@@ -1,4 +1,4 @@
-import { transformProjectToIconSet } from '@/api/arkhamCardsApi';
+import { transformProjectToIconSet } from './transformResponse/icomoon';
 import { AppThunk } from '@/store';
 import { IIcoMoonProject, IReactIcoMoonExtendedIconSet } from '@/types/icomoon';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
