@@ -1,0 +1,30 @@
+.container {
+    width: 95mm;
+    height: 82mm;
+
+    background-size: contain;
+    font-family: 'Conkordia', sans-serif;
+
+    padding: 3mm;
+    box-sizing: border-box;
+}
+
+.no-bleeds {
+    width: 88mm;
+    height: 76mm;
+}
+
+.title {
+    margin: 2.5mm 0;
+    font-size: 4.5mm;
+    text-align: center;
+    font-weight: normal;
+}
+
+.type_grayscale {
+    background-image: url(./images/grayscale.png);
+}
+
+.type_color {
+    background-image: url(./images/color.png);
+}

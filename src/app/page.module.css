@@ -1,0 +1,24 @@
+.container {
+  min-height: 100vh;
+}
+
+.main {
+  width: 75%;
+  padding: 10px;
+  box-sizing: border-box;
+  @media print {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.sidebar {
+  width: calc(25% - 2px);
+  border-right: 2px solid gray;
+  @media print {
+    display: none;
+    padding: 0;
+  }
+}
