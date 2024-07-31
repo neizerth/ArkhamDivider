@@ -1,5 +1,5 @@
 'use client';
-import { DividerList, Row, DividerForm, Container } from "@/components";
+import { DividerList, Row, DividerForm, Container, AppLoader } from "@/components";
 import S from "./page.module.css";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { selectDividerList } from "@/store/features/dividers/dividers";
@@ -21,8 +21,7 @@ export default function Home() {
 
   return (
     <Container>
-      {loading && <div>Icons are loading</div>}
-      {!loading && (
+      <AppLoader loading={loading}>
         <Row className={S.container}>
           <aside className={S.sidebar}>
             <DividerForm dividers={dividers}/>
@@ -31,7 +30,7 @@ export default function Home() {
             <DividerList dividers={dividers}/>
           </main>
         </Row>
-      )}
+      </AppLoader>
     </Container>
   );
 }

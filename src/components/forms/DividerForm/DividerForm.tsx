@@ -45,18 +45,21 @@ export const DividerForm = ({ dividers, iconSet }: DividerFormProps) => {
 	
 	return (
 		<form>
-		{fields.map((field, index) => (
-			<Row key={field.id}>
-			<div>
-			<input
-			{...register(`dividers.${index}.title`)}
-			/>
-			</div>
-			<div>
-			  <Icon icon="the_first_day" size={32}/>
-			</div>
-			</Row>
-		))}
+		{fields.map((field, index) => {
+			const { icon } = dividers[index];
+			return (
+				<Row key={field.id}>
+				<div>
+				<input
+				{...register(`dividers.${index}.title`)}
+				/>
+				</div>
+				<div>
+					{icon && <Icon icon={icon} size={32}/>}
+				</div>
+				</Row>
+			)
+		})}
 		</form>
 	);
 }
