@@ -10,8 +10,8 @@ export type DividerListProps = {
 export const DividerList = ({ dividers }: DividerListProps) => {
 	return (
 		<List className={S.container}>
-			{dividers.map(({ id, ...props }) => (
-				<Divider key={id} {...props}/>
+			{dividers.map((divider, index) => (
+				<Divider key={index} {...divider}/>
 			))}
 		</List>
 	);

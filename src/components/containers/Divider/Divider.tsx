@@ -3,6 +3,8 @@ import IcoMoon from "react-icomoon";
 import S from './Divider.module.scss';
 import classNames from 'classnames';
 import Icon from '@/components/ui/Icon/Icon';
+import { useTranslation } from 'react-i18next';
+import { I18N_NAMESPACE } from '@/constants/i18n';
 
 export enum DividerType {
 	GRAYSCALE = 'grayscale',
@@ -10,17 +12,23 @@ export enum DividerType {
 }
 
 export type DividerProps = PropsWithChildren & {
-	title: string
+	id?: string
+	name?: string
 	type?: DividerType
-	icon?: string
+	icon?: boolean
 }
 
 export const Divider = ({
-	icon,
-	title,
+	id = '',
+	icon = true,
+	name,
 	children,
 	type = DividerType.COLOR
 }: DividerProps) => {
+	const { t } = useTranslation(I18N_NAMESPACE.ENCOUNTER_SETS);
+
+	const dividerName = name || (id && t(id));
+
 	const className = classNames(
 		S.container,
 		S[`type_${type}`]
@@ -32,11 +40,12 @@ export const Divider = ({
 
 	return (
 		<div className={className}>
-			<h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{title}</h3>
-			{icon && (
+			{/* <h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{dividerName}</h3> */}
+			<h3 className={S.title} data-id={id}>{dividerName}</h3>
+			{icon && id && (
 				<>
-					<Icon icon={icon} className={classNames(S.icon, S.icon_small)}/>
-					<Icon icon={icon} className={classNames(S.icon, S.icon_large)}/>
+					<Icon icon={id} className={classNames(S.icon, S.icon_small)}/>
+					<Icon icon={id} className={classNames(S.icon, S.icon_large)}/>
 				</>
 			)}
 		</div>

@@ -1,0 +1,1 @@
+export const unique = <T>(data: T[]): T[] => Array.from(new Set(data));

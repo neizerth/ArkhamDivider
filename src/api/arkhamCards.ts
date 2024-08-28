@@ -22,9 +22,11 @@ export const fetchScenarioNames = withLanguagePostfix((language: string) => `${A
 
 export const fetchCampaigns = withLanguagePostfix((language: string) => `${ARKHAM_CARDS_GENERATED_PATH}/allCampaigns${language}.json`);
 
-export const fetchUITranslation = (language: string) => 
+export const fetchEncounterSets = withLanguagePostfix((language: string) => `${ARKHAM_CARDS_GENERATED_PATH}/encounterSets${language}.json`);
+
+export const fetchCoreTranslations = (language: string) => 
     fetchArkhamCardsAsset(
-        ARKHAM_CARDS_I18N_PATH + `/i18n/${language}.po.json`
+        ARKHAM_CARDS_I18N_PATH + `/${language}.po.json`
     );
 
 // export const ARKHAM_CARDS_ICOMOON_PROJECT_URL = process.env.NEXT_PUBLIC_ARKHAM_CARDS_URL + '/assets/icomoon/project.json'; 

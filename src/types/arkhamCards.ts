@@ -1,9 +1,16 @@
+export type IArkhamCardsScenarioStep = {
+  id: string;
+  type: string;
+  encounter_sets?: string[]
+}
+
 export type IArkhamCardsScenarioDetail = {
   id: string;
   scenario_name: string;
   full_name: string;
   setup: string[];
   icon: string;
+  steps: IArkhamCardsScenarioStep[];
 }
 
 export type IArkhamCardsCampaign = {
