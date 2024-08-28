@@ -1,17 +1,17 @@
-import { transformProjectToIconSet } from './transformResponse/icomoon';
+import { fetchIcomoonProject } from '@/api/arkhamCards';
+import { transformProjectToIconSet } from './transform/icomoon';
 import { AppThunk } from '@/store';
 import { IIcoMoonProject, IReactIcoMoonExtendedIconSet } from '@/types/icomoon';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice, ActionCreator } from '@reduxjs/toolkit';
 
-export const ARKHAM_CARDS_ICOMOON_PROJECT_URL = process.env.NEXT_PUBLIC_ARKHAM_CARDS_URL + '/assets/icomoon/project.json'; 
-
 export type IIconsState = {
+  loading: boolean;
   iconSet?: IReactIcoMoonExtendedIconSet
 }
 
 const initialState: IIconsState = {
-
+  loading: true
 };
 
 export const icons = createSlice({
@@ -21,7 +21,7 @@ export const icons = createSlice({
     setIconSet: createSliceSetter('iconSet'),
   },
   selectors: {
-    selectIconSet: createSliceSelector('iconSet'),
+    selectIconSet: createSliceSelector('iconSet')
   }
 });
 
@@ -34,7 +34,7 @@ export const {
 } = icons.selectors;
 
 export const loadIcons: ActionCreator<AppThunk> = () => async dispatch => {
-  const response = await fetch(ARKHAM_CARDS_ICOMOON_PROJECT_URL);
+  const response = await fetchIcomoonProject();
   const json: IIcoMoonProject = await response.json();
   const iconSet = transformProjectToIconSet(json);
   

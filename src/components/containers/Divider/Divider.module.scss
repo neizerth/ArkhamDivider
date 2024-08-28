@@ -7,6 +7,7 @@
 
     padding: 3mm;
     box-sizing: border-box;
+    position: relative;
 }
 
 .no-bleeds {
@@ -40,3 +41,22 @@
     }
 }
 
+.icon {
+    position: absolute;
+    object-fit: contain;
+    aspect-ratio: 1;
+}
+
+.icon_small {
+    width: 4.4mm;
+    right: 5.6mm;
+    top: 5.9mm;
+}
+
+.icon_large {
+    top: 17mm;
+    opacity: 0.2;
+    transform: translate(-50%, 0);
+    left: 50%;
+    height: 50mm;
+}

@@ -9,15 +9,11 @@ import {
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
-export const transformProjectToIconSet = ({ iconSets }: IIcoMoonProject): IReactIcoMoonExtendedIconSet => {  
-  const icons = iconSets
+export const transformProjectToIconSet = ({ iconSets }: IIcoMoonProject): IReactIcoMoonExtendedIconSet => ({
+  icons: iconSets
     .map(mapIconSet)
-    .flat();
-    
-  return {
-    icons
-  }
-}
+    .flat()
+})
 
 const addIconName = ({ selection, metadata }: IIcoMoonIconSet) => {
   const encounterSet = metadata.name;

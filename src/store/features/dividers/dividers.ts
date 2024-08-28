@@ -1,6 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { createSliceSetter, createSliceSelector } from '@/util/slice';
-import { dividersList } from './sampleData';
 import { IDividerList } from '@/types/dividers';
 
 export type IDividersState = {
@@ -8,7 +7,7 @@ export type IDividersState = {
 }
 
 const initialState: IDividersState = {
-  list: dividersList
+  list: []
 };
 
 export const dividers = createSlice({

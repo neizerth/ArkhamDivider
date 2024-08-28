@@ -2,6 +2,7 @@ import React, { FormEvent, PropsWithChildren } from 'react';
 import IcoMoon from "react-icomoon";
 import S from './Divider.module.scss';
 import classNames from 'classnames';
+import Icon from '@/components/ui/Icon/Icon';
 
 export enum DividerType {
 	GRAYSCALE = 'grayscale',
@@ -32,6 +33,12 @@ export const Divider = ({
 	return (
 		<div className={className}>
 			<h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{title}</h3>
+			{icon && (
+				<>
+					<Icon icon={icon} className={classNames(S.icon, S.icon_small)}/>
+					<Icon icon={icon} className={classNames(S.icon, S.icon_large)}/>
+				</>
+			)}
 		</div>
 	);
 }

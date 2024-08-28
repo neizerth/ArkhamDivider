@@ -10,8 +10,8 @@ export * from './ui/Icon/Icon';
 
 export * from './loaders/AppLoader/AppLoader';
 
-export * from './forms/DividerForm/DividerForm';
 export * from './forms/IconSelect/IconSelect';
 
 export * from './typography/Title/Title';
 
+export * from './sections/AppSettings/AppSettings';

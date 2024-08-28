@@ -1,12 +1,15 @@
 import { PropsWithChildren } from 'react';
 import S from './AppLoader.module.scss';
 import classNames from 'classnames';
+import { useAppLoader } from '@/hooks/useAppLoader';
 
 export type AppLoaderProps = PropsWithChildren & {
-	loading?: boolean
+	
 }
 
-export const AppLoader = ({ loading = true, children }: AppLoaderProps) => {
+export const AppLoader = ({ children }: AppLoaderProps) => {
+
+  const loading = useAppLoader();
 	const containerClassNames = classNames(S.container, loading && S.loading);
 	return (
 		<div className={containerClassNames}>
