@@ -4,7 +4,7 @@ import { AppSelector, AppThunk } from '@/store';
 import { IIcoMoonProject, IReactIcoMoonExtendedIconSet } from '@/types/icomoon';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice, ActionCreator } from '@reduxjs/toolkit';
-import { IIconPatch, transformComponentToPatch } from './transform/iconPatch';
+import { transformComponentToPatch } from './transform/iconPatch';
 
 export type IIconMapping = {
   [index: string]: string;
