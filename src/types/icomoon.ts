@@ -5,7 +5,8 @@ export type IReactIcoMoonIcon = IReactIcoMoonIconSet['icons'][number];
 
 export type IReactIcoMoonExtendedIcon = IReactIcoMoonIcon & {
   properties: {
-    encounterSet: string
+    encounterSet: string,
+    tags: string[],
   }
 };
 

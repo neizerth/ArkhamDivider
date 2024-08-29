@@ -30,7 +30,8 @@ export const dividers = createSlice({
 const campaignToDividers = ({ scenarios, unique_encounter_sets }: ICampaign): IDividerList => {
   const encounterSetDividers = unique_encounter_sets
     .map(id => ({
-      id
+      id,
+      icon: id
     }));
 
   const scenarioDividers = scenarios
@@ -45,13 +46,6 @@ const campaignToDividers = ({ scenarios, unique_encounter_sets }: ICampaign): ID
     // ...scenarioDividers,
     ...encounterSetDividers
   ];
-  // const encounterSets = scenarios 
-  // scenarios
-  // .map(({ id, icon, scenario_name }) => ({
-  //   id,
-  //   icon,
-  //   title: scenario_name
-  // }))
 }
 
 export const changeCampaign: ActionCreator<AppThunk> = (id: string) => (dispatch, getState) => {

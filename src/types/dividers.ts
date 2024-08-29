@@ -1,7 +1,7 @@
 export type IDivider = {
     id: string
     name?: string
-    icon?: boolean
+    icon?: string
     campaignIcon?: string
     scenarioIndex?: number
 }

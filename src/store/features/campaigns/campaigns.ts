@@ -32,7 +32,7 @@ export const campaigns = createSlice({
 });
 
 export const scenarioToEncounterSets = ({ steps }: IArkhamCardsScenarioDetail) => {
-  const step = steps.find(({ id }) => id === 'gather_encounter_sets');
+  const step = steps.find(({ type }) => type === 'encounter_sets');
 
   return step?.encounter_sets || [];
 }
@@ -45,7 +45,7 @@ export const transformArkhamCampaign = ({ campaign, scenarios }: IArkhamCardsCam
     unique_encounter_sets: uniqueEncounterSets,
     campaign,
     scenarios: scenarios.map(({ 
-        id, 
+        id,
         scenario_name,
         full_name,
         setup,

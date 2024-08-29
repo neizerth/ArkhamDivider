@@ -11,6 +11,8 @@ export const fetchArkhamCardsAsset = (path: string) => fetch(ARKHAM_CARDS_URL + 
 
 export const fetchIcomoonProject = () => fetchArkhamCardsAsset(ARKHAM_CARDS_ICOMOON_PATH);
 
+export const fetchIconPatch = () => fetchArkhamCardsAsset('/src/icons/EncounterIcon.tsx');
+
 export const withLanguagePostfix = (getUrl: (language: string) => string) => (language: string) => {
     const postfix = language === 'en' ? '' : '_' + language;
     const url = getUrl(postfix);

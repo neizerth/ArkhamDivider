@@ -32,13 +32,13 @@
 
 .title {
     margin: 0.25cm 1.2cm;
-    &:focus {
-        outline: 2px solid rgba(0, 0, 0, 0.5);
-        border-radius: 4px;
-    }
-    &:hover {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
-    }
+    // &:focus {
+    //     outline: 2px solid rgba(0, 0, 0, 0.5);
+    //     border-radius: 4px;
+    // }
+    // &:hover {
+    //     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+    // }
 }
 
 .icon {

@@ -15,12 +15,12 @@ export type DividerProps = PropsWithChildren & {
 	id?: string
 	name?: string
 	type?: DividerType
-	icon?: boolean
+	icon?: string
 }
 
 export const Divider = ({
 	id = '',
-	icon = true,
+	icon,
 	name,
 	children,
 	type = DividerType.COLOR
@@ -41,11 +41,11 @@ export const Divider = ({
 	return (
 		<div className={className}>
 			{/* <h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{dividerName}</h3> */}
-			<h3 className={S.title} data-id={id}>{dividerName}</h3>
-			{icon && id && (
+			<h3 className={S.title}>{dividerName}</h3>
+			{icon && (
 				<>
-					<Icon icon={id} className={classNames(S.icon, S.icon_small)}/>
-					<Icon icon={id} className={classNames(S.icon, S.icon_large)}/>
+					<Icon icon={icon} className={classNames(S.icon, S.icon_small)}/>
+					<Icon icon={icon} className={classNames(S.icon, S.icon_large)}/>
 				</>
 			)}
 		</div>

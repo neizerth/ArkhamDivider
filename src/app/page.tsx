@@ -3,10 +3,9 @@ import { DividerList, Row, Container, AppLoader, AppSettings } from "@/component
 import S from "./page.module.css";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { selectDividers } from "@/store/features/dividers/dividers";
-import { loadIcons, selectIconSet } from "@/store/features/icons/icons";
+import { loadIcons } from "@/store/features/icons/icons";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { loadScenarios } from "@/store/features/scenarios/scenarios";
 import { useTranslation } from "react-i18next";
 import { selectLanguage, changeLanguage } from "@/store/features/language/language";
 import '@/bootstrap'
