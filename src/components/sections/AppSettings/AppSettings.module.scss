@@ -1,0 +1,8 @@
+.container {
+  padding: 20px;
+  position: fixed;
+  z-index: 1;
+  @media print {
+    display: none
+  }
+}

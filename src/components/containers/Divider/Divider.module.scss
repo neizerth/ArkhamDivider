@@ -1,6 +1,6 @@
 .container {
+    aspect-ratio: 95 / 82;
     width: 95mm;
-    height: 82mm;
 
     background-size: contain;
     font-family: 'Conkordia', sans-serif;
@@ -8,6 +8,9 @@
     padding: 3mm;
     box-sizing: border-box;
     position: relative;
+    @media print {
+        width: 95mm;
+    }
 }
 
 .no-bleeds {
@@ -22,12 +25,14 @@
     font-weight: normal;
 }
 
-.type_grayscale {
-    background-image: url(./images/grayscale.png);
-}
-
-.type_color {
-    background-image: url(./images/color.png);
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .title {

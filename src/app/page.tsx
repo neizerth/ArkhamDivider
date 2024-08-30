@@ -31,8 +31,10 @@ export default function Home() {
   return (
     <Container>
       <AppLoader>
-        <AppSettings/>
-        <DividerList dividers={dividers}/>
+        <div className={S.container}>
+          <AppSettings/>
+          <DividerList dividers={dividers} groupSize={6} rowSize={2}/>
+        </div>
       </AppLoader>
     </Container>
   );

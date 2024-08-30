@@ -6,12 +6,21 @@ import Icon from '@/components/ui/Icon/Icon';
 import { useTranslation } from 'react-i18next';
 import { I18N_NAMESPACE } from '@/constants/i18n';
 
+import colorBg from './images/color.png';
+import grayscaleBg from './images/grayscale.png';
+import { PropsWithClassName } from '@/types/util';
+
 export enum DividerType {
-	GRAYSCALE = 'grayscale',
-	COLOR = 'color',
+	GRAYSCALE = 'GRAYSCALE',
+	COLOR = 'COLOR',
 }
 
-export type DividerProps = PropsWithChildren & {
+export const DIVIDER_BACKGROUND = {
+	GRAYSCALE: grayscaleBg.src,
+	COLOR: colorBg.src,
+}
+
+export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	id?: string
 	name?: string
 	type?: DividerType
@@ -23,7 +32,8 @@ export const Divider = ({
 	icon,
 	name,
 	children,
-	type = DividerType.COLOR
+	type = DividerType.GRAYSCALE,
+	...props
 }: DividerProps) => {
 	const { t } = useTranslation(I18N_NAMESPACE.ENCOUNTER_SETS);
 
@@ -31,17 +41,22 @@ export const Divider = ({
 
 	const className = classNames(
 		S.container,
-		S[`type_${type}`]
+		S[`type_${type}`],
+		props.className
 	);
 
 	const onTitleChange = ({ target }: FormEvent) => {
 		const { textContent } = target as HTMLElement;
 	}
 
+	const background = DIVIDER_BACKGROUND[type];
+
 	return (
 		<div className={className}>
+			
 			{/* <h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{dividerName}</h3> */}
 			<h3 className={S.title}>{dividerName}</h3>
+			<img className={S.background} src={background} alt={dividerName}/>
 			{icon && (
 				<>
 					<Icon icon={icon} className={classNames(S.icon, S.icon_small)}/>
