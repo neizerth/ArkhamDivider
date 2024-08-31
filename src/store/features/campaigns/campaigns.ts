@@ -4,6 +4,8 @@ import { IArkhamCardsCampaign, IArkhamCardsScenarioDetail } from '@/types/arkham
 import { unique } from '@/util/common';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
+import { transformArkhamCardsCampaign } from './transform/transformArkhamCardsCampaign';
+import { getCoreEntrounterSet } from './transform/getCoreEntrounterSet';
 
 export type ICampaignScenario = Omit<IArkhamCardsScenarioDetail, 'steps'>;
 
@@ -14,66 +16,46 @@ export type ICampaign = Omit<IArkhamCardsCampaign, 'scenarios'> & {
 
 export type ICampaignsState = {
   list: ICampaign[]
+  coreEncounterSet: string[]
 }
 
 const initialState: ICampaignsState = {
-  list: []
+  list: [],
+  coreEncounterSet: []
 };
 
 export const campaigns = createSlice({
   name: 'campaigns',
   initialState,
   reducers: {
-    setCampaigns: createSliceSetter('list')
+    setCampaigns: createSliceSetter('list'),
+    setCoreEncounterSet: createSliceSetter('coreEncounterSet'),
   },
   selectors: {
-    selectCampaigns: createSliceSelector('list')
+    selectCampaigns: createSliceSelector('list'),
+    selectCoreEncounterSet: createSliceSelector('coreEncounterSet')
   }
 });
 
-export const scenarioToEncounterSets = ({ steps }: IArkhamCardsScenarioDetail) => {
-  const step = steps.find(({ type }) => type === 'encounter_sets');
-
-  return step?.encounter_sets || [];
-}
-
-export const transformArkhamCampaign = ({ campaign, scenarios }: IArkhamCardsCampaign): ICampaign => {
-  const encounterSets = scenarios.map(scenarioToEncounterSets).flat();
-  const uniqueEncounterSets = unique(encounterSets);
-
-  return {
-    unique_encounter_sets: uniqueEncounterSets,
-    campaign,
-    scenarios: scenarios.map(({ 
-        id,
-        scenario_name,
-        full_name,
-        setup,
-        icon
-      }) => ({
-        id, 
-        scenario_name,
-        full_name,
-        setup,
-        icon
-      }))
-  }
-}
 
 export const loadCampaigns: ActionCreator<AppThunk> = (language: string) => async dispatch => {
   const response = await fetchCampaigns(language);
   const campaigns: IArkhamCardsCampaign[] = await response.json();
-  const list = campaigns.map(transformArkhamCampaign);
+  const list = campaigns.map(transformArkhamCardsCampaign);
+  const coreEncounterSet = getCoreEntrounterSet(list);
   
   dispatch(setCampaigns(list));
+  dispatch(setCoreEncounterSet(coreEncounterSet));
 }
 
 export const {
-  setCampaigns
+  setCampaigns,
+  setCoreEncounterSet
 } = campaigns.actions;
 
 export const {
-  selectCampaigns
+  selectCampaigns,
+  selectCoreEncounterSet
 } = campaigns.selectors;
 
 export default campaigns.reducer;

@@ -3,14 +3,16 @@ import { createSliceSetter, createSliceSelector } from '@/util/slice';
 import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
 import { IArkhamCardsCampaign } from '@/types/arkhamCards';
-import { ICampaign, selectCampaigns } from '../campaigns/campaigns';
+import { ICampaign, selectCampaigns, selectCoreEncounterSet } from '../campaigns/campaigns';
 
 export type IDividersState = {
+  includeCoreSet: boolean;
   campaign?: ICampaign;
   list: IDividerList
 }
 
 const initialState: IDividersState = {
+  includeCoreSet: true,
   list: []
 };
 
@@ -18,56 +20,62 @@ export const dividers = createSlice({
   name: 'dividers',
   initialState,
   reducers: {
+    setIncludeCoreSet: createSliceSetter('includeCoreSet'),
     setCampaign: createSliceSetter('campaign'),
     setDividers: createSliceSetter('list')
   },
   selectors: {
+    selectIncludeCoreSet: createSliceSelector('includeCoreSet'),
     selectCampaign: createSliceSelector('campaign'),
-    selectDividers: createSliceSelector('list')
+    selectDividers: createSliceSelector('list'),
   }
 });
 
-const campaignToDividers = ({ scenarios, unique_encounter_sets }: ICampaign): IDividerList => {
-  const encounterSetDividers = unique_encounter_sets
-    .map(id => ({
-      id,
-      icon: id
-    }));
+const campaignToDividers = ({ unique_encounter_sets }: ICampaign, excludeSets: string[] = []): IDividerList => unique_encounter_sets
+  .filter(id => !excludeSets.includes(id))
+  .map(id => ({
+    id,
+    icon: id
+  }));
 
-  const scenarioDividers = scenarios
-    .filter(({ icon }) => icon)
-    .map(({ id, icon, scenario_name }) => ({
-      id,
-      icon,
-      name: scenario_name
-    }));
+export const refreshDividers: ActionCreator<AppThunk> = () => (dispatch, getState) => {
+  const state = getState();
+  const campaign = selectCampaign(state);
+  if (!campaign) {
+    return;
+  }
+  const includeCoreSet = selectIncludeCoreSet(state);
+  const coreEncounterSet = selectCoreEncounterSet(state);
+  const dividers = campaignToDividers(campaign, includeCoreSet ? [] : coreEncounterSet);
 
-  return [
-    // ...scenarioDividers,
-    ...encounterSetDividers
-  ];
+  dispatch(setDividers(dividers));
 }
+
 
 export const changeCampaign: ActionCreator<AppThunk> = (id: string) => (dispatch, getState) => {
   const campaign = selectCampaigns(getState())
     .find(({ campaign }) => campaign.id === id);
 
-  const dividers = campaign ? campaignToDividers(campaign) : [];
-
-  console.log({id, campaign, dividers})
-
   dispatch(setCampaign(campaign));
-  dispatch(setDividers(dividers));
+  dispatch(refreshDividers());
+}
+
+export const toggleIncludeCoreSet: ActionCreator<AppThunk> = () => (dispatch, getState) => {
+  const includeCoreSet = selectIncludeCoreSet(getState());
+
+  dispatch(setIncludeCoreSet(!includeCoreSet));
 }
 
 export const {
   setCampaign,
-  setDividers
+  setDividers,
+  setIncludeCoreSet,
 } = dividers.actions;
 
 export const {
   selectCampaign,
-  selectDividers
+  selectDividers,
+  selectIncludeCoreSet
 } = dividers.selectors;
 
 export default dividers.reducer;
