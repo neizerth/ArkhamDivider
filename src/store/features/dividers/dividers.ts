@@ -7,11 +7,12 @@ import { ICampaign, selectCampaigns, selectCoreEncounterSet } from '../campaigns
 
 export type IDividersState = {
   includeCoreSet: boolean;
-  campaign?: ICampaign;
+  campaign: ICampaign | null;
   list: IDividerList
 }
 
 const initialState: IDividersState = {
+  campaign: null,
   includeCoreSet: false,
   list: []
 };

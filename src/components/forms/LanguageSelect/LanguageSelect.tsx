@@ -4,6 +4,7 @@ import { changeLanguage, selectAvailableLanguages, selectLanguage } from '@/stor
 import { useTranslation } from 'react-i18next';
 import { ReactEventHandler } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
+import Select from 'react-select';
 
 export type LanguageSelectProps = {
 
@@ -17,20 +18,24 @@ export const LanguageSelect = ({}: LanguageSelectProps) => {
   
   // console.log({ availableLanguages })
 
-  const changeCurrentLanguage: ReactEventHandler = (e) => {
-    const target = e.target as HTMLSelectElement;
+  const changeCurrentLanguage = (value: string) => {
+    dispatch(changeLanguage(value));
+  }
 
-    dispatch(changeLanguage(target.value));
+  const options = availableLanguages.map(value => ({
+    value,
+    label: value
+  }));
+
+  const languageValue = {
+    value: language,
+    label: language
   }
 
   return (
     <label className={S.container}>
       {t('Language')}
-      <select value={language} onChange={changeCurrentLanguage}>
-        {availableLanguages.map(availableLanguage => (
-          <option key={availableLanguage}>{availableLanguage}</option>
-        ))}
-      </select>
+      <Select options={options} value={languageValue} onChange={item => item && changeCurrentLanguage(item.value)}/>
     </label>
   );
 }

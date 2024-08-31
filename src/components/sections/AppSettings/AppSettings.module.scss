@@ -1,9 +1,13 @@
 .container {
   padding: 20px;
   position: fixed;
+  left: 0;
+  top: 0;
   z-index: 1;
   display: flex;
   gap: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
   @media print {
     display: none
   }

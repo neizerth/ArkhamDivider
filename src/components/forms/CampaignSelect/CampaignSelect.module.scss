@@ -1,14 +1,20 @@
 .container {
   display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.selectContainer {
+  display: flex;
+  align-items: center;
   gap: 20px;
 }
 
 .select {
-  display: flex;
-  gap: 20px;
+  min-width: 300px;
 }
-
 .core {
   display: flex;
+  align-items: center;
   gap: 5px;
 }
