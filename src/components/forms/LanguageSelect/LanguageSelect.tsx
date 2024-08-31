@@ -24,9 +24,9 @@ export const LanguageSelect = ({}: LanguageSelectProps) => {
   }
 
   return (
-    <label className={S.container} onChange={changeCurrentLanguage}>
+    <label className={S.container}>
       {t('Language')}
-      <select value={language}>
+      <select value={language} onChange={changeCurrentLanguage}>
         {availableLanguages.map(availableLanguage => (
           <option key={availableLanguage}>{availableLanguage}</option>
         ))}

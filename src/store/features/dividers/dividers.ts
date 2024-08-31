@@ -12,7 +12,7 @@ export type IDividersState = {
 }
 
 const initialState: IDividersState = {
-  includeCoreSet: true,
+  includeCoreSet: false,
   list: []
 };
 

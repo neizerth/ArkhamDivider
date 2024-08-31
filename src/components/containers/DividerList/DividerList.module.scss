@@ -1,11 +1,19 @@
-.group {
-  padding-top: 20mm;
-  max-width: 210mm;
-  margin: 0 auto;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  @media print {
+    padding: 0;
+    display: block;
+  }
 }
 
-.item {
-  display: inline-block;
-  // width: 50%;
-  position: relative;
+.group {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.row {
+  display: flex;
 }

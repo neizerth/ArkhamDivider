@@ -1,0 +1,20 @@
+
+.lines{
+  position: relative;
+}
+
+.vertical {
+  position: absolute;
+  width: 0;
+  border-left: 0.1mm solid black;
+  height: 10.1mm;
+  top: -5mm;
+
+}
+.horizontal {
+  position: absolute;
+  border-bottom: 0.1mm solid black;
+  width: 10.1mm;
+  height: 0;
+  left: -5mm;
+}

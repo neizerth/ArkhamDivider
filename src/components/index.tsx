@@ -2,13 +2,13 @@ export * from './containers/Container/Container';
 export * from './containers/Divider/Divider';
 export * from './containers/DividerList/DividerList';
 
-export * from './ui/Guide/Guide';
-
 export * from './ui/grid/Row/Row';
 export * from './ui/grid/List/List';
 export * from './ui/Icon/Icon';
 
-export * from './ui/behavior/GuidedItem/GuidedItem';
+export * from './print/GuidedItem/GuidedItem';
+export * from './print/Guide/Guide';
+export * from './print/A4/A4';
 
 export * from './loaders/AppLoader/AppLoader';
 

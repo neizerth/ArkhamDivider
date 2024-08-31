@@ -1,0 +1,15 @@
+.container {
+  box-sizing: border-box;
+  padding: 20mm 0;
+  width: 210mm;
+  height: 297mm;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+
+  @media print {
+    box-shadow: none;
+  }
+}

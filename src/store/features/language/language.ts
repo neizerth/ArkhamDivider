@@ -10,7 +10,7 @@ import { fetchGenerated, fetchI18NSource } from '@/api/arkhamCards';
 import { unique } from '@/util/common';
 
 export type ILanguageState = {
-  language?: string;
+  language: string;
   availableLanguages: string[]
 }
 

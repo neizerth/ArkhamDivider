@@ -1,4 +1,4 @@
-import { List, Divider, GuidedItem } from '@/components';
+import { List, Divider, GuidedItem, A4 } from '@/components';
 
 import S from './DividerList.module.scss';
 import { IDividerList } from '@/types/dividers';
@@ -20,20 +20,22 @@ export const DividerList = ({ dividers, groupSize, rowSize }: DividerListProps) 
 	return (
 		<div className={S.container}>
 			{groups.map((group, groupIndex) => (
-				<div className={S.group} key={groupIndex}>
-					{splitIntoGroups(group, rowSize).map((row, rowIndex) => (
-						<div className={S.row} key={rowIndex}>
-							{row.map((divider, index) => (
-								<GuidedItem 
-									key={index}
-									className={S.item} 
-								>
-									<Divider {...divider} language={language}/>
-								</GuidedItem>
-							))}
-						</div>
-					))}
-				</div>
+				<A4 className={S.page} key={groupIndex}>
+					<div className={S.group}>
+						{splitIntoGroups(group, rowSize).map((row, rowIndex) => (
+							<div className={S.row} key={rowIndex}>
+								{row.map((divider, index) => (
+									<GuidedItem 
+										key={index}
+										className={S.item} 
+									>
+										<Divider {...divider} language={language}/>
+									</GuidedItem>
+								))}
+							</div>
+						))}
+					</div>
+				</A4>
 			))}
 		</div>
 	);

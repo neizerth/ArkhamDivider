@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import S from './GuidedItem.module.scss';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
+import { Guide } from '@/components';
 
 export type GuidedItemProps = PropsWithChildren & PropsWithClassName & {
   topLeft?: boolean;
@@ -21,10 +22,10 @@ export const GuidedItem = ({
   return (
     <div className={classNames(S.container, className)}>
       
-      {topLeft && <div className={classNames(S.guide, S.guide_tl)}/>}
-      {topRight && <div className={classNames(S.guide, S.guide_tr)}/>}
-      {bottomLeft && <div className={classNames(S.guide, S.guide_bl)}/>}
-      {bottomRight && <div className={classNames(S.guide, S.guide_br)}/>}
+      {topLeft && <Guide className={classNames(S.guide, S.guide_topLeft)}/>}
+      {topRight && <Guide className={classNames(S.guide, S.guide_topRight)}/>}
+      {bottomLeft && <Guide className={classNames(S.guide, S.guide_bottomLeft)}/>}
+      {bottomRight && <Guide className={classNames(S.guide, S.guide_bottomRight)}/>}
 
       {children}
     </div>

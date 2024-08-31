@@ -52,7 +52,10 @@ export const Divider = ({
 	}
 
 	const background = DIVIDER_BACKGROUND[type];
-	const titleClassName = classNames(S.title, S[`title_${language}`])
+	const titleClassName = classNames(
+		S.title, 
+		S[`title_${language}`]
+	);
 
 	return (
 		<div className={className}>
