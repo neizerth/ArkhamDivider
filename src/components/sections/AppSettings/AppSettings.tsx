@@ -5,7 +5,7 @@ import { selectCampaigns } from '@/store/features/campaigns/campaigns';
 import { ReactEventHandler, useState } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { changeCampaign } from '@/store/features/dividers/dividers';
-import { CampaignSelect } from '@/components';
+import { CampaignSelect, LanguageSelect } from '@/components';
 
 export type AppSettingsProps = {
 
@@ -15,7 +15,7 @@ export const AppSettings = ({}: AppSettingsProps) => {
     
     return (
         <div className={S.container}>
-            {/* <CategoriesMenu/> */}
+            <LanguageSelect/>
             <CampaignSelect/>
         </div>
     );

@@ -14,6 +14,7 @@ export * from './loaders/AppLoader/AppLoader';
 
 export * from './forms/IconSelect/IconSelect';
 export * from './forms/CampaignSelect/CampaignSelect';
+export * from './forms/LanguageSelect/LanguageSelect';
 
 export * from './typography/Title/Title';
 

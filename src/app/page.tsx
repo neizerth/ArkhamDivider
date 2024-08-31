@@ -7,7 +7,7 @@ import { loadIcons } from "@/store/features/icons/icons";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useTranslation } from "react-i18next";
-import { selectLanguage, changeLanguage } from "@/store/features/language/language";
+import { selectLanguage, changeLanguage, loadAvailableLanguages } from "@/store/features/language/language";
 import '@/bootstrap'
 import { loadCampaigns } from "@/store/features/campaigns/campaigns";
 
@@ -19,8 +19,9 @@ export default function Home() {
   const { i18n } = useTranslation();
 
   useEffect(() => {
+    dispatch(loadAvailableLanguages());
     dispatch(loadIcons());
-    dispatch(changeLanguage('ru'));
+    dispatch(changeLanguage('en'));
   }, [dispatch]);
 
   useEffect(() => {

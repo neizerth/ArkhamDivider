@@ -24,7 +24,8 @@ export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	id?: string
 	name?: string
 	type?: DividerType
-	icon?: string
+	icon?: string;
+	language: string;
 }
 
 export const Divider = ({
@@ -32,6 +33,7 @@ export const Divider = ({
 	icon,
 	name,
 	children,
+	language,
 	type = DividerType.GRAYSCALE,
 	...props
 }: DividerProps) => {
@@ -50,12 +52,13 @@ export const Divider = ({
 	}
 
 	const background = DIVIDER_BACKGROUND[type];
+	const titleClassName = classNames(S.title, S[`title_${language}`])
 
 	return (
 		<div className={className}>
 			
 			{/* <h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{dividerName}</h3> */}
-			<h3 className={S.title}>{dividerName}</h3>
+			<h3 className={titleClassName}>{dividerName}</h3>
 			<img className={S.background} src={background} alt={dividerName}/>
 			{icon && (
 				<>

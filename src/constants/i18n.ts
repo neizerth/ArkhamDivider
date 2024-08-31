@@ -5,3 +5,5 @@ export const I18N_NAMESPACE = {
   DEFAULT: 'core',
   ENCOUNTER_SETS: 'encounter_sets'
 }
+
+export const AVAILABLE_LANGUAGES = ['ru', 'de', 'fr', 'ko', 'es', 'en', 'zh', 'pt'];

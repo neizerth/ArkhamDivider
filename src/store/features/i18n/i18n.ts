@@ -11,7 +11,7 @@ import { I18N_NAMESPACE } from "@/constants/i18n";
 export const transformToBundle = ({ translations }: IPOEditorSource) => Object.values(translations[''])
   .reduce((total, { msgid, msgstr }) => {
     const [value]= msgstr;
-    total[msgid] = value;
+    total[msgid] = value || msgid;
     return total;
   }, {} as I18NLanguageBundle);
 

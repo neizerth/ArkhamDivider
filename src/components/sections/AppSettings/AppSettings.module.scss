@@ -2,6 +2,8 @@
   padding: 20px;
   position: fixed;
   z-index: 1;
+  display: flex;
+  gap: 20px;
   @media print {
     display: none
   }

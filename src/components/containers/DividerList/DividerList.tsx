@@ -3,6 +3,8 @@ import { List, Divider, GuidedItem } from '@/components';
 import S from './DividerList.module.scss';
 import { IDividerList } from '@/types/dividers';
 import { isEven, splitIntoGroups } from '@/util/common';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectLanguage } from '@/store/features/language/language';
 
 export type DividerListProps = {
 	groupSize: number,
@@ -13,6 +15,8 @@ export type DividerListProps = {
 
 export const DividerList = ({ dividers, groupSize, rowSize }: DividerListProps) => {
 	const groups = splitIntoGroups(dividers, groupSize);
+	const language = useAppSelector(selectLanguage);
+
 	return (
 		<div className={S.container}>
 			{groups.map((group, groupIndex) => (
@@ -24,7 +28,7 @@ export const DividerList = ({ dividers, groupSize, rowSize }: DividerListProps) 
 									key={index}
 									className={S.item} 
 								>
-									<Divider {...divider}/>
+									<Divider {...divider} language={language}/>
 								</GuidedItem>
 							))}
 						</div>
