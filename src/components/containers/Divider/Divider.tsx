@@ -3,25 +3,14 @@ import S from './Divider.module.scss';
 import classNames from 'classnames';
 import Icon from '@/components/ui/Icon/Icon';
 
-import colorBg from './images/color.png';
-import grayscaleBg from './images/grayscale.png';
 import { PropsWithClassName } from '@/types/util';
 
-export enum DividerType {
-	GRAYSCALE = 'GRAYSCALE',
-	COLOR = 'COLOR',
-}
-
-export const DIVIDER_BACKGROUND = {
-	GRAYSCALE: grayscaleBg.src,
-	COLOR: colorBg.src,
-}
 
 export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	id?: string
 	name?: string
-	type?: DividerType
 	icon?: string;
+	background: string;
 	language: string;
 }
 
@@ -30,8 +19,8 @@ export const Divider = ({
 	icon,
 	name,
 	children,
+	background,
 	language,
-	type = DividerType.GRAYSCALE,
 	...props
 }: DividerProps) => {
 	const [title, setTitle] = useState(name);
@@ -42,7 +31,6 @@ export const Divider = ({
 
 	const className = classNames(
 		S.container,
-		S[`type_${type}`],
 		props.className
 	);
 
@@ -53,8 +41,6 @@ export const Divider = ({
 	}
 
 	const clear = () => setTitle(name);
-
-	const background = DIVIDER_BACKGROUND[type];
 	const titleClassName = classNames(
 		S.titleInput, 
 		S[`titleInput_${language}`]

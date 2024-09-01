@@ -1,0 +1,19 @@
+[
+  {
+    "id": "return_color_horizontal",
+    "rowSize": 2,
+    "groupSize": 6,
+    "title": "Return To (Color)",
+    "type": "horizontal",
+    "image": "/images/dividers/horizontal/common/return.png",
+    "is_default": true
+  },
+  {
+    "id": "return_bw_horizontal",
+    "rowSize": 2,
+    "groupSize": 6,
+    "title": "Return To (B&W)",
+    "type": "horizontal",
+    "image": "/images/dividers/horizontal/common/return_bw.png"
+  }
+]

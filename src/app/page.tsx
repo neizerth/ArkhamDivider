@@ -1,22 +1,17 @@
 'use client';
 import { DividerList, Row, Container, AppLoader, AppSettings } from "@/components";
 import S from "./page.module.css";
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { selectDividers } from "@/store/features/dividers/dividers";
 import { loadIcons } from "@/store/features/icons/icons";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { useTranslation } from "react-i18next";
-import { selectLanguage, changeLanguage, loadAvailableLanguages } from "@/store/features/language/language";
+import { changeLanguage, loadAvailableLanguages } from "@/store/features/language/language";
 import '@/bootstrap'
-import { loadCampaigns } from "@/store/features/campaigns/campaigns";
-
+import { useAppSelector } from "@/hooks/useAppSelector";
+import { selectLayout } from "@/store/features/layout/layout";
 export default function Home() {
 
   const dispatch = useAppDispatch();
-	const dividers = useAppSelector(selectDividers);
-  const language = useAppSelector(selectLanguage);
-  const { i18n } = useTranslation();
+  const layout = useAppSelector(selectLayout);
 
   useEffect(() => {
     dispatch(loadAvailableLanguages());
@@ -34,7 +29,7 @@ export default function Home() {
       <AppLoader>
         <div className={S.container}>
           <AppSettings/>
-          <DividerList dividers={dividers} groupSize={6} rowSize={2}/>
+          {layout && <DividerList layout={layout}/>}
         </div>
       </AppLoader>
     </Container>

@@ -1,0 +1,24 @@
+.icon {
+  width: 32px;
+  cursor: pointer;
+  position: relative;
+  top: -4px;
+}
+
+.icon_vertical {
+  transform: rotate(90deg);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.select {
+  width: 200px; 
+}
