@@ -1,5 +1,6 @@
 export type IDivider = {
     id: string
+    layoutId?: string
     name?: string
     icon?: string
     language: string

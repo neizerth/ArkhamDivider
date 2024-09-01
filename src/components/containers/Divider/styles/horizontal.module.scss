@@ -8,14 +8,6 @@
     padding: 3mm;
     box-sizing: border-box;
     position: relative;
-    @media print {
-        width: 95mm;
-    }
-}
-
-.no-bleeds {
-    width: 88mm;
-    height: 76mm;
 }
 
 .title {
@@ -31,12 +23,12 @@
 .clear {
     display: none;
     cursor: pointer;
-}
-
-.clearIcon {
     position: absolute;
     right: 10mm;
     top: 1.5mm;
+}
+
+.clearIcon {
     width: 6mm;
 }
 

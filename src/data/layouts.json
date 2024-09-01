@@ -3,7 +3,7 @@
     "id": "return_color_horizontal",
     "rowSize": 2,
     "groupSize": 6,
-    "title": "Return To (Color)",
+    "title": "Return To",
     "type": "horizontal",
     "image": "/images/dividers/horizontal/common/return.png",
     "is_default": true
@@ -15,5 +15,21 @@
     "title": "Return To (B&W)",
     "type": "horizontal",
     "image": "/images/dividers/horizontal/common/return_bw.png"
+  },
+  {
+    "id": "return_color_vertical",
+    "rowSize": 3,
+    "groupSize": 6,
+    "title": "Return To",
+    "type": "vertical",
+    "image": "/images/dividers/vertical/common/return.png"
+  },
+  {
+    "id": "return_bw_vertical",
+    "rowSize": 3,
+    "groupSize": 6,
+    "title": "Return To (B&W)",
+    "type": "vertical",
+    "image": "/images/dividers/vertical/common/return_bw.png"
   }
 ]

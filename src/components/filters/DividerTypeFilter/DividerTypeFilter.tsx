@@ -10,7 +10,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
 import { IDividerType } from '@/types/dividers';
 import layouts from '@/data/layouts.json';
-import { getLayoutById } from '@/util/layouts';
+import { getLayoutById, getLayoutsByType } from '@/util/layouts';
 
 export type DividerTypeFilterProps = {
 
@@ -18,9 +18,9 @@ export type DividerTypeFilterProps = {
 
 export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
   const dispatch = useAppDispatch();
-  const type = useAppSelector(selectType);
+  const dividerType = useAppSelector(selectType);
   const layout = useAppSelector(selectLayout);
-  const isVertical = type === IDividerType.VERTICAL;
+  const isVertical = dividerType === IDividerType.VERTICAL;
 
   const iconClassName = classNames(
     S.icon,
@@ -28,17 +28,20 @@ export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
   );
 
   const toggleType = () => {
-    const nextType = type === IDividerType.HORIZONTAL ? 
+    const nextType = dividerType === IDividerType.HORIZONTAL ? 
       IDividerType.VERTICAL : 
       IDividerType.HORIZONTAL;
     
+    const [firstLayout] = getLayoutsByType(nextType);
     dispatch(setType(nextType));
+    dispatch(setLayout(firstLayout));
   };
 
-  const options = layouts.map(({ title, id }) => ({
-    label: title,
-    value: id
-  }));
+  const options = getLayoutsByType(dividerType)
+    .map(({ title, id }) => ({
+      label: title,
+      value: id
+    }));
 
   const value = layout ? options.find(({ value }) => value === layout.id) : null;
 

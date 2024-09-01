@@ -1,15 +1,24 @@
 import React, { FormEvent, PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
-import S from './Divider.module.scss';
+import horizontalStyle from './styles/horizontal.module.scss';
+import verticalStyle from './styles/vertical.module.scss';
+
 import classNames from 'classnames';
 import Icon from '@/components/ui/Icon/Icon';
 
 import { PropsWithClassName } from '@/types/util';
+import { IDividerType } from '@/types/dividers';
 
+export const DIVIDER_STYLE = {
+	[IDividerType.HORIZONTAL]: horizontalStyle,
+	[IDividerType.VERTICAL]: verticalStyle
+}
 
 export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	id?: string
+	layoutId?: string;
 	name?: string
 	icon?: string;
+	type: IDividerType;
 	background: string;
 	language: string;
 }
@@ -17,13 +26,16 @@ export type DividerProps = PropsWithChildren & PropsWithClassName & {
 export const Divider = ({
 	id = '',
 	icon,
-	name,
+	name = '',
+	type,
+	layoutId,
 	children,
 	background,
 	language,
 	...props
 }: DividerProps) => {
 	const [title, setTitle] = useState(name);
+	const S = DIVIDER_STYLE[type];
 
 	useEffect(() => {
 		setTitle(name);
@@ -31,6 +43,8 @@ export const Divider = ({
 
 	const className = classNames(
 		S.container,
+		layoutId && S[`layout_${layoutId}`],
+		type && S[`type_`+type],
 		props.className
 	);
 
@@ -43,6 +57,7 @@ export const Divider = ({
 	const clear = () => setTitle(name);
 	const titleClassName = classNames(
 		S.titleInput, 
+		title.length > 30 && S.titleInput_largeText,
 		S[`titleInput_${language}`]
 	);
 
