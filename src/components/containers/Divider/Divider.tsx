@@ -1,10 +1,7 @@
-import React, { FormEvent, PropsWithChildren } from 'react';
-import IcoMoon from "react-icomoon";
+import React, { FormEvent, PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
 import S from './Divider.module.scss';
 import classNames from 'classnames';
 import Icon from '@/components/ui/Icon/Icon';
-import { useTranslation } from 'react-i18next';
-import { I18N_NAMESPACE } from '@/constants/i18n';
 
 import colorBg from './images/color.png';
 import grayscaleBg from './images/grayscale.png';
@@ -37,9 +34,11 @@ export const Divider = ({
 	type = DividerType.GRAYSCALE,
 	...props
 }: DividerProps) => {
-	const { t } = useTranslation(I18N_NAMESPACE.ENCOUNTER_SETS);
+	const [title, setTitle] = useState(name);
 
-	const dividerName = name || (id && t(id));
+	useEffect(() => {
+		setTitle(name);
+	}, [name]);
 
 	const className = classNames(
 		S.container,
@@ -47,22 +46,29 @@ export const Divider = ({
 		props.className
 	);
 
-	const onTitleChange = ({ target }: FormEvent) => {
-		const { textContent } = target as HTMLElement;
+	const onTitleChange: ReactEventHandler = e => {
+		const target = e.target as HTMLInputElement;
+		const { value } = target;
+		setTitle(value.trim() === '' ? name : value);
 	}
+
+	const clear = () => setTitle(name);
 
 	const background = DIVIDER_BACKGROUND[type];
 	const titleClassName = classNames(
-		S.title, 
-		S[`title_${language}`]
+		S.titleInput, 
+		S[`titleInput_${language}`]
 	);
 
 	return (
 		<div className={className}>
 			
 			{/* <h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{dividerName}</h3> */}
-			<h3 className={titleClassName}>{dividerName}</h3>
-			<img className={S.background} src={background} alt={dividerName}/>
+			<div className={S.title}>
+				<input className={titleClassName} onInput={onTitleChange} value={title}/>
+				<Icon icon="dismiss" className={S.clearIcon} containerClassName={S.clear} onClick={clear}/>
+			</div>
+			<img className={S.background} src={background} alt={title}/>
 			{icon && (
 				<>
 					<Icon icon={icon} className={classNames(S.icon, S.icon_small)}/>

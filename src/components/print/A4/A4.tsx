@@ -4,12 +4,18 @@ import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 export type A4Props = PropsWithClassName & PropsWithChildren & {
-
+  landscape?: boolean;
 }
 
-export const A4 = ({ className, children }: A4Props) => {
+export const A4 = ({ landscape = false, className, children }: A4Props) => {
+  
+  const classList = classNames(
+    S.container, 
+    className,
+    landscape && S.landscape
+  );
   return (
-    <div className={classNames(S.container, className)}>
+    <div className={classList}>
       {children}
     </div>
   );

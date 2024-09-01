@@ -68,17 +68,6 @@ export const loadAvailableLanguages: ActionCreator<AppThunk> = () => async dispa
   const availableLanguages = ['en', ...languages];
 
   dispatch(setAvailableLanguages(availableLanguages));
-  // const response = await fetchI18NSource();
-  // const source = await response.text();
-  // const re = /const ALL_LANGUAGES = \[([^\[]+)\]/mg;
-  // const [constDeclaration = '']  = source.match(re) || [];
-
-  // const languageRe = /'(.*)'/gm;
-  // const languageMatches = constDeclaration.matchAll(languageRe)
-  // const languages = Array.from(languageMatches).map(matches => matches[1]);
-  // const uniqueLanguages = unique(languages);
-
-  // dispatch(setAvailableLanguages(uniqueLanguages));
 }
 
 export const {

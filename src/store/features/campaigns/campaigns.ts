@@ -6,6 +6,7 @@ import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { transformArkhamCardsCampaign } from './transform/transformArkhamCardsCampaign';
 import { getCoreEntrounterSet } from './transform/getCoreEntrounterSet';
+import { refreshDividers } from '../dividers/dividers';
 
 export type ICampaignScenario = Omit<IArkhamCardsScenarioDetail, 'steps'>;
 
@@ -46,6 +47,7 @@ export const loadCampaigns: ActionCreator<AppThunk> = (language: string) => asyn
   
   dispatch(setCampaigns(list));
   dispatch(setCoreEncounterSet(coreEncounterSet));
+  dispatch(refreshDividers());
 }
 
 export const {

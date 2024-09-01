@@ -32,7 +32,8 @@ export const CampaignSelect = ({ }: CampaignSelectProps) => {
   const options = campaigns.map(({ campaign }) => ({
     label: campaign.name,
     value: campaign.id
-  }));
+  }))
+  .sort((a, b) => a.label > b.label ? 1 : -1)
 
   const labels = campaigns.reduce((target, { campaign }) => {
     target[campaign.id] = campaign.name;

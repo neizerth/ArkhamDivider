@@ -13,8 +13,10 @@ export * from './print/A4/A4';
 export * from './loaders/AppLoader/AppLoader';
 
 export * from './forms/IconSelect/IconSelect';
-export * from './forms/CampaignSelect/CampaignSelect';
-export * from './forms/LanguageSelect/LanguageSelect';
+
+export * from './filters/CampaignSelect/CampaignSelect';
+export * from './filters/LanguageSelect/LanguageSelect';
+export * from './filters/DividerTypeFilter/DividerTypeFilter';
 
 export * from './typography/Title/Title';
 

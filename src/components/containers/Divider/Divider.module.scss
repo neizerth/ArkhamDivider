@@ -19,17 +19,54 @@
 }
 
 .title {
-    margin: 2.5mm 0;
-    font-size: 4.5mm;
-    text-align: center;
-    font-weight: normal;
+    margin-top: 0.6mm;
+    box-sizing: border-box;
+    padding: 0 10mm;
+    position: relative;
+    &:hover .clear {
+        display: block;
+    }
 }
 
-.title_ko {
+.clear {
+    display: none;
+    cursor: pointer;
+}
+
+.clearIcon {
+    position: absolute;
+    right: 10mm;
+    top: 1.5mm;
+    width: 6mm;
+}
+
+.titleInput {
+    font-family: inherit;
+    background-color: transparent;
+    font-size: 4.4mm;
+    text-align: center;
+    font-weight: normal;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: 2px solid rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        & + .clear {
+            display: block;
+        }
+    }
+    &:hover {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+    }
+}
+
+.titleInput_ko {
     font-size: 3.5mm;
 }
 
-.title_zh {
+.titleInput_zh {
     font-size: 3.5mm;
     position: relative;
     top: 0.1mm;
@@ -43,17 +80,6 @@
     left: 0;
     object-fit: cover;
     z-index: -1;
-}
-
-.title {
-    margin: 0.25cm 1.2cm;
-    // &:focus {
-    //     outline: 2px solid rgba(0, 0, 0, 0.5);
-    //     border-radius: 4px;
-    // }
-    // &:hover {
-    //     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
-    // }
 }
 
 .icon {
