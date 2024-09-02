@@ -1,9 +1,9 @@
-import React, { FormEvent, PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
+import { PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
 import horizontalStyle from './styles/horizontal.module.scss';
 import verticalStyle from './styles/vertical.module.scss';
 
+import { Icon } from '@/components';
 import classNames from 'classnames';
-import Icon from '@/components/ui/Icon/Icon';
 
 import { PropsWithClassName } from '@/types/util';
 import { IDividerType } from '@/types/dividers';
@@ -21,17 +21,17 @@ export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	type: IDividerType;
 	background: string;
 	language: string;
+	onRemove: () => void;
 }
 
 export const Divider = ({
-	id = '',
 	icon,
 	name = '',
 	type,
 	layoutId,
-	children,
 	background,
 	language,
+	onRemove,
 	...props
 }: DividerProps) => {
 	const [title, setTitle] = useState(name);
@@ -63,11 +63,9 @@ export const Divider = ({
 
 	return (
 		<div className={className}>
-			
-			{/* <h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{dividerName}</h3> */}
 			<div className={S.title}>
 				<input className={titleClassName} onInput={onTitleChange} value={title}/>
-				<Icon icon="dismiss" className={S.clearIcon} containerClassName={S.clear} onClick={clear}/>
+				<Icon icon="dismiss" className={S.clear} onClick={clear}/>
 			</div>
 			<img className={S.background} src={background} alt={title}/>
 			{icon && (
@@ -76,6 +74,8 @@ export const Divider = ({
 					<Icon icon={icon} className={classNames(S.icon, S.icon_large)}/>
 				</>
 			)}
+
+			<Icon icon="hide" className={S.remove} onClick={onRemove}/>
 		</div>
 	);
 }

@@ -27,7 +27,9 @@ export const GuidedItem = ({
       {bottomLeft && <Guide className={classNames(S.guide, S.guide_bottomLeft)}/>}
       {bottomRight && <Guide className={classNames(S.guide, S.guide_bottomRight)}/>}
 
-      {children}
+      <div className={S.content}>
+        {children}
+      </div>
     </div>
   );
 }

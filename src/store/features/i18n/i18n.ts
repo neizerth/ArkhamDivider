@@ -1,5 +1,3 @@
-import i18n from "i18next";
-
 import { fetchCoreTranslations, fetchEncounterSets } from "@/api/arkhamCards";
 import { AppThunk } from "@/store";
 import { IArkhamCardsCampaign } from "@/types/arkhamCards";

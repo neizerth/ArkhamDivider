@@ -1,5 +1,10 @@
 .container {
     display: flex;
+    align-items: center;
+}
+
+.gap {
+    gap: 20px;
 }
 
 .wrap {

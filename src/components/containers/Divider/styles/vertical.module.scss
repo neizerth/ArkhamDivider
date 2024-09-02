@@ -1,67 +1,25 @@
+@import "./common.module.scss";
+
 .container {
   aspect-ratio: 82 / 95;
   width: 82mm;
-
-  background-size: contain;
-  font-family: 'Conkordia', sans-serif;
-
-  // padding: 3mm;
-  box-sizing: border-box;
-  position: relative;
 }
 
 .title {
-  margin-top: 0.6mm;
-  box-sizing: border-box;
-  padding: 4mm 11.2mm 0 11.2mm;
-  position: relative;
-  &:hover .clear {
-    display: block;
-  }
+  padding: 0.2mm 11.2mm 0 11.2mm;
 }
 
 .clear {
-  display: none;
-  cursor: pointer;
-  position: absolute;
   right: 12mm;
-  top: 5.5mm;
+  top: 1.5mm;
 }
 
 .clearIcon {
   width: 6mm;
 }
 
-.titleInput {
-  font-family: inherit;
-  background-color: transparent;
-  font-size: 4.4mm;
-  text-align: center;
-  font-weight: normal;
-  border: none;
-  width: 100%;
-  box-sizing: border-box;
-  // padding-right: 12mm;
-
-  &:focus {
-      outline: 2px solid rgba(0, 0, 0, 0.5);
-      border-radius: 4px;
-      & + .clear {
-          display: block;
-      }
-  }
-  &:hover {
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
-  }
-  &_largeText {
-    font-size: 3.6mm;
-    position: relative;
-    top: -0.3mm;
-  }
-}
-
 .layout_return_bw_vertical {
-  .titleInput.largeText {
+  .titleInput {
     text-shadow: 1px 1px rgba(255, 255, 255, 0.5), 1px -1px rgba(255, 255, 255, 0.5), -1px -1px rgba(255, 255, 255, 0.5), -1px 1px rgba(255, 255, 255, 0.5);
   }
 }
@@ -72,43 +30,10 @@
   }
 }
 
-.titleInput_ko {
-  font-size: 3.5mm;
-}
-
-.titleInput_zh {
-  font-size: 3.5mm;
-  position: relative;
-  top: 0.1mm;
-}
-
-.background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.icon {
-  position: absolute;
-  object-fit: contain;
-  aspect-ratio: 1;
-}
-
 .icon_small {
-  width: 4.4mm;
-  right: 5.6mm;
   top: 6.1mm;
 }
 
 .icon_large {
   top: 20mm;
-  opacity: 0.2;
-  transform: translate(-50%, 0);
-  left: 50%;
-  height: 50mm;
-  max-width: 50mm;
 }

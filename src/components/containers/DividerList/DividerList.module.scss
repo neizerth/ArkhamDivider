@@ -2,9 +2,23 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-top: 140px;
   @media print {
+    display: block;
     padding: 0;
+  }
+}
+
+.removedInfo {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @media print {
     display: block;
   }
 }
@@ -16,4 +30,27 @@
 
 .row {
   display: flex;
+}
+
+.removedDividers {
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+  @media print {
+    display: none;
+  }
+}
+
+.removed {
+  gap: 3px;
+}
+
+.removedIcon {
+  width: 8mm;
+}
+
+
+.refreshIcon {
+  width: 6mm;
+  transform: scale(1.3);
 }

@@ -1,13 +1,11 @@
 import { DEFAULT_LANGUAGE } from '@/constants/i18n';
 import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { ActionCreator, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { loadScenarios } from '../scenarios/scenarios';
 import { loadCampaigns } from '../campaigns/campaigns';
 import { loadCoreTranslations, loadEncounterSetsTranslations } from '../i18n/i18n';
-import { setI18NLanguage } from '@/util/i18n';
-import { fetchGenerated, fetchI18NSource } from '@/api/arkhamCards';
-import { unique } from '@/util/common';
+import { fetchGenerated } from '@/api/arkhamCards';
 
 export type ILanguageState = {
   language: string;
@@ -33,7 +31,6 @@ export const language = createSlice({
 });
 
 export const changeLanguage: ActionCreator<AppThunk> = (language: string) => async dispatch => {
-  setI18NLanguage(language);
 
   dispatch(setLanguage(language));
   

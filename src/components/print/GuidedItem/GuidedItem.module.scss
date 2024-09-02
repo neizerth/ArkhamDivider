@@ -4,6 +4,12 @@
 
 .guide {
   position: absolute;
+  z-index: 2;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
 }
 
 .guide_topLeft {

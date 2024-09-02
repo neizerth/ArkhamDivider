@@ -1,0 +1,102 @@
+.container {
+  background-size: contain;
+  font-family: 'Conkordia', sans-serif;
+
+  padding: 3mm;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.title {
+  margin-top: 0.6mm;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  &:hover .clear {
+      display: block;
+  }
+}
+
+.clear {
+  width: 6mm;
+  display: none;
+  cursor: pointer;
+  position: absolute;
+}
+
+
+.titleInput {
+  font-family: inherit;
+  background-color: transparent;
+  font-size: 4.4mm;
+  text-align: center;
+  font-weight: normal;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+      outline: 2px solid rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      & + .clear {
+          display: block;
+      }
+  }
+  &:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
+  }
+}
+
+.titleInput_ko {
+  font-size: 3.5mm;
+}
+
+.titleInput_zh {
+  font-size: 3.5mm;
+  position: relative;
+  top: 0.1mm;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.icon {
+  position: absolute;
+  object-fit: contain;
+  aspect-ratio: 1;
+  z-index: 2;
+}
+
+.icon_small {
+  width: 4.4mm;
+  right: 5.6mm;
+}
+
+.icon_large {
+  opacity: 0.2;
+  transform: translate(-50%, 0);
+  left: 50%;
+  height: 50mm;
+}
+
+.remove {
+  width: 10mm;
+  position: absolute;
+  bottom: 8mm;
+  right: 8mm;
+  cursor: pointer;
+  z-index: 2;
+  &:hover {
+    opacity: 0.8;
+  }
+  @media print {
+    display: none;
+  }
+}

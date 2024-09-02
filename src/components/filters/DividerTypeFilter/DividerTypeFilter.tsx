@@ -9,7 +9,6 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
 import { IDividerType } from '@/types/dividers';
-import layouts from '@/data/layouts.json';
 import { getLayoutById, getLayoutsByType } from '@/util/layouts';
 
 export type DividerTypeFilterProps = {
@@ -53,7 +52,7 @@ export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
 
   return (
     <div className={S.container}>
-      <img className={iconClassName} src={icon.src} alt="Change Type" onClick={toggleType}/>
+      <img className={iconClassName} src={icon} alt="Change Type" onClick={toggleType}/>
       <Select 
         className={S.select} 
         placeholder="Select type..." 

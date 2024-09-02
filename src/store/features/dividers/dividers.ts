@@ -3,10 +3,10 @@ import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { createSliceSetter, createSliceSelector } from '@/util/slice';
 import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
-import { IArkhamCardsCampaign } from '@/types/arkhamCards';
 import { ICampaign, selectCampaigns, selectCoreEncounterSet } from '../campaigns/campaigns';
-import { createTranslation, getLanguage } from '@/util/i18n';
+import { createTranslation } from '@/util/i18n';
 import { I18N_NAMESPACE } from '@/constants/i18n';
+import { selectLanguage } from '../language/language';
 
 export type IDividersState = {
   includeCoreSet: boolean;
@@ -35,11 +35,16 @@ export const dividers = createSlice({
   }
 });
 
-const campaignToDividers = ({ unique_encounter_sets }: ICampaign, excludeSets: string[] = []): IDividerList => {
+export type ICampaignToDividersOptions = {
+  excludeSets?: string[],
+  currentLanguage: string
+}
+
+const campaignToDividers = ({ unique_encounter_sets }: ICampaign, options: ICampaignToDividersOptions): IDividerList => {
+  const { excludeSets = [], currentLanguage } = options;
   const ns = I18N_NAMESPACE.ENCOUNTER_SETS;
   const t = createTranslation(ns);
   const toEnglish = createTranslation(ns, 'en');
-  const currentLanguage = getLanguage();
 
   const encounterSetToDivider = (id: string) => {
     const name = t(id);
@@ -65,9 +70,13 @@ export const refreshDividers: ActionCreator<AppThunk> = () => (dispatch, getStat
   if (!campaign) {
     return;
   }
+  const language = selectLanguage(state);
   const includeCoreSet = selectIncludeCoreSet(state);
   const coreEncounterSet = selectCoreEncounterSet(state);
-  const dividers = campaignToDividers(campaign, includeCoreSet ? [] : coreEncounterSet);
+  const dividers = campaignToDividers(campaign, {
+    excludeSets: includeCoreSet ? [] : coreEncounterSet,
+    currentLanguage: language
+  });
 
   dispatch(setDividers(dividers));
 }

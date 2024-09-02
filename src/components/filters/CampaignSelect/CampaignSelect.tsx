@@ -1,6 +1,6 @@
 import { ReactEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
-import Select, { SingleValue } from 'react-select'
+import Select from 'react-select'
 import S from './CampaignSelect.module.scss';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
@@ -10,6 +10,7 @@ import { selectCampaigns } from '@/store/features/campaigns/campaigns';
 
 import { changeCampaign, refreshDividers, selectIncludeCoreSet, setIncludeCoreSet } from '@/store/features/dividers/dividers';
 import { selectLanguage } from '@/store/features/language/language';
+import { Checkbox, InlineRow } from '@/components';
 
 export type CampaignSelectProps = {
 
@@ -47,19 +48,20 @@ export const CampaignSelect = ({ }: CampaignSelectProps) => {
   return (
     <div className={S.container}>
       <label className={S.selectContainer}>
-        <span className={S.label}>{t('Campaign')}</span>
-        <Select 
-          className={S.select}
-          onChange={item => updateCampaign(item?.value || null)} 
-          options={options}
-          placeholder={t('Campaign')}
-          getOptionLabel={({ value }) => labels[value]}
-        />
+        <InlineRow>
+          <span className={S.label}>{t('Campaign')}</span>
+          <Select 
+            className={S.select}
+            onChange={item => updateCampaign(item?.value || null)} 
+            options={options}
+            placeholder={t('Campaign')}
+            getOptionLabel={({ value }) => labels[value]}
+          />
+        </InlineRow>
       </label>
-      <label className={S.core}>
-        <input type="checkbox" checked={includeCoreSet} onChange={toggleCoreSet}/>
+      <Checkbox checked={includeCoreSet} onChange={toggleCoreSet}>
         {t('Core Set')}
-      </label>
+      </Checkbox>
     </div>
   );
 }

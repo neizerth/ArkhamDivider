@@ -7,13 +7,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #fff;
 
   @media print {
     box-shadow: none;
   }
 }
-
 
 .landscape {
   width: 297mm;
