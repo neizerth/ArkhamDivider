@@ -1,4 +1,5 @@
-import { IDividerType } from "./dividers"
+import { DividerType } from "./dividers"
+import { PageOrientation } from "./print"
 
 export type ILayout = {
   id: string,
@@ -7,8 +8,9 @@ export type ILayout = {
   rowSize: number
   groupSize: number
   title: string
-  type: IDividerType
+  type: DividerType
   image: string
+  orientation: PageOrientation,
   is_default?: boolean
   color: boolean
 }

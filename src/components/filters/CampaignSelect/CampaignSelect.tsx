@@ -8,7 +8,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectCampaigns, selectCoreEncounterSet } from '@/store/features/campaigns/campaigns';
 
 import { refreshDividers, selectCampaign, selectIncludeCoreSet, setCampaign, setIncludeCoreSet, showAllSets } from '@/store/features/dividers/dividers';
-import { Checkbox, InlineRow, Row } from '@/components';
+import { Checkbox, Row } from '@/components';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { hasSets, isCoreCampaign } from '@/util/campaigns';
@@ -61,7 +61,7 @@ export const CampaignSelect = ({ className }: CampaignSelectProps) => {
           className={S.select}
           onChange={item => updateCampaign(item?.value || null)} 
           options={options}
-          placeholder={t('Campaign')}
+          placeholder={t('Select Campaign')}
           getOptionLabel={({ value }) => labels[value]}
         />
       {showCheckbox && (

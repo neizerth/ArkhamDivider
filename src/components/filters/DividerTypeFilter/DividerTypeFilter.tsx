@@ -8,24 +8,20 @@ import icon from './images/change-orientation.svg';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
-import { IDividerType } from '@/types/dividers';
-import { getLayoutById, getLayoutsByType } from '@/util/layouts';
-import { Color, ColorSelect } from '@/components';
+import { DividerType } from '@/types/dividers';
+import { getLayoutById } from '@/util/layouts';
+import { Color } from '@/components';
 import { selectColor, setColor } from '@/store/features/dividers/dividers';
 import { layouts } from '@/data/layouts';
 import { whereEquals } from '@/util/common';
 
-export type DividerTypeFilterProps = {
-
-}
-
-export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
+export const DividerTypeFilter = () => {
   const dispatch = useAppDispatch();
   const dividerType = useAppSelector(selectType);
   const layout = useAppSelector(selectLayout);
   const useColor = useAppSelector(selectColor);
 
-  const isVertical = dividerType === IDividerType.VERTICAL;
+  const isVertical = dividerType === DividerType.VERTICAL;
 
   const iconClassName = classNames(
     S.icon,
@@ -33,9 +29,9 @@ export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
   );
 
   const toggleType = () => {
-    const nextType = dividerType === IDividerType.HORIZONTAL ? 
-      IDividerType.VERTICAL : 
-      IDividerType.HORIZONTAL;
+    const nextType = dividerType === DividerType.HORIZONTAL ? 
+      DividerType.VERTICAL : 
+      DividerType.HORIZONTAL;
     
     const criteria = {
       color: useColor,

@@ -9,3 +9,8 @@ export type IPage<T> = {
   merged?: boolean;
   rows: T[][]
 }
+
+export enum PageOrientation {
+  LANDSCAPE = 'landscape',
+  PORTRAIT = 'portrait'
+}

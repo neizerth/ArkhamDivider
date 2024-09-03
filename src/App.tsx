@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import S from './App.module.scss'
 
-import { Container, AppLoader, DividerList, AppSettings, LayoutInfo } from '@/components';
+import { Container, AppLoader, DividerList, AppSettings } from '@/components';
 import { changeLanguage } from '@/store/features/language/language';
 import { loadIcons } from '@/store/features/icons/icons';
 import { useAppDispatch } from '@/hooks/useAppDispatch';

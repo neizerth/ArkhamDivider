@@ -6,13 +6,13 @@ import { Icon, Guides } from '@/components';
 import classNames from 'classnames';
 
 import { PropsWithClassName } from '@/types/util';
-import { IDividerType } from '@/types/dividers';
+import { DividerType } from '@/types/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { hideSet } from '@/store/features/dividers/dividers';
 
 export const DIVIDER_STYLE = {
-	[IDividerType.HORIZONTAL]: horizontalStyle,
-	[IDividerType.VERTICAL]: verticalStyle
+	[DividerType.HORIZONTAL]: horizontalStyle,
+	[DividerType.VERTICAL]: verticalStyle
 }
 
 export type DividerProps = PropsWithChildren & PropsWithClassName & {
@@ -21,7 +21,7 @@ export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	name?: string
 	icon?: string;
 	color?: boolean;
-	type: IDividerType;
+	type: DividerType;
 	background: string;
 	language: string;
   bleeds?: boolean;

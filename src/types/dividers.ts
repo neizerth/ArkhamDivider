@@ -2,7 +2,7 @@ export type IDivider = {
     id: string
     layoutId?: string
     name?: string
-    color: boolean
+    color?: boolean
     icon?: string
     language: string
     campaignIcon?: string
@@ -11,7 +11,7 @@ export type IDivider = {
 
 export type IDividerList = IDivider[];
 
-export enum IDividerType {
+export enum DividerType {
     HORIZONTAL = 'horizontal',
     VERTICAL = 'vertical'
 };

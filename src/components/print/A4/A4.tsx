@@ -2,18 +2,18 @@ import { PropsWithClassName } from '@/types/util';
 import S from './A4.module.scss';
 import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import { PageSide } from '@/types/print';
+import { PageOrientation, PageSide } from '@/types/print';
 
 export type A4Props = PropsWithClassName & PropsWithChildren & {
   side: PageSide;
   showPageSide?: boolean;
   pageNumber: number;
   pagesTotal: number; 
-  landscape?: boolean;
+  orientation: PageOrientation;
 }
 
 export const A4 = ({ 
-  landscape = false, 
+  orientation, 
   showPageSide = false,
   pageNumber,
   pagesTotal,
@@ -26,7 +26,7 @@ export const A4 = ({
     S.container, 
     S[`side_${side}`],
     className,
-    landscape ? S.landscape : S.portrait
+    S[orientation]
   );
   return (
     <div className={classList}>

@@ -1,5 +1,6 @@
-import { IDividerType } from "@/types/dividers";
+import { DividerType } from "@/types/dividers";
 import { ILayout } from "@/types/layouts";
+import { PageOrientation } from "@/types/print";
 
 export const layouts: ILayout[] = [
   {
@@ -9,7 +10,8 @@ export const layouts: ILayout[] = [
     width: 88.9,
     height: 76.2,
     title: "Classic",
-    type: IDividerType.HORIZONTAL,
+    type: DividerType.HORIZONTAL,
+    orientation: PageOrientation.PORTRAIT,
     image: "/images/dividers/horizontal/common/classic.png",
     color: true,
     is_default: true
@@ -21,7 +23,8 @@ export const layouts: ILayout[] = [
     width: 88.9,
     height: 76.2,
     title: "Classic (B&W)",
-    type: IDividerType.HORIZONTAL,
+    type: DividerType.HORIZONTAL,
+    orientation: PageOrientation.LANDSCAPE,
     color: false,
     image: "/images/dividers/horizontal/common/classic_bw.png"
   },
@@ -32,7 +35,8 @@ export const layouts: ILayout[] = [
     width: 88.9,
     height: 76.2,
     title: "Classic 76x89",
-    type: IDividerType.VERTICAL,
+    type: DividerType.VERTICAL,
+    orientation: PageOrientation.LANDSCAPE,
     color: true,
     image: "/images/dividers/vertical/common/classic.png"
   },
@@ -43,7 +47,8 @@ export const layouts: ILayout[] = [
     height: 88.9,
     width: 76.2,
     title: "Classic 76x89",
-    type: IDividerType.VERTICAL,
+    type: DividerType.VERTICAL,
+    orientation: PageOrientation.LANDSCAPE,
     color: false,
     image: "/images/dividers/vertical/common/classic_bw.png"
   },
@@ -54,7 +59,8 @@ export const layouts: ILayout[] = [
     height: 100,
     width: 60,
     title: "Classic 60x100",
-    type: IDividerType.VERTICAL,
+    type: DividerType.VERTICAL,
+    orientation: PageOrientation.PORTRAIT,
     color: true,
     image: "/images/dividers/vertical/common/classic_60.png"
   },
@@ -65,7 +71,8 @@ export const layouts: ILayout[] = [
     height: 100,
     width: 60,
     title: "Classic 60x100",
-    type: IDividerType.VERTICAL,
+    type: DividerType.VERTICAL,
+    orientation: PageOrientation.PORTRAIT,
     color: false,
     image: "/images/dividers/vertical/common/classic_60_bw.png"
   }

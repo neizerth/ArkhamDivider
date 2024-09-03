@@ -1,4 +1,3 @@
-import { campaigns } from "@/store/features";
 import { ICampaign } from "@/types/campaigns";
 
 export const isCoreCampaign = ({ campaign }: ICampaign) => campaign.id === 'core' && campaign.position === 0;

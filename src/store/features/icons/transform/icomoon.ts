@@ -1,4 +1,3 @@
-import { metadata } from '@/app/layout';
 import { 
   IReactIcoMoonExtendedIconSet, 
   IIcoMoonProject, 
@@ -6,7 +5,6 @@ import {
   IIcoMoonIconSetItem,
   IReactIcoMoonExtendedIcon
 } from '@/types/icomoon'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
 export const transformProjectToIconSet = ({ iconSets }: IIcoMoonProject): IReactIcoMoonExtendedIconSet => ({

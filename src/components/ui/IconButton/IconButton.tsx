@@ -2,7 +2,7 @@ import S from './IconButton.module.scss';
 import classNames from 'classnames';
 import { Icon, Button } from '@/components';
 
-export type IconButtonProps = React.ComponentProps<Button> &{
+export type IconButtonProps = React.ComponentProps<typeof Button> &{
   icon: string,
   iconClassName?: string
 };

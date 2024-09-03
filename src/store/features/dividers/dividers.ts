@@ -3,11 +3,12 @@ import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { createSliceSetter, createSliceSelector } from '@/util/slice';
 import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
-import { ICampaign, selectCampaigns, selectCoreEncounterSet } from '../campaigns/campaigns';
+import { selectCoreEncounterSet } from '../campaigns/campaigns';
 import { createTranslation } from '@/util/i18n';
 import { I18N_NAMESPACE } from '@/constants/i18n';
 import { selectLanguage } from '../language/language';
 import { isCoreCampaign } from '@/util/campaigns';
+import { ICampaign } from '@/types/campaigns';
 
 export type IDividersState = {
   hiddenSets: string[];

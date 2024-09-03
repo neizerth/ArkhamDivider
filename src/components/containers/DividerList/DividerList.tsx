@@ -1,7 +1,6 @@
 import { Divider, A4, Row, HiddenSets } from '@/components';
 
 import S from './DividerList.module.scss';
-import { IDividerType } from '@/types/dividers';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { ILayout } from '@/types/layouts';
 import { selectDividers, selectHiddenSets, showAllSets } from '@/store/features/dividers/dividers';
@@ -28,9 +27,9 @@ export const DividerList = ({ layout }: DividerListProps) => {
 		image, 
 		type, 
 		color,
+		orientation,
 		id
 	} = layout;
-	const landscape = type === IDividerType.VERTICAL;
 
 	const clear = () => dispatch(showAllSets([]));
 
@@ -62,7 +61,7 @@ export const DividerList = ({ layout }: DividerListProps) => {
 						pageNumber={pageNumber}
 						pagesTotal={pagesTotal}
 						key={pageIndex}
-						landscape={landscape}
+						orientation={orientation}
 					>
 						<div className={S.group}>
 							{rows.map((row, rowIndex) => (

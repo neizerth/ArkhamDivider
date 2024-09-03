@@ -37,22 +37,30 @@
   padding: 0.6mm 11.2mm 0 11.2mm;
 }
 
-.container[data-layout="classic_60_color_vertical"] {
-  .divider {
-    aspect-ratio: 65 / 105;
-    width: 65mm;
-  }
-  .noBleeds {
-    .wrapper {
-      height: 105mm;
-      width: 60mm;
+.container {
+  &[data-layout="classic_60_color_vertical"],
+  &[data-layout="classic_60_bw_vertical"] {
+    &.noBleeds {
+      .wrapper {
+        height: 100mm;
+        width: 60mm;
+      }
     }
-  }
-
-  .withBleeds {
-    .guides {
-      height: 105mm;
-      width: 60mm;
+    &.withBleeds {
+      .guides {
+        height: 100mm;
+        width: 60mm;
+      }
+    }
+    .divider {
+      aspect-ratio: 65 / 105;
+      width: 65mm;
+    }
+    .title {
+      padding-top: 0;
+    }
+    .icon_large {
+      top: 25mm;
     }
   }
 }

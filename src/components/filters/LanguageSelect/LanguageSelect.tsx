@@ -4,14 +4,9 @@ import { changeLanguage, selectAvailableLanguages, selectLanguage } from '@/stor
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import Select from 'react-select';
-import { Row } from '@/components'
 
-export type LanguageSelectProps = {
-
-}
-
-export const LanguageSelect = ({}: LanguageSelectProps) => {
-  const { t, i18n } = useTranslation();
+export const LanguageSelect = () => {
+  const { i18n } = useTranslation();
   const dispatch = useAppDispatch();
   const availableLanguages = useAppSelector(selectAvailableLanguages);
   const language = useAppSelector(selectLanguage);

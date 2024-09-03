@@ -16,7 +16,6 @@ export { A4 } from './print/A4/A4';
 
 export { AppLoader } from './loaders/AppLoader/AppLoader';
 
-export { IconSelect } from './forms/IconSelect/IconSelect';
 export { Checkbox } from './forms/Checkbox/Checkbox'
 export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
@@ -24,8 +23,6 @@ export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 export { CampaignSelect } from './filters/CampaignSelect/CampaignSelect';
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
 export { DividerTypeFilter } from './filters/DividerTypeFilter/DividerTypeFilter';
-
-export { Title } from './typography/Title/Title';
 
 export { AppSettings } from './settings/AppSettings/AppSettings';
 export { PrintSettings } from './settings/PrintSettings/PrintSettings';
