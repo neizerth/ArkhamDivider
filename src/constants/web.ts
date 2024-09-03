@@ -1,0 +1,1 @@
+export const BASE_PATH = import.meta.env.APP_BASE_PATH || '/ArkhamDivider'

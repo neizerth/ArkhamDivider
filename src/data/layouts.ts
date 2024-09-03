@@ -1,3 +1,4 @@
+import { BASE_PATH } from "@/constants/web";
 import { DividerType } from "@/types/dividers";
 import { ILayout } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
@@ -12,7 +13,7 @@ export const layouts: ILayout[] = [
     title: "Classic",
     type: DividerType.HORIZONTAL,
     orientation: PageOrientation.PORTRAIT,
-    image: "/images/dividers/horizontal/common/classic.png",
+    image: BASE_PATH + "/images/dividers/horizontal/common/classic.png",
     color: true,
     is_default: true
   },
@@ -24,9 +25,9 @@ export const layouts: ILayout[] = [
     height: 76.2,
     title: "Classic (B&W)",
     type: DividerType.HORIZONTAL,
-    orientation: PageOrientation.LANDSCAPE,
+    orientation: PageOrientation.PORTRAIT,
     color: false,
-    image: "/images/dividers/horizontal/common/classic_bw.png"
+    image: BASE_PATH + "/images/dividers/horizontal/common/classic_bw.png"
   },
   {
     id: "classic_color_vertical",
@@ -38,7 +39,7 @@ export const layouts: ILayout[] = [
     type: DividerType.VERTICAL,
     orientation: PageOrientation.LANDSCAPE,
     color: true,
-    image: "/images/dividers/vertical/common/classic.png"
+    image: BASE_PATH + "/images/dividers/vertical/common/classic.png"
   },
   {
     id: "classic_bw_vertical",
@@ -50,7 +51,7 @@ export const layouts: ILayout[] = [
     type: DividerType.VERTICAL,
     orientation: PageOrientation.LANDSCAPE,
     color: false,
-    image: "/images/dividers/vertical/common/classic_bw.png"
+    image: BASE_PATH + "/images/dividers/vertical/common/classic_bw.png"
   },
   {
     id: "classic_60_color_vertical",
@@ -62,7 +63,7 @@ export const layouts: ILayout[] = [
     type: DividerType.VERTICAL,
     orientation: PageOrientation.PORTRAIT,
     color: true,
-    image: "/images/dividers/vertical/common/classic_60.png"
+    image: BASE_PATH + "/images/dividers/vertical/common/classic_60.png"
   },
   {
     id: "classic_60_bw_vertical",
@@ -74,6 +75,6 @@ export const layouts: ILayout[] = [
     type: DividerType.VERTICAL,
     orientation: PageOrientation.PORTRAIT,
     color: false,
-    image: "/images/dividers/vertical/common/classic_60_bw.png"
+    image: BASE_PATH + "/images/dividers/vertical/common/classic_60_bw.png"
   }
 ]
