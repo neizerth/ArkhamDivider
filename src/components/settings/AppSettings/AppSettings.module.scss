@@ -42,10 +42,7 @@
 
 .printSettings {
   width: 100%;
-  display: flex;
-  justify-content: center;
   @media (min-width: 500px) {
-    display: block;
     width: auto;
   }
 }

@@ -56,7 +56,7 @@ export const CampaignSelect = ({ className }: CampaignSelectProps) => {
   }
 
   return (
-    <Row className={classNames(S.container, className)}>
+    <Row wrap className={classNames(S.container, className)}>
       <Select 
           className={S.select}
           onChange={item => updateCampaign(item?.value || null)} 
