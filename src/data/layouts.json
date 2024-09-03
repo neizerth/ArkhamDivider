@@ -6,7 +6,8 @@
     "title": "Return To",
     "type": "horizontal",
     "image": "/images/dividers/horizontal/common/return.png",
-    "is_default": true
+    "is_default": true,
+    "bleeds": true
   },
   {
     "id": "return_bw_horizontal",
@@ -14,7 +15,8 @@
     "groupSize": 6,
     "title": "Return To (B&W)",
     "type": "horizontal",
-    "image": "/images/dividers/horizontal/common/return_bw.png"
+    "image": "/images/dividers/horizontal/common/return_bw.png",
+    "bleeds": true
   },
   {
     "id": "return_color_vertical",
@@ -22,7 +24,8 @@
     "groupSize": 6,
     "title": "Return To",
     "type": "vertical",
-    "image": "/images/dividers/vertical/common/return.png"
+    "image": "/images/dividers/vertical/common/return.png",
+    "bleeds": true
   },
   {
     "id": "return_bw_vertical",
@@ -30,6 +33,7 @@
     "groupSize": 6,
     "title": "Return To (B&W)",
     "type": "vertical",
-    "image": "/images/dividers/vertical/common/return_bw.png"
+    "image": "/images/dividers/vertical/common/return_bw.png",
+    "bleeds": true
   }
 ]

@@ -64,17 +64,14 @@ export const DividerList = ({ layout }: DividerListProps) => {
 									key={rowIndex}
 								>
 									{row.map((divider, index) => (
-										<GuidedItem 
+										<Divider 
+											{...divider} 
+
 											key={index}
-											className={S.item} 
-										>
-											<Divider 
-												{...divider} 
-												background={image}
-												type={type}
-												layoutId={id}
-											/>
-										</GuidedItem>
+											background={image}
+											type={type}
+											layoutId={id}
+										/>
 									))}
 								</Row>
 							))}

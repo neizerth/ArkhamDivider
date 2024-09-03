@@ -19,7 +19,7 @@ export const GuidedItem = ({
   topLeft = true,
   topRight = true,
   bottomLeft = true,
-  bottomRight = true 
+  bottomRight = true
 }: GuidedItemProps) => {
   return (
     <div className={classNames(S.container, className)}>

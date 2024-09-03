@@ -1,4 +1,6 @@
 
+$guide-size: 2mm;
+
 .lines{
   position: relative;
 }
@@ -7,14 +9,14 @@
   position: absolute;
   width: 0;
   border-left: 0.1mm solid black;
-  height: 10.1mm;
-  top: -5mm;
+  height: 0.1mm + $guide-size * 2;
+  top: -$guide-size;
 
 }
 .horizontal {
   position: absolute;
   border-bottom: 0.1mm solid black;
-  width: 10.1mm;
+  width: 0.1mm + $guide-size * 2;
   height: 0;
-  left: -5mm;
+  left: -$guide-size;
 }
