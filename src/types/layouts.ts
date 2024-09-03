@@ -8,5 +8,5 @@ export type ILayout = {
   type: IDividerType
   image: string
   is_default?: boolean
-  bleeds?: false
+  bleeds?: boolean
 }

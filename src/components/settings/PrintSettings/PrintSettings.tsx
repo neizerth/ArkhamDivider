@@ -1,9 +1,8 @@
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import S from './PrintSettings.module.scss';
 
-import { Checkbox } from '@/components';
+import { Checkbox, Row } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDoubleSided, setDoubleSided } from '@/store/features/print/print';
+import { selectBleeds, selectDoubleSided, setBleeds, setDoubleSided } from '@/store/features/print/print';
 
 export type PrintSettingsProps = {
 
@@ -12,13 +11,18 @@ export type PrintSettingsProps = {
 export const PrintSettings = () => {
   const dispatch = useAppDispatch();
   const doubleSided = useAppSelector(selectDoubleSided);
+  const useBleeds = useAppSelector(selectBleeds);
 
   const toggleDoubleSided = () => dispatch(setDoubleSided(!doubleSided));
+  const toggleBleeds = () => dispatch(setBleeds(!useBleeds));
   return (
-    <div>
+    <Row>
       <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>
         Double-sided
       </Checkbox>
-    </div>
+      <Checkbox onChange={toggleBleeds} checked={useBleeds}>
+        Bleeds
+      </Checkbox>
+    </Row>
   );
 }

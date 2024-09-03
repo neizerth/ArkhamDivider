@@ -1,4 +1,4 @@
-import { Divider, GuidedItem, A4, Row, HiddenSets } from '@/components';
+import { Divider, A4, Row, HiddenSets } from '@/components';
 
 import S from './DividerList.module.scss';
 import { IDividerType } from '@/types/dividers';
@@ -7,7 +7,7 @@ import { ILayout } from '@/types/layouts';
 import { selectDividers, selectHiddenSets, showAllSets } from '@/store/features/dividers/dividers';
 import { useCallback } from 'react';
 import classNames from 'classnames';
-import { selectDoubleSided } from '@/store/features/print/print';
+import { selectBleeds, selectDoubleSided } from '@/store/features/print/print';
 import { splittIntoPages } from '@/util/print';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
@@ -20,8 +20,16 @@ export const DividerList = ({ layout }: DividerListProps) => {
 	const hiddenSets = useAppSelector(selectHiddenSets);
 	const dividers = useAppSelector(selectDividers);
 	const doubleSidedPrint = useAppSelector(selectDoubleSided);
+	const useBleeds = useAppSelector(selectBleeds);
 
-	const { groupSize, rowSize, image, type, id } = layout;
+	const { 
+		groupSize, 
+		rowSize, 
+		image, 
+		type, 
+		id,
+		bleeds
+	} = layout;
 	const landscape = type === IDividerType.VERTICAL;
 
 	const clear = () => dispatch(showAllSets([]));
@@ -71,6 +79,7 @@ export const DividerList = ({ layout }: DividerListProps) => {
 											background={image}
 											type={type}
 											layoutId={id}
+											bleeds={useBleeds}
 										/>
 									))}
 								</Row>

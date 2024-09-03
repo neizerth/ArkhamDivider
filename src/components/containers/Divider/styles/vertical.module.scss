@@ -1,10 +1,38 @@
 @import "./common.module.scss";
 
-.container {
+.divider {
   aspect-ratio: 82 / 95;
   width: 82mm;
 }
 
+
+.noBleeds {
+  .guides {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .wrapper {
+    height: 88.9mm;
+    width: 76.2mm;
+    overflow: hidden;
+  }
+
+  .divider {
+    top: -2.2mm;
+    left: -2.8mm;
+  }
+}
+
+.withBleeds {
+  .guides {
+    height: 88.9mm;
+    width: 76.2mm;
+    top: 2.2mm;
+    left: 2.8mm;
+  }
+}
 .title {
   padding: 0.2mm 11.2mm 0 11.2mm;
 }

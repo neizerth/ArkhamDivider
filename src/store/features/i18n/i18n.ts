@@ -1,6 +1,5 @@
 import { fetchCoreTranslations, fetchEncounterSets } from "@/api/arkhamCards";
 import { AppThunk } from "@/store";
-import { IArkhamCardsCampaign } from "@/types/arkhamCards";
 import { I18NLanguageBundle, IPOEditorSource } from "@/types/i18n";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { hasResourceBundle, addResourceBundle } from "@/util/i18n";

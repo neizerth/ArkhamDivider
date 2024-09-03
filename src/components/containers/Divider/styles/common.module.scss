@@ -1,16 +1,32 @@
 .container {
   background-size: contain;
   font-family: 'Conkordia', sans-serif;
+  position: relative;
+}
 
-  padding: 3mm;
-  box-sizing: border-box;
+.guides {
+  position: absolute;
+  z-index: 2;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.guidesContent {
+  width: 100%;
+  height: 100%;
+}
+
+.divider {
   position: relative;
 }
 
 .title {
-  margin-top: 0.6mm;
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
+  width: 100%;
+  top: 3.6mm;
   z-index: 2;
   &:hover .clear {
       display: block;

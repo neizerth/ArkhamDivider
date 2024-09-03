@@ -8,7 +8,7 @@ export { List } from './ui/grid/List/List';
 export { Icon } from './ui/Icon/Icon';
 export { IconButton } from './ui/IconButton/IconButton';
 
-export { GuidedItem } from './print/GuidedItem/GuidedItem';
+export { Guides } from './print/Guides/Guides';
 export { Guide } from './print/Guide/Guide';
 export { A4 } from './print/A4/A4';
 
