@@ -27,8 +27,7 @@ export const DividerList = ({ layout }: DividerListProps) => {
 		rowSize, 
 		image, 
 		type, 
-		id,
-		bleeds
+		id
 	} = layout;
 	const landscape = type === IDividerType.VERTICAL;
 

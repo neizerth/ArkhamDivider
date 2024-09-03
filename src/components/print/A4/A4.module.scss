@@ -10,6 +10,10 @@
   background: #fff;
   position: relative;
 
+  &:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  }
+
   @media print {
     padding: 0;
     box-shadow: none;
@@ -30,6 +34,10 @@
 .side_back {
   background-color: #f3f3f3;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.1);
+  &:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
   @media print {
     box-shadow: none;
   }

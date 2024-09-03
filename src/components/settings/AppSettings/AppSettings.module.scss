@@ -1,5 +1,6 @@
 .container {
   padding: 20px;
+  box-sizing: border-box;
   position: fixed;
   left: 0;
   top: 0;
@@ -13,5 +14,31 @@
   width: 100%;
   @media print {
     display: none
+  }
+}
+
+
+.row {
+  width: 100%;
+  @media (min-width: 768px) {
+    width: auto;
+  }
+}
+
+.campaignFilter {
+  width: 100%;
+  @media (min-width: 768px) {
+    width: auto;
+  }
+}
+
+
+.printSettings {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 768px) {
+    display: block;
+    width: auto;
   }
 }

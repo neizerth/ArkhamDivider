@@ -1,6 +1,5 @@
 .container {
     display: flex;
-    align-items: center;
 }
 
 .gap {
@@ -9,4 +8,13 @@
 
 .wrap {
     flex-wrap: wrap;
+}
+
+.alignItems {
+    &_center {
+        align-items: center;
+    }
+    &_start {
+        align-items: start;
+    }
 }

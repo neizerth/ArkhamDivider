@@ -77,7 +77,8 @@ export const Divider = ({
 	const clear = () => setTitle(name);
 	const titleClassName = classNames(
 		S.titleInput, 
-		title.length > 30 && S.titleInput_largeText,
+		title.length > 30 && S.titleInput_l,
+		title.length > 40 && S.titleInput_xl,
 		S[`titleInput_${language}`]
 	);
 
@@ -106,7 +107,9 @@ export const Divider = ({
 						</>
 					)}
 
-					<Icon icon="hide" className={S.remove} onClick={onRemove}/>
+					<div className={S.remove}>
+						<Icon icon="hide" className={S.removeIcon} onClick={onRemove}/>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -64,17 +64,25 @@
   &:hover {
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
   }
+
+  &_ko {
+    font-size: 3.5mm;
+  }
+  &_zh {
+    font-size: 3.5mm;
+    position: relative;
+    top: 0.1mm;
+  }
+  &_l {
+    font-size: 3.4mm;
+  }
+  &_xl {
+    font-size: 3.2mm;
+    position: relative;
+    top: -0.2mm;
+  }
 }
 
-.titleInput_ko {
-  font-size: 3.5mm;
-}
-
-.titleInput_zh {
-  font-size: 3.5mm;
-  position: relative;
-  top: 0.1mm;
-}
 
 .background {
   position: absolute;
@@ -105,16 +113,19 @@
   height: 50mm;
 }
 
-.remove {
+.removeIcon {
   width: 10mm;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.remove {
   position: absolute;
   bottom: 8mm;
   right: 8mm;
   cursor: pointer;
   z-index: 2;
-  &:hover {
-    opacity: 0.8;
-  }
   @media print {
     display: none;
   }

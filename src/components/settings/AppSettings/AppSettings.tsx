@@ -9,14 +9,26 @@ export const AppSettings = ({}: AppSettingsProps) => {
     
     return (
         <div className={S.container}>
-            <Row>
-                <LanguageSelect/>
-                <CampaignSelect/>
+            <Row wrap className={S.row}>
+                <div className={S.languageSelect}>
+                    <LanguageSelect/>
+                </div>
+
+                <div className={S.dividerFilter}>
+                    <DividerTypeFilter/>
+                </div>
+
+                <div className={S.campaignFilter}>
+                    <CampaignSelect/>
+                </div>
+            
+                
+
+                <div className={S.printSettings}>
+                    <PrintSettings/>
+                </div>
+                
             </Row>
-           <Row>
-                <DividerTypeFilter/>
-                <PrintSettings/>
-           </Row>
         </div>
     );
 }

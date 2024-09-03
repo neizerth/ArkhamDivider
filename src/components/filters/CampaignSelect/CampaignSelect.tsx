@@ -8,7 +8,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectCampaigns, selectCoreEncounterSet } from '@/store/features/campaigns/campaigns';
 
 import { refreshDividers, selectCampaign, selectIncludeCoreSet, setCampaign, setIncludeCoreSet, showAllSets } from '@/store/features/dividers/dividers';
-import { Checkbox, InlineRow } from '@/components';
+import { Checkbox, InlineRow, Row } from '@/components';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { hasSets, isCoreCampaign } from '@/util/campaigns';
@@ -56,24 +56,19 @@ export const CampaignSelect = ({ className }: CampaignSelectProps) => {
   }
 
   return (
-    <div className={classNames(S.container, className)}>
-      <label className={S.selectContainer}>
-        <InlineRow>
-          <span className={S.label}>{t('Campaign')}</span>
-          <Select 
-            className={S.select}
-            onChange={item => updateCampaign(item?.value || null)} 
-            options={options}
-            placeholder={t('Campaign')}
-            getOptionLabel={({ value }) => labels[value]}
-          />
-        </InlineRow>
-      </label>
+    <Row className={classNames(S.container, className)}>
+      <Select 
+          className={S.select}
+          onChange={item => updateCampaign(item?.value || null)} 
+          options={options}
+          placeholder={t('Campaign')}
+          getOptionLabel={({ value }) => labels[value]}
+        />
       {showCheckbox && (
         <Checkbox checked={includeCoreSet} onChange={toggleCoreSet}>
-          {t('Core Set')}
+          <span className={S.core}>{t('Core Set')}</span>
         </Checkbox>
       )}
-    </div>
+    </Row>
   );
 }

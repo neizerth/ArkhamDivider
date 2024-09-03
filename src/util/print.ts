@@ -24,7 +24,10 @@ export const splittIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): I
     return pages;
   }
 
-  return  createDoubleSidedPages(pages, groupSize);
+  return  createDoubleSidedPages(pages, {
+    groupSize,
+    rowSize
+  });
 }
 
 export const getPageSize = <T>(group: T[][]) => group.reduce((total, group) => total + group.length, 0);
@@ -36,23 +39,42 @@ export const canFitDoubleSide = <T>(group: T[][], groupSize: number) => {
   return size <= halfSize;
 };
 
-export const createDoubleSidedPages = <T>(pages: IPage<T>[], groupSize: number) => pages.reduce((target, page, index): IPage<T>[] => {
+export type CreateDoubleSidedPagesOptions = {
+  groupSize: number
+  rowSize: number
+}
+
+const cloneItems = <T>(rows: T[][], isLandscape: boolean) => {
+  if (isLandscape) {
+    return [
+      ...rows,
+      ...rows.toReversed()
+    ]
+  }
+
+  return rows.reduce((target, row) => {
+    return [
+      ...target,
+      ...row.map(item => ([item, item]))
+    ];
+  }, [] as T[][]);
+}
+
+export const createDoubleSidedPages = <T>(pages: IPage<T>[], options: CreateDoubleSidedPagesOptions) => pages.reduce((target, page, index): IPage<T>[] => {
   const isLastGroup = index === pages.length - 1;
+  const { rowSize, groupSize } = options;
+  const colSize = groupSize / rowSize;
+  const isLandscape = rowSize > colSize;
 
   if (isLastGroup && canFitDoubleSide(page.rows, groupSize)) {
-    const rows = page.rows.reduce((target, row) => {
-      return [
-        ...target,
-        ...row.map(item => ([item, item]))
-      ];
-    }, [] as T[][]);
+    const rows = cloneItems(page.rows, isLandscape);
 
     return [
       ...target,
       {
         pageNumber: page.pageNumber + 1,
         side: PageSide.FRONT,
-        split: true,
+        merged: true,
         rows
       }
     ]

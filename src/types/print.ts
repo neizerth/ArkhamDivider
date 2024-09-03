@@ -6,6 +6,6 @@ export enum PageSide {
 export type IPage<T> = {
   pageNumber: number;
   side: PageSide;
-  split?: boolean;
+  merged?: boolean;
   rows: T[][]
 }
