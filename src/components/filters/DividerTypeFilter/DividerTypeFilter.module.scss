@@ -16,9 +16,17 @@
 
 .container {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .select {
-  width: 200px; 
+  width: 100%;
+  min-width: 100px; 
+}
+
+.color {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }

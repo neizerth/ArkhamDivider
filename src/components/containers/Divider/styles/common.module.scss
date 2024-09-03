@@ -1,3 +1,5 @@
+@import "./_layouts";
+
 .container {
   background-size: contain;
   font-family: 'Conkordia', sans-serif;
@@ -29,13 +31,32 @@
   top: 3.6mm;
   z-index: 2;
   &:hover .clear {
-      display: block;
+      display: flex;
+  }
+  &_ko {
+    transform: scale(0.8);
+  }
+  &_zh {
+    transform: scale(0.9);
+    position: relative;
+    top: 0.1mm;
+  }
+  &_l {
+    transform: scale(0.9);
+  }
+  &_xl {
+    transform: scale(0.8);
   }
 }
 
 .clear {
   display: none;
   position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  top: 0;
+  right: 0;
 }
 
 .clearIcon {
@@ -43,6 +64,9 @@
   cursor: pointer;
 }
 
+.titleContent {
+  position: relative;
+}
 
 .titleInput {
   font-family: inherit;
@@ -53,33 +77,13 @@
   border: none;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 4px;
 
   &:focus {
-      outline: 2px solid rgba(0, 0, 0, 0.5);
-      border-radius: 4px;
-      & + .clear {
-          display: block;
-      }
+    outline: 2px solid rgba(0, 0, 0, 0.5);
   }
   &:hover {
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
-  }
-
-  &_ko {
-    font-size: 3.5mm;
-  }
-  &_zh {
-    font-size: 3.5mm;
-    position: relative;
-    top: 0.1mm;
-  }
-  &_l {
-    font-size: 3.4mm;
-  }
-  &_xl {
-    font-size: 3.2mm;
-    position: relative;
-    top: -0.2mm;
+      // box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
   }
 }
 
@@ -90,7 +94,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  object-fit: cover;
+  object-fit: contain;
   z-index: 1;
 }
 
@@ -128,5 +132,18 @@
   z-index: 2;
   @media print {
     display: none;
+  }
+}
+
+
+.grayscale {
+  .titleInput {
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.5), 1px -1px rgba(255, 255, 255, 0.5), -1px -1px rgba(255, 255, 255, 0.5), -1px 1px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.color {
+  .titleInput {
+    text-shadow: 1px 1px rgba(228, 208, 156, 0.5), 1px -1px rgba(228, 208, 156, 0.5), -1px -1px rgba(228, 208, 156, 0.5), -1px 1px rgba(228, 208, 156, 0.5)
   }
 }

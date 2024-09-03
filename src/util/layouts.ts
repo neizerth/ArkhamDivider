@@ -1,5 +1,5 @@
 
-import layouts from '@/data/layouts.json';
+import { layouts } from '@/data/layouts';
 import { IDividerType } from '@/types/dividers';
 
 export const getLayoutById = (layoutId: string) => layouts.find(({ id }) => layoutId === id);

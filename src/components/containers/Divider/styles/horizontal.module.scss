@@ -38,20 +38,8 @@
 }
 
 .clear {
-  right: 11.2mm;
-  top: 1.5mm;
-}
-
-.layout_return_bw_horizontal {
-  .titleInput {
-    text-shadow: 1px 1px rgba(255, 255, 255, 0.5), 1px -1px rgba(255, 255, 255, 0.5), -1px -1px rgba(255, 255, 255, 0.5), -1px 1px rgba(255, 255, 255, 0.5);
-  }
-}
-
-.layout_return_color_horizontal {
-  .titleInput {
-    text-shadow: 1px 1px rgba(228, 208, 156, 0.5), 1px -1px rgba(228, 208, 156, 0.5), -1px -1px rgba(228, 208, 156, 0.5), -1px 1px rgba(228, 208, 156, 0.5)
-  }
+  right: 0;
+  top: 0.3mm;
 }
 
 .icon_small {

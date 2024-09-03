@@ -10,6 +10,10 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
 import { IDividerType } from '@/types/dividers';
 import { getLayoutById, getLayoutsByType } from '@/util/layouts';
+import { Color, ColorSelect } from '@/components';
+import { selectColor, setColor } from '@/store/features/dividers/dividers';
+import { layouts } from '@/data/layouts';
+import { whereEquals } from '@/util/common';
 
 export type DividerTypeFilterProps = {
 
@@ -19,6 +23,8 @@ export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
   const dispatch = useAppDispatch();
   const dividerType = useAppSelector(selectType);
   const layout = useAppSelector(selectLayout);
+  const useColor = useAppSelector(selectColor);
+
   const isVertical = dividerType === IDividerType.VERTICAL;
 
   const iconClassName = classNames(
@@ -31,12 +37,22 @@ export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
       IDividerType.VERTICAL : 
       IDividerType.HORIZONTAL;
     
-    const [firstLayout] = getLayoutsByType(nextType);
+    const criteria = {
+      color: useColor,
+      type: nextType
+    }
+
+    const [firstLayout] = layouts.filter(whereEquals(criteria));
     dispatch(setType(nextType));
     dispatch(setLayout(firstLayout));
   };
 
-  const options = getLayoutsByType(dividerType)
+  const criteria = {
+    color: useColor,
+    type: layout?.type 
+  }
+
+  const options = layouts.filter(whereEquals(criteria))
     .map(({ title, id }) => ({
       label: title,
       value: id
@@ -50,16 +66,32 @@ export const DividerTypeFilter = ({}: DividerTypeFilterProps) => {
     dispatch(setLayout(layout));
   }
 
+  const toggleColor = () => {
+    const nextColor = !useColor;
+
+    const criteria = {
+      color: nextColor,
+      type: layout?.type
+    }
+
+    const [firstLayout] = layouts.filter(whereEquals(criteria));
+    dispatch(setColor(nextColor));
+    dispatch(setLayout(firstLayout));
+  };
+
   return (
     <div className={S.container}>
+      <Color className={S.color} color={useColor ? 'rgb(225 173 36)' : 'black'} onClick={toggleColor}/>
       <img className={iconClassName} src={icon} alt="Change Type" onClick={toggleType}/>
-      <Select 
-        className={S.select} 
-        placeholder="Select type..." 
-        value={value} 
-        options={options}
-        onChange={item => item && changeDividerType(item.value)}
-      />
+      {options.length > 1 && (
+        <Select 
+          className={S.select} 
+          placeholder="Select type..." 
+          value={value} 
+          options={options}
+          onChange={item => item && changeDividerType(item.value)}
+        />
+      )}
     </div>
   );
 }

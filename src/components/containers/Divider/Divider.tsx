@@ -20,6 +20,7 @@ export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	layoutId?: string;
 	name?: string
 	icon?: string;
+	color?: boolean;
 	type: IDividerType;
 	background: string;
 	language: string;
@@ -33,6 +34,7 @@ export const Divider = ({
 	icon,
 	name = '',
 	type,
+	color,
 	layoutId,
 	background,
 	language,
@@ -53,12 +55,12 @@ export const Divider = ({
 	const containerClassName = classNames(
 		S.container,
 		bleeds ? S.withBleeds : S.noBleeds,
+		color ? S.color : S.grayscale,
 		className
 	);
 
 	const dividerClassName = classNames(
 		S.divider,
-		layoutId && S[`layout_${layoutId}`],
 		type && S[`type_`+type],
 		props.dividerClassName
 	);
@@ -76,10 +78,10 @@ export const Divider = ({
 
 	const clear = () => setTitle(name);
 	const titleClassName = classNames(
-		S.titleInput, 
+		S.title, 
 		title.length > 30 && S.titleInput_l,
 		title.length > 40 && S.titleInput_xl,
-		S[`titleInput_${language}`]
+		S[`title_${language}`]
 	);
 
 	const guidesClassName = classNames(
@@ -87,16 +89,18 @@ export const Divider = ({
 	)
 
 	return (
-		<div className={containerClassName}>
+		<div className={containerClassName} data-layout={layoutId} data-color={color} data-grayscale={!color}>
 			<div className={guidesClassName}>
 				<Guides className={S.guidesContent}/>
 			</div>
 			<div className={wrapperClassName}>
 				<div className={dividerClassName}>
-					<div className={S.title}>
-						<input className={titleClassName} onInput={onTitleChange} value={title}/>
-						<div className={S.clear}>
-							<Icon icon="dismiss" className={S.clearIcon} onClick={clear}/>
+					<div className={titleClassName}>
+						<div className={S.titleContent}>
+							<input className={S.titleInput} onInput={onTitleChange} value={title}/>
+							<div className={S.clear}>
+								<Icon icon="dismiss" className={S.clearIcon} onClick={clear}/>
+							</div>
 						</div>
 					</div>
 					<img className={S.background} src={background} alt={title}/>

@@ -1,5 +1,5 @@
 .container {
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   position: fixed;
   left: 0;
@@ -20,14 +20,21 @@
 
 .row {
   width: 100%;
-  @media (min-width: 768px) {
+  @media (min-width: 500px) {
     width: auto;
   }
 }
 
 .campaignFilter {
   width: 100%;
-  @media (min-width: 768px) {
+  @media (min-width: 500px) {
+    width: auto;
+  }
+}
+
+.dividerFilter {
+  width: 100%;
+  @media (min-width: 500px) {
     width: auto;
   }
 }
@@ -37,7 +44,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  @media (min-width: 768px) {
+  @media (min-width: 500px) {
     display: block;
     width: auto;
   }

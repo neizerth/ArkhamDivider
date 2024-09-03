@@ -1,4 +1,4 @@
-import { DEFAULT_LANGUAGE } from '@/constants/i18n';
+import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/i18n';
 import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
@@ -14,7 +14,7 @@ export type ILanguageState = {
 
 const initialState: ILanguageState = {
   language: DEFAULT_LANGUAGE,
-  availableLanguages: [DEFAULT_LANGUAGE]
+  availableLanguages: AVAILABLE_LANGUAGES
 };
 
 export const language = createSlice({

@@ -13,11 +13,13 @@ export type IDividersState = {
   hiddenSets: string[];
   includeCoreSet: boolean;
   campaign: ICampaign | null;
+  color: boolean;
   list: IDividerList
 }
 
 const initialState: IDividersState = {
   hiddenSets: [],
+  color: true,
   campaign: null,
   includeCoreSet: false,
   list: []
@@ -30,13 +32,15 @@ export const dividers = createSlice({
     setHiddenSets: createSliceSetter('hiddenSets'),
     setIncludeCoreSet: createSliceSetter('includeCoreSet'),
     setCampaign: createSliceSetter('campaign'),
-    setDividers: createSliceSetter('list')
+    setDividers: createSliceSetter('list'),
+    setColor: createSliceSetter('color')
   },
   selectors: {
     selectHiddenSets: createSliceSelector('hiddenSets'),
     selectIncludeCoreSet: createSliceSelector('includeCoreSet'),
     selectCampaign: createSliceSelector('campaign'),
     selectDividers: createSliceSelector('list'),
+    selectColor: createSliceSelector('color')
   }
 });
 
@@ -108,13 +112,15 @@ export const {
   setDividers,
   setIncludeCoreSet,
   setHiddenSets,
+  setColor
 } = dividers.actions;
 
 export const {
   selectCampaign,
   selectDividers,
   selectIncludeCoreSet,
-  selectHiddenSets
+  selectHiddenSets,
+  selectColor
 } = dividers.selectors;
 
 export default dividers.reducer;

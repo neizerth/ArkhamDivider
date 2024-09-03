@@ -2,6 +2,7 @@ export type IDivider = {
     id: string
     layoutId?: string
     name?: string
+    color: boolean
     icon?: string
     language: string
     campaignIcon?: string

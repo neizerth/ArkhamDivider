@@ -2,7 +2,7 @@ import { IDividerType } from '@/types/dividers';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice } from '@reduxjs/toolkit';
 
-import layouts from '@/data/layouts.json';
+import { layouts } from '@/data/layouts';
 import { ILayout } from '@/types/layouts';
 
 const DEFAULT_LAYOUT = layouts.find(({ is_default }) => is_default) as ILayout;

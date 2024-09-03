@@ -5,7 +5,6 @@
   width: 82mm;
 }
 
-
 .noBleeds {
   .guides {
     width: 100%;
@@ -33,28 +32,28 @@
     left: 2.8mm;
   }
 }
+
 .title {
-  padding: 0.7mm 11.2mm 0 11.2mm;
+  padding: 0.6mm 11.2mm 0 11.2mm;
 }
 
-.clear {
-  right: 12mm;
-  top: 1.5mm;
-}
-
-.clearIcon {
-  width: 6mm;
-}
-
-.layout_return_bw_vertical {
-  .titleInput {
-    text-shadow: 1px 1px rgba(255, 255, 255, 0.5), 1px -1px rgba(255, 255, 255, 0.5), -1px -1px rgba(255, 255, 255, 0.5), -1px 1px rgba(255, 255, 255, 0.5);
+.container[data-layout="classic_60_color_vertical"] {
+  .divider {
+    aspect-ratio: 65 / 105;
+    width: 65mm;
   }
-}
+  .noBleeds {
+    .wrapper {
+      height: 105mm;
+      width: 60mm;
+    }
+  }
 
-.layout_return_color_vertical {
-  .titleInput {
-    text-shadow: 1px 1px rgba(228, 208, 156, 0.5), 1px -1px rgba(228, 208, 156, 0.5), -1px -1px rgba(228, 208, 156, 0.5), -1px 1px rgba(228, 208, 156, 0.5)
+  .withBleeds {
+    .guides {
+      height: 105mm;
+      width: 60mm;
+    }
   }
 }
 
