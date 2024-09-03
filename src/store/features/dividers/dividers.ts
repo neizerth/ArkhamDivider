@@ -7,14 +7,17 @@ import { ICampaign, selectCampaigns, selectCoreEncounterSet } from '../campaigns
 import { createTranslation } from '@/util/i18n';
 import { I18N_NAMESPACE } from '@/constants/i18n';
 import { selectLanguage } from '../language/language';
+import { isCoreCampaign } from '@/util/campaigns';
 
 export type IDividersState = {
+  hiddenSets: string[];
   includeCoreSet: boolean;
   campaign: ICampaign | null;
   list: IDividerList
 }
 
 const initialState: IDividersState = {
+  hiddenSets: [],
   campaign: null,
   includeCoreSet: false,
   list: []
@@ -24,11 +27,13 @@ export const dividers = createSlice({
   name: 'dividers',
   initialState,
   reducers: {
+    setHiddenSets: createSliceSetter('hiddenSets'),
     setIncludeCoreSet: createSliceSetter('includeCoreSet'),
     setCampaign: createSliceSetter('campaign'),
     setDividers: createSliceSetter('list')
   },
   selectors: {
+    selectHiddenSets: createSliceSelector('hiddenSets'),
     selectIncludeCoreSet: createSliceSelector('includeCoreSet'),
     selectCampaign: createSliceSelector('campaign'),
     selectDividers: createSliceSelector('list'),
@@ -70,8 +75,9 @@ export const refreshDividers: ActionCreator<AppThunk> = () => (dispatch, getStat
   if (!campaign) {
     return;
   }
+  const isCore = isCoreCampaign(campaign);
   const language = selectLanguage(state);
-  const includeCoreSet = selectIncludeCoreSet(state);
+  const includeCoreSet = isCore || selectIncludeCoreSet(state);
   const coreEncounterSet = selectCoreEncounterSet(state);
   const dividers = campaignToDividers(campaign, {
     excludeSets: includeCoreSet ? [] : coreEncounterSet,
@@ -81,31 +87,34 @@ export const refreshDividers: ActionCreator<AppThunk> = () => (dispatch, getStat
   dispatch(setDividers(dividers));
 }
 
-
-export const changeCampaign: ActionCreator<AppThunk> = (id: string) => (dispatch, getState) => {
-  const campaign = selectCampaigns(getState())
-    .find(({ campaign }) => campaign.id === id);
-
-  dispatch(setCampaign(campaign || null));
-  dispatch(refreshDividers());
-}
-
 export const toggleIncludeCoreSet: ActionCreator<AppThunk> = () => (dispatch, getState) => {
   const includeCoreSet = selectIncludeCoreSet(getState());
 
   dispatch(setIncludeCoreSet(!includeCoreSet));
 }
 
+export const hideSet: ActionCreator<AppThunk> = (id: string) => (dispatch, getState) => {
+  const hiddenSets = selectHiddenSets(getState());
+
+  dispatch(setHiddenSets([...hiddenSets, id]));
+}
+
+export const showAllSets: ActionCreator<AppThunk> = () => (dispatch) => {
+  dispatch(setHiddenSets([]));
+}
+
 export const {
   setCampaign,
   setDividers,
   setIncludeCoreSet,
+  setHiddenSets,
 } = dividers.actions;
 
 export const {
   selectCampaign,
   selectDividers,
-  selectIncludeCoreSet
+  selectIncludeCoreSet,
+  selectHiddenSets
 } = dividers.selectors;
 
 export default dividers.reducer;

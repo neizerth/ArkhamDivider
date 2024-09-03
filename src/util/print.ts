@@ -1,17 +1,46 @@
-export const getGroupSize = <T>(group: T[][]) => group.reduce((total, group) => total + group.length, 0);
+import { IPage, PageSide } from "@/types/print";
+import { splitIntoGroups } from "./common";
+
+export type SplitIntoPagesOptions = {
+  groupSize: number
+  rowSize: number
+  doubleSidedPrint?: boolean
+}
+
+export const splittIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
+  const {
+    doubleSidedPrint = false,
+    groupSize,
+    rowSize
+  } = options;
+  const groups = splitIntoGroups(data, groupSize);
+  const pages = groups.map((items, index) => ({
+    pageNumber: index + 1,
+    side: PageSide.FRONT,
+    rows: splitIntoGroups(items, rowSize)
+  }));
+
+  if (!doubleSidedPrint) {
+    return pages;
+  }
+
+  return  createDoubleSidedPages(pages, groupSize);
+}
+
+export const getPageSize = <T>(group: T[][]) => group.reduce((total, group) => total + group.length, 0);
 
 export const canFitDoubleSide = <T>(group: T[][], groupSize: number) => {
-  const size = getGroupSize(group);
+  const size = getPageSize(group);
   const halfSize = Math.floor(groupSize / 2);
 
   return size <= halfSize;
 };
 
-export const createDoubleSidedGroups = <T>(groups: T[][][], groupSize: number) => groups.reduce((target, group, index) => {
-  const isLastGroup = index === groups.length - 1;
+export const createDoubleSidedPages = <T>(pages: IPage<T>[], groupSize: number) => pages.reduce((target, page, index): IPage<T>[] => {
+  const isLastGroup = index === pages.length - 1;
 
-  if (isLastGroup && canFitDoubleSide(group, groupSize)) {
-    const doubleSideGroup = group.reduce((target, row) => {
+  if (isLastGroup && canFitDoubleSide(page.rows, groupSize)) {
+    const rows = page.rows.reduce((target, row) => {
       return [
         ...target,
         ...row.map(item => ([item, item]))
@@ -20,13 +49,24 @@ export const createDoubleSidedGroups = <T>(groups: T[][][], groupSize: number) =
 
     return [
       ...target,
-      doubleSideGroup
+      {
+        pageNumber: page.pageNumber + 1,
+        side: PageSide.FRONT,
+        split: true,
+        rows
+      }
     ]
   }
 
+  const rows = page.rows.map(group => group.toReversed());
+
   return [
     ...target,
-    group,
-    group.map(row => row.reverse())
+    page,
+    {
+      pageNumber: page.pageNumber,
+      side: PageSide.BACK,
+      rows
+    }
   ];
-}, [] as T[][][]);
+}, [] as IPage<T>[]);

@@ -8,12 +8,6 @@
   }
 }
 
-.removedInfo {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-}
-
 .groups {
   display: flex;
   flex-direction: column;
@@ -25,32 +19,10 @@
 
 .group {
   margin: 0 auto;
-  text-align: center;
 }
 
 .row {
-  display: flex;
-}
-
-.removedDividers {
-  display: inline-flex;
-  gap: 20px;
-  align-items: center;
-  @media print {
-    display: none;
+  &_side_back {
+    justify-content: end;
   }
-}
-
-.removed {
-  gap: 3px;
-}
-
-.removedIcon {
-  width: 8mm;
-}
-
-
-.refreshIcon {
-  width: 6mm;
-  transform: scale(1.3);
 }

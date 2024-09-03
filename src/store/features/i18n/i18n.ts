@@ -44,7 +44,3 @@ export const loadEncounterSetsTranslations: ActionCreator<AppThunk> = (language:
 export const setEncounterSetsTranslations: ActionCreator<AppThunk> = (language: string, bundle: I18NLanguageBundle) => () => {
   addResourceBundle(language, bundle, I18N_NAMESPACE.ENCOUNTER_SETS);
 }
-
-export const setCampaignTranslations: ActionCreator<AppThunk> = (campaign: IArkhamCardsCampaign) => async dispatch => {
-  
-}

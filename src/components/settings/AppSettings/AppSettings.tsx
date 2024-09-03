@@ -1,5 +1,5 @@
 import S from './AppSettings.module.scss';
-import { CampaignSelect, DividerTypeFilter, LanguageSelect, Row } from '@/components';
+import { CampaignSelect, DividerTypeFilter, LanguageSelect, PrintSettings, Row } from '@/components';
 
 export type AppSettingsProps = {
 
@@ -15,6 +15,7 @@ export const AppSettings = ({}: AppSettingsProps) => {
             </Row>
            <Row>
                 <DividerTypeFilter/>
+                <PrintSettings/>
            </Row>
         </div>
     );

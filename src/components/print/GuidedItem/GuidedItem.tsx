@@ -9,11 +9,13 @@ export type GuidedItemProps = PropsWithChildren & PropsWithClassName & {
   topRight?: boolean;
   bottomLeft?: boolean;
   bottomRight?: boolean;
+  contentClassName?: string;
 }
 
 export const GuidedItem = ({ 
   children, 
   className,
+  contentClassName,
   topLeft = true,
   topRight = true,
   bottomLeft = true,
@@ -27,7 +29,7 @@ export const GuidedItem = ({
       {bottomLeft && <Guide className={classNames(S.guide, S.guide_bottomLeft)}/>}
       {bottomRight && <Guide className={classNames(S.guide, S.guide_bottomRight)}/>}
 
-      <div className={S.content}>
+      <div className={classNames(S.content, contentClassName)}>
         {children}
       </div>
     </div>

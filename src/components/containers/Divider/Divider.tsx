@@ -7,6 +7,8 @@ import classNames from 'classnames';
 
 import { PropsWithClassName } from '@/types/util';
 import { IDividerType } from '@/types/dividers';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { hideSet } from '@/store/features/dividers/dividers';
 
 export const DIVIDER_STYLE = {
 	[IDividerType.HORIZONTAL]: horizontalStyle,
@@ -14,32 +16,34 @@ export const DIVIDER_STYLE = {
 }
 
 export type DividerProps = PropsWithChildren & PropsWithClassName & {
-	id?: string
+	id: string
 	layoutId?: string;
 	name?: string
 	icon?: string;
 	type: IDividerType;
 	background: string;
 	language: string;
-	onRemove: () => void;
 }
 
 export const Divider = ({
+	id,
 	icon,
 	name = '',
 	type,
 	layoutId,
 	background,
 	language,
-	onRemove,
 	...props
 }: DividerProps) => {
 	const [title, setTitle] = useState(name);
+	const dispatch = useAppDispatch();
 	const S = DIVIDER_STYLE[type];
 
 	useEffect(() => {
 		setTitle(name);
 	}, [name]);
+
+	const onRemove = () => dispatch(hideSet(id));
 
 	const className = classNames(
 		S.container,
@@ -65,7 +69,9 @@ export const Divider = ({
 		<div className={className}>
 			<div className={S.title}>
 				<input className={titleClassName} onInput={onTitleChange} value={title}/>
-				<Icon icon="dismiss" className={S.clear} onClick={clear}/>
+				<div className={S.clear}>
+					<Icon icon="dismiss" className={S.clearIcon} onClick={clear}/>
+				</div>
 			</div>
 			<img className={S.background} src={background} alt={title}/>
 			{icon && (

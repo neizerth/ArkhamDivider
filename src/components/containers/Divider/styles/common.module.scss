@@ -18,10 +18,13 @@
 }
 
 .clear {
-  width: 6mm;
   display: none;
-  cursor: pointer;
   position: absolute;
+}
+
+.clearIcon {
+  width: 6mm;
+  cursor: pointer;
 }
 
 

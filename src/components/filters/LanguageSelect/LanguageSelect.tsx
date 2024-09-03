@@ -34,12 +34,11 @@ export const LanguageSelect = ({}: LanguageSelectProps) => {
   }
 
   return (
-    <label className={S.container}>
-      <Row>
-        {t('Language')}
-        
-        <Select options={options} value={languageValue} onChange={item => item && changeCurrentLanguage(item.value)}/>
-      </Row>
-    </label>
+    <Select 
+      className={S.container} 
+      options={options} 
+      value={languageValue} 
+      onChange={item => item && changeCurrentLanguage(item.value)}
+      />
   );
 }
