@@ -2,18 +2,27 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-top: 140px;
   @media print {
+    display: block;
     padding: 0;
+  }
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @media print {
     display: block;
   }
 }
 
 .group {
   margin: 0 auto;
-  text-align: center;
 }
 
 .row {
-  display: flex;
+  &_side_back {
+    justify-content: end;
+  }
 }

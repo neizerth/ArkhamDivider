@@ -1,51 +1,73 @@
-import React, { FormEvent, PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
+import { PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
 import horizontalStyle from './styles/horizontal.module.scss';
 import verticalStyle from './styles/vertical.module.scss';
 
+import { Icon, Guides } from '@/components';
 import classNames from 'classnames';
-import Icon from '@/components/ui/Icon/Icon';
 
 import { PropsWithClassName } from '@/types/util';
-import { IDividerType } from '@/types/dividers';
+import { DividerType } from '@/types/dividers';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { hideSet } from '@/store/features/dividers/dividers';
 
 export const DIVIDER_STYLE = {
-	[IDividerType.HORIZONTAL]: horizontalStyle,
-	[IDividerType.VERTICAL]: verticalStyle
+	[DividerType.HORIZONTAL]: horizontalStyle,
+	[DividerType.VERTICAL]: verticalStyle
 }
 
 export type DividerProps = PropsWithChildren & PropsWithClassName & {
-	id?: string
+	id: string
 	layoutId?: string;
 	name?: string
 	icon?: string;
-	type: IDividerType;
+	color?: boolean;
+	type: DividerType;
 	background: string;
 	language: string;
+  bleeds?: boolean;
+	dividerClassName?: string
+	wrapperClassName?: string
 }
 
 export const Divider = ({
-	id = '',
+	id,
 	icon,
 	name = '',
 	type,
+	color,
 	layoutId,
-	children,
 	background,
 	language,
+	bleeds,
+	className,
 	...props
 }: DividerProps) => {
 	const [title, setTitle] = useState(name);
+	const dispatch = useAppDispatch();
 	const S = DIVIDER_STYLE[type];
 
 	useEffect(() => {
 		setTitle(name);
 	}, [name]);
 
-	const className = classNames(
+	const onRemove = () => dispatch(hideSet(id));
+
+	const containerClassName = classNames(
 		S.container,
-		layoutId && S[`layout_${layoutId}`],
+		bleeds ? S.withBleeds : S.noBleeds,
+		color ? S.color : S.grayscale,
+		className
+	);
+
+	const dividerClassName = classNames(
+		S.divider,
 		type && S[`type_`+type],
-		props.className
+		props.dividerClassName
+	);
+
+	const wrapperClassName = classNames(
+		S.wrapper,
+		props.wrapperClassName
 	);
 
 	const onTitleChange: ReactEventHandler = e => {
@@ -56,26 +78,44 @@ export const Divider = ({
 
 	const clear = () => setTitle(name);
 	const titleClassName = classNames(
-		S.titleInput, 
-		title.length > 30 && S.titleInput_largeText,
-		S[`titleInput_${language}`]
+		S.title, 
+		title.length > 30 && S.titleInput_l,
+		title.length > 40 && S.titleInput_xl,
+		S[`title_${language}`]
 	);
 
+	const guidesClassName = classNames(
+		S.guides
+	)
+
 	return (
-		<div className={className}>
-			
-			{/* <h3 className={S.title} contentEditable={true} onInput={onTitleChange}>{dividerName}</h3> */}
-			<div className={S.title}>
-				<input className={titleClassName} onInput={onTitleChange} value={title}/>
-				<Icon icon="dismiss" className={S.clearIcon} containerClassName={S.clear} onClick={clear}/>
+		<div className={containerClassName} data-layout={layoutId} data-color={color} data-grayscale={!color}>
+			<div className={guidesClassName}>
+				<Guides className={S.guidesContent}/>
 			</div>
-			<img className={S.background} src={background} alt={title}/>
-			{icon && (
-				<>
-					<Icon icon={icon} className={classNames(S.icon, S.icon_small)}/>
-					<Icon icon={icon} className={classNames(S.icon, S.icon_large)}/>
-				</>
-			)}
+			<div className={wrapperClassName}>
+				<div className={dividerClassName}>
+					<div className={titleClassName}>
+						<div className={S.titleContent}>
+							<input className={S.titleInput} onInput={onTitleChange} value={title}/>
+							<div className={S.clear}>
+								<Icon icon="dismiss" className={S.clearIcon} onClick={clear}/>
+							</div>
+						</div>
+					</div>
+					<img className={S.background} src={background} alt={title}/>
+					{icon && (
+						<>
+							<Icon icon={icon} className={classNames(S.icon, S.icon_small)}/>
+							<Icon icon={icon} className={classNames(S.icon, S.icon_large)}/>
+						</>
+					)}
+
+					<div className={S.remove}>
+						<Icon icon="hide" className={S.removeIcon} onClick={onRemove}/>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

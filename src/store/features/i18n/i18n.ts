@@ -1,8 +1,5 @@
-import i18n from "i18next";
-
 import { fetchCoreTranslations, fetchEncounterSets } from "@/api/arkhamCards";
 import { AppThunk } from "@/store";
-import { IArkhamCardsCampaign } from "@/types/arkhamCards";
 import { I18NLanguageBundle, IPOEditorSource } from "@/types/i18n";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { hasResourceBundle, addResourceBundle } from "@/util/i18n";
@@ -45,8 +42,4 @@ export const loadEncounterSetsTranslations: ActionCreator<AppThunk> = (language:
 
 export const setEncounterSetsTranslations: ActionCreator<AppThunk> = (language: string, bundle: I18NLanguageBundle) => () => {
   addResourceBundle(language, bundle, I18N_NAMESPACE.ENCOUNTER_SETS);
-}
-
-export const setCampaignTranslations: ActionCreator<AppThunk> = (campaign: IArkhamCardsCampaign) => async dispatch => {
-  
 }

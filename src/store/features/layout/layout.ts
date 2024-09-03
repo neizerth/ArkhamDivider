@@ -1,20 +1,20 @@
-import { IDividerType } from '@/types/dividers';
+import { DividerType } from '@/types/dividers';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice } from '@reduxjs/toolkit';
 
-import layouts from '@/data/layouts.json';
+import { layouts } from '@/data/layouts';
 import { ILayout } from '@/types/layouts';
 
 const DEFAULT_LAYOUT = layouts.find(({ is_default }) => is_default) as ILayout;
 
 export type ILayoutState = {
   layout?: ILayout,
-  type: IDividerType,
+  type: DividerType,
 }
 
 const initialState: ILayoutState = {
   layout: DEFAULT_LAYOUT,
-  type: IDividerType.HORIZONTAL
+  type: DividerType.HORIZONTAL
 };
 
 export const layout = createSlice({

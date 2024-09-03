@@ -1,7 +1,0 @@
-.container {
-  font-size: 24px;
-  font-family: 'Conkordia', serif;
-  @media print {
-    text-align: center;
-  }
-}

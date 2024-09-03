@@ -9,3 +9,6 @@ export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
 }
 
 export const isEven = (x: number) => x % 2 === 0;
+
+export const whereEquals = <C extends { [index: string]: unknown }>(criteria: C) => <T extends C>(item: T) => 
+  Object.entries(criteria).every(([key, value]) => item[key] === value);

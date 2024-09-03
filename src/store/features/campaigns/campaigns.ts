@@ -1,19 +1,12 @@
 import { fetchCampaigns } from '@/api/arkhamCards';
 import { AppThunk } from '@/store';
-import { IArkhamCardsCampaign, IArkhamCardsScenarioDetail } from '@/types/arkhamCards';
-import { unique } from '@/util/common';
+import { IArkhamCardsCampaign } from '@/types/arkhamCards';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { transformArkhamCardsCampaign } from './transform/transformArkhamCardsCampaign';
-import { getCoreEntrounterSet } from './transform/getCoreEntrounterSet';
+import { getCoreEntrounterSet } from '../../../util/campaigns';
 import { refreshDividers } from '../dividers/dividers';
-
-export type ICampaignScenario = Omit<IArkhamCardsScenarioDetail, 'steps'>;
-
-export type ICampaign = Omit<IArkhamCardsCampaign, 'scenarios'> & {
-  unique_encounter_sets: string[];
-  scenarios: ICampaignScenario[]
-}
+import { ICampaign } from '@/types/campaigns';
 
 export type ICampaignsState = {
   list: ICampaign[]

@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import S from './CategoriesMenu.module.scss';
 
-import Link from 'next/link'
-
 export type CategoriesMenuProps = {
 
 }
@@ -12,9 +10,9 @@ export const CategoriesMenu = ({}: CategoriesMenuProps) => {
 
   return (
     <div className={S.container}>
-      <Link href={'/campaigns'}>{t('Campaigns')}</Link>
-      <Link href={'/investigators'}>{t('Investigators')}</Link>
-      <Link href={'/player-cards'}>{t('Player Cards')}</Link>
+      <a href={'/campaigns'}>{t('Campaigns')}</a>
+      <a href={'/investigators'}>{t('Investigators')}</a>
+      <a href={'/player-cards'}>{t('Player Cards')}</a>
     </div>
  );
 }

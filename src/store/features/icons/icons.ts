@@ -55,25 +55,14 @@ export const loadIcons: ActionCreator<AppThunk> = () => async dispatch => {
 }
 
 export const patchIconMapping = (baseMapping: IIconMapping, patch: IIconMapping) => {
-  const iconKeys = Object.values(baseMapping);
-
-
-  const patchedMapping = Object.entries(patch)
-    .filter(([key]) => !baseMapping[key])
-    .reduce((target, [key, value]) => {
-      target[key] = baseMapping[value] || value;
-      return target;
-    }, {} as IIconMapping);
-
   return {
-    // ...patchedMapping,
     ...baseMapping,
     ...patch
   };
 
 }
 
-export const loadIconPatch: ActionCreator<AppThunk> = () => async(dispatch, getStore) => {
+export const loadIconPatch: ActionCreator<AppThunk> = () => async(dispatch) => {
   const response = await fetchIconPatch();
   const contents = await response.text();
 

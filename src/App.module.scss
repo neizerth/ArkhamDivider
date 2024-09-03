@@ -1,0 +1,14 @@
+.container {
+  font-size: 24px;
+  font-family: 'Conkordia', serif;
+  @media print {
+    text-align: center;
+  }
+}
+
+.content {
+  padding-top: 200px;
+  @media print {
+    padding-top: 0;
+  }
+}

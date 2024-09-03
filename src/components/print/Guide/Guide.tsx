@@ -1,4 +1,3 @@
-import React from 'react';
 import S from './Guide.module.scss';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';

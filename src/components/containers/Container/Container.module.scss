@@ -1,5 +1,7 @@
 .container {
     margin: 0 auto;
+    width: 100%;
+    overflow-x: auto;
     // max-width: 1200px;
     @media print {
         max-width: none;

@@ -1,26 +1,33 @@
 import { ReactEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
-import Select, { SingleValue } from 'react-select'
+import Select from 'react-select'
 import S from './CampaignSelect.module.scss';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectCampaigns } from '@/store/features/campaigns/campaigns';
+import { selectCampaigns, selectCoreEncounterSet } from '@/store/features/campaigns/campaigns';
 
+import { refreshDividers, selectCampaign, selectIncludeCoreSet, setCampaign, setIncludeCoreSet, showAllSets } from '@/store/features/dividers/dividers';
+import { Checkbox, Row } from '@/components';
+import { PropsWithClassName } from '@/types/util';
+import classNames from 'classnames';
+import { hasSets, isCoreCampaign } from '@/util/campaigns';
 
-import { changeCampaign, refreshDividers, selectIncludeCoreSet, setIncludeCoreSet } from '@/store/features/dividers/dividers';
-import { selectLanguage } from '@/store/features/language/language';
-
-export type CampaignSelectProps = {
+export type CampaignSelectProps = PropsWithClassName & {
 
 }
 
-export const CampaignSelect = ({ }: CampaignSelectProps) => {
+export const CampaignSelect = ({ className }: CampaignSelectProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const campaigns = useAppSelector(selectCampaigns);
   const includeCoreSet = useAppSelector(selectIncludeCoreSet);
-  const language = useAppSelector(selectLanguage);
+  const currentCampaign = useAppSelector(selectCampaign);
+  const coreSet = useAppSelector(selectCoreEncounterSet);
+
+  const isCore = currentCampaign && isCoreCampaign(currentCampaign);
+
+  const showCheckbox = isCore || (currentCampaign && hasSets(currentCampaign, coreSet));
 
   const toggleCoreSet: ReactEventHandler = (e) => {
     const target = e.target as HTMLInputElement;
@@ -41,25 +48,27 @@ export const CampaignSelect = ({ }: CampaignSelectProps) => {
   }, {} as { [index: string]: string});
   
   const updateCampaign = (id: string | null) => {
-    dispatch(changeCampaign(id));
+    const campaign = campaigns.find(({ campaign }) => campaign.id === id);
+
+    dispatch(showAllSets());
+    dispatch(setCampaign(campaign || null));
+    dispatch(refreshDividers());
   }
 
   return (
-    <div className={S.container}>
-      <label className={S.selectContainer}>
-        <span className={S.label}>{t('Campaign')}</span>
-        <Select 
+    <Row className={classNames(S.container, className)}>
+      <Select 
           className={S.select}
           onChange={item => updateCampaign(item?.value || null)} 
           options={options}
-          placeholder={t('Campaign')}
+          placeholder={t('Select Campaign')}
           getOptionLabel={({ value }) => labels[value]}
         />
-      </label>
-      <label className={S.core}>
-        <input type="checkbox" checked={includeCoreSet} onChange={toggleCoreSet}/>
-        {t('Core Set')}
-      </label>
-    </div>
+      {showCheckbox && (
+        <Checkbox checked={includeCoreSet} onChange={toggleCoreSet}>
+          <span className={S.core}>{t('Core Set')}</span>
+        </Checkbox>
+      )}
+    </Row>
   );
 }

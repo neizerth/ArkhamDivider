@@ -1,20 +1,10 @@
-.container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.selectContainer {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
 .select {
-  width: 300px;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 300px;
+  }
 }
+
 .core {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  white-space: nowrap;
 }

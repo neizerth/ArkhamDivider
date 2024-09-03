@@ -2,6 +2,19 @@
     display: flex;
 }
 
+.gap {
+    gap: 20px;
+}
+
 .wrap {
     flex-wrap: wrap;
+}
+
+.alignItems {
+    &_center {
+        align-items: center;
+    }
+    &_start {
+        align-items: start;
+    }
 }

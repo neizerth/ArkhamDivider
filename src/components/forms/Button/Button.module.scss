@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    border-color: hsl(0, 0%, 70%);
+  }
+}

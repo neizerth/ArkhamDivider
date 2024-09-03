@@ -2,16 +2,11 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import S from './LanguageSelect.module.scss';
 import { changeLanguage, selectAvailableLanguages, selectLanguage } from '@/store/features/language/language';
 import { useTranslation } from 'react-i18next';
-import { ReactEventHandler } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import Select from 'react-select';
 
-export type LanguageSelectProps = {
-
-}
-
-export const LanguageSelect = ({}: LanguageSelectProps) => {
-  const { t } = useTranslation();
+export const LanguageSelect = () => {
+  const { i18n } = useTranslation();
   const dispatch = useAppDispatch();
   const availableLanguages = useAppSelector(selectAvailableLanguages);
   const language = useAppSelector(selectLanguage);
@@ -19,6 +14,7 @@ export const LanguageSelect = ({}: LanguageSelectProps) => {
   // console.log({ availableLanguages })
 
   const changeCurrentLanguage = (value: string) => {
+    i18n.changeLanguage(value);
     dispatch(changeLanguage(value));
   }
 
@@ -33,9 +29,11 @@ export const LanguageSelect = ({}: LanguageSelectProps) => {
   }
 
   return (
-    <label className={S.container}>
-      {t('Language')}
-      <Select options={options} value={languageValue} onChange={item => item && changeCurrentLanguage(item.value)}/>
-    </label>
+    <Select 
+      className={S.container} 
+      options={options} 
+      value={languageValue} 
+      onChange={item => item && changeCurrentLanguage(item.value)}
+      />
   );
 }

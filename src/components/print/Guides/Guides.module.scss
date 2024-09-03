@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+}
+
+.guide {
+  position: absolute;
+  z-index: 2;
+}
+
+.guide_topLeft {
+  top: 0;
+  left: 0;
+}
+
+.guide_topRight {
+  top: 0;
+  right: 0;
+}
+
+.guide_bottomLeft {
+  bottom: 0;
+  left: 0;
+}
+
+.guide_bottomRight {
+  bottom: 0;
+  right: 0;
+}

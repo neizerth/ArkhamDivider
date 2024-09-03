@@ -1,6 +1,6 @@
 import { IArkhamCardsCampaign, IArkhamCardsScenarioDetail } from "@/types/arkhamCards";
+import { ICampaign } from "@/types/campaigns";
 import { unique } from "@/util/common";
-import { ICampaign } from "../campaigns";
 
 export const scenarioToEncounterSets = ({ steps }: IArkhamCardsScenarioDetail) => {
   const step = steps.find(({ type }) => type === 'encounter_sets');

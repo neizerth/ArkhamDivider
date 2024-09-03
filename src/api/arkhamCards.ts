@@ -1,13 +1,9 @@
-import { language } from "@/store/features";
-
-export const ARKHAM_CARDS_URL = process.env.NEXT_PUBLIC_ARKHAM_CARDS_URL;
-export const ARKHAM_CARDS_CONTENTS_URL = process.env.NEXT_PUBLIC_ARKHAM_CARDS_CONTENTS_URL;
+export const ARKHAM_CARDS_URL = import.meta.env.VITE_ARKHAM_CARDS_URL;
+export const ARKHAM_CARDS_CONTENTS_URL = import.meta.env.VITE_ARKHAM_CARDS_CONTENTS_URL;
 
 export const ARKHAM_CARDS_ICOMOON_PATH = '/assets/icomoon/project.json';
 export const ARKHAM_CARDS_GENERATED_PATH = '/assets/generated';
 export const ARKHAM_CARDS_I18N_PATH = '/assets/i18n';
-
-const getLanguagePostfix = (language?: string) => language === 'en' ? '' : '_' + language;
 
 export const fetchArkhamCardsContents = (path: string) => fetch(ARKHAM_CARDS_CONTENTS_URL + path);
 export const fetchArkhamCardsAsset = (path: string) => fetch(ARKHAM_CARDS_URL + path);
@@ -37,6 +33,3 @@ export const fetchCoreTranslations = (language: string) =>
     fetchArkhamCardsAsset(
         ARKHAM_CARDS_I18N_PATH + `/${language}.po.json`
     );
-
-// export const ARKHAM_CARDS_ICOMOON_PROJECT_URL = process.env.NEXT_PUBLIC_ARKHAM_CARDS_URL + '/assets/icomoon/project.json'; 
-
