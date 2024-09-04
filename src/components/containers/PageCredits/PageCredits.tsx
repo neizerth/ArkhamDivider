@@ -18,7 +18,7 @@ export const PageCreditsGlobal = () => (
     <QRCodeSVG value={PAYPAL_LINK} className={S.qr}/>
     <div>
       <Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>
-      Spend as many resources as you want to <a href={PAYPAL_LINK} target='_blank'>{PAYPAL_LINK}</a><br/>
+      Spend as many resources as you want&nbsp;to&nbsp;<a href={PAYPAL_LINK} target='_blank'>{PAYPAL_LINK}</a><br/>
       Remember that <i><a href="https://github.com/neizerth">Author</a> is grateful to you</i>
     </div>
   </Row>
