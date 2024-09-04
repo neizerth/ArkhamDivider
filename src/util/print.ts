@@ -5,13 +5,15 @@ export type SplitIntoPagesOptions = {
   groupSize: number
   rowSize: number
   doubleSidedPrint?: boolean
+  merge?: boolean
 }
 
 export const splittIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
   const {
     doubleSidedPrint = false,
     groupSize,
-    rowSize
+    rowSize,
+    merge = false
   } = options;
   const groups = splitIntoGroups(data, groupSize);
   const pages = groups.map((items, index) => ({
@@ -26,7 +28,8 @@ export const splittIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): I
 
   return  createDoubleSidedPages(pages, {
     groupSize,
-    rowSize
+    rowSize,
+    merge
   });
 }
 
