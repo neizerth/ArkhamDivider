@@ -3,6 +3,7 @@ export { Divider } from './containers/Divider/Divider';
 export { DividerList } from './containers/DividerList/DividerList';
 export { HiddenSets } from './containers/HiddenSets/HiddenSets';
 export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
+export { PageCredits } from './containers/PageCredits/PageCredits';
 
 export { Row, InlineRow } from './ui/grid/Row/Row';
 export { List } from './ui/grid/List/List';

@@ -6,3 +6,19 @@
     font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+    font-family: 'Allegreya';
+    src: local("Allegreya"), 
+        url('/fonts/Allegreya-Regular.ttf') format('truetype');
+    font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'Allegreya';
+    src: local("Allegreya"), 
+        url('/fonts/Allegreya-Italic.ttf') format('truetype');
+    font-weight: normal;
+	font-style: italic;
+}

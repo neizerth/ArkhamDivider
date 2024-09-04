@@ -28,7 +28,7 @@
   box-sizing: border-box;
   position: absolute;
   width: 100%;
-  top: 3.6mm;
+  top: 5.6mm;
   z-index: 2;
   &:hover .clear {
       display: flex;
@@ -55,7 +55,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  top: 0;
+  top: -1px;
   right: 0;
 }
 
@@ -66,6 +66,7 @@
 
 .titleContent {
   position: relative;
+  display: flex;
 }
 
 .titleInput {
@@ -107,7 +108,7 @@
 
 .icon_small {
   width: 4.4mm;
-  right: 5.6mm;
+  right: 5.62mm;
 }
 
 .icon_large {

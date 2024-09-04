@@ -8,6 +8,9 @@
 
 .content {
   padding-top: 200px;
+  @media (min-width: 768px) {
+    padding-top: 100px;
+  }
   @media print {
     padding-top: 0;
   }

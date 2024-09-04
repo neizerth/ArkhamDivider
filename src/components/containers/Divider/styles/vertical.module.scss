@@ -37,6 +37,10 @@
   padding: 0.6mm 11.2mm 0 11.2mm;
 }
 
+.titleInput {
+  font-size: 3.6mm;
+}
+
 .container {
   &[data-layout="classic_60_color_vertical"],
   &[data-layout="classic_60_bw_vertical"] {
@@ -66,7 +70,8 @@
 }
 
 .icon_small {
-  top: 6.1mm;
+  top: 5.7mm;
+  right: 5.1mm;
 }
 
 .icon_large {

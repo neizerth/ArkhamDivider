@@ -27,7 +27,7 @@ export const CampaignSelect = ({ className }: CampaignSelectProps) => {
 
   const isCore = currentCampaign && isCoreCampaign(currentCampaign);
 
-  const showCheckbox = isCore || (currentCampaign && hasSets(currentCampaign, coreSet));
+  const showCheckbox = !isCore && currentCampaign && hasSets(currentCampaign, coreSet);
 
   const toggleCoreSet: ReactEventHandler = (e) => {
     const target = e.target as HTMLInputElement;

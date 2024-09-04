@@ -60,6 +60,7 @@ export const DividerList = ({ layout }: DividerListProps) => {
 						showPageSide={doubleSidedPrint}
 						pageNumber={pageNumber}
 						pagesTotal={pagesTotal}
+						isLast={pageIndex === pages.length - 1}
 						key={pageIndex}
 						orientation={orientation}
 					>
