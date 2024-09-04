@@ -1,11 +1,10 @@
 import S from './AppSettings.module.scss';
-import { CampaignSelect, DividerTypeFilter, LanguageSelect, PrintSettings, Row } from '@/components';
+import { CampaignSelect, DividerTypeFilter, LanguageSelect, PrintSettings, Row, Button } from '@/components';
 
-export type AppSettingsProps = {
 
-}
+export const AppSettings = () => {
 
-export const AppSettings = ({}: AppSettingsProps) => {
+    const print = () => window.print();
     
     return (
         <div className={S.container}>
@@ -25,7 +24,9 @@ export const AppSettings = ({}: AppSettingsProps) => {
                 <div className={S.printSettings}>
                     <PrintSettings/>
                 </div>
-                
+                <div className={S.print}>
+                    <Button onClick={print}>Print</Button>
+                </div>
             </Row>
         </div>
     );
