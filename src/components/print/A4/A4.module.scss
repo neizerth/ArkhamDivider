@@ -38,6 +38,7 @@
   @media print {
     width: auto;
     height: 100vh;
+    max-height: 297mm;
   }
 }
 
@@ -47,6 +48,7 @@
   @media print {
     width: auto;
     height: 100vh;
+    max-height: 210mm;
   }
 }
 
