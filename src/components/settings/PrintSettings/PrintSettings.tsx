@@ -18,7 +18,7 @@ export const PrintSettings = () => {
   return (
     <Row>
       <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>
-        Double-sided
+        2 sides
       </Checkbox>
       <Checkbox onChange={toggleBleeds} checked={useBleeds}>
         Bleeds

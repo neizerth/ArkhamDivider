@@ -25,8 +25,13 @@
   }
 }
 
+.languageSelect {
+  
+}
+
 .campaignFilter {
   width: 100%;
+  order: 2;
   @media (min-width: 500px) {
     width: auto;
   }
@@ -34,15 +39,16 @@
 
 .dividerFilter {
   width: 100%;
+  order: 2;
   @media (min-width: 500px) {
     width: auto;
   }
 }
 
-
 .printSettings {
-  width: 100%;
+  order: 1;
   @media (min-width: 500px) {
+    order: 3;
     width: auto;
   }
 }

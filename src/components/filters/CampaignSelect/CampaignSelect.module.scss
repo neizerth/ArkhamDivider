@@ -1,3 +1,9 @@
+.container {
+  flex-wrap: wrap;
+  @media (min-width: 500px) {
+    flex-wrap: nowrap;
+  }
+}
 .select {
   width: 100%;
   @media (min-width: 768px) {

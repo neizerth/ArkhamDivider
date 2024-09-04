@@ -21,8 +21,6 @@ export const AppSettings = ({}: AppSettingsProps) => {
                 <div className={S.campaignFilter}>
                     <CampaignSelect/>
                 </div>
-            
-                
 
                 <div className={S.printSettings}>
                     <PrintSettings/>
