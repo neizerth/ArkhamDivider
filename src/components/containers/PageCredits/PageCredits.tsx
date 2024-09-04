@@ -27,7 +27,7 @@ export const PageCreditsRU = () => (
     <img src={qr} className={S.qr} alt="" />
     <div>
       <Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>
-      Сыщик может потратить любое число<br/> ресурсов на <a href={T_LINK} target='_blank'>{T_LINK}</a>.<br/>
+      Сыщик может потратить любое число<br/> ресурсов на <a href={T_LINK} target='_blank'>{T_LINK}</a><br/>
       Запомните, что <i><a href="https://github.com/neizerth">Автор</a> вам благодарен</i>
     </div>
   </Row>
