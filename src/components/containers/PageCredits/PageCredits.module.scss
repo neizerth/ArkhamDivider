@@ -26,3 +26,9 @@
   text-align: left;
   max-width: 77mm;
 }
+
+.author {
+  @media print {
+    text-decoration: none;
+  }
+}

@@ -19,7 +19,7 @@ export const PageCreditsGlobal = () => (
     <div>
       <Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>
       Spend as many resources as you want&nbsp;to&nbsp;<a href={PAYPAL_LINK} target='_blank'>{PAYPAL_LINK}</a><br/>
-      Remember that <i><a href="https://github.com/neizerth">Author</a> is grateful to you</i>
+      Remember that <i><a href="https://github.com/neizerth" className={S.author}>Author</a> is grateful to you</i>
     </div>
   </Row>
 )
@@ -30,7 +30,7 @@ export const PageCreditsRU = () => (
     <div>
       <Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>
       Вы можете потратить любое число ресурсов на <a href={T_LINK} target='_blank'>{T_LINK}</a><br/>
-      Запомните, что <i><a href="https://github.com/neizerth">Автор</a> вам благодарен</i>
+      Запомните, что <i><a href="https://github.com/neizerth" className={S.author}>Автор</a> вам благодарен</i>
     </div>
   </Row>
 )
