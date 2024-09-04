@@ -79,10 +79,15 @@ export const Divider = ({
 	const clear = () => setTitle(name);
 	const titleClassName = classNames(
 		S.title, 
+	);
+
+	const titleInputClassName = classNames(
+		S.titleInput,
 		title.length > 30 && S.titleInput_l,
 		title.length > 40 && S.titleInput_xl,
-		S[`title_${language}`]
-	);
+		title.length > 50 && S.titleInput_xxl,
+		S[`titleInput_${language}`]
+	)
 
 	const guidesClassName = classNames(
 		S.guides
@@ -97,7 +102,7 @@ export const Divider = ({
 				<div className={dividerClassName}>
 					<div className={titleClassName}>
 						<div className={S.titleContent}>
-							<input className={S.titleInput} onInput={onTitleChange} value={title}/>
+							<input className={titleInputClassName} onInput={onTitleChange} value={title}/>
 							<div className={S.clear}>
 								<Icon icon="dismiss" className={S.clearIcon} onClick={clear}/>
 							</div>

@@ -34,11 +34,28 @@
 }
 
 .title {
-  padding: 0.6mm 11.2mm 0 11.2mm;
+  padding: 0.6mm 12mm 0 6mm;
 }
 
 .titleInput {
-  font-size: 3.6mm;
+  padding-left: 6mm;
+  font-size: 3.8mm;
+  &_l {
+    font-size: 3.1mm;
+  }
+  &_xl {
+    font-size: 2.7mm;
+    padding-left: 0.2mm;
+  }
+
+  &_ko {
+    font-size: 3.6mm;
+  }
+  &_zh {
+    font-size: 3.6mm;
+    position: relative;
+    top: -0.4mm;
+  }
 }
 
 .container {

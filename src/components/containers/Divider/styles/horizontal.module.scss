@@ -37,6 +37,17 @@
   padding: 0 11.2mm;
 }
 
+.titleInput {
+  &_ko {
+    font-size: 4mm;
+  }
+  &_zh {
+    font-size: 4mm;
+    position: relative;
+    top: -0.1mm;
+  }
+}
+
 .clear {
   right: 0;
 }
