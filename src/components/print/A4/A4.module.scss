@@ -23,12 +23,13 @@
     box-shadow: none;
     background: #fff;
 
-    page-break-after: always;
+    // page-break-after: always;
   }
 }
 
 .last {
   align-items: start;
+  padding-top: 15mm;
 }
 
 .portrait {
