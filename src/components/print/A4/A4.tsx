@@ -29,7 +29,8 @@ export const A4 = ({
     S.container, 
     S[`side_${side}`],
     className,
-    S[orientation]
+    S[orientation],
+    isLast && S.last
   );
   return (
     <div className={classList}>

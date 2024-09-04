@@ -5,46 +5,63 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background: #fff;
   position: relative;
   overflow: hidden;
 
-  &:hover {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  @media screen {
+
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    &:hover {
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    }
   }
 
   @media print {
     padding: 0;
     box-shadow: none;
     background: #fff;
+
+    page-break-after: always;
   }
+}
+
+.last {
+  align-items: start;
 }
 
 .portrait {
   width: 210mm;
   height: 297mm;
+  @media print {
+    width: auto;
+    height: 100vh;
+  }
 }
 
 .landscape {
   width: 297mm;
   height: 210mm;
+  @media print {
+    width: auto;
+    height: 100vh;
+  }
 }
 
 .side_back {
   background-color: #f3f3f3;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.1);
-  &:hover {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-  @media print {
-    box-shadow: none;
+  @media screen {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.1);
+  
+    &:hover {
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.1);
+    }
   }
 }
 
 .counter {
+  text-align: right;
   position: absolute;
   font-size: 5mm;
   top: 5mm;

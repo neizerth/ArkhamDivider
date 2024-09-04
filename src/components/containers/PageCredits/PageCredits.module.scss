@@ -15,9 +15,14 @@
 }
 
 .qr {
-  width: 25mm;
+  width: 15mm;
+  @media (min-width: 200mm) {
+    width: 20mm;
+  }
 }
 
 .row {
   gap: 2mm;
+  text-align: left;
+  max-width: 75mm;
 }
