@@ -31,7 +31,7 @@
 
 .campaignFilter {
   width: 100%;
-  order: 2;
+  order: 3;
   @media (min-width: 500px) {
     width: auto;
   }
@@ -39,7 +39,7 @@
 
 .dividerFilter {
   width: 100%;
-  order: 2;
+  order: 3;
   @media (min-width: 500px) {
     width: auto;
   }
@@ -48,11 +48,17 @@
 .printSettings {
   order: 1;
   @media (min-width: 500px) {
-    order: 3;
+    order: 4;
     width: auto;
   }
 }
 
 .print {
   order: 4;
+  @media (min-width: 400px) {
+    order: 2;
+  }
+  @media (min-width: 500px) {
+    order: 4;
+  }
 }
