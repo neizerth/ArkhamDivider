@@ -42,6 +42,7 @@ export const canFitDoubleSide = <T>(group: T[][], groupSize: number) => {
 export type CreateDoubleSidedPagesOptions = {
   groupSize: number
   rowSize: number
+  merge?: boolean
 }
 
 const cloneItems = <T>(rows: T[][], isLandscape: boolean) => {
@@ -62,11 +63,11 @@ const cloneItems = <T>(rows: T[][], isLandscape: boolean) => {
 
 export const createDoubleSidedPages = <T>(pages: IPage<T>[], options: CreateDoubleSidedPagesOptions) => pages.reduce((target, page, index): IPage<T>[] => {
   const isLastGroup = index === pages.length - 1;
-  const { rowSize, groupSize } = options;
+  const { rowSize, groupSize, merge = false } = options;
   const colSize = groupSize / rowSize;
   const isLandscape = rowSize > colSize;
 
-  if (isLastGroup && canFitDoubleSide(page.rows, groupSize)) {
+  if (isLastGroup && merge && canFitDoubleSide(page.rows, groupSize)) {
     const rows = cloneItems(page.rows, isLandscape);
 
     return [
