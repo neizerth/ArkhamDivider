@@ -20,7 +20,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Container>
+    <>
       <AppLoader>
         <div className={S.container}>
           <AppSettings/>
@@ -34,7 +34,7 @@ function App() {
         
         </div>
       </AppLoader>
-    </Container>
+    </>
   );
 }
 
