@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'Conkordia';
     src: local("Conkordia"), 
-        url('/fonts/conkordia.woff2') format('woff2'), 
-        url('/fonts/conkordia.svg') format('svg');
+        url('@/fonts/conkordia.woff2') format('woff2'), 
+        url('@/fonts/conkordia.svg') format('svg');
     font-weight: normal;
 	font-style: normal;
 }
@@ -10,7 +10,7 @@
 @font-face {
     font-family: 'Allegreya';
     src: local("Allegreya"), 
-        url('/fonts/Allegreya-Regular.ttf') format('truetype');
+        url('@/fonts/Allegreya-Regular.ttf') format('truetype');
     font-weight: normal;
 	font-style: normal;
 }
@@ -18,7 +18,7 @@
 @font-face {
     font-family: 'Allegreya';
     src: local("Allegreya"), 
-        url('/fonts/Allegreya-Italic.ttf') format('truetype');
+        url('@/fonts/Allegreya-Italic.ttf') format('truetype');
     font-weight: normal;
 	font-style: italic;
 }
@@ -26,7 +26,7 @@
 @font-face {
     font-family: 'Arkhamic';
     src: local("Arkhamic"), 
-        url('/fonts/Arkhamic.ttf') format('truetype');
+        url('@/fonts/Arkhamic.ttf') format('truetype');
     font-weight: normal;
 	font-style: normal;
 }
