@@ -18,5 +18,8 @@ export default defineConfig({
   },
   preview: {
     port: Number(process.env.APP_PREVIEW_PORT) || 8080
-  }
+  },
+  assetsInclude: [
+    '**/*.ttf'
+  ]
 })
