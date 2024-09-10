@@ -3,9 +3,9 @@ import { ICampaign } from "@/types/campaigns";
 import { unique } from "@/util/common";
 
 export const scenarioToEncounterSets = ({ steps }: IArkhamCardsScenarioDetail) => {
-  const step = steps.find(({ type }) => type === 'encounter_sets');
-
-  return step?.encounter_sets || [];
+  return steps.map(({ encounter_sets }) => encounter_sets)
+    .filter(x => Boolean(x))
+    .flat() as string[];
 }
 
 export const transformArkhamCardsCampaign = ({ campaign, scenarios }: IArkhamCardsCampaign): ICampaign => {
