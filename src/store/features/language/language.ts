@@ -14,7 +14,7 @@ export type ILanguageState = {
 
 const initialState: ILanguageState = {
   language: DEFAULT_LANGUAGE,
-  availableLanguages: AVAILABLE_LANGUAGES
+  availableLanguages: []
 };
 
 export const language = createSlice({
@@ -34,37 +34,19 @@ export const changeLanguage: ActionCreator<AppThunk> = (language: string) => asy
 
   dispatch(setLanguage(language));
   
-  dispatch(loadEncounterSetsTranslations(language));
-  dispatch(loadScenarios(language));
-  dispatch(loadCampaigns(language));
-  if (language === 'en') {
-    return;
-  }
-  dispatch(loadCoreTranslations(language));
+  // dispatch(loadEncounterSetsTranslations(language));
+  // dispatch(loadScenarios(language));
+  // dispatch(loadCampaigns(language));
+  // if (language === 'en') {
+  //   return;
+  // }
+  // dispatch(loadCoreTranslations(language));
 }
 
 export type IGithubFilename = {
   name: string;
   path: string;
   size: string;
-}
-
-export const loadAvailableLanguages: ActionCreator<AppThunk> = () => async dispatch => {
-
-  const response = await fetchGenerated();
-  const list: IGithubFilename[] = await response.json();
-
-  const campaignsPrefix = 'allCampaigns_';
-  const languages = list
-    .filter(({ name }) => name.startsWith(campaignsPrefix))
-    .map(({ name }) => name
-      .replace(campaignsPrefix, '')
-      .replace('.json', '')
-    )
-
-  const availableLanguages = ['en', ...languages];
-
-  dispatch(setAvailableLanguages(availableLanguages));
 }
 
 export const {

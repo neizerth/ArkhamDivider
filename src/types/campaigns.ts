@@ -1,8 +1,6 @@
-import { IArkhamCardsCampaign, IArkhamCardsScenarioDetail } from "@/types/arkhamCards";
+import { IArkhamCardsScenarioDetail } from "@/types/arkhamCards";
+import { IArkhamData } from "arkham-divider-data";
 
 export type ICampaignScenario = Omit<IArkhamCardsScenarioDetail, 'steps'>;
 
-export type ICampaign = Omit<IArkhamCardsCampaign, 'scenarios'> & {
-  unique_encounter_sets: string[];
-  scenarios: ICampaignScenario[]
-}
+export type ICampaign = IArkhamData.Core['campaigns'][number];

@@ -50,7 +50,7 @@ export type ICampaignToDividersOptions = {
   currentLanguage: string
 }
 
-const campaignToDividers = ({ unique_encounter_sets }: ICampaign, options: ICampaignToDividersOptions): IDividerList => {
+const campaignToDividers = ({ encounter_sets }: ICampaign, options: ICampaignToDividersOptions): IDividerList => {
   const { excludeSets = [], currentLanguage } = options;
   const ns = I18N_NAMESPACE.ENCOUNTER_SETS;
   const t = createTranslation(ns);
@@ -69,7 +69,7 @@ const campaignToDividers = ({ unique_encounter_sets }: ICampaign, options: ICamp
     }
   }
 
-  return unique_encounter_sets
+  return encounter_sets
     .filter(id => !excludeSets.includes(id))
     .map(encounterSetToDivider);
 }

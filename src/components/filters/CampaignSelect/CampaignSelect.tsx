@@ -36,19 +36,19 @@ export const CampaignSelect = ({ className }: CampaignSelectProps) => {
     dispatch(refreshDividers());
   }
 
-  const options = campaigns.map(({ campaign }) => ({
-    label: campaign.name,
-    value: campaign.id
+  const options = campaigns.map(({ name, id }) => ({
+    label: name,
+    value: id
   }))
   .sort((a, b) => a.label > b.label ? 1 : -1)
 
-  const labels = campaigns.reduce((target, { campaign }) => {
-    target[campaign.id] = campaign.name;
+  const labels = campaigns.reduce((target, { name, id }) => {
+    target[id] = name;
     return target
   }, {} as { [index: string]: string});
   
   const updateCampaign = (id: string | null) => {
-    const campaign = campaigns.find(({ campaign }) => campaign.id === id);
+    const campaign = campaigns.find(campaign => campaign.id === id);
 
     dispatch(showAllSets());
     dispatch(setCampaign(campaign || null));
