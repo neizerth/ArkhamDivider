@@ -1,5 +1,5 @@
 import S from './AppSettings.module.scss';
-import { CampaignSelect, DividerTypeFilter, LanguageSelect, PrintSettings, Row, Button } from '@/components';
+import { DividerTypeFilter, LanguageSelect, PrintSettings, Row, Button } from '@/components';
 
 
 export const AppSettings = () => {
@@ -15,10 +15,6 @@ export const AppSettings = () => {
 
                 <div className={S.dividerFilter}>
                     <DividerTypeFilter/>
-                </div>
-
-                <div className={S.campaignFilter}>
-                    <CampaignSelect/>
                 </div>
 
                 <div className={S.printSettings}>

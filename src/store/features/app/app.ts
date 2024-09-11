@@ -6,6 +6,7 @@ import { setCampaigns } from '../campaigns/campaigns';
 import { setIconSet } from '../icons/icons';
 import { transformProjectToIconSet } from '../icons/transform/icomoon';
 import { setAvailableLanguages } from '../language/language';
+import { setEncounterSets } from '../encounterSets/encounterSets';
 
 export type IAppState = {
   loading: boolean
@@ -31,12 +32,14 @@ export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
   const {
     campaigns,
     icons,
+    encounterSets,
     languages
   } = await fetchCoreData();
 
   const iconSet = { icons };
 
   dispatch(setCampaigns(campaigns));
+  dispatch(setEncounterSets(encounterSets));
   dispatch(setIconSet(iconSet));
   dispatch(setAvailableLanguages(languages))
   // console.log(data);

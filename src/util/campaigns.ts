@@ -1,4 +1,4 @@
-import { ICampaign } from "@/types/campaigns";
+import { ICampaign } from "@/types/api";
 
 export const isCoreCampaign = (campaign: ICampaign) => campaign.id === 'core' && campaign.position === 0;
 

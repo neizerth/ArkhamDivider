@@ -1,12 +1,7 @@
-import { fetchCampaigns } from '@/api/arkhamCards';
-import { AppThunk } from '@/store';
-import { IArkhamCardsCampaign } from '@/types/arkhamCards';
+
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { ActionCreator, createSlice } from '@reduxjs/toolkit';
-import { transformArkhamCardsCampaign } from './transform/transformArkhamCardsCampaign';
-import { getCoreEntrounterSet } from '../../../util/campaigns';
-import { refreshDividers } from '../dividers/dividers';
-import { ICampaign } from '@/types/campaigns';
+import { createSlice } from '@reduxjs/toolkit';
+import { ICampaign } from '@/types/api';
 
 export type ICampaignsState = {
   list: ICampaign[]
@@ -31,17 +26,6 @@ export const campaigns = createSlice({
   }
 });
 
-
-export const loadCampaigns: ActionCreator<AppThunk> = (language: string) => async dispatch => {
-  const response = await fetchCampaigns(language);
-  const campaigns: IArkhamCardsCampaign[] = await response.json();
-  const list = campaigns.map(transformArkhamCardsCampaign);
-  const coreEncounterSet = getCoreEntrounterSet(list);
-  
-  dispatch(setCampaigns(list));
-  dispatch(setCoreEncounterSet(coreEncounterSet));
-  dispatch(refreshDividers());
-}
 
 export const {
   setCampaigns,

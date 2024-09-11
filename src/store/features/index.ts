@@ -5,4 +5,5 @@ export { default as campaigns } from './campaigns/campaigns';
 export { default as scenarios } from './scenarios/scenarios';
 export { default as layout } from './layout/layout';
 export { default as print } from './print/print';
+export { default as encounterSets } from './encounterSets/encounterSets';
 export { default as app } from './app/app';

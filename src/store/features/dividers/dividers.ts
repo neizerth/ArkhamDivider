@@ -3,17 +3,14 @@ import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { createSliceSetter, createSliceSelector } from '@/util/slice';
 import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
-import { selectCoreEncounterSet } from '../campaigns/campaigns';
 import { createTranslation } from '@/util/i18n';
 import { I18N_NAMESPACE } from '@/constants/i18n';
-import { selectLanguage } from '../language/language';
-import { isCoreCampaign } from '@/util/campaigns';
-import { ICampaign } from '@/types/campaigns';
+import { ICampaign } from '@/types/api';
 
 export type IDividersState = {
   hiddenSets: string[];
-  includeCoreSet: boolean;
-  campaign: ICampaign | null;
+  includeExtraSets: boolean;
+  campaigns: ICampaign[];
   color: boolean;
   list: IDividerList
 }
@@ -21,8 +18,8 @@ export type IDividersState = {
 const initialState: IDividersState = {
   hiddenSets: [],
   color: true,
-  campaign: null,
-  includeCoreSet: false,
+  campaigns: [],
+  includeExtraSets: false,
   list: []
 };
 
@@ -31,15 +28,15 @@ export const dividers = createSlice({
   initialState,
   reducers: {
     setHiddenSets: createSliceSetter('hiddenSets'),
-    setIncludeCoreSet: createSliceSetter('includeCoreSet'),
-    setCampaign: createSliceSetter('campaign'),
+    setIncludeExtraSets: createSliceSetter('includeExtraSets'),
+    setCampaigns: createSliceSetter('campaigns'),
     setDividers: createSliceSetter('list'),
     setColor: createSliceSetter('color')
   },
   selectors: {
     selectHiddenSets: createSliceSelector('hiddenSets'),
-    selectIncludeCoreSet: createSliceSelector('includeCoreSet'),
-    selectCampaign: createSliceSelector('campaign'),
+    selectIncludeExtraSets: createSliceSelector('includeExtraSets'),
+    selectCampaigns: createSliceSelector('campaigns'),
     selectDividers: createSliceSelector('list'),
     selectColor: createSliceSelector('color')
   }
@@ -57,14 +54,14 @@ const campaignToDividers = ({ encounter_sets }: ICampaign, options: ICampaignToD
   const toEnglish = createTranslation(ns, 'en');
 
   const encounterSetToDivider = (id: string) => {
-    const name = t(id);
+    const localName = t(id);
     const originalName = toEnglish(id);
-    const language = name === originalName ? 'en' : currentLanguage;
+    const language = localName === originalName ? 'en' : currentLanguage;
     
     return {
       id,
       icon: id,
-      name,
+      name: localName,
       language
     }
   }
@@ -80,22 +77,21 @@ export const refreshDividers: ActionCreator<AppThunk> = () => (dispatch, getStat
   if (!campaign) {
     return;
   }
-  const isCore = isCoreCampaign(campaign);
-  const language = selectLanguage(state);
-  const includeCoreSet = isCore || selectIncludeCoreSet(state);
-  const coreEncounterSet = selectCoreEncounterSet(state);
-  const dividers = campaignToDividers(campaign, {
-    excludeSets: includeCoreSet ? [] : coreEncounterSet,
-    currentLanguage: language
-  });
+  // const encounterCodes = campaign.encounter_sets;
+  // const encounters = selectEncounterSets(state);
+  
+  // const language = selectLanguage(state);
+  // const coreEncounterSet = selectCoreEncounterSet(state);
+
+  const dividers = []
 
   dispatch(setDividers(dividers));
 }
 
-export const toggleIncludeCoreSet: ActionCreator<AppThunk> = () => (dispatch, getState) => {
-  const includeCoreSet = selectIncludeCoreSet(getState());
+export const toggleIncludeExtraSets: ActionCreator<AppThunk> = () => (dispatch, getState) => {
+  const includeSets = selectIncludeExtraSets(getState());
 
-  dispatch(setIncludeCoreSet(!includeCoreSet));
+  dispatch(setIncludeExtraSets(!includeSets));
 }
 
 export const hideSet: ActionCreator<AppThunk> = (id: string) => (dispatch, getState) => {
@@ -109,17 +105,15 @@ export const showAllSets: ActionCreator<AppThunk> = () => (dispatch) => {
 }
 
 export const {
-  setCampaign,
   setDividers,
-  setIncludeCoreSet,
+  setIncludeExtraSets,
   setHiddenSets,
   setColor
 } = dividers.actions;
 
 export const {
-  selectCampaign,
   selectDividers,
-  selectIncludeCoreSet,
+  selectIncludeExtraSets,
   selectHiddenSets,
   selectColor
 } = dividers.selectors;
