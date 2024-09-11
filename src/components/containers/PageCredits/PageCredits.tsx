@@ -17,7 +17,7 @@ export const PageCreditsGlobal = () => (
   <Row className={S.row} gap={false}>
     <QRCodeSVG value={PAYPAL_LINK} className={S.qr}/>
     <div>
-      <Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>
+      <span className={S.symbol}><Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>:</span>
       Spend as many resources as you want&nbsp;to&nbsp;<a href={PAYPAL_LINK} target='_blank'>{PAYPAL_LINK}</a><br/>
       Remember that <i><a href="https://github.com/neizerth" className={S.author}>Author</a> is grateful to you</i>
     </div>
@@ -28,7 +28,7 @@ export const PageCreditsRU = () => (
   <Row className={S.row} gap={false}>
     <QRCodeSVG value={T_LINK} className={S.qr}/>
     <div>
-      <Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>
+      <span className={S.symbol}><Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>:</span>
       Вы можете потратить любое число ресурсов на&nbsp;
       <a href={T_LINK} target='_blank'>{T_LINK}</a> или&nbsp;<a href={PAYPAL_LINK} target='_blank'>{PAYPAL_LINK}</a><br/>
       Запомните, что <i><a href="https://github.com/neizerth" className={S.author}>Автор</a> вам благодарен</i>
