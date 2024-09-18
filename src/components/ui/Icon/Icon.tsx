@@ -1,20 +1,21 @@
 import S from './Icon.module.scss';
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { selectIconSet } from "@/store/features/icons/icons";
+
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectIcons } from '@/store/features/icons/icons';
+import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
-import IcoMoon, { IconProps } from "react-icomoon";
+import { propEq } from 'ramda';
 
+export type IconProps = PropsWithClassName & {
+	icon: string
+}
+export const Icon = ({ icon, className }: IconProps) => {
+	const icons = useAppSelector(selectIcons);
+	const entry = icons.find(propEq(icon, 'icon'));
+	// const iconSet = useAppSelector(selectIconSet);
 
-export const Icon = (props: IconProps) => {
-	const iconSet = useAppSelector(selectIconSet);
-
+	const char = entry ? String.fromCharCode(entry.code) : '';
 	return (
-		<>
-			{iconSet && <IcoMoon 
-				{...props} 
-				iconSet={iconSet} 
-				className={classNames(S.icon, props.className)} 
-			/>}
-		</>
+		<span className={classNames(S.icon, className)}>{char}</span>
 	)
 }

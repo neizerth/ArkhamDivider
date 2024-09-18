@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppSelector } from "./useAppSelector";
 import { selectIconSet } from "@/store/features/icons/icons";
-import { selectCampaigns } from "@/store/features/campaigns/campaigns";
+import { selectCampaigns } from "@/store/features/stories/stories";
 import { selectScenarios } from "@/store/features/scenarios/scenarios";
 
 export const useAppLoader = () => {

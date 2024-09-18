@@ -1,11 +1,7 @@
-import { AVAILABLE_LANGUAGES, DEFAULT_LANGUAGE } from '@/constants/i18n';
+import { DEFAULT_LANGUAGE } from '@/constants/i18n';
 import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
-import { loadScenarios } from '../scenarios/scenarios';
-import { loadCampaigns } from '../campaigns/campaigns';
-import { loadCoreTranslations, loadEncounterSetsTranslations } from '../i18n/i18n';
-import { fetchGenerated } from '@/api/arkhamCards';
 
 export type ILanguageState = {
   language: string;

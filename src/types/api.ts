@@ -1,4 +1,5 @@
-import { IArkhamData } from "arkham-divider-data";
+import { ArkhamDivider } from "arkham-divider-data";
+import { Single } from "./util";
 
-export type ICampaign = IArkhamData.Core['campaigns'][number];
-export type IEncounterSet = IArkhamData.Core['encounterSets'][number];
+export type IStory = Single<ArkhamDivider.Core['stories']>
+export type IEncounterSet = Single<ArkhamDivider.Core['encounterSets']>;

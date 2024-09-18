@@ -5,7 +5,7 @@ import S from './CampaignSelect.module.scss';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectCampaigns, setCampaigns } from '@/store/features/campaigns/campaigns';
+import { selectCampaigns, setStories } from '@/store/features/stories/stories';
 
 import { refreshDividers, selectIncludeExtraSets, showAllSets, toggleIncludeExtraSets } from '@/store/features/dividers/dividers';
 import { Checkbox, Row } from '@/components';
@@ -46,7 +46,7 @@ export const CampaignSelect = ({ className }: CampaignSelectProps) => {
     const currentCampaigns = campaign ? [campaign] : []
 
     dispatch(showAllSets());
-    dispatch(setCampaigns(currentCampaigns));
+    dispatch(setStories(currentCampaigns));
     dispatch(refreshDividers());
   }
 

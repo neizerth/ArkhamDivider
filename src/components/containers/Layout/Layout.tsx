@@ -1,6 +1,6 @@
 import { Divider, A4, Row, HiddenSets } from '@/components';
 
-import S from './DividerList.module.scss';
+import S from './Layout.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { ILayout } from '@/types/layouts';
 import { selectDividers, selectHiddenSets, showAllSets } from '@/store/features/dividers/dividers';
@@ -10,11 +10,11 @@ import { selectBleeds, selectDoubleSided } from '@/store/features/print/print';
 import { splittIntoPages } from '@/util/print';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
-export type DividerListProps = {
+export type LayoutProps = {
 	layout: ILayout
 }
 
-export const DividerList = ({ layout }: DividerListProps) => {
+export const Layout = ({ layout }: LayoutProps) => {
 	const dispatch = useAppDispatch();
 	const hiddenSets = useAppSelector(selectHiddenSets);
 	const dividers = useAppSelector(selectDividers);

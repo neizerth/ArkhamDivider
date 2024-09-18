@@ -8,7 +8,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action
 >;
 
-export type AppSelector<ReturnType = void> = (state: RootState) => ReturnType;
+export type AppSelector<ReturnType = unknown> = (state: RootState) => ReturnType;
 
 export const makeStore = () => {
   return configureStore({

@@ -1,34 +1,34 @@
-import { IIconSet } from '@/types/icomoon';
+import { ArkhamDivider } from 'arkham-divider-data';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice } from '@reduxjs/toolkit';
-import { Mapping } from 'classnames';
+
+export type Icons = ArkhamDivider.Core['icons'];
 
 export type IIconsState = {
-  iconMapping: Mapping;
-  iconSet?: IIconSet
+  icons: Icons
 }
 
 const initialState: IIconsState = {
-  iconMapping: {}
+  icons: []
 };
 
 export const icons = createSlice({
   name: 'icons',
   initialState,
   reducers: {
-    setIconSet: createSliceSetter('iconSet'),
+    setIcons: createSliceSetter('icons'),
   },
   selectors: {
-    selectIconSet: createSliceSelector('iconSet'),
+    selectIcons: createSliceSelector('icons'),
   }
 });
 
 export const {
-  setIconSet,
+  setIcons,
 } = icons.actions;
 
 export const {
-  selectIconSet,
+  selectIcons,
 } = icons.selectors;
 
 export default icons.reducer;

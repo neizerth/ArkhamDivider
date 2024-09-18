@@ -15,7 +15,7 @@ export const DIVIDER_STYLE = {
 	[DividerType.VERTICAL]: verticalStyle
 }
 
-export type DividerProps = PropsWithChildren & PropsWithClassName & {
+export type EncounterSetDividerProps = PropsWithChildren & PropsWithClassName & {
 	id: string
 	layoutId?: string;
 	name?: string
@@ -29,7 +29,7 @@ export type DividerProps = PropsWithChildren & PropsWithClassName & {
 	wrapperClassName?: string
 }
 
-export const Divider = ({
+export const EncounterSetDivider = ({
 	id,
 	icon,
 	name = '',
@@ -41,7 +41,7 @@ export const Divider = ({
 	bleeds,
 	className,
 	...props
-}: DividerProps) => {
+}: EncounterSetDividerProps) => {
 	const [title, setTitle] = useState(name);
 	const dispatch = useAppDispatch();
 	const S = DIVIDER_STYLE[type];

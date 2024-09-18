@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'icons';
+  src: url('@icons/icons.svg') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Conkordia';
   src: local("Conkordia"), 
       url('./fonts/conkordia.woff2') format('woff2'), 

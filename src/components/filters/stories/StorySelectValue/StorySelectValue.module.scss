@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.icon {
+  width: 20px;
+  font-size: 18px;
+
+  position: relative;
+  top: -1px;
+}
+
+.official {
+  color: #275891;
+}
+
+.selected .official {
+  color: inherit;
+}

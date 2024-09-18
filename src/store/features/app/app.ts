@@ -1,10 +1,9 @@
-import { fetchCoreData } from '@/api/dividerDivider';
+import { fetchCoreData } from '@/api/arkhamDivider';
 import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
-import { setCampaigns } from '../campaigns/campaigns';
-import { setIconSet } from '../icons/icons';
-import { transformProjectToIconSet } from '../icons/transform/icomoon';
+import { setStories } from '../stories/stories';
+import { setIcons } from '../icons/icons';
 import { setAvailableLanguages } from '../language/language';
 import { setEncounterSets } from '../encounterSets/encounterSets';
 
@@ -30,18 +29,16 @@ export const app = createSlice({
 export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
   dispatch(setLoading(true));
   const {
-    campaigns,
+    stories,
     icons,
     encounterSets,
     languages
   } = await fetchCoreData();
 
-  const iconSet = { icons };
-
-  dispatch(setCampaigns(campaigns));
+  dispatch(setStories(stories));
   dispatch(setEncounterSets(encounterSets));
-  dispatch(setIconSet(iconSet));
-  dispatch(setAvailableLanguages(languages))
+  dispatch(setAvailableLanguages(languages));
+  dispatch(setIcons(icons));
   // console.log(data);
   dispatch(setLoading(false));
 }
