@@ -15,4 +15,4 @@ export const isSideContent = anyPass([
   isStandalone
 ]);
 
-export const isReturnPack = (story: IStory) => Boolean(story.return_to_code)
+export const isReturnPack = (story: IStory) => Boolean(story.return_to_code);

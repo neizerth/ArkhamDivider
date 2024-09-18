@@ -21,29 +21,16 @@ export const stories = createSlice({
     setStories: createSliceSetter('list'),
   },
   selectors: {
-    selectStoriesList: createSliceSelector('list'),
+    selectStories: createSliceSelector('list'),
   }
 });
-
 
 export const {
   setStories
 } = stories.actions;
 
 export const {
-  selectStoriesList,
+  selectStories,
 } = stories.selectors;
-
-export const selectStories: AppSelector<IStory[]> = state => {
-  const data = selectStoriesList(state);
-
-  return sortWith([
-    descend(({ is_official }) => Boolean(is_official)),
-    descend(isCampaign),
-    ascend(isReturnPack),
-    ascend(({ position }) => position || Infinity),
-    ascend(prop('name'))
-  ], data)
-}
 
 export default stories.reducer;

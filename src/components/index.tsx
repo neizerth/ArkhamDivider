@@ -6,12 +6,16 @@ export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
 export { PageCredits } from './containers/PageCredits/PageCredits';
 
 export { Row, InlineRow } from './ui/grid/Row/Row';
+export { Col } from './ui/grid/Col/Col';
 export { List } from './ui/grid/List/List';
 export { Icon } from './ui/Icon/Icon';
 export { IconButton } from './ui/IconButton/IconButton';
 export { Color } from './ui/Color/Color';
-export { AddCampaign }  from './ui/AddCampaign/AddCampaign';
-export { IconFontStyles as FontStyles } from './ui/IconFontStyles/IconFontStyles';
+
+export { AddStoryDividers }  from './ui/addDividers/AddStoryDividers/AddStoryDividers';
+export { AddStoryParams }  from './ui/addDividers/AddStoryParams/AddStoryParams';
+
+export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 
 export { Guides } from './print/Guides/Guides';
 export { Guide } from './print/Guide/Guide';

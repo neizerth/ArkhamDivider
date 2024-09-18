@@ -5,12 +5,15 @@ import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
 import { createTranslation } from '@/util/i18n';
 import { I18N_NAMESPACE } from '@/constants/i18n';
-import { ICampaign } from '@/types/api';
+import { IStory } from '@/types/api';
+import { selectEncounterSets } from '../encounterSets/encounterSets';
+import { getStoryDividers } from '@/features/dividers';
+import { selectStories } from '../stories/stories';
+import { safePropEq } from '@/util/criteria';
 
 export type IDividersState = {
   hiddenSets: string[];
   includeExtraSets: boolean;
-  campaigns: ICampaign[];
   color: boolean;
   list: IDividerList
 }
@@ -29,14 +32,12 @@ export const dividers = createSlice({
   reducers: {
     setHiddenSets: createSliceSetter('hiddenSets'),
     setIncludeExtraSets: createSliceSetter('includeExtraSets'),
-    setCampaigns: createSliceSetter('campaigns'),
     setDividers: createSliceSetter('list'),
     setColor: createSliceSetter('color')
   },
   selectors: {
     selectHiddenSets: createSliceSelector('hiddenSets'),
     selectIncludeExtraSets: createSliceSelector('includeExtraSets'),
-    selectCampaigns: createSliceSelector('campaigns'),
     selectDividers: createSliceSelector('list'),
     selectColor: createSliceSelector('color')
   }
@@ -45,6 +46,35 @@ export const dividers = createSlice({
 export type ICampaignToDividersOptions = {
   excludeSets?: string[],
   currentLanguage: string
+}
+
+export const setStory: ActionCreator<AppThunk> = (data: {
+  story: IStory
+  includeExtra: boolean
+  includeReturnSet: boolean
+  includeScenarios: boolean
+}) => (dispatch, getState) => {
+  const state = getState();
+  const encounterSets = selectEncounterSets(state);
+  const stories = selectStories(state);
+  const { 
+    story, 
+    includeReturnSet 
+  } = data; 
+
+  const returnStories = includeReturnSet ? stories.filter(
+    safePropEq(story.code, 'return_to_code')
+  ) : [];
+
+  const dividers = getStoryDividers({
+    ...data,
+    returnStories,
+    encounterSets
+  });
+
+  console.log(dividers);
+
+  dispatch(setDividers(dividers));
 }
 
 const campaignToDividers = ({ encounter_sets }: ICampaign, options: ICampaignToDividersOptions): IDividerList => {

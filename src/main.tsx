@@ -7,13 +7,13 @@ import { StoreProvider } from '@/providers/StoreProvider.tsx';
 import { I18nextProvider } from 'react-i18next';
 import App from './App.tsx'
 import i18n from './config/i18n.ts';
-import { FontStyles } from './components/index.tsx';
+import { IconFontStyles } from './components';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <StoreProvider>
       <I18nextProvider i18n={i18n}>
-        <FontStyles/>
+        <IconFontStyles/>
         <App />
       </I18nextProvider>
     </StoreProvider>

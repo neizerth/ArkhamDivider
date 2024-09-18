@@ -7,7 +7,6 @@ export type RowProps = PropsWithClassName & PropsWithChildren & {
 	wrap?: boolean,
 	inline?: boolean,
 	gap?: boolean,
-	alignItems?: string,
 	as?: ElementType
 };
 
@@ -19,7 +18,6 @@ export const Row = ({
 	className, 
 	inline = false,
 	gap = true, 
-	alignItems = 'center',
 	as,
 	wrap, 
 	...props 
@@ -27,7 +25,6 @@ export const Row = ({
 	const classes = classNames(
 		S.container, 
 		className,
-		S[`alignItems_${alignItems}`],
 		wrap && S.wrap,
 		gap && S.gap
 	);
