@@ -7,12 +7,18 @@ import { ReactEventHandler } from "react";
 //         const newState = onChange(e.target as T);
 //       }
 
-export const createToggleHanlder = <K extends PropertyKey>(state: Record<K, boolean>, onChange: (data: Record<K, boolean>) => void) =>
-  (prop: K): ReactEventHandler => 
-    e => {
+export const createToggleHanlder = <K extends PropertyKey>(state: Record<K, boolean>, callback: (data: Record<K, boolean>) => void) =>
+  (prop: K) => {
+    const onChange: ReactEventHandler = e => {
       const target = e.target as HTMLInputElement;
-      onChange({
+      callback({
         ...state,
         [prop]: target.checked
       })
     }
+
+    return {
+      onChange,
+      checked: state[prop]
+    }
+  }

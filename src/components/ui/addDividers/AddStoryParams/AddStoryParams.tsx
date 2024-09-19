@@ -33,7 +33,7 @@ export const AddStoryParams = ({
   // console.log(story);
   // onlyWithScenarioEncounters(story); 
 
-  const onToggle = createToggleHanlder(
+  const check = createToggleHanlder(
     form, 
     data => dispatch(setDividerFormConfig(data))
   );
@@ -43,58 +43,39 @@ export const AddStoryParams = ({
       <Col>
         <Row>
           {haveExtraDividers && (
-            <Checkbox 
-              checked={form.includeExtraSets}
-              onChange={onToggle('includeExtraSets')}
-            >
+            <Checkbox {...check('includeExtraSets')}>
               Extra
             </Checkbox>
           )}
           {!onlyScenario && (
-            <Checkbox 
-              checked={form.includeScenarios}
-              onChange={onToggle('includeScenarios')}
-            >
+            <Checkbox {...check('includeScenarios')}>
               Scenarios
             </Checkbox>
           )}
-          <Checkbox 
-            checked={form.includeScenarioEncounterSet}
-            onChange={onToggle('includeScenarioEncounterSet')}
-          >
+          <Checkbox {...check('includeScenarioEncounterSet')}>
             Scenario Encounter
           </Checkbox>
           {story.is_size_supported && (
             <>
-              <Checkbox 
-                checked={form.includeEncounterSize}
-                onChange={onToggle('includeEncounterSize')}
-              >
+              <Checkbox {...check('includeEncounterSize')}>
                 Encounter Size
               </Checkbox>
               {!onlyScenario && (
-                <Checkbox 
-                  checked={form.includeScenarioSize}
-                  onChange={onToggle('includeScenarioSize')}
-                >
+                <Checkbox {...check('includeScenarioSize')}>
                   Scenario Size
                 </Checkbox>
               )}
             </>
           )}
-          <Checkbox 
-            checked={form.includeCampaignIcon}
-            onChange={onToggle('includeCampaignIcon')}
-          >
+          <Checkbox {...check('includeCampaignIcon')}>
             Campaign Icon
           </Checkbox>
         </Row>
         {haveReturnCycle && (
           <Row>
             <Checkbox 
-              checked={form.includeReturnSets}
+              {...check('includeReturnSets')}
               labelClassName={S.returnLabel}
-              onChange={onToggle('includeReturnSets')}
             >
               <span className={S.label}>Include Return Set:</span>
 
