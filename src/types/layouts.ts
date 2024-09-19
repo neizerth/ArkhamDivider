@@ -13,4 +13,5 @@ export type ILayout = {
   orientation: PageOrientation,
   is_default?: boolean
   color: boolean
+  tags: string[]
 }

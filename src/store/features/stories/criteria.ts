@@ -1,4 +1,5 @@
 import { IStory } from "@/types/api";
+import { safePropEq } from "@/util/criteria";
 import { anyPass, propEq } from "ramda";
 
 export const withoutReturns = (story: IStory) => !story.return_to_code;
@@ -16,3 +17,10 @@ export const isSideContent = anyPass([
 ]);
 
 export const isReturnPack = (story: IStory) => Boolean(story.return_to_code);
+
+export const withReturnTo = (code: string) => safePropEq(code, 'return_to_set');
+
+export const onlyWithScenarioEncounters = ({ encounter_sets, scenario_encounter_sets }: IStory) => 
+  scenario_encounter_sets.filter(
+    code => !encounter_sets.includes(code)
+  ).length === 0;

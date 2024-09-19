@@ -1,5 +1,3 @@
-@import "./_layouts";
-
 .container {
   background-size: contain;
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
@@ -35,16 +33,6 @@
   }
 }
 
-.clear {
-  display: none;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  top: -1px;
-  right: 0;
-}
-
 .clearIcon {
   width: 6mm;
   cursor: pointer;
@@ -57,22 +45,8 @@
 
 .titleInput {
   font-family: inherit;
-  background-color: transparent;
   font-size: 4.4mm;
-  text-align: center;
-  font-weight: normal;
-  border: none;
-  width: 100%;
   height: 5.4mm;
-  box-sizing: border-box;
-  border-radius: 4px;
-
-  &:focus {
-    outline: 2px solid rgba(0, 0, 0, 0.5);
-  }
-  &:hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
-  }
 }
 
 
@@ -88,39 +62,30 @@
 
 .icon {
   position: absolute;
-  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   aspect-ratio: 1;
   z-index: 2;
 }
 
 .icon_small {
-  width: 4.4mm;
-  right: 5.62mm;
+  font-size: 4.4mm;
+  width: 7.2mm;
+  height: 6.8mm;
+  right: 4.3mm;
 }
 
 .icon_large {
   opacity: 0.2;
   transform: translate(-50%, 0);
   left: 50%;
-  height: 50mm;
+  font-size: 48mm;
 }
 
-.removeIcon {
-  width: 10mm;
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-.remove {
+.menu {
   position: absolute;
-  bottom: 8mm;
-  right: 8mm;
-  cursor: pointer;
-  z-index: 2;
-  @media print {
-    display: none;
-  }
+  z-index: 3;
 }
 
 
@@ -134,4 +99,28 @@
   .titleInput {
     text-shadow: 1px 1px rgba(228, 208, 156, 0.7), 1px -1px rgba(228, 208, 156, 0.7), -1px -1px rgba(228, 208, 156, 0.7), -1px 1px rgba(228, 208, 156, 0.5)
   }
+}
+
+.status {
+  position: absolute;
+  font-family: 'PT Serif', serif;
+  font-weight: normal;
+  display: flex;
+  gap: 0.5mm;
+  align-items: center;
+  z-index: 1;
+  right: 6.8mm;
+  bottom: 11.5mm;
+  font-size: 3mm;
+}
+
+.size {
+  color: #000000ad;
+}
+
+.campaignIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  top: 0.2mm;
 }

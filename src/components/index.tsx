@@ -1,9 +1,12 @@
 export { Container } from './containers/Container/Container';
-export { EncounterSetDivider as Divider } from './dividers/EncounterSetDivider/EncounterSetDivider';
 export { Layout } from './containers/Layout/Layout';
-export { HiddenSets } from './containers/HiddenSets/HiddenSets';
 export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
 export { PageCredits } from './containers/PageCredits/PageCredits';
+
+
+export { Divider } from './dividers/Divider/Divider';
+export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
+export { DividerTitle } from './dividers/DividerTitle/DividerTitle';
 
 export { Row, InlineRow } from './ui/grid/Row/Row';
 export { Col } from './ui/grid/Col/Col';
@@ -27,7 +30,6 @@ export { Checkbox } from './forms/Checkbox/Checkbox'
 export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 
-// export { CampaignSelect } from './filters/CampaignSelect/CampaignSelect';
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
 export { DividerTypeFilter } from './filters/DividerTypeFilter/DividerTypeFilter';
 

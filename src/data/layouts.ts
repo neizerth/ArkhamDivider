@@ -15,7 +15,8 @@ export const layouts: ILayout[] = [
     orientation: PageOrientation.PORTRAIT,
     image: BASE_PATH + "/images/dividers/horizontal/common/classic.png",
     color: true,
-    is_default: true
+    is_default: true,
+    tags: ['classic', 'color', 'horizontal']
   },
   {
     id: "classic_bw_horizontal",
@@ -27,7 +28,8 @@ export const layouts: ILayout[] = [
     type: DividerType.HORIZONTAL,
     orientation: PageOrientation.PORTRAIT,
     color: false,
-    image: BASE_PATH + "/images/dividers/horizontal/common/classic_bw.png"
+    image: BASE_PATH + "/images/dividers/horizontal/common/classic_bw.png",
+    tags: ['classic', 'bw', 'vertical']
   },
   {
     id: "classic_60_color_vertical",
@@ -39,7 +41,8 @@ export const layouts: ILayout[] = [
     type: DividerType.VERTICAL,
     orientation: PageOrientation.PORTRAIT,
     color: true,
-    image: BASE_PATH + "/images/dividers/vertical/common/classic_60.png"
+    image: BASE_PATH + "/images/dividers/vertical/common/classic_60.png",
+    tags: ['classic', 'color', 'horizontal']
   },
   {
     id: "classic_60_bw_vertical",
@@ -51,6 +54,7 @@ export const layouts: ILayout[] = [
     type: DividerType.VERTICAL,
     orientation: PageOrientation.PORTRAIT,
     color: false,
-    image: BASE_PATH + "/images/dividers/vertical/common/classic_60_bw.png"
+    image: BASE_PATH + "/images/dividers/vertical/common/classic_60_bw.png",
+    tags: ['classic', 'bw', 'vertical']
   }
 ]

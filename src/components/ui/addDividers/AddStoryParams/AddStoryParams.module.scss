@@ -1,8 +1,11 @@
-.label {
-  font-weight: bold;
+.returnStories {
+  display: flex;
+  font-weight: normal;
+  color: #5f5f5f;
+  gap: 5px;
 }
 
-.returnStories {
+.returnLabel {
   display: flex;
   gap: 5px;
 }

@@ -1,45 +1,31 @@
-import { Divider, A4, Row, HiddenSets } from '@/components';
+import { Divider, A4, Row } from '@/components';
 
 import S from './Layout.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { ILayout } from '@/types/layouts';
-import { selectDividers, selectHiddenSets, showAllSets } from '@/store/features/dividers/dividers';
-import { useCallback } from 'react';
+import { selectDividers } from '@/store/features/dividers/dividers';
+
 import classNames from 'classnames';
-import { selectBleeds, selectDoubleSided } from '@/store/features/print/print';
+import { selectDoubleSided } from '@/store/features/print/print';
 import { splittIntoPages } from '@/util/print';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { selectLayout } from '@/store/features/layout/layout';
 
 export type LayoutProps = {
-	layout: ILayout
 }
 
-export const Layout = ({ layout }: LayoutProps) => {
-	const dispatch = useAppDispatch();
-	const hiddenSets = useAppSelector(selectHiddenSets);
+export const Layout = ({ }: LayoutProps) => {
 	const dividers = useAppSelector(selectDividers);
 	const doubleSidedPrint = useAppSelector(selectDoubleSided);
-	const useBleeds = useAppSelector(selectBleeds);
+	const layout = useAppSelector(selectLayout);
 
 	const { 
 		groupSize, 
 		rowSize, 
 		image, 
-		type, 
-		color,
 		orientation,
 		id
 	} = layout;
 
-	const clear = () => dispatch(showAllSets([]));
-
-	useCallback(() => {
-		clear()
-	}, [dividers, clear]);
-
-	const availableDividers = dividers.filter(({ id }) => !hiddenSets.includes(id));
-
-	const pages = splittIntoPages(availableDividers, {
+	const pages = splittIntoPages(dividers, {
 		doubleSidedPrint,
 		groupSize, 
 		rowSize
@@ -49,9 +35,6 @@ export const Layout = ({ layout }: LayoutProps) => {
 
 	return (
 		<div className={S.container}>
-
-			<HiddenSets/>
-
 			<div className={S.groups}>
 				{pages.map(({ side, rows, pageNumber }, pageIndex) => (
 					<A4 
@@ -74,13 +57,9 @@ export const Layout = ({ layout }: LayoutProps) => {
 									{row.map((divider, index) => (
 										<Divider 
 											{...divider} 
-
 											key={index}
-											color={color}
 											background={image}
-											type={type}
 											layoutId={id}
-											bleeds={useBleeds}
 										/>
 									))}
 								</Row>

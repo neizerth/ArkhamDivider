@@ -3,8 +3,7 @@ import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice } from '@reduxjs/toolkit';
 import { IStory } from '@/types/api';
 import { AppSelector } from '@/store';
-import { ascend, descend, prop, sortWith } from 'ramda';
-import { isCampaign, isReturnPack } from './criteria';
+import { withReturnTo } from './criteria';
 
 export type IStoriesState = {
   list: IStory[]
@@ -32,5 +31,9 @@ export const {
 export const {
   selectStories,
 } = stories.selectors;
+
+export const selectReturnSetsOf = (code: string): AppSelector<IStory[]> => 
+  state => selectStories(state)
+    .filter(withReturnTo(code))
 
 export default stories.reducer;

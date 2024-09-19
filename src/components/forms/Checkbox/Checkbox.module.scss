@@ -1,5 +1,10 @@
 .container {
   display: flex;
-  gap: 5px;
   align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.label {
+  font-weight: 500;
 }

@@ -1,4 +1,4 @@
-import { fetchCoreData } from '@/api/arkhamDivider';
+import { fetchCoreData, fetchLanguageData } from '@/api/arkhamDivider';
 import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
@@ -39,7 +39,15 @@ export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
   dispatch(setEncounterSets(encounterSets));
   dispatch(setAvailableLanguages(languages));
   dispatch(setIcons(icons));
-  // console.log(data);
+  dispatch(setLoading(false));
+}
+
+export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) => async dispatch => {
+  dispatch(setLoading(true));
+  const {
+
+  } = await fetchLanguageData(language);
+  
   dispatch(setLoading(false));
 }
 

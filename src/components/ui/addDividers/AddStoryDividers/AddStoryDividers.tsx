@@ -1,11 +1,13 @@
-import { Container, StorySelect, AddStoryParams, Col, Row, Button } from '@/components';
+import { Container, StorySelect, AddStoryParams, Col, Row, Button, Icon } from '@/components';
 import S from './AddStoryDividers.module.scss';
 import { selectStories } from '@/store/features/stories/stories';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useState } from 'react';
 import { IStory } from '@/types/api';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setStory } from '@/store/features/dividers/dividers';
+import { addStoryDividers as addDividers } from '@/store/features/addDividersForm/addDividersForm';
+import { removeAllDividers } from '@/store/features/dividers/dividers';
+import { ButtonType } from '@/types/ui';
 
 export type AddStoryDividersProps = {
 
@@ -15,21 +17,20 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
 
   const dispatch = useAppDispatch();
   const [story, setCurrentStory] = useState<IStory | null>(null);
-  const [includeExtra, setIncludeExtra] = useState(false);
-  const [includeReturnSet, setIncludeReturnSet] = useState(false);
-  const [includeScenarios, setIncludeScenarios] = useState(false);
 
   const onAdd = () => {
     if (!story) {
       return;
     }
-    dispatch(setStory({
-      story,
-      includeExtra,
-      includeReturnSet,
-      includeScenarios
-    }));
+    dispatch(addDividers(story));
   };
+
+  const onGenerate = () => {
+    onClear();
+    onAdd();
+  }
+
+  const onClear = () => dispatch(removeAllDividers());
 
   const stories = useAppSelector(selectStories);
   
@@ -49,16 +50,25 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                 onChange={addStoryDividers}
                 value={story}
               />
-              <Button onClick={onAdd}>Add</Button>
+              <Button onClick={onGenerate} className={S.generate}>
+                <Icon icon='check-thin'/> Generate
+              </Button>
+              <Button onClick={onAdd} className={S.add}>
+                <Icon icon='plus-thin'/> Add
+              </Button>
+              <Button 
+                onClick={onClear} 
+                className={S.add}
+                buttonType={ButtonType.DANGER}
+              >
+                <Icon icon='trash'/> Clear
+              </Button>
             </Row>
           </div>
           {story && (
             <div>
               <AddStoryParams 
                 story={story}
-                onChangeIncludeExtra={setIncludeExtra}
-                onChangeIncludeReturnSet={setIncludeReturnSet}
-                onChangeIncludeScenarios={setIncludeScenarios}
               />
             </div>
           )}

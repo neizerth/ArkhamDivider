@@ -1,39 +1,41 @@
+import { MouseEventHandler } from 'react';
 import { IStory } from '@/types/api';
 import S from './AddStoryParams.module.scss';
 import { Checkbox, Col, Icon, Row } from '@/components';
 import { selectStories } from '@/store/features/stories/stories';
-import { prop } from 'ramda';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { safePropEq } from '@/util/criteria';
-import { MouseEventHandler } from 'react';
+import { selectDividerFormConfig, setDividerFormConfig } from '@/store/features/addDividersForm/addDividersForm';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { createToggleHanlder } from '@/util/forms';
+import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
 
 export type ToggleFunction = (value: boolean) => void;
 
 export type AddStoryParamsProps = {
   story: IStory
-  onChangeIncludeExtra: ToggleFunction
-  onChangeIncludeReturnSet: ToggleFunction
-  onChangeIncludeScenarios: ToggleFunction
 }
 
 export const AddStoryParams = ({ 
   story, 
-  onChangeIncludeExtra,
-  onChangeIncludeReturnSet,
-  onChangeIncludeScenarios
 }: AddStoryParamsProps) => {
+  const dispatch = useAppDispatch();
+  
   const stories = useAppSelector(selectStories);
+  const form = useAppSelector(selectDividerFormConfig);
 
   const haveExtraDividers = story.extra_encounter_sets.length > 0;
 
   const returnStories = stories.filter(safePropEq(story.code, 'return_to_code'));
   const haveReturnCycle = returnStories.length > 0;
-  
-  const createToggleHanlder = (onToggle: ToggleFunction): MouseEventHandler => 
-    e => {
-      const { checked } = e.target as HTMLInputElement;
-      onToggle(checked);
-    }
+  const onlyScenario = onlyWithScenarioEncounters(story);
+  // console.log(story);
+  // onlyWithScenarioEncounters(story); 
+
+  const onToggle = createToggleHanlder(
+    form, 
+    data => dispatch(setDividerFormConfig(data))
+  );
 
   return (
     <div className={S.container}>
@@ -41,21 +43,47 @@ export const AddStoryParams = ({
         <Row>
           {haveExtraDividers && (
             <Checkbox 
-              onClick={createToggleHanlder(onChangeIncludeExtra)}
+              checked={form.includeExtraSets}
+              onChange={onToggle('includeExtraSets')}
             >
-              <span className={S.label}>Extra</span>
+              Extra
+            </Checkbox>
+          )}
+          {!onlyScenario && (
+            <Checkbox 
+              checked={form.includeScenarios}
+              onChange={onToggle('includeScenarios')}
+            >
+              Scenarios
             </Checkbox>
           )}
           <Checkbox 
-            onClick={createToggleHanlder(onChangeIncludeScenarios)}
+            checked={form.includeScenarioEncounterSet}
+            onChange={onToggle('includeScenarioEncounterSet')}
           >
-            <span className={S.label}>Scenarios</span>
+            Scenario Encounter
+          </Checkbox>
+          {story.is_size_supported && (
+            <Checkbox 
+              checked={form.includeEncounterSize}
+              onChange={onToggle('includeEncounterSize')}
+            >
+              Size
+            </Checkbox>
+          )}
+          <Checkbox 
+            checked={form.includeCampaignIcon}
+            onChange={onToggle('includeCampaignIcon')}
+          >
+            Campaign Icon
           </Checkbox>
         </Row>
         {haveReturnCycle && (
           <Row>
             <Checkbox 
-              onClick={createToggleHanlder(onChangeIncludeReturnSet)}
+              checked={form.includeReturnSets}
+              labelClassName={S.returnLabel}
+              onChange={onToggle('includeReturnSets')}
             >
               <span className={S.label}>Include Return Set:</span>
 
