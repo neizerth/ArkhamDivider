@@ -4,8 +4,10 @@ import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { setStories } from '../stories/stories';
 import { setIcons } from '../icons/icons';
-import { setAvailableLanguages } from '../language/language';
+import { addTranslatedStories, setAvailableLanguages, setLoadedTranslations } from '../language/language';
 import { setEncounterSets } from '../encounterSets/encounterSets';
+import { DEFAULT_LANGUAGE } from '@/constants/i18n';
+import { setCoreTranslations } from '../i18n/i18n';
 
 export type IAppState = {
   loading: boolean
@@ -35,6 +37,7 @@ export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
     languages
   } = await fetchCoreData();
 
+  dispatch(setLoadedTranslations([DEFAULT_LANGUAGE]));
   dispatch(setStories(stories));
   dispatch(setEncounterSets(encounterSets));
   dispatch(setAvailableLanguages(languages));
@@ -43,12 +46,25 @@ export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
 }
 
 export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) => async dispatch => {
-  dispatch(setLoading(true));
   const {
-
+    translatedStories,
+    campaigns,
+    scenarios,
+    encounterSets,
+    stories,
+    common,
   } = await fetchLanguageData(language);
+
+  const mapping = {
+    ...encounterSets,
+    ...campaigns,
+    ...scenarios,
+    ...stories,
+    ...common,
+  };
   
-  dispatch(setLoading(false));
+  dispatch(setCoreTranslations(language, mapping));
+  dispatch(addTranslatedStories(language, translatedStories));
 }
 
 export const {

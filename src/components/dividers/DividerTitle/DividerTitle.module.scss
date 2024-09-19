@@ -1,7 +1,7 @@
 .container {
   position: relative;
 
-  & .clear {
+  &:hover .clear {
     display: flex;
   }
 }

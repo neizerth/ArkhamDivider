@@ -103,19 +103,25 @@
 
 .status {
   position: absolute;
-  font-family: 'PT Serif', serif;
+  font-family: 'Arno Pro', serif;
   font-weight: normal;
   display: flex;
-  gap: 0.5mm;
+  gap: 0.6mm;
   align-items: center;
   z-index: 1;
   right: 6.8mm;
-  bottom: 11.5mm;
+  bottom: 10.2mm;
   font-size: 3mm;
+  min-height: 1.5em;
 }
 
 .size {
   color: #000000ad;
+  font-size: 4mm;
+  font-weight: bold;
+  position: relative;
+  opacity: 0.9;
+  top: 0.6mm;
 }
 
 .campaignIcon {

@@ -1,4 +1,3 @@
-import { MouseEventHandler } from 'react';
 import { IStory } from '@/types/api';
 import S from './AddStoryParams.module.scss';
 import { Checkbox, Col, Icon, Row } from '@/components';
@@ -9,6 +8,7 @@ import { selectDividerFormConfig, setDividerFormConfig } from '@/store/features/
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { createToggleHanlder } from '@/util/forms';
 import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
+import { useTranslation } from 'react-i18next';
 
 export type ToggleFunction = (value: boolean) => void;
 
@@ -19,6 +19,7 @@ export type AddStoryParamsProps = {
 export const AddStoryParams = ({ 
   story, 
 }: AddStoryParamsProps) => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   
   const stories = useAppSelector(selectStories);
@@ -90,7 +91,7 @@ export const AddStoryParams = ({
               <span className={S.returnStories}>
                 {returnStories.map(({ code, name, is_official }) => (
                   <span className={S.return} key={code}>
-                    {name} {is_official && <Icon icon='ffg'/>}
+                    {t(name)} {is_official && <Icon icon='ffg' className={S.official}/>}
                   </span>
                 ))}
               </span>

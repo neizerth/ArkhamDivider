@@ -11,6 +11,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
 import { selectBleeds } from '@/store/features/print/print';
 import { selectLayout } from '@/store/features/layout/layout';
+import { useTranslation } from 'react-i18next';
 
 
 export type DividerProps = PropsWithClassName & {
@@ -33,6 +34,7 @@ export const Divider = ({
 	className,
 	campaignIcon,
 }: DividerProps) => {
+	const { t } = useTranslation();
 	const bleeds = useAppSelector(selectBleeds);
 	const layout = useAppSelector(selectLayout);
 
@@ -41,14 +43,15 @@ export const Divider = ({
 		color,
 	} = layout;
 
-	const [title, setTitle] = useState(name);
-	// const S = DIVIDER_STYLE[type];
+	const translatedName = t(name);
+
+	const [title, setTitle] = useState(translatedName);
 
 	const language = useAppSelector(selectLanguage);
 
 	useEffect(() => {
-		setTitle(name);
-	}, [name]);
+		setTitle(translatedName);
+	}, [translatedName]);
 
 	const containerClassName = classNames(
 		S.container,
@@ -59,10 +62,13 @@ export const Divider = ({
 	);
 
 	const onTitleChange = (value: string) => {
-		setTitle(value.trim() === '' ? name : value);
+		if (!value.trim()) {
+			return clear();
+		}
+		setTitle(value);
 	}
 
-	const clear = () => setTitle(name);
+	const clear = () => setTitle(translatedName);
 
 	const titleInputClassName = classNames(
 		S.titleInput,

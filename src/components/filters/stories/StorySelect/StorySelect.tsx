@@ -32,7 +32,7 @@ export const StorySelect = ({
   ], stories)
 
   const labels = data.reduce((target, { name, code }) => {
-    target.set(code, name);
+    target.set(code, t(name));
     return target;
   }, new Map);
 

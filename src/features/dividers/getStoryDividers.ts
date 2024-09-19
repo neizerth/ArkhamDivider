@@ -117,7 +117,7 @@ export const getStoryDividers = ({
     ...encounterDividers,
     ...returnSetDividers
   ];
-  
+
   return sortWith([
     descend(prop('type')),
   ], dividers);
