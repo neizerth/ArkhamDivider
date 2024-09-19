@@ -72,12 +72,14 @@ export const AddStoryParams = ({
               >
                 Encounter Size
               </Checkbox>
-              <Checkbox 
-                checked={form.includeScenarioSize}
-                onChange={onToggle('includeScenarioSize')}
-              >
-                Scenario Size
-              </Checkbox>
+              {!onlyScenario && (
+                <Checkbox 
+                  checked={form.includeScenarioSize}
+                  onChange={onToggle('includeScenarioSize')}
+                >
+                  Scenario Size
+                </Checkbox>
+              )}
             </>
           )}
           <Checkbox 
