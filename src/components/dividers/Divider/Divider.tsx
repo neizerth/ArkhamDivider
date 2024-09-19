@@ -5,7 +5,6 @@ import S from './Divider.module.scss';
 import { Icon, Guides, DividerMenu, DividerTitle } from '@/components';
 import classNames from 'classnames';
 
-import { DividerType } from '@/types/dividers';
 import { PropsWithClassName } from '@/types/util';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
@@ -124,7 +123,7 @@ export const Divider = ({
 								<Icon icon={campaignIcon}/>
 							</div>
 						)}
-						{size && (
+						{Boolean(size) && (
 							<div className={S.size}>
 								{!campaignIcon && '∑'} {size}
 							</div>

@@ -15,6 +15,7 @@ export type IAddDividersFormState = {
     includeEncounterSize: boolean
     includeCampaignIcon: boolean
     includeScenarioEncounterSet: boolean
+    includeScenarioSize: boolean
   }
 }
 
@@ -25,7 +26,8 @@ const initialState: IAddDividersFormState = {
     includeScenarios: true,
     includeEncounterSize: false,
     includeCampaignIcon: false,
-    includeScenarioEncounterSet: false
+    includeScenarioEncounterSet: false,
+    includeScenarioSize: false
   }
 };
 

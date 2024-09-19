@@ -2,7 +2,8 @@ import { PropsWithClassName } from '@/types/util';
 import S from './DividerMenu.module.scss';
 import classNames from 'classnames';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { copyDivider, removeDivider } from '@/store/features/dividers/dividers';
+import { removeDivider } from '@/store/features/dividers/dividers';
+// import { copyDivider, removeDivider } from '@/store/features/dividers/dividers';
 import { Icon } from '@/components';
 
 export type DividerMenuProps = PropsWithClassName &{

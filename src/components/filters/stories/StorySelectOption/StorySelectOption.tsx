@@ -1,7 +1,6 @@
 import { OptionProps, components } from 'react-select';
 
 import { IStory } from '@/types/api';
-import S from './StorySelectOption.module.scss';
 import { StorySelectValue } from '@/components';
 
 

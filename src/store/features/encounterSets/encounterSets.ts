@@ -1,6 +1,6 @@
 import { IEncounterSet } from '@/types/api';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export type IEncounterSetsState = {
   list: IEncounterSet[]

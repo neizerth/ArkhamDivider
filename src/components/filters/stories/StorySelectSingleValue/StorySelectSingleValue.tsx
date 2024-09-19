@@ -1,6 +1,5 @@
 import { SingleValueProps, components } from 'react-select';
 
-import S from './StorySelectSingleValue.module.scss';
 import { StorySelectValue } from '../StorySelectValue/StorySelectValue';
 import { IStory } from '@/types/api';
 

@@ -3,7 +3,7 @@ import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { createSliceSetter, createSliceSelector } from '@/util/slice';
 import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
-import { any, propEq } from 'ramda';
+import { propEq } from 'ramda';
 import { uniqId } from '@/util/common';
 
 export type IDividersState = {

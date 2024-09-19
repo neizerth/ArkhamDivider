@@ -59,6 +59,10 @@ export const DividerTypeFilter = () => {
   const changeDividerType = (id: string) => {
     const layout = getLayoutById(id);
 
+    if (!layout) {
+      return;
+    }
+
     dispatch(setLayout(layout));
   }
 

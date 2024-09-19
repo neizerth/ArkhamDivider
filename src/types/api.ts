@@ -3,4 +3,5 @@ import { Defined, Single } from "./util";
 
 export type IStory = Single<ArkhamDivider.Core['stories']>
 export type IEncounterSet = Single<ArkhamDivider.Core['encounterSets']>;
+export type IEncounterSetType = Single<Defined<IEncounterSet['types']>>;
 export type IScenario = Defined<IStory['scenario']>;

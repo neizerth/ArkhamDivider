@@ -1,4 +1,4 @@
-import { always, curry, equals, ifElse, isNil, prop } from "ramda";
+import { curry, isNil, prop } from "ramda";
 
 export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
   const groups: T[][] = [];

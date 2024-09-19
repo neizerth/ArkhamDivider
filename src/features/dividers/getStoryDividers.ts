@@ -1,7 +1,9 @@
+import { SCENARIO_TYPES } from "@/store/features/encounterSets/constants";
 import { onlyWithScenarioEncounters } from "@/store/features/stories/criteria";
 import { IEncounterSet, IScenario, IStory } from "@/types/api";
 import { IDivider } from "@/types/dividers";
 import { arrayIf, definedIf, toArrayIfExists, uniqId } from "@/util/common";
+import { safePropEq } from "@/util/criteria";
 import { ascend, descend, isNotNil, prop, propEq, sortWith } from "ramda";
 
 export const getStoryScenarios = ({
@@ -23,6 +25,7 @@ export const getStoryDividers = ({
   includeEncounterSize: boolean
   includeCampaignIcon: boolean
   includeScenarioEncounterSet: boolean
+  includeScenarioSize: boolean
   encounterSets: IEncounterSet[]
 }) => {
   
@@ -32,6 +35,7 @@ export const getStoryDividers = ({
     includeEncounterSize,
     includeCampaignIcon,
     includeScenarioEncounterSet,
+    includeScenarioSize,
     encounterSets
   } = options;
 
@@ -65,11 +69,22 @@ export const getStoryDividers = ({
         scenario_name,
         icon
       } = scenario;
+
+      const encounter = encounterSets.find(safePropEq(icon, 'icon'));
+      
+      const types = encounter?.types || [];
+
+      const sizeData = includeScenarioSize ? {
+        size: types
+          .filter(({ type }) => SCENARIO_TYPES.includes(type))
+          .reduce((total, { size }) => total + size, 0)
+      } : {}
       
       return {
         id: uniqId() + id,
         name: scenario_name,
         icon,
+        ...sizeData,
         campaignIcon,
         type: 'scenario'
       }
@@ -86,14 +101,25 @@ export const getStoryDividers = ({
       const {
         name,
         icon,
-        size
+        types = []
       } = encounter;
 
-      if (!includeScenarioEncounterSet && scenarioIcons.includes(icon)) {
+      const isScenario = scenarioIcons.includes(icon);
+
+      if (!includeScenarioEncounterSet && isScenario) {
         return;
       }
       
-      const sizeData = includeEncounterSize ? { size } : {};
+      // const showSize = includeEncounterSize && !isScenario;
+      const showSize = includeEncounterSize;
+      
+      const encounterSize = types
+        .filter(({ type }) => !SCENARIO_TYPES.includes(type))
+        .reduce((total, { size }) => total + size, 0);
+
+      const size = isScenario ? encounterSize : encounter.size || 0;
+
+      const sizeData = showSize ? { size } : {};
 
       return {
         id: uniqId() + code,

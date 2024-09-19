@@ -1,5 +1,3 @@
-import { IStory } from "./api"
-
 export type IDivider = {
     id: string
     type: string

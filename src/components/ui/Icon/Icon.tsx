@@ -2,7 +2,6 @@ import S from './Icon.module.scss';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectIcons } from '@/store/features/icons/icons';
-import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { propEq } from 'ramda';
 import { ComponentProps } from 'react';

@@ -1,5 +1,5 @@
 import { DEFAULT_LANGUAGE } from '@/constants/i18n';
-import { AppSelector, AppThunk } from '@/store';
+import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { loadAppTranslations } from '../app/app';

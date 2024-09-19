@@ -107,21 +107,22 @@
   font-weight: normal;
   display: flex;
   gap: 0.6mm;
-  align-items: center;
+  align-items: start;
   z-index: 1;
   right: 6.8mm;
-  bottom: 10.2mm;
+  bottom: 10mm;
   font-size: 3mm;
   min-height: 1.5em;
 }
 
 .size {
   color: #000000ad;
-  font-size: 4mm;
-  font-weight: bold;
+  font-size: 3.5mm;
+  display: flex;
+  align-items: center;
   position: relative;
-  opacity: 0.9;
-  top: 0.6mm;
+  top: 0.2mm;
+  letter-spacing: -0.2mm;
 }
 
 .campaignIcon {
