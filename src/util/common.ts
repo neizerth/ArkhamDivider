@@ -1,4 +1,4 @@
-export const unique = <T>(data: T[]): T[] => Array.from(new Set(data));
+import { curry, isNil, prop } from "ramda";
 
 export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
   const groups: T[][] = [];
@@ -8,7 +8,26 @@ export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
   return groups;
 }
 
-export const isEven = (x: number) => x % 2 === 0;
+export const arrayIf = <T>(condition: boolean, data: T[]): T[] => condition ? data : [];
 
-export const whereEquals = <C extends { [index: string]: unknown }>(criteria: C) => <T extends C>(item: T) => 
-  Object.entries(criteria).every(([key, value]) => item[key] === value);
+export const toArrayIfExists = <T>(item: T | undefined) => isNil(item) ? [] : [item];
+
+export const safeProp = curry(
+  <T, K extends PropertyKey>(name: K, defaultValue: T, obj: Record<K, T>) => {
+    const value = prop(name, obj);
+    if (isNil(value)) {
+      return defaultValue;
+    }
+    return value;
+  }
+);
+
+export const upperFirst = (str: string) => str[0].toUpperCase() + str.slice(1);
+
+export const uniqId = () => Math.random().toString(36).slice(2);
+
+export const definedIf = <T>(value: T, condition: boolean) => {
+  if (condition) {
+    return value
+  }
+}

@@ -13,7 +13,7 @@ import { getLayoutById } from '@/util/layouts';
 import { Color } from '@/components';
 import { selectColor, setColor } from '@/store/features/dividers/dividers';
 import { layouts } from '@/data/layouts';
-import { whereEquals } from '@/util/common';
+import { propsEquals } from '@/util/criteria';
 
 export const DividerTypeFilter = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +38,7 @@ export const DividerTypeFilter = () => {
       type: nextType
     }
 
-    const [firstLayout] = layouts.filter(whereEquals(criteria));
+    const [firstLayout] = layouts.filter(propsEquals(criteria));
     dispatch(setType(nextType));
     dispatch(setLayout(firstLayout));
   };
@@ -48,7 +48,7 @@ export const DividerTypeFilter = () => {
     type: layout?.type 
   }
 
-  const options = layouts.filter(whereEquals(criteria))
+  const options = layouts.filter(propsEquals(criteria))
     .map(({ title, id }) => ({
       label: title,
       value: id
@@ -58,6 +58,10 @@ export const DividerTypeFilter = () => {
 
   const changeDividerType = (id: string) => {
     const layout = getLayoutById(id);
+
+    if (!layout) {
+      return;
+    }
 
     dispatch(setLayout(layout));
   }
@@ -70,7 +74,7 @@ export const DividerTypeFilter = () => {
       type: layout?.type
     }
 
-    const [firstLayout] = layouts.filter(whereEquals(criteria));
+    const [firstLayout] = layouts.filter(propsEquals(criteria));
     dispatch(setColor(nextColor));
     dispatch(setLayout(firstLayout));
   };

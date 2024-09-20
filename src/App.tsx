@@ -1,22 +1,20 @@
 import { useEffect } from 'react'
 import S from './App.module.scss'
 
-import { AppLoader, DividerList, AppSettings } from '@/components';
-import { changeLanguage } from '@/store/features/language/language';
-import { loadIcons } from '@/store/features/icons/icons';
+import { AppLoader, Layout, AppSettings, AddStoryDividers } from '@/components';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { loadAppData } from './store/features/app/app';
+import { selectDividers } from './store/features/dividers/dividers';
 
 function App() {
   const dispatch = useAppDispatch();
-  const layout = useAppSelector(selectLayout);
+  const dividers = useAppSelector(selectDividers);
+
+  const showLayout = dividers.length > 0;
 
   useEffect(() => {
-    // dispatch(loadAvailableLanguages());
-    dispatch(loadIcons());
-
-    dispatch(changeLanguage('en'));
+    dispatch(loadAppData());
   }, [dispatch]);
 
   return (
@@ -24,14 +22,10 @@ function App() {
       <AppLoader>
         <div className={S.container}>
           <AppSettings/>
-          {layout && (
-            <>
-              <div className={S.content}>
-                <DividerList layout={layout}/>
-              </div>
-            </>
-          )}
-        
+          <div className={S.content}>
+            <AddStoryDividers/>
+            {showLayout && <Layout/>}
+          </div>
         </div>
       </AppLoader>
     </>

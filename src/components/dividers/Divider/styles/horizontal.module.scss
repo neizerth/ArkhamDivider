@@ -1,0 +1,69 @@
+.horizontal {
+  &.noBleeds {
+    .guides {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    .wrapper {
+      width: 88.9mm;
+      height: 76.2mm;
+      overflow: hidden;
+    }
+  
+    .divider {
+      top: -2.2mm;
+      left: -2.8mm;
+    }
+  }
+  
+  &.withBleeds {
+    .guides {
+      width: 88.9mm;
+      height: 76.2mm;
+      top: 2.2mm;
+      left: 2.8mm;
+    }
+  }
+
+  .divider {
+    aspect-ratio: 95 / 82;
+    width: 95mm;
+  }
+
+  .title {
+    padding: 0 12mm;
+  }
+
+  .titleInput {
+    &_ko {
+      font-size: 4mm;
+    }
+    &_zh {
+      font-size: 4mm;
+      position: relative;
+      top: -0.1mm;
+    }
+  }
+
+  .clear {
+    right: 0;
+  }
+
+  .icon_small {
+    top: 4.8mm;
+  }
+
+  .icon_large {
+    top: 17mm;
+  }
+
+  .menu {
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 8mm;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

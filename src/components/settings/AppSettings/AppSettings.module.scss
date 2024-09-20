@@ -4,7 +4,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 3;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -20,45 +20,9 @@
 
 .row {
   width: 100%;
+  align-items: center;
+  justify-content: space-between;
   @media (min-width: 500px) {
     width: auto;
-  }
-}
-
-.languageSelect {
-  
-}
-
-.campaignFilter {
-  width: 100%;
-  order: 3;
-  @media (min-width: 500px) {
-    width: auto;
-  }
-}
-
-.dividerFilter {
-  width: 100%;
-  order: 3;
-  @media (min-width: 500px) {
-    width: auto;
-  }
-}
-
-.printSettings {
-  order: 1;
-  @media (min-width: 500px) {
-    order: 4;
-    width: auto;
-  }
-}
-
-.print {
-  order: 4;
-  @media (min-width: 400px) {
-    order: 2;
-  }
-  @media (min-width: 500px) {
-    order: 4;
   }
 }

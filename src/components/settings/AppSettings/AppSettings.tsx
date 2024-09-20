@@ -1,5 +1,5 @@
 import S from './AppSettings.module.scss';
-import { CampaignSelect, DividerTypeFilter, LanguageSelect, PrintSettings, Row, Button } from '@/components';
+import { DividerTypeFilter, LanguageSelect, PrintSettings, Row, Button, Icon } from '@/components';
 
 
 export const AppSettings = () => {
@@ -9,23 +9,24 @@ export const AppSettings = () => {
     return (
         <div className={S.container}>
             <Row wrap className={S.row}>
-                <div className={S.languageSelect}>
-                    <LanguageSelect/>
-                </div>
+                <Row wrap className={S.row}>
+                    <div className={S.languageSelect}>
+                        <LanguageSelect/>
+                    </div>
 
-                <div className={S.dividerFilter}>
-                    <DividerTypeFilter/>
-                </div>
-
-                <div className={S.campaignFilter}>
-                    <CampaignSelect/>
-                </div>
-
-                <div className={S.printSettings}>
-                    <PrintSettings/>
-                </div>
+                    <div className={S.dividerFilter}>
+                        <DividerTypeFilter/>
+                    </div>
+                </Row>
                 <div className={S.print}>
-                    <Button onClick={print}>Print</Button>
+                    <Row wrap className={S.row}>
+                        <div className={S.printSettings}>
+                            <PrintSettings/>
+                        </div>
+                        <Button onClick={print}>
+                            <Icon icon='printer'/> Print
+                        </Button>
+                    </Row>
                 </div>
             </Row>
         </div>

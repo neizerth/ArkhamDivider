@@ -3,7 +3,32 @@ import S from './LanguageSelect.module.scss';
 import { changeLanguage, selectAvailableLanguages, selectLanguage } from '@/store/features/language/language';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import Select from 'react-select';
+import Select, { OptionProps, SingleValueProps, components } from 'react-select';
+import { LanguageFlag } from '@/components/ui/LanguageFlag/LanguageFlag';
+
+export const LanguageSelectSingleValue = (props: SingleValueProps<{
+  label: string,
+  value: string
+}>) => {
+  const { value } = props.data;
+  return (
+    <components.SingleValue {...props}>
+      <LanguageFlag language={value}/>
+    </components.SingleValue>
+  )
+}
+
+export const LanguageSelectOption = (props: OptionProps<{
+  label: string,
+  value: string
+}>) => {
+  const { value } = props.data;
+  return (
+    <components.Option {...props}>
+      <LanguageFlag language={value}/>
+    </components.Option>
+  )
+}
 
 export const LanguageSelect = () => {
   const { i18n } = useTranslation();
@@ -28,12 +53,19 @@ export const LanguageSelect = () => {
     label: language
   }
 
+  const components = {
+    Option: LanguageSelectOption,
+    SingleValue: LanguageSelectSingleValue
+  }
+
   return (
     <Select 
       className={S.container} 
       options={options} 
       value={languageValue} 
+      components={components}
+      isMulti={false}
       onChange={item => item && changeCurrentLanguage(item.value)}
-      />
+    />
   );
 }

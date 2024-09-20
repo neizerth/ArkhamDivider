@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+
+  &:hover .clear {
+    display: flex;
+  }
+}
+
+.input {
+  font-family: inherit;
+  background-color: transparent;
+  text-align: center;
+  font-weight: normal;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  &:focus {
+    outline: 2px solid rgba(0, 0, 0, 0.5);
+    & + .clear {
+      display: flex;
+    }
+  }
+  &:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+ 
+}
+
+.clear {
+  display: none;
+
+  position: absolute;
+  height: 100%;
+  right: 0.5mm;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}

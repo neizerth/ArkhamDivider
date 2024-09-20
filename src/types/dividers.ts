@@ -1,12 +1,10 @@
 export type IDivider = {
     id: string
-    layoutId?: string
+    type: string
     name?: string
-    color?: boolean
     icon?: string
-    language: string
     campaignIcon?: string
-    scenarioIndex?: number
+    size?: number
 }
 
 export type IDividerList = IDivider[];

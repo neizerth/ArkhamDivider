@@ -1,9 +1,7 @@
 export const DEFAULT_LANGUAGE = 'en';
-export const DEFAULT_I18N_NAMESPACE = 'core';
 
 export const I18N_NAMESPACE = {
-  DEFAULT: 'core',
-  ENCOUNTER_SETS: 'encounter_sets'
+  DEFAULT: 'core'
 }
 
-export const AVAILABLE_LANGUAGES = ['ru', 'de', 'fr', 'ko', 'es', 'en', 'zh', 'pt'];
+export const CHINA_LANGUAGES = ['zh', 'zh-cn'];

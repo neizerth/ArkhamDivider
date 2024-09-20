@@ -1,0 +1,133 @@
+.container {
+  background-size: contain;
+  font-family: 'Conkordia', 'Arkhamic', sans-serif;
+  position: relative;
+}
+
+.guides {
+  position: absolute;
+  z-index: 2;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.guidesContent {
+  width: 100%;
+  height: 100%;
+}
+
+.divider {
+  position: relative;
+}
+
+.title {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  top: 5.6mm;
+  z-index: 2;
+  &:hover .clear {
+      display: flex;
+  }
+}
+
+.clearIcon {
+  width: 6mm;
+  cursor: pointer;
+}
+
+.titleContent {
+  position: relative;
+  display: flex;
+}
+
+.titleInput {
+  font-family: inherit;
+  font-size: 4.4mm;
+  height: 5.4mm;
+}
+
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  z-index: 2;
+}
+
+.icon_small {
+  font-size: 4.4mm;
+  width: 7.2mm;
+  height: 6.8mm;
+  right: 4.3mm;
+}
+
+.icon_large {
+  opacity: 0.2;
+  transform: translate(-50%, 0);
+  left: 50%;
+  font-size: 48mm;
+}
+
+.menu {
+  position: absolute;
+  z-index: 3;
+}
+
+
+.grayscale {
+  .titleInput {
+    text-shadow: 1px 1px rgb(255, 255, 255), 1px -1px rgb(255, 255, 255), -1px -1px rgb(255, 255, 255), -1px 1px rgb(255, 255, 255);
+  }
+}
+
+.color {
+  .titleInput {
+    text-shadow: 1px 1px rgba(228, 208, 156, 0.7), 1px -1px rgba(228, 208, 156, 0.7), -1px -1px rgba(228, 208, 156, 0.7), -1px 1px rgba(228, 208, 156, 0.5)
+  }
+}
+
+.status {
+  position: absolute;
+  font-family: 'Arno Pro', serif;
+  font-weight: normal;
+  display: flex;
+  gap: 0.6mm;
+  align-items: start;
+  z-index: 1;
+  right: 6.8mm;
+  bottom: 10mm;
+  font-size: 3mm;
+  min-height: 1.5em;
+}
+
+.size {
+  color: #000000ad;
+  font-size: 3.5mm;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 0.2mm;
+  letter-spacing: -0.2mm;
+}
+
+.campaignIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  top: 0.2mm;
+}

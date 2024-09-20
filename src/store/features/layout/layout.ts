@@ -8,7 +8,7 @@ import { ILayout } from '@/types/layouts';
 const DEFAULT_LAYOUT = layouts.find(({ is_default }) => is_default) as ILayout;
 
 export type ILayoutState = {
-  layout?: ILayout,
+  layout: ILayout,
   type: DividerType,
 }
 

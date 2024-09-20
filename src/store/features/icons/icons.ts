@@ -1,82 +1,34 @@
-import { fetchIcomoonProject, fetchIconPatch } from '@/api/arkhamCards';
-import { transformProjectToIconSet } from './transform/icomoon';
-import { AppSelector, AppThunk } from '@/store';
-import { IIcoMoonProject, IReactIcoMoonExtendedIconSet } from '@/types/icomoon';
+import { ArkhamDivider } from 'arkham-divider-data';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { createSlice, ActionCreator } from '@reduxjs/toolkit';
-import { transformComponentToPatch } from './transform/iconPatch';
+import { createSlice } from '@reduxjs/toolkit';
 
-export type IIconMapping = {
-  [index: string]: string;
-}
+export type Icons = ArkhamDivider.Core['icons'];
 
 export type IIconsState = {
-  loading: boolean;
-  iconMapping: IIconMapping;
-  iconSet?: IReactIcoMoonExtendedIconSet
+  icons: Icons
 }
 
 const initialState: IIconsState = {
-  iconMapping: {},
-  loading: true
+  icons: []
 };
 
 export const icons = createSlice({
   name: 'icons',
   initialState,
   reducers: {
-    setIconSet: createSliceSetter('iconSet'),
-    setIconMapping: createSliceSetter('iconMapping'),
+    setIcons: createSliceSetter('icons'),
   },
   selectors: {
-    selectIconSet: createSliceSelector('iconSet'),
-    selectIconMapping: createSliceSelector('iconMapping'),
+    selectIcons: createSliceSelector('icons'),
   }
 });
 
 export const {
-  setIconSet,
-  setIconMapping
+  setIcons,
 } = icons.actions;
 
 export const {
-  selectIconSet,
-  selectIconMapping
+  selectIcons,
 } = icons.selectors;
-
-export const loadIcons: ActionCreator<AppThunk> = () => async dispatch => {
-  const response = await fetchIcomoonProject();
-  const json: IIcoMoonProject = await response.json();
-  const iconSet = transformProjectToIconSet(json);
-
-  
-  dispatch(setIconSet(iconSet));
-  dispatch(loadIconPatch());
-}
-
-export const patchIconMapping = (baseMapping: IIconMapping, patch: IIconMapping) => {
-  return {
-    ...baseMapping,
-    ...patch
-  };
-
-}
-
-export const loadIconPatch: ActionCreator<AppThunk> = () => async(dispatch) => {
-  const response = await fetchIconPatch();
-  const contents = await response.text();
-
-  const patch = transformComponentToPatch(contents);
-  // const iconMapping = selectIconMapping(getStore());
-  // const mapping = patchIconMapping(iconMapping, patch);
-  // console.log({ mapping });
- 
-  dispatch(setIconMapping(patch));
-}
-
-export const selectEncounterSetIconName = (id: string): AppSelector<string> => (state): string => {
-  const mapping = selectIconMapping(state);
-  return mapping[id] || id;
-}
 
 export default icons.reducer;

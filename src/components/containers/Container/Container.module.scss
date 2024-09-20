@@ -1,9 +1,10 @@
 .container {
     margin: 0 auto;
     width: 100%;
-    overflow-x: auto;
-    // max-width: 1200px;
+    max-width: 1200px;
+    box-sizing: border-box;
+    padding: 0 20px;
     @media print {
-        max-width: none;
+        display: none;
     }
 }

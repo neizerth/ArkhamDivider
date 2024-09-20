@@ -1,10 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300..800;1,300..800&display=swap');
+
+@font-face {
+  font-family: 'Arno Pro';
+  src: local("Arno Pro"), 
+      url('./fonts/ArnoPro-Caption.woff2') format('woff'), 
+      url('./fonts/ArnoPro-Caption.woff') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Arno Pro';
+  src: local("Arno Pro"), 
+      url('./fonts/ArnoPro-Bold.woff2') format('woff'), 
+      url('./fonts/ArnoPro-Bold.woff') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'Conkordia';
   src: local("Conkordia"), 
       url('./fonts/conkordia.woff2') format('woff2'), 
       url('./fonts/conkordia.svg') format('svg');
   font-weight: normal;
-font-style: normal;
+  font-style: normal;
 }
 
 @font-face {
@@ -36,6 +56,7 @@ font-style: normal;
 }
 
 body {
+  font-family: "Roboto", sans-serif;
   margin: 0;
   background-color: #f9f9f9;
   @media print {

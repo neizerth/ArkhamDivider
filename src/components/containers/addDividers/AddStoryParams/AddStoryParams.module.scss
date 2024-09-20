@@ -1,0 +1,21 @@
+.returnStories {
+  display: flex;
+  font-weight: normal;
+  color: #5f5f5f;
+  gap: 5px;
+}
+
+.returnLabel {
+  display: flex;
+  gap: 5px;
+}
+
+.official {
+  color: #275891;
+}
+
+.return {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
