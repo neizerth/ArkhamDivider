@@ -62,8 +62,6 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
 
   const translation: Mapping = translations[language as keyof typeof translations] || {};
 
-  console.log(translation)
-
   const mapping = {
     ...encounterSets,
     ...campaigns,

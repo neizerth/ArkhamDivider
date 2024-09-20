@@ -13,7 +13,9 @@ export const LanguageSelectSingleValue = (props: SingleValueProps<{
   const { value } = props.data;
   return (
     <components.SingleValue {...props}>
-      <LanguageFlag language={value}/>
+      <div className={S.value}>
+        <LanguageFlag language={value} imageClassName={S.flag}/>
+      </div>
     </components.SingleValue>
   )
 }
@@ -25,7 +27,9 @@ export const LanguageSelectOption = (props: OptionProps<{
   const { value } = props.data;
   return (
     <components.Option {...props}>
-      <LanguageFlag language={value}/>
+      <div className={S.value}>
+        <LanguageFlag language={value} imageClassName={S.flag}/>
+      </div>
     </components.Option>
   )
 }
