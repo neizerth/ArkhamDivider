@@ -1,9 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
 import { DividerTypeFilter, LanguageSelect, PrintSettings, Row, Button, Icon } from '@/components';
 
 
 export const AppSettings = () => {
-
+    const { t } = useTranslation();
     const print = () => window.print();
     
     return (
@@ -24,7 +25,7 @@ export const AppSettings = () => {
                             <PrintSettings/>
                         </div>
                         <Button onClick={print}>
-                            <Icon icon='printer'/> Print
+                            <Icon icon='printer'/> {t('Print')}
                         </Button>
                     </Row>
                 </div>

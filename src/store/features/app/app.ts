@@ -8,6 +8,8 @@ import { addTranslatedStories, setAvailableLanguages, setLoadedTranslations } fr
 import { setEncounterSets } from '../encounterSets/encounterSets';
 import { DEFAULT_LANGUAGE } from '@/constants/i18n';
 import { setCoreTranslations } from '../i18n/i18n';
+import * as translations from '@/translations';
+import { Mapping } from 'classnames';
 
 export type IAppState = {
   loading: boolean
@@ -55,12 +57,20 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
     common,
   } = await fetchLanguageData(language);
 
+  // translations[language as keyof translations];
+  // const translationKey = language as keyof typeof translations;
+
+  const translation: Mapping = translations[language as keyof typeof translations] || {};
+
+  console.log(translation)
+
   const mapping = {
     ...encounterSets,
     ...campaigns,
     ...scenarios,
     ...stories,
     ...common,
+    ...translation
   };
   
   dispatch(setCoreTranslations(language, mapping));

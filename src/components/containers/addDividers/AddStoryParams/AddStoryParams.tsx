@@ -41,30 +41,33 @@ export const AddStoryParams = ({
   return (
     <div className={S.container}>
       <Col>
-        <Row>
+        <Row wrap>
           {haveExtraDividers && (
             <Checkbox {...check('includeExtraSets')}>
-              Extra
+              {t('Extra Dividers')}
             </Checkbox>
           )}
           <Checkbox {...check('includeScenarios')}>
-            Scenarios
+            {t('Scenario Dividers')}
           </Checkbox>
           <Checkbox {...check('includeScenarioEncounterSet')}>
-            Scenario Encounter
+            {t('Scenario Encounter Divider')}
           </Checkbox>
           {story.is_size_supported && (
             <>
               <Checkbox {...check('includeEncounterSize')}>
-                Encounter Size
+                {t('Encounter Size')}
               </Checkbox>
-              <Checkbox {...check('includeScenarioSize')}>
-                Scenario Size
-              </Checkbox>
+              {form.includeScenarios && (
+                <Checkbox {...check('includeScenarioSize')}>
+                 {t('Scenario Size')}
+                </Checkbox>
+              )}
+             
             </>
           )}
           <Checkbox {...check('includeCampaignIcon')}>
-            Campaign Icon
+            {t('Campaign Icon')}
           </Checkbox>
         </Row>
         {haveReturnCycle && (
@@ -73,7 +76,7 @@ export const AddStoryParams = ({
               {...check('includeReturnSets')}
               labelClassName={S.returnLabel}
             >
-              <span className={S.label}>Include Return Set:</span>
+              <span className={S.label}>{t('Include Return Set:')}</span>
 
               <span className={S.returnStories}>
                 {returnStories.map(({ code, name, is_official }) => (

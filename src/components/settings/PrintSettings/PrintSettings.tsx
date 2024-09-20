@@ -3,12 +3,14 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { Checkbox, Row } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectBleeds, selectDoubleSided, setBleeds, setDoubleSided } from '@/store/features/print/print';
+import { useTranslation } from 'react-i18next';
 
 export type PrintSettingsProps = {
 
 }
 
 export const PrintSettings = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const doubleSided = useAppSelector(selectDoubleSided);
   const useBleeds = useAppSelector(selectBleeds);
@@ -18,10 +20,10 @@ export const PrintSettings = () => {
   return (
     <Row>
       <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>
-        2 sides
+        {t('2 sides')}
       </Checkbox>
       <Checkbox onChange={toggleBleeds} checked={useBleeds}>
-        Bleeds
+        {t('Bleeds')}
       </Checkbox>
     </Row>
   );

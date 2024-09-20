@@ -8,13 +8,15 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { addStoryDividers as addDividers } from '@/store/features/addDividersForm/addDividersForm';
 import { removeAllDividers } from '@/store/features/dividers/dividers';
 import { ButtonType } from '@/types/ui';
+import { T } from 'ramda';
+import { useTranslation } from 'react-i18next';
 
 export type AddStoryDividersProps = {
 
 }
 
 export const AddStoryDividers = ({}: AddStoryDividersProps) => {
-
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [story, setCurrentStory] = useState<IStory | null>(null);
 
@@ -53,17 +55,17 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
               {story && (
                 <>
                   <Button onClick={onGenerate} className={S.generate}>
-                    <Icon icon='check-thin'/> Generate
+                    <Icon icon='check-thin'/> {t('Generate')}
                   </Button>
                   <Button onClick={onAdd} className={S.add}>
-                    <Icon icon='plus-thin'/> Add
+                    <Icon icon='plus-thin'/> {t('Add')}
                   </Button>
                   <Button 
                     onClick={onClear} 
                     className={S.add}
                     buttonType={ButtonType.DANGER}
                   >
-                    <Icon icon='trash'/> Clear
+                    <Icon icon='trash'/> {t('Clear')}
                   </Button>
                 </>
               )}
