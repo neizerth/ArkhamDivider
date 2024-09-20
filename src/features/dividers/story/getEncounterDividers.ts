@@ -1,4 +1,3 @@
-import { IEncounterSet, IStory } from "@/types/api";
 import { isNotNil, propEq } from "ramda";
 import { getEncounterSize } from "./getEncounterSize";
 import { definedIf, uniqId } from "@/util/common";
