@@ -38,7 +38,7 @@ export const Divider = ({
 	const layout = useAppSelector(selectLayout);
 
 	const { 
-		type, 
+		orientation, 
 		color,
 	} = layout;
 
@@ -54,7 +54,7 @@ export const Divider = ({
 
 	const containerClassName = classNames(
 		S.container,
-		type && S[type],
+		orientation && S[orientation],
 		bleeds ? S.withBleeds : S.noBleeds,
 		color ? S.color : S.grayscale,
 		className
@@ -87,7 +87,6 @@ export const Divider = ({
 			data-layout={layoutId} 
 			data-color={color} 
 			data-grayscale={!color}
-			data-type={type}
 		>
 			<div className={guidesClassName}>
 				<Guides className={S.guidesContent}/>

@@ -8,8 +8,3 @@ export type IDivider = {
 }
 
 export type IDividerList = IDivider[];
-
-export enum LayoutType {
-    HORIZONTAL = 'horizontal',
-    VERTICAL = 'vertical'
-};

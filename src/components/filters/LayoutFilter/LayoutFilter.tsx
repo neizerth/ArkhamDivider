@@ -7,21 +7,21 @@ import icon from './images/change-orientation.svg';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
-import { LayoutType } from '@/types/dividers';
+import { selectLayout, selectOrientation, setLayout, setOrientation } from '@/store/features/layout/layout';
+import { LayoutOrientation } from "@/types/layouts";
 import { getLayoutById } from '@/util/layouts';
 import { Color } from '@/components';
-import { selectColor, setColor } from '@/store/features/dividers/dividers';
+import { selectColor, setColor } from '@/store/features/layout/layout';
 import { layouts } from '@/data/layouts';
 import { propsEquals } from '@/util/criteria';
 
 export const LayoutFilter = () => {
   const dispatch = useAppDispatch();
-  const LayoutFilter = useAppSelector(selectType);
+  const LayoutFilter = useAppSelector(selectOrientation);
   const layout = useAppSelector(selectLayout);
   const useColor = useAppSelector(selectColor);
 
-  const isVertical = LayoutFilter === LayoutType.VERTICAL;
+  const isVertical = LayoutFilter === LayoutOrientation.VERTICAL;
 
   const iconClassName = classNames(
     S.icon,
@@ -29,23 +29,23 @@ export const LayoutFilter = () => {
   );
 
   const toggleType = () => {
-    const nextType = LayoutFilter === LayoutType.HORIZONTAL ? 
-      LayoutType.VERTICAL : 
-      LayoutType.HORIZONTAL;
+    const nextType = LayoutFilter === LayoutOrientation.HORIZONTAL ? 
+      LayoutOrientation.VERTICAL : 
+      LayoutOrientation.HORIZONTAL;
     
     const criteria = {
       color: useColor,
-      type: nextType
+      orientation: nextType
     }
 
     const [firstLayout] = layouts.filter(propsEquals(criteria));
-    dispatch(setType(nextType));
+    dispatch(setOrientation(nextType));
     dispatch(setLayout(firstLayout));
   };
 
   const criteria = {
     color: useColor,
-    type: layout?.type 
+    orientation: layout?.orientation 
   }
 
   const options = layouts.filter(propsEquals(criteria))
@@ -71,7 +71,7 @@ export const LayoutFilter = () => {
 
     const criteria = {
       color: nextColor,
-      type: layout?.type
+      orientation: layout?.orientation
     }
 
     const [firstLayout] = layouts.filter(propsEquals(criteria));

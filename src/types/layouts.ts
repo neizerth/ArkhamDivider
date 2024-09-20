@@ -1,4 +1,3 @@
-import { LayoutType } from "./dividers"
 import { PageOrientation } from "./print"
 
 export type ILayout = {
@@ -8,10 +7,22 @@ export type ILayout = {
   rowSize: number
   groupSize: number
   title: string
-  type: LayoutType
+  types: LayoutType[]
+  orientation: LayoutOrientation
   image: string
-  orientation: PageOrientation,
+  pageOrientation: PageOrientation
   is_default?: boolean
   color: boolean
   tags: string[]
+}
+
+export enum LayoutType {
+  SCENARIO = 'scenario',
+  PLAYER = 'player',
+  INVESTIGATOR = 'investigator'
+}
+
+export enum LayoutOrientation {
+  HORIZONTAL = 'horizontal',
+  VERTICAL = 'vertical'
 }

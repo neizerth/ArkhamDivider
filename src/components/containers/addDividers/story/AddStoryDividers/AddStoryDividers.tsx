@@ -44,7 +44,7 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
       <Container>
         <Col className={S.col}>
           <div className={S.row}>
-            <Row>
+            <Row wrap>
               <StorySelect 
                 className={S.select}
                 stories={stories} 

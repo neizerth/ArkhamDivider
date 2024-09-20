@@ -1,4 +1,4 @@
-import { LayoutType } from '@/types/dividers';
+import { LayoutOrientation, LayoutType } from "@/types/layouts";
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -9,12 +9,16 @@ const DEFAULT_LAYOUT = layouts.find(({ is_default }) => is_default) as ILayout;
 
 export type ILayoutState = {
   layout: ILayout,
+  color: boolean,
   type: LayoutType,
+  orientation: LayoutOrientation,
 }
 
 const initialState: ILayoutState = {
   layout: DEFAULT_LAYOUT,
-  type: LayoutType.HORIZONTAL
+  color: true,
+  type: LayoutType.SCENARIO,
+  orientation: LayoutOrientation.HORIZONTAL
 };
 
 export const layout = createSlice({
@@ -22,22 +26,30 @@ export const layout = createSlice({
   initialState,
   reducers: {
     setLayout: createSliceSetter('layout'),
-    setType: createSliceSetter('type')
+    setOrientation: createSliceSetter('orientation'),
+    setType: createSliceSetter('type'),
+    setColor: createSliceSetter('color')
   },
   selectors: {
     selectLayout: createSliceSelector('layout'),
-    selectType: createSliceSelector('type')
+    selectOrientation: createSliceSelector('orientation'),
+    selectType: createSliceSelector('type'),
+    selectColor: createSliceSelector('color')
   }
 });
 
 export const {
-  setType,
-  setLayout
+  setOrientation,
+  setLayout,
+  setColor,
+  setType
 } = layout.actions;
 
 export const {
-  selectType,
-  selectLayout
+  selectOrientation,
+  selectLayout,
+  selectColor,
+  selectType
 } = layout.selectors;
 
 export default layout.reducer;

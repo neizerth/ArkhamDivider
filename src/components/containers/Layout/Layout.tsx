@@ -21,7 +21,7 @@ export const Layout = ({ }: LayoutProps) => {
 		groupSize, 
 		rowSize, 
 		image, 
-		orientation,
+		pageOrientation,
 		id
 	} = layout;
 
@@ -45,7 +45,7 @@ export const Layout = ({ }: LayoutProps) => {
 						pagesTotal={pagesTotal}
 						isLast={pageNumber === pagesTotal}
 						key={pageIndex}
-						orientation={orientation}
+						orientation={pageOrientation}
 					>
 						<div className={S.group}>
 							{rows.map((row, rowIndex) => (
