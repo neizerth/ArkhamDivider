@@ -3,6 +3,7 @@ import S from './AddPlayerDividers.module.scss';
 import { CostSelect } from '@/components';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 export type AddPlayerDividersProps = {
 
@@ -10,13 +11,8 @@ export type AddPlayerDividersProps = {
 
 export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const { t } = useTranslation();
-  const setFactions = () => {
-
-  };
-
-  const setCosts = () => {
-
-  }
+  const [costs, setCosts] = useState([]);
+  const [factions, setFactions] = useState([]);
 
   return (
     <div className={S.container}>

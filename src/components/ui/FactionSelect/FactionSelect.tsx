@@ -2,7 +2,6 @@ import { Icon, ToggleSelect } from '@/components';
 import S from './FactionSelect.module.scss';
 import data from '@/data/factions.json';
 import classNames from 'classnames';
-import { keys } from 'ramda';
 export type FactionSelectItemProps = {
   id: string,
   icon: string
