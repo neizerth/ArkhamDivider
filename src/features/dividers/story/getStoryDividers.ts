@@ -48,6 +48,6 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
   ];
 
   return sortWith([
-    descend(prop('type')),
+    descend(prop('orientation')),
   ], dividers);
 }
