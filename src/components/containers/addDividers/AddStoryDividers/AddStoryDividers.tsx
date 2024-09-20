@@ -8,7 +8,6 @@ import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { addStoryDividers as addDividers } from '@/store/features/addDividersForm/addDividersForm';
 import { removeAllDividers } from '@/store/features/dividers/dividers';
 import { ButtonType } from '@/types/ui';
-import { T } from 'ramda';
 import { useTranslation } from 'react-i18next';
 
 export type AddStoryDividersProps = {
