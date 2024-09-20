@@ -9,7 +9,7 @@ export type IDivider = {
 
 export type IDividerList = IDivider[];
 
-export enum DividerType {
+export enum LayoutType {
     HORIZONTAL = 'horizontal',
     VERTICAL = 'vertical'
 };

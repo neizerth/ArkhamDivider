@@ -33,7 +33,7 @@ export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
-export { DividerTypeFilter } from './filters/DividerTypeFilter/DividerTypeFilter';
+export { LayoutFilter } from './filters/LayoutFilter/LayoutFilter';
 
 export { StorySelect, StorySelectOption, StorySelectValue } from './filters/stories';
 

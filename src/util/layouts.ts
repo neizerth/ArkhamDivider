@@ -1,7 +1,7 @@
 
 import { layouts } from '@/data/layouts';
-import { DividerType } from '@/types/dividers';
+import { LayoutType } from '@/types/dividers';
 
 export const getLayoutById = (layoutId: string) => layouts.find(({ id }) => layoutId === id);
 
-export const getLayoutsByType = (layoutType: DividerType) => layouts.filter(({ type }) => type === layoutType);
+export const getLayoutsByType = (layoutType: LayoutType) => layouts.filter(({ type }) => type === layoutType);

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
-import { DividerTypeFilter, LanguageSelect, PrintSettings, Row, Button, Icon } from '@/components';
+import { LayoutFilter, LanguageSelect, PrintSettings, Row, Button, Icon } from '@/components';
 
 
 export const AppSettings = () => {
@@ -16,7 +16,7 @@ export const AppSettings = () => {
                     </div>
 
                     <div className={S.dividerFilter}>
-                        <DividerTypeFilter/>
+                        <LayoutFilter/>
                     </div>
                 </Row>
                 <div className={S.print}>

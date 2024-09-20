@@ -1,27 +1,27 @@
 import Select from 'react-select';
 import classNames from 'classnames';
 
-import S from './DividerTypeFilter.module.scss';
+import S from './LayoutFilter.module.scss';
 
 import icon from './images/change-orientation.svg';
 
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
-import { DividerType } from '@/types/dividers';
+import { LayoutType } from '@/types/dividers';
 import { getLayoutById } from '@/util/layouts';
 import { Color } from '@/components';
 import { selectColor, setColor } from '@/store/features/dividers/dividers';
 import { layouts } from '@/data/layouts';
 import { propsEquals } from '@/util/criteria';
 
-export const DividerTypeFilter = () => {
+export const LayoutFilter = () => {
   const dispatch = useAppDispatch();
-  const dividerType = useAppSelector(selectType);
+  const LayoutFilter = useAppSelector(selectType);
   const layout = useAppSelector(selectLayout);
   const useColor = useAppSelector(selectColor);
 
-  const isVertical = dividerType === DividerType.VERTICAL;
+  const isVertical = LayoutFilter === LayoutType.VERTICAL;
 
   const iconClassName = classNames(
     S.icon,
@@ -29,9 +29,9 @@ export const DividerTypeFilter = () => {
   );
 
   const toggleType = () => {
-    const nextType = dividerType === DividerType.HORIZONTAL ? 
-      DividerType.VERTICAL : 
-      DividerType.HORIZONTAL;
+    const nextType = LayoutFilter === LayoutType.HORIZONTAL ? 
+      LayoutType.VERTICAL : 
+      LayoutType.HORIZONTAL;
     
     const criteria = {
       color: useColor,
@@ -56,7 +56,7 @@ export const DividerTypeFilter = () => {
 
   const value = layout ? options.find(({ value }) => value === layout.id) : null;
 
-  const changeDividerType = (id: string) => {
+  const changeLayoutFilter = (id: string) => {
     const layout = getLayoutById(id);
 
     if (!layout) {
@@ -89,7 +89,7 @@ export const DividerTypeFilter = () => {
           placeholder="Select type..." 
           value={value} 
           options={options}
-          onChange={item => item && changeDividerType(item.value)}
+          onChange={item => item && changeLayoutFilter(item.value)}
         />
       )}
     </div>

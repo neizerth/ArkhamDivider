@@ -1,5 +1,5 @@
 import { BASE_PATH } from "@/constants/web";
-import { DividerType } from "@/types/dividers";
+import { LayoutType } from "@/types/dividers";
 import { ILayout } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
@@ -11,7 +11,7 @@ export const layouts: ILayout[] = [
     width: 88.9,
     height: 76.2,
     title: "Classic",
-    type: DividerType.HORIZONTAL,
+    type: LayoutType.HORIZONTAL,
     orientation: PageOrientation.PORTRAIT,
     image: BASE_PATH + "/images/dividers/horizontal/common/classic.png",
     color: true,
@@ -25,7 +25,7 @@ export const layouts: ILayout[] = [
     width: 88.9,
     height: 76.2,
     title: "Classic (B&W)",
-    type: DividerType.HORIZONTAL,
+    type: LayoutType.HORIZONTAL,
     orientation: PageOrientation.PORTRAIT,
     color: false,
     image: BASE_PATH + "/images/dividers/horizontal/common/classic_bw.png",
@@ -38,7 +38,7 @@ export const layouts: ILayout[] = [
     height: 100,
     width: 60,
     title: "Classic",
-    type: DividerType.VERTICAL,
+    type: LayoutType.VERTICAL,
     orientation: PageOrientation.PORTRAIT,
     color: true,
     image: BASE_PATH + "/images/dividers/vertical/common/classic_60.png",
@@ -51,7 +51,7 @@ export const layouts: ILayout[] = [
     height: 100,
     width: 60,
     title: "Classic",
-    type: DividerType.VERTICAL,
+    type: LayoutType.VERTICAL,
     orientation: PageOrientation.PORTRAIT,
     color: false,
     image: BASE_PATH + "/images/dividers/vertical/common/classic_60_bw.png",
