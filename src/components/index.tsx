@@ -3,6 +3,10 @@ export { Layout } from './containers/Layout/Layout';
 export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
 export { PageCredits } from './containers/PageCredits/PageCredits';
 
+export { StoryCustomContent }  from './containers/StoryCustomContent/StoryCustomContent';
+
+export { AddStoryDividers }  from './containers/addDividers/AddStoryDividers/AddStoryDividers';
+export { AddStoryParams }  from './containers/addDividers/AddStoryParams/AddStoryParams';
 
 export { Divider } from './dividers/Divider/Divider';
 export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
@@ -14,9 +18,7 @@ export { List } from './ui/grid/List/List';
 export { Icon } from './ui/Icon/Icon';
 export { IconButton } from './ui/IconButton/IconButton';
 export { Color } from './ui/Color/Color';
-
-export { AddStoryDividers }  from './ui/addDividers/AddStoryDividers/AddStoryDividers';
-export { AddStoryParams }  from './ui/addDividers/AddStoryParams/AddStoryParams';
+export { LanguageFlag } from './ui/LanguageFlag/LanguageFlag';
 
 export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 

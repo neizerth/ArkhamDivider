@@ -7,7 +7,7 @@ import { safePropEq } from '@/util/criteria';
 import { selectDividerFormConfig, setDividerFormConfig } from '@/store/features/addDividersForm/addDividersForm';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { createToggleHanlder } from '@/util/forms';
-import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
+// import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
 import { useTranslation } from 'react-i18next';
 
 export type ToggleFunction = (value: boolean) => void;
@@ -29,7 +29,7 @@ export const AddStoryParams = ({
 
   const returnStories = stories.filter(safePropEq(story.code, 'return_to_code'));
   const haveReturnCycle = returnStories.length > 0;
-  const onlyScenario = onlyWithScenarioEncounters(story);
+  // const onlyScenario = onlyWithScenarioEncounters(story);
   // console.log(story);
   // onlyWithScenarioEncounters(story); 
 
@@ -47,11 +47,9 @@ export const AddStoryParams = ({
               Extra
             </Checkbox>
           )}
-          {!onlyScenario && (
-            <Checkbox {...check('includeScenarios')}>
-              Scenarios
-            </Checkbox>
-          )}
+          <Checkbox {...check('includeScenarios')}>
+            Scenarios
+          </Checkbox>
           <Checkbox {...check('includeScenarioEncounterSet')}>
             Scenario Encounter
           </Checkbox>
@@ -60,11 +58,9 @@ export const AddStoryParams = ({
               <Checkbox {...check('includeEncounterSize')}>
                 Encounter Size
               </Checkbox>
-              {!onlyScenario && (
-                <Checkbox {...check('includeScenarioSize')}>
-                  Scenario Size
-                </Checkbox>
-              )}
+              <Checkbox {...check('includeScenarioSize')}>
+                Scenario Size
+              </Checkbox>
             </>
           )}
           <Checkbox {...check('includeCampaignIcon')}>

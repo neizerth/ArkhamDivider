@@ -21,6 +21,6 @@ export const isReturnPack = (story: IStory) => Boolean(story.return_to_code);
 export const withReturnTo = (code: string) => safePropEq(code, 'return_to_set');
 
 export const onlyWithScenarioEncounters = ({ encounter_sets, scenario_encounter_sets }: IStory) => 
-  scenario_encounter_sets.filter(
-    code => !encounter_sets.includes(code)
+  encounter_sets.filter(
+    code => !scenario_encounter_sets.includes(code)
   ).length === 0;

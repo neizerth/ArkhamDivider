@@ -77,6 +77,7 @@ export const StorySelect = ({
       isMulti={false}
       onChange={(item) => item && onChange(item.value)}
       className={classNames(S.select, className)}
+      placeholder={t('Select Campaign')}
       options={groups}
       value={value}
       getOptionLabel={({ value }) => labels.get(value.code)}

@@ -1,9 +1,9 @@
 import { AppThunk } from "@/store";
-import { I18NLanguageBundle } from "@/types/i18n";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { addResourceBundle } from "@/util/i18n";
+import { Mapping } from "classnames";
 
-export const setTranslations = (ns?: string): ActionCreator<AppThunk> => (language: string, bundle: I18NLanguageBundle) => () => {
+export const setTranslations = (ns?: string): ActionCreator<AppThunk> => (language: string, bundle: Mapping) => () => {
   addResourceBundle(language, bundle, ns);
 }
 

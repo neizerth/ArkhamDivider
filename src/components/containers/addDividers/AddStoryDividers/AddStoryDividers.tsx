@@ -1,4 +1,4 @@
-import { Container, StorySelect, AddStoryParams, Col, Row, Button, Icon } from '@/components';
+import { Container, StorySelect, AddStoryParams, Col, Row, Button, Icon, StoryCustomContent } from '@/components';
 import S from './AddStoryDividers.module.scss';
 import { selectStories } from '@/store/features/stories/stories';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -50,19 +50,23 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                 onChange={addStoryDividers}
                 value={story}
               />
-              <Button onClick={onGenerate} className={S.generate}>
-                <Icon icon='check-thin'/> Generate
-              </Button>
-              <Button onClick={onAdd} className={S.add}>
-                <Icon icon='plus-thin'/> Add
-              </Button>
-              <Button 
-                onClick={onClear} 
-                className={S.add}
-                buttonType={ButtonType.DANGER}
-              >
-                <Icon icon='trash'/> Clear
-              </Button>
+              {story && (
+                <>
+                  <Button onClick={onGenerate} className={S.generate}>
+                    <Icon icon='check-thin'/> Generate
+                  </Button>
+                  <Button onClick={onAdd} className={S.add}>
+                    <Icon icon='plus-thin'/> Add
+                  </Button>
+                  <Button 
+                    onClick={onClear} 
+                    className={S.add}
+                    buttonType={ButtonType.DANGER}
+                  >
+                    <Icon icon='trash'/> Clear
+                  </Button>
+                </>
+              )}
             </Row>
           </div>
           {story && (
@@ -71,6 +75,13 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                 story={story}
               />
             </div>
+          )}
+          {story?.custom_content && (
+            <div>
+              <StoryCustomContent
+                content={story.custom_content}
+              />
+          </div>
           )}
         </Col>
       </Container>

@@ -3,7 +3,7 @@ import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { selectReturnSetsOf } from '../stories/stories';
 import { selectEncounterSets } from '../encounterSets/encounterSets';
 import { AppThunk } from '@/store';
-import { getStoryDividers } from '@/features/dividers/getStoryDividers';
+import { getStoryDividers } from '@/features/dividers/story/getStoryDividers';
 import { addDividers } from '../dividers/dividers';
 import { IStory } from '@/types/api';
 

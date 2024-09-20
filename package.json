@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "arkham-divider-data": "^1.0.14",
     "classnames": "^2.5.1",
+    "country-flag-icons": "^1.5.13",
     "dotenv": "^16.4.5",
     "i18next": "^23.14.0",
     "lodash": "^4.17.21",
