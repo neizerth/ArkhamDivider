@@ -9,5 +9,6 @@ export const fixedCosts: ICost[] = [
   Cost.FIVE
 ].map(value => ({
   value,
+  level: Number(value),
   is_fixed: true
 }))

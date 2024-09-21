@@ -21,14 +21,19 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const [costs, setCosts] = useState<ICost[]>([]);
   const [factions, setFactions] = useState<IFaction[]>([]);
   const [types, setTypes] = useState<ICardType[]>([]);
+
   const [useUpgrading, setUpgrading] = useState(false);
+  const [includeBasicWeakness, setIncludeBasicWeakness] = useState(false);
+  const [includeAllies, setIncludeAllies] = useState(false);
 
   const onAdd = () => {
     dispatch(addPlayerDividers({
       costs,
       factions,
       types,
-      useUpgrading
+      useUpgrading,
+      includeBasicWeakness,
+      includeAllies
     }));
   };
 
@@ -43,9 +48,15 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
     <div className={S.container}>
       <Container>
         <Col className={S.content}>
-          <div>
+          <Row className={classNames(S.row)}>
             <FactionSelect onChange={setFactions}/>
-          </div>
+            <Checkbox 
+              checked={includeBasicWeakness} 
+              onChange={onToggle(setIncludeBasicWeakness)}
+            >
+              {t('Basic Weakness')}
+            </Checkbox>
+          </Row>
           <Row className={classNames(S.row)}>
             <PlayerCardTypeSelect onChange={setTypes}/>
             <Checkbox 
@@ -53,6 +64,12 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
               onChange={onToggle(setUpgrading)}
             >
               {t('Upgrading')}
+            </Checkbox>
+            <Checkbox 
+              checked={includeAllies} 
+              onChange={onToggle(setIncludeAllies)}
+            >
+              {t('Ally')}
             </Checkbox>
           </Row>
           <Row className={classNames(S.cost)}>

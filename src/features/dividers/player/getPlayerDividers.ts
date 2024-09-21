@@ -1,39 +1,63 @@
 import { AddPlayerDividersOptions } from '@/store/features/addDividers/addDividers';
 import { IDivider } from '@/types/dividers';
-import { IFaction } from '@/types/game';
+import { CardType, IFaction } from '@/types/game';
 import { uniqId } from '@/util/common';
 
 export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
   return [
+    ...getBasicWeaknessDividers(options),
+    ...getUpgradingDividers(options),
     ...getPlayerCardDividers(options),
-    ...getUpgradingDividers(options)
   ]
 }
 
 export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
   const {
-    factions,
     costs,
-    types
+    factions
   } = options;
+
+  const types = [
+    ...options.types,
+    ...getAllyType(options)
+  ]
+
   return factions.map(faction => {
     return costs.map(cost => {
       return types.map((type): IDivider => {
         return {
           id: uniqId(),
           name: type.name,
-          icon: faction.icon,
+          icon: type.icon || faction.icon,
+          previewIcon: faction.icon,
+          cardType: type.type,
           type: 'player',
-          cost: {
-            text: cost.value,
-            fixed: cost.is_fixed,
-          }
+          cost
         }
       });
     })
     .flat()
   })
   .flat()
+}
+
+export const getAllyType = ({
+  includeAllies
+}: {
+  includeAllies: boolean
+}) => {
+  if (!includeAllies) {
+    return []
+  }
+
+  return [
+    {
+      id: 'ally',
+      icon: 'ally_inverted',
+      type: CardType.ASSET,
+      name: 'Ally'
+    }
+  ]
 }
 
 export const getUpgradingDividers = ({
@@ -52,4 +76,21 @@ export const getUpgradingDividers = ({
     icon: faction.icon,
     type: 'player'
   }))
+}
+
+export const getBasicWeaknessDividers = ({
+  includeBasicWeakness
+}: AddPlayerDividersOptions) => {
+  if (!includeBasicWeakness) {
+    return []
+  }
+
+  return [
+    {
+      id: uniqId(),
+      name: 'Basic Weakness',
+      icon: 'weakness',
+      type: 'player'
+    }
+  ]
 }

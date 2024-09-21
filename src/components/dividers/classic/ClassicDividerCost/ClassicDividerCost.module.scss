@@ -1,0 +1,51 @@
+.container {
+  font-size: 8.1mm;
+}
+
+.background {
+  position: relative;
+  z-index: 1;
+}
+
+.skill {
+  position: relative;
+  top: 0.05em;
+  left: 0.04em;
+  font-size: 1.1em;
+}
+
+.skillBackground {
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8), -1px 1px 0 rgba(255, 255, 255, 0.8), -1px -1px 0 rgba(255, 255, 255, 0.8), 1px -1px 0 rgba(255, 255, 255, 0.8),
+    2px 2px 2px rgba(0, 0, 0, 0.2), -2px 2px 2px rgba(0, 0, 0, 0.2), -2px -2px 2px rgba(0, 0, 0, 0.2), 2px -2px 2px rgba(0, 0, 0, 0.2)
+}
+
+.skill .level {
+  top: -0.6mm
+}
+
+.nullSkillBackground {
+  position: relative;
+  text-shadow: 1px 1px rgb(255, 255, 255), 1px -1px rgb(255, 255, 255), -1px -1px rgb(255, 255, 255), -1px 1px rgb(255, 255, 255);
+}
+
+.color .nullSkillBackground{
+  text-shadow: 1px 1px rgba(228, 208, 156, 0.7), 1px -1px rgba(228, 208, 156, 0.7), -1px -1px rgba(228, 208, 156, 0.7), -1px 1px rgba(228, 208, 156, 0.5)
+}
+
+.level {
+  
+}
+
+.lightLevel {
+  position: absolute;
+  top: 0.2mm;
+  left: 0;
+  z-index: 2;
+  color: white;
+}
+
+.event {
+  position: relative;
+  top: -0.06em;
+  color: #000;
+}

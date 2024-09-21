@@ -14,12 +14,21 @@ export enum Cost {
   FIVE = '5'
 }
 
+export enum CardType {
+  SKILL = 'skill',
+  ASSET = 'asset',
+  EVENT = 'event'
+}
+
 export type ICost = {
   value: string
+  level?: number
   is_fixed: boolean
 }
 
 export type ICardType = {
   id: string
   name: string
+  type: CardType
+  icon?: string
 }

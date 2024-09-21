@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import S from './Divider.module.scss';
+import S from './ClassicDivider.module.scss';
 
 import { Icon, Guides, DividerMenu, DividerTitle } from '@/components';
 import classNames from 'classnames';
@@ -11,28 +11,29 @@ import { selectLanguage } from '@/store/features/language/language';
 import { selectBleeds } from '@/store/features/print/print';
 import { selectLayout } from '@/store/features/layout/layout';
 import { useTranslation } from 'react-i18next';
+import { IDivider } from '@/types/dividers';
+import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
+import { ClassicDividerCost, ClassicDividerSkillCost } from '../ClassicDividerCost/ClassicDividerCost';
+import { CardType } from '@/types/game';
 
 
-export type DividerProps = PropsWithClassName & {
+export type ClassicDividerProps = PropsWithClassName & IDivider &{
 	id: string
-	layoutId?: string;
-	name?: string
-	icon?: string;
-	campaignIcon?: string;
 	background: string;
-	size?: number
 }
 
-export const Divider = ({
+export const ClassicDivider = ({
 	id,
 	icon,
+	cardType,
+	previewIcon = icon,
+	cost,
 	name = '',
-	layoutId,
 	background,
 	size,
 	className,
 	campaignIcon,
-}: DividerProps) => {
+}: ClassicDividerProps) => {
 	const { t } = useTranslation();
 	const bleeds = useAppSelector(selectBleeds);
 	const layout = useAppSelector(selectLayout);
@@ -84,9 +85,6 @@ export const Divider = ({
 	return (
 		<div 
 			className={containerClassName} 
-			data-layout={layoutId} 
-			data-color={color} 
-			data-grayscale={!color}
 		>
 			<div className={guidesClassName}>
 				<Guides className={S.guidesContent}/>
@@ -104,30 +102,30 @@ export const Divider = ({
 					</div>
 					<img className={S.background} src={background} alt={title}/>
 					{icon && (
-						<>
-							<div className={classNames(S.icon, S.icon_small)}>
-								<Icon icon={icon}/>
-							</div>
-							<div className={classNames(S.icon, S.icon_large)}>
-								<Icon icon={icon}/>
-							</div>
-						</>
+						<div className={classNames(S.icon, S.icon_large)}>
+							<Icon icon={icon}/>
+						</div>
 					)}
-
+					{previewIcon && (
+						<div className={classNames(S.icon, S.icon_small)}>
+							<Icon icon={previewIcon}/>
+						</div>
+					)}
+					{cost && cost.level !== undefined && cardType && (
+						<div className={S.cost}>
+							<ClassicDividerCost
+								type={cardType}
+								level={cost.level}
+							/>
+						</div>
+					)}
 					<DividerMenu id={id} className={S.menu}/>
-					<div className={S.status}>
-						
-						{campaignIcon && (
-							<div className={S.campaignIcon}>
-								<Icon icon={campaignIcon}/>
-							</div>
-						)}
-						{Boolean(size) && (
-							<div className={S.size}>
-								{!campaignIcon && '∑'} {size}
-							</div>
-						)}
-					</div>
+
+					<ClassicDividerStatus
+						className={S.status}
+						size={size}
+						campaignIcon={campaignIcon}
+					/>
 				</div>
 			</div>
 		</div>

@@ -15,7 +15,6 @@ export const CostSelect = ({ onChange }: CostSelectProps) => {
       value={costs}
       className={S.container} 
       onChange={onChange}
-    >
-    </ToggleSelect>
+    />
   );
 }

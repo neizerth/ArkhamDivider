@@ -10,7 +10,7 @@ export { AddStoryParams }  from './containers/addDividers/story/AddStoryParams/A
 export { AddPlayerDividers }  from './containers/addDividers/player/AddPlayerDividers/AddPlayerDividers';
 export { AddDividers }  from './containers/addDividers/AddDividers/AddDividers';
 
-export { Divider } from './dividers/Divider/Divider';
+export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';
 export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
 export { DividerTitle } from './dividers/DividerTitle/DividerTitle';
 

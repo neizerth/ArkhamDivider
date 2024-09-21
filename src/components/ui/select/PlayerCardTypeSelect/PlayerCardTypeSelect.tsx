@@ -1,7 +1,7 @@
 import { ICardType } from '@/types/game';
 import { ToggleSelect, ToggleSelectItem, ToggleSelectItemProps } from '../ToggleSelect/ToggleSelect';
 import S from './PlayerCardTypeSelect.module.scss';
-import cardTypes from '@/data/playerCardTypes.json';
+import { playerCardTypes } from '@/data/playerCardTypes';
 import { useTranslation } from 'react-i18next';
 
 export const PlayerCardTypeSelectItem = (props: ToggleSelectItemProps<ICardType>) => {
@@ -25,7 +25,7 @@ export const PlayerCardTypeSelect = ({ onChange }: PlayerCardTypeSelectProps) =>
   return (
     <ToggleSelect 
       onChange={onChange} 
-      value={cardTypes}
+      value={playerCardTypes}
       components={components}
     />
   );

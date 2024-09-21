@@ -13,6 +13,8 @@ export type AddPlayerDividersOptions = {
   costs: ICost[]
   types: ICardType[]
   useUpgrading: boolean
+  includeBasicWeakness: boolean
+  includeAllies: boolean
 }
 
 export type AddStoryDividersOptions = {
