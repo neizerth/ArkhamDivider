@@ -1,4 +1,29 @@
 .icon {
   font-family: 'ArkhamIcons';
   user-select: none;
+  position: relative;
+}
+
+.icon {
+  position: relative;
+}
+
+.guardian {
+  top: -0.07em;
+}
+
+.seeker {
+  top: -0.07em;
+}
+
+.rogue {
+  top: -0.05em;
+}
+
+.survivor {
+  top: -0.1em;
+}
+
+.mystic {
+  top: -0.1em;
 }

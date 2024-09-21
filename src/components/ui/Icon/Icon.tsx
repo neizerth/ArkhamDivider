@@ -22,7 +22,7 @@ export const Icon = ({ icon, className, ...props }: IconProps) => {
 	}
 	return (
 		<span 
-			className={classNames(S.icon, className)}
+			className={classNames(S.icon, S[icon], className)}
 			style={style}
 			{...props}
 		>

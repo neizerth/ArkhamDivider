@@ -1,14 +1,14 @@
-import { Container, StorySelect, AddStoryParams, Col, Row, Button, Icon, StoryCustomContent } from '@/components';
+import { Container, StorySelect, AddStoryParams, Col, Row, StoryCustomContent, IconButton } from '@/components';
 import S from './AddStoryDividers.module.scss';
 import { selectStories } from '@/store/features/stories/stories';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useState } from 'react';
 import { IStory } from '@/types/api';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { addStoryDividers as addDividers } from '@/store/features/addDividersForm/addDividersForm';
 import { removeAllDividers } from '@/store/features/dividers/dividers';
 import { ButtonType } from '@/types/ui';
 import { useTranslation } from 'react-i18next';
+import { addStoryDividers } from '@/store/features/addDividers/addDividers';
 
 export type AddStoryDividersProps = {
 
@@ -18,12 +18,24 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [story, setCurrentStory] = useState<IStory | null>(null);
+  const [form, onFormChange] = useState({
+    includeExtraSets: false,
+    includeReturnSets: false,
+    includeScenarios: false,
+    includeEncounterSize: false,
+    includeCampaignIcon: false,
+    includeScenarioEncounterSet: false,
+    includeScenarioSize: false
+  });
 
   const onAdd = () => {
     if (!story) {
       return;
     }
-    dispatch(addDividers(story));
+    dispatch(addStoryDividers({
+      story,
+      ...form
+    }));
   };
 
   const onGenerate = () => {
@@ -34,10 +46,6 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const onClear = () => dispatch(removeAllDividers());
 
   const stories = useAppSelector(selectStories);
-  
-  const addStoryDividers = (story: IStory) => {
-    setCurrentStory(story);
-  }
 
   return (
     <div className={S.container}>
@@ -48,24 +56,33 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
               <StorySelect 
                 className={S.select}
                 stories={stories} 
-                onChange={addStoryDividers}
+                onChange={setCurrentStory}
                 value={story}
               />
               {story && (
                 <>
-                  <Button onClick={onGenerate} className={S.generate}>
-                    <Icon icon='check-thin'/> {t('Generate')}
-                  </Button>
-                  <Button onClick={onAdd} className={S.add}>
-                    <Icon icon='plus-thin'/> {t('Add')}
-                  </Button>
-                  <Button 
+                  <IconButton 
+                    onClick={onGenerate} 
+                    className={S.generate}
+                    icon="Icon"
+                  >
+                    {t('Generate')}
+                  </IconButton>
+                  <IconButton 
+                    onClick={onAdd} 
+                    className={S.add}
+                    icon="plus-thin"
+                  >
+                    {t('Add')}
+                  </IconButton>
+                  <IconButton 
                     onClick={onClear} 
                     className={S.add}
                     buttonType={ButtonType.DANGER}
+                    icon="trash"
                   >
-                    <Icon icon='trash'/> {t('Clear')}
-                  </Button>
+                    {t('Clear')}
+                  </IconButton>
                 </>
               )}
             </Row>
@@ -73,6 +90,8 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
           {story && (
             <div>
               <AddStoryParams 
+                onChange={onFormChange}
+                defaultValue={form}
                 story={story}
               />
             </div>

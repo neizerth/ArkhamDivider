@@ -10,6 +10,8 @@ export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
 
 export const arrayIf = <T>(condition: boolean, data: T[]): T[] => condition ? data : [];
 
+export const arrayIfFn = <T>(condition: () => boolean, getData: () => T[]): T[] => condition() ? getData() : [];
+
 export const toArrayIfExists = <T>(item: T | undefined) => isNil(item) ? [] : [item];
 
 export const safeProp = curry(

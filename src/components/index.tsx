@@ -23,9 +23,10 @@ export { Color } from './ui/Color/Color';
 export { LanguageFlag } from './ui/LanguageFlag/LanguageFlag';
 export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 
-export { FactionSelect } from './ui/FactionSelect/FactionSelect';
-export { CostSelect } from './ui/CostSelect/CostSelect';
-export { ToggleSelect } from './ui/ToggleSelect/ToggleSelect';
+export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';
+export { CostSelect } from './ui/select/CostSelect/CostSelect';
+export { PlayerCardTypeSelect } from './ui/select/PlayerCardTypeSelect/PlayerCardTypeSelect';
+export { ToggleSelect } from './ui/select/ToggleSelect/ToggleSelect';
 
 export { Guides } from './print/Guides/Guides';
 export { Guide } from './print/Guide/Guide';

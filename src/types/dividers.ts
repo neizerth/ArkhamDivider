@@ -4,6 +4,12 @@ export type IDivider = {
     name?: string
     icon?: string
     campaignIcon?: string
+    isUpgrading?: boolean
+    cost?: {
+      value?: number
+      text: string
+      fixed: boolean
+    },
     size?: number
 }
 

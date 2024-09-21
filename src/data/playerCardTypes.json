@@ -1,0 +1,14 @@
+[
+  {
+    "id": "asset",
+    "name": "Asset"
+  },
+  {
+    "id": "event",
+    "name": "Event"
+  },
+  {
+    "id": "skill",
+    "name": "Skill"
+  }
+]

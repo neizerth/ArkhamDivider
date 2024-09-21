@@ -1,23 +1,25 @@
-import { Children, PropsWithChildren, useState } from 'react';
+import React, { Children, PropsWithChildren, useState } from 'react';
 import S from './ToggleSelect.module.scss';
 import { append, without } from 'ramda';
 import { inArray } from '@/util/criteria';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 
-export type ToggleSelectItemProps = PropsWithChildren & PropsWithClassName & {
+export type ToggleSelectItemProps<T> = PropsWithClassName & PropsWithChildren &{
   selectedClassName?: string
   isSelected?: boolean
   onToggle: () => void
+  value: T
+  index: number
 }
 
-export const ToggleSelectItem = ({
+export function ToggleSelectItem <T>({
   className,
   selectedClassName,
   onToggle,
   isSelected,
   children
-}: ToggleSelectItemProps) => {
+}: ToggleSelectItemProps<T>) {
   const classList = classNames(
     S.item,
     className,
@@ -36,48 +38,60 @@ export const ToggleSelectItem = ({
   )
 }
 
-export type ToggleSelectProps = PropsWithChildren & PropsWithClassName & {
+export type ToggleSelectProps<T> = PropsWithClassName & {
   selectedItemClassName?: string
   itemClassName?: string
-  defaultValue?: number[],
-  onSelect: (selected: number[]) => void 
+  value?: T[],
+  defaultSelectedIndexes?: number[],
+  onChange: (selected: T[]) => void
+  components?: {
+    Item: React.FC<ToggleSelectItemProps<T>>
+  }
 }
 
-export const ToggleSelect = ({ 
+export function ToggleSelect <T>({ 
   className,
-  defaultValue,
+  value = [],
+  defaultSelectedIndexes = [],
   selectedItemClassName,
   itemClassName,
-  onSelect,
-  children 
-}: ToggleSelectProps) => {
-  const [data, setData] = useState<number[]>(defaultValue || []);
+  onChange,
+  components = {
+    Item: ToggleSelectItem
+  }
+}: ToggleSelectProps<T>) {
+  const { Item } = components;
+  const [selected, setSelected] = useState<number[]>(defaultSelectedIndexes);
   
-  const getIsSelected = inArray(data);
+  const getIsSelected = inArray(selected);
 
   const toggleFaction = (id: number) => {
     const isSelected = getIsSelected(id);
     
-    const selected = isSelected ? 
-      without([id], data) : 
-      append(id, data);
+    const data = isSelected ? 
+      without([id], selected) : 
+      append(id, selected);
     
-    setData(selected);
-    onSelect(selected);
+    setSelected(data);
+    onChange(
+      data.map(index => value[index])
+    );
   }
 
   return (
     <div className={classNames(S.container, className)}>
-      {Children.map(children, (Child, index) => (
-        <ToggleSelectItem 
+      {value.map((item, index) => (
+        <Item 
           key={index}
           className={itemClassName}
           selectedClassName={selectedItemClassName}
           isSelected={getIsSelected(index)}
           onToggle={() => toggleFaction(index)}
+          value={item}
+          index={index}
         >
-          {Child}
-        </ToggleSelectItem>
+          {index}
+        </Item>
       ))}
     </div>
   );
