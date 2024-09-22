@@ -8,6 +8,7 @@ export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
     ...getBasicWeaknessDividers(options),
     ...getUpgradingDividers(options),
     ...getPlayerCardDividers(options),
+    ...getFactionIdDividers(options),
   ]
 }
 
@@ -77,6 +78,25 @@ export const getUpgradingDividers = ({
     type: 'player'
   }))
 }
+
+export const getFactionIdDividers = ({
+  factions,
+  useFactionId
+}: {
+  factions: IFaction[]
+  useFactionId: boolean
+}) => {
+  if (!useFactionId) {
+    return [];
+  }
+  return factions.map((faction): IDivider => ({
+    id: uniqId(),
+    name: faction.name,
+    icon: faction.icon,
+    type: 'player'
+  }))
+}
+
 
 export const getBasicWeaknessDividers = ({
   includeBasicWeakness

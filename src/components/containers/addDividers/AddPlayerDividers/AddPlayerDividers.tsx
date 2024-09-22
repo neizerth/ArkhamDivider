@@ -25,6 +25,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const [useUpgrading, setUpgrading] = useState(false);
   const [includeBasicWeakness, setIncludeBasicWeakness] = useState(false);
   const [includeAllies, setIncludeAllies] = useState(false);
+  const [useFactionId, setUseFactionId] = useState(false);
 
   const onAdd = () => {
     dispatch(addPlayerDividers({
@@ -32,6 +33,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
       factions,
       types,
       useUpgrading,
+      useFactionId,
       includeBasicWeakness,
       includeAllies
     }));
@@ -59,6 +61,12 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
           </Row>
           <Row className={classNames(S.row)}>
             <PlayerCardTypeSelect onChange={setTypes}/>
+            <Checkbox 
+              checked={useFactionId} 
+              onChange={onToggle(setUseFactionId)}
+            >
+              {t('Card Factions')}
+            </Checkbox>
             <Checkbox 
               checked={useUpgrading} 
               onChange={onToggle(setUpgrading)}

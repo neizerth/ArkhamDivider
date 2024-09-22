@@ -16,6 +16,7 @@ export type AddPlayerDividersOptions = {
   useUpgrading: boolean
   includeBasicWeakness: boolean
   includeAllies: boolean
+  useFactionId: boolean
 }
 
 export type AddStoryDividersOptions = {
