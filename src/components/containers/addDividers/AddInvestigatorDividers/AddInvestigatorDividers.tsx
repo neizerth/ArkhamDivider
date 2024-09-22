@@ -27,13 +27,13 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
 
   const storiesWithInvestigators = stories.filter(({ investigators }) => investigators.length > 0);
 
-  const getIsTranslated = ({ investigators }: IStory) => {
+  const getIsTranslated = ({ investigators, code }: IStory) => {
     if (language === 'en') {
       return true;
     }
-    return investigators.some(
+    return investigators.every(
       ({ name }) => t(name) !== name
-    )
+    );
   }
 
   const onAdd = () => {
