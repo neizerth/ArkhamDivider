@@ -7,7 +7,6 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectType, setType } from '@/store/features/layout/layout';
 import classNames from 'classnames';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { current } from '@reduxjs/toolkit';
 import { setDividers } from '@/store/features/dividers/dividers';
 
 

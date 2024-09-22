@@ -14,8 +14,6 @@ import { useTranslation } from 'react-i18next';
 import { IDivider } from '@/types/dividers';
 import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
 import { ClassicDividerXPCost } from '../ClassicDividerXPCost/ClassicDividerXPCost';
-import { CardType } from '@/types/game';
-
 
 export type ClassicDividerProps = PropsWithClassName & IDivider &{
 	id: string
