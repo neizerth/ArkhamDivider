@@ -1,24 +1,24 @@
 import { Icon } from '@/components/ui/Icon/Icon';
-import S from './ClassicDividerCost.module.scss';
+import S from './ClassicDividerXPCost.module.scss';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { CardType } from '@/types/game';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectColor } from '@/store/features/layout/layout';
 
-export type ClassicDividerCostProps = PropsWithClassName & {
+export type ClassicDividerXPCostProps = PropsWithClassName & {
   level: number
   type: CardType
 }
 
-export type ClassicDividerSkillCostProps = PropsWithClassName & {
+export type ClassicDividerSkillXPCostProps = PropsWithClassName & {
   level: number
 }
 
-export const ClassicDividerSkillCost = ({
+export const ClassicDividerSkillXPCost = ({
   className,
   level
-}: ClassicDividerSkillCostProps) => {
+}: ClassicDividerSkillXPCostProps) => {
   return (
     <div className={classNames(S.skill, className)}>
       {level === 0 && (
@@ -36,36 +36,36 @@ export const ClassicDividerSkillCost = ({
   )
 }
 
-export const ClassicDividerDefaultCost = ({
+export const ClassicDividerDefaultXPCost = ({
   level
 }: {
   level: number
 }) => {
   return (
-    <div className={S.cost}>
+    <div className={S.XPCost}>
       <Icon icon="inverted_level_0" className={classNames(S.background)}/>
       {level > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level, S.lightLevel)}/>}
     </div>
   )
 }
 
-export const ClassicDividerEventCost = ({
+export const ClassicDividerEventXPCost = ({
   level
 }: {
   level: number
 }) => {
   return (
-    <div className={classNames(S.cost, S.event)}>
+    <div className={classNames(S.XPCost, S.event)}>
       {level > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level)}/>}
     </div>
   )
 }
 
-export const ClassicDividerCost = ({
+export const ClassicDividerXPCost = ({
   className,
   type,
   level
-}: ClassicDividerCostProps) => {
+}: ClassicDividerXPCostProps) => {
   const color = useAppSelector(selectColor);
 
   const classList = classNames(
@@ -77,13 +77,13 @@ export const ClassicDividerCost = ({
   return (
     <div className={classList}>
       {type === CardType.SKILL && (
-        <ClassicDividerSkillCost level={level}/>
+        <ClassicDividerSkillXPCost level={level}/>
       )}
       {type === CardType.EVENT && (
-        <ClassicDividerEventCost level={level}/>
+        <ClassicDividerEventXPCost level={level}/>
       )}
        {type === CardType.ASSET && (
-        <ClassicDividerDefaultCost level={level}/>
+        <ClassicDividerDefaultXPCost level={level}/>
       )}
     </div>
   );

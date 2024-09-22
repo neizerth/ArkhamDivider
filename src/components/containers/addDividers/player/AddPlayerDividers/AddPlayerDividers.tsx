@@ -1,10 +1,10 @@
 import { Checkbox, Col, Container, FactionSelect, IconButton, PlayerCardTypeSelect, Row } from '@/components';
 import S from './AddPlayerDividers.module.scss';
-import { CostSelect } from '@/components';
+import { XPCostSelect } from '@/components';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { ICardType, ICost, IFaction } from '@/types/game';
+import { ICardType, IXPCost, IFaction } from '@/types/game';
 import { ButtonType } from '@/types/ui';
 import { onToggle } from '@/util/forms';
 import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
@@ -18,7 +18,7 @@ export type AddPlayerDividersProps = {
 export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [costs, setCosts] = useState<ICost[]>([]);
+  const [xpCosts, setXPCosts] = useState<IXPCost[]>([]);
   const [factions, setFactions] = useState<IFaction[]>([]);
   const [types, setTypes] = useState<ICardType[]>([]);
 
@@ -28,7 +28,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
 
   const onAdd = () => {
     dispatch(addPlayerDividers({
-      costs,
+      xpCosts,
       factions,
       types,
       useUpgrading,
@@ -72,9 +72,9 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
               {t('Ally')}
             </Checkbox>
           </Row>
-          <Row className={classNames(S.cost)}>
+          <Row className={classNames(S.xpCost)}>
             <div className={S.label}>{t('Cost')}</div>
-            <CostSelect onChange={setCosts}/>
+            <XPCostSelect onChange={setXPCosts}/>
           </Row>
           <Row className={S.actions}>
             <IconButton 

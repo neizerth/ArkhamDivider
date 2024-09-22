@@ -1,6 +1,6 @@
 import { AppThunk } from "@/store";
 import { IStory } from "@/types/api";
-import { IFaction, ICardType, ICost } from "@/types/game";
+import { IFaction, ICardType, IXPCost } from "@/types/game";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { selectEncounterSets } from "../encounterSets/encounterSets";
 import { selectReturnSetsOf } from "../stories/stories";
@@ -10,7 +10,7 @@ import { getPlayerDividers } from "@/features/dividers/player/getPlayerDividers"
 
 export type AddPlayerDividersOptions = {
   factions: IFaction[]
-  costs: ICost[]
+  xpCosts: IXPCost[]
   types: ICardType[]
   useUpgrading: boolean
   includeBasicWeakness: boolean

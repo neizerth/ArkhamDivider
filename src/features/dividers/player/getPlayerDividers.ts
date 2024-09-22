@@ -13,7 +13,7 @@ export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
 
 export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
   const {
-    costs,
+    xpCosts,
     factions
   } = options;
 
@@ -23,7 +23,7 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
   ]
 
   return factions.map(faction => {
-    return costs.map(cost => {
+    return xpCosts.map(xpCost => {
       return types.map((type): IDivider => {
         return {
           id: uniqId(),
@@ -32,7 +32,7 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
           previewIcon: faction.icon,
           cardType: type.type,
           type: 'player',
-          cost
+          xpCost
         }
       });
     })

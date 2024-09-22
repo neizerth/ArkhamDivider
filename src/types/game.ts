@@ -5,7 +5,7 @@ export type IFaction = {
   name: string
 }
 
-export enum Cost {
+export enum XPCost {
   ZERO = '0',
   ONE = '1',
   TWO = '2',
@@ -20,7 +20,7 @@ export enum CardType {
   EVENT = 'event'
 }
 
-export type ICost = {
+export type IXPCost = {
   value: string
   level?: number
   is_fixed: boolean

@@ -24,7 +24,7 @@ export { LanguageFlag } from './ui/LanguageFlag/LanguageFlag';
 export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';
-export { CostSelect } from './ui/select/CostSelect/CostSelect';
+export { XPCostSelect } from './ui/select/XPCostSelect/XPCostSelect';
 export { PlayerCardTypeSelect } from './ui/select/PlayerCardTypeSelect/PlayerCardTypeSelect';
 export { ToggleSelect } from './ui/select/ToggleSelect/ToggleSelect';
 

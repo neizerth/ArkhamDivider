@@ -1,4 +1,4 @@
-import { CardType, ICost } from "./game"
+import { CardType, IXPCost } from "./game"
 
 export type IDivider = {
     id: string
@@ -9,7 +9,7 @@ export type IDivider = {
     previewIcon?: string
     campaignIcon?: string
     isUpgrading?: boolean
-    cost?: ICost,
+    xpCost?: IXPCost,
     size?: number
 }
 

@@ -13,7 +13,7 @@ import { selectLayout } from '@/store/features/layout/layout';
 import { useTranslation } from 'react-i18next';
 import { IDivider } from '@/types/dividers';
 import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
-import { ClassicDividerCost, ClassicDividerSkillCost } from '../ClassicDividerCost/ClassicDividerCost';
+import { ClassicDividerXPCost } from '../ClassicDividerXPCost/ClassicDividerXPCost';
 import { CardType } from '@/types/game';
 
 
@@ -27,7 +27,7 @@ export const ClassicDivider = ({
 	icon,
 	cardType,
 	previewIcon = icon,
-	cost,
+	xpCost,
 	name = '',
 	background,
 	size,
@@ -111,11 +111,11 @@ export const ClassicDivider = ({
 							<Icon icon={previewIcon}/>
 						</div>
 					)}
-					{cost && cost.level !== undefined && cardType && (
-						<div className={S.cost}>
-							<ClassicDividerCost
+					{xpCost && xpCost.level !== undefined && cardType && (
+						<div className={S.xpCost}>
+							<ClassicDividerXPCost
 								type={cardType}
-								level={cost.level}
+								level={xpCost.level}
 							/>
 						</div>
 					)}
