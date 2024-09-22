@@ -116,7 +116,7 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
               <StoryCustomContent
                 content={story.custom_content}
               />
-          </div>
+            </div>
           )}
         </Col>
       </Container>
