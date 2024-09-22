@@ -1,5 +1,5 @@
 import { AppThunk } from "@/store";
-import { IStory } from "@/types/api";
+import { IInvestigator, IStory } from "@/types/api";
 import { IFaction, ICardType, IXPCost } from "@/types/game";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { selectEncounterSets } from "../encounterSets/encounterSets";
@@ -7,6 +7,7 @@ import { selectReturnSetsOf } from "../stories/stories";
 import { getStoryDividers } from "@/features/dividers/story/getStoryDividers";
 import { addDividers } from "../dividers/dividers";
 import { getPlayerDividers } from "@/features/dividers/player/getPlayerDividers";
+import { getInvestigatorDividers } from "@/features/dividers/investigator/getInvestigatorDividers";
 
 export type AddPlayerDividersOptions = {
   factions: IFaction[]
@@ -28,12 +29,18 @@ export type AddStoryDividersOptions = {
   includeScenarioSize: boolean
 }
 
-export const addPlayerDividers = (options: AddPlayerDividersOptions): ActionCreator<AppThunk> => dispatch => {
-  // const { factions } = options;
-  // const dividers: IDivider = factions.map()
+export type AddInvestigatorDividers = {
+  investigators: IInvestigator[]
+}
 
+export const addInvestigatorDividers = (options: AddInvestigatorDividers): ActionCreator<AppThunk> => dispatch => {
+  const dividers = getInvestigatorDividers(options);
+  return dispatch(addDividers(dividers));
+}
+
+export const addPlayerDividers = (options: AddPlayerDividersOptions): ActionCreator<AppThunk> => dispatch => {
   const dividers = getPlayerDividers(options);
-  dispatch(addDividers(dividers));
+  return dispatch(addDividers(dividers));
 }
 
 export const addStoryDividers: ActionCreator<AppThunk> = (options: AddStoryDividersOptions) => (dispatch, getState) => {

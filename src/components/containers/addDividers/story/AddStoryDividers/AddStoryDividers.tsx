@@ -9,6 +9,7 @@ import { removeAllDividers } from '@/store/features/dividers/dividers';
 import { ButtonType } from '@/types/ui';
 import { useTranslation } from 'react-i18next';
 import { addStoryDividers } from '@/store/features/addDividers/addDividers';
+import { selectLanguage, selectTranslatedStories } from '@/store/features/language/language';
 
 export type AddStoryDividersProps = {
 
@@ -18,6 +19,20 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [story, setCurrentStory] = useState<IStory | null>(null);
+
+  const stories = useAppSelector(selectStories);
+  const language = useAppSelector(selectLanguage);
+  const translated = useAppSelector(selectTranslatedStories);
+  const getIsTranslated = (story: IStory) => {
+    if (language === 'en') {
+      return true;
+    }
+    if (!translated[language]) {
+      return false;
+    }
+    return translated[language].includes(story.code);
+  }
+  
   const [form, onFormChange] = useState({
     includeExtraSets: false,
     includeReturnSets: false,
@@ -45,7 +60,6 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
 
   const onClear = () => dispatch(removeAllDividers());
 
-  const stories = useAppSelector(selectStories);
 
   return (
     <div className={S.container}>
@@ -56,6 +70,7 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
               <StorySelect 
                 className={S.select}
                 stories={stories} 
+                getIsTranslated={getIsTranslated}
                 onChange={setCurrentStory}
                 value={story}
               />
@@ -64,7 +79,7 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                   <IconButton 
                     onClick={onGenerate} 
                     className={S.generate}
-                    icon="Icon"
+                    icon="check-thin"
                   >
                     {t('Generate')}
                   </IconButton>

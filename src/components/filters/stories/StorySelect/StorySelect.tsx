@@ -14,6 +14,7 @@ import classNames from 'classnames';
 export type StorySelectProps = PropsWithClassName & {
   stories: IStory[]
   value: IStory | null
+  getIsTranslated: (story: IStory) => boolean
   onChange: (story: IStory) => void
 }
 
@@ -21,6 +22,7 @@ export const StorySelect = ({
   stories, 
   onChange,
   className,
+  getIsTranslated,
   ...props 
 }: StorySelectProps) => {
   const { t } = useTranslation();
@@ -38,6 +40,7 @@ export const StorySelect = ({
 
   const mapStory = (story: IStory) => ({
     label: t(story.name),
+    isTranslated: getIsTranslated(story),
     value: story
   });
   

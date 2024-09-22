@@ -7,7 +7,7 @@ export { StoryCustomContent }  from './containers/StoryCustomContent/StoryCustom
 
 export { AddStoryDividers }  from './containers/addDividers/story/AddStoryDividers/AddStoryDividers';
 export { AddStoryParams }  from './containers/addDividers/story/AddStoryParams/AddStoryParams';
-export { AddPlayerDividers }  from './containers/addDividers/player/AddPlayerDividers/AddPlayerDividers';
+export { AddPlayerDividers }  from './containers/addDividers/AddPlayerDividers/AddPlayerDividers';
 export { AddDividers }  from './containers/addDividers/AddDividers/AddDividers';
 
 export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';

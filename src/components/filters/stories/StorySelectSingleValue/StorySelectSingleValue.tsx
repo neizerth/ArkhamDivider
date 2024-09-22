@@ -5,6 +5,7 @@ import { IStory } from '@/types/api';
 
 export type StorySelectSingleValueProps = SingleValueProps<{
   label: string,
+  isTranslated: boolean
   value: IStory
 }>
 
@@ -12,10 +13,13 @@ export const StorySelectSingleValue = ({
   children, 
   ...props
 }: StorySelectSingleValueProps) => {
-  const story = props.data.value;
+  const { data } = props;
   return (
     <components.SingleValue {...props}>
-      <StorySelectValue story={story}>
+      <StorySelectValue 
+        story={data.value} 
+        isTranslated={data.isTranslated}
+      >
         {children}
       </StorySelectValue>
     </components.SingleValue>
