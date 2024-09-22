@@ -65,31 +65,31 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
             getIsTranslated={getIsTranslated}
           />
           {story && (
-          <>
-            <IconButton
-              onClick={onGenerate} 
-              className={S.generate}
-              icon="check-thin"
-            >
-              {t('Generate')}
-            </IconButton>
-            <IconButton 
-              onClick={onAdd} 
-              className={S.add}
-              icon="plus-thin"
-            >
-              {t('Add')}
-            </IconButton>
-            <IconButton 
-              onClick={onClear} 
-              className={S.add}
-              buttonType={ButtonType.DANGER}
-              icon="trash"
-            >
-              {t('Clear')}
-            </IconButton>
-          </>
-        )}
+            <>
+              <IconButton
+                onClick={onGenerate} 
+                className={S.generate}
+                icon="check-thin"
+              >
+                {t('Generate')}
+              </IconButton>
+              <IconButton 
+                onClick={onAdd} 
+                className={S.add}
+                icon="plus-thin"
+              >
+                {t('Add')}
+              </IconButton>
+              <IconButton 
+                onClick={onClear} 
+                className={S.add}
+                buttonType={ButtonType.DANGER}
+                icon="trash"
+              >
+                {t('Clear')}
+              </IconButton>
+            </>
+          )}
         </Row>
       </Container>
     </div>
