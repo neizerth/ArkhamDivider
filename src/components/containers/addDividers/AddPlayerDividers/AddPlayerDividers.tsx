@@ -50,7 +50,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
     <div className={S.container}>
       <Container>
         <Col className={S.content}>
-          <Row className={classNames(S.row)}>
+          <Row className={classNames(S.row)} wrap>
             <FactionSelect onChange={setFactions}/>
             <Checkbox 
               checked={includeBasicWeakness} 
@@ -59,7 +59,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
               {t('Basic Weakness')}
             </Checkbox>
           </Row>
-          <Row className={classNames(S.row)}>
+          <Row className={classNames(S.row)} wrap>
             <PlayerCardTypeSelect onChange={setTypes}/>
             <Checkbox 
               checked={useFactionId} 
@@ -84,7 +84,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             <div className={S.label}>{t('Cost')}</div>
             <XPCostSelect onChange={setXPCosts}/>
           </Row>
-          <Row className={S.actions}>
+          <Row className={S.actions} wrap>
             <IconButton 
               icon="check-thin"
               onClick={onGenerate}

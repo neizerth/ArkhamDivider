@@ -7,6 +7,7 @@
 .label {
   font-weight: 500;
   padding: 0px 20px;
+  box-sizing: border-box;
   border-right: 1px solid #e7e7e7;
 }
 
@@ -17,6 +18,8 @@
 .actions {
   border-top: 1px solid #e7e7e7;
   padding: 20px;
+
+  box-sizing: border-box;
   border-radius: 5px;
   // background-color: #fff;
   // box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
