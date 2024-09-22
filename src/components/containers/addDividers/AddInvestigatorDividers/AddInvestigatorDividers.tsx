@@ -27,7 +27,7 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
 
   const storiesWithInvestigators = stories.filter(({ investigators }) => investigators.length > 0);
 
-  const getIsTranslated = ({ investigators, code }: IStory) => {
+  const getIsTranslated = ({ investigators }: IStory) => {
     if (language === 'en') {
       return true;
     }
