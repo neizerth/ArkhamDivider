@@ -1,0 +1,37 @@
+[
+  {
+    "id": "guardian",
+    "name": "Guardian",
+    "icon": "guardian"
+  },
+  {
+    "id": "seeker",
+    "name": "Seeker",
+    "icon": "seeker"
+  },
+  {
+    "id": "rogue",
+    "name": "Rogue",
+    "icon": "rogue"
+  },
+  {
+    "id": "mystic",
+    "name": "Mystic",
+    "icon": "mystic"
+  },
+  {
+    "id": "survivor",
+    "name": "Survivor",
+    "icon": "survivor"
+  },
+  {
+    "id": "neutral",
+    "name": "Neutral",
+    "icon": "class_neutral"
+  },
+  {
+    "id": "multiclass",
+    "name": "Multiclass",
+    "icon": "multiclass"
+  }
+]

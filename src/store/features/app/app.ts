@@ -54,6 +54,7 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
     scenarios,
     encounterSets,
     stories,
+    investigators,
     common,
   } = await fetchLanguageData(language);
 
@@ -68,7 +69,8 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
     ...scenarios,
     ...stories,
     ...common,
-    ...translation
+    ...translation,
+    ...investigators
   };
   
   dispatch(setCoreTranslations(language, mapping));

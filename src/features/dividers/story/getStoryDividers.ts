@@ -4,17 +4,11 @@ import { arrayIf } from "@/util/common";
 import { descend, isNotNil, prop, sortWith } from "ramda";
 import { getScenarioDividers } from "./getScenarioDividers";
 import { getEncounterDividers } from "./getEncounterDividers";
+import { AddStoryDividersOptions } from "@/store/features/addDividers/addDividers";
 
-export type IGetStoryDividersOptions = {
-  story: IStory
-  returnStories?: IStory[],
-  includeExtraSets: boolean
-  includeScenarios: boolean
-  includeEncounterSize: boolean
-  includeCampaignIcon: boolean
-  includeScenarioEncounterSet: boolean
-  includeScenarioSize: boolean
+export type IGetStoryDividersOptions = AddStoryDividersOptions & {
   encounterSets: IEncounterSet[]
+  returnStories?: IStory[]
 }
 
 export const getStoryDividers = (options: IGetStoryDividersOptions) => {

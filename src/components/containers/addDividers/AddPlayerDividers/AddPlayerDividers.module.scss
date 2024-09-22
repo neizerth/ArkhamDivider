@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  font-weight: 500;
+  padding: 0px 20px;
+  border-right: 1px solid #e7e7e7;
+}
+
+.xpCost {
+  align-items: center;
+}
+
+.actions {
+  border-top: 1px solid #e7e7e7;
+  padding: 20px;
+  border-radius: 5px;
+  // background-color: #fff;
+  // box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

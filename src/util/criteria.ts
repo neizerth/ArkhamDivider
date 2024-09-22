@@ -20,6 +20,9 @@ export const propNotIncludes =  <K extends keyof U, U>(data: U[K][], name: K) =>
     data
   )
 
+export const inArray = curry(
+  <T>(data: T[], value: T) => data.includes(value)
+); 
 // export const safePropEq = curry(
 //   <K extends keyof U, U>(name: K | undefined, obj: U) => isNil(prop) propEq(name, obj)
 // );

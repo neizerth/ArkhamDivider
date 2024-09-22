@@ -7,12 +7,10 @@ import { propEq } from 'ramda';
 import { uniqId } from '@/util/common';
 
 export type IDividersState = {
-  color: boolean;
   list: IDividerList
 }
 
 const initialState: IDividersState = {
-  color: true,
   list: []
 };
 
@@ -21,11 +19,9 @@ export const dividers = createSlice({
   initialState,
   reducers: {
     setDividers: createSliceSetter('list'),
-    setColor: createSliceSetter('color')
   },
   selectors: {
-    selectDividers: createSliceSelector('list'),
-    selectColor: createSliceSelector('color')
+    selectDividers: createSliceSelector('list')
   }
 });
 
@@ -75,12 +71,10 @@ export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
 
 export const {
   setDividers,
-  setColor
 } = dividers.actions;
 
 export const {
   selectDividers,
-  selectColor
 } = dividers.selectors;
 
 export default dividers.reducer;

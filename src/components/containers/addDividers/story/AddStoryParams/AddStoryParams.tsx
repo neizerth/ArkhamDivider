@@ -4,26 +4,39 @@ import { Checkbox, Col, Icon, Row } from '@/components';
 import { selectStories } from '@/store/features/stories/stories';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { safePropEq } from '@/util/criteria';
-import { selectDividerFormConfig, setDividerFormConfig } from '@/store/features/addDividersForm/addDividersForm';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { createToggleHanlder } from '@/util/forms';
 // import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 export type ToggleFunction = (value: boolean) => void;
 
+export type IAddStoryParamsForm = {
+  includeExtraSets: boolean
+  includeReturnSets: boolean
+  includeScenarios: boolean
+  includeEncounterSize: boolean
+  includeCampaignIcon: boolean
+  includeScenarioEncounterSet: boolean
+  includeScenarioSize: boolean
+}
+
 export type AddStoryParamsProps = {
   story: IStory
+  defaultValue: IAddStoryParamsForm
+  onChange: (form: IAddStoryParamsForm) => void
 }
 
 export const AddStoryParams = ({ 
   story, 
+  defaultValue,
+  onChange,
 }: AddStoryParamsProps) => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   
   const stories = useAppSelector(selectStories);
-  const form = useAppSelector(selectDividerFormConfig);
+  
+  const [form, setForm] = useState(defaultValue);
 
   const haveExtraDividers = story.extra_encounter_sets.length > 0;
 
@@ -35,7 +48,10 @@ export const AddStoryParams = ({
 
   const check = createToggleHanlder(
     form, 
-    data => dispatch(setDividerFormConfig(data))
+    form => {
+      setForm(form);
+      onChange(form);
+    }
   );
 
   return (

@@ -1,4 +1,4 @@
-import { Divider, A4, Row } from '@/components';
+import { ClassicDivider, A4, Row } from '@/components';
 
 import S from './Layout.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -21,8 +21,7 @@ export const Layout = ({ }: LayoutProps) => {
 		groupSize, 
 		rowSize, 
 		image, 
-		orientation,
-		id
+		pageOrientation,
 	} = layout;
 
 	const pages = splittIntoPages(dividers, {
@@ -45,7 +44,7 @@ export const Layout = ({ }: LayoutProps) => {
 						pagesTotal={pagesTotal}
 						isLast={pageNumber === pagesTotal}
 						key={pageIndex}
-						orientation={orientation}
+						orientation={pageOrientation}
 					>
 						<div className={S.group}>
 							{rows.map((row, rowIndex) => (
@@ -55,11 +54,10 @@ export const Layout = ({ }: LayoutProps) => {
 									key={rowIndex}
 								>
 									{row.map((divider, index) => (
-										<Divider 
+										<ClassicDivider 
 											{...divider} 
 											key={index}
 											background={image}
-											layoutId={id}
 										/>
 									))}
 								</Row>
