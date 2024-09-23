@@ -1,7 +1,6 @@
 import { range } from 'ramda';
 import S from './Invocation2018DividerCost.module.scss';
 import classNames from 'classnames';
-import { Icon } from '@/components';
 import { PropsWithClassName } from '@/types/util';
 
 export type Invocation2018DividerCostProps = PropsWithClassName &{

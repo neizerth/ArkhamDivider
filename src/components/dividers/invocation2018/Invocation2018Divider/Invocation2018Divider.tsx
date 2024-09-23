@@ -2,7 +2,7 @@ import S from './Invocation2018Divider.module.scss';
 import { IDivider } from '@/types/dividers';
 import { PropsWithClassName } from '@/types/util';
 import { backgrounds } from './backgrounds';
-import { omit, propEq } from 'ramda';
+import { omit } from 'ramda';
 import { ClassicDivider } from '@/components';
 import { propsEquals } from '@/util/criteria';
 import { Invocation2018DividerCost } from '../Invocation2018DividerCost/Invocation2018DividerCost';

@@ -1,5 +1,5 @@
-import { Mapping, PropsWithClassName } from '@/types/util';
-import S from './Divider.module.scss';
+import { PropsWithClassName } from '@/types/util';
+// import S from './Divider.module.scss';
 import { IDivider } from '@/types/dividers';
 import { ClassicDivider } from '../classic/ClassicDivider/ClassicDivider';
 import { Invocation2018Divider } from '../invocation2018/Invocation2018Divider/Invocation2018Divider';
