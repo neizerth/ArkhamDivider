@@ -2,6 +2,7 @@ import { range } from 'ramda';
 import S from './Invocation2018DividerCost.module.scss';
 import classNames from 'classnames';
 import { PropsWithClassName } from '@/types/util';
+import { Icon } from '@/components/ui/Icon/Icon';
 
 export type Invocation2018DividerCostProps = PropsWithClassName &{
   level: number
@@ -26,7 +27,9 @@ export const Invocation2018DividerCost = ({
               l > level && S[`level_style-${l - level}`],
               l <= level && S.level_current
             )}
-          />
+          >
+            <Icon icon='ae_level_1'/>
+          </div>
         ))}
       </div>
     </div>

@@ -8,10 +8,7 @@
 
 .level {
   position: absolute;
-  width: 0.09em;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: var(--color);
+  font-size: 1em;
   // box-shadow: 0 0 0.5em var(--color);
 }
 
@@ -38,19 +35,19 @@
   }
   &_style {
     &-1 {
-      --color: rgba(255, 255, 255, 0.45);
+      color: rgba(255, 255, 255, 0.45);
     }
     &-2 {
-      --color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
     &-3 {
-      --color: rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.35);
     }
     &-4 {
-      --color: rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.3);
     }
   }
   &_current {
-    --color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);
   }
 }
