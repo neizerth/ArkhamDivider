@@ -3,11 +3,12 @@ import { IInvestigator, IStory } from "@/types/api";
 import { IFaction, ICardType, IXPCost } from "@/types/game";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { selectEncounterSets } from "../encounterSets/encounterSets";
-import { selectReturnSetsOf } from "../stories/stories";
+import { selectStories } from "../stories/stories";
 import { getStoryDividers } from "@/features/dividers/story/getStoryDividers";
 import { addDividers } from "../dividers/dividers";
 import { getPlayerDividers } from "@/features/dividers/player/getPlayerDividers";
 import { getInvestigatorDividers } from "@/features/dividers/investigator/getInvestigatorDividers";
+import { withReturnTo } from "../stories/criteria";
 
 export type AddPlayerDividersOptions = {
   factions: IFaction[]
@@ -16,7 +17,8 @@ export type AddPlayerDividersOptions = {
   useUpgrading: boolean
   includeBasicWeakness: boolean
   includeAllies: boolean
-  useFactionId: boolean
+  includeFactionId: boolean
+  includeBonded: boolean
 }
 
 export type AddStoryDividersOptions = {
@@ -48,10 +50,10 @@ export const addStoryDividers: ActionCreator<AppThunk> = (options: AddStoryDivid
   const state = getState();
 
   const encounterSets = selectEncounterSets(state);
+  const stories = selectStories(state);
   const { story, includeReturnSets } = options;
  
-  const selectReturnSets = selectReturnSetsOf(story.code);
-  const returnStories = includeReturnSets ? selectReturnSets(state) : [];
+  const returnStories = includeReturnSets ? stories.filter(withReturnTo(story.code)) : [];
 
   const dividers = getStoryDividers({
     ...options,

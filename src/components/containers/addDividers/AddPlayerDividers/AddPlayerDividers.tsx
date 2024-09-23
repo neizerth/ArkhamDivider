@@ -25,7 +25,8 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const [useUpgrading, setUpgrading] = useState(false);
   const [includeBasicWeakness, setIncludeBasicWeakness] = useState(false);
   const [includeAllies, setIncludeAllies] = useState(false);
-  const [useFactionId, setUseFactionId] = useState(false);
+  const [includeFactionId, setIncludeFactionId] = useState(false);
+  const [includeBonded, setIncludeBonded] = useState(false);
 
   const onAdd = () => {
     dispatch(addPlayerDividers({
@@ -33,7 +34,8 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
       factions,
       types,
       useUpgrading,
-      useFactionId,
+      includeFactionId,
+      includeBonded,
       includeBasicWeakness,
       includeAllies
     }));
@@ -62,22 +64,30 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
           <Row className={classNames(S.row)} wrap>
             <PlayerCardTypeSelect onChange={setTypes}/>
             <Checkbox 
-              checked={useFactionId} 
-              onChange={onToggle(setUseFactionId)}
+              checked={includeAllies} 
+              onChange={onToggle(setIncludeAllies)}
+            >
+              {t('Ally')}
+            </Checkbox>
+          </Row>
+          <Row wrap>
+            <Checkbox 
+              checked={includeFactionId} 
+              onChange={onToggle(setIncludeFactionId)}
             >
               {t('Card Factions')}
+            </Checkbox>
+            <Checkbox 
+              checked={includeBonded} 
+              onChange={onToggle(setIncludeBonded)}
+            >
+              {t('Bonded')}
             </Checkbox>
             <Checkbox 
               checked={useUpgrading} 
               onChange={onToggle(setUpgrading)}
             >
               {t('Upgrading')}
-            </Checkbox>
-            <Checkbox 
-              checked={includeAllies} 
-              onChange={onToggle(setIncludeAllies)}
-            >
-              {t('Ally')}
             </Checkbox>
           </Row>
           <Row className={classNames(S.xpCost)}>

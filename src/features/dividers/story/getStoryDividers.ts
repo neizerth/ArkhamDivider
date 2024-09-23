@@ -32,6 +32,7 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
   const returnSetDividers: IDivider[] = returnStories.map(story => getStoryDividers({
     ...options,
     story,
+    returnStories: [],
   }))
   .flat();
   

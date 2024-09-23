@@ -9,6 +9,7 @@ export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
     ...getUpgradingDividers(options),
     ...getPlayerCardDividers(options),
     ...getFactionIdDividers(options),
+    ...getBondedDividers(options)
   ]
 }
 
@@ -79,14 +80,32 @@ export const getUpgradingDividers = ({
   }))
 }
 
-export const getFactionIdDividers = ({
+export const getBondedDividers = ({
   factions,
-  useFactionId
+  includeBonded
 }: {
   factions: IFaction[]
-  useFactionId: boolean
+  includeBonded: boolean
 }) => {
-  if (!useFactionId) {
+  if (!includeBonded) {
+    return [];
+  }
+  return factions.map((faction): IDivider => ({
+    id: uniqId(),
+    name: 'Bonded',
+    icon: faction.icon,
+    type: 'player'
+  }))
+}
+
+export const getFactionIdDividers = ({
+  factions,
+  includeFactionId
+}: {
+  factions: IFaction[]
+  includeFactionId: boolean
+}) => {
+  if (!includeFactionId) {
     return [];
   }
   return factions.map((faction): IDivider => ({
