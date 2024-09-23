@@ -13,7 +13,6 @@ import survivorXP from './images/survivor_xp.png';
 import seekerXP from './images/seeker_xp.png';
 
 
-
 export const baseBackgrounds = [
   {
     faction: 'mystic',
