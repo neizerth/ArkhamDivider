@@ -1,4 +1,4 @@
-import { ClassicDivider, A4, Row } from '@/components';
+import { A4, Row, Divider } from '@/components';
 
 import S from './Layout.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -53,7 +53,7 @@ export const Layout = ({ }: LayoutProps) => {
 									key={rowIndex}
 								>
 									{row.map((divider, index) => (
-										<ClassicDivider 
+										<Divider 
 											{...divider} 
 											key={index}
 										/>

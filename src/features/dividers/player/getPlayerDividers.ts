@@ -32,6 +32,7 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
           name: type.name,
           icon: type.icon || faction.icon,
           previewIcon: faction.icon,
+          faction: faction.id,
           cardType: type.type,
           type: 'player',
           xpCost
@@ -76,6 +77,7 @@ export const getUpgradingDividers = ({
     id: uniqId(),
     name: 'Upgrading',
     icon: faction.icon,
+    faction: faction.id,
     type: 'player'
   }))
 }
@@ -94,6 +96,7 @@ export const getBondedDividers = ({
     id: uniqId(),
     name: 'Bonded',
     icon: faction.icon,
+    faction: faction.id,
     type: 'player'
   }))
 }
@@ -112,6 +115,7 @@ export const getFactionIdDividers = ({
     id: uniqId(),
     name: faction.name,
     icon: faction.icon,
+    faction: faction.id,
     type: 'player'
   }))
 }

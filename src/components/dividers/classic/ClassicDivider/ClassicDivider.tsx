@@ -17,8 +17,8 @@ import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStat
 import { ClassicDividerXPCost } from '../ClassicDividerXPCost/ClassicDividerXPCost';
 import { propsEquals } from '@/util/criteria';
 
-export type ClassicDividerProps = PropsWithClassName & IDivider &{
-	id: string
+export type ClassicDividerProps = PropsWithClassName & IDivider & {
+	titleStroke: boolean
 }
 
 export const ClassicDivider = ({
@@ -28,9 +28,11 @@ export const ClassicDivider = ({
 	previewIcon = icon,
 	xpCost,
 	name = '',
+	titleStroke = true,
 	size,
 	className,
 	campaignIcon,
+	...props
 }: ClassicDividerProps) => {
 	const { t } = useTranslation();
 	const bleeds = useAppSelector(selectBleeds);
@@ -41,10 +43,12 @@ export const ClassicDivider = ({
 		color,
 	} = layout;
 	
-	const background = backgrounds.find(propsEquals({
-		orientation,
-		color
-	}));
+	const background = props.background || backgrounds.find(
+		propsEquals({
+			orientation,
+			color
+		})
+	)?.src;
 	
 	const translatedName = t(name);
 
@@ -75,21 +79,18 @@ export const ClassicDivider = ({
 
 	const titleInputClassName = classNames(
 		S.titleInput,
+		titleStroke && S.stroke,
 		title.length > 30 && S.titleInput_l,
 		title.length > 40 && S.titleInput_xl,
 		title.length > 50 && S.titleInput_xxl,
 		S[`titleInput_${language}`]
 	)
-
-	const guidesClassName = classNames(
-		S.guides
-	)
-
+	
 	return (
 		<div 
 			className={containerClassName} 
 		>
-			<div className={guidesClassName}>
+			<div className={S.guides}>
 				<Guides className={S.guidesContent}/>
 			</div>
 			<div className={S.wrapper}>
@@ -103,7 +104,7 @@ export const ClassicDivider = ({
 							onClear={clear}
 						/>
 					</div>
-					{background && <img className={S.background} src={background.src} alt={title}/>}
+					{background && <img className={S.background} src={background} alt={title}/>}
 					{icon && (
 						<div className={classNames(S.icon, S.icon_large)}>
 							<Icon icon={icon}/>
