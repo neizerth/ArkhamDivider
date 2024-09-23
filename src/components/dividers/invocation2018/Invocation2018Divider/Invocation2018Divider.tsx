@@ -4,20 +4,44 @@ import { PropsWithClassName } from '@/types/util';
 import { backgrounds } from './backgrounds';
 import { omit, propEq } from 'ramda';
 import { ClassicDivider } from '@/components';
+import { propsEquals } from '@/util/criteria';
+import { Invocation2018DividerCost } from '../Invocation2018DividerCost/Invocation2018DividerCost';
 
 export type Invocation2018DividerProps = PropsWithClassName & IDivider;
 
 export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
-	const { faction } = props;
+	const { 
+		faction,
+		xpCost
+	} = props;
 
-  const background = backgrounds.find(propEq(faction, 'faction'));
+	const xp = Boolean(
+		xpCost?.level && xpCost.level > 0
+	);
 
-	const dividerProps = omit(['previewIcon', 'icon'], props);
+  const background = backgrounds.find(propsEquals({
+		faction,
+		xp
+	}));
+	
+	const dividerProps = background ? omit([
+		'previewIcon', 
+		'icon', 
+		'xpCost'
+	], props) : props;
+
   return (
     <ClassicDivider 
 			{...dividerProps}
 			titleStroke={false}
 			background={background?.src}
-		/>
+		>
+			{xpCost?.level && (
+				<Invocation2018DividerCost 
+					className={S.xpCost}
+					level={xpCost.level}
+				/>
+			)}
+		</ClassicDivider>
   );
 }

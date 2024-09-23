@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 
 import S from './ClassicDivider.module.scss';
 import { backgrounds } from './backgrounds';
@@ -17,8 +17,8 @@ import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStat
 import { ClassicDividerXPCost } from '../ClassicDividerXPCost/ClassicDividerXPCost';
 import { propsEquals } from '@/util/criteria';
 
-export type ClassicDividerProps = PropsWithClassName & IDivider & {
-	titleStroke: boolean
+export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChildren &{
+	titleStroke?: boolean
 }
 
 export const ClassicDivider = ({
@@ -32,6 +32,7 @@ export const ClassicDivider = ({
 	size,
 	className,
 	campaignIcon,
+	children,
 	...props
 }: ClassicDividerProps) => {
 	const { t } = useTranslation();
@@ -123,6 +124,9 @@ export const ClassicDivider = ({
 							/>
 						</div>
 					)}
+					
+					{children}
+
 					<DividerMenu id={id} className={S.menu}/>
 
 					<ClassicDividerStatus

@@ -1,0 +1,56 @@
+.container {
+  
+}
+
+.levels {
+  position: relative;
+}
+
+.level {
+  position: absolute;
+  width: 0.09em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color);
+  // box-shadow: 0 0 0.5em var(--color);
+}
+
+.level {
+  &_1 {
+    top: 4.6mm;
+    right: 9.35mm
+  }
+  &_2 {
+    top: 6.05mm;
+    right: 7.89mm
+  }
+  &_3 {
+    top: 6.55mm;
+    right: 6mm
+  }
+  &_4 {
+    top: 6.05mm;
+    right: 4.05mm
+  }
+  &_5 {
+    top: 4.6mm;
+    right: 2.6mm
+  }
+  &_style {
+    &-1 {
+      --color: rgba(255, 255, 255, 0.45);
+    }
+    &-2 {
+      --color: rgba(255, 255, 255, 0.4);
+    }
+    &-3 {
+      --color: rgba(255, 255, 255, 0.35);
+    }
+    &-4 {
+      --color: rgba(255, 255, 255, 0.3);
+    }
+  }
+  &_current {
+    --color: rgba(255, 255, 255, 1);
+  }
+}

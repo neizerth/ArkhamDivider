@@ -50,6 +50,7 @@ export const changeLanguage: ActionCreator<AppThunk> = (language: string) => asy
   if (loadedTranslations.includes(language)) {
     return;
   }
+  
   dispatch(loadAppTranslations(language));
 }
 

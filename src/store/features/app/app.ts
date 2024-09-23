@@ -4,7 +4,7 @@ import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { setStories } from '../stories/stories';
 import { setIcons } from '../icons/icons';
-import { addTranslatedStories, setAvailableLanguages, setLoadedTranslations } from '../language/language';
+import { addTranslatedStories, selectLoadedTranslations, setAvailableLanguages, setLoadedTranslations } from '../language/language';
 import { setEncounterSets } from '../encounterSets/encounterSets';
 import { DEFAULT_LANGUAGE } from '@/constants/i18n';
 import { setCoreTranslations } from '../i18n/i18n';
@@ -47,7 +47,8 @@ export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
   dispatch(setLoading(false));
 }
 
-export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) => async dispatch => {
+export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) => async (dispatch, getState) => {
+  const loadedTranslations = selectLoadedTranslations(getState());
   const {
     translatedStories,
     campaigns,
@@ -75,6 +76,10 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
   
   dispatch(setCoreTranslations(language, mapping));
   dispatch(addTranslatedStories(language, translatedStories));
+  dispatch(setLoadedTranslations([
+    ...loadedTranslations,
+    language
+  ]))
 }
 
 export const {
