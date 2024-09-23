@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import S from './ClassicDivider.module.scss';
+import { backgrounds } from './backgrounds';
 
 import { Icon, Guides, DividerMenu, DividerTitle } from '@/components';
 import classNames from 'classnames';
@@ -14,10 +15,10 @@ import { useTranslation } from 'react-i18next';
 import { IDivider } from '@/types/dividers';
 import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
 import { ClassicDividerXPCost } from '../ClassicDividerXPCost/ClassicDividerXPCost';
+import { propsEquals } from '@/util/criteria';
 
 export type ClassicDividerProps = PropsWithClassName & IDivider &{
 	id: string
-	background: string;
 }
 
 export const ClassicDivider = ({
@@ -27,7 +28,6 @@ export const ClassicDivider = ({
 	previewIcon = icon,
 	xpCost,
 	name = '',
-	background,
 	size,
 	className,
 	campaignIcon,
@@ -40,7 +40,12 @@ export const ClassicDivider = ({
 		orientation, 
 		color,
 	} = layout;
-
+	
+	const background = backgrounds.find(propsEquals({
+		orientation,
+		color
+	}));
+	
 	const translatedName = t(name);
 
 	const [title, setTitle] = useState(translatedName);
@@ -98,7 +103,7 @@ export const ClassicDivider = ({
 							onClear={clear}
 						/>
 					</div>
-					<img className={S.background} src={background} alt={title}/>
+					{background && <img className={S.background} src={background.src} alt={title}/>}
 					{icon && (
 						<div className={classNames(S.icon, S.icon_large)}>
 							<Icon icon={icon}/>

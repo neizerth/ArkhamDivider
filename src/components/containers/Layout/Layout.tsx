@@ -20,7 +20,6 @@ export const Layout = ({ }: LayoutProps) => {
 	const { 
 		groupSize, 
 		rowSize, 
-		image, 
 		pageOrientation,
 	} = layout;
 
@@ -57,7 +56,6 @@ export const Layout = ({ }: LayoutProps) => {
 										<ClassicDivider 
 											{...divider} 
 											key={index}
-											background={image}
 										/>
 									))}
 								</Row>

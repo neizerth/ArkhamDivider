@@ -1,4 +1,3 @@
-import { BASE_PATH } from "@/constants/web";
 import { LayoutOrientation, LayoutType } from "@/types/layouts";
 import { ILayout } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
@@ -14,10 +13,8 @@ export const layouts: ILayout[] = [
     types: [LayoutType.SCENARIO],
     orientation: LayoutOrientation.HORIZONTAL,
     pageOrientation: PageOrientation.PORTRAIT,
-    image: BASE_PATH + "/images/dividers/horizontal/common/classic.png",
     color: true,
     is_default: true,
-    tags: ['classic', 'color', 'horizontal']
   },
   {
     id: "classic_bw_horizontal",
@@ -30,8 +27,6 @@ export const layouts: ILayout[] = [
     orientation: LayoutOrientation.HORIZONTAL,
     pageOrientation: PageOrientation.PORTRAIT,
     color: false,
-    image: BASE_PATH + "/images/dividers/horizontal/common/classic_bw.png",
-    tags: ['classic', 'bw', 'vertical']
   },
   {
     id: "classic_60_color_vertical",
@@ -44,8 +39,6 @@ export const layouts: ILayout[] = [
     orientation: LayoutOrientation.VERTICAL,
     pageOrientation: PageOrientation.PORTRAIT,
     color: true,
-    image: BASE_PATH + "/images/dividers/vertical/common/classic_60.png",
-    tags: ['classic', 'color', 'horizontal']
   },
   {
     id: "classic_60_bw_vertical",
@@ -58,7 +51,5 @@ export const layouts: ILayout[] = [
     orientation: LayoutOrientation.VERTICAL,
     pageOrientation: PageOrientation.PORTRAIT,
     color: false,
-    image: BASE_PATH + "/images/dividers/vertical/common/classic_60_bw.png",
-    tags: ['classic', 'bw', 'vertical']
   }
 ]

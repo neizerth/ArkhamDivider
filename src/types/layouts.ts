@@ -9,11 +9,9 @@ export type ILayout = {
   title: string
   types: LayoutType[]
   orientation: LayoutOrientation
-  image: string
   pageOrientation: PageOrientation
   is_default?: boolean
   color: boolean
-  tags: string[]
 }
 
 export enum LayoutType {
