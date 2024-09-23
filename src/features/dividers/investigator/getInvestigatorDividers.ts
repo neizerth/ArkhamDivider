@@ -22,6 +22,7 @@ export const getInvestigatorDividers = ({
     const { icon } = faction;
     return {
       id: uniqId(),
+      faction: faction.id,
       type: 'investigator',
       name,
       icon

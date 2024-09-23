@@ -90,13 +90,13 @@
 
 
 .grayscale {
-  .titleInput {
+  .stroke {
     text-shadow: 1px 1px rgb(255, 255, 255), 1px -1px rgb(255, 255, 255), -1px -1px rgb(255, 255, 255), -1px 1px rgb(255, 255, 255);
   }
 }
 
 .color {
-  .titleInput {
+  .stroke {
     text-shadow: 1px 1px rgba(228, 208, 156, 0.7), 1px -1px rgba(228, 208, 156, 0.7), -1px -1px rgba(228, 208, 156, 0.7), -1px 1px rgba(228, 208, 156, 0.5)
   }
 }

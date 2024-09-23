@@ -5,7 +5,9 @@ export type IDivider = {
     type: string
     name?: string
     icon?: string
-    cardType?: CardType,
+    faction?: string
+    cardType?: CardType
+    background?: string
     previewIcon?: string
     campaignIcon?: string
     isUpgrading?: boolean

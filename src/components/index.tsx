@@ -11,6 +11,7 @@ export { AddPlayerDividers }  from './containers/addDividers/AddPlayerDividers/A
 export { AddDividers }  from './containers/addDividers/AddDividers/AddDividers';
 
 export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';
+export { Divider } from './dividers/Divider/Divider';
 export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
 export { DividerTitle } from './dividers/DividerTitle/DividerTitle';
 
@@ -39,7 +40,7 @@ export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
-export { LayoutFilter } from './filters/LayoutFilter/LayoutFilter';
+export { LayoutSelect } from './filters/LayoutSelect/LayoutSelect';
 
 export { StorySelect, StorySelectOption, StorySelectValue } from './filters/stories';
 
