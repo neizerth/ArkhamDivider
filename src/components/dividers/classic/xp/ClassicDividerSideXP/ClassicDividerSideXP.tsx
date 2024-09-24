@@ -23,7 +23,7 @@ export const ClassicDividerSideXP = ({
       {numeric && (
         <div className={S.text}>{value}</div>
       )}
-      {!numeric && level > 0 && (
+      {!numeric && max > 0 && (
         <div className={S.dots}>
           {range(1, 6).map(l => (
             <div 

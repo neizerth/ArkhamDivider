@@ -33,8 +33,6 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 		'xpCost'
 	], props) : props;
 
-	const displayXP = xpCost && xpCost.level > 0;
-
   return (
     <ClassicDivider 
 			{...dividerProps}
@@ -47,7 +45,7 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 					xpCost={xpCost}
 				/>
 			)}
-			{displaySideXP && displayXP && (
+			{displaySideXP && xpCost && (
 				<div className={S.sideXP}>
 					<ClassicDividerSideXP
 						numeric={displayNumericXP}

@@ -21,12 +21,12 @@ export const ClassicDividerSkillXPCost = ({
 
   return (
     <div className={classNames(S.skill, className)}>
-      {level === 0 && (
+      {max === 0 && (
         <>
           <Icon icon="s_level_null" className={classNames(S.nullSkillBackground)}/>
         </>
       )}
-      {level > 0 && (
+      {max > 0 && (
         <>
           <Icon icon="s_frame_background" className={classNames(S.skillBackground)}/>
           <Icon icon={`s_level_${level}`} className={classNames(S.level, S.lightLevel)}/>
@@ -55,7 +55,7 @@ export const ClassicDividerAssetXPCost = ({
   return (
     <div className={S.XPCost}>
       <Icon icon="inverted_level_0" className={classNames(S.background)}/>
-      {level > 0 && (
+      {max > 0 && (
         <Icon 
           icon={`ae_level_${level}`} 
           className={classNames(S.level, S.lightLevel)}
@@ -83,7 +83,7 @@ export const ClassicDividerEventXPCost = ({
 
   return (
     <div className={classNames(S.XPCost, S.event)}>
-      {level > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level)}/>}
+      {max > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level)}/>}
       {max > level && (
         <Icon 
           icon={`ae_level_${max}`} 

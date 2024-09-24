@@ -60,8 +60,6 @@ export const ClassicDivider = ({
 
 	const language = useAppSelector(selectLanguage);
 
-	const displayXP = xpCost && xpCost.level > 0;
-
 	useEffect(() => {
 		setTitle(translatedName);
 	}, [translatedName]);
@@ -121,7 +119,7 @@ export const ClassicDivider = ({
 							<Icon icon={previewIcon}/>
 						</div>
 					)}
-					{displayXP && cardType && (
+					{xpCost && cardType && (
 						<div className={S.xpCost}>
 							<ClassicDividerIconXPCost
 								type={cardType}
@@ -129,7 +127,7 @@ export const ClassicDivider = ({
 							/>
 						</div>
 					)}
-					{displaySideXP && displayXP && (
+					{displaySideXP && xpCost && (
 						<div className={S.sideXP}>
 							<ClassicDividerSideXP 
 								numeric={displayNumericXP}
