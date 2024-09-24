@@ -5,6 +5,7 @@ import { ClassicDivider } from '../classic/ClassicDivider/ClassicDivider';
 import { Invocation2018Divider } from '../invocation2018/Invocation2018Divider/Invocation2018Divider';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
+import { SarnetskyDivider } from '../sarnetsky/SarnetskyDivider/SarnetskyDivider';
 
 export type DividerProps = PropsWithClassName & IDivider;
 
@@ -14,6 +15,7 @@ export const Divider = (props: DividerProps) => {
     <>
       {id === 'classic' && <ClassicDivider {...props}/>}
       {id === 'invocation2018' && <Invocation2018Divider {...props}/>}
+      {id === 'sarnetsky' && <SarnetskyDivider {...props}/>}
     </>
   );
 }

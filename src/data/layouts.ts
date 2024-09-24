@@ -64,4 +64,16 @@ export const layouts: ILayout[] = [
     pageOrientation: PageOrientation.PORTRAIT,
     color: true
   },
+  {
+    id: "sarnetsky",
+    rowSize: 2,
+    groupSize: 6,
+    width: 63,
+    height: 103,
+    title: "Made by @sarnetsky",
+    types: [LayoutType.SCENARIO],
+    orientation: LayoutOrientation.VERTICAL,
+    pageOrientation: PageOrientation.PORTRAIT,
+    color: true
+  },
 ]
