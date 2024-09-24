@@ -18,8 +18,10 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 		displayNumericXP = false
 	} = props;
 
+	const level = xpCost?.max || xpCost?.level || 0;
+
 	const xp = Boolean(
-		xpCost?.level && xpCost.level > 0
+		level > 0
 	);
 
   const background = backgrounds.find(propsEquals({
