@@ -1,0 +1,45 @@
+.dot {
+  fill: currentColor;
+  width: 100%;
+}
+
+.text {
+  position: relative;
+  top: 0.1em;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.level {
+  display: flex;
+  width: 0.35em;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  // color: rgba(0, 0, 0, 0.2);
+  &_current {
+    color: #000;
+  }
+  &_max {
+    // color: red;
+    color: rgba(0, 0, 0, 0.3);
+    .dot {
+      box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+    }
+  }
+  &_inactive {
+    // color: #000;
+    // color: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.3);
+    // color: white;
+    .dot {
+      width: 0.15em;
+    }
+  }
+}

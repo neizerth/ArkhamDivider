@@ -1,24 +1,24 @@
 import { Icon } from '@/components/ui/Icon/Icon';
-import S from './ClassicDividerXPCost.module.scss';
+import S from './ClassicDividerIconXPCost.module.scss';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
-import { CardType } from '@/types/game';
+import { CardType, IXPCost } from '@/types/game';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectColor } from '@/store/features/layout/layout';
 
-export type ClassicDividerXPCostProps = PropsWithClassName & {
-  level: number
-  type: CardType
-}
-
 export type ClassicDividerSkillXPCostProps = PropsWithClassName & {
-  level: number
+  xpCost: IXPCost
 }
 
 export const ClassicDividerSkillXPCost = ({
   className,
-  level
+  xpCost
 }: ClassicDividerSkillXPCostProps) => {
+  const {
+    level,
+    max = level
+  } = xpCost;
+
   return (
     <div className={classNames(S.skill, className)}>
       {level === 0 && (
@@ -29,45 +29,83 @@ export const ClassicDividerSkillXPCost = ({
       {level > 0 && (
         <>
           <Icon icon="s_frame_background" className={classNames(S.skillBackground)}/>
-          <Icon icon={`ae_level_${level}`} className={classNames(S.level, S.lightLevel)}/>
+          <Icon icon={`s_level_${level}`} className={classNames(S.level, S.lightLevel)}/>
+          {max > level && (
+            <Icon 
+              icon={`s_level_${max}`} 
+              className={classNames(S.level, S.maxLevel)}
+            />
+          )}
         </>
       )}
     </div>
   )
 }
 
-export const ClassicDividerDefaultXPCost = ({
-  level
+export const ClassicDividerAssetXPCost = ({
+  xpCost
 }: {
-  level: number
+  xpCost: IXPCost
 }) => {
+  const {
+    level,
+    max = level
+  } = xpCost;
+
   return (
     <div className={S.XPCost}>
       <Icon icon="inverted_level_0" className={classNames(S.background)}/>
-      {level > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level, S.lightLevel)}/>}
+      {level > 0 && (
+        <Icon 
+          icon={`ae_level_${level}`} 
+          className={classNames(S.level, S.lightLevel)}
+        />
+      )}
+      {max > level && (
+        <Icon 
+          icon={`ae_level_${max}`} 
+          className={classNames(S.level, S.maxLevel)}
+        />
+      )}
     </div>
   )
 }
 
 export const ClassicDividerEventXPCost = ({
-  level
+  xpCost
 }: {
-  level: number
+  xpCost: IXPCost
 }) => {
+  const {
+    level,
+    max = level
+  } = xpCost;
+
   return (
     <div className={classNames(S.XPCost, S.event)}>
       {level > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level)}/>}
+      {max > level && (
+        <Icon 
+          icon={`ae_level_${max}`} 
+          className={classNames(S.level, S.maxLevel)}
+        />
+      )}
     </div>
   )
 }
 
-export const ClassicDividerXPCost = ({
+export type ClassicDividerIconXPCostProps = PropsWithClassName & {
+  xpCost: IXPCost
+  type: CardType
+}
+
+export const ClassicDividerIconXPCost = ({
   className,
   type,
-  level
-}: ClassicDividerXPCostProps) => {
+  xpCost
+}: ClassicDividerIconXPCostProps) => {
   const color = useAppSelector(selectColor);
-
+  
   const classList = classNames(
     className,
     S.container,
@@ -77,13 +115,13 @@ export const ClassicDividerXPCost = ({
   return (
     <div className={classList}>
       {type === CardType.SKILL && (
-        <ClassicDividerSkillXPCost level={level}/>
+        <ClassicDividerSkillXPCost xpCost={xpCost}/>
       )}
       {type === CardType.EVENT && (
-        <ClassicDividerEventXPCost level={level}/>
+        <ClassicDividerEventXPCost xpCost={xpCost}/>
       )}
        {type === CardType.ASSET && (
-        <ClassicDividerDefaultXPCost level={level}/>
+        <ClassicDividerAssetXPCost xpCost={xpCost}/>
       )}
     </div>
   );

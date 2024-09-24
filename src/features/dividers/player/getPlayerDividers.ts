@@ -16,7 +16,9 @@ export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
 export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
   const {
     xpCosts,
-    factions
+    factions,
+    displaySideXP,
+    displayNumericXP
   } = options;
 
   const types = [
@@ -35,6 +37,8 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
           faction: faction.id,
           cardType: type.type,
           type: 'player',
+          displaySideXP,
+          displayNumericXP,
           xpCost
         }
       });

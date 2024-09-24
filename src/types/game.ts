@@ -6,12 +6,12 @@ export type IFaction = {
 }
 
 export enum XPCost {
-  ZERO = '0',
-  ONE = '1',
-  TWO = '2',
-  THREE = '3',
-  FOUR = '4',
-  FIVE = '5'
+  ZERO = 0,
+  ONE = 1,
+  TWO = 2,
+  THREE = 3,
+  FOUR = 4,
+  FIVE = 5
 }
 
 export enum CardType {
@@ -22,7 +22,8 @@ export enum CardType {
 
 export type IXPCost = {
   value: string
-  level?: number
+  max?: number
+  level: number
   is_fixed: boolean
 }
 
