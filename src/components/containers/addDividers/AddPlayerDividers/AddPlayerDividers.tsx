@@ -98,7 +98,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
           </Row>
           <div className={S.rule}/>
           <Row className={classNames(S.xpCost)} wrap>
-            <div className={S.label}>{t('Cost')}</div>
+            <div className={S.label}>{t('Experience')}</div>
             <XPCostSelect onChange={setXPCosts}/>
           </Row>
           <Row wrap className={S.row}>
