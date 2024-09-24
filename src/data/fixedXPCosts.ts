@@ -7,8 +7,8 @@ export const fixedXPCosts: IXPCost[] = [
   XPCost.THREE,
   XPCost.FOUR,
   XPCost.FIVE
-].map(value => ({
-  value,
-  level: Number(value),
+].map(level => ({
+  value: level.toString(),
+  level,
   is_fixed: true
 }))

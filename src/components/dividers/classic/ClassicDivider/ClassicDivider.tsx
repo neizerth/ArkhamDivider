@@ -14,8 +14,9 @@ import { selectLayout } from '@/store/features/layout/layout';
 import { useTranslation } from 'react-i18next';
 import { IDivider } from '@/types/dividers';
 import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
-import { ClassicDividerXPCost } from '../ClassicDividerXPCost/ClassicDividerXPCost';
+import { ClassicDividerIconXPCost } from '../xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost';
 import { propsEquals } from '@/util/criteria';
+import { ClassicDividerSideXP } from '../xp/ClassicDividerSideXP/ClassicDividerSideXP';
 
 export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChildren &{
 	titleStroke?: boolean
@@ -33,6 +34,8 @@ export const ClassicDivider = ({
 	className,
 	campaignIcon,
 	children,
+	displayNumericXP = false,
+	displaySideXP = false,
 	...props
 }: ClassicDividerProps) => {
 	const { t } = useTranslation();
@@ -56,6 +59,8 @@ export const ClassicDivider = ({
 	const [title, setTitle] = useState(translatedName);
 
 	const language = useAppSelector(selectLanguage);
+
+	const displayXP = xpCost && xpCost.level > 0;
 
 	useEffect(() => {
 		setTitle(translatedName);
@@ -86,7 +91,7 @@ export const ClassicDivider = ({
 		title.length > 50 && S.titleInput_xxl,
 		S[`titleInput_${language}`]
 	)
-	
+
 	return (
 		<div 
 			className={containerClassName} 
@@ -116,11 +121,19 @@ export const ClassicDivider = ({
 							<Icon icon={previewIcon}/>
 						</div>
 					)}
-					{xpCost && xpCost.level !== undefined && cardType && (
+					{displayXP && cardType && (
 						<div className={S.xpCost}>
-							<ClassicDividerXPCost
+							<ClassicDividerIconXPCost
 								type={cardType}
-								level={xpCost.level}
+								xpCost={xpCost}
+							/>
+						</div>
+					)}
+					{displaySideXP && displayXP && (
+						<div className={S.sideXP}>
+							<ClassicDividerSideXP 
+								numeric={displayNumericXP}
+								xpCost={xpCost}
 							/>
 						</div>
 					)}

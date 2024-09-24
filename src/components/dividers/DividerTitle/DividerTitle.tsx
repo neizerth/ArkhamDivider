@@ -32,7 +32,7 @@ export const DividerTitle = ({
       <input className={classNames(S.input, inputClassName)} onInput={onTitleChange} value={title}/>
 
       <div 
-        className={classNames(S.clear, inputClassName)} 
+        className={classNames(S.clear)} 
         onClick={() => onClear()}
       >
         <Icon icon="dismiss"/>

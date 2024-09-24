@@ -5,14 +5,17 @@ import { backgrounds } from './backgrounds';
 import { omit } from 'ramda';
 import { ClassicDivider } from '@/components';
 import { propsEquals } from '@/util/criteria';
-import { Invocation2018DividerCost } from '../Invocation2018DividerCost/Invocation2018DividerCost';
+import { Invocation2018DividerXPCost } from '../Invocation2018DividerXPCost/Invocation2018DividerXPCost';
+import { ClassicDividerSideXP } from '../../classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
 
 export type Invocation2018DividerProps = PropsWithClassName & IDivider;
 
 export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 	const { 
 		faction,
-		xpCost
+		xpCost,
+		displaySideXP,
+		displayNumericXP = false
 	} = props;
 
 	const xp = Boolean(
@@ -30,17 +33,27 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 		'xpCost'
 	], props) : props;
 
+	const displayXP = xpCost && xpCost.level > 0;
+
   return (
     <ClassicDivider 
 			{...dividerProps}
 			titleStroke={false}
 			background={background?.src}
 		>
-			{xpCost?.level && (
-				<Invocation2018DividerCost 
+			{xpCost && (
+				<Invocation2018DividerXPCost 
 					className={S.xpCost}
-					level={xpCost.level}
+					xpCost={xpCost}
 				/>
+			)}
+			{displaySideXP && displayXP && (
+				<div className={S.sideXP}>
+					<ClassicDividerSideXP
+						numeric={displayNumericXP}
+						xpCost={xpCost}
+					/>
+				</div>
 			)}
 		</ClassicDivider>
   );

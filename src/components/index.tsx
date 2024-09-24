@@ -11,6 +11,7 @@ export { AddPlayerDividers }  from './containers/addDividers/AddPlayerDividers/A
 export { AddDividers }  from './containers/addDividers/AddDividers/AddDividers';
 
 export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';
+export { ClassicDividerSideXP } from './dividers/classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
 export { Divider } from './dividers/Divider/Divider';
 export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
 export { DividerTitle } from './dividers/DividerTitle/DividerTitle';
@@ -23,6 +24,7 @@ export { IconButton } from './ui/IconButton/IconButton';
 export { Color } from './ui/Color/Color';
 export { LanguageFlag } from './ui/LanguageFlag/LanguageFlag';
 export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
+export { XPSlider } from './ui/XPSlider/XPSlider';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';
 export { XPCostSelect } from './ui/select/XPCostSelect/XPCostSelect';

@@ -10,9 +10,11 @@ export type IDivider = {
     background?: string
     previewIcon?: string
     campaignIcon?: string
-    isUpgrading?: boolean
     xpCost?: IXPCost,
     size?: number
+
+    displaySideXP?: boolean
+    displayNumericXP?: boolean
 }
 
 export type IDividerList = IDivider[];

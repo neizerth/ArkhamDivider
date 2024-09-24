@@ -19,6 +19,8 @@ export type AddPlayerDividersOptions = {
   includeAllies: boolean
   includeFactionId: boolean
   includeBonded: boolean
+  displaySideXP: boolean
+  displayNumericXP: boolean
 }
 
 export type AddStoryDividersOptions = {

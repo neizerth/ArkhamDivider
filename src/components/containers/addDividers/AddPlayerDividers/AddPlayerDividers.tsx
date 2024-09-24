@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { ICardType, IXPCost, IFaction } from '@/types/game';
 import { ButtonType } from '@/types/ui';
-import { onToggle } from '@/util/forms';
+import { createToggleHanlder, onToggle } from '@/util/forms';
 import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { removeAllDividers } from '@/store/features/dividers/dividers';
@@ -22,22 +22,27 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const [factions, setFactions] = useState<IFaction[]>([]);
   const [types, setTypes] = useState<ICardType[]>([]);
 
-  const [useUpgrading, setUpgrading] = useState(false);
-  const [includeBasicWeakness, setIncludeBasicWeakness] = useState(false);
-  const [includeAllies, setIncludeAllies] = useState(false);
-  const [includeFactionId, setIncludeFactionId] = useState(false);
-  const [includeBonded, setIncludeBonded] = useState(false);
+  const [form, setForm] = useState({
+    useUpgrading: false,
+    includeBasicWeakness: false,
+    includeAllies: false,
+    includeFactionId: false,
+    includeBonded: false,
+    displaySideXP: false,
+    displayNumericXP: false
+  });
+
+  const check = createToggleHanlder(
+    form, 
+    setForm
+  );
 
   const onAdd = () => {
     dispatch(addPlayerDividers({
       xpCosts,
       factions,
       types,
-      useUpgrading,
-      includeFactionId,
-      includeBonded,
-      includeBasicWeakness,
-      includeAllies
+      ...form
     }));
   };
 
@@ -51,48 +56,66 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   return (
     <div className={S.container}>
       <Container>
-        <Col className={S.content}>
-          <Row className={classNames(S.row)} wrap>
+        <div className={S.content}>
+          <Row className={S.row} wrap>
             <FactionSelect onChange={setFactions}/>
-            <Checkbox 
-              checked={includeBasicWeakness} 
-              onChange={onToggle(setIncludeBasicWeakness)}
-            >
-              {t('Basic Weakness')}
-            </Checkbox>
+          
           </Row>
-          <Row className={classNames(S.row)} wrap>
+          <div className={S.rule}/>
+          <div>
+            <Checkbox 
+              {...check('includeFactionId')}
+            >
+              {t('Card Factions')}
+            </Checkbox>
+          </div>
+          <div className={S.rule}/>
+          <Row className={S.row} wrap>
             <PlayerCardTypeSelect onChange={setTypes}/>
             <Checkbox 
-              checked={includeAllies} 
-              onChange={onToggle(setIncludeAllies)}
+              {...check('includeAllies')}
             >
               {t('Ally')}
             </Checkbox>
           </Row>
+          <div className={S.rule}/>
           <Row wrap>
             <Checkbox 
-              checked={includeFactionId} 
-              onChange={onToggle(setIncludeFactionId)}
+              {...check('includeBasicWeakness')}
             >
-              {t('Card Factions')}
+              {t('Basic Weakness')}
             </Checkbox>
             <Checkbox 
-              checked={includeBonded} 
-              onChange={onToggle(setIncludeBonded)}
+              {...check('includeBonded')}
             >
               {t('Bonded')}
             </Checkbox>
             <Checkbox 
-              checked={useUpgrading} 
-              onChange={onToggle(setUpgrading)}
+              {...check('useUpgrading')}
             >
               {t('Upgrading')}
             </Checkbox>
           </Row>
-          <Row className={classNames(S.xpCost)}>
+          <div className={S.rule}/>
+          <Row className={classNames(S.xpCost)} wrap>
             <div className={S.label}>{t('Cost')}</div>
             <XPCostSelect onChange={setXPCosts}/>
+          </Row>
+          <Row wrap className={S.row}>
+
+            <Checkbox 
+              {...check('displaySideXP')}
+            >
+              {t('Side XP')}
+            </Checkbox>
+            
+            {form.displaySideXP && (
+              <Checkbox 
+                {...check('displayNumericXP')}
+              >
+                {t('Numeric XP')}
+              </Checkbox>
+            )}
           </Row>
           <Row className={S.actions} wrap>
             <IconButton 
@@ -115,7 +138,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
               {t('Clear')}
             </IconButton>
           </Row>
-        </Col>
+        </div>
       </Container>
     </div>
   );
