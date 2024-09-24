@@ -1,4 +1,4 @@
-import { Checkbox, Col, Container, FactionSelect, IconButton, PlayerCardTypeSelect, Row } from '@/components';
+import { Checkbox, Container, FactionSelect, IconButton, PlayerCardTypeSelect, Row } from '@/components';
 import S from './AddPlayerDividers.module.scss';
 import { XPCostSelect } from '@/components';
 import classNames from 'classnames';
@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { ICardType, IXPCost, IFaction } from '@/types/game';
 import { ButtonType } from '@/types/ui';
-import { createToggleHanlder, onToggle } from '@/util/forms';
+import { createToggleHanlder } from '@/util/forms';
 import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { removeAllDividers } from '@/store/features/dividers/dividers';

@@ -2,7 +2,7 @@ import { IXPCost } from "@/types/game";
 import { ToggleSelect } from '../ToggleSelect/ToggleSelect';
 import S from './XPCostSelect.module.scss';
 import { fixedXPCosts } from "@/data/fixedXPCosts";
-import { Button, Col, IconButton, Row, XPSlider } from "@/components";
+import { Col, IconButton, Row, XPSlider } from "@/components";
 import { ButtonType } from "@/types/ui";
 import { useState } from "react";
 import { getXPDisplayValue } from "@/util/xp";
