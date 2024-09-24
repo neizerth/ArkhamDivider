@@ -8,6 +8,7 @@ type IGetSizeOptions = FirstParam<typeof getScenarioSize>
 type IGetScenarioDividersOptions = Omit<IGetSizeOptions, 'scenario'> & {
   includeCampaignIcon: boolean
   story: IStory
+  includeScenarios: boolean
 }
 
 export const getStoryScenarios = ({
@@ -21,8 +22,12 @@ export const getStoryScenarios = ({
 export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
   const { 
     story, 
-    includeCampaignIcon 
+    includeCampaignIcon,
+    includeScenarios
   } = options;
+  if (!includeScenarios) {
+    return [];
+  }
   const { icon } = story;
   const scenarios = getStoryScenarios(story);
 

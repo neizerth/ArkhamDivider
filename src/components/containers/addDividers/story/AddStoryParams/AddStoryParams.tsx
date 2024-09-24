@@ -19,6 +19,7 @@ export type IAddStoryParamsForm = {
   includeCampaignIcon: boolean
   includeScenarioEncounterSet: boolean
   includeScenarioSize: boolean
+  includeCampaign: boolean
 }
 
 export type AddStoryParamsProps = {
@@ -57,34 +58,52 @@ export const AddStoryParams = ({
   return (
     <div className={S.container}>
       <Col>
-        <Row wrap>
-          {haveExtraDividers && (
-            <Checkbox {...check('includeExtraSets')}>
-              {t('Extra Dividers')}
-            </Checkbox>
-          )}
-          <Checkbox {...check('includeScenarios')}>
-            {t('Scenario Dividers')}
-          </Checkbox>
-          <Checkbox {...check('includeScenarioEncounterSet')}>
-            {t('Scenario Encounter Divider')}
-          </Checkbox>
-          {story.is_size_supported && (
-            <>
-              <Checkbox {...check('includeEncounterSize')}>
-                {t('Encounter Size')}
+        <Row wrap className={S.controls}>
+          <div className={S.checkboxGroup}>
+            <h3 className={S.title}>{t('Campaign')}</h3>
+            <Col wrap className={S.checks}>
+              <Checkbox {...check('includeCampaign')}>
+                {t('Campaign Divider')}
               </Checkbox>
-              {form.includeScenarios && (
-                <Checkbox {...check('includeScenarioSize')}>
-                 {t('Scenario Size')}
+              <Checkbox {...check('includeCampaignIcon')}>
+                {t('Campaign Icon')}
+              </Checkbox>
+            </Col>
+          </div>
+          <div className={S.checkboxGroup}>
+            <h3 className={S.title}>{t('Scenario')}</h3>
+            <Col wrap className={S.checks}>
+              <Checkbox {...check('includeScenarios')}>
+                {t('Scenario Dividers')}
+              </Checkbox>
+              <Checkbox {...check('includeScenarioEncounterSet')}>
+                {t('Scenario Encounter Divider')}
+              </Checkbox>
+            </Col>
+          </div>
+          <div className={S.checkboxGroup}>
+            <h3 className={S.title}>{t('Additional')}</h3>
+            <Col wrap className={S.checks}>
+              {haveExtraDividers && (
+                <Checkbox {...check('includeExtraSets')}>
+                  {t('Extra Dividers')}
                 </Checkbox>
               )}
-             
-            </>
-          )}
-          <Checkbox {...check('includeCampaignIcon')}>
-            {t('Campaign Icon')}
-          </Checkbox>
+              {story.is_size_supported && (
+                <>
+                  <Checkbox {...check('includeEncounterSize')}>
+                    {t('Encounter Size')}
+                  </Checkbox>
+                  {form.includeScenarios && (
+                    <Checkbox {...check('includeScenarioSize')}>
+                    {t('Scenario Size')}
+                    </Checkbox>
+                  )}
+                
+                </>
+              )}
+            </Col>
+          </div>
         </Row>
         {haveReturnCycle && (
           <Row>

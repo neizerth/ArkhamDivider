@@ -40,7 +40,8 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
     includeEncounterSize: false,
     includeCampaignIcon: false,
     includeScenarioEncounterSet: false,
-    includeScenarioSize: false
+    includeScenarioSize: false,
+    includeCampaign: false
   });
 
   const onAdd = () => {
