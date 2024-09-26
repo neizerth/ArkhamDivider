@@ -1,5 +1,5 @@
 import { AddStoryDividersOptions } from "@/store/features/addDividers/addDividers";
-import { IDivider } from "@/types/dividers";
+import { DividerType, IDivider } from "@/types/dividers";
 import { uniqId } from "@/util/common";
 
 export const getCampaignDividers = ({
@@ -12,15 +12,16 @@ export const getCampaignDividers = ({
 
   const {
     name,
-    icon
+    icon,
   } = story;
 
   return [
     {
       id: uniqId(),
+      story,
       name,
       icon,
-      type: 'campaign'
+      type: DividerType.CAMPAIGN
     }
   ]
 }

@@ -8,6 +8,8 @@ import { createToggleHanlder } from '@/util/forms';
 // import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { selectLayout } from '@/store/features/layout/layout';
+import { isNil } from 'ramda';
 
 export type ToggleFunction = (value: boolean) => void;
 
@@ -36,6 +38,7 @@ export const AddStoryParams = ({
   const { t } = useTranslation();
   
   const stories = useAppSelector(selectStories);
+  const { showCampaignIcon } = useAppSelector(selectLayout);
   
   const [form, setForm] = useState(defaultValue);
 
@@ -43,9 +46,6 @@ export const AddStoryParams = ({
 
   const returnStories = stories.filter(safePropEq(story.code, 'return_to_code'));
   const haveReturnCycle = returnStories.length > 0;
-  // const onlyScenario = onlyWithScenarioEncounters(story);
-  // console.log(story);
-  // onlyWithScenarioEncounters(story); 
 
   const check = createToggleHanlder(
     form, 
@@ -65,9 +65,12 @@ export const AddStoryParams = ({
               <Checkbox {...check('includeCampaign')}>
                 {t('Campaign Divider')}
               </Checkbox>
-              <Checkbox {...check('includeCampaignIcon')}>
-                {t('Campaign Icon')}
-              </Checkbox>
+              {isNil(showCampaignIcon) && (
+                <Checkbox {...check('includeCampaignIcon')}>
+                  {t('Campaign Icon')}
+                </Checkbox>
+              )}
+              
             </Col>
           </div>
           <div className={S.checkboxGroup}>

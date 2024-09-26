@@ -12,6 +12,13 @@ export type ILayout = {
   pageOrientation: PageOrientation
   is_default?: boolean
   color: boolean
+  bleeds: {
+    width: number
+    height: number
+    top: number
+    left: number
+  }
+  showCampaignIcon?: boolean
 }
 
 export enum LayoutType {

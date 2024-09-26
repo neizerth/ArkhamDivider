@@ -1,29 +1,11 @@
 .container {
-  background-size: contain;
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
-  position: relative;
-}
-
-.guides {
-  position: absolute;
-  z-index: 2;
-}
-
-.wrapper {
-  position: relative;
-}
-
-.guidesContent {
-  width: 100%;
-  height: 100%;
-}
-
-.divider {
   position: relative;
 }
 
 .title {
   box-sizing: border-box;
+  text-align: center;
   position: absolute;
   width: 100%;
   top: 5.6mm;
@@ -48,7 +30,6 @@
   font-size: 4.4mm;
   height: 5.4mm;
 }
-
 
 .background {
   position: absolute;
@@ -80,7 +61,7 @@
   opacity: 0.2;
   transform: translate(-50%, 0);
   left: 50%;
-  font-size: 48mm;
+  font-size: 40mm;
 }
 
 .menu {

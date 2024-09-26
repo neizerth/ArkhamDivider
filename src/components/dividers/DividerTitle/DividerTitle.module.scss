@@ -9,7 +9,7 @@
 .input {
   font-family: inherit;
   background-color: transparent;
-  text-align: center;
+  text-align: inherit;
   font-weight: normal;
   border: none;
   width: 100%;
@@ -23,7 +23,7 @@
     }
   }
   &:hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(99, 75, 75, 0.5);
   }
  
 }
@@ -33,7 +33,8 @@
 
   position: absolute;
   height: 100%;
-  right: 0.5mm;
+  top: 0.1em;
+  right: 0.2em;
   justify-content: center;
   align-items: center;
   cursor: pointer;

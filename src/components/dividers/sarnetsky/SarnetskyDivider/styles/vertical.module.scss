@@ -1,34 +1,3 @@
 .vertical {
-  &.noBleeds {
-    .guides {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-    .wrapper {
-      height: 105mm;
-      width: 63mm;
-      overflow: hidden;
-    }
   
-    .divider {
-      top: -2mm;
-      left: -2mm;
-    }
-  }
-  
-  &.withBleeds {
-    .guides {
-      height: 105mm;
-      width: 60mm;
-      top: 2mm;
-      left: 2mm;
-    }
-  }
-
-  .divider {
-    aspect-ratio: 63 / 105;
-    width: 63mm;
-  }
 }

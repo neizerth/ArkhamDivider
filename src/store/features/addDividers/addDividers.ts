@@ -9,6 +9,7 @@ import { addDividers } from "../dividers/dividers";
 import { getPlayerDividers } from "@/features/dividers/player/getPlayerDividers";
 import { getInvestigatorDividers } from "@/features/dividers/investigator/getInvestigatorDividers";
 import { withReturnTo } from "../stories/criteria";
+import { selectLayout } from "../layout/layout";
 
 export type AddPlayerDividersOptions = {
   factions: IFaction[]
@@ -52,6 +53,9 @@ export const addPlayerDividers = (options: AddPlayerDividersOptions): ActionCrea
 export const addStoryDividers: ActionCreator<AppThunk> = (options: AddStoryDividersOptions) => (dispatch, getState) => {
   const state = getState();
 
+  const {
+    showCampaignIcon
+  } = selectLayout(state);
   const encounterSets = selectEncounterSets(state);
   const stories = selectStories(state);
   const { story, includeReturnSets } = options;
@@ -61,7 +65,8 @@ export const addStoryDividers: ActionCreator<AppThunk> = (options: AddStoryDivid
   const dividers = getStoryDividers({
     ...options,
     returnStories,
-    encounterSets
+    encounterSets,
+    includeCampaignIcon: showCampaignIcon || options.includeCampaignIcon
   });
 
   dispatch(addDividers(dividers));

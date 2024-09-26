@@ -3,13 +3,12 @@ import { PropsWithChildren, useEffect, useState } from 'react';
 import S from './ClassicDivider.module.scss';
 import { backgrounds } from './backgrounds';
 
-import { Icon, Guides, DividerMenu, DividerTitle } from '@/components';
+import { Icon, DividerMenu, DividerTitle, DividerContent } from '@/components';
 import classNames from 'classnames';
 
 import { PropsWithClassName } from '@/types/util';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
-import { selectBleeds } from '@/store/features/print/print';
 import { selectLayout } from '@/store/features/layout/layout';
 import { useTranslation } from 'react-i18next';
 import { IDivider } from '@/types/dividers';
@@ -39,7 +38,6 @@ export const ClassicDivider = ({
 	...props
 }: ClassicDividerProps) => {
 	const { t } = useTranslation();
-	const bleeds = useAppSelector(selectBleeds);
 	const layout = useAppSelector(selectLayout);
 
 	const { 
@@ -66,9 +64,8 @@ export const ClassicDivider = ({
 
 	const containerClassName = classNames(
 		S.container,
-		orientation && S[orientation],
-		bleeds ? S.withBleeds : S.noBleeds,
-		color ? S.color : S.grayscale,
+		S[orientation],
+		color ? S.color : S.grayscale, 
 		className
 	);
 
@@ -91,62 +88,55 @@ export const ClassicDivider = ({
 	)
 
 	return (
-		<div 
-			className={containerClassName} 
-		>
-			<div className={S.guides}>
-				<Guides className={S.guidesContent}/>
-			</div>
-			<div className={S.wrapper}>
-				<div className={S.divider}>
-					<div className={S.title}>
-						<DividerTitle
-							title={title}
-							className={S.titleContent}
-							inputClassName={titleInputClassName}
-							onChange={onTitleChange}
-							onClear={clear}
-						/>
-					</div>
-					{background && <img className={S.background} src={background} alt={title}/>}
-					{icon && (
-						<div className={classNames(S.icon, S.icon_large)}>
-							<Icon icon={icon}/>
-						</div>
-					)}
-					{previewIcon && (
-						<div className={classNames(S.icon, S.icon_small)}>
-							<Icon icon={previewIcon}/>
-						</div>
-					)}
-					{xpCost && cardType && (
-						<div className={S.xpCost}>
-							<ClassicDividerIconXPCost
-								type={cardType}
-								xpCost={xpCost}
-							/>
-						</div>
-					)}
-					{displaySideXP && xpCost && (
-						<div className={S.sideXP}>
-							<ClassicDividerSideXP 
-								numeric={displayNumericXP}
-								xpCost={xpCost}
-							/>
-						</div>
-					)}
-					
-					{children}
-
-					<DividerMenu id={id} className={S.menu}/>
-
-					<ClassicDividerStatus
-						className={S.status}
-						size={size}
-						campaignIcon={campaignIcon}
+		<div className={containerClassName}>
+			<DividerContent>
+				<div className={S.title}>
+					<DividerTitle
+						title={title}
+						className={S.titleContent}
+						inputClassName={titleInputClassName}
+						onChange={onTitleChange}
+						onClear={clear}
 					/>
 				</div>
-			</div>
+				{background && <img className={S.background} src={background} alt={title}/>}
+				{icon && (
+					<div className={classNames(S.icon, S.icon_large)}>
+						<Icon icon={icon}/>
+					</div>
+				)}
+				{previewIcon && (
+					<div className={classNames(S.icon, S.icon_small)}>
+						<Icon icon={previewIcon}/>
+					</div>
+				)}
+				{xpCost && cardType && (
+					<div className={S.xpCost}>
+						<ClassicDividerIconXPCost
+							type={cardType}
+							xpCost={xpCost}
+						/>
+					</div>
+				)}
+				{displaySideXP && xpCost && (
+					<div className={S.sideXP}>
+						<ClassicDividerSideXP 
+							numeric={displayNumericXP}
+							xpCost={xpCost}
+						/>
+					</div>
+				)}
+				
+				{children}
+
+				<DividerMenu id={id} className={S.menu}/>
+
+				<ClassicDividerStatus
+					className={S.status}
+					size={size}
+					campaignIcon={campaignIcon}
+				/>
+			</DividerContent>
 		</div>
 	);
 }

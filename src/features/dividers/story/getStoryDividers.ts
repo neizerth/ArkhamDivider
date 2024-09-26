@@ -6,6 +6,7 @@ import { getScenarioDividers } from "./getScenarioDividers";
 import { getEncounterDividers } from "./getEncounterDividers";
 import { AddStoryDividersOptions } from "@/store/features/addDividers/addDividers";
 import { getCampaignDividers } from "./getCampaignDividers";
+import { getStoryScenarioIcons } from "./getStoryScenarioIcons";
 
 export type IGetStoryDividersOptions = AddStoryDividersOptions & {
   encounterSets: IEncounterSet[]
@@ -16,14 +17,12 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
   
   const {
     returnStories = [],
-    includeScenarios,
+    includeScenarios
   } = options;
 
   const scenarioDividers: IDivider[] = getScenarioDividers(options);
   
-  const scenarioIcons = scenarioDividers
-    .map(prop('icon'))
-    .filter(isNotNil);
+  const scenarioIcons = getStoryScenarioIcons(options)
 
   const encounterDividers: IDivider[] = getEncounterDividers({
     ...options,
