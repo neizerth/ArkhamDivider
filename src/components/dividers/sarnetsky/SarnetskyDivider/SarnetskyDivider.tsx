@@ -70,7 +70,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	
 	const isScenario = [DividerType.SCENARIO, DividerType.CAMPAIGN].includes(type);
 
-	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 10;
+	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 16;
 
   return (
     <div 

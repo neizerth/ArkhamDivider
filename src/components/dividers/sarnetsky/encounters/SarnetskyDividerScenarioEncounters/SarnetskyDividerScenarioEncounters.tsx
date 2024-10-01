@@ -72,7 +72,9 @@ export const SarnetskyDividerGroupedEncounters = ({
     between(totalSize) && S.wrapper_max
   )
 
-  const gap = between(totalSize) ? 0.4 * rowSize / 8: 0.5 * rowSize / 8;
+  const k = rowSize / 8;
+  const baseGap = between(totalSize) ? 0.4 * k: 0.5 * k;
+  const gap = Math.min(baseGap, 0.7);
 
   const groupStyle = {
     gap: `${gap}em`

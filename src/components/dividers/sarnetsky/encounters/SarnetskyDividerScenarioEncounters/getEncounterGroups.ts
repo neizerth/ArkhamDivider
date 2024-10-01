@@ -12,12 +12,13 @@ export const getEncounterGroups = (options: IGetEcnounterGroups) => {
 
   const groups = values(
       groupBy(
-        prop('version_text'), ecnounterGroups
+        prop('version_text'), 
+        ecnounterGroups
       )
     )
     .filter(isNotNil);
 
-  return groups.map(groups => {
+  const versionGroups = groups.map(groups => {
     const [first] = groups;
     const {
       version_number,
@@ -51,6 +52,45 @@ export const getEncounterGroups = (options: IGetEcnounterGroups) => {
     }
     
   });
+
+  if (versionGroups.length > 0) {
+    return versionGroups;
+  }
+
+  return getScenarioGroups(options);
+}
+
+export const getScenarioGroups = ({ 
+  mainScenario,
+  scenario,
+  encounterSets 
+}: IGetEcnounterGroups) => {
+
+  const {
+    icon,
+    encounter_sets = [],
+    extra_encounter_sets = []
+  } = scenario
+
+  const toIcon = (code: string) => encounterSets.find(
+    propEq(code, 'code')
+  )?.icon
+
+  const excludeIcons = mainScenario ? [icon, mainScenario.icon] : [icon]; 
+
+  const toEncounters = (ids: string[]) => 
+    ids.map(toIcon)
+      .filter(icon => !excludeIcons.includes(icon))
+      .filter(isNotNil)
+
+  return [
+    {
+      main: toEncounters(encounter_sets),
+      side: toEncounters(extra_encounter_sets),
+      version_number: 1,
+      version_text: 'I'
+    }
+  ]
 }
 
 const getAllGroups = ({
