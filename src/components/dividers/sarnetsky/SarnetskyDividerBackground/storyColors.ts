@@ -12,3 +12,5 @@ export const storyColors: Mapping = {
   'tsk': '#B7265E',
   'fhv': '#f36f32'
 }
+
+export const DEFAULT_COLOR = '#978577';

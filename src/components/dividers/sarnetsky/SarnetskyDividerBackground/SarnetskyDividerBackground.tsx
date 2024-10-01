@@ -7,7 +7,7 @@ import S from './SarnetskyDividerBackground.module.scss';
 import { ComponentProps, FC } from 'react';
 import { scenarioImages } from './images/scenario';
 import { encounterImages } from './images/encounter';
-import { storyColors } from './storyColors';
+import { DEFAULT_COLOR, storyColors } from './storyColors';
 import classNames from 'classnames';
 
 export const SarnetskyPlayerBackground = ({ id }: {
@@ -33,7 +33,7 @@ export const SarnetskyScenarioBackground = ({ storyCode }: SarnetskyStoryBackgro
     propEq(oritentation, 'orientation')
   );
 
-  const color = storyColors[storyCode];
+  const color = storyColors[storyCode] || DEFAULT_COLOR;
 
   return (
     <>
@@ -51,7 +51,7 @@ export const SarnetskyEncounterBackground = ({ storyCode }: SarnetskyStoryBackgr
     propEq(oritentation, 'orientation')
   );
 
-  const color = storyColors[storyCode];
+  const color = storyColors[storyCode] || DEFAULT_COLOR;
 
   return (
     <>
