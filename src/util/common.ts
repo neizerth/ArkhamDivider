@@ -1,5 +1,7 @@
 import { curry, isNil, prop } from "ramda";
 
+export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
   const groups: T[][] = [];
   for (let i = 0; i < data.length; i += groupSize) {
@@ -33,3 +35,5 @@ export const definedIf = <T>(value: T, condition: boolean) => {
     return value
   }
 }
+
+export const pxToNumber = (x: string) => +x.replace('px', '');

@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Arno Pro';
-  src: local("Arno Pro"), 
+  src: local("ArnoPro"), 
       url('./fonts/ArnoPro-Caption.woff2') format('woff'), 
       url('./fonts/ArnoPro-Caption.woff') format('woff2');
   font-weight: normal;
@@ -11,12 +11,22 @@
 
 @font-face {
   font-family: 'Arno Pro';
-  src: local("Arno Pro"), 
+  src: local("ArnoPro-Bold"), 
       url('./fonts/ArnoPro-Bold.woff2') format('woff'), 
       url('./fonts/ArnoPro-Bold.woff') format('woff2');
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Arno Pro';
+  src: local("ArnoPro-BoldItalic"), 
+      url('./fonts/ArnoPro-BoldItalic.woff2') format('woff'), 
+      url('./fonts/ArnoPro-BoldItalic.woff') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+}
+
 
 @font-face {
   font-family: 'Conkordia';

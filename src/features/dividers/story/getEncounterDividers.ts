@@ -1,6 +1,6 @@
 import { isNotNil, propEq } from "ramda";
 import { getEncounterSize } from "./getEncounterSize";
-import { definedIf, uniqId } from "@/util/common";
+import { uniqId } from "@/util/common";
 import { IGetStoryDividersOptions } from "./getStoryDividers";
 import { DividerType } from "@/types/dividers";
 
@@ -24,7 +24,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     extra_encounter_sets,
   } = story;
 
-  const campaignIcon = definedIf(icon, includeCampaignIcon);
+  const campaignIcon = icon;
 
   const extraEncounters = includeExtraSets ? extra_encounter_sets : [];
 
@@ -66,7 +66,8 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
         name,
         icon,
         campaignIcon,
-        type: DividerType.ENCOUNTER
+        type: DividerType.ENCOUNTER,
+        displayCampaignIcon: includeCampaignIcon
       }
     })
   .filter(isNotNil);

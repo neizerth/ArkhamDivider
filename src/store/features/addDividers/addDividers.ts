@@ -52,10 +52,6 @@ export const addPlayerDividers = (options: AddPlayerDividersOptions): ActionCrea
 
 export const addStoryDividers: ActionCreator<AppThunk> = (options: AddStoryDividersOptions) => (dispatch, getState) => {
   const state = getState();
-
-  const {
-    showCampaignIcon
-  } = selectLayout(state);
   const encounterSets = selectEncounterSets(state);
   const stories = selectStories(state);
   const { story, includeReturnSets } = options;
@@ -65,8 +61,7 @@ export const addStoryDividers: ActionCreator<AppThunk> = (options: AddStoryDivid
   const dividers = getStoryDividers({
     ...options,
     returnStories,
-    encounterSets,
-    includeCampaignIcon: showCampaignIcon || options.includeCampaignIcon
+    encounterSets
   });
 
   dispatch(addDividers(dividers));

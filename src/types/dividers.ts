@@ -1,4 +1,4 @@
-import { IStory } from "./api"
+import { IEncounterSetGroup, IScenario, IStory } from "./api"
 import { CardType, IXPCost } from "./game"
 
 export enum DividerType {
@@ -12,6 +12,7 @@ export enum DividerType {
 export type IDivider = {
     id: string
     story?: IStory
+    scenario?: IScenario
     type: DividerType
     name?: string
     icon?: string
@@ -23,8 +24,11 @@ export type IDivider = {
     xpCost?: IXPCost,
     size?: number
 
+    encounters?: string[]
+    ecnounterGroups?: IEncounterSetGroup[]
     displaySideXP?: boolean
     displayNumericXP?: boolean
+    displayCampaignIcon?: boolean
 }
 
 export type IDividerList = IDivider[];

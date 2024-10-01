@@ -14,7 +14,7 @@ export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider
 export { ClassicDividerSideXP } from './dividers/classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
 export { Divider } from './dividers/Divider/Divider';
 export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
-export { DividerTitle } from './dividers/DividerTitle/DividerTitle';
+export { DividerText } from './dividers/DividerText/DividerText';
 export { DividerContent } from './dividers/DividerContent/DividerContent';
 
 export { Row, InlineRow } from './ui/grid/Row/Row';

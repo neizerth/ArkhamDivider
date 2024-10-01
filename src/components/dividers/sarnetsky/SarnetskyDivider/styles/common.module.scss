@@ -12,6 +12,15 @@
   top: 0;
 }
 
+.titleInput {
+  text-align: left;
+  padding: 0.2em;
+  display: grid;
+  grid-template-columns: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
 .icon {
   position: absolute;
   z-index: 2;
@@ -20,24 +29,50 @@
   align-items: center;
   justify-content: center;
   &_main {
-    font-size: 8em;
-    opacity: 0.1;
+    color: #b2aaa2;
+    mix-blend-mode: multiply;
+    opacity: 0.2;
+    font-size: 5.6em;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
   &_encounter {
-    font-size: 1.6em;
-    top: 3.4mm;
+    font-size: 1.2em;
+    top: 3.5mm;
     left: 50%;
     transform: translate(-50%, 0);
   }
   &_scenario {
-    font-size: 1.3em;
+    font-size: 1.2em;
     width: 1.1em;
-    top: 7.6mm;
-    left: 7.8mm;
+    top: 7.9mm;
+    left: 8.1mm;
   }
+}
+
+.type_encounter .icon_campaign {
+  font-size: 0.6em;
+  color: #fff;
+  top: 5.3mm;
+  right: 5.6mm;
+}
+
+.type_scenario .icon_campaign {
+  font-size: 0.55em;
+  width: 1.1em;
+  top: 9.5mm;
+  right: 5mm;
+}
+
+.encounters {
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+  width: 100%;
+  bottom: 13.6mm;
+  padding: 0 7.5mm;
+  box-sizing: border-box;
 }
 
 .title {
@@ -48,18 +83,57 @@
     text-align: center;
     padding: 0 5mm;
     box-sizing: border-box;
-    top: 11mm;
+    top: 8.7mm;
   }
   &_scenario {
+    line-height: 1;
     width: 100%;
     text-align: center;
-    // text-align: left;
-    // padding: 0 1mm;
-    // padding: 0 4.5mm 0 7.8mm;
     padding-right: 2.5mm;
     box-sizing: border-box;
-    top: 7.9mm;
+    top: 6.9mm;
     left: 15mm;
     width: 45mm;
+    height: 8.15mm;
   }
+  &_m {
+    // font-size: 1em
+  }
+  &_l {
+    // font-size: 0.7em;
+    // padding: 0.8em 1em 0.8em 1em;
+    // line-height: 1.2;
+  }
+  &_xl {
+    // padding: 0.2em 2em 0.2em 1em;
+    // font-size: 0.7em;
+  }
+  &_xxl {
+
+  }
+  &_zh, &_zh-cn, &_ko {
+    line-height: 1.1;
+    padding-top: 0.2em;
+    // margin-top: -0.1em;
+  }
+}
+
+.scenarioTitle {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  padding: 0 7.5mm;
+  box-sizing: border-box;
+  font-family: 'Arno Pro', 'Alegreya', sans-serif;
+  font-style: italic;
+  text-align: center;
+  top: 21.2mm;
+}
+
+.scenarioInputTitle {
+  font-size: 0.63em;
+}
+
+.nowrap {
+  white-space: nowrap;
 }

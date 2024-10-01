@@ -9,7 +9,11 @@ import { ComponentProps } from 'react';
 export type IconProps = ComponentProps<'span'>  & {
 	icon: string
 }
-export const Icon = ({ icon, className, ...props }: IconProps) => {
+export const Icon = ({ 
+	icon, 
+	className, 
+	...props 
+}: IconProps) => {
 	const icons = useAppSelector(selectIcons);
 	const entry = icons.find(propEq(icon, 'icon'));
 
@@ -24,6 +28,7 @@ export const Icon = ({ icon, className, ...props }: IconProps) => {
 		<span 
 			className={classNames(S.icon, S[icon], className)}
 			style={style}
+			data-icon={icon}
 			{...props}
 		>
 			{char}

@@ -38,7 +38,6 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
 
   const campaignDividers: IDivider[] = getCampaignDividers(options);
   
-  
   const dividers = [
     ...campaignDividers,
     ...arrayIf(includeScenarios, scenarioDividers),

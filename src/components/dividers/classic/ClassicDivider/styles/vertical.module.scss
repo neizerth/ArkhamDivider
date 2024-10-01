@@ -1,27 +1,30 @@
 .vertical {
   .title {
     padding: 0 12mm 0 6mm;
+    &_m {
+      padding-top: 0.2mm;
+    }
+    &_l {
+      padding-top: 0.8mm;
+    }
+    &_xl {
+      padding-left: 0.2mm;
+      padding-top: 1.4mm;
+    }
   }
   
   .titleInput {
+    padding-right: 1mm;
     padding-left: 6mm;
-    font-size: 3.8mm;
-    &_l {
-      font-size: 3.1mm;
-    }
-    &_xl {
-      font-size: 2.7mm;
-      padding-left: 0.2mm;
-    }
     &_zh, &_zh-cn, &_ko {
-      font-size: 3.6mm;
+      transform: scale(0.9);
       position: relative;
       top: -0.4mm;
     }
   }
 
   .icon_small {
-    top: 4.6mm;
+    top: 5.2mm;
     right: 3.8mm;
   }
   

@@ -33,10 +33,10 @@ export const LayoutSelect = () => {
     type,
     ...criteria
   }: Partial<ILayout> & {
-    type: LayoutType
+    type?: LayoutType
   }) => layouts
     .filter(propsEquals(criteria))
-    .filter(({ types }) => types.includes(type))
+    .filter(({ types }) => !type || types.includes(type))
 
   const toggleType = () => {
     const nextType = LayoutFilter === LayoutOrientation.HORIZONTAL ? 
@@ -54,7 +54,7 @@ export const LayoutSelect = () => {
 
   const criteria = {
     color: useColor,
-    orientation: layout?.orientation,
+    orientation: layout.orientation,
     type
   }
 
@@ -67,13 +67,16 @@ export const LayoutSelect = () => {
   const value = layout ? options.find(({ value }) => value === layout.id) : null;
 
   const changeLayoutFilter = (id: string) => {
-    const layout = getLayoutById(id);
+    const [nextLayout] = getLayouts({
+      id,
+      orientation: layout.orientation
+    })
 
-    if (!layout) {
+    if (!nextLayout) {
       return;
     }
 
-    dispatch(setLayout(layout));
+    dispatch(setLayout(nextLayout));
   }
 
   const toggleColor = () => {

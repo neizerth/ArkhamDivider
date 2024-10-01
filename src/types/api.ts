@@ -7,3 +7,4 @@ export type IEncounterSetType = Single<Defined<IEncounterSet['types']>>;
 export type IScenario = Defined<IStory['scenario']>;
 export type ICustomContent = Defined<IStory['custom_content']>;
 export type IInvestigator = Single<IStory['investigators']>;
+export type IEncounterSetGroup = Single<Defined<IScenario['encounter_set_groups']>>

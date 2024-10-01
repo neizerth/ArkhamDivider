@@ -3,7 +3,7 @@ import { PropsWithChildren, useEffect, useState } from 'react';
 import S from './ClassicDivider.module.scss';
 import { backgrounds } from './backgrounds';
 
-import { Icon, DividerMenu, DividerTitle, DividerContent } from '@/components';
+import { Icon, DividerMenu, DividerText, DividerContent } from '@/components';
 import classNames from 'classnames';
 
 import { PropsWithClassName } from '@/types/util';
@@ -16,6 +16,7 @@ import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStat
 import { ClassicDividerIconXPCost } from '../xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost';
 import { propsEquals } from '@/util/criteria';
 import { ClassicDividerSideXP } from '../xp/ClassicDividerSideXP/ClassicDividerSideXP';
+import { definedIf } from '@/util/common';
 
 export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChildren &{
 	titleStroke?: boolean
@@ -31,10 +32,10 @@ export const ClassicDivider = ({
 	titleStroke = true,
 	size,
 	className,
-	campaignIcon,
 	children,
 	displayNumericXP = false,
 	displaySideXP = false,
+	displayCampaignIcon = false,
 	...props
 }: ClassicDividerProps) => {
 	const { t } = useTranslation();
@@ -45,6 +46,8 @@ export const ClassicDivider = ({
 		color,
 	} = layout;
 	
+	const campaignIcon = definedIf(props.campaignIcon, displayCampaignIcon);
+
 	const background = props.background || backgrounds.find(
 		propsEquals({
 			orientation,
@@ -57,6 +60,7 @@ export const ClassicDivider = ({
 	const [title, setTitle] = useState(translatedName);
 
 	const language = useAppSelector(selectLanguage);
+	const realLanguage = translatedName === name ? 'en' : language;
 
 	useEffect(() => {
 		setTitle(translatedName);
@@ -69,34 +73,33 @@ export const ClassicDivider = ({
 		className
 	);
 
-	const onTitleChange = (value: string) => {
-		if (!value.trim()) {
-			return clear();
-		}
-		setTitle(value);
-	}
-
-	const clear = () => setTitle(translatedName);
+	const titleSize = ['ko', 'zh', 'zh-cn'].includes(realLanguage) ? title.length * 2 : title.length;
 
 	const titleInputClassName = classNames(
 		S.titleInput,
 		titleStroke && S.stroke,
-		title.length > 30 && S.titleInput_l,
-		title.length > 40 && S.titleInput_xl,
-		title.length > 50 && S.titleInput_xxl,
-		S[`titleInput_${language}`]
+		S[`titleInput_${realLanguage}`]
+	)
+
+	const titleClassName = classNames(
+		S.title,
+		titleSize <= 30 && S.title_m,
+		titleSize > 30 && S.title_l,
+		titleSize > 40 && S.title_xl,
+		titleSize > 50 && S.title_xxl,
 	)
 
 	return (
 		<div className={containerClassName}>
 			<DividerContent>
-				<div className={S.title}>
-					<DividerTitle
-						title={title}
+				<div className={titleClassName}>
+					<DividerText
+						defaultValue={translatedName}
 						className={S.titleContent}
 						inputClassName={titleInputClassName}
-						onChange={onTitleChange}
-						onClear={clear}
+						onChange={setTitle}
+						fixedFontSize={false}
+						minFontSize={8}
 					/>
 				</div>
 				{background && <img className={S.background} src={background} alt={title}/>}

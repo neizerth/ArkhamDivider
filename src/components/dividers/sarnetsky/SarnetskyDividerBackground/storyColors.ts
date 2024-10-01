@@ -8,6 +8,6 @@ export const storyColors: Mapping = {
   'tcu': '#593B5D',
   'tde': '#45559C',
   'tic': '#2A7D7F',
-  'eote': '#00B7CE',
+  'eoe': '#00B7CE',
   'tsk': '#B7265E'
 }

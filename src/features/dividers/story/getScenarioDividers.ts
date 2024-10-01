@@ -1,8 +1,8 @@
 import { IScenario, IStory } from "@/types/api";
-import { ascend, sortWith } from "ramda";
+import { ascend, isNotNil, propEq, sortWith } from "ramda";
 import { getScenarioSize } from "./getScenarioSize";
 import { FirstParam } from "@/types/util";
-import { definedIf, toArrayIfExists, uniqId } from "@/util/common";
+import { toArrayIfExists, uniqId } from "@/util/common";
 import { DividerType } from "@/types/dividers";
 
 type IGetSizeOptions = FirstParam<typeof getScenarioSize>
@@ -23,18 +23,19 @@ export const getStoryScenarios = ({
 export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
   const { 
     story, 
+    includeScenarios,
     includeCampaignIcon,
-    includeScenarios
+    encounterSets
   } = options;
-  
+
   if (!includeScenarios) {
     return [];
   }
 
-  const { icon, code } = story;
+  const { icon } = story;
   const scenarios = getStoryScenarios(story);
 
-  const campaignIcon = definedIf(icon, includeCampaignIcon);
+  const campaignIcon = icon;
 
   return sortWith(
     [
@@ -46,22 +47,60 @@ export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
     const {
       id,
       scenario_name,
-      icon
+      icon,
+      encounter_sets = [],
+      extra_encounter_sets = [],
+      encounter_set_groups = [],
+      scenarios = []
     } = scenario;
   
     const sizeData = getScenarioSize({
       scenario,
       ...options
     });
-    
+
+    const allEncounterSets = [
+      ...encounter_sets,
+      ...extra_encounter_sets
+    ];
+
+    const toIcon = (code: string) => encounterSets.find(
+      propEq(code, 'code')
+    )?.icon
+
+    const encounters = allEncounterSets
+      .map(toIcon)
+      .filter(encounterIcon => encounterIcon !== icon)
+      .filter(isNotNil);
+
+    const ecnounterGroups = encounter_set_groups.map(group => ({
+      ...group,
+      encounter_sets: group.encounter_sets
+        .filter(code => code !== id)
+        .map(toIcon)
+        .filter(isNotNil)
+    }));
+
+    const linkedScenarios = scenarios.map(s => ({
+      ...s,
+      encounter_sets: s.encounter_sets?.map(toIcon)
+    }))
+
     return {
       ...sizeData,
       id: uniqId() + id,
+      scenario: {
+        ...scenario,
+        scenarios: linkedScenarios
+      },
       story,
       name: scenario_name,
       icon,
       campaignIcon,
-      type: DividerType.SCENARIO
+      type: DividerType.SCENARIO,
+      encounters,
+      ecnounterGroups,
+      displayCampaignIcon: includeCampaignIcon
     }
   })
 
