@@ -1,3 +1,17 @@
 .vertical {
-  
+  .menu {
+    top: 28mm;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .title {
+    &_scenario, &_campaign {
+      width: 45mm;
+    }
+  }
+
+  .scenarioTitle {
+    top: 21.2mm;
+  }
 }

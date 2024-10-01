@@ -62,6 +62,7 @@ const getAllGroups = ({
   const {
     id,
     encounter_set_groups = [],
+    icon
   } = scenario
 
   const toIcon = (code: string) => encounterSets.find(
@@ -69,12 +70,14 @@ const getAllGroups = ({
   )?.icon
 
   const excludeIds = mainScenario ? [id, mainScenario.id] : [id]; 
+  const excludeIcons = mainScenario ? [icon, mainScenario.icon] : [icon]; 
 
   return encounter_set_groups.map(group => ({
     ...group,
     encounter_sets: group.encounter_sets
       .filter(code => !excludeIds.includes(code))
       .map(toIcon)
+      .filter(code => !excludeIcons.includes(code))
       .filter(isNotNil)
   }));
 }

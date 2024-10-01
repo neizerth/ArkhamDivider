@@ -1,0 +1,18 @@
+.horizontal {
+  .menu {
+    right: 8mm;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  .menuContainer {
+    flex-direction: column;
+  }
+  .title {
+    &_scenario, &_campaign {
+      width: 72mm;
+    }
+  }
+  .scenarioTitle {
+    top: 20.2mm;
+  }
+}

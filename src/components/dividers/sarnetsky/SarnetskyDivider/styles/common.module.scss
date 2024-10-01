@@ -92,13 +92,11 @@
   }
   &_scenario, &_campaign {
     line-height: 1;
-    width: 100%;
     text-align: center;
     padding-right: 2.5mm;
     box-sizing: border-box;
     top: 6.9mm;
     left: 15mm;
-    width: 45mm;
     height: 8.15mm;
   }
   &_m {
@@ -132,7 +130,6 @@
   font-family: 'Arno Pro', 'Alegreya', sans-serif;
   font-style: italic;
   text-align: center;
-  top: 21.2mm;
 }
 
 .scenarioInputTitle {
@@ -145,9 +142,6 @@
 
 .menu {
   position: absolute;
-  top: 28mm;
-  left: 50%;
-  transform: translate(-50%, 0);
   color: rgba(0, 0, 0, 0.2);
   z-index: 2;
 }

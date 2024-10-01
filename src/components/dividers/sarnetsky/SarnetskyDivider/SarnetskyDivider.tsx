@@ -4,13 +4,14 @@ import { DividerType, IDivider } from '@/types/dividers';
 import { DividerContent, DividerMenu, DividerText, Icon } from '@/components';
 import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectOrientation } from '@/store/features/layout/layout';
+import { selectLayout, selectOrientation } from '@/store/features/layout/layout';
 import { SarnetskyDividerBackground as DividerBackground } from '../SarnetskyDividerBackground/SarnetskyDividerBackground';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { selectLanguage } from '@/store/features/language/language';
 import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from '../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters';
 import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from '../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters';
+import { LayoutOrientation } from '@/types/layouts';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -38,7 +39,6 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 
 	const [title, setTitle] = useState(translatedName);
 
-
 	useEffect(() => {
 		setTitle(translatedName);
 	}, [translatedName]);
@@ -50,8 +50,6 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 		S[orientation],
 		S[`type_${type}`]
 	);
-
-
 
 	const size = ['ko', 'zh', 'zh-cn'].includes(realLanguage) ? title.length * 2 : title.length;
 
@@ -71,6 +69,8 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	)
 	
 	const isScenario = [DividerType.SCENARIO, DividerType.CAMPAIGN].includes(type);
+
+	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 10;
 
   return (
     <div 
@@ -128,14 +128,14 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						{!scenario.scenarios && (
 							<ScenarioEncounters 
 								scenario={scenario}
-								rowSize={8}
+								rowSize={rowSize}
 							/>
 						)}
 						{scenario.scenarios && (
 							<LinkedScenarioEncounters
 								mainScenario={scenario}
 								scenarios={scenario.scenarios}
-								rowSize={8}
+								rowSize={rowSize}
 							/>
 						)}
 					</div>

@@ -72,6 +72,12 @@ export const SarnetskyDividerGroupedEncounters = ({
     between(totalSize) && S.wrapper_max
   )
 
+  const gap = between(totalSize) ? 0.4 * rowSize / 8: 0.5 * rowSize / 8;
+
+  const groupStyle = {
+    gap: `${gap}em`
+  }
+
   return (
     <div className={classNames(S.container, showName && S.withName)}>
       {showName && (
@@ -84,16 +90,23 @@ export const SarnetskyDividerGroupedEncounters = ({
               S.main, 
               getGroupClass(mainEncounters)
             )}
+            style={groupStyle}
           >
             {mainEncounters.map(icon => (
-              <div className={classNames(S.encounter, S.encounter_main)} key={`main_${icon}`}>
+              <div 
+                className={classNames(S.encounter, S.encounter_main)} 
+                key={`main_${icon}`}
+              >
                 <Icon icon={icon}/>
               </div>
             ))}
           </div>
         )}
         {sideEncounters.length > 0 && (
-          <div className={classNames(S.side, getGroupClass(sideEncounters))}>
+          <div 
+            className={classNames(S.side, getGroupClass(sideEncounters))}
+            style={groupStyle}
+          >
             {sideEncounters.map(icon => (
               <div 
                 className={classNames(S.encounter, S.encounter_side)} 
