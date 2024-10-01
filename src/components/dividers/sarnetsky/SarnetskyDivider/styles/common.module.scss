@@ -72,6 +72,7 @@
   width: 100%;
   bottom: 13.6mm;
   padding: 0 7.5mm;
+  transform: translate(0, 10%);
   box-sizing: border-box;
 }
 
@@ -136,4 +137,17 @@
 
 .nowrap {
   white-space: nowrap;
+}
+
+.menu {
+  position: absolute;
+  top: 28mm;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.menuContainer {
+  gap: 2mm;
 }

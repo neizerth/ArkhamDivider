@@ -1,17 +1,16 @@
 import S from './SarnetskyDivider.module.scss';
 
 import { DividerType, IDivider } from '@/types/dividers';
-import { DividerContent, DividerText, Icon } from '@/components';
+import { DividerContent, DividerMenu, DividerText, Icon } from '@/components';
 import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectOrientation } from '@/store/features/layout/layout';
-import { SarnetskyDividerBackground } from '../SarnetskyDividerBackground/SarnetskyDividerBackground';
+import { SarnetskyDividerBackground as DividerBackground } from '../SarnetskyDividerBackground/SarnetskyDividerBackground';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { selectLanguage } from '@/store/features/language/language';
-import { SarnetskyDividerScenarioEncounters } from '../SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters';
-import { count } from 'ramda';
-import { useLinesCount } from '@/hooks/useLinesCount';
+import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from '../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters';
+import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from '../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -20,6 +19,7 @@ export type SarnetskyDividerProps = IDivider;
 export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 
 	const {
+		id,
 		scenario,
 		name = '',
 		faction,
@@ -27,7 +27,6 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 		type,
 		story,
 		campaignIcon,
-		ecnounterGroups
 	} = props;
 
 	const { t } = useTranslation();
@@ -77,7 +76,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 		>
 			<DividerContent>
 				<div className={S.background}>
-					<SarnetskyDividerBackground 
+					<DividerBackground 
 						id={faction || icon}
 						storyCode={story?.return_to_code || story?.code}
 						type={type}
@@ -122,17 +121,27 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						<Icon icon={campaignIcon}/>
 					</div>
 				)}
-				{ecnounterGroups && scenario && (
-					<div className={S.encounters}>
-						<SarnetskyDividerScenarioEncounters 
-							scenario={scenario}
-							ecnounterGroups={ecnounterGroups}
-							rowSize={8}
-						/>
+				{scenario && (
+					<div className={classNames(S.encounters)}>
+						{!scenario.scenarios && (
+							<ScenarioEncounters 
+								scenario={scenario}
+								rowSize={8}
+							/>
+						)}
+						{scenario.scenarios && (
+							<LinkedScenarioEncounters
+								mainScenario={scenario}
+								scenarios={scenario.scenarios}
+								rowSize={8}
+							/>
+						)}
 					</div>
 				)}
 				{/* {background && <img className={S.background} src={background} alt={title}/>} */}
-				{/* <DividerMenu id={id}/> */}
+				<div className={S.menu}>
+					<DividerMenu id={id} className={S.menuContainer}/>
+				</div>
 			</DividerContent>
     </div>
   );

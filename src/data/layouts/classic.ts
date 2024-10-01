@@ -2,7 +2,7 @@ import { ILayout, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
 export const common = {
-  id: "classic",
+  categoryId: "classic",
   title: "Classic",
   types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
   pageOrientation: PageOrientation.PORTRAIT,
@@ -38,6 +38,7 @@ export const classicLayouts: ILayout[] = [
   {
     ...common,
     ...horizontal,
+    id: "classic_h",
     title: "Classic",
     orientation: LayoutOrientation.HORIZONTAL,
     color: true,
@@ -46,18 +47,21 @@ export const classicLayouts: ILayout[] = [
   {
     ...common,
     ...horizontal,
+    id: "classic_h-bw",
     orientation: LayoutOrientation.HORIZONTAL,
     color: false,
   },
   {
     ...common,
     ...vertical,
+    id: "classic_v",
     orientation: LayoutOrientation.VERTICAL,
     color: true,
   },
   {
     ...common,
     ...vertical,
+    id: "classic_v-bw",
     orientation: LayoutOrientation.VERTICAL,
     color: false,
   },

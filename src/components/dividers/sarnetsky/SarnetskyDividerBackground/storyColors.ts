@@ -9,5 +9,6 @@ export const storyColors: Mapping = {
   'tde': '#45559C',
   'tic': '#2A7D7F',
   'eoe': '#00B7CE',
-  'tsk': '#B7265E'
+  'tsk': '#B7265E',
+  'fhv': '#f36f32'
 }

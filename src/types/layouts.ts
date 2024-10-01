@@ -2,6 +2,7 @@ import { PageOrientation } from "./print"
 
 export type ILayout = {
   id: string,
+  categoryId: string,
   width: number
   height: number
   rowSize: number

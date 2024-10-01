@@ -1,5 +1,5 @@
 import { IScenario, IStory } from "@/types/api";
-import { ascend, isNotNil, propEq, sortWith } from "ramda";
+import { ascend, sortWith } from "ramda";
 import { getScenarioSize } from "./getScenarioSize";
 import { FirstParam } from "@/types/util";
 import { toArrayIfExists, uniqId } from "@/util/common";
@@ -24,8 +24,7 @@ export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
   const { 
     story, 
     includeScenarios,
-    includeCampaignIcon,
-    encounterSets
+    includeCampaignIcon
   } = options;
 
   if (!includeScenarios) {
@@ -47,11 +46,7 @@ export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
     const {
       id,
       scenario_name,
-      icon,
-      encounter_sets = [],
-      extra_encounter_sets = [],
-      encounter_set_groups = [],
-      scenarios = []
+      icon
     } = scenario;
   
     const sizeData = getScenarioSize({
@@ -59,47 +54,15 @@ export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
       ...options
     });
 
-    const allEncounterSets = [
-      ...encounter_sets,
-      ...extra_encounter_sets
-    ];
-
-    const toIcon = (code: string) => encounterSets.find(
-      propEq(code, 'code')
-    )?.icon
-
-    const encounters = allEncounterSets
-      .map(toIcon)
-      .filter(encounterIcon => encounterIcon !== icon)
-      .filter(isNotNil);
-
-    const ecnounterGroups = encounter_set_groups.map(group => ({
-      ...group,
-      encounter_sets: group.encounter_sets
-        .filter(code => code !== id)
-        .map(toIcon)
-        .filter(isNotNil)
-    }));
-
-    const linkedScenarios = scenarios.map(s => ({
-      ...s,
-      encounter_sets: s.encounter_sets?.map(toIcon)
-    }))
-
     return {
       ...sizeData,
       id: uniqId() + id,
-      scenario: {
-        ...scenario,
-        scenarios: linkedScenarios
-      },
       story,
+      scenario,
       name: scenario_name,
       icon,
       campaignIcon,
       type: DividerType.SCENARIO,
-      encounters,
-      ecnounterGroups,
       displayCampaignIcon: includeCampaignIcon
     }
   })

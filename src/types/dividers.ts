@@ -24,8 +24,6 @@ export type IDivider = {
     xpCost?: IXPCost,
     size?: number
 
-    encounters?: string[]
-    ecnounterGroups?: IEncounterSetGroup[]
     displaySideXP?: boolean
     displayNumericXP?: boolean
     displayCampaignIcon?: boolean

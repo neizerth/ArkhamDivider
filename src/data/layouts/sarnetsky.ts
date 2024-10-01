@@ -4,6 +4,7 @@ import { PageOrientation } from "@/types/print";
 export const sarnetskyLayouts: ILayout[] = [
   {
     id: "sarnetsky",
+    categoryId: "sarnetsky",
     rowSize: 3,
     groupSize: 6,
     width: 63,
