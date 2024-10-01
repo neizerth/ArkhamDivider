@@ -52,3 +52,4 @@ export { PrintSettings } from './settings/PrintSettings/PrintSettings';
 
 export { CategoriesMenu } from './layout/CategoriesMenu/CategoriesMenu';
 export { LayoutMenu } from './layout/LayoutMenu/LayoutMenu';
+export { Footer } from './layout/Footer/Footer';

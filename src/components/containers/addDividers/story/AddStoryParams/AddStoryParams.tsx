@@ -38,7 +38,7 @@ export const AddStoryParams = ({
   const { t } = useTranslation();
   
   const stories = useAppSelector(selectStories);
-  const { showCampaignIcon } = useAppSelector(selectLayout);
+  const { campaignOptions } = useAppSelector(selectLayout);
   
   const [form, setForm] = useState(defaultValue);
 
@@ -55,6 +55,13 @@ export const AddStoryParams = ({
     }
   );
 
+  const includeEncounterSize = isNil(campaignOptions?.includeEncounterSize)
+  const includeScenarioSize = form.includeScenarios && isNil(campaignOptions?.includeScenarioSize);
+
+  const showSize = story.is_size_supported && (includeEncounterSize || includeScenarioSize)
+
+  const showAdditional = haveExtraDividers || showSize;
+
   return (
     <div className={S.container}>
       <Col>
@@ -65,7 +72,7 @@ export const AddStoryParams = ({
               <Checkbox {...check('includeCampaign')}>
                 {t('Campaign Divider')}
               </Checkbox>
-              {isNil(showCampaignIcon) && (
+              {isNil(campaignOptions?.includeCampaignIcon) && (
                 <Checkbox {...check('includeCampaignIcon')}>
                   {t('Campaign Icon')}
                 </Checkbox>
@@ -84,29 +91,33 @@ export const AddStoryParams = ({
               </Checkbox>
             </Col>
           </div>
-          <div className={S.checkboxGroup}>
-            <h3 className={S.title}>{t('Additional')}</h3>
-            <Col wrap className={S.checks}>
-              {haveExtraDividers && (
-                <Checkbox {...check('includeExtraSets')}>
-                  {t('Extra Dividers')}
-                </Checkbox>
-              )}
-              {story.is_size_supported && (
-                <>
-                  <Checkbox {...check('includeEncounterSize')}>
-                    {t('Encounter Size')}
+          {showAdditional && (
+            <div className={S.checkboxGroup}>
+              <h3 className={S.title}>{t('Additional')}</h3>
+              <Col wrap className={S.checks}>
+                {haveExtraDividers && (
+                  <Checkbox {...check('includeExtraSets')}>
+                    {t('Extra Dividers')}
                   </Checkbox>
-                  {form.includeScenarios && (
-                    <Checkbox {...check('includeScenarioSize')}>
-                    {t('Scenario Size')}
-                    </Checkbox>
-                  )}
-                
-                </>
-              )}
-            </Col>
-          </div>
+                )}
+                {showSize && (
+                  <>
+                    {includeEncounterSize && (
+                      <Checkbox {...check('includeEncounterSize')}>
+                        {t('Encounter Size')}
+                      </Checkbox>
+                    )}
+                    {includeScenarioSize && (
+                      <Checkbox {...check('includeScenarioSize')}>
+                      {t('Scenario Size')}
+                      </Checkbox>
+                    )}
+                  
+                  </>
+                )}
+              </Col>
+            </div>
+          )}
         </Row>
         {haveReturnCycle && (
           <Row>

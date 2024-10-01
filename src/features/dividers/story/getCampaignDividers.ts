@@ -21,6 +21,7 @@ export const getCampaignDividers = ({
       story,
       name,
       icon,
+      campaignIcon: icon,
       type: DividerType.CAMPAIGN
     }
   ]

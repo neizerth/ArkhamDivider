@@ -20,6 +20,10 @@ export const sarnetskyLayouts: ILayout[] = [
       top: 2,
       left: 2
     },
-    showCampaignIcon: true
+    campaignOptions: {
+      includeCampaignIcon: true,
+      includeEncounterSize: false,
+      includeScenarioSize: false
+    }
   },
 ]

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import S from './App.module.scss'
 
-import { AppLoader, Layout, AppSettings, LayoutMenu, AddDividers, Col } from '@/components';
+import { AppLoader, Layout, AppSettings, LayoutMenu, AddDividers, Col, Footer } from '@/components';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { loadAppData } from './store/features/app/app';
@@ -20,14 +20,15 @@ function App() {
   return (
     <>
       <AppLoader>
-        <div className={S.container}>
+        <Col className={S.container}>
           <AppSettings/>
           <Col className={S.content}>
             <LayoutMenu/>
             <AddDividers/>
-            {showLayout && <Layout/>}
+          {showLayout && <Layout/>}
           </Col>
-        </div>
+          <Footer/>
+        </Col>
       </AppLoader>
     </>
   );

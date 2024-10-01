@@ -67,8 +67,10 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 
 	const titleInputClassName = classNames(
 		S.titleInput,
+		S[`titleInput_${type}`],
 	)
 	
+	const isScenario = [DividerType.SCENARIO, DividerType.CAMPAIGN].includes(type);
 
   return (
     <div 
@@ -82,7 +84,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						type={type}
 					/>
 				</div>
-				{type === DividerType.SCENARIO && story && scenario && (
+				{isScenario && story && scenario && (
 					<div className={S.scenarioTitle}>
 						<DividerText 
 							defaultValue={`${t(story.name)}. \u{200B}${t(scenario.header)}`}
@@ -92,7 +94,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 				)}
 				{icon && (
 					<>
-						<div className={classNames(S.icon, S[`icon_${type}`])}>
+						<div className={classNames(S.icon, S[`icon_type-${type}`])}>
 							<Icon icon={icon}/>
 						</div>
 						<div className={classNames(S.icon, S.icon_main)}>
@@ -101,7 +103,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 					</>
 				)}
 				{campaignIcon && (
-					<div className={classNames(S.icon, S.icon_campaign)}>
+					<div className={classNames(S.icon, S.campaignIcon)}>
 						<Icon icon={campaignIcon}/>
 					</div>
 				)}
@@ -112,7 +114,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 							onChange={setTitle}
 							inputClassName={titleInputClassName}
 							minFontSize={60}
-							fixedFontSize={type !== DividerType.SCENARIO}
+							fixedFontSize={!isScenario}
 						/>
 					</div>
 				)}

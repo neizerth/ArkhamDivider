@@ -1,5 +1,6 @@
 .container {
   font-size: 16px;
+  min-height: 100vh;
   @media print {
     text-align: center;
   }
@@ -7,6 +8,7 @@
 
 .content {
   padding-top: 200px;
+  flex: 1;
   @media (min-width: 768px) {
     padding-top: 100px;
   }

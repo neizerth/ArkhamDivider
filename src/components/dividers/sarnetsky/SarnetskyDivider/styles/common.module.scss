@@ -15,10 +15,12 @@
 .titleInput {
   text-align: left;
   padding: 0.2em;
-  display: grid;
-  grid-template-columns: 100%;
-  align-items: center;
-  justify-items: center;
+  &_scenario, &_campaign {
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: center;
+    justify-items: center;
+  }
 }
 
 .icon {
@@ -37,13 +39,13 @@
     top: 50%;
     transform: translate(-50%, -50%);
   }
-  &_encounter {
+  &_type-encounter {
     font-size: 1.2em;
     top: 3.5mm;
     left: 50%;
     transform: translate(-50%, 0);
   }
-  &_scenario {
+  &_type-scenario, &_type-campaign {
     font-size: 1.2em;
     width: 1.1em;
     top: 7.9mm;
@@ -51,18 +53,20 @@
   }
 }
 
-.type_encounter .icon_campaign {
+.type_encounter .campaignIcon {
   font-size: 0.6em;
   color: #fff;
   top: 5.3mm;
   right: 5.6mm;
 }
 
-.type_scenario .icon_campaign {
-  font-size: 0.55em;
-  width: 1.1em;
-  top: 9.5mm;
-  right: 5mm;
+.type_scenario, .type_campaign {
+  .campaignIcon {
+    font-size: 0.55em;
+    width: 1.1em;
+    top: 9.5mm;
+    right: 5mm;
+  }
 }
 
 .encounters {
@@ -86,7 +90,7 @@
     box-sizing: border-box;
     top: 8.7mm;
   }
-  &_scenario {
+  &_scenario, &_campaign {
     line-height: 1;
     width: 100%;
     text-align: center;

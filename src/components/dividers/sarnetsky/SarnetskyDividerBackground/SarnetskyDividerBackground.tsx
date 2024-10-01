@@ -108,7 +108,7 @@ export const SarnetskyDividerBackground = ({
       {type === DividerType.PLAYER && (
         <SarnetskyPlayerBackground id={id}/>
       )}
-      {type === DividerType.SCENARIO && storyCode && (
+      {[DividerType.SCENARIO, DividerType.CAMPAIGN].includes(type) && storyCode && (
         <SarnetskyScenarioBackground storyCode={storyCode}/>
       )}
       {type === DividerType.ENCOUNTER && storyCode && (
