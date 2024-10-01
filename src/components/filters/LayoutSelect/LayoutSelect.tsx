@@ -8,12 +8,10 @@ import icon from './images/change-orientation.svg';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout, selectOrientation, selectType, setLayout, setOrientation } from '@/store/features/layout/layout';
-import { ILayout, LayoutOrientation, LayoutType } from "@/types/layouts";
-import { getLayoutById } from '@/util/layouts';
+import { LayoutOrientation } from "@/types/layouts";
+import { getLayouts } from '@/util/layouts';
 import { Color } from '@/components';
 import { selectColor, setColor } from '@/store/features/layout/layout';
-import { layouts } from '@/data/layouts';
-import { propsEquals } from '@/util/criteria';
 
 export const LayoutSelect = () => {
   const dispatch = useAppDispatch();
@@ -29,14 +27,6 @@ export const LayoutSelect = () => {
     isVertical && S.icon_vertical
   );
 
-  const getLayouts = ({
-    type,
-    ...criteria
-  }: Partial<ILayout> & {
-    type?: LayoutType
-  }) => layouts
-    .filter(propsEquals(criteria))
-    .filter(({ types }) => !type || types.includes(type))
 
   const toggleType = () => {
     const nextType = LayoutFilter === LayoutOrientation.HORIZONTAL ? 

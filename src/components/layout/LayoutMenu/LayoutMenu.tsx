@@ -4,10 +4,11 @@ import { Container } from '@/components';
 import { PropsWithChildren } from 'react';
 import { LayoutType } from '@/types/layouts';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectType, setType } from '@/store/features/layout/layout';
+import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
 import classNames from 'classnames';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { setDividers } from '@/store/features/dividers/dividers';
+import { getLayouts } from '@/util/layouts';
 
 
 export type LayoutMenuItemProps = PropsWithChildren & {
@@ -16,16 +17,31 @@ export type LayoutMenuItemProps = PropsWithChildren & {
 
 export const LayoutMenuItem = ({ type, children }: LayoutMenuItemProps) => {
   const currentType = useAppSelector(selectType);
+  const {
+    orientation,
+    color,
+  } = useAppSelector(selectLayout);
+
   const dispatch = useAppDispatch();
   const isSelected = currentType === type;
 
   const classList = classNames(S.item, isSelected && S.selected);
+
   const select = () => {
     if (type === currentType) {
       return;
     }
+    
     dispatch(setType(type))
     dispatch(setDividers([]));
+
+    const [layout] = getLayouts({
+      orientation,
+      color,
+      type
+    });
+
+    dispatch(setLayout(layout))
   };
 
   return (
