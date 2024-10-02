@@ -6,7 +6,7 @@ import neutral from './neutral.jpg'
 import rogue from './rogue.jpg'
 import seeker from './seeker.jpg'
 import survivor from './survivor.jpg'
-import upgrade from './upgrade.jpg'
+import customizations from './customizations.jpg'
 import weakness from './weakness.jpg'
 import { DividerType } from '@/types/dividers';
 
@@ -47,8 +47,8 @@ export const playerImages = [
       background: survivor
     },
     {
-      id: 'upgrading',
-      background: upgrade
+      id: 'customizations',
+      background: customizations
     },
     {
       id: 'weakness',

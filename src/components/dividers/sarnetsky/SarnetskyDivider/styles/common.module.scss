@@ -1,6 +1,8 @@
 .container {
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
   position: relative;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 .background {
@@ -15,12 +17,17 @@
 .titleInput {
   text-align: left;
   padding: 0.2em;
-  &_scenario, &_campaign {
+  &_scenario, &_campaign, &_player {
     display: grid;
     grid-template-columns: 100%;
     align-items: center;
     justify-items: center;
   }
+}
+
+
+.light {
+  color: white;
 }
 
 .icon {
@@ -80,7 +87,7 @@
 
 .title {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   &_encounter {
     width: 100%;
     text-align: center;
@@ -88,29 +95,21 @@
     box-sizing: border-box;
     top: 8.7mm;
   }
-  &_scenario, &_campaign {
+  &_scenario, &_campaign, &_player {
     line-height: 1;
     text-align: center;
-    padding-right: 2.5mm;
     box-sizing: border-box;
+  }
+  &_scenario, &_campaign {
     top: 6.9mm;
     left: 15mm;
     height: 8.15mm;
+    padding-right: 2.5mm;
   }
-  &_m {
-    // font-size: 1em
-  }
-  &_l {
-    // font-size: 0.7em;
-    // padding: 0.8em 1em 0.8em 1em;
-    // line-height: 1.2;
-  }
-  &_xl {
-    // padding: 0.2em 2em 0.2em 1em;
-    // font-size: 0.7em;
-  }
-  &_xxl {
-
+  &_player {
+    top: 7.2mm;
+    left: 16mm;
+    height: 7.6mm;
   }
   &_zh, &_zh-cn, &_ko {
     line-height: 1.1;
@@ -140,10 +139,30 @@
 
 .menu {
   position: absolute;
-  color: rgba(0, 0, 0, 0.2);
   z-index: 2;
+  color: rgba(0, 0, 0, 0.3);
+  padding: 0.5em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1mm;
+  @media print {
+    display: none;
+  }
 }
 
 .menuContainer {
   gap: 2mm;
+}
+
+.sideXP {
+  position: absolute;
+  z-index: 2;
+  top: 10.1mm;
+  right: 14.3mm;
+}
+
+.xpCost {
+  position: absolute;
+  z-index: 2;
+  top: 7.9mm;
+  right: 9.4mm;
 }

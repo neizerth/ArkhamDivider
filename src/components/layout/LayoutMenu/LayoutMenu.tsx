@@ -20,6 +20,7 @@ export const LayoutMenuItem = ({ type, children }: LayoutMenuItemProps) => {
   const {
     orientation,
     color,
+    categoryId
   } = useAppSelector(selectLayout);
 
   const dispatch = useAppDispatch();
@@ -38,7 +39,8 @@ export const LayoutMenuItem = ({ type, children }: LayoutMenuItemProps) => {
     const [layout] = getLayouts({
       orientation,
       color,
-      type
+      type,
+      categoryId
     });
 
     dispatch(setLayout(layout))

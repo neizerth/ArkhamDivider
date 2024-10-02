@@ -4,18 +4,26 @@ import { DividerType, IDivider } from '@/types/dividers';
 import { DividerContent, DividerMenu, DividerText, Icon } from '@/components';
 import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout, selectOrientation } from '@/store/features/layout/layout';
+import { selectOrientation } from '@/store/features/layout/layout';
 import { SarnetskyDividerBackground as DividerBackground } from '../SarnetskyDividerBackground/SarnetskyDividerBackground';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { selectLanguage } from '@/store/features/language/language';
 import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from '../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters';
 import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from '../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters';
 import { LayoutOrientation } from '@/types/layouts';
+import { SarnetskyDividerXPCost } from '../xp/SarnetskyDividerXPCost/SarnetskyDividerXPCost';
+import { SarnetskyDividerSideXP } from '../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
 export type SarnetskyDividerProps = IDivider;
+
+const LIGHT_FACTIONS = [
+	'mystic',
+	'rogue',
+	'guardian',
+	'survivor'
+]
 
 export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 
@@ -23,54 +31,55 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 		id,
 		scenario,
 		name = '',
-		faction,
+		faction = '',
 		icon = '',
 		type,
 		story,
 		campaignIcon,
+		xpCost,
+		tags = []
 	} = props;
 
 	const { t } = useTranslation();
 
 	const language = useAppSelector(selectLanguage);
-	const translatedName = t(name);
-
-	const realLanguage = translatedName === name ? 'en' : language;
-
-	const [title, setTitle] = useState(translatedName);
-
-	useEffect(() => {
-		setTitle(translatedName);
-	}, [translatedName]);
-
 	const orientation = useAppSelector(selectOrientation);
+
+	const translatedName = t(name);
+	const realLanguage = translatedName === name ? 'en' : language;
+	const [tag] = tags;
+
+	const isLight = !tag && LIGHT_FACTIONS.includes(faction);
 
 	const containerClassName = classNames(
 		S.container,
 		S[orientation],
-		S[`type_${type}`]
+		S[`type_${type}`],
+		isLight && S.light
 	);
 
-	const size = ['ko', 'zh', 'zh-cn'].includes(realLanguage) ? title.length * 2 : title.length;
+	const isScenario = [
+		DividerType.SCENARIO, 
+		DividerType.CAMPAIGN,
+	].includes(type);
+
+	const isPlayer = type === DividerType.PLAYER;
+	const isEncounter = type === DividerType.ENCOUNTER;
 
 	const titleClassName = classNames(
 		S.title, 
 		S[`title_${type}`],
-		size <= 30 && S.title_m,
-		size > 30 && S.title_l,
-		size > 40 && S.title_xl,
-		size > 50 && S.title_xxl,
-		S[`title_${language}`]
+		S[`title_${realLanguage}`]
 	)
 
 	const titleInputClassName = classNames(
 		S.titleInput,
 		S[`titleInput_${type}`],
 	)
-	
-	const isScenario = [DividerType.SCENARIO, DividerType.CAMPAIGN].includes(type);
 
 	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 16;
+
+	const showTitle = !isPlayer || (isPlayer && !xpCost);
 
   return (
     <div 
@@ -79,12 +88,22 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 			<DividerContent>
 				<div className={S.background}>
 					<DividerBackground 
-						id={faction || icon}
+						id={tag || faction || icon}
 						storyCode={story?.return_to_code || story?.code}
 						type={type}
 					/>
 				</div>
-				{isScenario && story && scenario && (
+				{xpCost && (
+					<>
+						<div className={S.xpCost}>
+							<SarnetskyDividerSideXP xpCost={xpCost}/>
+						</div>
+						<div className={S.sideXP}>
+							<SarnetskyDividerXPCost xpCost={xpCost}/>
+						</div>
+					</>
+				)}
+				{story && scenario && (
 					<div className={S.scenarioTitle}>
 						<DividerText 
 							defaultValue={`${t(story.name)}. \u{200B}${t(scenario.header)}`}
@@ -92,7 +111,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						/>
 					</div>
 				)}
-				{icon && (
+				{!isPlayer && icon && (
 					<>
 						<div className={classNames(S.icon, S[`icon_type-${type}`])}>
 							<Icon icon={icon}/>
@@ -102,19 +121,18 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						</div>
 					</>
 				)}
-				{campaignIcon && (
+				{isScenario && campaignIcon && (
 					<div className={classNames(S.icon, S.campaignIcon)}>
 						<Icon icon={campaignIcon}/>
 					</div>
 				)}
-				{name && (
+				{showTitle && name && (
 					<div className={classNames(titleClassName)}>
 						<DividerText 
 							defaultValue={translatedName} 
-							onChange={setTitle}
 							inputClassName={titleInputClassName}
 							minFontSize={60}
-							fixedFontSize={!isScenario}
+							fixedFontSize={isEncounter}
 						/>
 					</div>
 				)}
@@ -140,7 +158,6 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						)}
 					</div>
 				)}
-				{/* {background && <img className={S.background} src={background} alt={title}/>} */}
 				<div className={S.menu}>
 					<DividerMenu id={id} className={S.menuContainer}/>
 				</div>

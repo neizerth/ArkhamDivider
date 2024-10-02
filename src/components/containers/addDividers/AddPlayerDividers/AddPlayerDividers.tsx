@@ -23,11 +23,12 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const [types, setTypes] = useState<ICardType[]>([]);
 
   const [form, setForm] = useState({
-    useUpgrading: false,
+    includeUpgrading: false,
     includeBasicWeakness: false,
     includeAllies: false,
     includeFactionId: false,
     includeBonded: false,
+    includeCustomizations: false,
     displaySideXP: false,
     displayNumericXP: false
   });
@@ -79,7 +80,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             </Checkbox>
           </Row>
           <div className={S.rule}/>
-          <Row wrap>
+          <Row wrap className={S.row}>
             <Checkbox 
               {...check('includeBasicWeakness')}
             >
@@ -91,9 +92,14 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
               {t('Bonded')}
             </Checkbox>
             <Checkbox 
-              {...check('useUpgrading')}
+              {...check('includeUpgrading')}
             >
               {t('Upgrading')}
+            </Checkbox>
+            <Checkbox 
+              {...check('includeCustomizations')}
+            >
+              {t('Customizations')}
             </Checkbox>
           </Row>
           <div className={S.rule}/>

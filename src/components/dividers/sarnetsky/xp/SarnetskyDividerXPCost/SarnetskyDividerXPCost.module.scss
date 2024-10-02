@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  gap: 1.21mm;
+}
+
+.level {
+  width: 0.4em;
+  fill: currentColor;
+}
+
+.inactive {
+  color: #000;
+  opacity: 0.25;
+}
+
+.current {
+  color: #fff;
+}
+
+.max {
+  color: #fff;
+  opacity: 0.8;
+}

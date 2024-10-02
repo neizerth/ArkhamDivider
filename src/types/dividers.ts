@@ -27,6 +27,8 @@ export type IDivider = {
     displaySideXP?: boolean
     displayNumericXP?: boolean
     displayCampaignIcon?: boolean
+
+    tags?: string[]
 }
 
 export type IDividerList = IDivider[];

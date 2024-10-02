@@ -34,7 +34,7 @@ export const sarnetskyLayouts: ILayout[] = [
     width: 89,
     height: 75,
     title: "Made by @sarnetsky",
-    types: [LayoutType.SCENARIO],
+    types: [LayoutType.SCENARIO, LayoutType.PLAYER],
     orientation: LayoutOrientation.HORIZONTAL,
     pageOrientation: PageOrientation.PORTRAIT,
     color: true,

@@ -2,6 +2,7 @@ import { IXPCost } from '@/types/game';
 import S from './ClassicDividerSideXP.module.scss';
 import { range } from 'ramda';
 import classNames from 'classnames';
+import Dot from './images/dot.svg?react'
 
 export type ClassicDividerSideXPProps = {
   numeric: boolean
@@ -37,10 +38,7 @@ export const ClassicDividerSideXP = ({
                 l > max && S.level_inactive
               )}
             >
-              <svg className={S.dot} viewBox="0 0 40 40" version="1.1"
-                xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20"/>
-              </svg>
+              <Dot className={S.dot} />
             </div>
           ))}
         </div>

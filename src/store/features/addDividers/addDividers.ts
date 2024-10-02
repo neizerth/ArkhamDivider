@@ -15,7 +15,8 @@ export type AddPlayerDividersOptions = {
   factions: IFaction[]
   xpCosts: IXPCost[]
   types: ICardType[]
-  useUpgrading: boolean
+  includeUpgrading: boolean
+  includeCustomizations: boolean
   includeBasicWeakness: boolean
   includeAllies: boolean
   includeFactionId: boolean

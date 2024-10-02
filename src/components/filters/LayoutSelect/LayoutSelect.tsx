@@ -36,7 +36,8 @@ export const LayoutSelect = () => {
     const [firstLayout] = getLayouts({
       color: useColor,
       orientation: nextType,
-      type
+      type,
+      categoryId: layout.categoryId
     })
     dispatch(setOrientation(nextType));
     dispatch(setLayout(firstLayout));
@@ -59,7 +60,8 @@ export const LayoutSelect = () => {
   const changeLayoutFilter = (id: string) => {
     const [nextLayout] = getLayouts({
       id,
-      orientation: layout.orientation
+      orientation: layout.orientation,
+      categoryId: layout.categoryId
     })
 
     if (!nextLayout) {
@@ -74,8 +76,9 @@ export const LayoutSelect = () => {
 
     const criteria = {
       color: nextColor,
-      orientation: layout?.orientation,
-      type
+      orientation: layout.orientation,
+      type,
+      categoryId: layout.categoryId
     }
 
     const [firstLayout] = getLayouts(criteria)
