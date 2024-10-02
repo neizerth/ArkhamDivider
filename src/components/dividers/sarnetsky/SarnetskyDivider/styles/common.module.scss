@@ -127,10 +127,11 @@
   font-family: 'Arno Pro', 'Alegreya', sans-serif;
   font-style: italic;
   text-align: center;
+  font-size: 0.63em;
 }
 
 .scenarioInputTitle {
-  font-size: 0.63em;
+  // font-size: 0.63em;
 }
 
 .nowrap {
@@ -165,4 +166,16 @@
   z-index: 2;
   top: 7.9mm;
   right: 9.4mm;
+}
+
+.xpTitle {
+  position: absolute;
+  z-index: 2;
+  top: 19.6mm;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  font-size: 0.63em;
+  line-height: 1.05;
+  font-family: 'Arno Pro', 'Alegreya', sans-serif;
 }

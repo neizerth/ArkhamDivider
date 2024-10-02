@@ -113,7 +113,6 @@ export const DividerText = ({
       >
         <Icon className={S.icon} icon="dismiss"/>
       </div>
-     
     </div>
   );
 }

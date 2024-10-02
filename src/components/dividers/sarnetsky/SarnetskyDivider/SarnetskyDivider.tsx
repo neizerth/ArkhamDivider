@@ -13,6 +13,7 @@ import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } 
 import { LayoutOrientation } from '@/types/layouts';
 import { SarnetskyDividerXPCost } from '../xp/SarnetskyDividerXPCost/SarnetskyDividerXPCost';
 import { SarnetskyDividerSideXP } from '../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP';
+import { SarnetskyDividerXPText } from '../xp/SarnetskyDividerXPText/SarnetskyDividerXPText';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -101,6 +102,15 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						<div className={S.sideXP}>
 							<SarnetskyDividerXPCost xpCost={xpCost}/>
 						</div>
+						{faction && (
+							<div className={S.xpTitle}>
+								<SarnetskyDividerXPText 
+									xpCost={xpCost} 
+									faction={faction}
+									icon={icon}
+								/>
+							</div>
+						)}
 					</>
 				)}
 				{story && scenario && (

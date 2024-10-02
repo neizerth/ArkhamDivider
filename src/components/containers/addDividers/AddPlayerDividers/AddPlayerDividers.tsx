@@ -60,7 +60,6 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
         <div className={S.content}>
           <Row className={S.row} wrap>
             <FactionSelect onChange={setFactions}/>
-          
           </Row>
           <div className={S.rule}/>
           <div>
@@ -91,6 +90,9 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             >
               {t('Bonded')}
             </Checkbox>
+          </Row>
+          <div className={S.rule}/>
+          <Row wrap className={S.row}>
             <Checkbox 
               {...check('includeUpgrading')}
             >
