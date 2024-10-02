@@ -56,7 +56,8 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 		S.container,
 		S[orientation],
 		S[`type_${type}`],
-		isLight && S.light
+		isLight && S.light,
+		xpCost ? S.withXP : S.withoutXP
 	);
 
 	const isScenario = [
@@ -70,7 +71,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	const titleClassName = classNames(
 		S.title, 
 		S[`title_${type}`],
-		S[`title_${realLanguage}`]
+		S[`title_${realLanguage}`],
 	)
 
 	const titleInputClassName = classNames(
@@ -79,8 +80,6 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	)
 
 	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 16;
-
-	const showTitle = !isPlayer || (isPlayer && !xpCost);
 
   return (
     <div 
@@ -136,7 +135,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						<Icon icon={campaignIcon}/>
 					</div>
 				)}
-				{showTitle && name && (
+				{name && (
 					<div className={classNames(titleClassName)}>
 						<DividerText 
 							defaultValue={translatedName} 

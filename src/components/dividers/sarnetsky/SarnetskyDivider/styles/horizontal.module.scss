@@ -11,9 +11,15 @@
     &_scenario, &_campaign {
       width: 72mm;
     }
-    &_player, &_investigator {
+    &_investigator {
       width: 65mm;
     }
+  }
+  &.withXP .title_player {
+    width: 49mm;
+  }
+  &.withoutXP .title_player {
+    width: 65mm;
   }
   .scenarioTitle {
     top: 20.2mm;
