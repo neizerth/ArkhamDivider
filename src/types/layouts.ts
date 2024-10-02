@@ -1,4 +1,4 @@
-import { AddStoryDividersOptions } from "@/store/features/addDividers/addDividers"
+import { AddPlayerDividersOptions, AddStoryDividersOptions } from "@/store/features/addDividers/addDividers"
 import { PageOrientation } from "./print"
 
 export type ILayout = {
@@ -20,7 +20,8 @@ export type ILayout = {
     top: number
     left: number
   }
-  campaignOptions?: Partial<AddStoryDividersOptions>
+  campaignOptions?: Partial<AddStoryDividersOptions>,
+  playerOptions?: Partial<AddPlayerDividersOptions>
 }
 
 export enum LayoutType {

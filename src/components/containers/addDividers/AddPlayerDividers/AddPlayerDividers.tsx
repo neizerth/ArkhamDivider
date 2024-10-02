@@ -10,6 +10,9 @@ import { createToggleHanlder } from '@/util/forms';
 import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { removeAllDividers } from '@/store/features/dividers/dividers';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectLayout } from '@/store/features/layout/layout';
+import { isNil } from 'ramda';
 
 export type AddPlayerDividersProps = {
 
@@ -18,6 +21,9 @@ export type AddPlayerDividersProps = {
 export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const {
+    playerOptions
+  } = useAppSelector(selectLayout);
   const [xpCosts, setXPCosts] = useState<IXPCost[]>([]);
   const [factions, setFactions] = useState<IFaction[]>([]);
   const [types, setTypes] = useState<ICardType[]>([]);
@@ -109,22 +115,23 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             <div className={S.label}>{t('Experience')}</div>
             <XPCostSelect onChange={setXPCosts}/>
           </Row>
-          <Row wrap className={S.row}>
-
-            <Checkbox 
-              {...check('displaySideXP')}
-            >
-              {t('Side XP')}
-            </Checkbox>
-            
-            {form.displaySideXP && (
+          {isNil(playerOptions?.displaySideXP) && (
+            <Row wrap className={S.row}>
               <Checkbox 
-                {...check('displayNumericXP')}
+                {...check('displaySideXP')}
               >
-                {t('Numeric XP')}
+                {t('Side XP')}
               </Checkbox>
-            )}
-          </Row>
+              
+              {form.displaySideXP && (
+                <Checkbox 
+                  {...check('displayNumericXP')}
+                >
+                  {t('Numeric XP')}
+                </Checkbox>
+              )}
+            </Row>
+          )}
           <Row className={S.actions} wrap>
             <IconButton 
               icon="check-thin"

@@ -34,7 +34,7 @@ export const sarnetskyLayouts: ILayout[] = [
     width: 89,
     height: 75,
     title: "Made by @sarnetsky",
-    types: [LayoutType.SCENARIO, LayoutType.PLAYER],
+    types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
     orientation: LayoutOrientation.HORIZONTAL,
     pageOrientation: PageOrientation.PORTRAIT,
     color: true,
@@ -48,6 +48,9 @@ export const sarnetskyLayouts: ILayout[] = [
       includeCampaignIcon: true,
       includeEncounterSize: false,
       includeScenarioSize: false
+    },
+    playerOptions: {
+      displaySideXP: true
     }
   },
 ]

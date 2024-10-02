@@ -17,7 +17,7 @@
 .titleInput {
   text-align: left;
   padding: 0.2em;
-  &_scenario, &_campaign, &_player {
+  &_scenario, &_campaign, &_player, &_investigator {
     display: grid;
     grid-template-columns: 100%;
     align-items: center;
@@ -95,7 +95,7 @@
     box-sizing: border-box;
     top: 8.7mm;
   }
-  &_scenario, &_campaign, &_player {
+  &_scenario, &_campaign, &_player, &_investigator {
     line-height: 1;
     text-align: center;
     box-sizing: border-box;
@@ -106,7 +106,7 @@
     height: 8.15mm;
     padding-right: 2.5mm;
   }
-  &_player {
+  &_player, &_investigator {
     top: 7.2mm;
     left: 16mm;
     height: 7.6mm;

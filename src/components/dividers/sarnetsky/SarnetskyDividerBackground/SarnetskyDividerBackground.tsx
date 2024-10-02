@@ -102,10 +102,11 @@ export const SarnetskyDividerBackground = ({
   type,
   storyCode
 }: SarnetskyDividerBackgroundProps) => {
+  
 
   return (
     <>
-      {type === DividerType.PLAYER && (
+      {[DividerType.PLAYER, DividerType.INVESTIGATOR].includes(type) && (
         <SarnetskyPlayerBackground id={id}/>
       )}
       {[DividerType.SCENARIO, DividerType.CAMPAIGN].includes(type) && storyCode && (
