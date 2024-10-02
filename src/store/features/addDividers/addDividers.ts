@@ -9,7 +9,6 @@ import { addDividers } from "../dividers/dividers";
 import { getPlayerDividers } from "@/features/dividers/player/getPlayerDividers";
 import { getInvestigatorDividers } from "@/features/dividers/investigator/getInvestigatorDividers";
 import { withReturnTo } from "../stories/criteria";
-import { selectLayout } from "../layout/layout";
 
 export type AddPlayerDividersOptions = {
   factions: IFaction[]

@@ -1,7 +1,7 @@
 import { IEncounterSet, IStory } from "@/types/api";
 import { IDivider } from "@/types/dividers";
 import { arrayIf } from "@/util/common";
-import { ascend, isNotNil, prop, sortWith } from "ramda";
+import { ascend, prop, sortWith } from "ramda";
 import { getScenarioDividers } from "./getScenarioDividers";
 import { getEncounterDividers } from "./getEncounterDividers";
 import { AddStoryDividersOptions } from "@/store/features/addDividers/addDividers";

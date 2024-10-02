@@ -1,4 +1,4 @@
-import { IEncounterSetGroup, IScenario, IStory } from "./api"
+import { IScenario, IStory } from "./api"
 import { CardType, IXPCost } from "./game"
 
 export enum DividerType {
