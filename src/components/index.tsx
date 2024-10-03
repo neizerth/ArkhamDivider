@@ -1,6 +1,7 @@
 export { Container } from './containers/Container/Container';
 export { Layout } from './containers/Layout/Layout';
 export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
+export { CategoryInfo } from './containers/CategoryInfo/CategoryInfo';
 export { PageCredits } from './containers/PageCredits/PageCredits';
 
 export { StoryCustomContent }  from './containers/StoryCustomContent/StoryCustomContent';
@@ -43,7 +44,7 @@ export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
-export { LayoutSelect } from './filters/LayoutSelect/LayoutSelect';
+export { LayoutFilter } from './filters/layout/LayoutFilter/LayoutFilter';
 
 export { StorySelect, StorySelectOption, StorySelectValue } from './filters/stories';
 

@@ -4,7 +4,7 @@ import { DividerType, IDivider } from '@/types/dividers';
 import { DividerContent, DividerMenu, DividerText, Icon } from '@/components';
 import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectOrientation } from '@/store/features/layout/layout';
+import { selectLayout } from '@/store/features/layout/layout';
 import { SarnetskyDividerBackground as DividerBackground } from '../SarnetskyDividerBackground/SarnetskyDividerBackground';
 import { useTranslation } from 'react-i18next';
 import { selectLanguage } from '@/store/features/language/language';
@@ -44,7 +44,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	const { t } = useTranslation();
 
 	const language = useAppSelector(selectLanguage);
-	const orientation = useAppSelector(selectOrientation);
+	const { orientation } = useAppSelector(selectLayout);
 
 	const translatedName = t(name);
 	const realLanguage = translatedName === name ? 'en' : language;

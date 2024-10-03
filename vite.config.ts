@@ -5,8 +5,6 @@ import svgr from "vite-plugin-svgr";
 import react from '@vitejs/plugin-react';
 import 'dotenv/config';
 
-console.log(process.env.VITE_BASE_URL)
-
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {

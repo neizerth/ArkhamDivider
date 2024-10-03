@@ -1,4 +1,4 @@
-import { ILayout, LayoutOrientation, LayoutType } from "@/types/layouts";
+import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
 export const common = {
@@ -38,7 +38,7 @@ export const classicLayouts: ILayout[] = [
   {
     ...common,
     ...horizontal,
-    id: "classic_h",
+    id: "classic-horizontal",
     title: "Classic",
     orientation: LayoutOrientation.HORIZONTAL,
     color: true,
@@ -47,22 +47,59 @@ export const classicLayouts: ILayout[] = [
   {
     ...common,
     ...horizontal,
-    id: "classic_h-bw",
+    id: "classic-horizontal-bw",
     orientation: LayoutOrientation.HORIZONTAL,
     color: false,
   },
   {
     ...common,
     ...vertical,
-    id: "classic_v",
+    id: "classic-vertical",
     orientation: LayoutOrientation.VERTICAL,
     color: true,
   },
   {
     ...common,
     ...vertical,
-    id: "classic_v-bw",
+    id: "classic-vertical-bw",
     orientation: LayoutOrientation.VERTICAL,
     color: false,
   },
-] 
+]
+
+export const classicLayoutCategory: ILayoutCategory = {
+  id: 'classic',
+  name: 'Classic',
+  info: 'Classic Return To... Dividers',
+  author: {
+    name: 'Fantasy Flight Games',
+    image: 'https://www.fantasyflightgames.com/static/images/logo_ffgdiamond_blk.png',
+    contacts: [
+      {
+        id: 'www',
+        icon: 'link',
+        url: 'https://www.fantasyflightgames.com/'
+      },
+      {
+        id: 'facebook',
+        icon: 'facebook',
+        url: 'http://www.facebook.com/FantasyFlightGames'
+      },
+      {
+        id: 'twitter',
+        icon: 'twitter',
+        url: 'http://www.twitter.com/ffgames'
+      },
+      {
+        id: 'instagram',
+        icon: 'instagram',
+        url: 'https://www.instagram.com/fantasyflightgames/'
+      },
+      {
+        id: 'youtube',
+        icon: 'youtube',
+        url: 'https://www.youtube.com/user/FantasyFlightStudio'
+      }
+    ]
+  }
+}

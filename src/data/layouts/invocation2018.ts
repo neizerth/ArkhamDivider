@@ -1,7 +1,7 @@
-import { LayoutOrientation, LayoutType } from '@/types/layouts';
-import { common, horizontal } from './classic';
+import { ILayoutCategory, LayoutOrientation, LayoutType } from '@/types/layouts';
+import { classicLayoutCategory, common, horizontal } from './classic';
 
-export const invocationLayouts = [
+export const invocation2018Layouts = [
   {
     ...common,
     ...horizontal,
@@ -13,3 +13,10 @@ export const invocationLayouts = [
     color: true
   },
 ]
+
+export const invocation2018LayoutCategory: ILayoutCategory = {
+  ...classicLayoutCategory,
+  id: "invocation2018",
+  name: "Invocation 2018",
+  info: "Invocation 2018 Event Promo Dividers"
+}

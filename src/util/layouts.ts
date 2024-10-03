@@ -1,33 +1,38 @@
 
-import { layouts } from '@/data/layouts';
-import { ILayout, LayoutOrientation, LayoutType } from "@/types/layouts";
+import { layoutCategories, layouts } from '@/data/layouts';
+import { ILayout, ILayoutCriteria, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { propsEquals } from './criteria';
-import { propEq } from 'ramda';
+import { isNil, propEq, reject } from 'ramda';
 
 export const getLayoutById = (layoutId: string) => layouts.find(({ id }) => layoutId === id);
 
 export const getLayoutsByType = (layoutType: LayoutOrientation) => layouts.filter(({ orientation }) => orientation === layoutType);
 
+
+type GetLayoutsOptions = {
+  criteria: ILayoutCriteria,
+  source?: ILayout[]
+}
+
+export const typeIncludes = (type?: LayoutType) => 
+  ({ types }: ILayout) => !type || types.includes(type);
+
 export const getLayouts = ({
-  type,
-  categoryId,
-  ...criteria
-}: Partial<ILayout> & {
-  type?: LayoutType
-}) => {
-  const data = layouts
-    .filter(propsEquals(criteria))
-    .filter(({ types }) => !type || types.includes(type));
+  criteria,
+  source = layouts
+}: GetLayoutsOptions) => {
+  const {
+    type,
+    ...restCriteria
+  } = criteria;
 
-  if (!categoryId) {
-    return data;
-  }
+  const safeCriteria = reject(isNil, restCriteria);
 
-  const sameCategory = data.filter(propEq(categoryId, 'categoryId'));
+  return source
+    .filter(propsEquals(safeCriteria))
+    .filter(typeIncludes(type));
+}
 
-  if (sameCategory.length === 0) {
-    return data;
-  }
-
-  return sameCategory;
+export const getCategoryById = (id: string) => {
+  return layoutCategories.find(propEq(id, 'id'));
 }

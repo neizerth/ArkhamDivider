@@ -1,6 +1,6 @@
 import { DividerType } from '@/types/dividers';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectOrientation } from '@/store/features/layout/layout';
+import { selectLayout } from '@/store/features/layout/layout';
 import { propEq } from 'ramda';
 import { playerImages } from './images/player';
 import S from './SarnetskyDividerBackground.module.scss';
@@ -27,10 +27,10 @@ export type SarnetskyStoryBackgroundProps = {
 }
 
 export const SarnetskyScenarioBackground = ({ storyCode }: SarnetskyStoryBackgroundProps) => {
-  const oritentation = useAppSelector(selectOrientation);
+  const { orientation } = useAppSelector(selectLayout);
 
   const item = scenarioImages.find(
-    propEq(oritentation, 'orientation')
+    propEq(orientation, 'orientation')
   );
 
   const color = storyColors[storyCode] || DEFAULT_COLOR;
@@ -45,10 +45,10 @@ export const SarnetskyScenarioBackground = ({ storyCode }: SarnetskyStoryBackgro
 }
 
 export const SarnetskyEncounterBackground = ({ storyCode }: SarnetskyStoryBackgroundProps) => {
-  const oritentation = useAppSelector(selectOrientation);
+  const { orientation } = useAppSelector(selectLayout);
 
   const item = encounterImages.find(
-    propEq(oritentation, 'orientation')
+    propEq(orientation, 'orientation')
   );
 
   const color = storyColors[storyCode] || DEFAULT_COLOR;
@@ -73,7 +73,7 @@ export const SarnetskyLayeredBackground = ({
   background: string
   color?: string
 }) => {
-  const oritentation = useAppSelector(selectOrientation);
+  const { orientation } = useAppSelector(selectLayout);
 
   return (
     <div className={S.layers}>
@@ -82,7 +82,7 @@ export const SarnetskyLayeredBackground = ({
       <Color 
         className={classNames(
           S.color, 
-          S[`color_${oritentation}`]
+          S[`color_${orientation}`]
         )} 
         fill={color}
       />

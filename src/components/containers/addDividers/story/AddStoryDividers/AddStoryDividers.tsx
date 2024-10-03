@@ -5,7 +5,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { useState } from 'react';
 import { IStory } from '@/types/api';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { removeAllDividers } from '@/store/features/dividers/dividers';
+import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
 import { ButtonType } from '@/types/ui';
 import { useTranslation } from 'react-i18next';
 import { addStoryDividers } from '@/store/features/addDividers/addDividers';
@@ -18,7 +18,7 @@ export type AddStoryDividersProps = {
 export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const [story, setCurrentStory] = useState<IStory | null>(null);
+  const story = useAppSelector(selectStory);
 
   const stories = useAppSelector(selectStories);
   const language = useAppSelector(selectLanguage);
@@ -72,8 +72,6 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                 className={S.select}
                 stories={stories} 
                 getIsTranslated={getIsTranslated}
-                onChange={setCurrentStory}
-                value={story}
               />
               {story && (
                 <>

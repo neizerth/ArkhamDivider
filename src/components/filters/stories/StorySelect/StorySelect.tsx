@@ -9,23 +9,24 @@ import { StorySelectSingleValue } from '../StorySelectSingleValue/StorySelectSin
 import { ascend, descend, prop, sortWith } from 'ramda';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
+import { useAppNavigate } from '@/hooks/useAppNavigate';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectStory } from '@/store/features/dividers/dividers';
 
 
 export type StorySelectProps = PropsWithClassName & {
   stories: IStory[]
-  value: IStory | null
   getIsTranslated: (story: IStory) => boolean
-  onChange: (story: IStory) => void
 }
 
 export const StorySelect = ({ 
   stories, 
-  onChange,
   className,
   getIsTranslated,
-  ...props 
 }: StorySelectProps) => {
   const { t } = useTranslation();
+  const navigate = useAppNavigate();
+  const story = useAppSelector(selectStory);
 
   const data = sortWith([
     ascend(({ position }) => position || Infinity),
@@ -43,6 +44,12 @@ export const StorySelect = ({
     isTranslated: getIsTranslated(story),
     value: story
   });
+
+  const onChange = (story: IStory) => {
+    navigate({
+      storyId: story.code
+    })
+  }
   
   const getOptions = (filter: (story: IStory) => boolean) => 
     data
@@ -73,7 +80,7 @@ export const StorySelect = ({
     SingleValue: StorySelectSingleValue
   }
 
-  const value = props.value && mapStory(props.value);
+  const value = story && mapStory(story);
 
   return (
     <Select

@@ -1,11 +1,17 @@
-import { ILayout } from "@/types/layouts";
+import { ILayout, ILayoutCategory } from "@/types/layouts";
 
-import { classicLayouts } from "./classic";
-import { invocationLayouts } from "./invocation2018";
-import { sarnetskyLayouts } from "./sarnetsky";
+import { classicLayouts, classicLayoutCategory } from "./classic";
+import { invocation2018Layouts, invocation2018LayoutCategory } from "./invocation2018";
+import { sarnetskyLayouts, sarnetskyLayoutCategory } from "./sarnetsky";
 
 export const layouts: ILayout[] = [
   ...classicLayouts,
-  ...invocationLayouts,
+  ...invocation2018Layouts,
   ...sarnetskyLayouts
 ]
+
+export const layoutCategories: ILayoutCategory[] = [
+  classicLayoutCategory,
+  invocation2018LayoutCategory,
+  sarnetskyLayoutCategory
+] 

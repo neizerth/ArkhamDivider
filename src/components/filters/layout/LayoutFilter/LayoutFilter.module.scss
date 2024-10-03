@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.select {
+  width: 100%;
+  min-width: 200px; 
+}
+
+.category {
+  cursor: pointer;
+  color: blue;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}

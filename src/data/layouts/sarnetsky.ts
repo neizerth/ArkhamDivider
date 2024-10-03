@@ -1,9 +1,11 @@
+import { BASE_PATH } from "@/constants/web";
 import { ILayout, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
+
 export const sarnetskyLayouts: ILayout[] = [
   {
-    id: "sarnetsky-v",
+    id: "sarnetsky-vertical",
     categoryId: "sarnetsky",
     rowSize: 3,
     groupSize: 6,
@@ -27,7 +29,7 @@ export const sarnetskyLayouts: ILayout[] = [
     }
   },
   {
-    id: "sarnetsky-h",
+    id: "sarnetsky-horizontal",
     categoryId: "sarnetsky",
     rowSize: 2,
     groupSize: 6,
@@ -54,3 +56,43 @@ export const sarnetskyLayouts: ILayout[] = [
     }
   },
 ]
+
+export const sarnetskyLayoutCategory = {
+  id: "sarnetsky",
+  name: "Eugene Sarnetsky",
+
+  author: {
+    name: 'Eugene Sarnetsky',
+    image: BASE_PATH + '/images/authors/esarnetsky.jpg',
+    donation: {
+      ru: 'https://www.tinkoff.ru/cf/8OT6GkH6KwE'
+    },
+    contacts: [
+      {
+        id: 'telegram',
+        icon: 'telegram',
+        url: 'https://t.me/sarnetsky'
+      },
+      {
+        id: 'vk',
+        icon: 'vk',
+        url: 'https://vk.com/sarnetsky'
+      },
+      {
+        id: 'facebook',
+        icon: 'facebook',
+        url: 'https://www.facebook.com/sarnetsky/'
+      },
+      {
+        id: 'twitter',
+        icon: 'twitter',
+        url: 'https://twitter.com/sarnetsky'
+      },
+      {
+        id: 'email',
+        icon: 'mail',
+        url: 'mailto:sarnetsky@gmail.com'
+      }
+    ]
+  }
+}

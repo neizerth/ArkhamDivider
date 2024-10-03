@@ -36,6 +36,8 @@ export const definedIf = <T>(value: T, condition: boolean) => {
   }
 }
 
+export const strIfDefined = (value: string) =>  value || '';
+
 export const pxToNumber = (x: string) => +x.replace('px', '');
 
 export const numberBetween = (min: number, max: number) => (x: number) => x >= min && x < max;

@@ -5,6 +5,6 @@
     box-sizing: border-box;
     padding: 0 20px;
     @media print {
-        display: none;
+        display: none !important;
     }
 }

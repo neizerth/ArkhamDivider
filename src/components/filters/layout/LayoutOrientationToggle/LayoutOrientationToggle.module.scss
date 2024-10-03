@@ -1,0 +1,11 @@
+.container {
+  width: 32px;
+  cursor: pointer;
+  position: relative;
+  top: -3px;
+}
+
+.vertical {
+  transform: rotate(90deg);
+  top: -1px;
+}

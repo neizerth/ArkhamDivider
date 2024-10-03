@@ -4,11 +4,9 @@ import { Container } from '@/components';
 import { PropsWithChildren } from 'react';
 import { LayoutType } from '@/types/layouts';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout, selectType, setLayout, setType } from '@/store/features/layout/layout';
+import { selectType } from '@/store/features/layout/layout';
 import classNames from 'classnames';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setDividers } from '@/store/features/dividers/dividers';
-import { getLayouts } from '@/util/layouts';
+import { useAppNavigate } from '@/hooks/useAppNavigate';
 
 
 export type LayoutMenuItemProps = PropsWithChildren & {
@@ -17,13 +15,8 @@ export type LayoutMenuItemProps = PropsWithChildren & {
 
 export const LayoutMenuItem = ({ type, children }: LayoutMenuItemProps) => {
   const currentType = useAppSelector(selectType);
-  const {
-    orientation,
-    color,
-    categoryId
-  } = useAppSelector(selectLayout);
+  const navigate = useAppNavigate();
 
-  const dispatch = useAppDispatch();
   const isSelected = currentType === type;
 
   const classList = classNames(S.item, isSelected && S.selected);
@@ -33,17 +26,10 @@ export const LayoutMenuItem = ({ type, children }: LayoutMenuItemProps) => {
       return;
     }
     
-    dispatch(setType(type))
-    dispatch(setDividers([]));
-
-    const [layout] = getLayouts({
-      orientation,
-      color,
+    navigate({
       type,
-      categoryId
+      storyId: void 0
     });
-
-    dispatch(setLayout(layout))
   };
 
   return (
