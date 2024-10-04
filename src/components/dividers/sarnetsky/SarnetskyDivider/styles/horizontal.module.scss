@@ -1,0 +1,36 @@
+.horizontal {
+  .menu {
+    right: 8mm;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  .menuContainer {
+    flex-direction: column;
+  }
+  .title {
+    &_scenario, &_campaign {
+      width: 72mm;
+    }
+    &_investigator {
+      width: 65mm;
+    }
+  }
+  &.withXP .title_player {
+    width: 49mm;
+    padding-left: 5mm;
+  }
+  &.withoutXP .title_player {
+    width: 65mm;
+  }
+  .scenarioTitle {
+    top: 20.2mm;
+  }
+
+  .icon {
+    &_main {
+
+      font-size: 6.5em;
+      top: 52%;
+    }
+  }
+}

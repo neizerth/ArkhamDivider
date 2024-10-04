@@ -1,36 +1,4 @@
 .horizontal {
-  &.noBleeds {
-    .guides {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
-    .wrapper {
-      width: 88.9mm;
-      height: 76.2mm;
-      overflow: hidden;
-    }
-  
-    .divider {
-      top: -2.2mm;
-      left: -2.8mm;
-    }
-  }
-  
-  &.withBleeds {
-    .guides {
-      width: 88.9mm;
-      height: 76.2mm;
-      top: 2.2mm;
-      left: 2.8mm;
-    }
-  }
-
-  .divider {
-    aspect-ratio: 95 / 82;
-    width: 95mm;
-  }
 
   .title {
     padding: 0 12mm;
@@ -41,9 +9,8 @@
       font-size: 4mm;
     }
     &_zh, &_zh-cn {
-      font-size: 4mm;
       position: relative;
-      top: -0.1mm;
+      top: -0.6mm;
     }
   }
 
@@ -53,10 +20,16 @@
 
   .icon_small {
     top: 4.8mm;
+    &_noXP {
+      top: 4.8mm;
+    }
+    &_withXP {
+      top: 4.4mm;
+    }
   }
 
   .icon_large {
-    top: 17mm;
+    top: 20mm;
   }
 
   .menu {

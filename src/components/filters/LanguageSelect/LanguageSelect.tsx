@@ -1,10 +1,9 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
 import S from './LanguageSelect.module.scss';
-import { changeLanguage, selectAvailableLanguages, selectLanguage } from '@/store/features/language/language';
-import { useTranslation } from 'react-i18next';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { selectAvailableLanguages, selectLanguage } from '@/store/features/language/language';
 import Select, { OptionProps, SingleValueProps, components } from 'react-select';
 import { LanguageFlag } from '@/components/ui/LanguageFlag/LanguageFlag';
+import { useAppNavigate } from '@/hooks/useAppNavigate';
 
 export const LanguageSelectSingleValue = (props: SingleValueProps<{
   label: string,
@@ -35,16 +34,13 @@ export const LanguageSelectOption = (props: OptionProps<{
 }
 
 export const LanguageSelect = () => {
-  const { i18n } = useTranslation();
-  const dispatch = useAppDispatch();
   const availableLanguages = useAppSelector(selectAvailableLanguages);
   const language = useAppSelector(selectLanguage);
   
-  // console.log({ availableLanguages })
+  const navigate = useAppNavigate()
 
-  const changeCurrentLanguage = (value: string) => {
-    i18n.changeLanguage(value);
-    dispatch(changeLanguage(value));
+  const changeCurrentLanguage = (language: string) => {
+    navigate({ language })
   }
 
   const options = availableLanguages.map(value => ({

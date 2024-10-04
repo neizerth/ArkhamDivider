@@ -1,33 +1,72 @@
-import { useEffect } from 'react'
+import { Routes, HashRouter, Route, Outlet } from 'react-router-dom';
 import S from './App.module.scss'
 
-import { AppLoader, Layout, AppSettings, LayoutMenu, AddDividers, Col } from '@/components';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { loadAppData } from './store/features/app/app';
-import { selectDividers } from './store/features/dividers/dividers';
+import { 
+  AppLoader, 
+  Layout, 
+  AppSettings, 
+  LayoutMenu, 
+  AddDividers, 
+  Col, 
+  Footer, 
+  LayoutInfo, 
+  CategoryInfo 
+} from '@/components';
 
-function App() {
-  const dispatch = useAppDispatch();
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectDividers } from './store/features/dividers/dividers';
+import { useAppNavigation } from './hooks/useAppNavigation';
+
+const App = () => {
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route path=':language'>
+            <Route path='orientation/:orientation'/>
+            <Route path='category/:categoryId' element={<CategoryInfo/>}>
+              <Route path=':layoutId' element={<LayoutInfo/>}>
+                <Route path=':type'>
+                  <Route path=':storyId'/>
+                </Route>
+              </Route>
+            </Route>
+
+            <Route path='color'/>
+            <Route path='grayscale'/>
+            
+            <Route path='layout/:layoutId' element={<LayoutInfo/>}>
+              <Route path=':type'>
+                <Route path=':storyId'/>
+              </Route>
+            </Route>
+          </Route>
+        </Route>
+      </Routes>
+    </HashRouter>
+  )
+}
+
+const AppLayout = () => {
+  useAppNavigation();
+
   const dividers = useAppSelector(selectDividers);
 
   const showLayout = dividers.length > 0;
 
-  useEffect(() => {
-    dispatch(loadAppData());
-  }, [dispatch]);
-
   return (
     <>
       <AppLoader>
-        <div className={S.container}>
+        <Col className={S.container}>
           <AppSettings/>
           <Col className={S.content}>
+            <Outlet/>
             <LayoutMenu/>
             <AddDividers/>
             {showLayout && <Layout/>}
           </Col>
-        </div>
+          <Footer/>
+        </Col>
       </AppLoader>
     </>
   );

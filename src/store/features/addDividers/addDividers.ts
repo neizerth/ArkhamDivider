@@ -14,7 +14,8 @@ export type AddPlayerDividersOptions = {
   factions: IFaction[]
   xpCosts: IXPCost[]
   types: ICardType[]
-  useUpgrading: boolean
+  includeUpgrading: boolean
+  includeCustomizations: boolean
   includeBasicWeakness: boolean
   includeAllies: boolean
   includeFactionId: boolean
@@ -51,7 +52,6 @@ export const addPlayerDividers = (options: AddPlayerDividersOptions): ActionCrea
 
 export const addStoryDividers: ActionCreator<AppThunk> = (options: AddStoryDividersOptions) => (dispatch, getState) => {
   const state = getState();
-
   const encounterSets = selectEncounterSets(state);
   const stories = selectStories(state);
   const { story, includeReturnSets } = options;

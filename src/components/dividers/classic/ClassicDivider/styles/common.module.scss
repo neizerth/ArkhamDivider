@@ -1,35 +1,19 @@
 .container {
-  background-size: contain;
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
-  position: relative;
-}
-
-.guides {
-  position: absolute;
-  z-index: 2;
-}
-
-.wrapper {
-  position: relative;
-}
-
-.guidesContent {
-  width: 100%;
-  height: 100%;
-}
-
-.divider {
   position: relative;
 }
 
 .title {
   box-sizing: border-box;
+  text-align: center;
   position: absolute;
   width: 100%;
+  height: 1.3em;
   top: 5.6mm;
   z-index: 2;
+  line-height: 1;
   &:hover .clear {
-      display: flex;
+    display: flex;
   }
 }
 
@@ -45,10 +29,15 @@
 
 .titleInput {
   font-family: inherit;
-  font-size: 4.4mm;
-  height: 5.4mm;
+  height: 5.6mm;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &_m {
+    font-size: 4.4mm;
+  }
 }
-
 
 .background {
   position: absolute;
@@ -77,15 +66,16 @@
 }
 
 .icon_large {
-  opacity: 0.2;
+  opacity: 0.1;
   transform: translate(-50%, 0);
   left: 50%;
-  font-size: 48mm;
+  font-size: 40mm;
 }
 
 .menu {
   position: absolute;
   z-index: 3;
+  color: #b9b9b9;
 }
 
 

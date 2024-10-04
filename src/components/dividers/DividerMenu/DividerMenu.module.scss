@@ -1,12 +1,13 @@
 .container {
   display: flex;
+
+  font-size: 30px;
   @media print {
     display: none;
   }
 }
 
 .icon {
-  color: #b9b9b9;
   cursor: pointer;
   z-index: 1;
   &:hover {
@@ -15,12 +16,9 @@
 }
 
 .remove {
-  font-size: 40px;
+  // font-size: 40px;
 }
 
 .copy {
-  font-size: 30px;
   position: relative;
-  left: 5px;
-  bottom: -5px;
 }

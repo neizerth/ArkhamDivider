@@ -1,55 +1,72 @@
-import { LayoutOrientation, LayoutType } from "@/types/layouts";
+import { LayoutType } from "@/types/layouts";
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { createSlice } from '@reduxjs/toolkit';
+import { CaseReducer, createSlice } from '@reduxjs/toolkit';
 
 import { layouts } from '@/data/layouts';
 import { ILayout } from '@/types/layouts';
+import * as reducers from './reducers';
+import { safePropEq } from "@/util/criteria";
 
-const DEFAULT_LAYOUT = layouts.find(({ is_default }) => is_default) as ILayout;
+const DEFAULT_LAYOUT = layouts.find(safePropEq(true, 'isDefault')) as ILayout;
 
 export type ILayoutState = {
   layout: ILayout,
   color: boolean,
   type: LayoutType,
-  orientation: LayoutOrientation,
+  categoryId?: string,
 }
 
 const initialState: ILayoutState = {
   layout: DEFAULT_LAYOUT,
   color: true,
   type: LayoutType.SCENARIO,
-  orientation: LayoutOrientation.HORIZONTAL
 };
 
 export const layout = createSlice({
   name: 'layout',
   initialState,
   reducers: {
+    ...reducers,
     setLayout: createSliceSetter('layout'),
-    setOrientation: createSliceSetter('orientation'),
-    setType: createSliceSetter('type'),
-    setColor: createSliceSetter('color')
+    setColor: createSliceSetter('color'),
+
+    setCategoryId: createSliceSetter('categoryId', (state, action) => {
+      const categoryId = action.payload;
+      layout.caseReducers.setLayoutByCriteria(state, {
+        ...action,
+        payload: { categoryId }
+      });
+    }),
+
+    setType: createSliceSetter('type', (state, action) => {
+      const type = action.payload;
+
+      reducers.setLayoutByCriteria(state, {
+        ...action,
+        payload: { type }
+      });
+    }),
   },
   selectors: {
     selectLayout: createSliceSelector('layout'),
-    selectOrientation: createSliceSelector('orientation'),
     selectType: createSliceSelector('type'),
-    selectColor: createSliceSelector('color')
+    selectCategoryId: createSliceSelector('categoryId'),
   }
 });
 
 export const {
-  setOrientation,
   setLayout,
   setColor,
-  setType
+  setType,
+  setCategoryId,
+  setLayoutByCriteria,
+  setLayoutById
 } = layout.actions;
 
 export const {
-  selectOrientation,
   selectLayout,
-  selectColor,
-  selectType
+  selectType,
+  selectCategoryId
 } = layout.selectors;
 
 export default layout.reducer;

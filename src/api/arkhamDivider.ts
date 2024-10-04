@@ -1,4 +1,4 @@
-import { API_URL } from '@/constants/web';
+import { API_URL } from '@/constants/app';
 import { ArkhamDivider } from 'arkham-divider-data';
 
 export const fetchData = <T>(path: string) => <T>fetch(API_URL + path).then(r => r.json())

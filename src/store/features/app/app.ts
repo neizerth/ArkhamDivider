@@ -48,7 +48,14 @@ export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
 }
 
 export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) => async (dispatch, getState) => {
-  const loadedTranslations = selectLoadedTranslations(getState());
+  const state = getState();
+  
+  const loadedTranslations = selectLoadedTranslations(state);
+
+  if (loadedTranslations.includes(language)) {
+    return;
+  }
+  
   const {
     translatedStories,
     campaigns,

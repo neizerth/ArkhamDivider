@@ -1,0 +1,20 @@
+.container {
+  // display: flex;
+  // flex-wrap: wrap;
+  // align-items: center;
+  // gap: 0.3em;
+}
+.row {
+  display: flex;
+  gap: 0.3em;
+}
+
+.faction {
+  position: relative;
+  top: -0.3em;
+}
+
+.icon {
+  position: relative;
+  top: 0.2em;
+}

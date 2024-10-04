@@ -1,8 +1,19 @@
+import { IScenario, IStory } from "./api"
 import { CardType, IXPCost } from "./game"
+
+export enum DividerType {
+    PLAYER = 'player',
+    SCENARIO = 'scenario',
+    CAMPAIGN = 'campaign',
+    INVESTIGATOR = 'investigator',
+    ENCOUNTER = 'encounter'
+}
 
 export type IDivider = {
     id: string
-    type: string
+    story?: IStory
+    scenario?: IScenario
+    type: DividerType
     name?: string
     icon?: string
     faction?: string
@@ -15,6 +26,9 @@ export type IDivider = {
 
     displaySideXP?: boolean
     displayNumericXP?: boolean
+    displayCampaignIcon?: boolean
+
+    tags?: string[]
 }
 
 export type IDividerList = IDivider[];

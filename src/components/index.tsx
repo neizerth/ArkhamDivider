@@ -1,6 +1,7 @@
 export { Container } from './containers/Container/Container';
 export { Layout } from './containers/Layout/Layout';
 export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
+export { CategoryInfo } from './containers/CategoryInfo/CategoryInfo';
 export { PageCredits } from './containers/PageCredits/PageCredits';
 
 export { StoryCustomContent }  from './containers/StoryCustomContent/StoryCustomContent';
@@ -14,7 +15,8 @@ export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider
 export { ClassicDividerSideXP } from './dividers/classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
 export { Divider } from './dividers/Divider/Divider';
 export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
-export { DividerTitle } from './dividers/DividerTitle/DividerTitle';
+export { DividerText } from './dividers/DividerText/DividerText';
+export { DividerContent } from './dividers/DividerContent/DividerContent';
 
 export { Row, InlineRow } from './ui/grid/Row/Row';
 export { Col } from './ui/grid/Col/Col';
@@ -42,7 +44,7 @@ export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
-export { LayoutSelect } from './filters/LayoutSelect/LayoutSelect';
+export { LayoutFilter } from './filters/layout/LayoutFilter/LayoutFilter';
 
 export { StorySelect, StorySelectOption, StorySelectValue } from './filters/stories';
 
@@ -51,3 +53,4 @@ export { PrintSettings } from './settings/PrintSettings/PrintSettings';
 
 export { CategoriesMenu } from './layout/CategoriesMenu/CategoriesMenu';
 export { LayoutMenu } from './layout/LayoutMenu/LayoutMenu';
+export { Footer } from './layout/Footer/Footer';

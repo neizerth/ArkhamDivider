@@ -1,5 +1,5 @@
 import { AddPlayerDividersOptions } from '@/store/features/addDividers/addDividers';
-import { IDivider } from '@/types/dividers';
+import { DividerType, IDivider } from '@/types/dividers';
 import { CardType, IFaction } from '@/types/game';
 import { uniqId } from '@/util/common';
 
@@ -7,6 +7,7 @@ export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
   return [
     ...getBasicWeaknessDividers(options),
     ...getUpgradingDividers(options),
+    ...getCustomizationsDividers(options),
     ...getPlayerCardDividers(options),
     ...getFactionIdDividers(options),
     ...getBondedDividers(options)
@@ -36,7 +37,7 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
           previewIcon: faction.icon,
           faction: faction.id,
           cardType: type.type,
-          type: 'player',
+          type: DividerType.PLAYER,
           displaySideXP,
           displayNumericXP,
           xpCost
@@ -69,12 +70,12 @@ export const getAllyType = ({
 
 export const getUpgradingDividers = ({
   factions,
-  useUpgrading
+  includeUpgrading
 }: {
   factions: IFaction[]
-  useUpgrading: boolean
+  includeUpgrading: boolean
 }) => {
-  if (!useUpgrading) {
+  if (!includeUpgrading) {
     return [];
   }
   return factions.map((faction): IDivider => ({
@@ -82,7 +83,27 @@ export const getUpgradingDividers = ({
     name: 'Upgrading',
     icon: faction.icon,
     faction: faction.id,
-    type: 'player'
+    type: DividerType.PLAYER
+  }))
+}
+
+export const getCustomizationsDividers = ({
+  factions,
+  includeCustomizations
+}: {
+  factions: IFaction[]
+  includeCustomizations: boolean
+}) => {
+  if (!includeCustomizations) {
+    return [];
+  }
+  return factions.map((faction): IDivider => ({
+    id: uniqId(),
+    name: 'Customizations',
+    tags: ['customizations'],
+    icon: faction.icon,
+    faction: faction.id,
+    type: DividerType.PLAYER
   }))
 }
 
@@ -101,7 +122,7 @@ export const getBondedDividers = ({
     name: 'Bonded',
     icon: faction.icon,
     faction: faction.id,
-    type: 'player'
+    type: DividerType.PLAYER
   }))
 }
 
@@ -120,7 +141,7 @@ export const getFactionIdDividers = ({
     name: faction.name,
     icon: faction.icon,
     faction: faction.id,
-    type: 'player'
+    type: DividerType.PLAYER
   }))
 }
 
@@ -137,7 +158,7 @@ export const getBasicWeaknessDividers = ({
       id: uniqId(),
       name: 'Basic Weakness',
       icon: 'weakness',
-      type: 'player'
+      type: DividerType.PLAYER
     }
   ]
 }

@@ -10,6 +10,9 @@ import { createToggleHanlder } from '@/util/forms';
 import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { removeAllDividers } from '@/store/features/dividers/dividers';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectLayout } from '@/store/features/layout/layout';
+import { isNil } from 'ramda';
 
 export type AddPlayerDividersProps = {
 
@@ -18,16 +21,20 @@ export type AddPlayerDividersProps = {
 export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const {
+    playerOptions
+  } = useAppSelector(selectLayout);
   const [xpCosts, setXPCosts] = useState<IXPCost[]>([]);
   const [factions, setFactions] = useState<IFaction[]>([]);
   const [types, setTypes] = useState<ICardType[]>([]);
 
   const [form, setForm] = useState({
-    useUpgrading: false,
+    includeUpgrading: false,
     includeBasicWeakness: false,
     includeAllies: false,
     includeFactionId: false,
     includeBonded: false,
+    includeCustomizations: false,
     displaySideXP: false,
     displayNumericXP: false
   });
@@ -59,7 +66,6 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
         <div className={S.content}>
           <Row className={S.row} wrap>
             <FactionSelect onChange={setFactions}/>
-          
           </Row>
           <div className={S.rule}/>
           <div>
@@ -79,7 +85,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             </Checkbox>
           </Row>
           <div className={S.rule}/>
-          <Row wrap>
+          <Row wrap className={S.row}>
             <Checkbox 
               {...check('includeBasicWeakness')}
             >
@@ -90,10 +96,18 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             >
               {t('Bonded')}
             </Checkbox>
+          </Row>
+          <div className={S.rule}/>
+          <Row wrap className={S.row}>
             <Checkbox 
-              {...check('useUpgrading')}
+              {...check('includeUpgrading')}
             >
               {t('Upgrading')}
+            </Checkbox>
+            <Checkbox 
+              {...check('includeCustomizations')}
+            >
+              {t('Customizations')}
             </Checkbox>
           </Row>
           <div className={S.rule}/>
@@ -101,22 +115,23 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             <div className={S.label}>{t('Experience')}</div>
             <XPCostSelect onChange={setXPCosts}/>
           </Row>
-          <Row wrap className={S.row}>
-
-            <Checkbox 
-              {...check('displaySideXP')}
-            >
-              {t('Side XP')}
-            </Checkbox>
-            
-            {form.displaySideXP && (
+          {isNil(playerOptions?.displaySideXP) && (
+            <Row wrap className={S.row}>
               <Checkbox 
-                {...check('displayNumericXP')}
+                {...check('displaySideXP')}
               >
-                {t('Numeric XP')}
+                {t('Side XP')}
               </Checkbox>
-            )}
-          </Row>
+              
+              {form.displaySideXP && (
+                <Checkbox 
+                  {...check('displayNumericXP')}
+                >
+                  {t('Numeric XP')}
+                </Checkbox>
+              )}
+            </Row>
+          )}
           <Row className={S.actions} wrap>
             <IconButton 
               icon="check-thin"

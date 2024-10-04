@@ -4,28 +4,46 @@ import { Container } from '@/components';
 import { PropsWithChildren } from 'react';
 import { LayoutType } from '@/types/layouts';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectType, setType } from '@/store/features/layout/layout';
+import { selectLayout, selectType } from '@/store/features/layout/layout';
 import classNames from 'classnames';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { setDividers } from '@/store/features/dividers/dividers';
+import { useAppNavigate } from '@/hooks/useAppNavigate';
+import { menu } from './menu';
+import { Single } from '@/types/util';
 
 
 export type LayoutMenuItemProps = PropsWithChildren & {
   type: LayoutType
+  disabled?: boolean
 }
 
-export const LayoutMenuItem = ({ type, children }: LayoutMenuItemProps) => {
+export const LayoutMenuItem = ({ 
+  type, 
+  children,
+  disabled 
+}: LayoutMenuItemProps) => {
   const currentType = useAppSelector(selectType);
-  const dispatch = useAppDispatch();
+  const navigate = useAppNavigate();
+
   const isSelected = currentType === type;
 
-  const classList = classNames(S.item, isSelected && S.selected);
+  const classList = classNames(
+    S.item, 
+    isSelected && S.selected,
+    disabled ? S.disabled : S.enabled
+  );
+
   const select = () => {
+    if (disabled) {
+      return;
+    }
     if (type === currentType) {
       return;
     }
-    dispatch(setType(type))
-    dispatch(setDividers([]));
+    
+    navigate({
+      type,
+      storyId: void 0
+    });
   };
 
   return (
@@ -45,13 +63,22 @@ export type LayoutMenuProps = {
 export const LayoutMenu = ({}: LayoutMenuProps) => {
   const { t } = useTranslation();
 
+  const { types } = useAppSelector(selectLayout);
+  const getIsEnabled = (type: LayoutType) => types.includes(type);
+
   return (
     <div className={S.container}>
       <Container>
         <div className={S.menu}>
-          <LayoutMenuItem type={LayoutType.SCENARIO}>{t('Campaigns')}</LayoutMenuItem>
-          <LayoutMenuItem type={LayoutType.PLAYER}>{t('Player Cards')}</LayoutMenuItem>
-          <LayoutMenuItem type={LayoutType.INVESTIGATOR}>{t('Investigators')}</LayoutMenuItem>
+          {menu.map(({ type, name }) => (
+            <LayoutMenuItem 
+              type={type} 
+              key={type}
+              disabled={!getIsEnabled(type)}
+            >
+              {t(name)}
+            </LayoutMenuItem>
+          ))}
         </div>
       </Container>
     </div>

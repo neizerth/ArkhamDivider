@@ -1,4 +1,4 @@
-import { API_URL } from "@/constants/web";
+import { API_URL } from "@/constants/app";
 import { createGlobalStyle } from "styled-components";
 
 const fontsURL = API_URL + '/fonts'

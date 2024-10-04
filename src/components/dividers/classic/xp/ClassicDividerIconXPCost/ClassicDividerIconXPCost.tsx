@@ -4,7 +4,7 @@ import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { CardType, IXPCost } from '@/types/game';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectColor } from '@/store/features/layout/layout';
+import { selectLayout } from '@/store/features/layout/layout';
 
 export type ClassicDividerSkillXPCostProps = PropsWithClassName & {
   xpCost: IXPCost
@@ -104,7 +104,7 @@ export const ClassicDividerIconXPCost = ({
   type,
   xpCost
 }: ClassicDividerIconXPCostProps) => {
-  const color = useAppSelector(selectColor);
+  const { color } = useAppSelector(selectLayout);
   
   const classList = classNames(
     className,
@@ -117,10 +117,7 @@ export const ClassicDividerIconXPCost = ({
       {type === CardType.SKILL && (
         <ClassicDividerSkillXPCost xpCost={xpCost}/>
       )}
-      {type === CardType.EVENT && (
-        <ClassicDividerEventXPCost xpCost={xpCost}/>
-      )}
-       {type === CardType.ASSET && (
+      {[CardType.ASSET, CardType.EVENT].includes(type) && (
         <ClassicDividerAssetXPCost xpCost={xpCost}/>
       )}
     </div>

@@ -7,7 +7,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { IStory } from '@/types/api';
 import { useState } from 'react';
 import { ButtonType } from '@/types/ui';
-import { removeAllDividers } from '@/store/features/dividers/dividers';
+import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useTranslation } from 'react-i18next';
 import { addInvestigatorDividers } from '@/store/features/addDividers/addDividers';
@@ -23,7 +23,7 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
   const stories = useAppSelector(selectStories);
   const language = useAppSelector(selectLanguage);
 
-  const [story, setCurrentStory] = useState<IStory | null>(null);
+  const story = useAppSelector(selectStory);
 
   const storiesWithInvestigators = stories.filter(({ investigators }) => investigators.length > 0);
 
@@ -59,7 +59,6 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
         <Row wrap className={S.row}>
           <StorySelect
             className={S.select}
-            onChange={setCurrentStory}
             stories={storiesWithInvestigators}
             value={story}
             getIsTranslated={getIsTranslated}

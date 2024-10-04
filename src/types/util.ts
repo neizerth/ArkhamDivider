@@ -3,7 +3,7 @@ export type PropsWithClassName = {
 };
 
 export type Mapping<T = string> = {
-    [index: string]: T
+    [index: string]: T | undefined
 }
 
 export type Single<T extends unknown[]> = T[number] 

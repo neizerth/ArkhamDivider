@@ -2,7 +2,8 @@ import { IScenario, IStory } from "@/types/api";
 import { ascend, sortWith } from "ramda";
 import { getScenarioSize } from "./getScenarioSize";
 import { FirstParam } from "@/types/util";
-import { definedIf, toArrayIfExists, uniqId } from "@/util/common";
+import { toArrayIfExists, uniqId } from "@/util/common";
+import { DividerType } from "@/types/dividers";
 
 type IGetSizeOptions = FirstParam<typeof getScenarioSize>
 type IGetScenarioDividersOptions = Omit<IGetSizeOptions, 'scenario'> & {
@@ -22,16 +23,18 @@ export const getStoryScenarios = ({
 export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
   const { 
     story, 
-    includeCampaignIcon,
-    includeScenarios
+    includeScenarios,
+    includeCampaignIcon
   } = options;
+
   if (!includeScenarios) {
     return [];
   }
+
   const { icon } = story;
   const scenarios = getStoryScenarios(story);
 
-  const campaignIcon = definedIf(icon, includeCampaignIcon);
+  const campaignIcon = icon;
 
   return sortWith(
     [
@@ -50,14 +53,17 @@ export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
       scenario,
       ...options
     });
-    
+
     return {
       ...sizeData,
       id: uniqId() + id,
+      story,
+      scenario,
       name: scenario_name,
       icon,
       campaignIcon,
-      type: 'scenario'
+      type: DividerType.SCENARIO,
+      displayCampaignIcon: includeCampaignIcon
     }
   })
 

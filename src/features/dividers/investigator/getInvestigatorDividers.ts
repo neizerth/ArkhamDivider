@@ -1,5 +1,5 @@
 import { IInvestigator } from "@/types/api"
-import { IDivider } from "@/types/dividers"
+import { DividerType, IDivider } from "@/types/dividers"
 import { uniqId } from "@/util/common"
 import factions from '@/data/factions.json'
 import { isNotNil, propEq } from "ramda"
@@ -23,7 +23,7 @@ export const getInvestigatorDividers = ({
     return {
       id: uniqId(),
       faction: faction.id,
-      type: 'investigator',
+      type: DividerType.INVESTIGATOR,
       name,
       icon
     }

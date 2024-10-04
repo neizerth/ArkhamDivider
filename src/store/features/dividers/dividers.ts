@@ -5,24 +5,36 @@ import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
 import { propEq } from 'ramda';
 import { uniqId } from '@/util/common';
+import { setType } from '../layout/layout';
+import * as reducers from './reducers';
+import { IStory } from '@/types/api';
 
 export type IDividersState = {
-  list: IDividerList
+  list: IDividerList,
+  story?: IStory
 }
 
 const initialState: IDividersState = {
-  list: []
+  list: [],
 };
 
 export const dividers = createSlice({
   name: 'dividers',
   initialState,
   reducers: {
+    ...reducers,
     setDividers: createSliceSetter('list'),
+    setStory: createSliceSetter('story')
   },
   selectors: {
-    selectDividers: createSliceSelector('list')
-  }
+    selectDividers: createSliceSelector('list'),
+    selectStory: createSliceSelector('story')
+  },
+  extraReducers(builder) {
+    builder.addCase(setType, (state) => {
+      dividers.caseReducers.removeAllDividers(state);
+    });
+  },
 });
 
 export type ICampaignToDividersOptions = {
@@ -39,9 +51,6 @@ export const addDividers: ActionCreator<AppThunk> = (dividers: IDividerList) =>
       ...dividers
     ]));
   }
-
-export const removeAllDividers: ActionCreator<AppThunk> = () => 
-  dispatch => dispatch(setDividers([]));
 
 export const removeDivider: ActionCreator<AppThunk> = (id: string) =>
   (dispatch, getState) => {
@@ -71,10 +80,13 @@ export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
 
 export const {
   setDividers,
+  removeAllDividers,
+  setStory
 } = dividers.actions;
 
 export const {
   selectDividers,
+  selectStory
 } = dividers.selectors;
 
 export default dividers.reducer;

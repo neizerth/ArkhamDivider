@@ -29,6 +29,7 @@ export const StoryCustomContent = ({
             <a 
               className={S.link} 
               href={href} 
+              key={language}
               target='_blank'
             >
               <LanguageFlag className={S.flag} language={language}/>
