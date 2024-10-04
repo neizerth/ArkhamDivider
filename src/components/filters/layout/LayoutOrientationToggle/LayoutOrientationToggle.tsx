@@ -45,7 +45,7 @@ export const LayoutOrientationToggle = ({
     })
 
     navigate({
-      layoutId: firstLayout.id
+      layout: firstLayout
     });
   };
 

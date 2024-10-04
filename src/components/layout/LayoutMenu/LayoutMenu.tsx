@@ -4,9 +4,10 @@ import { Container } from '@/components';
 import { PropsWithChildren } from 'react';
 import { LayoutType } from '@/types/layouts';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectType } from '@/store/features/layout/layout';
+import { selectLayout, selectType } from '@/store/features/layout/layout';
 import classNames from 'classnames';
 import { useAppNavigate } from '@/hooks/useAppNavigate';
+import { menu } from './menu';
 
 
 export type LayoutMenuItemProps = PropsWithChildren & {
@@ -49,13 +50,20 @@ export type LayoutMenuProps = {
 export const LayoutMenu = ({}: LayoutMenuProps) => {
   const { t } = useTranslation();
 
+  const { types, id } = useAppSelector(selectLayout);
+  const items = menu.filter(({ type }) => types.includes(type));
+
+  console.log({ types, id });
+
   return (
     <div className={S.container}>
       <Container>
         <div className={S.menu}>
-          <LayoutMenuItem type={LayoutType.SCENARIO}>{t('Campaigns')}</LayoutMenuItem>
-          <LayoutMenuItem type={LayoutType.PLAYER}>{t('Player Cards')}</LayoutMenuItem>
-          <LayoutMenuItem type={LayoutType.INVESTIGATOR}>{t('Investigators')}</LayoutMenuItem>
+          {items.map(({ type, name }) => (
+            <LayoutMenuItem type={type} key={type}>
+              {t(name)}
+            </LayoutMenuItem>
+          ))}
         </div>
       </Container>
     </div>

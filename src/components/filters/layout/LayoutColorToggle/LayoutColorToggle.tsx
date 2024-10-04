@@ -35,7 +35,7 @@ export const LayoutColorToggle = ({
     });
 
     navigate({
-      layoutId: firstLayout.id
+      layout: firstLayout
     })
   };
 

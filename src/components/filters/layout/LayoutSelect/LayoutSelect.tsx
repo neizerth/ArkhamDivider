@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { PropsWithClassName } from '@/types/util';
 import { ILayout } from '@/types/layouts';
 import { useAppNavigate } from '@/hooks/useAppNavigate';
+import { propEq } from 'ramda';
 
 export type LayoutSelectProps = PropsWithClassName & {
   data: ILayout[]
@@ -31,8 +32,9 @@ export const LayoutSelect = ({
   ) : null;
 
   const setLayoutId = (id: string) => {
+    const layout = data.find(propEq(id, 'id'));
     navigate({
-      layoutId: id
+      layout
     });
   }
 
