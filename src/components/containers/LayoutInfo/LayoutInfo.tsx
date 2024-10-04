@@ -1,7 +1,7 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
 import S from './LayoutInfo.module.scss';
 import { selectCategoryId, selectLayout } from '@/store/features/layout/layout';
-import { Col, Container, Icon, Row } from '@/components';
+import { Container, Icon } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { getCategoryById } from '@/util/layouts';
 

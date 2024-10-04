@@ -1,6 +1,6 @@
 import { LayoutType } from "@/types/layouts";
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { CaseReducer, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { layouts } from '@/data/layouts';
 import { ILayout } from '@/types/layouts';

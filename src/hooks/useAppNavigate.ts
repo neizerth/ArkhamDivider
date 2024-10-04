@@ -1,6 +1,6 @@
 import { selectLanguage } from "@/store/features/language/language"
 import { useAppSelector } from "./useAppSelector"
-import layout, { selectCategoryId, selectLayout, selectType } from "@/store/features/layout/layout";
+import { selectCategoryId, selectLayout, selectType } from "@/store/features/layout/layout";
 import { useNavigate, useParams } from "react-router-dom";
 import { createRoute, RouteOptions } from "@/util/routes";
 import { selectStory } from "@/store/features/dividers/dividers";

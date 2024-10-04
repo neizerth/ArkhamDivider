@@ -106,6 +106,7 @@ export const classicLayoutCategory: ILayoutCategory = {
   author: {
     name: 'Fantasy Flight Games',
     image: BASE_PATH + '/images/ffg.png',
+    url: 'https://www.fantasyflightgames.com/',
     contacts: [
       {
         id: 'www',

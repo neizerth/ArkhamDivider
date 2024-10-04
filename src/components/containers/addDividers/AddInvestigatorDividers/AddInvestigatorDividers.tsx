@@ -5,7 +5,6 @@ import { selectStories } from '@/store/features/stories/stories';
 import { selectLanguage } from '@/store/features/language/language';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { IStory } from '@/types/api';
-import { useState } from 'react';
 import { ButtonType } from '@/types/ui';
 import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
@@ -60,7 +59,6 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
           <StorySelect
             className={S.select}
             stories={storiesWithInvestigators}
-            value={story}
             getIsTranslated={getIsTranslated}
           />
           {story && (

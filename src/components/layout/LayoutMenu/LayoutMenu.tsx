@@ -8,8 +8,6 @@ import { selectLayout, selectType } from '@/store/features/layout/layout';
 import classNames from 'classnames';
 import { useAppNavigate } from '@/hooks/useAppNavigate';
 import { menu } from './menu';
-import { Single } from '@/types/util';
-
 
 export type LayoutMenuItemProps = PropsWithChildren & {
   type: LayoutType
