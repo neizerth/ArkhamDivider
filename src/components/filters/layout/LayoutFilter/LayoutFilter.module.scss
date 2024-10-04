@@ -16,3 +16,8 @@
   gap: 5px;
   align-items: center;
 }
+
+.color {
+  flex-shrink: 0;
+  // flex: 0;
+}

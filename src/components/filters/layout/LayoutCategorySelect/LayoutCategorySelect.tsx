@@ -20,6 +20,7 @@ export const LayoutCategorySelect = ({
   const categoryId = useAppSelector(selectCategoryId);
 
   const options = layoutCategories
+    .filter(({ unlisted, id }) => !unlisted || id === categoryId)
     .map(({ name, id }) => ({
       label: name,
       value: id

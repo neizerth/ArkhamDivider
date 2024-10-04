@@ -1,6 +1,15 @@
 .container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
   a {
     color: inherit;
+  }
+  @media print {
+    a {
+      text-decoration: none;
+    }
   }
 }
 
@@ -18,9 +27,12 @@
 }
 
 .qr {
+  flex-shrink: 0;
   width: 15mm;
+  height: 15mm;
   @media (min-width: 200mm) {
     width: 20mm;
+    height: 20mm;
   }
 }
 
@@ -28,11 +40,17 @@
   gap: 2mm;
   text-align: left;
   align-items: center;
-  max-width: 77mm;
+  max-width: 100mm;
 }
 
-.author {
-  @media print {
-    text-decoration: none;
-  }
+.support {
+  display: flex;
+  gap: 2mm;
+  align-items: center;
+}
+
+.supportContent {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }

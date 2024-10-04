@@ -3,6 +3,7 @@ import S from './SarnetskyDividerXPCost.module.scss';
 import { range } from 'ramda';
 import classNames from 'classnames';
 import Dot from './images/dot.svg?react'
+import { MAX_XP } from '@/constants/xp';
 
 export type SarnetskyDividerXPCostProps = {
   xpCost: IXPCost
@@ -19,7 +20,7 @@ export const SarnetskyDividerXPCost = ({
 
   return (
     <div className={S.container}>
-      {range(1, 6).map(l => (
+      {range(1, MAX_XP + 1).map(l => (
         <Dot 
           key={l}
           className={classNames(

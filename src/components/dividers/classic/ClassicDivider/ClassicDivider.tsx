@@ -109,7 +109,13 @@ export const ClassicDivider = ({
 					</div>
 				)}
 				{previewIcon && (
-					<div className={classNames(S.icon, S.icon_small)}>
+					<div 
+						className={classNames(
+							S.icon, 
+							S.icon_small,
+							xpCost && xpCost.level > 0 ? S.icon_small_withXP : S.icon_small_noXP
+						)}
+					>
 						<Icon icon={previewIcon}/>
 					</div>
 				)}

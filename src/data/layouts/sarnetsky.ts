@@ -1,5 +1,5 @@
-import { BASE_PATH } from "@/constants/web";
-import { ILayout, LayoutOrientation, LayoutType } from "@/types/layouts";
+import { BASE_PATH } from "@/constants/app";
+import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
 
@@ -57,16 +57,15 @@ export const sarnetskyLayouts: ILayout[] = [
   },
 ]
 
-export const sarnetskyLayoutCategory = {
+export const sarnetskyLayoutCategory: ILayoutCategory = {
   id: "sarnetsky",
   name: "Eugene Sarnetsky",
-
+  unlisted: true,
   author: {
     name: 'Eugene Sarnetsky',
     image: BASE_PATH + '/images/authors/esarnetsky.jpg',
-    donation: {
-      ru: 'https://www.tinkoff.ru/cf/8OT6GkH6KwE'
-    },
+    donationUrl: 'https://www.tinkoff.ru/cf/8OT6GkH6KwE',
+    url: 'https://t.me/sarnetsky',
     contacts: [
       {
         id: 'telegram',

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useAppDispatch } from "../useAppDispatch";
 import { useAppSelector } from "../useAppSelector";
-import { selectCategoryId, setCategoryId, setLayoutByCriteria } from "@/store/features/layout/layout";
+import { selectCategoryId, setCategoryId } from "@/store/features/layout/layout";
 import { layoutCategories } from "@/data/layouts";
 import { prop } from "ramda";
 
@@ -26,7 +26,6 @@ export const useCategoryNavigation = () => {
     if (!categories.includes(categoryId)) {
       return;
     }
-
     dispatch(setCategoryId(categoryId));
 
   }, [categoryId]);

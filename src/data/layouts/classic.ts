@@ -1,3 +1,4 @@
+import { BASE_PATH } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
@@ -30,7 +31,20 @@ export const vertical = {
     width: 69,
     height: 105,
     top: 2.2,
-    left: 3
+    left: 2.8
+  }
+}
+
+export const verticalUCF = {
+  rowSize: 3,
+  groupSize: 6,
+  height: 100,
+  width: 65,
+  bleeds: {
+    width: 69,
+    height: 105,
+    top: 2.2,
+    left: 2.3
   }
 }
 
@@ -42,7 +56,7 @@ export const classicLayouts: ILayout[] = [
     title: "Classic",
     orientation: LayoutOrientation.HORIZONTAL,
     color: true,
-    is_default: true,
+    isDefault: true,
   },
   {
     ...common,
@@ -55,6 +69,7 @@ export const classicLayouts: ILayout[] = [
     ...common,
     ...vertical,
     id: "classic-vertical",
+    title: "64x100",
     orientation: LayoutOrientation.VERTICAL,
     color: true,
   },
@@ -62,6 +77,23 @@ export const classicLayouts: ILayout[] = [
     ...common,
     ...vertical,
     id: "classic-vertical-bw",
+    title: "64x100",
+    orientation: LayoutOrientation.VERTICAL,
+    color: false,
+  },
+  {
+    ...common,
+    ...verticalUCF,
+    id: "classic-vertical-ucf",
+    title: "65x100",
+    orientation: LayoutOrientation.VERTICAL,
+    color: true,
+  },
+  {
+    ...common,
+    ...verticalUCF,
+    id: "classic-vertical-ucf-bw",
+    title: "65x100",
     orientation: LayoutOrientation.VERTICAL,
     color: false,
   },
@@ -73,7 +105,7 @@ export const classicLayoutCategory: ILayoutCategory = {
   info: 'Classic Return To... Dividers',
   author: {
     name: 'Fantasy Flight Games',
-    image: 'https://www.fantasyflightgames.com/static/images/logo_ffgdiamond_blk.png',
+    image: BASE_PATH + '/images/ffg.png',
     contacts: [
       {
         id: 'www',

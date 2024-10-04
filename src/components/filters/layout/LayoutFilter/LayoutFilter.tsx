@@ -2,15 +2,12 @@ import S from './LayoutFilter.module.scss';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectCategoryId, selectLayout, selectType } from '@/store/features/layout/layout';
-import { getCategoryById, getLayouts } from '@/util/layouts';
+import { getLayouts } from '@/util/layouts';
 import { isNotNil, prop, uniq } from 'ramda';
-import { layouts } from '@/data/layouts';
 import { LayoutColorToggle } from '../LayoutColorToggle/LayoutColorToggle';
 import { LayoutOrientationToggle } from '../LayoutOrientationToggle/LayoutOrientationToggle';
-import { LayoutSelect } from '../LayoutSelect/LayoutSelect';
-import { Icon } from '@/components/ui/Icon/Icon';
-import { useAppNavigate } from '@/hooks/useAppNavigate';
 import { LayoutCategorySelect } from '../LayoutCategorySelect/LayoutCategorySelect';
+import { LayoutSelect } from '../LayoutSelect/LayoutSelect';
 
 export const LayoutFilter = () => {
   const layout = useAppSelector(selectLayout);
@@ -23,11 +20,18 @@ export const LayoutFilter = () => {
   const type = useAppSelector(selectType);
   const categoryId = useAppSelector(selectCategoryId);
 
+  const cateogoryLayouts = getLayouts({
+    criteria: {
+      categoryId,
+      type,
+      orientation,
+      color
+    }
+  })
   
   const colorLayouts = getLayouts({ 
     criteria: {
       categoryId,
-      type,
       orientation
     }
   });
@@ -35,8 +39,8 @@ export const LayoutFilter = () => {
   const orientationLayouts = getLayouts({ 
     criteria: {
       categoryId,
-      type,
-      color
+      color,
+      type
     }
   });
 
@@ -61,7 +65,16 @@ export const LayoutFilter = () => {
             <LayoutOrientationToggle data={orientationLayouts}/>
           )}
           {haveColor && (
-            <LayoutColorToggle data={colorLayouts}/>
+            <LayoutColorToggle 
+              className={S.color}
+              data={colorLayouts}
+            />
+          )}
+          {cateogoryLayouts.length > 1 && (
+            <LayoutSelect 
+              className={S.select}
+              data={cateogoryLayouts}
+            />
           )}
         </>
       )}

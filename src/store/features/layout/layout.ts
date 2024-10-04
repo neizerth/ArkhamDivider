@@ -1,12 +1,13 @@
 import { LayoutType } from "@/types/layouts";
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { createSlice } from '@reduxjs/toolkit';
+import { CaseReducer, createSlice } from '@reduxjs/toolkit';
 
 import { layouts } from '@/data/layouts';
 import { ILayout } from '@/types/layouts';
 import * as reducers from './reducers';
+import { safePropEq } from "@/util/criteria";
 
-const DEFAULT_LAYOUT = layouts.find(({ is_default }) => is_default) as ILayout;
+const DEFAULT_LAYOUT = layouts.find(safePropEq(true, 'isDefault')) as ILayout;
 
 export type ILayoutState = {
   layout: ILayout,
@@ -27,33 +28,29 @@ export const layout = createSlice({
   reducers: {
     ...reducers,
     setLayout: createSliceSetter('layout'),
-    setType: createSliceSetter('type'),
     setColor: createSliceSetter('color'),
-    setCategoryId: createSliceSetter('categoryId'),
+
+    setCategoryId: createSliceSetter('categoryId', (state, action) => {
+      const categoryId = action.payload;
+      layout.caseReducers.setLayoutByCriteria(state, {
+        ...action,
+        payload: { categoryId }
+      });
+    }),
+
+    setType: createSliceSetter('type', (state, action) => {
+      const type = action.payload;
+
+      reducers.setLayoutByCriteria(state, {
+        ...action,
+        payload: { type }
+      });
+    }),
   },
   selectors: {
     selectLayout: createSliceSelector('layout'),
     selectType: createSliceSelector('type'),
     selectCategoryId: createSliceSelector('categoryId'),
-  },
-  extraReducers(builder) {
-    builder
-      .addCase(setCategoryId, (state, action) => {
-        const categoryId = action.payload;
-
-        reducers.setLayoutByCriteria(state, {
-          ...action,
-          payload: { categoryId }
-        });
-      })
-      .addCase(setType, (state, action) => {
-        const type = action.payload;
-
-        reducers.setLayoutByCriteria(state, {
-          ...action,
-          payload: { type }
-        });
-      })
   }
 });
 

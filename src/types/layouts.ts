@@ -12,7 +12,7 @@ export type ILayout = {
   types: LayoutType[]
   orientation: LayoutOrientation
   pageOrientation: PageOrientation
-  is_default?: boolean
+  isDefault?: boolean
   color: boolean
   bleeds: {
     width: number
@@ -32,12 +32,15 @@ export type ILayoutAuthorContact = {
 
 export type ILayoutAuthor = {
   name: string
+  url: string
   image?: string
+  donationUrl?: string
   contacts?: ILayoutAuthorContact[]
 } 
 
 export type ILayoutCategory = {
   id: string
+  unlisted?: boolean,
   name: string
   info?: string
   author?: ILayoutAuthor

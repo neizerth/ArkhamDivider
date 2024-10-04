@@ -26,8 +26,7 @@ export const useAppNavigate = () => {
     const layoutId = layout ? layout.id : id; 
     const type = layout && !layout.types.includes(currentType) ? 
       layout.types[0] : currentType;
-    
-    const route = createRoute({
+    const routeOptions = {
       ...params,
       language,
       type,
@@ -35,7 +34,8 @@ export const useAppNavigate = () => {
       layoutId,
       storyId: story?.code,
       ...options
-    });
+    }
+    const route = createRoute(routeOptions);
     navigate(route);
   };
 } 

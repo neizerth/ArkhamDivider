@@ -1,4 +1,8 @@
+import { Icon } from '@/components/ui/Icon/Icon';
+import { contacts } from './contacts';
 import S from './Footer.module.scss';
+import { useTranslation } from 'react-i18next';
+import { BOOSTY_LINK } from '@/constants/app';
 
 const GAME_URL = "https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/";
 const FFG_URL = "https://www.fantasyflightgames.com/";
@@ -8,23 +12,47 @@ export type FooterProps = {
 }
 
 export const Footer = ({}: FooterProps) => {
+  const { t } = useTranslation();
+
   return (
     <footer className={S.container}>
-      <a 
-        href={GAME_URL} 
-        target='_blank'
-      >
-        Arkham Horror: The Card Game™
-      </a> and all related content ©
-      {' '}
-      <a 
-        href={FFG_URL}
-        target='_blank'
-      >
-        Fantasy Flight Games (FFG)
-      </a>. 
-      This site is not produced, endorsed by or affiliated with FFG.
-
+      <div className={S.content}>
+        <a 
+          href={GAME_URL} 
+          target='_blank'
+        >
+          Arkham Horror: The Card Game™
+        </a> and all related content ©
+        {' '}
+        <a 
+          href={FFG_URL}
+          target='_blank'
+        >
+          Fantasy Flight Games (FFG)
+        </a>. 
+        This site is not produced, endorsed by or affiliated with FFG.
+      </div>
+      <div className={S.contacts}>
+        <a 
+          className={S.support}
+          href={BOOSTY_LINK}
+          target='_blank'
+        >
+          {t('Support project on Boosty')}
+        </a>
+        <div className={S.social}>
+          {contacts.map(({ icon, url }) => (
+            <a 
+              href={url} 
+              target='_blank' 
+              className={S.contact}
+              key={icon}
+            >
+              <Icon icon={icon}/>
+            </a>
+          ))}
+        </div>
+      </div>
     </footer>
   );
 }

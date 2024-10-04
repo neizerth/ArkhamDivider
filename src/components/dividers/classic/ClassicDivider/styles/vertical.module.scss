@@ -24,8 +24,13 @@
   }
 
   .icon_small {
-    top: 5.2mm;
     right: 3.8mm;
+    &_noXP {
+      top: 5.2mm;
+    }
+    &_withXP {
+      top: 4.6mm;
+    }
   }
   
   .icon_large {
