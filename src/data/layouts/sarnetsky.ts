@@ -73,21 +73,6 @@ export const sarnetskyLayoutCategory: ILayoutCategory = {
         url: 'https://t.me/sarnetsky'
       },
       {
-        id: 'vk',
-        icon: 'vk',
-        url: 'https://vk.com/sarnetsky'
-      },
-      {
-        id: 'facebook',
-        icon: 'facebook',
-        url: 'https://www.facebook.com/sarnetsky/'
-      },
-      {
-        id: 'twitter',
-        icon: 'twitter',
-        url: 'https://twitter.com/sarnetsky'
-      },
-      {
         id: 'email',
         icon: 'mail',
         url: 'mailto:sarnetsky@gmail.com'
