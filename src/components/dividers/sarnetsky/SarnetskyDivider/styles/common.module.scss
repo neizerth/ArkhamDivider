@@ -59,6 +59,8 @@
 }
 
 .type_encounter .campaignIcon {
+  position: absolute;
+  z-index: 2;
   font-size: 0.6em;
   color: #fff;
   top: 5.3mm;
