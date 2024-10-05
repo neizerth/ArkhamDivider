@@ -54,7 +54,7 @@ export const ClassicDividerAssetXPCost = ({
 
   return (
     <div className={S.XPCost}>
-      <Icon icon="inverted_level_0" className={classNames(S.background)}/>
+      {max > 0 && <Icon icon="inverted_level_0" className={classNames(S.background)}/>}
       {max > 0 && (
         <Icon 
           icon={`ae_level_${level}`} 
