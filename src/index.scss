@@ -42,7 +42,7 @@
   src: local("Allegreya"), 
       url('./fonts/Alegreya-Regular.ttf') format('truetype');
   font-weight: normal;
-font-style: normal;
+  font-style: normal;
 }
 
 @font-face {
@@ -50,7 +50,7 @@ font-style: normal;
   src: local("Alegreya"), 
       url('./fonts/Alegreya-Italic.ttf') format('truetype');
   font-weight: normal;
-font-style: italic;
+  font-style: italic;
 }
 
 @font-face {
@@ -58,7 +58,15 @@ font-style: italic;
   src: local("Arkhamic"), 
       url('./fonts/Arkhamic.ttf') format('truetype');
   font-weight: normal;
-font-style: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Teutonic';
+  src: local("Teutonic"), 
+      url('./fonts/Teutonic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @page {
