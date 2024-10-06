@@ -26,16 +26,16 @@ export const vertical = {
   rowSize: 3,
   groupSize: 6,
   height: 100,
-  width: 64,
+  width: 63.5,
   bleeds: {
     width: 69,
     height: 105,
     top: 2.2,
-    left: 2.8
+    left: 3
   }
 }
 
-export const verticalUCF = {
+export const verticalForSleeves = {
   rowSize: 3,
   groupSize: 6,
   height: 100,
@@ -69,7 +69,7 @@ export const classicLayouts: ILayout[] = [
     ...common,
     ...vertical,
     id: "classic-vertical",
-    title: "64x100",
+    title: "63.5x100",
     orientation: LayoutOrientation.VERTICAL,
     color: true,
   },
@@ -83,7 +83,7 @@ export const classicLayouts: ILayout[] = [
   },
   {
     ...common,
-    ...verticalUCF,
+    ...verticalForSleeves,
     id: "classic-vertical-ucf",
     title: "65x100",
     orientation: LayoutOrientation.VERTICAL,
@@ -91,7 +91,7 @@ export const classicLayouts: ILayout[] = [
   },
   {
     ...common,
-    ...verticalUCF,
+    ...verticalForSleeves,
     id: "classic-vertical-ucf-bw",
     title: "65x100",
     orientation: LayoutOrientation.VERTICAL,
