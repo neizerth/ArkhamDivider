@@ -26,12 +26,12 @@ export const vertical = {
   rowSize: 3,
   groupSize: 6,
   height: 100,
-  width: 63.5,
+  width: 63,
   bleeds: {
     width: 69,
     height: 105,
     top: 2.2,
-    left: 3
+    left: 3.4
   }
 }
 
@@ -69,7 +69,7 @@ export const classicLayouts: ILayout[] = [
     ...common,
     ...vertical,
     id: "classic-vertical",
-    title: "63.5x100",
+    title: "63x100",
     orientation: LayoutOrientation.VERTICAL,
     color: true,
   },
@@ -77,7 +77,7 @@ export const classicLayouts: ILayout[] = [
     ...common,
     ...vertical,
     id: "classic-vertical-bw",
-    title: "64x100",
+    title: "63x100",
     orientation: LayoutOrientation.VERTICAL,
     color: false,
   },
