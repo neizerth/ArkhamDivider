@@ -21,11 +21,6 @@ export const ClassicDividerSkillXPCost = ({
 
   return (
     <div className={classNames(S.skill, className)}>
-      {max === 0 && (
-        <>
-          <Icon icon="s_level_null" className={classNames(S.nullSkillBackground)}/>
-        </>
-      )}
       {max > 0 && (
         <>
           <Icon icon="s_frame_background" className={classNames(S.skillBackground)}/>
@@ -54,12 +49,14 @@ export const ClassicDividerAssetXPCost = ({
 
   return (
     <div className={S.XPCost}>
-      {max > 0 && <Icon icon="inverted_level_0" className={classNames(S.background)}/>}
       {max > 0 && (
-        <Icon 
-          icon={`ae_level_${level}`} 
-          className={classNames(S.level, S.lightLevel)}
-        />
+        <>
+          <Icon icon="inverted_level_0" className={classNames(S.background)}/>
+          <Icon 
+            icon={`ae_level_${level}`} 
+            className={classNames(S.level, S.lightLevel)}
+          />
+        </>
       )}
       {max > level && (
         <Icon 
@@ -83,7 +80,7 @@ export const ClassicDividerEventXPCost = ({
 
   return (
     <div className={classNames(S.XPCost, S.event)}>
-      {max > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level)}/>}
+      {level > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level)}/>}
       {max > level && (
         <Icon 
           icon={`ae_level_${max}`} 
@@ -117,8 +114,11 @@ export const ClassicDividerIconXPCost = ({
       {type === CardType.SKILL && (
         <ClassicDividerSkillXPCost xpCost={xpCost}/>
       )}
-      {[CardType.ASSET, CardType.EVENT].includes(type) && (
+      {type === CardType.ASSET && (
         <ClassicDividerAssetXPCost xpCost={xpCost}/>
+      )}
+      {type === CardType.EVENT && (
+        <ClassicDividerEventXPCost xpCost={xpCost}/>
       )}
     </div>
   );
