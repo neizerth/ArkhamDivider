@@ -31,7 +31,7 @@ export const vertical = {
     width: 69,
     height: 105,
     top: 2.2,
-    left: 3.4
+    left: 3.6
   }
 }
 
