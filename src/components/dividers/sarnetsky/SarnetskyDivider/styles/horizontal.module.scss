@@ -26,11 +26,11 @@
     top: 20.2mm;
   }
 
-  .icon {
-    &_main {
+  .mainIcon {
+    font-size: 6.5em;
+  }
 
-      font-size: 6.5em;
-      top: 52%;
-    }
+  .content {
+    top: 25mm;
   }
 }

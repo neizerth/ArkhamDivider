@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  color: #b2aaa2;
+  mix-blend-mode: multiply;
+  opacity: 0.2;
+}

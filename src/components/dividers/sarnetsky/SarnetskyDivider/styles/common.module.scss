@@ -31,19 +31,12 @@
 }
 
 .icon {
+  aspect-ratio: 1;
   position: absolute;
   z-index: 2;
-  aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  &_main {
-    color: #b2aaa2;
-    mix-blend-mode: multiply;
-    opacity: 0.2;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
   &_type-encounter {
     font-size: 1.2em;
     top: 3.5mm;
@@ -58,9 +51,12 @@
   }
 }
 
-.type_encounter .campaignIcon {
+.campaignIcon {
   position: absolute;
   z-index: 2;
+}
+
+.type_encounter .campaignIcon {
   font-size: 0.6em;
   color: #fff;
   top: 5.45mm;
@@ -76,16 +72,25 @@
   }
 }
 
-.encounters {
+.content {
   position: absolute;
   text-align: center;
   z-index: 2;
   width: 100%;
   bottom: 13.6mm;
   padding: 0 7.5mm;
-  transform: translate(0, 10%);
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
+  justify-content: space-between;
+  // align-items: center;
+  // height: ;
 }
+
+.mainIcon {
+  flex: 1;
+}
+
 
 .title {
   position: absolute;

@@ -14,6 +14,7 @@ import { LayoutOrientation } from '@/types/layouts';
 import { SarnetskyDividerXPCost } from '../xp/SarnetskyDividerXPCost/SarnetskyDividerXPCost';
 import { SarnetskyDividerSideXP } from '../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP';
 import { SarnetskyDividerXPText } from '../xp/SarnetskyDividerXPText/SarnetskyDividerXPText';
+import { SarnetskyDividerMainIcon as MainIcon } from '../SarnetskyDividerMainIcon/SarnetskyDividerMainIcon';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -79,7 +80,8 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 		S[`titleInput_${type}`],
 	)
 
-	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 16;
+	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 10;
+	const showIcon = !isPlayer && icon;
 
   return (
     <div 
@@ -120,15 +122,10 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						/>
 					</div>
 				)}
-				{!isPlayer && icon && (
-					<>
-						<div className={classNames(S.icon, S[`icon_type-${type}`])}>
-							<Icon icon={icon}/>
-						</div>
-						<div className={classNames(S.icon, S.icon_main)}>
-							<Icon icon={icon}/>
-						</div>
-					</>
+				{showIcon && (
+					<div className={classNames(S.icon, S[`icon_type-${type}`])}>
+						<Icon icon={icon}/>
+					</div>
 				)}
 				{isScenario && campaignIcon && (
 					<div className={classNames(S.icon, S.campaignIcon)}>
@@ -146,27 +143,36 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 					</div>
 				)}
 				{campaignIcon && (
-					<div className={classNames(S.campaignIcon, S[`icon_${type}`])}>
+					<div className={classNames(S.campaignIcon, S[`icon_${type}`], S.icon_secondary)}>
 						<Icon icon={campaignIcon}/>
 					</div>
 				)}
-				{scenario && (
-					<div className={classNames(S.encounters)}>
-						{!scenario.scenarios && (
-							<ScenarioEncounters 
-								scenario={scenario}
-								rowSize={rowSize}
-							/>
-						)}
-						{scenario.scenarios && (
-							<LinkedScenarioEncounters
-								mainScenario={scenario}
-								scenarios={scenario.scenarios}
-								rowSize={rowSize}
-							/>
-						)}
-					</div>
-				)}
+				<div className={S.content}>
+					{showIcon && (
+						<MainIcon 
+							className={S.mainIcon} 
+							dynamicHeight={Boolean(scenario)}
+							icon={icon}
+						/>
+					)}
+					{scenario && (
+						<div className={classNames(S.encounters)}>
+							{!scenario.scenarios && (
+								<ScenarioEncounters 
+									scenario={scenario}
+									rowSize={rowSize}
+								/>
+							)}
+							{scenario.scenarios && (
+								<LinkedScenarioEncounters
+									mainScenario={scenario}
+									scenarios={scenario.scenarios}
+									rowSize={rowSize}
+								/>
+							)}
+						</div>
+					)}
+				</div>
 				<div className={S.menu}>
 					<DividerMenu id={id} className={S.menuContainer}/>
 				</div>
