@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { PropsWithClassName } from '@/types/util';
 import { propEq } from 'ramda';
 import { getLayouts } from '@/util/layouts';
+import { useTranslation } from 'react-i18next';
 
 export type LayoutCategorySelectProps = PropsWithClassName & {
   
@@ -16,6 +17,7 @@ export type LayoutCategorySelectProps = PropsWithClassName & {
 export const LayoutCategorySelect = ({
   className
 }: LayoutCategorySelectProps) => {
+  const { t } = useTranslation();
   const navigate = useAppNavigate();
   const categoryId = useAppSelector(selectCategoryId);
 
@@ -47,7 +49,8 @@ export const LayoutCategorySelect = ({
     <Select
       className={containerClassName} 
       options={options}
-      value={value} 
+      value={value}
+      placeholder={t('Choose an option')}
       onChange={item => item && setCategoryId(item.value)}
     />
   );
