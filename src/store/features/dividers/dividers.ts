@@ -32,11 +32,8 @@ export const dividers = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(setType, (state) => {
-        dividers.caseReducers.removeAllDividers(state);
-      })
-      .addCase(setLayout, (state) => {
-        dividers.caseReducers.removeAllDividers(state);
-      });
+      dividers.caseReducers.removeAllDividers(state);
+    });
   },
 });
 
