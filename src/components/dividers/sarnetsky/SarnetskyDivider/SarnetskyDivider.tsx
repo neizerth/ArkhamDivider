@@ -67,6 +67,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	].includes(type);
 
 	const isPlayer = type === DividerType.PLAYER;
+ const isInvestigator = type === DividerType.INVESTIGATOR;
 	const isEncounter = type === DividerType.ENCOUNTER;
 
 	const titleClassName = classNames(
@@ -81,7 +82,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	)
 
 	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 10;
-	const showIcon = !isPlayer && icon;
+	const showIcon = !isPlayer && !isInvestigator && icon;
 
   return (
     <div 
