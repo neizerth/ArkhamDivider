@@ -60,7 +60,7 @@ export const sarnetskyLayouts: ILayout[] = [
 export const sarnetskyLayoutCategory: ILayoutCategory = {
   id: "sarnetsky",
   name: "Eugene Sarnetsky",
-  unlisted: true,
+  // unlisted: true,
   author: {
     name: 'Eugene Sarnetsky',
     image: BASE_PATH + '/images/authors/esarnetsky.jpg',
