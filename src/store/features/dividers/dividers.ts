@@ -5,7 +5,7 @@ import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
 import { propEq } from 'ramda';
 import { uniqId } from '@/util/common';
-import { setType } from '../layout/layout';
+import { setType, setLayout } from '../layout/layout';
 import * as reducers from './reducers';
 import { IStory } from '@/types/api';
 
@@ -32,8 +32,11 @@ export const dividers = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(setType, (state) => {
-      dividers.caseReducers.removeAllDividers(state);
-    });
+        dividers.caseReducers.removeAllDividers(state);
+      })
+      .addCase(setLayout, (state) => {
+        dividers.caseReducers.removeAllDividers(state);
+      });
   },
 });
 
