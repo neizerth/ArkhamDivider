@@ -5,7 +5,7 @@ import { IDividerList } from '@/types/dividers';
 import { AppThunk } from '@/store';
 import { propEq } from 'ramda';
 import { uniqId } from '@/util/common';
-import { setType, setLayout } from '../layout/layout';
+import { setType } from '../layout/layout';
 import * as reducers from './reducers';
 import { IStory } from '@/types/api';
 
