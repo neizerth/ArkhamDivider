@@ -80,7 +80,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 	)
 
 	const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 10;
-	const showIcon = isScenario && icon;
+	const showIcon = (isScenario || isEncounter) && icon;
 
   return (
     <div 
