@@ -16,6 +16,9 @@ import {
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectDividers } from './store/features/dividers/dividers';
 import { useAppNavigation } from './hooks/useAppNavigation';
+import { useAppDispatch } from './hooks/useAppDispatch';
+import { loadAppData } from './store/features/app/app';
+import { useEffect } from 'react';
 
 const App = () => {
   return (
@@ -48,6 +51,12 @@ const App = () => {
 }
 
 const AppLayout = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadAppData());
+  }, [dispatch]);
+
   useAppNavigation();
 
   const dividers = useAppSelector(selectDividers);
