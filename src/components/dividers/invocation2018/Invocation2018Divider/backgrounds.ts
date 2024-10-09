@@ -4,6 +4,7 @@ import guardian from './images/guardian.png';
 import rogue from './images/rogue.png';
 import survivor from './images/survivor.png';
 import seeker from './images/seeker.png';
+import multiclass from './images/multiclass.png';
 
 import mysticXP from './images/mystic_xp.png';
 import neutralXP from './images/neutral_xp.png';
@@ -11,6 +12,7 @@ import guardianXP from './images/guardian_xp.png';
 import rogueXP from './images/rogue_xp.png';
 import survivorXP from './images/survivor_xp.png';
 import seekerXP from './images/seeker_xp.png';
+import multiclassXP from './images/multiclass_xp.png';
 
 
 export const baseBackgrounds = [
@@ -42,6 +44,11 @@ export const baseBackgrounds = [
   {
     faction: 'seeker',
     src: seeker,
+    xp: false
+  },
+  {
+    faction: 'multiclass',
+    src: multiclass,
     xp: false
   }
 ]
@@ -75,6 +82,11 @@ export const xpBackgrounds = [
   {
     faction: 'seeker',
     src: seekerXP,
+    xp: true
+  },
+  {
+    faction: 'multiclass',
+    src: multiclassXP,
     xp: true
   }
 ]
