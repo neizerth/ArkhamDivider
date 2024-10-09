@@ -13,7 +13,7 @@ export const LanguageSelectSingleValue = (props: SingleValueProps<{
   return (
     <components.SingleValue {...props}>
       <div className={S.value}>
-        <LanguageFlag language={value} imageClassName={S.flag}/>
+        <LanguageFlag displayTitle={false} language={value} imageClassName={S.flag}/>
       </div>
     </components.SingleValue>
   )

@@ -9,6 +9,7 @@ import { CHINA_LANGUAGES } from '@/constants/i18n';
 export type LanguageFlagProps = PropsWithClassName & {
   imageClassName?: string
   altClassName?: string
+  displayTitle?: boolean;
   language: string;
 }
 
@@ -16,6 +17,7 @@ export const LanguageFlag = ({
   className,
   imageClassName,
   altClassName,
+  displayTitle = true,
   language
 }: LanguageFlagProps) => {
   const isChina = CHINA_LANGUAGES.includes(language);
@@ -36,7 +38,7 @@ export const LanguageFlag = ({
       {isChina && (
         <Flags.CN className={classList}/>
       )}
-      {!hasFlag && (
+      {!hasFlag && displayTitle && (
         <span className={classNames(S.alt, altClassName)}>
           {language}
         </span>
