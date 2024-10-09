@@ -3,7 +3,8 @@
   z-index: 1;
   // right: -2.2mm;
   right: 2.3mm;
-  top: 1.05mm;
+  // top: 1.05mm;
+  top: 2.2mm;
   font-size: 6.1mm;
 }
 
@@ -11,5 +12,9 @@
   position: absolute;
   z-index: 1;
   right: 17mm;
-  top: 5.2mm;
+  top: 6.1mm;
+}
+
+.title {
+  top: 5.8mm;
 }

@@ -39,6 +39,7 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
     <ClassicDivider 
 			{...dividerProps}
 			titleStroke={false}
+			titleClassName={S.title}
 			background={background?.src}
 		>
 			{xpCost && (

@@ -20,6 +20,7 @@ import { definedIf } from '@/util/common';
 
 export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChildren &{
 	titleStroke?: boolean
+	titleClassName?: string
 }
 
 export const ClassicDivider = ({
@@ -83,6 +84,7 @@ export const ClassicDivider = ({
 
 	const titleClassName = classNames(
 		S.title,
+		props.titleClassName,
 		titleSize <= 30 && S.title_m,
 		titleSize > 30 && S.title_l,
 		titleSize > 40 && S.title_xl,
