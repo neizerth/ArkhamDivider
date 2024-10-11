@@ -43,10 +43,11 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 			background={background?.src}
 		>
 			{xpCost && (
-				<Invocation2018DividerXPCost 
-					className={S.xpCost}
-					xpCost={xpCost}
-				/>
+				<div className={S.xpCost}>
+					<Invocation2018DividerXPCost 
+						xpCost={xpCost}
+					/>
+				</div>
 			)}
 			{displaySideXP && xpCost && (
 				<div className={S.sideXP}>

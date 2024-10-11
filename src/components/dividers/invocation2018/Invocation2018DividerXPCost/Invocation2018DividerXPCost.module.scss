@@ -1,5 +1,5 @@
 .container {
-  
+  position: relative;
 }
 
 .levels {
@@ -8,15 +8,16 @@
 
 .dot {
   fill: currentColor;
-  width: 0.1em;
+  width: 0.6mm;
 
   // filter: drop-shadow(0 0 0.1em var(--color));
-  box-shadow: 0 0 0.05em var(--color);
+  box-shadow: 0 0 0.1mm var(--color);
+  border-radius: 50%;
 }
 
 .level {
   position: absolute;
-  font-size: 1em;
+  font-size: 0;
   // box-shadow: 0 0 0.5em var(--color);
 }
 
