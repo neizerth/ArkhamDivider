@@ -17,6 +17,7 @@ import { ClassicDividerIconXPCost } from '../xp/ClassicDividerIconXPCost/Classic
 import { propsEquals } from '@/util/criteria';
 import { ClassicDividerSideXP } from '../xp/ClassicDividerSideXP/ClassicDividerSideXP';
 import { definedIf } from '@/util/common';
+import { useSelectIcon } from '@/hooks/useSelectIcon';
 
 export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChildren &{
 	titleStroke?: boolean
@@ -25,9 +26,7 @@ export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChild
 
 export const ClassicDivider = ({
 	id,
-	icon,
 	cardType,
-	previewIcon = icon,
 	xpCost,
 	name = '',
 	titleStroke = true,
@@ -48,6 +47,8 @@ export const ClassicDivider = ({
 	} = layout;
 	
 	const campaignIcon = definedIf(props.campaignIcon, displayCampaignIcon);
+	const [icon, selectIcon] = useSelectIcon(props.icon);
+	const [previewIcon, selectPreviewIcon] = useSelectIcon(props.previewIcon || props.icon);
 
 	const background = props.background || backgrounds.find(
 		propsEquals({
@@ -107,6 +108,7 @@ export const ClassicDivider = ({
 				{background && <img className={S.background} src={background} alt={title}/>}
 				{icon && (
 					<div className={classNames(S.icon, S.icon_large)}>
+						<div className={S.iconSelect} onClick={selectIcon}/>
 						<Icon icon={icon}/>
 					</div>
 				)}

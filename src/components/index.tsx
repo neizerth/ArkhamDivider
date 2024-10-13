@@ -27,6 +27,7 @@ export { Color } from './ui/Color/Color';
 export { LanguageFlag } from './ui/LanguageFlag/LanguageFlag';
 export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 export { XPSlider } from './ui/XPSlider/XPSlider';
+export { Popup } from './ui/Popup/Popup';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';
 export { XPCostSelect } from './ui/select/XPCostSelect/XPCostSelect';

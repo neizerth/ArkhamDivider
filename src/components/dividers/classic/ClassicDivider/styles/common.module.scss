@@ -58,6 +58,14 @@
   z-index: 2;
 }
 
+.iconSelect {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
 .icon_small {
   font-size: 4.4mm;
   width: 7.2mm;
