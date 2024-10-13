@@ -48,6 +48,7 @@ export const FactionSelect = ({
       value={factions}
       onChange={onChange} 
       components={components}
+      className={S.select}
     />
   );
 }

@@ -75,7 +75,11 @@
 .menu {
   position: absolute;
   z-index: 3;
-  color: #b9b9b9;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 10px;
 }
 
 

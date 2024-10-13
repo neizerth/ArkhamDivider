@@ -6,12 +6,10 @@ import { useAppDispatch } from "../useAppDispatch";
 
 export const useLayoutNavigation = () => {
   const dispatch = useAppDispatch();
-  const params = useParams();
+  const { layoutId } = useParams();
   const currentLayout = useAppSelector(selectLayout);
 
   useEffect(() => {
-    const { layoutId } = params;
-
     if (currentLayout.id === layoutId) {
       return;
     }
@@ -22,5 +20,5 @@ export const useLayoutNavigation = () => {
 
     dispatch(setLayoutById(layoutId));
 
-  }, [params.layoutId])
+  }, [layoutId])
 }

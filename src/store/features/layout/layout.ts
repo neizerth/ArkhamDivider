@@ -30,13 +30,7 @@ export const layout = createSlice({
     setLayout: createSliceSetter('layout'),
     setColor: createSliceSetter('color'),
 
-    setCategoryId: createSliceSetter('categoryId', (state, action) => {
-      const categoryId = action.payload;
-      layout.caseReducers.setLayoutByCriteria(state, {
-        ...action,
-        payload: { categoryId }
-      });
-    }),
+    setCategoryId: createSliceSetter('categoryId'),
 
     setType: createSliceSetter('type', (state, action) => {
       const type = action.payload;

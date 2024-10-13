@@ -84,7 +84,7 @@ export const classicLayouts: ILayout[] = [
   {
     ...common,
     ...verticalForSleeves,
-    id: "classic-vertical-ucf",
+    id: "classic-vertical-sleeves",
     title: "65x100",
     orientation: LayoutOrientation.VERTICAL,
     color: true,
@@ -92,7 +92,7 @@ export const classicLayouts: ILayout[] = [
   {
     ...common,
     ...verticalForSleeves,
-    id: "classic-vertical-ucf-bw",
+    id: "classic-vertical-sleeves-bw",
     title: "65x100",
     orientation: LayoutOrientation.VERTICAL,
     color: false,

@@ -16,5 +16,11 @@
 }
 
 .title {
-  top: 5.8mm;
+  &_horizontal {
+    top: 5.8mm;
+  }
+  &_vertical {
+    top: 5.6mm;
+    left: -0.8mm
+  }
 }

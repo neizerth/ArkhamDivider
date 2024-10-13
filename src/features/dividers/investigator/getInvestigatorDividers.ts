@@ -2,14 +2,20 @@ import { IInvestigator } from "@/types/api"
 import { DividerType, IDivider } from "@/types/dividers"
 import { uniqId } from "@/util/common"
 import factions from '@/data/factions.json'
-import { isNotNil, propEq } from "ramda"
+import { groupBy, isNotNil, prop, propEq, values } from "ramda"
 
 export const getInvestigatorDividers = ({
   investigators
 }: {
   investigators: IInvestigator[]
 }): IDivider[] => {
-  return investigators.map(({ 
+  const data = values(
+      groupBy(prop('name'), investigators)
+    )
+    .filter(isNotNil)
+    .map(group => group[0]);
+
+  return data.map(({ 
     name,
     faction_code
   }) => {

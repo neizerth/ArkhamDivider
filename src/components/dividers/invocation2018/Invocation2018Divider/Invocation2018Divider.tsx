@@ -7,16 +7,21 @@ import { ClassicDivider } from '@/components';
 import { propsEquals } from '@/util/criteria';
 import { Invocation2018DividerXPCost } from '../Invocation2018DividerXPCost/Invocation2018DividerXPCost';
 import { ClassicDividerSideXP } from '../../classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectLayout } from '@/store/features/layout/layout';
+import classNames from 'classnames';
 
 export type Invocation2018DividerProps = PropsWithClassName & IDivider;
 
 export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
-	const { 
+	const {
 		faction,
 		xpCost,
 		displaySideXP,
 		displayNumericXP = false
 	} = props;
+
+	const { orientation } = useAppSelector(selectLayout);
 
 	const level = xpCost?.max || xpCost?.level || 0;
 
@@ -25,6 +30,7 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 	);
 
   const background = backgrounds.find(propsEquals({
+		orientation,
 		faction,
 		xp
 	}));
@@ -39,7 +45,10 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
     <ClassicDivider 
 			{...dividerProps}
 			titleStroke={false}
-			titleClassName={S.title}
+			titleClassName={classNames(
+				S.title,
+				S[`title_${orientation}`]
+			)}
 			background={background?.src}
 		>
 			{xpCost && (
