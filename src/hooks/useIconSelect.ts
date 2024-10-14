@@ -9,7 +9,7 @@ export const useIconSelect = ({
   defaultIcon
 }: {
   defaultIcon?: string
-}) => {
+} = {}) => {
   const dispatch = useAppDispatch();
   const popupId = useAppSelector(selectActivePopupId);
   const popupIcon = useAppSelector(selectPopupIcon);
