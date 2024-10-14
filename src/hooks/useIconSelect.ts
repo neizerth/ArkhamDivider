@@ -39,7 +39,7 @@ export const useIconSelect = ({
   }
 
   return [icon, openPopup] as [
-    string | null,
+    string | undefined,
     () => void 
   ];
 }

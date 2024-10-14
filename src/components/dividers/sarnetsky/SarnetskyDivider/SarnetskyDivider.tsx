@@ -15,6 +15,7 @@ import { SarnetskyDividerXPCost } from '../xp/SarnetskyDividerXPCost/SarnetskyDi
 import { SarnetskyDividerSideXP } from '../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP';
 import { SarnetskyDividerXPText } from '../xp/SarnetskyDividerXPText/SarnetskyDividerXPText';
 import { SarnetskyDividerMainIcon as MainIcon } from '../SarnetskyDividerMainIcon/SarnetskyDividerMainIcon';
+import { useIconSelect } from '@/hooks/useIconSelect';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -34,11 +35,10 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 		scenario,
 		name = '',
 		faction = '',
-		icon = '',
 		type,
 		story,
-		campaignIcon,
 		xpCost,
+		icon,
 		tags = []
 	} = props;
 
@@ -46,7 +46,15 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 
 	const language = useAppSelector(selectLanguage);
 	const { orientation } = useAppSelector(selectLayout);
+	
+	const [previewIcon, selectPreviewIcon] = useIconSelect({
+		defaultIcon: props.previewIcon || props.icon
+	});
 
+	const [campaignIcon, selectCampaignIcon] = useIconSelect({
+		defaultIcon: props.campaignIcon
+	});
+	
 	const translatedName = t(name);
 	const realLanguage = translatedName === name ? 'en' : language;
 	const [tag] = tags;
@@ -89,7 +97,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 			<DividerContent>
 				<div className={S.background}>
 					<DividerBackground 
-						id={tag || faction || icon}
+						id={tag || faction || icon || ''}
 						storyCode={story?.return_to_code || story?.code}
 						type={type}
 					/>
@@ -102,7 +110,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 						<div className={S.sideXP}>
 							<SarnetskyDividerXPCost xpCost={xpCost}/>
 						</div>
-						{faction && (
+						{faction && icon && (
 							<div className={S.xpTitle}>
 								<SarnetskyDividerXPText 
 									xpCost={xpCost} 
@@ -122,12 +130,24 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 					</div>
 				)}
 				{showIcon && (
-					<div className={classNames(S.icon, S[`icon_type-${type}`])}>
-						<Icon icon={icon}/>
+					<div 
+						className={classNames(
+							S.icon, 
+							S[`icon_type-${type}`]
+						)}
+						onClick={selectPreviewIcon}
+					>
+						{previewIcon && <Icon icon={previewIcon}/>}
 					</div>
 				)}
 				{isScenario && campaignIcon && (
-					<div className={classNames(S.icon, S.campaignIcon)}>
+					<div 
+						className={classNames(
+							S.icon, 
+							S.campaignIcon
+						)}
+						onClick={selectCampaignIcon}
+					>
 						<Icon icon={campaignIcon}/>
 					</div>
 				)}
@@ -142,7 +162,13 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 					</div>
 				)}
 				{campaignIcon && (
-					<div className={classNames(S.campaignIcon, S[`icon_${type}`], S.icon_secondary)}>
+					<div className={classNames(
+							S.campaignIcon, 
+							S[`icon_${type}`], 
+							S.icon_secondary
+						)}
+						onClick={selectCampaignIcon}
+					>
 						<Icon icon={campaignIcon}/>
 					</div>
 				)}
@@ -173,7 +199,10 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 					)}
 				</div>
 				<div className={S.menu}>
-					<DividerMenu id={id} className={S.menuContainer}/>
+					<DividerMenu 
+						id={id} 
+						className={S.menuContainer}
+					/>
 				</div>
 			</DividerContent>
     </div>
