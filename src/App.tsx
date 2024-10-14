@@ -10,7 +10,8 @@ import {
   Col, 
   Footer, 
   LayoutInfo, 
-  CategoryInfo 
+  CategoryInfo,
+  ActivePopup
 } from '@/components';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -76,6 +77,7 @@ const AppLayout = () => {
           </Col>
           <Footer/>
         </Col>
+        <ActivePopup/>
       </AppLoader>
     </>
   );

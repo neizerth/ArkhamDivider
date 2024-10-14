@@ -1,8 +1,9 @@
 import { PropsWithClassName } from '@/types/util';
 import S from './SarnetskyDividerMainIcon.module.scss';
-import { Icon } from '@/components/ui/Icon/Icon';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
+import { useIconSelect } from '@/hooks/useIconSelect';
 
 export type SarnetskyDividerMainIconProps = PropsWithClassName & {
   icon: string
@@ -12,7 +13,7 @@ export type SarnetskyDividerMainIconProps = PropsWithClassName & {
 export const SarnetskyDividerMainIcon = ({
   className,
   dynamicHeight,
-  icon
+  ...props
 }: SarnetskyDividerMainIconProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState<string>(); 
@@ -32,10 +33,19 @@ export const SarnetskyDividerMainIcon = ({
 
   const style = { fontSize };
 
+  const [icon, selectIcon] = useIconSelect({
+    defaultIcon: props.icon
+  })
+
   return (
-    <div className={classNames(S.container, className)} ref={ref} style={style}>
+    <div 
+      className={classNames(S.container, className)} 
+      ref={ref} 
+      style={style}
+      onClick={selectIcon}
+    >
       <div className={classNames(S.icon)}>
-        <Icon icon={icon}/>
+        {icon && <Icon icon={icon}/>}
       </div>
     </div>
   );

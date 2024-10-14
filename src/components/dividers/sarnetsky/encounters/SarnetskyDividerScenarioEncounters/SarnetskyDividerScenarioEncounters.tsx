@@ -1,6 +1,6 @@
 import { IScenario } from '@/types/api';
 import S from './SarnetskyDividerScenarioEncounters.module.scss';
-import { Icon } from '@/components/ui/Icon/Icon';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 import classNames from 'classnames';
 import { getEncounterGroups } from './getEncounterGroups';
 import { useAppSelector } from '@/hooks/useAppSelector';

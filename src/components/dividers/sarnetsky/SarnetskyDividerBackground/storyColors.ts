@@ -10,7 +10,8 @@ export const storyColors: Mapping = {
   'tic': '#2A7D7F',
   'eoe': '#00B7CE',
   'tsk': '#B7265E',
-  'fhv': '#f36f32'
+  'fhv': '#f36f32',
+  'tdc': '#5C672B'
 }
 
 export const DEFAULT_COLOR = '#B2AAA2';

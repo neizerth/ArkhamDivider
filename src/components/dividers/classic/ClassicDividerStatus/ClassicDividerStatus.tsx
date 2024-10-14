@@ -1,7 +1,8 @@
 import { PropsWithClassName } from '@/types/util';
 import S from './ClassicDividerStatus.module.scss';
-import { Icon } from '@/components/ui/Icon/Icon';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 import classNames from 'classnames';
+import { useIconSelect } from '@/hooks/useIconSelect';
 
 export type ClassicDividerStatusProps = PropsWithClassName & {
   campaignIcon?: string
@@ -13,11 +14,14 @@ export const ClassicDividerStatus = ({
   campaignIcon,
   size
 }: ClassicDividerStatusProps) => {
+  const [icon, selectIcon] = useIconSelect({
+    defaultIcon: campaignIcon
+  })
   return (
     <div className={classNames(S.container, className)}>
-      {campaignIcon && (
-        <div className={S.campaignIcon}>
-          <Icon icon={campaignIcon}/>
+      {icon && (
+        <div className={S.campaignIcon} onClick={selectIcon}>
+          <Icon icon={icon}/>
         </div>
       )}
       {Boolean(size) && (

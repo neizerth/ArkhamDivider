@@ -1,15 +1,21 @@
 import { ArkhamDivider } from 'arkham-divider-data';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { createSlice } from '@reduxjs/toolkit';
+import { ActionCreator, createSlice } from '@reduxjs/toolkit';
+import { AppThunk } from '@/store';
 
 export type Icons = ArkhamDivider.Core['icons'];
 
 export type IIconsState = {
-  icons: Icons
+  icons: Icons,
+  popupIcon: {
+    default?: string,
+    current?: string
+  } | null
 }
 
 const initialState: IIconsState = {
-  icons: []
+  icons: [],
+  popupIcon: null
 };
 
 export const icons = createSlice({
@@ -17,18 +23,24 @@ export const icons = createSlice({
   initialState,
   reducers: {
     setIcons: createSliceSetter('icons'),
+    setPopupIcon: createSliceSetter('popupIcon'),
   },
   selectors: {
     selectIcons: createSliceSelector('icons'),
+    selectPopupIcon: createSliceSelector('popupIcon'),
   }
 });
 
+export const clearPopupIcon: ActionCreator<AppThunk> = () => dispatch => dispatch(setPopupIcon(null));
+
 export const {
   setIcons,
+  setPopupIcon
 } = icons.actions;
 
 export const {
   selectIcons,
+  selectPopupIcon
 } = icons.selectors;
 
 export default icons.reducer;

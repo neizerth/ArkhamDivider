@@ -3,3 +3,7 @@ export enum ButtonType {
   SECONDARY = 'secondary',
   DANGER = 'danger'
 }
+
+export enum PopupType {
+  ICON_SELECT = 'icon-select'
+}

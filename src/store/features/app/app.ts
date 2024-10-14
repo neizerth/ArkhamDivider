@@ -10,25 +10,32 @@ import { DEFAULT_LANGUAGE } from '@/constants/i18n';
 import { setCoreTranslations } from '../i18n/i18n';
 import * as translations from '@/translations';
 import { Mapping } from 'classnames';
+import { PopupType } from '@/types/ui';
 
 export type IAppState = {
-  loading: boolean
+  loading: boolean,
+  activePopupId: PopupType | null
 }
 
 const initialState: IAppState = {
-  loading: true
+  loading: true,
+  activePopupId: null
 };
 
 export const app = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setLoading: createSliceSetter('loading')
+    setLoading: createSliceSetter('loading'),
+    setActivePopupId: createSliceSetter('activePopupId')
   },
   selectors: {
-    selectLoading: createSliceSelector('loading')
+    selectLoading: createSliceSelector('loading'),
+    selectActivePopupId: createSliceSelector('activePopupId')
   }
 });
+
+export const clearActivePopupId: ActionCreator<AppThunk> = () => dispatch => dispatch(setActivePopupId(null));
 
 export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
   dispatch(setLoading(true));
@@ -90,11 +97,13 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
 }
 
 export const {
-  setLoading
+  setLoading,
+  setActivePopupId
 } = app.actions;
 
 export const {
-  selectLoading
+  selectLoading,
+  selectActivePopupId
 } = app.selectors;
 
 export default app.reducer;
