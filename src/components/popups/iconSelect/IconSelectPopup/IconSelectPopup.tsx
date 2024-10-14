@@ -7,14 +7,12 @@ import { selectEncounterSets } from '@/store/features/encounterSets/encounterSet
 import { getIconGroups } from '@/features/icons/getIconGroups';
 import { useTranslation } from 'react-i18next';
 import { Button, Col, Icon, Row } from '@/components';
-import { createRef, useEffect, useMemo, useRef, useState } from 'react';
-import classNames from 'classnames';
+import { createRef, useMemo, useRef, useState } from 'react';
 import { ButtonType } from '@/types/ui';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { clearActivePopupId } from '@/store/features/app/app';
 import useScrollSpy from 'react-use-scrollspy';
 import { IconSelectView } from '../IconSelectView/IconSelectView';
-import { group } from 'console';
 import { IconSelectNav } from '../IconSelectNav/IconSelectNav';
 import { IconSelectPreview } from '../IconSelectPreview/IconSelectPreview';
 
