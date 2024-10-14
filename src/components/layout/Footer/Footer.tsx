@@ -1,4 +1,4 @@
-import { Icon } from '@/components/ui/Icon/Icon';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { contacts } from './contacts';
 import S from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';

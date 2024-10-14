@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { selectActivePopupId } from "@/store/features/app/app";
-import { IconSelectPopup } from "../IconSelectPopup/IconSelectPopup";
+import { IconSelectPopup } from "../iconSelect/IconSelectPopup/IconSelectPopup";
 import { PopupType } from "@/types/ui";
 
 export const ActivePopup = () => {
@@ -8,7 +8,7 @@ export const ActivePopup = () => {
   return (
     <>
       {id === PopupType.ICON_SELECT && (
-        <IconSelectPopup/>
+        <IconSelectPopup show={true}/>
       )}
     </>
   );

@@ -1,20 +1,19 @@
-import S from './Icon.module.scss';
-
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectIcons } from '@/store/features/icons/icons';
 import classNames from 'classnames';
+import S from './FontIcon.module.scss';
 import { propEq } from 'ramda';
-import { ComponentProps } from 'react';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { PropsWithClassName } from '@/types/util';
+import { selectIcons } from '@/store/features/icons/icons';
 
-export type IconProps = ComponentProps<'span'>  & {
-	icon: string
+export type FontIconProps = PropsWithClassName & {
+  icon: string
 }
-export const Icon = ({ 
-	icon, 
+
+export const FontIcon = ({
+  icon, 
 	className, 
-	...props 
-}: IconProps) => {
-	const icons = useAppSelector(selectIcons);
+}: FontIconProps) => {
+  const icons = useAppSelector(selectIcons);
 	const entry = icons.find(propEq(icon, 'icon'));
 
 	const char = entry ? String.fromCharCode(entry.code) : '';
@@ -29,7 +28,6 @@ export const Icon = ({
 			className={classNames(S.icon, S[icon], className)}
 			style={style}
 			data-icon={icon}
-			{...props}
 		>
 			{char}
 		</span>

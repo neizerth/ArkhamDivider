@@ -27,9 +27,11 @@
     "react-router-dom": "^6.26.2",
     "react-select": "^5.8.0",
     "react-slider": "^2.0.6",
+    "react-use-scrollspy": "^3.1.1",
     "sanitize-html": "^2.13.0",
     "styled-components": "^6.1.13",
-    "use-fit-text": "^2.4.0"
+    "use-fit-text": "^2.4.0",
+    "use-onclickoutside": "^0.4.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

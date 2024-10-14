@@ -1,5 +1,7 @@
 import { IEncounterSet, IIcon, IStory } from "@/types/api"
 import { getStoriesIconGroups } from "./getStoriesIconGroups";
+import { getGameIconGroups } from "./getGameIconGroups";
+import { IIconMainGroup } from "@/types/icons";
 
 export type IGetIconGroupsOptions = {
   icons: IIcon[]
@@ -7,9 +9,10 @@ export type IGetIconGroupsOptions = {
   stories: IStory[]
 };
 
-export const getIconGroups = (options: IGetIconGroupsOptions) => {
+export const getIconGroups = (options: IGetIconGroupsOptions): IIconMainGroup[] => {
   return [
-    ...getStoriesIconGroups(options)
+    ...getGameIconGroups(options),
+    ...getStoriesIconGroups(options),
   ]
 }
 

@@ -1,6 +1,6 @@
 import { IStory } from "@/types/api";
 import { IGetIconGroupsOptions } from "./getIconGroups";
-import { isNotNil, propEq } from "ramda";
+import { isNotNil, propEq, uniq } from "ramda";
 import { isCampaign, isChallenge, isSideContent } from '@/store/features/stories/criteria';
 
 export const getStoriesIconGroups = ({
@@ -21,16 +21,19 @@ export const getStoriesIconGroups = ({
 
   return [
     {
+      id: 'campaigns',
       name: 'Campaigns',
-      icons: campaignGroups.map(toIconGroup)
+      groups: campaignGroups.map(toIconGroup)
     },
     {
+      id: 'side',
       name: 'Side Scenarios',
-      icons: sideGroups.map(toIconGroup)
+      groups: sideGroups.map(toIconGroup)
     },
     {
+      id: 'challenges',
       name: 'Challenge Scenarios',
-      icons: challengeGroups.map(toIconGroup)
+      groups: challengeGroups.map(toIconGroup)
     },
   ]
 }
@@ -40,7 +43,8 @@ const getStoryIconGroup = (toIcon: (name: string) => string | undefined) =>
   ({ 
     encounter_sets, 
     name, 
-    icon 
+    icon,
+    code
   }: IStory) => {
 
     const icons = [
@@ -50,7 +54,8 @@ const getStoryIconGroup = (toIcon: (name: string) => string | undefined) =>
       .filter(isNotNil);
 
     return {
+      id: code,
       name,
-      icons
+      icons: uniq(icons)
     }
   }

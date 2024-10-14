@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react"
 import { useAppSelector } from "./useAppSelector";
-import { clearActivePopupId, selectActivePopupId, setActivePopupId } from "@/store/features/app/app";
+import { selectActivePopupId, setActivePopupId } from "@/store/features/app/app";
 import { PopupType } from "@/types/ui";
 import { useAppDispatch } from "./useAppDispatch";
 import { selectPopupIcon, setPopupIcon } from "@/store/features/icons/icons";
 
-export const useSelectIcon = (defaultIcon: string | null = null) => {
+export const useIconSelect = ({
+  defaultIcon
+}: {
+  defaultIcon?: string
+}) => {
   const dispatch = useAppDispatch();
   const popupId = useAppSelector(selectActivePopupId);
   const popupIcon = useAppSelector(selectPopupIcon);
@@ -13,19 +17,24 @@ export const useSelectIcon = (defaultIcon: string | null = null) => {
   const [icon, setIcon] = useState(defaultIcon);
 
   useEffect(() => {
+    setIcon(defaultIcon);
+  }, [defaultIcon]);
+
+  useEffect(() => {
     if (!isPopupOpen || popupId) {
       return;
     }
     setPopupOpen(false);
-    setIcon(popupIcon);
+    setIcon(popupIcon?.current);
 
-    dispatch(clearActivePopupId());
-
-  }, [popupId, isPopupOpen]);
+  }, [popupId, isPopupOpen, popupIcon]);
 
   const openPopup = () => {
     dispatch(setActivePopupId(PopupType.ICON_SELECT));
-    dispatch(setPopupIcon(defaultIcon));
+    dispatch(setPopupIcon({
+      default: defaultIcon,
+      current: icon
+    }));
     setPopupOpen(true);
   }
 

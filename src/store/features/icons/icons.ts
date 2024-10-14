@@ -9,7 +9,10 @@ export type Icons = ArkhamDivider.Core['icons'];
 
 export type IIconsState = {
   icons: Icons,
-  popupIcon: string | null
+  popupIcon: {
+    default?: string,
+    current?: string
+  } | null
 }
 
 const initialState: IIconsState = {
@@ -27,16 +30,7 @@ export const icons = createSlice({
   selectors: {
     selectIcons: createSliceSelector('icons'),
     selectPopupIcon: createSliceSelector('popupIcon'),
-  },
-  extraReducers(builder) {
-    builder.addCase(setActivePopupId, (state, action) => {
-      const id = action.payload
-      if (id === PopupType.ICON_SELECT) {
-        return;
-      }
-      state.popupIcon = null;
-    })
-  },
+  }
 });
 
 export const clearPopupIcon: ActionCreator<AppThunk> = () => dispatch => dispatch(setPopupIcon(null));

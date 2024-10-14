@@ -17,7 +17,7 @@ import { ClassicDividerIconXPCost } from '../xp/ClassicDividerIconXPCost/Classic
 import { propsEquals } from '@/util/criteria';
 import { ClassicDividerSideXP } from '../xp/ClassicDividerSideXP/ClassicDividerSideXP';
 import { definedIf } from '@/util/common';
-import { useSelectIcon } from '@/hooks/useSelectIcon';
+import { useIconSelect } from '@/hooks/useIconSelect';
 
 export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChildren &{
 	titleStroke?: boolean
@@ -47,8 +47,13 @@ export const ClassicDivider = ({
 	} = layout;
 	
 	const campaignIcon = definedIf(props.campaignIcon, displayCampaignIcon);
-	const [icon, selectIcon] = useSelectIcon(props.icon);
-	const [previewIcon, selectPreviewIcon] = useSelectIcon(props.previewIcon || props.icon);
+	const [icon, selectIcon] = useIconSelect({
+		defaultIcon: props.icon
+	});
+
+	const [previewIcon, selectPreviewIcon] = useIconSelect({
+		defaultIcon: props.previewIcon || props.icon
+	});
 
 	const background = props.background || backgrounds.find(
 		propsEquals({
@@ -109,7 +114,7 @@ export const ClassicDivider = ({
 				{icon && (
 					<div className={classNames(S.icon, S.icon_large)}>
 						<div className={S.iconSelect} onClick={selectIcon}/>
-						<Icon icon={icon}/>
+						<Icon icon={icon} className={S.iconItem}/>
 					</div>
 				)}
 				{previewIcon && (
@@ -120,7 +125,8 @@ export const ClassicDivider = ({
 							xpCost && xpCost.level > 0 ? S.icon_small_withXP : S.icon_small_noXP
 						)}
 					>
-						<Icon icon={previewIcon}/>
+						<div className={S.iconSelect} onClick={selectPreviewIcon}/>
+						<Icon icon={previewIcon} className={S.iconItem}/>
 					</div>
 				)}
 				{xpCost && cardType && (

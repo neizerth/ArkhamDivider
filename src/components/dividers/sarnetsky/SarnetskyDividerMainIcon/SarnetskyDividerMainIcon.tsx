@@ -1,6 +1,6 @@
 import { PropsWithClassName } from '@/types/util';
 import S from './SarnetskyDividerMainIcon.module.scss';
-import { Icon } from '@/components/ui/Icon/Icon';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 

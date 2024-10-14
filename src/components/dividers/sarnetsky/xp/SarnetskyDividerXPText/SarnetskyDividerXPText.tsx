@@ -3,7 +3,7 @@ import S from './SarnetskyDividerXPText.module.scss';
 import { DividerText } from '@/components/dividers/DividerText/DividerText';
 import { upperFirst } from '@/util/common';
 import { useTranslation } from 'react-i18next';
-import { Icon } from '@/components/ui/Icon/Icon';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 
 export type SarnetskyDividerXPTextProps = {
   xpCost: IXPCost

@@ -1,4 +1,4 @@
-import { Icon } from '@/components/ui/Icon/Icon';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 import S from './ClassicDividerIconXPCost.module.scss';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
