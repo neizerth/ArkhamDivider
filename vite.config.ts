@@ -19,7 +19,7 @@ const metrica = ((id?: string) => {
       webvisor:true
     }
   }
-})(process.env.APP_METRIKA_ID) ;
+})(process.env.APP_METRIKA_ID);
 
 // https://vitejs.dev/config/
 export default defineConfig({
