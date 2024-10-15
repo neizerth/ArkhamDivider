@@ -16,6 +16,10 @@ export const contacts = [
     url: 'https://t.me/neizerth'
   },
   {
+    icon: 'bgg',
+    url: 'https://boardgamegeek.com/thread/3382882'
+  },
+  {
     icon: 'discord',
     url: 'https://discord.com/channels/225349059689447425/1281165161889005680'
   }
