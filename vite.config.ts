@@ -11,7 +11,13 @@ const metrica = ((id?: string) => {
     return;
   }
   return {
-    id
+    id,
+    config: {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:true
+    }
   }
 })(process.env.APP_METRIKA_ID) ;
 
