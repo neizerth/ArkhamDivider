@@ -1,6 +1,6 @@
 import { Row } from '@/components/ui/grid/Row/Row';
 import S from './AddInvestigatorDividers.module.scss';
-import { Container, IconButton, StorySelect } from '@/components';
+import { Col, Container, IconButton, StoryCustomContent, StorySelect } from '@/components';
 import { selectStories } from '@/store/features/stories/stories';
 import { selectLanguage } from '@/store/features/language/language';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -55,39 +55,48 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
   return (
     <div className={S.container}>
       <Container>
-        <Row wrap className={S.row}>
-          <StorySelect
-            className={S.select}
-            stories={storiesWithInvestigators}
-            getIsTranslated={getIsTranslated}
-          />
-          {story && (
-            <>
-              <IconButton
-                onClick={onGenerate} 
-                className={S.generate}
-                icon="check-thin"
-              >
-                {t('Generate')}
-              </IconButton>
-              <IconButton 
-                onClick={onAdd} 
-                className={S.add}
-                icon="plus-thin"
-              >
-                {t('Add')}
-              </IconButton>
-              <IconButton 
-                onClick={onClear} 
-                className={S.add}
-                buttonType={ButtonType.DANGER}
-                icon="trash"
-              >
-                {t('Clear')}
-              </IconButton>
-            </>
+        <Col>
+          <Row wrap className={S.row}>
+            <StorySelect
+              className={S.select}
+              stories={storiesWithInvestigators}
+              getIsTranslated={getIsTranslated}
+            />
+            {story && (
+              <>
+                <IconButton
+                  onClick={onGenerate} 
+                  className={S.generate}
+                  icon="check-thin"
+                >
+                  {t('Generate')}
+                </IconButton>
+                <IconButton 
+                  onClick={onAdd} 
+                  className={S.add}
+                  icon="plus-thin"
+                >
+                  {t('Add')}
+                </IconButton>
+                <IconButton 
+                  onClick={onClear} 
+                  className={S.add}
+                  buttonType={ButtonType.DANGER}
+                  icon="trash"
+                >
+                  {t('Clear')}
+                </IconButton>
+              </>
+            )}
+          </Row>
+          {story?.custom_content && (
+            <div>
+              <StoryCustomContent
+                content={story.custom_content}
+              />
+            </div>
           )}
-        </Row>
+        </Col>
       </Container>
     </div>
   );
