@@ -10,15 +10,17 @@ const metrica = ((id?: string) => {
   if (!id) {
     return;
   }
-  return {
-    id,
-    config: {
-      clickmap:true,
-      trackLinks:true,
-      accurateTrackBounce:true,
-      webvisor:true
+  return [
+    {
+      id,
+      config: {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+      }
     }
-  }
+  ]
 })(process.env.APP_METRIKA_ID);
 
 // https://vitejs.dev/config/
@@ -32,6 +34,7 @@ export default defineConfig({
     svgr(), 
     react(),
     VitePluginRadar({
+      enableDev: false,
       metrica
     })
   ],
