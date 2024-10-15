@@ -75,6 +75,7 @@ export const ClassicDivider = ({
 
 	const containerClassName = classNames(
 		S.container,
+		S[realLanguage],
 		S[orientation],
 		color ? S.color : S.grayscale, 
 		className

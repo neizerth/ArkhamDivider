@@ -63,6 +63,7 @@ export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
 
 	const containerClassName = classNames(
 		S.container,
+		S[realLanguage],
 		S[orientation],
 		S[`type_${type}`],
 		isLight && S.light,
