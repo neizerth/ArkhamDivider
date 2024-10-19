@@ -17,13 +17,15 @@ import topLine from './images/top-line.png'
 import scenarioTentacles from './images/scenario-tentacles.png'
 
 import classNames from 'classnames';
-import { DividerText, Icon } from '@/components';
+import { DividerMenu, DividerText, Icon } from '@/components';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
 import { selectLayout } from '@/store/features/layout/layout';
 import { useIconSelect } from '@/hooks/useIconSelect';
+import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
+import { getXPDisplayValue } from '@/util/xp';
 
 export type ArkhamDecoDividerProps = IDivider & {
 
@@ -33,9 +35,11 @@ export const ArkhamDecoDivider = ({
   ...props
 }: ArkhamDecoDividerProps) => {
   const {
-    name,
+    name = '',
     type,
-    scenario
+    scenario,
+    xpCost,
+    id
   } = props;
 
   const [icon, selectIcon] = useIconSelect({
@@ -52,7 +56,12 @@ export const ArkhamDecoDivider = ({
 
 
   const { t } = useTranslation();
-  const { color } = useAppSelector(selectLayout); 
+  const { 
+    color,
+    customParams 
+  } = useAppSelector(selectLayout); 
+
+  const size = customParams?.size || 'standard';
 
   const translatedName = t(name);
 
@@ -61,149 +70,168 @@ export const ArkhamDecoDivider = ({
 	const language = useAppSelector(selectLanguage);
 	const realLanguage = translatedName === name ? 'en' : language;
 
-  // const isScenario = type === DividerType.SCENARIO && scenario?.number_text;
   const isScenario = type === DividerType.SCENARIO;
-  const isCampaign = type === DividerType.CAMPAIGN;
 
 	useEffect(() => {
 		setTitle(translatedName);
 	}, [translatedName]);
   
   return (
-    <div className={S.container}>
-      <DividerContent>
+    <div className={classNames(
+        S.container,
+        S[`size_${size}`]
+      )}
+    >
+      <DividerContent className={S.dividerContent}>
+        <div className={S.wrapper}>
+          <div className={S.card}/>
 
-        <div className={S.card}/>
-
-        {color && (
-          <img src={paper} alt="" className={S.paper}/>
-        )}
-
-        
-        <div 
-          className={S.campaignIcon} 
-          onClick={selectSpecialIcon}
-        >
-          {specialIcon && <Icon icon={specialIcon}/>}
-        </div>
-
-        <div 
-          className={classNames(
-            S.title,
-            S[`title_${type}`]
-          )}
-        >
-          <DividerText
-            defaultValue={translatedName}
-            className={S.titleContent}
-            inputClassName={S.titleInput}
-            onChange={setTitle}
-            fixedFontSize={false}
-          />
-        </div>
-
-        <div className={S.previewIcon} onClick={selectPreviewIcon}>
-          {previewIcon && <Icon icon={previewIcon}/>}
-        </div>
-
-        <div className={classNames(
-            S.pattern,
-            S.patternHandler
-          )}
-          onClick={selectIcon}
-        />
-        
-
-        <div className={S.content}>
-          <img src={scratches} alt="" className={S.scratches}/>
-
-          {scenario && (
-            <>
-              <div className={S.scenarioCorner}>
-                <div className={S.scenarioName}>
-                  {scenario?.number_text || (
-                    <div className={S.scenarioIcon}>
-                      <Icon icon='typejournal'/>
-                    </div>
-                  )}
-                </div>
-                <img
-                  className={S.scenarioTentacles}
-                  src={scenarioTentacles} 
-                />
-              </div>
-            </>
-          )}
-
-          <img 
-            src={topLine} 
-            className={classNames(
-              S.topLine,
-              isScenario && S.topLine_scenario
-            )} 
-          alt="" />
-          <div 
-            className={S.preview}
-          >
+          <div className={S.menu}>
+            <DividerMenu id={id} className={S.menuContainer}/>
           </div>
 
-          <img 
-            src={topLeftCorner} 
-            className={classNames(
-              S.topLeftCorner
-            )} 
-            alt="" 
-          />
-          <img 
-            src={isScenario ? scenarioTopRightCorner : topRightCorner} 
-            className={classNames(
-              S.topRightCorner,
-              isScenario && S.topRightCorner_scenario
-            )} 
-            alt="" 
-          />
-
-          <img 
-            src={centerBorder} 
-            className={classNames(
-              S.centerBorder,
-              S.centerBorder_left
-            )} 
-            alt="" 
-          />
-          <img 
-            src={centerBorder} 
-            className={classNames(
-              S.centerBorder,
-              S.centerBorder_right
-            )} 
-            alt="" 
-          />
-          <img src={pattern} className={S.pattern} alt="" />
-          <img src={bottomLine} className={S.bottomLine} alt="" />
-          {icon && (
-            <div className={S.icon}>
-              <Icon icon={icon}/>
-            </div>
+          {color && (
+            <img src={paper} alt="" className={S.paper}/>
           )}
-          <div
-              className={classNames(
-                S.bottomCorner,
-                S.bottomCorner_left
+
+          <div 
+            className={S.specialCorner} 
+            onClick={selectSpecialIcon}
+          >
+            <div className={S.specialIcon}>
+              {specialIcon && <Icon icon={specialIcon}/>}
+              {!specialIcon && xpCost && (
+                <div className={S.xpCost}>
+                  {xpCost.max ? getXPDisplayValue(xpCost.level, xpCost.max, '-') : xpCost.level}
+                </div>
               )}
-            >
-              <img src={bottomTentacle} className={S.bottomTentacle} alt="" />
-              <img src={bottomCorner} className={S.bottomCornerImage} alt="" />
             </div>
+          </div>
+
+          <div 
+            className={classNames(
+              S.title,
+              S[`title_${type}`]
+            )}
+          >
+            <DividerText
+              defaultValue={translatedName}
+              className={S.titleContent}
+              inputClassName={S.titleInput}
+              onChange={setTitle}
+              fixedFontSize={false}
+            />
+          </div>
+
+          <div className={S.previewIcon} onClick={selectPreviewIcon}>
+            {previewIcon && <Icon icon={previewIcon}/>}
+          </div>
+
+          <div className={classNames(
+              S.pattern,
+              S.patternHandler
+            )}
+            onClick={selectIcon}
+          />
+          
+
+          <div className={S.content}>
+            <img src={scratches} alt="" className={S.scratches}/>
+
+            {xpCost && (
+              <div className={S.sideXP}>
+                <ArkhamDecoSideXP xpCost={xpCost}/>
+              </div>
+            )}
+
+            {scenario && (
+              <>
+                <div className={S.scenarioCorner}>
+                  <div className={S.scenarioName}>
+                    {scenario?.number_text || (
+                      <div className={S.scenarioIcon}>
+                        <Icon icon='typejournal'/>
+                      </div>
+                    )}
+                  </div>
+                  <img
+                    className={S.scenarioTentacles}
+                    src={scenarioTentacles} 
+                  />
+                </div>
+              </>
+            )}
+
+            <img 
+              src={topLine} 
+              className={classNames(
+                S.topLine,
+                isScenario && S.topLine_scenario
+              )} 
+            alt="" />
+            <div 
+              className={S.preview}
+            >
+            </div>
+
+            <img 
+              src={topLeftCorner} 
+              className={classNames(
+                S.topLeftCorner
+              )} 
+              alt="" 
+            />
+            <img 
+              src={isScenario ? scenarioTopRightCorner : topRightCorner} 
+              className={classNames(
+                S.topRightCorner,
+                isScenario && S.topRightCorner_scenario
+              )} 
+              alt="" 
+            />
+
+            <img 
+              src={centerBorder} 
+              className={classNames(
+                S.centerBorder,
+                S.centerBorder_left
+              )} 
+              alt="" 
+            />
+            <img 
+              src={centerBorder} 
+              className={classNames(
+                S.centerBorder,
+                S.centerBorder_right
+              )} 
+              alt="" 
+            />
+            <img src={pattern} className={S.pattern} alt="" />
+            <img src={bottomLine} className={S.bottomLine} alt="" />
+            {icon && (
+              <div className={S.icon}>
+                <Icon icon={icon}/>
+              </div>
+            )}
             <div
-              className={classNames(
-                S.bottomCorner,
-                S.bottomCorner_right
-              )}
-            >
-              <img src={bottomTentacle} className={S.bottomTentacle} alt="" />
-              <img src={bottomCorner} className={S.bottomCornerImage} alt="" />
-            </div>
+                className={classNames(
+                  S.bottomCorner,
+                  S.bottomCorner_left
+                )}
+              >
+                <img src={bottomTentacle} className={S.bottomTentacle} alt="" />
+                <img src={bottomCorner} className={S.bottomCornerImage} alt="" />
+              </div>
+              <div
+                className={classNames(
+                  S.bottomCorner,
+                  S.bottomCorner_right
+                )}
+              >
+                <img src={bottomTentacle} className={S.bottomTentacle} alt="" />
+                <img src={bottomCorner} className={S.bottomCornerImage} alt="" />
+              </div>
+          </div>
         </div>
       </DividerContent>
     </div>

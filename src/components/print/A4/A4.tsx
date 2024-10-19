@@ -12,26 +12,29 @@ export type A4Props = PropsWithClassName & PropsWithChildren & {
   pagesTotal: number; 
   orientation: PageOrientation;
   isLast: boolean;
+  showCredits?: boolean;
 }
 
 export const A4 = ({ 
   orientation, 
   showPageSide = false,
   isLast = false,
+  showCredits = true,
   pageNumber,
   pagesTotal,
   className, 
   children,
   side
 }: A4Props) => {
-  
+
   const classList = classNames(
     S.container, 
     S[`side_${side}`],
     className,
     S[orientation],
-    isLast && S.last
+    showCredits && isLast && S.withCredits
   );
+
   return (
     <div className={classList}>
       {children}
@@ -40,7 +43,7 @@ export const A4 = ({
         {pageNumber} 
         {showPageSide && (side === PageSide.FRONT ? 'A' : 'B')} / {pagesTotal}
       </div>
-      {isLast && (
+      {showCredits && isLast && (
         <div className={S.credits}>
           <PageCredits/>
         </div>

@@ -30,6 +30,7 @@ export const getInvestigatorDividers = ({
       id: uniqId(),
       faction: faction.id,
       type: DividerType.INVESTIGATOR,
+      specialIcon: 'per_investigator',
       name,
       icon
     }

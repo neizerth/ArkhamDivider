@@ -32,7 +32,7 @@
   }
 }
 
-.last {
+.withCredits {
   align-items: start;
   padding-top: 15mm;
 }
@@ -71,9 +71,10 @@
 .counter {
   text-align: right;
   position: absolute;
-  font-size: 3mm;
-  top: 5mm;
-  right: 5mm;
+  z-index: 2;
+  font-size: 2.2mm;
+  top: 2mm;
+  right: 2mm;
 }
 
 .credits {

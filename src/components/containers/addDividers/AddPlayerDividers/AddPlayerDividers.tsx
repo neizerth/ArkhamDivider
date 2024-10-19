@@ -123,7 +123,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
                 {t('Side XP')}
               </Checkbox>
               
-              {form.displaySideXP && (
+              {isNil(playerOptions?.displayNumericXP) && form.displaySideXP && (
                 <Checkbox 
                   {...check('displayNumericXP')}
                 >

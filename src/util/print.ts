@@ -8,7 +8,7 @@ export type SplitIntoPagesOptions = {
   merge?: boolean
 }
 
-export const splittIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
+export const splitIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
   const {
     doubleSidedPrint = false,
     groupSize,
@@ -19,7 +19,8 @@ export const splittIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): I
   const pages = groups.map((items, index) => ({
     pageNumber: index + 1,
     side: PageSide.FRONT,
-    rows: splitIntoGroups(items, rowSize)
+    rows: splitIntoGroups(items, rowSize),
+    size: items.length
   }));
 
   if (!doubleSidedPrint) {

@@ -1,5 +1,6 @@
 import { AddPlayerDividersOptions, AddStoryDividersOptions } from "@/store/features/addDividers/addDividers"
 import { PageOrientation } from "./print"
+import { Mapping } from "./util"
 
 export type ILayout = {
   id: string,
@@ -19,9 +20,11 @@ export type ILayout = {
     height: number
     top: number
     left: number
-  }
+  },
+  maxCreditsGroupSize: number,
   campaignOptions?: Partial<AddStoryDividersOptions>,
-  playerOptions?: Partial<AddPlayerDividersOptions>
+  playerOptions?: Partial<AddPlayerDividersOptions>,
+  customParams?: Mapping
 }
 
 export type ILayoutAuthorContact = {
