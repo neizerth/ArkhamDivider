@@ -9,10 +9,12 @@ export type GuidesProps = PropsWithClassName & {
   bottomLeft?: boolean;
   bottomRight?: boolean;
   contentClassName?: string;
+  guideClassName?: string;
 }
 
 export const Guides = ({ 
   className,
+  guideClassName,
   topLeft = true,
   topRight = true,
   bottomLeft = true,
@@ -20,10 +22,10 @@ export const Guides = ({
 }: GuidesProps) => {
   return (
     <div className={classNames(S.container, className)}>
-      {topLeft && <Guide className={classNames(S.guide, S.guide_topLeft)}/>}
-      {topRight && <Guide className={classNames(S.guide, S.guide_topRight)}/>}
-      {bottomLeft && <Guide className={classNames(S.guide, S.guide_bottomLeft)}/>}
-      {bottomRight && <Guide className={classNames(S.guide, S.guide_bottomRight)}/>}
+      {topLeft && <Guide className={classNames(guideClassName, S.guide, S.guide_topLeft)}/>}
+      {topRight && <Guide className={classNames(guideClassName, S.guide, S.guide_topRight)}/>}
+      {bottomLeft && <Guide className={classNames(guideClassName, S.guide, S.guide_bottomLeft)}/>}
+      {bottomRight && <Guide className={classNames(guideClassName, S.guide, S.guide_bottomRight)}/>}
     </div>
   );
 }

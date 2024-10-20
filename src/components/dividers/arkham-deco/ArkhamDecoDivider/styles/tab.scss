@@ -1,0 +1,132 @@
+
+.tabPreviewIcon {
+  position: absolute;
+  z-index: 4;
+  width: 12mm;
+  height: 6mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.1mm;
+  top: 2.4mm;
+  align-items: start;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.tabHeader {
+  position: absolute;
+  z-index: 5;
+  top: 2mm;
+  // border-top: 1px solid black;
+  left: 0;
+  right: 0;
+  // left: 13.6mm;
+  // right: 10mm;
+  height: 2mm;
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+    width: 21mm;
+    border-top: 1px solid black;
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    width: 21mm;
+
+    border-top: 1px solid black;
+  }
+}
+
+.tabHeaderOverlay {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  background-color: white;
+  top: -2mm;
+  height: 4mm;
+}
+
+.tabHeaderBox {
+  position: absolute;
+  display: block;
+  z-index: 7;
+  height: 4mm;
+  left: 21mm;
+  right: 21mm;
+  top: 0mm;
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-width: 1px 1px 0 1px;
+  // border-radius: 4mm 4mm 0 0;
+}
+
+.type_tab {
+  --offset: 3.5mm;
+
+  .specialCorner {
+    top: 5.6mm;
+  }
+  .previewIcon {
+    --offset: 3.8mm;
+    font-size: 3.8mm;
+  }
+
+  .scenarioName {
+    font-size: 3mm;
+    padding-top: 1.7mm;
+  }
+
+  .pattern {
+    height: 51mm;
+  }
+
+  .icon {
+    font-size: 20mm;
+  }
+
+  .title {
+    --offset: 3.7mm;
+    text-align: center;
+    box-sizing: border-box;
+    // padding-left: 4.3mm;
+    right: 17.3mm;
+    height: 4.7mm;
+
+    &_scenario {
+      // text-align: center;
+      // right: 17.3mm;
+      right: 23mm;
+      left: 23mm;
+    }
+  }
+}
+
+.tabTentacles {
+  position: absolute;
+  z-index: 6;
+  width: 15mm;
+  top: 0mm;
+  // left: 
+  &_left {
+    left: 28mm;
+  }
+  &_right {
+    transform: scale(-1, 1);
+    right: 28mm;
+  }
+}

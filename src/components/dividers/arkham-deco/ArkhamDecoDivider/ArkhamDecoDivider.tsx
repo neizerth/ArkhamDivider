@@ -10,7 +10,6 @@ import pattern from './images/pattern.png';
 import scratches from './images/scratches.png';
 import centerBorder from './images/center-border.svg';
 import topLeftCorner from './images/top-left-corner.png'
-import spellBook from './images/spell-book.png'
 import topRightCorner from './images/top-right-corner.png'
 import scenarioTopRightCorner from './images/scenario-top-right-corner.png'
 import topLine from './images/top-line.png'
@@ -26,6 +25,7 @@ import { selectLayout } from '@/store/features/layout/layout';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
 import { getXPDisplayValue } from '@/util/xp';
+import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 
 export type ArkhamDecoDividerProps = IDivider & {
 
@@ -61,7 +61,7 @@ export const ArkhamDecoDivider = ({
     customParams 
   } = useAppSelector(selectLayout); 
 
-  const size = customParams?.size || 'standard';
+  const layoutType = customParams?.type || 'standard';
 
   const translatedName = t(name);
 
@@ -69,6 +69,7 @@ export const ArkhamDecoDivider = ({
 
 	const language = useAppSelector(selectLanguage);
 	const realLanguage = translatedName === name ? 'en' : language;
+  const isTab = layoutType === ArkhamDecoDividerType.TAB;
 
   const isScenario = type === DividerType.SCENARIO;
 
@@ -79,7 +80,7 @@ export const ArkhamDecoDivider = ({
   return (
     <div className={classNames(
         S.container,
-        S[`size_${size}`]
+        S[`type_${layoutType}`]
       )}
     >
       <DividerContent className={S.dividerContent}>
@@ -127,6 +128,12 @@ export const ArkhamDecoDivider = ({
             {previewIcon && <Icon icon={previewIcon}/>}
           </div>
 
+          {isTab && (
+            <div className={S.tabPreviewIcon} onClick={selectPreviewIcon}>
+              {previewIcon && <Icon icon={previewIcon}/>}
+            </div>
+          )}
+
           <div className={classNames(
               S.pattern,
               S.patternHandler
@@ -137,6 +144,17 @@ export const ArkhamDecoDivider = ({
 
           <div className={S.content}>
             <img src={scratches} alt="" className={S.scratches}/>
+
+            <img src={scratches} alt="" className={classNames(S.scratches, S.scratches_2)}/>
+
+            {isTab && (
+              <>
+                <div className={S.tabHeaderBox}/>
+                <div className={S.tabHeader}>
+                  <div className={S.tabHeaderOverlay}/>
+                </div>
+              </>
+            )}
 
             {xpCost && (
               <div className={S.sideXP}>

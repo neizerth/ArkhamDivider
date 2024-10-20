@@ -20,7 +20,6 @@ export const LayoutSelect = ({
 }: LayoutSelectProps) => {
   const navigate = useAppNavigate();
   const layout = useAppSelector(selectLayout);
-  console.log({ layout });
 
   const options = data
     .map(({ title, id }) => ({

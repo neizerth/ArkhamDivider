@@ -2,6 +2,10 @@ import { BASE_PATH } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
+export enum ArkhamDecoDividerType {
+  TAB = 'tab'
+} 
+
 export const common = {
   categoryId: "arkham-deco",
   title: "Arkham Deco",
@@ -25,25 +29,24 @@ export const horizontal = {
   height: 68.5,
   bleeds: {
     width: 97,
-    height: 73,
+    height: 72.5,
     top: 2,
     left: 2
   }
 }
 
-export const horizontalMedium = {
-  rowSize: 2,
-  groupSize: 8,
-  width: 93,
-  height: 67,
+export const horizontalTab = {
+  ...horizontal,
+  width: 93.5,
+  height: 68.5,
   bleeds: {
     width: 97,
-    height: 73,
+    height: 72.5,
     top: 2,
     left: 2
   },
   customParams: {
-    size: 'medium'
+    type: 'tab'
   }
 }
 
@@ -52,7 +55,7 @@ export const arkhamDecoLayouts: ILayout[] = [
     ...common,
     ...horizontal,
     id: "arkham-deco",
-    title: "Standart 68.5x93",
+    title: "Standart",
     orientation: LayoutOrientation.HORIZONTAL,
     color: true,
   },
@@ -60,23 +63,23 @@ export const arkhamDecoLayouts: ILayout[] = [
     ...common,
     ...horizontal,
     id: "arkham-deco-bw",
-    title: "Standart 68.5x93",
+    title: "Standart",
     orientation: LayoutOrientation.HORIZONTAL,
     color: false,
   },
   {
     ...common,
-    ...horizontalMedium,
-    title: "Medium 67x93",
-    id: "arkham-deco-medium-bw",
+    ...horizontalTab,
+    title: "Tab",
+    id: "arkham-deco-tab-bw",
     orientation: LayoutOrientation.HORIZONTAL,
     color: false,
   },
   {
     ...common,
-    ...horizontalMedium,
-    title: "Medium 67x93",
-    id: "arkham-deco-medium",
+    ...horizontalTab,
+    title: "Tab",
+    id: "arkham-deco-tab",
     orientation: LayoutOrientation.HORIZONTAL,
     color: true,
   },
