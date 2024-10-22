@@ -16,7 +16,6 @@ import topLine from './images/top-line.png'
 import scenarioTentacles from './images/scenario-tentacles.png'
 import tabTopCorner from './images/tab-top-corner.png'
 import tabTopLine from './images/tab-top-line.png'
-import scenarioTabTopLine from './images/tab-scenario-line.png';
 import tabTentacles from './images/tab-tentacles.png';
 
 import classNames from 'classnames';
@@ -29,7 +28,7 @@ import { selectLayout } from '@/store/features/layout/layout';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
 import { getXPDisplayValue } from '@/util/xp';
-import { ArkhamDecoDividerSize, ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
+import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 
 export type ArkhamDecoDividerProps = IDivider & {
 
@@ -63,7 +62,8 @@ export const ArkhamDecoDivider = ({
   const { t } = useTranslation();
   const { 
     color,
-    customParams 
+    customParams,
+    orientation,
   } = useAppSelector(selectLayout);
 
   const layoutSize = customParams?.size || 'standard';
@@ -76,8 +76,7 @@ export const ArkhamDecoDivider = ({
 	const language = useAppSelector(selectLanguage);
 	const realLanguage = translatedName === name ? 'en' : language;
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
-  const isSmall = layoutSize === ArkhamDecoDividerSize.SMALL;
-
+  const isPlayer = type === DividerType.PLAYER;
   const isScenario = type === DividerType.SCENARIO;
 
   const topRightCornerImage = (() => {
@@ -99,6 +98,7 @@ export const ArkhamDecoDivider = ({
         S[`size_${layoutSize}`],
         xpCost ? S.xp : S.noXP,
         S[`language_${realLanguage}`],
+        S[`orientation_${orientation}`]
       )}
       data-type={layoutType}
     >
@@ -118,8 +118,9 @@ export const ArkhamDecoDivider = ({
             className={classNames(
               S.specialCorner,
               xpCost && [
-                !specialIcon ? S.specialCorner_withXPIcon : S.specialCorner_noXPIcon
-              ]
+                specialIcon ? S.specialCorner_withXPIcon : S.specialCorner_noXPIcon
+              ],
+              S[`specialCorner_${type}`]
             )} 
             onClick={selectSpecialIcon}
           >
@@ -162,7 +163,7 @@ export const ArkhamDecoDivider = ({
           
 
           <div className={S.content}>
-            <img src={scratches} alt="" className={S.scratches}/>
+            <img src={scratches} alt="" className={classNames(S.scratches, S.scratches_1)}/>
 
             <img src={scratches} alt="" className={classNames(S.scratches, S.scratches_2)}/>
 

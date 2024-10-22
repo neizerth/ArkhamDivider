@@ -61,16 +61,16 @@
 .tabTopLine {
   position: absolute;
   z-index: 5;
+
+  @include clipX(5.8mm, 39mm);
   &_left {
     top: 3.2mm;
-    @include clipX(5.8mm, 39mm);
     left: 3.9mm;
     height: 2.4mm;
   }
 
   &_right {
     top: 3.2mm;
-    @include clipX(5.8mm, 39mm);
     right: 3.9mm;
     height: 2.4mm;
     transform: scale(-1, 1);
@@ -117,21 +117,38 @@
   }
 
   .specialCorner {
-    right: 21.8mm;
     height: 3mm;
-  }
-  
-  &.xp {
-    .specialCorner {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5.1mm;
+
+    &_player {
+      left: auto;
+      transform: none;
+      top: 2.7mm;
+      right: 21.8mm;
+    }
+    &_withXPIcon {
+      top: 2.8mm;
+    }
+    &_noXPIcon {
       top: 2.5mm;
     }
   }
+  
+  // &.xp {
+  //   .specialCorner {
+  //     top: 2.5mm;
+  //   }
+  // }
 
-  &.noXP {
-    .specialCorner {
-      top: 2.8mm;
-    }
-  }
+  // &.noXP {
+  //   .specialCorner {
+  //     left: 50%;
+  //     transform: translateX(-50%);
+  //     top: 5.1mm;
+  //   }
+  // }
 
   .sideXP {
     z-index: 5;
@@ -199,11 +216,6 @@
     display: none;
   }
   
-
-  // .topLeftCorner {
-  //   top: 4.8mm;
-  //   left: 0.8mm;
-  // }
   &.size_small {
     .scenarioCorner {
       right: 18mm;
@@ -239,23 +251,16 @@
     }
 
     .specialCorner {
-      right: 17.8mm;
-    }
-
-    .scenarioCorner {
-      right: 17.3mm;
+      &_player {
+        right: 17.8mm;
+      }
     }
     .sideXP {
       right: 21.5mm;
     }
 
     .tabTopLine {
-      &_left {
-        @include clipX(10mm, 43.5mm);
-      }
-      &_right {
-        @include clipX(10mm, 43.5mm);
-      }
+      @include clipX(10mm, 43.5mm);
     }
   }
 }

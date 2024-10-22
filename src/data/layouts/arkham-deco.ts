@@ -39,6 +39,23 @@ export const horizontal = {
   }
 }
 
+export const vertical = {
+  rowSize: 3,
+  groupSize: 6,
+  width: 62,
+  height: 96,
+  bleeds: {
+    width: 66,
+    height: 100,
+    top: 2,
+    left: 2
+  },
+  customParams: {
+    type: 'tab'
+  },
+  maxCreditsGroupSize: null
+}
+
 export const horizontalDeckbox = {
   rowSize: 2,
   groupSize: 8,
@@ -51,7 +68,7 @@ export const horizontalDeckbox = {
     left: 2
   },
   customParams: {
-    type: 'gamegenic'
+    type: 'deckbox'
   }
 }
 
@@ -150,6 +167,22 @@ export const arkhamDecoLayouts: ILayout[] = [
     id: "arkham-deco-small-bw",
     title: "UCS Standart",
     orientation: LayoutOrientation.HORIZONTAL,
+    color: false,
+  },
+  {
+    ...common,
+    ...vertical,
+    title: "UCS Quartz",
+    id: "arkham-deco-vertical",
+    orientation: LayoutOrientation.VERTICAL,
+    color: true,
+  },
+  {
+    ...common,
+    ...vertical,
+    id: "arkham-deco-vertical-bw",
+    title: "UCS Quartz",
+    orientation: LayoutOrientation.VERTICAL,
     color: false,
   },
 ]

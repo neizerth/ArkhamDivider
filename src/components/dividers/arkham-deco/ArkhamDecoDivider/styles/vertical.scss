@@ -1,0 +1,90 @@
+.orientation_vertical {
+  --offset: 0mm;
+  .centerBorder {
+    display: none;;
+  }
+  .pattern {
+    --offset: calc(22.5mm / 2);
+  }
+  .icon {
+    --offset: 9mm;
+  }
+  .pattern {
+    transform-origin: left center;
+    transform: rotate(90deg) translateX(-50%);
+  }
+  .topLine {
+    left: -15.6mm;
+    @include clipX(26.2mm, 70.3mm);
+    width: 94.4mm;
+    &_scenario {
+      @include clipX(26.2mm, 68.2mm);
+    }
+  }
+
+  .tabHeaderBox {
+    display: none;
+  }
+  .tabHeaderOverlay {
+    display: none;
+  }
+
+  .tabTopLine {
+
+    @include clipX(23mm, 43.5mm);
+    // display: none;
+    &_left {
+      left: -14mm;
+    }
+    &_right {
+      right: -14mm;
+    }
+  }
+
+  .tabHeader {
+    display: none;
+  }
+
+  .tabTentacles {
+    &_left {
+      left: 24mm;
+    }
+    &_right {
+      right: 24mm;
+    }
+  }
+
+  .previewIcon {
+    top: 2.8mm;    
+    font-size: 3.5mm;
+    left: 3mm;
+    height: 4.4mm;
+    // align-items: start;
+  }
+
+  .title {
+    --offset: -0.27mm;
+    left: 9mm;
+    right: 8.5mm;
+  }
+
+  .scratches {
+    &_1 {
+      top: 51%;
+      left: 36%;
+      width: 226%;
+    }
+    &_2 {
+      transform: none;
+      width: 200%;
+    }
+  }
+  .scenarioCorner {
+    right: 1.5mm;
+    top: 0.7mm;
+    align-items: center;
+  }
+  .scenarioName {
+    font-size: 3.8mm;
+  }
+}
