@@ -43,7 +43,8 @@ export const ArkhamDecoDivider = ({
     scenario,
     xpCost,
     id,
-    displaySideXP
+    displaySideXP,
+    size,
   } = props;
 
   const [icon, selectIcon] = useIconSelect({
@@ -160,7 +161,18 @@ export const ArkhamDecoDivider = ({
             onClick={selectIcon}
           />
           
-
+          {size && (
+            <div className={S.size}>
+              {specialIcon && (
+                <div className={S.sizeIcon}>
+                  <Icon icon={specialIcon}/>
+                </div>
+              )}
+              <div className={S.sizeNumber}>
+                {size}
+              </div>
+            </div>
+          )}
           <div className={S.content}>
             <img src={scratches} alt="" className={classNames(S.scratches, S.scratches_1)}/>
 

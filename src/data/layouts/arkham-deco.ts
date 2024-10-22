@@ -17,9 +17,7 @@ export const common = {
   pageOrientation: PageOrientation.PORTRAIT,
   maxCreditsGroupSize: 6,
   campaignOptions: {
-    includeCampaignIcon: true,
-    includeEncounterSize: false,
-    includeScenarioSize: false
+    includeCampaignIcon: true
   },
   playerOptions: {
     displayNumericXP: false
