@@ -22,7 +22,7 @@ export const DividerMenu = ({
   return (
     <div className={classNames(S.container, className)}>
       <div onClick={onCopy}>
-        <Icon icon="icomoon-copy" className={classNames(S.icon, S.copy)}/>
+        <Icon icon="icomoonfree-copy" className={classNames(S.icon, S.copy)}/>
       </div>
       <div onClick={onRemove}>
         <Icon icon="trash" className={classNames(S.icon, S.remove)}/>
