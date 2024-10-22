@@ -66,6 +66,9 @@
     --offset: -0.27mm;
     left: 9mm;
     right: 8.5mm;
+    &_withSideXP {
+      right: 19mm;
+    }
   }
 
   .scratches {
@@ -82,9 +85,17 @@
   .scenarioCorner {
     right: 1.5mm;
     top: 0.7mm;
-    align-items: center;
+    &_player {
+      right: 1.5mm;
+    }
   }
-  .scenarioName {
-    font-size: 3.8mm;
+
+  .specialCorner {
+    &_player {
+      right: 1.5mm;
+    }
+  }
+  .sideXP {
+    right: 5mm;
   }
 }
