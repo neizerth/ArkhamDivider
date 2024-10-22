@@ -26,7 +26,7 @@ export const DividerContent = ({
   return (
     <div className={S.container}>
       <GuidesContent className={S.guides} {...styledProps}>
-				<Guides className={S.guidesContent}/>
+				<Guides className={S.guidesContent} guideClassName={S.guide}/>
 			</GuidesContent>
 			<Wrapper className={S.wrapper} {...styledProps}>
 				<Content className={S.divider} {...styledProps}>

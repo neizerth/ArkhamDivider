@@ -82,6 +82,7 @@ export const getUpgradingDividers = ({
     id: uniqId(),
     name: 'Upgrading',
     icon: faction.icon,
+    specialIcon: 'upgrade',
     faction: faction.id,
     type: DividerType.PLAYER
   }))
@@ -102,6 +103,7 @@ export const getCustomizationsDividers = ({
     name: 'Customizations',
     tags: ['customizations'],
     icon: faction.icon,
+    specialIcon: 'list',
     faction: faction.id,
     type: DividerType.PLAYER
   }))
@@ -120,6 +122,7 @@ export const getBondedDividers = ({
   return factions.map((faction): IDivider => ({
     id: uniqId(),
     name: 'Bonded',
+    specialIcon: 'link',
     icon: faction.icon,
     faction: faction.id,
     type: DividerType.PLAYER

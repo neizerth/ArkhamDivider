@@ -16,6 +16,7 @@ export type IDivider = {
     type: DividerType
     name?: string
     icon?: string
+    specialIcon?: string
     faction?: string
     cardType?: CardType
     background?: string

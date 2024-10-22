@@ -72,8 +72,14 @@ const AppLayout = () => {
           <Col className={S.content}>
             <Outlet/>
             <LayoutMenu/>
-            <AddDividers/>
-            {showLayout && <Layout/>}
+            <div className={S.addDividers}>
+              <AddDividers/>
+            </div>
+            {showLayout && (
+              <div className={S.layout}>
+                 <Layout/>
+              </div>
+            )}
           </Col>
           <Footer/>
         </Col>

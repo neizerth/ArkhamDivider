@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  align-items: end;
+  gap: 0mm;
+}
+
+.level {
+  width: 2mm;
+  height: 2mm;
+  position: relative;
+  &_full {
+    width: 2.4mm;
+  }
+}
+
+.bar {
+  position: absolute;
+  fill: none;
+}
+
+.full {
+  width: 4mm;
+  bottom: -0.8mm;
+  left: -1.3mm;
+}
+
+.small {
+  width: 2mm;
+  bottom: 0;
+}
+
+.current {
+  fill: black;
+}

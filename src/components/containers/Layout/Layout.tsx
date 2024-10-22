@@ -6,7 +6,7 @@ import { selectDividers } from '@/store/features/dividers/dividers';
 
 import classNames from 'classnames';
 import { selectDoubleSided } from '@/store/features/print/print';
-import { splittIntoPages } from '@/util/print';
+import { splitIntoPages } from '@/util/print';
 import { selectLayout } from '@/store/features/layout/layout';
 
 export type LayoutProps = {
@@ -21,9 +21,10 @@ export const Layout = ({ }: LayoutProps) => {
 		groupSize, 
 		rowSize, 
 		pageOrientation,
+		maxCreditsGroupSize,
 	} = layout;
 
-	const pages = splittIntoPages(dividers, {
+	const pages = splitIntoPages(dividers, {
 		doubleSidedPrint,
 		groupSize, 
 		rowSize
@@ -34,7 +35,7 @@ export const Layout = ({ }: LayoutProps) => {
 	return (
 		<div className={S.container}>
 			<div className={S.groups}>
-				{pages.map(({ side, rows, pageNumber }, pageIndex) => (
+				{pages.map(({ side, rows, pageNumber, size }, pageIndex) => (
 					<A4 
 						className={S.page}
 						side={side}
@@ -42,6 +43,7 @@ export const Layout = ({ }: LayoutProps) => {
 						pageNumber={pageNumber}
 						pagesTotal={pagesTotal}
 						isLast={pageNumber === pagesTotal}
+						showCredits={!maxCreditsGroupSize || maxCreditsGroupSize >= size}
 						key={pageIndex}
 						orientation={pageOrientation}
 					>

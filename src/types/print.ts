@@ -8,6 +8,7 @@ export type IPage<T> = {
   side: PageSide;
   merged?: boolean;
   rows: T[][]
+  size: number;
 }
 
 export enum PageOrientation {

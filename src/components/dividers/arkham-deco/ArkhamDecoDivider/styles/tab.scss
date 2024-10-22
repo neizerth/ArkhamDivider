@@ -1,0 +1,266 @@
+@import "../../../../../sass/mixins.scss";
+
+.tabHeader {
+  position: absolute;
+  z-index: 5;
+  top: 2mm;
+  // border-top: 1px solid black;
+  left: 0;
+  right: 0;
+  // left: 13.6mm;
+  // right: 10mm;
+  height: 2mm;
+  &::before {
+    position: absolute;
+    content: '';
+    display: block;
+    z-index: 2;
+    left: 0;
+    bottom: 0;
+    width: 21mm;
+    border-top: 1px solid black;
+  }
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    width: 21mm;
+
+    border-top: 1px solid black;
+  }
+}
+
+.tabHeaderOverlay {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  background-color: white;
+  top: -2mm;
+  height: 4mm;
+}
+
+.tabHeaderBox {
+  position: absolute;
+  display: block;
+  z-index: 7;
+  height: 4mm;
+  left: 21mm;
+  right: 21mm;
+  top: 0mm;
+  box-sizing: border-box;
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-width: 1px 1px 0 1px;
+  // border-radius: 4mm 4mm 0 0;
+}
+
+.tabTopLine {
+  position: absolute;
+  z-index: 5;
+
+  @include clipX(5.8mm, 39mm);
+  &_left {
+    top: 3.2mm;
+    left: 3.9mm;
+    height: 2.4mm;
+  }
+
+  &_right {
+    top: 3.2mm;
+    right: 3.9mm;
+    height: 2.4mm;
+    transform: scale(-1, 1);
+  }
+}
+
+.tabTentacles {
+  position: absolute;
+  z-index: 5;
+  width: 6mm;
+  top: 3.8mm;
+  // left: 
+  &_left {
+    left: 38mm;
+  }
+  &_right {
+    transform: scale(-1, 1);
+    right: 38mm;
+  }
+}
+
+.type_tab {
+  --offset: 3.5mm;
+
+  .pattern, .centerBorder {
+    --offset: 0mm;
+  }
+
+  .title {
+    --offset: -0.3mm;
+    left: 28.5mm;
+    height: 4.3mm;
+    right: 27mm;
+    &_withSideXP {
+      right: 39mm;
+    }
+  }
+  
+  &.language_zh, &.language_ko {
+    .title {
+      --offset: 0mm;
+      font-size: 2.5mm;
+    }
+  }
+
+  .specialCorner {
+    height: 3mm;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5.1mm;
+
+    &_player {
+      left: auto;
+      transform: none;
+      top: 2.7mm;
+      right: 21.8mm;
+    }
+    &_withXPIcon {
+      top: 2.8mm;
+    }
+    &_noXPIcon {
+      top: 2.5mm;
+    }
+  }
+  
+  // &.xp {
+  //   .specialCorner {
+  //     top: 2.5mm;
+  //   }
+  // }
+
+  // &.noXP {
+  //   .specialCorner {
+  //     left: 50%;
+  //     transform: translateX(-50%);
+  //     top: 5.1mm;
+  //   }
+  // }
+
+  .sideXP {
+    z-index: 5;
+    right: 25.5mm;
+    top: 1.9mm;
+    transform: scale(0.8);
+  }
+
+  .xpCost {
+    font-size: 3mm;
+  }
+
+  .previewIcon {
+    --offset: 3.8mm;
+    z-index: 4;
+    width: 6mm;
+    height: 4.4mm;
+    font-size: 3.3mm;
+    top: 2.3mm;
+    left: 23mm;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .scenarioName {
+    font-size: 3mm;
+    padding: 0 1mm;
+  }
+
+  .scenarioCorner {
+    z-index: 7;
+    border-radius: 50%;
+    
+    top: 0.45mm;
+    right: 21mm;
+  }
+  .pattern {
+    height: 51mm;
+  }
+
+  .icon {
+    --offset: -2mm;
+    font-size: 20mm;
+  }
+
+  .topLeftCorner {
+    top: 4.8mm;
+    left: 0.8mm;
+    width: 11mm;
+  }
+
+  .topRightCorner {
+    transform: scale(-1, 1);
+    top: 4.8mm;
+    right: 0.8mm;
+    width: 11mm;
+  }
+
+  .topLine {
+    display: none;
+  }
+  .scenarioTentacles {
+    display: none;
+  }
+  
+  &.size_small {
+    .scenarioCorner {
+      right: 18mm;
+    }
+    .tabHeaderBox {
+      left: 17mm;
+      right: 17mm;;
+    }
+
+    .tabHeader {
+      &::after,
+      &::before {
+        width: 17mm;
+      }
+    }
+    .tabTopLine {
+      left: -0.1mm;
+      &_right {
+        left: auto;
+        right: -0.1mm;
+      }
+    }
+    .previewIcon {
+      left: 19mm;
+    }
+
+    .title {
+      left: 24.5mm;
+      right: 24mm;
+      &_withSideXP {
+        right: 35mm;
+      }
+    }
+
+    .specialCorner {
+      &_player {
+        right: 17.8mm;
+      }
+    }
+    .sideXP {
+      right: 21.5mm;
+    }
+
+    .tabTopLine {
+      @include clipX(10mm, 43.5mm);
+    }
+  }
+}
