@@ -34,10 +34,10 @@
     @include clipX(23mm, 43.5mm);
     // display: none;
     &_left {
-      left: -14mm;
+      left: -16mm;
     }
     &_right {
-      right: -14mm;
+      right: -16mm;
     }
   }
 
@@ -47,10 +47,10 @@
 
   .tabTentacles {
     &_left {
-      left: 24mm;
+      left: 22mm;
     }
     &_right {
-      right: 24mm;
+      right: 22mm;
     }
   }
 
