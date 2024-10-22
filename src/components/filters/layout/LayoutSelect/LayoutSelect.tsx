@@ -21,6 +21,8 @@ export const LayoutSelect = ({
   const navigate = useAppNavigate();
   const layout = useAppSelector(selectLayout);
 
+  console.log(layout);
+
   const options = data
     .map(({ title, id }) => ({
       label: title,

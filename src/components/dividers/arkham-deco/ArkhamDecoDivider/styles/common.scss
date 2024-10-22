@@ -1,3 +1,5 @@
+@import "../../../../../sass/mixins.scss";
+
 .container {
   --offset: 0mm;
   // border: 1px solid black;
@@ -38,10 +40,10 @@
   // display: none;
   position: absolute;
   z-index: 7;
-  top: 38%;
-  left: 41%;
+  top: 45%;
+  left: 48%;
   transform: translate(-50%, -50%);
-  width: 155%;
+  width: 144%;
   opacity: 0.9;
   // width: 100%;
   // height: 100%;
@@ -62,7 +64,7 @@
   position: absolute;
   width: 24mm;
   height: 25.8mm;
-  top: 23.3mm;
+  top: calc(23.3mm + var(--offset));
   left: 50%;
   display: flex;
   justify-content: center;
@@ -232,12 +234,12 @@
   position: absolute;
   z-index: 2;
   top: calc(var(--offset) + 4.8mm);
-  left: -0.65mm;
-  clip-path: polygon(11.3mm 0, 85mm 0, 85mm 100%, 11.3mm 100%);
+  left: -0.05mm;
+  @include clipX(10.9mm, 85.1mm);
   // left: 9.4mm;
   width: 94.4mm;
   &_scenario {
-    clip-path: polygon(11.3mm 0, 81.9mm 0, 81.9mm 100%, 11.3mm 100%);
+    @include clipX(10.9mm, 82mm);
   }
 
 }
@@ -262,6 +264,13 @@
     // text-align: center;
     // right: 17.3mm;
     right: 23mm;
+  }
+}
+
+.language_zh, .language_ko {
+  .title {
+    --offset: 0.2mm;
+    font-size: 3.5mm;
   }
 }
 

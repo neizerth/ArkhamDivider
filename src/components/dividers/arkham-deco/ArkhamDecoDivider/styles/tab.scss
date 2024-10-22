@@ -1,22 +1,4 @@
-
-.tabPreviewIcon {
-  position: absolute;
-  z-index: 4;
-  width: 12mm;
-  height: 6mm;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4.1mm;
-  top: 2.4mm;
-  align-items: start;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-}
+@import "../../../../../sass/mixins.scss";
 
 .tabHeader {
   position: absolute;
@@ -69,64 +51,211 @@
   left: 21mm;
   right: 21mm;
   top: 0mm;
+  box-sizing: border-box;
 
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-width: 1px 1px 0 1px;
   // border-radius: 4mm 4mm 0 0;
 }
 
-.type_tab {
-  --offset: 3.5mm;
-
-  .specialCorner {
-    top: 5.6mm;
-  }
-  .previewIcon {
-    --offset: 3.8mm;
-    font-size: 3.8mm;
-  }
-
-  .scenarioName {
-    font-size: 3mm;
-    padding-top: 1.7mm;
+.tabTopLine {
+  position: absolute;
+  z-index: 5;
+  &_left {
+    top: 3.2mm;
+    @include clipX(5.8mm, 39mm);
+    left: 3.9mm;
+    height: 2.4mm;
   }
 
-  .pattern {
-    height: 51mm;
-  }
-
-  .icon {
-    font-size: 20mm;
-  }
-
-  .title {
-    --offset: 3.7mm;
-    text-align: center;
-    box-sizing: border-box;
-    // padding-left: 4.3mm;
-    right: 17.3mm;
-    height: 4.7mm;
-
-    &_scenario {
-      // text-align: center;
-      // right: 17.3mm;
-      right: 23mm;
-      left: 23mm;
-    }
+  &_right {
+    top: 3.2mm;
+    @include clipX(5.8mm, 39mm);
+    right: 3.9mm;
+    height: 2.4mm;
+    transform: scale(-1, 1);
   }
 }
 
 .tabTentacles {
   position: absolute;
-  z-index: 6;
-  width: 15mm;
-  top: 0mm;
+  z-index: 5;
+  width: 6mm;
+  top: 3.8mm;
   // left: 
   &_left {
-    left: 28mm;
+    left: 38mm;
   }
   &_right {
     transform: scale(-1, 1);
-    right: 28mm;
+    right: 38mm;
+  }
+}
+
+.type_tab {
+  --offset: 3.5mm;
+
+  .pattern, .centerBorder {
+    --offset: 0mm;
+  }
+
+  .title {
+    --offset: -0.3mm;
+    left: 28.5mm;
+    height: 4.3mm;
+    right: 27mm;
+    &_withSideXP {
+      right: 39mm;
+    }
+  }
+  
+  &.language_zh, &.language_ko {
+    .title {
+      --offset: 0mm;
+      font-size: 2.5mm;
+    }
+  }
+
+  .specialCorner {
+    right: 21.8mm;
+    height: 3mm;
+  }
+  
+  &.xp {
+    .specialCorner {
+      top: 2.5mm;
+    }
+  }
+
+  &.noXP {
+    .specialCorner {
+      top: 2.8mm;
+    }
+  }
+
+  .sideXP {
+    z-index: 5;
+    right: 25.5mm;
+    top: 1.9mm;
+    transform: scale(0.8);
+  }
+
+  .xpCost {
+    font-size: 3mm;
+  }
+
+  .previewIcon {
+    --offset: 3.8mm;
+    z-index: 4;
+    width: 6mm;
+    height: 4.4mm;
+    font-size: 3.3mm;
+    top: 2.3mm;
+    left: 23mm;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .scenarioName {
+    font-size: 3mm;
+    padding: 0 1mm;
+  }
+
+  .scenarioCorner {
+    z-index: 7;
+    border-radius: 50%;
+    
+    top: 0.45mm;
+    right: 21mm;
+  }
+  .pattern {
+    height: 51mm;
+  }
+
+  .icon {
+    --offset: -2mm;
+    font-size: 20mm;
+  }
+
+  .topLeftCorner {
+    top: 4.8mm;
+    left: 0.8mm;
+    width: 11mm;
+  }
+
+  .topRightCorner {
+    transform: scale(-1, 1);
+    top: 4.8mm;
+    right: 0.8mm;
+    width: 11mm;
+  }
+
+  .topLine {
+    display: none;
+  }
+  .scenarioTentacles {
+    display: none;
+  }
+  
+
+  // .topLeftCorner {
+  //   top: 4.8mm;
+  //   left: 0.8mm;
+  // }
+  &.size_small {
+    .scenarioCorner {
+      right: 18mm;
+    }
+    .tabHeaderBox {
+      left: 17mm;
+      right: 17mm;;
+    }
+
+    .tabHeader {
+      &::after,
+      &::before {
+        width: 17mm;
+      }
+    }
+    .tabTopLine {
+      left: -0.1mm;
+      &_right {
+        left: auto;
+        right: -0.1mm;
+      }
+    }
+    .previewIcon {
+      left: 19mm;
+    }
+
+    .title {
+      left: 24.5mm;
+      right: 24mm;
+      &_withSideXP {
+        right: 35mm;
+      }
+    }
+
+    .specialCorner {
+      right: 17.8mm;
+    }
+
+    .scenarioCorner {
+      right: 17.3mm;
+    }
+    .sideXP {
+      right: 21.5mm;
+    }
+
+    .tabTopLine {
+      &_left {
+        @include clipX(10mm, 43.5mm);
+      }
+      &_right {
+        @include clipX(10mm, 43.5mm);
+      }
+    }
   }
 }

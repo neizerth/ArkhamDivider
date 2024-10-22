@@ -14,6 +14,10 @@ import topRightCorner from './images/top-right-corner.png'
 import scenarioTopRightCorner from './images/scenario-top-right-corner.png'
 import topLine from './images/top-line.png'
 import scenarioTentacles from './images/scenario-tentacles.png'
+import tabTopCorner from './images/tab-top-corner.png'
+import tabTopLine from './images/tab-top-line.png'
+import scenarioTabTopLine from './images/tab-scenario-line.png';
+import tabTentacles from './images/tab-tentacles.png';
 
 import classNames from 'classnames';
 import { DividerMenu, DividerText, Icon } from '@/components';
@@ -25,7 +29,7 @@ import { selectLayout } from '@/store/features/layout/layout';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
 import { getXPDisplayValue } from '@/util/xp';
-import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
+import { ArkhamDecoDividerSize, ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 
 export type ArkhamDecoDividerProps = IDivider & {
 
@@ -39,7 +43,8 @@ export const ArkhamDecoDivider = ({
     type,
     scenario,
     xpCost,
-    id
+    id,
+    displaySideXP
   } = props;
 
   const [icon, selectIcon] = useIconSelect({
@@ -59,8 +64,9 @@ export const ArkhamDecoDivider = ({
   const { 
     color,
     customParams 
-  } = useAppSelector(selectLayout); 
+  } = useAppSelector(selectLayout);
 
+  const layoutSize = customParams?.size || 'standard';
   const layoutType = customParams?.type || 'standard';
 
   const translatedName = t(name);
@@ -70,8 +76,17 @@ export const ArkhamDecoDivider = ({
 	const language = useAppSelector(selectLanguage);
 	const realLanguage = translatedName === name ? 'en' : language;
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
+  const isSmall = layoutSize === ArkhamDecoDividerSize.SMALL;
 
   const isScenario = type === DividerType.SCENARIO;
+
+  const topRightCornerImage = (() => {
+    if (isTab) {
+      return tabTopCorner;
+    }
+    
+    return isScenario ? scenarioTopRightCorner : topRightCorner;
+  })()
 
 	useEffect(() => {
 		setTitle(translatedName);
@@ -80,8 +95,12 @@ export const ArkhamDecoDivider = ({
   return (
     <div className={classNames(
         S.container,
-        S[`type_${layoutType}`]
+        S[`type_${layoutType}`],
+        S[`size_${layoutSize}`],
+        xpCost ? S.xp : S.noXP,
+        S[`language_${realLanguage}`],
       )}
+      data-type={layoutType}
     >
       <DividerContent className={S.dividerContent}>
         <div className={S.wrapper}>
@@ -96,7 +115,12 @@ export const ArkhamDecoDivider = ({
           )}
 
           <div 
-            className={S.specialCorner} 
+            className={classNames(
+              S.specialCorner,
+              xpCost && [
+                !specialIcon ? S.specialCorner_withXPIcon : S.specialCorner_noXPIcon
+              ]
+            )} 
             onClick={selectSpecialIcon}
           >
             <div className={S.specialIcon}>
@@ -112,7 +136,8 @@ export const ArkhamDecoDivider = ({
           <div 
             className={classNames(
               S.title,
-              S[`title_${type}`]
+              S[`title_${type}`],
+              displaySideXP && S.title_withSideXP
             )}
           >
             <DividerText
@@ -127,12 +152,6 @@ export const ArkhamDecoDivider = ({
           <div className={S.previewIcon} onClick={selectPreviewIcon}>
             {previewIcon && <Icon icon={previewIcon}/>}
           </div>
-
-          {isTab && (
-            <div className={S.tabPreviewIcon} onClick={selectPreviewIcon}>
-              {previewIcon && <Icon icon={previewIcon}/>}
-            </div>
-          )}
 
           <div className={classNames(
               S.pattern,
@@ -153,10 +172,38 @@ export const ArkhamDecoDivider = ({
                 <div className={S.tabHeader}>
                   <div className={S.tabHeaderOverlay}/>
                 </div>
+                <img 
+                  className={classNames(
+                    S.tabTentacles,
+                    S.tabTentacles_left
+                  )}
+                  src={tabTentacles}
+                />
+                <img 
+                  className={classNames(
+                    S.tabTentacles,
+                    S.tabTentacles_right
+                  )}
+                  src={tabTentacles}
+                />
+                <img 
+                  className={classNames(
+                    S.tabTopLine,
+                    S.tabTopLine_left
+                  )}
+                  src={tabTopLine}
+                />
+                 <img 
+                  className={classNames(
+                    S.tabTopLine,
+                    S.tabTopLine_right
+                  )}
+                  src={tabTopLine}
+                />
               </>
             )}
 
-            {xpCost && (
+            {displaySideXP && xpCost && (
               <div className={S.sideXP}>
                 <ArkhamDecoSideXP xpCost={xpCost}/>
               </div>
@@ -193,14 +240,14 @@ export const ArkhamDecoDivider = ({
             </div>
 
             <img 
-              src={topLeftCorner} 
+              src={isTab ? tabTopCorner : topLeftCorner} 
               className={classNames(
                 S.topLeftCorner
               )} 
               alt="" 
             />
             <img 
-              src={isScenario ? scenarioTopRightCorner : topRightCorner} 
+              src={topRightCornerImage}
               className={classNames(
                 S.topRightCorner,
                 isScenario && S.topRightCorner_scenario

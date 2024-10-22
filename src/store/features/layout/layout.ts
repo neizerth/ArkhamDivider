@@ -31,15 +31,7 @@ export const layout = createSlice({
     setColor: createSliceSetter('color'),
 
     setCategoryId: createSliceSetter('categoryId'),
-
-    setType: createSliceSetter('type', (state, action) => {
-      const type = action.payload;
-
-      reducers.setLayoutByCriteria(state, {
-        ...action,
-        payload: { type }
-      });
-    }),
+    setType: createSliceSetter('type'),
   },
   selectors: {
     selectLayout: createSliceSelector('layout'),

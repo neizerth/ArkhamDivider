@@ -17,3 +17,13 @@
     padding-top: 0;
   }
 }
+
+.addDividers {
+  position: relative;
+  z-index: 2;
+}
+
+.layout {
+  position: relative;
+  z-index: 1;
+}
