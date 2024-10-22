@@ -21,7 +21,7 @@ export type ILayout = {
     top: number
     left: number
   },
-  maxCreditsGroupSize?: number | null,
+  maxCreditsGroupSize?: number,
   campaignOptions?: Partial<AddStoryDividersOptions>,
   playerOptions?: Partial<AddPlayerDividersOptions>,
   customParams?: Mapping

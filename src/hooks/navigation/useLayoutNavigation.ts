@@ -7,9 +7,7 @@ import { useAppDispatch } from "../useAppDispatch";
 export const useLayoutNavigation = () => {
   const dispatch = useAppDispatch();
   const { 
-    layoutId,
-    type,
-    categoryId
+    layoutId
   } = useParams();
   const currentLayout = useAppSelector(selectLayout);
 

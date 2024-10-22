@@ -80,7 +80,8 @@ export const createDoubleSidedPages = <T>(pages: IPage<T>[], options: CreateDoub
         pageNumber: page.pageNumber + 1,
         side: PageSide.FRONT,
         merged: true,
-        rows
+        rows,
+        size: page.size
       }
     ]
   }
@@ -93,7 +94,8 @@ export const createDoubleSidedPages = <T>(pages: IPage<T>[], options: CreateDoub
     {
       pageNumber: page.pageNumber,
       side: PageSide.BACK,
-      rows
+      rows,
+      size: page.size
     }
   ];
 }, [] as IPage<T>[]);

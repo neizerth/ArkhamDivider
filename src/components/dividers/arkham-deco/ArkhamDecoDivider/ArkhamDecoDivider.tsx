@@ -71,12 +71,11 @@ export const ArkhamDecoDivider = ({
 
   const translatedName = t(name);
 
-	const [title, setTitle] = useState(translatedName);
+	const [_, setTitle] = useState(translatedName);
 
 	const language = useAppSelector(selectLanguage);
 	const realLanguage = translatedName === name ? 'en' : language;
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
-  const isPlayer = type === DividerType.PLAYER;
   const isScenario = type === DividerType.SCENARIO;
 
   const topRightCornerImage = (() => {

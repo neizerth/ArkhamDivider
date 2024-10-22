@@ -53,7 +53,6 @@ export const vertical = {
   customParams: {
     type: 'tab'
   },
-  maxCreditsGroupSize: null
 }
 
 export const horizontalDeckbox = {
@@ -125,14 +124,14 @@ export const arkhamDecoLayouts: ILayout[] = [
     ...common,
     ...horizontalSmall,
     id: "arkham-deco-small",
-    title: "UCS Standart",
+    title: "UCF Standart",
     orientation: LayoutOrientation.HORIZONTAL,
     color: true,
   },
   {
     ...common,
     ...horizontalTab,
-    title: "UCS50",
+    title: "UCF50",
     id: "arkham-deco-tab",
     orientation: LayoutOrientation.HORIZONTAL,
     color: true,
@@ -156,7 +155,7 @@ export const arkhamDecoLayouts: ILayout[] = [
   {
     ...common,
     ...horizontalTab,
-    title: "UCS50",
+    title: "UCF50",
     id: "arkham-deco-tab-bw",
     orientation: LayoutOrientation.HORIZONTAL,
     color: false,
@@ -165,14 +164,14 @@ export const arkhamDecoLayouts: ILayout[] = [
     ...common,
     ...horizontalSmall,
     id: "arkham-deco-small-bw",
-    title: "UCS Standart",
+    title: "UCF Standart",
     orientation: LayoutOrientation.HORIZONTAL,
     color: false,
   },
   {
     ...common,
     ...vertical,
-    title: "UCS Quartz",
+    title: "UC Quartz",
     id: "arkham-deco-vertical",
     orientation: LayoutOrientation.VERTICAL,
     color: true,
@@ -181,7 +180,7 @@ export const arkhamDecoLayouts: ILayout[] = [
     ...common,
     ...vertical,
     id: "arkham-deco-vertical-bw",
-    title: "UCS Quartz",
+    title: "UC Quartz",
     orientation: LayoutOrientation.VERTICAL,
     color: false,
   },
