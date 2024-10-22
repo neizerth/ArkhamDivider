@@ -189,7 +189,7 @@ export const arkhamDecoLayouts: ILayout[] = [
 export const arkhamDecoCategory: ILayoutCategory = {
   id: 'arkham-deco',
   name: 'Arkham Deco',
-  info: 'Dividers For Small Height Boxes',
+  info: 'Compact Dividers',
   author: {
     name: 'Vladimir Yazykov',
     image: BASE_PATH + '/images/neizerth.jpg',
