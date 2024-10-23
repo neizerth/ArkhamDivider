@@ -23,7 +23,7 @@ export const PrintSettings = () => {
   return (
     <Row>
       <Checkbox onChange={toggleItemPerPage} checked={itemPerPage}>
-        {t('One per Page')}
+        {t('One per page')}
       </Checkbox>
       <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>
         {t('2 sides')}
