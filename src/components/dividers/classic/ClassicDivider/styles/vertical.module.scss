@@ -24,29 +24,29 @@
   }
 
   .icon_small {
-    right: 3.8mm;
+    right: 4.8mm;
     &_noXP {
-      top: 5.2mm;
+      top: 6.2mm;
     }
     &_withXP {
-      top: 4.7mm;
+      top: 5.7mm;
     }
   }
   
   .icon_large {
-    top: 30mm;
+    top: 31mm;
     // font-size: 46mm;
   }
   
   .menu {
-    top: 14mm;
+    top: 15mm;
     gap: 10px;
     left: 50%;
     transform: translate(-50%, 0)
   }
   .xpCost {
-    top: 4.5mm;
-    right: 3.7mm;
+    top: 5.5mm;
+    right: 4.7mm;
   }
 }
 

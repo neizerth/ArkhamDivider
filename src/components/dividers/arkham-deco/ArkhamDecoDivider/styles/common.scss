@@ -4,8 +4,8 @@
   --offset: 0mm;
   // border: 1px solid black;
   box-sizing: border-box;
-  // border-radius: 4mm;
-  // overflow: hidden;
+  border-radius: 4mm;
+  overflow: hidden;
 
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
 
@@ -68,7 +68,7 @@
   position: absolute;
   width: 24mm;
   height: 25.8mm;
-  top: calc(23.3mm + var(--offset));
+  top: calc(24.3mm + var(--offset));
   left: 50%;
   display: flex;
   justify-content: center;
@@ -81,10 +81,10 @@
 .content {
   position: absolute;
   z-index: 3;
-  left: 2mm;
-  top: 2mm;
-  right: 2mm;
-  bottom: 2mm;
+  left: 3mm;
+  top: 3mm;
+  right: 3mm;
+  bottom: 3mm;
   overflow: hidden;
   mix-blend-mode: multiply;
 }
@@ -143,8 +143,9 @@
 }
 
 .centerBorder {
+  --offset: 3mm;
   position: absolute;
-  top: calc(var(--offset) + 26.9mm);
+  top: calc(var(--offset) + 26.4mm);
   height: 15mm;
   &_left {
     left: 0.8mm;
@@ -219,8 +220,8 @@
 .previewIcon {
   position: absolute;
   z-index: 4;
-  left: 2mm;
-  top: calc(var(--offset) + 2mm);
+  left: 3mm;
+  top: calc(var(--offset) + 3mm);
   width: 12mm;
   height: 6mm;
   display: flex;
@@ -257,18 +258,18 @@
   line-height: 1.5;
   font-size: 4mm;
   height: 5.6mm;
-  top: calc(var(--offset) + 2.5mm);
-  left: 17.3mm;
-  right: 13mm;
+  top: calc(var(--offset) + 3.5mm);
+  left: 18.3mm;
+  right: 14mm;
   
   &_campaign {
     text-align: center;
   }
   &_scenario {
-    right: 23mm;
+    right: 24mm;
   }
   &_withSideXP {
-    right: 27mm;
+    right: 28mm;
   }
 }
 
@@ -282,8 +283,8 @@
 .specialCorner {
   position: absolute;
   z-index: 4;
-  top: 2mm;
-  right: 2mm;
+  top: 3mm;
+  right: 3mm;
   width: 8mm;
   height: 6mm;
   display: flex;
@@ -298,7 +299,7 @@
 .menu {
   position: absolute;
   z-index: 10;
-  right: 5mm;
+  right: 6mm;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -392,8 +393,8 @@
   align-items: center;
   gap: 1mm;
   z-index: 3;
-  right: 8mm;
-  bottom: 5.5mm;
+  right: 9mm;
+  bottom: 6.5mm;
 }
 
 .sizeNumber {

@@ -30,10 +30,10 @@ export const horizontal = {
   width: 94,
   height: 68.5,
   bleeds: {
-    width: 98,
-    height: 72.5,
-    top: 2,
-    left: 2
+    width: 100,
+    height: 74.5,
+    top: 3,
+    left: 3,
   }
 }
 
@@ -43,10 +43,10 @@ export const vertical = {
   width: 62,
   height: 96,
   bleeds: {
-    width: 66,
-    height: 100,
-    top: 2,
-    left: 2
+    width: 68,
+    height: 102,
+    top: 3,
+    left: 3
   },
   customParams: {
     type: 'tab'
@@ -59,10 +59,10 @@ export const horizontalDeckbox = {
   width: 94,
   height: 70,
   bleeds: {
-    width: 98,
-    height: 74,
-    top: 2,
-    left: 2
+    width: 100,
+    height: 76,
+    top: 3,
+    left: 3
   },
   customParams: {
     type: 'deckbox'
@@ -75,10 +75,10 @@ export const horizontalSmall = {
   width: 94,
   height: 67,
   bleeds: {
-    width: 98,
-    height: 71,
-    top: 2,
-    left: 2
+    width: 100,
+    height: 73,
+    top: 3,
+    left: 3
   },
   customParams: {
     type: 'tab',
@@ -91,10 +91,10 @@ export const horizontalTab = {
   width: 93.5,
   height: 68.5,
   bleeds: {
-    width: 97,
-    height: 72.5,
-    top: 2,
-    left: 2
+    width: 99,
+    height: 74.5,
+    top: 3,
+    left: 3
   },
   customParams: {
     type: 'tab'

@@ -20,12 +20,12 @@
   }
 
   .icon_small {
-    top: 4.8mm;
+    top: 5.8mm;
     &_noXP {
-      top: 5mm;
+      top: 6mm;
     }
     &_withXP {
-      top: 4.4mm;
+      top: 5.4mm;
     }
   }
 
@@ -36,7 +36,7 @@
   .menu {
     top: 50%;
     transform: translate(0, -50%);
-    right: 8mm;
+    right: 9mm;
     flex-direction: column;
     gap: 10px;
   }

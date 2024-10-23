@@ -55,17 +55,17 @@
   }
 
   .previewIcon {
-    top: 2.8mm;    
+    top: 3.8mm;    
     font-size: 3.5mm;
-    left: 3mm;
+    left: 4mm;
     height: 4.4mm;
     // align-items: start;
   }
 
   .title {
     --offset: -0.27mm;
-    left: 9mm;
-    right: 8.5mm;
+    left: 10mm;
+    right: 9.5mm;
     &_withSideXP {
       right: 19mm;
     }
@@ -92,7 +92,7 @@
 
   .specialCorner {
     &_player {
-      right: 1.5mm;
+      right: 2.5mm;
     }
   }
   .sideXP {
