@@ -2,34 +2,34 @@
   position: absolute;
   z-index: 3;
   // right: -2.2mm;
-  right: 2.3mm;
+  right: 3.3mm;
   // top: 1.05mm;
-  top: 5.7mm;
+  top: 6.7mm;
   // top:0;
 }
 
 .sideXP {
   position: absolute;
   z-index: 1;
-  right: 17mm;
-  top: 6.1mm;
+  right: 18mm;
+  top: 7.1mm;
 }
 
 .title {
   &_horizontal {
-    top: 5.8mm;
+    top: 6.8mm;
   }
   &_vertical {
-    top: 5.6mm;
-    left: -0.8mm
+    top: 6.6mm;
+    left: 0.2mm
   }
 }
 
 .icon {
   width: 8.3mm;
   height: 8.3mm;
-  right: 4.4mm;
-  top: 3.9mm;
+  right: 5.4mm;
+  top: 4.9mm;
   position: absolute;
   z-index: 2;
   cursor: pointer;
@@ -48,8 +48,8 @@
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
   }
   &_xp {
-    top: 3.8mm;
-    right: 4.5mm
+    top: 4.8mm;
+    right: 5.5mm
   }
 }
 .iconBackground {
@@ -68,7 +68,7 @@
   align-items: center;
   width: 6.9mm;
   aspect-ratio: 1;
-  left: 0.8mm;
-  top: 0.8mm;
+  left: 1.8mm;
+  top: 1.8mm;
   box-sizing: border-box;
 }

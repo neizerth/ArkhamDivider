@@ -95,17 +95,21 @@
 .type_tab {
   --offset: 3.5mm;
 
-  .pattern, .centerBorder {
+  .pattern {
     --offset: 0mm;
+  }
+
+  .centerBorder {
+    --offset: 1mm;
   }
 
   .title {
     --offset: -0.3mm;
-    left: 28.5mm;
+    left: 29.5mm;
     height: 4.3mm;
-    right: 27mm;
+    right: 28mm;
     &_withSideXP {
-      right: 39mm;
+      right: 40mm;
     }
   }
   
@@ -120,19 +124,19 @@
     height: 3mm;
     left: 50%;
     transform: translateX(-50%);
-    top: 5.1mm;
+    top: 6.1mm;
 
     &_player {
       left: auto;
       transform: none;
-      top: 2.7mm;
-      right: 21.8mm;
+      top: 3.7mm;
+      right: 22.8mm;
     }
     &_withXPIcon {
-      top: 2.8mm;
+      top: 3.8mm;
     }
     &_noXPIcon {
-      top: 2.5mm;
+      top: 3.5mm;
     }
   }
   
@@ -167,8 +171,8 @@
     width: 6mm;
     height: 4.4mm;
     font-size: 3.3mm;
-    top: 2.3mm;
-    left: 23mm;
+    top: 3.3mm;
+    left: 24mm;
     cursor: pointer;
     &:hover {
       opacity: 0.8;
@@ -239,20 +243,20 @@
       }
     }
     .previewIcon {
-      left: 19mm;
+      left: 20mm;
     }
 
     .title {
-      left: 24.5mm;
-      right: 24mm;
+      left: 25.5mm;
+      right: 25mm;
       &_withSideXP {
-        right: 35mm;
+        right: 36mm;
       }
     }
 
     .specialCorner {
       &_player {
-        right: 17.8mm;
+        right: 18.8mm;
       }
     }
     .sideXP {
