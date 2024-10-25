@@ -30,13 +30,9 @@ import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
 import { getXPDisplayValue } from '@/util/xp';
 import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 
-export type ArkhamDecoDividerProps = IDivider & {
-
-}
-
 export const ArkhamDecoDivider = ({
   ...props
-}: ArkhamDecoDividerProps) => {
+}: IDivider) => {
   const {
     name = '',
     type,

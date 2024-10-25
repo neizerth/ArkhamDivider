@@ -3,19 +3,20 @@ $guide-size: 2mm;
 
 .lines{
   position: relative;
+
+  --guide-color: red;
 }
 
 .vertical {
   position: absolute;
   width: 0;
-  border-left: 0.1mm solid black;
+  border-left: 0.1mm solid var(--guide-color);
   height: 0.1mm + $guide-size * 2;
   top: -$guide-size;
-
 }
 .horizontal {
   position: absolute;
-  border-bottom: 0.1mm solid black;
+  border-bottom: 0.1mm solid var(--guide-color);
   width: 0.1mm + $guide-size * 2;
   height: 0;
   left: -$guide-size;

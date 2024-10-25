@@ -3,8 +3,8 @@ import { PageOrientation } from "./print"
 import { Mapping } from "./util"
 
 export type ILayout = {
-  id: string,
-  categoryId: string,
+  id: string
+  categoryId: string
   width: number
   height: number
   rowSize: number

@@ -7,6 +7,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
 import { SarnetskyDivider } from '@/components/dividers/sarnetsky/SarnetskyDivider/SarnetskyDivider';
 import { ArkhamDecoDivider } from '@/components/dividers/arkham-deco/ArkhamDecoDivider/ArkhamDecoDivider';
+import { ArkhamStarter3mmDivider } from '../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider';
 
 export type DividerProps = PropsWithClassName & IDivider;
 
@@ -18,6 +19,7 @@ export const Divider = (props: DividerProps) => {
       {categoryId === 'invocation2018' && <Invocation2018Divider {...props}/>}
       {categoryId === 'sarnetsky' && <SarnetskyDivider {...props}/>}
       {categoryId === 'arkham-deco' && <ArkhamDecoDivider {...props}/>}
+      {categoryId === '3mm' && <ArkhamStarter3mmDivider {...props}/>}
     </>
   );
 }

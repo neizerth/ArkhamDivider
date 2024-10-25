@@ -19,8 +19,6 @@ import { useIconSelect } from '@/hooks/useIconSelect';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
-export type SarnetskyDividerProps = IDivider;
-
 const LIGHT_FACTIONS = [
 	'mystic',
 	'rogue',
@@ -28,7 +26,7 @@ const LIGHT_FACTIONS = [
 	'survivor'
 ]
 
-export const SarnetskyDivider = (props: SarnetskyDividerProps) => {
+export const SarnetskyDivider = (props: IDivider) => {
 
 	const {
 		id,
