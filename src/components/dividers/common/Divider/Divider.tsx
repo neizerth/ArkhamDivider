@@ -1,12 +1,12 @@
 import { PropsWithClassName } from '@/types/util';
 // import S from './Divider.module.scss';
 import { IDivider } from '@/types/dividers';
-import { ClassicDivider } from '../classic/ClassicDivider/ClassicDivider';
-import { Invocation2018Divider } from '../invocation2018/Invocation2018Divider/Invocation2018Divider';
+import { ClassicDivider } from '@/components/dividers/classic/ClassicDivider/ClassicDivider';
+import { Invocation2018Divider } from '@/components/dividers/invocation2018/Invocation2018Divider/Invocation2018Divider';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
-import { SarnetskyDivider } from '../sarnetsky/SarnetskyDivider/SarnetskyDivider';
-import { ArkhamDecoDivider } from '../arkham-deco/ArkhamDecoDivider/ArkhamDecoDivider';
+import { SarnetskyDivider } from '@/components/dividers/sarnetsky/SarnetskyDivider/SarnetskyDivider';
+import { ArkhamDecoDivider } from '@/components/dividers/arkham-deco/ArkhamDecoDivider/ArkhamDecoDivider';
 
 export type DividerProps = PropsWithClassName & IDivider;
 

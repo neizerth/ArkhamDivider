@@ -13,10 +13,10 @@ export { AddDividers }  from './containers/addDividers/AddDividers/AddDividers';
 
 export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';
 export { ClassicDividerSideXP } from './dividers/classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
-export { Divider } from './dividers/Divider/Divider';
-export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
-export { DividerText } from './dividers/DividerText/DividerText';
-export { DividerContent } from './dividers/DividerContent/DividerContent';
+export { Divider } from './dividers/common/Divider/Divider';
+export { DividerMenu } from './dividers/common/DividerMenu/DividerMenu';
+export { DividerText } from './dividers/common/DividerText/DividerText';
+export { DividerContent } from './dividers/common/DividerContent/DividerContent';
 
 export { Row, InlineRow } from './ui/grid/Row/Row';
 export { Col } from './ui/grid/Col/Col';

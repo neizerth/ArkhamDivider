@@ -1,5 +1,5 @@
 import { DividerType, IDivider } from '@/types/dividers';
-import { DividerContent } from '../../DividerContent/DividerContent';
+import { DividerContent } from '../../common/DividerContent/DividerContent';
 import S from './ArkhamDecoDivider.module.scss';
 import paper from './images/paper.png'
 
