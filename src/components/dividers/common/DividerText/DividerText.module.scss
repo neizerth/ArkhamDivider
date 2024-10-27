@@ -1,9 +1,19 @@
 .container {
   position: relative;
-  height: 100%;
+  min-height: 1em;
 
   &:hover .clear {
     display: flex;
+  }
+}
+
+.fullHeight {
+  height: 100%;
+  .input {
+    height: 100%;
+  }
+  .wrapper_dynamic {
+    height: 100%;
   }
 }
 
@@ -13,25 +23,22 @@
     position: absolute;
     top: 50%;
     left: 0;
-    height: 100%;
     transform: translate(0, -50%);
   }
 }
+
 .input {
   font-family: inherit;
   background-color: transparent;
   text-align: inherit;
   font-style: inherit;
   font-weight: normal;
-  height: 100%;
   overflow: hidden;
   resize: none;
   border: none;
   width: 100%;
   box-sizing: border-box;
   border-radius: 4px;
-
-  
 
   &:focus {
     outline: 2px solid rgba(0, 0, 0, 0.5);

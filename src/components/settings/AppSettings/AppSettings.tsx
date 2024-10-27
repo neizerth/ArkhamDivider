@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
-import { LayoutFilter, LanguageSelect, PrintSettings, Row, IconButton } from '@/components';
+import { LayoutFilter, LanguageSelect, PrintSettings, Row, IconButton, LayoutZoom } from '@/components';
 
 
 export const AppSettings = () => {
@@ -21,6 +21,9 @@ export const AppSettings = () => {
                 </Row>
                 <div className={S.print}>
                     <Row wrap className={S.row}>
+                        <div className={S.zoom}>
+                            <LayoutZoom/>
+                        </div>
                         <div className={S.printSettings}>
                             <PrintSettings/>
                         </div>

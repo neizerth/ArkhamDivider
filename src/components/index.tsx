@@ -10,6 +10,7 @@ export { AddStoryDividers }  from './containers/addDividers/story/AddStoryDivide
 export { AddStoryParams }  from './containers/addDividers/story/AddStoryParams/AddStoryParams';
 export { AddPlayerDividers }  from './containers/addDividers/AddPlayerDividers/AddPlayerDividers';
 export { AddDividers }  from './containers/addDividers/AddDividers/AddDividers';
+export { LayoutZoom }  from './containers/LayoutZoom/LayoutZoom';
 
 export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';
 export { ClassicDividerSideXP } from './dividers/classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
@@ -29,6 +30,8 @@ export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 export { XPSlider } from './ui/XPSlider/XPSlider';
 export { Popup } from './ui/Popup/Popup';
 export { Nav } from './ui/Nav/Nav';
+export { TextFit } from './ui/behavior/TextFit/TextFit';
+export { ZoomView } from './ui/behavior/ZoomView/ZoomView';
 export { CustomIcon } from './ui/icons/CustomIcon/CustomIcon';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';

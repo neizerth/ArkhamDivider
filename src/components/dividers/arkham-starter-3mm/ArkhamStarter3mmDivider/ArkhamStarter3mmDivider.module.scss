@@ -1,8 +1,4 @@
-.container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+
 
 .background {
   position: absolute;
@@ -11,6 +7,7 @@
   top: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .content {
@@ -18,4 +15,17 @@
   z-index: 2;
   top: 3.5mm;
   left: 3.5mm;
+}
+
+.strip {
+  position: absolute;
+  z-index: 2;
+  &_vertical {
+    top: 0;
+    left: 3.5mm;
+  }
+  &_horizontal {
+    top: 3.5mm;
+    right: -2.7mm;
+  }
 }

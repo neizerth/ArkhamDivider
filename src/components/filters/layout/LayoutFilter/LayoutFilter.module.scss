@@ -4,10 +4,16 @@
   gap: 10px;
 }
 
-.select {
+.categorySelect {
   width: 100%;
-  min-width: 220px; 
+  min-width: 160px; 
 }
+
+.layoutSelect {
+  width: 100%;
+  min-width: 120px; 
+}
+
 
 .category {
   cursor: pointer;

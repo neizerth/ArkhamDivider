@@ -9,6 +9,7 @@ export const isSideStory = propEq('side_story', 'type');
 export const isSideCampaign = propEq('side_campaign', 'type');
 export const isChallenge = propEq('challenge', 'type');
 export const isStandalone = propEq('standalone', 'type');
+export const isCustom = (story: IStory) => Boolean(story.custom_content);
 
 export const isSideContent = anyPass([
   isSideStory, 

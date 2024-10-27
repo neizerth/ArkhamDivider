@@ -1,5 +1,8 @@
+import { isChallenge, isSideContent } from "@/store/features/stories/criteria";
+import { IDivider } from "@/types/dividers";
 import { IRGBAColor } from "@/types/ui";
 import { Mapping } from "@/types/util";
+import { rgba256 } from "@/util/colors";
 
 export const customStripColor: Mapping<IRGBAColor> = {
   'zaw': { r: 0.6509804, g: 0.48235294, b: 0.39607844, a: 1 },
@@ -43,4 +46,51 @@ export const stripColor: Mapping<IRGBAColor> = {
   ...campaignStripColor,
   ...standaloneStripColor,
   ...customStripColor
+}
+
+export const getStripColor = (divider: IDivider) => {
+  const color = getChannelStripColor(divider);
+  return color && rgba256(color);
+}
+
+export const getSecondaryStripColor = (divider: IDivider) => {
+  const color = getChannelSecondaryStripColor(divider);
+  return color && rgba256(color);
+}
+
+export const getChannelSecondaryStripColor = ({
+  story
+}: IDivider) => {
+  if (!story?.custom_content) {
+    return;
+  }
+  return stripColor['custom'];
+}
+
+export const getChannelStripColor = ({
+  story
+}: IDivider) => {
+  if (!story) {
+    return;
+  }
+
+  const { code, return_to_code } = story;
+
+  if (stripColor[code]) {
+    return stripColor[code];
+  }
+
+  if (return_to_code && stripColor[return_to_code]) {
+    return stripColor[return_to_code];
+  }
+
+  if (isChallenge(story)) {
+    return stripColor['challenge'];
+  }
+
+  if (isSideContent(story)) {
+    return stripColor['standalone'];
+  }
+
+  return stripColor['empty'];
 }

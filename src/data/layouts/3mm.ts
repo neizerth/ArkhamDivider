@@ -9,6 +9,7 @@ export const arkhamStarter3mmLayout: ILayout = {
   types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
   pageOrientation: PageOrientation.PORTRAIT,
   orientation: LayoutOrientation.HORIZONTAL,
+  maxCreditsGroupSize: 6,
   color: true,
   rowSize: 2,
   groupSize: 8,
@@ -24,7 +25,7 @@ export const arkhamStarter3mmLayout: ILayout = {
 
 export const arkhamStarter3mmLayoutCategory: ILayoutCategory = {
   id: '3mm',
-  name: '3mm (arkham-starter.com)',
+  name: '3mm',
   info: 'The smallest required headroom in the world',
   author: {
     name: '5argon',
