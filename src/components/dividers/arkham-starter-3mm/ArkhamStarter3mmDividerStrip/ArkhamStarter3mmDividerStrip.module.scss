@@ -10,7 +10,7 @@
 
 .contentWrapper {
   position: absolute;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: start;
   z-index: 2;
@@ -51,7 +51,7 @@
     padding-left: 6mm;
     width: 27mm;
     height: 2.7mm;
-    display: flex;
+    display: grid;
     align-items: center;
   }
   .content {
