@@ -61,10 +61,11 @@ export const getSecondaryStripColor = (divider: IDivider) => {
 export const getChannelSecondaryStripColor = ({
   story
 }: IDivider) => {
-  if (!story?.custom_content) {
-    return;
-  }
-  return stripColor['custom'];
+  return void story;
+  // if (!story?.custom_content) {
+  //   return;
+  // }
+  // return stripColor['custom'];
 }
 
 export const getChannelStripColor = ({
