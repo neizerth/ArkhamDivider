@@ -8,18 +8,21 @@ export type ArkhamStarter3mmDividerStripProps = PropsWithChildren & {
   color: string
   secondaryColor?: string
   horizontal?: boolean
+  reverse?: boolean
 }
 
 export const ArkhamStarter3mmDividerStrip = ({
   color,
   secondaryColor,
   horizontal,
+  reverse,
   children
 }: ArkhamStarter3mmDividerStripProps) => {
   return (
     <div className={classNames(
       S.container,
-      horizontal ? S.horizontal : S.vertical
+      horizontal ? S.horizontal : S.vertical,
+      reverse && S.reverse
     )}>
       <div className={S.contentWrapper}>
         <div className={S.content}>

@@ -5,7 +5,6 @@
   --width: 2.7mm;
   width: 2.7mm;
   height: 27.8mm;
-  font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
   position: relative;
 }
 
@@ -61,12 +60,15 @@
     transform: rotate(-90deg);
     transform-origin: top right;
     top: 3.5mm;
-    right: calc(100% - 0.3mm);
+    right: calc(100% - 0.25mm);
     width: 20.8mm;
     padding-left: 3mm;
   }
   .content {
-    width: 14mm;
+    // width: 14mm;
+  }
+  &.reverse {
+    transform: scale(1, -1);
   }
 }
 

@@ -17,7 +17,9 @@ const ZOOM_LEVELS = [
   150,
   200,
   250,
-  300
+  300,
+  350,
+  400
 ]
 
 export const LayoutZoom = ({}: LayoutZoomProps) => {

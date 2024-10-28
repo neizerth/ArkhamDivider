@@ -15,8 +15,9 @@ export const TextFit = ({ text, ...props }: TextFitProps) => {
     <div 
       className={S.container}
       style={styles}
+      ref={ref}
     >
-      <div ref={ref}>{text}</div>
+      {text}
     </div>
   );
 }

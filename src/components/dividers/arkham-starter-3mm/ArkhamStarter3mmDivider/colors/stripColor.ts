@@ -27,7 +27,7 @@ export const standaloneStripColor: Mapping<IRGBAColor> = {
 export const campaignStripColor: Mapping<IRGBAColor> = { 
   'core': { r: 0.36078432, g: 0.4, b: 0.5568628, a: 1 },
   'eoe':  { r: 0.2509804, g: 0.62352943, b: 0.7254902, a: 1 },
-  'rcu': { r: 0.32941177, g: 0.25490198, b: 0.36862746, a: 1 },
+  'tcu': { r: 0.32941177, g: 0.25490198, b: 0.36862746, a: 1 },
   'tde': { r: 0.2784314, g: 0.25882354, b: 0.34901962, a: 1 },
   'tdc': { r: 0.39607844, g: 0.44313726, b: 0.26666668, a: 1 },
   'dwl': { r: 0.3019608, g: 0.45490196, b: 0.4, a: 1 },
@@ -49,8 +49,8 @@ export const stripColor: Mapping<IRGBAColor> = {
 }
 
 export const getStripColor = (divider: IDivider) => {
-  const color = getChannelStripColor(divider);
-  return color && rgba256(color);
+  const color = getChannelStripColor(divider) as IRGBAColor;
+  return rgba256(color);
 }
 
 export const getSecondaryStripColor = (divider: IDivider) => {
@@ -71,7 +71,7 @@ export const getChannelStripColor = ({
   story
 }: IDivider) => {
   if (!story) {
-    return;
+    return stripColor.empty;
   }
 
   const { code, return_to_code } = story;
@@ -85,12 +85,12 @@ export const getChannelStripColor = ({
   }
 
   if (isChallenge(story)) {
-    return stripColor['challenge'];
+    return stripColor.challenge;
   }
 
   if (isSideContent(story)) {
-    return stripColor['standalone'];
+    return stripColor.standalone;
   }
 
-  return stripColor['empty'];
+  return stripColor.empty;
 }
