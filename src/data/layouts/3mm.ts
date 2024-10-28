@@ -1,5 +1,5 @@
 import { BASE_PATH } from "@/constants/app";
-import { ILayout, ILayoutCategory, LayoutGuidesType, LayoutOrientation, LayoutType } from "@/types/layouts";
+import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
 export const arkhamStarter3mmLayout: ILayout = {

@@ -3,7 +3,6 @@ import S from './LayoutZoom.module.scss';
 import Select from 'react-select';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectZoom, setZoom } from '@/store/features/layout/layout';
-import { values } from 'ramda';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import classNames from 'classnames';
 

@@ -1,5 +1,5 @@
 import { PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { Area, Container, Wrapper } from './components';
+import { Area, Container } from './components';
 
 
 export type ZoomViewProps = PropsWithChildren & {
