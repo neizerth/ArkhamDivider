@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 export type PageCreditsLocalProps = PropsWithClassName & {
   link: string,
   name: string,
-  authorLink: string
+  authorLink?: string
 }
 
 export const PageCreditsGlobal = ({ 
@@ -26,7 +26,10 @@ export const PageCreditsGlobal = ({
     <div>
       <span className={S.symbol}><Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>:</span>
       Spend as many resources as you want&nbsp;to&nbsp;<a href={link} target='_blank'>{link}</a><br/>
-      Remember that <i><a href={authorLink} target='_blank' className={S.author}>{name}</a> is grateful to you</i>
+      Remember that <i>
+      {authorLink ? <a href={authorLink} target='_blank' className={S.author}>{name}</a> : name}
+      {' '}is grateful to you
+      </i>
     </div>
   </Row>
 )
@@ -42,7 +45,10 @@ export const PageCreditsRU = ({
       <span className={S.symbol}><Icon icon='free' className={classNames(S.icon, S.freeIcon)}/>:</span>
       Вы можете потратить любое число ресурсов на{' '}
       <a href={link} target='_blank'>{link}</a><br/>
-      Запомните, что <i><a href={authorLink}>{name}</a> вам благодарен</i>
+      Запомните, что <i>
+        {authorLink ? <a href={authorLink}>{name}</a> : name}
+        {' '}вам благодарен
+      </i>
     </div>
   </Row>
 )

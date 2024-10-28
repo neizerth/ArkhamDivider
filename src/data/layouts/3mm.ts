@@ -38,11 +38,13 @@ export const arkhamStarter3mmLayoutCategory: ILayoutCategory = {
       {
         id: 'www',
         icon: 'link',
+        title: 'Personal website',
         url: 'https://www.5argon.info/'
       },
       {
         id: 'www2',
-        icon: 'link',
+        icon: 'skill_intellect',
+        title: 'Arkham Starter project',
         url: 'https://www.arkham-starter.com/'
       },
       {
@@ -53,11 +55,13 @@ export const arkhamStarter3mmLayoutCategory: ILayoutCategory = {
       {
         id: 'twitter',
         icon: 'twitter',
+        title: 'Thai, tweets nonsense',
         url: 'http://twitter.com/5argon'
       },
       {
         id: 'twitter2',
         icon: 'twitter',
+        title: '日本語, tweets music games',
         url: 'https://twitter.com/5argondesu'
       },
       {

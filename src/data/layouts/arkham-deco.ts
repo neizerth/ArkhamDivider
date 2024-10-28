@@ -191,7 +191,8 @@ export const arkhamDecoCategory: ILayoutCategory = {
   author: {
     name: 'Vladimir Yazykov',
     image: BASE_PATH + '/images/neizerth.jpg',
-    url: '',
+    url: 'https://github.com/neizerth',
+    donationUrl: BOOSTY_LINK,
     contacts: [
       {
         id: 'boosty',
