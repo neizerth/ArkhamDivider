@@ -34,15 +34,15 @@
   text-align: inherit;
   font-style: inherit;
   font-weight: normal;
-  overflow: hidden;
+  // overflow: hidden;
   resize: none;
   border: none;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 4px;
 
   &:focus {
     outline: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
     & + .clear {
       display: flex;
     }

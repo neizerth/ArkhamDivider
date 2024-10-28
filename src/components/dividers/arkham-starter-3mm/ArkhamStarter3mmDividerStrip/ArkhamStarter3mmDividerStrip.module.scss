@@ -25,10 +25,13 @@
   width: var(--height);
   right: 100%;
 
-  @include textStroke(black);
+  // text-shadow: 0 0 2px rgba(0, 0, 0) ;
+  @include textStroke(#352e1f, 0.1mm, 0.1mm);
 }
 
 .content {
+  position: relative;
+  z-index: 2;
   width: 17mm;
   // height: 100%;
   line-height: 1.5;

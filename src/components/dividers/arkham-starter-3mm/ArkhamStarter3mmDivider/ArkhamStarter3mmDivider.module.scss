@@ -1,3 +1,4 @@
+@import "../../../../sass/mixins.scss";
 
 .container {
   font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
@@ -132,6 +133,9 @@
   z-index: 2;
   font-size: 3.5mm;
   width: 8mm;
+
+  // color: white;
+  // @include textStroke(#352e1f, 0.3mm, 0.15mm);
   &_horizontal {
     right: 28mm;
     top: 3.5mm;

@@ -2,9 +2,9 @@
   clip-path: polygon($left 0, $right 0, $right 100%, $left 100%);
 }
 
-@mixin textStroke($color, $size: 1px) {
-  text-shadow: $size $size $color, 
-    $size (-$size) $color, 
-    (-$size) (-$size) $color, 
-    (-$size) $size $color;
+@mixin textStroke($color, $spread: 0px, $size: 1px) {
+  text-shadow: $size $size $spread $color, 
+    $size (-$size) $spread $color, 
+    (-$size) (-$size) $spread $color, 
+    (-$size) $size $spread $color;
 }
