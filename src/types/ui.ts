@@ -7,3 +7,10 @@ export enum ButtonType {
 export enum PopupType {
   ICON_SELECT = 'icon-select'
 }
+
+export type IRGBAColor = {
+  r: number
+  g: number
+  b: number
+  a: number
+}

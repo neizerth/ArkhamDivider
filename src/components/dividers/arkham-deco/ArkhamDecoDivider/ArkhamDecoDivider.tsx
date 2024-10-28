@@ -1,5 +1,5 @@
 import { DividerType, IDivider } from '@/types/dividers';
-import { DividerContent } from '../../DividerContent/DividerContent';
+import { DividerContent } from '../../common/DividerContent/DividerContent';
 import S from './ArkhamDecoDivider.module.scss';
 import paper from './images/paper.png'
 
@@ -30,13 +30,9 @@ import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
 import { getXPDisplayValue } from '@/util/xp';
 import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 
-export type ArkhamDecoDividerProps = IDivider & {
-
-}
-
 export const ArkhamDecoDivider = ({
   ...props
-}: ArkhamDecoDividerProps) => {
+}: IDivider) => {
   const {
     name = '',
     type,

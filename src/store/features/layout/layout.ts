@@ -14,12 +14,14 @@ export type ILayoutState = {
   color: boolean,
   type: LayoutType,
   categoryId?: string,
+  zoom: number,
 }
 
 const initialState: ILayoutState = {
   layout: DEFAULT_LAYOUT,
   color: true,
   type: LayoutType.SCENARIO,
+  zoom: 100
 };
 
 export const layout = createSlice({
@@ -32,11 +34,13 @@ export const layout = createSlice({
 
     setCategoryId: createSliceSetter('categoryId'),
     setType: createSliceSetter('type'),
+    setZoom: createSliceSetter('zoom')
   },
   selectors: {
     selectLayout: createSliceSelector('layout'),
     selectType: createSliceSelector('type'),
     selectCategoryId: createSliceSelector('categoryId'),
+    selectZoom: createSliceSelector('zoom')
   }
 });
 
@@ -46,13 +50,15 @@ export const {
   setType,
   setCategoryId,
   setLayoutByCriteria,
-  setLayoutById
+  setLayoutById,
+  setZoom
 } = layout.actions;
 
 export const {
   selectLayout,
   selectType,
-  selectCategoryId
+  selectCategoryId,
+  selectZoom
 } = layout.selectors;
 
 export default layout.reducer;

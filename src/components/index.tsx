@@ -10,13 +10,14 @@ export { AddStoryDividers }  from './containers/addDividers/story/AddStoryDivide
 export { AddStoryParams }  from './containers/addDividers/story/AddStoryParams/AddStoryParams';
 export { AddPlayerDividers }  from './containers/addDividers/AddPlayerDividers/AddPlayerDividers';
 export { AddDividers }  from './containers/addDividers/AddDividers/AddDividers';
+export { LayoutZoom }  from './containers/LayoutZoom/LayoutZoom';
 
 export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';
 export { ClassicDividerSideXP } from './dividers/classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
-export { Divider } from './dividers/Divider/Divider';
-export { DividerMenu } from './dividers/DividerMenu/DividerMenu';
-export { DividerText } from './dividers/DividerText/DividerText';
-export { DividerContent } from './dividers/DividerContent/DividerContent';
+export { Divider } from './dividers/common/Divider/Divider';
+export { DividerMenu } from './dividers/common/DividerMenu/DividerMenu';
+export { DividerText } from './dividers/common/DividerText/DividerText';
+export { DividerContent } from './dividers/common/DividerContent/DividerContent';
 
 export { Row, InlineRow } from './ui/grid/Row/Row';
 export { Col } from './ui/grid/Col/Col';
@@ -29,6 +30,8 @@ export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 export { XPSlider } from './ui/XPSlider/XPSlider';
 export { Popup } from './ui/Popup/Popup';
 export { Nav } from './ui/Nav/Nav';
+export { TextFit } from './ui/behavior/TextFit/TextFit';
+export { ZoomView } from './ui/behavior/ZoomView/ZoomView';
 export { CustomIcon } from './ui/icons/CustomIcon/CustomIcon';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';

@@ -1,6 +1,6 @@
 import { Icon } from '@/components';
 import S from './DividerText.module.scss';
-import { ReactEventHandler, useEffect } from 'react';
+import { ReactEventHandler, useEffect, useState } from 'react';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import sanitizeHtml from 'sanitize-html';
@@ -18,6 +18,7 @@ export type DividerTextProps = PropsWithClassName & {
   onClear?: CallableFunction
   onChange?: (value: string) => void
   defaultValue: string
+  fullHeight?: boolean
 }
 
 const toText = (html: string): string => 
@@ -29,6 +30,7 @@ const toText = (html: string): string =>
 
 export const DividerText = ({
   fixedFontSize = true,
+  fullHeight = true,
   onClear,
   defaultValue,
   className,
@@ -38,6 +40,7 @@ export const DividerText = ({
   onChange
 }: DividerTextProps) => {
 
+  const [_, setInitialValue] = useState(defaultValue);
   // const ref = useRef<HTMLDivElement>(null)
 
   const { fontSize, ref } = useFitText({
@@ -59,6 +62,7 @@ export const DividerText = ({
     ref.current.textContent = value;
 
     onValueChange(value);
+    setInitialValue(value);
   }
 
   const onTitleChange: ReactEventHandler = e => {
@@ -87,19 +91,23 @@ export const DividerText = ({
     setDefaultValue(defaultValue);
   }, [defaultValue]);
 
-
   const style = fixedFontSize ? {} : {
     fontSize,
     // lineHeight 
   }
 
   return (
-    <div className={classNames(S.container, className)}>
+    <div className={classNames(
+      S.container,
+      fullHeight && S.fullHeight,
+      className
+    )}>
       <div 
         className={classNames(S.wrapper, !fixedFontSize && S.wrapper_dynamic)}
       >
         <div
           contentEditable 
+          spellCheck={false}
           suppressContentEditableWarning
           className={classNames(S.input, inputClassName)}
           onInput={onTitleChange}

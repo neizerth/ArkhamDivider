@@ -58,7 +58,7 @@ export const LayoutFilter = () => {
 
   return (
     <div className={S.container}>
-      <LayoutCategorySelect className={S.select}/>
+      <LayoutCategorySelect className={S.categorySelect}/>
       {categoryId && (
         <>
           {haveOrientation && (
@@ -72,7 +72,7 @@ export const LayoutFilter = () => {
           )}
           {cateogoryLayouts.length > 1 && (
             <LayoutSelect 
-              className={S.select}
+              className={S.layoutSelect}
               data={cateogoryLayouts}
             />
           )}

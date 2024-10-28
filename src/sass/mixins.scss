@@ -1,3 +1,10 @@
 @mixin clipX($left: 0%, $right: 100%) {
   clip-path: polygon($left 0, $right 0, $right 100%, $left 100%);
 }
+
+@mixin textStroke($color, $size: 1px) {
+  text-shadow: $size $size $color, 
+    $size (-$size) $color, 
+    (-$size) (-$size) $color, 
+    (-$size) $size $color;
+}

@@ -1,0 +1,116 @@
+@import "../../../../sass/mixins.scss";
+
+.container {
+  --height: 27.8mm;
+  --width: 2.7mm;
+  width: 2.7mm;
+  height: 27.8mm;
+  position: relative;
+}
+
+.contentWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  z-index: 2;
+  font-size: 2mm;
+  color: white;
+  white-space: nowrap;
+  top: 0.3mm;
+  box-sizing: border-box;
+  line-height: 1.5;
+
+  height: var(--width);
+  width: var(--height);
+  right: 100%;
+
+  @include textStroke(black);
+}
+
+.content {
+  width: 17mm;
+  // height: 100%;
+  line-height: 1.5;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.horizontal {
+  .wrapper {
+    transform: rotate(90deg);
+    transform-origin: top left;
+  }
+  .contentWrapper {
+    padding-left: 6mm;
+    width: 27mm;
+    height: 2.7mm;
+    display: flex;
+    align-items: center;
+  }
+  .content {
+
+  }
+}
+.vertical {
+  .contentWrapper {
+    transform: rotate(-90deg);
+    transform-origin: top right;
+    top: 3.5mm;
+    right: calc(100% - 0.25mm);
+    width: 20.8mm;
+    padding-left: 3mm;
+  }
+  .content {
+    // width: 14mm;
+  }
+  &.reverse {
+    transform: scale(1, -1);
+  }
+}
+
+.stripBorder {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.inner {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 1.4mm;
+  height: 25.7mm;
+}
+
+.stripInner {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.color {
+  position: absolute;
+  border-bottom-right-radius: 100% 10%;
+  mix-blend-mode: multiply;
+  z-index: 2;
+  left: 5%;
+  right: 0%;
+  top: -0.5%;
+  height: 100%;
+}
+
+.secondaryColor {
+  position: absolute;
+  mix-blend-mode: multiply;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6.3mm;
+}

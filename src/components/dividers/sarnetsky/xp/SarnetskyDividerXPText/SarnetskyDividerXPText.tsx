@@ -1,6 +1,6 @@
 import { IXPCost } from '@/types/game';
 import S from './SarnetskyDividerXPText.module.scss';
-import { DividerText } from '@/components/dividers/DividerText/DividerText';
+import { DividerText } from '@/components/dividers/common/DividerText/DividerText';
 import { upperFirst } from '@/util/common';
 import { useTranslation } from 'react-i18next';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
