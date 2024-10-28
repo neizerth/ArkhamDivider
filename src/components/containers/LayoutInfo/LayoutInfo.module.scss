@@ -81,3 +81,23 @@
 .size {
   white-space: nowrap;
 }
+
+.donate {
+  text-align: center;
+  padding: 10px 0 0;
+}
+
+.button {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  padding: 10px 20px;
+
+  background-color: rgb(255 205 72);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

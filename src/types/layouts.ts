@@ -31,11 +31,12 @@ export type ILayoutAuthorContact = {
   id: string
   icon: string
   url: string
+  title?: string
 }
 
 export type ILayoutAuthor = {
   name: string
-  url: string
+  url?: string
   image?: string
   donationUrl?: string
   contacts?: ILayoutAuthorContact[]

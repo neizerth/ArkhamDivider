@@ -8,7 +8,7 @@ export type ButtonProps = React.ComponentProps<'button'> & {
 
 export const Button = ({ 
   className, 
-  buttonType = ButtonType.PRIMARY, 
+  buttonType = ButtonType.PRIMARY,
   ...props 
 }: ButtonProps) => {
   return (

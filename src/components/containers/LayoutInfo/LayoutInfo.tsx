@@ -47,6 +47,7 @@ export const LayoutInfo = ({}: LayoutInfoProps) => {
                             href={contact.url} 
                             target='_blank' 
                             className={S.contact}
+                            title={contact.title}
                             key={contact.id}
                           >
                             <Icon icon={contact.icon}/>
@@ -57,6 +58,14 @@ export const LayoutInfo = ({}: LayoutInfoProps) => {
                   </div>
                 </div>
               </div>
+
+              {author.donationUrl && (
+                <div className={S.donate}>
+                  <a className={S.button} href={author.donationUrl} target='_blank'>
+                    {t('Support author')}
+                  </a>
+                </div>
+              )}
             </div>
           </>
         )}
