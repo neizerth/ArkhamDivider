@@ -59,6 +59,9 @@ export const DividerText = ({
     if (!ref.current) {
       return;
     }
+    if (ref.current.textContent === value) {
+      return;
+    }
     ref.current.textContent = value;
 
     onValueChange(value);
