@@ -34,6 +34,7 @@ export type AddStoryDividersOptions = {
   includeScenarioEncounterSet: boolean
   includeScenarioSize: boolean
   includeCampaign: boolean
+  includeEncounters: boolean
 }
 
 export type AddInvestigatorDividers = {

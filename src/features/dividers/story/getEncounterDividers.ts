@@ -15,8 +15,13 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     includeExtraSets,
     includeScenarioEncounterSet,
     includeCampaignIcon,
+    includeEncounters,
     encounterSets
   } = options;
+
+  if (!includeEncounters) {
+    return [];
+  }
 
   const {
     icon,

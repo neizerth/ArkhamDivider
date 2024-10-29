@@ -22,6 +22,7 @@ export type IAddStoryParamsForm = {
   includeScenarioEncounterSet: boolean
   includeScenarioSize: boolean
   includeCampaign: boolean
+  includeEncounters: boolean
 }
 
 export type AddStoryParamsProps = {
@@ -69,6 +70,9 @@ export const AddStoryParams = ({
           <div className={S.checkboxGroup}>
             <h3 className={S.title}>{t('Campaign')}</h3>
             <Col wrap className={S.checks}>
+              <Checkbox {...check('includeEncounters')}>
+                {t('Encounter Dividers')}
+              </Checkbox>
               <Checkbox {...check('includeCampaign')}>
                 {t('Campaign Divider')}
               </Checkbox>
