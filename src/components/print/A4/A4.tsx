@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { PageOrientation, PageSide } from '@/types/print';
 import { PageCredits } from '@/components/containers/PageCredits/PageCredits';
+import { detect } from 'detect-browser'
 
 export type A4Props = PropsWithClassName & PropsWithChildren & {
   side: PageSide;
@@ -27,8 +28,14 @@ export const A4 = ({
   side
 }: A4Props) => {
 
+  const browser = detect();
   const classList = classNames(
     S.container, 
+    browser && [
+      S[`browser_${browser.name}`],
+      S[`os_${browser.os}`],
+      S[`version_${browser.version}`]
+    ],
     S[`side_${side}`],
     className,
     S[orientation],

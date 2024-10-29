@@ -1,11 +1,13 @@
 import { LayoutType } from "@/types/layouts";
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { createSlice } from '@reduxjs/toolkit';
+import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 
 import { layouts } from '@/data/layouts';
 import { ILayout } from '@/types/layouts';
 import * as reducers from './reducers';
 import { safePropEq } from "@/util/criteria";
+import { AppThunk } from "@/store";
+import { getLayouts } from "@/util/layouts";
 
 export const DEFAULT_LAYOUT = layouts.find(safePropEq(true, 'isDefault')) as ILayout;
 
@@ -44,13 +46,25 @@ export const layout = createSlice({
   }
 });
 
+
+export const setLayoutById: ActionCreator<AppThunk> = (id: string) => (dispatch) => {
+    const criteria = { id };
+    const [layout] = getLayouts({ criteria });
+
+    if (!layout) {
+      return;
+    }
+
+    dispatch(setLayout(layout));
+  }
+
+
 export const {
   setLayout,
   setColor,
   setType,
   setCategoryId,
   setLayoutByCriteria,
-  setLayoutById,
   setZoom
 } = layout.actions;
 

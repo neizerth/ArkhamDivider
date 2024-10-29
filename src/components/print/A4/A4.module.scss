@@ -18,10 +18,13 @@
     }
   }
 
-  .a4 {
-    --long-side: 297mm;
-    --short-side: 210mm;
-  }
+  // .a4 {
+  //   --long-side: 297mm;
+  //   --short-side: 210mm;
+  // }
+
+  --long-side: 297mm;
+  --short-side: 210mm;
 
   @media print {
     padding: 0;
@@ -44,24 +47,42 @@
 }
 
 .portrait {
-  width: 210mm;
-  height: 297mm;
+  width: var(--short-side);
+  height: var(--long-side);
   @media print {
     width: auto;
     // min-height: 100vh;
     // height: auto;
-    // max-height: 297mm;
+    max-height: var(--long-side);
   }
 }
 
+.browser_safari {
+  @extend .with_margins;
+  @media print {
+    &.landscape,
+    &.portrait {
+      height: auto;
+    }
+  }
+}
+
+// .browser_chrome {
+//   @extend .with_margins;
+// }
+
+.with_margins {
+  padding: 2.97mm 2.7mm;
+}
+
 .landscape {
-  width: 297mm;
-  height: 210mm;
+  width: var(--long-side);
+  height: var(--short-side);
   @media print {
     width: auto;
     // height: auto;
     // min-height: 100vh;
-    // max-height: 210mm;
+    max-height: var(--short-side);
   }
 }
 
