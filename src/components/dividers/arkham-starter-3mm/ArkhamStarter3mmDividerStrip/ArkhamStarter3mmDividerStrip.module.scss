@@ -101,6 +101,7 @@
   position: absolute;
   border-bottom-right-radius: 100% 10%;
   mix-blend-mode: multiply;
+  transform: translate3d(0,0,0);
   z-index: 2;
   left: 5%;
   right: 0%;
@@ -111,6 +112,7 @@
 .secondaryColor {
   position: absolute;
   mix-blend-mode: multiply;
+  transform: translate3d(0,0,0);
   z-index: 3;
   left: 0;
   right: 0;

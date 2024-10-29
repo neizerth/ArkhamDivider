@@ -11,6 +11,7 @@
 .color {
   position: absolute;
   mix-blend-mode: multiply;
+  transform: translate3d(0,0,0);
   z-index: 2;
   width: 100%;
   top: 0;
