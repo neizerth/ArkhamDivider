@@ -59,12 +59,12 @@
 
 .browser_safari {
   @extend .with_margins;
-  @media print {
-    &.landscape,
-    &.portrait {
-      height: auto;
-    }
-  }
+  // @media print {
+  //   &.landscape,
+  //   &.portrait {
+  //     height: auto;
+  //   }
+  // }
 }
 
 // .browser_chrome {
