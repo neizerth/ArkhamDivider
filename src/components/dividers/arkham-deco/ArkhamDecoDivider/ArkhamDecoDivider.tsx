@@ -55,6 +55,7 @@ export const ArkhamDecoDivider = ({
     defaultIcon: props.campaignIcon || props.specialIcon
   });
 
+  const [lineIcon, selectLineIcon] = useIconSelect();
 
   const { t } = useTranslation();
   const { 
@@ -74,6 +75,7 @@ export const ArkhamDecoDivider = ({
 	const realLanguage = translatedName === name ? 'en' : language;
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
   const isScenario = type === DividerType.SCENARIO;
+  const isPlayer = type === DividerType.PLAYER;
 
   const topRightCornerImage = (() => {
     if (isTab) {
@@ -101,7 +103,15 @@ export const ArkhamDecoDivider = ({
       <DividerContent className={S.dividerContent}>
         <div className={S.wrapper}>
           <div className={S.card}/>
-
+          {isTab && !lineIcon && (
+            <div 
+              className={classNames(
+                S.topLineHandler,
+                S[`topLineHandler_${type}`]
+              )}
+              onClick={selectLineIcon}
+            />
+          )}
           <div className={S.menu}>
             <DividerMenu id={id} className={S.menuContainer}/>
           </div>
@@ -150,6 +160,13 @@ export const ArkhamDecoDivider = ({
             {previewIcon && <Icon icon={previewIcon}/>}
           </div>
 
+          {lineIcon && (
+            <div className={S.lineIcon} onClick={selectLineIcon}>
+              <Icon icon={lineIcon}/>
+            </div>
+          )}
+
+
           <div className={classNames(
               S.pattern,
               S.patternHandler
@@ -180,31 +197,37 @@ export const ArkhamDecoDivider = ({
                 <div className={S.tabHeader}>
                   <div className={S.tabHeaderOverlay}/>
                 </div>
-                <img 
-                  className={classNames(
-                    S.tabTentacles,
-                    S.tabTentacles_left
-                  )}
-                  src={tabTentacles}
-                />
-                <img 
-                  className={classNames(
-                    S.tabTentacles,
-                    S.tabTentacles_right
-                  )}
-                  src={tabTentacles}
-                />
+                {(!isPlayer || lineIcon) && (
+                  <>
+                    <img 
+                      className={classNames(
+                        S.tabTentacles,
+                        S.tabTentacles_left
+                      )}
+                      src={tabTentacles}
+                    />
+                    <img 
+                      className={classNames(
+                        S.tabTentacles,
+                        S.tabTentacles_right
+                      )}
+                      src={tabTentacles}
+                    />
+                  </>
+                )}
                 <img 
                   className={classNames(
                     S.tabTopLine,
-                    S.tabTopLine_left
+                    S.tabTopLine_left,
+                    specialIcon ? S.tabTopLine_special : S.tabTopLine_noSpecial
                   )}
                   src={tabTopLine}
                 />
                  <img 
                   className={classNames(
                     S.tabTopLine,
-                    S.tabTopLine_right
+                    S.tabTopLine_right,
+                    specialIcon ? S.tabTopLine_special : S.tabTopLine_noSpecial
                   )}
                   src={tabTopLine}
                 />
@@ -235,13 +258,15 @@ export const ArkhamDecoDivider = ({
               </>
             )}
 
-            <img 
-              src={topLine} 
-              className={classNames(
-                S.topLine,
-                isScenario && S.topLine_scenario
-              )} 
-            alt="" />
+            {!lineIcon && (
+              <img 
+                src={topLine} 
+                className={classNames(
+                  S.topLine,
+                  S[`topLine_${type}`]
+                )}
+              alt="" />
+            )}
             <div 
               className={S.preview}
             >

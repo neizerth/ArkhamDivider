@@ -10,6 +10,13 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { selectLayout } from '@/store/features/layout/layout';
 import { isNil } from 'ramda';
+import { 
+  getCampaignDividerIcons, 
+  getExtraEncounterDividersIcons, 
+  getRequiredEncounterDividersIcons, 
+  getScenarioDividerIcons
+} from '@/features/dividers/story/icons';
+import { selectEncounterSets } from '@/store/features/encounterSets/encounterSets';
 
 export type ToggleFunction = (value: boolean) => void;
 
@@ -38,6 +45,7 @@ export const AddStoryParams = ({
 }: AddStoryParamsProps) => {
   const { t } = useTranslation();
   
+  const encounterSets = useAppSelector(selectEncounterSets);
   const stories = useAppSelector(selectStories);
   const { campaignOptions } = useAppSelector(selectLayout);
   
@@ -63,6 +71,22 @@ export const AddStoryParams = ({
 
   const showAdditional = haveExtraDividers || showSize;
 
+  const encountersCountOptions = {
+    encounterSets,
+    story,
+    includeScenarioEncounterSet: form.includeScenarioEncounterSet
+  }
+
+  const encountersCount = getRequiredEncounterDividersIcons({
+    encounterSets,
+    story,
+    includeScenarioEncounterSet: form.includeScenarioEncounterSet
+  }).length;
+
+  const extraCount = getExtraEncounterDividersIcons(encountersCountOptions).length;
+  const scenariosCount = getScenarioDividerIcons(story).length;
+  const campaignsCount = getCampaignDividerIcons(story).length;
+
   return (
     <div className={S.container}>
       <Col>
@@ -71,10 +95,10 @@ export const AddStoryParams = ({
             <h3 className={S.title}>{t('Campaign')}</h3>
             <Col wrap className={S.checks}>
               <Checkbox {...check('includeEncounters')}>
-                {t('Encounter Dividers')}
+                {t('Encounter Dividers')} ({encountersCount})
               </Checkbox>
               <Checkbox {...check('includeCampaign')}>
-                {t('Campaign Divider')}
+                {t('Campaign Divider')} ({campaignsCount})
               </Checkbox>
               {isNil(campaignOptions?.includeCampaignIcon) && (
                 <Checkbox {...check('includeCampaignIcon')}>
@@ -88,10 +112,10 @@ export const AddStoryParams = ({
             <h3 className={S.title}>{t('Scenario')}</h3>
             <Col wrap className={S.checks}>
               <Checkbox {...check('includeScenarios')}>
-                {t('Scenario Dividers')}
+                {t('Scenario Dividers')} ({scenariosCount})
               </Checkbox>
               <Checkbox {...check('includeScenarioEncounterSet')}>
-                {t('Scenario Encounter Divider')}
+                {t('Scenario Encounter Divider')} ({scenariosCount})
               </Checkbox>
             </Col>
           </div>
@@ -101,7 +125,7 @@ export const AddStoryParams = ({
               <Col wrap className={S.checks}>
                 {haveExtraDividers && (
                   <Checkbox {...check('includeExtraSets')}>
-                    {t('Extra Dividers')}
+                    {t('Extra Dividers')} ({extraCount})
                   </Checkbox>
                 )}
                 {showSize && (

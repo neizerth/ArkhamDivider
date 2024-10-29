@@ -14,11 +14,15 @@
     transform: rotate(90deg) translateX(-50%);
   }
   .topLine {
-    left: -15.6mm;
-    @include clipX(26.2mm, 70.3mm);
+    --offset: -1.93mm;
+    left: -16.2mm;
+    @include clipX(38mm, 56mm);
     width: 94.4mm;
     &_scenario {
       @include clipX(26.2mm, 68.2mm);
+    }
+    &_investigator {
+      display: none;
     }
   }
 
@@ -65,7 +69,11 @@
   .title {
     --offset: -0.27mm;
     left: 10mm;
-    right: 9.5mm;
+    right: 10.5mm;
+    &_encounter,
+    &_campaign {
+      right: 4.5mm;
+    }
     &_withSideXP {
       right: 19mm;
     }

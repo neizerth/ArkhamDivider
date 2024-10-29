@@ -98,9 +98,23 @@
   .pattern {
     --offset: 0mm;
   }
+  .topLine {
+    --offset: -1.93mm;
+    z-index: 7;
+    @include clipX(40mm, 55mm);
+    &_scenario,
+    &_campaign,
+    &_encounter {
+      display: none;
+    }
+  }
+
+  .topLineHandler {
+    --offset: -0.07mm;
+  }
 
   .centerBorder {
-    --offset: 1mm;
+    --offset: 0mm;
   }
 
   .title {
@@ -108,6 +122,10 @@
     left: 29.5mm;
     height: 4.3mm;
     right: 28mm;
+    &_encounter,
+    &_campaign {
+      right: 25mm;
+    }
     &_withSideXP {
       right: 40mm;
     }
@@ -214,13 +232,18 @@
   }
 
   .topLine {
-    display: none;
+    // display: none;
   }
   .scenarioTentacles {
     display: none;
   }
   
   &.size_small {
+
+    .centerBorder {
+      --offset: 1mm;
+    }
+
     .scenarioCorner {
       right: 18mm;
     }
@@ -249,6 +272,11 @@
     .title {
       left: 25.5mm;
       right: 25mm;
+      // right: 22mm;
+      &_encounter,
+      &_campaign {
+        right: 22mm;
+      }
       &_withSideXP {
         right: 36mm;
       }

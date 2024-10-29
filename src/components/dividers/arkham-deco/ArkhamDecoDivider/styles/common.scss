@@ -241,12 +241,29 @@
   top: calc(var(--offset) + 4.8mm);
   left: -0.05mm;
   @include clipX(10.9mm, 85.1mm);
-  // left: 9.4mm;
   width: 94.4mm;
   &_scenario {
     @include clipX(10.9mm, 82mm);
   }
+}
 
+.topLineHandler {
+  position: absolute;
+  z-index: 8;
+  top: calc(var(--offset) + 6mm);
+  height: 2.3mm;
+  width: 100%;
+  left: 0;
+  cursor: pointer;
+  clip-path: none;
+  &:hover {
+    box-shadow: inset 0px 0px 20mm rgba(255, 255, 255, 0.2);
+  }
+  &_scenario,
+  &_encounter,
+  &_campaign {
+    display: none;
+  }
 }
 
 .title {
@@ -339,6 +356,20 @@
   top: 4.9mm;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.lineIcon {
+  position: absolute;
+  z-index: 7;
+  height: 3mm;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 6.3mm;
+  font-size: 2.5mm;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .rightCornerLine {

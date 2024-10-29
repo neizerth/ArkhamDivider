@@ -13,8 +13,9 @@ export const getCampaignDividers = ({
   const {
     name,
     icon,
+    campaigns = []
   } = story;
-
+  
   return [
     {
       id: uniqId(),
@@ -23,6 +24,16 @@ export const getCampaignDividers = ({
       icon,
       campaignIcon: icon,
       type: DividerType.CAMPAIGN
-    }
+    },
+    ...campaigns
+      .filter(campaign => campaign.name !== name)
+      .map(campaign => ({
+        id: uniqId(),
+        name: campaign.name,
+        icon: campaign.icon,
+        campaignIcon: icon,
+        type: DividerType.CAMPAIGN,
+        story
+      }))
   ]
 }
