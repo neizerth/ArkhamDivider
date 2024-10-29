@@ -24,11 +24,12 @@ export const Layout = ({ }: LayoutProps) => {
 		rowSize, 
 		pageOrientation,
 		maxCreditsGroupSize,
+		groupSize
 	} = layout;
 
 	const pages = splitIntoPages(dividers, {
 		doubleSidedPrint,
-		groupSize: itemsPerPage, 
+		groupSize: itemsPerPage || groupSize, 
 		rowSize
 	});
 
