@@ -14,6 +14,9 @@ export const Container = styled.div<ContainerProps>`
   `}
   overflow-x: auto;
   padding: 20px 0;
+  @media print {
+    padding: 0;
+  }
 `
 
 export const Area = styled.div<ZoomProps>`
