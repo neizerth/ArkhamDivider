@@ -32,6 +32,7 @@ export const A4 = ({
     S[`side_${side}`],
     className,
     S[orientation],
+    isLast ? S.last : S.page,
     showCredits && isLast && S.withCredits
   );
 

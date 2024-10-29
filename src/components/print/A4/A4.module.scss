@@ -34,6 +34,10 @@
   }
 }
 
+.page {
+  page-break-after: always;
+}
+
 .withCredits {
   align-items: start;
   padding-top: 15mm;
@@ -44,8 +48,8 @@
   height: 297mm;
   @media print {
     width: auto;
-    min-height: 100vh;
-    height: auto;
+    // min-height: 100vh;
+    // height: auto;
     // max-height: 297mm;
   }
 }
@@ -55,8 +59,8 @@
   height: 210mm;
   @media print {
     width: auto;
-    height: auto;
-    min-height: 100vh;
+    // height: auto;
+    // min-height: 100vh;
     // max-height: 210mm;
   }
 }

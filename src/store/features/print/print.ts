@@ -1,16 +1,17 @@
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { createSlice } from '@reduxjs/toolkit';
-import { setLayout } from '../layout/layout';
+import { DEFAULT_LAYOUT, setLayout } from '../layout/layout';
 
 export type IPrintState = {
   doubleSided: boolean
   bleeds: boolean
-  itemsPerPage?: number
+  itemsPerPage: number
 }
 
 const initialState: IPrintState = {
   doubleSided: false,
-  bleeds: false
+  bleeds: false,
+  itemsPerPage: DEFAULT_LAYOUT.groupSize
 };
 
 export const print = createSlice({

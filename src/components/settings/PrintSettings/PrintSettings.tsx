@@ -27,12 +27,12 @@ export const PrintSettings = () => {
   const doubleSided = useAppSelector(selectDoubleSided);
   const useBleeds = useAppSelector(selectBleeds);
   const { groupSize } = useAppSelector(selectLayout);
-  const itemsPerPage = useAppSelector(selectItemsPerPage);
 
   const toggleDoubleSided = () => dispatch(setDoubleSided(!doubleSided));
   const toggleBleeds = () => dispatch(setBleeds(!useBleeds));
 
-  const currentItemsSize = itemsPerPage || groupSize;
+  const itemsPerPage = useAppSelector(selectItemsPerPage);
+
   const itemsPerPageOptions = range(0, groupSize / 2 + 1)
     .map(index => {
       const value = index === 0 ? 1 : index * 2;
@@ -42,9 +42,9 @@ export const PrintSettings = () => {
         value
       }
     });
-  const currentItemsValue = {
-    label: currentItemsSize,
-    value: currentItemsSize
+  const itemsPerPagevalue = {
+    label: itemsPerPage,
+    value: itemsPerPage
   }
 
   const changeItemsPerPage = (value: number) => dispatch(setItemsPerPage(value));
@@ -55,7 +55,7 @@ export const PrintSettings = () => {
       <Select 
         className={S.itemsPerPage}
         options={itemsPerPageOptions}
-        value={currentItemsValue}
+        value={itemsPerPagevalue}
         onChange={item => item && changeItemsPerPage(item.value)}
       />
       <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>

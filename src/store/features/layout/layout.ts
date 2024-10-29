@@ -7,7 +7,7 @@ import { ILayout } from '@/types/layouts';
 import * as reducers from './reducers';
 import { safePropEq } from "@/util/criteria";
 
-const DEFAULT_LAYOUT = layouts.find(safePropEq(true, 'isDefault')) as ILayout;
+export const DEFAULT_LAYOUT = layouts.find(safePropEq(true, 'isDefault')) as ILayout;
 
 export type ILayoutState = {
   layout: ILayout,

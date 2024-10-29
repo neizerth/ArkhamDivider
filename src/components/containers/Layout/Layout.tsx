@@ -16,20 +16,19 @@ export const Layout = ({ }: LayoutProps) => {
 
 	const dividers = useAppSelector(selectDividers);
 	const doubleSidedPrint = useAppSelector(selectDoubleSided);
-	const itemsPerPage = useAppSelector(selectItemsPerPage);
 	const layout = useAppSelector(selectLayout);
 	const zoom = useAppSelector(selectZoom);
+	const groupSize = useAppSelector(selectItemsPerPage);
 
 	const { 
 		rowSize, 
 		pageOrientation,
 		maxCreditsGroupSize,
-		groupSize
 	} = layout;
 
 	const pages = splitIntoPages(dividers, {
 		doubleSidedPrint,
-		groupSize: itemsPerPage || groupSize, 
+		groupSize, 
 		rowSize
 	});
 
