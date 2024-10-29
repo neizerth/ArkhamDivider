@@ -73,6 +73,9 @@
 
 .with_margins {
   padding: 2.97mm 2.7mm;
+  @media print {
+    padding: 2.97mm 2.7mm;
+  }
 }
 
 .landscape {
