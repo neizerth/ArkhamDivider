@@ -54,7 +54,7 @@
   height: 210mm;
   @media print {
     width: auto;
-    height: 100vh;
+    min-height: 100vh;
     max-height: 210mm;
   }
 }
