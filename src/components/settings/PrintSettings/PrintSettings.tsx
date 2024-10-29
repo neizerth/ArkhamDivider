@@ -7,9 +7,11 @@ import {
   selectBleeds, 
   selectDoubleSided, 
   selectItemsPerPage, 
+  selectRowsPerPage, 
   setBleeds, 
   setDoubleSided,
-  setItemsPerPage, 
+  setItemsPerPage,
+  setRowsPerPage, 
 } from '@/store/features/print/print';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
@@ -26,38 +28,67 @@ export const PrintSettings = () => {
 
   const doubleSided = useAppSelector(selectDoubleSided);
   const useBleeds = useAppSelector(selectBleeds);
-  const { groupSize } = useAppSelector(selectLayout);
+  const { groupSize, rowSize } = useAppSelector(selectLayout);
 
   const toggleDoubleSided = () => dispatch(setDoubleSided(!doubleSided));
   const toggleBleeds = () => dispatch(setBleeds(!useBleeds));
 
   const itemsPerPage = useAppSelector(selectItemsPerPage);
+  const rowsPerPage = useAppSelector(selectRowsPerPage);
+  const colSize = itemsPerPage / rowsPerPage;
 
-  const itemsPerPageOptions = range(0, groupSize / 2 + 1)
-    .map(index => {
-      const value = index === 0 ? 1 : index * 2;
-
+  const rowsOptions = range(1, rowSize + 1)
+    .map(value => {
       return {
         label: value,
         value
       }
     });
-  const itemsPerPagevalue = {
-    label: itemsPerPage,
-    value: itemsPerPage
+
+  const rowsValue = {
+    label: rowsPerPage,
+    value: rowsPerPage
   }
 
-  const changeItemsPerPage = (value: number) => dispatch(setItemsPerPage(value));
+  const colsOptions = range(1, groupSize / 2 + 1)
+    .map(value => {
+      return {
+        label: value,
+        value
+      }
+    });
+
+  const colsValue = {
+    label: colSize,
+    value: colSize
+  }
+
+  const changeColsPerPage = (cols: number) => dispatch(
+    setItemsPerPage(cols * rowsPerPage)
+  );
+  const changeRowsPerPage = (rows: number) => {
+    dispatch(setRowsPerPage(rows));
+    dispatch(setItemsPerPage(rows * colSize))
+  };
 
   // const 
   return (
     <Row>
-      <Select 
-        className={S.itemsPerPage}
-        options={itemsPerPageOptions}
-        value={itemsPerPagevalue}
-        onChange={item => item && changeItemsPerPage(item.value)}
-      />
+      <div className={S.grid}>
+        <Select 
+          className={S.rows}
+          options={rowsOptions}
+          value={rowsValue}
+          onChange={item => item && changeRowsPerPage(item.value)}
+        />
+        x
+        <Select 
+          className={S.cols}
+          options={colsOptions}
+          value={colsValue}
+          onChange={item => item && changeColsPerPage(item.value)}
+        />
+        </div>
       <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>
         {t('2 sides')}
       </Checkbox>

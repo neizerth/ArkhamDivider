@@ -5,7 +5,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectDividers } from '@/store/features/dividers/dividers';
 
 import classNames from 'classnames';
-import { selectDoubleSided, selectItemsPerPage } from '@/store/features/print/print';
+import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/store/features/print/print';
 import { splitIntoPages } from '@/util/print';
 import { selectLayout, selectZoom } from '@/store/features/layout/layout';
 
@@ -19,9 +19,9 @@ export const Layout = ({ }: LayoutProps) => {
 	const layout = useAppSelector(selectLayout);
 	const zoom = useAppSelector(selectZoom);
 	const groupSize = useAppSelector(selectItemsPerPage);
+	const rowSize = useAppSelector(selectRowsPerPage);
 
 	const { 
-		rowSize, 
 		pageOrientation,
 		maxCreditsGroupSize,
 	} = layout;

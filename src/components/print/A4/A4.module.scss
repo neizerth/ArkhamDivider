@@ -61,12 +61,6 @@
 //   @extend .with_margins;
 // }
 
-.with_margins {
-  padding: 2.97mm 2.7mm;
-  @media print {
-    padding: 2.97mm 2.7mm;
-  }
-}
 
 .landscape {
   width: var(--long-side);
@@ -80,8 +74,13 @@
 }
 
 .browser_safari {
-  @extend .with_margins;
+  // padding: 14.5mm 6.5mm;
+  // @media print {
+  //   padding: 14.5mm 6.5mm;
+  // }
   @media print {
+    page-break-after: auto;
+    display: block;
     &.landscape,
     &.portrait {
       height: auto;

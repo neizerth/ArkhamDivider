@@ -1,3 +1,9 @@
 .doubleSide {
   width: 8mm;
 }
+
+.grid {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
