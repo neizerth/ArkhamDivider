@@ -88,7 +88,7 @@ export const PrintSettings = () => {
           value={colsValue}
           onChange={item => item && changeColsPerPage(item.value)}
         />
-        </div>
+      </div>
       <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>
         {t('2 sides')}
       </Checkbox>

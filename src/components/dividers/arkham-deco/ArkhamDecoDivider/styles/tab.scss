@@ -104,7 +104,8 @@
     @include clipX(40mm, 55mm);
     &_scenario,
     &_campaign,
-    &_encounter {
+    &_encounter,
+    &_investigator {
       display: none;
     }
   }
