@@ -45,7 +45,8 @@
   @media print {
     width: auto;
     min-height: 100vh;
-    max-height: 297mm;
+    height: auto;
+    // max-height: 297mm;
   }
 }
 
@@ -54,8 +55,9 @@
   height: 210mm;
   @media print {
     width: auto;
+    height: auto;
     min-height: 100vh;
-    max-height: 210mm;
+    // max-height: 210mm;
   }
 }
 
