@@ -16,6 +16,7 @@ export const Container = styled.div<ContainerProps>`
   padding: 20px 0;
   @media print {
     padding: 0;
+    min-height: auto;
   }
 `
 
@@ -24,4 +25,7 @@ export const Area = styled.div<ZoomProps>`
     transform-origin: top left;
     transform: scale(${$zoom / 100});
   `}
+  @media print {
+    transform: none;
+  }
 `;
