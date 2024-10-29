@@ -3,6 +3,9 @@
 .container {
   font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
   color: #352e1f;
+
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 .background {
