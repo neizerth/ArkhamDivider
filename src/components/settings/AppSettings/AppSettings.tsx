@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
-import { LayoutFilter, LanguageSelect, PrintSettings, Row, IconButton, LayoutZoom } from '@/components';
+import { LayoutFilter, LanguageSelect, PrintSettings, Row, IconButton, LayoutZoom, Button, Icon } from '@/components';
 import { useDownloadDividers } from '@/hooks/useDownloadDividers';
 import { ButtonType } from '@/types/ui';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -50,12 +50,12 @@ export const AppSettings = () => {
                   )}
                 </IconButton>
 
-                <IconButton 
+                <Button 
                   onClick={print} 
-                  icon="printer"
                 >
-                  {t('Print')} / PDF
-                </IconButton>
+                  <Icon icon="printer"/>{t('Print')} /
+                  <Icon icon="download"/> PDF
+                </Button>
               </>
             )}
           </Row>
