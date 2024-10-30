@@ -1,10 +1,27 @@
+@use 'sass:math';
+
 @mixin clipX($left: 0%, $right: 100%) {
   clip-path: polygon($left 0, $right 0, $right 100%, $left 100%);
 }
 
-@mixin textStroke($color, $spread: 0px, $size: 1px) {
+@mixin textStrokeOld($color, $spread: 0px, $size: 1px) {
   text-shadow: $size $size $spread $color, 
     $size (-$size) $spread $color, 
     (-$size) (-$size) $spread $color, 
     (-$size) $size $spread $color;
+}
+
+@mixin textStroke($color, $size: 1, $unit: 1px) {
+  $value: ();
+  $angle: 0;
+  // $step: 1 / $size;
+  $step: 1 / ($size * 2);
+  @while $angle < 2 * math.$pi {
+    $x: math.cos($angle) * $size;
+    $y: math.sin($angle) * $size;
+    
+    $value: append($value, $x*$unit $y*$unit $color, comma);
+    $angle: $angle + $step;
+  }
+  text-shadow: $value;
 }

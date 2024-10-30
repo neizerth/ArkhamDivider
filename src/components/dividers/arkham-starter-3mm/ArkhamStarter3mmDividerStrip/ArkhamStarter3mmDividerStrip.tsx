@@ -42,16 +42,12 @@ export const ArkhamStarter3mmDividerStrip = ({
                 fullHeight={false}
                 onChange={onChange}
                 onClear={onClear}
-                strokeClassName={S.textStroke}
-                stroke
               />
             )}
             {!editable && (
               <TextFit 
                 text={text} 
                 key={text}
-                strokeClassName={S.textStroke}
-                stroke
               />
             )}
           </div>
