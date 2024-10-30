@@ -32,7 +32,10 @@
 
 .textStroke {
   color: #352e1f;
-  transform: scale(1.01) translateX(0.5%);
+  transform: scale(1.01) translateX(0.25%);
+
+  @include textStroke(#352e1f, 0.1mm, 0.15mm);
+  -webkit-text-stroke: 0.001mm #352e1f;
   transform-origin: center center;
 }
 
