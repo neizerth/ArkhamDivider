@@ -13,12 +13,19 @@ import { Mapping } from 'classnames';
 import { PopupType } from '@/types/ui';
 
 export type IAppState = {
+  export: boolean,
   loading: boolean,
+  loadingStatus: {
+    text?: string,
+    progress: number
+  } | null,
   activePopupId: PopupType | null
 }
 
 const initialState: IAppState = {
+  export: false,
   loading: true,
+  loadingStatus: null,
   activePopupId: null
 };
 
@@ -26,10 +33,14 @@ export const app = createSlice({
   name: 'app',
   initialState,
   reducers: {
+    setExport: createSliceSetter('export'),
+    setLoadingStatus: createSliceSetter('loadingStatus'),
     setLoading: createSliceSetter('loading'),
     setActivePopupId: createSliceSetter('activePopupId')
   },
   selectors: {
+    selectExport: createSliceSelector('export'),
+    selectLoadingStatus: createSliceSelector('loadingStatus'),
     selectLoading: createSliceSelector('loading'),
     selectActivePopupId: createSliceSelector('activePopupId')
   }
@@ -51,6 +62,7 @@ export const loadAppData: ActionCreator<AppThunk> = () => async dispatch => {
   dispatch(setEncounterSets(encounterSets));
   dispatch(setAvailableLanguages(languages));
   dispatch(setIcons(icons));
+
   dispatch(setLoading(false));
 }
 
@@ -98,12 +110,16 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
 
 export const {
   setLoading,
-  setActivePopupId
+  setLoadingStatus,
+  setActivePopupId,
+  setExport
 } = app.actions;
 
 export const {
-  selectLoading,
-  selectActivePopupId
+ selectActivePopupId,
+ selectLoading,
+ selectLoadingStatus,
+ selectExport
 } = app.selectors;
 
 export default app.reducer;

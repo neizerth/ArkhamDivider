@@ -18,7 +18,7 @@ export const horizontal = {
     width: 97,
     height: 84,
     top: 3.2,
-    left: 3.8
+    left: 4
   }
 }
 

@@ -6,20 +6,19 @@ import { backgrounds } from './backgrounds';
 import { Icon, DividerMenu, DividerText, DividerContent } from '@/components';
 import classNames from 'classnames';
 
-import { PropsWithClassName } from '@/types/util';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
 import { selectLayout } from '@/store/features/layout/layout';
 import { useTranslation } from 'react-i18next';
-import { IDivider } from '@/types/dividers';
 import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
 import { ClassicDividerIconXPCost } from '../xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost';
 import { propsEquals } from '@/util/criteria';
 import { ClassicDividerSideXP } from '../xp/ClassicDividerSideXP/ClassicDividerSideXP';
 import { definedIf } from '@/util/common';
 import { useIconSelect } from '@/hooks/useIconSelect';
+import { DividerProps } from '../../common/Divider/Divider';
 
-export type ClassicDividerProps = PropsWithClassName & IDivider & PropsWithChildren &{
+export type ClassicDividerProps = DividerProps & PropsWithChildren &{
 	titleStroke?: boolean
 	titleClassName?: string
 }

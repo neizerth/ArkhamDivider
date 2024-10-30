@@ -1,17 +1,23 @@
 .container {
-    
+  
 }
 
 .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  
+  background-color: #eeeef1;
+}
 
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    
-    background-color: #eeeef1;
+.loader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

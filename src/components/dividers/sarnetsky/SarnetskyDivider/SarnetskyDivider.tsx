@@ -1,6 +1,6 @@
 import S from './SarnetskyDivider.module.scss';
 
-import { DividerType, IDivider } from '@/types/dividers';
+import { DividerType } from '@/types/dividers';
 import { DividerContent, DividerMenu, DividerText, Icon } from '@/components';
 import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -16,6 +16,7 @@ import { SarnetskyDividerSideXP } from '../xp/SarnetskyDividerSideXP/SarnetskyDi
 import { SarnetskyDividerXPText } from '../xp/SarnetskyDividerXPText/SarnetskyDividerXPText';
 import { SarnetskyDividerMainIcon as MainIcon } from '../SarnetskyDividerMainIcon/SarnetskyDividerMainIcon';
 import { useIconSelect } from '@/hooks/useIconSelect';
+import { DividerProps } from '../../common/Divider/Divider';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -26,7 +27,7 @@ const LIGHT_FACTIONS = [
 	'survivor'
 ]
 
-export const SarnetskyDivider = (props: IDivider) => {
+export const SarnetskyDivider = (props: DividerProps) => {
 
 	const {
 		id,
@@ -37,7 +38,8 @@ export const SarnetskyDivider = (props: IDivider) => {
 		story,
 		xpCost,
 		icon,
-		tags = []
+		tags = [],
+		className
 	} = props;
 
 	const { t } = useTranslation();
@@ -65,7 +67,8 @@ export const SarnetskyDivider = (props: IDivider) => {
 		S[orientation],
 		S[`type_${type}`],
 		isLight && S.light,
-		xpCost ? S.withXP : S.withoutXP
+		xpCost ? S.withXP : S.withoutXP,
+		className
 	);
 
 	const isScenario = [
