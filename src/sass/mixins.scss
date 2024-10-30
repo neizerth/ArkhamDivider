@@ -11,7 +11,7 @@
     (-$size) $size $spread $color;
 }
 
-@mixin textStroke($color, $size: 1, $unit: 1px) {
+@function textStrokeValue($color, $size: 1, $unit: 1px) {
   $value: ();
   $angle: 0;
   // $step: 1 / $size;
@@ -23,5 +23,18 @@
     $value: append($value, $x*$unit $y*$unit $color, comma);
     $angle: $angle + $step;
   }
-  text-shadow: $value;
+  @return $value;
+}
+
+@mixin textStroke($color, $size: 1, $unit: 1px) {
+  text-shadow: textStrokeValue($color, $size, $unit);
+}
+
+@mixin textStrokeFilter($color, $size: 1, $unit: 1px) {
+  $data: textStrokeValue($color, $size, $unit);
+  $value: ();
+  @each $item in $data {
+    $value: append($value, drop-shadow($item), space);
+  }
+  filter: $value;
 }

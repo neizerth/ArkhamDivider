@@ -29,6 +29,7 @@
   -webkit-text-stroke: 0.001mm #352e1f;
   // @include textStroke(#352e1f, 0.1mm, 0.1mm);
   @include textStroke(#352e1f, 2, 0.1mm);
+  // @include textStrokeFilter(#352e1f, 2, 0.1mm)
 }
 
 .textStroke {
@@ -36,6 +37,8 @@
   transform: scale(1, 1.2);
   -webkit-text-stroke: 0.001mm #352e1f;
   transform-origin: center center;
+
+  // @include textStrokeFilter(#352e1f, 2, 0.5mm)
 }
 
 .content {

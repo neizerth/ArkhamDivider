@@ -43,7 +43,7 @@ export const ArkhamStarter3mmDividerStrip = ({
                 onChange={onChange}
                 onClear={onClear}
                 strokeClassName={S.textStroke}
-                stroke
+                // stroke
               />
             )}
             {!editable && (
@@ -51,7 +51,7 @@ export const ArkhamStarter3mmDividerStrip = ({
                 text={text} 
                 key={text}
                 strokeClassName={S.textStroke}
-                stroke
+                // stroke
               />
             )}
           </div>
