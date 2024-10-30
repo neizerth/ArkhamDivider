@@ -1,13 +1,15 @@
 import domToImage from 'dom-to-image';
 import JSZip from 'jszip';
-import { Jimp } from 'jimp';
 import { saveAs } from 'file-saver';
 import { getBrowserDPI, PRINT_DPI } from '@/util/units';
 import { useMemo, useState } from 'react';
 import { useAppDispatch } from './useAppDispatch';
-import { setZoom } from '@/store/features/layout/layout';
+import { selectLayout, setZoom } from '@/store/features/layout/layout';
 import { setExport } from '@/store/features/app/app';
 import Vips from 'wasm-vips';
+import { useAppSelector } from './useAppSelector';
+import { selectBleeds, setBleeds } from '@/store/features/print/print';
+import { delay } from '@/util/common';
 const vips = await Vips();
 
 export const getDividerImage = async ({
@@ -59,6 +61,8 @@ const getDividerNodes = () => Array.from(
 
 export const useDownloadDividers = () => {
   const dispatch = useAppDispatch();
+  const bleeds = useAppSelector(selectBleeds);
+  const layout = useAppSelector(selectLayout);
   const scale = useMemo(() => PRINT_DPI / getBrowserDPI(), []);
 
   const [progress, setProgress] = useState({
@@ -69,9 +73,13 @@ export const useDownloadDividers = () => {
   let cancelled = false;
 
   const download = async () => {
+    const useBleeds = bleeds;
     dispatch(setZoom(100));
     dispatch(setExport(true));
+    dispatch(setBleeds(true));
+
     try {
+      await delay(1000);
       await process();
     }
     catch (error) {
@@ -82,6 +90,9 @@ export const useDownloadDividers = () => {
         done: 0,
         total: 0
       });
+    }
+    finally {
+      dispatch(setBleeds(useBleeds));
     }
   }
 

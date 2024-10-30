@@ -27,7 +27,7 @@ import { selectLanguage } from '@/store/features/language/language';
 import { selectLayout } from '@/store/features/layout/layout';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
-import { getXPDisplayValue } from '@/util/xp';
+import { getXPDisplayValue } from '@/features/xp';
 import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 import { DividerProps } from '../../common/Divider/Divider';
 

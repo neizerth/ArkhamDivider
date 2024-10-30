@@ -6,7 +6,7 @@ import { selectDividers } from '@/store/features/dividers/dividers';
 
 import classNames from 'classnames';
 import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/store/features/print/print';
-import { splitIntoPages } from '@/util/print';
+import { splitIntoPages } from '@/features/print';
 import { selectLayout, selectZoom } from '@/store/features/layout/layout';
 
 export type LayoutProps = {

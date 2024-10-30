@@ -1,9 +1,9 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
 import S from './LayoutInfo.module.scss';
 import { selectCategoryId, selectLayout } from '@/store/features/layout/layout';
-import { Container, Icon } from '@/components';
+import { AuthorInfo, Container } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { getCategoryById } from '@/util/layouts';
+import { getCategoryById } from '@/features/layouts/common';
 
 export type LayoutInfoProps = {
 
@@ -31,42 +31,7 @@ export const LayoutInfo = ({}: LayoutInfoProps) => {
         {author && (
           <>
             <div className={S.rule}/>
-            <div className={S.author}>
-              <div className={S.info}>
-                <div className={S.authorContent}>
-
-                  {author.image && (
-                    <img className={S.image} src={author.image} alt={author.name} />
-                  )}
-                  <div className={S.about}>
-                    <h3 className={S.name}>{author.name}</h3>
-                    {author.contacts && (
-                      <div className={S.contacts}>
-                        {author.contacts.map(contact => (
-                          <a 
-                            href={contact.url} 
-                            target='_blank' 
-                            className={S.contact}
-                            title={contact.title}
-                            key={contact.id}
-                          >
-                            <Icon icon={contact.icon}/>
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {author.donationUrl && (
-                <div className={S.donate}>
-                  <a className={S.button} href={author.donationUrl} target='_blank'>
-                    {t('Support author')}
-                  </a>
-                </div>
-              )}
-            </div>
+            <AuthorInfo author={author}/>
           </>
         )}
       </div>

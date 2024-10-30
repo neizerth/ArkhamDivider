@@ -3,6 +3,7 @@ export { Layout } from './containers/Layout/Layout';
 export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
 export { CategoryInfo } from './containers/CategoryInfo/CategoryInfo';
 export { PageCredits } from './containers/PageCredits/PageCredits';
+export { AuthorInfo } from './containers/AuthorInfo/AuthorInfo';
 
 export { StoryCustomContent }  from './containers/StoryCustomContent/StoryCustomContent';
 

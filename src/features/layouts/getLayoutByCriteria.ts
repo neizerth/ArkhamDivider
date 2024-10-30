@@ -1,5 +1,5 @@
 import { ILayout, ILayoutCriteria, LayoutType } from "@/types/layouts";
-import { getLayouts } from "@/util/layouts";
+import { getLayouts } from "@/features/layouts/common";
 import { omit } from "ramda";
 
 export const getLayoutByCriteria = ({

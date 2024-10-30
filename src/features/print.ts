@@ -1,5 +1,5 @@
 import { IPage, PageSide } from "@/types/print";
-import { splitIntoGroups } from "./common";
+import { splitIntoGroups } from "../util/common";
 
 export type SplitIntoPagesOptions = {
   groupSize: number

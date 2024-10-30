@@ -1,7 +1,7 @@
 
 import { layoutCategories, layouts } from '@/data/layouts';
 import { ILayout, ILayoutCriteria, LayoutOrientation, LayoutType } from "@/types/layouts";
-import { propsEquals } from './criteria';
+import { propsEquals } from '../../util/criteria';
 import { isNil, propEq, reject } from 'ramda';
 
 export const getLayoutById = (layoutId: string) => layouts.find(({ id }) => layoutId === id);

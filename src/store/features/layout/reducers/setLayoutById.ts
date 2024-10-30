@@ -1,4 +1,4 @@
-import { getLayouts } from "@/util/layouts";
+import { getLayouts } from "@/features/layouts/common";
 import { CaseReducer, PayloadAction } from "@reduxjs/toolkit";
 import { ILayoutState } from "../layout";
 
