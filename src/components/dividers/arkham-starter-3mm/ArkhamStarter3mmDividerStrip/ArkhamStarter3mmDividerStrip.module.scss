@@ -30,6 +30,12 @@
   @include textStroke(#352e1f, 0.1mm, 0.1mm);
 }
 
+.textStroke {
+  color: #352e1f;
+  transform: scale(1.01) translateX(0.5%);
+  transform-origin: center center;
+}
+
 .content {
   position: relative;
   z-index: 2;

@@ -9,6 +9,7 @@ import useFitText from "use-fit-text";
 export type DividerTextProps = PropsWithClassName & {
   inputClassName?: string
   iconClassName?: string
+  strokeClassName?: string
   lineClassName?: (count: number) => string
 
   fixedFontSize?: boolean
@@ -19,6 +20,8 @@ export type DividerTextProps = PropsWithClassName & {
   onChange?: (value: string) => void
   defaultValue: string
   fullHeight?: boolean
+
+  stroke?: boolean
 }
 
 const toText = (html: string): string => 
@@ -29,6 +32,8 @@ const toText = (html: string): string =>
 
 
 export const DividerText = ({
+  stroke = false,
+  strokeClassName,
   fixedFontSize = true,
   fullHeight = true,
   onClear,
@@ -41,6 +46,7 @@ export const DividerText = ({
 }: DividerTextProps) => {
 
   const [_, setInitialValue] = useState(defaultValue);
+  const [text, setText] = useState(defaultValue); 
   // const ref = useRef<HTMLDivElement>(null)
 
   const { fontSize, ref } = useFitText({
@@ -50,9 +56,12 @@ export const DividerText = ({
   // console.log({ linesValue });
 
   const onValueChange = (value: string) => {
-    if (onChange) {
-      onChange(value);
+    if (!onChange) {
+      return;
     }
+
+    onChange(value);
+    setText(value);
   }
 
   const setDefaultValue = (value: string) => {
@@ -117,6 +126,17 @@ export const DividerText = ({
           style={style}
           ref={ref}
         />
+        {stroke && (
+          <div 
+            className={classNames(
+              S.stroke,
+              strokeClassName
+            )}
+            style={style}
+          >
+            {text}
+          </div>
+        )}
       </div>
       <div 
         className={classNames(S.clear)} 

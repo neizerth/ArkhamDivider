@@ -197,9 +197,8 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
                 color={stripColor}
                 secondaryColor={secondaryStripColor}
                 reverse={Boolean(xpCost)}
-              >
-                {storyName && <TextFit text={storyName} key={storyName}/>}
-              </Strip>
+                text={storyName}
+              />
             </div>
             <div
               className={classNames(
@@ -213,17 +212,11 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
                 color={stripColor}
                 secondaryColor={secondaryStripColor}
                 horizontal
-              >
-                {storyName && (
-                  <DividerText
-                    defaultValue={storyName}
-                    fixedFontSize={false}
-                    fullHeight={false}
-                    onChange={setStoryName}
-                    onClear={() => setStoryName(defaultStoryName)}
-                  />
-                )}
-              </Strip>
+                editable
+                onChange={setStoryName}
+                onClear={() => setStoryName(defaultStoryName)}
+                text={storyName}
+              />
             </div>
           </>
         )}

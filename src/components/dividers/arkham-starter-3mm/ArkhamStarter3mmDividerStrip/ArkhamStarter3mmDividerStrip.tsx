@@ -3,12 +3,18 @@ import S from './ArkhamStarter3mmDividerStrip.module.scss';
 import stripBorder from './images/stripBorder.png';
 import stripInner from './images/stripInner.png';
 import { PropsWithChildren } from 'react';
+import { DividerText } from '../../common/DividerText/DividerText';
+import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 
-export type ArkhamStarter3mmDividerStripProps = PropsWithChildren & {
+export type ArkhamStarter3mmDividerStripProps = {
   color: string
   secondaryColor?: string
   horizontal?: boolean
   reverse?: boolean
+  editable?: boolean
+  text?: string
+  onChange?: (value: string) => void
+  onClear?: () => void
 }
 
 export const ArkhamStarter3mmDividerStrip = ({
@@ -16,7 +22,10 @@ export const ArkhamStarter3mmDividerStrip = ({
   secondaryColor,
   horizontal,
   reverse,
-  children
+  text,
+  editable,
+  onChange,
+  onClear
 }: ArkhamStarter3mmDividerStripProps) => {
   return (
     <div className={classNames(
@@ -24,11 +33,26 @@ export const ArkhamStarter3mmDividerStrip = ({
       horizontal ? S.horizontal : S.vertical,
       reverse && S.reverse
     )}>
-      <div className={S.contentWrapper}>
-        <div className={S.content}>
-          {children}
+      {text && (
+        <div className={S.contentWrapper}>
+          <div className={S.content}>
+            {editable && (
+              <DividerText
+                defaultValue={text}
+                fixedFontSize={false}
+                fullHeight={false}
+                strokeClassName={S.textStroke}
+                onChange={onChange}
+                onClear={onClear}
+                stroke
+              />
+            )}
+            {!editable && (
+              <TextFit text={text} key={text}/>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={classNames(
         S.wrapper

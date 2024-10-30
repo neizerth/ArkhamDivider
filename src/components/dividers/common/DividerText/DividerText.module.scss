@@ -28,7 +28,18 @@
   }
 }
 
+.stroke {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .input {
+  position: relative;
+  z-index: 2;
   font-family: inherit;
   background-color: transparent;
   text-align: inherit;
