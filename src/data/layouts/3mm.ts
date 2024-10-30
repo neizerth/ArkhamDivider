@@ -19,7 +19,9 @@ export const arkhamStarter3mmLayout: ILayout = {
     width: 100,
     height: 74,
     top: 3.5,
-    left: 3.5
+    left: 3.5,
+    right: 3.5,
+    bottom: 3.5
   },
   playerOptions: {
     displaySideXP: false
