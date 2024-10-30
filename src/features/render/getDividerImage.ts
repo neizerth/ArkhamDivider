@@ -44,17 +44,22 @@ export const getDividerImage = async ({
   const cropHeight = toPrintSize(crop.height);
 
   const source = await blob.arrayBuffer();
-  const buffer = vips.Image.newFromBuffer(source)
+  const image = vips.Image.newFromBuffer(source)
     .crop(
       cropLeft,
       cropTop,
       cropWidth,
       cropHeight
     )
-    .iccTransform('cmyk')
-    .writeToBuffer(ext);
+    .iccTransform('cmyk');
+  
+  // vips.ex
 
   const blobOptions = { type };
+  
+  const buffer = image.writeToBuffer(ext);
+
+  image.delete();
   
   const contents = new Blob([buffer], blobOptions);
   const filename = name + ext;

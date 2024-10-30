@@ -115,7 +115,6 @@ export const useDownloadDividers = () => {
     });
     const zipName = `Arkham Divider-${similarBleeds.size.toFixed(1)}mm.zip`
     saveAs(content, zipName);
-
   }
 
   return {
