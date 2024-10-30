@@ -26,6 +26,8 @@ export const Area = styled.div<ZoomProps>`
     filter: blur(0);
     transform-origin: top left;
     transform: translate3d(0, 0, 0) scale(${$zoom / 100});
+    image-rendering: crisp-edges;
+    backface-visibility: hidden;
   `}
   @media print {
     transform: none;
