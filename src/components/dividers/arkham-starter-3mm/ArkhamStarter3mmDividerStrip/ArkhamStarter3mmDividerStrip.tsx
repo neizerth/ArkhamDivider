@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import S from './ArkhamStarter3mmDividerStrip.module.scss';
 import stripBorder from './images/stripBorder.png';
 import stripInner from './images/stripInner.png';
-import { PropsWithChildren } from 'react';
 import { DividerText } from '../../common/DividerText/DividerText';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 
@@ -41,14 +40,19 @@ export const ArkhamStarter3mmDividerStrip = ({
                 defaultValue={text}
                 fixedFontSize={false}
                 fullHeight={false}
-                strokeClassName={S.textStroke}
                 onChange={onChange}
                 onClear={onClear}
+                strokeClassName={S.textStroke}
                 stroke
               />
             )}
             {!editable && (
-              <TextFit text={text} key={text}/>
+              <TextFit 
+                text={text} 
+                key={text}
+                strokeClassName={S.textStroke}
+                stroke
+              />
             )}
           </div>
         </div>
