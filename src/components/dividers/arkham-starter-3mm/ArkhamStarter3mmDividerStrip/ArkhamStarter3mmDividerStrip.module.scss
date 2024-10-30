@@ -26,6 +26,7 @@
   right: 100%;
 
   // text-shadow: 0 0 2px rgba(0, 0, 0) ;
+  -webkit-text-stroke: 0.001mm #352e1f;
   @include textStroke(#352e1f, 0.1mm, 0.1mm);
 }
 
