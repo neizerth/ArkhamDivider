@@ -55,6 +55,8 @@ export const AppSettings = () => {
                   onClick={onDownload} 
                   buttonType={ButtonType.SECONDARY}
                   icon="download"
+                  disabled={isSafari}
+                  title={isSafari ? 'Your browser is not supported' : ''}
                 >
                   TIFF {!done && (
                     <>{progress.done} / {progress.total}</>
