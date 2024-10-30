@@ -39,22 +39,25 @@ export const AppSettings = () => {
               <PrintSettings/>
             </div>
             {dividers.length > 0 && (
-              <IconButton 
-                onClick={download} 
-                buttonType={ButtonType.SECONDARY}
-                icon="download"
-              >
-                TIFF {!done && (
-                  <>{progress.done} / {progress.total}</>
-                )}
-              </IconButton>
+              <>
+                <IconButton 
+                  onClick={download} 
+                  buttonType={ButtonType.SECONDARY}
+                  icon="download"
+                >
+                  TIFF {!done && (
+                    <>{progress.done} / {progress.total}</>
+                  )}
+                </IconButton>
+
+                <IconButton 
+                  onClick={print} 
+                  icon="printer"
+                >
+                  {t('Print')} / PDF
+                </IconButton>
+              </>
             )}
-            <IconButton 
-              onClick={print} 
-              icon="printer"
-            >
-              {t('Print')} / PDF
-            </IconButton>
           </Row>
         </div>
       </Row>
