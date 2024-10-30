@@ -1,4 +1,4 @@
-import { DividerType, IDivider } from '@/types/dividers';
+import { DividerType } from '@/types/dividers';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
 import S from './ArkhamDecoDivider.module.scss';
 import paper from './images/paper.png'
@@ -29,10 +29,11 @@ import { useIconSelect } from '@/hooks/useIconSelect';
 import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
 import { getXPDisplayValue } from '@/util/xp';
 import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
+import { DividerProps } from '../../common/Divider/Divider';
 
 export const ArkhamDecoDivider = ({
   ...props
-}: IDivider) => {
+}: DividerProps) => {
   const {
     name = '',
     type,
@@ -41,6 +42,7 @@ export const ArkhamDecoDivider = ({
     id,
     displaySideXP,
     size,
+    className
   } = props;
 
   const [icon, selectIcon] = useIconSelect({
@@ -96,7 +98,8 @@ export const ArkhamDecoDivider = ({
         S[`size_${layoutSize}`],
         xpCost ? S.xp : S.noXP,
         S[`language_${realLanguage}`],
-        S[`orientation_${orientation}`]
+        S[`orientation_${orientation}`],
+        className
       )}
       data-type={layoutType}
     >

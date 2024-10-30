@@ -1,6 +1,4 @@
 import S from './Invocation2018Divider.module.scss';
-import { IDivider } from '@/types/dividers';
-import { PropsWithClassName } from '@/types/util';
 import { backgrounds } from './backgrounds';
 import { omit } from 'ramda';
 import { ClassicDivider, Icon } from '@/components';
@@ -12,8 +10,9 @@ import { selectLayout } from '@/store/features/layout/layout';
 import classNames from 'classnames';
 import iconBg from './images/icon-bg.png';
 import { useIconSelect } from '@/hooks/useIconSelect';
+import { DividerProps } from '../../common/Divider/Divider';
 
-export type Invocation2018DividerProps = PropsWithClassName & IDivider;
+export type Invocation2018DividerProps = DividerProps;
 
 export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 	const {

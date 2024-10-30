@@ -1,4 +1,3 @@
-import { IDivider } from '@/types/dividers';
 import S from './ArkhamStarter3mmDivider.module.scss';
 
 import background from './images/background.png';
@@ -14,14 +13,16 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { ArkhamStarter3mmPlayerCorner as PlayerCorner } from '../ArkhamStarter3mmPlayerCorner/ArkhamStarter3mmPlayerCorner';
 import { getPlayerCornerColor } from './colors/playerCornerColor';
+import { DividerProps } from '../../common/Divider/Divider';
 
-export const ArkhamStarter3mmDivider = (props: IDivider) => {
+export const ArkhamStarter3mmDivider = (props: DividerProps) => {
   const { t } = useTranslation();
   const {
     story,
     name = '',
     xpCost,
-    id
+    id,
+    className
   } = props;
 
   const [previewIcon, setPreviewIcon] = useIconSelect({
@@ -69,7 +70,8 @@ export const ArkhamStarter3mmDivider = (props: IDivider) => {
   return (
     <div className={classNames(
       S.container,
-      S[realLanguage]
+      S[realLanguage],
+      className
     )}>
       <DividerContent className={S.content}>
         <div className={S.menu}>

@@ -7,6 +7,7 @@ import { selectLayout } from '@/store/features/layout/layout';
 import { selectBleeds } from '@/store/features/print/print';
 
 import { Wrapper, GuidesContent, Content } from './components';
+import classNames from 'classnames';
 
 export type DividerContentProps = PropsWithClassName & PropsWithChildren & {
 
@@ -28,7 +29,13 @@ export const DividerContent = ({
       <GuidesContent className={S.guides} {...styledProps}>
 				<Guides className={S.guidesContent} guideClassName={S.guide}/>
 			</GuidesContent>
-			<Wrapper className={S.wrapper} {...styledProps}>
+			<Wrapper className={
+        classNames(
+          S.wrapper, 
+          'divider'
+        )} 
+        {...styledProps}
+      >
 				<Content className={S.divider} {...styledProps}>
           {children}
         </Content>

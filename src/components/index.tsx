@@ -30,8 +30,10 @@ export { IconFontStyles } from './ui/IconFontStyles/IconFontStyles';
 export { XPSlider } from './ui/XPSlider/XPSlider';
 export { Popup } from './ui/Popup/Popup';
 export { Nav } from './ui/Nav/Nav';
+export { Progress } from './ui/Progress/Progress';
 export { TextFit } from './ui/behavior/TextFit/TextFit';
 export { ZoomView } from './ui/behavior/ZoomView/ZoomView';
+export { NotExportable } from './ui/behavior/NotExportable/NotExportable';
 export { CustomIcon } from './ui/icons/CustomIcon/CustomIcon';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';
