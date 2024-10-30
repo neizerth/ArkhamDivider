@@ -38,7 +38,7 @@
 .safari {
   .text {
     text-shadow: none;
-    @include textStrokeOld(#352e1f);
+    @include simpleTextStrokeFilter(#352e1f);
   }
 }
 

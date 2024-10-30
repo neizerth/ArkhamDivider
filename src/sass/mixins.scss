@@ -4,13 +4,6 @@
   clip-path: polygon($left 0, $right 0, $right 100%, $left 100%);
 }
 
-@mixin textStrokeOld($color, $spread: 0px, $size: 1px) {
-  text-shadow: $size $size $spread $color, 
-    $size (-$size) $spread $color, 
-    (-$size) (-$size) $spread $color, 
-    (-$size) $size $spread $color;
-}
-
 @mixin textStroke($color, $size: 1, $unit: 1px) {
   $value: ();
   $angle: 0;
@@ -39,4 +32,11 @@
     $angle: $angle + $step;
   }
   text-shadow: $value;
+}
+
+@mixin simpleTextStrokeFilter($color, $size: 1px) {
+  filter: drop-shadow($size $size $color)  
+    drop-shadow($size (-$size) $color) 
+    drop-shadow((-$size) (-$size) $spread $color) 
+    drop-shadow((-$size) $size $spread $color);
 }
