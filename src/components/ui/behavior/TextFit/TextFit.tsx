@@ -13,6 +13,7 @@ export const TextFit = ({
   text, 
   stroke,
   strokeClassName,
+  className,
   ...props 
 }: TextFitProps) => {
   const { fontSize, ref } = useFitText(props);
@@ -21,7 +22,10 @@ export const TextFit = ({
   }
   return (
     <div 
-      className={S.container}
+      className={classNames(
+        S.container,
+        className
+      )}
       style={styles}
       ref={ref}
     >

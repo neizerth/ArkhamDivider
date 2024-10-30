@@ -11,11 +11,11 @@
     (-$size) $size $spread $color;
 }
 
-@function textStrokeValue($color, $size: 1, $unit: 1px) {
+@mixin textStroke($color, $size: 1, $unit: 1px) {
   $value: ();
   $angle: 0;
-  // $step: 1 / $size;
-  $step: 1 / ($size * 2);
+  $step: 1 / $size;
+  // $step: 1 / ($size * 2);
   @while $angle < 2 * math.$pi {
     $x: math.cos($angle) * $size;
     $y: math.sin($angle) * $size;
@@ -23,18 +23,20 @@
     $value: append($value, $x*$unit $y*$unit $color, comma);
     $angle: $angle + $step;
   }
-  @return $value;
+  text-shadow: $value;
 }
 
-@mixin textStroke($color, $size: 1, $unit: 1px) {
-  text-shadow: textStrokeValue($color, $size, $unit);
-}
-
-@mixin textStrokeFilter($color, $size: 1, $unit: 1px) {
-  $data: textStrokeValue($color, $size, $unit);
+@mixin textStrokeFilter($color, $size: 1, $unit: 1px, $spread: 0) {
   $value: ();
-  @each $item in $data {
-    $value: append($value, drop-shadow($item), space);
+  $angle: 0;
+  $step: 1 / $size;
+  // $step: 1 / ($size * 2);
+  @while $angle < 2 * math.$pi {
+    $x: math.cos($angle) * $size;
+    $y: math.sin($angle) * $size;
+    
+    $value: append($value, $x*$unit $y*$unit $spread $color, comma);
+    $angle: $angle + $step;
   }
-  filter: $value;
+  text-shadow: $value;
 }
