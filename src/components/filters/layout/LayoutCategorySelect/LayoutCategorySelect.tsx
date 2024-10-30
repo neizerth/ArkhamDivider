@@ -7,7 +7,7 @@ import { layoutCategories } from '@/data/layouts';
 import classNames from 'classnames';
 import { PropsWithClassName } from '@/types/util';
 import { propEq } from 'ramda';
-import { getLayouts } from '@/util/layouts';
+import { getLayouts } from '@/features/layouts/common';
 import { useTranslation } from 'react-i18next';
 
 export type LayoutCategorySelectProps = PropsWithClassName & {

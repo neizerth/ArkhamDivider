@@ -30,8 +30,10 @@ export const invocation2018Layouts = [
     color: true,
     bleeds: {
       ...vertical.bleeds,
-      top: 2.2,
-      left: 3.2
+      top: 3,
+      left: 3.2,
+      bottom: 4,
+      right: 4.8
     }
   },
   {
@@ -45,8 +47,10 @@ export const invocation2018Layouts = [
     color: true,
     bleeds: {
       ...verticalForSleeves.bleeds,
-      top: 2.2,
-      left: 1.9
+      top: 3,
+      left: 3,
+      bottom: 4,
+      right: 5
     }
   },
 ]

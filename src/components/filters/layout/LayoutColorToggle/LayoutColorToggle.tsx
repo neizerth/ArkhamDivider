@@ -3,7 +3,7 @@ import S from './LayoutColorToggle.module.scss';
 import { selectLayout } from '@/store/features/layout/layout';
 import { PropsWithClassName } from '@/types/util';
 import { Color } from '@/components';
-import { getLayouts } from '@/util/layouts';
+import { getLayouts } from '@/features/layouts/common';
 import classNames from 'classnames';
 import { useAppNavigate } from '@/hooks/useAppNavigate';
 import { ILayout } from '@/types/layouts';

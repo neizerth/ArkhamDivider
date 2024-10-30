@@ -7,7 +7,7 @@ import { ILayout } from '@/types/layouts';
 import * as reducers from './reducers';
 import { safePropEq } from "@/util/criteria";
 import { AppThunk } from "@/store";
-import { getLayouts } from "@/util/layouts";
+import { getLayouts } from "@/features/layouts/common";
 
 export const DEFAULT_LAYOUT = layouts.find(safePropEq(true, 'isDefault')) as ILayout;
 

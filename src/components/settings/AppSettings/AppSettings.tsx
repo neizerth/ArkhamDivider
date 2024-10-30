@@ -7,6 +7,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectDividers } from '@/store/features/dividers/dividers';
 import { detect } from 'detect-browser';
 import { useMemo } from 'react';
+import { selectExport } from '@/store/features/app/app';
 
 
 export const AppSettings = () => {
@@ -16,14 +17,15 @@ export const AppSettings = () => {
     download,
     progress 
   } = useDownloadDividers();
+  const isExport = useAppSelector(selectExport);
   const dividers = useAppSelector(selectDividers);
 
-  const done = progress.done === progress.total;
+  const isDone = progress.done === progress.total;
   const browser = useMemo(detect, []);
-  const isSafari = browser?.name ==='safari';
+  const isChrome = browser?.name ==='chrome';
 
   const onDownload = () => {
-    if (isSafari) {
+    if (!isChrome) {
       return;
     }
     download();
@@ -55,13 +57,14 @@ export const AppSettings = () => {
                   onClick={onDownload} 
                   buttonType={ButtonType.SECONDARY}
                   icon="download"
-                  disabled={isSafari}
-                  title={isSafari ? 'Your browser is not supported' : ''}
+                  disabled={!isChrome}
+                  title={!isChrome ? 'Your browser is not supported' : ''}
                 >
-                  TIFF {!done && (
+                  PNG {!isDone && (
                     <>{progress.done} / {progress.total}</>
                   )}
-                  {isSafari && (
+                  {isDone && isExport && <Icon icon="hour-glass"/>}
+                  {!isChrome && (
                     <Icon icon="chrome"/>
                   )}
                 </IconButton>

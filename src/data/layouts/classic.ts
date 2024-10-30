@@ -18,7 +18,9 @@ export const horizontal = {
     width: 97,
     height: 84,
     top: 3.2,
-    left: 4
+    left: 4,
+    right: 4.1,
+    bottom: 4.6,
   }
 }
 
@@ -29,9 +31,11 @@ export const vertical = {
   width: 63,
   bleeds: {
     width: 71,
-    height: 106,
+    height: 107,
     top: 3.2,
-    left: 4.6
+    left: 4.6,
+    right: 3.4,
+    bottom: 3.8
   },
 }
 
@@ -42,9 +46,11 @@ export const verticalForSleeves = {
   width: 65,
   bleeds: {
     width: 71,
-    height: 106,
+    height: 107,
     top: 3.2,
-    left: 3.3
+    left: 3.3,
+    right: 4.7,
+    bottom: 3.8
   }
 }
 

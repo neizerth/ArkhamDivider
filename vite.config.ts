@@ -47,5 +47,14 @@ export default defineConfig({
   },
   assetsInclude: [
     '**/*.ttf'
-  ]
+  ],
+  optimizeDeps: {
+    exclude: ["wasm-vips"],
+  },
+  server: {
+    headers: {
+      "Cross-Origin-Embedder-Policy": "require-corp",
+      "Cross-Origin-Opener-Policy": "same-origin",
+    },
+  },
 })

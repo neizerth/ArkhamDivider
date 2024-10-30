@@ -2,6 +2,12 @@ import { BASE_PATH } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
+const bleedsSize = {
+  top: 2,
+  left: 2,
+  right: 2,
+  bottom: 2
+}
 
 export const sarnetskyLayouts: ILayout[] = [
   {
@@ -19,8 +25,7 @@ export const sarnetskyLayouts: ILayout[] = [
     bleeds: {
       width: 93,
       height: 79,
-      top: 2,
-      left: 2
+      ...bleedsSize
     },
     campaignOptions: {
       includeCampaignIcon: true,
@@ -46,8 +51,7 @@ export const sarnetskyLayouts: ILayout[] = [
     bleeds: {
       width: 67,
       height: 109,
-      top: 2,
-      left: 2
+      ...bleedsSize
     },
     campaignOptions: {
       includeCampaignIcon: true,

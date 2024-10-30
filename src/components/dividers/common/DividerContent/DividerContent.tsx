@@ -8,6 +8,7 @@ import { selectBleeds } from '@/store/features/print/print';
 
 import { Wrapper, GuidesContent, Content } from './components';
 import classNames from 'classnames';
+import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
 
 export type DividerContentProps = PropsWithClassName & PropsWithChildren & {
 
@@ -31,9 +32,11 @@ export const DividerContent = ({
         useBleeds && 'divider'
       )}
     >
-      <GuidesContent className={S.guides} {...styledProps}>
-				<Guides className={S.guidesContent} guideClassName={S.guide}/>
-			</GuidesContent>
+      <NotExportable>
+        <GuidesContent className={S.guides} {...styledProps}>
+          <Guides className={S.guidesContent} guideClassName={S.guide}/>
+        </GuidesContent>
+      </NotExportable>
 			<Wrapper className={
         classNames(
           S.wrapper, 

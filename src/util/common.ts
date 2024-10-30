@@ -41,3 +41,9 @@ export const strIfDefined = (value: string) =>  value || '';
 export const pxToNumber = (x: string) => +x.replace('px', '');
 
 export const numberBetween = (min: number, max: number) => (x: number) => x >= min && x < max;
+
+export const minmax = (min: number, max: number) => 
+  (value: number) => Math.max(
+    min,
+    Math.min(value, max)
+  )

@@ -1,45 +1,17 @@
-import domToImage from 'dom-to-image';
 import JSZip from 'jszip';
-import { Jimp } from 'jimp';
 import { saveAs } from 'file-saver';
 import { getBrowserDPI, PRINT_DPI } from '@/util/units';
 import { useMemo, useState } from 'react';
 import { useAppDispatch } from './useAppDispatch';
-import { setZoom } from '@/store/features/layout/layout';
+import { selectLayout, setZoom } from '@/store/features/layout/layout';
 import { setExport } from '@/store/features/app/app';
+import { useAppSelector } from './useAppSelector';
+import { selectBleeds, setBleeds } from '@/store/features/print/print';
+import { delay } from '@/util/common';
+import { getDividerImage } from '@/features/render/getDividerImage';
+import { getSimilarBleeds } from '@/features/render/getSimilarBleeds';
+import { useTranslation } from 'react-i18next';
 
-export const getDividerImage = async ({
-  node,
-  scale,
-  name
-}: {
-  node: Element
-  scale: number
-  name: string
-}) => {
-  const rect = node.getBoundingClientRect();
-  
-  const width = rect.width * scale;
-  const height = rect.height * scale;
-
-  const image = await domToImage.toPng(node, {
-    width,
-    height,
-    style: {
-      transform: `scale(${scale})`,
-      transformOrigin: 'top left'
-    }
-  });
-
-  const jimp = await Jimp.read(image);
-  const contents = await jimp.getBuffer('image/tiff');
-  const filename = name + '.tiff';
-
-  return {
-    filename,
-    contents
-  }
-}
 
 const getDividerNodes = () => Array.from(
   document.querySelectorAll('.divider')
@@ -47,6 +19,11 @@ const getDividerNodes = () => Array.from(
 
 export const useDownloadDividers = () => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const useBleeds = useAppSelector(selectBleeds);
+  const { bleeds } = useAppSelector(selectLayout);
+  const similarBleeds = getSimilarBleeds(bleeds);
+
   const scale = useMemo(() => PRINT_DPI / getBrowserDPI(), []);
 
   const [progress, setProgress] = useState({
@@ -57,21 +34,26 @@ export const useDownloadDividers = () => {
   let cancelled = false;
 
   const download = async () => {
+    const defaultUseBleeds = useBleeds;
     dispatch(setZoom(100));
     dispatch(setExport(true));
+    dispatch(setBleeds(true));
+
     try {
+      await delay(1000);
       await process();
     }
     catch (error) {
       console.error('Error downloading dividers:', error);
-    }
-    finally {
 
       dispatch(setExport(false));
       setProgress({
         done: 0,
         total: 0
       });
+    }
+    finally {
+      dispatch(setBleeds(defaultUseBleeds));
     }
   }
 
@@ -86,13 +68,15 @@ export const useDownloadDividers = () => {
       return;
     }
 
+    const zip = new JSZip;
+    const bleedSize = similarBleeds.size;
+
     setProgress({
       done: 0,
       total
     });
 
     cancelled = false;
-    const zip = new JSZip;
 
     for (const [key, node] of nodes.entries()) {
       if (cancelled) {
@@ -102,7 +86,8 @@ export const useDownloadDividers = () => {
       const options = {
         name,
         node,
-        scale
+        scale,
+        bleeds
       };
 
       const {
@@ -124,8 +109,14 @@ export const useDownloadDividers = () => {
       type: 'blob',
     });
     dispatch(setExport(false));
-    saveAs(content, 'Arkham Divider');
-
+    setProgress({
+      done: 0,
+      total: 0
+    });
+    const bleed = bleedSize.toFixed(1);
+    const bleedsText = t('Bleeds').toLowerCase();
+    const zipName = `Arkham Divider (${bleedsText} ${bleed}mm).zip`
+    saveAs(content, zipName);
   }
 
   return {

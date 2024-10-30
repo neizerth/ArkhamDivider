@@ -3,7 +3,7 @@ import S from './LayoutOrientationToggle.module.scss';
 import icon from './images/change-orientation.svg'; 
 import { selectLayout } from '@/store/features/layout/layout';
 import { ILayout, LayoutOrientation } from '@/types/layouts';
-import { getLayouts } from '@/util/layouts';
+import { getLayouts } from '@/features/layouts/common';
 import classNames from 'classnames';
 import { PropsWithClassName } from '@/types/util';
 import { useAppNavigate } from '@/hooks/useAppNavigate';

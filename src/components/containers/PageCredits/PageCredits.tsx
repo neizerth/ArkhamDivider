@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import {QRCodeSVG} from 'qrcode.react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
-import { getCategoryById } from '@/util/layouts';
+import { getCategoryById } from '@/features/layouts/common';
 import { selectCategoryId } from '@/store/features/layout/layout';
 import { BOOSTY_LINK } from '@/constants/app';
 import { useTranslation } from 'react-i18next';

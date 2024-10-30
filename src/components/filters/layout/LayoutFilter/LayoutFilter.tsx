@@ -2,7 +2,7 @@ import S from './LayoutFilter.module.scss';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectCategoryId, selectLayout, selectType } from '@/store/features/layout/layout';
-import { getLayouts } from '@/util/layouts';
+import { getLayouts } from '@/features/layouts/common';
 import { isNotNil, prop, uniq } from 'ramda';
 import { LayoutColorToggle } from '../LayoutColorToggle/LayoutColorToggle';
 import { LayoutOrientationToggle } from '../LayoutOrientationToggle/LayoutOrientationToggle';
