@@ -5,6 +5,9 @@ import stripInner from './images/stripInner.png';
 import { DividerText } from '../../common/DividerText/DividerText';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { detect } from 'detect-browser';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectExport } from '@/store/features/app/app';
+import { useMemo } from 'react';
 
 export type ArkhamStarter3mmDividerStripProps = {
   color: string
@@ -27,15 +30,17 @@ export const ArkhamStarter3mmDividerStrip = ({
   onChange,
   onClear
 }: ArkhamStarter3mmDividerStripProps) => {
-  const browser = detect();
+
+  const browser = useMemo(detect, []);
   const isSafari = browser?.name === 'safari';
+  const isExport = useAppSelector(selectExport);
 
   return (
     <div className={classNames(
       S.container,
       horizontal ? S.horizontal : S.vertical,
       reverse && S.reverse,
-      isSafari && S.safariExport
+      isExport && isSafari && S.safari
     )}>
       {text && (
         <div className={S.contentWrapper}>

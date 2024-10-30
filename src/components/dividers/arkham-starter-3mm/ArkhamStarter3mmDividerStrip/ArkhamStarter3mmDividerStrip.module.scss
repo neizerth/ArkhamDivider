@@ -31,15 +31,17 @@
   // @include textStrokeFilter(#352e1f, 2, 0.1mm)
 }
 
-.safari {
-  .text {
-    @include textStrokeFilter(#352e1f, 0.4, 1mm, 0.2mm);
-  }
-}
-
 .text {
   @include textStroke(#352e1f, 4, 0.1mm);
 }
+
+.safari {
+  .text {
+    text-shadow: none;
+    @include textStrokeOld(#352e1f);
+  }
+}
+
 
 .textStroke {
   color: #352e1f;
