@@ -60,11 +60,28 @@ export const useDownloadDividers = () => {
   let cancelled = false;
 
   const download = async () => {
+    dispatch(setZoom(100));
+    dispatch(setExport(true));
+    try {
+      await process();
+    }
+    catch (error) {
+      console.error('Error downloading dividers:', error);
+    }
+    finally {
+
+      dispatch(setExport(false));
+      setProgress({
+        done: 0,
+        total: 0
+      });
+    }
+  }
+
+  const process = async () => {
     if (progress.done !== progress.total) {
       return;
     }
-    dispatch(setZoom(100));
-    dispatch(setExport(true));
 
     const nodes = getDividerNodes();
     const total = nodes.length;
