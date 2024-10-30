@@ -37,6 +37,6 @@
 @mixin simpleTextStrokeFilter($color, $size: 1px) {
   filter: drop-shadow($size $size $color)  
     drop-shadow($size (-$size) $color) 
-    drop-shadow((-$size) (-$size) $spread $color) 
-    drop-shadow((-$size) $size $spread $color);
+    drop-shadow((-$size) (-$size) $color) 
+    drop-shadow((-$size) $size $color);
 }
