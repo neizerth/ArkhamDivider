@@ -19,3 +19,5 @@ export const getBrowserDPI = () => {
 
   return width * INCH / mm;
 }
+
+export const MIN_BLEED_SIZE = 3; // 3mm

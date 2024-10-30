@@ -1,6 +1,5 @@
 import path from 'path';
 import { VitePluginRadar } from 'vite-plugin-radar'
-import crossOriginIsolation from 'vite-plugin-cross-origin-isolation'
 
 import { defineConfig } from 'vite';
 import svgr from "vite-plugin-svgr";
@@ -34,7 +33,6 @@ export default defineConfig({
   plugins: [
     svgr(), 
     react(),
-    crossOriginIsolation(),
     VitePluginRadar({
       enableDev: false,
       metrica
@@ -52,5 +50,11 @@ export default defineConfig({
   ],
   optimizeDeps: {
     exclude: ["wasm-vips"],
-  }
+  },
+  server: {
+    headers: {
+      "Cross-Origin-Embedder-Policy": "require-corp",
+      "Cross-Origin-Opener-Policy": "same-origin",
+    },
+  },
 })

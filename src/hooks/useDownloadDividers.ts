@@ -11,6 +11,7 @@ import { delay } from '@/util/common';
 import { getDividerImage } from '@/features/render/getDividerImage';
 import Vips from 'wasm-vips';
 import { getSimilarBleeds } from '@/features/render/getSimilarBleeds';
+import { useTranslation } from 'react-i18next';
 
 const vipsPromise = Vips();
 
@@ -20,6 +21,7 @@ const getDividerNodes = () => Array.from(
 
 export const useDownloadDividers = () => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
   const useBleeds = useAppSelector(selectBleeds);
   const { bleeds } = useAppSelector(selectLayout);
   const similarBleeds = getSimilarBleeds(bleeds);
@@ -69,13 +71,15 @@ export const useDownloadDividers = () => {
       return;
     }
 
+    const zip = new JSZip;
+    const bleedSize = similarBleeds.size;
+
     setProgress({
       done: 0,
       total
     });
 
     cancelled = false;
-    const zip = new JSZip;
 
     for (const [key, node] of nodes.entries()) {
       if (cancelled) {
@@ -113,7 +117,9 @@ export const useDownloadDividers = () => {
       done: 0,
       total: 0
     });
-    const zipName = `Arkham Divider-${similarBleeds.size.toFixed(1)}mm.zip`
+    const bleed = bleedSize.toFixed(1);
+    const bleedsText = t('Bleeds').toLowerCase();
+    const zipName = `Arkham Divider (${bleedsText} ${bleed}mm).zip`
     saveAs(content, zipName);
   }
 
