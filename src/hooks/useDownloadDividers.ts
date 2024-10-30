@@ -9,11 +9,9 @@ import { useAppSelector } from './useAppSelector';
 import { selectBleeds, setBleeds } from '@/store/features/print/print';
 import { delay } from '@/util/common';
 import { getDividerImage } from '@/features/render/getDividerImage';
-import Vips from 'wasm-vips';
 import { getSimilarBleeds } from '@/features/render/getSimilarBleeds';
 import { useTranslation } from 'react-i18next';
 
-const vipsPromise = Vips();
 
 const getDividerNodes = () => Array.from(
   document.querySelectorAll('.divider')
@@ -60,7 +58,6 @@ export const useDownloadDividers = () => {
   }
 
   const process = async () => {
-    const vips = await vipsPromise;
     if (progress.done !== progress.total) {
       return;
     }
@@ -90,8 +87,7 @@ export const useDownloadDividers = () => {
         name,
         node,
         scale,
-        bleeds,
-        vips
+        bleeds
       };
 
       const {

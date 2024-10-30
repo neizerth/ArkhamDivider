@@ -1,22 +1,20 @@
 import { ILayoutBleeds } from '@/types/layouts';
 import { toPrintSize } from '@/util/units';
 import domToImage from 'dom-to-image';
-import Vips from "wasm-vips";
 import { getSimilarBleeds } from './getSimilarBleeds';
+import { Jimp } from 'jimp';
 
 export type IGetDividerImageOptions = {
   node: Element
   scale: number
   name: string
   bleeds: ILayoutBleeds
-  vips: typeof Vips
 }
 
 export const getDividerImage = async ({
   node,
   scale,
   name,
-  vips,
   bleeds
 }: IGetDividerImageOptions) => {
   const rect = node.getBoundingClientRect();
@@ -24,7 +22,7 @@ export const getDividerImage = async ({
   const width = rect.width * scale;
   const height = rect.height * scale;
 
-  const blob = await domToImage.toBlob(node, {
+  const source = await domToImage.toPng(node, {
     width,
     height,
     style: {
@@ -33,9 +31,6 @@ export const getDividerImage = async ({
     }
   });
 
-  const fileFormat = 'tiff';
-  const ext = '.' + fileFormat;
-  const type = 'image/' + fileFormat;
   const crop = getSimilarBleeds(bleeds);
 
   const cropLeft = toPrintSize(crop.left);
@@ -43,25 +38,20 @@ export const getDividerImage = async ({
   const cropWidth = toPrintSize(crop.width);
   const cropHeight = toPrintSize(crop.height);
 
-  const source = await blob.arrayBuffer();
-  const image = vips.Image.newFromBuffer(source)
-    .crop(
-      cropLeft,
-      cropTop,
-      cropWidth,
-      cropHeight
-    )
-    .iccTransform('cmyk');
-  
-  // vips.ex
+  const image = await Jimp.read(source);
 
-  const blobOptions = { type };
-  
-  const buffer = image.writeToBuffer(ext);
+  image.crop({
+    x: cropLeft,
+    y: cropTop,
+    w: cropWidth,
+    h: cropHeight
+  });
 
-  image.delete();
-  
-  const contents = new Blob([buffer], blobOptions);
+  const fileFormat = 'png';
+  const ext = '.' + fileFormat;
+
+  const contents = await image.getBuffer('image/png');
+
   const filename = name + ext;
 
   return {

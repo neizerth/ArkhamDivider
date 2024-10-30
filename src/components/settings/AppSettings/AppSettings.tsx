@@ -60,7 +60,7 @@ export const AppSettings = () => {
                   disabled={!isChrome}
                   title={!isChrome ? 'Your browser is not supported' : ''}
                 >
-                  TIFF {!isDone && (
+                  PNG {!isDone && (
                     <>{progress.done} / {progress.total}</>
                   )}
                   {isDone && isExport && <Icon icon="hour-glass"/>}
