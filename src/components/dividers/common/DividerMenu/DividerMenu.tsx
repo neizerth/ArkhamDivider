@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 // import { removeDivider } from '@/store/features/dividers/dividers';
 import { copyDivider, removeDivider } from '@/store/features/dividers/dividers';
-import { Icon, NotExportable } from '@/components';
+import { Icon } from '@/components';
 
 export type DividerMenuProps = PropsWithClassName &{
   id: string
@@ -19,18 +19,16 @@ export const DividerMenu = ({
   const onCopy = () => dispatch(copyDivider(id));
 
   return (
-    <NotExportable>
-      <div className={classNames(
-        S.container,
-        className
-      )}>
-      <div onClick={onCopy}>
-        <Icon icon="icomoonfree-copy" className={classNames(S.icon, S.copy)}/>
-      </div>
-      <div onClick={onRemove}>
-        <Icon icon="trash" className={classNames(S.icon, S.remove)}/>
-      </div>
+    <div className={classNames(
+      S.container,
+      className
+    )}>
+    <div onClick={onCopy}>
+      <Icon icon="icomoonfree-copy" className={classNames(S.icon, S.copy)}/>
     </div>
-    </NotExportable>
+    <div onClick={onRemove}>
+      <Icon icon="trash" className={classNames(S.icon, S.remove)}/>
+    </div>
+  </div>
   );
 }

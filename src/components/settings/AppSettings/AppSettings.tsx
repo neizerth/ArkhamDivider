@@ -5,6 +5,8 @@ import { useDownloadDividers } from '@/hooks/useDownloadDividers';
 import { ButtonType } from '@/types/ui';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectDividers } from '@/store/features/dividers/dividers';
+import { detect } from 'detect-browser';
+import { useMemo } from 'react';
 
 
 export const AppSettings = () => {
@@ -17,6 +19,15 @@ export const AppSettings = () => {
   const dividers = useAppSelector(selectDividers);
 
   const done = progress.done === progress.total;
+  const browser = useMemo(detect, []);
+  const isSafari = browser?.name ==='safari';
+
+  const onDownload = () => {
+    if (isSafari) {
+      return;
+    }
+    download();
+  };
   
   return (
     <div className={S.container}>
@@ -41,12 +52,15 @@ export const AppSettings = () => {
             {dividers.length > 0 && (
               <>
                 <IconButton 
-                  onClick={download} 
+                  onClick={onDownload} 
                   buttonType={ButtonType.SECONDARY}
                   icon="download"
                 >
                   TIFF {!done && (
                     <>{progress.done} / {progress.total}</>
+                  )}
+                  {isSafari && (
+                    <Icon icon="chrome"/>
                   )}
                 </IconButton>
 

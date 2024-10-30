@@ -35,13 +35,6 @@
   @include textStroke(#352e1f, 4, 0.1mm);
 }
 
-.safari {
-  .text {
-    text-shadow: none;
-    @include simpleTextStrokeFilter(#352e1f);
-  }
-}
-
 
 .textStroke {
   color: #352e1f;

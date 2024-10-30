@@ -1,7 +1,7 @@
 import S from './SarnetskyDivider.module.scss';
 
 import { DividerType } from '@/types/dividers';
-import { DividerContent, DividerMenu, DividerText, Icon } from '@/components';
+import { DividerContent, DividerMenu, DividerText, Icon, NotExportable } from '@/components';
 import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
@@ -200,12 +200,14 @@ export const SarnetskyDivider = (props: DividerProps) => {
 						</div>
 					)}
 				</div>
-				<div className={S.menu}>
-					<DividerMenu 
-						id={id} 
-						className={S.menuContainer}
-					/>
-				</div>
+				<NotExportable>
+					<div className={S.menu}>
+						<DividerMenu 
+							id={id} 
+							className={S.menuContainer}
+						/>
+					</div>
+				</NotExportable>
 			</DividerContent>
     </div>
   );

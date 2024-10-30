@@ -2,7 +2,7 @@ import S from './ArkhamStarter3mmDivider.module.scss';
 
 import background from './images/background.png';
 import iconCornerImage from './images/iconCorner.png';
-import { DividerContent, DividerMenu, DividerText, Icon, TextFit } from '@/components';
+import { DividerContent, DividerMenu, DividerText, Icon, NotExportable, TextFit } from '@/components';
 import classNames from 'classnames';
 import { ArkhamStarter3mmDividerStrip as Strip } from '../ArkhamStarter3mmDividerStrip/ArkhamStarter3mmDividerStrip';
 import { getSecondaryStripColor, getStripColor } from './colors/stripColor';
@@ -74,9 +74,11 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
       className
     )}>
       <DividerContent className={S.content}>
-        <div className={S.menu}>
-          <DividerMenu id={id} className={S.menuInner}/>
-        </div>
+        <NotExportable>
+          <div className={S.menu}>
+            <DividerMenu id={id} className={S.menuInner}/>
+          </div>
+        </NotExportable>
         <img className={S.background} src={background}/>
         {xpCost && xpTitle && (
           <>

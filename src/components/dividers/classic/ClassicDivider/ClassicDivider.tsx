@@ -3,7 +3,7 @@ import { PropsWithChildren, useEffect, useState } from 'react';
 import S from './ClassicDivider.module.scss';
 import { backgrounds } from './backgrounds';
 
-import { Icon, DividerMenu, DividerText, DividerContent } from '@/components';
+import { Icon, DividerMenu, DividerText, DividerContent, NotExportable } from '@/components';
 import classNames from 'classnames';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -148,7 +148,9 @@ export const ClassicDivider = ({
 				
 				{children}
 
-				<DividerMenu id={id} className={S.menu}/>
+				<NotExportable>
+					<DividerMenu id={id} className={S.menu}/>
+				</NotExportable>
 
 				<ClassicDividerStatus
 					className={S.status}

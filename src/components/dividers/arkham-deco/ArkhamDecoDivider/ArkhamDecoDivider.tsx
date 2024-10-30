@@ -19,7 +19,7 @@ import tabTopLine from './images/tab-top-line.png'
 import tabTentacles from './images/tab-tentacles.png';
 
 import classNames from 'classnames';
-import { DividerMenu, DividerText, Icon } from '@/components';
+import { DividerMenu, DividerText, Icon, NotExportable } from '@/components';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -115,9 +115,11 @@ export const ArkhamDecoDivider = ({
               onClick={selectLineIcon}
             />
           )}
-          <div className={S.menu}>
-            <DividerMenu id={id} className={S.menuContainer}/>
-          </div>
+          <NotExportable>
+            <div className={S.menu}>
+              <DividerMenu id={id} className={S.menuContainer}/>
+            </div>
+          </NotExportable>
 
           {color && (
             <img src={paper} alt="" className={S.paper}/>
