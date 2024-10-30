@@ -11,8 +11,7 @@ export const AppSettings = () => {
   const { t } = useTranslation();
   const print = () => window.print();
   const { 
-    download, 
-    cancel, 
+    download,
     progress 
   } = useDownloadDividers();
   const dividers = useAppSelector(selectDividers);
@@ -45,7 +44,7 @@ export const AppSettings = () => {
                 buttonType={ButtonType.SECONDARY}
                 icon="download"
               >
-                ZIP {!done && (
+                TIFF {!done && (
                   <>{progress.done} / {progress.total}</>
                 )}
               </IconButton>
@@ -54,7 +53,7 @@ export const AppSettings = () => {
               onClick={print} 
               icon="printer"
             >
-              {t('Print')}
+              {t('Print')} / PDF
             </IconButton>
           </Row>
         </div>

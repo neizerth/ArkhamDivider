@@ -59,6 +59,7 @@ export { StorySelect, StorySelectOption, StorySelectValue } from './filters/stor
 
 export { AppSettings } from './settings/AppSettings/AppSettings';
 export { PrintSettings } from './settings/PrintSettings/PrintSettings';
+export { LayoutGridSettings } from './settings/LayoutGridSettings/LayoutGridSettings';
 
 export { CategoriesMenu } from './layout/CategoriesMenu/CategoriesMenu';
 export { LayoutMenu } from './layout/LayoutMenu/LayoutMenu';

@@ -26,6 +26,7 @@ export const PrintSettings = () => {
   const toggleDoubleSided = () => dispatch(setDoubleSided(!doubleSided));
   const toggleBleeds = () => dispatch(setBleeds(!useBleeds));
 
+
   // const 
   return (
     <Row>

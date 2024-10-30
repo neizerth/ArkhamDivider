@@ -1,5 +1,6 @@
 import domToImage from 'dom-to-image';
 import JSZip from 'jszip';
+import { Jimp } from 'jimp';
 import { saveAs } from 'file-saver';
 import { getBrowserDPI, PRINT_DPI } from '@/util/units';
 import { useMemo, useState } from 'react';
@@ -9,17 +10,19 @@ import { setExport } from '@/store/features/app/app';
 
 export const getDividerImage = async ({
   node,
-  scale
+  scale,
+  name
 }: {
   node: Element
   scale: number
+  name: string
 }) => {
   const rect = node.getBoundingClientRect();
   
   const width = rect.width * scale;
   const height = rect.height * scale;
 
-  const image = await domToImage.toBlob(node, {
+  const image = await domToImage.toPng(node, {
     width,
     height,
     style: {
@@ -28,7 +31,14 @@ export const getDividerImage = async ({
     }
   });
 
-  return image;
+  const jimp = await Jimp.read(image);
+  const contents = await jimp.getBuffer('image/tiff');
+  const filename = name + '.tiff';
+
+  return {
+    filename,
+    contents
+  }
 }
 
 const getDividerNodes = () => Array.from(
@@ -43,7 +53,7 @@ export const useDownloadDividers = () => {
     done: 0,
     total: 0
   });
-  
+
   let cancelled = false;
 
   const download = async () => {
@@ -71,13 +81,16 @@ export const useDownloadDividers = () => {
       if (cancelled) {
         return;
       }
-      const contents = await getDividerImage({
+      const name = key > 9 ? key.toString() : '0' + key;
+      
+      const {
+        contents,
+        filename
+      } = await getDividerImage({
+        name,
         node,
         scale
       });
-
-      const index = key > 9 ? key : '0' + key;
-      const filename = `${index}.png`;
 
       zip.file(filename, contents, {
         binary: true,
