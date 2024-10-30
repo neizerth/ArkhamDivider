@@ -1,5 +1,6 @@
 import path from 'path';
 import { VitePluginRadar } from 'vite-plugin-radar'
+import crossOriginIsolation from 'vite-plugin-cross-origin-isolation'
 
 import { defineConfig } from 'vite';
 import svgr from "vite-plugin-svgr";
@@ -33,6 +34,7 @@ export default defineConfig({
   plugins: [
     svgr(), 
     react(),
+    crossOriginIsolation(),
     VitePluginRadar({
       enableDev: false,
       metrica
@@ -47,5 +49,8 @@ export default defineConfig({
   },
   assetsInclude: [
     '**/*.ttf'
-  ]
+  ],
+  optimizeDeps: {
+    exclude: ["wasm-vips"],
+  }
 })

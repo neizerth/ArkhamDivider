@@ -7,6 +7,8 @@ import { useMemo, useState } from 'react';
 import { useAppDispatch } from './useAppDispatch';
 import { setZoom } from '@/store/features/layout/layout';
 import { setExport } from '@/store/features/app/app';
+import Vips from 'wasm-vips';
+const vips = await Vips();
 
 export const getDividerImage = async ({
   node,
@@ -22,7 +24,7 @@ export const getDividerImage = async ({
   const width = rect.width * scale;
   const height = rect.height * scale;
 
-  const image = await domToImage.toPng(node, {
+  const blob = await domToImage.toBlob(node, {
     width,
     height,
     style: {
@@ -31,9 +33,19 @@ export const getDividerImage = async ({
     }
   });
 
-  const jimp = await Jimp.read(image);
-  const contents = await jimp.getBuffer('image/tiff');
-  const filename = name + '.tiff';
+  const fileFormat = 'tiff';
+  const ext = '.' + fileFormat;
+  const type = 'image/' + fileFormat;
+
+  const source = await blob.arrayBuffer();
+  const buffer = vips.Image.newFromBuffer(source)
+    .iccTransform('cmyk')
+    .writeToBuffer(ext);
+
+  const blobOptions = { type };
+  
+  const contents = new Blob([buffer], blobOptions);
+  const filename = name + ext;
 
   return {
     filename,
@@ -64,8 +76,6 @@ export const useDownloadDividers = () => {
     }
     catch (error) {
       console.error('Error downloading dividers:', error);
-    }
-    finally {
 
       dispatch(setExport(false));
       setProgress({

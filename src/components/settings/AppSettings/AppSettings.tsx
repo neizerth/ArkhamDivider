@@ -20,10 +20,10 @@ export const AppSettings = () => {
 
   const done = progress.done === progress.total;
   const browser = useMemo(detect, []);
-  const isSafari = browser?.name ==='safari';
+  const isChrome = browser?.name ==='chrome';
 
   const onDownload = () => {
-    if (isSafari) {
+    if (!isChrome) {
       return;
     }
     download();
@@ -55,13 +55,13 @@ export const AppSettings = () => {
                   onClick={onDownload} 
                   buttonType={ButtonType.SECONDARY}
                   icon="download"
-                  disabled={isSafari}
-                  title={isSafari ? 'Your browser is not supported' : ''}
+                  disabled={!isChrome}
+                  title={!isChrome ? 'Your browser is not supported' : ''}
                 >
                   TIFF {!done && (
                     <>{progress.done} / {progress.total}</>
                   )}
-                  {isSafari && (
+                  {!isChrome && (
                     <Icon icon="chrome"/>
                   )}
                 </IconButton>

@@ -36,7 +36,9 @@
     "sanitize-html": "^2.13.0",
     "styled-components": "^6.1.13",
     "use-fit-text": "^2.4.0",
-    "use-onclickoutside": "^0.4.1"
+    "use-onclickoutside": "^0.4.1",
+    "vite-plugin-cross-origin-isolation": "^0.1.6",
+    "wasm-vips": "^0.0.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

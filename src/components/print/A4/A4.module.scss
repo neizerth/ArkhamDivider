@@ -1,4 +1,7 @@
 .container {
+  --long-side: 297mm;
+  --short-side: 210mm;
+  
   box-sizing: border-box;
   padding: 20mm 0;
   margin: 0 auto;
@@ -22,9 +25,6 @@
   //   --long-side: 297mm;
   //   --short-side: 210mm;
   // }
-
-  --long-side: 297mm;
-  --short-side: 210mm;
 
   @media print {
     padding: 0;

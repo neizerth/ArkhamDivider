@@ -7,7 +7,7 @@
 @mixin textStroke($color, $size: 1, $unit: 1px) {
   $value: ();
   $angle: 0;
-  $step: 1 / $size;
+  $step: calc(1 / $size);
   // $step: 1 / ($size * 2);
   @while $angle < 2 * math.$pi {
     $x: math.cos($angle) * $size;
@@ -22,7 +22,7 @@
 @mixin textStrokeFilter($color, $size: 1, $unit: 1px, $spread: 0) {
   $value: ();
   $angle: 0;
-  $step: 1 / $size;
+  $step: calc(1 / $size);
   // $step: 1 / ($size * 2);
   @while $angle < 2 * math.$pi {
     $x: math.cos($angle) * $size;
