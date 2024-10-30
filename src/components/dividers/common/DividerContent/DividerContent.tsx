@@ -25,14 +25,19 @@ export const DividerContent = ({
   }
 
   return (
-    <div className={S.container}>
+    <div 
+      className={classNames(
+        S.container,
+        useBleeds && 'divider'
+      )}
+    >
       <GuidesContent className={S.guides} {...styledProps}>
 				<Guides className={S.guidesContent} guideClassName={S.guide}/>
 			</GuidesContent>
 			<Wrapper className={
         classNames(
           S.wrapper, 
-          'divider'
+          !useBleeds && 'divider'
         )} 
         {...styledProps}
       >
