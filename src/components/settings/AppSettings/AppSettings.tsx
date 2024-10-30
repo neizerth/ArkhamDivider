@@ -17,6 +17,11 @@ export const AppSettings = () => {
   const dividers = useAppSelector(selectDividers);
 
   const done = progress.done === progress.total;
+
+  const onDownload = async () => {
+    download()
+      .catch(console.error);
+  };
   
   return (
     <div className={S.container}>
@@ -41,7 +46,7 @@ export const AppSettings = () => {
             {dividers.length > 0 && (
               <>
                 <IconButton 
-                  onClick={download} 
+                  onClick={onDownload} 
                   buttonType={ButtonType.SECONDARY}
                   icon="download"
                 >
