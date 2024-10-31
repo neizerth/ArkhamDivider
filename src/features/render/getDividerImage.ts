@@ -50,7 +50,7 @@ export const getDividerImage = async ({
   const fileFormat = 'png';
   const ext = '.' + fileFormat;
 
-  const contents = await image.getBuffer('image/png');
+  // const contents = await image.getBuffer('image/png');
 
   const filename = name + ext;
 

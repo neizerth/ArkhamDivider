@@ -12,7 +12,6 @@ import { getDividerImage } from '@/features/render/getDividerImage';
 import { getSimilarBleeds } from '@/features/render/getSimilarBleeds';
 import { useTranslation } from 'react-i18next';
 
-
 const getDividerNodes = () => Array.from(
   document.querySelectorAll('.divider')
 );
