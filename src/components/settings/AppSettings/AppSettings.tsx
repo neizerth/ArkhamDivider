@@ -45,6 +45,22 @@ export const AppSettings = () => {
         </Row>
         <div className={S.print}>
           <Row wrap className={S.row}>
+            <IconButton 
+              onClick={print} 
+              icon="crop"
+
+              buttonType={ButtonType.SECONDARY}
+            >
+              TIFF CMYK
+            </IconButton>
+            <IconButton 
+              onClick={print} 
+              icon="download"
+
+              buttonType={ButtonType.SECONDARY}
+            >
+              Laser Cut / Plotter PDF
+            </IconButton>
             <div className={S.zoom}>
               <LayoutZoom/>
             </div>
