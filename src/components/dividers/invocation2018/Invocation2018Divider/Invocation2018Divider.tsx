@@ -11,6 +11,7 @@ import classNames from 'classnames';
 import iconBg from './images/icon-bg.png';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
+import { selectLanguage } from '@/store/features/language/language';
 
 export type Invocation2018DividerProps = DividerProps;
 
@@ -23,6 +24,7 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 	} = props;
 
 	const { orientation } = useAppSelector(selectLayout);
+	const language = useAppSelector(selectLanguage);
 
 	const level = xpCost?.max || xpCost?.level || 0;
 
@@ -41,8 +43,10 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 	const dividerProps = background ? omit([
 		'previewIcon', 
 		'icon', 
-		'xpCost'
+		'xpCost',
+		'displaySideXP'
 	], props) : props;
+	
 
   return (
     <ClassicDivider 
@@ -78,7 +82,12 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 				</div>
 			)}
 			{displaySideXP && xpCost && (
-				<div className={S.sideXP}>
+				<div className={classNames(
+						S.sideXP,
+						S[`sideXP_${language}`],
+						displayNumericXP && S.sideXP_numeric
+					)}
+				>
 					<ClassicDividerSideXP
 						numeric={displayNumericXP}
 						xpCost={xpCost}

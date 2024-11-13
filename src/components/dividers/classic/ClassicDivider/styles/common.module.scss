@@ -5,8 +5,11 @@
   position: relative;
 }
 
-.ru {
+.ru{
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
+  .sideXP {
+    top: 6.2mm;
+  }
 }
 
 .title {
@@ -82,7 +85,7 @@
   font-size: 4mm;
   width: 5.4mm;
   height: 5.4mm;
-  right: 6mm;
+  right: 6.2mm;
 }
 
 .icon_large {
@@ -125,8 +128,8 @@
 .xpCost {
   position: absolute;
   z-index: 1;
-  right: 5.35mm;
-  top: 5.25mm;
+  right: 5.15mm;
+  top: 5.27mm;
 }
 
 .sideXP {
