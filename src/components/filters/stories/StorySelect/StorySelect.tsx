@@ -2,7 +2,7 @@ import S from './StorySelect.module.scss';
 import Select from 'react-select';
 
 import { IStory } from '@/types/api';
-import { isCampaign, isChallenge, isSideContent } from '@/store/features/stories/criteria';
+import { isCampaign, isChallenge, isSideCampaign, isSideContent } from '@/store/features/stories/criteria';
 import { useTranslation } from 'react-i18next';
 import { StorySelectOption } from '../StorySelectOption/StorySelectOption';
 import { StorySelectSingleValue } from '../StorySelectSingleValue/StorySelectSingleValue';
@@ -51,12 +51,12 @@ export const StorySelect = ({
     })
   }
   
-  const getOptions = (filter: (story: IStory) => boolean) => 
-    data
-      .filter(filter)
-      .map(mapStory);
+  const getOptions = (filter: (story: IStory) => boolean) => {
+    const stories = data.filter(filter);
+    return stories.map(mapStory);
+  }
 
-  const campaigns = getOptions(isCampaign)
+  const campaigns = getOptions(story => isCampaign(story) || isSideCampaign(story))
   const sideContent = getOptions(isSideContent)
   const challenges = getOptions(isChallenge);
 

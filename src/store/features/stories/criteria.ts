@@ -12,8 +12,7 @@ export const isStandalone = propEq('standalone', 'type');
 export const isCustom = (story: IStory) => Boolean(story.custom_content);
 
 export const isSideContent = anyPass([
-  isSideStory, 
-  isSideCampaign, 
+  isSideStory,
   isStandalone
 ]);
 
