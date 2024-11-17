@@ -1,6 +1,6 @@
-export type I18NLanguageBundle = {
-    [key: string]: string
-}
+import { Mapping } from "./util";
+
+export type I18NLanguageBundle = Mapping<string>;
 
 export type IPOEditorTranslation = {
     msgid: string;

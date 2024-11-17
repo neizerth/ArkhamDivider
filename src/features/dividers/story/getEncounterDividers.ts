@@ -19,7 +19,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     encounterSets
   } = options;
 
-  if (!includeEncounters) {
+  if (!includeEncounters && !includeScenarioEncounterSet) {
     return [];
   }
 
@@ -38,6 +38,10 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     ...extraEncounters
   ];
 
+  console.log({
+    scenarioIcons
+  })
+
   return encounters
     .map(code => {
       const isExtra = extra_encounter_sets.includes(code);
@@ -55,6 +59,10 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
       const isScenario = Boolean(icon) && scenarioIcons.includes(icon as string);
 
       if (!includeScenarioEncounterSet && isScenario) {
+        return;
+      }
+
+      if (!isScenario && !includeEncounters) {
         return;
       }
       

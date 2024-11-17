@@ -1,7 +1,6 @@
 import { IEncounterSet, IStory } from "@/types/api"
 import { isNotNil, prop, propEq, uniq } from "ramda"
 import { getStoryScenarios } from "./getScenarioDividers";
-import { getStoryScenarioIcons } from "./getStoryScenarioIcons";
 
 export const getScenarioDividerIcons = (story: IStory) => {
   const scenarios = getStoryScenarios(story);
@@ -68,10 +67,7 @@ export const getEncounterDividerIcons = ({
     propEq(code, 'code')
   )?.icon;
 
-  const scenarioIcons = getStoryScenarioIcons({
-    story,
-    encounterSets
-  });
+  const scenarioIcons = getScenarioDividerIcons(story);
 
   const filterScenarioIcons = (icon: string) => {
     if (!scenarioIcons.includes(icon)) {

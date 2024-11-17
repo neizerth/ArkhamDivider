@@ -1,6 +1,7 @@
 import { I18N_NAMESPACE } from "@/constants/i18n";
 import { I18NLanguageBundle } from "@/types/i18n";
 import i18n from "@/config/i18n";
+import { IStory } from "@/types/api";
 
 export const hasResourceBundle = (language: string, ns = I18N_NAMESPACE.DEFAULT) => 
   i18n.hasResourceBundle(language, ns);
@@ -14,3 +15,5 @@ export const setI18NLanguage = (language: string) => i18n.changeLanguage(languag
 export const createTranslation = (ns = I18N_NAMESPACE.DEFAULT, language: string | null = null) => i18n.getFixedT(language, ns);
 
 export const getLanguage = () => i18n.language;
+
+export const getStoryNS = ({ code }: IStory) => `story.${code}`;

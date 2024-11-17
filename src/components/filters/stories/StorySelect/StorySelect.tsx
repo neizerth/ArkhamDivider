@@ -3,7 +3,6 @@ import Select from 'react-select';
 
 import { IStory } from '@/types/api';
 import { isCampaign, isChallenge, isSideCampaign, isSideContent } from '@/store/features/stories/criteria';
-import { useTranslation } from 'react-i18next';
 import { StorySelectOption } from '../StorySelectOption/StorySelectOption';
 import { StorySelectSingleValue } from '../StorySelectSingleValue/StorySelectSingleValue';
 import { ascend, descend, prop, sortWith } from 'ramda';
@@ -12,6 +11,7 @@ import classNames from 'classnames';
 import { useAppNavigate } from '@/hooks/useAppNavigate';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectStory } from '@/store/features/dividers/dividers';
+import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 
 
 export type StorySelectProps = PropsWithClassName & {
@@ -24,7 +24,7 @@ export const StorySelect = ({
   className,
   getIsTranslated,
 }: StorySelectProps) => {
-  const { t } = useTranslation();
+  const { t, translateStory } = useStoryTranslation();
   const navigate = useAppNavigate();
   const story = useAppSelector(selectStory);
 
@@ -34,13 +34,14 @@ export const StorySelect = ({
     ascend(prop('name'))
   ], stories)
 
-  const labels = data.reduce((target, { name, code }) => {
-    target.set(code, t(name));
+  const labels = data.reduce((target, story) => {
+    const { name, code } = story;
+    target.set(code, translateStory(name, story));
     return target;
   }, new Map);
 
   const mapStory = (story: IStory) => ({
-    label: t(story.name),
+    label: translateStory(story.name, story),
     isTranslated: getIsTranslated(story),
     value: story
   });

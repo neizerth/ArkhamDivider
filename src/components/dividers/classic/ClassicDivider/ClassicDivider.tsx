@@ -9,7 +9,6 @@ import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
 import { selectLayout } from '@/store/features/layout/layout';
-import { useTranslation } from 'react-i18next';
 import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
 import { ClassicDividerIconXPCost } from '../xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost';
 import { propsEquals } from '@/util/criteria';
@@ -17,6 +16,7 @@ import { ClassicDividerSideXP } from '../xp/ClassicDividerSideXP/ClassicDividerS
 import { definedIf } from '@/util/common';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
+import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 
 export type ClassicDividerProps = DividerProps & PropsWithChildren &{
 	titleStroke?: boolean
@@ -37,7 +37,7 @@ export const ClassicDivider = ({
 	displayCampaignIcon = false,
 	...props
 }: ClassicDividerProps) => {
-	const { t } = useTranslation();
+	const { t } = useStoryTranslation(props.story);
 	const layout = useAppSelector(selectLayout);
 
 	const { 

@@ -7,7 +7,7 @@ import { setIcons } from '../icons/icons';
 import { addTranslatedStories, selectLoadedTranslations, setAvailableLanguages, setLoadedTranslations } from '../language/language';
 import { setEncounterSets } from '../encounterSets/encounterSets';
 import { DEFAULT_LANGUAGE } from '@/constants/i18n';
-import { setCoreTranslations } from '../i18n/i18n';
+import { setCoreTranslations, setCustomTranslations } from '../i18n/i18n';
 import * as translations from '@/translations';
 import { Mapping } from 'classnames';
 import { PopupType } from '@/types/ui';
@@ -83,6 +83,7 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
     stories,
     investigators,
     common,
+    custom
   } = await fetchLanguageData(language);
 
   // translations[language as keyof translations];
@@ -101,6 +102,7 @@ export const loadAppTranslations: ActionCreator<AppThunk> = (language: string) =
   };
   
   dispatch(setCoreTranslations(language, mapping));
+  dispatch(setCustomTranslations(language, custom));
   dispatch(addTranslatedStories(language, translatedStories));
   dispatch(setLoadedTranslations([
     ...loadedTranslations,
