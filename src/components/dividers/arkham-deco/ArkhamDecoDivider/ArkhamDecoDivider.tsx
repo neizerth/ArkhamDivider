@@ -21,7 +21,6 @@ import tabTentacles from './images/tab-tentacles.png';
 import classNames from 'classnames';
 import { DividerMenu, DividerText, Icon, NotExportable } from '@/components';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
 import { selectLayout } from '@/store/features/layout/layout';
