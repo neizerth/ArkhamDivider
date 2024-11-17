@@ -38,10 +38,6 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     ...extraEncounters
   ];
 
-  console.log({
-    scenarioIcons
-  })
-
   return encounters
     .map(code => {
       const isExtra = extra_encounter_sets.includes(code);
