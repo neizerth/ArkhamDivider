@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
 import { SarnetskyDividerBackground as DividerBackground } from '../SarnetskyDividerBackground/SarnetskyDividerBackground';
-import { useTranslation } from 'react-i18next';
 import { selectLanguage } from '@/store/features/language/language';
 import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from '../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters';
 import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from '../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters';
@@ -17,6 +16,7 @@ import { SarnetskyDividerXPText } from '../xp/SarnetskyDividerXPText/SarnetskyDi
 import { SarnetskyDividerMainIcon as MainIcon } from '../SarnetskyDividerMainIcon/SarnetskyDividerMainIcon';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
+import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -42,7 +42,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 		className
 	} = props;
 
-	const { t } = useTranslation();
+	const { t } = useStoryTranslation(story);
 
 	const language = useAppSelector(selectLanguage);
 	const { orientation } = useAppSelector(selectLayout);

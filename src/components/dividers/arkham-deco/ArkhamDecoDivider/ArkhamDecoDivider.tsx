@@ -30,6 +30,7 @@ import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
 import { getXPDisplayValue } from '@/features/xp';
 import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 import { DividerProps } from '../../common/Divider/Divider';
+import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 
 export const ArkhamDecoDivider = ({
   ...props
@@ -59,7 +60,7 @@ export const ArkhamDecoDivider = ({
 
   const [lineIcon, selectLineIcon] = useIconSelect();
 
-  const { t } = useTranslation();
+  const { t } = useStoryTranslation(props.story);
   const { 
     color,
     customParams,

@@ -6,7 +6,6 @@ import { DividerContent, DividerMenu, DividerText, Icon, NotExportable, TextFit 
 import classNames from 'classnames';
 import { ArkhamStarter3mmDividerStrip as Strip } from '../ArkhamStarter3mmDividerStrip/ArkhamStarter3mmDividerStrip';
 import { getSecondaryStripColor, getStripColor } from './colors/stripColor';
-import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { selectLanguage } from '@/store/features/language/language';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -14,9 +13,10 @@ import { useIconSelect } from '@/hooks/useIconSelect';
 import { ArkhamStarter3mmPlayerCorner as PlayerCorner } from '../ArkhamStarter3mmPlayerCorner/ArkhamStarter3mmPlayerCorner';
 import { getPlayerCornerColor } from './colors/playerCornerColor';
 import { DividerProps } from '../../common/Divider/Divider';
+import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 
 export const ArkhamStarter3mmDivider = (props: DividerProps) => {
-  const { t } = useTranslation();
+  const { t } = useStoryTranslation(props.story);
   const {
     story,
     name = '',
