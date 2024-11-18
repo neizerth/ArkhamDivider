@@ -1,18 +1,25 @@
 import { IStory } from "@/types/api";
 import { IGetIconGroupsOptions } from "./getIconGroups";
-import { isNotNil, propEq, uniq } from "ramda";
+import { isNotNil, prop, propEq, uniq } from "ramda";
 import { isCampaign, isChallenge, isSideCampaign, isSideContent } from '@/store/features/stories/criteria';
 
 export const getStoriesIconGroups = ({
   stories,
+  icons,
   encounterSets
 }: IGetIconGroupsOptions) => {
 
-  const toIcon = (name: string) => encounterSets
-    .find(
+  const toIcon = (name: string) => {
+    const icon = encounterSets.find(
       propEq(name, 'code')
     )?.icon;
 
+    if (icon) {
+      return icon;
+    }
+
+    return icons.find(propEq(name, 'icon'))?.icon;
+  }
   const campaignGroups = stories.filter(story => isCampaign(story) || isSideCampaign(story));
   const sideGroups = stories.filter(isSideContent)
   const challengeGroups = stories.filter(isChallenge);
@@ -44,11 +51,26 @@ const getStoryIconGroup = (toIcon: (name: string) => string | undefined) =>
     encounter_sets, 
     name, 
     icon,
-    code
+    code,
+    pack_codes = [],
+    pack_code,
+    campaigns = []
   }: IStory) => {
+
+    const campaignIcons = campaigns
+      .map(prop('icon'))
+      .concat([
+        code,
+        pack_code,
+        ...pack_codes
+      ])
+      .filter(isNotNil)
+      .map(toIcon)
+      .filter(isNotNil);
 
     const icons = [
         icon,
+        ...campaignIcons,
         ...encounter_sets.map(toIcon)
       ]
       .filter(isNotNil);

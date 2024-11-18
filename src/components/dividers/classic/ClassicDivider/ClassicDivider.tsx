@@ -102,6 +102,11 @@ export const ClassicDivider = ({
 			<DividerContent>
 				<div className={titleClassName}>
 					<DividerText
+						stroke
+						strokeClassName={classNames(
+							titleInputClassName,
+							S.textStroke
+						)}
 						defaultValue={translatedName}
 						className={S.titleContent}
 						inputClassName={titleInputClassName}

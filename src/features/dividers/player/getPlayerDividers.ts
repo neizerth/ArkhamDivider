@@ -4,14 +4,22 @@ import { CardType, IFaction } from '@/types/game';
 import { uniqId } from '@/util/common';
 
 export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
-  return [
+  const { story } = options; 
+  const dividers = [
     ...getBasicWeaknessDividers(options),
     ...getUpgradingDividers(options),
     ...getCustomizationsDividers(options),
     ...getPlayerCardDividers(options),
     ...getFactionIdDividers(options),
     ...getBondedDividers(options)
-  ]
+  ];
+
+  console.log(story);
+  return dividers.map(divider => ({
+    ...divider,
+    story,
+    campaignIcon: story?.icon
+  }))
 }
 
 export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {

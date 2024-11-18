@@ -85,7 +85,7 @@
   .content {
     // width: 14mm;
   }
-  &.reverse {
+  &.reverse .wrapper {
     transform: scale(1, -1);
   }
 }

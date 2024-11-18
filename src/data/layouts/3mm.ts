@@ -24,7 +24,8 @@ export const arkhamStarter3mmLayout: ILayout = {
     bottom: 3.5
   },
   playerOptions: {
-    displaySideXP: false
+    displaySideXP: false,
+    storySupported: true
   }
 } 
 

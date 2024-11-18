@@ -248,6 +248,7 @@
 }
 
 .topLineHandler {
+  --offset: 2mm;
   position: absolute;
   z-index: 8;
   top: calc(var(--offset) + 6mm);
@@ -259,11 +260,11 @@
   &:hover {
     box-shadow: inset 0px 0px 20mm rgba(255, 255, 255, 0.2);
   }
-  &_scenario,
-  &_encounter,
-  &_campaign {
-    display: none;
-  }
+  // &_scenario,
+  // &_encounter,
+  // &_campaign {
+  //   display: none;
+  // }
 }
 
 .title {
@@ -364,7 +365,7 @@
   height: 3mm;
   left: 50%;
   transform: translateX(-50%);
-  top: 6.3mm;
+  top: 7.3mm;
   font-size: 2.5mm;
   cursor: pointer;
   &:hover {

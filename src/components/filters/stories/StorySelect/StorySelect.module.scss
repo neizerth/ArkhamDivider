@@ -1,0 +1,14 @@
+.container {
+  // width: 100%;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.select {
+  width: 100%;
+  min-width: 400px;
+}
+
+.clear {
+  flex-shrink: 0;
+}

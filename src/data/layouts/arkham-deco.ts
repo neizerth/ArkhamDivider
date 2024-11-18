@@ -27,7 +27,8 @@ export const common = {
     includeCampaignIcon: true
   },
   playerOptions: {
-    displayNumericXP: false
+    displayNumericXP: false,
+    storySupported: true
   }
 }
 

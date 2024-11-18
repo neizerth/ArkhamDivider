@@ -11,6 +11,7 @@ import { getInvestigatorDividers } from "@/features/dividers/investigator/getInv
 import { withReturnTo } from "../stories/criteria";
 
 export type AddPlayerDividersOptions = {
+  story?: IStory,
   factions: IFaction[]
   xpCosts: IXPCost[]
   types: ICardType[]
@@ -22,6 +23,7 @@ export type AddPlayerDividersOptions = {
   includeBonded: boolean
   displaySideXP: boolean
   displayNumericXP: boolean
+  storySupported?: boolean
 }
 
 export type AddStoryDividersOptions = {

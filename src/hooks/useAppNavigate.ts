@@ -26,6 +26,7 @@ export const useAppNavigate = () => {
     const layoutId = layout ? layout.id : id; 
     const type = layout && !layout.types.includes(currentType) ? 
       layout.types[0] : currentType;
+    
     const routeOptions = {
       ...params,
       language,
