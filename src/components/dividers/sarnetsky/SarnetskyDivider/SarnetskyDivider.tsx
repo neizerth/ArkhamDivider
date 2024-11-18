@@ -163,7 +163,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 						/>
 					</div>
 				)}
-				{campaignIcon && (
+				{!isScenario && campaignIcon && (
 					<div className={classNames(
 							S.campaignIcon, 
 							S[`icon_${type}`], 
