@@ -9,7 +9,7 @@ import { ButtonType } from '@/types/ui';
 import { createToggleHanlder } from '@/util/forms';
 import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { removeAllDividers, selectStory, setStory } from '@/store/features/dividers/dividers';
+import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
 import { isNil } from 'ramda';
