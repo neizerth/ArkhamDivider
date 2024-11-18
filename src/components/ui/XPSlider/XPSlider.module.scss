@@ -2,6 +2,8 @@
   // resize: horizontal;
   max-width: 100%;
   padding-right: 8px;
+  position: relative;
+  z-index: 1;
 }
 
 .row {
@@ -43,6 +45,8 @@
   font-size: 0.8em;
   text-align: center;
   border-radius: 50%;
+
+  z-index: 1;
   // color: b;
   outline: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

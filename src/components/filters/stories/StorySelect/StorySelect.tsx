@@ -12,17 +12,22 @@ import { useAppNavigate } from '@/hooks/useAppNavigate';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectStory } from '@/store/features/dividers/dividers';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { Row } from '@/components/ui/grid/Row/Row';
+import { IconButton } from '@/components/ui/IconButton/IconButton';
+import { ButtonType } from '@/types/ui';
 
 
 export type StorySelectProps = PropsWithClassName & {
   stories: IStory[]
-  getIsTranslated: (story: IStory) => boolean
+  clear?: boolean
+  getIsTranslated?: (story: IStory) => boolean
 }
 
 export const StorySelect = ({ 
   stories, 
+  clear = false,
   className,
-  getIsTranslated,
+  getIsTranslated = () => true,
 }: StorySelectProps) => {
   const { t, translateStory } = useStoryTranslation();
   const navigate = useAppNavigate();
@@ -46,9 +51,11 @@ export const StorySelect = ({
     value: story
   });
 
-  const onChange = (story: IStory) => {
+  const onChange = (story?: IStory) => {
+    const storyId = story?.code;
+    console.log({ storyId })
     navigate({
-      storyId: story.code
+      storyId
     })
   }
   
@@ -81,18 +88,31 @@ export const StorySelect = ({
     SingleValue: StorySelectSingleValue
   }
 
-  const value = story && mapStory(story);
+  const value = story ? mapStory(story) : null;
 
   return (
-    <Select
-      isMulti={false}
-      onChange={(item) => item && onChange(item.value)}
-      className={classNames(S.select, className)}
-      placeholder={t('Select Campaign')}
-      options={groups}
-      value={value}
-      getOptionLabel={({ value }) => labels.get(value.code)}
-      components={components}
-    />
+    <Row className={classNames(S.container, className)}>
+      <Select
+        isMulti={false}
+        onChange={item => onChange(item?.value)}
+        className={classNames(S.select)}
+        placeholder={t('Select Campaign')}
+        options={groups}
+        value={value}
+        getOptionLabel={({ value }) => labels.get(value.code)}
+        components={components}
+      />
+
+      {clear && (
+        <IconButton 
+          className={S.clear}
+          buttonType={ButtonType.SECONDARY}
+          icon="trash" 
+          onClick={() => onChange()}
+        >
+          {t('Clear')}
+        </IconButton>
+      )}
+    </Row>
   );
 }

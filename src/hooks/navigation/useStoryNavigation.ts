@@ -16,10 +16,14 @@ export const useStoryNavigation = () => {
 
 
   useEffect(() => {
-    if (!storyId || loading) {
+    if (loading) {
       return;
     }
     if (storyId === currentStory?.code) {
+      return;
+    }
+    if (!storyId) {
+      dispatch(setStory());
       return;
     }
 

@@ -45,6 +45,8 @@ export const ArkhamDecoDivider = ({
     className
   } = props;
 
+  const isPlayer = type === DividerType.PLAYER;
+
   const [icon, selectIcon] = useIconSelect({
     defaultIcon: props.icon
   });
@@ -53,11 +55,27 @@ export const ArkhamDecoDivider = ({
     defaultIcon: props.previewIcon || props.icon
   });
 
+  const defaultSpecialIcon = (() => {
+    if (isPlayer) {
+      return;
+    }
+    return props.campaignIcon || props.specialIcon;
+  })();
+
   const [specialIcon, selectSpecialIcon] = useIconSelect({
-    defaultIcon: props.campaignIcon || props.specialIcon
+    defaultIcon: defaultSpecialIcon
   });
 
-  const [lineIcon, selectLineIcon] = useIconSelect();
+  const defaultLineIcon = (() => {
+    if (!isPlayer) {
+      return;
+    }
+    return props.campaignIcon;
+  })();
+
+  const [lineIcon, selectLineIcon] = useIconSelect({
+    defaultIcon: defaultLineIcon
+  });
 
   const { t } = useStoryTranslation(props.story);
   const { 
@@ -77,7 +95,6 @@ export const ArkhamDecoDivider = ({
 	const realLanguage = translatedName === name ? 'en' : language;
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
   const isScenario = type === DividerType.SCENARIO;
-  const isPlayer = type === DividerType.PLAYER;
 
   const topRightCornerImage = (() => {
     if (isTab) {
@@ -106,7 +123,7 @@ export const ArkhamDecoDivider = ({
       <DividerContent className={S.dividerContent}>
         <div className={S.wrapper}>
           <div className={S.card}/>
-          {isTab && !lineIcon && (
+          {!lineIcon && (
             <div 
               className={classNames(
                 S.topLineHandler,
@@ -202,6 +219,11 @@ export const ArkhamDecoDivider = ({
                 <div className={S.tabHeader}>
                   <div className={S.tabHeaderOverlay}/>
                 </div>
+              </>
+            )}
+
+            {lineIcon && (
+              <>
                 {(!isPlayer || lineIcon) && (
                   <>
                     <img 

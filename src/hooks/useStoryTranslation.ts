@@ -8,8 +8,8 @@ export const useStoryTranslation = (story?: IStory) => {
 
   const i18n = useTranslation();
 
-  const translate = (text: string, options: TOptions = { ns: storyNs }) => {
-    const translation = i18n.t(text);
+  const translate = (text: string, options: TOptions = {}) => {
+    const translation = i18n.t(text, options);
 
     if (translation && translation !== text) {
       return translation;
@@ -19,7 +19,10 @@ export const useStoryTranslation = (story?: IStory) => {
       return text;
     }
     
-    return i18n.t(text, options);
+    return i18n.t(text, {
+      ...options,
+      ns: storyNs
+    });
   }
 
   const translateStory = (text: string, story: IStory) => translate(text, {

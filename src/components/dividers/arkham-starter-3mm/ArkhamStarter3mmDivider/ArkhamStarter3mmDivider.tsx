@@ -14,6 +14,7 @@ import { ArkhamStarter3mmPlayerCorner as PlayerCorner } from '../ArkhamStarter3m
 import { getPlayerCornerColor } from './colors/playerCornerColor';
 import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { DividerType } from '@/types/dividers';
 
 export const ArkhamStarter3mmDivider = (props: DividerProps) => {
   const { t } = useStoryTranslation(props.story);
@@ -22,6 +23,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
     name = '',
     xpCost,
     id,
+    type,
     className
   } = props;
 
@@ -29,7 +31,12 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
     defaultIcon: props.previewIcon || props.icon
   });
 
+  const isPlayer = type === DividerType.PLAYER;
+
   const [playerIcon, setPlayerIcon] = useIconSelect();
+  const [campaignIcon, setCampaignIcon] = useIconSelect({
+    defaultIcon: props.campaignIcon
+  });
 
   const defaultStoryName = story && t(story.name);
   const [storyName, setStoryName] = useState(defaultStoryName);
@@ -54,8 +61,14 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
     setXPTitle(xpDefaultTitle);
   }, [xpDefaultTitle]);
 
-  const specialIcon = playerIcon || (story && previewIcon);
-  const setSpecialIcon = story ? setPreviewIcon : setPlayerIcon;
+  const specialIcon = (() => {
+    if (isPlayer) {
+      return playerIcon;
+    }
+    return previewIcon;
+  })();
+
+  const setSpecialIcon = isPlayer ? setPlayerIcon : setPreviewIcon;
 
   const showStrip = Boolean(story);
   // const [showStrip, setShowStrip] = useState(Boolean(story));
@@ -90,7 +103,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
                 defaultValue={xpTitle}
                 onChange={setXPTitle}
                 onClear={() => setXPTitle(xpDefaultTitle)}
-                fixedFontSize={false}
+                fixedFontSize={true}
               />
             </div>
             <div className={classNames(
@@ -106,13 +119,35 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
             </div>
           </>
         )}
-        {!story && !playerIcon && playerCornerColor && (
+        {!playerIcon && isPlayer && playerCornerColor && (
           <div 
             className={S.playerCorner}
             onClick={setPlayerIcon}
           >
             <PlayerCorner color={playerCornerColor}/>
           </div>
+        )}
+        {isPlayer && campaignIcon && (
+          <>
+            <div 
+              className={classNames(
+                S.campaignIcon,
+                S.campaignIcon_horizontal
+              )} 
+              onClick={setCampaignIcon}
+            >
+              <Icon icon={campaignIcon}/>
+            </div>
+            <div 
+              className={classNames(
+                S.campaignIcon,
+                S.campaignIcon_vertical
+              )} 
+              onClick={setCampaignIcon}
+            >
+              <Icon icon={campaignIcon}/>
+            </div>
+          </>
         )}
         {specialIcon && (
           <>
@@ -171,6 +206,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
           className={classNames(
             S.title,
             S.title_vertical,
+            campaignIcon && S.title_vertical_withPlayerStrip
             // playerCornerColor && showStrip && S.title_vertical_withPlayerStrip
           )}
           >

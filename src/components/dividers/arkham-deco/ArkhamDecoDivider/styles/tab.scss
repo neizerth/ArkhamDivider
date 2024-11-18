@@ -62,18 +62,18 @@
   position: absolute;
   z-index: 5;
 
-  @include clipX(5.8mm, 39mm);
+  @include clipX(7mm, 39mm);
+  top: 4.3mm;
   &_left {
-    top: 3.2mm;
     left: 3.9mm;
     height: 2.4mm;
   }
 
   &_right {
-    top: 3.2mm;
     right: 3.9mm;
     height: 2.4mm;
     transform: scale(-1, 1);
+    @include clipX(5mm, 39mm);
   }
 }
 
@@ -81,7 +81,7 @@
   position: absolute;
   z-index: 5;
   width: 6mm;
-  top: 3.8mm;
+  top: 4.8mm;
   // left: 
   &_left {
     left: 38mm;
@@ -97,6 +97,17 @@
 
   .pattern {
     --offset: 0mm;
+  }
+
+  .lineIcon {
+    top: 6.3mm;
+  }
+  .tabTentacles {
+    top: 3.8mm;
+  }
+  .tabTopLine {
+    top: 3.2mm;
+    @include clipX(5.8mm, 39mm);
   }
   .topLine {
     --offset: -1.93mm;

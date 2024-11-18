@@ -21,6 +21,7 @@
   top: 6.9mm;
   z-index: 2;
   line-height: 1;
+  color: #2E2622;
   &:hover .clear {
     display: flex;
   }
@@ -106,19 +107,6 @@
   padding: 10px;
 }
 
-
-.grayscale {
-  .stroke {
-    @include textStroke(white);
-  }
-}
-
-.color {
-  .stroke {
-    @include textStroke(rgba(228, 208, 156, 0.7));
-  }
-}
-
 .status {
   position: absolute;
   z-index: 2;
@@ -138,4 +126,23 @@
   z-index: 1;
   right: 14.7mm;
   top: 7mm;
+}
+
+.textStroke {
+  box-sizing: border-box;
+  color: transparent;
+  @include clipX(0, 15mm);
+}
+
+
+.grayscale {
+  .textStroke {
+    @include textStroke(white);
+  }
+}
+
+.color {
+  .textStroke {
+    @include textStroke(rgba(228, 208, 156, 0.7));
+  }
 }

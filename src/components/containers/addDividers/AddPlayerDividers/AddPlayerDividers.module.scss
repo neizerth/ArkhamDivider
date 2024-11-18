@@ -1,5 +1,5 @@
 .container {
-  max-width: 550px;
+  max-width: 650px;
   margin: 0 auto;
 }
 .content {
@@ -39,4 +39,10 @@
 
 .row {
   justify-content: center;
+}
+
+.storiesSelect {
+  width: 400px;
+  position: relative;
+  z-index: 2;
 }

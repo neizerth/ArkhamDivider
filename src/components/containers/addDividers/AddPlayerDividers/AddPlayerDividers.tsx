@@ -1,4 +1,4 @@
-import { Checkbox, Container, FactionSelect, IconButton, PlayerCardTypeSelect, Row } from '@/components';
+import { Checkbox, Container, FactionSelect, IconButton, PlayerCardTypeSelect, Row, StorySelect } from '@/components';
 import S from './AddPlayerDividers.module.scss';
 import { XPCostSelect } from '@/components';
 import classNames from 'classnames';
@@ -9,10 +9,11 @@ import { ButtonType } from '@/types/ui';
 import { createToggleHanlder } from '@/util/forms';
 import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { removeAllDividers } from '@/store/features/dividers/dividers';
+import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
 import { isNil } from 'ramda';
+import { selectStories } from '@/store/features/stories/stories';
 
 export type AddPlayerDividersProps = {
 
@@ -36,8 +37,11 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
     includeBonded: false,
     includeCustomizations: false,
     displaySideXP: false,
-    displayNumericXP: false
+    displayNumericXP: false,
   });
+
+  const stories = useAppSelector(selectStories);
+  const story = useAppSelector(selectStory);
 
   const check = createToggleHanlder(
     form, 
@@ -49,6 +53,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
       xpCosts,
       factions,
       types,
+      story,
       ...form
     }));
   };
@@ -110,6 +115,18 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
               {t('Customizations')}
             </Checkbox>
           </Row>
+          {playerOptions?.storySupported && (
+            <>
+              <div className={S.rule}/>
+              <Row wrap className={S.row}>
+                <StorySelect
+                  stories={stories}
+                  className={S.storiesSelect}
+                  clear={true}
+                />
+              </Row>
+            </>
+          )}
           <div className={S.rule}/>
           <Row className={classNames(S.xpCost)} wrap>
             <div className={S.label}>{t('Experience')}</div>
