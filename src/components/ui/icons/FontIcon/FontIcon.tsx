@@ -18,11 +18,10 @@ export const FontIcon = ({
 
 	const char = entry ? String.fromCharCode(entry.code) : '';
 	// const fontSize = entry?.ratio && `${entry.ratio}em`;
-	const transform = entry?.ratio && entry?.ratio > 1 ? `scale(${1 / entry.ratio})` : '';
+	const style = entry?.ratio && entry?.ratio > 1 ? {
+		fontSize: `${100 / entry.ratio}%`
+	} : {};
 
-	const style = {
-		transform
-	}
 	return (
 		<span 
 			className={classNames(S.icon, S[icon], className)}
