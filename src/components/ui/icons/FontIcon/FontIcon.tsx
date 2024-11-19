@@ -18,9 +18,12 @@ export const FontIcon = ({
 
 	const char = entry ? String.fromCharCode(entry.code) : '';
 	// const fontSize = entry?.ratio && `${entry.ratio}em`;
-	const style = entry?.ratio && entry?.ratio > 1 ? {
-		fontSize: `${100 / entry.ratio}%`
-	} : {};
+	const scale = entry?.ratio && entry?.ratio > 1 ? 
+		Math.min(100, 100 / entry.ratio) : 
+		100;
+	const style = {
+		fontSize: `${scale}%`
+	}
 
 	return (
 		<span 
