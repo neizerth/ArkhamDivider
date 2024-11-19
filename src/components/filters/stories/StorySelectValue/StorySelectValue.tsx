@@ -24,7 +24,11 @@ export const StorySelectValue = ({
   );
   return (
     <div className={containerClassNames}>
-      {icon && <Icon icon={icon} className={S.icon}/>}
+      {icon && (
+        <div className={S.icon}>
+          <Icon icon={icon} className={S.icon}/>
+        </div>
+      )}
       <div className={S.optionLabel}>{children}</div>
       <div className={S.icons}>
         {!isTranslated && <Icon icon={'en'}/>}
