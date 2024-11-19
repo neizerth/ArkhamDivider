@@ -1,7 +1,7 @@
 .horizontal {
 
   .title {
-    padding: 0 12mm;
+    padding: 0 14mm;
   }
 
   .titleInput {
@@ -22,9 +22,10 @@
   .icon_small {
     top: 5.8mm;
     &_noXP {
-      top: 6.7mm;
+      top: 6.6mm;
     }
     &_withXP {
+      font-size: 4mm;
       top: 6.1mm;
     }
   }

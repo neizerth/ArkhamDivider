@@ -83,17 +83,19 @@
 }
 
 .icon_small {
-  font-size: 4mm;
+  font-size: 5.5mm;
+  // font-size: 6mm;
   width: 5.4mm;
   height: 5.4mm;
-  right: 6.2mm;
+  right: 6mm;
+  // right: 5.9mm;
 }
 
 .icon_large {
   opacity: 0.05;
   transform: translate(-50%, 0);
   left: 50%;
-  font-size: 40mm;
+  font-size: 50mm;
   height: 46mm;
 }
 
