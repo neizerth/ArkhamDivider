@@ -10,6 +10,18 @@
   .sideXP {
     top: 6.2mm;
   }
+  .title {
+    font-size: 4.5mm;
+    top: 6.7mm;
+  }
+}
+
+.ko,
+.zn,
+.zh-cn {
+  .title {
+    top: 6.5mm;
+  }
 }
 
 .title {
@@ -18,8 +30,9 @@
   position: absolute;
   width: 100%;
   height: 1.3em;
-  top: 6.9mm;
+  top: 6.7mm;
   z-index: 2;
+  font-size: 4.8mm;
   line-height: 1;
   color: #2E2622;
   &:hover .clear {
