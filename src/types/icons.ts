@@ -9,3 +9,5 @@ export type IIconGroup = {
   name?: string
   icons: string[]
 }
+
+export type IconScale = 'circle' | 'square' | false;

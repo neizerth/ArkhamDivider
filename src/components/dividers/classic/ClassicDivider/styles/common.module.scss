@@ -83,12 +83,21 @@
 }
 
 .icon_small {
-  font-size: 5mm;
+  font-size: 6.6mm;
+  // font-size: 5mm;
   // font-size: 5.7mm;
-  width: 5.4mm;
-  height: 5.4mm;
-  right: 6.1mm;
+  width: 8.3mm;
+  height: 8.3mm;
+  right: 4.7mm;
   // right: 5.9mm;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.player {
+  .icon_small_noXP {
+    font-size: 6mm;
+  }
 }
 
 .icon_large {
@@ -119,8 +128,8 @@
 .xpCost {
   position: absolute;
   z-index: 1;
-  right: 5.15mm;
-  top: 5.27mm;
+  right: 5.05mm;
+  top: 5.77mm;
 }
 
 .sideXP {

@@ -23,12 +23,21 @@ export const ClassicDividerSkillXPCost = ({
     <div className={classNames(S.skill, className)}>
       {max > 0 && (
         <>
-          <Icon icon="s_frame_background" className={classNames(S.skillBackground)}/>
-          <Icon icon={`s_level_${level}`} className={classNames(S.level, S.lightLevel)}/>
+          <Icon 
+            icon="s_frame_background" 
+            className={classNames(S.skillBackground)} 
+            scale={false}
+          />
+          <Icon 
+            icon={`s_level_${level}`} 
+            className={classNames(S.level, S.lightLevel)} 
+            scale={false}
+          />
           {max > level && (
             <Icon 
               icon={`s_level_${max}`} 
               className={classNames(S.level, S.maxLevel)}
+              scale={false}
             />
           )}
         </>
@@ -51,10 +60,15 @@ export const ClassicDividerAssetXPCost = ({
     <div className={S.XPCost}>
       {max > 0 && (
         <>
-          <Icon icon="inverted_level_0" className={classNames(S.background)}/>
+          <Icon 
+            icon="inverted_level_0" 
+            className={classNames(S.background)}
+            scale={false}
+          />
           <Icon 
             icon={`ae_level_${level}`} 
             className={classNames(S.level, S.lightLevel)}
+            scale={false}
           />
         </>
       )}
@@ -62,6 +76,7 @@ export const ClassicDividerAssetXPCost = ({
         <Icon 
           icon={`ae_level_${max}`} 
           className={classNames(S.level, S.maxLevel)}
+          scale={false}
         />
       )}
     </div>
@@ -80,11 +95,18 @@ export const ClassicDividerEventXPCost = ({
 
   return (
     <div className={classNames(S.XPCost, S.event)}>
-      {level > 0 && <Icon icon={`ae_level_${level}`} className={classNames(S.level)}/>}
+      {level > 0 && (
+        <Icon 
+          icon={`ae_level_${level}`} 
+          className={classNames(S.level)}
+          scale={false}
+        />
+      )}
       {max > level && (
         <Icon 
           icon={`ae_level_${max}`} 
           className={classNames(S.level, S.maxLevel)}
+          scale={false}
         />
       )}
     </div>

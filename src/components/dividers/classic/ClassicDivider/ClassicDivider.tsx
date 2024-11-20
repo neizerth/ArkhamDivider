@@ -35,6 +35,7 @@ export const ClassicDivider = ({
 	displayNumericXP = false,
 	displaySideXP = false,
 	displayCampaignIcon = false,
+	type,
 	...props
 }: ClassicDividerProps) => {
 	const { t } = useStoryTranslation(props.story);
@@ -76,6 +77,7 @@ export const ClassicDivider = ({
 		S.container,
 		S[realLanguage],
 		S[orientation],
+		S[type],
 		color ? S.color : S.grayscale, 
 		className
 	);
@@ -119,7 +121,11 @@ export const ClassicDivider = ({
 				{icon && (
 					<div className={classNames(S.icon, S.icon_large)}>
 						<div className={S.iconSelect} onClick={selectIcon}/>
-						<Icon icon={icon} className={S.iconItem}/>
+						<Icon 
+							icon={icon} 
+							className={S.iconItem}
+							scale={'square'}
+						/>
 					</div>
 				)}
 				{previewIcon && (
@@ -131,7 +137,11 @@ export const ClassicDivider = ({
 						)}
 					>
 						<div className={S.iconSelect} onClick={selectPreviewIcon}/>
-						<Icon icon={previewIcon} className={S.iconItem}/>
+						<Icon 
+							icon={previewIcon} 
+							className={S.iconItem}
+							scale={'circle'}
+						/>
 					</div>
 				)}
 				{xpCost && cardType && (
