@@ -133,6 +133,7 @@ export const ClassicDivider = ({
 						className={classNames(
 							S.icon, 
 							S.icon_small,
+							S[`icon_small_${icon}`],
 							xpCost && xpCost.level > 0 ? S.icon_small_withXP : S.icon_small_noXP
 						)}
 					>
