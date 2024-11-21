@@ -2,7 +2,7 @@ import Select from 'react-select';
 import { useAppNavigate } from '@/hooks/useAppNavigate';
 import S from './LayoutCategorySelect.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectCategoryId } from '@/store/features/layout/layout';
+import { selectCategoryId, selectLayout } from '@/store/features/layout/layout';
 import { layoutCategories } from '@/data/layouts';
 import classNames from 'classnames';
 import { PropsWithClassName } from '@/types/util';
@@ -19,7 +19,10 @@ export const LayoutCategorySelect = ({
 }: LayoutCategorySelectProps) => {
   const { t } = useTranslation();
   const navigate = useAppNavigate();
-  const categoryId = useAppSelector(selectCategoryId);
+  const selectedCategoryId = useAppSelector(selectCategoryId);
+  const layout = useAppSelector(selectLayout);
+
+  const categoryId = selectedCategoryId || layout.categoryId;
 
   const options = layoutCategories
     .filter(({ unlisted, id }) => !unlisted || id === categoryId)

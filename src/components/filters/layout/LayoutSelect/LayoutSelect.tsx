@@ -26,7 +26,7 @@ export const LayoutSelect = ({
       label: title,
       value: id
     }));
-    
+
   const value = layout ? options.find(
     ({ value }) => value === layout.id
   ) : null;

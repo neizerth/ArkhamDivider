@@ -18,7 +18,8 @@ export const LayoutFilter = () => {
   } = layout;
 
   const type = useAppSelector(selectType);
-  const categoryId = useAppSelector(selectCategoryId);
+  const selectedCategoryId = useAppSelector(selectCategoryId);
+  const categoryId = selectedCategoryId || layout.categoryId;
 
   const cateogoryLayouts = getLayouts({
     criteria: {
