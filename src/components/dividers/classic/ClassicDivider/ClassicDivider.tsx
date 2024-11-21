@@ -92,6 +92,7 @@ export const ClassicDivider = ({
 
 	const titleClassName = classNames(
 		S.title,
+		S[`title_${realLanguage}`],
 		props.titleClassName,
 		titleSize <= 30 && S.title_m,
 		titleSize > 30 && S.title_l,

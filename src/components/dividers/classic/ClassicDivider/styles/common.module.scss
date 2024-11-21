@@ -10,10 +10,6 @@
   .sideXP {
     top: 6.2mm;
   }
-  .title {
-    font-size: 4.5mm;
-    top: 6.7mm;
-  }
 }
 
 .ko,
@@ -37,6 +33,10 @@
   color: #2E2622;
   &:hover .clear {
     display: flex;
+  }
+  &_ru {
+    font-size: 4.5mm;
+    top: 6.7mm;
   }
 }
 

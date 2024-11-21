@@ -54,7 +54,8 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 			titleStroke={false}
 			titleClassName={classNames(
 				S.title,
-				S[`title_${orientation}`]
+				S[`title_${orientation}`],
+				S[`title_${language}`]
 			)}
 			background={background?.src}
 		>
