@@ -12,9 +12,11 @@
   position: absolute;
   z-index: 1;
   right: 18mm;
-  top: 7.1mm;
+  top: 7mm;
+  font-size: 4mm;
+  line-height: 1;
   &_ru {
-    top: 6.3mm;
+    top: 7.2mm;
   }
 }
 
