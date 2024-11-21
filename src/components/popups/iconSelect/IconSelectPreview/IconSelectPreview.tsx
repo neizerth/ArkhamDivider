@@ -24,7 +24,7 @@ export const IconSelectPreview = ({
   }, [defaultIcon])
 
   const onUpload = ([file]: FileList) => {
-    console.log(file);
+    // console.log(file);
     const url = URL.createObjectURL(file);
     setIcon(url);
     onChange(url);

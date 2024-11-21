@@ -53,7 +53,7 @@ export const StorySelect = ({
 
   const onChange = (story?: IStory) => {
     const storyId = story?.code;
-    console.log({ storyId })
+    // console.log({ storyId })
     navigate({
       storyId
     })

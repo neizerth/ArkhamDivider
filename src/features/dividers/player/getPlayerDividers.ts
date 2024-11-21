@@ -14,7 +14,7 @@ export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
     ...getBondedDividers(options)
   ];
 
-  console.log(story);
+  // console.log(story);
   return dividers.map(divider => ({
     ...divider,
     story,
