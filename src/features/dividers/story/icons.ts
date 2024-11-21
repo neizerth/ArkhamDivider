@@ -63,24 +63,36 @@ export const getEncounterDividerIcons = ({
   encounters,
   includeScenarioEncounterSet
 }: IGetEncounterDividerIconsOptions) => {
-  const toIcon = (code: string) => encounterSets.find(
+
+  const toEncounterSet = (code: string) => encounterSets.find(
     propEq(code, 'code')
-  )?.icon;
+  );
 
-  const scenarioIcons = getScenarioDividerIcons(story);
+  const scenarios = getStoryScenarios(story);
+  const scenarioNames = scenarios.map(prop('scenario_name'));
 
-  const filterScenarioIcons = (icon: string) => {
-    if (!scenarioIcons.includes(icon)) {
-      return true;
+  const filterScenarios = (code: string) => {
+    const encounter = toEncounterSet(code)
+    if (!encounter) {
+      return;
     }
 
-    return includeScenarioEncounterSet;
+    if (!scenarioNames.includes(encounter.name)) {
+      return encounter;
+    }
+
+    if (!includeScenarioEncounterSet) {
+      return;
+    }
+
+    return encounter;
   }
 
   const icons = encounters
-    .map(toIcon)
+    .map(filterScenarios)
     .filter(isNotNil)
-    .filter(filterScenarioIcons);
+    .map(prop('icon'))
+    .filter(isNotNil)
 
   return icons;
 }
