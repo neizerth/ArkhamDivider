@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "@types/jimp": "^0.2.28",
     "arkham-divider-data": "^1.0.14",
+    "arkhamesque-divider-data": "^1.0.0",
     "classnames": "^2.5.1",
     "country-flag-icons": "^1.5.13",
     "detect-browser": "^5.3.0",

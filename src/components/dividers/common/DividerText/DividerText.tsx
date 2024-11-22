@@ -22,6 +22,8 @@ export type DividerTextProps = PropsWithClassName & {
   fullHeight?: boolean
 
   stroke?: boolean
+
+  clearPosition?: 'inside' | 'outside'
 }
 
 const toText = (html: string): string => 
@@ -42,6 +44,7 @@ export const DividerText = ({
   inputClassName,
   minFontSize,
   maxFontSize,
+  clearPosition = 'inside',
   onChange
 }: DividerTextProps) => {
 
@@ -139,7 +142,10 @@ export const DividerText = ({
         )}
       </div>
       <div 
-        className={classNames(S.clear)} 
+        className={classNames(
+          S.clear,
+          S[`clear_${clearPosition}`]
+        )} 
         onClick={clear}
       >
         <Icon className={S.icon} icon="dismiss"/>

@@ -90,4 +90,7 @@
   font-size: 0.8em;
   cursor: pointer;
   z-index: 1;
+  &_outside {
+    right: -1em;
+  }
 }

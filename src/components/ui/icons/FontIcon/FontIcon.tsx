@@ -12,6 +12,7 @@ export const FontIcon = ({
   icon, 
 	className, 
 	scale = 'square',
+	scaleBy = 1
 }: FontIconProps) => {
   const icons = useAppSelector(selectIcons);
 	const entry = icons.find(propEq(icon, 'icon'));
@@ -20,8 +21,9 @@ export const FontIcon = ({
 	// const fontSize = entry?.ratio && `${entry.ratio}em`;
 	const size = getIconScale({
 		scale, 
+		scaleBy,
 		ratio: entry?.ratio,
-		circled: entry?.circled
+		circled: entry?.circled,
 	});
 	const style = {
 		fontSize: `${size}%`
