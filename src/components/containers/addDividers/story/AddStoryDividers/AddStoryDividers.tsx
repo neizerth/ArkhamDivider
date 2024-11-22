@@ -10,6 +10,7 @@ import { ButtonType } from '@/types/ui';
 import { useTranslation } from 'react-i18next';
 import { addStoryDividers } from '@/store/features/addDividers/addDividers';
 import { selectLanguage, selectTranslatedStories } from '@/store/features/language/language';
+import { withScenario } from '@/store/features/stories/criteria';
 
 export type AddStoryDividersProps = {
 
@@ -20,9 +21,12 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const dispatch = useAppDispatch();
   const story = useAppSelector(selectStory);
 
-  const stories = useAppSelector(selectStories);
+  const allStories = useAppSelector(selectStories);
   const language = useAppSelector(selectLanguage);
   const translated = useAppSelector(selectTranslatedStories);
+
+  const stories = allStories.filter(withScenario);
+  
   const getIsTranslated = (story: IStory) => {
     if (language === 'en') {
       return true;

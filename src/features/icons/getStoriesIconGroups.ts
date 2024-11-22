@@ -1,7 +1,7 @@
 import { IStory } from "@/types/api";
 import { IGetIconGroupsOptions } from "./getIconGroups";
 import { isNotNil, prop, propEq, uniq } from "ramda";
-import { isCampaign, isChallenge, isSideCampaign, isSideContent } from '@/store/features/stories/criteria';
+import { isMainCampaign, isChallenge, isSideCampaign, isSideContent } from '@/store/features/stories/criteria';
 
 export const getStoriesIconGroups = ({
   stories,
@@ -20,7 +20,7 @@ export const getStoriesIconGroups = ({
 
     return icons.find(propEq(name, 'icon'))?.icon;
   }
-  const campaignGroups = stories.filter(story => isCampaign(story) || isSideCampaign(story));
+  const campaignGroups = stories.filter(story => isMainCampaign(story) || isSideCampaign(story));
   const sideGroups = stories.filter(isSideContent)
   const challengeGroups = stories.filter(isChallenge);
 

@@ -14,6 +14,8 @@ export const arrayIf = <T>(condition: boolean, data: T[]): T[] => condition ? da
 
 export const arrayIfFn = <T>(condition: () => boolean, getData: () => T[]): T[] => condition() ? getData() : [];
 
+export const toArrayIf = <T>(condition: boolean, item: T): T[] => condition ? [item] : [];
+
 export const toArrayIfExists = <T>(item: T | undefined) => isNil(item) ? [] : [item];
 
 export const safeProp = curry(

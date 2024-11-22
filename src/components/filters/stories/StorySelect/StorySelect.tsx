@@ -2,7 +2,7 @@ import S from './StorySelect.module.scss';
 import Select from 'react-select';
 
 import { IStory } from '@/types/api';
-import { isCampaign, isChallenge, isSideCampaign, isSideContent } from '@/store/features/stories/criteria';
+import { isMainCampaign, isChallenge, isSideCampaign, isSideContent, isCampaign } from '@/store/features/stories/criteria';
 import { StorySelectOption } from '../StorySelectOption/StorySelectOption';
 import { StorySelectSingleValue } from '../StorySelectSingleValue/StorySelectSingleValue';
 import { ascend, descend, prop, sortWith } from 'ramda';
@@ -15,6 +15,7 @@ import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { Row } from '@/components/ui/grid/Row/Row';
 import { IconButton } from '@/components/ui/IconButton/IconButton';
 import { ButtonType } from '@/types/ui';
+import { toArrayIf } from '@/util/common';
 
 
 export type StorySelectProps = PropsWithClassName & {
@@ -64,9 +65,15 @@ export const StorySelect = ({
     return stories.map(mapStory);
   }
 
-  const campaigns = getOptions(story => isCampaign(story) || isSideCampaign(story))
+  const campaigns = getOptions(isCampaign)
   const sideContent = getOptions(isSideContent)
   const challenges = getOptions(isChallenge);
+  const isRest = (story: IStory) => 
+    !isCampaign(story) && 
+    !isSideContent(story) && 
+    !isChallenge(story);
+
+  const rest = getOptions(isRest);
 
   const groups = [
     {
@@ -80,7 +87,11 @@ export const StorySelect = ({
     {
       label: t('Challenge Scenarios'),
       options: challenges
-    }
+    },
+    ...toArrayIf(rest.length > 0, {
+      label: t('Other'),
+      options: rest
+    })
   ]
 
   const components = { 
