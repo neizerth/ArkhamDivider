@@ -50,6 +50,7 @@
   font-size: 0.75em;
   padding-left: 10px;
   position: absolute;
+  z-index: 3;
   left: 100%;
   top: 50%;
   transform: translateY(-50%);
@@ -70,6 +71,7 @@
 .translatedByTitle {
   padding: 0 5px 5px 5px;
   text-align: center;
+  white-space: nowrap;
   border-bottom: 1px solid #f1f1f1;
 }
 

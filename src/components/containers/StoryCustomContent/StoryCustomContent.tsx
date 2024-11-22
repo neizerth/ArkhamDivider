@@ -48,6 +48,7 @@ export const StoryCustomContent = ({
                         <div className={S.translatedByUsers}>
                           {item.translated_by.map(user => (
                             <a 
+                              key={user.name}
                               className={S.user} 
                               href={user.link} 
                               title={user.kind || user.name}
