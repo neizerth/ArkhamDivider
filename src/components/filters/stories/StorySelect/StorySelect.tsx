@@ -2,7 +2,7 @@ import S from './StorySelect.module.scss';
 import Select from 'react-select';
 
 import { IStory } from '@/types/api';
-import { isMainCampaign, isChallenge, isSideCampaign, isSideContent, isCampaign } from '@/store/features/stories/criteria';
+import { isChallenge, isSideContent, isCampaign } from '@/store/features/stories/criteria';
 import { StorySelectOption } from '../StorySelectOption/StorySelectOption';
 import { StorySelectSingleValue } from '../StorySelectSingleValue/StorySelectSingleValue';
 import { ascend, descend, prop, sortWith } from 'ramda';
