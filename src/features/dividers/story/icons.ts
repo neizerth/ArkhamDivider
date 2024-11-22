@@ -33,27 +33,25 @@ export type IGetEncounterDividerIconsOptions = IGetCommonEncounterDividerIconsOp
 
 export const getRequiredEncounterDividersIcons = ({
   story, 
-  encounterSets,
-  includeScenarioEncounterSet
+  encounterSets
 }: IGetCommonEncounterDividerIconsOptions) => {
   return getEncounterDividerIcons({
     story,
     encounters: story.encounter_sets,
     encounterSets,
-    includeScenarioEncounterSet
+    includeScenarioEncounterSet: false
   });
 }
 
 export const getExtraEncounterDividersIcons = ({
   story, 
-  encounterSets,
-  includeScenarioEncounterSet
+  encounterSets
 }: IGetCommonEncounterDividerIconsOptions) => {
   return getEncounterDividerIcons({
     story,
     encounters: story.extra_encounter_sets,
     encounterSets,
-    includeScenarioEncounterSet
+    includeScenarioEncounterSet: false
   });
 }
 
