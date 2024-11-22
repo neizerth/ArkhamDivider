@@ -35,3 +35,48 @@
   display: flex;
   align-items: center;
 }
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  &:hover .translatedBy {
+    display: block;
+  }
+}
+
+.translatedBy {
+  font-size: 0.75em;
+  padding-left: 10px;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.translatedByContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 0;
+  background-color: #fff;
+
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+}
+
+.translatedByTitle {
+  padding-bottom: 5px;
+  text-align: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.translatedByUsers {
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+  flex-direction: column;
+  gap: 7px;
+}
