@@ -1,4 +1,4 @@
-import { IScenario, IStory } from "./api"
+import { IEncounterSet, IScenario, IStory } from "./api"
 import { CardType, IXPCost } from "./game"
 
 export enum DividerType {
@@ -13,6 +13,7 @@ export type IDivider = {
     id: string
     story?: IStory
     scenario?: IScenario
+    encounterSet?: IEncounterSet
     type: DividerType
     name?: string
     icon?: string

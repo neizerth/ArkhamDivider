@@ -46,10 +46,9 @@ export const getStoryDividerData = ({
     return;
   }
   const { category } = search;
-  const isEncounter = divider.type === DividerType.ENCOUNTER;
   const isReturnSet = Boolean(story.return_to_code);
 
-  const scenarioId = divider.scenario?.id;
+  const id = divider.scenario?.id || divider.encounterSet?.code;
   
   const categoryPrefix = category.prefix;
   const { name, return_name } = search.story;
@@ -61,7 +60,7 @@ export const getStoryDividerData = ({
     isReturnSet && return_name
   ])
 
-  if (!search.story.scenarios || !scenarioId || isEncounter) {
+  if (!search.story.scenarios || !id) {
     return {
       category,
       image: defaultImage
@@ -70,9 +69,9 @@ export const getStoryDividerData = ({
   
   const scenario = search.story.scenarios.find(scenario => {
     if ('code' in scenario) {
-      return scenario.code === scenarioId;
+      return scenario.code === id;
     }
-    return scenario.codes.includes(scenarioId);
+    return scenario.codes.includes(id);
   });
 
   if (!scenario) {

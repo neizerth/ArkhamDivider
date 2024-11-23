@@ -74,7 +74,13 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
               </div>
             )}
             {campaignIcon && (
-              <div className={S.campaignIcon} onClick={selectCampaignIcon}>
+              <div 
+                className={classNames(
+                  S.campaignIcon,
+                  S[`campaignIcon_${campaignIcon}`]
+                )} 
+                onClick={selectCampaignIcon}
+              >
                 <Icon icon={campaignIcon} scale='circle'/>
               </div>
             )}
