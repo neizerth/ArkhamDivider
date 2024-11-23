@@ -29,6 +29,7 @@ export const getCampaignDividers = ({
       .filter(campaign => campaign.icon && campaign.name !== name)
       .map(campaign => ({
         id: uniqId(),
+        campaign,
         name: campaign.name,
         icon: campaign.icon,
         campaignIcon: icon,

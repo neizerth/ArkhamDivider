@@ -2,7 +2,7 @@ import { getArkhamesqueClassicStory } from "@/store/features/arkhamesque/criteri
 import { DividerType, IDivider } from "@/types/dividers"
 import { IArkhamesqueBuild } from "arkhamesque-divider-data"
 import { ARKHAMESQUE_URL } from "@/constants/app";
-import { identity } from "ramda";
+import { identity, propEq } from "ramda";
 
 export type GetDividerDataOptions = {
   data: IArkhamesqueBuild,
@@ -48,7 +48,7 @@ export const getStoryDividerData = ({
   const { category } = search;
   const isReturnSet = Boolean(story.return_to_code);
 
-  const id = divider.scenario?.id || divider.encounterSet?.code;
+  const id = divider.scenario?.id || divider.encounterSet?.code || divider.campaign?.id;
   
   const categoryPrefix = category.prefix;
   const { name, return_name } = search.story;
@@ -58,13 +58,15 @@ export const getStoryDividerData = ({
     categoryPrefix,
     name,
     isReturnSet && return_name
-  ])
+  ]);
+
+  const defaultResponse = {
+    category,
+    image: defaultImage
+  };
 
   if (!search.story.scenarios || !id) {
-    return {
-      category,
-      image: defaultImage
-    }
+    return defaultResponse
   }
   
   const scenario = search.story.scenarios.find(scenario => {
@@ -74,26 +76,38 @@ export const getStoryDividerData = ({
     return scenario.codes.includes(id);
   });
 
-  if (!scenario) {
+  if (scenario) {
     return {
+      scenario,
       category,
-      image: defaultImage
+      image: toImage([
+        data.prefix,
+        categoryPrefix,
+        name,
+        scenario.name
+      ])
     }
+  }
+
+  if (!divider.campaign?.id) {
+    return defaultResponse;
+  }
+
+  const { campaigns = [] } = search.story;
+  const campaign = campaigns.find(propEq(divider.campaign.id, 'id'));
+
+  if (!campaign) {
+    return defaultResponse;
   }
 
   return {
     scenario,
     category,
-    imageData: [
-      data.prefix,
-      categoryPrefix,
-      scenario.name
-    ],
     image: toImage([
       data.prefix,
       categoryPrefix,
       name,
-      scenario.name
+      campaign.name
     ])
   }
 }

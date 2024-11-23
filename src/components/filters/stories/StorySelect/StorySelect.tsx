@@ -17,7 +17,6 @@ import { IconButton } from '@/components/ui/IconButton/IconButton';
 import { ButtonType } from '@/types/ui';
 import { toArrayIf } from '@/util/common';
 
-
 export type StorySelectProps = PropsWithClassName & {
   stories: IStory[]
   clear?: boolean
@@ -99,7 +98,17 @@ export const StorySelect = ({
     SingleValue: StorySelectSingleValue
   }
 
-  const value = story ? mapStory(story) : null;
+  const getSelectValue = (story: IStory) => {
+    for (const group of groups) {
+      for (const option of group.options) {
+        if (option.value.code === story.code) {
+          return option;
+        }
+      }
+    }
+  }
+
+  const value = story && getSelectValue(story);
 
   return (
     <Row className={classNames(S.container, className)}>

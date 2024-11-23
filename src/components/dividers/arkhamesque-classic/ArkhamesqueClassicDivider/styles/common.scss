@@ -10,7 +10,7 @@
   position: absolute;
   z-index: 2;
   height: 6mm;
-  top: 7.4mm;
+  top: 6.7mm;
   left: 19mm;
   right: 19mm;
   font-size: 4.3mm;
@@ -21,12 +21,18 @@
   }
 }
 
+.titleInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .zh,
 .zh-cn,
 .ko {
   .title {
     font-size: 3.8mm;
-    top: 6.7mm
+    top: 6.5mm
   }
 }
 
@@ -37,6 +43,7 @@
 
 .ru .title {
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
+  top: 6.8mm
 }
 
 .icon {

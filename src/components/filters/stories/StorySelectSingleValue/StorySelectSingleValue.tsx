@@ -10,14 +10,14 @@ export type StorySelectSingleValueProps = SingleValueProps<{
 }>
 
 export const StorySelectSingleValue = ({ 
-  children, 
+  children,
   ...props
 }: StorySelectSingleValueProps) => {
   const { data } = props;
   return (
     <components.SingleValue {...props}>
       <StorySelectValue 
-        story={data.value} 
+        story={data.value}
         isTranslated={data.isTranslated}
       >
         {children}

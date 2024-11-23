@@ -12,7 +12,6 @@ export type StorySelectOptionProps = OptionProps<{
 
 export const StorySelectOption = (props: StorySelectOptionProps) => {
   const { children, data, isSelected } = props;
-
   return (
     <components.Option {...props}>
       <StorySelectValue 

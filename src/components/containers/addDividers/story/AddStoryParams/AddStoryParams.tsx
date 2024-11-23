@@ -11,12 +11,12 @@ import { useState } from 'react';
 import { selectLayout } from '@/store/features/layout/layout';
 import { isNil } from 'ramda';
 import { 
-  getCampaignDividerIcons, 
   getExtraEncounterDividersIcons, 
   getRequiredEncounterDividersIcons, 
   getScenarioDividerIcons
 } from '@/features/dividers/story/icons';
 import { selectEncounterSets } from '@/store/features/encounterSets/encounterSets';
+import { getCampaignDividersCount } from '@/features/dividers/story/count';
 
 export type ToggleFunction = (value: boolean) => void;
 
@@ -85,7 +85,7 @@ export const AddStoryParams = ({
 
   const extraCount = getExtraEncounterDividersIcons(encountersCountOptions).length;
   const scenariosCount = getScenarioDividerIcons(story).length;
-  const campaignsCount = getCampaignDividerIcons(story).length;
+  const campaignsCount = getCampaignDividersCount(story);
 
   return (
     <div className={S.container}>
