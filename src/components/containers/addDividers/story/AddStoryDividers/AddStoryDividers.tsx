@@ -1,6 +1,5 @@
-import { Container, StorySelect, AddStoryParams, Col, Row, StoryCustomContent, IconButton } from '@/components';
+import { Container, StorySelect, AddStoryParams, Col, Row, StoryCustomContent, IconButton, WithLayoutSupport } from '@/components';
 import S from './AddStoryDividers.module.scss';
-import { selectStories } from '@/store/features/stories/stories';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useState } from 'react';
 import { IStory } from '@/types/api';
@@ -11,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { addStoryDividers } from '@/store/features/addDividers/addDividers';
 import { selectLanguage, selectTranslatedStories } from '@/store/features/language/language';
 import { withScenario } from '@/store/features/stories/criteria';
+import { useCampaignStories } from '@/hooks/stories/useCampaignStories';
 
 export type AddStoryDividersProps = {
 
@@ -21,7 +21,7 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const dispatch = useAppDispatch();
   const story = useAppSelector(selectStory);
 
-  const allStories = useAppSelector(selectStories);
+  const allStories = useCampaignStories();
   const language = useAppSelector(selectLanguage);
   const translated = useAppSelector(selectTranslatedStories);
 
@@ -79,7 +79,7 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                 getIsTranslated={getIsTranslated}
               />
               {story && (
-                <>
+                <WithLayoutSupport>
                   <IconButton 
                     onClick={onGenerate} 
                     className={S.generate}
@@ -102,18 +102,18 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                   >
                     {t('Clear')}
                   </IconButton>
-                </>
+                </WithLayoutSupport>
               )}
             </Row>
           </div>
           {story && (
-            <div>
+            <WithLayoutSupport>
               <AddStoryParams 
                 onChange={onFormChange}
                 defaultValue={form}
                 story={story}
               />
-            </div>
+            </WithLayoutSupport>
           )}
           {story?.custom_content && (
             <div>

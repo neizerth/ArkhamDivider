@@ -1,4 +1,6 @@
+import { IStory } from "@/types/api";
 import { IArkhamesqueBuild } from "arkhamesque-divider-data";
+import { propEq } from "ramda";
 
 export const getArkhamesqueClassicStory = ({
   code,
@@ -18,3 +20,16 @@ export const getArkhamesqueClassicStory = ({
     }
   }
 }
+
+export const hasArkhamesqueStorySupport = ({
+  story,
+  data
+}: {
+  story: IStory,
+  data: IArkhamesqueBuild
+}) =>{
+    const id = story.return_to_code || story.code;
+    return data.stories.some(
+      category => category.data.some(propEq(id, 'code'))
+    );
+  }

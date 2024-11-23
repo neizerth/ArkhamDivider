@@ -51,6 +51,7 @@ export const arkhamesqueCategory: ILayoutCategory = {
   id: "arkhamesque-classic",
   name: "Arkhamesque Classic",
   info: "Arkhamesque Classic Horizontal Dividers",
+  url: 'https://boardgamegeek.com/filepage/197199/arkhamesque-classic-horizontal-dividers',
   author: {
     name: 'Troy',
     image: BASE_PATH + '/images/authors/troy.png',

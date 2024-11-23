@@ -16,7 +16,11 @@ export const StorySelectValue = ({
   isTranslated = false,
   children
 }: StorySelectValueProps) => {
-  const { is_official, icon } = story;
+  const { 
+    is_official, 
+    icon, 
+    supported = true
+  } = story;
 
   const containerClassNames = classNames(
     S.container, 
@@ -32,7 +36,14 @@ export const StorySelectValue = ({
       <div className={S.optionLabel}>{children}</div>
       <div className={S.icons}>
         {!isTranslated && <Icon icon={'en'}/>}
-        {is_official && <Icon icon={'ffg'} className={classNames(S.icon, S.official)}/>}
+        {is_official && (
+          <Icon icon={'ffg'} className={classNames(S.icon, S.official)}/>
+        )}
+        {!supported && (
+          <div className={classNames(S.icon, S.notSupported)}>
+            <Icon icon={'blocked'}/>
+          </div>
+        )}
       </div>
     </div>
   );

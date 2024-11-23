@@ -50,6 +50,7 @@ export type ILayoutCategory = {
   id: string
   unlisted?: boolean,
   name: string
+  url?: string
   info?: string
   author?: ILayoutAuthor
 }
