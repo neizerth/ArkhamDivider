@@ -35,6 +35,7 @@ export { Progress } from './ui/Progress/Progress';
 export { TextFit } from './ui/behavior/TextFit/TextFit';
 export { ZoomView } from './ui/behavior/ZoomView/ZoomView';
 export { NotExportable } from './ui/behavior/NotExportable/NotExportable';
+export { WithLayoutSupport } from './ui/behavior/WithLayoutSupport/WithLayoutSupport';
 export { CustomIcon } from './ui/icons/CustomIcon/CustomIcon';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';

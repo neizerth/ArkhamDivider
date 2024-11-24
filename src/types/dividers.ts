@@ -1,4 +1,4 @@
-import { IScenario, IStory } from "./api"
+import { ICampaign, IEncounterSet, IInvestigator, IScenario, IStory } from "./api"
 import { CardType, IXPCost } from "./game"
 
 export enum DividerType {
@@ -9,15 +9,31 @@ export enum DividerType {
     ENCOUNTER = 'encounter'
 }
 
+export enum DividerSubtype {
+    FACTION = 'faction',
+    INVESTIGATORS = 'investigators',
+    CARD = 'card',
+    WEAKNESS = 'weakness',
+    BASIC_WEAKNESS = 'basic_weakness',
+    BONDED = 'bonded',
+    CUSTOMIZATIONS = 'customizations',
+    UPGRADE = 'upgrade',
+    ALLY = 'ally',
+}
+
 export type IDivider = {
     id: string
     story?: IStory
+    campaign?: ICampaign
     scenario?: IScenario
+    encounterSet?: IEncounterSet
     type: DividerType
+    subtype?: DividerSubtype
     name?: string
     icon?: string
     specialIcon?: string
     faction?: string
+    investigator?: IInvestigator,
     cardType?: CardType
     background?: string
     previewIcon?: string

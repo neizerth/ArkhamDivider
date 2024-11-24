@@ -15,10 +15,12 @@ export const getInvestigatorDividers = ({
     .filter(isNotNil)
     .map(group => group[0]);
 
-  return data.map(({ 
-    name,
-    faction_code
-  }) => {
+  return data.map(investigator => {
+    const { 
+      name,
+      faction_code
+    } = investigator;
+    
     const faction = factions.find(
       propEq(faction_code, 'id')
     );
@@ -29,6 +31,7 @@ export const getInvestigatorDividers = ({
     return {
       id: uniqId(),
       faction: faction.id,
+      investigator,
       type: DividerType.INVESTIGATOR,
       specialIcon: 'per_investigator',
       name,

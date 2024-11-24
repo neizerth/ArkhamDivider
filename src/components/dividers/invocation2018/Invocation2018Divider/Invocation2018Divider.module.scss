@@ -9,15 +9,14 @@
 }
 
 .sideXP {
+
+  font-family: 'Conkordia', 'Arkhamic', sans-serif;
   position: absolute;
   z-index: 1;
   right: 18mm;
-  top: 7mm;
+  top: 7.3mm;
   font-size: 4mm;
   line-height: 1;
-  &_ru {
-    top: 7.2mm;
-  }
 }
 
 .title {
@@ -27,6 +26,17 @@
   &_vertical {
     top: 6.2mm;
     left: 0.2mm
+  }
+}
+
+.ru {
+  .title {
+    &_horizontal {
+      top: 6.7mm;
+    }
+    &_vertical {
+      top: 6.5mm;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 @import "../../../../sass/mixins.scss";
 
 .container {
-  font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
+  font-family: 'Teutonic', 'Teutonic2', 'Conkordia', 'Arkhamic', sans-serif;
   color: #352e1f;
 
   print-color-adjust: exact;
@@ -135,7 +135,7 @@
 .xpCost {
   position: absolute;
   z-index: 2;
-  font-size: 3.5mm;
+  font-size: 3mm;
 
   // color: white;
   // @include textStroke(#352e1f, 0.3mm, 0.15mm);
@@ -174,7 +174,7 @@
   font-size: 2.2mm;
   &_horizontal {
     left: 22mm;
-    top: 3.8mm;
+    top: 3.9mm;
     cursor: pointer;
     &:hover {
       opacity: 0.8;

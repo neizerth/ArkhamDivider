@@ -67,7 +67,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 		S[orientation],
 		S[`type_${type}`],
 		isLight && S.light,
-		xpCost ? S.withXP : S.withoutXP,
+		xpCost && xpCost.level < 0 ? S.withoutXP : S.withXP,
 		className
 	);
 
@@ -81,7 +81,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 	const titleClassName = classNames(
 		S.title, 
 		S[`title_${type}`],
-		S[`title_${realLanguage}`],
+		S[`title_${realLanguage}`]
 	)
 
 	const titleInputClassName = classNames(

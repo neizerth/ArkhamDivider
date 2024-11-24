@@ -5,20 +5,18 @@ import { IStory } from '@/types/api';
 
 export type StorySelectSingleValueProps = SingleValueProps<{
   label: string,
-  isTranslated: boolean
   value: IStory
 }>
 
 export const StorySelectSingleValue = ({ 
-  children, 
+  children,
   ...props
 }: StorySelectSingleValueProps) => {
   const { data } = props;
   return (
     <components.SingleValue {...props}>
       <StorySelectValue 
-        story={data.value} 
-        isTranslated={data.isTranslated}
+        story={data.value}
       >
         {children}
       </StorySelectValue>

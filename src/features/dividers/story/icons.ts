@@ -16,7 +16,7 @@ export const getCampaignDividerIcons = ({
 }: IStory) => {
   return uniq([
       icon,
-      ...campaigns.map(prop('icon'))
+      ...campaigns.map(prop('icon')),
     ])
     .filter(isNotNil);
 }

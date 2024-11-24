@@ -6,6 +6,7 @@ import { IconScale } from '@/types/icons';
 export type IconProps = PropsWithClassName & {
 	icon: string
 	scale?: IconScale
+	scaleBy?: number
 }
 
 export const Icon = ({ 

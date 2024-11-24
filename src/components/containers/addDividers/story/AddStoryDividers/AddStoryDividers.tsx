@@ -1,16 +1,14 @@
-import { Container, StorySelect, AddStoryParams, Col, Row, StoryCustomContent, IconButton } from '@/components';
+import { Container, StorySelect, AddStoryParams, Col, Row, StoryCustomContent, IconButton, WithLayoutSupport } from '@/components';
 import S from './AddStoryDividers.module.scss';
-import { selectStories } from '@/store/features/stories/stories';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useState } from 'react';
-import { IStory } from '@/types/api';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
 import { ButtonType } from '@/types/ui';
 import { useTranslation } from 'react-i18next';
 import { addStoryDividers } from '@/store/features/addDividers/addDividers';
-import { selectLanguage, selectTranslatedStories } from '@/store/features/language/language';
 import { withScenario } from '@/store/features/stories/criteria';
+import { useCampaignStories } from '@/hooks/stories/useCampaignStories';
 
 export type AddStoryDividersProps = {
 
@@ -21,21 +19,9 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const dispatch = useAppDispatch();
   const story = useAppSelector(selectStory);
 
-  const allStories = useAppSelector(selectStories);
-  const language = useAppSelector(selectLanguage);
-  const translated = useAppSelector(selectTranslatedStories);
+  const allStories = useCampaignStories();
 
   const stories = allStories.filter(withScenario);
-  
-  const getIsTranslated = (story: IStory) => {
-    if (language === 'en') {
-      return true;
-    }
-    if (!translated[language]) {
-      return false;
-    }
-    return translated[language].includes(story.code);
-  }
   
   const [form, onFormChange] = useState({
     includeExtraSets: false,
@@ -66,7 +52,6 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
 
   const onClear = () => dispatch(removeAllDividers());
 
-
   return (
     <div className={S.container}>
       <Container>
@@ -76,10 +61,9 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
               <StorySelect 
                 className={S.select}
                 stories={stories} 
-                getIsTranslated={getIsTranslated}
               />
               {story && (
-                <>
+                <WithLayoutSupport>
                   <IconButton 
                     onClick={onGenerate} 
                     className={S.generate}
@@ -102,18 +86,18 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
                   >
                     {t('Clear')}
                   </IconButton>
-                </>
+                </WithLayoutSupport>
               )}
             </Row>
           </div>
           {story && (
-            <div>
+            <WithLayoutSupport>
               <AddStoryParams 
                 onChange={onFormChange}
                 defaultValue={form}
                 story={story}
               />
-            </div>
+            </WithLayoutSupport>
           )}
           {story?.custom_content && (
             <div>

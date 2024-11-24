@@ -6,6 +6,7 @@ export type IFaction = {
 }
 
 export enum XPCost {
+  NO_COST = -1,
   ZERO = 0,
   ONE = 1,
   TWO = 2,
@@ -15,6 +16,7 @@ export enum XPCost {
 }
 
 export enum CardType {
+  ALL = 'all',
   SKILL = 'skill',
   ASSET = 'asset',
   EVENT = 'event'

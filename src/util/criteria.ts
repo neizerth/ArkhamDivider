@@ -1,6 +1,6 @@
 import { curry, includes, isEmpty, isNil, pipe, prop } from "ramda";
 
-export const propsEquals = <C extends { [index: string]: unknown }>(criteria: C) => <T extends C>(item: T) => 
+export const propsEquals = <C extends { [index: string]: unknown }>(criteria: C) => <T extends Partial<C>>(item: T) => 
   Object.entries(criteria).every(([key, value]) => item[key] === value);
 
 export const isPropEmpty = pipe(

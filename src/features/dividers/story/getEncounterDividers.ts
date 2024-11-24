@@ -17,7 +17,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     encounterSets
   } = options;
 
-  if (!includeEncounters && !includeScenarioEncounterSet) {
+  if (!includeEncounters && !includeScenarioEncounterSet && !includeExtraSets) {
     return [];
   }
 
@@ -59,7 +59,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
         return;
       }
 
-      if (!isScenario && !includeEncounters) {
+      if (!isScenario && !includeEncounters && !includeExtraSets) {
         return;
       }
       
@@ -76,6 +76,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
         name,
         icon,
         campaignIcon,
+        encounterSet: encounter,
         type: DividerType.ENCOUNTER,
         displayCampaignIcon: includeCampaignIcon
       }

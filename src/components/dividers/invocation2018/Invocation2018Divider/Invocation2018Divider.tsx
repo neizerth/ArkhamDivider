@@ -12,6 +12,7 @@ import iconBg from './images/icon-bg.png';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
 import { selectLanguage } from '@/store/features/language/language';
+import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 
 export type Invocation2018DividerProps = DividerProps;
 
@@ -20,9 +21,11 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 		faction,
 		xpCost,
 		displaySideXP,
-		displayNumericXP = false
+		displayNumericXP = false,
+		name = ''
 	} = props;
 
+	const { t } = useStoryTranslation(props.story);
 	const { orientation } = useAppSelector(selectLayout);
 	const language = useAppSelector(selectLanguage);
 
@@ -46,16 +49,23 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 		'xpCost',
 		'displaySideXP'
 	], props) : props;
+
+	const translatedName = t(name);
+	const realLanguage = translatedName === name ? 'en' : language;
 	
 
   return (
     <ClassicDivider 
 			{...dividerProps}
+			className={classNames(
+				S[realLanguage],
+				dividerProps.className
+			)}
 			titleStroke={false}
 			titleClassName={classNames(
 				S.title,
 				S[`title_${orientation}`],
-				S[`title_${language}`]
+				S[`title_${realLanguage}`]
 			)}
 			background={background?.src}
 		>

@@ -5,19 +5,22 @@ import { invocation2018Layouts, invocation2018LayoutCategory } from "./invocatio
 import { sarnetskyLayouts, sarnetskyLayoutCategory } from "./sarnetsky";
 import { arkhamDecoCategory, arkhamDecoLayouts } from "./arkham-deco";
 import { arkhamStarter3mmLayout, arkhamStarter3mmLayoutCategory } from "./3mm";
+import { arkhamesqueCategory, arkhamesqueClassicLayouts } from "./arkhamesque";
 
 export const layouts: ILayout[] = [
   ...classicLayouts,
   ...invocation2018Layouts,
   ...sarnetskyLayouts,
   ...arkhamDecoLayouts,
-  arkhamStarter3mmLayout
+  arkhamStarter3mmLayout,
+  ...arkhamesqueClassicLayouts
 ]
 
 export const layoutCategories: ILayoutCategory[] = [
+  arkhamesqueCategory,
   classicLayoutCategory,
   invocation2018LayoutCategory,
   sarnetskyLayoutCategory,
   arkhamDecoCategory,
-  arkhamStarter3mmLayoutCategory
+  arkhamStarter3mmLayoutCategory,
 ] 

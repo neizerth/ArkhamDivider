@@ -5,4 +5,5 @@ export { default as stories } from './stories/stories';
 export { default as layout } from './layout/layout';
 export { default as print } from './print/print';
 export { default as encounterSets } from './encounterSets/encounterSets';
+export { default as arkhamesque } from './arkhamesque/arkhamesque';
 export { default as app } from './app/app';

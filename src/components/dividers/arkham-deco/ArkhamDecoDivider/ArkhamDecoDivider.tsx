@@ -30,6 +30,7 @@ import { getXPDisplayValue } from '@/features/xp';
 import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { XPCost } from '@/types/game';
 
 export const ArkhamDecoDivider = ({
   ...props
@@ -40,10 +41,11 @@ export const ArkhamDecoDivider = ({
     scenario,
     xpCost,
     id,
-    displaySideXP,
     size,
     className
   } = props;
+
+  const displaySideXP = props.displaySideXP && xpCost?.level !== XPCost.NO_COST;
 
   const isPlayer = type === DividerType.PLAYER;
 
@@ -156,9 +158,13 @@ export const ArkhamDecoDivider = ({
               {specialIcon && <Icon icon={specialIcon}/>}
               {!specialIcon && xpCost && (
                 <div className={S.xpCost}>
-                  {xpCost.max ? getXPDisplayValue(xpCost.level, xpCost.max, '-') : xpCost.level}
+                  {xpCost.max && (
+                    getXPDisplayValue(xpCost.level, xpCost.max, '-')
+                  )}
+                  {!xpCost.max && xpCost.value}
                 </div>
               )}
+              {!specialIcon && !xpCost && !isTab && '—'}
             </div>
           </div>
 

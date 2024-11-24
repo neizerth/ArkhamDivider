@@ -2,6 +2,11 @@ import { CardType } from "@/types/game";
 
 export const playerCardTypes = [
   {
+    "id": "all",
+    "name": "∑",
+    "type": CardType.ALL
+  },
+  {
     "id": "asset",
     "name": "Asset",
     "type": CardType.ASSET

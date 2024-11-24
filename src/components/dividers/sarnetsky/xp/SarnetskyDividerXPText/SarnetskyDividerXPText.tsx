@@ -39,10 +39,12 @@ export const SarnetskyDividerXPText = ({
           (<Icon icon={icon} className={S.icon}/>)
         </div>
       </div>
-      <DividerText 
-        defaultValue={levelText} 
-        className={S.input}
-      />
+      {level >= 0 && (
+        <DividerText 
+          defaultValue={levelText} 
+          className={S.input}
+        />
+      )}
     </div>
   );
 }

@@ -2,12 +2,14 @@ import { IconScale } from "@/types/icons";
 
 export const getIconScale = ({
   scale,
+  scaleBy,
   ratio,
   circled = false
 }: {
   scale: IconScale, 
   ratio?: number,
   circled?: boolean,
+  scaleBy?: number
 }) => {
   if (!ratio) {
     return 100;
@@ -15,7 +17,8 @@ export const getIconScale = ({
   if (scale === 'circle') {
     return getCircleScale({
       ratio,
-      circled
+      circled,
+      scaleBy
     });
   }
 
@@ -28,15 +31,17 @@ export const getSquareScale = (ratio: number) => {
 
 export const getCircleScale = ({
   ratio,
+  scaleBy = 1,
   circled = false
 }: {
-  ratio: number,
+  ratio: number
   circled?: boolean
+  scaleBy?: number
 }) => {
   if (circled) {
     return 90;
   }
   const angle = Math.atan(ratio);
   const height = Math.cos(angle);
-  return height * 100;
+  return height * scaleBy * 100;
 }

@@ -17,18 +17,15 @@ import { IconButton } from '@/components/ui/IconButton/IconButton';
 import { ButtonType } from '@/types/ui';
 import { toArrayIf } from '@/util/common';
 
-
 export type StorySelectProps = PropsWithClassName & {
   stories: IStory[]
   clear?: boolean
-  getIsTranslated?: (story: IStory) => boolean
 }
 
 export const StorySelect = ({ 
   stories, 
   clear = false,
   className,
-  getIsTranslated = () => true,
 }: StorySelectProps) => {
   const { t, translateStory } = useStoryTranslation();
   const navigate = useAppNavigate();
@@ -48,7 +45,6 @@ export const StorySelect = ({
 
   const mapStory = (story: IStory) => ({
     label: translateStory(story.name, story),
-    isTranslated: getIsTranslated(story),
     value: story
   });
 
@@ -99,7 +95,17 @@ export const StorySelect = ({
     SingleValue: StorySelectSingleValue
   }
 
-  const value = story ? mapStory(story) : null;
+  const getSelectValue = (story: IStory) => {
+    for (const group of groups) {
+      for (const option of group.options) {
+        if (option.value.code === story.code) {
+          return option;
+        }
+      }
+    }
+  }
+
+  const value = story && getSelectValue(story);
 
   return (
     <Row className={classNames(S.container, className)}>

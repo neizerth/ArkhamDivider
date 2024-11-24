@@ -3,7 +3,6 @@ import S from './App.module.scss'
 
 import { 
   AppLoader, 
-  Layout, 
   AppSettings, 
   LayoutMenu, 
   AddDividers, 
@@ -11,7 +10,9 @@ import {
   Footer, 
   LayoutInfo, 
   CategoryInfo,
-  ActivePopup
+  ActivePopup,
+  WithLayoutSupport,
+  Layout
 } from '@/components';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -75,11 +76,13 @@ const AppLayout = () => {
             <div className={S.addDividers}>
               <AddDividers/>
             </div>
-            {showLayout && (
-              <div className={S.layout}>
-                 <Layout/>
-              </div>
-            )}
+            <WithLayoutSupport fallback={true}>
+              {showLayout && (
+                <div className={S.layout}>
+                  <Layout/>
+                </div>
+              )}
+            </WithLayoutSupport>
           </Col>
           <Footer/>
         </Col>

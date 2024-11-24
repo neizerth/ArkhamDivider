@@ -38,6 +38,7 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
     includeCustomizations: false,
     displaySideXP: false,
     displayNumericXP: false,
+    includeInvestigators: false
   });
 
   const stories = useAppSelector(selectStories);
@@ -73,33 +74,38 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             <FactionSelect onChange={setFactions}/>
           </Row>
           <div className={S.rule}/>
-          <div>
+          <Row className={S.row} wrap>
             <Checkbox 
               {...check('includeFactionId')}
             >
               {t('Card Factions')}
             </Checkbox>
-          </div>
+            <Checkbox 
+              {...check('includeInvestigators')}
+            >
+              {t('Investigators')}
+            </Checkbox>
+          </Row>
           <div className={S.rule}/>
           <Row className={S.row} wrap>
             <PlayerCardTypeSelect onChange={setTypes}/>
-            <Checkbox 
-              {...check('includeAllies')}
-            >
-              {t('Ally')}
-            </Checkbox>
           </Row>
           <div className={S.rule}/>
           <Row wrap className={S.row}>
             <Checkbox 
-              {...check('includeBasicWeakness')}
-            >
-              {t('Basic Weakness')}
+                {...check('includeAllies')}
+              >
+              {t('Ally')}
             </Checkbox>
             <Checkbox 
               {...check('includeBonded')}
             >
               {t('Bonded')}
+            </Checkbox>
+            <Checkbox 
+              {...check('includeBasicWeakness')}
+            >
+              {t('Weakness')}
             </Checkbox>
           </Row>
           <div className={S.rule}/>
