@@ -125,3 +125,15 @@
   // align-items: center;
   // justify-content: center;
 }
+
+.menu {
+  position: absolute;
+  right: 7mm;
+  gap: 10px;
+  bottom: 15mm;
+  z-index: 2;
+  // right: 10mm;
+  
+  display: flex;
+  flex-direction: column;
+}

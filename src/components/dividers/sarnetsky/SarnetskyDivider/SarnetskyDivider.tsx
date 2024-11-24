@@ -67,7 +67,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 		S[orientation],
 		S[`type_${type}`],
 		isLight && S.light,
-		xpCost?.level < 0 ? S.withoutXP : S.withXP,
+		xpCost && xpCost.level < 0 ? S.withoutXP : S.withXP,
 		className
 	);
 

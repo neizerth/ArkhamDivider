@@ -2,13 +2,11 @@ import { Container, StorySelect, AddStoryParams, Col, Row, StoryCustomContent, I
 import S from './AddStoryDividers.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useState } from 'react';
-import { IStory } from '@/types/api';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
 import { ButtonType } from '@/types/ui';
 import { useTranslation } from 'react-i18next';
 import { addStoryDividers } from '@/store/features/addDividers/addDividers';
-import { selectLanguage, selectTranslatedStories } from '@/store/features/language/language';
 import { withScenario } from '@/store/features/stories/criteria';
 import { useCampaignStories } from '@/hooks/stories/useCampaignStories';
 

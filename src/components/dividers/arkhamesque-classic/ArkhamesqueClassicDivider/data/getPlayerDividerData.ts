@@ -1,7 +1,7 @@
 import { DividerSubtype } from "@/types/dividers";
 import { GetDividerDataOptions } from "./getDividerData";
 import { getDividerImage } from "./getDividerImage";
-import { descend, prop, propEq } from "ramda";
+import { descend, propEq } from "ramda";
 import { Single } from "@/types/util";
 import { propsEquals } from "@/util/criteria";
 import { CardType } from "@/types/game";

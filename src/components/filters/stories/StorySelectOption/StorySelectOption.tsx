@@ -6,7 +6,6 @@ import { StorySelectValue } from '@/components';
 
 export type StorySelectOptionProps = OptionProps<{
   label: string,
-  isTranslated: boolean
   value: IStory
 }>
 
@@ -17,7 +16,6 @@ export const StorySelectOption = (props: StorySelectOptionProps) => {
       <StorySelectValue 
         story={data.value} 
         isSelected={isSelected}
-        isTranslated={data.isTranslated}
       >
         {children}
       </StorySelectValue>

@@ -3,7 +3,6 @@ import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { IArkhamesqueBuild } from 'arkhamesque-classic-divider-data';
-import { setLoading } from '../app/app';
 
 export type IArkhamesqueState = {
   data: IArkhamesqueBuild | null

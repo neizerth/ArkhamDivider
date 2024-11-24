@@ -36,7 +36,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const translatedName = t(name);
   const realLanguage = translatedName === name ? 'en' : language;
 
-	const [title, setTitle] = useState(translatedName);
+	const [_, setTitle] = useState(translatedName);
 
   const [icon, selectIcon] = useIconSelect({
 		defaultIcon: mapDefaultIcon(props.icon)
@@ -124,7 +124,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
               className={S.image}
             />
             <NotExportable>
-              {/* <DividerMenu id={id} className={S.menu}/> */}
+              <DividerMenu id={id} className={S.menu}/>
             </NotExportable>
           </>
         )}
