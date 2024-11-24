@@ -21,7 +21,7 @@ export const useLayoutSupport = () => {
   const isArkhamesqueLayout = categoryId === arkhamesqueCategory.id;
 
   if (!story) {
-    return false;
+    return true;
   }
 
   if (!isArkhamesqueLayout) {
