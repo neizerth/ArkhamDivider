@@ -1,4 +1,4 @@
-import { ICampaign, IEncounterSet, IScenario, IStory } from "./api"
+import { ICampaign, IEncounterSet, IInvestigator, IScenario, IStory } from "./api"
 import { CardType, IXPCost } from "./game"
 
 export enum DividerType {
@@ -33,6 +33,7 @@ export type IDivider = {
     icon?: string
     specialIcon?: string
     faction?: string
+    investigator?: IInvestigator,
     cardType?: CardType
     background?: string
     previewIcon?: string

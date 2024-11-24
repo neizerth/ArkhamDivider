@@ -60,13 +60,12 @@ export const getPlayerDividerData = ({
   }
 
   if (subtype === DividerSubtype.FACTION) {
-    const type = subtype.toString();
     const xp = xpCost?.level;
-    const item = items.find(propsEquals({
-      faction,
-      xp,
-      type
-    }));
+    const item = items.find(
+      item => item.faction === faction &&
+        item.xp === xp &&
+        item.type === subtype
+    );
     
     return sendItem(item);
   }
@@ -98,18 +97,24 @@ export const getPlayerDividerData = ({
     }
 
     const withXP = found.find(
-      ({ xp }) => xp !== undefined && xp <= level
+      ({ xp }) => typeof xp === 'number' && xp <= level
     );
     
     if (withXP) {
       return sendItem(withXP);
     }
 
-    const fallbackItem = items.find(propsEquals({
-      faction,
-      type: 'faction',
-      xp: level
-    }));
+    // const fallbackItem = items.find(propsEquals({
+    //   faction,
+    //   type: 'faction',
+    //   xp: level
+    // }));
+
+    const fallbackItem = items.find(
+      item => item.faction === faction &&
+        item.xp === level &&
+        item.type === 'faction'
+    );
 
     return sendItem(fallbackItem);
   }

@@ -20,14 +20,12 @@ import { toArrayIf } from '@/util/common';
 export type StorySelectProps = PropsWithClassName & {
   stories: IStory[]
   clear?: boolean
-  getIsTranslated?: (story: IStory) => boolean
 }
 
 export const StorySelect = ({ 
   stories, 
   clear = false,
   className,
-  getIsTranslated = () => true,
 }: StorySelectProps) => {
   const { t, translateStory } = useStoryTranslation();
   const navigate = useAppNavigate();
@@ -47,7 +45,6 @@ export const StorySelect = ({
 
   const mapStory = (story: IStory) => ({
     label: translateStory(story.name, story),
-    isTranslated: getIsTranslated(story),
     value: story
   });
 

@@ -1,4 +1,3 @@
-import { playerCardTypes } from '@/data/playerCardTypes';
 import { AddPlayerDividersOptions } from '@/store/features/addDividers/addDividers';
 import { DividerSubtype, DividerType, IDivider } from '@/types/dividers';
 import { CardType, IFaction, IXPCost, XPCost } from '@/types/game';

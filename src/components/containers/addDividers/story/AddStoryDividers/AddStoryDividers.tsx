@@ -22,20 +22,8 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   const story = useAppSelector(selectStory);
 
   const allStories = useCampaignStories();
-  const language = useAppSelector(selectLanguage);
-  const translated = useAppSelector(selectTranslatedStories);
 
   const stories = allStories.filter(withScenario);
-  
-  const getIsTranslated = (story: IStory) => {
-    if (language === 'en') {
-      return true;
-    }
-    if (!translated[language]) {
-      return false;
-    }
-    return translated[language].includes(story.code);
-  }
   
   const [form, onFormChange] = useState({
     includeExtraSets: false,
@@ -66,7 +54,6 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
 
   const onClear = () => dispatch(removeAllDividers());
 
-
   return (
     <div className={S.container}>
       <Container>
@@ -76,7 +63,6 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
               <StorySelect 
                 className={S.select}
                 stories={stories} 
-                getIsTranslated={getIsTranslated}
               />
               {story && (
                 <WithLayoutSupport>

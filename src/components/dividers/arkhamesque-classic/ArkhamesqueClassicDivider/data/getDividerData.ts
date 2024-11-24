@@ -2,6 +2,7 @@ import { DividerType, IDivider } from "@/types/dividers"
 import { IArkhamesqueBuild, IArkhamesquePlayerCategory, IArkhamesqueStoriesCategory, IArkhamesqueStoryScenario } from "arkhamesque-classic-divider-data"
 import { getStoryDividerData } from "./getStoryDividerData";
 import { getPlayerDividerData } from "./getPlayerDividerData";
+import { getInvestigatorsDividerData } from "./getInvestigatorsDividerData";
 
 export type GetDividerDataOptions = {
   data: IArkhamesqueBuild,
@@ -28,5 +29,7 @@ export const getDividerData = (options: GetDividerDataOptions): IArkhamesqueDivi
       return getStoryDividerData(options);
     case DividerType.PLAYER:
       return getPlayerDividerData(options);
+    case DividerType.INVESTIGATOR:
+      return getInvestigatorsDividerData(options);
   }
 }

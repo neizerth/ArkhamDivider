@@ -13,13 +13,13 @@ export type StorySelectValueProps = PropsWithChildren & {
 export const StorySelectValue = ({ 
   story,
   isSelected = false,
-  isTranslated = false,
   children
 }: StorySelectValueProps) => {
   const { 
     is_official, 
     icon, 
-    supported = true
+    supported = true,
+    tranlated
   } = story;
 
   const containerClassNames = classNames(
@@ -35,7 +35,7 @@ export const StorySelectValue = ({
       )}
       <div className={S.optionLabel}>{children}</div>
       <div className={S.icons}>
-        {!isTranslated && <Icon icon={'en'}/>}
+        {!tranlated && <Icon icon={'en'}/>}
         {is_official && (
           <Icon icon={'ffg'} className={classNames(S.icon, S.official)}/>
         )}

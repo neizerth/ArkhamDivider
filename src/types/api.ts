@@ -3,6 +3,7 @@ import { Defined, Single } from "./util";
 
 export type IStory = Single<ArkhamDivider.Core['stories']> & {
   supported?: boolean
+  tranlated?: boolean
 }
 
 export type IEncounterSet = Single<ArkhamDivider.Core['encounterSets']>;
