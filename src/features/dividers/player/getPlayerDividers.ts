@@ -1,6 +1,7 @@
+import { playerCardTypes } from '@/data/playerCardTypes';
 import { AddPlayerDividersOptions } from '@/store/features/addDividers/addDividers';
-import { DividerType, IDivider } from '@/types/dividers';
-import { CardType, IFaction } from '@/types/game';
+import { DividerSubtype, DividerType, IDivider } from '@/types/dividers';
+import { CardType, IFaction, IXPCost } from '@/types/game';
 import { uniqId } from '@/util/common';
 
 export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
@@ -11,6 +12,7 @@ export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
     ...getCustomizationsDividers(options),
     ...getPlayerCardDividers(options),
     ...getFactionIdDividers(options),
+    ...getFactionInvestigatorDividers(options),
     ...getBondedDividers(options)
   ];
 
@@ -40,7 +42,7 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
       return types.map((type): IDivider => {
         return {
           id: uniqId(),
-          name: type.name,
+          name: type.type === CardType.ALL ? faction.name : type.name,
           icon: type.icon || faction.icon,
           previewIcon: faction.icon,
           faction: faction.id,
@@ -48,7 +50,8 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
           type: DividerType.PLAYER,
           displaySideXP,
           displayNumericXP,
-          xpCost
+          xpCost,
+          subtype: DividerSubtype.CARD
         }
       });
     })
@@ -71,89 +74,139 @@ export const getAllyType = ({
       id: 'ally',
       icon: 'ally_inverted',
       type: CardType.ASSET,
-      name: 'Ally'
+      name: 'Ally',
+      subtype: DividerSubtype.ALLY
     }
   ]
 }
 
 export const getUpgradingDividers = ({
   factions,
-  includeUpgrading
+  includeUpgrading,
+  xpCosts
 }: {
   factions: IFaction[]
   includeUpgrading: boolean
+  xpCosts: IXPCost[]
 }) => {
   if (!includeUpgrading) {
     return [];
   }
-  return factions.map((faction): IDivider => ({
-    id: uniqId(),
-    name: 'Upgrading',
-    icon: faction.icon,
-    specialIcon: 'upgrade',
-    faction: faction.id,
-    type: DividerType.PLAYER
-  }))
+  return xpCosts.map(xpCost =>
+    factions.map((faction): IDivider => ({
+      id: uniqId(),
+      name: 'Upgrading',
+      icon: faction.icon,
+      specialIcon: 'upgrade',
+      xpCost,
+      faction: faction.id,
+      type: DividerType.PLAYER,
+      subtype: DividerSubtype.UPGRADE
+    }))
+  ).flat()
 }
 
 export const getCustomizationsDividers = ({
   factions,
-  includeCustomizations
+  includeCustomizations,
+  xpCosts
 }: {
   factions: IFaction[]
   includeCustomizations: boolean
+  xpCosts: IXPCost[]
 }) => {
   if (!includeCustomizations) {
     return [];
   }
-  return factions.map((faction): IDivider => ({
-    id: uniqId(),
-    name: 'Customizations',
-    tags: ['customizations'],
-    icon: faction.icon,
-    specialIcon: 'list',
-    faction: faction.id,
-    type: DividerType.PLAYER
-  }))
+  return xpCosts.map(xpCost =>
+    factions.map((faction): IDivider => ({
+      id: uniqId(),
+      name: 'Customizations',
+      tags: ['customizations'],
+      icon: faction.icon,
+      specialIcon: 'list',
+      xpCost,
+      faction: faction.id,
+      type: DividerType.PLAYER,
+      subtype: DividerSubtype.CUSTOMIZATIONS
+    }))
+  ).flat()
 }
 
 export const getBondedDividers = ({
   factions,
-  includeBonded
+  includeBonded,
+  xpCosts
 }: {
   factions: IFaction[]
   includeBonded: boolean
+  xpCosts: IXPCost[]
 }) => {
   if (!includeBonded) {
     return [];
   }
-  return factions.map((faction): IDivider => ({
-    id: uniqId(),
-    name: 'Bonded',
-    specialIcon: 'link',
-    icon: faction.icon,
-    faction: faction.id,
-    type: DividerType.PLAYER
-  }))
+  return xpCosts.map(xpCost => 
+    factions.map((faction): IDivider => ({
+      id: uniqId(),
+      name: 'Bonded',
+      specialIcon: 'link',
+      icon: faction.icon,
+      xpCost,
+      faction: faction.id,
+      type: DividerType.PLAYER,
+      subtype: DividerSubtype.BONDED
+    }))
+  ).flat()
 }
 
 export const getFactionIdDividers = ({
   factions,
-  includeFactionId
+  includeFactionId,
+  xpCosts
 }: {
   factions: IFaction[]
   includeFactionId: boolean
+  xpCosts: IXPCost[]
 }) => {
   if (!includeFactionId) {
     return [];
   }
-  return factions.map((faction): IDivider => ({
-    id: uniqId(),
-    name: faction.name,
-    icon: faction.icon,
-    faction: faction.id,
-    type: DividerType.PLAYER
-  }))
+  return [ 
+    ...xpCosts.map(xpCost => 
+      factions.map(faction => ({
+        id: uniqId(),
+        name: faction.name,
+        icon: faction.icon,
+        faction: faction.id,
+        xpCost,
+        type: DividerType.PLAYER,
+        subtype: DividerSubtype.FACTION
+      }))
+    ).flat()
+  ]
+}
+
+export const getFactionInvestigatorDividers = ({
+  factions,
+  includeInvestigators,
+}: {
+  factions: IFaction[]
+  includeInvestigators: boolean
+}) => {
+  if (!includeInvestigators) {
+    return [];
+  }
+  return factions
+    .filter(faction => faction.id !== 'multiclass') 
+    .map((faction): IDivider => ({
+      id: uniqId(),
+      name: 'Investigators',
+      icon: faction.icon,
+      faction: faction.id,
+      type: DividerType.PLAYER,
+      subtype: DividerSubtype.INVESTIGATORS
+    }))
+  
 }
 
 
@@ -169,7 +222,15 @@ export const getBasicWeaknessDividers = ({
       id: uniqId(),
       name: 'Basic Weakness',
       icon: 'weakness',
-      type: DividerType.PLAYER
+      type: DividerType.PLAYER,
+      subtype: DividerSubtype.BASIC_WEAKNESS
+    },
+    {
+      id: uniqId(),
+      name: 'Weakness',
+      icon: 'weakness',
+      type: DividerType.PLAYER,
+      subtype: DividerSubtype.WEAKNESS
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { IXPCost } from '@/types/game';
+import { IXPCost, XPCost } from '@/types/game';
 import S from './ClassicDividerSideXP.module.scss';
 import { range } from 'ramda';
 import classNames from 'classnames';
@@ -15,13 +15,13 @@ export const ClassicDividerSideXP = ({
 }: ClassicDividerSideXPProps) => {
   const {
     value,
-    level,
+    level = 0,
     max = level
   } = xpCost;
 
   return (
     <div className={S.container}>
-      {numeric && (
+      {numeric && level !== XPCost.NO_COST && (
         <div className={S.text}>{value}</div>
       )}
       {!numeric && max > 0 && (

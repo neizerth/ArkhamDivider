@@ -20,17 +20,21 @@ export const SarnetskyDividerXPCost = ({
 
   return (
     <div className={S.container}>
-      {range(1, MAX_XP + 1).map(l => (
-        <Dot 
-          key={l}
-          className={classNames(
-            S.level,
-            l <= level && S.current,
-            l > level && l <= max && S.max,
-            l > max && S.inactive
-          )}
-        />
-      ))}
+      {level >= 0 && (
+        <>
+          {range(1, MAX_XP + 1).map(l => (
+            <Dot 
+              key={l}
+              className={classNames(
+                S.level,
+                l <= level && S.current,
+                l > level && l <= max && S.max,
+                l > max && S.inactive
+              )}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 }

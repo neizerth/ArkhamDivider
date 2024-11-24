@@ -65,7 +65,7 @@
   }
 }
 
-.campaignIcon {
+.specialIcon {
   --offset-top: 0mm;
   --offset-left: 0mm;
   position: absolute;
@@ -85,7 +85,8 @@
   }
 }
 
-.scenarioNumber {
+.specialText {
+  // font-family: 'Arno Pro', sans-serif;
   position: absolute;
   z-index: 3;
   top: 7.3mm;
@@ -102,7 +103,13 @@
   // line-height: 6.1mm;
 }
 
-.scenarioNumberContainer {
+.player {
+  .specialText {
+    font-family: 'Arno Pro', sans-serif;
+  }
+}
+
+.specialTextContainer {
   position: absolute;
   width: 4mm;
   height: fit-content;

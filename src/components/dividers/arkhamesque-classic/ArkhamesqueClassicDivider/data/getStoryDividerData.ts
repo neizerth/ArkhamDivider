@@ -1,30 +1,8 @@
 import { getArkhamesqueClassicStory } from "@/store/features/arkhamesque/criteria";
-import { DividerType, IDivider } from "@/types/dividers"
-import { IArkhamesqueBuild } from "arkhamesque-divider-data"
-import { ARKHAMESQUE_URL } from "@/constants/app";
-import { identity, propEq } from "ramda";
+import { getDividerImage } from "./getDividerImage";
+import { GetDividerDataOptions } from "./getDividerData";
+import { propEq } from "ramda";
 
-export type GetDividerDataOptions = {
-  data: IArkhamesqueBuild,
-  divider: IDivider
-}
-
-export type GetTypedDividerDataOptions = NonNullable<GetDividerDataOptions>;
-export const getDividerData = (options: GetDividerDataOptions) => {
-  const { divider } = options;
-
-  switch (divider.type) {
-    case DividerType.CAMPAIGN:
-    case DividerType.SCENARIO:
-    case DividerType.ENCOUNTER:
-      return getStoryDividerData(options);
-  }
-}
-
-const toImage = (data: (string | undefined | false)[]) => {
-  const path = data.filter(identity).join('');
-  return `${ARKHAMESQUE_URL}/images/${path}.jpg`
-}
 
 export const getStoryDividerData = ({
   data,
@@ -53,7 +31,7 @@ export const getStoryDividerData = ({
   const categoryPrefix = category.prefix;
   const { name, return_name } = search.story;
 
-  const defaultImage = toImage([
+  const defaultImage = getDividerImage([
     data.prefix,
     categoryPrefix,
     name,
@@ -80,7 +58,7 @@ export const getStoryDividerData = ({
     return {
       scenario,
       category,
-      image: toImage([
+      image: getDividerImage([
         data.prefix,
         categoryPrefix,
         name,
@@ -103,7 +81,7 @@ export const getStoryDividerData = ({
   return {
     scenario,
     category,
-    image: toImage([
+    image: getDividerImage([
       data.prefix,
       categoryPrefix,
       name,

@@ -2,7 +2,7 @@ import { fetchArkhamesqueData } from '@/api/arkhamesqueClassic';
 import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
-import { IArkhamesqueBuild } from 'arkhamesque-divider-data';
+import { IArkhamesqueBuild } from 'arkhamesque-classic-divider-data';
 import { setLoading } from '../app/app';
 
 export type IArkhamesqueState = {

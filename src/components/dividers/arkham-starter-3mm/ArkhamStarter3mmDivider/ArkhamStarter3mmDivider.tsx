@@ -15,6 +15,7 @@ import { getPlayerCornerColor } from './colors/playerCornerColor';
 import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { DividerType } from '@/types/dividers';
+import { XPCost } from '@/types/game';
 
 export const ArkhamStarter3mmDivider = (props: DividerProps) => {
   const { t } = useStoryTranslation(props.story);
@@ -80,6 +81,8 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
 
   const playerCornerColor = getPlayerCornerColor(props);
 
+  const showXPCost = xpCost && xpCost.level !== XPCost.NO_COST;
+
   return (
     <div className={classNames(
       S.container,
@@ -93,7 +96,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
           </div>
         </NotExportable>
         <img className={S.background} src={background}/>
-        {xpCost && xpTitle && (
+        {showXPCost && xpTitle && (
           <>
             <div className={classNames(
               S.xpCost,

@@ -3,12 +3,20 @@ import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from '@/types
 import { PageOrientation } from '@/types/print';
 
 const arkhamesqueClassicLayoutBase = {
-  types: [LayoutType.SCENARIO],
+  types: [LayoutType.SCENARIO, LayoutType.PLAYER],
   orientation: LayoutOrientation.HORIZONTAL,
   pageOrientation: PageOrientation.PORTRAIT,
   color: true,
   rowSize: 2,
   groupSize: 6,
+  campaignOptions: {
+    includeCampaignIcon: true,
+    includeScenarioSize: false,
+    includeEncounterSize: false
+  },
+  playerOptions: {
+    displaySideXP: false
+  }
 }
 
 export const arkhamesqueClassicLayouts: ILayout[] = [

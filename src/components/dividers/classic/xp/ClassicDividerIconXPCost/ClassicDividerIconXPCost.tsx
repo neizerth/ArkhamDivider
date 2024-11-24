@@ -136,7 +136,7 @@ export const ClassicDividerIconXPCost = ({
       {type === CardType.SKILL && (
         <ClassicDividerSkillXPCost xpCost={xpCost}/>
       )}
-      {type === CardType.ASSET && (
+      {[CardType.ASSET, CardType.ALL].includes(type) && (
         <ClassicDividerAssetXPCost xpCost={xpCost}/>
       )}
       {type === CardType.EVENT && (

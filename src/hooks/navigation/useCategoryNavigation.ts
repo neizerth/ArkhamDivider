@@ -5,7 +5,7 @@ import { useAppSelector } from "../useAppSelector";
 import { selectCategoryId, setCategoryId } from "@/store/features/layout/layout";
 import { layoutCategories } from "@/data/layouts";
 import { prop } from "ramda";
-import { arkhamesqueCategory } from "@/data/layouts/arkhamesque-classic";
+import { arkhamesqueCategory } from "@/data/layouts/arkhamesque";
 import { loadArkhamesqueData } from "@/store/features/arkhamesque/arkhamesque";
 
 export const useCategoryNavigation = () => {

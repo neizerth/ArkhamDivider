@@ -1,5 +1,5 @@
 import { IXPCost } from "@/types/game";
-import { ToggleSelect } from '../ToggleSelect/ToggleSelect';
+import { ToggleSelect, ToggleSelectItem, ToggleSelectItemProps } from '../ToggleSelect/ToggleSelect';
 import S from './XPCostSelect.module.scss';
 import { fixedXPCosts } from "@/data/fixedXPCosts";
 import { Col, IconButton, Row, XPSlider } from "@/components";
@@ -14,8 +14,18 @@ export type XPCostSelectProps = {
 
 export type IXPCostRange = [number, number];
 
+export const XPCostItem = (props: ToggleSelectItemProps<IXPCost>) => {
+  const xpCost = props.value;
+
+  return (
+    <ToggleSelectItem {...props}>
+      {xpCost.value}
+    </ToggleSelectItem>
+  );
+}
+
 export const XPCostSelect = (props: XPCostSelectProps) => {
-  const xpCosts = fixedXPCosts;
+
   const defaultRangeValue: [number, number] = [1, 2];
   const [currentRange, setRange] = useState<IXPCostRange>(defaultRangeValue); 
   const [data, setData] = useState<IXPCost[]>([]);
@@ -57,12 +67,17 @@ export const XPCostSelect = (props: XPCostSelectProps) => {
     )
   );
 
+  const components = {
+    Item: XPCostItem
+  };
+
   return (
     <Col className={S.container}>
       <ToggleSelect 
-        value={xpCosts}
+        value={fixedXPCosts}
         className={S.container} 
         onChange={onFixedChange}
+        components={components}
       />
       <Row className={S.row} wrap>
         <div className={S.slider}>

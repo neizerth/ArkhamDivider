@@ -20,6 +20,7 @@ export type AddPlayerDividersOptions = {
   includeBasicWeakness: boolean
   includeAllies: boolean
   includeFactionId: boolean
+  includeInvestigators: boolean
   includeBonded: boolean
   displaySideXP: boolean
   displayNumericXP: boolean

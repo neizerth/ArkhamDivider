@@ -1,5 +1,12 @@
-.campaignIcon {
+.specialIcon {
   &_dream {
     --offset-top: 0.2mm;
-  }  
+  }
+  &_guardian {
+    --offset-top: 0.32mm;
+    --offset-left: 0.05mm;
+  }
+  &_survivor {
+    --offset-top: 0.2mm;
+  }
 }

@@ -1,7 +1,7 @@
 import { selectLayout, selectType } from "@/store/features/layout/layout";
 import { useAppSelector } from "../useAppSelector";
 import { selectArkhamesqueData } from "@/store/features/arkhamesque/arkhamesque";
-import { arkhamesqueCategory } from "@/data/layouts/arkhamesque-classic";
+import { arkhamesqueCategory } from "@/data/layouts/arkhamesque";
 import { hasArkhamesqueStorySupport } from "@/store/features/arkhamesque/criteria";
 import { selectStory } from "@/store/features/dividers/dividers";
 import { LayoutType } from "@/types/layouts";

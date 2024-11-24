@@ -5,16 +5,18 @@ import { DividerContent } from '../../common/DividerContent/DividerContent';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { useState } from 'react';
-import { getDividerData } from './getDividerData';
+import { getDividerData } from './data/getDividerData';
 import { useSelector } from 'react-redux';
 import { selectArkhamesqueData } from '@/store/features/arkhamesque/arkhamesque';
 import { DividerText } from '../../common/DividerText/DividerText';
 import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
 import { DividerMenu } from '../../common/DividerMenu/DividerMenu';
-import { language } from '@/store/features';
 import { selectLanguage } from '@/store/features/language/language';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
+import { XPCost } from '@/types/game';
+import { MAX_XP } from '@/constants/xp';
+import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 
 export type ArkhamesqueClassicDividerProps = IDivider;
 
@@ -23,7 +25,8 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     id,
     story, 
     name = '',
-    type
+    type,
+    xpCost
   } = props;
 
   const language = useSelector(selectLanguage);
@@ -38,8 +41,8 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 		defaultIcon: props.icon
 	});
 
-  const [campaignIcon, selectCampaignIcon] = useIconSelect({
-		defaultIcon: props.campaignIcon
+  const [specialIcon, selectSpecialIcon] = useIconSelect({
+		defaultIcon: props.campaignIcon || props.specialIcon || props.icon
 	});
 
   const item = data && getDividerData({
@@ -52,11 +55,14 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   )
 
   const scenarioNumber = item?.scenario?.number_text || props.scenario?.number_text;
+  const showPreviewIcon = item?.icon !== false && item?.previewIcon !== false;
+  const showSpecialIcon = item?.icon !== false;
 
   return (
     <div 
       className={classNames(
         S.container,
+        S[type],
         S[realLanguage]
       )}
       data-scenario-id={props.scenario?.id}
@@ -64,7 +70,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
-            {icon && (
+            {icon && showPreviewIcon && (
               <div className={S.icon} onClick={selectIcon}>
                 <Icon 
                   icon={icon} 
@@ -73,20 +79,27 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 />
               </div>
             )}
-            {campaignIcon && (
+            {specialIcon && showSpecialIcon && (
               <div 
                 className={classNames(
-                  S.campaignIcon,
-                  S[`campaignIcon_${campaignIcon}`]
+                  S.specialIcon,
+                  S[`specialIcon_${specialIcon}`]
                 )} 
-                onClick={selectCampaignIcon}
+                onClick={selectSpecialIcon}
               >
-                <Icon icon={campaignIcon} scale='circle'/>
+                <Icon icon={specialIcon} scale='circle'/>
               </div>
             )}
             {item.scenario && scenarioNumber && (
-              <div className={S.scenarioNumber}>
-                <TextFit text={scenarioNumber} className={S.scenarioNumberContainer}/>
+              <div className={S.specialText}>
+                <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
+              </div>
+            )}
+            {xpCost && xpCost?.level !== XPCost.NO_COST && (
+              <div className={S.specialText}>
+                <XPCostTitle
+                  xpCost={xpCost}
+                />
               </div>
             )}
             <div 
