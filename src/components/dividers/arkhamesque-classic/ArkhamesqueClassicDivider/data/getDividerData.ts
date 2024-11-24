@@ -14,6 +14,7 @@ export type IArkhamesqueDividerDataItem = {
   image: string
   icon?: boolean
   previewIcon?: boolean 
+  xp?: number | boolean
 }
 
 export type GetTypedDividerDataOptions = NonNullable<GetDividerDataOptions>;

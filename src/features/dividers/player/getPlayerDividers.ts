@@ -1,7 +1,7 @@
 import { playerCardTypes } from '@/data/playerCardTypes';
 import { AddPlayerDividersOptions } from '@/store/features/addDividers/addDividers';
 import { DividerSubtype, DividerType, IDivider } from '@/types/dividers';
-import { CardType, IFaction, IXPCost } from '@/types/game';
+import { CardType, IFaction, IXPCost, XPCost } from '@/types/game';
 import { uniqId } from '@/util/common';
 
 export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
@@ -39,21 +39,23 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
 
   return factions.map(faction => {
     return xpCosts.map(xpCost => {
-      return types.map((type): IDivider => {
-        return {
-          id: uniqId(),
-          name: type.type === CardType.ALL ? faction.name : type.name,
-          icon: type.icon || faction.icon,
-          previewIcon: faction.icon,
-          faction: faction.id,
-          cardType: type.type,
-          type: DividerType.PLAYER,
-          displaySideXP,
-          displayNumericXP,
-          xpCost,
-          subtype: DividerSubtype.CARD
-        }
-      });
+      return types
+        .filter(({ type }) => !(type === CardType.ALL && xpCost.level === XPCost.NO_COST))
+        .map((type): IDivider => {
+          return {
+            id: uniqId(),
+            name: type.type === CardType.ALL ? faction.name : type.name,
+            icon: type.icon || faction.icon,
+            previewIcon: faction.icon,
+            faction: faction.id,
+            cardType: type.type,
+            type: DividerType.PLAYER,
+            displaySideXP,
+            displayNumericXP,
+            xpCost,
+            subtype: DividerSubtype.CARD
+          }
+        });
     })
     .flat()
   })

@@ -58,6 +58,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const scenarioNumber = item?.scenario?.number_text || props.scenario?.number_text;
   const showPreviewIcon = item?.icon !== false && item?.previewIcon !== false;
   const showSpecialIcon = item?.icon !== false;
+  const showXP = item?.xp !== false;
 
   return (
     <div 
@@ -96,7 +97,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
               </div>
             )}
-            {xpCost && xpCost?.level !== XPCost.NO_COST && (
+            {xpCost && xpCost?.level !== XPCost.NO_COST && showXP && (
               <div className={S.specialText}>
                 <XPCostTitle
                   xpCost={xpCost}
