@@ -4,6 +4,7 @@ import { getDividerImage } from "./getDividerImage";
 import { descend, prop, propEq } from "ramda";
 import { Single } from "@/types/util";
 import { propsEquals } from "@/util/criteria";
+import { CardType } from "@/types/game";
 
 const COMMON_SUBTYPES = [
   DividerSubtype.BONDED,
@@ -32,14 +33,15 @@ export const getPlayerDividerData = ({
     }))
   ).flat();
 
-  const sendItem = (item: Single<typeof items>) => ({
-    ...item,
-    image: getDividerImage([
-      prefix,
-      item.prefix,
-      item.name
-    ])
-  });
+  const sendItem = (item?: Single<typeof items>) => 
+    item && {
+      ...item,
+      image: getDividerImage([
+        prefix,
+        item.prefix,
+        item.name
+      ])
+    };
 
   if (!subtype) {
     return;
@@ -50,7 +52,7 @@ export const getPlayerDividerData = ({
       propEq(subtype.toString(), 'type')
     );
 
-    return item && sendItem(item);
+    return sendItem(item);
   }
 
   if (!faction) {
@@ -66,7 +68,7 @@ export const getPlayerDividerData = ({
       type
     }));
     
-    return item && sendItem(item);
+    return sendItem(item);
   }
 
   if (subtype === DividerSubtype.INVESTIGATORS) {
@@ -80,21 +82,35 @@ export const getPlayerDividerData = ({
   }
 
   if (cardType) {
-    const type = cardType.toString();
     const level = xpCost?.level;
+    
     const found = items
-      .filter(propsEquals({
-        faction,
-        type
-      }))
+      .filter(item => {
+        if (item.faction !== faction) {
+          return false;
+        }
+        return cardType === CardType.ALL || item.type === cardType;
+      })
       .toSorted(descend(({ xp = Infinity }) => xp));
 
-    const item = level !== undefined ? 
-      found.find(
-        ({ xp }) => xp !== undefined && xp <= level
-      ) || found[0] :
-      found[0];
+    if (level === undefined) {
+      return sendItem(found[0]);
+    }
+
+    const withXP = found.find(
+      ({ xp }) => xp !== undefined && xp <= level
+    );
     
-    return item && sendItem(item);
+    if (withXP) {
+      return sendItem(withXP);
+    }
+
+    const fallbackItem = items.find(propsEquals({
+      faction,
+      type: 'faction',
+      xp: level
+    }));
+
+    return sendItem(fallbackItem);
   }
 }

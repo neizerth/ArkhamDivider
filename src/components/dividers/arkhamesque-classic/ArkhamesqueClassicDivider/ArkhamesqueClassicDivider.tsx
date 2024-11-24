@@ -15,10 +15,11 @@ import { selectLanguage } from '@/store/features/language/language';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
-import { MAX_XP } from '@/constants/xp';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 
 export type ArkhamesqueClassicDividerProps = IDivider;
+
+export const mapDefaultIcon = (icon?: string) => icon === 'multiclass' ? 'multiclass_arkhamesque' : icon;
 
 export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps) => {
   const { 
@@ -38,11 +39,11 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 	const [title, setTitle] = useState(translatedName);
 
   const [icon, selectIcon] = useIconSelect({
-		defaultIcon: props.icon
+		defaultIcon: mapDefaultIcon(props.icon)
 	});
 
   const [specialIcon, selectSpecialIcon] = useIconSelect({
-		defaultIcon: props.campaignIcon || props.specialIcon || props.icon
+		defaultIcon: mapDefaultIcon(props.campaignIcon || props.specialIcon || props.icon)
 	});
 
   const item = data && getDividerData({

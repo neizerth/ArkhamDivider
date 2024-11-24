@@ -3,7 +3,7 @@ import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from '@/types
 import { PageOrientation } from '@/types/print';
 
 const arkhamesqueClassicLayoutBase = {
-  types: [LayoutType.SCENARIO, LayoutType.PLAYER],
+  types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
   orientation: LayoutOrientation.HORIZONTAL,
   pageOrientation: PageOrientation.PORTRAIT,
   color: true,
