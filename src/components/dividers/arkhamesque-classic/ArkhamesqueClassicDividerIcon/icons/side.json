@@ -1,0 +1,31 @@
+[
+  {
+    "icon": "excelsior_management",
+    "top": 4
+  },
+  {
+    "icon": "migo",
+    "scale": 0.9,
+    "top": 3,
+    "left": 2
+  },
+  {
+    "icon": "in_the_labyrinths_of_lunacy",
+    "left": 3
+  },
+  {
+    "icon": "death_of_the_stars",
+    "scale": 0.9,
+    "top": 4,
+    "left": 2
+  },
+  {
+    "icon": "by_the_book",
+    "top": 4,
+    "left": 3
+  },
+  {
+    "icon": "read_or_die",
+    "left": 1
+  }
+]

@@ -49,17 +49,11 @@
 .icon {
   position: absolute;
   z-index: 2;
+  top: 5.7mm;
+  left: 9.9mm;
   font-size: 8.3mm;
-  top: 5.8mm;
-  // left: 9.9mm;
-  left: 10mm;
-  aspect-ratio: 1;
-  width: 8.5mm;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  cursor: pointer;
+  width: 8.4mm;
+  height: 8.25mm;
   &:hover {
     opacity: 0.8;
   }
@@ -71,11 +65,11 @@
   position: absolute;
   z-index: 2;
   font-size: 5mm;
-  bottom: calc(8.2mm - var(--offset-top));
+  bottom: calc(8.5mm - var(--offset-top));
   left: calc(50% + var(--offset-left));
   transform: translateX(-50%);
-  width: 5.9mm;
-  height: 5.9mm;
+  width: 5.3mm;
+  height: 5.3mm;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +109,7 @@
   height: fit-content;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -48%);
+  transform: translate(-50%, -50%);
   // transform: translateY(5%) translateX(1%);
   // box-sizing: border-box;
   // // margin-top: 0.2mm;

@@ -61,7 +61,7 @@ export const arkhamesqueCategory: ILayoutCategory = {
   info: "Arkhamesque Classic Horizontal Dividers",
   url: 'https://boardgamegeek.com/filepage/197199/arkhamesque-classic-horizontal-dividers',
   author: {
-    name: 'Troy',
+    name: 'smallville247',
     image: BASE_PATH + '/images/authors/troy.png',
     donationUrl: 'http://www.patreon.com/smallville247',
     contacts: [
@@ -70,12 +70,6 @@ export const arkhamesqueCategory: ILayoutCategory = {
         title: 'Patreon',
         icon: 'patreon',
         url: 'https://www.patreon.com/smallville247'
-      },
-      {
-        id: 'etsy',
-        title: 'TheArtisanMeeple',
-        icon: 'meeple',
-        url: 'https://etsy.com/shop/TheArtisanMeeple'
       },
       {
         id: 'bgg',

@@ -16,10 +16,9 @@ import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
+import { ArkhamesqueClassicDividerIcon as ArkhamesqueIcon} from '../ArkhamesqueClassicDividerIcon/ArkhamesqueClassicDividerIcon';
 
 export type ArkhamesqueClassicDividerProps = IDivider;
-
-export const mapDefaultIcon = (icon?: string) => icon === 'multiclass' ? 'multiclass_arkhamesque' : icon;
 
 export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps) => {
   const { 
@@ -37,6 +36,8 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const realLanguage = translatedName === name ? 'en' : language;
 
 	const [_, setTitle] = useState(translatedName);
+
+  const mapDefaultIcon = (icon?: string) => icon === 'multiclass' ? 'multiclass_arkhamesque' : icon;
 
   const [icon, selectIcon] = useIconSelect({
 		defaultIcon: mapDefaultIcon(props.icon)
@@ -74,11 +75,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
           <>
             {icon && showPreviewIcon && (
               <div className={S.icon} onClick={selectIcon}>
-                <Icon 
-                  icon={icon} 
-                  scale='circle'
-                  scaleBy={0.93}
-                />
+                <ArkhamesqueIcon icon={icon}/>
               </div>
             )}
             {specialIcon && showSpecialIcon && (
@@ -89,7 +86,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 )} 
                 onClick={selectSpecialIcon}
               >
-                <Icon icon={specialIcon} scale='circle'/>
+                <ArkhamesqueIcon icon={specialIcon}/>
               </div>
             )}
             {item.scenario && scenarioNumber && (

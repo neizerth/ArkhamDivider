@@ -2,13 +2,14 @@ import { getArkhamesqueClassicStory } from "@/store/features/arkhamesque/criteri
 import { getDividerImage } from "./getDividerImage";
 import { GetDividerDataOptions } from "./getDividerData";
 import { propEq } from "ramda";
+import { DividerType } from "@/types/dividers";
 
 
 export const getStoryDividerData = ({
   data,
   divider
 }: GetDividerDataOptions) => {
-  const { story } = divider;
+  const { story, type } = divider;
   
   if (!story ) {
     return;
@@ -42,8 +43,9 @@ export const getStoryDividerData = ({
     category,
     image: defaultImage
   };
+  const isEncounter = type === DividerType.ENCOUNTER;
 
-  if (!search.story.scenarios || !id) {
+  if (!search.story.scenarios || !id || isEncounter) {
     return defaultResponse
   }
   
@@ -54,7 +56,7 @@ export const getStoryDividerData = ({
     return scenario.codes.includes(id);
   });
 
-  if (scenario) {
+  if (scenario && !isEncounter) {
     return {
       scenario,
       category,

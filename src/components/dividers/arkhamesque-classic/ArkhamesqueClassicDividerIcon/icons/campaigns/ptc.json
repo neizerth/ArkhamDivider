@@ -1,0 +1,86 @@
+[
+  {
+    "icon": "carcosa",
+    "top": -1,
+    "left": 0.5
+  },
+  {
+    "icon": "evil_portents",
+    "top": 2,
+    "left": -1,
+    "scale": 0.9
+  },
+  {
+    "icon": "byakhee",
+    "top": 4
+  },
+  {
+    "icon": "cult_of_the_yellow_sign",
+    "top": 3
+  },
+  {
+    "icon": "hasturs_gift",
+    "top": 4,
+    "left": 4
+  },
+  {
+    "icon": "decay_and_filth",
+    "top": -2
+  },
+  {
+    "icon": "hasturs_envoys",
+    "top": -3,
+    "left": 3
+  },
+  {
+    "icon": "maddening_delusions",
+    "top": 4,
+    "left": 1
+  },
+  {
+    "icon": "decaying_reality",
+    "top": 4
+  },
+  {
+    "icon": "curtain_call",
+    "top": 3,
+    "left": 1
+  },
+  {
+    "icon": "the_last_king",
+    "top": 2,
+    "left": 3
+  },
+  {
+    "icon": "echoes_of_the_past",
+    "left": -0.5
+  },
+  {
+    "icon": "the_unspeakable_oath",
+    "top": -2
+  },
+  {
+    "icon": "a_phantom_of_truth",
+    "top": 3
+  },
+  {
+    "icon": "the_pallid_mask",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "black_stars_rise",
+    "top": -3,
+    "left": 0
+  },
+  {
+    "icon": "dim_carcosa",
+    "top": 4,
+    "left": 3
+  },
+  {
+    "icon": "return_to_the_unspeakable_oath",
+    "top": 1,
+    "left": 1
+  }
+]

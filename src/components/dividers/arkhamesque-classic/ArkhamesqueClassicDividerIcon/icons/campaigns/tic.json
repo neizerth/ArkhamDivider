@@ -1,0 +1,63 @@
+[
+  {
+    "icon": "locals",
+    "top": 6,
+    "left": 0.5
+  },
+  {
+    "icon": "agents_of_dagon",
+    "top": 1,
+    "left": 3
+  },
+  {
+    "icon": "rolling_tide",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "stalkers_of_cthulhu",
+    "top": 4,
+    "left": 1
+  },
+  {
+    "icon": "barricaded_doors",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "grotto_of_despair",
+    "left": 1,
+    "top": 1
+  },
+  {
+    "icon": "disappearance_of_elina_harper",
+    "top": 3,
+    "left": 3
+  },
+  {
+    "icon": "in_too_deep",
+    "top": -3,
+    "left": 1
+  },
+  {
+    "icon": "devil_reef",
+    "left": 2
+  },
+  {
+    "icon": "a_light_in_the_fog",
+    "top": 2
+  },
+  {
+    "icon": "lair_of_dagon",
+    "top": 3
+  },
+  {
+    "icon": "into_the_maelstrom",
+    "top": 2
+  },
+  {
+    "icon": "syzygy",
+    "top": 2,
+    "left": 3
+  }
+]

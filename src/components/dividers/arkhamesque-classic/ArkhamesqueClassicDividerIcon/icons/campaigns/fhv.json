@@ -1,0 +1,81 @@
+[
+  {
+    "icon": "fhvc",
+    "top": 3,
+    "left": 4
+  },
+  {
+    "icon": "the_first_day",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "day_of_rest",
+    "top": 3,
+    "left": 2
+  },
+  {
+    "icon": "the_vale",
+    "top": 2
+  },
+  {
+    "icon": "agents_of_the_colour",
+    "top": 3,
+    "left": 3
+  },
+  {
+    "icon": "transfiguration",
+    "top": 4,
+    "left": 2
+  },
+  {
+    "icon": "mutations",
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "myconids",
+    "top": 2
+  },
+  {
+    "icon": "the_forest",
+    "top": 2,
+    "left": 3
+  },
+  {
+    "icon": "heirlooms",
+    "top": 4
+  },
+  {
+    "icon": "the_second_day",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "the_final_day",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "day_of_the_feast",
+    "top": 5
+  },
+  {
+    "icon": "hemlock_house",
+    "left": 2
+  },
+  {
+    "icon": "the_silent_heath",
+    "top": 3
+  },
+  {
+    "icon": "the_twisted_hollow",
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "fate_of_the_vale",
+    "top": 3,
+    "left": -1
+  }
+]
