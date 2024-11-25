@@ -12,7 +12,6 @@ import { DividerText } from '../../common/DividerText/DividerText';
 import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
 import { DividerMenu } from '../../common/DividerMenu/DividerMenu';
 import { selectLanguage } from '@/store/features/language/language';
-import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';

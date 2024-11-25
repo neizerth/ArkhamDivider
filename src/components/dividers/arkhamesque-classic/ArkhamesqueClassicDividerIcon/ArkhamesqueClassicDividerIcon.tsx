@@ -7,11 +7,18 @@ export type ArkhamesqueClassicDividerIconProps = {
   icon: string
 }
 
+export type IIconData = {
+  icon: string
+  left?: number
+  top?: number
+  scale?: number
+}
+
 export const ArkhamesqueClassicDividerIcon = ({
   icon
 }: ArkhamesqueClassicDividerIconProps) => {
 
-  const iconData = icons.find(propEq(icon, 'icon'));
+  const iconData = icons.find(propEq(icon, 'icon')) as IIconData | undefined;
   const styles = iconData && {
     transform: `translate(${iconData?.left || 0}%, ${iconData?.top || 0}%) scale(${iconData?.scale || 1})`
   }
