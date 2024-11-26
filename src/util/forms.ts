@@ -7,7 +7,10 @@ import { ReactEventHandler } from "react";
 //         const newState = onChange(e.target as T);
 //       }
 
-export const createToggleHanlder = <K extends PropertyKey>(state: Record<K, boolean>, callback: (data: Record<K, boolean>) => void) =>
+export const createToggleHanlder = <K extends PropertyKey>(
+  state: Record<K, boolean>, 
+  callback: (data: Record<K, boolean>
+) => void) =>
   (prop: K) => {
     const onChange = onToggle(
       checked => callback({

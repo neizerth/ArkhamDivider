@@ -5,6 +5,7 @@ import { selectItemsPerPage, selectRowsPerPage, setItemsPerPage, setRowsPerPage 
 import { range } from 'ramda';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import Select from 'react-select';
+import classNames from 'classnames';
 
 export type LayoutGridSettingsProps = {
 
@@ -56,14 +57,14 @@ export const LayoutGridSettings = ({}: LayoutGridSettingsProps) => {
   return (
     <div className={S.container}>
       <Select 
-        className={S.rows}
+        className={classNames(S.select, S.rows)}
         options={rowsOptions}
         value={rowsValue}
         onChange={item => item && changeRowsPerPage(item.value)}
       />
       x
       <Select 
-        className={S.cols}
+        className={classNames(S.select, S.cols)}
         options={colsOptions}
         value={colsValue}
         onChange={item => item && changeColsPerPage(item.value)}

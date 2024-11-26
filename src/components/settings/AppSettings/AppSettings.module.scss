@@ -8,7 +8,7 @@
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
   flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -16,20 +16,63 @@
   @media print {
     display: none
   }
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
 }
 
 
 .row {
-  width: 100%;
+  // width: 100%;
   align-items: center;
+
   justify-content: space-between;
+  flex-wrap: wrap;
   @media (min-width: 500px) {
     width: auto;
+  }
+
+  @media (min-width: 600px) {
+    // justify-content: end;
   }
 }
 
 .print {
   flex-grow: 1;
   display: flex;
-  justify-content: end;
+  // justify-content: end;
+}
+
+.printRow {
+  justify-content: space-between;
+  width: 100%;
+  @media (min-width: 600px) {
+    justify-content: end;
+  }
+}
+
+
+.zoom {
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.printButton {
+  white-space: nowrap;
+}
+
+.mainRow {
+  width: 100%;
+  @media (min-width: 367px) {
+    width: auto;
+  }
+}
+
+.additional {
+  display: none;
+  @media (min-width: 367px) {
+    display: block;
+  }
 }

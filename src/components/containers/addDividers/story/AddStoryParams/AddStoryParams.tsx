@@ -17,6 +17,7 @@ import {
 } from '@/features/dividers/story/icons';
 import { selectEncounterSets } from '@/store/features/encounterSets/encounterSets';
 import { getCampaignDividersCount } from '@/features/dividers/story/count';
+import { FirstParam } from '@/types/util';
 
 export type ToggleFunction = (value: boolean) => void;
 
@@ -56,13 +57,18 @@ export const AddStoryParams = ({
   const returnStories = stories.filter(safePropEq(story.code, 'return_to_code'));
   const haveReturnCycle = returnStories.length > 0;
 
-  const check = createToggleHanlder(
+  const onToggle = createToggleHanlder(
     form, 
     form => {
       setForm(form);
       onChange(form);
     }
   );
+
+  const check = (prop: FirstParam<typeof onToggle>) => ({
+    ...onToggle(prop),
+    labelClassName: S.label
+  });
 
   const includeEncounterSize = isNil(campaignOptions?.includeEncounterSize)
   const includeScenarioSize = form.includeScenarios && isNil(campaignOptions?.includeScenarioSize);

@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  display: flex;
+}
+
+.button {
+  font-size: 1.5em;
+  // line-height: -0.1;
+}
+
+.panel {
+  position: absolute;
+  z-index: 2;
+  width: max-content;
+  top: calc(100% + 10px);
+  left: -15px;
+  display: flex;
+  padding: 10px 15px 10px 15px;
+  background: white;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 5px 5px 0px rgba(143, 143, 143, 0.1);
+  align-items: center;
+  gap: 20px;
+  @media (min-width: 600px) {
+    left: auto;
+    right: -15px;
+  }
+  @media (min-width: 769px) {
+    right: auto;
+    left: -15px;
+  }
+}
+
+.item {
+  flex-shrink: 0;
+}

@@ -8,9 +8,15 @@
 }
 
 .content {
-  padding-top: 150px;
+  padding-top: 250px;
   flex: 1;
-  @media (min-width: 1400px) {
+  @media (min-width: 334px) {
+    padding-top: 200px;
+  }
+   @media (min-width: 367px) {
+    padding-top: 150px;
+  }
+  @media (min-width: 950px) {
     padding-top: 100px;
   }
   @media print {

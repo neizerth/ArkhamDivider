@@ -6,7 +6,7 @@ import classNames from 'classnames';
 export type RowProps = PropsWithClassName & PropsWithChildren & {
 	wrap?: boolean,
 	inline?: boolean,
-	gap?: boolean,
+	gap?: boolean | 'responsive',
 	as?: ElementType
 };
 
@@ -26,7 +26,8 @@ export const Row = ({
 		S.container, 
 		className,
 		wrap && S.wrap,
-		gap && S.gap
+		gap === true && S.gap,
+		gap === 'responsive' && S.gap_responsive
 	);
 	const Component = inline ? 'span' : as || 'div';
 	return (

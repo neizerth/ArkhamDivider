@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-// import S from './PrintSettings.module.scss';
+import S from './PrintSettings.module.scss';
 
 import { Checkbox, Row } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -10,7 +10,6 @@ import {
   setDoubleSided,
 } from '@/store/features/print/print';
 import { useTranslation } from 'react-i18next';
-import { LayoutGridSettings } from '../LayoutGridSettings/LayoutGridSettings';
 
 export type PrintSettingsProps = {
 
@@ -29,14 +28,19 @@ export const PrintSettings = () => {
 
   // const 
   return (
-    <Row>
-      <LayoutGridSettings/>
-      <Checkbox onChange={toggleDoubleSided} checked={doubleSided}>
+    <Row gap={'responsive'}>
+      <Checkbox 
+        onChange={toggleDoubleSided} 
+        checked={doubleSided}
+
+        labelClassName={S.label}
+      >
         {t('2 sides')}
       </Checkbox>
       <Checkbox 
         onChange={toggleBleeds} 
         checked={useBleeds}
+        labelClassName={S.label}
       >
         {t('Bleeds')}
       </Checkbox>
