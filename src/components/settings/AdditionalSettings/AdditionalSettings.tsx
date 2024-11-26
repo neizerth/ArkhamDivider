@@ -17,7 +17,9 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
         className={S.button}
         onClick={toggleDisplay}
       >
-        ...
+        <div className={S.buttonText}>
+          ...
+        </div>
       </div>
       {display && (
         <div className={S.panel}>
