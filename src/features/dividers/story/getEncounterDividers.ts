@@ -39,7 +39,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     ...extraEncounters
   ];
 
-  return encounters
+  const encounterDividers = encounters
     .map(code => {
       const isExtra = extra_encounter_sets.includes(code);
       const encounter = encounterSets.find(propEq(code, 'code'));
@@ -53,7 +53,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
         icon,
       } = encounter;
 
-      const isScenario = Boolean(icon) && scenarioNames.includes(name)
+      const isScenario = Boolean(icon) && scenarioNames.includes(name);
 
       if (!includeScenarioEncounterSet && isScenario) {
         return;
@@ -82,4 +82,29 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
       }
     })
   .filter(isNotNil);
+
+  if (!includeScenarioEncounterSet) {
+    return encounterDividers;
+  }
+
+  const scenarioEncounterDividers = scenarios
+    .filter(({ icon }) => !encounterDividers.find(propEq(icon, 'icon')))
+    .map(({ 
+      scenario_name, 
+      id, 
+      icon 
+    }) => ({
+      id: uniqId() + id,
+      story,
+      name: scenario_name,
+      icon,
+      campaignIcon,
+      type: DividerType.ENCOUNTER,
+      displayCampaignIcon: includeCampaignIcon
+    }));
+
+  return [
+    ...encounterDividers,
+    ...scenarioEncounterDividers
+  ]
 }
