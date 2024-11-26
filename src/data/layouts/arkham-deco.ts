@@ -10,7 +10,7 @@ export enum ArkhamDecoDividerSize {
   SMALL = 'small'
 } 
 
-const bleedsSize = {
+const bleedSize = {
   top: 3,
   bottom: 3,
   left: 3,
@@ -37,10 +37,10 @@ export const horizontal = {
   groupSize: 8,
   width: 94,
   height: 68.5,
-  bleeds: {
+  bleed: {
     width: 100,
     height: 74.5,
-    ...bleedsSize
+    ...bleedSize
   }
 }
 
@@ -49,10 +49,10 @@ export const vertical = {
   groupSize: 6,
   width: 62,
   height: 96,
-  bleeds: {
+  bleed: {
     width: 68,
     height: 102,
-    ...bleedsSize
+    ...bleedSize
   },
   customParams: {
     type: 'tab'
@@ -64,10 +64,10 @@ export const horizontalDeckbox = {
   groupSize: 8,
   width: 94,
   height: 70,
-  bleeds: {
+  bleed: {
     width: 100,
     height: 76,
-    ...bleedsSize
+    ...bleedSize
   },
   customParams: {
     type: 'deckbox'
@@ -79,10 +79,10 @@ export const horizontalSmall = {
   groupSize: 8,
   width: 94,
   height: 67,
-  bleeds: {
+  bleed: {
     width: 100,
     height: 73,
-    ...bleedsSize
+    ...bleedSize
   },
   customParams: {
     type: 'tab',
@@ -94,10 +94,10 @@ export const horizontalTab = {
   ...horizontal,
   width: 93.5,
   height: 68.5,
-  bleeds: {
+  bleed: {
     width: 99,
     height: 74.5,
-    ...bleedsSize
+    ...bleedSize
   },
   customParams: {
     type: 'tab'

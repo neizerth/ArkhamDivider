@@ -27,7 +27,7 @@ export const arkhamesqueClassicLayouts: ILayout[] = [
     title: 'Large 3.25"',
     width: 89,
     height: 80,
-    bleeds: {
+    bleed: {
       width: 95,
       height: 86,
       left: 3,
@@ -43,7 +43,7 @@ export const arkhamesqueClassicLayouts: ILayout[] = [
     title: 'Medium 3"',
     width: 89,
     height: 77,
-    bleeds: {
+    bleed: {
       width: 95,
       height: 86,
       left: 3,

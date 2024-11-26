@@ -3,17 +3,17 @@ import styled, { css } from 'styled-components';
 
 type ComponentProps = {
   $layout: ILayout
-  $bleeds: boolean
+  $bleed: boolean
 }
 
 export const GuidesContent = styled.div<ComponentProps>`
-  ${({ $bleeds, $layout }) => $bleeds && css`
+  ${({ $bleed, $layout }) => $bleed && css`
     width: calc(${$layout.width}mm + 2px);
     height: calc(${$layout.height}mm + 2px);
-    top: calc(${$layout.bleeds.top}mm - 2px);
-    left: calc(${$layout.bleeds.left}mm - 2px);
+    top: calc(${$layout.bleed.top}mm - 2px);
+    left: calc(${$layout.bleed.left}mm - 2px);
   `}
-  ${({ $bleeds }) => !$bleeds && css`
+  ${({ $bleed }) => !$bleed && css`
     width: 100%;
     height: 100%;
     top: 0;
@@ -22,7 +22,7 @@ export const GuidesContent = styled.div<ComponentProps>`
 `
 
 export const Wrapper = styled.div<ComponentProps>`
-  ${({ $bleeds, $layout }) => !$bleeds && css`
+  ${({ $bleed, $layout }) => !$bleed && css`
     width: ${$layout.width}mm;
     height: ${$layout.height}mm;
     overflow: hidden;
@@ -30,15 +30,15 @@ export const Wrapper = styled.div<ComponentProps>`
 `
 
 export const Content = styled.div<ComponentProps>`
-  ${({ $layout, $bleeds }) => $bleeds && css`
-    width: calc(${$layout.bleeds.width}mm + 2px);
-    height: calc(${$layout.bleeds.height}mm + 2px)
+  ${({ $layout, $bleed }) => $bleed && css`
+    width: calc(${$layout.bleed.width}mm + 2px);
+    height: calc(${$layout.bleed.height}mm + 2px)
   `}
-  ${({ $bleeds, $layout }) => !$bleeds && css`
-    top: -${$layout.bleeds.top}mm;
-    left: -${$layout.bleeds.left}mm;
+  ${({ $bleed, $layout }) => !$bleed && css`
+    top: -${$layout.bleed.top}mm;
+    left: -${$layout.bleed.left}mm;
 
-    width: ${$layout.bleeds.width}mm;
-    height: ${$layout.bleeds.height}mm;
+    width: ${$layout.bleed.width}mm;
+    height: ${$layout.bleed.height}mm;
   `}
 `

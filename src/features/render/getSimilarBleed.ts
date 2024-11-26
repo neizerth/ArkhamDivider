@@ -1,14 +1,14 @@
-import { ILayoutBleeds } from "@/types/layouts";
+import { ILayoutBleed } from "@/types/layouts";
 import { MIN_BLEED_SIZE } from "@/util/units";
 
-export const getSimilarBleeds = ({
+export const getSimilarBleed = ({
   top,
   left,
   right,
   bottom,
   width,
   height
-}: ILayoutBleeds) => {
+}: ILayoutBleed) => {
   const min = Math.min(top, left, right, bottom);
   const size = Math.min(min, MIN_BLEED_SIZE); // 3mm from each side
   

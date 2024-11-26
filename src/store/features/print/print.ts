@@ -4,14 +4,14 @@ import { DEFAULT_LAYOUT, setLayout } from '../layout/layout';
 
 export type IPrintState = {
   doubleSided: boolean
-  bleeds: boolean
+  bleed: boolean
   itemsPerPage: number
   rowsPerPage: number
 }
 
 const initialState: IPrintState = {
   doubleSided: false,
-  bleeds: false,
+  bleed: false,
   itemsPerPage: DEFAULT_LAYOUT.groupSize,
   rowsPerPage: DEFAULT_LAYOUT.rowSize
 };
@@ -23,13 +23,13 @@ export const print = createSlice({
     setRowsPerPage: createSliceSetter('rowsPerPage'),
     setItemsPerPage: createSliceSetter('itemsPerPage'),
     setDoubleSided: createSliceSetter('doubleSided'),
-    setBleeds: createSliceSetter('bleeds')
+    setBleed: createSliceSetter('bleed')
   },
   selectors: {
     selectRowsPerPage: createSliceSelector('rowsPerPage'),
     selectItemsPerPage: createSliceSelector('itemsPerPage'),
     selectDoubleSided: createSliceSelector('doubleSided'),
-    selectBleeds: createSliceSelector('bleeds')
+    selectBleed: createSliceSelector('bleed')
   },
   extraReducers: builder => {
     builder.addCase(setLayout, (state, action) => {
@@ -45,14 +45,14 @@ export const {
   setRowsPerPage,
   setItemsPerPage,
   setDoubleSided,
-  setBleeds
+  setBleed
 } = print.actions;
 
 export const {
   selectRowsPerPage,
   selectItemsPerPage,
   selectDoubleSided,
-  selectBleeds
+  selectBleed
 } = print.selectors;
 
 export default print.reducer;

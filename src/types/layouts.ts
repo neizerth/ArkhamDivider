@@ -2,7 +2,7 @@ import { AddPlayerDividersOptions, AddStoryDividersOptions } from "@/store/featu
 import { PageOrientation } from "./print"
 import { Mapping } from "./util"
 
-export type ILayoutBleeds = {
+export type ILayoutBleed = {
   width: number
   height: number
   top: number
@@ -24,7 +24,7 @@ export type ILayout = {
   pageOrientation: PageOrientation
   isDefault?: boolean
   color: boolean
-  bleeds: ILayoutBleeds,
+  bleed: ILayoutBleed,
   maxCreditsGroupSize?: number,
   campaignOptions?: Partial<AddStoryDividersOptions>,
   playerOptions?: Partial<AddPlayerDividersOptions>,

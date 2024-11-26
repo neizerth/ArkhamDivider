@@ -4,7 +4,7 @@ import { PropsWithClassName } from '@/types/util';
 import { PropsWithChildren } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
-import { selectBleeds } from '@/store/features/print/print';
+import { selectBleed } from '@/store/features/print/print';
 
 import { Wrapper, GuidesContent, Content } from './components';
 import classNames from 'classnames';
@@ -18,10 +18,10 @@ export const DividerContent = ({
   children
 }: DividerContentProps) => {
   const layout = useAppSelector(selectLayout);
-  const useBleeds = useAppSelector(selectBleeds);
+  const useBleed = useAppSelector(selectBleed);
 
   const styledProps = {
-    $bleeds: useBleeds,
+    $bleed: useBleed,
     $layout: layout
   }
 
@@ -29,7 +29,7 @@ export const DividerContent = ({
     <div 
       className={classNames(
         S.container,
-        useBleeds && 'divider'
+        useBleed && 'divider'
       )}
     >
       <NotExportable>
@@ -40,7 +40,7 @@ export const DividerContent = ({
 			<Wrapper className={
         classNames(
           S.wrapper, 
-          !useBleeds && 'divider'
+          !useBleed && 'divider'
         )} 
         {...styledProps}
       >

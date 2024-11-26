@@ -4,9 +4,9 @@ import S from './PrintSettings.module.scss';
 import { Checkbox, Row } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { 
-  selectBleeds, 
+  selectBleed, 
   selectDoubleSided, 
-  setBleeds, 
+  setBleed, 
   setDoubleSided,
 } from '@/store/features/print/print';
 import { useTranslation } from 'react-i18next';
@@ -20,10 +20,10 @@ export const PrintSettings = () => {
   const dispatch = useAppDispatch();
 
   const doubleSided = useAppSelector(selectDoubleSided);
-  const useBleeds = useAppSelector(selectBleeds);
+  const useBleed = useAppSelector(selectBleed);
 
   const toggleDoubleSided = () => dispatch(setDoubleSided(!doubleSided));
-  const toggleBleeds = () => dispatch(setBleeds(!useBleeds));
+  const toggleBleed = () => dispatch(setBleed(!useBleed));
 
 
   // const 
@@ -38,11 +38,11 @@ export const PrintSettings = () => {
         {t('2 sides')}
       </Checkbox>
       <Checkbox 
-        onChange={toggleBleeds} 
-        checked={useBleeds}
+        onChange={toggleBleed} 
+        checked={useBleed}
         labelClassName={S.label}
       >
-        {t('Bleeds')}
+        {t('Bleed')}
       </Checkbox>
     </Row>
   );
