@@ -30,6 +30,8 @@
 .contact {
   text-decoration: none;
   color: #000;
+  display: flex;
+  align-items: center;
   &:hover {
     color: rgb(225 173 36);
   }
