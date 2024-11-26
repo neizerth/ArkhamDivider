@@ -3,7 +3,7 @@ import { CardType } from "@/types/game";
 export const playerCardTypes = [
   {
     "id": "all",
-    "name": "∑",
+    "name": "—",
     "type": CardType.ALL
   },
   {
