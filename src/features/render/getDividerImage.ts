@@ -1,21 +1,21 @@
-import { ILayoutBleeds } from '@/types/layouts';
+import { ILayoutBleed } from '@/types/layouts';
 import { toPrintSize } from '@/util/units';
 import domToImage from 'dom-to-image';
-import { getSimilarBleeds } from './getSimilarBleeds';
+import { getSimilarBleed } from './getSimilarBleed';
 import { Jimp } from 'jimp';
 
 export type IGetDividerImageOptions = {
   node: Element
   scale: number
   name: string
-  bleeds: ILayoutBleeds
+  bleed: ILayoutBleed
 }
 
 export const getDividerImage = async ({
   node,
   scale,
   name,
-  bleeds
+  bleed
 }: IGetDividerImageOptions) => {
   const rect = node.getBoundingClientRect();
   
@@ -31,7 +31,7 @@ export const getDividerImage = async ({
     }
   });
 
-  const crop = getSimilarBleeds(bleeds);
+  const crop = getSimilarBleed(bleed);
 
   const cropLeft = toPrintSize(crop.left);
   const cropTop = toPrintSize(crop.top);

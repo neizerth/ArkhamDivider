@@ -6,10 +6,10 @@ import { useAppDispatch } from './useAppDispatch';
 import { selectLayout, setZoom } from '@/store/features/layout/layout';
 import { setExport } from '@/store/features/app/app';
 import { useAppSelector } from './useAppSelector';
-import { selectBleeds, setBleeds } from '@/store/features/print/print';
+import { selectBleed, setBleed } from '@/store/features/print/print';
 import { delay } from '@/util/common';
 import { getDividerImage } from '@/features/render/getDividerImage';
-import { getSimilarBleeds } from '@/features/render/getSimilarBleeds';
+import { getSimilarBleed } from '@/features/render/getSimilarBleed';
 import { useTranslation } from 'react-i18next';
 
 
@@ -20,9 +20,9 @@ const getDividerNodes = () => Array.from(
 export const useDownloadDividers = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const useBleeds = useAppSelector(selectBleeds);
-  const { bleeds } = useAppSelector(selectLayout);
-  const similarBleeds = getSimilarBleeds(bleeds);
+  const useBleed = useAppSelector(selectBleed);
+  const { bleed } = useAppSelector(selectLayout);
+  const similarBleed = getSimilarBleed(bleed);
 
   const scale = useMemo(() => PRINT_DPI / getBrowserDPI(), []);
 
@@ -34,10 +34,10 @@ export const useDownloadDividers = () => {
   let cancelled = false;
 
   const download = async () => {
-    const defaultUseBleeds = useBleeds;
+    const defaultUseBleed = useBleed;
     dispatch(setZoom(100));
     dispatch(setExport(true));
-    dispatch(setBleeds(true));
+    dispatch(setBleed(true));
 
     try {
       await delay(1000);
@@ -53,7 +53,7 @@ export const useDownloadDividers = () => {
       });
     }
     finally {
-      dispatch(setBleeds(defaultUseBleeds));
+      dispatch(setBleed(defaultUseBleed));
     }
   }
 
@@ -69,7 +69,7 @@ export const useDownloadDividers = () => {
     }
 
     const zip = new JSZip;
-    const bleedSize = similarBleeds.size;
+    const bleedSize = similarBleed.size;
 
     setProgress({
       done: 0,
@@ -87,7 +87,7 @@ export const useDownloadDividers = () => {
         name,
         node,
         scale,
-        bleeds
+        bleed
       };
 
       const {
@@ -113,9 +113,10 @@ export const useDownloadDividers = () => {
       done: 0,
       total: 0
     });
-    const bleed = bleedSize.toFixed(1);
-    const bleedsText = t('Bleeds').toLowerCase();
-    const zipName = `Arkham Divider (${bleedsText} ${bleed}mm).zip`
+    
+    const bleedText = bleedSize.toFixed(1);
+    const bleedTranslation = t('Bleed').toLowerCase();
+    const zipName = `Arkham Divider (${bleedTranslation} ${bleedText}mm).zip`
     saveAs(content, zipName);
   }
 

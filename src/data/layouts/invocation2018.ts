@@ -28,8 +28,8 @@ export const invocation2018Layouts = [
     types: [LayoutType.PLAYER, LayoutType.INVESTIGATOR],
     orientation: LayoutOrientation.VERTICAL,
     color: true,
-    bleeds: {
-      ...vertical.bleeds,
+    bleed: {
+      ...vertical.bleed,
       top: 3,
       left: 3.2,
       bottom: 4,
@@ -45,8 +45,8 @@ export const invocation2018Layouts = [
     types: [LayoutType.PLAYER, LayoutType.INVESTIGATOR],
     orientation: LayoutOrientation.VERTICAL,
     color: true,
-    bleeds: {
-      ...verticalForSleeves.bleeds,
+    bleed: {
+      ...verticalForSleeves.bleed,
       top: 3,
       left: 3,
       bottom: 4,

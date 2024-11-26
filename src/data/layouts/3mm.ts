@@ -15,7 +15,7 @@ export const arkhamStarter3mmLayout: ILayout = {
   groupSize: 8,
   width: 93,
   height: 67,
-  bleeds: {
+  bleed: {
     width: 100,
     height: 74,
     top: 3.5,

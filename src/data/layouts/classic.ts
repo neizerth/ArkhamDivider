@@ -14,7 +14,7 @@ export const horizontal = {
   groupSize: 6,
   width: 88.9,
   height: 76.2,
-  bleeds: {
+  bleed: {
     width: 97,
     height: 84,
     top: 3.2,
@@ -29,7 +29,7 @@ export const vertical = {
   groupSize: 6,
   height: 100,
   width: 63,
-  bleeds: {
+  bleed: {
     width: 71,
     height: 107,
     top: 3.2,
@@ -44,7 +44,7 @@ export const verticalForSleeves = {
   groupSize: 6,
   height: 100,
   width: 65,
-  bleeds: {
+  bleed: {
     width: 71,
     height: 107,
     top: 3.2,
