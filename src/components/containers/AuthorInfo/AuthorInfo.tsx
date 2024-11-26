@@ -44,7 +44,7 @@ export const AuthorInfo = ({
       {author.donationUrl && (
         <div className={S.donate}>
           <a className={S.button} href={author.donationUrl} target='_blank'>
-            {t('Support author')}
+            {t('Support the author')}
           </a>
         </div>
       )}
