@@ -43,6 +43,11 @@
   // justify-content: end;
 }
 
+.languageSelect {
+  position: relative;
+  z-index: 2;
+}
+
 .printRow {
   justify-content: space-between;
   width: 100%;
@@ -72,6 +77,8 @@
 
 .additional {
   display: none;
+  position: relative;
+  z-index: 1;
   @media (min-width: 367px) {
     display: block;
   }
