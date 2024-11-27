@@ -1,6 +1,10 @@
-import { T_LINK } from "@/constants/app";
+import { PAYPAL_LINK, T_LINK } from "@/constants/app";
 
 export const contacts = [
+  {
+    icon: 'paypal',
+    url: PAYPAL_LINK
+  },
   {
     icon: 't_bank',
     url: T_LINK
