@@ -1,4 +1,4 @@
-import { BASE_PATH, BOOSTY_LINK } from "@/constants/app";
+import { BASE_PATH, BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 import { PageOrientation } from "@/types/print";
 
@@ -201,6 +201,16 @@ export const arkhamDecoCategory: ILayoutCategory = {
         id: 'boosty',
         icon: 'link',
         url: BOOSTY_LINK
+      },
+      {
+        id: 'paypal',
+        icon: 'paypal',
+        url: PAYPAL_LINK
+      },
+      {
+        id: 't_bank',
+        icon: 't_bank',
+        url: T_LINK
       },
       {
         id: 'github',
