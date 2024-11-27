@@ -1,4 +1,10 @@
+import { T_LINK } from "@/constants/app";
+
 export const contacts = [
+  {
+    icon: 't_bank',
+    url: T_LINK
+  },
   {
     icon: 'github',
     url: 'https://github.com/neizerth'
