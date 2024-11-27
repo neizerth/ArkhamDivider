@@ -75,6 +75,11 @@
   }
 }
 
+.layoutRow {
+  position: relative;
+  z-index: 2;
+}
+
 .additional {
   display: none;
   position: relative;

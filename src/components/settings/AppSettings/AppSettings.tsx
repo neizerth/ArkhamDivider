@@ -15,7 +15,7 @@ export const AppSettings = () => {
   return (
     <div className={S.container}>
       <Row wrap className={S.row} gap={'responsive'}>
-        <Row wrap className={S.row} gap={'responsive'}>
+        <Row wrap className={classNames(S.row, S.layoutRow)} gap={'responsive'}>
           <div className={S.languageSelect}>
             <LanguageSelect/>
           </div>
