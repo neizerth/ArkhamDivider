@@ -1,6 +1,6 @@
 import { AppThunk } from "@/store";
 import { ActionCreator } from "@reduxjs/toolkit";
-import { addResourceBundle } from "@/util/i18n";
+import { addResourceBundle, getStoryNS } from "@/util/i18n";
 import { Mapping } from "@/types/util";
 import { I18NLanguageBundle } from "@/types/i18n";
 
@@ -13,9 +13,9 @@ export const setCoreTranslations = setTranslations();
 export const setCustomTranslations: ActionCreator<AppThunk> = (language: string, translations: Mapping<I18NLanguageBundle>) => () => {
   for (const [code, mapping] of Object.entries(translations)) {
     if (!mapping) {
-      continue
+      continue;
     }
-    const ns = `story.${code}`;
+    const ns = getStoryNS(code);
 
     addResourceBundle(language, mapping, ns);
   }

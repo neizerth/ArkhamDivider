@@ -16,4 +16,4 @@ export const createTranslation = (ns = I18N_NAMESPACE.DEFAULT, language: string 
 
 export const getLanguage = () => i18n.language;
 
-export const getStoryNS = ({ code }: IStory) => `story.${code}`;
+export const getStoryNS = (code: string) => `story.${code}`;
