@@ -14,18 +14,19 @@ export const useStoryTranslation = (story?: IStory) => {
 
   const translate = (text: string, options: TOptions = {}) => {
     const translation = i18n.t(text, omitNS(options));
+    const { ns = storyNs } = options;
 
     if (translation && translation !== text) {
       return translation;
     }
-    
-    if (!options.ns) {
+
+    if (!ns) {
       return text;
     }
     
     return i18n.t(text, {
       ...options,
-      ns: storyNs
+      ns
     });
   }
 
