@@ -1,7 +1,6 @@
 import { I18N_NAMESPACE } from "@/constants/i18n";
 import { I18NLanguageBundle } from "@/types/i18n";
 import i18n from "@/config/i18n";
-import { IStory } from "@/types/api";
 
 export const hasResourceBundle = (language: string, ns = I18N_NAMESPACE.DEFAULT) => 
   i18n.hasResourceBundle(language, ns);
