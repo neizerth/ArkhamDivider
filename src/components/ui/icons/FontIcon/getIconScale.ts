@@ -43,5 +43,5 @@ export const getCircleScale = ({
   }
   const angle = Math.atan(ratio);
   const height = Math.cos(angle);
-  return height * scaleBy * 100;
+  return Math.max(height * scaleBy * 100, 90);
 }
