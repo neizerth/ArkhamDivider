@@ -209,7 +209,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
           className={classNames(
             S.title,
             S.title_vertical,
-            campaignIcon && S.title_vertical_withPlayerStrip
+            campaignIcon && isPlayer && S.title_vertical_withPlayerStrip
             // playerCornerColor && showStrip && S.title_vertical_withPlayerStrip
           )}
           >
