@@ -1,8 +1,8 @@
 [
   {
     "icon": "the_forgotten_age",
-    "top": 2,
-    "left": 2
+    "top": 0,
+    "left": 0
   },
   {
     "icon": "agents_of_yig",
@@ -11,14 +11,19 @@
   },
   {
     "icon": "temporal_flux",
-    "scale": 0.9,
-    "top": 1,
-    "left": 1
+    "scale": 0.8,
+    "top": 4,
+    "left": 2
   },
   {
     "icon": "forgotten_ruins",
     "top": 3,
     "left": 1
+  },
+  {
+    "icon": "temporal_hunters",
+    "top": 2,
+    "left": 2
   },
   {
     "icon": "poison",
@@ -32,8 +37,9 @@
   },
   {
     "icon": "rainforest",
-    "top": 1, 
-    "left": 2.5
+    "scale": 0.85,
+    "top": 2, 
+    "left": 0
   },
   {
     "icon": "serpents",
@@ -44,7 +50,7 @@
     "icon": "expedition",
     "scale": 1.2,
     "top": 3,
-    "left": 2
+    "left": -1
   },
   {
     "icon": "knyan",
@@ -64,6 +70,12 @@
     "icon": "return_to_pillars_of_judgement",
     "top": 1,
     "left": 1
+  },
+  {
+    "icon": "shattered_aeons",
+    "scale": 0.9, 
+    "top": 5,
+    "left": 4
   },
   {
     "icon": "doomed_expedition",
@@ -112,5 +124,59 @@
     "icon": "turn_back_time",
     "top": 5,
     "left": 1
+  },
+  {
+    "icon": "return_to_the_rainforest",
+    "top": 1,
+    "left": 1.5
+  },
+  {
+    "icon": "return_to_the_untamed_wilds",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "return_to_knyan",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "return_to_city_of_archives",
+    "top": 1,
+    "left": 0.5
+  },
+  {
+    "icon": "return_to_the_depths_of_yoth",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "return_to_the_doom_of_eztli",
+    "top": 2
+  },
+  {
+    "icon": "return_to_the_forgotten_age",
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "return_to_threads_of_fate",
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "return_to_the_boundary_beyond",
+    "top": 1,
+    "left": 0.5
+  },
+  {
+    "icon": "return_to_the_heart_of_the_elders",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "return_to_turn_back_time",
+    "top": 2,
+    "left": 2
   }
 ]

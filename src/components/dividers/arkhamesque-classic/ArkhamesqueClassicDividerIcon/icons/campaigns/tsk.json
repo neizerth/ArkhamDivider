@@ -48,7 +48,9 @@
   },
   {
     "icon": "on_thin_ice",
-    "top": 7
+    "scale": 0.9,
+    "top": 6,
+    "left": 2
   },
   {
     "icon": "tokyo",
@@ -72,7 +74,8 @@
   },
   {
     "icon": "congress_of_the_keys",
-    "scale": 0.9,
-    "left": 2
+    "scale": 0.8,
+    "top": 4,
+    "left": 4
   }
 ]

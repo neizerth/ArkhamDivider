@@ -70,9 +70,15 @@
     "top": 1
   },
   {
+    "icon": "return_to_where_doom_awaits",
+    "top": 1,
+    "left": 1
+  },
+  {
     "icon": "lost_in_time_and_space",
-    "top": 2,
-    "left": 2
+    "top": 4,
+    "left": 1,
+    "scale": 0.85
   },
   {
     "icon": "resurgent_evils",
@@ -102,14 +108,42 @@
   },
   {
     "icon": "return_to_extracurricular_activities",
-    "top": 1
+    "top": 2,
+    "left": 0.5
   },
   {
     "icon": "return_to_the_house_always_wins",
-    "left": 0.5
+    "top": 1.5,
+    "left": 1
   },
   {
     "icon": "set",
     "left": -2
+  },
+  {
+    "icon": "return_to_the_miskatonic_museum",
+    "top": 1,
+    "left": 1.5
+  },
+  {
+    "icon": "return_to_the_dunwich_legacy",
+    "top": 2,
+    "left": 1,
+    "scale": 1
+  },
+  {
+    "icon": "return_to_the_essex_county_express",
+    "top": 3,
+    "left": 1
+  },
+  {
+    "icon": "return_to_blood_on_the_altar",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "return_to_lost_in_time_and_space",
+    "top": 2,
+    "left": 1
   }
 ]

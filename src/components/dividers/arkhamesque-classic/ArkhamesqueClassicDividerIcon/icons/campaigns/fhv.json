@@ -6,8 +6,9 @@
   },
   {
     "icon": "the_first_day",
-    "top": 2,
-    "left": 1
+    "scale": 0.85,
+    "top": 4,
+    "left": 2
   },
   {
     "icon": "day_of_rest",
@@ -17,6 +18,11 @@
   {
     "icon": "the_vale",
     "top": 2
+  },
+  {
+    "icon": "fire",
+    "top": 2,
+    "left": 5
   },
   {
     "icon": "agents_of_the_colour",
@@ -48,13 +54,15 @@
   },
   {
     "icon": "the_second_day",
-    "top": 2,
-    "left": 1
+    "scale": 0.85,
+    "top": 4,
+    "left": 2
   },
   {
     "icon": "the_final_day",
-    "top": 2,
-    "left": 1
+    "scale": 0.85,
+    "top": 4,
+    "left": 2
   },
   {
     "icon": "day_of_the_feast",
@@ -62,7 +70,9 @@
   },
   {
     "icon": "hemlock_house",
-    "left": 2
+    "scale": 0.9,
+    "top": 1,
+    "left": 4
   },
   {
     "icon": "the_silent_heath",

@@ -5,6 +5,10 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectZoom, setZoom } from '@/store/features/layout/layout';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import classNames from 'classnames';
+import { toArrayIf } from '@/util/common';
+import { IS_DEVELOPMENT } from '@/constants/app';
+import { useMemo } from 'react';
+import { getWebToPrintScale } from '@/util/units';
 
 export type LayoutZoomProps = {
 
@@ -24,12 +28,18 @@ const ZOOM_LEVELS = [
 export const LayoutZoom = ({}: LayoutZoomProps) => {
   const dispatch = useAppDispatch();
   const zoom = useAppSelector(selectZoom);
+  const webToPrintScale = useMemo(getWebToPrintScale, []) * 100;
+
+  const LEVELS = [
+    ...ZOOM_LEVELS,
+    ...toArrayIf(IS_DEVELOPMENT, webToPrintScale)
+  ]
 
   const toOption = (value: number) => ({
-    label: `${value}%`,
+    label: value === webToPrintScale?  'print' : `${value}%`,
     value,
   })
-  const options = ZOOM_LEVELS.map(toOption);
+  const options = LEVELS.map(toOption);
 
   const value = toOption(zoom);
 
@@ -38,19 +48,19 @@ export const LayoutZoom = ({}: LayoutZoomProps) => {
   );
 
   const goToIndex = (diff: number) => {
-    const index = ZOOM_LEVELS.indexOf(zoom);
+    const index = LEVELS.indexOf(zoom);
     const value = index + diff;
 
-    if (value >= 0 && value < ZOOM_LEVELS.length) {
+    if (value >= 0 && value < LEVELS.length) {
       return value;
     }
     if (diff < 0) {
       return 0;
     }
-    return ZOOM_LEVELS.length - 1;
+    return LEVELS.length - 1;
   }
 
-  const goToZoom = (diff: number) => ZOOM_LEVELS[goToIndex(diff)];
+  const goToZoom = (diff: number) => LEVELS[goToIndex(diff)];
 
   const zoomIn = () => onChange(goToZoom(-1));
   const zoomOut = () => onChange(goToZoom(1));
@@ -60,7 +70,7 @@ export const LayoutZoom = ({}: LayoutZoomProps) => {
       <div 
         className={classNames(
           S.zoomButton,
-          zoom === ZOOM_LEVELS[0] && S.disabled
+          zoom === LEVELS[0] && S.disabled
         )} 
         onClick={zoomIn}
       >
@@ -76,7 +86,7 @@ export const LayoutZoom = ({}: LayoutZoomProps) => {
       <div 
         className={classNames(
           S.zoomButton,
-          zoom === ZOOM_LEVELS[ZOOM_LEVELS.length - 1] && S.disabled
+          zoom === LEVELS[LEVELS.length - 1] && S.disabled
         )} 
         onClick={zoomOut}
       >

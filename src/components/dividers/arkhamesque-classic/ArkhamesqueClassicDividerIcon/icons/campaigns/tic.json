@@ -45,7 +45,8 @@
   },
   {
     "icon": "a_light_in_the_fog",
-    "top": 2
+    "top": 6,
+    "left": 3
   },
   {
     "icon": "lair_of_dagon",
@@ -59,5 +60,52 @@
     "icon": "syzygy",
     "top": 2,
     "left": 3
+  },
+  {
+    "icon": "tic",
+    "left": 2
+  },
+  {
+    "icon": "rttic",
+    "top": 2,
+    "left": 0.5
+  },
+  {
+    "icon": "return_to_the_vanishing_of_elina_harper",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "return_to_the_pit_of_despair",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "return_to_in_too_deep",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "return_to_devil_reef",
+    "top": 1
+  },
+  {
+    "icon": "return_to_horror_in_high_gear",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "return_to_a_light_in_the_fog",
+    "top": 1
+  },
+  {
+    "icon": "return_to_the_lair_of_dagon",
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "return_to_into_the_maelstrom",
+    "top": 1.5,
+    "left": 1
   }
 ]

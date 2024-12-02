@@ -5,6 +5,7 @@ import { propEq } from 'ramda';
 
 export type ArkhamesqueClassicDividerIconProps = {
   icon: string
+  type?: string
 }
 
 export type IIconData = {
@@ -12,13 +13,18 @@ export type IIconData = {
   left?: number
   top?: number
   scale?: number
+  type?: string
 }
 
 export const ArkhamesqueClassicDividerIcon = ({
-  icon
+  icon,
+  type
 }: ArkhamesqueClassicDividerIconProps) => {
 
-  const iconData = icons.find(propEq(icon, 'icon')) as IIconData | undefined;
+  const iconDataList = icons.filter(propEq(icon, 'icon')) as IIconData[];
+
+  const iconData = iconDataList.find(icon => icon.type === type) || iconDataList[0];
+
   const styles = iconData && {
     transform: `translate(${iconData?.left || 0}%, ${iconData?.top || 0}%) scale(${iconData?.scale || 1})`
   }

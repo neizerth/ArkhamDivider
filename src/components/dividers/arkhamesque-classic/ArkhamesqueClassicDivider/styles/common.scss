@@ -51,7 +51,7 @@
   z-index: 2;
   top: 5.7mm;
   left: 9.9mm;
-  font-size: 8.3mm;
+  font-size: 7.5mm;
   width: 8.4mm;
   height: 8.25mm;
   &:hover {
@@ -62,11 +62,13 @@
 .specialIcon {
   --offset-top: 0mm;
   --offset-left: 0mm;
+  --index-offset-left: 0mm;
+  --index-offset-top: 0mm;
   position: absolute;
   z-index: 2;
   font-size: 5mm;
-  bottom: calc(8.5mm - var(--offset-top));
-  left: calc(50% + var(--offset-left));
+  bottom: calc(8.4mm - var(--offset-top) + var(--index-offset-top));
+  left: calc(50% + var(--offset-left) + var(--index-offset-left));
   transform: translateX(-50%);
   width: 5.3mm;
   height: 5.3mm;
@@ -78,6 +80,17 @@
     opacity: 0.8;
   }
 }
+
+.chrome {
+  &.odd .specialIcon {
+    --index-offset-left: 0.02mm;
+  }
+  
+  &.row .specialIcon {
+    --index-offset-top: 0.1mm;
+  }
+}
+
 
 .specialText {
   // font-family: 'Arno Pro', sans-serif;

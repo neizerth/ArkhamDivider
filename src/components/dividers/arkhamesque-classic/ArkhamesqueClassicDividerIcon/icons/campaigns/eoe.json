@@ -9,9 +9,8 @@
   },
   {
     "icon": "nameless_horrors",
-    "scale": 0.9,
-    "top": 4,
-    "left": 3
+    "scale": 0.8,
+    "top": 5
   },
   {
     "icon": "shoggoths",
@@ -23,7 +22,9 @@
   },
   {
     "icon": "expedition_team",
-    "left": 2.5
+    "scale": 0.87,
+    "top": 1,
+    "left": 0
   },
   {
     "icon": "agents_of_the_unknown",
@@ -36,14 +37,23 @@
     "left": 5
   },
   {
+    "icon": "memorials_of_the_lost",
+    "scale": 0.85,
+    "top": 1,
+    "left": 3
+  },
+  {
+    "icon": "tokyo"
+  },
+  {
     "icon": "the_crash",
     "top": 3,
     "left": 2
   },
   {
     "icon": "deadly_weather",
-    "top": 2,
-    "left": 2
+    "scale": 0.9,
+    "top": 3
   },
   {
     "icon": "lost_in_the_night",
@@ -87,5 +97,10 @@
   {
     "icon": "fatal_mirage",
     "top": 2
+  },
+  {
+    "icon": "the_heart_of_madness",
+    "top": 0.5,
+    "left": 1
   }
 ]

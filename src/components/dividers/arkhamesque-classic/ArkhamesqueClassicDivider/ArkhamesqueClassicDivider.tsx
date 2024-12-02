@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { useIconSelect } from '@/hooks/useIconSelect';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { getDividerData } from './data/getDividerData';
 import { useSelector } from 'react-redux';
 import { selectArkhamesqueData } from '@/store/features/arkhamesque/arkhamesque';
@@ -16,6 +16,7 @@ import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 import { ArkhamesqueClassicDividerIcon as ArkhamesqueIcon} from '../ArkhamesqueClassicDividerIcon/ArkhamesqueClassicDividerIcon';
+import { detect } from 'detect-browser';
 
 export type ArkhamesqueClassicDividerProps = IDivider;
 
@@ -25,8 +26,13 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     story, 
     name = '',
     type,
-    xpCost
+    xpCost,
+    index,
+    rowIndex
   } = props;
+
+  const browser = useMemo(detect, []);
+  const isChrome = browser?.name ==='chrome';
 
   const language = useSelector(selectLanguage);
   const data = useSelector(selectArkhamesqueData);
@@ -35,6 +41,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const realLanguage = translatedName === name ? 'en' : language;
 
 	const [_, setTitle] = useState(translatedName);
+  const isEven = index % 2 === 0;
 
   const mapDefaultIcon = (icon?: string) => icon === 'multiclass' ? 'multiclass_arkhamesque' : icon;
 
@@ -64,6 +71,9 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     <div 
       className={classNames(
         S.container,
+        isChrome && S.chrome,
+        isEven ? S.even : S.odd,
+        rowIndex > 1 ? S.row : S.firstRow,
         S[type],
         S[realLanguage]
       )}
@@ -85,7 +95,10 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 )} 
                 onClick={selectSpecialIcon}
               >
-                <ArkhamesqueIcon icon={specialIcon}/>
+                <ArkhamesqueIcon 
+                  icon={specialIcon}
+                  type="special"
+                />
               </div>
             )}
             {item.scenario && scenarioNumber && (

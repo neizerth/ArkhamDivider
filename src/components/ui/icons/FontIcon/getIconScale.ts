@@ -39,9 +39,9 @@ export const getCircleScale = ({
   scaleBy?: number
 }) => {
   if (circled) {
-    return 90;
+    return 100;
   }
   const angle = Math.atan(ratio);
   const height = Math.cos(angle);
-  return Math.min(height * scaleBy * 100, 85);
+  return Math.min(height * scaleBy * 100, 95);
 }

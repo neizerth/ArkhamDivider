@@ -5,13 +5,15 @@
   },
   {
     "icon": "migo",
-    "scale": 0.9,
-    "top": 3,
-    "left": 2
+    "scale": 0.85,
+    "top": 7,
+    "left": 3
   },
   {
     "icon": "in_the_labyrinths_of_lunacy",
-    "left": 3
+    "scale": 0.9,
+    "top": 3,
+    "left": 1
   },
   {
     "icon": "death_of_the_stars",
@@ -27,5 +29,15 @@
   {
     "icon": "read_or_die",
     "left": 1
+  },
+  {
+    "icon": "murder_at_the_excelsior_hotel",
+    "scale": 0.9,
+    "top": 4,
+    "left": 3
+  },
+  {
+    "icon": "single_group",
+    "top": 4
   }
 ]

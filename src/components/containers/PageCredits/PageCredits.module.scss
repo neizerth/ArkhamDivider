@@ -14,16 +14,21 @@
 }
 
 .icon {
-  width: 5mm;
+  // width: 5mm;
 }
 
 .freeIcon {
   position: relative;
-  top: 1mm;
+  font-size: 3em;
+  // top: 0.5mm;
+  // height: 1em;
+  margin-right: 0.3mm;
+  display: inline-flex;
+  align-items: center;
 }
 
 .symbol {
-  margin-right: 1.5mm;
+  margin-right: 0.5em;
 }
 
 .qr {
