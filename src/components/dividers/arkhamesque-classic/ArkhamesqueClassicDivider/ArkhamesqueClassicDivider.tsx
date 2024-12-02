@@ -1,4 +1,3 @@
-import { IDivider } from '@/types/dividers';
 import S from './ArkhamesqueClassicDivider.module.scss';
 import classNames from 'classnames';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
@@ -17,8 +16,9 @@ import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 import { ArkhamesqueClassicDividerIcon as ArkhamesqueIcon} from '../ArkhamesqueClassicDividerIcon/ArkhamesqueClassicDividerIcon';
 import { detect } from 'detect-browser';
+import { DividerProps } from '../../common/Divider/Divider';
 
-export type ArkhamesqueClassicDividerProps = IDivider;
+export type ArkhamesqueClassicDividerProps = DividerProps;
 
 export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps) => {
   const { 

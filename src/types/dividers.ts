@@ -23,8 +23,6 @@ export enum DividerSubtype {
 
 export type IDivider = {
     id: string
-    index: number
-    rowIndex: number
     story?: IStory
     campaign?: ICampaign
     scenario?: IScenario

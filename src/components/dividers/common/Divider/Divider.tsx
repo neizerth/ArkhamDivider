@@ -10,7 +10,10 @@ import { ArkhamDecoDivider } from '@/components/dividers/arkham-deco/ArkhamDecoD
 import { ArkhamStarter3mmDivider } from '../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider';
 import { ArkhamesqueClassicDivider } from '../../arkhamesque-classic/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider';
 
-export type DividerProps = PropsWithClassName & IDivider;
+export type DividerProps = PropsWithClassName & IDivider & {
+	index: number
+	rowIndex: number
+}
 
 export const Divider = (props: DividerProps) => {
   const { categoryId } = useAppSelector(selectLayout);
