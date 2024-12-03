@@ -160,6 +160,12 @@
     "left": 2
   },
   {
+    "icon": "return_to_the_forgotten_age",
+    "top": 2,
+    "left": 1.5,
+    "type": "special"
+  },
+  {
     "icon": "return_to_threads_of_fate",
     "top": 2,
     "left": 2

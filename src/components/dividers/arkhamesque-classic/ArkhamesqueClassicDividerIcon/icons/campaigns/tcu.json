@@ -99,6 +99,12 @@
     "left": 2
   },
   {
+    "icon": "rttcu",
+    "top": 4,
+    "left": 1,
+    "type": "special"
+  },
+  {
     "icon": "disappearance_at_the_twilight_estate",
     "top": 1,
     "left": 2
