@@ -67,8 +67,8 @@
   position: absolute;
   z-index: 2;
   font-size: 5mm;
-  bottom: calc(8.4mm - var(--offset-top) + var(--index-offset-top));
-  left: calc(50% + var(--offset-left) + var(--index-offset-left));
+  bottom: calc(8.4mm - var(--offset-top) + var(--index-offset-top) + 0.00001%);
+  left: calc(50% + var(--offset-left) + var(--index-offset-left) + 0.00001%);
   transform: translateX(-50%);
   width: 5.3mm;
   height: 5.3mm;

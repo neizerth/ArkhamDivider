@@ -130,5 +130,11 @@
     "icon": "return_to_the_path_to_carcosa",
     "top": 2,
     "left": 2
+  },
+  {
+    "icon": "return_to_the_path_to_carcosa",
+    "top": 2,
+    "left": 0,
+    "type": "special"
   }
 ]
