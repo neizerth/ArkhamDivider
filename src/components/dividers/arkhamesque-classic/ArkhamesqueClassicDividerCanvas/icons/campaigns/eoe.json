@@ -1,106 +1,144 @@
 [
   {
     "icon": "elder_things",
-    "left": 2
+    "left": 0,
+    "top": -2
   },
   {
     "icon": "miasma",
-    "top": 2
+    "top": 2,
+    "left": -1
   },
   {
     "icon": "nameless_horrors",
     "scale": 0.8,
-    "top": 5
+    "top": 0,
+    "left": -2
+  },
+  {
+    "icon": "eoe_campaign",
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "penguins",
+    "top": -1,
+    "left": -2
   },
   {
     "icon": "shoggoths",
-    "left": 3
+    "left": 2,
+    "top": -2
   },
   {
     "icon": "creatures_in_the_ice",
-    "top": 3
+    "top": 0,
+    "left": -3
+  },
+  {
+    "icon": "silence_and_mystery",
+    "left": -2,
+    "top": -2,
+    "scale": 1.2
   },
   {
     "icon": "expedition_team",
     "scale": 0.87,
-    "top": 1,
+    "top": -2,
     "left": 0
   },
   {
     "icon": "agents_of_the_unknown",
-    "top": 2,
-    "left": 1
+    "top": -1,
+    "left": -1,
+    "scale": 1.1
   },
   {
     "icon": "left_behind",
-    "top": 2,
-    "left": 5
+    "top": -5,
+    "left": 2
   },
   {
     "icon": "memorials_of_the_lost",
     "scale": 0.85,
-    "top": 1,
-    "left": 3
+    "top": -3,
+    "left": -1
   },
   {
     "icon": "tokyo"
   },
   {
     "icon": "the_crash",
-    "top": 3,
-    "left": 2
+    "top": 1,
+    "left": -1,
+    "scale": 1.2
+  },
+  {
+    "icon": "hazards_of_antarctica",
+    "scale": 1.15,
+    "top": -4,
+    "left": -3
   },
   {
     "icon": "deadly_weather",
     "scale": 0.9,
-    "top": 3
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "lost_in_the_night",
+    "scale": 1.08,
     "top": 3,
-    "left": 2
+    "left": -1
   },
   {
     "icon": "sleeping_nightmares",
-    "top": 4,
-    "left": 1
+    "scale": 1.2,
+    "top": 2,
+    "left": -2
   },
   {
     "icon": "the_great_seal",
-    "top": 5,
-    "left": 5
+    "scale": 1.1,
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "stirring_in_the_deep",
-    "top": 3,
-    "left": 1
+    "top": 1,
+    "left": -1
   },
   {
     "icon": "tekeli_li",
-    "top": 1.5,
-    "left": 1.5
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "ice_and_death",
-    "top": 1,
-    "left": 3
+    "scale": 1.1,
+    "top": -1,
+    "left": 0
   },
   {
     "icon": "to_the_forbidden_peaks",
-    "top": 3
+    "scale": 1.1,
+    "top": 0,
+    "left": -1
   },
   {
     "icon": "city_of_the_elder_things",
+    "scale": 1.1,
     "top": 8,
-    "left": 2
+    "left": -2.5
   },
   {
     "icon": "fatal_mirage",
-    "top": 2
+    "top": -3,
+    "left": -1
   },
   {
     "icon": "the_heart_of_madness",
-    "top": 0.5,
-    "left": 1
+    "top": -2,
+    "left": -2
   }
 ]
