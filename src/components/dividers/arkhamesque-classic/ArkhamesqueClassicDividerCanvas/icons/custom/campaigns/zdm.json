@@ -1,23 +1,20 @@
 [
   {
     "icon": "interstellar_predators",
-    "top": 7
+    "top": 4
   },
   {
     "icon": "lost_quantum",
-    "top": 2,
-    "left": 7
+    "top": -1,
+    "left": 5
   },
   {
     "icon": "strange_moons",
     "top": 3
   },
   {
-    "icon": "the_machine_in_yellow",
-    "top": 3
-  },
-  {
     "icon": "starfall",
+    "scale": 0.95,
     "left": 1
   },
   {
@@ -28,8 +25,8 @@
   {
     "icon": "dark_past",
     "scale": 0.85,
-    "top": 4,
-    "left": 3
+    "top": 2,
+    "left": 0
   },
   {
     "icon": "anachronism",
@@ -47,6 +44,7 @@
   {
     "icon": "artificial_intelligence",
     "scale": 0.9,
-    "top": 3
+    "top": 0,
+    "left": -2
   }
 ]

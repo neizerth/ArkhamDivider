@@ -8,13 +8,13 @@
     "top": 2
   },
   {
-    "icon": "jumanji-hunter",
-    "top": 6
+    "icon": "jumanji-call_of_jumanji",
+    "left": -5
   },
   {
     "icon": "jumanji-home_invasion",
-    "top": 4,
-    "left": 4
+    "top": 1,
+    "left": 3
   },
   {
     "icon": "jumanji-urban_jungle",
@@ -22,11 +22,11 @@
   },
   {
     "icon": "jumanji-game_night",
-    "left": 3,
+    "left": 1,
     "top": 2
   },
   {
     "icon": "jumanji-force_of_nature",
-    "top": 2
+    "top": -1
   }
 ]

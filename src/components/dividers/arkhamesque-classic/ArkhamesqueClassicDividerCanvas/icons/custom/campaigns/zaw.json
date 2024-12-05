@@ -1,10 +1,13 @@
 [
   {
     "icon": "wonderland_boons",
-    "left": 2
+    "scale": 0.9,
+    "left": 1,
+    "top": -2
   },
   {
     "icon": "walrus_and_carpenter",
+    "scale": 0.9,
     "top": -2,
     "left": 2
   },
@@ -14,11 +17,16 @@
   },
   {
     "icon": "jabberwock",
-    "top": 2,
-    "left": 3
+    "top": 0,
+    "left": 1
   },
   {
     "icon": "wild_snark_chase",
     "left": 5
+  },
+  {
+    "icon": "alice_in_arkham",
+    "scale": 0.95,
+    "top": -2
   }
 ]

@@ -1,23 +1,39 @@
 [
   {
     "icon": "ages_unwound-agents_of_aforgomon",
-    "top": 2,
-    "left": 1
+    "top": 1,
+    "left": 0
   },
   {
     "icon": "ages_unwound-myriad",
-    "top": 2,
-    "left": 2
+    "top": 1,
+    "left": -1
   },
   {
     "icon": "ages_unwound-paradox",
     "top": -3,
-    "left": 3
+    "left": 1
+  },
+  {
+    "icon": "ages_unwound-nyctophobia",
+    "left": -2
+  },
+  {
+    "icon": "ages_unwound-missions",
+    "scale": 0.9
+  },
+  {
+    "icon": "ages_unwound-a_year_to_plan",
+    "scale": 0.9
+  },
+  {
+    "icon": "ages_unwound-the_myriad_gentleman",
+    "scale": 0.95
   },
   {
     "icon": "ages_unwound-night_of_fire",
-    "scale": 1.1,
-    "top": 4,
-    "left": 2
+    "scale": 1.25,
+    "top": 0,
+    "left": 0
   } 
 ]

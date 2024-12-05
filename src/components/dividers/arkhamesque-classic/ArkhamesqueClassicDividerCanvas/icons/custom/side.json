@@ -1,24 +1,32 @@
 [
   {
     "icon": "blood_spilled_in_salem-atrocities",
-    "top": 6,
-    "left": 2
+    "top": 10,
+    "left": 1
+  },
+  {
+    "icon": "blood_spilled_in_salem",
+    "top": 2
   },
   {
     "icon": "knightfall",
     "top": 2
   },
   {
-    "icon": "knightfall-fear_toxin",
-    "left": 2
-  },
-  {
-    "icon": "stranger_things-upside_down",
-    "left": 2
-  },
-  {
     "icon": "the_collector",
-    "top": 4,
-    "left": 2
+    "top": 2
+  },
+  {
+    "icon": "the_festival",
+    "top": -2
+  },
+  {
+    "icon": "meteoric_phenomenon",
+    "top": 2,
+    "left": -2
+  },
+  {
+    "icon": "the_nameless_city",
+    "top": -2
   }
 ]

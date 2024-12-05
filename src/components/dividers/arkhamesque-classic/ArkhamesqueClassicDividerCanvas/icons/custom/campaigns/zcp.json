@@ -2,16 +2,16 @@
   {
     "icon": "tenuous_allies",
     "top": -2,
-    "left": 4
+    "left": 1
   },
   {
     "icon": "unbound_power",
-    "top": -4,
-    "left": 3
+    "top": -6,
+    "left": 2
   },
   {
-    "icon": "night_on_the_town",
-    "top": 3,
-    "left": 2
+    "icon": "late_risers",
+    "top": -2,
+    "left": 0
   }
 ]

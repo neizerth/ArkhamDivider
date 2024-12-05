@@ -1,22 +1,22 @@
 [
   {
-    "icon": "bloodborne-agents_of_paleblood",
+    "icon": "bloodborne-agents_of_oedon",
     "top": 3,
-    "left": 2
+    "left": -1
   },
   {
-    "icon": "bloodborne-beasts",
-    "top": 2,
-    "left": 2
+    "icon": "bloodborne-agents_of_paleblood",
+    "scale": 1.1,
+    "top": 1,
+    "left": 1
   },
   {
-    "icon": "bloodborne-quite_thrilling",
-    "top": 2
+    "icon": "bloodborne-welcome_to_yharnam",
+    "top": -3
   },
   {
     "icon": "bloodborne-radiance",
-    "top": -3,
-    "left": 1.5
+    "top": -4
   },
   {
     "icon": "bloodborne-great_deep_sea",
@@ -24,45 +24,33 @@
   },
   {
     "icon": "bloodborne-hunters_of_yharnam",
-    "top": 3
+    "left": -1
+  },
+  {
+    "icon": "bloodborne-oedon_writhe",
+    "left": -1,
+    "top": 1
   },
   {
     "icon": "bloodborne-silent_prayer",
-    "top": 2,
-    "left": 4
+    "left": 4,
+    "top": 1
   },
   {
-    "icon": "bloodborne-impurity",
-    "top": 3,
-    "left": 1
-  },
-  {
-    "icon": "bloodborne-astral_clocktower",
-    "left": 1
-  },
-  {
-    "icon": "bloodborne-pthemerian_heir",
-    "left": 1
+    "icon": "bloodborne-blood_rapture",
+    "top": -2 
   },
   {
     "icon": "bloodborne-quests",
-    "scale": 0.85
-  },
-  {
-    "icon": "bloodborne-the_hunt_begins",
-    "top": 1,
-    "left": 1
-  },
-  {
-    "icon": "bloodborne-night_unending",
+    "scale": 0.8,
     "left": 2
   },
   {
-    "icon": "bloodborne-the_frailty_of_men",
-    "top": -2
+    "icon": "bloodborne-the_hunt_begins",
+    "top": -0.5
   },
   {
-    "icon": "bloodborne-a_call_beyond",
-    "top": 4
+    "icon": "bloodborne-fear_the_old_blood",
+    "top": -3
   }
 ]
