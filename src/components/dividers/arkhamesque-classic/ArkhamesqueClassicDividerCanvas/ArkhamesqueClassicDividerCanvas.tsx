@@ -64,9 +64,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
               width={canvasSize.width}
               preventDefault={false}
             />
-          </Layer>
-          {special && (
-            <Layer>
+            {special && (
               <Icon 
                 {...special} 
                 type="special" 
@@ -78,10 +76,8 @@ export const ArkhamesqueClassicDividerCanvas = ({
                   height: 62
                 }}
               />
-            </Layer>
-          )}
-          {preview && (
-            <Layer>
+            )}
+            {preview && (
               <Icon 
                 {...preview} 
                 height={92}
@@ -92,8 +88,8 @@ export const ArkhamesqueClassicDividerCanvas = ({
                   height: 104
                 }}
               />
-            </Layer>
-          )}
+            )}
+          </Layer>
         </Stage>
       )}
     </>
