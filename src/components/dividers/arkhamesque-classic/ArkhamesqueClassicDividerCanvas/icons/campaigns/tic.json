@@ -1,98 +1,149 @@
 [
   {
     "icon": "locals",
-    "top": 6,
-    "left": 0.5
+    "top": 0,
+    "left": -2
   },
   {
     "icon": "agents_of_dagon",
-    "top": 1,
-    "left": 3
+    "top": -1,
+    "left": 1
+  },
+  {
+    "icon": "occultation",
+    "top": -2,
+    "left": 0
+  },
+  {
+    "icon": "flooded_caves",
+    "top": -5,
+    "left": -1
   },
   {
     "icon": "rolling_tide",
-    "top": 1,
-    "left": 2
+    "scale": 1.1,
+    "top": -1,
+    "left": -2
+  },
+  {
+    "icon": "rising_tide",
+    "top": -1,
+    "left": -1
   },
   {
     "icon": "stalkers_of_cthulhu",
-    "top": 4,
-    "left": 1
+    "top": 1,
+    "left": -1
   },
   {
     "icon": "barricaded_doors",
-    "top": 1,
-    "left": 2
+    "top": -1,
+    "left": 0
   },
   {
     "icon": "grotto_of_despair",
-    "left": 1,
-    "top": 1
+    "left": -1,
+    "top": -5
+  },
+  {
+    "icon": "innsmouth_haze",
+    "top": -5
   },
   {
     "icon": "disappearance_of_elina_harper",
-    "top": 2,
-    "left": 2
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "creatures_from_below",
+    "top": -6,
+    "left": -1
   },
   {
     "icon": "in_too_deep",
-    "top": -3,
-    "left": 1
+    "top": -7,
+    "left": -1
   },
   {
     "icon": "devil_reef",
-    "left": 2
+    "left": -2,
+    "top": -2
   },
   {
     "icon": "a_light_in_the_fog",
-    "top": 6,
-    "left": 3
+    "top": -2,
+    "left": 0
   },
   {
     "icon": "lair_of_dagon",
-    "top": 3
+    "top": -1,
+    "left": -1
   },
   {
     "icon": "into_the_maelstrom",
-    "top": 2
+    "top": -3,
+    "left": -1
+  },
+  {
+    "icon": "agents_of_hydra",
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "syzygy",
-    "top": 2,
-    "left": 3
+    "top": -1,
+    "left": 0
   },
   {
     "icon": "tic",
-    "left": 2
+    "left": -1.5,
+    "top": -1
   },
   {
     "icon": "rttic",
-    "top": 2,
-    "left": 0.5
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_vanishing_of_elina_harper",
-    "top": 2,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_pit_of_despair",
-    "top": 2,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_in_too_deep",
-    "top": 1,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_devil_reef",
-    "top": 1
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "horror_in_high_gear",
+    "top": -4,
+    "left": -2
   },
   {
     "icon": "return_to_horror_in_high_gear",
-    "top": 2,
-    "left": 1
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "shattered_memories",
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "fog_over_innsmouth",
+    "scale": 0.95,
+    "left": -1,
+    "top": -2
   },
   {
     "icon": "return_to_a_light_in_the_fog",
@@ -100,12 +151,23 @@
   },
   {
     "icon": "return_to_the_lair_of_dagon",
-    "top": 2,
-    "left": 2
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_into_the_maelstrom",
-    "top": 1.5,
-    "left": 1
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "malfunction",
+    "top": -5,
+    "left": -2,
+    "scale": 1.1
+  },
+  {
+    "icon": "return_to_flooded_caverns",
+    "left": -2,
+    "top": -2
   }
 ]
