@@ -1,79 +1,122 @@
 [
   {
     "icon": "spectral_predators",
-    "top": 4,
-    "left": 2
+    "top": -1,
+    "left": -2
   },
   {
     "icon": "the_watcher",
-    "scale": 0.9,
-    "top": 5,
-    "left": 0
+    "scale": 0.8,
+    "top": -1,
+    "left": -1
   },
   {
     "icon": "music_of_the_damned",
-    "top": 2
+    "top": 1,
+    "left": -1
+  },
+  {
+    "icon": "agents_of_azathoth",
+    "scale": 1.1,
+    "left": -1,
+    "top": -5
   },
   {
     "icon": "anettes_coven",
-    "top": -2,
-    "left": 3
+    "top": -4,
+    "left": 0
   },
   {
     "icon": "witchcraft",
-    "top": -2
+    "top": -4,
+    "left": -2
   },
   {
     "icon": "unspeakable_fate",
-    "top": -2,
-    "left": 3
+    "top": -6,
+    "left": 0
   },
   {
     "icon": "spectral_realm",
-    "top": 4,
-    "left": 1
+    "top": -1,
+    "left": -2
+  },
+  {
+    "icon": "trapped_spirits",
+    "top": -7,
+    "left": -1
   },
   {
     "icon": "bloodthirsty_spirits",
-    "top": 5
+    "top": 2,
+    "left": -1
   },
   {
     "icon": "cold_fog",
-    "top": 3,
-    "left": 3
+    "top": -1,
+    "left": -1
+  },
+  {
+    "icon": "threatening_evil",
+    "scale": 1.05,
+    "top": -2,
+    "left": 0
   },
   {
     "icon": "city_of_the_damned",
     "top": 7,
-    "left": 3
+    "left": -2
+  },
+  {
+    "icon": "the_circle_undone",
+    "left": -3,
+    "top": -1
+  },
+  {
+    "icon": "inexorable_fate",
+    "left": -3,
+    "top": -1
+  },
+  {
+    "icon": "realm_of_death",
+    "left": -1,
+    "top": -1
   },
   {
     "icon": "witchwork",
-    "top": 3,
-    "left": 1
+    "top": -2,
+    "left": -1.5
   },
   {
     "icon": "the_witching_hour",
-    "top": 1,
-    "left": 1.5
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "at_deaths_doorstep",
-    "top": 8
+    "top": 0,
+    "left": -1
   },
   {
     "icon": "the_wages_of_sin",
-    "top": -2
+    "scale": 0.95,
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "city_of_sins",
+    "left": -9
   },
   {
     "icon": "for_the_greater_good",
     "scale": 0.87,
-    "left": 0,
-    "top": 1
+    "left": -2,
+    "top": -2
   },
   {
     "icon": "return_to_for_the_greater_good",
-    "left": 1
+    "left": -2,
+    "top": -2
   },
   {
     "icon": "a_thousand_shapes_of_horror",
@@ -83,31 +126,33 @@
   },
   {
     "icon": "union_and_disillusion",
-    "top": 3
+    "top": -1,
+    "left": -1
   },
   {
     "icon": "in_the_clutches_of_chaos",
-    "top": 2
+    "top": -1,
+    "left": -2
   },
   {
     "icon": "before_the_black_throne",
-    "top": 2
+    "top": 1,
+    "left": -2
   },
   {
     "icon": "rttcu",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "rttcu",
-    "top": 4,
-    "left": 1,
-    "type": "special"
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "disappearance_at_the_twilight_estate",
-    "top": 1,
-    "left": 2
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "return_to_disappearance_at_the_twilight_estate",
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_before_the_black_throne"
@@ -115,23 +160,32 @@
   },
   {
     "icon": "return_to_the_witching_hour",
-    "top": 1,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_at_deaths_doorstep",
-    "top": 1,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_secret_name",
-    "top": 1,
-    "left": 1
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "the_secret_name",
+    "left": -2
+  },
+  {
+    "icon": "secrets_of_the_universe",
+    "scale": 0.9,
+    "top": -2
   },
   {
     "icon": "return_to_the_wages_of_sin",
-    "top": 1,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_in_the_clutches_of_chaos",
