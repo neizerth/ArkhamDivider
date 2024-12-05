@@ -33,8 +33,8 @@ export const ArkhamesqueClassicDividerIcon = ({
     <div className={S.container} style={styles}>
       <Icon 
         icon={icon} 
-        scale='circle'
-        scaleBy={0.93}
+        scaleType='circle'
+        scaleFactor={0.93}
       />
     </div>
   );

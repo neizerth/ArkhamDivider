@@ -40,8 +40,11 @@ export const ArkhamesqueClassicDividerCanvasIcon = ({
   const iconDataList = icons.filter(propEq(icon.icon, 'icon')) as IIconTransform[];
 
   const iconData = iconDataList.find(icon => icon.type === type) || iconDataList[0];
-  const dX = iconData?.left || 0;
-  const dY = iconData?.top || 0;
+  // const dX = iconData?.left || 0;
+  // const dY = iconData?.top || 0;
+  const dX = 0;
+  const dY = 0;
+
   const zoom = iconData?.scale || 1;
 
   const height = props.height * scale * zoom / 100;

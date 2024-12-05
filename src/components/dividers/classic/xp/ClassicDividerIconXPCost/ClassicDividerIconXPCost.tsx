@@ -26,18 +26,18 @@ export const ClassicDividerSkillXPCost = ({
           <Icon 
             icon="s_frame_background" 
             className={classNames(S.skillBackground)} 
-            scale={false}
+            scaleType={false}
           />
           <Icon 
             icon={`s_level_${level}`} 
             className={classNames(S.level, S.lightLevel)} 
-            scale={false}
+            scaleType={false}
           />
           {max > level && (
             <Icon 
               icon={`s_level_${max}`} 
               className={classNames(S.level, S.maxLevel)}
-              scale={false}
+              scaleType={false}
             />
           )}
         </>
@@ -63,12 +63,12 @@ export const ClassicDividerAssetXPCost = ({
           <Icon 
             icon="inverted_level_0" 
             className={classNames(S.background)}
-            scale={false}
+            scaleType={false}
           />
           <Icon 
             icon={`ae_level_${level}`} 
             className={classNames(S.level, S.lightLevel)}
-            scale={false}
+            scaleType={false}
           />
         </>
       )}
@@ -76,7 +76,7 @@ export const ClassicDividerAssetXPCost = ({
         <Icon 
           icon={`ae_level_${max}`} 
           className={classNames(S.level, S.maxLevel)}
-          scale={false}
+          scaleType={false}
         />
       )}
     </div>
@@ -99,14 +99,14 @@ export const ClassicDividerEventXPCost = ({
         <Icon 
           icon={`ae_level_${level}`} 
           className={classNames(S.level)}
-          scale={false}
+          scaleType={false}
         />
       )}
       {max > level && (
         <Icon 
           icon={`ae_level_${max}`} 
           className={classNames(S.level, S.maxLevel)}
-          scale={false}
+          scaleType={false}
         />
       )}
     </div>

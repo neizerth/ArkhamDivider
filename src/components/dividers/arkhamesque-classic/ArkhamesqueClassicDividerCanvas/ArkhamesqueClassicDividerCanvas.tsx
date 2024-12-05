@@ -80,7 +80,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
         <Layer>
           <Icon 
             {...preview} 
-            height={92}
+            height={100}
             container={{
               x: 118,
               y: 67,

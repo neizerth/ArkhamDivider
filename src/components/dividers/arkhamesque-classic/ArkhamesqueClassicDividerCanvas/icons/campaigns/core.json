@@ -67,7 +67,14 @@
   },
   {
     "icon": "core",
-    "top": 4
+    "top": 4,
+    "scale": 1.2,
+    "type": "special"
+  },
+  {
+    "icon": "core",
+    "scale": 1.15,
+    "top": -2
   },
   {
     "icon": "the_gathering",
@@ -100,8 +107,14 @@
   },
   {
     "icon": "rtnotz",
+    "top": -2,
+    "left": -1
+  },
+  {
+    "icon": "rtnotz",
     "top": 1,
-    "left": 0
+    "left": 0,
+    "type": "special"
   },
   {
     "icon": "return_to_the_midnight_masks",
