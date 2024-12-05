@@ -23,7 +23,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
 }: ArkhamesqueClassicDividerCanvasProps) => {
 
   const { bleed } = useAppSelector(selectLayout);
-  const [image] = useImage(props.image, 'anonymous');
+  const [image, status] = useImage(props.image, 'anonymous');
   
   const preview = useIconImage({
     icon: previewIcon

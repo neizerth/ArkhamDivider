@@ -1,4 +1,4 @@
-import { curry, isNil, prop, values } from "ramda";
+import { curry, isNil, prop } from "ramda";
 
 export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 

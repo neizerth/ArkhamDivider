@@ -4,7 +4,7 @@ import { getDividerImage } from "./getDividerImage";
 import { descend, propEq } from "ramda";
 import { Single } from "@/types/util";
 import { propsEquals } from "@/util/criteria";
-import { CardType } from "@/types/game";
+import { CardType, XPCost } from "@/types/game";
 
 const COMMON_SUBTYPES = [
   DividerSubtype.BONDED,
@@ -62,8 +62,9 @@ export const getPlayerDividerData = ({
   if (subtype === DividerSubtype.FACTION) {
     const xp = xpCost?.level;
     const item = items.find(
-      item => item.faction === faction &&
-        item.xp === xp &&
+      item => 
+        item.faction === faction &&
+        (xp === XPCost.NO_COST || item.xp === xp) &&
         item.type === subtype
     );
     
@@ -92,7 +93,7 @@ export const getPlayerDividerData = ({
       })
       .toSorted(descend(({ xp = Infinity }) => xp));
 
-    if (level === undefined) {
+    if (level === undefined || level === XPCost.NO_COST) {
       return sendItem(found[0]);
     }
 

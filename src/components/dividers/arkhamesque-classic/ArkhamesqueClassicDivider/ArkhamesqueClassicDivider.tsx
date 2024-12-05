@@ -110,6 +110,14 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 fixedFontSize={false}
               />
             </div>
+            {showPreviewIcon && (
+              <div className={S.previewHandler} onClick={selectIcon}/>
+            )}
+            {showSpecialIcon && (
+              <div className={S.specialHandler} onClick={selectSpecialIcon}/>
+            )}
+            <div className={S.background}/>
+            
             <Canvas
               className={S.canvas}
               image={item.image}
