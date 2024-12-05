@@ -1,81 +1,146 @@
 [
   {
-    "icon": "outsiders",
-    "top": 1,
-    "left": 2
-  },
-  {
-    "icon": "spreading_corruption",
-    "top": 2,
+    "icon": "tsk",
+    "top": -2,
     "left": 1
   },
   {
+    "icon": "tskc",
+    "scale": 1.1
+  },
+  {
+    "icon": "outsiders",
+    "top": 1
+  },
+  {
+    "icon": "crimson_conspiracy",
+    "left": -1,
+    "top": -1
+  },
+  {
+    "icon": "riddles_and_rain",
+    "top": -1
+  },
+  {
+    "icon": "strange_happenings",
+    "scale": 0.95,
+    "left": 1
+  },
+  {
+    "icon": "without_a_trace",
+    "top": -1
+  },
+  {
+    "icon": "shadow_of_a_doubt",
+    "scale": 1.1,
+    "left": 0
+  },
+  {
+    "icon": "agents_of_yuggoth",
+    "left": -1,
+    "top": 2
+  },
+  {
+    "icon": "globetrotting",
+    "top": 1
+  },
+  {
+    "icon": "mysteries_abound"
+  },
+  {
+    "icon": "spreading_corruption",
+    "top": 0
+  },
+  {
+    "icon": "cleanup_crew"
+  },
+  {
     "icon": "agents_of_the_outside",
-    "top": 3,
-    "left": 2
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "beyond_the_beyond",
-    "left": 2,
-    "top": 4
+    "scale": 1.2
   },
   {
     "icon": "sanguine_shadows",
-    "top": 4,
-    "left": 2
+    "scale": 1.1,
+    "top": 2
   },
   {
     "icon": "secret_war",
-    "top": 2,
-    "left": 2
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "red_coterie",
     "top": 2,
-    "left": 2
+    "left": 1
+  },
+  {
+    "icon": "dark_veiling",
+    "scale": 1.1,
+    "top": -3
   },
   {
     "icon": "dealings_in_the_dark",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "dead_heat",
+    "top": 0,
     "left": 2
   },
   {
-    "icon": "dancing_mad",
-    "left": -1
+    "icon": "dancing_mad"
   },
   {
     "icon": "shanghai",
-    "top": -2
+    "left": 2
   },
   {
     "icon": "on_thin_ice",
     "scale": 0.9,
-    "top": 6,
-    "left": 2
+    "top": 4
   },
   {
     "icon": "tokyo",
-    "top": 2,
-    "left": 2.5
-  },
-  {
-    "icon": "dogs_of_war",
-    "top": 7,
-    "left": 2
-  },
-  {
-    "icon": "manokwari",
-    "top": 1,
-    "left": 1
+    "top": 4,
+    "left": 4.5
   },
   {
     "icon": "shades_of_sorrow",
-    "top": 2,
+    "left": -3
+  },
+  {
+    "icon": "dogs_of_war",
+    "top": 6
+  },
+  {
+    "icon": "scarlet_sorcery",
+    "top": 4,
     "left": -1
+  },
+  {
+    "icon": "spatial_anomaly",
+    "top": -6
+  },
+  {
+    "icon": "manokwari",
+    "top": 3,
+    "left": 3
+  },
+  {
+    "icon": "shades_of_sorrow",
+    "top": 4,
+    "left": 1
   },
   {
     "icon": "congress_of_the_keys",
     "scale": 0.8,
-    "top": 4,
-    "left": 4
+    "top": -1,
+    "left": 1
   }
 ]

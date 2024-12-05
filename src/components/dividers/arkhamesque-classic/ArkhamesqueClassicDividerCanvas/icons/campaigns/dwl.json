@@ -1,175 +1,156 @@
 [
   {
     "icon": "blood_on_the_altar",
-    "top": -1,
-    "left": -1,
+    "top": 1,
+    "left": 1,
     "scale": 1.2
   },
   {
     "icon": "dunwich",
-    "top": -1,
-    "left": 0
+    "top": 1,
+    "left": 2
   },
   {
     "icon": "whippoorwills",
     "scale": 1.1,
-    "top": -4,
-    "left": -1
+    "top": -2,
+    "left": 1
   },
   {
-    "icon": "naomis_crew",
-    "top": -2,
-    "left": -2
+    "icon": "naomis_crew"
   },
   {
     "icon": "the_beyond",
-    "top": -3,
-    "left": 0
+    "top": -1,
+    "left": 2
   },
   {
     "icon": "sorcery",
-    "top": -4,
-    "left": -1
+    "top": -2,
+    "left": 1
   },
   {
     "icon": "creeping_cold",
-    "left": -3
+    "left": -1
   },
   {
     "icon": "bishops_thralls",
     "scale": 1.1,
-    "top": -1,
-    "left": -1
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "hideous_abominations",
-    "top": -1,
-    "left": 0,
+    "top": 1,
+    "left": 2,
     "scale": 1.1
   },
   {
     "icon": "bad_luck",
-    "left": -1,
-    "top": -2
+    "left": 1
   },
   {
     "icon": "beast_thralls",
-    "top": 0,
-    "left": 0
+    "top": 2,
+    "left": 2
   },
   {
     "icon": "armitages_fate",
-    "top": 3,
-    "left": -2
+    "top": 5
   },
   {
     "icon": "the_house_always_wins",
-    "top": -3,
-    "left": -2
+    "top": -1
   },
   {
     "icon": "the_essex_county_express",
-    "top": -2,
-    "left": -1
+    "left": 1
   },
   {
     "icon": "undimensioned_and_unseen",
     "scale": 1.1,
-    "top": 0,
-    "left": -0.5
+    "top": 2,
+    "left": 1.5
   },
   {
     "icon": "where_doom_awaits",
-    "top": -4,
-    "left": -1
+    "top": -2,
+    "left": 1
   },
   {
     "icon": "return_to_where_doom_awaits",
-    "top": -1,
-    "left": -1
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "lost_in_time_and_space",
-    "top": 0,
-    "left": -1,
+    "top": 2,
+    "left": 1,
     "scale": 0.85
   },
   {
     "icon": "resurgent_evils",
-    "top": -1,
-    "left": 1,
+    "top": 1,
+    "left": 3,
     "scale": 1.05
   },
   {
     "icon": "beyond_the_threshold",
-    "left": -0.5
+    "left": 1.5,
+    "top": 2
   },
   {
     "icon": "erratic_fear",
-    "top": -5,
-    "left": -2
+    "top": -3
   },
   {
-    "icon": "secret_doors",
-    "left": -2,
-    "top": -2 
+    "icon": "secret_doors"
   },
   {
-    "icon": "yog_sothoths_emissaries",
-    "top": -2,
-    "left": -2
+    "icon": "yog_sothoths_emissaries"
   },
   {
     "icon": "extracurricular_activity",
-    "top": -4,
-    "left": -1.5
+    "top": -2,
+    "left": 0.5
   },
   {
     "icon": "return_to_extracurricular_activities",
-    "scale": 1.01,
-    "top": -2,
-    "left": -2
+    "scale": 1.01
   },
   {
     "icon": "return_to_the_house_always_wins",
-    "scale": 1.01,
-    "top": -2,
-    "left": -2
+    "scale": 1.01
   },
   {
     "icon": "set",
-    "top": -4,
-    "left": -3.5
+    "top": -2,
+    "left": -1.5
   },
   {
     "icon": "the_miskatonic_museum",
-    "top": -3,
-    "left": -2
+    "top": -1
   },
   {
     "icon": "return_to_the_miskatonic_museum",
-    "top": -2,
-    "left": -1
+    "left": 1
   },
   {
     "icon": "return_to_the_dunwich_legacy",
-    "top": -3,
-    "left": -2,
+    "top": -2,
     "scale": 1.02
   },
   {
     "icon": "return_to_the_essex_county_express",
-    "top": -1,
-    "left": -1
-  },
-  {
-    "icon": "return_to_blood_on_the_altar",
-    "top": 2,
+    "top": 1,
     "left": 1
   },
   {
-    "icon": "return_to_lost_in_time_and_space",
-    "top": -2,
-    "left": -2
+    "icon": "return_to_blood_on_the_altar",
+    "top": 4,
+    "left": 3
+  },
+  {
+    "icon": "return_to_lost_in_time_and_space"
   }
 ]

@@ -1,189 +1,160 @@
 [
   {
     "icon": "spectral_predators",
-    "top": -1,
-    "left": -2
+    "top": 1
   },
   {
     "icon": "the_watcher",
     "scale": 0.8,
-    "top": -1,
-    "left": -1
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "music_of_the_damned",
-    "top": 1,
-    "left": -1
+    "top": 3,
+    "left": 1
   },
   {
     "icon": "agents_of_azathoth",
     "scale": 1.1,
-    "left": -1,
-    "top": -5
+    "left": 1,
+    "top": -3
   },
   {
     "icon": "anettes_coven",
-    "top": -4,
-    "left": 0
+    "top": -2,
+    "left": 2
   },
   {
     "icon": "witchcraft",
-    "top": -4,
-    "left": -2
+    "top": -2
   },
   {
     "icon": "unspeakable_fate",
-    "top": -6,
-    "left": 0
+    "top": -4,
+    "left": 2
   },
   {
     "icon": "spectral_realm",
-    "top": -1,
-    "left": -2
+    "top": 1
   },
   {
     "icon": "trapped_spirits",
-    "top": -7,
-    "left": -1
+    "top": -5,
+    "left": 1
   },
   {
     "icon": "bloodthirsty_spirits",
-    "top": 2,
-    "left": -1
+    "top": 4,
+    "left": 1
   },
   {
     "icon": "cold_fog",
-    "top": -1,
-    "left": -1
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "threatening_evil",
     "scale": 1.05,
-    "top": -2,
-    "left": 0
+    "left": 2
   },
   {
     "icon": "city_of_the_damned",
-    "top": 7,
-    "left": -2
+    "top": 9
   },
   {
     "icon": "the_circle_undone",
-    "left": -3,
-    "top": -1
+    "left": -1,
+    "top": 1
   },
   {
     "icon": "inexorable_fate",
-    "left": -3,
-    "top": -1
+    "left": -1,
+    "top": 1
   },
   {
     "icon": "realm_of_death",
-    "left": -1,
-    "top": -1
+    "left": 1,
+    "top": 1
   },
   {
     "icon": "witchwork",
-    "top": -2,
-    "left": -1.5
+    "left": 0.5
   },
   {
-    "icon": "the_witching_hour",
-    "top": -2,
-    "left": -2
+    "icon": "the_witching_hour"
   },
   {
     "icon": "at_deaths_doorstep",
-    "top": 0,
-    "left": -1
+    "top": 2,
+    "left": 1
   },
   {
     "icon": "the_wages_of_sin",
-    "scale": 0.95,
-    "top": -2,
-    "left": -2
+    "scale": 0.95
   },
   {
     "icon": "city_of_sins",
-    "left": -9
+    "left": -7
   },
   {
     "icon": "for_the_greater_good",
-    "scale": 0.87,
-    "left": -2,
-    "top": -2
+    "scale": 0.87
   },
   {
-    "icon": "return_to_for_the_greater_good",
-    "left": -2,
-    "top": -2
+    "icon": "return_to_for_the_greater_good"
   },
   {
     "icon": "union_and_disillusion",
-    "top": -1,
-    "left": -1
+    "top": 1,
+    "left": 1
   },
   {
     "icon": "in_the_clutches_of_chaos",
-    "top": -1,
-    "left": -2
+    "top": 1
   },
   {
     "icon": "before_the_black_throne",
-    "top": 1,
-    "left": -2
+    "top": 1
   },
   {
-    "icon": "rttcu",
-    "top": -2,
-    "left": -2
+    "icon": "rttcu"
   },
   {
-    "icon": "disappearance_at_the_twilight_estate",
-    "top": -2,
-    "left": -2
+    "icon": "disappearance_at_the_twilight_estate"
   },
   {
-    "icon": "return_to_disappearance_at_the_twilight_estate",
-    "top": -2,
-    "left": -2
+    "icon": "return_to_disappearance_at_the_twilight_estate"
   },
   {
-    "icon": "return_to_before_the_black_throne"
-
+    "icon": "return_to_before_the_black_throne",
+    "left": 2,
+    "top": 2
   },
   {
-    "icon": "return_to_the_witching_hour",
-    "top": -2,
-    "left": -2
+    "icon": "return_to_the_witching_hour"
   },
   {
-    "icon": "return_to_at_deaths_doorstep",
-    "top": -2,
-    "left": -2
+    "icon": "return_to_at_deaths_doorstep"
   },
   {
-    "icon": "return_to_the_secret_name",
-    "top": -2,
-    "left": -2
+    "icon": "return_to_the_secret_name"
   },
   {
     "icon": "the_secret_name",
-    "left": -2
+    "top": 2
   },
   {
     "icon": "secrets_of_the_universe",
     "scale": 0.9,
-    "top": -2
+    "left": 2
   },
   {
-    "icon": "return_to_the_wages_of_sin",
-    "top": -2,
-    "left": -2
+    "icon": "return_to_the_wages_of_sin"
   },
   {
     "icon": "return_to_in_the_clutches_of_chaos",
-    "top": 0.5,
-    "left": 2
+    "top": 2.5,
+    "left": 4
   }
 ]
