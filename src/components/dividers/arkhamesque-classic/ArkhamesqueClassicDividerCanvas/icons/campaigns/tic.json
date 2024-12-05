@@ -1,0 +1,142 @@
+[
+  {
+    "icon": "locals",
+    "top": 2
+  },
+  {
+    "icon": "agents_of_dagon",
+    "top": 1,
+    "left": 3
+  },
+  {
+    "icon": "occultation",
+    "left": 2
+  },
+  {
+    "icon": "flooded_caves",
+    "top": -3,
+    "left": 1
+  },
+  {
+    "icon": "rolling_tide",
+    "scale": 1.1,
+    "top": 1
+  },
+  {
+    "icon": "rising_tide",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "stalkers_of_cthulhu",
+    "top": 3,
+    "left": 1
+  },
+  {
+    "icon": "barricaded_doors",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "grotto_of_despair",
+    "left": 1,
+    "top": -3
+  },
+  {
+    "icon": "innsmouth_haze",
+    "top": -3,
+    "left": 2
+  },
+  {
+    "icon": "disappearance_of_elina_harper"
+  },
+  {
+    "icon": "creatures_from_below",
+    "top": -4,
+    "left": 1
+  },
+  {
+    "icon": "in_too_deep",
+    "top": -5,
+    "left": 1
+  },
+  {
+    "icon": "devil_reef"
+  },
+  {
+    "icon": "a_light_in_the_fog",
+    "left": 2
+  },
+  {
+    "icon": "lair_of_dagon",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "into_the_maelstrom",
+    "top": -1,
+    "left": 1
+  },
+  {
+    "icon": "agents_of_hydra"
+  },
+  {
+    "icon": "syzygy",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "tic",
+    "left": 0.5,
+    "top": 1
+  },
+  {
+    "icon": "rttic"
+  },
+  {
+    "icon": "return_to_the_vanishing_of_elina_harper"
+  },
+  {
+    "icon": "return_to_the_pit_of_despair"
+  },
+  {
+    "icon": "return_to_in_too_deep"
+  },
+  {
+    "icon": "return_to_devil_reef"
+  },
+  {
+    "icon": "horror_in_high_gear",
+    "top": -2
+  },
+  {
+    "icon": "return_to_horror_in_high_gear"
+  },
+  {
+    "icon": "shattered_memories"
+  },
+  {
+    "icon": "fog_over_innsmouth",
+    "scale": 0.95,
+    "left": 1
+  },
+  {
+    "icon": "return_to_a_light_in_the_fog",
+    "top": 3,
+    "left": 2
+  },
+  {
+    "icon": "return_to_the_lair_of_dagon"
+  },
+  {
+    "icon": "return_to_into_the_maelstrom"
+  },
+  {
+    "icon": "malfunction",
+    "top": -3,
+    "scale": 1.1
+  },
+  {
+    "icon": "return_to_flooded_caverns"
+  }
+]

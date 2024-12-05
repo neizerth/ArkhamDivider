@@ -1,2 +1,146 @@
-@import './styles/common.scss';
-@import './styles/icons.scss';
+
+.image {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+}
+
+.title {
+  position: absolute;
+  z-index: 3;
+  height: 6mm;
+  top: 6.7mm;
+  left: 19mm;
+  right: 19mm;
+  font-size: 4.3mm;
+  text-align: center;
+  box-sizing: border-box;
+  &_scenario {
+    width: 58mm;
+  }
+}
+
+.background {
+  border-radius: 4mm;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 10mm rgba(0, 0, 0, 0.3);
+  background-color: rgb(250, 250, 250);
+}
+
+.titleInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zh,
+.zh-cn,
+.ko {
+  .title {
+    font-size: 3.8mm;
+    top: 6.5mm
+  }
+}
+
+.container {
+  font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
+  position: relative;
+}
+
+.ru .title {
+  font-family: 'Conkordia', 'Arkhamic', sans-serif;
+  top: 6.8mm
+}
+
+.previewHandler {
+  position: absolute;
+  z-index: 3;
+  top: 5.7mm;
+  left: 9.9mm;
+  width: 8.4mm;
+  height: 8.4mm;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 8.4mm rgba(255, 255, 255, 0.3);
+  }
+}
+
+.specialHandler {
+  position: absolute;
+  z-index: 3;
+  bottom: 8.4mm;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5.3mm;
+  height: 5.3mm;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 5.3mm rgba(255, 255, 255, 0.3);
+  }
+}
+
+.chrome {
+  &.odd .specialIcon {
+    --index-offset-left: 0.02mm;
+  }
+  
+  &.row .specialIcon {
+    --index-offset-top: 0.1mm;
+  }
+}
+
+
+.specialText {
+  position: absolute;
+  z-index: 3;
+  top: 7.3mm;
+  right: 11.1mm;
+  width: 5.4mm;
+  height: 5.2mm;
+  font-size: 4.8mm;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.player {
+  .specialText {
+    font-family: 'Arno Pro', sans-serif;
+  }
+}
+
+.specialTextContainer {
+  position: absolute;
+  width: 4mm;
+  height: fit-content;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu {
+  position: absolute;
+  right: 7mm;
+  gap: 10px;
+  bottom: 15mm;
+  z-index: 2;
+  // right: 10mm;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+
+.canvas {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}

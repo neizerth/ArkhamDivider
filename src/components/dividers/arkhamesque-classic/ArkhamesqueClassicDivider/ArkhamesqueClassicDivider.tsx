@@ -14,9 +14,9 @@ import { selectLanguage } from '@/store/features/language/language';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
-import { ArkhamesqueClassicDividerIcon as ArkhamesqueIcon} from '../ArkhamesqueClassicDividerIcon/ArkhamesqueClassicDividerIcon';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
+import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -78,29 +78,12 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
         S[realLanguage]
       )}
       data-scenario-id={props.scenario?.id}
+      data-icon={icon}
+      data-special-icon={specialIcon}
     >
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
-            {icon && showPreviewIcon && (
-              <div className={S.icon} onClick={selectIcon}>
-                <ArkhamesqueIcon icon={icon}/>
-              </div>
-            )}
-            {specialIcon && showSpecialIcon && (
-              <div 
-                className={classNames(
-                  S.specialIcon,
-                  S[`specialIcon_${specialIcon}`]
-                )} 
-                onClick={selectSpecialIcon}
-              >
-                <ArkhamesqueIcon 
-                  icon={specialIcon}
-                  type="special"
-                />
-              </div>
-            )}
             {item.scenario && scenarioNumber && (
               <div className={S.specialText}>
                 <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
@@ -127,11 +110,21 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 fixedFontSize={false}
               />
             </div>
-            <img 
-              crossOrigin='anonymous'
-              src={item.image}
-              className={S.image}
+            {showPreviewIcon && (
+              <div className={S.previewHandler} onClick={selectIcon}/>
+            )}
+            {showSpecialIcon && (
+              <div className={S.specialHandler} onClick={selectSpecialIcon}/>
+            )}
+            <div className={S.background}/>
+            
+            <Canvas
+              className={S.canvas}
+              image={item.image}
+              previewIcon={showPreviewIcon && icon}
+              specialIcon={showSpecialIcon && specialIcon}
             />
+
             <NotExportable>
               <DividerMenu id={id} className={S.menu}/>
             </NotExportable>

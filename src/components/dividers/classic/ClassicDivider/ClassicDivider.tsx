@@ -125,7 +125,7 @@ export const ClassicDivider = ({
 						<Icon 
 							icon={icon} 
 							className={S.iconItem}
-							scale={'square'}
+							scaleType={'square'}
 						/>
 					</div>
 				)}
@@ -142,7 +142,10 @@ export const ClassicDivider = ({
 						<Icon 
 							icon={previewIcon} 
 							className={S.iconItem}
-							scale={'circle'}
+							scaleType={'circle'}
+							scaleFactor={{
+								circled: 0.97
+							}}
 						/>
 					</div>
 				)}
