@@ -14,10 +14,10 @@ import { selectLanguage } from '@/store/features/language/language';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
-import { ArkhamesqueClassicDividerIcon as ArkhamesqueIcon} from '../ArkhamesqueClassicDividerIcon/ArkhamesqueClassicDividerIcon';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
 import { ArkhamesqueClassicDividerPreviewIcon as PreviewIcon } from '../ArkhamesqueClassicDividerPreviewIcon/ArkhamesqueClassicDividerPreviewIcon';
+import { ArkhamesqueClassicDividerSpecialIcon as SpecialIcon } from '../ArkhamesqueClassicDividerSpecialIcon copy/ArkhamesqueClassicDividerSpecialIcon';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -87,22 +87,20 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
               // <div className={S.icon} onClick={selectIcon}>
               //   <ArkhamesqueIcon icon={icon}/>
               // </div>
-              <div className={S.previewIcon}>
+              <div className={S.areaIcon}>
                 <PreviewIcon 
-                  className={S.previewIconArea}
+                  className={S.area}
                   icon={icon}
                 />
               </div>
             )}
             {specialIcon && showSpecialIcon && (
               <div 
-                className={classNames(
-                  S.specialIcon,
-                  S[`specialIcon_${specialIcon}`]
-                )} 
-                onClick={selectSpecialIcon}
+                className={S.areaIcon} 
+                // onClick={selectSpecialIcon}
               >
-                <ArkhamesqueIcon 
+                <SpecialIcon 
+                  className={S.area}
                   icon={specialIcon}
                   type="special"
                 />

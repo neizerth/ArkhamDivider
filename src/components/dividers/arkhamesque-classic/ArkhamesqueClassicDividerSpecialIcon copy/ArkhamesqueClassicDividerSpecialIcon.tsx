@@ -1,22 +1,21 @@
 import { PropsWithClassName } from '@/types/util';
-import S from './ArkhamesqueClassicDividerPreviewIcon.module.scss';
-import { ImageAreaIcon } from '@/components';
+import S from './ArkhamesqueClassicDividerSpecialIcon.module.scss';
 import { ImageAreaContainer } from '@/components/ui/icons/ImageAreaIcon/ImageAreaIcon';
 import { ArkhamesqueClassicDividerAreaIcon as Icon } from '../ArkhamesqueClassicDividerAreaIcon/ArkhamesqueClassicDividerAreaIcon';
 
-export type ArkhamesqueClassicDividerPreviewIconProps = PropsWithClassName & {
+export type ArkhamesqueClassicDividerSpecialIconProps = PropsWithClassName & {
   icon: string
 }
 
-export const ArkhamesqueClassicDividerPreviewIcon = ({
+export const ArkhamesqueClassicDividerSpecialIcon = ({
   className,
   icon
 }: ArkhamesqueClassicDividerPreviewIconProps) => {
   const container: ImageAreaContainer = {
-    x: 118,
-    y: 67,
-    width: 104,
-    height: 104,
+    x: 532,
+    y: 853,
+    width: 62,
+    height: 62,
     alignX: 'center',
     alignY: 'center'
   }
@@ -24,9 +23,10 @@ export const ArkhamesqueClassicDividerPreviewIcon = ({
   return (
     <Icon
       className={className}
-      size={92}
+      size={60}
       container={container}
       icon={icon}
+      type="special"
     />
   );
 }

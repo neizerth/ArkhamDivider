@@ -1,35 +1,81 @@
 import { IIcon } from "@/types/api"
-import { ImageAreaSize } from "../ImageAreaIcon"
+import { ImageAreaContainer } from "../ImageAreaIcon"
+import { API_URL } from "@/constants/app"
+const iconURL = API_URL + '/fonts/icons'
 
-export const getIconPosition = () => {
+export const getIconPosition = ({
+  container,
+  icon,
+  scale,
+  ...options
+}: {
+  container?: ImageAreaContainer
+  icon: IIcon
+  scale: number
+  top: number
+  left: number
+}) => {
+  let left = options.left * scale;
+  let top = options.top * scale;
 
+  if (container) {
+    const position = alignContainerIcon({
+      container,
+      scale,
+      icon
+    });
+
+    left += position.left;
+    top += position.top;
+  }
+
+  return {
+    left,
+    top
+  }
 }
 
-export const getIconSize = (options: ImageAreaSize & {
-  entry: IIcon
+export const alignContainerIcon = ({
+  container,
+  scale,
+  icon
+}: {
+  container: ImageAreaContainer
+  scale: number
+  icon: IIcon
 }) => {
-  const { entry } = options;
+  const { 
+    alignX = 'center', 
+    alignY = 'center'
+  } = container;
 
-  if ('width' in options) {
-    return {
-      width: options.width,
-      height: options.height,
-    }
+  let left = container.x * scale;
+  let top = container.y * scale;
+
+  switch (alignX) {
+    case 'right':
+      left += container.width - icon.width;
+      break;
+    case 'center':
+      left += Math.round((container.width * scale - icon.width) / 2);
   }
 
-  const { size } = options;
-
-  if (entry.height > size) {
-    return {
-      height: entry.height,
-      width: entry.width
-    }
+  switch (alignY) {
+    case 'bottom':
+      top += container.height - icon.height;
+      break;
+    case 'center':
+      top += Math.round((container.height * scale - icon.height) / 2);
   }
-  const k = size * entry.height;
-  const width = entry.width * k;
-  
+
   return {
-    height: size,
-    width
+    left,
+    top
   }
+}
+
+export const getIconContents = async (icon: string) => {
+  const url = `${iconURL}/${icon}.svg`;
+  const response = await fetch(url);
+  return await response.text();
 }

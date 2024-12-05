@@ -2,27 +2,27 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { IconProps } from '../Icon/Icon';
 import S from './ImageAreaIcon.module.scss';
 import { selectIcons } from '@/store/features/icons/icons';
-import { API_URL } from '@/constants/app';
 import { propEq } from 'ramda';
 import { useEffect, useState } from 'react';
 import { selectLayout } from '@/store/features/layout/layout';
 import { getEntryArea } from './features/imageArea';
 import { PropsWithClassName } from '@/types/util';
 import { parseSVG } from './features/svg';
-import { getIconPosition } from './features/icon';
+import { getIconContents, getIconPosition } from './features/icon';
+import { IBox } from '@/types/size';
+import { getIconScale } from '@/features/icons/scale/getIconScale';
 
-const iconURL = API_URL + '/fonts/icons'
 
-export type ImageAreaSize = {
-  size: number
-} | {
-  width: number
-  height: number
+export type ImageAreaContainer = IBox & {
+  x: number
+  y: number
+  alignX?: 'left' | 'center' | 'right'
+  alignY?: 'top' | 'center' | 'bottom'
 }
 
-export type ImageAreaIconProps = IconProps & PropsWithClassName & ImageAreaSize & {
-  alignX: 'left' | 'center' | 'right'
-  alignY: 'top' | 'center' | 'bottom'
+export type ImageAreaIconProps = Omit<IconProps, 'type'> & PropsWithClassName & {
+  size: number
+  container?: ImageAreaContainer
   top?: number
   left?: number
   offsetX?: number
@@ -34,8 +34,7 @@ export const ImageAreaIcon = ({
   className,
   offsetX = 1,
   offsetY = 1,
-  alignX,
-  alignY,
+  container,
   ...props
 }: ImageAreaIconProps) => {
 
@@ -46,39 +45,45 @@ export const ImageAreaIcon = ({
 
 	const entry = icons.find(propEq(icon, 'icon'));
 
-  const { width, height } = getIconSize({
-    ...props,
-    entry
-  });
+  let area;
+  let left = 0;
+  let top = 0;
+  let size = props.size;
 
-  const { 
-    left, 
-    top, 
-    scale
-  } = getIconPosition({
-    alignX,
-    alignY,
-    width, 
-    height 
-  });
-  // const scale = entry ? entry.height / size : 1;
-  
-  const area = entry && getEntryArea({
-    bleed,
-    offsetX,
-    offsetY,
-    scale
-  });
+  const scale = 1;
 
-  const fetchImage = async () => {
-    if (!entry) {
-      return;
-    }
-    const url = `${iconURL}/${icon}.svg`;
-    const response = await fetch(url);
-    const contents = await response.text();
+  if (entry) {
+    const scale = entry.height / size;
 
-    setContents(contents);
+    const scaleType = props.scale || 'square';
+
+    size = props.size * getIconScale({
+      scale: scaleType, 
+      scaleFactor: props.scaleFactor, 
+      ratio: entry?.ratio,
+      circled: entry?.circled,
+    });
+
+    area = getEntryArea({
+      bleed,
+      offsetX,
+      offsetY,
+      scale
+    });
+
+    const position = getIconPosition({
+      container,
+      scale,
+      icon: entry,
+      top: props.top || 0,
+      left: props.left || 0,
+    });
+
+    left = position.left;
+    top = position.top;
+    // const scale = entry ? entry.height / size : 1;
+    
+   
   }
 
   useEffect(() => {
@@ -88,18 +93,22 @@ export const ImageAreaIcon = ({
 
     const paths = parseSVG({
       contents,
-      top,
+      scale,
       left,
-      scale
+      top
     });
     
     setPaths(paths);
 
-  }, [contents, top, left, scale])
+  }, [contents, left, top])
 
   useEffect(() => {
-    fetchImage();
-  }, [])
+    if (!entry) {
+      return;
+    }
+    getIconContents(icon)
+      .then(setContents);
+  }, [icon])
 
 
   return (

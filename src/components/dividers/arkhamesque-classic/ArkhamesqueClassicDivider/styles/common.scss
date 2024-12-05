@@ -4,6 +4,8 @@
   z-index: 1;
   left: 0;
   width: 100%;
+  // height: 100%;
+  // object-fit: cover;
 }
 
 .title {
@@ -59,7 +61,7 @@
   }
 }
 
-.specialIcon {
+.specialIcon_old {
   --offset-top: 0mm;
   --offset-left: 0mm;
   --index-offset-left: 0mm;
@@ -146,7 +148,7 @@
   flex-direction: column;
 }
 
-.previewIcon {
+.areaIcon {
   position: absolute;
   z-index: 2;
   left: 0;
@@ -155,7 +157,7 @@
   width: 100%;
 }
 
-.previewIconArea {
+.area {
   width: 100%;
   height: 100%;
 }

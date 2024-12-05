@@ -1,0 +1,141 @@
+[
+  {
+    "icon": "spectral_predators",
+    "top": 4,
+    "left": 2
+  },
+  {
+    "icon": "the_watcher",
+    "scale": 0.9,
+    "top": 5,
+    "left": 0
+  },
+  {
+    "icon": "music_of_the_damned",
+    "top": 2
+  },
+  {
+    "icon": "anettes_coven",
+    "top": -2,
+    "left": 3
+  },
+  {
+    "icon": "witchcraft",
+    "top": -2
+  },
+  {
+    "icon": "unspeakable_fate",
+    "top": -2,
+    "left": 3
+  },
+  {
+    "icon": "spectral_realm",
+    "top": 4,
+    "left": 1
+  },
+  {
+    "icon": "bloodthirsty_spirits",
+    "top": 5
+  },
+  {
+    "icon": "cold_fog",
+    "top": 3,
+    "left": 3
+  },
+  {
+    "icon": "city_of_the_damned",
+    "top": 7,
+    "left": 3
+  },
+  {
+    "icon": "witchwork",
+    "top": 3,
+    "left": 1
+  },
+  {
+    "icon": "the_witching_hour",
+    "top": 1,
+    "left": 1.5
+  },
+  {
+    "icon": "at_deaths_doorstep",
+    "top": 8
+  },
+  {
+    "icon": "the_wages_of_sin",
+    "top": -2
+  },
+  {
+    "icon": "for_the_greater_good",
+    "scale": 0.87,
+    "left": 0,
+    "top": 1
+  },
+  {
+    "icon": "return_to_for_the_greater_good",
+    "left": 1
+  },
+  {
+    "icon": "a_thousand_shapes_of_horror",
+    "scale": 0.85,
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "union_and_disillusion",
+    "top": 3
+  },
+  {
+    "icon": "in_the_clutches_of_chaos",
+    "top": 2
+  },
+  {
+    "icon": "before_the_black_throne",
+    "top": 2
+  },
+  {
+    "icon": "rttcu",
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "rttcu",
+    "top": 4,
+    "left": 1,
+    "type": "special"
+  },
+  {
+    "icon": "disappearance_at_the_twilight_estate",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "return_to_before_the_black_throne"
+
+  },
+  {
+    "icon": "return_to_the_witching_hour",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "return_to_at_deaths_doorstep",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "return_to_the_secret_name",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "return_to_the_wages_of_sin",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "return_to_in_the_clutches_of_chaos",
+    "top": 0.5,
+    "left": 2
+  }
+]

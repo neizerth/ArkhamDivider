@@ -1,0 +1,149 @@
+[
+  {
+    "icon": "chilling_cold",
+    "scale": 1.1,
+    "top": 5,
+    "left": 2
+  },
+  {
+    "icon": "nightgaunts",
+    "scale": 1.23,
+    "top": 0,
+    "left": 0
+  },
+  {
+    "icon": "dark_cult",
+    "scale": 1.3,
+    "top": 3,
+    "left": 1
+  },
+  {
+    "icon": "locked_doors",
+    "scale": 1.15,
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "cult_of_umordoth",
+    "scale": 1.1,
+    "top": 2,
+    "left": 0
+  },
+  {
+    "icon": "ancient_evils",
+    "scale": 1.2,
+    "top": 7,
+    "left": 3
+  },
+  {
+    "icon": "striking_fear",
+    "scale": 1.15,
+    "top": 7,
+    "left": 2
+  },
+  {
+    "icon": "ghouls",
+    "scale": 1.1,
+    "top": 4,
+    "left": 1
+  },
+  {
+    "icon": "agents_of_yog",
+    "scale": 1.16,
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "agents_of_shub",
+    "top": 4,
+    "left": 1,
+    "scale": 0.87
+  },
+  {
+    "icon": "agents_of_cthulhu",
+    "top": 5,
+    "left": 1,
+    "scale": 1.2
+  },
+  {
+    "icon": "agents_of_hastur",
+    "scale": 1.1,
+    "top": 0,
+    "left": 5
+  },
+  {
+    "icon": "rats",
+    "scale": 1.2,
+    "top": 6,
+    "left": -1
+  },
+  {
+    "icon": "core",
+    "scale": 0.82,
+    "top": -2,
+    "left": -1
+  },
+  {
+    "icon": "core",
+    "scale": 0.82,
+    "top": 2,
+    "type": "special"
+  },
+  {
+    "icon": "the_gathering",
+    "left": -1
+  },
+  {
+    "icon": "the_devourer_below",
+    "scale": 1.2,
+    "top": 1,
+    "left": 3
+  },
+  {
+    "icon": "return_to_the_devourer_below",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "ghouls_of_umrdhoth",
+    "scale": 1.08,
+    "top": 5,
+    "left": 1
+  },
+  {
+    "icon": "the_devourers_cult",
+    "scale": 1.25,
+    "top": 0,
+    "left": 3
+  },
+  {
+    "icon": "return_to_the_gathering",
+    "top": 1.5,
+    "left": 0
+  },
+  {
+    "icon": "rtnotz",
+    "top": -1,
+    "left": -2
+  },
+  {
+    "icon": "rtnotz",
+    "top": 0,
+    "left": 0,
+    "scale": 0.97,
+    "type": "special"
+  },
+  {
+    "icon": "return_to_the_midnight_masks",
+    "left": 1
+  },
+  {
+    "icon": "return_cult",
+    "left": -1
+  },
+  {
+    "icon": "midnight_masks",
+    "top": 1,
+    "left": 2
+  }
+]

@@ -1,10 +1,5 @@
-import { IIcon } from "@/types/api";
 import { ILayoutBleed } from "@/types/layouts"
 import { toPrintSize } from "@/util/units"
-import { match } from "assert";
-import { isNotEmpty } from "ramda";
-
-import { SVGPathData } from 'svg-pathdata';
 
 export type GetAreaSizeOptions = {
   bleed: ILayoutBleed

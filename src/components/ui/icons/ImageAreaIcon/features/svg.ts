@@ -23,8 +23,8 @@ export const parseSVG = ({
   scale: number
 }) => {
   const paths = getSVGPaths(contents);
-  const dX = left * scale;
-  const dY = top * scale;
+  const dX = Math.ceil(left * scale);
+  const dY = Math.ceil(top * scale);
 
   return paths.map((path: string) => {
     const pathData = new SVGPathData(path);
