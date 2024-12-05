@@ -56,6 +56,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
           )}
           width={canvasSize.width} 
           height={canvasSize.height}
+          preventDefault={false}
         >
           <Layer>
             <Image
