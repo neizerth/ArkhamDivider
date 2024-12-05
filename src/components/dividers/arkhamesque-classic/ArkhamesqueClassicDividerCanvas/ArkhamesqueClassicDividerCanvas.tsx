@@ -62,6 +62,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
             <Image
               image={image}
               width={canvasSize.width}
+              preventDefault={false}
             />
           </Layer>
           {special && (

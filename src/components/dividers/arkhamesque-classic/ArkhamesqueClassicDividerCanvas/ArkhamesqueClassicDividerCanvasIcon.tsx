@@ -66,6 +66,7 @@ export const ArkhamesqueClassicDividerCanvasIcon = ({
       width={width}
       x={x}
       y={y}
+      preventDefault={false}
     />
   )
 }
