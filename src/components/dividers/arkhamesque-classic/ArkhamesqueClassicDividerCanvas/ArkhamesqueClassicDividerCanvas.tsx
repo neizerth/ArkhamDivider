@@ -4,15 +4,10 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
 import { Stage, Layer, Image } from 'react-konva';
 import useImage from 'use-image';
-import { getBleedCanvasSize, getCanvasSize } from './features/size';
+import { getBleedCanvasSize } from './features/size';
 import classNames from 'classnames';
 import { useIconImage } from '@/hooks/useIconImage';
 import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassicDividerCanvasIcon';
-import { isNotEmpty } from 'ramda';
-import { isDefined } from '@/util/common';
-
-const PREVIEW_ICON_SIZE = 92;
-const SPECIAL_ICON_SIZE = 60;
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
   image: string
@@ -66,10 +61,10 @@ export const ArkhamesqueClassicDividerCanvas = ({
           <Icon 
             {...special} 
             type="special" 
-            height={SPECIAL_ICON_SIZE}
+            height={60}
             container={{
               x: 532,
-              y: 853,
+              y: 855,
               width: 62,
               height: 62
             }}
@@ -80,7 +75,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
         <Layer>
           <Icon 
             {...preview} 
-            height={100}
+            height={92}
             container={{
               x: 118,
               y: 67,

@@ -1,12 +1,12 @@
 import { CustomIcon } from '@/components';
 import { PropsWithClassName } from '@/types/util';
 import { FontIcon } from '../FontIcon/FontIcon';
-import { IconScaleType } from '@/types/icons';
+import { IconScaleFactor, IconScaleType } from '@/types/icons';
 
 export type IconProps = PropsWithClassName & {
 	icon: string
 	scaleType?: IconScaleType
-	scaleFactor?: number
+	scaleFactor?: IconScaleFactor
 }
 
 export const Icon = ({ 

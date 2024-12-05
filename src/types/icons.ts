@@ -11,3 +11,8 @@ export type IIconGroup = {
 }
 
 export type IconScaleType = 'circle' | 'square' | false;
+export type IconScaleFactor = {
+  all?: number
+  circled?: number
+  regular?: number
+}

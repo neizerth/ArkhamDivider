@@ -78,26 +78,12 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
         S[realLanguage]
       )}
       data-scenario-id={props.scenario?.id}
+      data-icon={icon}
+      data-special-icon={specialIcon}
     >
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
-            {/* {icon && showPreviewIcon && (
-              <div className={S.icon} onClick={selectIcon}>
-                <ArkhamesqueIcon icon={icon}/>
-              </div>
-            )}
-            {specialIcon && showSpecialIcon && (
-              <div 
-                className={S.specialIcon} 
-                onClick={selectSpecialIcon}
-              >
-                <ArkhamesqueIcon 
-                  icon={specialIcon}
-                  type="special"
-                />
-              </div>
-            )} */}
             {item.scenario && scenarioNumber && (
               <div className={S.specialText}>
                 <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
@@ -130,6 +116,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
               previewIcon={showPreviewIcon && icon}
               specialIcon={showSpecialIcon && specialIcon}
             />
+
             <NotExportable>
               <DividerMenu id={id} className={S.menu}/>
             </NotExportable>

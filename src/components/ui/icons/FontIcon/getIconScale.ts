@@ -1,20 +1,24 @@
-import { IconScaleType } from "@/types/icons";
+import { IconScaleFactor, IconScaleType } from "@/types/icons";
 
 export const getIconScale = ({
-  scale,
-  scaleBy,
+  scaleType = 'square',
+  scaleFactor = {
+    all: 1,
+    circled: 1,
+    regular: 1
+  },
   ratio,
   circled = false
 }: {
-  scale: IconScaleType, 
+  scaleType?: IconScaleType, 
   ratio?: number,
   circled?: boolean,
-  scaleFactor?: number
+  scaleFactor?: IconScaleFactor
 }) => {
   if (!ratio) {
     return 100;
   }
-  if (scale === 'circle') {
+  if (scaleType === 'circle') {
     return getCircleScale({
       ratio,
       circled,
@@ -22,26 +26,40 @@ export const getIconScale = ({
     });
   }
 
-  return getSquareScale(ratio);
+  return getSquareScale({
+    ratio,
+    scaleFactor
+  });
 }
 
-export const getSquareScale = (ratio: number) => {
-  return ratio > 1 ? 100 / ratio : 100;
+export const getSquareScale = ({
+  ratio,
+  scaleFactor
+}: {
+  ratio: number
+  scaleFactor: IconScaleFactor
+}) => {
+  const scale = scaleFactor.regular || scaleFactor.all || 1;
+  const fullSize = 100 * scale;
+  return ratio > 1 ? fullSize / ratio : fullSize;
 }
 
 export const getCircleScale = ({
   ratio,
-  scaleFactor = 1,
+  scaleFactor,
   circled = false
 }: {
   ratio: number
   circled?: boolean
-  scaleFactor?: number
+  scaleFactor: IconScaleFactor
 }) => {
   if (circled) {
-    return 100;
+    const scale = scaleFactor.circled || scaleFactor.all || 1;
+    return 100 * scale;
   }
+
+  const scale = scaleFactor.regular || scaleFactor.all || 1;
   const angle = Math.atan(ratio);
   const height = Math.cos(angle);
-  return Math.min(height * scaleFactor * 100, 95);
+  return 100 * Math.min(height, 1) * scale;
 }
