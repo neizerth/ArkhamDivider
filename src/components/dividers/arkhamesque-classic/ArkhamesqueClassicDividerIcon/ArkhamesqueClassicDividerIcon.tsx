@@ -25,16 +25,25 @@ export const ArkhamesqueClassicDividerIcon = ({
 
   const iconData = iconDataList.find(icon => icon.type === type) || iconDataList[0];
 
+  const scale = iconData?.scale || 1;
+
   const styles = iconData && {
-    transform: `translate(${iconData?.left || 0}%, ${iconData?.top || 0}%) scale(${iconData?.scale || 1})`
+    transform: `translate(${iconData?.left || 0}%, ${iconData?.top || 0}%)`
   }
 
   return (
-    <div className={S.container} style={styles}>
+    <div 
+      className={S.container} 
+      style={styles}
+    >
       <Icon 
         icon={icon} 
+        type='image'
         scale='circle'
-        scaleBy={0.93}
+        scaleFactor={{
+          common: 0.93 * scale,
+          circled: scale
+        }}
       />
     </div>
   );

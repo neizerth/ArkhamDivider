@@ -37,6 +37,7 @@
     "react-use-scrollspy": "^3.1.1",
     "sanitize-html": "^2.13.0",
     "styled-components": "^6.1.13",
+    "svg-pathdata": "^7.1.0",
     "use-fit-text": "^2.4.0",
     "use-onclickoutside": "^0.4.1"
   },

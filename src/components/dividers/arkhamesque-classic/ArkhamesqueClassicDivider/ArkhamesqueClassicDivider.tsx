@@ -17,6 +17,7 @@ import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../Ar
 import { ArkhamesqueClassicDividerIcon as ArkhamesqueIcon} from '../ArkhamesqueClassicDividerIcon/ArkhamesqueClassicDividerIcon';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
+import { ArkhamesqueClassicDividerPreviewIcon as PreviewIcon } from '../ArkhamesqueClassicDividerPreviewIcon/ArkhamesqueClassicDividerPreviewIcon';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -83,8 +84,14 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
         {item && (
           <>
             {icon && showPreviewIcon && (
-              <div className={S.icon} onClick={selectIcon}>
-                <ArkhamesqueIcon icon={icon}/>
+              // <div className={S.icon} onClick={selectIcon}>
+              //   <ArkhamesqueIcon icon={icon}/>
+              // </div>
+              <div className={S.previewIcon}>
+                <PreviewIcon 
+                  className={S.previewIconArea}
+                  icon={icon}
+                />
               </div>
             )}
             {specialIcon && showSpecialIcon && (

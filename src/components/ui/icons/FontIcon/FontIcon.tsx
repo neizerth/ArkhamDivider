@@ -3,17 +3,19 @@ import S from './FontIcon.module.scss';
 import { propEq } from 'ramda';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectIcons } from '@/store/features/icons/icons';
-import { getIconScale } from './getIconScale';
+import { getIconScale } from '../../../../features/icons/scale/getIconScale';
 import { IconProps } from '../Icon/Icon';
 
 export type FontIconProps = IconProps;
 
-export const FontIcon = ({
-  icon, 
-	className, 
-	scale = 'square',
-	scaleBy = 1
-}: FontIconProps) => {
+export const FontIcon = (props: FontIconProps) => {
+	const {
+		icon, 
+		className, 
+		scale = 'square',
+		scaleFactor
+	} = props;
+
   const icons = useAppSelector(selectIcons);
 	const entry = icons.find(propEq(icon, 'icon'));
 
@@ -21,7 +23,7 @@ export const FontIcon = ({
 	// const fontSize = entry?.ratio && `${entry.ratio}em`;
 	const size = getIconScale({
 		scale, 
-		scaleBy,
+		scaleFactor,
 		ratio: entry?.ratio,
 		circled: entry?.circled,
 	});

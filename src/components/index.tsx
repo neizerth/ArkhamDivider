@@ -24,6 +24,7 @@ export { Row, InlineRow } from './ui/grid/Row/Row';
 export { Col } from './ui/grid/Col/Col';
 export { List } from './ui/grid/List/List';
 export { Icon } from './ui/icons/Icon/Icon';
+export { ImageAreaIcon } from './ui/icons/ImageAreaIcon/ImageAreaIcon';
 export { IconButton } from './ui/IconButton/IconButton';
 export { Color } from './ui/Color/Color';
 export { LanguageFlag } from './ui/LanguageFlag/LanguageFlag';

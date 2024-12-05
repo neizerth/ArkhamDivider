@@ -1,12 +1,10 @@
-import { ArkhamDivider } from 'arkham-divider-data';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 import { AppThunk } from '@/store';
-
-export type Icons = ArkhamDivider.Core['icons'];
+import { IIcon } from '@/types/api';
 
 export type IIconsState = {
-  icons: Icons,
+  icons: IIcon[],
   popupIcon: {
     default?: string,
     current?: string
