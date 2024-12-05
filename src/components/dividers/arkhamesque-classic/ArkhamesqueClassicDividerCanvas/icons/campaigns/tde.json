@@ -1,72 +1,107 @@
 [
   {
     "icon": "dream",
-    "top": 4,
-    "left": 1
-  },
-  {
-    "icon": "agents_of_nyarlathotep",
-    "top": 3,
-    "left": 2
-  },
-  {
-    "icon": "zoogs",
-    "top": 4
-  },
-  {
-    "icon": "dreamers_curse",
-    "left": 2
-  },
-  {
-    "icon": "dreamlands",
-    "top": 2
-  },
-  {
-    "icon": "corsairs",
-    "top": 6,
-    "left": 2
-  },
-  {
-    "icon": "whispers_of_hypnos",
-    "top": 4
-  },
-  {
-    "icon": "creatures_of_the_underworld",
-    "top": 3,
-    "left": 2
-  },
-  {
-    "icon": "merging_realities",
-    "top": 3,
-    "left": 1
-  },
-  {
-    "icon": "descent_into_the_pitch",
-    "left": 2
-  },
-  {
-    "icon": "agents_of_atlach_nacha",
     "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "beyond_the_gates_of_sleep",
-    "top": 3,
-    "left": 3
-  },
-  {
-    "icon": "waking_nightmare",
-    "top": -2,
     "left": -2
   },
   {
-    "icon": "the_search_for_kadath",
+    "icon": "agents_of_nyarlathotep",
     "top": -2,
     "left": -1
   },
   {
+    "icon": "zoogs",
+    "top": 2,
+    "left": -2
+  },
+  {
+    "icon": "dreamers_curse",
+    "top": -1,
+    "left": -2
+  },
+  {
+    "icon": "dreamlands",
+    "top": -2,
+    "left": -1
+  },
+  {
+    "icon": "corsairs",
+    "top": 1,
+    "left": -1
+  },
+  {
+    "icon": "spiders",
+    "scale": 0.95,
+    "top": -3,
+    "left": -1
+  },
+  {
+    "icon": "whispers_of_hypnos",
+    "top": 2,
+    "left": -1
+  },
+  {
+    "icon": "creatures_of_the_underworld",
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "merging_realities",
+    "top": -2,
+    "left": -1
+  },
+  {
+    "icon": "terror_of_the_vale",
+    "top": -4
+  },
+  {
+    "icon": "descent_into_the_pitch",
+    "left": -2,
+    "top": -6
+  },
+  {
+    "icon": "agents_of_atlach_nacha",
+    "top": -2,
+    "left": 0
+  },
+  {
+    "icon": "beyond_the_gates_of_sleep",
+    "top": -3,
+    "left": 0
+  },
+  {
+    "icon": "a_thousand_shapes_of_horror",
+    "scale": 0.85,
+    "top": -3,
+    "left": -2
+  },
+  {
+    "icon": "dark_side_of_the_moon",
+    "top": -12,
+    "left": -1
+  },
+  {
+    "icon": "point_of_no_return",
+    "left": -2,
+    "top": -6
+  },
+  {
+    "icon": "waking_nightmare",
+    "top": -3,
+    "left": -8
+  },
+  {
+    "icon": "the_search_for_kadath",
+    "top": -2,
+    "left": -4
+  },
+  {
     "icon": "where_gods_dwell",
-    "top": -4,
-    "left": 3
+    "top": -7,
+    "left": -1
+  },
+  {
+    "icon": "weaver_of_the_cosmos",
+    "top": -3
   }
 ]
