@@ -1,4 +1,4 @@
-import { curry, isNil, prop } from "ramda";
+import { curry, isNil, prop, values } from "ramda";
 
 export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -49,3 +49,5 @@ export const minmax = (min: number, max: number) =>
     min,
     Math.min(value, max)
   )
+
+export const isDefined = <T>(value: T | undefined): value is T => value !== undefined; 

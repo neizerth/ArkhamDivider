@@ -14,9 +14,9 @@ import { selectLanguage } from '@/store/features/language/language';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
-import { ArkhamesqueClassicDividerIcon as ArkhamesqueIcon} from '../ArkhamesqueClassicDividerIcon/ArkhamesqueClassicDividerIcon';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
+import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -82,17 +82,14 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
-            {icon && showPreviewIcon && (
+            {/* {icon && showPreviewIcon && (
               <div className={S.icon} onClick={selectIcon}>
                 <ArkhamesqueIcon icon={icon}/>
               </div>
             )}
             {specialIcon && showSpecialIcon && (
               <div 
-                className={classNames(
-                  S.specialIcon,
-                  S[`specialIcon_${specialIcon}`]
-                )} 
+                className={S.specialIcon} 
                 onClick={selectSpecialIcon}
               >
                 <ArkhamesqueIcon 
@@ -100,7 +97,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                   type="special"
                 />
               </div>
-            )}
+            )} */}
             {item.scenario && scenarioNumber && (
               <div className={S.specialText}>
                 <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
@@ -127,10 +124,11 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 fixedFontSize={false}
               />
             </div>
-            <img 
-              crossOrigin='anonymous'
-              src={item.image}
-              className={S.image}
+            <Canvas
+              className={S.canvas}
+              image={item.image}
+              previewIcon={showPreviewIcon && icon}
+              specialIcon={showSpecialIcon && specialIcon}
             />
             <NotExportable>
               <DividerMenu id={id} className={S.menu}/>

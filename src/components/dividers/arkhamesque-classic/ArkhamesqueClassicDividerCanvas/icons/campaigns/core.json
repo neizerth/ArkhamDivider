@@ -1,0 +1,116 @@
+[
+  {
+    "icon": "chilling_cold",
+    "top": 6,
+    "left": 3
+  },
+  {
+    "icon": "nightgaunts",
+    "top": 3,
+    "left": 2
+  },
+  {
+    "icon": "dark_cult",
+    "top": -1,
+    "left": -2,
+    "scale": 1.2
+  },
+  {
+    "icon": "locked_doors",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "cult_of_umordoth",
+    "top": 2
+  },
+  {
+    "icon": "ancient_evils",
+    "top": 4,
+    "left": 3
+  },
+  {
+    "icon": "striking_fear",
+    "top": 7,
+    "left": 2
+  },
+  {
+    "icon": "ghouls",
+    "top": 4,
+    "left": 1
+  },
+  {
+    "icon": "agents_of_yog",
+    "top": 3,
+    "left": 0
+  },
+  {
+    "icon": "agents_of_shub",
+    "top": 4,
+    "left": 0,
+    "scale": 0.87
+  },
+  {
+    "icon": "agents_of_cthulhu",
+    "top": 3,
+    "left": 3,
+    "scale": 1.1
+  },
+  {
+    "icon": "agents_of_hastur",
+    "top": 1,
+    "left": 5
+  },
+  {
+    "icon": "rats",
+    "top": 2
+  },
+  {
+    "icon": "core",
+    "top": 4
+  },
+  {
+    "icon": "the_gathering",
+    "left": -1
+  },
+  {
+    "icon": "the_devourer_below",
+    "top": 3,
+    "left": 3
+  },
+  {
+    "icon": "return_to_the_devourer_below",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "ghouls_of_umrdhoth",
+    "top": 4,
+    "left": 2
+  },
+  {
+    "icon": "the_devourers_cult",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "return_to_the_gathering",
+    "top": 1.5,
+    "left": 1
+  },
+  {
+    "icon": "rtnotz",
+    "top": 1,
+    "left": 0
+  },
+  {
+    "icon": "return_to_the_midnight_masks",
+    "top": 1,
+    "left": 1
+  },
+  {
+    "icon": "return_cult",
+    "top": 1.5,
+    "left": 1.5
+  }
+]
