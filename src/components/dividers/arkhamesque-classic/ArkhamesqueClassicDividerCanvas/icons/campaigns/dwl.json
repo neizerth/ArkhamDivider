@@ -138,13 +138,8 @@
   },
   {
     "icon": "set",
-    "top": -5,
+    "top": -4,
     "left": -3.5
-  },
-  {
-    "icon": "set",
-    "left": -2,
-    "type": "special"
   },
   {
     "icon": "the_miskatonic_museum",
@@ -161,12 +156,6 @@
     "top": -3,
     "left": -2,
     "scale": 1.02
-  },
-  {
-    "icon": "return_to_the_dunwich_legacy",
-    "top": 0,
-    "left": 0.5,
-    "type": "special"
   },
   {
     "icon": "return_to_the_essex_county_express",

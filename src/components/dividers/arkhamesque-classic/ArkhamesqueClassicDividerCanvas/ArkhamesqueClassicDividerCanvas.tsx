@@ -63,8 +63,8 @@ export const ArkhamesqueClassicDividerCanvas = ({
             type="special" 
             height={60}
             container={{
-              x: 532,
-              y: 855,
+              x: 534,
+              y: 857,
               width: 62,
               height: 62
             }}

@@ -1,140 +1,179 @@
 [
   {
     "icon": "carcosa",
-    "top": -1,
-    "left": 0.5
-  },
-  {
-    "icon": "carcosa",
-    "top": 4,
-    "left": -0.5,
-    "type": "special"
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "evil_portents",
-    "top": 2,
-    "left": -1,
+    "top": -2,
+    "left": -3,
     "scale": 0.9
   },
   {
     "icon": "byakhee",
-    "top": 4
+    "top": -1
+  },
+  {
+    "icon": "the_stranger",
+    "scale": 0.87,
+    "top": -3,
+    "left": -1
   },
   {
     "icon": "cult_of_the_yellow_sign",
-    "top": 3
+    "top": -4,
+    "left": -1
   },
   {
     "icon": "hasturs_gift",
-    "top": 4,
-    "left": 4
+    "top": 0,
+    "left": 0
   },
   {
     "icon": "decay_and_filth",
-    "top": -2
+    "top": -5,
+    "left": -2
   },
   {
     "icon": "hasturs_envoys",
+    "top": -6,
+    "left": 0
+  },
+  {
+    "icon": "hauntings",
     "top": -3,
-    "left": 3
+    "left": -1
+  },
+  {
+    "icon": "the_vortex_above",
+    "top": -3,
+    "left": -1
+  },
+  {
+    "icon": "the_flood_below",
+    "scale": 1.1,
+    "top": -1,
+    "left": 0
+  },
+  {
+    "icon": "inhabitants_of_carcosa",
+    "scale": 1.2,
+    "left": -2,
+    "top": -3
+  },
+  {
+    "icon": "delusions",
+    "scale": 1.15,
+    "top": -1,
+    "left": -2
   },
   {
     "icon": "maddening_delusions",
-    "top": 4,
-    "left": 1
+    "top": 1,
+    "left": -1
+  },
+  {
+    "icon": "neurotic_fear",
+    "top": -3,
+    "left": -1
+  },
+  {
+    "icon": "delusory_evils",
+    "top": -3,
+    "left": -1
   },
   {
     "icon": "decaying_reality",
-    "top": 4
+    "top": -3,
+    "left": -2
   },
   {
     "icon": "curtain_call",
-    "top": 3,
-    "left": 1
+    "top": -1,
+    "left": -2
   },
   {
     "icon": "the_last_king",
-    "top": 2,
-    "left": 3
+    "top": 0,
+    "left": 2
   },
   {
     "icon": "echoes_of_the_past",
-    "top": 1,
-    "left": 1,
-    "scale": 0.9
+    "top": -1,
+    "left": -3,
+    "scale": 0.87
   },
   {
     "icon": "the_unspeakable_oath",
-    "top": -2
+    "top": -5,
+    "left": -5
   },
   {
     "icon": "a_phantom_of_truth",
-    "top": 3
+    "top": -2,
+    "left": -1,
+    "scale": 1.2
   },
   {
     "icon": "the_pallid_mask",
-    "top": 2,
-    "left": 1
+    "top": -2,
+    "left": -1
   },
   {
     "icon": "black_stars_rise",
-    "top": -3,
-    "left": 0
+    "top": -6,
+    "left": -2
   },
   {
     "icon": "dim_carcosa",
-    "top": 4,
-    "left": 3
-  },
-  {
-    "icon": "return_to_the_unspeakable_oath",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "return_to_curtain_call",
-    "top": 1,
-    "left": 1
-  },
-  {
-    "icon": "return_to_the_last_king",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "return_to_echoes_of_the_past",
-    "top": 2,
-    "left": 1
-  },
-  {
-    "icon": "return_to_the_phantom_of_truth",
-    "top": 2,
-    "left": 1
-  },
-  {
-    "icon": "return_to_the_pallid_mask",
-    "top": 1,
-    "left": 2
-  },
-  {
-    "icon": "return_to_black_stars_rise",
-    "top": 1,
+    "top": 5,
     "left": 0
   },
   {
+    "icon": "return_to_the_unspeakable_oath",
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "return_to_curtain_call",
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "return_to_the_last_king",
+    "top": -2,
+    "left": -2,
+    "scale": 1.02
+  },
+  {
+    "icon": "return_to_echoes_of_the_past",
+    "top": -1,
+    "left": -1
+  },
+  {
+    "icon": "return_to_the_phantom_of_truth",
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "return_to_the_pallid_mask",
+    "top": -2,
+    "left": -2
+  },
+  {
+    "icon": "return_to_black_stars_rise",
+    "top": -2,
+    "left": -2
+  },
+  {
     "icon": "return_to_dim_carcosa",
-    "top": 1,
-    "left": 2
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_path_to_carcosa",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "return_to_the_path_to_carcosa",
-    "top": 2,
-    "left": 0,
-    "type": "special"
+    "top": -2,
+    "left": -2
   }
 ]
