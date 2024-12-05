@@ -16,7 +16,7 @@ import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
-import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
+import { ArkhamesqueClassicDividerCanvasMemo as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 

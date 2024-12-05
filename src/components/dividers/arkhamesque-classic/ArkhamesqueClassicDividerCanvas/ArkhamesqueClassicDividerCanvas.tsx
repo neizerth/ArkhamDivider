@@ -8,6 +8,7 @@ import { getBleedCanvasSize } from './features/size';
 import classNames from 'classnames';
 import { useIconImage } from '@/hooks/useIconImage';
 import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassicDividerCanvasIcon';
+import { memo } from 'react';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
   image: string
@@ -23,13 +24,13 @@ export const ArkhamesqueClassicDividerCanvas = ({
 }: ArkhamesqueClassicDividerCanvasProps) => {
 
   const { bleed } = useAppSelector(selectLayout);
-  const [image] = useImage(props.image, 'anonymous');
+  const [image, imageStatus] = useImage(props.image, 'anonymous');
   
-  const preview = useIconImage({
+  const [preview, previewStatus] = useIconImage({
     icon: previewIcon
   });
 
-  const special = useIconImage({
+  const [special, specialStatus] = useIconImage({
     icon: specialIcon
   });
 
@@ -37,54 +38,64 @@ export const ArkhamesqueClassicDividerCanvas = ({
     bleed
   });
 
+  const isLoaded = imageStatus === 'loaded' && 
+    previewStatus === 'complete' && 
+    specialStatus === 'complete';
+
   // console.log(canvasSize);
 
   // return <></>;
 
   return (
-    <Stage 
-      className={classNames(
-        S.container,
-        className
+    <>
+      {isLoaded && (
+        <Stage 
+          className={classNames(
+            S.container,
+            className
+          )}
+          width={canvasSize.width} 
+          height={canvasSize.height}
+        >
+          <Layer>
+            <Image
+              image={image}
+              width={canvasSize.width}
+            />
+          </Layer>
+          {special && (
+            <Layer>
+              <Icon 
+                {...special} 
+                type="special" 
+                height={60}
+                container={{
+                  x: 532,
+                  y: 855,
+                  width: 62,
+                  height: 62
+                }}
+              />
+            </Layer>
+          )}
+          {preview && (
+            <Layer>
+              <Icon 
+                {...preview} 
+                height={92}
+                container={{
+                  x: 116,
+                  y: 65,
+                  width: 104,
+                  height: 104
+                }}
+              />
+            </Layer>
+          )}
+        </Stage>
       )}
-      width={canvasSize.width} 
-      height={canvasSize.height}
-    >
-      <Layer>
-        <Image
-          image={image}
-          width={canvasSize.width}
-        />
-      </Layer>
-      {special && (
-        <Layer>
-          <Icon 
-            {...special} 
-            type="special" 
-            height={60}
-            container={{
-              x: 532,
-              y: 855,
-              width: 62,
-              height: 62
-            }}
-          />
-        </Layer>
-      )}
-      {preview && (
-        <Layer>
-          <Icon 
-            {...preview} 
-            height={92}
-            container={{
-              x: 116,
-              y: 65,
-              width: 104,
-              height: 104
-            }}
-          />
-        </Layer>
-      )}
-    </Stage>
+    </>
   );
 }
+
+export const ArkhamesqueClassicDividerCanvasMemo = memo(ArkhamesqueClassicDividerCanvas);
