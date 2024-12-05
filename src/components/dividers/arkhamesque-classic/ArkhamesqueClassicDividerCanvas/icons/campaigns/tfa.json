@@ -1,188 +1,211 @@
 [
   {
     "icon": "the_forgotten_age",
-    "top": 0,
+    "top": -3,
     "left": 0
+  },
+  {
+    "icon": "the_forgotten_age",
+    "top": -3,
+    "left": -1.5,
+    "type": "special"
   },
   {
     "icon": "agents_of_yig",
-    "top": 8,
-    "left": 2
-  },
-  {
-    "icon": "temporal_flux",
-    "scale": 0.8,
-    "top": 4,
-    "left": 2
-  },
-  {
-    "icon": "forgotten_ruins",
-    "top": 3,
-    "left": 1
-  },
-  {
-    "icon": "temporal_hunters",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "poison",
-    "top": 4,
-    "left": 1.5
-  },
-  {
-    "icon": "pillars_of_judgement",
-    "top": -2.5,
-    "left": 0.5
-  },
-  {
-    "icon": "rainforest",
-    "scale": 0.85,
-    "top": 2, 
-    "left": 0
-  },
-  {
-    "icon": "serpents",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "expedition",
-    "scale": 1.2,
     "top": 3,
     "left": -1
   },
   {
+    "icon": "temporal_flux",
+    "scale": 0.8,
+    "top": -1,
+    "left": -1
+  },
+  {
+    "icon": "deadly_traps",
+    "left": -2,
+    "top": -1
+  },
+  {
+    "icon": "forgotten_ruins",
+    "top": 0,
+    "left": -1.5
+  },
+  {
+    "icon": "temporal_hunters",
+    "scale": 1.15,
+    "top": -2,
+    "left": -1
+  },
+  {
+    "icon": "poison",
+    "top": -1,
+    "left": -1
+  },
+  {
+    "icon": "pillars_of_judgement",
+    "top": -5,
+    "left": -3
+  },
+  {
+    "icon": "rainforest",
+    "scale": 0.85,
+    "top": 0, 
+    "left": -1.5
+  },
+  {
+    "icon": "serpents",
+    "top": -2,
+    "left": -2,
+    "scale": 1.1
+  },
+  {
+    "icon": "expedition",
+    "scale": 1.2,
+    "top": -2,
+    "left": -2.5
+  },
+  {
     "icon": "knyan",
-    "top": 3
+    "top": -1,
+    "left": -3,
+    "scale": 1.2
   },
   {
     "icon": "pnakotic_brotherhood",
-    "top": 1,
-    "left": 3
+    "top": -2,
+    "left": -1,
+    "scale": 1.1
   },
   {
     "icon": "guardians_of_time",
-    "top": 4,
-    "left": -2
+    "top": 1,
+    "left": -3
   },
   {
     "icon": "return_to_pillars_of_judgement",
-    "top": 1,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "shattered_aeons",
     "scale": 0.9, 
-    "top": 5,
-    "left": 4
+    "top": -1,
+    "left": -1
+  },
+  {
+    "icon": "venomous_hate",
+    "left": -3
   },
   {
     "icon": "doomed_expedition",
-    "top": 4,
-    "left": 3
+    "top": -2,
+    "left": -1
   },
   {
     "icon": "cult_of_pnakotus",
-    "top": 4,
-    "left": 1
+    "scale": 0.95,
+    "top": -1,
+    "left": -2
   },
   {
     "icon": "the_untamed_wilds",
-    "top": 6,
-    "left": 3
+    "top": 3,
+    "left": -1
   },
   {
     "icon": "the_doom_of_eztli",
-    "top": 3
+    "top": 0,
+    "left": -1
   },
   {
     "icon": "threads_of_fate",
-    "top": 5,
-    "left": 2
+    "top": 1,
+    "left": -1
   },
   {
     "icon": "the_boundary_beyond",
-    "top": -2
+    "top": -3,
+    "left": -2.5
   },
   {
     "icon": "heart_of_the_elders",
+    "top": -4,
+    "left": 0
+  },
+  {
+    "icon": "yigs_venom",
     "top": -2,
-    "left": 3
+    "left": -2
   },
   {
     "icon": "city_of_archives",
-    "top": 3,
-    "left": 1
+    "top": 1,
+    "left": -2
   },
   {
     "icon": "the_depths_of_yoth",
-    "top": 4,
-    "left": 1
+    "top": 2,
+    "left": -2
   },
   {
     "icon": "turn_back_time",
-    "top": 5,
-    "left": 1
+    "top": -3,
+    "left": -3
   },
   {
     "icon": "return_to_the_rainforest",
-    "top": 1,
-    "left": 1.5
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_untamed_wilds",
-    "top": 1,
-    "left": 2
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_knyan",
-    "top": 1,
-    "left": 1
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_city_of_archives",
-    "top": 1,
-    "left": 0.5
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_depths_of_yoth",
-    "top": 1,
-    "left": 2
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_doom_of_eztli",
-    "top": 2
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_forgotten_age",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "return_to_the_forgotten_age",
-    "top": 2,
-    "left": 1.5,
-    "type": "special"
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_threads_of_fate",
-    "top": 2,
+    "top": -2,
     "left": 2
   },
   {
     "icon": "return_to_the_boundary_beyond",
-    "top": 1,
-    "left": 0.5
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_the_heart_of_the_elders",
-    "top": 1,
-    "left": 2
+    "top": -2,
+    "left": -2
   },
   {
     "icon": "return_to_turn_back_time",
-    "top": 2,
-    "left": 2
+    "top": -2,
+    "left": -2
   }
 ]
