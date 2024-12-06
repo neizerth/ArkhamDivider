@@ -2,17 +2,20 @@ import { PropsWithClassName } from '@/types/util';
 import S from './ArkhamesqueClassicDividerCanvas.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
-import { Stage, Layer } from 'react-konva';
+import { Stage, Layer, Image } from 'react-konva';
 import { getBleedCanvasSize } from './features/size';
 import classNames from 'classnames';
 import { useIconImage } from '@/hooks/useIconImage';
 import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassicDividerCanvasIcon';
 import { memo, useEffect, useRef, useState } from 'react';
+import useImage from 'use-image';
 import Konva from 'konva';
+import { IS_DEVELOPMENT } from '@/constants/app';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
   previewIcon?: string | false
   specialIcon?: string | false
+  image: string,
   onRender: () => void
 }
 
@@ -35,11 +38,14 @@ export const ArkhamesqueClassicDividerCanvas = ({
     icon: specialIcon
   });
 
+  const [image, status] = useImage(props.image, 'anonymous');
+
   const ref = useRef<Konva.Stage>(null);
 
   const canvasSize = getBleedCanvasSize(bleed);
 
-  const isLoaded = previewStatus === 'complete' && 
+  const isLoaded = status === 'loaded' &&
+    previewStatus === 'complete' && 
     specialStatus === 'complete';
 
   const renderImage = async (stage: Konva.Stage) => {
@@ -56,7 +62,6 @@ export const ArkhamesqueClassicDividerCanvas = ({
 
     const blobURL = URL.createObjectURL(blob);
     setUrl(blobURL);
-
     props.onRender();
   }
 
@@ -65,6 +70,10 @@ export const ArkhamesqueClassicDividerCanvas = ({
   }, [preview, special])
 
   useEffect(() => {
+    if (!isLoaded) {
+      return;
+    }
+
     if (!ref.current) {
       return;
     }
@@ -78,14 +87,18 @@ export const ArkhamesqueClassicDividerCanvas = ({
 
       URL.revokeObjectURL(url);
     }
-  }, [ref, preview, special])
+  }, [ref, preview, special, image, isLoaded])
+
+  const devMode = IS_DEVELOPMENT;
+
+  const showCanvas = (isLoaded && !url) || devMode;
 
   return (
     <>
-      {url && (
+      {!showCanvas && url && (
         <img src={url} className={className}/>
       )}
-      {isLoaded && !url && (
+      {showCanvas && (
         <Stage 
           className={classNames(
             S.container,
@@ -97,14 +110,18 @@ export const ArkhamesqueClassicDividerCanvas = ({
           ref={ref}
         >
           <Layer>
+            <Image
+              image={image}
+              width={canvasSize.width}
+            />
             {special && (
               <Icon 
                 {...special} 
                 type="special" 
                 height={60}
                 container={{
-                  x: 532,
-                  y: 855,
+                  x: 531,
+                  y: 854,
                   width: 62,
                   height: 62
                 }}
@@ -115,8 +132,8 @@ export const ArkhamesqueClassicDividerCanvas = ({
                 {...preview} 
                 height={92}
                 container={{
-                  x: 116,
-                  y: 65,
+                  x: 115,
+                  y: 64,
                   width: 104,
                   height: 104
                 }}

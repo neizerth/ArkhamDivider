@@ -17,9 +17,9 @@ import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../Ar
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
 import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
-import { selectLoadIndex, setLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
+import { selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { delay } from '@/util/common';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -59,10 +59,13 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 		defaultIcon: mapDefaultIcon(props.campaignIcon || props.specialIcon || props.icon)
 	});
 
+  const [isRendered, setIsRendered] = useState(false);
+
   const onRender = async () => {
-    if (index !== loadIndex) {
+    if (index !== loadIndex || isRendered) {
       return;
     }
+    setIsRendered(true);
     dispatch(setNextLoadIndex());
   }
 
@@ -82,6 +85,8 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 
   const readyToRender = index <= loadIndex;
 
+
+
   return (
     <div 
       className={classNames(
@@ -99,52 +104,59 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
-            <img src={item.image} crossOrigin='anonymous' className={S.image}/>
-            {item.scenario && scenarioNumber && (
-              <div className={S.specialText}>
-                <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
+            {!readyToRender && (
+              <div className={S.loader}>
+                <Icon icon='hour-glass'/>
               </div>
-            )}
-            {xpCost && xpCost?.level !== XPCost.NO_COST && showXP && (
-              <div className={S.specialText}>
-                <XPCostTitle
-                  xpCost={xpCost}
-                />
-              </div>
-            )}
-            <div 
-              className={classNames(
-                S.title,
-                S[type]
-              )}
-            >
-              <DividerText
-                defaultValue={translatedName}
-                className={S.titleControl}
-                inputClassName={titleInputClassName}
-                onChange={setTitle}
-                fixedFontSize={false}
-              />
-            </div>
-            {showPreviewIcon && (
-              <div className={S.previewHandler} onClick={selectIcon}/>
-            )}
-            {showSpecialIcon && (
-              <div className={S.specialHandler} onClick={selectSpecialIcon}/>
             )}
 
             {readyToRender && (
-              <Canvas
-                className={S.canvas}
-                previewIcon={showPreviewIcon && icon}
-                specialIcon={showSpecialIcon && specialIcon}
-                onRender={onRender}
-              />
-            )}
+              <>
+                {item.scenario && scenarioNumber && (
+                  <div className={S.specialText}>
+                    <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
+                  </div>
+                )}
+                {xpCost && xpCost?.level !== XPCost.NO_COST && showXP && (
+                  <div className={S.specialText}>
+                    <XPCostTitle
+                      xpCost={xpCost}
+                    />
+                  </div>
+                )}
+                <div 
+                  className={classNames(
+                    S.title,
+                    S[type]
+                  )}
+                >
+                  <DividerText
+                    defaultValue={translatedName}
+                    className={S.titleControl}
+                    inputClassName={titleInputClassName}
+                    onChange={setTitle}
+                    fixedFontSize={false}
+                  />
+                </div>
+                {showPreviewIcon && (
+                  <div className={S.previewHandler} onClick={selectIcon}/>
+                )}
+                {showSpecialIcon && (
+                  <div className={S.specialHandler} onClick={selectSpecialIcon}/>
+                )}
+                <Canvas
+                  className={S.canvas}
+                  image={item.image}
+                  previewIcon={showPreviewIcon && icon}
+                  specialIcon={showSpecialIcon && specialIcon}
+                  onRender={onRender}
+                />
 
-            <NotExportable>
-              <DividerMenu id={id} className={S.menu}/>
-            </NotExportable>
+                <NotExportable>
+                  <DividerMenu id={id} className={S.menu}/>
+                </NotExportable>
+              </>
+            )}
           </>
         )}
       </DividerContent>

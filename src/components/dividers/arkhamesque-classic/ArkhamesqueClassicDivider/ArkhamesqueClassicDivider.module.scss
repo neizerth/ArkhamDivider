@@ -21,7 +21,7 @@
   }
 }
 
-.backgroundLoader {
+.loader {
   border-radius: 4mm;
   position: absolute;
   left: 0;
@@ -31,6 +31,11 @@
   height: 100%;
   box-shadow: inset 0 0 10mm rgba(0, 0, 0, 0.3);
   background-color: rgb(250, 250, 250);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #999999;
 }
 
 .background {

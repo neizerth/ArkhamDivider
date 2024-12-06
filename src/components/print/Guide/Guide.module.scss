@@ -10,14 +10,14 @@ $guide-size: 2mm;
 .vertical {
   position: absolute;
   width: 0;
-  border-left: 0.1mm solid var(--guide-color);
-  height: 0.1mm + $guide-size * 2;
+  border-left: 1px solid var(--guide-color);
+  height: 1px + $guide-size * 2;
   top: -$guide-size;
 }
 .horizontal {
   position: absolute;
   border-bottom: 0.1mm solid var(--guide-color);
-  width: 0.1mm + $guide-size * 2;
+  width: 1px + $guide-size * 2;
   height: 0;
   left: -$guide-size;
 }

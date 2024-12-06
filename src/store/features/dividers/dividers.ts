@@ -64,10 +64,12 @@ export const setNextLoadIndex: ActionCreator<AppThunk> = () => (dispatch, getSta
 
 export const removeDivider: ActionCreator<AppThunk> = (id: string) =>
   (dispatch, getState) => {
-    const data = selectDividers(getState())
+    const state = getState();
+    const data = selectDividers(state)
       .filter(divider => divider.id !== id);
+    const loadIndex = selectLoadIndex(state);
     dispatch(setDividers(data));
-    dispatch(setLoadIndex(0));
+    dispatch(setLoadIndex(loadIndex - 1));
   }
 
 export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
@@ -86,7 +88,8 @@ export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
         id: uniqId()
       },
       ...data.slice(index)
-    ])); 
+    ]));
+    dispatch(setNextLoadIndex());
   }
 
 export const {
