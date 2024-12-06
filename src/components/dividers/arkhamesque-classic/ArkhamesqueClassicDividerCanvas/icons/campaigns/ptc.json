@@ -39,7 +39,7 @@
   },
   {
     "icon": "hauntings",
-    "top": -1,
+    "top": 1,
     "left": 1
   },
   {
@@ -61,7 +61,7 @@
   {
     "icon": "delusions",
     "scale": 1.15,
-    "top": -1
+    "top": 2
   },
   {
     "icon": "maddening_delusions",
@@ -70,7 +70,7 @@
   },
   {
     "icon": "neurotic_fear",
-    "top": -1,
+    "top": 1,
     "left": 1
   },
   {
@@ -80,11 +80,11 @@
   },
   {
     "icon": "decaying_reality",
-    "top": -1
+    "top": 1
   },
   {
     "icon": "curtain_call",
-    "top": 1
+    "top": 2
   },
   {
     "icon": "the_last_king",

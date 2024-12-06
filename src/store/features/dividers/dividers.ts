@@ -12,10 +12,12 @@ import { IStory } from '@/types/api';
 export type IDividersState = {
   list: IDividerList,
   story?: IStory
+  loadIndex: number
 }
 
 const initialState: IDividersState = {
   list: [],
+  loadIndex: 0,
 };
 
 export const dividers = createSlice({
@@ -24,11 +26,13 @@ export const dividers = createSlice({
   reducers: {
     ...reducers,
     setDividers: createSliceSetter('list'),
-    setStory: createSliceSetter('story')
+    setStory: createSliceSetter('story'),
+    setLoadIndex: createSliceSetter('loadIndex')
   },
   selectors: {
     selectDividers: createSliceSelector('list'),
-    selectStory: createSliceSelector('story')
+    selectStory: createSliceSelector('story'),
+    selectLoadIndex: createSliceSelector('loadIndex'),
   },
   extraReducers(builder) {
     builder.addCase(setType, (state) => {
@@ -45,18 +49,27 @@ export type ICampaignToDividersOptions = {
 export const addDividers: ActionCreator<AppThunk> = (dividers: IDividerList) => 
   (dispatch, getState) => {
     const data = selectDividers(getState());
-
+    
     dispatch(setDividers([
       ...data,
       ...dividers
     ]));
   }
 
+export const setNextLoadIndex: ActionCreator<AppThunk> = () => (dispatch, getState) => {
+  const state = getState();
+  const index = selectLoadIndex(state);
+  dispatch(setLoadIndex(index + 1));
+}
+
 export const removeDivider: ActionCreator<AppThunk> = (id: string) =>
   (dispatch, getState) => {
-    const data = selectDividers(getState())
+    const state = getState();
+    const data = selectDividers(state)
       .filter(divider => divider.id !== id);
-    dispatch(setDividers(data)); 
+    const loadIndex = selectLoadIndex(state);
+    dispatch(setDividers(data));
+    dispatch(setLoadIndex(loadIndex - 1));
   }
 
 export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
@@ -75,18 +88,21 @@ export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
         id: uniqId()
       },
       ...data.slice(index)
-    ])); 
+    ]));
+    dispatch(setNextLoadIndex());
   }
 
 export const {
   setDividers,
   removeAllDividers,
-  setStory
+  setStory,
+  setLoadIndex
 } = dividers.actions;
 
 export const {
   selectDividers,
-  selectStory
+  selectStory,
+  selectLoadIndex
 } = dividers.selectors;
 
 export default dividers.reducer;

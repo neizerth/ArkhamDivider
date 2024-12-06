@@ -2,7 +2,7 @@ import { A4, Row, Divider, ZoomView } from '@/components';
 
 import S from './Layout.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDividers } from '@/store/features/dividers/dividers';
+import { selectDividers, selectLoadIndex } from '@/store/features/dividers/dividers';
 
 import classNames from 'classnames';
 import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/store/features/print/print';
@@ -61,7 +61,7 @@ export const Layout = ({ }: LayoutProps) => {
 										{row.map((divider, index) => (
 											<Divider 
 												{...divider}
-												index={index}
+												index={dividers.indexOf(divider)}
 												rowIndex={rowIndex + 1}
 												key={index}
 											/>

@@ -16,7 +16,10 @@ import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
-import { ArkhamesqueClassicDividerCanvasMemo as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
+import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
+import { selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -28,15 +31,18 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     type,
     xpCost,
     index,
-    rowIndex
+    rowIndex,
   } = props;
 
   const browser = useMemo(detect, []);
   const isChrome = browser?.name ==='chrome';
 
+  const dispatch = useAppDispatch();
   const language = useSelector(selectLanguage);
   const data = useSelector(selectArkhamesqueData);
+  const loadIndex = useSelector(selectLoadIndex);
 	const { t } = useStoryTranslation(story);
+
   const translatedName = t(name);
   const realLanguage = translatedName === name ? 'en' : language;
 
@@ -53,6 +59,16 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 		defaultIcon: mapDefaultIcon(props.campaignIcon || props.specialIcon || props.icon)
 	});
 
+  const [isRendered, setIsRendered] = useState(false);
+
+  const onRender = async () => {
+    if (index !== loadIndex || isRendered) {
+      return;
+    }
+    setIsRendered(true);
+    dispatch(setNextLoadIndex());
+  }
+
   const item = data && getDividerData({
     data,
     divider: props
@@ -66,6 +82,10 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const showPreviewIcon = item?.icon !== false && item?.previewIcon !== false;
   const showSpecialIcon = item?.icon !== false;
   const showXP = item?.xp !== false;
+
+  const readyToRender = index <= loadIndex;
+
+
 
   return (
     <div 
@@ -84,50 +104,59 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
-            {item.scenario && scenarioNumber && (
-              <div className={S.specialText}>
-                <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
+            {!readyToRender && (
+              <div className={S.loader}>
+                <Icon icon='hour-glass'/>
               </div>
             )}
-            {xpCost && xpCost?.level !== XPCost.NO_COST && showXP && (
-              <div className={S.specialText}>
-                <XPCostTitle
-                  xpCost={xpCost}
-                />
-              </div>
-            )}
-            <div 
-              className={classNames(
-                S.title,
-                S[type]
-              )}
-            >
-              <DividerText
-                defaultValue={translatedName}
-                className={S.titleControl}
-                inputClassName={titleInputClassName}
-                onChange={setTitle}
-                fixedFontSize={false}
-              />
-            </div>
-            {showPreviewIcon && (
-              <div className={S.previewHandler} onClick={selectIcon}/>
-            )}
-            {showSpecialIcon && (
-              <div className={S.specialHandler} onClick={selectSpecialIcon}/>
-            )}
-            <div className={S.background}/>
-            
-            <Canvas
-              className={S.canvas}
-              image={item.image}
-              previewIcon={showPreviewIcon && icon}
-              specialIcon={showSpecialIcon && specialIcon}
-            />
 
-            <NotExportable>
-              <DividerMenu id={id} className={S.menu}/>
-            </NotExportable>
+            {readyToRender && (
+              <>
+                {item.scenario && scenarioNumber && (
+                  <div className={S.specialText}>
+                    <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
+                  </div>
+                )}
+                {xpCost && xpCost?.level !== XPCost.NO_COST && showXP && (
+                  <div className={S.specialText}>
+                    <XPCostTitle
+                      xpCost={xpCost}
+                    />
+                  </div>
+                )}
+                <div 
+                  className={classNames(
+                    S.title,
+                    S[type]
+                  )}
+                >
+                  <DividerText
+                    defaultValue={translatedName}
+                    className={S.titleControl}
+                    inputClassName={titleInputClassName}
+                    onChange={setTitle}
+                    fixedFontSize={false}
+                  />
+                </div>
+                {showPreviewIcon && (
+                  <div className={S.previewHandler} onClick={selectIcon}/>
+                )}
+                {showSpecialIcon && (
+                  <div className={S.specialHandler} onClick={selectSpecialIcon}/>
+                )}
+                <Canvas
+                  className={S.canvas}
+                  image={item.image}
+                  previewIcon={showPreviewIcon && icon}
+                  specialIcon={showSpecialIcon && specialIcon}
+                  onRender={onRender}
+                />
+
+                <NotExportable>
+                  <DividerMenu id={id} className={S.menu}/>
+                </NotExportable>
+              </>
+            )}
           </>
         )}
       </DividerContent>
