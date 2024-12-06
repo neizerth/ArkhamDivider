@@ -11,6 +11,7 @@ import { memo, useEffect, useRef, useState } from 'react';
 import useImage from 'use-image';
 import Konva from 'konva';
 import { IS_DEVELOPMENT } from '@/constants/app';
+import { delay } from '@/util/common';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
   previewIcon?: string | false
@@ -59,7 +60,6 @@ export const ArkhamesqueClassicDividerCanvas = ({
 
     const blobURL = URL.createObjectURL(blob);
     setUrl(blobURL);
-    props.onRender();
   }
 
   useEffect(() => {
@@ -89,12 +89,15 @@ export const ArkhamesqueClassicDividerCanvas = ({
     }
   }, [ref, preview, special, image, isLoaded])
 
-  const onImageLoad = () => {
-    setIsRendered(true);
+  const onImageLoad = async () => {
     if (!url) {
       return;
     }
     URL.revokeObjectURL(url);
+    await delay(100);
+
+    setIsRendered(true);
+    props.onRender();
   }
 
   const devMode = IS_DEVELOPMENT;
