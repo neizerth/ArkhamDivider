@@ -61,7 +61,7 @@ export const Layout = ({ }: LayoutProps) => {
 										{row.map((divider, index) => (
 											<Divider 
 												{...divider}
-												index={index}
+												index={dividers.indexOf(divider)}
 												rowIndex={rowIndex + 1}
 												key={index}
 											/>

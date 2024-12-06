@@ -16,7 +16,9 @@ import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
-import { ArkhamesqueClassicDividerCanvasMemo as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
+import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
+import { selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
+import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -28,15 +30,19 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     type,
     xpCost,
     index,
-    rowIndex
+    rowIndex,
   } = props;
 
   const browser = useMemo(detect, []);
   const isChrome = browser?.name ==='chrome';
 
+  const dispatch = useAppDispatch();
   const language = useSelector(selectLanguage);
   const data = useSelector(selectArkhamesqueData);
+  const loadIndex = useSelector(selectLoadIndex);
 	const { t } = useStoryTranslation(story);
+  const [backgroundUrl, setBackgroundUrl] = useState<string>();
+
   const translatedName = t(name);
   const realLanguage = translatedName === name ? 'en' : language;
 
@@ -52,6 +58,14 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const [specialIcon, selectSpecialIcon] = useIconSelect({
 		defaultIcon: mapDefaultIcon(props.campaignIcon || props.specialIcon || props.icon)
 	});
+
+  const onBackgroundLoad = (url: string) => {
+
+    console.log('loaded!', index);
+
+    setBackgroundUrl(url);
+    dispatch(setNextLoadIndex());
+  }
 
   const item = data && getDividerData({
     data,
@@ -84,6 +98,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
+            <img src={item.image} crossOrigin='anonymous' className={S.image}/>
             {item.scenario && scenarioNumber && (
               <div className={S.specialText}>
                 <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
@@ -116,14 +131,15 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
             {showSpecialIcon && (
               <div className={S.specialHandler} onClick={selectSpecialIcon}/>
             )}
-            <div className={S.background}/>
-            
-            <Canvas
-              className={S.canvas}
-              image={item.image}
-              previewIcon={showPreviewIcon && icon}
-              specialIcon={showSpecialIcon && specialIcon}
-            />
+
+            {(
+              <Canvas
+                className={S.canvas}
+                previewIcon={showPreviewIcon && icon}
+                specialIcon={showSpecialIcon && specialIcon}
+                onLoad={onBackgroundLoad}
+              />
+            )}
 
             <NotExportable>
               <DividerMenu id={id} className={S.menu}/>

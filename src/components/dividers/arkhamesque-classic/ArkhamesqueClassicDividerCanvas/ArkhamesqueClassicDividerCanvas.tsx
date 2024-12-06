@@ -2,18 +2,19 @@ import { PropsWithClassName } from '@/types/util';
 import S from './ArkhamesqueClassicDividerCanvas.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
-import { Stage, Layer, Image } from 'react-konva';
-import useImage from 'use-image';
+import { Stage, Layer } from 'react-konva';
 import { getBleedCanvasSize } from './features/size';
 import classNames from 'classnames';
 import { useIconImage } from '@/hooks/useIconImage';
 import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassicDividerCanvasIcon';
-import { memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
+import Konva from 'konva';
+import { reject } from 'ramda';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
-  image: string
   previewIcon?: string | false
   specialIcon?: string | false
+  onLoad: (url: string) => void
 }
 
 export const ArkhamesqueClassicDividerCanvas = ({
@@ -24,7 +25,8 @@ export const ArkhamesqueClassicDividerCanvas = ({
 }: ArkhamesqueClassicDividerCanvasProps) => {
 
   const { bleed } = useAppSelector(selectLayout);
-  const [image, imageStatus] = useImage(props.image, 'anonymous');
+
+  const [url, setUrl] = useState<string | null>(null);
   
   const [preview, previewStatus] = useIconImage({
     icon: previewIcon
@@ -34,21 +36,56 @@ export const ArkhamesqueClassicDividerCanvas = ({
     icon: specialIcon
   });
 
+  const ref = useRef<Konva.Stage>(null);
+
   const canvasSize = getBleedCanvasSize({
     bleed
   });
 
-  const isLoaded = imageStatus === 'loaded' && 
-    previewStatus === 'complete' && 
+  const isLoaded = previewStatus === 'complete' && 
     specialStatus === 'complete';
 
-  // console.log(canvasSize);
+  const renderImage = async (stage: Konva.Stage) => {
+    const blob = await stage.toBlob() as Blob | null;
 
-  // return <></>;
+    if (!blob) {
+      return;
+    }
+
+    if (url) {
+      URL.revokeObjectURL(url);
+    }
+
+    const blobURL = URL.createObjectURL(blob);
+    setUrl(blobURL);
+  }
+
+  useEffect(() => {
+    setUrl(null);
+  }, [preview, special])
+
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+  
+    renderImage(ref.current)
+
+    return () => {
+      if (!url) {
+        return;
+      }
+
+      URL.revokeObjectURL(url);
+    }
+  }, [ref.current])
 
   return (
     <>
-      {isLoaded && (
+      {url && (
+        <img src={url} className={className}/>
+      )}
+      {isLoaded && !url && (
         <Stage 
           className={classNames(
             S.container,
@@ -57,13 +94,9 @@ export const ArkhamesqueClassicDividerCanvas = ({
           width={canvasSize.width} 
           height={canvasSize.height}
           preventDefault={false}
+          ref={ref}
         >
           <Layer>
-            <Image
-              image={image}
-              width={canvasSize.width}
-              preventDefault={false}
-            />
             {special && (
               <Icon 
                 {...special} 
