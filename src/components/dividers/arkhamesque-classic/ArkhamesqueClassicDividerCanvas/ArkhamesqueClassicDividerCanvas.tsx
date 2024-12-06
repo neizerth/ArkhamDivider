@@ -39,6 +39,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
   });
 
   const [image, status] = useImage(props.image, 'anonymous');
+  const [isRendered, setIsRendered] = useState(false);
 
   const ref = useRef<Konva.Stage>(null);
 
@@ -56,10 +57,6 @@ export const ArkhamesqueClassicDividerCanvas = ({
       return;
     }
 
-    if (url) {
-      URL.revokeObjectURL(url);
-    }
-
     const blobURL = URL.createObjectURL(blob);
     setUrl(blobURL);
     props.onRender();
@@ -67,6 +64,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
 
   useEffect(() => {
     setUrl(null);
+    setIsRendered(false);
   }, [preview, special])
 
   useEffect(() => {
@@ -85,21 +83,28 @@ export const ArkhamesqueClassicDividerCanvas = ({
         return;
       }
 
-      URL.revokeObjectURL(url);
       image?.remove();
       preview?.image.remove();
       special?.image.remove();
     }
   }, [ref, preview, special, image, isLoaded])
 
+  const onImageLoad = () => {
+    setIsRendered(true);
+    if (!url) {
+      return;
+    }
+    URL.revokeObjectURL(url);
+  }
+
   const devMode = IS_DEVELOPMENT;
 
-  const showCanvas = (isLoaded && !url) || devMode;
+  const showCanvas = (isLoaded && !url && !isRendered) || devMode;
 
   return (
     <>
-      {!showCanvas && url && (
-        <img src={url} className={className}/>
+      {url && (
+        <img src={url} onLoad={onImageLoad} className={className}/>
       )}
       {showCanvas && (
         <Stage 
