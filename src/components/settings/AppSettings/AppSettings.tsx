@@ -2,15 +2,20 @@ import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
 import { LayoutFilter, LanguageSelect, PrintSettings, Row, Button, Icon, LayoutZoom } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDividers } from '@/store/features/dividers/dividers';
+import { selectDividers, selectLoadIndex } from '@/store/features/dividers/dividers';
 import { AdditionalSettings } from '../AdditionalSettings/AdditionalSettings';
 import classNames from 'classnames';
+import { selectLayout } from '@/store/features/layout/layout';
 
 
 export const AppSettings = () => {
   const { t } = useTranslation();
   const print = () => window.print();
   const dividers = useAppSelector(selectDividers);
+  const loadIndex = useAppSelector(selectLoadIndex);
+  const layout = useAppSelector(selectLayout);
+
+  const canPrint = !layout.async || loadIndex >= dividers.length;
 
   return (
     <div className={S.container}>
@@ -41,7 +46,13 @@ export const AppSettings = () => {
                   <Button 
                     onClick={print} 
                     className={S.printButton}
+                    disabled={!canPrint}
                   >
+                    {!canPrint && (
+                      <>
+                        <Icon icon="hour-glass"/>...
+                      </>
+                    )}
                     <Icon icon="printer"/>{t('Print')} /
                     <Icon icon="download"/> PDF
                   </Button>

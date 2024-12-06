@@ -104,12 +104,10 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
       <DividerContent className={S.dividerContent}>
         {item && (
           <>
-            {!readyToRender && (
-              <div className={S.loader}>
-                <Icon icon='hour-glass'/>
-              </div>
-            )}
-
+            <div className={S.loader}>
+              <Icon icon='hour-glass'/>
+            </div>
+            
             {readyToRender && (
               <>
                 {item.scenario && scenarioNumber && (

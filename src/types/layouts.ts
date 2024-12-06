@@ -29,6 +29,7 @@ export type ILayout = {
   campaignOptions?: Partial<AddStoryDividersOptions>,
   playerOptions?: Partial<AddPlayerDividersOptions>,
   customParams?: Mapping
+  async?: boolean
 }
 
 export type ILayoutAuthorContact = {

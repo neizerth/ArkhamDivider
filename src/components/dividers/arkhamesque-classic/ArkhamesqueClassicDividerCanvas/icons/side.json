@@ -37,7 +37,8 @@
   },
   {
     "icon": "laid_to_rest",
-    "top": 2,
+    "scale": 0.9,
+    "top": 3,
     "left": 2
   },
   {
@@ -47,6 +48,10 @@
   {
     "icon": "read_or_die",
     "left": 1
+  },
+  {
+    "icon": "rop",
+    "scale": 0.9
   },
   {
     "icon": "murder_at_the_excelsior_hotel",

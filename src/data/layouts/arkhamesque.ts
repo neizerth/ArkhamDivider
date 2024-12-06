@@ -7,6 +7,7 @@ const arkhamesqueClassicLayoutBase = {
   orientation: LayoutOrientation.HORIZONTAL,
   pageOrientation: PageOrientation.PORTRAIT,
   color: true,
+  async: true,
   rowSize: 2,
   groupSize: 6,
   campaignOptions: {
