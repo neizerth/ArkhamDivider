@@ -60,7 +60,8 @@
   },
   {
     "icon": "the_house_always_wins",
-    "top": -1
+    "top": -2,
+    "left": -0.5
   },
   {
     "icon": "the_essex_county_express",
@@ -84,7 +85,7 @@
   },
   {
     "icon": "lost_in_time_and_space",
-    "top": 2,
+    "top": 1,
     "left": 1,
     "scale": 0.85
   },
@@ -146,9 +147,7 @@
     "left": 1
   },
   {
-    "icon": "return_to_blood_on_the_altar",
-    "top": 4,
-    "left": 3
+    "icon": "return_to_blood_on_the_altar"
   },
   {
     "icon": "return_to_lost_in_time_and_space"

@@ -28,6 +28,8 @@ npm run dev
 
 @fspoettel, @Chr1Z93 - German UI translation
 
+@Dedcap - French UI translation
+
 ### Design
 
 @5argon - 3mm Divider design template

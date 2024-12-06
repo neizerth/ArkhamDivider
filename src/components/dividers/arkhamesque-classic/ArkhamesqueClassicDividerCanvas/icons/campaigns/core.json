@@ -74,17 +74,16 @@
   {
     "icon": "the_gathering",
     "top": -2,
-    "left": -2
+    "left": -4
   },
   {
     "icon": "the_devourer_below",
+    "scale": 1.1,
     "top": 1,
     "left": 3
   },
   {
-    "icon": "return_to_the_devourer_below",
-    "top": 0.5,
-    "left": -1
+    "icon": "return_to_the_devourer_below"
   },
   {
     "icon": "ghouls_of_umrdhoth",
@@ -98,9 +97,7 @@
     "left": 2
   },
   {
-    "icon": "return_to_the_gathering",
-    "top": 1,
-    "left": 1
+    "icon": "return_to_the_gathering"
   },
   {
     "icon": "rtnotz",
@@ -108,18 +105,14 @@
     "top": -1
   },
   {
-    "icon": "return_to_the_midnight_masks",
-    "top": 1,
-    "left": 1
+    "icon": "return_to_the_midnight_masks"
   },
   {
     "icon": "midnight_masks",
     "scale": 1.1,
-    "top": -4
+    "top": -1
   },
   {
-    "icon": "return_cult",
-    "top": 1,
-    "left": 2
+    "icon": "return_cult"
   }
 ]
