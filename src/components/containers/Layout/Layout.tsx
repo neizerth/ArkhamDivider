@@ -2,7 +2,7 @@ import { A4, Row, Divider, ZoomView } from '@/components';
 
 import S from './Layout.module.scss';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDividers, selectLoadIndex } from '@/store/features/dividers/dividers';
+import { selectDividers } from '@/store/features/dividers/dividers';
 
 import classNames from 'classnames';
 import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/store/features/print/print';
