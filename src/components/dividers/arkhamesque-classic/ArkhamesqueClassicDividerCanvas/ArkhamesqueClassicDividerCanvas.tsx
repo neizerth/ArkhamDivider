@@ -94,25 +94,29 @@ export const ArkhamesqueClassicDividerCanvas = ({
       return;
     }
     URL.revokeObjectURL(url);
-    await delay(100);
-
+  
     setIsRendered(true);
     props.onRender();
   }
 
-  const devMode = IS_DEVELOPMENT;
-
+  // const devMode = IS_DEVELOPMENT;
+  const devMode = false;
   const showCanvas = (isLoaded && !url && !isRendered) || devMode;
 
   return (
     <>
       {url && (
-        <img src={url} onLoad={onImageLoad} className={className}/>
+        <img src={url} onLoad={onImageLoad} className={classNames(
+          className,
+          S.image,
+          isRendered && S.rendered
+        )}/>
       )}
       {showCanvas && (
         <Stage 
           className={classNames(
             S.container,
+            devMode && S.development,
             className
           )}
           width={canvasSize.width} 

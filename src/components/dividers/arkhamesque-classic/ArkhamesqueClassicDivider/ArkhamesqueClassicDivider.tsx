@@ -85,8 +85,6 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 
   const readyToRender = index <= loadIndex;
 
-
-
   return (
     <div 
       className={classNames(
@@ -107,8 +105,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
             <div className={S.loader}>
               <Icon icon='hour-glass'/>
             </div>
-            
-            {readyToRender && (
+            {isRendered && (
               <>
                 {item.scenario && scenarioNumber && (
                   <div className={S.specialText}>
@@ -142,18 +139,21 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 {showSpecialIcon && (
                   <div className={S.specialHandler} onClick={selectSpecialIcon}/>
                 )}
-                <Canvas
-                  className={S.canvas}
-                  image={item.image}
-                  previewIcon={showPreviewIcon && icon}
-                  specialIcon={showSpecialIcon && specialIcon}
-                  onRender={onRender}
-                />
 
                 <NotExportable>
                   <DividerMenu id={id} className={S.menu}/>
                 </NotExportable>
               </>
+            )}
+
+            {readyToRender && (
+              <Canvas
+                className={S.canvas}
+                image={item.image}
+                previewIcon={showPreviewIcon && icon}
+                specialIcon={showSpecialIcon && specialIcon}
+                onRender={onRender}
+              />
             )}
           </>
         )}
