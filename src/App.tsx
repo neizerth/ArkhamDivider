@@ -12,7 +12,8 @@ import {
   CategoryInfo,
   ActivePopup,
   WithLayoutSupport,
-  Layout
+  Layout,
+  WithBrowserSupport
 } from '@/components';
 
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -66,7 +67,7 @@ const AppLayout = () => {
   const showLayout = dividers.length > 0;
 
   return (
-    <>
+    <WithBrowserSupport>
       <AppLoader>
         <Col className={S.container}>
           <AppSettings/>
@@ -88,7 +89,7 @@ const AppLayout = () => {
         </Col>
         <ActivePopup/>
       </AppLoader>
-    </>
+    </WithBrowserSupport>
   );
 }
 

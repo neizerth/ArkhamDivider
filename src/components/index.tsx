@@ -36,6 +36,7 @@ export { TextFit } from './ui/behavior/TextFit/TextFit';
 export { ZoomView } from './ui/behavior/ZoomView/ZoomView';
 export { NotExportable } from './ui/behavior/NotExportable/NotExportable';
 export { WithLayoutSupport } from './ui/behavior/WithLayoutSupport/WithLayoutSupport';
+export { WithBrowserSupport } from './ui/behavior/WithBrowserSupport/WithBrowserSupport';
 export { CustomIcon } from './ui/icons/CustomIcon/CustomIcon';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';
