@@ -9,12 +9,11 @@ import { useIconImage } from '@/hooks/useIconImage';
 import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassicDividerCanvasIcon';
 import { memo, useEffect, useRef, useState } from 'react';
 import Konva from 'konva';
-import { reject } from 'ramda';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
   previewIcon?: string | false
   specialIcon?: string | false
-  onLoad: (url: string) => void
+  onRender: () => void
 }
 
 export const ArkhamesqueClassicDividerCanvas = ({
@@ -38,9 +37,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
 
   const ref = useRef<Konva.Stage>(null);
 
-  const canvasSize = getBleedCanvasSize({
-    bleed
-  });
+  const canvasSize = getBleedCanvasSize(bleed);
 
   const isLoaded = previewStatus === 'complete' && 
     specialStatus === 'complete';
@@ -49,6 +46,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
     const blob = await stage.toBlob() as Blob | null;
 
     if (!blob) {
+      console.error('blob not rendered');
       return;
     }
 
@@ -58,6 +56,8 @@ export const ArkhamesqueClassicDividerCanvas = ({
 
     const blobURL = URL.createObjectURL(blob);
     setUrl(blobURL);
+
+    props.onRender();
   }
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
 
       URL.revokeObjectURL(url);
     }
-  }, [ref.current])
+  }, [ref, preview, special])
 
   return (
     <>

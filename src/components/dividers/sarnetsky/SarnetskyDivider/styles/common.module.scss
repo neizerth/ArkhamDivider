@@ -40,7 +40,6 @@
   position: absolute;
   z-index: 3;
   display: flex;
-  // align-items: center;
   justify-content: center;
   cursor: pointer;
   &_type-encounter {
@@ -50,10 +49,11 @@
     transform: translate(-50%, 0);
   }
   &_type-scenario, &_type-campaign {
-    font-size: 1.2em;
-    width: 1.1em;
-    top: 7.9mm;
-    left: 8.1mm;
+    align-items: center;
+    font-size: 1.4em;
+    width: 1.2em;
+    top: 7.6mm;
+    left: 7.5mm;
   }
   &:hover {
     opacity: 0.8;
@@ -80,7 +80,7 @@
   .campaignIcon {
     font-size: 0.55em;
     width: 1.1em;
-    top: 9.5mm;
+    top: 9.9mm;
     right: 5mm;
   }
 }

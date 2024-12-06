@@ -131,7 +131,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 						/>
 					</div>
 				)}
-				{showIcon && (
+				{showIcon && previewIcon && (
 					<div 
 						className={classNames(
 							S.icon, 
@@ -139,7 +139,10 @@ export const SarnetskyDivider = (props: DividerProps) => {
 						)}
 						onClick={selectPreviewIcon}
 					>
-						{previewIcon && <Icon icon={previewIcon}/>}
+						<Icon 
+							icon={previewIcon}
+							scaleType={isScenario ? 'circle' : 'square'}
+						/>
 					</div>
 				)}
 				{isScenario && campaignIcon && (
@@ -150,7 +153,9 @@ export const SarnetskyDivider = (props: DividerProps) => {
 						)}
 						onClick={selectCampaignIcon}
 					>
-						<Icon icon={campaignIcon}/>
+						<Icon 
+							icon={campaignIcon}
+						/>
 					</div>
 				)}
 				{name && (
@@ -161,17 +166,6 @@ export const SarnetskyDivider = (props: DividerProps) => {
 							minFontSize={60}
 							fixedFontSize={isEncounter}
 						/>
-					</div>
-				)}
-				{!isScenario && campaignIcon && (
-					<div className={classNames(
-							S.campaignIcon, 
-							S[`icon_${type}`], 
-							S.icon_secondary
-						)}
-						onClick={selectCampaignIcon}
-					>
-						<Icon icon={campaignIcon}/>
 					</div>
 				)}
 				<div className={S.content}>

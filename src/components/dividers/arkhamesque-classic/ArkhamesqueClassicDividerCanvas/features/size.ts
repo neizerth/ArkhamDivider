@@ -19,18 +19,11 @@ export type IOffsetOptions = {
   offsetSize?: number
 }
 
-export const getBleedCanvasSize = ({
-  bleed,
-  offset,
-  offsetSize
-}: GetBleedCanvasSizeOptions) => {
+export const getBleedCanvasSize = (bleed: ILayoutBleed) => {
   const width = Math.ceil(toPrintSize(bleed.width));
   const height = Math.ceil(toPrintSize(bleed.height));
 
-  return addOffset(
-    { width, height }, 
-    { offset, offsetSize }
-  );
+  return { width, height };
 }
 
 export type ICanvasIcon = {

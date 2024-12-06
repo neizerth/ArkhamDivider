@@ -8,10 +8,10 @@ type ComponentProps = {
 
 export const GuidesContent = styled.div<ComponentProps>`
   ${({ $bleed, $layout }) => $bleed && css`
-    width: calc(${$layout.width}mm + 2px);
-    height: calc(${$layout.height}mm + 2px);
-    top: calc(${$layout.bleed.top}mm - 2px);
-    left: calc(${$layout.bleed.left}mm - 2px);
+    width: ${$layout.width}mm;
+    height: ${$layout.height}mm;
+    top: ${$layout.bleed.top}mm;
+    left: ${$layout.bleed.left}mm;
   `}
   ${({ $bleed }) => !$bleed && css`
     width: 100%;
@@ -31,8 +31,8 @@ export const Wrapper = styled.div<ComponentProps>`
 
 export const Content = styled.div<ComponentProps>`
   ${({ $layout, $bleed }) => $bleed && css`
-    width: calc(${$layout.bleed.width}mm + 2px);
-    height: calc(${$layout.bleed.height}mm + 2px)
+    width: ${$layout.bleed.width}mm;
+    height: ${$layout.bleed.height}mm;
   `}
   ${({ $bleed, $layout }) => !$bleed && css`
     top: -${$layout.bleed.top}mm;

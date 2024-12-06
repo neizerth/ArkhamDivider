@@ -17,8 +17,9 @@ import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../Ar
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
 import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
-import { selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
+import { selectLoadIndex, setLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { delay } from '@/util/common';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -41,7 +42,6 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const data = useSelector(selectArkhamesqueData);
   const loadIndex = useSelector(selectLoadIndex);
 	const { t } = useStoryTranslation(story);
-  const [backgroundUrl, setBackgroundUrl] = useState<string>();
 
   const translatedName = t(name);
   const realLanguage = translatedName === name ? 'en' : language;
@@ -59,11 +59,10 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 		defaultIcon: mapDefaultIcon(props.campaignIcon || props.specialIcon || props.icon)
 	});
 
-  const onBackgroundLoad = (url: string) => {
-
-    console.log('loaded!', index);
-
-    setBackgroundUrl(url);
+  const onRender = async () => {
+    if (index !== loadIndex) {
+      return;
+    }
     dispatch(setNextLoadIndex());
   }
 
@@ -80,6 +79,8 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const showPreviewIcon = item?.icon !== false && item?.previewIcon !== false;
   const showSpecialIcon = item?.icon !== false;
   const showXP = item?.xp !== false;
+
+  const readyToRender = index <= loadIndex;
 
   return (
     <div 
@@ -132,12 +133,12 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
               <div className={S.specialHandler} onClick={selectSpecialIcon}/>
             )}
 
-            {(
+            {readyToRender && (
               <Canvas
                 className={S.canvas}
                 previewIcon={showPreviewIcon && icon}
                 specialIcon={showSpecialIcon && specialIcon}
-                onLoad={onBackgroundLoad}
+                onRender={onRender}
               />
             )}
 
