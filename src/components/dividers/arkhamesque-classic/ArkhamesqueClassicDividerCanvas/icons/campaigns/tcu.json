@@ -142,7 +142,8 @@
   },
   {
     "icon": "the_secret_name",
-    "top": 2
+    "scale": 0.92,
+    "top": 0
   },
   {
     "icon": "secrets_of_the_universe",

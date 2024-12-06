@@ -10,7 +10,7 @@ import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassi
 import { memo, useEffect, useRef, useState } from 'react';
 import useImage from 'use-image';
 import Konva from 'konva';
-// import { IS_DEVELOPMENT } from '@/constants/app';
+import { IS_DEVELOPMENT } from '@/constants/app';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
   previewIcon?: string | false
@@ -99,7 +99,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
   }
 
   // const devMode = IS_DEVELOPMENT;
-  const devMode = false;
+  const devMode = IS_DEVELOPMENT;
   const showCanvas = (isLoaded && !url && !isRendered) || devMode;
 
   return (
