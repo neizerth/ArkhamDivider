@@ -37,6 +37,6 @@ export const useCampaignStories = () => {
       story,
       data: arkhamesqueData
     }),
-    tranlated: getIsTranslated(story)
+    translated: getIsTranslated(story)
   }));
 }

@@ -19,7 +19,7 @@ export const StorySelectValue = ({
     is_official, 
     icon, 
     supported = true,
-    tranlated
+    translated
   } = story;
 
   const containerClassNames = classNames(
@@ -35,7 +35,7 @@ export const StorySelectValue = ({
       )}
       <div className={S.optionLabel}>{children}</div>
       <div className={S.icons}>
-        {tranlated === false && <Icon icon={'en'}/>}
+        {translated === false && <Icon icon={'en'}/>}
         {is_official && (
           <Icon icon={'ffg'} className={classNames(S.icon, S.official)}/>
         )}

@@ -12,7 +12,14 @@ export const isChallenge = propEq('challenge', 'type');
 export const isStandalone = propEq('standalone', 'type');
 export const isPromo = propEq('promo', 'type');
 export const isCustom = (story: IStory) => Boolean(story.custom_content);
-export const withScenario = ({ scenario_encounter_sets, scenario }: IStory) => Boolean(scenario) || scenario_encounter_sets.length > 0;
+export const withScenario = ({ 
+  scenario_encounter_sets, 
+  scenario, 
+  scenarios = [] 
+}: IStory) => 
+  Boolean(scenario) || 
+  scenario_encounter_sets.length > 0 || 
+  scenarios.length > 0;
 
 export const isSideContent = anyPass([
   isSideStory,
