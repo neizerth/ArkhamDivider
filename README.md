@@ -24,11 +24,13 @@ npm run dev
 
 ## Hall of fame
 
-### Translations
+### UI Translations
 
-@fspoettel, @Chr1Z93 - German UI translation
+@fspoettel, @Chr1Z93 - German translation
 
-@Dedcap - French UI translation
+@Dedcap - French translation
+
+@Warenhari - Polish translation
 
 ### Design
 
