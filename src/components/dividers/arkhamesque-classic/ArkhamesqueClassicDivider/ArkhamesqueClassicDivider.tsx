@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { useIconSelect } from '@/hooks/useIconSelect';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getDividerData } from './data/getDividerData';
 import { useSelector } from 'react-redux';
 import { selectArkhamesqueData } from '@/store/features/arkhamesque/arkhamesque';
@@ -62,7 +62,9 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const [isRendered, setIsRendered] = useState(false);
 
   const onRender = async () => {
-    if (index !== loadIndex || isRendered) {
+
+    // console.log('render!', index, loadIndex, isRendered)
+    if (index !== loadIndex) {
       return;
     }
     setIsRendered(true);
@@ -73,6 +75,12 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     data,
     divider: props
   });
+
+  useEffect(() => {
+    if (item?.image) {
+      setIsRendered(false);
+    }
+  }, [item?.image])
 
   const titleInputClassName = classNames(
     S.titleInput

@@ -64,7 +64,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
   useEffect(() => {
     setUrl(null);
     setIsRendered(false);
-  }, [preview, special])
+  }, [preview, special, image])
 
   useEffect(() => {
     if (!isLoaded) {
