@@ -1,10 +1,10 @@
-import { UseIconImageData } from "@/hooks/useIconImage"
-import { Image } from "react-konva"
+import { Text } from "react-konva"
 import { IIconContainer } from "./features/size"
 import { getIconScale } from "@/components/ui/icons/FontIcon/getIconScale"
 import icons from './icons';
 import { propEq } from "ramda"
 import { IconScaleFactor } from "@/types/icons";
+import { IIcon } from "@/types/api";
 
 export type IIconTransform = {
   icon: string
@@ -14,7 +14,8 @@ export type IIconTransform = {
   type?: string
 }
 
-export type ArkhamesqueClassicDividerCanvasIconProps = UseIconImageData & {
+export type ArkhamesqueClassicDividerCanvasIconProps = {
+  icon: IIcon
   height: number
   top?: number
   left?: number
@@ -25,7 +26,6 @@ export type ArkhamesqueClassicDividerCanvasIconProps = UseIconImageData & {
 
 export const ArkhamesqueClassicDividerCanvasIcon = ({
   icon,
-  image,
   top = 0,
   left = 0,
   container,
@@ -58,15 +58,15 @@ export const ArkhamesqueClassicDividerCanvasIcon = ({
   const x = container.x + left + dX + (container.width - width) / 2;
   const y = container.y + top + + dY + (container.height - height) / 2;
 
+  const text = String.fromCharCode(icon.code);
+
   return (
-    <Image
-      data-icon={icon.icon}
-      image={image}
-      height={height}
-      width={width}
+    <Text
+      fontFamily="ArkhamIcons"
+      fontSize={height}
       x={x}
       y={y}
-      preventDefault={false}
+      text={text}
     />
   )
 }
