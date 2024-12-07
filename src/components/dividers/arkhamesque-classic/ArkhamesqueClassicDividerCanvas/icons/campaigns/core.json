@@ -7,7 +7,7 @@
   {
     "icon": "nightgaunts",
     "top": 2,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "dark_cult",
@@ -28,7 +28,7 @@
     "icon": "ancient_evils",
     "scale": 1.1,
     "top": 3,
-    "left": 2
+    "left": 1
   },
   {
     "icon": "striking_fear",
@@ -38,7 +38,8 @@
   },
   {
     "icon": "ghouls",
-    "top": 4
+    "top": 4,
+    "left": -1
   },
   {
     "icon": "agents_of_yog",

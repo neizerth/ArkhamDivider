@@ -9,12 +9,17 @@
   },
   {
     "icon": "jumanji-call_of_jumanji",
+    "top": 2,
     "left": -5
   },
   {
     "icon": "jumanji-home_invasion",
     "top": 1,
     "left": 3
+  },
+  {
+    "icon": "jumanji-hunter",
+    "top": 2
   },
   {
     "icon": "jumanji-urban_jungle",

@@ -1,12 +1,12 @@
 [
   {
     "icon": "elder_things",
-    "left": 2
+    "left": 0
   },
   {
     "icon": "miasma",
     "top": 4,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "nameless_horrors",
@@ -22,7 +22,7 @@
   },
   {
     "icon": "shoggoths",
-    "left": 4
+    "left": 3
   },
   {
     "icon": "creatures_in_the_ice",
@@ -31,28 +31,29 @@
   },
   {
     "icon": "silence_and_mystery",
-    "scale": 1.2
+    "scale": 1.2,
+    "left": -1
   },
   {
     "icon": "expedition_team",
     "scale": 0.87,
-    "left": 2
+    "left": 0
   },
   {
     "icon": "agents_of_the_unknown",
-    "top": 1,
-    "left": 1,
+    "top": 2,
+    "left": 0,
     "scale": 1.1
   },
   {
     "icon": "left_behind",
     "top": -3,
-    "left": 4
+    "left": 3
   },
   {
     "icon": "memorials_of_the_lost",
     "scale": 0.85,
-    "top": -2,
+    "top": 0,
     "left": 1
   },
   {
@@ -60,7 +61,7 @@
   },
   {
     "icon": "the_crash",
-    "top": 3,
+    "top": 4,
     "left": 1,
     "scale": 1.2
   },
@@ -72,7 +73,8 @@
   },
   {
     "icon": "deadly_weather",
-    "scale": 0.9
+    "scale": 0.9,
+    "top": 1
   },
   {
     "icon": "lost_in_the_night",
@@ -83,7 +85,8 @@
   {
     "icon": "sleeping_nightmares",
     "scale": 1.2,
-    "top": 4
+    "top": 4,
+    "left": -1
   },
   {
     "icon": "the_great_seal",
@@ -103,7 +106,7 @@
     "icon": "ice_and_death",
     "scale": 1.1,
     "top": 1,
-    "left": 2
+    "left": 1
   },
   {
     "icon": "to_the_forbidden_peaks",

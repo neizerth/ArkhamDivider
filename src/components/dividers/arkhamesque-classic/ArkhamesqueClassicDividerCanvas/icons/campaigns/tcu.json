@@ -27,7 +27,8 @@
   },
   {
     "icon": "witchcraft",
-    "top": -2
+    "top": -2,
+    "left": -1
   },
   {
     "icon": "unspeakable_fate",
@@ -40,18 +41,18 @@
   },
   {
     "icon": "trapped_spirits",
-    "top": -5,
-    "left": 1
+    "top": -3,
+    "left": 0
   },
   {
     "icon": "bloodthirsty_spirits",
     "top": 4,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "cold_fog",
     "top": 1,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "threatening_evil",
@@ -60,7 +61,8 @@
   },
   {
     "icon": "city_of_the_damned",
-    "top": 9
+    "top": 9,
+    "left": 1
   },
   {
     "icon": "the_circle_undone",
@@ -79,15 +81,16 @@
   },
   {
     "icon": "witchwork",
-    "left": 0.5
+    "left": 0.5,
+    "top": 1
   },
   {
     "icon": "the_witching_hour"
   },
   {
     "icon": "at_deaths_doorstep",
-    "top": 2,
-    "left": 1
+    "top": 3,
+    "left": 0
   },
   {
     "icon": "the_wages_of_sin",
@@ -95,7 +98,8 @@
   },
   {
     "icon": "city_of_sins",
-    "left": -7
+    "top": 3,
+    "left": -9
   },
   {
     "icon": "for_the_greater_good",
@@ -107,7 +111,7 @@
   {
     "icon": "union_and_disillusion",
     "top": 1,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "in_the_clutches_of_chaos",

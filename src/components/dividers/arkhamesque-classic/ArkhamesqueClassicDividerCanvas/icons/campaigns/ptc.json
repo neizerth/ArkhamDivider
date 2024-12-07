@@ -21,7 +21,7 @@
   {
     "icon": "cult_of_the_yellow_sign",
     "top": -2,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "hasturs_gift",
@@ -45,13 +45,13 @@
   {
     "icon": "the_vortex_above",
     "top": -1,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "the_flood_below",
     "scale": 1.1,
     "top": 1,
-    "left": 2
+    "left": 1
   },
   {
     "icon": "inhabitants_of_carcosa",
@@ -71,7 +71,7 @@
   {
     "icon": "neurotic_fear",
     "top": 1,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "delusory_evils",
@@ -80,7 +80,8 @@
   },
   {
     "icon": "decaying_reality",
-    "top": 1
+    "top": 2,
+    "left": -2
   },
   {
     "icon": "curtain_call",

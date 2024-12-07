@@ -14,8 +14,8 @@
   },
   {
     "icon": "starfall",
-    "scale": 0.95,
-    "left": 1
+    "scale": 0.93,
+    "left": 0
   },
   {
     "icon": "the_tatterdemalion",
@@ -31,6 +31,10 @@
   {
     "icon": "anachronism",
     "top": 4
+  },
+  {
+    "icon": "the_machine_in_yellow",
+    "top": 2
   },
   {
     "icon": "the_boogeyman",

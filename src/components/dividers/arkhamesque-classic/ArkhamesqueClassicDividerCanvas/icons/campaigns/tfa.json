@@ -19,11 +19,12 @@
     "icon": "temporal_flux",
     "scale": 0.8,
     "top": 1,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "deadly_traps",
-    "top": 1
+    "top": 1,
+    "left": -1
   },
   {
     "icon": "forgotten_ruins",
@@ -38,7 +39,7 @@
   {
     "icon": "poison",
     "top": 1,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "pillars_of_judgement",
@@ -102,7 +103,7 @@
   {
     "icon": "the_untamed_wilds",
     "top": 5,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "the_doom_of_eztli",
@@ -122,22 +123,22 @@
   {
     "icon": "heart_of_the_elders",
     "top": -2,
-    "left": 2
+    "left": 1
   },
   {
     "icon": "yigs_venom"
   },
   {
     "icon": "city_of_archives",
-    "top": 1
+    "top": 3
   },
   {
     "icon": "the_depths_of_yoth",
-    "top": 2
+    "top": 6
   },
   {
     "icon": "turn_back_time",
-    "top": -1,
+    "top": 1,
     "left": -1
   },
   {

@@ -13,5 +13,10 @@
     "icon": "late_risers",
     "top": -2,
     "left": 0
+  },
+  {
+    "icon": "call_of_the_plaguebearer",
+    "top": 2,
+    "left": -4
   }
 ]

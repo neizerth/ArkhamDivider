@@ -31,9 +31,14 @@
     "scale": 0.95
   },
   {
+    "icon": "ages_unwound-night_of_the_ritual",
+    "top": 2,
+    "left": 1
+  },
+  {
     "icon": "ages_unwound-night_of_fire",
     "scale": 1.25,
-    "top": 0,
+    "top": 1,
     "left": 0
   } 
 ]

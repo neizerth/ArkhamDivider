@@ -17,7 +17,8 @@
     "left": 1
   },
   {
-    "icon": "naomis_crew"
+    "icon": "naomis_crew",
+    "left": -1
   },
   {
     "icon": "the_beyond",
@@ -27,7 +28,7 @@
   {
     "icon": "sorcery",
     "top": -2,
-    "left": 1
+    "left": 0
   },
   {
     "icon": "creeping_cold",
@@ -36,18 +37,19 @@
   {
     "icon": "bishops_thralls",
     "scale": 1.1,
-    "top": 1,
-    "left": 1
+    "top": 3,
+    "left": 0
   },
   {
     "icon": "hideous_abominations",
-    "top": 1,
-    "left": 2,
+    "top": 2,
+    "left": 0,
     "scale": 1.1
   },
   {
     "icon": "bad_luck",
-    "left": 1
+    "top": 1,
+    "left": 0
   },
   {
     "icon": "beast_thralls",
@@ -56,6 +58,7 @@
   },
   {
     "icon": "armitages_fate",
+    "left": -1,
     "top": 5
   },
   {
@@ -92,7 +95,7 @@
   {
     "icon": "resurgent_evils",
     "top": 1,
-    "left": 3,
+    "left": 2,
     "scale": 1.05
   },
   {

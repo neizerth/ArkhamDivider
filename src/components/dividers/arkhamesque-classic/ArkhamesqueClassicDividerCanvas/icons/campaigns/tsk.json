@@ -42,7 +42,8 @@
   },
   {
     "icon": "globetrotting",
-    "top": 1
+    "top": 1,
+    "left": -1
   },
   {
     "icon": "mysteries_abound"

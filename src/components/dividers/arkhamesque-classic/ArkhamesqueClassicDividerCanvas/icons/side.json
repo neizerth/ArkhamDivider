@@ -14,10 +14,18 @@
     "left": 1
   },
   {
+    "icon": "single_group",
+    "top": 2
+  },
+  {
     "icon": "in_the_labyrinths_of_lunacy",
     "scale": 0.9,
-    "top": 0,
-    "left": -1
+    "top": 1,
+    "left": 0
+  },
+  {
+    "icon": "machinations_through_time",
+    "top": -4
   },
   {
     "icon": "lol",
@@ -32,14 +40,18 @@
   },
   {
     "icon": "by_the_book",
-    "top": 2,
-    "left": 3
+    "top": 3,
+    "left": 2
   },
   {
     "icon": "laid_to_rest",
     "scale": 0.9,
     "top": 3,
-    "left": 2
+    "left": 1
+  },
+  {
+    "icon": "lost_cathedral",
+    "top": 1
   },
   {
     "icon": "all_or_nothing",
@@ -50,14 +62,23 @@
     "left": 1
   },
   {
+    "icon": "roulette",
+    "top": 1,
+    "left": -1
+  },
+  {
+    "icon": "fof",
+    "top": 1
+  },
+  {
     "icon": "rop",
     "scale": 0.9
   },
   {
     "icon": "murder_at_the_excelsior_hotel",
     "scale": 0.9,
-    "top": 0,
-    "left": 1
+    "top": 1,
+    "left": 0
   },
   {
     "icon": "sins_of_the_past",
@@ -73,7 +94,11 @@
   },
   {
     "icon": "curse_of_the_rougarou",
-    "top": 2,
+    "top": 3,
     "left": 2
+  },
+  {
+    "icon": "abyssal_tribute",
+    "left": -1
   }
 ]

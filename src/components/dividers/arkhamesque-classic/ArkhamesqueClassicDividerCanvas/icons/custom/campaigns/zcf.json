@@ -31,7 +31,12 @@
     "top": -3
   },
   {
+    "icon": "archaic_evils",
+    "top": 2,
+    "left": 1
+  },
+  {
     "icon": "zcf",
-    "top": -4
+    "top": -3
   }
 ]

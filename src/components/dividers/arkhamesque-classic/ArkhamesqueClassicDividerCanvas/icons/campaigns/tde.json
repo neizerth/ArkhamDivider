@@ -5,7 +5,7 @@
   },
   {
     "icon": "agents_of_nyarlathotep",
-    "left": 1
+    "left": 0
   },
   {
     "icon": "zoogs",
@@ -17,18 +17,19 @@
   },
   {
     "icon": "dreamlands",
-    "left": 1
+    "top": 2,
+    "left": 0
   },
   {
     "icon": "corsairs",
-    "top": 3,
-    "left": 1
+    "top": 5,
+    "left": -0.5
   },
   {
     "icon": "spiders",
     "scale": 0.95,
-    "top": -1,
-    "left": 1
+    "top": 0,
+    "left": 0
   },
   {
     "icon": "whispers_of_hypnos",
@@ -44,7 +45,7 @@
   },
   {
     "icon": "terror_of_the_vale",
-    "top": -2
+    "top": 0
   },
   {
     "icon": "descent_into_the_pitch",
@@ -52,7 +53,7 @@
   },
   {
     "icon": "agents_of_atlach_nacha",
-    "left": 2
+    "left": 1
   },
   {
     "icon": "beyond_the_gates_of_sleep",
@@ -62,12 +63,13 @@
   {
     "icon": "a_thousand_shapes_of_horror",
     "scale": 0.85,
-    "top": -1
+    "top": -1,
+    "left": -2
   },
   {
     "icon": "dark_side_of_the_moon",
     "top": -10,
-    "left": 1
+    "left": -1
   },
   {
     "icon": "point_of_no_return",
@@ -75,8 +77,8 @@
   },
   {
     "icon": "waking_nightmare",
-    "top": -1,
-    "left": -6
+    "top": 1,
+    "left": -6.5
   },
   {
     "icon": "the_search_for_kadath",
