@@ -102,9 +102,7 @@
     "icon": "return_to_the_gathering"
   },
   {
-    "icon": "rtnotz",
-    "scale": 1.03,
-    "top": -1
+    "icon": "rtnotz"
   },
   {
     "icon": "return_to_the_midnight_masks"

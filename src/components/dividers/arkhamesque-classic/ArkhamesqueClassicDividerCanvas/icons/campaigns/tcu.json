@@ -131,11 +131,6 @@
     "icon": "return_to_disappearance_at_the_twilight_estate"
   },
   {
-    "icon": "return_to_before_the_black_throne",
-    "left": 2,
-    "top": 2
-  },
-  {
     "icon": "return_to_the_witching_hour"
   },
   {
@@ -156,10 +151,5 @@
   },
   {
     "icon": "return_to_the_wages_of_sin"
-  },
-  {
-    "icon": "return_to_in_the_clutches_of_chaos",
-    "top": 2.5,
-    "left": 4
   }
 ]
