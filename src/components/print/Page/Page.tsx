@@ -3,7 +3,7 @@ import S from './Page.module.scss';
 import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { PageOrientation, PageSide, PageSize } from '@/types/print';
-import { PageCredits } from '@/components/containers/PageCredits/PageCredits';
+import { CREDITS_HEIGHT, PageCredits } from '@/components/containers/PageCredits/PageCredits';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
 import { selectBleed, selectPageOrientation, selectPageSizeType } from '@/store/features/print/print';
@@ -18,7 +18,7 @@ export type PageProps = PropsWithClassName & PropsWithChildren & {
   rows: number;
 }
 
-const CREDITS_HEIGHT = 20;
+
 const COUNTER_SIZE = 10;
 
 export const Page = ({ 
@@ -51,14 +51,14 @@ export const Page = ({
   })
 
   const showCredits = freeHeight >= CREDITS_HEIGHT;
+
   const rotateCounter = freeWidth / 2 < COUNTER_SIZE && freeHeight / 2 < COUNTER_SIZE;
 
   const classList = classNames(
     S.container, 
     S[`side_${side}`],
     className,
-    isLast ? S.last : S.page,
-    showCredits && isLast && S.withCredits
+    isLast ? S.last : S.page
   );
 
   return (
@@ -66,6 +66,9 @@ export const Page = ({
       className={classList}
       $portrait={pageOrientation === PageOrientation.PORTRAIT}
       $size={size}
+      $freeHeight={freeHeight}
+      $showCredits={showCredits}
+      $isLast={isLast}
     >
       {children}
 

@@ -10,6 +10,8 @@ import { selectCategoryId } from '@/store/features/layout/layout';
 import { BOOSTY_LINK } from '@/constants/app';
 import { useTranslation } from 'react-i18next';
 
+export const CREDITS_HEIGHT = 20;
+
 export type PageCreditsLocalProps = PropsWithClassName & {
   link: string,
   name: string,

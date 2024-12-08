@@ -1,10 +1,20 @@
+import { CREDITS_HEIGHT } from "@/components/containers/PageCredits/PageCredits";
 import { IBox } from "@/types/units";
 import styled, { css } from "styled-components";
+
+
 
 export const Container = styled.div<{
   $portrait: boolean
   $size: IBox
+  $freeHeight: number
+  $showCredits: boolean
+  $isLast: boolean
 }>`
+  ${({ $showCredits, $freeHeight, $isLast }) => $isLast && $showCredits && css`
+    align-items: start;
+    padding-top: ${Math.min($freeHeight - CREDITS_HEIGHT, 10)}mm;
+  `}
   ${({ $portrait, $size }) => $portrait && css`
     width: ${$size.width}mm;
     height: ${$size.height}mm;
