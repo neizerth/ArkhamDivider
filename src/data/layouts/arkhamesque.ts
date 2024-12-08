@@ -56,7 +56,6 @@ export const arkhamesqueClassicLayouts: ILayout[] = [
 ]
 
 export const arkhamesqueCategory: ILayoutCategory = {
-  unlisted: true,
   id: "arkhamesque-classic",
   name: "Arkhamesque Classic",
   info: "Arkhamesque Classic Horizontal Dividers",
