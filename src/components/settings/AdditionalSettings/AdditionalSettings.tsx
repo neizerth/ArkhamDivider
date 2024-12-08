@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import S from './AdditionalSettings.module.scss';
 import { DownloadZIPButton } from '@/actions/DownloadZIPButton/DownloadZIPButton';
-import { LayoutGridSettings } from '../LayoutGridSettings/LayoutGridSettings';
+import { PageSizeSettings } from '../PageSizeSettings/PageSizeSettings';
 
 export type AdditionalSettingsProps = {
 
@@ -24,9 +24,8 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
       {display && (
         <div className={S.panel}>
           <div className={S.item}>
-            <LayoutGridSettings/>
+            <PageSizeSettings/>
           </div>
-         
           <div className={S.item}>
             <DownloadZIPButton/>
           </div>

@@ -1,5 +1,5 @@
 import { IPage, PageSide } from "@/types/print";
-import { splitIntoGroups } from "../util/common";
+import { splitIntoGroups, uniqId } from "../util/common";
 
 export type SplitIntoPagesOptions = {
   groupSize: number
@@ -8,7 +8,11 @@ export type SplitIntoPagesOptions = {
   merge?: boolean
 }
 
-export const splitIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
+type WithId = {
+  id: string
+}
+
+export const splitIntoPages = <T extends WithId>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
   const {
     doubleSidedPrint = false,
     groupSize,
@@ -27,7 +31,7 @@ export const splitIntoPages = <T>(data: T[], options: SplitIntoPagesOptions): IP
     return pages;
   }
 
-  return  createDoubleSidedPages(pages, {
+  return createDoubleSidedPages(pages, {
     groupSize,
     rowSize,
     merge
@@ -49,53 +53,62 @@ export type CreateDoubleSidedPagesOptions = {
   merge?: boolean
 }
 
-const cloneItems = <T>(rows: T[][], isLandscape: boolean) => {
+const cloneRow = <T extends WithId>(row: T[]) => 
+  row.map(item => ({
+    ...item,
+    id: uniqId()
+  }))
+
+const cloneItems = <T extends WithId>(rows: T[][], isLandscape: boolean) => {
   if (isLandscape) {
     return [
       ...rows,
-      ...rows.toReversed()
+      ...rows.toReversed().map(cloneRow)
     ]
   }
 
   return rows.reduce((target, row) => {
     return [
       ...target,
-      ...row.map(item => ([item, item]))
+      ...row
+        .map(item => ([item, item]))
+        .map(cloneRow)
     ];
   }, [] as T[][]);
 }
 
-export const createDoubleSidedPages = <T>(pages: IPage<T>[], options: CreateDoubleSidedPagesOptions) => pages.reduce((target, page, index): IPage<T>[] => {
-  const isLastGroup = index === pages.length - 1;
-  const { rowSize, groupSize, merge = false } = options;
-  const colSize = groupSize / rowSize;
-  const isLandscape = rowSize > colSize;
+export const createDoubleSidedPages = <T extends WithId>(pages: IPage<T>[], options: CreateDoubleSidedPagesOptions) => 
+  pages.reduce((target, page, index): IPage<T>[] => {
+    const isLastGroup = index === pages.length - 1;
+    const { rowSize, groupSize, merge = false } = options;
+    const colSize = groupSize / rowSize;
+    const isLandscape = rowSize > colSize;
 
-  if (isLastGroup && merge && canFitDoubleSide(page.rows, groupSize)) {
-    const rows = cloneItems(page.rows, isLandscape);
+    if (isLastGroup && merge && canFitDoubleSide(page.rows, groupSize)) {
+      const rows = cloneItems(page.rows, isLandscape);
+
+      return [
+        ...target,
+        {
+          pageNumber: page.pageNumber + 1,
+          side: PageSide.FRONT,
+          merged: true,
+          rows,
+          size: page.size
+        }
+      ]
+    }
+
+    const rows = page.rows.map(group => group.toReversed());
 
     return [
       ...target,
+      page,
       {
-        pageNumber: page.pageNumber + 1,
-        side: PageSide.FRONT,
-        merged: true,
+        pageNumber: page.pageNumber,
+        side: PageSide.BACK,
         rows,
         size: page.size
       }
-    ]
-  }
-
-  const rows = page.rows.map(group => group.toReversed());
-
-  return [
-    ...target,
-    page,
-    {
-      pageNumber: page.pageNumber,
-      side: PageSide.BACK,
-      rows,
-      size: page.size
-    }
-  ];
-}, [] as IPage<T>[]);
+    ];
+  }, [] as IPage<T>[]);

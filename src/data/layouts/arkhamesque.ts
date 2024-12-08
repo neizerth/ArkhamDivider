@@ -1,15 +1,11 @@
 import { BASE_PATH } from '@/constants/app';
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from '@/types/layouts';
-import { PageOrientation } from '@/types/print';
 
 const arkhamesqueClassicLayoutBase = {
   types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
   orientation: LayoutOrientation.HORIZONTAL,
-  pageOrientation: PageOrientation.PORTRAIT,
   color: true,
   async: true,
-  rowSize: 2,
-  groupSize: 6,
   campaignOptions: {
     includeCampaignIcon: true,
     includeScenarioSize: false,

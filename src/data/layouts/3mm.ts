@@ -1,18 +1,14 @@
 import { BASE_PATH } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
-import { PageOrientation } from "@/types/print";
 
 export const arkhamStarter3mmLayout: ILayout = {
   id: "3mm",
   categoryId: "3mm",
   title: "3mm",
   types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
-  pageOrientation: PageOrientation.PORTRAIT,
   orientation: LayoutOrientation.HORIZONTAL,
   maxCreditsGroupSize: 6,
   color: true,
-  rowSize: 2,
-  groupSize: 8,
   width: 93,
   height: 67,
   bleed: {

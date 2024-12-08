@@ -1,17 +1,13 @@
 import { BASE_PATH } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
-import { PageOrientation } from "@/types/print";
 
 export const common = {
   categoryId: "classic",
   title: "Classic",
   types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
-  pageOrientation: PageOrientation.PORTRAIT,
 }
 
 export const horizontal = {
-  rowSize: 2,
-  groupSize: 6,
   width: 88.9,
   height: 76.2,
   bleed: {
@@ -25,8 +21,6 @@ export const horizontal = {
 }
 
 export const vertical = {
-  rowSize: 3,
-  groupSize: 6,
   height: 100,
   width: 63,
   bleed: {
@@ -40,8 +34,6 @@ export const vertical = {
 }
 
 export const verticalForSleeves = {
-  rowSize: 3,
-  groupSize: 6,
   height: 100,
   width: 65,
   bleed: {

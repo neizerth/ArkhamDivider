@@ -1,6 +1,5 @@
 import { BASE_PATH, BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
-import { PageOrientation } from "@/types/print";
 
 export enum ArkhamDecoDividerType {
   TAB = 'tab'
@@ -21,7 +20,6 @@ export const common = {
   categoryId: "arkham-deco",
   title: "Arkham Deco",
   types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
-  pageOrientation: PageOrientation.PORTRAIT,
   maxCreditsGroupSize: 6,
   campaignOptions: {
     includeCampaignIcon: true
@@ -33,8 +31,6 @@ export const common = {
 }
 
 export const horizontal = {
-  rowSize: 2,
-  groupSize: 8,
   width: 94,
   height: 68.5,
   bleed: {
@@ -45,8 +41,6 @@ export const horizontal = {
 }
 
 export const vertical = {
-  rowSize: 3,
-  groupSize: 6,
   width: 62,
   height: 96,
   bleed: {
@@ -60,8 +54,6 @@ export const vertical = {
 }
 
 export const horizontalDeckbox = {
-  rowSize: 2,
-  groupSize: 8,
   width: 94,
   height: 70,
   bleed: {
@@ -75,8 +67,6 @@ export const horizontalDeckbox = {
 }
 
 export const horizontalSmall = {
-  rowSize: 2,
-  groupSize: 8,
   width: 94,
   height: 67,
   bleed: {

@@ -17,9 +17,9 @@ export const layouts: ILayout[] = [
 ]
 
 export const layoutCategories: ILayoutCategory[] = [
-  arkhamesqueCategory,
   classicLayoutCategory,
   invocation2018LayoutCategory,
+  arkhamesqueCategory,
   sarnetskyLayoutCategory,
   arkhamDecoCategory,
   arkhamStarter3mmLayoutCategory,

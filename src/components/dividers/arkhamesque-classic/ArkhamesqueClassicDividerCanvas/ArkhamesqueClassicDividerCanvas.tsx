@@ -9,7 +9,7 @@ import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassi
 import { memo, useEffect, useRef, useState } from 'react';
 import useImage from 'use-image';
 import Konva from 'konva';
-import { IS_DEVELOPMENT } from '@/constants/app';
+import { ARKHAMESQUE_RENDER_DEBUG } from '@/constants/app';
 import { selectIcons } from '@/store/features/icons/icons';
 import { propEq } from 'ramda';
 
@@ -87,13 +87,12 @@ export const ArkhamesqueClassicDividerCanvas = ({
       return;
     }
     URL.revokeObjectURL(url);
-  
     setIsRendered(true);
     props.onRender();
   }
 
   // const devMode = IS_DEVELOPMENT;
-  const devMode = IS_DEVELOPMENT;
+  const devMode = ARKHAMESQUE_RENDER_DEBUG;
   const showCanvas = (isLoaded && !url && !isRendered) || devMode;
 
   return (

@@ -2,7 +2,7 @@ import { ActionCreator, createSlice } from '@reduxjs/toolkit';
 
 import { createSliceSetter, createSliceSelector } from '@/util/slice';
 import { IDividerList } from '@/types/dividers';
-import { AppThunk } from '@/store';
+import { AppSelector, AppThunk } from '@/store';
 import { propEq } from 'ramda';
 import { uniqId } from '@/util/common';
 import { setType } from '../layout/layout';
@@ -12,12 +12,14 @@ import { IStory } from '@/types/api';
 export type IDividersState = {
   list: IDividerList,
   story?: IStory
+  loadQueue: string[]
   loadIndex: number
 }
 
 const initialState: IDividersState = {
   list: [],
   loadIndex: 0,
+  loadQueue: []
 };
 
 export const dividers = createSlice({
@@ -27,12 +29,12 @@ export const dividers = createSlice({
     ...reducers,
     setDividers: createSliceSetter('list'),
     setStory: createSliceSetter('story'),
-    setLoadIndex: createSliceSetter('loadIndex')
+    setLoadQueue: createSliceSetter('loadQueue')
   },
   selectors: {
     selectDividers: createSliceSelector('list'),
     selectStory: createSliceSelector('story'),
-    selectLoadIndex: createSliceSelector('loadIndex'),
+    selectLoadQueue: createSliceSelector('loadQueue'),
   },
   extraReducers(builder) {
     builder.addCase(setType, (state) => {
@@ -58,8 +60,11 @@ export const addDividers: ActionCreator<AppThunk> = (dividers: IDividerList) =>
 
 export const setNextLoadIndex: ActionCreator<AppThunk> = () => (dispatch, getState) => {
   const state = getState();
-  const index = selectLoadIndex(state);
-  dispatch(setLoadIndex(index + 1));
+  const loadQueue = selectLoadQueue(state);
+  
+  dispatch(setLoadQueue(
+    loadQueue.slice(1)
+  ));
 }
 
 export const removeDivider: ActionCreator<AppThunk> = (id: string) =>
@@ -67,9 +72,12 @@ export const removeDivider: ActionCreator<AppThunk> = (id: string) =>
     const state = getState();
     const data = selectDividers(state)
       .filter(divider => divider.id !== id);
-    const loadIndex = selectLoadIndex(state);
+    const loadQueue = selectLoadQueue(state);
     dispatch(setDividers(data));
-    dispatch(setLoadIndex(loadIndex - 1));
+
+    dispatch(setLoadQueue(
+      loadQueue.filter(dividerId => dividerId !== id)
+    ));
   }
 
 export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
@@ -89,20 +97,36 @@ export const copyDivider: ActionCreator<AppThunk> = (id: string) =>
       },
       ...data.slice(index)
     ]));
-    dispatch(setNextLoadIndex());
   }
+
+export const addLoadIndex: ActionCreator<AppThunk> = (id: string) =>
+  (dispatch, getState) => {
+    const state = getState();
+    const loadQueue = selectLoadQueue(state);
+
+    if (loadQueue.includes(id)) {
+      return;
+    }
+
+    dispatch(setLoadQueue([
+     ...loadQueue,
+     id
+    ]));
+  }
+
+export const selectLoadIndex: AppSelector = ({ dividers }) => dividers.loadQueue[0];  
 
 export const {
   setDividers,
   removeAllDividers,
   setStory,
-  setLoadIndex
+  setLoadQueue
 } = dividers.actions;
 
 export const {
   selectDividers,
   selectStory,
-  selectLoadIndex
+  selectLoadQueue
 } = dividers.selectors;
 
 export default dividers.reducer;
