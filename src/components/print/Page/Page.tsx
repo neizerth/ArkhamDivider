@@ -15,6 +15,7 @@ export type PageProps = PropsWithClassName & PropsWithChildren & {
   pageNumber: number;
   pagesTotal: number; 
   isLast: boolean;
+  rows: number;
 }
 
 const CREDITS_HEIGHT = 20;
@@ -24,6 +25,7 @@ export const Page = ({
   isLast = false,
   pageNumber,
   pagesTotal,
+  rows,
   className, 
   children,
   side
@@ -37,7 +39,7 @@ export const Page = ({
 
   const pageHeight = pageOrientation === PageOrientation.PORTRAIT ? size.height : size.width;
   
-  const freeSpace = pageHeight % height;
+  const freeSpace = pageHeight - rows * height;
   
   const showCredits = freeSpace >= CREDITS_HEIGHT;
 

@@ -33,7 +33,7 @@ export const Layout = ({ }: LayoutProps) => {
 				zoom={zoom}
 			>
 				<div className={S.groups}>
-					{pages.map(({ side, rows, pageNumber }, pageIndex) => (
+					{pages.map(({ side, rows, pageNumber, size }, pageIndex) => (
 						<Page 
 							className={S.page}
 							side={side}
@@ -41,6 +41,7 @@ export const Layout = ({ }: LayoutProps) => {
 							pageNumber={pageNumber}
 							pagesTotal={pagesTotal}
 							isLast={pageNumber === pagesTotal}
+							rows={rows.length}
 							key={pageIndex}
 						>
 							<div className={S.group}>
