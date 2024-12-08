@@ -33,7 +33,7 @@ export const Layout = ({ }: LayoutProps) => {
 				zoom={zoom}
 			>
 				<div className={S.groups}>
-					{pages.map(({ side, rows, pageNumber, size }, pageIndex) => (
+					{pages.map(({ side, rows, pageNumber }, pageIndex) => (
 						<Page 
 							className={S.page}
 							side={side}

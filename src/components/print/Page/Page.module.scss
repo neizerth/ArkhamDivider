@@ -64,10 +64,13 @@
   position: absolute;
   z-index: 2;
   font-size: 2.2mm;
-  top: 2mm;
-  right: 2mm;
-  transform: rotate(-90deg);
-  transform-origin: bottom right;
+  top: 1.5mm;
+  right: 1.5mm;
+  &_rotated {
+    right: 1.5mm;
+    transform: rotate(-90deg);
+    transform-origin: bottom right;
+  }
 }
 
 .credits {

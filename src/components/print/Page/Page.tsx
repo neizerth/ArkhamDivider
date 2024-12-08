@@ -19,6 +19,7 @@ export type PageProps = PropsWithClassName & PropsWithChildren & {
 }
 
 const CREDITS_HEIGHT = 20;
+const COUNTER_SIZE = 10;
 
 export const Page = ({ 
   showPageSide = false,
@@ -34,14 +35,23 @@ export const Page = ({
   const pageOrientation = useAppSelector(selectPageOrientation);
   const bleed = useAppSelector(selectBleed);
   const layout = useAppSelector(selectLayout);
-  const { height } = bleed ? layout.bleed : layout;
+  const { width, height } = bleed ? layout.bleed : layout;
   const size = PageSize[pageSizeType];
 
-  const pageHeight = pageOrientation === PageOrientation.PORTRAIT ? size.height : size.width;
+  const [pageWidth, pageHeight] = pageOrientation === PageOrientation.PORTRAIT ? 
+    [size.width, size.height] : [size.height, size.width];
   
-  const freeSpace = pageHeight - rows * height;
-  
-  const showCredits = freeSpace >= CREDITS_HEIGHT;
+  const freeHeight = pageHeight - rows * height;
+  const freeWidth = pageWidth % width;
+
+  console.log({
+    freeWidth,
+    width,
+    pageWidth
+  })
+
+  const showCredits = freeHeight >= CREDITS_HEIGHT;
+  const rotateCounter = freeWidth / 2 < COUNTER_SIZE && freeHeight / 2 < COUNTER_SIZE;
 
   const classList = classNames(
     S.container, 
@@ -59,7 +69,12 @@ export const Page = ({
     >
       {children}
 
-      <div className={S.counter}>
+      <div 
+        className={classNames(
+          S.counter,
+          rotateCounter && S.counter_rotated
+        )}
+      >
         {pageNumber} 
         {showPageSide && (side === PageSide.FRONT ? 'A' : 'B')} / {pagesTotal}
       </div>
