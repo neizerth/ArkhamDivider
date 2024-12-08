@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
 import { LayoutFilter, LanguageSelect, PrintSettings, Row, Button, Icon, LayoutZoom } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDividers, selectLoadIndex, selectLoadQueue } from '@/store/features/dividers/dividers';
+import { selectDividers, selectLoadQueue } from '@/store/features/dividers/dividers';
 import { AdditionalSettings } from '../AdditionalSettings/AdditionalSettings';
 import classNames from 'classnames';
 import { selectLayout } from '@/store/features/layout/layout';

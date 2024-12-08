@@ -12,7 +12,6 @@ import Konva from 'konva';
 import { ARKHAMESQUE_RENDER_DEBUG } from '@/constants/app';
 import { selectIcons } from '@/store/features/icons/icons';
 import { propEq } from 'ramda';
-import { delay } from '@/util/common';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
   previewIcon?: string | false

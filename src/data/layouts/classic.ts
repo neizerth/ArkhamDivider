@@ -1,6 +1,5 @@
 import { BASE_PATH } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
-import { PageOrientation } from "@/types/print";
 
 export const common = {
   categoryId: "classic",
