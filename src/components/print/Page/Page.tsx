@@ -44,12 +44,6 @@ export const Page = ({
   const freeHeight = pageHeight - rows * height;
   const freeWidth = pageWidth % width;
 
-  console.log({
-    freeWidth,
-    width,
-    pageWidth
-  })
-
   const showCredits = freeHeight >= CREDITS_HEIGHT;
 
   const rotateCounter = freeWidth / 2 < COUNTER_SIZE && freeHeight / 2 < COUNTER_SIZE;
