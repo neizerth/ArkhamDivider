@@ -1,5 +1,4 @@
 import { AddPlayerDividersOptions, AddStoryDividersOptions } from "@/store/features/addDividers/addDividers"
-import { PageOrientation } from "./print"
 import { Mapping } from "./util"
 
 export type ILayoutBleed = {
@@ -16,12 +15,9 @@ export type ILayout = {
   categoryId: string
   width: number
   height: number
-  rowSize: number
-  groupSize: number
   title: string
   types: LayoutType[]
   orientation: LayoutOrientation
-  pageOrientation: PageOrientation
   isDefault?: boolean
   color: boolean
   bleed: ILayoutBleed,

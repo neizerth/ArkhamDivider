@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
 import { LayoutFilter, LanguageSelect, PrintSettings, Row, Button, Icon, LayoutZoom } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDividers, selectLoadIndex } from '@/store/features/dividers/dividers';
+import { selectDividers, selectLoadIndex, selectLoadQueue } from '@/store/features/dividers/dividers';
 import { AdditionalSettings } from '../AdditionalSettings/AdditionalSettings';
 import classNames from 'classnames';
 import { selectLayout } from '@/store/features/layout/layout';
@@ -12,10 +12,10 @@ export const AppSettings = () => {
   const { t } = useTranslation();
   const print = () => window.print();
   const dividers = useAppSelector(selectDividers);
-  const loadIndex = useAppSelector(selectLoadIndex);
+  const loadQueue = useAppSelector(selectLoadQueue);
   const layout = useAppSelector(selectLayout);
 
-  const canPrint = !layout.async || loadIndex >= dividers.length;
+  const canPrint = !layout.async || loadQueue.length === 0;
 
   return (
     <div className={S.container}>

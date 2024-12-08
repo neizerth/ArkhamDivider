@@ -1,6 +1,4 @@
 .container {
-  --long-side: 297mm;
-  --short-side: 210mm;
   
   box-sizing: border-box;
   padding: 20mm 0;
@@ -45,48 +43,10 @@
   align-items: start;
   padding-top: 15mm;
 }
-
-.portrait {
-  width: var(--short-side);
-  height: var(--long-side);
-  @media print {
-    width: auto;
-    // min-height: 100vh;
-    // height: auto;
-    max-height: var(--long-side);
-  }
-}
-
 // .browser_chrome {
 //   @extend .with_margins;
 // }
 
-
-.landscape {
-  width: var(--long-side);
-  height: var(--short-side);
-  @media print {
-    width: auto;
-    // height: auto;
-    // min-height: 100vh;
-    max-height: var(--short-side);
-  }
-}
-
-.browser_safari {
-  // padding: 14.5mm 6.5mm;
-  // @media print {
-  //   padding: 14.5mm 6.5mm;
-  // }
-  @media print {
-    page-break-after: auto;
-    display: block;
-    &.landscape,
-    &.portrait {
-      height: auto;
-    }
-  }
-}
 
 .side_back {
   background-color: #f3f3f3;

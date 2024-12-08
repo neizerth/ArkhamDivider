@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { useIconSelect } from '@/hooks/useIconSelect';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { getDividerData } from './data/getDividerData';
 import { useSelector } from 'react-redux';
 import { selectArkhamesqueData } from '@/store/features/arkhamesque/arkhamesque';
@@ -16,10 +16,11 @@ import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
-import { ArkhamesqueClassicDividerCanvas as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
-import { selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
+import { ArkhamesqueClassicDividerCanvasMemo as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
+import { addLoadIndex, selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
+import { delay } from '@/util/common';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -41,6 +42,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const language = useSelector(selectLanguage);
   const data = useSelector(selectArkhamesqueData);
   const loadIndex = useSelector(selectLoadIndex);
+
 	const { t } = useStoryTranslation(story);
 
   const translatedName = t(name);
@@ -61,26 +63,34 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 
   const [isRendered, setIsRendered] = useState(false);
 
-  const onRender = async () => {
 
-    // console.log('render!', index, loadIndex, isRendered)
-    if (index !== loadIndex) {
+  const isLoading = id === loadIndex;
+
+  useLayoutEffect(() => {
+    setIsRendered(false);
+  }, [specialIcon, icon]);
+
+  useEffect(() => {
+    if (isRendered) {
       return;
     }
+    dispatch(addLoadIndex(id));
+  }, [isRendered, id])
+
+  const onRender = async () => {
+
     setIsRendered(true);
-    dispatch(setNextLoadIndex());
+    // console.log('render!', index, loadIndex, isRendered)
+    if (isLoading) {
+      await delay(100);
+      dispatch(setNextLoadIndex());
+    }
   }
 
   const item = data && getDividerData({
     data,
     divider: props
   });
-
-  useEffect(() => {
-    if (item?.image) {
-      setIsRendered(false);
-    }
-  }, [item?.image])
 
   const titleInputClassName = classNames(
     S.titleInput
@@ -91,7 +101,8 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const showSpecialIcon = item?.icon !== false;
   const showXP = item?.xp !== false;
 
-  const readyToRender = index <= loadIndex;
+
+  const showCanvas = isLoading || isRendered;
 
   return (
     <div 
@@ -111,12 +122,16 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
         {item && (
           <>
             {!isRendered && (
-              <div className={S.loader}>
-                <Icon icon='hour-glass'/>
+              <div className={classNames(
+                S.loader,
+                isRendered && S.loaded
+              )}>
+              
+                <Icon icon={isLoading ? 'action' : 'hour-glass' }/>
               </div>
             )}
             {isRendered && (
-              <>
+              <div className={S.renderContent}>
                 {item.scenario && scenarioNumber && (
                   <div className={S.specialText}>
                     <TextFit text={scenarioNumber} className={S.specialTextContainer}/>
@@ -153,10 +168,10 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                 <NotExportable>
                   <DividerMenu id={id} className={S.menu}/>
                 </NotExportable>
-              </>
+              </div>
             )}
 
-            {readyToRender && (
+            {showCanvas && (
               <Canvas
                 className={S.canvas}
                 image={item.image}

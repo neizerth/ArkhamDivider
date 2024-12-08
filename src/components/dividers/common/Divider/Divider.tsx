@@ -9,6 +9,7 @@ import { SarnetskyDivider } from '@/components/dividers/sarnetsky/SarnetskyDivid
 import { ArkhamDecoDivider } from '@/components/dividers/arkham-deco/ArkhamDecoDivider/ArkhamDecoDivider';
 import { ArkhamStarter3mmDivider } from '../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider';
 import { ArkhamesqueClassicDivider } from '../../arkhamesque-classic/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider';
+import { memo } from 'react';
 
 export type DividerProps = PropsWithClassName & IDivider & {
 	index: number
@@ -28,3 +29,5 @@ export const Divider = (props: DividerProps) => {
     </>
   );
 }
+
+export const DividerMemo = memo(Divider);

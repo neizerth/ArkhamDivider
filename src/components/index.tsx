@@ -15,7 +15,7 @@ export { LayoutZoom }  from './containers/LayoutZoom/LayoutZoom';
 
 export { ClassicDivider } from './dividers/classic/ClassicDivider/ClassicDivider';
 export { ClassicDividerSideXP } from './dividers/classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
-export { Divider } from './dividers/common/Divider/Divider';
+export { Divider, DividerMemo } from './dividers/common/Divider/Divider';
 export { DividerMenu } from './dividers/common/DividerMenu/DividerMenu';
 export { DividerText } from './dividers/common/DividerText/DividerText';
 export { DividerContent } from './dividers/common/DividerContent/DividerContent';
@@ -46,7 +46,7 @@ export { ToggleSelect } from './ui/select/ToggleSelect/ToggleSelect';
 
 export { Guides } from './print/Guides/Guides';
 export { Guide } from './print/Guide/Guide';
-export { A4 } from './print/A4/A4';
+export { Page } from './print/Page/Page';
 
 export { AppLoader } from './loaders/AppLoader/AppLoader';
 
@@ -62,7 +62,6 @@ export { StorySelect, StorySelectOption, StorySelectValue } from './filters/stor
 
 export { AppSettings } from './settings/AppSettings/AppSettings';
 export { PrintSettings } from './settings/PrintSettings/PrintSettings';
-export { LayoutGridSettings } from './settings/LayoutGridSettings/LayoutGridSettings';
 
 export { CategoriesMenu } from './layout/CategoriesMenu/CategoriesMenu';
 export { LayoutMenu } from './layout/LayoutMenu/LayoutMenu';
