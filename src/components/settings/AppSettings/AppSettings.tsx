@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
-import { LayoutFilter, LanguageSelect, PrintSettings, Row, Button, Icon, LayoutZoom } from '@/components';
+import { LayoutFilter, LanguageSelect, PrintSettings, Row, Button, Icon } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectDividers, selectLoadQueue } from '@/store/features/dividers/dividers';
 import { AdditionalSettings } from '../AdditionalSettings/AdditionalSettings';
@@ -35,9 +35,6 @@ export const AppSettings = () => {
               <AdditionalSettings/>
             </div>
             <Row className={classNames(S.row, S.mainRow)} gap={'responsive'}>
-              <div className={S.zoom}>
-                <LayoutZoom/>
-              </div>
               <div className={S.printSettings}>
                 <PrintSettings/>
               </div>

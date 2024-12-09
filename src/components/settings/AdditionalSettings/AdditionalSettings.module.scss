@@ -19,9 +19,10 @@
   position: absolute;
   z-index: 2;
   width: max-content;
-  top: calc(100% + 16px);
+  top: calc(100% + 15px);
   left: -15px;
   display: flex;
+  flex-direction: column;
   padding: 10px 15px 10px 15px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 0 0 5px 5px;
