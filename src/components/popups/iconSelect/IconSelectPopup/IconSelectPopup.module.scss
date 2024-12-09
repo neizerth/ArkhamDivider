@@ -1,7 +1,44 @@
 .sidebar {
-  width: 200px;
+  width: 100%;
+  margin: 0 auto;
+  order: 1;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+
+  flex-direction: column;
+}
+
+.view {
+  order: 2;
+}
+
+.content {
+  overflow: auto;
 }
 
 .actions {
   justify-content: space-between;
+}
+
+.nav {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .row {
+    flex-direction: row;
+  }
+  .sidebar {
+    order: 2;
+    max-width: 200px;
+  }
+  .view {
+    order: 1;
+  }
+  .nav {
+    display: block;
+  }
 }

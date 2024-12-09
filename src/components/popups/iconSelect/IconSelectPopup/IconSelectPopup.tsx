@@ -15,6 +15,7 @@ import useScrollSpy from 'react-use-scrollspy';
 import { IconSelectView } from '../IconSelectView/IconSelectView';
 import { IconSelectNav } from '../IconSelectNav/IconSelectNav';
 import { IconSelectPreview } from '../IconSelectPreview/IconSelectPreview';
+import classNames from 'classnames';
 
 export type IconSelectPopupProps = PopupProps & {
 
@@ -75,34 +76,41 @@ export const IconSelectPopup = ({
     <Popup
       show={show}
       className={className}
-      contentClassName={contentClassName}
+      contentClassName={classNames(
+        contentClassName,
+        S.content
+      )}
       scrollable={false}
     >
       <Col>
-        <Row>
-          {useMemo(() => (
-            <IconSelectView
-              iconGroups={iconGroups}
-              ref={viewRef}
-              sectionRefs={sectionRefs.current}
-              defaultIcon={selectedIcon}
-              onChange={selectIcon}
-            />
-          ), [sectionRefs, selectedIcon])}
+        <div className={S.row}>
+          <div className={S.view}>
+            {useMemo(() => (
+              <IconSelectView
+                iconGroups={iconGroups}
+                ref={viewRef}
+                sectionRefs={sectionRefs.current}
+                defaultIcon={selectedIcon}
+                onChange={selectIcon}
+              />
+            ), [sectionRefs, selectedIcon])}
+          </div>
 
           <Col className={S.sidebar}>
             <IconSelectPreview
               defaultIcon={selectedIcon}
               onChange={selectIcon}
             />
-            <IconSelectNav
-              activeSection={activeSection}
-              icon={selectedIcon}
-              iconGroups={iconGroups}
-              sectionRefs={sectionRefs.current}
-            />
+            <div className={S.nav}>
+              <IconSelectNav
+                activeSection={activeSection}
+                icon={selectedIcon}
+                iconGroups={iconGroups}
+                sectionRefs={sectionRefs.current}
+              />
+            </div>
           </Col>
-        </Row>
+        </div>
         <Row className={S.actions}>
           <Row>
             <Button onClick={select}>
