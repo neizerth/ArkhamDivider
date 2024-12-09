@@ -1,18 +1,10 @@
 import { Text } from "react-konva"
 import { IIconContainer } from "./features/size"
 import { getIconScale } from "@/components/ui/icons/FontIcon/getIconScale"
-import icons from './icons';
+import icons from '../../../../data/icons';
 import { propEq } from "ramda"
 import { IconScaleFactor } from "@/types/icons";
 import { IIcon } from "@/types/api";
-
-export type IIconTransform = {
-  icon: string
-  left?: number
-  top?: number
-  scale?: number
-  type?: string
-}
 
 export type ArkhamesqueClassicDividerCanvasIconProps = {
   icon: IIcon
@@ -41,7 +33,7 @@ export const ArkhamesqueClassicDividerCanvasIcon = ({
 		circled,
 	});
 
-  const iconDataList = icons.filter(propEq(icon.icon, 'icon')) as IIconTransform[];
+  const iconDataList = icons.filter(propEq(icon.icon, 'icon'))
 
   const iconData = iconDataList.find(icon => icon.type === type) || iconDataList[0];
   const dX = iconData?.left || 0;
@@ -56,7 +48,7 @@ export const ArkhamesqueClassicDividerCanvasIcon = ({
   const width = icon.width * height / icon.height;
 
   const x = container.x + left + dX + (container.width - width) / 2;
-  const y = container.y + top + + dY + (container.height - height) / 2;
+  const y = container.y + top + dY + (container.height - height) / 2;
 
   const text = String.fromCharCode(icon.code);
 

@@ -16,3 +16,11 @@ export type IconScaleFactor = {
   circled?: number
   regular?: number
 }
+
+export type IIconTransform = {
+  icon: string
+  left?: number
+  top?: number
+  scale?: number
+  type?: string
+}

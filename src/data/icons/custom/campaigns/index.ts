@@ -5,6 +5,7 @@ import zcp from './zcp.json'
 import zcf from './zcf.json'
 import zdm from './zdm.json'
 import jumanji from './jumanji.json'
+import celtic_rising from './celtic_rising.json'
 
 export default [
   ...ages_unwound,
@@ -13,5 +14,6 @@ export default [
   ...zcp,
   ...zcf,
   ...zdm,
-  ...jumanji
+  ...jumanji,
+  ...celtic_rising
 ]

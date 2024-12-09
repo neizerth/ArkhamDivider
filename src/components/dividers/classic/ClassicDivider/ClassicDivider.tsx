@@ -17,6 +17,7 @@ import { definedIf } from '@/util/common';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { CircleIcon } from '@/components/ui/icons/CircleIcon/CircleIcon';
 
 export type ClassicDividerProps = DividerProps & PropsWithChildren &{
 	titleStroke?: boolean
@@ -139,10 +140,10 @@ export const ClassicDivider = ({
 						)}
 					>
 						<div className={S.iconSelect} onClick={selectPreviewIcon}/>
-						<Icon 
+						<CircleIcon 
 							icon={previewIcon} 
 							className={S.iconItem}
-							scaleType={'circle'}
+							containerClassName={S.iconContainer}
 							scaleFactor={{
 								circled: 0.97,
 								all: 0.99

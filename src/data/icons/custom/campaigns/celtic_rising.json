@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "celtic_rising-pests",
+    "top": -4
+  },
+  {
+    "icon": "celtic_rising-celtic_evils",
+    "top": -3
+  },
+  {
+    "icon": "celtic_rising-the_deep_woods",
+    "top": 10
+  },
+  {
+    "icon": "celtic_rising-beyond_the_grave",
+    "top": 4
+  },
+  {
+    "icon": "celtic_rising-cave_path",
+    "scale": 0.9,
+    "top": -12,
+    "left": 2
+  },
+  {
+    "icon": "celtic_rising-losing_hope",
+    "top": 8
+  },
+  {
+    "icon": "celtic_rising-caorthannachs_song",
+    "scale": 0.95
+  }
+]

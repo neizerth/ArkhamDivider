@@ -54,5 +54,15 @@
   {
     "icon": "wendigos_myth",
     "top": 2
+  },
+  {
+    "icon": "return_to_the_wendigo-spoils_of_hanninah",
+    "scale": 0.65,
+    "left": 2,
+    "top": 14
+  },
+  {
+    "icon": "return_to_consternation_on_the_constellation-save_our_ship",
+    "scale": 0.8
   }
 ]
