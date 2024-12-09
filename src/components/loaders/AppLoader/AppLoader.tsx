@@ -2,14 +2,19 @@ import { PropsWithChildren } from 'react';
 import S from './AppLoader.module.scss';
 import classNames from 'classnames';
 
-import loader from './images/loader.gif';
+import { BASE_PATH } from "@/constants/app";
+
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLoading, selectLoadingStatus } from '@/store/features/app/app';
 import { Progress } from '@/components';
 
+const loader = BASE_PATH + 'images/loader.gif';
+
+
 export type AppLoaderProps = PropsWithChildren & {
 	
 }
+
 
 export const AppLoader = ({ children }: AppLoaderProps) => {
 
