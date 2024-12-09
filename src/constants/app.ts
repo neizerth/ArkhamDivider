@@ -1,4 +1,4 @@
-export const BASE_PATH = import.meta.env.APP_BASE_PATH || '/ArkhamDivider'
+export const BASE_PATH = import.meta.env.APP_BASE_PATH || process.env.APP_BASE_PATH;
 export const API_URL = import.meta.env.VITE_BASE_URL;
 export const ARKHAMESQUE_URL = import.meta.env.VITE_ARKHAMESQUE_URL;
 
