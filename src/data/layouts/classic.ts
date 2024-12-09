@@ -103,7 +103,7 @@ export const classicLayoutCategory: ILayoutCategory = {
   info: 'Classic Return To... Dividers',
   author: {
     name: 'Fantasy Flight Games',
-    image: BASE_PATH + '/images/ffg.png',
+    image: BASE_PATH + 'images/ffg.png',
     url: 'https://www.fantasyflightgames.com/',
     contacts: [
       {
