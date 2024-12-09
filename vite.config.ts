@@ -38,7 +38,7 @@ export default defineConfig({
       metrica
     })
   ],
-  base: process.env.APP_BASE_PATH || '/ArkhamDivider/',
+  base: process.env.APP_BASE_PATH,
   build: {
     outDir: process.env.APP_BUILD_DIR || 'dist'
   },
