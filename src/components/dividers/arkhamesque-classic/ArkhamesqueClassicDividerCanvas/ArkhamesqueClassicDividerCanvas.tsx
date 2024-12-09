@@ -77,7 +77,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
       if (!url) {
         return;
       }
-
+      URL.revokeObjectURL(url);
       image?.remove();
     }
   }, [ref, previewIcon, specialIcon, image, isLoaded])
@@ -86,7 +86,7 @@ export const ArkhamesqueClassicDividerCanvas = ({
     if (!url) {
       return;
     }
-    URL.revokeObjectURL(url);
+    // URL.revokeObjectURL(url);
     setIsRendered(true);
     props.onRender();
   }
