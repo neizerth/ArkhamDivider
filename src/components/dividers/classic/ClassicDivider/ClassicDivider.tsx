@@ -135,7 +135,7 @@ export const ClassicDivider = ({
 							S.icon, 
 							S.icon_small,
 							S[`icon_small_${icon}`],
-							xpCost && xpCost.level > 0 ? S.icon_small_withXP : S.icon_small_noXP
+							xpCost && cardType && xpCost.level > 0 ? S.icon_small_withXP : S.icon_small_noXP
 						)}
 					>
 						<div className={S.iconSelect} onClick={selectPreviewIcon}/>
