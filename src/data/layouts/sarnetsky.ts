@@ -60,7 +60,7 @@ export const sarnetskyLayoutCategory: ILayoutCategory = {
   // unlisted: true,
   author: {
     name: 'Eugene Sarnetsky',
-    image: BASE_PATH + '/images/authors/esarnetsky.jpg',
+    image: BASE_PATH + 'images/authors/esarnetsky.jpg',
     donationUrl: 'https://www.tinkoff.ru/cf/8OT6GkH6KwE',
     url: 'https://t.me/sarnetsky',
     contacts: [
