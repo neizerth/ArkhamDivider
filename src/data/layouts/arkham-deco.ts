@@ -183,7 +183,7 @@ export const arkhamDecoCategory: ILayoutCategory = {
   info: 'Compact Dividers',
   author: {
     name: 'Vladimir Yazykov',
-    image: BASE_PATH + '/images/neizerth.jpg',
+    image: BASE_PATH + 'images/neizerth.jpg',
     url: 'https://github.com/neizerth',
     donationUrl: BOOSTY_LINK,
     contacts: [
