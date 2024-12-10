@@ -6,6 +6,7 @@ import { selectDividers, selectLoadQueue } from '@/store/features/dividers/divid
 import { AdditionalSettings } from '../AdditionalSettings/AdditionalSettings';
 import classNames from 'classnames';
 import { selectLayout } from '@/store/features/layout/layout';
+import { useState } from 'react';
 
 
 export const AppSettings = () => {
@@ -14,12 +15,13 @@ export const AppSettings = () => {
   const dividers = useAppSelector(selectDividers);
   const loadQueue = useAppSelector(selectLoadQueue);
   const layout = useAppSelector(selectLayout);
+  const [showAdditional, setShowAdditional] = useState(false);
 
   const canPrint = !layout.async || loadQueue.length === 0;
 
   return (
     <div className={S.container}>
-      <Row wrap className={S.row} gap={'responsive'}>
+      <Row wrap className={classNames(S.row, S.wrapper)} gap={'responsive'}>
         <Row wrap className={classNames(S.row, S.layoutRow)} gap={'responsive'}>
           <div className={S.languageSelect}>
             <LanguageSelect/>
@@ -31,8 +33,11 @@ export const AppSettings = () => {
         </Row>
         <div className={S.print}>
           <Row gap={'responsive'} wrap className={classNames(S.row, S.printRow)}>
-            <div className={S.additional}>
-              <AdditionalSettings/>
+            <div 
+              className={S.additionalButton} 
+              onClick={() => setShowAdditional(!showAdditional)}
+            >
+              <div className={S.additionalButtonText}>...</div>
             </div>
             <Row className={classNames(S.row, S.mainRow)} gap={'responsive'}>
               <div className={S.printSettings}>
@@ -59,6 +64,11 @@ export const AppSettings = () => {
           </Row>
         </div>
       </Row>
+      {showAdditional && (
+        <div className={S.additional}>
+          <AdditionalSettings/>
+        </div>
+      )}
     </div>
   );
 }
