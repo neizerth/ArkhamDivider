@@ -16,11 +16,7 @@ export const useCampaignStories = () => {
   const translated = useAppSelector(selectTranslatedStories);
 
   const isArkhamesqueLayout = categoryId !== arkhamesqueCategory.id;
-  
-  if (isArkhamesqueLayout || !arkhamesqueData) {
-    return stories;
-  }
-    
+
   const getIsTranslated = (story: IStory) => {
     if (language === 'en') {
       return true;
@@ -29,6 +25,13 @@ export const useCampaignStories = () => {
       return false;
     }
     return translated[language].includes(story.code);
+  }
+  
+  if (isArkhamesqueLayout || !arkhamesqueData) {
+    return stories.map(story => ({
+      ...story,
+      translated: getIsTranslated(story)
+    }));
   }
 
   return stories.map(story => ({
