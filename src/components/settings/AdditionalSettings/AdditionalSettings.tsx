@@ -1,5 +1,5 @@
 import S from './AdditionalSettings.module.scss';
-import { DownloadZIPButton } from '@/actions/DownloadZIPButton/DownloadZIPButton';
+import { DownloadZIPButton } from '@/components/actions/DownloadZIPButton/DownloadZIPButton';
 import { PageSizeSettings } from '../PageSizeSettings/PageSizeSettings';
 import { LayoutZoom, Row } from '@/components';
 

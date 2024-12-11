@@ -42,6 +42,11 @@ jobs:
         env:
           APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
           APP_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
+  
+      - name: Install coi service worker
+        run: |
+          cp node_modules/coi-serviceworker/coi-serviceworker.min.js dist/
+          sed -i 's#\(		<script src="index.js"></script>\)#		<script src="coi-serviceworker.min.js"></script>\n\1#g' index.html
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
