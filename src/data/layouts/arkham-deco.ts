@@ -1,4 +1,4 @@
-import { BASE_PATH, BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/constants/app";
+import { BASE_PATH, BOOSTY_LINK, PATREON_LINK, PAYPAL_LINK, T_LINK } from "@/constants/app";
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 
 export enum ArkhamDecoDividerType {
@@ -185,17 +185,22 @@ export const arkhamDecoCategory: ILayoutCategory = {
     name: 'Vladimir Yazykov',
     image: BASE_PATH + 'images/neizerth.jpg',
     url: 'https://github.com/neizerth',
-    donationUrl: BOOSTY_LINK,
+    donationUrl: PATREON_LINK,
     contacts: [
       {
-        id: 'boosty',
-        icon: 'link',
-        url: BOOSTY_LINK
+        id: 'patreon',
+        icon: 'patreon',
+        url: PATREON_LINK
       },
       {
         id: 'paypal',
         icon: 'paypal',
         url: PAYPAL_LINK
+      },
+      {
+        id: 'boosty',
+        icon: 'boosty',
+        url: BOOSTY_LINK
       },
       {
         id: 't_bank',

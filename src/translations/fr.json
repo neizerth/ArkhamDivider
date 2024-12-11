@@ -25,7 +25,7 @@
   "Size": "Taille",
   "mm": "mm",
   "Author": "Auteur",
-  "Support project on Boosty": "Supporter le projet sur Boosty",
+  "Support project on {{platform}}": "Supporter le projet sur {{platform}}",
   "Tokens": "Jetons",
   "Card Icons": "Icones des cartes",
   "Lv. {{level}}": "Lv. {{level}}",

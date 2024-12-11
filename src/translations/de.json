@@ -25,7 +25,7 @@
   "Size": "Größe",
   "mm": "mm",
   "Author": "Autor",
-  "Support project on Boosty": "Projekt auf Boosty unterstützen",
+  "Support project on {{platform}}": "Projekt auf {{platform}} unterstützen",
   "Tokens": "Spielsteine",
   "Card Icons": "Kartensymbole",
   "Lv. {{level}}": "Lv. {{level}}",

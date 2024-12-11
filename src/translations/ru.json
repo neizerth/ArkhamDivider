@@ -25,7 +25,7 @@
   "Size": "Размер",
   "mm": "мм",
   "Author": "Автор",
-  "Support project on Boosty": "Поддержать проект на\u00A0Boosty",
+  "Support project on {{platform}}": "Поддержать проект на\u00A0{{platform}}",
   "Tokens": "Жетоны",
   "Card Icons": "Карты",
   "Lv. {{level}}": "Ур. {{level}}",

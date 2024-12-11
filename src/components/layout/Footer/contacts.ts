@@ -1,6 +1,10 @@
-import { PAYPAL_LINK, T_LINK } from "@/constants/app";
+import { BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/constants/app";
 
 export const contacts = [
+  {
+    icon: 'boosty',
+    url: BOOSTY_LINK
+  },
   {
     icon: 'paypal',
     url: PAYPAL_LINK
