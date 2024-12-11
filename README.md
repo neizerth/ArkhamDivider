@@ -8,6 +8,7 @@ https://neizerth.github.io/ArkhamDivider
 
 ```txt
 VITE_BASE_URL="https://neizerth.github.io/ArkhamDividerData"
+VITE_ARKHAMESQUE_URL="https://neizerth.github.io/ArkhamesqueDividerData"
 ```
 
 2. install dependencies
@@ -32,10 +33,16 @@ npm run dev
 
 @Warenhari - Polish translation
 
+@TengounPlan - Spanish translation
+
 ### Design
 
 @5argon - 3mm Divider design template
 
+@smallville247 - Arkhamesque design template
+
+@Sarnetsky - Eugene Sarnetsky design template
+
 ### Testing
 
-@fspoettel, @5argon
+@fspoettel, @5argon, @polochamps
