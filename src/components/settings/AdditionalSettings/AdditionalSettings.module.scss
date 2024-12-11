@@ -1,9 +1,27 @@
 .container {
   position: relative;
   display: inline-flex;
+  padding: 10px;
 }
 
 
 .item {
   flex-shrink: 0;
+}
+
+.row {
+  position: relative;
+  z-index: 2;
+}
+
+.shadow {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  clip-path: inset(0 -20px -20px -20px);
 }

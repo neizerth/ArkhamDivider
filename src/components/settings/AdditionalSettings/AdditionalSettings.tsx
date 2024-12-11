@@ -11,7 +11,7 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
 
   return (
     <div className={S.container}>
-      <Row gap='responsive'>
+      <Row gap='responsive' className={S.row}>
         <div className={S.item}>
           <LayoutZoom/>
         </div>
@@ -22,6 +22,7 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
           <DownloadZIPButton/>
         </div>
       </Row>
+      <div className={S.shadow}></div>
     </div>
   );
 }
