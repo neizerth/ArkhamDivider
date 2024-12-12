@@ -24,6 +24,7 @@ export const vintageLayout: ILayout = {
 
 export const vintageLayoutCategory: ILayoutCategory = {
   id: 'vintage',
+  unlisted: true,
   name: 'Vintage (Tabbed)',
   info: 'Tabbed Vintage Dividers',
   author: {
