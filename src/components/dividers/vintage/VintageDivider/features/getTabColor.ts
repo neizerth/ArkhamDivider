@@ -22,9 +22,10 @@ export const playerColors: Mapping = {
   'survivor': '#57101d',
   'mystic': '#41295f',
   'neutral': '#3c3d3c',
-  'guardian': '#083d20',
+  'guardian': '#1a2e54',
   'rogue': '#083d20',
-  'seeker': '#bd572e'
+  'seeker': '#bd572e',
+  'multiclass': '#b19229'
 }
 
 export const DEFAULT_COLOR = '#B2AAA2';

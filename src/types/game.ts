@@ -1,3 +1,4 @@
+import { DividerSubtype } from "./dividers"
 
 export type IFaction = {
   id: string
@@ -34,4 +35,5 @@ export type ICardType = {
   name: string
   type: CardType
   icon?: string
+  subtype?: DividerSubtype
 }

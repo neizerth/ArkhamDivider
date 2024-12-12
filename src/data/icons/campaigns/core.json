@@ -110,6 +110,11 @@
     "icon": "rtnotz"
   },
   {
+    "icon": "rtnotz",
+    "type": "vintage",
+    "scale": 1.13
+  },
+  {
     "icon": "return_to_the_midnight_masks"
   },
   {

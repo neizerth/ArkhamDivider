@@ -5,8 +5,8 @@ export const vintageLayout: ILayout = {
   categoryId: 'vintage',
   width: 90,
   height: 71,
-  title: 'Vintage Tabbed',
-  types: [LayoutType.SCENARIO, LayoutType.PLAYER],
+  title: 'Vintage',
+  types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
   orientation: LayoutOrientation.HORIZONTAL,
   color: true,
   bleed: {
@@ -16,12 +16,15 @@ export const vintageLayout: ILayout = {
     right: 3,
     top: 3,
     bottom: 3
+  },
+  playerOptions: {
+    displaySideXP: true
   }
 }
 
 export const vintageLayoutCategory: ILayoutCategory = {
   id: 'vintage',
-  name: 'Vintage Tabbed',
+  name: 'Vintage (Tabbed)',
   info: 'Tabbed Vintage Dividers',
   author: {
     name: 'Bob Lafouine',

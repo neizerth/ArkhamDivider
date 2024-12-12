@@ -1,44 +1,45 @@
 
-$guide-size: 2mm;
-
 .lines{
   position: relative;
 
   --guide-color: red;
+  --guide-size: 2mm;
+  --negative-guide-size: -2mm;
+  --line-width: 1px;
+}
+
+.vertical {
+  position: absolute;
+  width: 0;
+  border-left: var(--line-width) solid var(--guide-color);
+}
+
+.horizontal {
+  position: absolute;
+  height: 0;
+  border-bottom: var(--line-width) solid var(--guide-color);
 }
 
 .cross {
   .vertical {
-    position: absolute;
-    width: 0;
-    border-left: 1px solid var(--guide-color);
-    height: 1px + $guide-size * 2;
-    top: -$guide-size;
+    height: calc(var(--line-width) + var(--guide-size) * 2);
+    top: var(--negative-guide-size);
   }
   
   .horizontal {
-    position: absolute;
-    border-bottom: 0.1mm solid var(--guide-color);
-    width: 1px + $guide-size * 2;
-    height: 0;
-    left: -$guide-size;
+    width: calc(var(--line-width) + var(--guide-size) * 2);
+    left: var(--negative-guide-size);
   }
 }
 
 .outset-corner {
   &-br, &-bl, &-tl, &-tr {
     .vertical {
-      position: absolute;
-      width: 0;
-      border-left: 1px solid var(--guide-color);
-      height: 1px + $guide-size;
+      height: calc(var(--line-width) + var(--guide-size));
     }
     
     .horizontal {
-      position: absolute;
-      border-bottom: 0.1mm solid var(--guide-color);
-      width: 1px + $guide-size;
-      height: 0;
+      width: calc(var(--line-width) + var(--guide-size));
     }
   }
   &-br {
@@ -46,7 +47,7 @@ $guide-size: 2mm;
       top: 0;
     }
     .horizontal {
-      top: $guide-size;
+      top: var(--guide-size);
       left: 0;
     }
   }
@@ -55,13 +56,13 @@ $guide-size: 2mm;
       top: 0;
     }
     .horizontal {
-      top: $guide-size;
-      left: -$guide-size;
+      top: var(--guide-size);
+      left: var(--negative-guide-size);
     }
   }
   &-tl {
     .vertical {
-      top: -$guide-size;
+      top: var(--negative-guide-size);
     }
     .horizontal {
       top: 0;
@@ -69,11 +70,59 @@ $guide-size: 2mm;
   }
   &-tr {
     .vertical {
-      top: -$guide-size;
+      top: var(--negative-guide-size);
     }
     .horizontal {
       top: 0;
-      left: -$guide-size;
+      left: var(--negative-guide-size);
+    }
+  }
+}
+
+.inset-corner {
+  &-br, &-bl, &-tl, &-tr {
+    .vertical {
+      height: calc(var(--line-width) + var(--guide-size));
+    }
+    
+    .horizontal {
+      width: calc(var(--line-width) + var(--guide-size));
+    }
+  }
+  &-br {
+    .vertical {
+      bottom: 0;
+      left: 0;
+    }
+    .horizontal {
+      bottom: 0;
+      left: var(--negative-guide-size);
+    }
+  }
+  &-bl {
+    .vertical {
+      bottom: 0;
+    }
+    .horizontal {
+      bottom: 0;
+      left: 0;
+    }
+  }
+  &-tl {
+    .vertical {
+      top: 0;
+    }
+    .horizontal {
+      top: 0;
+    }
+  }
+  &-tr {
+    .vertical {
+      top: 0;
+    }
+    .horizontal {
+      top: 0;
+      left: var(--negative-guide-size);
     }
   }
 }

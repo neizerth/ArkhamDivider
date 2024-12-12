@@ -138,15 +138,18 @@ export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
             <div className={S.label}>{t('Experience')}</div>
             <XPCostSelect onChange={setXPCosts}/>
           </Row>
-          {isNil(playerOptions?.displaySideXP) && (
+          {playerOptions?.displaySideXP && (
             <Row wrap className={S.row}>
-              <Checkbox 
-                {...check('displaySideXP')}
-              >
-                {t('Side XP')}
-              </Checkbox>
+              {isNil(playerOptions?.displaySideXP) && (
+                <Checkbox 
+                  {...check('displaySideXP')}
+                >
+                  {t('Side XP')}
+                </Checkbox>
+              )}
               
-              {isNil(playerOptions?.displayNumericXP) && form.displaySideXP && (
+              
+              {isNil(playerOptions?.displayNumericXP) && (
                 <Checkbox 
                   {...check('displayNumericXP')}
                 >

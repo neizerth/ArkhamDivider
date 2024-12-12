@@ -10,6 +10,7 @@ export type DividerTextProps = PropsWithClassName & {
   inputClassName?: string
   iconClassName?: string
   strokeClassName?: string
+  wrapperClassName?: string
   lineClassName?: (count: number) => string
 
   fixedFontSize?: boolean
@@ -41,6 +42,7 @@ export const DividerText = ({
   onClear,
   defaultValue,
   className,
+  wrapperClassName,
   inputClassName,
   minFontSize,
   maxFontSize,
@@ -119,7 +121,11 @@ export const DividerText = ({
       className
     )}>
       <div 
-        className={classNames(S.wrapper, !fixedFontSize && S.wrapper_dynamic)}
+        className={classNames(
+          S.wrapper, 
+          !fixedFontSize && S.wrapper_dynamic,
+          wrapperClassName
+        )}
       >
         <div
           contentEditable 

@@ -1,23 +1,8 @@
 import { UseStoryTranslateFunction } from "@/hooks/useStoryTranslation";
-import { DividerType, IDivider } from "@/types/dividers";
+import { DividerSubtype, DividerType, IDivider } from "@/types/dividers";
 import { CardType } from "@/types/game";
-
-export const getTopTitle = ({
-  story,
-  faction,
-  name,
-  type
-}: IDivider) => {
-  if (type === DividerType.PLAYER && faction) {
-    return faction;
-  }
-
-  if (type === DividerType.CAMPAIGN && story) {
-    return story.name
-  }
-
-  return name;
-}
+import factions from '@/data/factions.json';
+import { propEq } from "ramda";
 
 export const getBottomTitle = (options: {
   divider: IDivider,
@@ -31,19 +16,23 @@ export const getBottomTitle = (options: {
     subtype,
     story,
     scenario,
-    name
+    name = ''
   } = divider;
 
   if (type === DividerType.PLAYER && cardType && faction) {
-    if (subtype) {
-      return translate(subtype);
+    if (subtype !== DividerSubtype.CARD) {
+      return translate(name);
     }
+    const factionName = factions.find(
+      propEq(faction, 'id')
+    )?.name || '';
     if (cardType) {
       return translate(
-        cardType === CardType.ALL ? faction : cardType
+        cardType === CardType.ALL ? factionName : name
       );
     }
-    return translate(faction);
+    
+    return translate(factionName);
   }
 
   if (type === DividerType.CAMPAIGN && story) {
@@ -51,10 +40,7 @@ export const getBottomTitle = (options: {
   }
 
   if (type === DividerType.SCENARIO && scenario) {
-    const name = translate(scenario.scenario_name);
-    const { number } = scenario;
-
-    return number ? `${number}. ${name}` : name;
+    return translate(scenario.scenario_name);
   }
   
   return name ? translate(name) : '';

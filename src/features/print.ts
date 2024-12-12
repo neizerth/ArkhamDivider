@@ -80,7 +80,7 @@ const cloneItems = <T extends PrintItem>(rows: T[][], isLandscape: boolean) => {
   }, [] as T[][]);
 }
 
-export const createDoubleSidedPages = <T extends WithId>(pages: IPage<T>[], options: CreateDoubleSidedPagesOptions) => 
+export const createDoubleSidedPages = <T extends PrintItem>(pages: IPage<T>[], options: CreateDoubleSidedPagesOptions) => 
   pages.reduce((target, page, index): IPage<T>[] => {
     const isLastGroup = index === pages.length - 1;
     const { rowSize, groupSize, merge = false } = options;

@@ -1,4 +1,11 @@
 .container {
+  --layout-bleed-size: 3mm;
+  --bleed-size: 0mm;
+  --tab-width: 33.5mm;
+  --tab-height: 12.3mm;
+  --tab-from-position: 0mm;
+  --tab-to-position: 0mm;
+
   font-family: 'Atlantic Cruise Extended', sans-serif;
 }
 
@@ -11,7 +18,26 @@
 .ru {
   font-family: 'Breamcatcher', sans-serif;
   .topTitle {
-    padding-top: 0.8mm;
+    padding-top: 0.6mm;
+  }
+  .bottomTitle {
+    top: 39.8mm;
+    height: 5mm;
+    font-size: 6mm;
+    line-height: 1em;
+  }
+  .bottomTitleText {
+    height: 100%;
+  }
+  .bottomTitleWrapper {
+    height: 100%;
+  }
+  .bottomTitleInput {
+    height: 100%;
+  }
+  .letterIcon {
+    top: 0.5mm;
+    font-size: 0.8em;
   }
 }
 
@@ -23,9 +49,16 @@
 }
 
 .zh, .zh-cn {
-  font-family: 'ZhenShuai', sans-serif;
+  font-family: 'Atlantic Cruise Digits', 'ZhenShuai', sans-serif;
   .topTitle {
     font-size: 3.8mm;
+  }
+  .bottomTitle {
+    line-height: 1em;
+    padding-top: 0.5mm;
+    padding-bottom: 0.5mm;
+    height: 6mm;
+    font-size: 6mm;
   }
 }
 
@@ -33,20 +66,20 @@
   position: absolute;
   z-index: 3;
   top: 0;
-  width: 33.5mm;
-  height: 12.3mm;
+  width: var(--tab-width);
+  height: var(--tab-height);
 
-  clip-path: inset(0 3mm 0 3mm);
+  // clip-path: inset(0 3mm 0 3mm);
   &_left {
-    clip-path: inset(0 3mm 0 0);
+    // clip-path: inset(0 3mm 0 0);
     left: 0;
   }
   &_right {
-    clip-path: inset(0 0 0 3mm);
+    // clip-path: inset(0 0 0 3mm);
     right: 0;
   }
   &_center {
-    clip-path: inset(0 3mm 0 3mm);
+    // clip-path: inset(0 3mm 0 3mm);
     left: 50%;
     transform: translateX(-50%);
   }
@@ -67,6 +100,10 @@
   &:hover {
     opacity: 0.8;
   }
+  &_xp {
+    top: 1.8mm;
+    font-size: 5mm;
+  }
 }
 
 .topTitle {
@@ -82,6 +119,7 @@
   font-size: 4mm;
   padding-top: 1.1mm;
   box-sizing: border-box;
+  color: #050505;
   // display: grid;
   // align-items: center;
 }
@@ -91,16 +129,33 @@
   text-transform: capitalize;
   position: absolute;
   z-index: 3;
-  left: 9mm;
-  right: 9mm;
-  top: 39.7mm;
-  height: 6.3mm;
-  padding-top: 0.8mm;
+  left: 26mm;
+  right: 26mm;
+  top: 39.3mm;
+  height: 8.1mm;
+  color: #050505;
+  // padding-top: 0.8mm;
   text-align: center;
-  font-size: 5mm;
+  // font-size: 5mm;
+  font-size: 8mm;
   box-sizing: border-box;
 }
 
+.bottomTitleText {
+  // display: flex;
+  max-height: 100%;
+}
+
+.bottomTitleInput {
+  max-height: 100%;
+  white-space: nowrap;
+}
+
+.bottomTitleWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 
 .iconBackground {
   position: absolute;
@@ -129,8 +184,11 @@
   height: 100%;
 }
 
-.bleed .tab {
-  clip-path: none;
+.bleed {
+  --bleed-size: 3mm;
+  .tab {
+    clip-path: none;
+  }
 }
 
 .body {
@@ -147,20 +205,100 @@
   top: 9.3mm;
   background-color: #151616;
   width: 100%;
-  height: 3mm;
+  height: var(--layout-bleed-size);
 }
+
+// .tabGuides {
+//   width: calc(100% - 6mm);
+//   height: 7.1mm;
+//   top: var(--layout-bleed-size);
+//   left: var(--layout-bleed-size);
+//   z-index: 2;
+// }
 
 .tabGuides {
-  width: calc(100% - 6mm);
-  height: 7.1mm;
-  top: 3mm;
-  left: 3mm;
-  z-index: 2;
+  position: absolute;
+  z-index: 4;
+  top: var(--layout-bleed-size);
+  height: calc(var(--tab-height) - var(--layout-bleed-size));
+  background-color: #fff;
+  
+  --tab-from-position: var(--layout-bleed-size);
+  --tab-to-position: calc(var(--tab-width) - var(--layout-bleed-size));
+
+  &_left {
+    left: var(--tab-from-position);
+    right: var(--tab-to-position);
+  }
+  &_right {
+    left: var(--tab-to-position);
+    right: var(--tab-from-position);
+  }
 }
 
-.bodyGuides {
+.bleed .tabGuides{
+  background-color: transparent;
+}
+
+.center .tabGuides {
+  --tab-to-position: calc((100% - var(--tab-width)));
+}
+
+.sideXPCost {
+  font-family: 'Breamcatcher', sans-serif;
   position: absolute;
-  left: 3mm;
-  right: 3mm;
-  top: 12.1mm;
+  z-index: 3;
+  top: 12.6mm;
+  right: 11mm;
+}
+
+.xpCost {
+  position: absolute;
+  z-index: 4;
+  font-size: 7mm;
+  top: 4.7mm;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.letterIcon {
+  line-height: 1;
+  position: relative;
+  top: 1.1mm;
+  font-size: 0.8em;
+  width: 5mm;
+  height: 7mm;
+  text-align: center;
+}
+
+.moveTab {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  width: 5mm;
+  height: calc(100% - var(--layout-bleed-size) - 0.5mm);
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+  &_left {
+    left: 3mm;
+
+    .moveIcon {
+      transform: scale(-1, 1);
+    }
+  }
+  &_right {
+    right: 3mm;
+  }
+}
+
+.tab:hover {
+  .moveTab {
+    display: flex;
+  }
 }

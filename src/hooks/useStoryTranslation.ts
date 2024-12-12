@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const omitNS = omit(['ns']);
 
-export type UseStoryTranslateFunction = (text: string, options?: TOptions) => string | undefined;
+export type UseStoryTranslateFunction = (text: string, options?: TOptions) => string;
 
 export const useStoryTranslation = (story?: IStory) => {
   const storyNs = story && getStoryNS(story.code);
