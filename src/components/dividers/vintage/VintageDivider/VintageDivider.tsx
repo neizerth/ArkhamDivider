@@ -166,12 +166,12 @@ export const VintageDivider = (props: VintageDividerProps) => {
             )} 
           >
             {icon && (
-              <div onClick={selectIcon}>
+              <div className={S.iconWrapper} onClick={selectIcon}>
                 <CircleIcon 
                   type="vintage"
                   icon={icon}
                   scaleFactor={{
-                    regular: 0.9,
+                    regular: 0.85,
                     circled: icon.startsWith('return_') ? 1 : 0.87
                   }}
                 />
