@@ -8,11 +8,12 @@ export type SplitIntoPagesOptions = {
   merge?: boolean
 }
 
-type WithId = {
+type PrintItem = {
   id: string
+  backId?: string
 }
 
-export const splitIntoPages = <T extends WithId>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
+export const splitIntoPages = <T extends PrintItem>(data: T[], options: SplitIntoPagesOptions): IPage<T>[] => {
   const {
     doubleSidedPrint = false,
     groupSize,
@@ -53,13 +54,14 @@ export type CreateDoubleSidedPagesOptions = {
   merge?: boolean
 }
 
-const cloneRow = <T extends WithId>(row: T[]) => 
+const cloneRow = <T extends PrintItem>(row: T[]) => 
   row.map(item => ({
     ...item,
-    id: uniqId()
+    id: uniqId(),
+    backId: item.id
   }))
 
-const cloneItems = <T extends WithId>(rows: T[][], isLandscape: boolean) => {
+const cloneItems = <T extends PrintItem>(rows: T[][], isLandscape: boolean) => {
   if (isLandscape) {
     return [
       ...rows,
@@ -71,8 +73,9 @@ const cloneItems = <T extends WithId>(rows: T[][], isLandscape: boolean) => {
     return [
       ...target,
       ...row
-        .map(item => ([item, item]))
-        .map(cloneRow)
+        .map(
+          item => cloneRow([item, item])
+        )
     ];
   }, [] as T[][]);
 }
@@ -99,7 +102,12 @@ export const createDoubleSidedPages = <T extends WithId>(pages: IPage<T>[], opti
       ]
     }
 
-    const rows = page.rows.map(group => group.toReversed());
+    const rows = page.rows
+      .map(group => 
+        cloneRow(
+          group.toReversed()
+        )
+      );
 
     return [
       ...target,

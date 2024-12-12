@@ -59,12 +59,13 @@ export const DividerText = ({
   // console.log({ linesValue });
 
   const onValueChange = (value: string) => {
+    setText(value);
+
     if (!onChange) {
       return;
     }
 
     onChange(value);
-    setText(value);
   }
 
   const setDefaultValue = (value: string) => {

@@ -53,6 +53,12 @@
     "scale": 0.87
   },
   {
+    "icon": "agents_of_shub",
+    "left": 1,
+    "scale": 0.8,
+    "type": "vintage"
+  },
+  {
     "icon": "agents_of_cthulhu",
     "top": -1,
     "scale": 1.17

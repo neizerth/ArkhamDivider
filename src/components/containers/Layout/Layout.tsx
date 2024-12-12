@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/store/features/print/print';
 import { splitIntoPages } from '@/features/print';
 import { selectZoom } from '@/store/features/layout/layout';
+import { prop } from 'ramda';
 
 export type LayoutProps = {
 }
@@ -27,6 +28,10 @@ export const Layout = ({ }: LayoutProps) => {
 	});
 
 	const pagesTotal = pages[pages.length - 1]?.pageNumber || 0;
+	
+	const ids = dividers
+		.filter(({ backId }) => !backId)
+		.map(prop('id'));
 	return (
 		<div className={S.container}>
 			<ZoomView
@@ -54,7 +59,7 @@ export const Layout = ({ }: LayoutProps) => {
 										{row.map((divider) => (
 											<DividerMemo
 												{...divider}
-												index={dividers.indexOf(divider)}
+												index={ids.indexOf(divider.id)}
 												rowIndex={rowIndex + 1}
 												key={divider.id}
 											/>

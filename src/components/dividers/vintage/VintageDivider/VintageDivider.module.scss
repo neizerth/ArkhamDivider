@@ -1,0 +1,166 @@
+.container {
+  font-family: 'Atlantic Cruise Extended', sans-serif;
+}
+
+.fr {
+  .topTitle {
+    padding-top: 0.9mm;
+  }
+}
+
+.ru {
+  font-family: 'Breamcatcher', sans-serif;
+  .topTitle {
+    padding-top: 0.8mm;
+  }
+}
+
+.ko {
+  font-family: 'Line Seed', sans-serif;
+  .topTitle {
+    padding-top: 0.7mm;
+  }
+}
+
+.zh, .zh-cn {
+  font-family: 'ZhenShuai', sans-serif;
+  .topTitle {
+    font-size: 3.8mm;
+  }
+}
+
+.tab {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  width: 33.5mm;
+  height: 12.3mm;
+
+  clip-path: inset(0 3mm 0 3mm);
+  &_left {
+    clip-path: inset(0 3mm 0 0);
+    left: 0;
+  }
+  &_right {
+    clip-path: inset(0 0 0 3mm);
+    right: 0;
+  }
+  &_center {
+    clip-path: inset(0 3mm 0 3mm);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.icon {
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  top: 3.4mm;
+  bottom: 0;
+  left: -0.1mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7.8mm;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.topTitle {
+  line-height: 1;
+  text-transform: capitalize;
+  position: absolute;
+  z-index: 3;
+  left: 9mm;
+  right: 9mm;
+  top: 13mm;
+  height: 5.2mm;
+  text-align: center;
+  font-size: 4mm;
+  padding-top: 1.1mm;
+  box-sizing: border-box;
+  // display: grid;
+  // align-items: center;
+}
+
+.bottomTitle {
+  line-height: 1;
+  text-transform: capitalize;
+  position: absolute;
+  z-index: 3;
+  left: 9mm;
+  right: 9mm;
+  top: 39.7mm;
+  height: 6.3mm;
+  padding-top: 0.8mm;
+  text-align: center;
+  font-size: 5mm;
+  box-sizing: border-box;
+}
+
+
+.iconBackground {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.tabImage {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  filter: grayscale(1);
+}
+
+.tabOverlay {
+  position: absolute;
+  z-index: 2;
+  mix-blend-mode: color;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bleed .tab {
+  clip-path: none;
+}
+
+.body {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.bodyBleed {
+  position: absolute;
+  z-index: 2;
+  top: 9.3mm;
+  background-color: #151616;
+  width: 100%;
+  height: 3mm;
+}
+
+.tabGuides {
+  width: calc(100% - 6mm);
+  height: 7.1mm;
+  top: 3mm;
+  left: 3mm;
+  z-index: 2;
+}
+
+.bodyGuides {
+  position: absolute;
+  left: 3mm;
+  right: 3mm;
+  top: 12.1mm;
+}

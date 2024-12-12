@@ -35,3 +35,7 @@ export const PageSize: Record<PageSizeType, IBox> = {
   SRA4: { width: 225, height: 320 },
   SRA3: { width: 320, height: 450 },
 }
+
+export type GuideType = 
+  'cross' | 'corner' | 
+  'outset-corner-bl' | 'outset-corner-br' | 'outset-corner-tr' | 'outset-corner-tl';

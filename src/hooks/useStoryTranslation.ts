@@ -4,15 +4,16 @@ import { TOptions } from "i18next";
 import { omit } from "ramda";
 import { useTranslation } from "react-i18next";
 
-
 const omitNS = omit(['ns']);
+
+export type UseStoryTranslateFunction = (text: string, options?: TOptions) => string | undefined;
 
 export const useStoryTranslation = (story?: IStory) => {
   const storyNs = story && getStoryNS(story.code);
 
   const i18n = useTranslation();
 
-  const translate = (text: string, options: TOptions = {}) => {
+  const translate: UseStoryTranslateFunction = (text: string, options: TOptions = {}) => {
     const translation = i18n.t(text, omitNS(options));
     const { ns = storyNs } = options;
 
