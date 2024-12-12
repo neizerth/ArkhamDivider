@@ -45,7 +45,7 @@ jobs:
       - name: Install coi service worker
         run: |
           cp node_modules/coi-serviceworker/coi-serviceworker.min.js dist/
-          sed -i 's#\(<!-- coi -->\)#<script src="coi-serviceworker.min.js"></script>#g' dist/index.html
+          sed -i 's#\(<!-- coi -->\)#<script src="/coi-serviceworker.min.js"></script>#g' dist/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
