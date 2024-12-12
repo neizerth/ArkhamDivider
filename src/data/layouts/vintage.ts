@@ -30,6 +30,12 @@ export const vintageLayoutCategory: ILayoutCategory = {
     name: 'Bob Lafouine',
     contacts: [
       {
+        id: 'bgg',
+        icon: 'bgg',
+        title: 'BGG',
+        url: 'https://boardgamegeek.com/user/boblafouine'
+      },
+      {
         id: 'email',
         icon: 'mail',
         title: 'E-mail',
