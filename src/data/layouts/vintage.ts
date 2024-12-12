@@ -17,6 +17,11 @@ export const vintageLayout: ILayout = {
     top: 3,
     bottom: 3
   },
+  campaignOptions: {
+    includeScenarioSize: false,
+    includeEncounterSize: false,
+    includeCampaignIcon: true
+  },
   playerOptions: {
     displaySideXP: true
   }
