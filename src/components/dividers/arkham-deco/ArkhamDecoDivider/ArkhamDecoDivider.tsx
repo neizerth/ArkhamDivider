@@ -20,7 +20,6 @@ import tabTentacles from './images/tab-tentacles.png';
 
 import classNames from 'classnames';
 import { DividerMenu, DividerText, Icon, NotExportable } from '@/components';
-import { useEffect, useState } from 'react';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLanguage } from '@/store/features/language/language';
 import { selectLayout } from '@/store/features/layout/layout';
@@ -91,8 +90,6 @@ export const ArkhamDecoDivider = ({
 
   const translatedName = t(name);
 
-	const [_, setTitle] = useState(translatedName);
-
 	const language = useAppSelector(selectLanguage);
 	const realLanguage = translatedName === name ? 'en' : language;
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
@@ -105,10 +102,6 @@ export const ArkhamDecoDivider = ({
     
     return isScenario ? scenarioTopRightCorner : topRightCorner;
   })()
-
-	useEffect(() => {
-		setTitle(translatedName);
-	}, [translatedName]);
   
   return (
     <div className={classNames(
@@ -179,7 +172,6 @@ export const ArkhamDecoDivider = ({
               defaultValue={translatedName}
               className={S.titleContent}
               inputClassName={S.titleInput}
-              onChange={setTitle}
               fixedFontSize={false}
             />
           </div>

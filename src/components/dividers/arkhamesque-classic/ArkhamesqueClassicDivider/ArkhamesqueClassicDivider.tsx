@@ -31,8 +31,6 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     name = '',
     type,
     xpCost,
-    index,
-    rowIndex,
   } = props;
 
   const browser = useMemo(detect, []);
@@ -49,7 +47,6 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const realLanguage = translatedName === name ? 'en' : language;
 
 	const [_, setTitle] = useState(translatedName);
-  const isEven = index % 2 === 0;
 
   const mapDefaultIcon = (icon?: string) => icon === 'multiclass' ? 'multiclass_arkhamesque' : icon;
 
@@ -109,8 +106,6 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
       className={classNames(
         S.container,
         isChrome && S.chrome,
-        isEven ? S.even : S.odd,
-        rowIndex > 1 ? S.row : S.firstRow,
         S[type],
         S[realLanguage]
       )}

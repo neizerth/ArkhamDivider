@@ -71,6 +71,48 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Atlantic Cruise';
+  src: url('./fonts/AtlanticCruise.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Atlantic Cruise Extended';
+  src: url('./fonts/AtlanticCruiseExtended.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Atlantic Cruise Digits';
+  src: url('./fonts/AtlanticCruiseExtended.ttf') format('truetype');
+  unicode-range: U+2150-218F;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Breamcatcher';
+  src: url('./fonts/Breamcatcher.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Line Seed';
+  src: url('./fonts/LineSeedKR-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ZhenShuai';
+  src: url('./fonts/ZhenShuai-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @page {
   margin: 0;

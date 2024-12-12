@@ -100,17 +100,6 @@
   }
 }
 
-.chrome {
-  &.odd .specialIcon {
-    --index-offset-left: 0.02mm;
-  }
-  
-  &.row .specialIcon {
-    --index-offset-top: 0.1mm;
-  }
-}
-
-
 .specialText {
   position: absolute;
   z-index: 3;

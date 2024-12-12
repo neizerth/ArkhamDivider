@@ -2,12 +2,17 @@ import S from './Guides.module.scss';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { Guide } from '@/components';
+import { GuideType } from '@/types/print';
+
+const DEFAULT_GUIDE_TYPE = 'cross';
+
+type GuideConfig = GuideType | false;
 
 export type GuidesProps = PropsWithClassName & {
-  topLeft?: boolean;
-  topRight?: boolean;
-  bottomLeft?: boolean;
-  bottomRight?: boolean;
+  topLeft?: GuideConfig;
+  topRight?: GuideConfig;
+  bottomLeft?: GuideConfig;
+  bottomRight?: GuideConfig;
   contentClassName?: string;
   guideClassName?: string;
 }
@@ -15,17 +20,53 @@ export type GuidesProps = PropsWithClassName & {
 export const Guides = ({ 
   className,
   guideClassName,
-  topLeft = true,
-  topRight = true,
-  bottomLeft = true,
-  bottomRight = true
+  topLeft = DEFAULT_GUIDE_TYPE,
+  topRight = DEFAULT_GUIDE_TYPE,
+  bottomLeft = DEFAULT_GUIDE_TYPE,
+  bottomRight = DEFAULT_GUIDE_TYPE
 }: GuidesProps) => {
   return (
     <div className={classNames(S.container, className)}>
-      {topLeft && <Guide className={classNames(guideClassName, S.guide, S.guide_topLeft)}/>}
-      {topRight && <Guide className={classNames(guideClassName, S.guide, S.guide_topRight)}/>}
-      {bottomLeft && <Guide className={classNames(guideClassName, S.guide, S.guide_bottomLeft)}/>}
-      {bottomRight && <Guide className={classNames(guideClassName, S.guide, S.guide_bottomRight)}/>}
+      {topLeft && (
+        <Guide 
+          className={classNames(
+            guideClassName, 
+            S.guide, 
+            S.guide_topLeft
+          )}
+          type={topLeft}
+        />
+      )}
+      {topRight && (
+        <Guide 
+          className={classNames(
+            guideClassName, 
+            S.guide, 
+            S.guide_topRight
+          )}
+          type={topRight}
+        />
+      )}
+      {bottomLeft && (
+        <Guide 
+          className={classNames(
+            guideClassName, 
+            S.guide, 
+            S.guide_bottomLeft
+          )}
+          type={bottomLeft}
+        />
+      )}
+      {bottomRight && (
+        <Guide 
+          className={classNames(
+            guideClassName, 
+            S.guide, 
+            S.guide_bottomRight
+          )}
+          type={bottomRight}
+        />
+      )}
     </div>
   );
 }

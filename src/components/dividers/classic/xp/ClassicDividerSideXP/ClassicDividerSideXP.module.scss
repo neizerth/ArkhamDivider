@@ -12,12 +12,12 @@
 .dots {
   display: inline-flex;
   align-items: center;
-  gap: 0.2em;
+  gap: 0.1em;
 }
 
 .level {
   display: flex;
-  width: 0.35em;
+  width: 0.4em;
   align-items: center;
   justify-content: center;
   flex: 1;
@@ -39,7 +39,7 @@
     color: rgba(0, 0, 0, 0.3);
     // color: white;
     .dot {
-      width: 0.15em;
+      width: 0.25em;
     }
   }
 }

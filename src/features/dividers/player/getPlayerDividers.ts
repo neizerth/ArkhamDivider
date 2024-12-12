@@ -1,6 +1,6 @@
 import { AddPlayerDividersOptions } from '@/store/features/addDividers/addDividers';
 import { DividerSubtype, DividerType, IDivider } from '@/types/dividers';
-import { CardType, IFaction, IXPCost, XPCost } from '@/types/game';
+import { CardType, ICardType, IFaction, IXPCost, XPCost } from '@/types/game';
 import { uniqId } from '@/util/common';
 
 export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
@@ -52,7 +52,7 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
             displaySideXP,
             displayNumericXP,
             xpCost,
-            subtype: DividerSubtype.CARD
+            subtype: type.subtype || DividerSubtype.CARD
           }
         });
     })
@@ -65,7 +65,7 @@ export const getAllyType = ({
   includeAllies
 }: {
   includeAllies: boolean
-}) => {
+}): ICardType[] => {
   if (!includeAllies) {
     return []
   }

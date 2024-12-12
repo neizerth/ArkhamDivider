@@ -38,12 +38,13 @@ export type IDivider = {
     background?: string
     previewIcon?: string
     campaignIcon?: string
-    xpCost?: IXPCost,
+    xpCost?: IXPCost
     size?: number
 
     displaySideXP?: boolean
     displayNumericXP?: boolean
     displayCampaignIcon?: boolean
+    backId?: string
 
     tags?: string[]
 }

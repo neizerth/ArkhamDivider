@@ -1,4 +1,5 @@
 import { IBox } from "./units";
+import { PrefixedUnion } from "./util";
 
 export enum PageSide {
   FRONT = 'front',
@@ -35,3 +36,10 @@ export const PageSize: Record<PageSizeType, IBox> = {
   SRA4: { width: 225, height: 320 },
   SRA3: { width: 320, height: 450 },
 }
+
+export type GuideCornerType = 'tl' | 'tr' | 'bl' | 'br';
+
+export type GuideInsetTypes = PrefixedUnion<'inset-corner-', GuideCornerType>;
+export type GuideOutsetTypes = PrefixedUnion<'outset-corner-', GuideCornerType>;
+
+export type GuideType = 'cross' | 'corner' | GuideInsetTypes | GuideOutsetTypes;

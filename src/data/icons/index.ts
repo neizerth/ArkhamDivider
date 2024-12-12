@@ -2,6 +2,7 @@ import campaigns from './campaigns';
 import custom from './custom';
 import side from './side.json';
 import player from './player.json';
+import common from './common.json';
 import { IIconTransform } from '@/types/icons';
 
 export const ICON_LAYOUT_HEIGHT = 89;
@@ -11,5 +12,6 @@ export default [
   ...campaigns,
   ...custom,
   ...side,
-  ...player
+  ...player,
+  ...common
 ] as IIconTransform[]

@@ -51,3 +51,7 @@ export const minmax = (min: number, max: number) =>
   )
 
 export const isDefined = <T>(value: T | undefined): value is T => value !== undefined; 
+
+export const capitalize = (value: string) => value[0].toUpperCase() + value.substring(1);
+
+export const firstLetter = (value: string) => value[0];

@@ -10,6 +10,7 @@ import { ArkhamDecoDivider } from '@/components/dividers/arkham-deco/ArkhamDecoD
 import { ArkhamStarter3mmDivider } from '../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider';
 import { ArkhamesqueClassicDivider } from '../../arkhamesque-classic/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider';
 import { memo } from 'react';
+import { VintageDivider } from '../../vintage/VintageDivider/VintageDivider';
 
 export type DividerProps = PropsWithClassName & IDivider & {
 	index: number
@@ -26,6 +27,7 @@ export const Divider = (props: DividerProps) => {
       {categoryId === 'arkham-deco' && <ArkhamDecoDivider {...props}/>}
       {categoryId === '3mm' && <ArkhamStarter3mmDivider {...props}/>}
       {categoryId === 'arkhamesque-classic' && <ArkhamesqueClassicDivider {...props}/>}
+      {categoryId === 'vintage' && <VintageDivider {...props}/>}
     </>
   );
 }
