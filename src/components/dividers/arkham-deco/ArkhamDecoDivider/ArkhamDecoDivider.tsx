@@ -57,7 +57,6 @@ export const ArkhamDecoDivider = ({
   const layoutSize = customParams?.size || 'standard';
   const layoutType = customParams?.type as ArkhamDecoDividerType || 'standard';
 
-  const isPlayer = type === DividerType.PLAYER;
   const isScenario = type === DividerType.SCENARIO;
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
   const isVertical = orientation === LayoutOrientation.VERTICAL;
