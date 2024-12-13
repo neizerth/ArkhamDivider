@@ -30,6 +30,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
 
   const { 
     id,
+    backId,
     xpCost,
     displayNumericXP = false,
     type,
@@ -126,7 +127,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
           )}
         >
           <NotExportable>
-            {tabPosition !== 'left' && (
+            {tabPosition !== 'left' && !backId && (
               <div 
                 className={classNames(
                   S.moveTab,
@@ -137,7 +138,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
                 <Icon icon='action' className={S.moveIcon}/>
               </div>
             )}
-            {tabPosition !== 'right' && (
+            {tabPosition !== 'right' && !backId && (
               <div 
                 className={classNames(
                   S.moveTab,
