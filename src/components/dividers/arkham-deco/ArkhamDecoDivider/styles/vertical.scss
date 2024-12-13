@@ -1,3 +1,5 @@
+
+
 .orientation_vertical {
   --offset: 0mm;
   .centerBorder {
@@ -14,10 +16,15 @@
     transform: rotate(90deg) translateX(-50%);
   }
   .topLine {
-    --offset: -1.93mm;
-    left: -16.2mm;
-    @include clipX(38mm, 56mm);
-    width: 94.4mm;
+    // --offset: -1.98mm;
+    --offset: -2.15mm;
+    // --offset: -1.95mm;
+    left: -22.4mm;
+    @include clipX(44mm, 65mm);
+    transform: scale(0.7);
+    // width: 94.1mm;
+    width: 107mm;
+    display: block;
     &_scenario {
       @include clipX(26.2mm, 68.2mm);
     }
@@ -26,12 +33,17 @@
     }
   }
 
+  .topLineHandler {
+    // display: none;
+  }
+
   .tabHeaderBox {
     display: none;
   }
   .tabHeaderOverlay {
     display: none;
   }
+  
 
   .tabTopLine {
 
@@ -72,7 +84,7 @@
     right: 10.5mm;
     &_encounter,
     &_campaign {
-      right: 4.5mm;
+      right: 10mm;
     }
     &_withSideXP {
       right: 19mm;

@@ -110,7 +110,8 @@
     @include clipX(5.8mm, 39mm);
   }
   .topLine {
-    --offset: -1.93mm;
+    // --offset: -1.93mm;
+    --offset: -1.95mm;
     z-index: 7;
     @include clipX(40mm, 55mm);
     &_scenario,
@@ -231,16 +232,16 @@
   }
 
   .topLeftCorner {
-    top: 4.8mm;
+    top: 4.9mm;
     left: 0.8mm;
     width: 11mm;
   }
 
   .topRightCorner {
     transform: scale(-1, 1);
-    top: 4.8mm;
+    top: 4.9mm;
     right: 0.8mm;
-    width: 11mm;
+    width: 11.05mm;
   }
 
   .topLine {

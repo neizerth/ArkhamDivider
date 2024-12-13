@@ -105,7 +105,8 @@ export const StorySelect = ({
     }
   }
 
-  const value = story && getSelectValue(story);
+  
+  const value = story ? getSelectValue(story) : null;
 
   return (
     <Row className={classNames(S.container, className)}>

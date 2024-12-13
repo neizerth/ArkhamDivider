@@ -30,6 +30,8 @@ import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
 import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { XPCost } from '@/types/game';
+import { LayoutOrientation } from '@/types/layouts';
+import { getDefaultLineIcon, getDefaultSpecialIcon } from './features/icons';
 
 export const ArkhamDecoDivider = ({
   ...props
@@ -46,7 +48,19 @@ export const ArkhamDecoDivider = ({
 
   const displaySideXP = props.displaySideXP && xpCost?.level !== XPCost.NO_COST;
 
+  const { 
+    color,
+    customParams,
+    orientation,
+  } = useAppSelector(selectLayout);
+
+  const layoutSize = customParams?.size || 'standard';
+  const layoutType = customParams?.type as ArkhamDecoDividerType || 'standard';
+
   const isPlayer = type === DividerType.PLAYER;
+  const isScenario = type === DividerType.SCENARIO;
+  const isTab = layoutType === ArkhamDecoDividerType.TAB;
+  const isVertical = orientation === LayoutOrientation.VERTICAL;
 
   const [icon, selectIcon] = useIconSelect({
     defaultIcon: props.icon
@@ -56,44 +70,30 @@ export const ArkhamDecoDivider = ({
     defaultIcon: props.previewIcon || props.icon
   });
 
-  const defaultSpecialIcon = (() => {
-    if (isPlayer) {
-      return;
-    }
-    return props.campaignIcon || props.specialIcon;
-  })();
+  const defaultSpecialIcon = getDefaultSpecialIcon({
+    divider: props,
+    layoutType
+  });
 
   const [specialIcon, selectSpecialIcon] = useIconSelect({
     defaultIcon: defaultSpecialIcon
   });
 
-  const defaultLineIcon = (() => {
-    if (!isPlayer) {
-      return;
-    }
-    return props.campaignIcon;
-  })();
+  const defaultLineIcon = getDefaultLineIcon({
+    divider: props,
+    layoutType
+  });
 
   const [lineIcon, selectLineIcon] = useIconSelect({
     defaultIcon: defaultLineIcon
   });
 
   const { t } = useStoryTranslation(props.story);
-  const { 
-    color,
-    customParams,
-    orientation,
-  } = useAppSelector(selectLayout);
-
-  const layoutSize = customParams?.size || 'standard';
-  const layoutType = customParams?.type || 'standard';
 
   const translatedName = t(name);
 
 	const language = useAppSelector(selectLanguage);
 	const realLanguage = translatedName === name ? 'en' : language;
-  const isTab = layoutType === ArkhamDecoDividerType.TAB;
-  const isScenario = type === DividerType.SCENARIO;
 
   const topRightCornerImage = (() => {
     if (isTab) {
@@ -222,24 +222,25 @@ export const ArkhamDecoDivider = ({
 
             {lineIcon && (
               <>
-                {(!isPlayer || lineIcon) && (
-                  <>
-                    <img 
-                      className={classNames(
-                        S.tabTentacles,
-                        S.tabTentacles_left
-                      )}
-                      src={tabTentacles}
-                    />
-                    <img 
-                      className={classNames(
-                        S.tabTentacles,
-                        S.tabTentacles_right
-                      )}
-                      src={tabTentacles}
-                    />
-                  </>
-                )}
+                <img 
+                  className={classNames(
+                    S.tabTentacles,
+                    S.tabTentacles_left
+                  )}
+                  src={tabTentacles}
+                />
+                <img 
+                  className={classNames(
+                    S.tabTentacles,
+                    S.tabTentacles_right
+                  )}
+                  src={tabTentacles}
+                />
+              </>
+            )}
+
+            {(isVertical || lineIcon) && (
+              <>
                 <img 
                   className={classNames(
                     S.tabTopLine,
@@ -248,7 +249,7 @@ export const ArkhamDecoDivider = ({
                   )}
                   src={tabTopLine}
                 />
-                 <img 
+                  <img 
                   className={classNames(
                     S.tabTopLine,
                     S.tabTopLine_right,
@@ -283,7 +284,7 @@ export const ArkhamDecoDivider = ({
               </>
             )}
 
-            {!lineIcon && (
+            {!lineIcon && (!isTab || isVertical) && (
               <img 
                 src={topLine} 
                 className={classNames(
