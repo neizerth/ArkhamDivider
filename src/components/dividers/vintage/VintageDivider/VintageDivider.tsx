@@ -172,8 +172,8 @@ export const VintageDivider = (props: VintageDividerProps) => {
                   type="vintage"
                   icon={icon}
                   scaleFactor={{
-                    regular: 0.85,
-                    circled: icon.startsWith('return_') ? 1 : 0.87
+                    regular: 0.87,
+                    circled: icon.startsWith('return_') ? 1.03 : 0.87
                   }}
                 />
               </div>
