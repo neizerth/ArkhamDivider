@@ -2,9 +2,7 @@ export type PropsWithClassName = {
     className?: string;
 };
 
-export type Mapping<T = string | undefined> = {
-    [index: string]: T
-}
+export type Mapping<T = string | undefined> = Record<string, T>
 
 export type Single<T extends unknown[]> = T[number] 
 
