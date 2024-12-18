@@ -90,7 +90,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
         S[tabPosition],
         bleed && S.bleed
       )}
-      data-language={language}
+      data-position={tabPosition}
     >
       <DividerContent>
         {xpCost && (

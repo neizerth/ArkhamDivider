@@ -39,7 +39,7 @@ export const getTabPosition = ({
     return 'center';
   }
 
-  const frontIndex = typeIndexes.indexOf(id);
+  const frontIndex = typeIndexes.indexOf(backId || id);
   const tabIndex = frontIndex % 3;
   const sideIndex = backId ? 2 - tabIndex : tabIndex;
   return TAB_POSITION[sideIndex] as TabPosition;
