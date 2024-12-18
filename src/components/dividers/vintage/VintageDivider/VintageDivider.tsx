@@ -38,7 +38,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
 
   const dispatch = useAppDispatch();
   const tabPositions = useAppSelector(selectTabPositions);
-  const currentPosition = tabPositions[id];
+  const currentPosition = tabPositions[backId || id];
 
   const { t } = useStoryTranslation(props.story);
   const language = useAppSelector(selectLanguage);
