@@ -1,7 +1,8 @@
 import S from './AdditionalSettings.module.scss';
-import { DownloadZIPButton } from '@/components/actions/DownloadZIPButton/DownloadZIPButton';
 import { PageSizeSettings } from '../PageSizeSettings/PageSizeSettings';
 import { LayoutZoom, Row } from '@/components';
+import { DownloadPNGButton } from '@/components/actions/DownloadPNGButton/DownloadPNGButton';
+import { DownloadCMYKButton } from '@/components/actions/DownloadCMYKButton/DownloadCMYKButton';
 
 export type AdditionalSettingsProps = {
 
@@ -19,7 +20,10 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
           <PageSizeSettings/>
         </div>
         <div className={S.item}>
-          <DownloadZIPButton/>
+          <DownloadCMYKButton/>
+        </div>
+        <div className={S.item}>
+          <DownloadPNGButton/>
         </div>
       </Row>
       <div className={S.shadow}></div>

@@ -1,6 +1,7 @@
 import { ILayoutBleed } from "@/types/layouts";
 import { getWebToPrintScale } from "@/util/units";
 import { getDividerImage } from "./getDividerImage";
+import { ImageFormat } from "@/types/image";
 
 type RenderResponse = Awaited<ReturnType<typeof getDividerImage>>;
 
@@ -21,6 +22,7 @@ export type DividerNodeRendererDoneEventData = {
 
 export type DividerNodeRendererOptions = {
   bleed: ILayoutBleed
+  imageFormat: ImageFormat
   onStart?: () => void
   onRender?: (event: DividerNodeRendererRenderEventData) => void
   onCancel?: (event: DividerNodeRendererCancelEventData) => void
@@ -76,13 +78,14 @@ export class DividerNodeRenderer {
     const key = this.current;
     const node = this.nodes[key];
     const name = key > 9 ? key.toString() : '0' + key;
-    const { bleed } = this.options;
+    const { bleed, imageFormat } = this.options;
 
     const options = {
       name,
       node,
       scale,
-      bleed
+      bleed,
+      imageFormat
     };
 
     return getDividerImage(options);

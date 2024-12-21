@@ -7,12 +7,19 @@ import { selectBleed, setBleed } from '@/store/features/print/print';
 import { useTranslation } from 'react-i18next';
 import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
 import { Nullable } from '@/types/util';
-import { createDividerZip } from '@/features/zip/createDividerZip';
+import { createDividerZip, CreateDividerZipOptions } from '@/features/zip/createDividerZip';
 import { getSimilarBleed } from '@/features/render/getSimilarBleed';
+import { ImageFormat } from '@/types/image';
 
 type DownloadStatus = 'working' | 'complete' | 'initial' | 'cancelled' | 'error';
 
-export const useDownloadDividers = () => {
+export const useDownloadDividers = ({
+  imageFormat,
+  mapRenderResponse
+}: {
+  imageFormat: ImageFormat
+  mapRenderResponse: CreateDividerZipOptions['mapRenderResponse']
+}) => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const useBleed = useAppSelector(selectBleed);
@@ -98,9 +105,11 @@ export const useDownloadDividers = () => {
 
     const renderer = createDividerZip({
       name,
+      imageFormat,
       bleed: similarBleed,
       onCancel,
       onRender: setProgress,
+      mapRenderResponse,
       beforeDone: () => dispatch(setExport(false))
     })
 
