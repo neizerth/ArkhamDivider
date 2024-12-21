@@ -1,45 +1,45 @@
-import { IEqualLayoutBleed, ILayoutBleed } from "@/types/layouts";
+import { ILayoutBleed } from "@/types/layouts";
 import { getWebToPrintScale } from "@/util/units";
-import { getSimilarBleed } from "./getSimilarBleed";
 import { getDividerImage } from "./getDividerImage";
 
 type RenderResponse = Awaited<ReturnType<typeof getDividerImage>>;
 
-type OnRenderEventData = {
+export type DividerNodeRendererRenderEventData = {
   data: RenderResponse
   total: number
   done: number
-  bleed: IEqualLayoutBleed
 }
 
-type OnCancelEventData = {
+export type DividerNodeRendererCancelEventData = {
   total: number
   done: number
 }
 
-type OnDoneEventData = {
+export type DividerNodeRendererDoneEventData = {
   total: number
-  bleed: IEqualLayoutBleed
 }
 
-type DividerNodeRendererOptions = {
+export type DividerNodeRendererOptions = {
   bleed: ILayoutBleed
-  onRender?: (event: OnRenderEventData) => void
-  onCancel?: (event: OnCancelEventData) => void
-  onDone?: (event: OnDoneEventData) => void
+  onStart?: () => void
+  onRender?: (event: DividerNodeRendererRenderEventData) => void
+  onCancel?: (event: DividerNodeRendererCancelEventData) => void
+  onDone?: (event: DividerNodeRendererDoneEventData) => void
 }
+export type DividerNodeRendererStatus = 'running' | 'initial' | 'done' | 'cancelled';
 
 export class DividerNodeRenderer {
   protected nodes: Element[] = []
-  readonly current = 0
+  protected current = 0
   readonly scale = getWebToPrintScale()
   protected cancelled = false
-  protected bleed: IEqualLayoutBleed;
-  protected status: 'running' | 'idle' = 'idle';
+  protected status: DividerNodeRendererStatus = 'initial';
   constructor (
     protected options: DividerNodeRendererOptions
-  ) {
-    this.bleed = getSimilarBleed(options.bleed);
+  ) {}
+
+  getStatus() {
+    return this.status;
   }
 
   async run() {
@@ -56,14 +56,13 @@ export class DividerNodeRenderer {
   
   async next() {
     if (this.cancelled) {
-      this.onCancel();
       return;
     }
 
     const response = await this.render();
     this.onRender(response);
 
-    if (this.current === this.nodes.length - 1) {
+    if (this.current === this.nodes.length - 1 && !this.cancelled) {
       this.onDone();
       return;
     }
@@ -73,10 +72,11 @@ export class DividerNodeRenderer {
   }
 
   render() {
-    const { bleed, scale } = this;
+    const { scale } = this;
     const key = this.current;
     const node = this.nodes[key];
     const name = key > 9 ? key.toString() : '0' + key;
+    const { bleed } = this.options;
 
     const options = {
       name,
@@ -90,6 +90,14 @@ export class DividerNodeRenderer {
 
   cancel() {
     this.cancelled = true;
+    this.onCancel();
+  }
+  onStart() {
+    this.status = 'running';
+    if (!this.options.onStart) {
+      return;
+    }
+    this.options.onStart()
   }
 
   onRender(data: RenderResponse) {
@@ -99,22 +107,22 @@ export class DividerNodeRenderer {
     this.options.onRender({
       total: this.nodes.length,
       done: this.current + 1,
-      data,
-      bleed: this.bleed
+      data
     });
   }
 
   onDone() {
+    this.status = 'done';
     if (!this.options.onDone) {
       return;
     }
     this.options.onDone({
-      total: this.nodes.length,
-      bleed: this.bleed
+      total: this.nodes.length
     });
   }
 
   onCancel() {
+    this.status = 'cancelled';
     if (!this.options.onCancel) {
       return;
     }

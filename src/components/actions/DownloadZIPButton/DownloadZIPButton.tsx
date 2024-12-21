@@ -16,7 +16,8 @@ export const DownloadZIPButton = ({}: DownloadZIPButtonProps) => {
   const { 
     download,
     progress,
-    cancel
+    cancel,
+    status
   } = useDownloadDividers();
   const isExport = useAppSelector(selectExport);
   const dividers = useAppSelector(selectDividers);
@@ -33,10 +34,18 @@ export const DownloadZIPButton = ({}: DownloadZIPButtonProps) => {
     download();
   }, []);
 
+  const onClick = () => {
+    console.log({status});
+    if (status === 'working') {
+      return cancel();
+    }
+    onDownload();
+  }
+
   return (
     <IconButton 
-      onClick={isDone ? onDownload : cancel} 
-      buttonType={ButtonType.SECONDARY}
+      onClick={onClick} 
+      buttonType={status === 'working' ? ButtonType.DANGER : ButtonType.SECONDARY}
       icon="download"
       disabled={isDisabled}
       title={!isChrome ? 'Your browser is not supported' : ''}

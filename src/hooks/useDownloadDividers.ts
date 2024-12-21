@@ -1,27 +1,31 @@
-import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch } from './useAppDispatch';
 import { selectLayout, setZoom } from '@/store/features/layout/layout';
-import { setExport } from '@/store/features/app/app';
+import { selectExport, setExport } from '@/store/features/app/app';
 import { useAppSelector } from './useAppSelector';
 import { selectBleed, setBleed } from '@/store/features/print/print';
 import { useTranslation } from 'react-i18next';
 import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
 import { Nullable } from '@/types/util';
-import { delay } from '@/util/common';
+import { createDividerZip } from '@/features/zip/createDividerZip';
+import { getSimilarBleed } from '@/features/render/getSimilarBleed';
 
-
-const getDividerNodes = () => Array.from(
-  document.querySelectorAll('.divider')
-);
+type DownloadStatus = 'working' | 'complete' | 'initial' | 'cancelled' | 'error';
 
 export const useDownloadDividers = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const useBleed = useAppSelector(selectBleed);
+  const isExport = useAppSelector(selectExport);
   const { bleed } = useAppSelector(selectLayout);
+  const [defaultBleed, setDefaultBleed] = useState(useBleed);
 
+  useEffect(() => {
+    if (isExport) {
+      return;
+    }
+    setDefaultBleed(useBleed);
+  }, [useBleed, isExport]);
 
   const [progress, setProgress] = useState({
     done: 0,
@@ -29,83 +33,86 @@ export const useDownloadDividers = () => {
   });
 
   const [renderer, setRenderer] = useState<Nullable<DividerNodeRenderer>>(null);
+  const [status, setStatus] = useState<DownloadStatus>('initial');
 
   const cancel = () => {
+    console.log('cancelled');
     renderer?.cancel();
   }
 
-  const download = async () => {
-    const defaultUseBleed = useBleed;
-    dispatch(setZoom(100));
-    dispatch(setExport(true));
-    dispatch(setBleed(true));
+  const onCancel = () => {
+    console.log('onCancel');
+    setStatus('cancelled');
+    onFinally();
+  }
 
+  const onFinally = () => {
+    dispatch(setBleed(defaultBleed));
+    dispatch(setExport(false));
+
+    setRenderer(null);
+    setProgress({
+      done: 0,
+      total: 0
+    });
+  }
+
+  useEffect(() => {
+    if (!isExport || renderer) {
+      return;
+    }
+    onStart();
+  }, [renderer, isExport])
+
+  const onStart = async () => {
     try {
-      await delay(10);
       await process();
+      setStatus('complete');
     }
     catch (error) {
       console.error('Error downloading dividers:', error);
-
-      dispatch(setExport(false));
-      setProgress({
-        done: 0,
-        total: 0
-      });
+      setStatus('error');
     }
     finally {
-      dispatch(setBleed(defaultUseBleed));
-      setRenderer(null);
+      onFinally();
     }
+  }
+
+  const download = async () => {
+    dispatch(setZoom(100));
+    dispatch(setExport(true));
+    dispatch(setBleed(true));
+    setStatus('working'); 
   }
 
   const process = async () => {
     if (progress.done !== progress.total) {
       return;
     }
+    
+    const similarBleed = getSimilarBleed(bleed);
 
-    const zip = new JSZip;
+    const bleedText = similarBleed.size.toFixed(1);
+    const bleedTranslation = t('Bleed').toLowerCase();
+    const name = `Arkham Divider (${bleedTranslation} ${bleedText}mm)`;
 
-    const renderer = new DividerNodeRenderer({
-      bleed,
-      onCancel() {
-        dispatch(setExport(false));
-      },
-      async onDone({ bleed }) {
-        const content = await zip.generateAsync({ 
-          type: 'blob',
-        });
-        dispatch(setExport(false));
-
-        const bleedText = bleed.size.toFixed(1);
-        const bleedTranslation = t('Bleed').toLowerCase();
-        const zipName = `Arkham Divider (${bleedTranslation} ${bleedText}mm).zip`
-        saveAs(content, zipName);
-      },
-      onRender({ done, total, data }) {
-        const {
-          contents,
-          filename
-        } = data;
-
-        zip.file(filename, contents, {
-          binary: true,
-        });
-
-        setProgress({
-          done,
-          total,
-        });
-      }
-    });
+    const renderer = createDividerZip({
+      name,
+      bleed: similarBleed,
+      onCancel,
+      onRender: setProgress,
+      beforeDone: () => dispatch(setExport(false))
+    })
 
     setRenderer(renderer);
+
     await renderer.run();
   }
 
   return {
     download,
     progress,
-    cancel
+    cancel,
+    status
   };
 }
