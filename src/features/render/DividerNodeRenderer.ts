@@ -2,32 +2,17 @@ import { ILayoutBleed } from "@/types/layouts";
 import { getWebToPrintScale } from "@/util/units";
 import { getDividerImage } from "./getDividerImage";
 import { ImageFormat } from "@/types/image";
-
-type RenderResponse = Awaited<ReturnType<typeof getDividerImage>>;
-
-export type DividerNodeRendererRenderEventData = {
-  data: RenderResponse
-  total: number
-  done: number
-}
-
-export type DividerNodeRendererCancelEventData = {
-  total: number
-  done: number
-}
-
-export type DividerNodeRendererDoneEventData = {
-  total: number
-}
+import { OnRenderCancelEventData, OnRenderDoneEventData, OnRenderEventData, RenderResponse } from "@/types/render";
 
 export type DividerNodeRendererOptions = {
   bleed: ILayoutBleed
   imageFormat: ImageFormat
-  onStart?: () => void
-  onRender?: (event: DividerNodeRendererRenderEventData) => void
-  onCancel?: (event: DividerNodeRendererCancelEventData) => void
-  onDone?: (event: DividerNodeRendererDoneEventData) => void
+  onStart?: () => Promise<void>
+  onRender?: (event: OnRenderEventData) => Promise<void>
+  onCancel?: (event: OnRenderCancelEventData) => Promise<void>
+  onDone?: (event: OnRenderDoneEventData) => Promise<void>
 }
+
 export type DividerNodeRendererStatus = 'running' | 'initial' | 'done' | 'cancelled';
 
 export class DividerNodeRenderer {
@@ -53,7 +38,7 @@ export class DividerNodeRenderer {
       return;
     }
 
-    this.onDone();
+    await this.onDone();
   }
   
   async next() {
@@ -62,10 +47,10 @@ export class DividerNodeRenderer {
     }
 
     const response = await this.render();
-    this.onRender(response);
+    await this.onRender(response);
 
     if (this.current === this.nodes.length - 1 && !this.cancelled) {
-      this.onDone();
+      await this.onDone();
       return;
     }
 
@@ -91,45 +76,45 @@ export class DividerNodeRenderer {
     return getDividerImage(options);
   }
 
-  cancel() {
+  async cancel() {
     this.cancelled = true;
-    this.onCancel();
+    await this.onCancel();
   }
-  onStart() {
+  async onStart() {
     this.status = 'running';
     if (!this.options.onStart) {
       return;
     }
-    this.options.onStart()
+    await this.options.onStart()
   }
 
-  onRender(data: RenderResponse) {
+  async onRender(data: RenderResponse) {
     if (!this.options.onRender) {
       return;
     }
-    this.options.onRender({
+    await this.options.onRender({
       total: this.nodes.length,
       done: this.current + 1,
       data
     });
   }
 
-  onDone() {
+  async onDone() {
     this.status = 'done';
     if (!this.options.onDone) {
       return;
     }
-    this.options.onDone({
+    await this.options.onDone({
       total: this.nodes.length
     });
   }
 
-  onCancel() {
+  async onCancel() {
     this.status = 'cancelled';
     if (!this.options.onCancel) {
       return;
     }
-    this.options.onCancel({
+    await this.options.onCancel({
       total: this.nodes.length,
       done: this.current + 1
     });

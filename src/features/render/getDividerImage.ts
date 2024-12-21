@@ -1,5 +1,6 @@
 import { ImageFormat } from '@/types/image';
 import { ILayoutBleed } from '@/types/layouts';
+import { RenderResponse } from '@/types/render';
 import { toPrintSize } from '@/util/units';
 import domToImage from 'dom-to-image';
 import { Jimp } from 'jimp';
@@ -18,7 +19,7 @@ export const getDividerImage = async ({
   name,
   bleed,
   imageFormat
-}: GetDividerImageOptions) => {
+}: GetDividerImageOptions): Promise<RenderResponse> => {
   const rect = node.getBoundingClientRect();
   
   const width = rect.width * scale;

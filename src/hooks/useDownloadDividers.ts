@@ -7,18 +7,20 @@ import { selectBleed, setBleed } from '@/store/features/print/print';
 import { useTranslation } from 'react-i18next';
 import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
 import { Nullable } from '@/types/util';
-import { createDividerZip, CreateDividerZipOptions } from '@/features/zip/createDividerZip';
 import { getSimilarBleed } from '@/features/render/getSimilarBleed';
 import { ImageFormat } from '@/types/image';
+import { CreateRendererFunction, RenderResponseMapper } from '@/types/render';
 
 type DownloadStatus = 'working' | 'complete' | 'initial' | 'cancelled' | 'error';
 
 export const useDownloadDividers = ({
   imageFormat,
-  mapRenderResponse
+  mapRenderResponse,
+  createRenderer
 }: {
   imageFormat: ImageFormat
-  mapRenderResponse: CreateDividerZipOptions['mapRenderResponse']
+  mapRenderResponse?: RenderResponseMapper
+  createRenderer: CreateRendererFunction
 }) => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -42,12 +44,12 @@ export const useDownloadDividers = ({
   const [renderer, setRenderer] = useState<Nullable<DividerNodeRenderer>>(null);
   const [status, setStatus] = useState<DownloadStatus>('initial');
 
-  const cancel = () => {
+  const cancel = async () => {
     console.log('cancelled');
     renderer?.cancel();
   }
 
-  const onCancel = () => {
+  const onCancel = async () => {
     console.log('onCancel');
     setStatus('cancelled');
     onFinally();
@@ -103,14 +105,18 @@ export const useDownloadDividers = ({
     const bleedTranslation = t('Bleed').toLowerCase();
     const name = `Arkham Divider (${bleedTranslation} ${bleedText}mm)`;
 
-    const renderer = createDividerZip({
+    const renderer = createRenderer({
       name,
       imageFormat,
       bleed: similarBleed,
       onCancel,
-      onRender: setProgress,
       mapRenderResponse,
-      beforeDone: () => dispatch(setExport(false))
+      async onRender({ done, total }) {
+        setProgress({ done, total})
+      },
+      async beforeDone() {
+        dispatch(setExport(false))
+      }
     })
 
     setRenderer(renderer);
