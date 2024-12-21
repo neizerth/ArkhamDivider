@@ -33,9 +33,13 @@ export const DownloadZIPButton = ({
 
   const isDone = progress.done === progress.total;
   const isDisabled = dividers.length === 0;
+  const isWorking = status === 'working';
 
   const onClick = () => {
-    if (status === 'working') {
+    if (isExport && !isWorking) {
+      return;
+    }
+    if (isWorking) {
       return cancel();
     }
     download();
@@ -44,14 +48,14 @@ export const DownloadZIPButton = ({
   return (
     <IconButton 
       onClick={onClick} 
-      buttonType={status === 'working' ? ButtonType.DANGER : ButtonType.SECONDARY}
+      buttonType={isWorking ? ButtonType.DANGER : ButtonType.SECONDARY}
       icon="download"
       disabled={isDisabled}
     >
-      {children} {!isDone && (
+      {children} {isWorking && !isDone && (
         <>{progress.done} / {progress.total}</>
       )}
-      {isDone && isExport && <Icon icon="hour-glass"/>}
+      {isWorking && isExport && <Icon icon="hour-glass"/>}
     </IconButton>
 );
 }

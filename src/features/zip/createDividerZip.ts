@@ -10,7 +10,7 @@ export type CreateDividerZipOptions = {
   name: string
   bleed: ILayoutBleed
   imageFormat: ImageFormat
-  mapRenderResponse?: <T extends Uint8Array>(buffer: T) => T
+  mapRenderResponse?: (buffer: Uint8Array) => Promise<Uint8Array>
   onCancel: () => void
   beforeDone?: () => void
   onRender?: (event: OnRenderEventData) => void
