@@ -1,0 +1,1 @@
+export type ImageFormat = 'png' | 'tiff' | 'jpeg';

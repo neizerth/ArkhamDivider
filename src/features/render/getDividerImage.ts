@@ -1,22 +1,24 @@
+import { ImageFormat } from '@/types/image';
 import { ILayoutBleed } from '@/types/layouts';
 import { toPrintSize } from '@/util/units';
 import domToImage from 'dom-to-image';
-import { getSimilarBleed } from './getSimilarBleed';
 import { Jimp } from 'jimp';
 
-export type IGetDividerImageOptions = {
+export type GetDividerImageOptions = {
   node: Element
   scale: number
   name: string
   bleed: ILayoutBleed
+  imageFormat: ImageFormat
 }
 
 export const getDividerImage = async ({
   node,
   scale,
   name,
-  bleed
-}: IGetDividerImageOptions) => {
+  bleed,
+  imageFormat
+}: GetDividerImageOptions) => {
   const rect = node.getBoundingClientRect();
   
   const width = rect.width * scale;
@@ -31,12 +33,10 @@ export const getDividerImage = async ({
     }
   });
 
-  const crop = getSimilarBleed(bleed);
-
-  const cropLeft = toPrintSize(crop.left);
-  const cropTop = toPrintSize(crop.top);
-  const cropWidth = toPrintSize(crop.width);
-  const cropHeight = toPrintSize(crop.height);
+  const cropLeft = toPrintSize(bleed.left);
+  const cropTop = toPrintSize(bleed.top);
+  const cropWidth = toPrintSize(bleed.width);
+  const cropHeight = toPrintSize(bleed.height);
 
   const image = await Jimp.read(source);
 
@@ -47,10 +47,9 @@ export const getDividerImage = async ({
     h: cropHeight
   });
 
-  const fileFormat = 'png';
-  const ext = '.' + fileFormat;
+  const ext = '.' + imageFormat;
 
-  const contents = await image.getBuffer('image/png');
+  const contents = await image.getBuffer(`image/${imageFormat}`);
 
   const filename = name + ext;
 

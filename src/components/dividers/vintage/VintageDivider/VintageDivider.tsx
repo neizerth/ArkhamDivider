@@ -21,7 +21,7 @@ import { selectLanguage } from '@/store/features/language/language';
 import { getBottomTitle } from './features/getBottomTitle';
 import { ClassicDividerEventXPCost } from '../../classic/xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost';
 import { getInvestigatorLetter } from './features/getInvestigatorLetter';
-import { moveTab, selectTabPositions } from '@/store/features/vintage/vintage';
+import { moveTab, selectTabPositions } from '@/store/features/dividers/vintage/vintage';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 
 export type VintageDividerProps = DividerProps;

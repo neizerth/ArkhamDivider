@@ -1,7 +1,7 @@
 import { TabPosition } from '@/components/dividers/vintage/VintageDivider/features/tabPosition';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
 import { ActionCreator, createSlice } from '@reduxjs/toolkit';
-import { setDividers } from '../dividers/dividers';
+import { setDividers } from '@/store/features/dividers/dividers';
 import { fromPairs, prop } from 'ramda';
 import { AppThunk } from '@/store';
 

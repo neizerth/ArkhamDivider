@@ -2,8 +2,8 @@ import { selectStories } from "@/store/features/stories/stories";
 import { useAppSelector } from "../useAppSelector";
 import { selectLayout } from "@/store/features/layout/layout";
 import { arkhamesqueCategory } from "@/data/layouts/arkhamesque";
-import { selectArkhamesqueData } from "@/store/features/arkhamesque/arkhamesque";
-import { hasArkhamesqueStorySupport } from "@/store/features/arkhamesque/criteria";
+import { selectArkhamesqueData } from "@/store/features/dividers/arkhamesque/arkhamesque";
+import { hasArkhamesqueStorySupport } from "@/store/features/dividers/arkhamesque/criteria";
 import { selectLanguage, selectTranslatedStories } from "@/store/features/language/language";
 import { IStory } from "@/types/api";
 

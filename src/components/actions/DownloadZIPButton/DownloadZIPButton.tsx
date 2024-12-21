@@ -4,49 +4,58 @@ import { Icon, IconButton } from '@/components';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectExport } from '@/store/features/app/app';
 import { useDownloadDividers } from '@/hooks/useDownloadDividers';
-import { detect } from 'detect-browser';
-import { useMemo } from 'react';
 import { selectDividers } from '@/store/features/dividers/dividers';
+import { PropsWithChildren } from 'react';
+import { CreateDividerZipOptions } from '@/features/zip/createDividerZip';
+import { ImageFormat } from '@/types/image';
 
-export type DownloadZIPButtonProps = {
-
+export type DownloadZIPButtonProps = PropsWithChildren & {
+  imageFormat: ImageFormat
+  mapRenderResponse?: CreateDividerZipOptions['mapRenderResponse']
 }
 
-export const DownloadZIPButton = ({}: DownloadZIPButtonProps) => {
+export const DownloadZIPButton = ({ 
+  mapRenderResponse,
+  imageFormat,
+  children 
+}: DownloadZIPButtonProps) => {
   const { 
     download,
-    progress 
-  } = useDownloadDividers();
+    progress,
+    cancel,
+    status
+  } = useDownloadDividers({
+    imageFormat,
+    mapRenderResponse
+  });
   const isExport = useAppSelector(selectExport);
   const dividers = useAppSelector(selectDividers);
 
   const isDone = progress.done === progress.total;
-  const browser = useMemo(detect, []);
-  const isChrome = browser?.name ==='chrome';
-  const isDisabled = dividers.length === 0 || !isChrome;
+  const isDisabled = dividers.length === 0;
+  const isWorking = status === 'working';
 
-  const onDownload = () => {
-    if (!isChrome) {
+  const onClick = () => {
+    if (isExport && !isWorking) {
       return;
     }
+    if (isWorking) {
+      return cancel();
+    }
     download();
-  };
+  }
 
   return (
     <IconButton 
-      onClick={onDownload} 
-      buttonType={ButtonType.SECONDARY}
+      onClick={onClick} 
+      buttonType={isWorking ? ButtonType.DANGER : ButtonType.SECONDARY}
       icon="download"
       disabled={isDisabled}
-      title={!isChrome ? 'Your browser is not supported' : ''}
     >
-      PNG {!isDone && (
+      {children} {isWorking && !isDone && (
         <>{progress.done} / {progress.total}</>
       )}
-      {isDone && isExport && <Icon icon="hour-glass"/>}
-      {!isChrome && (
-        <Icon icon="chrome"/>
-      )}
+      {isWorking && isExport && <Icon icon="hour-glass"/>}
     </IconButton>
 );
 }
