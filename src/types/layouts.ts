@@ -10,6 +10,10 @@ export type ILayoutBleed = {
   bottom: number
 }
 
+export type IEqualLayoutBleed = ILayoutBleed & {
+  size: number
+}
+
 export type ILayout = {
   id: string
   categoryId: string

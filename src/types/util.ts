@@ -12,3 +12,5 @@ export type FirstParam<F extends (arg: any) => unknown> = Parameters<F>[0];
 export type Defined<T> = Exclude<T, undefined>;
 
 export type PrefixedUnion<Prefix extends string, Values extends string> = `${Prefix}${Values}`
+
+export type Nullable<T> = T | null;

@@ -1,10 +1,9 @@
 import { ILayoutBleed } from '@/types/layouts';
 import { toPrintSize } from '@/util/units';
 import domToImage from 'dom-to-image';
-import { getSimilarBleed } from './getSimilarBleed';
 import { Jimp } from 'jimp';
 
-export type IGetDividerImageOptions = {
+export type GetDividerImageOptions = {
   node: Element
   scale: number
   name: string
@@ -16,7 +15,7 @@ export const getDividerImage = async ({
   scale,
   name,
   bleed
-}: IGetDividerImageOptions) => {
+}: GetDividerImageOptions) => {
   const rect = node.getBoundingClientRect();
   
   const width = rect.width * scale;
@@ -31,12 +30,20 @@ export const getDividerImage = async ({
     }
   });
 
-  const crop = getSimilarBleed(bleed);
+  const cropLeft = toPrintSize(bleed.left);
+  const cropTop = toPrintSize(bleed.top);
+  const cropWidth = toPrintSize(bleed.width);
+  const cropHeight = toPrintSize(bleed.height);
 
-  const cropLeft = toPrintSize(crop.left);
-  const cropTop = toPrintSize(crop.top);
-  const cropWidth = toPrintSize(crop.width);
-  const cropHeight = toPrintSize(crop.height);
+  console.log({
+    scale,
+    width,
+    height,
+    x: cropLeft,
+    y: cropTop,
+    w: cropWidth,
+    h: cropHeight
+  })
 
   const image = await Jimp.read(source);
 

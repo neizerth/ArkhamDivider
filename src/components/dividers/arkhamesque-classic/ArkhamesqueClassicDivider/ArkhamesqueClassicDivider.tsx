@@ -6,7 +6,7 @@ import { useIconSelect } from '@/hooks/useIconSelect';
 import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { getDividerData } from './data/getDividerData';
 import { useSelector } from 'react-redux';
-import { selectArkhamesqueData } from '@/store/features/arkhamesque/arkhamesque';
+import { selectArkhamesqueData } from '@/store/features/dividers/arkhamesque/arkhamesque';
 import { DividerText } from '../../common/DividerText/DividerText';
 import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
 import { DividerMenu } from '../../common/DividerMenu/DividerMenu';

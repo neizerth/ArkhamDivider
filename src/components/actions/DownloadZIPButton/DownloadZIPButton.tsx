@@ -5,7 +5,7 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectExport } from '@/store/features/app/app';
 import { useDownloadDividers } from '@/hooks/useDownloadDividers';
 import { detect } from 'detect-browser';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { selectDividers } from '@/store/features/dividers/dividers';
 
 export type DownloadZIPButtonProps = {
@@ -15,7 +15,8 @@ export type DownloadZIPButtonProps = {
 export const DownloadZIPButton = ({}: DownloadZIPButtonProps) => {
   const { 
     download,
-    progress 
+    progress,
+    cancel
   } = useDownloadDividers();
   const isExport = useAppSelector(selectExport);
   const dividers = useAppSelector(selectDividers);
@@ -25,16 +26,16 @@ export const DownloadZIPButton = ({}: DownloadZIPButtonProps) => {
   const isChrome = browser?.name ==='chrome';
   const isDisabled = dividers.length === 0 || !isChrome;
 
-  const onDownload = () => {
+  const onDownload = useCallback(() => {
     if (!isChrome) {
       return;
     }
     download();
-  };
+  }, []);
 
   return (
     <IconButton 
-      onClick={onDownload} 
+      onClick={isDone ? onDownload : cancel} 
       buttonType={ButtonType.SECONDARY}
       icon="download"
       disabled={isDisabled}
