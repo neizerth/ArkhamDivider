@@ -23,7 +23,7 @@ export const createDividerZip = ({
   onCancel,
   onRender,
   beforeDone,
-  mapRenderResponse = f => f
+  mapRenderResponse = async f => f
 }: CreateDividerZipOptions) => {
   const zip = new JSZip;
 
