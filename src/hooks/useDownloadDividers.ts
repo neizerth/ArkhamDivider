@@ -1,32 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from './useAppDispatch';
-import { selectLayout, setZoom } from '@/store/features/layout/layout';
+import { setZoom } from '@/store/features/layout/layout';
 import { selectExport, setExport } from '@/store/features/app/app';
 import { useAppSelector } from './useAppSelector';
 import { selectBleed, setBleed } from '@/store/features/print/print';
-import { useTranslation } from 'react-i18next';
 import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
-import { Nullable } from '@/types/util';
-import { getSimilarBleed } from '@/features/render/getSimilarBleed';
-import { ImageFormat } from '@/types/image';
-import { CreateRendererFunction, RenderResponseMapper } from '@/types/render';
+import { OnRenderEventData } from '@/types/render';
 
-type DownloadStatus = 'working' | 'complete' | 'initial' | 'cancelled' | 'error';
+type DownloadStatus = 'working' | 'complete' | 'initial' | 'cancelled' | 'error' | 'ready';
 
 export const useDownloadDividers = ({
-  imageFormat,
-  mapRenderResponse,
-  createRenderer
+  renderer
 }: {
-  imageFormat: ImageFormat
-  mapRenderResponse?: RenderResponseMapper
-  createRenderer: CreateRendererFunction
+  renderer: DividerNodeRenderer
 }) => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
   const useBleed = useAppSelector(selectBleed);
   const isExport = useAppSelector(selectExport);
-  const { bleed } = useAppSelector(selectLayout);
   const [defaultBleed, setDefaultBleed] = useState(useBleed);
 
   useEffect(() => {
@@ -41,12 +31,11 @@ export const useDownloadDividers = ({
     total: 0
   });
 
-  const [renderer, setRenderer] = useState<Nullable<DividerNodeRenderer>>(null);
   const [status, setStatus] = useState<DownloadStatus>('initial');
 
   const cancel = async () => {
     console.log('cancelled');
-    renderer?.cancel();
+    renderer.cancel();
   }
 
   const onCancel = async () => {
@@ -59,7 +48,6 @@ export const useDownloadDividers = ({
     dispatch(setBleed(defaultBleed));
     dispatch(setExport(false));
 
-    setRenderer(null);
     setProgress({
       done: 0,
       total: 0
@@ -67,13 +55,14 @@ export const useDownloadDividers = ({
   }
 
   useEffect(() => {
-    if (!isExport || renderer) {
-      return;
+    if (isExport && status === 'ready') {
+      onStart();
     }
-    onStart();
-  }, [renderer, isExport])
+    
+  }, [isExport, status])
 
   const onStart = async () => {
+    console.log('started');
     try {
       await process();
       setStatus('complete');
@@ -87,39 +76,37 @@ export const useDownloadDividers = ({
     }
   }
 
+  const onRender = ({ done, total }: OnRenderEventData) => {
+    setProgress({ done, total })
+  }
+
+  const onDone = () => {
+    dispatch(setExport(false));
+    
+    renderer
+      .off('render', onRender)
+      .off('done', onDone)
+      .off('cancel', onCancel);
+  }
+
   const download = async () => {
     dispatch(setZoom(100));
     dispatch(setExport(true));
     dispatch(setBleed(true));
-    setStatus('working'); 
+    setStatus('ready');
   }
 
   const process = async () => {
     if (progress.done !== progress.total) {
       return;
     }
-    
-    const similarBleed = getSimilarBleed(bleed);
 
-    const bleedText = similarBleed.size.toFixed(1);
-    const bleedTranslation = t('Bleed').toLowerCase();
-    const name = `Arkham Divider (${bleedTranslation} ${bleedText}mm)`;
+    setStatus('working'); 
 
-    const renderer = createRenderer({
-      name,
-      imageFormat,
-      bleed: similarBleed,
-      onCancel,
-      mapRenderResponse,
-      async onRender({ done, total }) {
-        setProgress({ done, total})
-      },
-      async beforeDone() {
-        dispatch(setExport(false))
-      }
-    })
-
-    setRenderer(renderer);
+    renderer
+      .on('render', onRender)
+      .on('done', onDone)
+      .on('cancel', onCancel);
 
     await renderer.run();
   }

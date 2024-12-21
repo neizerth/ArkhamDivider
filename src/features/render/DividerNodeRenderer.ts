@@ -3,6 +3,7 @@ import { getWebToPrintScale } from "@/util/units";
 import { getDividerImage } from "./getDividerImage";
 import { ImageFormat } from "@/types/image";
 import { OnRenderCancelEventData, OnRenderDoneEventData, OnRenderEventData, RenderResponse } from "@/types/render";
+import { EventEmitter } from "@/features/events/EventEmitter";
 
 export type DividerNodeRendererOptions = {
   bleed: ILayoutBleed
@@ -15,7 +16,7 @@ export type DividerNodeRendererOptions = {
 
 export type DividerNodeRendererStatus = 'running' | 'initial' | 'done' | 'cancelled';
 
-export class DividerNodeRenderer {
+export class DividerNodeRenderer extends EventEmitter {
   protected nodes: Element[] = []
   protected current = 0
   readonly scale = getWebToPrintScale()
@@ -23,7 +24,9 @@ export class DividerNodeRenderer {
   protected status: DividerNodeRendererStatus = 'initial';
   constructor (
     protected options: DividerNodeRendererOptions
-  ) {}
+  ) {
+    super();
+  }
 
   getStatus() {
     return this.status;
@@ -82,6 +85,7 @@ export class DividerNodeRenderer {
   }
   async onStart() {
     this.status = 'running';
+    this.emit('start');
     if (!this.options.onStart) {
       return;
     }
@@ -89,34 +93,44 @@ export class DividerNodeRenderer {
   }
 
   async onRender(data: RenderResponse) {
-    if (!this.options.onRender) {
-      return;
-    }
-    await this.options.onRender({
+    
+    const event = {
       total: this.nodes.length,
       done: this.current + 1,
       data
-    });
+    };
+    this.emit('render', event);
+
+    if (!this.options.onRender) {
+      return;
+    }
+    
+    await this.options.onRender(event);
   }
 
   async onDone() {
     this.status = 'done';
+    const event = {
+      total: this.nodes.length
+    }
+    this.emit('done', event);
     if (!this.options.onDone) {
       return;
     }
-    await this.options.onDone({
-      total: this.nodes.length
-    });
+  
+    await this.options.onDone(event);
   }
 
   async onCancel() {
     this.status = 'cancelled';
+    const event = {
+      total: this.nodes.length,
+      done: this.current + 1
+    };
+    this.emit('cancel', event);
     if (!this.options.onCancel) {
       return;
     }
-    await this.options.onCancel({
-      total: this.nodes.length,
-      done: this.current + 1
-    });
+    await this.options.onCancel(event);
   }
 }

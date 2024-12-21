@@ -1,4 +1,4 @@
-import S from './DownloadLasercutPDF.module.scss';
+// import S from './DownloadLasercutPDF.module.scss';
 
 export type DownloadLasercutPDFProps = {
 

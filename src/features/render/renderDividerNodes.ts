@@ -10,7 +10,7 @@ export const createDividerZip = ({
   imageFormat,
   onCancel,
   onRender,
-  beforeDone,
+  // beforeDone,
   mapRenderResponse = async f => f
 }: CreateDividerZipOptions) => {
   const renders: Uint8Array[] = [] 
@@ -20,11 +20,11 @@ export const createDividerZip = ({
     onCancel,
     imageFormat,
     async onDone() {
-      return renders;
+      // return renders;
     },
     async onRender(event) {
       const { data } = event;
-      const { filename } = data;
+      // const { filename } = data;
       const contents = await mapRenderResponse(data.contents);
 
       renders.push(contents);

@@ -6,31 +6,26 @@ import { selectExport } from '@/store/features/app/app';
 import { useDownloadDividers } from '@/hooks/useDownloadDividers';
 import { selectDividers } from '@/store/features/dividers/dividers';
 import { PropsWithChildren } from 'react';
-import { ImageFormat } from '@/types/image';
-import { CreateRendererFunction, RenderResponseMapper } from '@/types/render';
-import { createDividerZip } from '@/features/zip/createDividerZip';
+import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
 
 export type DownloadZIPButtonProps = PropsWithChildren & {
-  imageFormat: ImageFormat
-  mapRenderResponse?: RenderResponseMapper
-  createRenderer: CreateRendererFunction
+  renderer: DividerNodeRenderer
 }
 
-export const DownloadZIPButton = ({ 
-  mapRenderResponse,
-  imageFormat,
+export const DownloadZIPButton = ({
+  renderer,
   children 
 }: DownloadZIPButtonProps) => {
+  
   const { 
     download,
     progress,
     cancel,
     status
   } = useDownloadDividers({
-    createRenderer: createDividerZip,
-    imageFormat,
-    mapRenderResponse
+    renderer
   });
+  
   const isExport = useAppSelector(selectExport);
   const dividers = useAppSelector(selectDividers);
 
