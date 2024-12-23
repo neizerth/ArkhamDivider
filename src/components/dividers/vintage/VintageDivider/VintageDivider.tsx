@@ -23,6 +23,7 @@ import { ClassicDividerEventXPCost } from '../../classic/xp/ClassicDividerIconXP
 import { getInvestigatorLetter } from './features/getInvestigatorLetter';
 import { moveTab, selectTabPositions } from '@/store/features/dividers/vintage/vintage';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { selectLayout } from '@/store/features/layout/layout';
 
 export type VintageDividerProps = DividerProps;
 
@@ -37,6 +38,9 @@ export const VintageDivider = (props: VintageDividerProps) => {
   } = props;
 
   const dispatch = useAppDispatch();
+  const { customParams = {}} = useAppSelector(selectLayout);
+  const { size = 'medium' } = customParams;
+  const isLarge = size === 'large';
   const tabPositions = useAppSelector(selectTabPositions);
   const currentPosition = tabPositions[backId || id];
 
@@ -88,11 +92,12 @@ export const VintageDivider = (props: VintageDividerProps) => {
         S.container,
         S[language],
         S[tabPosition],
+        S[size],
         bleed && S.bleed
       )}
       data-position={tabPosition}
     >
-      <DividerContent>
+      <DividerContent className={S.content}>
         {xpCost && (
           <div className={S.sideXPCost}>
             <ClassicDividerSideXP
@@ -191,6 +196,9 @@ export const VintageDivider = (props: VintageDividerProps) => {
         </div>
         {bleed && (
           <div className={S.bodyBleed}/>
+        )}
+        {isLarge && (
+          <div className={S.bottomBacground}/>
         )}
         <NotExportable>
           {tabPosition !== 'left' && (
