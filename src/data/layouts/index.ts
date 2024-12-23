@@ -6,7 +6,7 @@ import { sarnetskyLayouts, sarnetskyLayoutCategory } from "./sarnetsky";
 import { arkhamDecoCategory, arkhamDecoLayouts } from "./arkham-deco";
 import { arkhamStarter3mmLayout, arkhamStarter3mmLayoutCategory } from "./3mm";
 import { arkhamesqueCategory, arkhamesqueClassicLayouts } from "./arkhamesque";
-import { vintageLayout, vintageLayoutCategory } from "./vintage";
+import { vintageLayouts, vintageLayoutCategory } from "./vintage";
 
 export const layouts: ILayout[] = [
   ...classicLayouts,
@@ -14,8 +14,8 @@ export const layouts: ILayout[] = [
   ...sarnetskyLayouts,
   ...arkhamDecoLayouts,
   ...arkhamesqueClassicLayouts,
+  ...vintageLayouts,
   arkhamStarter3mmLayout,
-  vintageLayout,
 ]
 
 export const layoutCategories: ILayoutCategory[] = [

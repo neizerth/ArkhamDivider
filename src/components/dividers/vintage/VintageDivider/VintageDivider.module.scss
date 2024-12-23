@@ -11,6 +11,16 @@
   -webkit-print-color-adjust: exact;
 }
 
+.bottomBacground {
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8mm;
+  background-color: #151616;
+} 
+
 .fr {
   .topTitle {
     padding-top: 0.9mm;
@@ -203,6 +213,10 @@
   left: 0;
 }
 
+.large .body {
+  bottom: 5mm;
+}
+
 .bodyBleed {
   position: absolute;
   z-index: 2;
@@ -268,7 +282,7 @@
 .letterIcon {
   line-height: 1;
   position: relative;
-  top: 1.1mm;
+  top: 1mm;
   font-size: 0.8em;
   width: 5mm;
   height: 7mm;

@@ -1,22 +1,18 @@
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from "@/types/layouts";
 
-export const vintageLayout: ILayout = {
-  id: 'vintage',
+const vintageBleed = {
+  left: 3,
+  right: 3,
+  top: 3,
+  bottom: 3
+};
+
+const vintageLayoutCommon = {
   categoryId: 'vintage',
-  width: 90,
-  height: 72,
-  title: 'Vintage',
+  
   types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
   orientation: LayoutOrientation.HORIZONTAL,
   color: true,
-  bleed: {
-    width: 96,
-    height: 78,
-    left: 3,
-    right: 3,
-    top: 3,
-    bottom: 3
-  },
   campaignOptions: {
     includeScenarioSize: false,
     includeEncounterSize: false,
@@ -26,6 +22,36 @@ export const vintageLayout: ILayout = {
     displaySideXP: true
   }
 }
+
+export const vintageLayouts: ILayout[] = [
+  {
+    ...vintageLayoutCommon,
+    id: 'vintage',
+    width: 90,
+    height: 72,
+    title: 'Standart',
+    bleed: {
+      ...vintageBleed,
+      width: 96,
+      height: 78,
+    }
+  },
+  {
+    ...vintageLayoutCommon,
+    id: 'vintage-large',
+    width: 90,
+    height: 77,
+    title: 'Large',
+    bleed: {
+      ...vintageBleed,
+      width: 96,
+      height: 83
+    },
+    customParams: {
+      size: 'large'
+    }
+  }
+] 
 
 export const vintageLayoutCategory: ILayoutCategory = {
   id: 'vintage',

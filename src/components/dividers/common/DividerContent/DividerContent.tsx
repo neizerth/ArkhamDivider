@@ -15,7 +15,8 @@ export type DividerContentProps = PropsWithClassName & PropsWithChildren & {
 }
 
 export const DividerContent = ({
-  children
+  children,
+  className
 }: DividerContentProps) => {
   const layout = useAppSelector(selectLayout);
   const useBleed = useAppSelector(selectBleed);
@@ -29,7 +30,8 @@ export const DividerContent = ({
     <div 
       className={classNames(
         S.container,
-        useBleed && 'divider'
+        useBleed && 'divider',
+        className
       )}
     >
       <NotExportable>
