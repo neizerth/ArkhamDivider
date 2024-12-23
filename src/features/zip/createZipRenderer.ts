@@ -22,11 +22,14 @@ export const createZipRenderer = ({
   imageFormat,
   transformResponse = async f => f
 }: CreateDividerZipOptions) => {
-  const zip = new JSZip;
+  let zip = new JSZip;
 
   const renderer = new DividerNodeRenderer({
     bleed,
     imageFormat,
+    async onStart() {
+      zip = new JSZip();
+    },
     async onDone() {
       const content = await zip.generateAsync({ 
         type: 'blob',

@@ -16,11 +16,10 @@ export const DownloadCMYKButton = ({}: DownloadCMYKButtonProps) => {
 
   const { t } = useTranslation();
 
-  const layout = useAppSelector(selectLayout);
+  const { bleed } = useAppSelector(selectLayout);
+  const { size } = getSimilarBleed(bleed);
 
-  const bleed = getSimilarBleed(layout.bleed);
-
-  const bleedText = bleed.size.toFixed(1);
+  const bleedText = size.toFixed(1);
   const bleedTranslation = t('Bleed').toLowerCase();
   const name = `Arkham Divider (${bleedTranslation} ${bleedText}mm)`;
 
