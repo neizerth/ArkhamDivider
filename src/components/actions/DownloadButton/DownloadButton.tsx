@@ -10,9 +10,11 @@ import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
 
 export type DownloadZIPButtonProps = PropsWithChildren & {
   renderer: DividerNodeRenderer
+  icon?: string
 }
 
-export const DownloadZIPButton = ({
+export const DownloadButton = ({
+  icon = 'download',
   renderer,
   children 
 }: DownloadZIPButtonProps) => {
@@ -47,7 +49,7 @@ export const DownloadZIPButton = ({
     <IconButton 
       onClick={onClick} 
       buttonType={isWorking ? ButtonType.DANGER : ButtonType.SECONDARY}
-      icon="download"
+      icon={icon}
       disabled={isDisabled}
     >
       {children} {isWorking && !isDone && (

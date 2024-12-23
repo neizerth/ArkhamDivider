@@ -1,8 +1,8 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { DownloadZIPButton } from '../DownloadZIPButton/DownloadZIPButton';
+import { DownloadButton } from '../DownloadButton/DownloadButton';
 import { selectLayout } from '@/store/features/layout/layout';
 import { getSimilarBleed } from '@/features/render/getSimilarBleed';
-import { createDividerZip } from '@/features/zip/createDividerZip';
+import { createZipRenderer } from '@/features/zip/createZipRenderer';
 import { useTranslation } from 'react-i18next';
 // import S from './DownloadPNGButton.module.scss';
 
@@ -22,17 +22,17 @@ export const DownloadPNGButton = ({}: DownloadPNGButtonProps) => {
   const bleedTranslation = t('Bleed').toLowerCase();
   const name = `Arkham Divider (${bleedTranslation} ${bleedText}mm)`;
 
-  const renderer = createDividerZip({
+  const renderer = createZipRenderer({
     name,
     imageFormat: 'png',
     bleed
   });
 
   return (
-    <DownloadZIPButton
+    <DownloadButton
       renderer={renderer}
     >
       PNG
-    </DownloadZIPButton>
+    </DownloadButton>
   );
 }

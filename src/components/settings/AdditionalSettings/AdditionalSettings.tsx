@@ -3,6 +3,7 @@ import { PageSizeSettings } from '../PageSizeSettings/PageSizeSettings';
 import { LayoutZoom, Row } from '@/components';
 import { DownloadPNGButton } from '@/components/actions/DownloadPNGButton/DownloadPNGButton';
 import { DownloadCMYKButton } from '@/components/actions/DownloadCMYKButton/DownloadCMYKButton';
+import { DownloadLasercutPDF } from '@/components/actions/DownloadLasercutPDF/DownloadLasercutPDF';
 
 export type AdditionalSettingsProps = {
 
@@ -20,10 +21,13 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
           <PageSizeSettings/>
         </div>
         <div className={S.item}>
+          <DownloadPNGButton/>
+        </div>
+        <div className={S.item}>
           <DownloadCMYKButton/>
         </div>
         <div className={S.item}>
-          <DownloadPNGButton/>
+          <DownloadLasercutPDF/>
         </div>
       </Row>
       <div className={S.shadow}></div>

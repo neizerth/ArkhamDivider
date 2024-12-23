@@ -1,7 +1,7 @@
 // import S from './DownloadCMYKButton.module.scss';
 
-import { createDividerZip, CreateDividerZipOptions } from "@/features/zip/createDividerZip";
-import { DownloadZIPButton } from "../DownloadZIPButton/DownloadZIPButton";
+import { createZipRenderer as createZipRenderer, CreateDividerZipOptions } from "@/features/zip/createZipRenderer";
+import { DownloadButton } from "../DownloadButton/DownloadButton";
 import { rgb2cmyk } from "@/features/image/rgb2cmyk";
 import { getSimilarBleed } from "@/features/render/getSimilarBleed";
 import { useAppSelector } from "@/hooks/useAppSelector";
@@ -9,7 +9,7 @@ import { selectLayout } from "@/store/features/layout/layout";
 import { useTranslation } from "react-i18next";
 
 export type DownloadCMYKButtonProps = {
-  mapRenderResponse?: CreateDividerZipOptions['mapRenderResponse']
+  mapRenderResponse?: CreateDividerZipOptions['transformResponse']
 }
 
 export const DownloadCMYKButton = ({}: DownloadCMYKButtonProps) => {
@@ -24,18 +24,18 @@ export const DownloadCMYKButton = ({}: DownloadCMYKButtonProps) => {
   const bleedTranslation = t('Bleed').toLowerCase();
   const name = `Arkham Divider (${bleedTranslation} ${bleedText}mm)`;
 
-  const renderer = createDividerZip({
+  const renderer = createZipRenderer({
     name,
     imageFormat: 'tiff',
     bleed,
-    mapRenderResponse: rgb2cmyk
+    transformResponse: rgb2cmyk
   });
 
   return (
-    <DownloadZIPButton
+    <DownloadButton
       renderer={renderer}
     >
       TIFF
-    </DownloadZIPButton>
+    </DownloadButton>
   );
 }

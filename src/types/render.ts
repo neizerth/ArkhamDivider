@@ -1,17 +1,4 @@
 import { DividerNodeRenderer } from "@/features/render/DividerNodeRenderer";
-import { ImageFormat } from "./image";
-import { ILayoutBleed } from "./layouts";
-
-export type RenderOptions = {
-  name: string
-  bleed: ILayoutBleed
-  imageFormat: ImageFormat
-  mapRenderResponse?: RenderResponseMapper
-  onDone?: () => Promise<void>
-  onCancel?: () => Promise<void>
-  beforeDone?: () => Promise<void>
-  onRender?: (event: OnRenderEventData) => Promise<void>
-};
 
 export type RenderResponse = {
   filename: string
