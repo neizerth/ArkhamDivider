@@ -94,7 +94,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
       renderer={downloader.renderer}
       icon="file-pdf"
     >
-      {t('Lasercut PDF')}
+      {t('HQ PDF')}
     </DownloadButton>
   );
 }

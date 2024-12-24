@@ -3,6 +3,7 @@ import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectExport } from '@/store/features/app/app';
 import { selectLayout } from '@/store/features/layout/layout';
 import { selectBleed, selectPageSizeType, setItemsPerPage, setPageOrientation, setPageSizeType, setRowsPerPage } from '@/store/features/print/print';
 import { PageSize, PageSizeType } from '@/types/print';
@@ -17,6 +18,8 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
   const pageSizeType = useAppSelector(selectPageSizeType);
   const layout = useAppSelector(selectLayout);
   const bleed = useAppSelector(selectBleed);
+  const isExport = useAppSelector(selectExport);
+  
   const CHROME_PAGE_SIZES: PageSizeType[] = [PageSizeType.A3, PageSizeType.SRA3];
 
   const pageSizes = Object.keys(PageSize) as PageSizeType[];
@@ -53,6 +56,7 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
       onChange={item => item && onChange(item.value)}
       options={options}
       value={value}
+      isDisabled={isExport}
     />
   );
 }

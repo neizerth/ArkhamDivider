@@ -8,6 +8,7 @@ import { AppThunk } from '@/store';
 export type IPrintState = {
   doubleSided: boolean
   bleed: boolean
+  cornerRadius: boolean
   itemsPerPage: number
   rowsPerPage: number
   pageSizeType: PageSizeType
@@ -24,6 +25,7 @@ const initialState: IPrintState = {
   doubleSided: false,
   bleed: false,
   pageSizeType: PageSizeType.A4,
+  cornerRadius: false,
   ...defaultGrid
 };
 
@@ -36,7 +38,8 @@ export const print = createSlice({
     setDoubleSided: createSliceSetter('doubleSided'),
     setBleed: createSliceSetter('bleed'),
     setPageOrientation: createSliceSetter('pageOrientation'),
-    setPageSizeType: createSliceSetter('pageSizeType')
+    setPageSizeType: createSliceSetter('pageSizeType'),
+    setCornerRadius: createSliceSetter('cornerRadius'),
   },
   selectors: {
     selectRowsPerPage: createSliceSelector('rowsPerPage'),
@@ -44,7 +47,8 @@ export const print = createSlice({
     selectDoubleSided: createSliceSelector('doubleSided'),
     selectBleed: createSliceSelector('bleed'),
     selectPageOrientation: createSliceSelector('pageOrientation'),
-    selectPageSizeType: createSliceSelector('pageSizeType')
+    selectPageSizeType: createSliceSelector('pageSizeType'),
+    selectCornerRadius: createSliceSelector('cornerRadius'),
   },
   extraReducers: builder => {
     builder
@@ -86,7 +90,8 @@ export const {
   setItemsPerPage,
   setDoubleSided,
   setPageOrientation,
-  setPageSizeType
+  setPageSizeType,
+  setCornerRadius
 } = print.actions;
 
 export const {
@@ -95,7 +100,8 @@ export const {
   selectDoubleSided,
   selectBleed,
   selectPageOrientation,
-  selectPageSizeType
+  selectPageSizeType,
+  selectCornerRadius
 } = print.selectors;
 
 export default print.reducer;

@@ -55,6 +55,7 @@ export { Checkbox } from './forms/Checkbox/Checkbox'
 export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 export { Upload } from './forms/Upload/Upload';
+export { Input } from './forms/Input/Input';
 
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
 export { LayoutFilter } from './filters/layout/LayoutFilter/LayoutFilter';

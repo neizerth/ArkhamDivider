@@ -1,9 +1,13 @@
 import { splitIntoPages } from "@/features/print";
-import { Document, Image, Page, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Image, Page, View, StyleSheet, Styles, Svg } from '@react-pdf/renderer';
 import { uniqId } from "@/util/common";
 import { PageOrientation, PageSizeType, PrintPageSize } from "@/types/print";
 import { IEqualLayoutBleed } from "@/types/layouts";
 import { toPrintSize } from "@/util/units";
+import { ValueOf } from "@/types/util";
+import { Rect } from "react-konva";
+
+const GUIDE_WIDTH = 1;
 
 const styles = StyleSheet.create({
   page: {
@@ -14,10 +18,17 @@ const styles = StyleSheet.create({
   row: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'nowrap'
+    flexWrap: 'nowrap',
+    position: 'relative',
+    zIndex: 1
+  },
+  cutPage: {
+    position: 'absolute',
+    zIndex: 2
   }
 });
 
+type Style = ValueOf<Styles>
 
 export type PDFLayoutOptions = {
   data: string[]
@@ -51,15 +62,18 @@ export const PDFLayout = ({
 	});
 
   const pageSize = PrintPageSize[pageSizeType];
-  const dividerSize = {
-    width: toPrintSize(bleed.width),
-    height: toPrintSize(bleed.height)
+  const dividerWithBleedStyle = {
+    width: Math.round(toPrintSize(bleed.width)),
+    height: Math.round(toPrintSize(bleed.height))
   }
 
-  console.log({
-    pageSize,
-    dividerSize
-  })
+  const bleedSize = Math.round(toPrintSize(bleed.size));
+  
+  const dividerStyle: Style = {
+    width: dividerWithBleedStyle.width - bleedSize * 2,
+    height: dividerWithBleedStyle.height - bleedSize * 2,
+    margin: bleedSize - GUIDE_WIDTH
+  }
 
   return (
     <Document>
@@ -79,11 +93,32 @@ export const PDFLayout = ({
                 <Image
                   key={divider.id}
                   src={divider.src}
-                  style={dividerSize}
+                  style={dividerWithBleedStyle}
                 />
               ))}
             </View>
           ))}
+          <View
+            style={[pageSize, styles.cutPage]}
+          >
+            {rows.map((row, rowIndex) => (
+              <View
+                key={rowIndex}
+                style={styles.row}
+              >
+                <Svg>
+                  {row.map(({ id }) => (
+                    <Rect
+                      key={id}
+                      style={dividerStyle}
+                      stroke={'black'}
+                      strokeWidth={1}
+                    />
+                  ))}
+                </Svg>
+              </View>
+            ))}
+          </View>
         </Page>
       ))}
     </Document>
