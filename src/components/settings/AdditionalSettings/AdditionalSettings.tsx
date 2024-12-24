@@ -21,13 +21,13 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
           <PageSizeSettings/>
         </div>
         <div className={S.item}>
-          <DownloadPNGButton/>
+          <DownloadLasercutPDF/>
         </div>
         <div className={S.item}>
           <DownloadCMYKButton/>
         </div>
         <div className={S.item}>
-          <DownloadLasercutPDF/>
+          <DownloadPNGButton/>
         </div>
       </Row>
       <div className={S.shadow}></div>

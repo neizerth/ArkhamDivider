@@ -10,6 +10,7 @@ import {
   setDoubleSided,
 } from '@/store/features/print/print';
 import { useTranslation } from 'react-i18next';
+import { selectExport } from '@/store/features/app/app';
 
 export type PrintSettingsProps = {
 
@@ -21,10 +22,10 @@ export const PrintSettings = () => {
 
   const doubleSided = useAppSelector(selectDoubleSided);
   const useBleed = useAppSelector(selectBleed);
+  const isExport = useAppSelector(selectExport);
 
-  const toggleDoubleSided = () => dispatch(setDoubleSided(!doubleSided));
-  const toggleBleed = () => dispatch(setBleed(!useBleed));
-
+  const toggleDoubleSided = () => !isExport && dispatch(setDoubleSided(!doubleSided));
+  const toggleBleed = () => !isExport && dispatch(setBleed(!useBleed));
 
   // const 
   return (
@@ -33,6 +34,8 @@ export const PrintSettings = () => {
         onChange={toggleDoubleSided} 
         checked={doubleSided}
 
+        disabled={isExport}
+
         labelClassName={S.label}
       >
         {t('2 sides')}
@@ -40,6 +43,7 @@ export const PrintSettings = () => {
       <Checkbox 
         onChange={toggleBleed} 
         checked={useBleed}
+        disabled={isExport}
         labelClassName={S.label}
       >
         {t('Bleed')}

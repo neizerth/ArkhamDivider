@@ -14,8 +14,9 @@ export const DownloadPNGButton = ({}: DownloadPNGButtonProps) => {
 
   const { t } = useTranslation();
 
-  const { bleed } = useAppSelector(selectLayout);
-  const { size } = getSimilarBleed(bleed);
+  const layout = useAppSelector(selectLayout);
+  const bleed = getSimilarBleed(layout.bleed);
+  const { size } = bleed;
 
   const bleedText = size.toFixed(1);
   const bleedTranslation = t('Bleed').toLowerCase();

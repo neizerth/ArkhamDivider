@@ -1,17 +1,14 @@
 import { ILayoutBleed } from "@/types/layouts";
 import { getWebToPrintScale } from "@/util/units";
 import { getDividerImage } from "./getDividerImage";
-import { ImageFormat } from "@/types/image";
-import { OnRenderCancelEventData, OnRenderDoneEventData, OnRenderEventData, RenderResponse } from "@/types/render";
+import { ColorScheme, ImageFormat } from "@/types/image";
+import { RenderResponse } from "@/types/render";
 import { EventEmitter } from "@/features/events/EventEmitter";
 
 export type DividerNodeRendererOptions = {
   bleed: ILayoutBleed
   imageFormat: ImageFormat
-  onStart?: () => Promise<void>
-  onRender?: (event: OnRenderEventData) => Promise<void>
-  onCancel?: (event: OnRenderCancelEventData) => Promise<void>
-  onDone?: (event: OnRenderDoneEventData) => Promise<void>
+  colorScheme?: ColorScheme
 }
 
 export type DividerNodeRendererStatus = 'running' | 'initial' | 'done' | 'cancelled';
@@ -33,6 +30,9 @@ export class DividerNodeRenderer extends EventEmitter {
   }
 
   async run() {
+    await this.onStart();
+    
+    this.current = 0;
     this.cancelled = false;
     this.nodes = [...document.querySelectorAll('.divider')];
 
@@ -66,14 +66,15 @@ export class DividerNodeRenderer extends EventEmitter {
     const key = this.current;
     const node = this.nodes[key];
     const name = key > 9 ? key.toString() : '0' + key;
-    const { bleed, imageFormat } = this.options;
+    const { bleed, imageFormat, colorScheme } = this.options;
 
     const options = {
       name,
       node,
       scale,
       bleed,
-      imageFormat
+      imageFormat,
+      colorScheme
     };
 
     return getDividerImage(options);
@@ -86,10 +87,6 @@ export class DividerNodeRenderer extends EventEmitter {
   async onStart() {
     this.status = 'running';
     this.emit('start');
-    if (!this.options.onStart) {
-      return;
-    }
-    await this.options.onStart()
   }
 
   async onRender(data: RenderResponse) {
@@ -100,12 +97,6 @@ export class DividerNodeRenderer extends EventEmitter {
       data
     };
     this.emit('render', event);
-
-    if (!this.options.onRender) {
-      return;
-    }
-    
-    await this.options.onRender(event);
   }
 
   async onDone() {
@@ -114,11 +105,6 @@ export class DividerNodeRenderer extends EventEmitter {
       total: this.nodes.length
     }
     this.emit('done', event);
-    if (!this.options.onDone) {
-      return;
-    }
-  
-    await this.options.onDone(event);
   }
 
   async onCancel() {
@@ -128,9 +114,5 @@ export class DividerNodeRenderer extends EventEmitter {
       done: this.current + 1
     };
     this.emit('cancel', event);
-    if (!this.options.onCancel) {
-      return;
-    }
-    await this.options.onCancel(event);
   }
 }

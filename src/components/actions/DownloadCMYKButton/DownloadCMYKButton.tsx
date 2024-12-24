@@ -16,8 +16,9 @@ export const DownloadCMYKButton = ({}: DownloadCMYKButtonProps) => {
 
   const { t } = useTranslation();
 
-  const { bleed } = useAppSelector(selectLayout);
-  const { size } = getSimilarBleed(bleed);
+  const layout = useAppSelector(selectLayout);
+  const bleed = getSimilarBleed(layout.bleed);
+  const { size } = bleed;
 
   const bleedText = size.toFixed(1);
   const bleedTranslation = t('Bleed').toLowerCase();
@@ -26,8 +27,8 @@ export const DownloadCMYKButton = ({}: DownloadCMYKButtonProps) => {
   const renderer = createZipRenderer({
     name,
     imageFormat: 'tiff',
+    colorScheme: 'cmyk',
     bleed,
-    transformResponse: rgb2cmyk
   });
 
   return (

@@ -32,6 +32,7 @@ export const Layout = ({ }: LayoutProps) => {
 	const ids = dividers
 		.filter(({ backId }) => !backId)
 		.map(prop('id'));
+		
 	return (
 		<div className={S.container}>
 			<ZoomView

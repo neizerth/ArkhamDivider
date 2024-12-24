@@ -25,14 +25,14 @@ export const AddStoryDividers = ({}: AddStoryDividersProps) => {
   
   const [form, onFormChange] = useState({
     includeExtraSets: false,
-    includeReturnSets: true,
+    includeReturnSets: false,
     includeScenarios: true,
     includeEncounterSize: false,
     includeCampaignIcon: false,
     includeScenarioEncounterSet: false,
     includeScenarioSize: false,
     includeCampaign: true,
-    includeEncounters: true
+    includeEncounters: false
   });
 
   const onAdd = () => {

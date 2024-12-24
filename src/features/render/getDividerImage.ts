@@ -1,9 +1,9 @@
-import { ImageFormat } from '@/types/image';
+import { ColorScheme, ImageFormat } from '@/types/image';
 import { ILayoutBleed } from '@/types/layouts';
 import { RenderResponse } from '@/types/render';
 import { toPrintSize } from '@/util/units';
 import domToImage from 'dom-to-image';
-import { Jimp } from 'jimp';
+import { getVips } from '../image/vips';
 
 export type GetDividerImageOptions = {
   node: Element
@@ -11,6 +11,7 @@ export type GetDividerImageOptions = {
   name: string
   bleed: ILayoutBleed
   imageFormat: ImageFormat
+  colorScheme?: ColorScheme
 }
 
 export const getDividerImage = async ({
@@ -18,14 +19,15 @@ export const getDividerImage = async ({
   scale,
   name,
   bleed,
-  imageFormat
+  imageFormat,
+  colorScheme
 }: GetDividerImageOptions): Promise<RenderResponse> => {
   const rect = node.getBoundingClientRect();
   
   const width = rect.width * scale;
   const height = rect.height * scale;
 
-  const source = await domToImage.toPng(node, {
+  const blob = await domToImage.toBlob(node, {
     width,
     height,
     style: {
@@ -39,20 +41,27 @@ export const getDividerImage = async ({
   const cropWidth = toPrintSize(bleed.width);
   const cropHeight = toPrintSize(bleed.height);
 
-  const image = await Jimp.read(source);
-
-  image.crop({
-    x: cropLeft,
-    y: cropTop,
-    w: cropWidth,
-    h: cropHeight
-  });
+  const source = await blob.arrayBuffer();
+  const vips = await getVips();
+  let image = vips.Image.newFromBuffer(source)
+    .crop(
+      cropLeft,
+      cropTop,
+      cropWidth,
+      cropHeight
+    );
+  
+  if (colorScheme) {
+    image = image.iccTransform(colorScheme);
+  }
 
   const ext = '.' + imageFormat;
 
-  const contents = await image.getBuffer(`image/${imageFormat}`);
+  const contents = image.writeToBuffer(ext);
 
   const filename = name + ext;
+
+  image.delete();
 
   return {
     filename,

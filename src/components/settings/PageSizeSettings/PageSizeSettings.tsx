@@ -1,4 +1,5 @@
-// import S from './PageSizeSettings.module.scss';
+import S from './PageSizeSettings.module.scss';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -16,14 +17,23 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
   const pageSizeType = useAppSelector(selectPageSizeType);
   const layout = useAppSelector(selectLayout);
   const bleed = useAppSelector(selectBleed);
+  const CHROME_PAGE_SIZES: PageSizeType[] = [PageSizeType.A3, PageSizeType.SRA3];
 
-  const options = Object.entries(PageSize)
-    .map(([label, value]) => ({
-      label: label as PageSizeType,
-      value
+  const pageSizes = Object.keys(PageSize) as PageSizeType[];
+  const options = pageSizes
+    .map(size => ({
+      label: (
+        <div className={S.label}>
+          {CHROME_PAGE_SIZES.includes(size) && (
+            <Icon icon="chrome"/>
+          )}
+          {size}
+        </div>
+      ),
+      value: size
     }));
 
-  const value = options.find(({ label }) => label === pageSizeType);
+  const value = options.find(({ value }) => value === pageSizeType);
 
   const onChange = (pageSizeType: PageSizeType) => {
     const grid = getLayoutGrid({
@@ -40,7 +50,7 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
 
   return (
     <Select
-      onChange={item => item && onChange(item.label)}
+      onChange={item => item && onChange(item.value)}
       options={options}
       value={value}
     />

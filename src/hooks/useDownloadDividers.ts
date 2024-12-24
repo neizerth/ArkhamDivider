@@ -6,6 +6,7 @@ import { useAppSelector } from './useAppSelector';
 import { selectBleed, setBleed } from '@/store/features/print/print';
 import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
 import { OnRenderEventData } from '@/types/render';
+import { delay } from '@/util/common';
 
 type DownloadStatus = 'working' | 'complete' | 'initial' | 'cancelled' | 'error' | 'ready';
 
@@ -64,6 +65,7 @@ export const useDownloadDividers = ({
   const onStart = async () => {
     console.log('started');
     try {
+      await delay(100);
       await process();
       setStatus('complete');
     }

@@ -2,14 +2,14 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { DividerNodeRenderer } from '../render/DividerNodeRenderer';
 import { ILayoutBleed } from '@/types/layouts';
-import { ImageFormat } from '@/types/image';
-import { RenderResponseMapper } from '@/types/render';
+import { ColorScheme, ImageFormat } from '@/types/image';
+import { OnRenderEventData, RenderResponseMapper } from '@/types/render';
 
 export type RenderOptions = {
   name: string
   bleed: ILayoutBleed
   imageFormat: ImageFormat
-  transformResponse?: RenderResponseMapper
+  colorScheme?: ColorScheme
 };
 
 export type CreateDividerZipOptions = RenderOptions & {
@@ -20,34 +20,33 @@ export const createZipRenderer = ({
   bleed,
   name,
   imageFormat,
-  transformResponse = async f => f
+  colorScheme
 }: CreateDividerZipOptions) => {
   let zip = new JSZip;
 
   const renderer = new DividerNodeRenderer({
     bleed,
     imageFormat,
-    async onStart() {
-      zip = new JSZip();
-    },
-    async onDone() {
+    colorScheme
+  });
+
+  renderer
+    .on('start', () => zip = new JSZip)
+    .on('render', (event: OnRenderEventData) => {
+      const { filename, contents } = event.data;
+
+      zip.file(filename, contents, {
+        binary: true,
+      });
+    })
+    .on('done', async () => {
       const content = await zip.generateAsync({ 
         type: 'blob',
       });
 
       const zipName = `${name}.zip`;
       saveAs(content, zipName);
-    },
-    async onRender(event) {
-      const { data } = event;
-      const { filename } = data;
-      const contents = await transformResponse(data.contents);
-
-      zip.file(filename, contents, {
-        binary: true,
-      });
-    }
-  });
+    });
 
   return renderer;
 }
