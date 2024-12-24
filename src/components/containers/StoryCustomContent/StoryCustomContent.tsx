@@ -5,8 +5,6 @@ import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { Col, LanguageFlag } from '@/components';
 import { prop } from 'ramda';
-// import { countries } from 'country-flag-icons'
-// import * as flags from 'country-flag-icons/react/3x2'
 
 export type StoryCustomContentProps = PropsWithClassName & {
   content: ICustomContent

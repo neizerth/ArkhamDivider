@@ -3,7 +3,6 @@ import S from './DividerText.module.scss';
 import { ReactEventHandler, useEffect, useState } from 'react';
 import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
-import sanitizeHtml from 'sanitize-html';
 import useFitText from "use-fit-text";
 
 export type DividerTextProps = PropsWithClassName & {
@@ -27,11 +26,11 @@ export type DividerTextProps = PropsWithClassName & {
   clearPosition?: 'inside' | 'outside'
 }
 
-const toText = (html: string): string => 
-  sanitizeHtml(html, {
-    allowedTags: ['br']
-  })
-  .replace(/<br>/, '\n');
+const toText = (html: string): string => {
+  const container = document.createElement('div');
+  container.innerHTML = html.replace(/<br\/?>/, '\n');
+  return container.textContent || '';
+}
 
 
 export const DividerText = ({
