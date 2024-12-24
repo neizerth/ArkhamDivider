@@ -1,7 +1,7 @@
 import { ImageFormat } from "@/types/image";
 import { DividerNodeRenderer } from "../render/DividerNodeRenderer";
 import { ILayoutBleed } from "@/types/layouts";
-import { OnRenderEventData, RenderResponseMapper } from "@/types/render";
+import { RenderResponseMapper } from "@/types/render";
 import { saveAs } from 'file-saver';
 
 export const createPDFRenderer = ({

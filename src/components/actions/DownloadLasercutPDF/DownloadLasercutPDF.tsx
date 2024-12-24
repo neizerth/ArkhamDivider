@@ -6,12 +6,10 @@ import { DividerNodeRenderer } from "@/features/render/DividerNodeRenderer";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { selectLayout } from "@/store/features/layout/layout";
 import { getSimilarBleed } from "@/features/render/getSimilarBleed";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPDFRenderer } from "@/features/pdf/createPDFRender";
 import { rgb2cmyk } from "@/features/image/rgb2cmyk";
-import { selectPageOrientation, selectPageSizeType } from "@/store/features/print/print";
-import { LasercutPDF } from "./features/LasercutPDF";
-import { RenderPDFOptions } from "./types";
+import { pdf } from "@react-pdf/renderer";
 import { PDFLayout } from "./PDFLayout";
 
 export type DownloadLasercutPDFProps = {
@@ -19,16 +17,15 @@ export type DownloadLasercutPDFProps = {
 }
 
 export const renderBlob = (data: Uint8Array[]) => {
-  const asPdf = pdf(<PDFLayout data={data}/>); // {} is important, throws without an argument
-  asPdf.updateContainer(doc);
+  const container = (<PDFLayout data={data}/>);
+  const asPdf = pdf(); // {} is important, throws without an argument
+  asPdf.updateContainer(container);
   
   return asPdf.toBlob();
 }
 
 export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
   const { t } = useTranslation();
-  const pageSizeType = useAppSelector(selectPageSizeType);
-  const pageOrientation = useAppSelector(selectPageOrientation);
   const layout = useAppSelector(selectLayout);
   const { bleed } = layout;
   const { size } = getSimilarBleed(bleed);
