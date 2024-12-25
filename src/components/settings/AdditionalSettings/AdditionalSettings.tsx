@@ -14,7 +14,7 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
 
   return (
     <div className={S.container}>
-      <Row gap='responsive' className={S.row}>
+      <Row gap='responsive' className={S.row} wrap={true}>
         <div className={S.item}>
           <LayoutZoom/>
         </div>
