@@ -14,7 +14,7 @@ export const AppSettings = () => {
   const dividers = useAppSelector(selectDividers);
   const loadQueue = useAppSelector(selectLoadQueue);
   const layout = useAppSelector(selectLayout);
-  const [showAdditional, setShowAdditional] = useState(true);
+  const [showAdditional, setShowAdditional] = useState(false);
 
   const canPrint = !layout.async || loadQueue.length === 0;
 
