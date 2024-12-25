@@ -46,6 +46,7 @@ export const VintageDividerCornerRadius = styled(DividerCornerRadius)<{
   z-index: 4;
   top: calc(13.29mm - 1px);
   border-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0 0 4mm 4mm;
   ${({ $tabPosition }) => css`
     clip-path: ${cornerRadiusClipPath[$tabPosition]};
   `}
