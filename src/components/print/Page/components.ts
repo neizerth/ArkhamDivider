@@ -2,8 +2,6 @@ import { CREDITS_HEIGHT } from "@/components/containers/PageCredits/PageCredits"
 import { IBox } from "@/types/units";
 import styled, { css } from "styled-components";
 
-
-
 export const Container = styled.div<{
   $portrait: boolean
   $size: IBox

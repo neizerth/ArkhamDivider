@@ -9,7 +9,7 @@ export const WithBrowserSupport = ({
   children
 }: WithBrowserSupportProps) => {
   const browser = detect();
-  const notSupported = browser?.name === 'safari';
+  const notSupported = ['safari', 'firefox'].includes(browser?.name || '');
   return (
     <>
       {notSupported && (
@@ -18,7 +18,7 @@ export const WithBrowserSupport = ({
             <div className={S.cross}>
               <Icon icon={'cross_a'}/>
             </div>
-            <Icon className={S.icon} icon={browser.name}/>
+            <Icon className={S.icon} icon={browser?.name || 'sphere'}/>
           </div>
         </div>
       )}

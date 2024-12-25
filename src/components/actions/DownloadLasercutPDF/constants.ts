@@ -1,0 +1,1 @@
+export const GUIDE_WIDTH = 1;

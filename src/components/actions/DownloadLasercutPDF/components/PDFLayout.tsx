@@ -1,34 +1,31 @@
 import { splitIntoPages } from "@/features/print";
-import { Document, Image, Page, View, StyleSheet, Styles, Svg } from '@react-pdf/renderer';
+import { Document, Image, Page, StyleSheet, View } from '@react-pdf/renderer';
 import { uniqId } from "@/util/common";
 import { PageOrientation, PageSizeType, PrintPageSize } from "@/types/print";
 import { IEqualLayoutBleed } from "@/types/layouts";
 import { toPrintSize } from "@/util/units";
-import { ValueOf } from "@/types/util";
-import { Rect } from "react-konva";
-
-const GUIDE_WIDTH = 1;
+import { PDFRow as Row } from "./PDFRow";
+import { PDFPageGuides as PageGuides } from "./guides/PDFPageGuides";
 
 const styles = StyleSheet.create({
   page: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
-  },
-  row: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
+    alignItems: 'center',
     position: 'relative',
-    zIndex: 1
   },
-  cutPage: {
+  content: {
+    position: 'relative',
+    zIndex: -1
+  },
+  guides: {
     position: 'absolute',
-    zIndex: 2
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%'
   }
 });
-
-type Style = ValueOf<Styles>
 
 export type PDFLayoutOptions = {
   data: string[]
@@ -46,7 +43,6 @@ export const PDFLayout = ({
   groupSize,
   rowSize,
   pageSizeType,
-  pageOrientation,
   bleed
 }: PDFLayoutOptions) => {
 
@@ -62,61 +58,47 @@ export const PDFLayout = ({
 	});
 
   const pageSize = PrintPageSize[pageSizeType];
+  const size: [number, number] = [pageSize.width, pageSize.height];
+
   const dividerWithBleedStyle = {
     width: Math.round(toPrintSize(bleed.width)),
     height: Math.round(toPrintSize(bleed.height))
   }
 
-  const bleedSize = Math.round(toPrintSize(bleed.size));
-  
-  const dividerStyle: Style = {
-    width: dividerWithBleedStyle.width - bleedSize * 2,
-    height: dividerWithBleedStyle.height - bleedSize * 2,
-    margin: bleedSize - GUIDE_WIDTH
+  const guideArea = {
+    ...dividerWithBleedStyle,
+    bleedSize: Math.round(toPrintSize(bleed.size))
   }
 
   return (
     <Document>
       {pages.map(({ rows }, pageIndex) => (
         <Page 
-          size={[pageSize.width, pageSize.height]}
-          orientation={pageOrientation}
+          size={size}
           key={pageIndex}
-          style={[styles.page, pageSize]}
+          style={[styles.page]}
         >
-          {rows.map((row, rowIndex) => (
-            <View
-              key={rowIndex}
-              style={styles.row}
-            >
-              {row.map(divider => (
-                <Image
-                  key={divider.id}
-                  src={divider.src}
-                  style={dividerWithBleedStyle}
-                />
-              ))}
-            </View>
-          ))}
+          <PageGuides
+            area={guideArea}
+            rows={rows}
+            pageSize={pageSize}
+            style={styles.guides}
+          />
           <View
-            style={[pageSize, styles.cutPage]}
+            style={styles.content}
           >
             {rows.map((row, rowIndex) => (
-              <View
+              <Row
                 key={rowIndex}
-                style={styles.row}
               >
-                <Svg>
-                  {row.map(({ id }) => (
-                    <Rect
-                      key={id}
-                      style={dividerStyle}
-                      stroke={'black'}
-                      strokeWidth={1}
-                    />
-                  ))}
-                </Svg>
-              </View>
+                {row.map(divider => (
+                  <Image
+                    key={divider.id}
+                    src={divider.src}
+                    style={dividerWithBleedStyle}
+                  />
+                ))}
+              </Row>
             ))}
           </View>
         </Page>
