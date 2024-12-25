@@ -2,10 +2,11 @@ import { splitIntoPages } from "@/features/print";
 import { Document, Image, Page, StyleSheet, View } from '@react-pdf/renderer';
 import { uniqId } from "@/util/common";
 import { PageOrientation, PageSizeType, PrintPageSize } from "@/types/print";
-import { IEqualLayoutBleed } from "@/types/layouts";
+import { IEqualLayoutBleed, ILayout } from "@/types/layouts";
 import { toPrintSize } from "@/util/units";
 import { PDFRow as Row } from "./PDFRow";
 import { PDFPageGuides as PageGuides } from "./guides/PDFPageGuides";
+import { IDivider } from "@/types/dividers";
 
 const styles = StyleSheet.create({
   page: {
@@ -35,6 +36,9 @@ export type PDFLayoutOptions = {
   pageSizeType: PageSizeType
   pageOrientation: PageOrientation
   bleed: IEqualLayoutBleed
+  cornerRadius: boolean
+  dividers: IDivider[]
+  layout: ILayout
 }
 
 export const PDFLayout = ({
@@ -43,7 +47,10 @@ export const PDFLayout = ({
   groupSize,
   rowSize,
   pageSizeType,
-  bleed
+  bleed,
+  cornerRadius,
+  dividers,
+  layout
 }: PDFLayoutOptions) => {
 
   const items = data.map(src => ({
@@ -83,6 +90,9 @@ export const PDFLayout = ({
             rows={rows}
             pageSize={pageSize}
             style={styles.guides}
+            cornerRadius={cornerRadius}
+            dividers={dividers}
+            layout={layout}
           />
           <View
             style={styles.content}

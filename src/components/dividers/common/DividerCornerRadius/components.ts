@@ -1,3 +1,4 @@
+import { DEFAULT_CORNER_RADIUS } from "@/constants/print"
 import { ILayout } from "@/types/layouts"
 import styled, { css } from "styled-components"
 
@@ -7,7 +8,7 @@ export const Container = styled.div<{
   position: absolute;
   border-width: 1px;
   border-style: dashed;
-  border-radius: 4mm;
+  border-radius: ${DEFAULT_CORNER_RADIUS}mm;
   pointer-events: none;
 
   ${({ $layout }) => css`

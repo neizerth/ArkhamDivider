@@ -21,11 +21,12 @@ import { selectLanguage } from '@/store/features/language/language';
 import { getBottomTitle } from './features/getBottomTitle';
 import { ClassicDividerEventXPCost } from '../../classic/xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost';
 import { getInvestigatorLetter } from './features/getInvestigatorLetter';
-import { moveTab, selectTabPositions } from '@/store/features/dividers/vintage/vintage';
+import { moveTab } from '@/store/features/dividers/vintage/vintage';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { selectLayout } from '@/store/features/layout/layout';
 import { VintageDividerCornerRadius as CornerRadius } from '../VintageDividerCornerRadius/VintageDividerCornerRadius';
 import { VintageDividerTabCornerRadius as TabCornerRadius } from '../VintageDividerTabCornerRadius/VintageDividerTabCornerRadius';
+import { propEq } from 'ramda';
 
 export type VintageDividerProps = DividerProps;
 
@@ -36,21 +37,23 @@ export const VintageDivider = (props: VintageDividerProps) => {
     backId,
     xpCost,
     displayNumericXP = false,
-    type,
+    type
   } = props;
 
   const dispatch = useAppDispatch();
   const { customParams = {}} = useAppSelector(selectLayout);
   const { size = 'medium' } = customParams;
   const isLarge = size === 'large';
-  const tabPositions = useAppSelector(selectTabPositions);
-  const currentPosition = tabPositions[backId || id];
+  // const currentPosition = tabPositions[backId || id];
 
   const { t } = useStoryTranslation(props.story);
   const language = useAppSelector(selectLanguage);
   const bleed = useAppSelector(selectBleed);
   const dividers = useAppSelector(selectDividers);
   const cornerRadius = useAppSelector(selectCornerRadius);
+
+  const tabProps = backId ? dividers.find(propEq(backId, 'id')) : props;
+  const currentPosition = tabProps?.customParams?.tabPosition;
 
   const defaultIcon = getDefaultIcon({
     divider: props,

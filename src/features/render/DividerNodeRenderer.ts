@@ -34,7 +34,7 @@ export class DividerNodeRenderer extends EventEmitter {
     
     this.current = 0;
     this.cancelled = false;
-    this.nodes = [...document.querySelectorAll('.divider')];
+    this.nodes = [...document.querySelectorAll('.page .divider')];
 
     if (this.nodes.length > 0) {
       await this.next();

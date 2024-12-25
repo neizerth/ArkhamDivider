@@ -1,3 +1,4 @@
+import { Mapping } from "classnames"
 import { ICampaign, IEncounterSet, IInvestigator, IScenario, IStory } from "./api"
 import { CardType, IXPCost } from "./game"
 
@@ -47,6 +48,7 @@ export type IDivider = {
     backId?: string
 
     tags?: string[]
+    customParams?: Mapping
 }
 
 export type IDividerList = IDivider[];

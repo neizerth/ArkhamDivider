@@ -9,7 +9,9 @@ import { pdf } from "@react-pdf/renderer";
 import { PDFLayout } from "./components/PDFLayout";
 import { PDFDownloader } from "./features/PDFDownloader";
 import { saveAs } from "file-saver";
-import { selectDoubleSided, selectItemsPerPage, selectPageOrientation, selectPageSizeType, selectRowsPerPage } from "@/store/features/print/print";
+import { selectCornerRadius, selectDoubleSided, selectPageSizeType } from "@/store/features/print/print";
+import { selectDividers } from '@/store/features/dividers/dividers';
+import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
 
 export type DownloadLasercutPDFProps = {
 
@@ -20,10 +22,9 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
   const bleed = getSimilarBleed(layout.bleed);
 
   const doubleSidedPrint = useAppSelector(selectDoubleSided);
-	const groupSize = useAppSelector(selectItemsPerPage);
-	const rowSize = useAppSelector(selectRowsPerPage);
   const pageSizeType = useAppSelector(selectPageSizeType);
-  const pageOrientation = useAppSelector(selectPageOrientation);
+  const cornerRadius = useAppSelector(selectCornerRadius);
+  const dividers = useAppSelector(selectDividers);
 
   const [items, setItems] = useState<Uint8Array[]>([])
 
@@ -48,15 +49,28 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
       return URL.createObjectURL(blob);
     });
 
+    const {
+      rowsPerPage,
+      itemsPerPage,
+      pageOrientation
+    } = getLayoutGrid({
+      layout,
+      bleed: true,
+      pageSizeType
+    });
+
     const container = (
       <PDFLayout 
         data={data}
         doubleSidedPrint={doubleSidedPrint}
-        groupSize={groupSize}
-        rowSize={rowSize}
+        groupSize={itemsPerPage}
+        rowSize={rowsPerPage}
         pageSizeType={pageSizeType}
         pageOrientation={pageOrientation}
         bleed={bleed}
+        cornerRadius={cornerRadius}
+        dividers={dividers}
+        layout={layout}
       />
     )
     const asPdf = pdf(); // {} is important, throws without an argument
@@ -73,7 +87,16 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
 
     setItems([]);
 
-  }, [items, doubleSidedPrint, groupSize, rowSize, pageSizeType, pageOrientation, bleed, name]);
+  }, [
+    items, 
+    doubleSidedPrint, 
+    pageSizeType,
+    bleed, 
+    name, 
+    cornerRadius,
+    dividers,
+    layout
+  ]);
 
   downloader
     .on('render', setItems);

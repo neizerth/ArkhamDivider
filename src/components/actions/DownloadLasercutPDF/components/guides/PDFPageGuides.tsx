@@ -1,6 +1,8 @@
 import { IBox } from "@/types/units"
 import { Svg, View, ViewProps } from "@react-pdf/renderer"
 import { PDFGuideRow as Row } from "./PDFGuideRow"
+import { IDivider } from "@/types/dividers"
+import { ILayout } from "@/types/layouts"
 
 export type PDFGuideArea = {
   width: number
@@ -12,14 +14,17 @@ export type PDFPageGuidesProps = ViewProps & {
   rows: unknown[][]
   pageSize: IBox
   area: PDFGuideArea
+  cornerRadius: boolean
+  dividers: IDivider[]
+  layout: ILayout
 }
 
 export const PDFPageGuides = ({
   rows,
-  area,
-  pageSize,
-  style
-}: PDFPageGuidesProps) => {  
+  style,
+  ...props
+}: PDFPageGuidesProps) => {
+  const { pageSize } = props;  
   const colSize = Math.max(
     ...rows.map(({ length }) => length)
   );
@@ -39,9 +44,8 @@ export const PDFPageGuides = ({
             rowIndex={index}
             rowSize={rowSize}
             colSize={colSize}
-            area={area}
             items={row}
-            pageSize={pageSize}
+            {...props}
           />
         ))}
       </Svg>
