@@ -19,21 +19,12 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
   const layout = useAppSelector(selectLayout);
   const bleed = useAppSelector(selectBleed);
   const isExport = useAppSelector(selectExport);
-  
-  const CHROME_PAGE_SIZES: PageSizeType[] = [PageSizeType.A3, PageSizeType.SRA3];
 
   const pageSizes = Object.keys(PageSize) as PageSizeType[];
   const options = pageSizes
-    .map(size => ({
-      label: (
-        <div className={S.label}>
-          {CHROME_PAGE_SIZES.includes(size) && (
-            <Icon icon="chrome"/>
-          )}
-          {size}
-        </div>
-      ),
-      value: size
+    .map(value => ({
+      label: value,
+      value
     }));
 
   const value = options.find(({ value }) => value === pageSizeType);

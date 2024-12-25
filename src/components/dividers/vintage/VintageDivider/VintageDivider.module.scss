@@ -320,3 +320,12 @@
     display: flex;
   }
 }
+
+.cornerRadius {
+  z-index: 4;
+  border-top: none;
+}
+
+.tabCornerRadius {
+  border-color: rgba(255, 255, 255, 0.5);
+}

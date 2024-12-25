@@ -32,6 +32,8 @@ import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { XPCost } from '@/types/game';
 import { LayoutOrientation } from '@/types/layouts';
 import { getDefaultLineIcon, getDefaultSpecialIcon } from './features/icons';
+import { selectCornerRadius } from '@/store/features/print/print';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
 
 export const ArkhamDecoDivider = ({
   ...props
@@ -53,6 +55,7 @@ export const ArkhamDecoDivider = ({
     customParams,
     orientation,
   } = useAppSelector(selectLayout);
+  const cornerRadius = useAppSelector(selectCornerRadius);
 
   const layoutSize = customParams?.size || 'standard';
   const layoutType = customParams?.type as ArkhamDecoDividerType || 'standard';
@@ -355,6 +358,12 @@ export const ArkhamDecoDivider = ({
                 <img src={bottomCorner} className={S.bottomCornerImage} alt="" />
               </div>
           </div>
+
+          {cornerRadius && (
+            <NotExportable>
+              <DividerCornerRadius className={S.cornerRadius}/>
+            </NotExportable>
+          )}
         </div>
       </DividerContent>
     </div>

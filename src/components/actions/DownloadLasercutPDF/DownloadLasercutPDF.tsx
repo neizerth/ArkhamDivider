@@ -1,6 +1,5 @@
-// import S from './DownloadLasercutPDF.module.scss';
+import S from './DownloadLasercutPDF.module.scss';
 
-import { useTranslation } from "react-i18next";
 import { DownloadButton } from "../DownloadButton/DownloadButton";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { selectLayout } from "@/store/features/layout/layout";
@@ -16,16 +15,7 @@ export type DownloadLasercutPDFProps = {
 
 }
 
-export const renderBlob = (data: Uint8Array[]) => {
-  const container = (<PDFLayout data={data}/>);
-  const asPdf = pdf(); // {} is important, throws without an argument
-  asPdf.updateContainer(container);
-  
-  return asPdf.toBlob();
-}
-
 export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
-  const { t } = useTranslation();
   const layout = useAppSelector(selectLayout);
   const bleed = getSimilarBleed(layout.bleed);
 
@@ -92,9 +82,8 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
   return (
     <DownloadButton
       renderer={downloader.renderer}
-      icon="file-pdf"
     >
-      {t('HQ PDF')}
+      PDF <div className={S.badge}>HQ</div>
     </DownloadButton>
   );
 }

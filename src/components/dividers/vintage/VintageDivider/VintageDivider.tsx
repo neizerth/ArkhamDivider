@@ -7,7 +7,7 @@ import iconBackground from './images/icon-background.png';
 
 import classNames from 'classnames';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectBleed } from '@/store/features/print/print';
+import { selectBleed, selectCornerRadius } from '@/store/features/print/print';
 import { CircleIcon } from '@/components/ui/icons/CircleIcon/CircleIcon';
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { getNextTabPosition, getPrevTabPosition, getTabPosition } from './features/tabPosition';
@@ -24,6 +24,8 @@ import { getInvestigatorLetter } from './features/getInvestigatorLetter';
 import { moveTab, selectTabPositions } from '@/store/features/dividers/vintage/vintage';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { selectLayout } from '@/store/features/layout/layout';
+import { VintageDividerCornerRadius as CornerRadius } from '../VintageDividerCornerRadius/VintageDividerCornerRadius';
+import { VintageDividerTabCornerRadius as TabCornerRadius } from '../VintageDividerTabCornerRadius/VintageDividerTabCornerRadius';
 
 export type VintageDividerProps = DividerProps;
 
@@ -48,6 +50,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
   const language = useAppSelector(selectLanguage);
   const bleed = useAppSelector(selectBleed);
   const dividers = useAppSelector(selectDividers);
+  const cornerRadius = useAppSelector(selectCornerRadius);
 
   const defaultIcon = getDefaultIcon({
     divider: props,
@@ -132,6 +135,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
           )}
         >
           <NotExportable>
+            {cornerRadius && <TabCornerRadius/>}
             {tabPosition !== 'left' && !backId && (
               <div 
                 className={classNames(
@@ -227,6 +231,14 @@ export const VintageDivider = (props: VintageDividerProps) => {
           )}
         </NotExportable>
         <img src={bodyBackground} alt="" className={S.body} />
+        {cornerRadius && (
+          <NotExportable>
+            <CornerRadius 
+              className={S.cornerRadius}
+              $tabPosition={tabPosition}
+            />
+          </NotExportable>
+        )}
       </DividerContent>
     </div>
   );

@@ -46,7 +46,7 @@
   right: 5.4mm;
   top: 4.9mm;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
   &::after {
     content: '';
@@ -86,4 +86,8 @@
   left: 0.8mm;
   top: 0.8mm;
   box-sizing: border-box;
+}
+
+.cornerRadius {
+  border-color: rgba(255, 255, 255, 0.2);
 }

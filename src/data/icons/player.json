@@ -6,5 +6,9 @@
   {
     "icon": "ally_inverted",
     "top": -4
+  },
+  {
+    "icon": "skill_wild",
+    "scale": 0.7
   }
 ]

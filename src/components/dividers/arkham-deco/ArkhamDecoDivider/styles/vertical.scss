@@ -24,7 +24,8 @@
     transform: scale(0.7);
     // width: 94.1mm;
     width: 107mm;
-    display: block;
+    // display: block;
+    display: none;
     &_scenario {
       @include clipX(26.2mm, 68.2mm);
     }
@@ -35,6 +36,9 @@
 
   .topLineHandler {
     // display: none;
+  }
+  .lineIcon {
+    top: 6.7mm;
   }
 
   .tabHeaderBox {

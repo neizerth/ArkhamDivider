@@ -20,6 +20,9 @@ export const WithBrowserSupport = ({
             </div>
             <Icon className={S.icon} icon={browser?.name || 'sphere'}/>
           </div>
+          <div>
+            <Icon className={S.icon} icon="chrome"/>
+          </div>
         </div>
       )}
       {!notSupported && children}

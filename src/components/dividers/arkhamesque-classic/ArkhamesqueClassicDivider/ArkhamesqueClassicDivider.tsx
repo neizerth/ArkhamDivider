@@ -20,6 +20,9 @@ import { addLoadIndex, selectLoadIndex, setNextLoadIndex } from '@/store/feature
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { delay } from '@/util/common';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectCornerRadius } from '@/store/features/print/print';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -36,6 +39,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
   const language = useSelector(selectLanguage);
   const data = useSelector(selectArkhamesqueData);
   const loadIndex = useSelector(selectLoadIndex);
+  const cornerRadius = useAppSelector(selectCornerRadius);
 
 	const { t } = useStoryTranslation(story);
 
@@ -171,6 +175,11 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
               />
             )}
           </>
+        )}
+        {cornerRadius && (
+          <NotExportable>
+            <DividerCornerRadius className={S.cornerRadius}/>
+          </NotExportable>
         )}
       </DividerContent>
     </div>

@@ -9,3 +9,5 @@ export type IBoxOffset = {
   right: number
   bottom: number
 }
+
+export type Point = [x: number, y: number];

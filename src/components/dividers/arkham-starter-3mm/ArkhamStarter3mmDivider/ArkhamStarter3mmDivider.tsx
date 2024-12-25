@@ -16,6 +16,8 @@ import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { DividerType } from '@/types/dividers';
 import { XPCost } from '@/types/game';
+import { selectCornerRadius } from '@/store/features/print/print';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
 
 export const ArkhamStarter3mmDivider = (props: DividerProps) => {
   const { t } = useStoryTranslation(props.story);
@@ -28,6 +30,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
     className
   } = props;
 
+  const cornerRadius = useAppSelector(selectCornerRadius);
   const [previewIcon, setPreviewIcon] = useIconSelect({
     defaultIcon: props.previewIcon || props.icon
   });
@@ -260,6 +263,11 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
               />
             </div>
           </>
+        )}
+        {cornerRadius && (
+          <NotExportable>
+            <DividerCornerRadius className={S.cornerRadius}/>
+          </NotExportable>
         )}
       </DividerContent>
     </div>
