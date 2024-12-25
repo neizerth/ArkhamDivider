@@ -14,3 +14,5 @@ export type Defined<T> = Exclude<T, undefined>;
 export type PrefixedUnion<Prefix extends string, Values extends string> = `${Prefix}${Values}`
 
 export type Nullable<T> = T | null;
+
+export type ValueOf<T> = T[keyof T];

@@ -19,8 +19,9 @@ export const getDefaultSpecialIcon = ({
 
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
   const isPlayer = type === DividerType.PLAYER;
+  const isInvestigator = type === DividerType.INVESTIGATOR;
 
-  if (isTab) {
+  if (isTab && !isInvestigator) {
     return;
   }
 
@@ -40,6 +41,7 @@ export const getDefaultLineIcon = ({
   const {
     type,
     campaignIcon,
+    specialIcon
   } = divider;
 
   // if (type === DividerType.CAMPAIGN) {
@@ -48,15 +50,15 @@ export const getDefaultLineIcon = ({
 
   const isTab = layoutType === ArkhamDecoDividerType.TAB;
   const isPlayer = type === DividerType.PLAYER;
+  const isInvestigator = type === DividerType.INVESTIGATOR;
+  if (isTab && isInvestigator) {
+    return specialIcon;
+  }
 
   if (!isTab) {
     if (isPlayer) {
       return campaignIcon;
     }
-    return;
-  }
-
-  if (type === DividerType.CAMPAIGN) {
     return;
   }
   

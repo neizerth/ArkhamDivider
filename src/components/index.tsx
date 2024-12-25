@@ -38,6 +38,7 @@ export { NotExportable } from './ui/behavior/NotExportable/NotExportable';
 export { WithLayoutSupport } from './ui/behavior/WithLayoutSupport/WithLayoutSupport';
 export { WithBrowserSupport } from './ui/behavior/WithBrowserSupport/WithBrowserSupport';
 export { CustomIcon } from './ui/icons/CustomIcon/CustomIcon';
+export { Flag } from './ui/Flag/Flag';
 
 export { FactionSelect } from './ui/select/FactionSelect/FactionSelect';
 export { XPCostSelect } from './ui/select/XPCostSelect/XPCostSelect';
@@ -54,6 +55,7 @@ export { Checkbox } from './forms/Checkbox/Checkbox'
 export { Button } from './forms/Button/Button';
 export { ColorSelect } from './forms/ColorSelect/ColorSelect';
 export { Upload } from './forms/Upload/Upload';
+export { Input } from './forms/Input/Input';
 
 export { LanguageSelect } from './filters/LanguageSelect/LanguageSelect';
 export { LayoutFilter } from './filters/layout/LayoutFilter/LayoutFilter';

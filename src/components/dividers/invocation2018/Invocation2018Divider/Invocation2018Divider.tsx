@@ -67,6 +67,7 @@ export const Invocation2018Divider = (props: Invocation2018DividerProps) => {
 				S[`title_${orientation}`],
 				S[`title_${realLanguage}`]
 			)}
+			cornerRadiusClassName={S.cornerRadius}
 			background={background?.src}
 		>
 			<div 

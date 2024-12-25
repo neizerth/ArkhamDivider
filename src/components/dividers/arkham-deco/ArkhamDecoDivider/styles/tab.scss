@@ -100,7 +100,7 @@
   }
 
   .lineIcon {
-    top: 6.3mm;
+    top: 6.7mm;
   }
   .tabTentacles {
     top: 3.8mm;
@@ -286,9 +286,11 @@
       left: 25.5mm;
       right: 25mm;
       // right: 22mm;
-      &_encounter,
-      &_campaign {
+      &_encounter {
         right: 22mm;
+      }
+      &_campaign {
+        right: 25mm;
       }
       &_withSideXP {
         right: 36mm;

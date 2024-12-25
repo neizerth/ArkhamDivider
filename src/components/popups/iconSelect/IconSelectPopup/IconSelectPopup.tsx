@@ -11,11 +11,11 @@ import { createRef, useMemo, useRef, useState } from 'react';
 import { ButtonType } from '@/types/ui';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { clearActivePopupId } from '@/store/features/app/app';
-import useScrollSpy from 'react-use-scrollspy';
 import { IconSelectView } from '../IconSelectView/IconSelectView';
 import { IconSelectNav } from '../IconSelectNav/IconSelectNav';
 import { IconSelectPreview } from '../IconSelectPreview/IconSelectPreview';
 import classNames from 'classnames';
+import { useScrollSpy } from '@/hooks/useScollSpy';
 
 export type IconSelectPopupProps = PopupProps & {
 

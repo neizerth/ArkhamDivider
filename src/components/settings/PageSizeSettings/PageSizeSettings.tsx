@@ -2,6 +2,7 @@
 import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectExport } from '@/store/features/app/app';
 import { selectLayout } from '@/store/features/layout/layout';
 import { selectBleed, selectPageSizeType, setItemsPerPage, setPageOrientation, setPageSizeType, setRowsPerPage } from '@/store/features/print/print';
 import { PageSize, PageSizeType } from '@/types/print';
@@ -16,14 +17,16 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
   const pageSizeType = useAppSelector(selectPageSizeType);
   const layout = useAppSelector(selectLayout);
   const bleed = useAppSelector(selectBleed);
+  const isExport = useAppSelector(selectExport);
 
-  const options = Object.entries(PageSize)
-    .map(([label, value]) => ({
-      label: label as PageSizeType,
+  const pageSizes = Object.keys(PageSize) as PageSizeType[];
+  const options = pageSizes
+    .map(value => ({
+      label: value,
       value
     }));
 
-  const value = options.find(({ label }) => label === pageSizeType);
+  const value = options.find(({ value }) => value === pageSizeType);
 
   const onChange = (pageSizeType: PageSizeType) => {
     const grid = getLayoutGrid({
@@ -40,9 +43,10 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
 
   return (
     <Select
-      onChange={item => item && onChange(item.label)}
+      onChange={item => item && onChange(item.value)}
       options={options}
       value={value}
+      isDisabled={isExport}
     />
   );
 }

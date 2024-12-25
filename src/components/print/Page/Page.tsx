@@ -52,7 +52,8 @@ export const Page = ({
     S.container, 
     S[`side_${side}`],
     className,
-    isLast ? S.last : S.page
+    isLast ? S.last : S.page,
+    side === PageSide.FRONT && 'page'
   );
 
   return (

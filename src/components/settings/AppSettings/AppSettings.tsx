@@ -8,14 +8,13 @@ import classNames from 'classnames';
 import { selectLayout } from '@/store/features/layout/layout';
 import { useState } from 'react';
 
-
 export const AppSettings = () => {
   const { t } = useTranslation();
   const print = () => window.print();
   const dividers = useAppSelector(selectDividers);
   const loadQueue = useAppSelector(selectLoadQueue);
   const layout = useAppSelector(selectLayout);
-  const [showAdditional, setShowAdditional] = useState(false);
+  const [showAdditional, setShowAdditional] = useState(true);
 
   const canPrint = !layout.async || loadQueue.length === 0;
 
@@ -34,7 +33,10 @@ export const AppSettings = () => {
         <div className={S.print}>
           <Row gap={'responsive'} wrap className={classNames(S.row, S.printRow)}>
             <div 
-              className={S.additionalButton} 
+              className={classNames(
+                S.additionalButton,
+                showAdditional && S.additionalButton_active
+              )} 
               onClick={() => setShowAdditional(!showAdditional)}
             >
               <div className={S.additionalButtonText}>...</div>

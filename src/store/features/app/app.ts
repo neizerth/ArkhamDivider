@@ -36,7 +36,7 @@ export const app = createSlice({
     setExport: createSliceSetter('export'),
     setLoadingStatus: createSliceSetter('loadingStatus'),
     setLoading: createSliceSetter('loading'),
-    setActivePopupId: createSliceSetter('activePopupId')
+    setActivePopupId: createSliceSetter('activePopupId'),
   },
   selectors: {
     selectExport: createSliceSelector('export'),

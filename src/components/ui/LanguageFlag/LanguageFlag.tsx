@@ -1,10 +1,11 @@
-import * as Flags from 'country-flag-icons/react/3x2'
 import { PropsWithClassName } from '@/types/util';
 import languageMapping from './languageMapping.json';
 import S from './LanguageFlag.module.scss';
 import { propEq } from 'ramda';
 import classNames from 'classnames';
 import { CHINA_LANGUAGES } from '@/constants/i18n';
+import countries from '@/data/countries.json'
+import { Flag } from '../Flag/Flag';
 
 export type LanguageFlagProps = PropsWithClassName & {
   imageClassName?: string
@@ -26,17 +27,15 @@ export const LanguageFlag = ({
   const country = mappingItem?.country;
   const code = country || language.toUpperCase();
 
-  const hasFlag = code in Flags;
-  const Component = Flags[code as keyof typeof Flags];
-
+  const hasFlag = countries.includes(code);
   const classList = classNames(S.image, imageClassName);
   return (
     <div className={classNames(S.container, className)} title={language}>
       {hasFlag && (
-        <Component className={classList}/>
+        <Flag className={classList} code={code}/>
       )}
       {isChina && (
-        <Flags.CN className={classList}/>
+        <Flag className={classList} code={'cn'}/>
       )}
       {!hasFlag && displayTitle && (
         <span className={classNames(S.alt, altClassName)}>

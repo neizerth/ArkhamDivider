@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { BASE_PATH } from "@/constants/app";
 
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLoading, selectLoadingStatus } from '@/store/features/app/app';
+import { selectExport, selectLoading, selectLoadingStatus } from '@/store/features/app/app';
 import { Progress } from '@/components';
 
 const loader = BASE_PATH + 'images/loader.gif';
@@ -19,6 +19,7 @@ export type AppLoaderProps = PropsWithChildren & {
 export const AppLoader = ({ children }: AppLoaderProps) => {
 
   const loading = useAppSelector(selectLoading);
+	const isExport = useAppSelector(selectExport);
 	const loadingStatus = useAppSelector(selectLoadingStatus);
 	const containerClassNames = classNames(
 		S.container, 
@@ -28,6 +29,9 @@ export const AppLoader = ({ children }: AppLoaderProps) => {
 	return (
 		<div className={containerClassNames}>
 			{!loading && children}
+			{isExport && (
+				<div className={S.exportBlocker}/>
+			)}
 			{loading && (
 				<div className={S.loader}>
 					<img src={loader} className={S.loaderImage} alt='Application is loading...'/>

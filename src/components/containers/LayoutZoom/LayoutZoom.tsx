@@ -9,6 +9,7 @@ import { toArrayIf } from '@/util/common';
 import { IS_DEVELOPMENT } from '@/constants/app';
 import { useMemo } from 'react';
 import { getWebToPrintScale } from '@/util/units';
+import { selectExport } from '@/store/features/app/app';
 
 export type LayoutZoomProps = {
 
@@ -28,6 +29,7 @@ const ZOOM_LEVELS = [
 export const LayoutZoom = ({}: LayoutZoomProps) => {
   const dispatch = useAppDispatch();
   const zoom = useAppSelector(selectZoom);
+  const isExport = useAppSelector(selectExport);
   const webToPrintScale = useMemo(getWebToPrintScale, []) * 100;
 
   const LEVELS = [
@@ -62,8 +64,8 @@ export const LayoutZoom = ({}: LayoutZoomProps) => {
 
   const goToZoom = (diff: number) => LEVELS[goToIndex(diff)];
 
-  const zoomIn = () => onChange(goToZoom(-1));
-  const zoomOut = () => onChange(goToZoom(1));
+  const zoomIn = () => !isExport && onChange(goToZoom(-1));
+  const zoomOut = () => !isExport && onChange(goToZoom(1));
 
   return (
     <div className={S.container}>
@@ -81,6 +83,7 @@ export const LayoutZoom = ({}: LayoutZoomProps) => {
         className={S.select}
         options={options}
         value={value}
+        isDisabled={isExport}
         onChange={item => item && onChange(item.value)}
       />
       <div 

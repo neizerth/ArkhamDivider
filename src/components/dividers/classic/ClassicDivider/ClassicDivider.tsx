@@ -18,10 +18,13 @@ import { useIconSelect } from '@/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { CircleIcon } from '@/components/ui/icons/CircleIcon/CircleIcon';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
+import { selectCornerRadius } from '@/store/features/print/print';
 
 export type ClassicDividerProps = DividerProps & PropsWithChildren &{
 	titleStroke?: boolean
 	titleClassName?: string
+	cornerRadiusClassName?: string
 }
 
 export const ClassicDivider = ({
@@ -41,7 +44,8 @@ export const ClassicDivider = ({
 }: ClassicDividerProps) => {
 	const { t } = useStoryTranslation(props.story);
 	const layout = useAppSelector(selectLayout);
-
+	const cornerRadius = useAppSelector(selectCornerRadius);
+	
 	const { 
 		orientation, 
 		color,
@@ -179,6 +183,16 @@ export const ClassicDivider = ({
 					size={size}
 					campaignIcon={campaignIcon}
 				/>
+				{cornerRadius && (
+					<NotExportable>
+						<DividerCornerRadius 
+							className={classNames(
+								S.cornerRadius,
+								props.cornerRadiusClassName
+							)}
+						/>
+					</NotExportable>
+				)}
 			</DividerContent>
 		</div>
 	);

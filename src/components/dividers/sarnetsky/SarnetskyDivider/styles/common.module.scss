@@ -62,7 +62,7 @@
 
 .campaignIcon {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
   &:hover {
     opacity: 0.8;
@@ -88,7 +88,7 @@
 .content {
   position: absolute;
   text-align: center;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   bottom: 13.6mm;
   padding: 0 7.5mm;
@@ -198,4 +198,9 @@
   font-size: 0.63em;
   line-height: 1.05;
   font-family: 'Arno Pro', 'Alegreya', sans-serif;
+}
+
+.cornerRadius {
+  border-color: rgba(255, 255, 255, 0.4);
+  z-index: 2;
 }

@@ -37,6 +37,15 @@ export const PageSize: Record<PageSizeType, IBox> = {
   SRA3: { width: 320, height: 450 },
 }
 
+export const PrintPageSize: Record<PageSizeType, IBox> = {
+  A4: { width: 2480, height: 3508 },
+  A3: { width: 3508, height: 4961 },
+  B4: { width: 2953, height: 4169 },
+  B3: { width: 4169, height: 5906 },
+  SRA4: { width: 2657, height: 3780 },
+  SRA3: { width: 3780, height: 5315 },
+}
+
 export type GuideCornerType = 'tl' | 'tr' | 'bl' | 'br';
 
 export type GuideInsetTypes = PrefixedUnion<'inset-corner-', GuideCornerType>;

@@ -17,7 +17,7 @@ export const getBrowserDPI = () => {
 
   node.remove();
 
-  return width * INCH / mm;
+  return Math.round(width * INCH / mm);
 }
 
 export const getWebToPrintScale = () => PRINT_DPI / getBrowserDPI();

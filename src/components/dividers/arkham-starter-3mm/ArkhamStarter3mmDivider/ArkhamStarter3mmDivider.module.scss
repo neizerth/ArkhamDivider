@@ -18,16 +18,9 @@
   pointer-events: none;
 }
 
-.content {
-  position: absolute;
-  z-index: 2;
-  top: 3.5mm;
-  left: 3.5mm;
-}
-
 .strip {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   // cursor: pointer;
   &_vertical {
     top: 0;
@@ -51,7 +44,7 @@
 
 .title {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   &_horizontal {
     left: 25.5mm;
     right: 28mm;
@@ -80,7 +73,7 @@
 
 .iconCorner {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
   
   &_horizontal {
@@ -124,7 +117,7 @@
 .playerCorner {
   position: absolute;
   cursor: pointer;
-  z-index: 3;
+  z-index: 4;
   left: -0.8mm;
   top: -2mm;
   &:hover {
@@ -134,7 +127,7 @@
 
 .xpCost {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   font-size: 3mm;
 
   // color: white;
@@ -157,7 +150,7 @@
 
 .menu {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 12mm;
   left: 50%;
   transform: translateX(-50%);
@@ -170,7 +163,7 @@
 
 .campaignIcon {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   font-size: 2.2mm;
   &_horizontal {
     left: 22mm;
@@ -185,4 +178,9 @@
     bottom: 27mm;
     left: 4.2mm;
   }
+}
+
+.cornerRadius {
+  z-index: 3;
+  border-color: rgba(255, 255, 255, 0.5);
 }

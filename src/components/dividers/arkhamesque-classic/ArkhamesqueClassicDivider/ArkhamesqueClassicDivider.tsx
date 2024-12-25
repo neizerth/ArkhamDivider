@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
 import { useIconSelect } from '@/hooks/useIconSelect';
-import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { getDividerData } from './data/getDividerData';
 import { useSelector } from 'react-redux';
 import { selectArkhamesqueData } from '@/store/features/dividers/arkhamesque/arkhamesque';
@@ -14,13 +14,15 @@ import { selectLanguage } from '@/store/features/language/language';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
-import { detect } from 'detect-browser';
 import { DividerProps } from '../../common/Divider/Divider';
 import { ArkhamesqueClassicDividerCanvasMemo as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
 import { addLoadIndex, selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { delay } from '@/util/common';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectCornerRadius } from '@/store/features/print/print';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 
@@ -33,13 +35,11 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     xpCost,
   } = props;
 
-  const browser = useMemo(detect, []);
-  const isChrome = browser?.name ==='chrome';
-
   const dispatch = useAppDispatch();
   const language = useSelector(selectLanguage);
   const data = useSelector(selectArkhamesqueData);
   const loadIndex = useSelector(selectLoadIndex);
+  const cornerRadius = useAppSelector(selectCornerRadius);
 
 	const { t } = useStoryTranslation(story);
 
@@ -105,7 +105,6 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     <div 
       className={classNames(
         S.container,
-        isChrome && S.chrome,
         S[type],
         S[realLanguage]
       )}
@@ -176,6 +175,11 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
               />
             )}
           </>
+        )}
+        {cornerRadius && (
+          <NotExportable>
+            <DividerCornerRadius className={S.cornerRadius}/>
+          </NotExportable>
         )}
       </DividerContent>
     </div>

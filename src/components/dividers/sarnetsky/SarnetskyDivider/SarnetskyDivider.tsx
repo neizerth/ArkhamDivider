@@ -17,6 +17,8 @@ import { SarnetskyDividerMainIcon as MainIcon } from '../SarnetskyDividerMainIco
 import { useIconSelect } from '@/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
 import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { selectCornerRadius } from '@/store/features/print/print';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
 
 export const ENCOUNTER_ROW_SIZE = 7;
 
@@ -46,6 +48,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 
 	const language = useAppSelector(selectLanguage);
 	const { orientation } = useAppSelector(selectLayout);
+	const cornerRadius = useAppSelector(selectCornerRadius);
 	
 	const [previewIcon, selectPreviewIcon] = useIconSelect({
 		defaultIcon: props.previewIcon || props.icon
@@ -202,6 +205,15 @@ export const SarnetskyDivider = (props: DividerProps) => {
 						/>
 					</div>
 				</NotExportable>
+				{cornerRadius && (
+					<NotExportable>
+						<DividerCornerRadius
+							className={classNames(
+								S.cornerRadius,
+							)}
+						/>
+					</NotExportable>
+				)}
 			</DividerContent>
     </div>
   );
