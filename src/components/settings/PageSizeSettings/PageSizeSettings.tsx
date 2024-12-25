@@ -1,5 +1,4 @@
-import S from './PageSizeSettings.module.scss';
-import { Icon } from '@/components/ui/icons/Icon/Icon';
+// import S from './PageSizeSettings.module.scss';
 import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';

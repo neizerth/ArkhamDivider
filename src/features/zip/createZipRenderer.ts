@@ -3,7 +3,7 @@ import { saveAs } from 'file-saver';
 import { DividerNodeRenderer } from '../render/DividerNodeRenderer';
 import { ILayoutBleed } from '@/types/layouts';
 import { ColorScheme, ImageFormat } from '@/types/image';
-import { OnRenderEventData, RenderResponseMapper } from '@/types/render';
+import { OnRenderEventData } from '@/types/render';
 
 export type RenderOptions = {
   name: string

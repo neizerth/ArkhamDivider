@@ -2,7 +2,7 @@ import { ArkhamDecoDividerType } from "@/data/layouts/arkham-deco"
 import { ILayout } from "@/types/layouts"
 import { IBox } from "@/types/units"
 import { toPrintSize } from "@/util/units"
-import { Path, Rect } from "@react-pdf/renderer"
+import { Path } from "@react-pdf/renderer"
 import { PDFDividerGuides, PDFDividerGuidesProps } from "../PDFDividerGuides"
 
 export type ArkhamDecoPDFGuidesProps = PDFDividerGuidesProps & {

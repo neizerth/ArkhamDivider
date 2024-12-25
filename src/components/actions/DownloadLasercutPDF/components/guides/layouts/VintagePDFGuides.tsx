@@ -13,8 +13,6 @@ const TAB_RECTS: Record<TabPosition, number> = {
   right: TAB_WIDTH * 2
 }
 
-const ROUND_TOP_BODY_CORNERS = false;
-
 export const VintagePDFGuides = ({
   divider,
   dividers,
@@ -23,8 +21,7 @@ export const VintagePDFGuides = ({
   width,
   height,
   radius,
-  topCornerRadius = 0,
-  ...props
+  topCornerRadius = 0
 }: {
   x: number
   y: number
