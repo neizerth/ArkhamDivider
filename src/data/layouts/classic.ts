@@ -8,8 +8,8 @@ export const common = {
 }
 
 export const horizontal = {
-  width: 88.9,
-  height: 76.2,
+  width: 89,
+  height: 76,
   bleed: {
     width: 97,
     height: 84,
