@@ -7,8 +7,6 @@ import { ILayout } from "@/types/layouts"
 import { PDFDividerGuides } from "./PDFDividerGuides"
 import { COMPONENT_MAP } from "./special"
 
-const BLEED_GAP = toPrintSize(1); // 1mm extra space
-
 export const PDFGuideBox = (props: {
   rowIndex: number
   rowSize: number
@@ -33,7 +31,7 @@ export const PDFGuideBox = (props: {
     layout
   } = props;
 
-  const bleedSize = area.bleedSize - BLEED_GAP;
+  const { bleedSize } = area;
 
   const index = rowIndex * colSize + colIndex;
 
