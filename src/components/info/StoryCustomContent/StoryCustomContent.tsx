@@ -33,7 +33,7 @@ export const StoryCustomContent = ({
       </div>
       {!isTranslated && (
         <Panel type='warning'>
-          Please, help me with content translation to your language <br/>
+          Please, help me with the content translation to your language <br/>
           Contact me using one of the links at the bottom of the page
         </Panel>
       )}
