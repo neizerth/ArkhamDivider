@@ -41,26 +41,18 @@ export default defineConfig({
   base: process.env.APP_BASE_PATH,
   build: {
     outDir: process.env.APP_BUILD_DIR || 'dist',
-    // rollupOptions: {
-    //   output: {
-    //     manualChunks: {
-    //       additional: [
-    //         'file-saver', 
-    //         'jszip', 
-    //         'jimp',
-    //         'wasm-vips',
-    //         'dom-to-image',
-    //         'readable-stream',
-    //         '@react-pdf/renderer'
-    //       ],
-    //       arkhamesque: [
-    //         'konva',
-    //         'react-konva',
-    //         'use-image'
-    //       ]
-    //     },
-    //   }
-    // }
+    rollupOptions: {
+      output: {
+        assetFileNames(chunkInfo) {
+          const name = chunkInfo.name || '';
+          const isVips = /vips\.wasm$/.test(name);
+          if (isVips) {
+            return "assets/vips-jxl.wasm";
+          }
+          return "assets/[name]-[hash][extname]";
+        }
+      }      
+    }
   },
   preview: {
     port: Number(process.env.APP_PREVIEW_PORT) || 8080
