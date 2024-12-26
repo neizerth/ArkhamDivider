@@ -10,5 +10,14 @@
   {
     "icon": "skill_wild",
     "scale": 0.7
+  },
+  {
+    "icon": "clue",
+    "left": -3
+  },
+  {
+    "icon": "stopwatch",
+    "scale": 0.9,
+    "left": -1
   }
 ]
