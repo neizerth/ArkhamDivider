@@ -4,6 +4,7 @@ import { IBox } from "@/types/units"
 import { toPrintSize } from "@/util/units"
 import { Path } from "@react-pdf/renderer"
 import { PDFDividerGuides, PDFDividerGuidesProps } from "../PDFDividerGuides"
+import { BLEED_GAP } from "../../../constants"
 
 export type ArkhamDecoPDFGuidesProps = PDFDividerGuidesProps & {
   layout: ILayout
@@ -11,12 +12,12 @@ export type ArkhamDecoPDFGuidesProps = PDFDividerGuidesProps & {
 }
 
 const TAB_SIZE: IBox = {
-  width: 21.3,
+  width: 21.3 + BLEED_GAP / 2,
   height: 4
 } 
 
 const SMALL_TAB_SIZE: IBox = {
-  width: 17.3,
+  width: 17.3 + BLEED_GAP / 2,
   height: 4
 }
 
@@ -52,11 +53,11 @@ export const ArkhamDecoPDFGuides = ({
 
   const {
     x,
-    y,
     width,
     height,
     radius
   } = props;
+  const y = props.y + toPrintSize(BLEED_GAP / 2);
 
   const topRightCorner = radius > 0 ? [
     ['L', x + width - radius, y + guide.height],

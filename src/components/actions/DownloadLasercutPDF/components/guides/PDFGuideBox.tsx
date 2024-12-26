@@ -6,6 +6,7 @@ import { IDivider } from "@/types/dividers"
 import { ILayout } from "@/types/layouts"
 import { PDFDividerGuides } from "./PDFDividerGuides"
 import { COMPONENT_MAP } from "./special"
+import { BLEED_GAP } from "../../constants"
 
 export const PDFGuideBox = (props: {
   rowIndex: number
@@ -31,12 +32,13 @@ export const PDFGuideBox = (props: {
     layout
   } = props;
 
+  const bleedGap = toPrintSize(BLEED_GAP);
   const { bleedSize } = area;
 
   const index = rowIndex * colSize + colIndex;
 
-  const width = area.width - bleedSize * 2;
-  const height = area.height - bleedSize * 2;
+  const width = area.width - bleedSize * 2 + bleedGap * 2;
+  const height = area.height - bleedSize * 2 + bleedGap * 2;
 
   const contentWidth = colSize * area.width;
   const contentHeight = rowSize * area.height;
@@ -44,8 +46,8 @@ export const PDFGuideBox = (props: {
   const relativeLeft = area.width * colIndex;
   const relativeTop = area.height * rowIndex;
 
-  const left = (pageSize.width - contentWidth) / 2 + bleedSize + relativeLeft
-  const top = (pageSize.height - contentHeight) / 2 + bleedSize + relativeTop;
+  const left = (pageSize.width - contentWidth) / 2 + bleedSize + relativeLeft - bleedGap;
+  const top = (pageSize.height - contentHeight) / 2 + bleedSize + relativeTop - bleedGap;
 
   const radius = cornerRadius ? toPrintSize(DEFAULT_CORNER_RADIUS) : 0;
   const divider = dividers[index];

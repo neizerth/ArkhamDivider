@@ -3,14 +3,15 @@ import { IDivider } from "@/types/dividers"
 import { toPrintSize } from "@/util/units"
 import { Path } from "@react-pdf/renderer";
 import { propEq } from "ramda"
+import { BLEED_GAP } from "../../../constants";
 
-const TAB_WIDTH = 30;
+const TAB_WIDTH = 30 + BLEED_GAP * 2;
 const TAB_HEIGHT = 10.3;
 
 const TAB_RECTS: Record<TabPosition, number> = {
   left: 0,
-  center: TAB_WIDTH,
-  right: TAB_WIDTH * 2
+  center: TAB_WIDTH - BLEED_GAP * 2,
+  right: TAB_WIDTH * 2 - BLEED_GAP * 4
 }
 
 export const VintagePDFGuides = ({
