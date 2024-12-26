@@ -1,11 +1,14 @@
 export { Container } from './containers/Container/Container';
 export { Layout } from './containers/Layout/Layout';
-export { LayoutInfo } from './containers/LayoutInfo/LayoutInfo';
-export { CategoryInfo } from './containers/CategoryInfo/CategoryInfo';
-export { PageCredits } from './containers/PageCredits/PageCredits';
-export { AuthorInfo } from './containers/AuthorInfo/AuthorInfo';
 
-export { StoryCustomContent }  from './containers/StoryCustomContent/StoryCustomContent';
+export { LayoutInfo } from './info/LayoutInfo/LayoutInfo';
+export { CategoryInfo } from './info/CategoryInfo/CategoryInfo';
+export { PageCredits } from './info/PageCredits/PageCredits';
+export { AuthorInfo } from './info/AuthorInfo/AuthorInfo';
+export { UITranslationRequest } from './info/UITranslationRequest/UITranslationRequest';
+
+
+export { StoryCustomContent }  from './info/StoryCustomContent/StoryCustomContent';
 
 export { AddStoryDividers }  from './containers/addDividers/story/AddStoryDividers/AddStoryDividers';
 export { AddStoryParams }  from './containers/addDividers/story/AddStoryParams/AddStoryParams';

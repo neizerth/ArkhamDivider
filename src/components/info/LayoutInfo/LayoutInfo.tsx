@@ -1,7 +1,7 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
 import S from './LayoutInfo.module.scss';
 import { selectCategoryId, selectLayout } from '@/store/features/layout/layout';
-import { AuthorInfo, Container } from '@/components';
+import { AuthorInfo, Container, UITranslationRequest } from '@/components';
 import { useTranslation } from 'react-i18next';
 import { getCategoryById } from '@/features/layouts/common';
 
@@ -21,6 +21,7 @@ export const LayoutInfo = ({}: LayoutInfoProps) => {
 
   return (
     <Container className={S.container}>
+      <UITranslationRequest/>
       <div className={S.wrapper}>
         <div className={S.size}>
           {t('Size')}: {width}x{height}{t('mm')}

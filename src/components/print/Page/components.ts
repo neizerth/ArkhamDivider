@@ -1,4 +1,4 @@
-import { CREDITS_HEIGHT } from "@/components/containers/PageCredits/PageCredits";
+import { CREDITS_HEIGHT } from "@/components/info/PageCredits/PageCredits";
 import { IBox } from "@/types/units";
 import styled, { css } from "styled-components";
 

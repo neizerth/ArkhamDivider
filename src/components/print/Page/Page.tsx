@@ -3,7 +3,7 @@ import S from './Page.module.scss';
 import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { PageOrientation, PageSide, PageSize } from '@/types/print';
-import { CREDITS_HEIGHT, PageCredits } from '@/components/containers/PageCredits/PageCredits';
+import { CREDITS_HEIGHT, PageCredits } from '@/components/info/PageCredits/PageCredits';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { selectLayout } from '@/store/features/layout/layout';
 import { selectBleed, selectPageOrientation, selectPageSizeType } from '@/store/features/print/print';
