@@ -25,6 +25,16 @@ npm run dev
 
 ## Hall of fame
 
+### Data
+
+@zzorba - Arkham Cards project
+
+@kamalisk - ArkhamDB project
+
+### UI
+
+@zzorba - Icomoon project
+
 ### UI Translations
 
 @fspoettel, @Chr1Z93 - German translation
