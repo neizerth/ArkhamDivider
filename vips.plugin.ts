@@ -14,7 +14,7 @@ export function vips(): Plugin {
   let outDir = "";
 
   return {
-    name: "custom-headers",
+    name: "vips",
     configResolved(config) {
       outDir = config.build.outDir;
       if (!config.inlineConfig.build?.ssr) {
