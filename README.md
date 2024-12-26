@@ -46,3 +46,7 @@ npm run dev
 ### Testing
 
 @fspoettel, @5argon, @polochamps
+
+### Consulting
+
+@w1ne_kun - Printing details 
