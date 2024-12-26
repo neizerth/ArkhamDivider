@@ -5,6 +5,9 @@ import { PropsWithClassName } from '@/types/util';
 import classNames from 'classnames';
 import { Col, LanguageFlag } from '@/components';
 import { prop } from 'ramda';
+import { selectLanguage } from '@/store/features/language/language';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import { Panel } from '@/components/ui/Panel/Panel';
 
 export type StoryCustomContentProps = PropsWithClassName & {
   content: ICustomContent
@@ -15,14 +18,25 @@ export const StoryCustomContent = ({
   className
 }: StoryCustomContentProps) => {
   const { t } = useTranslation();
+  const language = useAppSelector(selectLanguage);
+
   const { creators, download_links } = content;
   const creator = creators.map(prop('name')).join(', ');
   const custom = { creator };
+
+  const isTranslated = download_links.find(link => language === link.language) !== undefined;
+
   return (
     <Col className={classNames(S.container, className)}>
       <div className={S.author}>
         {t('Fan-made scenario by {{custom.creator}}', { custom })}
       </div>
+      {!isTranslated && (
+        <Panel type='warning'>
+          Please, help me with content translation to your language <br/>
+          Contact me using one of the links at the bottom of the page
+        </Panel>
+      )}
       <div className={S.download}>
         <div>{t('Download print and play cards')}:</div>
         <div className={S.links}>
