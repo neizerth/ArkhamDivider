@@ -1,6 +1,6 @@
 import path from 'path';
 import { VitePluginRadar } from 'vite-plugin-radar'
-
+import { vips } from './vips.plugin';
 import { defineConfig } from 'vite';
 import svgr from "vite-plugin-svgr";
 import react from '@vitejs/plugin-react';
@@ -31,6 +31,7 @@ export default defineConfig({
     }
   },
   plugins: [
+    vips(),
     svgr(), 
     react(),
     VitePluginRadar({
@@ -40,19 +41,7 @@ export default defineConfig({
   ],
   base: process.env.APP_BASE_PATH,
   build: {
-    outDir: process.env.APP_BUILD_DIR || 'dist',
-    rollupOptions: {
-      output: {
-        assetFileNames(chunkInfo) {
-          const name = chunkInfo.name || '';
-          const isVips = /vips\.wasm$/.test(name);
-          if (isVips) {
-            return "assets/vips-jxl.wasm";
-          }
-          return "assets/[name]-[hash][extname]";
-        }
-      }      
-    }
+    outDir: process.env.APP_BUILD_DIR || 'dist'
   },
   preview: {
     port: Number(process.env.APP_PREVIEW_PORT) || 8080
