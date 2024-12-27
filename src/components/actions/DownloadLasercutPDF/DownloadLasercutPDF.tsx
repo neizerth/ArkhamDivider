@@ -1,4 +1,4 @@
-import S from './DownloadLasercutPDF.module.scss';
+// import S from './DownloadLasercutPDF.module.scss';
 
 import { DownloadButton } from "../DownloadButton/DownloadButton";
 import { useAppSelector } from "@/hooks/useAppSelector";

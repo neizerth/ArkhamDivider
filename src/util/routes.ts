@@ -49,23 +49,13 @@ export const createCategoryRoute = (options: RouteOptions) => {
   const {
     language = DEFAULT_LANGUAGE,
     categoryId,
-    storyId,
-    type = 'scenario',
     layoutId
   } = options;
 
-  let path = '/' + language;
-
   if (!layoutId) {
-    return path + '/category/' + categoryId;
+    return '/' + language + '/category/' + categoryId;
   }
   
-  path += '/layout/' + layoutId + '/' + type;
-
-  if (!storyId) {
-    return path;
-  }
-
-  return path + '/' + storyId;
+  return createLayoutRoute(options);
 }
 
