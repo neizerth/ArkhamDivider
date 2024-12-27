@@ -6,6 +6,7 @@ import { getSimilarBleed } from "@/features/render/getSimilarBleed";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { selectLayout } from "@/store/features/layout/layout";
 import { useTranslation } from "react-i18next";
+import { Badge } from "@/components/ui/Badge/Badge";
 
 export type DownloadCMYKButtonProps = {
 }
@@ -33,7 +34,7 @@ export const DownloadCMYKButton = ({}: DownloadCMYKButtonProps) => {
     <DownloadButton
       renderer={renderer}
     >
-      TIFF
+      TIFF <Badge size={'small'}>zip</Badge>
     </DownloadButton>
   );
 }

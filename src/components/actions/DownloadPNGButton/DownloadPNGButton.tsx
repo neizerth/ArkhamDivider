@@ -4,6 +4,7 @@ import { selectLayout } from '@/store/features/layout/layout';
 import { getSimilarBleed } from '@/features/render/getSimilarBleed';
 import { createZipRenderer } from '@/features/zip/createZipRenderer';
 import { useTranslation } from 'react-i18next';
+import { Badge } from '@/components/ui/Badge/Badge';
 // import S from './DownloadPNGButton.module.scss';
 
 export type DownloadPNGButtonProps = {
@@ -32,7 +33,7 @@ export const DownloadPNGButton = ({}: DownloadPNGButtonProps) => {
     <DownloadButton
       renderer={renderer}
     >
-      PNG
+      PNG <Badge size={'small'}>zip</Badge>
     </DownloadButton>
   );
 }

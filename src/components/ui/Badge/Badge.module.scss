@@ -1,6 +1,10 @@
-.badge {
-  padding: 2px;
+.container {
+  display: inline-flex;
   border: 1px solid #ccc;
+}
+
+.small {
+  padding: 2px;
   border-radius: 5px;
   font-size: 0.75em;
 }

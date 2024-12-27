@@ -12,6 +12,7 @@ import { saveAs } from "file-saver";
 import { selectCornerRadius, selectDoubleSided, selectPageSizeType } from "@/store/features/print/print";
 import { selectDividers } from '@/store/features/dividers/dividers';
 import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
+import { Badge } from '@/components';
 
 export type DownloadLasercutPDFProps = {
 
@@ -106,7 +107,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
     <DownloadButton
       renderer={downloader.renderer}
     >
-      PDF <div className={S.badge}>HQ</div>
+      PDF <Badge size={'small'}>HQ</Badge>
     </DownloadButton>
   );
 }
