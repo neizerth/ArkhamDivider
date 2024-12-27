@@ -35,6 +35,7 @@ export const createLayoutRoute = (options: RouteOptions) => {
   } = options;
 
   let path = '/' + language + '/layout/' + layoutId;
+  
   path += '/' + type;
 
   if (!storyId) {
@@ -53,13 +54,13 @@ export const createCategoryRoute = (options: RouteOptions) => {
     layoutId
   } = options;
 
-  let path = '/' + language + '/category/' + categoryId;
+  let path = '/' + language;
 
   if (!layoutId) {
-    return path;
+    return path + '/category/' + categoryId;
   }
   
-  path += '/' + layoutId + '/' + type;
+  path += '/layout/' + layoutId + '/' + type;
 
   if (!storyId) {
     return path;
