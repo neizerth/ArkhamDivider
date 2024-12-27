@@ -15,12 +15,12 @@ export const createRoute = (options: RouteOptions) => {
     language = DEFAULT_LANGUAGE
   } = options;
 
-  if (categoryId) {
-    return createCategoryRoute(options);
-  }
-
   if (layoutId) {
     return createLayoutRoute(options);
+  }
+
+  if (categoryId) {
+    return createCategoryRoute(options);
   }
 
   return '/' + language;
@@ -34,10 +34,8 @@ export const createLayoutRoute = (options: RouteOptions) => {
     layoutId
   } = options;
 
-  let path = '/' + language + '/layout/' + layoutId;
+  const path = '/' + language + '/layout/' + layoutId + '/' + type;
   
-  path += '/' + type;
-
   if (!storyId) {
     return path;
   }
@@ -49,13 +47,8 @@ export const createCategoryRoute = (options: RouteOptions) => {
   const {
     language = DEFAULT_LANGUAGE,
     categoryId,
-    layoutId
   } = options;
-
-  if (!layoutId) {
-    return '/' + language + '/category/' + categoryId;
-  }
   
-  return createLayoutRoute(options);
+  return '/' + language + '/category/' + categoryId;
 }
 
