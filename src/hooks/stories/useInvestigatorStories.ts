@@ -1,7 +1,7 @@
 import { selectStories } from "@/store/features/stories/stories"
 import { useAppSelector } from "../useAppSelector"
 import { selectArkhamesqueData } from "@/store/features/dividers/arkhamesque/arkhamesque";
-import { selectLayout } from "@/store/features/layout/layout";
+import { selectCategoryId, selectLayout } from "@/store/features/layout/layout";
 import { arkhamesqueCategory } from "@/data/layouts/arkhamesque";
 import { hasArkhamesqueInvestigatorSupport } from "@/store/features/dividers/arkhamesque/criteria";
 import { prop } from "ramda";
@@ -14,7 +14,9 @@ export const useInvestigatorStories = () => {
   const { t } = useTranslation();
 
   const arkhamesqueData = useAppSelector(selectArkhamesqueData);
-  const { categoryId } = useAppSelector(selectLayout);
+  const layout = useAppSelector(selectLayout);
+  const defaultCategoryId = useAppSelector(selectCategoryId);
+  const categoryId = defaultCategoryId || layout.categoryId;
   const language = useAppSelector(selectLanguage);
 
   const isArkhamesqueLayout = categoryId !== arkhamesqueCategory.id;

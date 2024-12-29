@@ -1,6 +1,6 @@
 import { selectStories } from "@/store/features/stories/stories";
 import { useAppSelector } from "../useAppSelector";
-import { selectLayout } from "@/store/features/layout/layout";
+import { selectCategoryId, selectLayout } from "@/store/features/layout/layout";
 import { arkhamesqueCategory } from "@/data/layouts/arkhamesque";
 import { selectArkhamesqueData } from "@/store/features/dividers/arkhamesque/arkhamesque";
 import { hasArkhamesqueStorySupport } from "@/store/features/dividers/arkhamesque/criteria";
@@ -10,7 +10,9 @@ import { IStory } from "@/types/api";
 export const useCampaignStories = () => {
   const stories = useAppSelector(selectStories);
   const arkhamesqueData = useAppSelector(selectArkhamesqueData);
-  const { categoryId } = useAppSelector(selectLayout);
+  const layout = useAppSelector(selectLayout);
+  const defaultCategoryId = useAppSelector(selectCategoryId);
+  const categoryId = defaultCategoryId || layout.categoryId;
   
   const language = useAppSelector(selectLanguage);
   const translated = useAppSelector(selectTranslatedStories);
