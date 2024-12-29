@@ -1,4 +1,4 @@
-import { selectLayout, selectType } from "@/store/features/layout/layout";
+import { selectCategoryId, selectLayout, selectType } from "@/store/features/layout/layout";
 import { useAppSelector } from "../useAppSelector";
 import { selectArkhamesqueData } from "@/store/features/dividers/arkhamesque/arkhamesque";
 import { arkhamesqueCategory } from "@/data/layouts/arkhamesque";
@@ -12,7 +12,9 @@ export const useLayoutSupport = () => {
   const type = useAppSelector(selectType);
   const story = useAppSelector(selectStory);
   const arkhamesqueData = useAppSelector(selectArkhamesqueData);
-  const { categoryId } = useAppSelector(selectLayout);
+  const layout = useAppSelector(selectLayout);
+  const defaultCategoryId = useAppSelector(selectCategoryId);
+  const categoryId = defaultCategoryId || layout.categoryId;
 
   if (type === LayoutType.PLAYER) {
     return true;
