@@ -25,9 +25,15 @@ export enum PageSizeType {
   B4 = 'B4',
   B3 = 'B3',
   SRA4 = 'SRA4',
-  SRA3 = 'SRA3'
+  SRA3 = 'SRA3',
+  US_LETTER = 'US Letter',
+  US_LEGAL = 'US Legal',
+  US_TABLOID = 'US Tabloid',
 }
 
+/**
+ * Page Size in mm
+ **/
 export const PageSize: Record<PageSizeType, IBox> = {
   A4: { width: 210, height: 297 },
   A3: { width: 297, height: 420 },
@@ -35,8 +41,14 @@ export const PageSize: Record<PageSizeType, IBox> = {
   B3: { width: 353, height: 500 },
   SRA4: { width: 225, height: 320 },
   SRA3: { width: 320, height: 450 },
+  'US Letter': { width: 215.9, height: 279.4 },
+  'US Legal': { width: 215.9, height: 355.6 },
+  'US Tabloid': { width: 279.4, height: 431.8 },
 }
 
+/**
+ * Page Size in pixels at 300 dpi
+ **/
 export const PrintPageSize: Record<PageSizeType, IBox> = {
   A4: { width: 2480, height: 3508 },
   A3: { width: 3508, height: 4961 },
@@ -44,6 +56,9 @@ export const PrintPageSize: Record<PageSizeType, IBox> = {
   B3: { width: 4169, height: 5906 },
   SRA4: { width: 2657, height: 3780 },
   SRA3: { width: 3780, height: 5315 },
+  'US Letter': { width: 2550, height: 3300 },
+  'US Legal': { width: 2550, height: 4200 },
+  'US Tabloid': { width: 3300, height: 5100 },
 }
 
 export type GuideCornerType = 'tl' | 'tr' | 'bl' | 'br';
