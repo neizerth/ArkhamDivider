@@ -7,7 +7,8 @@ import { removeAllDividers, selectStory } from '@/store/features/dividers/divide
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useTranslation } from 'react-i18next';
 import { addInvestigatorDividers } from '@/store/features/addDividers/addDividers';
-import { useInvestigatorStories } from '@/hooks/stories/useInvestigatorStories';
+import { useInvestigatorStories } from '@/hooks/investigators/useInvestigatorStories';
+import { useSupportedInvestigators } from '@/hooks/investigators/useSupportedInvestigators';
 
 export type AddInvestigatorDividersProps = {
 
@@ -20,6 +21,7 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
   const stories = useInvestigatorStories();
 
   const story = useAppSelector(selectStory);
+  const getSupportedInvestigators = useSupportedInvestigators();
 
   const storiesWithInvestigators = stories.filter(
     ({ investigators }) => investigators.length > 0
@@ -29,7 +31,8 @@ export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
     if (!story) {
       return;
     }
-    const { investigators } = story
+    const investigators = getSupportedInvestigators(story);
+
     dispatch(addInvestigatorDividers({
       investigators
     }));

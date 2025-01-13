@@ -6,8 +6,9 @@ import { layouts } from '@/data/layouts';
 import { ILayout } from '@/types/layouts';
 import * as reducers from './reducers';
 import { safePropEq } from "@/util/criteria";
-import { AppThunk } from "@/store";
+import { AppSelector, AppThunk } from "@/store";
 import { getLayouts } from "@/features/layouts/common";
+import { arkhamesqueCategory } from "@/data/layouts/arkhamesque";
 
 export const DEFAULT_LAYOUT = layouts.find(safePropEq(true, 'isDefault')) as ILayout;
 
@@ -58,6 +59,15 @@ export const setLayoutById: ActionCreator<AppThunk> = (id: string) => (dispatch)
     dispatch(setLayout(layout));
   }
 
+export const selectIsArkhamesqueLayout: AppSelector<boolean> = (state) => {
+  const { 
+    layout, 
+    categoryId: defaultCategoryId 
+  } = state.layout;
+  const categoryId = defaultCategoryId || layout.categoryId;
+
+  return categoryId === arkhamesqueCategory.id;
+}
 
 export const {
   setLayout,

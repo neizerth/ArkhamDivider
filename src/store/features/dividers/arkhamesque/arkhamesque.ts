@@ -1,8 +1,9 @@
 import { fetchArkhamesqueData } from '@/api/arkhamesqueClassic';
 import { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { ActionCreator, createSlice } from '@reduxjs/toolkit';
+import { ActionCreator, createSelector, createSlice } from '@reduxjs/toolkit';
 import { IArkhamesqueBuild } from 'arkhamesque-classic-divider-data';
+import { prop } from 'ramda';
 
 export type IArkhamesqueState = {
   data: IArkhamesqueBuild | null
@@ -40,5 +41,18 @@ export const {
 export const {
   selectArkhamesqueData
 } = arkhamesque.selectors;
+
+export const selectArkhamesqueClassicInvestigators = createSelector(
+  [selectArkhamesqueData],
+  (arkhamesqueData) => {
+    if (!arkhamesqueData) {
+      return [];
+    }
+    return arkhamesqueData.investigators
+      .flatMap(
+        ({ data }) => data.map(prop('code'))
+      )
+  }
+)
 
 export default arkhamesque.reducer;
