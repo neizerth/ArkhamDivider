@@ -14,9 +14,9 @@ import { selectLanguage } from '@/store/features/language/language';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
 import { XPCost } from '@/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
-import { DividerProps } from '../../common/Divider/Divider';
+import type { DividerProps } from '../../common/Divider/Divider';
 import { ArkhamesqueClassicDividerCanvasMemo as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
-import { addLoadIndex, selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
+import { addLoadIndex, removeDivider, selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { delay } from '@/util/common';
@@ -60,19 +60,18 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
 
   const [isRendered, setIsRendered] = useState(false);
 
-
   const isLoading = id === loadIndex;
 
   useLayoutEffect(() => {
     setIsRendered(false);
-  }, [specialIcon, icon]);
+  }, [specialIcon, icon, dispatch]);
 
   useEffect(() => {
     if (isRendered) {
       return;
     }
     dispatch(addLoadIndex(id));
-  }, [isRendered, id])
+  }, [isRendered, id, dispatch])
 
   const onRender = async () => {
 
@@ -88,6 +87,12 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
     data,
     divider: props
   });
+
+  useEffect(() => {
+    if (!item?.image) {
+      dispatch(removeDivider(id))
+    }
+  }, [item, id, dispatch])
 
   const titleInputClassName = classNames(
     S.titleInput

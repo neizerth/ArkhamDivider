@@ -1,8 +1,8 @@
 import { fetchArkhamesqueData } from '@/api/arkhamesqueClassic';
-import { AppThunk } from '@/store';
+import type { AppThunk } from '@/store';
 import { createSliceSelector, createSliceSetter } from '@/util/slice';
-import { ActionCreator, createSelector, createSlice } from '@reduxjs/toolkit';
-import { IArkhamesqueBuild } from 'arkhamesque-classic-divider-data';
+import { type ActionCreator, createSelector, createSlice } from '@reduxjs/toolkit';
+import type { IArkhamesqueBuild } from 'arkhamesque-classic-divider-data';
 import { prop } from 'ramda';
 
 export type IArkhamesqueState = {
