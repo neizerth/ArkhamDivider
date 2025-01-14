@@ -1,4 +1,4 @@
-// import S from './PageSizeSettings.module.scss';
+import S from './PageSizeSettings.module.scss';
 import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -43,6 +43,7 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
 
   return (
     <Select
+      className={S.select}
       onChange={item => item && onChange(item.value)}
       options={options}
       value={value}
