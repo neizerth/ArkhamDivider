@@ -109,7 +109,6 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
                 defaultValue={xpTitle}
                 onChange={setXPTitle}
                 onClear={() => setXPTitle(xpDefaultTitle)}
-                fixedFontSize={true}
               />
             </div>
             <div className={classNames(
