@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import S from './FontIcon.module.scss';
 import { propEq } from 'ramda';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectIcons } from '@/store/features/icons/icons';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectIcons } from '@/app/store/features/icons/icons';
 import { getIconScale } from './getIconScale';
 import { IconProps } from '../Icon/Icon';
 

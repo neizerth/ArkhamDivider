@@ -2,12 +2,12 @@ import Select from 'react-select';
 
 import S from './LayoutSelect.module.scss';
 
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import classNames from 'classnames';
-import { PropsWithClassName } from '@/types/util';
-import { ILayout } from '@/types/layouts';
-import { useAppNavigate } from '@/hooks/useAppNavigate';
+import { PropsWithClassName } from '@/shared/types/util';
+import { ILayout } from '@/shared/types/layouts';
+import { useAppNavigate } from '@/shared/lib/hooks/useAppNavigate';
 import { propEq } from 'ramda';
 
 export type LayoutSelectProps = PropsWithClassName & {

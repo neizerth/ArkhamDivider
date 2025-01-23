@@ -1,12 +1,12 @@
-import { ButtonType } from '@/types/ui';
+import { ButtonType } from '@/shared/types/ui';
 // import S from './DownloadZIPButton.module.scss';
 import { Icon, IconButton } from '@/components';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectExport } from '@/store/features/app/app';
-import { useDownloadDividers } from '@/hooks/useDownloadDividers';
-import { selectDividers } from '@/store/features/dividers/dividers';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectExport } from '@/app/store/features/app/app';
+import { useDownloadDividers } from '@/shared/lib/hooks/useDownloadDividers';
+import { selectDividers } from '@/app/store/features/dividers/dividers';
 import { PropsWithChildren } from 'react';
-import { DividerNodeRenderer } from '@/features/render/DividerNodeRenderer';
+import { DividerNodeRenderer } from '@/shared/lib/features/render/DividerNodeRenderer';
 
 export type DownloadZIPButtonProps = PropsWithChildren & {
   renderer: DividerNodeRenderer

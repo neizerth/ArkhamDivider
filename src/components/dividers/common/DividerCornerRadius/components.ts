@@ -1,5 +1,5 @@
-import { DEFAULT_CORNER_RADIUS } from "@/constants/print"
-import { ILayout } from "@/types/layouts"
+import { DEFAULT_CORNER_RADIUS } from "@/shared/config/print"
+import { ILayout } from "@/shared/types/layouts"
 import styled, { css } from "styled-components"
 
 export const Container = styled.div<{

@@ -1,9 +1,9 @@
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import S from './SarnetskyDividerMainIcon.module.scss';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
-import { useIconSelect } from '@/hooks/useIconSelect';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 
 export type SarnetskyDividerMainIconProps = PropsWithClassName & {
   icon: string

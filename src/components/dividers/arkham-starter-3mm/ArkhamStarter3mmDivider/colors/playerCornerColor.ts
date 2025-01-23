@@ -1,7 +1,7 @@
-import { IDivider } from "@/types/dividers";
-import { IRGBAColor } from "@/types/ui";
-import { Mapping } from "@/types/util";
-import { rgba256 } from "@/util/colors";
+import { IDivider } from "@/shared/types/dividers";
+import { IRGBAColor } from "@/shared/types/ui";
+import { Mapping } from "@/shared/types/util";
+import { rgba256 } from "@/shared/lib/features/util/colors";
 
 export const factionPlayerCornerColor: Mapping<IRGBAColor> = {
   'guardian': { r: 0.16862746, g: 0.42745098, b: 0.7058824, a: 1 },

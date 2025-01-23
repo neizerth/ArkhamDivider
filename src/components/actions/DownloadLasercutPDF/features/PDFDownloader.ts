@@ -1,8 +1,8 @@
-import { EventEmitter } from "@/features/events/EventEmitter";
-import { DividerNodeRenderer } from "@/features/render/DividerNodeRenderer"
-import { ColorScheme, ImageFormat } from "@/types/image";
-import { ILayoutBleed } from "@/types/layouts"
-import { OnRenderEventData } from "@/types/render";
+import { EventEmitter } from "@/shared/lib/features/events/EventEmitter";
+import { DividerNodeRenderer } from "@/shared/lib/features/render/DividerNodeRenderer"
+import { ColorScheme, ImageFormat } from "@/shared/types/image";
+import { ILayoutBleed } from "@/shared/types/layouts"
+import { OnRenderEventData } from "@/shared/types/render";
 
 export class PDFDownloader extends EventEmitter {
   protected _renderer: DividerNodeRenderer;

@@ -2,10 +2,10 @@ import { PropsWithChildren } from 'react';
 import S from './AppLoader.module.scss';
 import classNames from 'classnames';
 
-import { BASE_PATH } from "@/constants/app";
+import { BASE_PATH } from "@/shared/config/app";
 
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectExport, selectLoading, selectLoadingStatus } from '@/store/features/app/app';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectExport, selectLoading, selectLoadingStatus } from '@/app/store/features/app/app';
 import { Progress } from '@/components';
 
 const loader = BASE_PATH + 'images/loader.gif';

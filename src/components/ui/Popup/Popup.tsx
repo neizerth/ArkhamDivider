@@ -1,10 +1,10 @@
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import S from './Popup.module.scss';
 import classNames from 'classnames';
 import { PropsWithChildren, useRef } from 'react';
 import useOnClickOutside from 'use-onclickoutside'
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { clearActivePopupId } from '@/store/features/app/app';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { clearActivePopupId } from '@/app/store/features/app/app';
 
 export type PopupProps = PropsWithClassName & PropsWithChildren & {
   show?: boolean

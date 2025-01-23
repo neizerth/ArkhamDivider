@@ -1,4 +1,4 @@
-import { BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/constants/app";
+import { BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/shared/config/app";
 
 export const contacts = [
   {

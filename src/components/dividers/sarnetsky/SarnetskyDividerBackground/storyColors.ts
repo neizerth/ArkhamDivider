@@ -1,4 +1,4 @@
-import { Mapping } from "@/types/util";
+import { Mapping } from "@/shared/types/util";
 
 export const storyColors: Mapping = {
   'core': '#00759C',

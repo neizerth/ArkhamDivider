@@ -1,12 +1,34 @@
-@import "../../../../sass/mixins.scss";
+@import "@/app/sass/mixins.scss";
 
 .container {
-  font-family: 'Teutonic', 'Teutonic2', 'Conkordia', 'Arkhamic', sans-serif;
+  font-family: 'Teutonic', 'Teutonic Extended', 'Arkhamic', sans-serif;
   color: #352e1f;
 
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
+
+.ru {
+  font-family: 'Conkordia', 'Arkhamic', sans-serif;
+}
+
+.zh,
+.zh-cn {
+  font-family: 'STXingkai', sans-serif;
+  .title {
+    height: 2.9mm;
+  }
+}
+
+.ko {
+  font-family: 'SanCn';
+  font-weight: bold;
+
+  .title {
+    height: 2.9mm;
+  }
+}
+
 
 .background {
   position: absolute;

@@ -1,4 +1,4 @@
-import { LayoutType } from "@/types/layouts";
+import { LayoutType } from "@/shared/types/layouts";
 
 export const menu = [
   {

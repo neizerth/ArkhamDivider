@@ -13,7 +13,7 @@ import rogueXP from './rogue_xp.png';
 import survivorXP from './survivor_xp.png';
 import seekerXP from './seeker_xp.png';
 import multiclassXP from './multiclass_xp.png';
-import { LayoutOrientation } from '@/types/layouts';
+import { LayoutOrientation } from '@/shared/types/layouts';
 
 
 export const baseBackgrounds = [

@@ -1,6 +1,6 @@
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { selectLayout } from "@/store/features/layout/layout";
-import { PropsWithClassName } from "@/types/util";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectLayout } from "@/app/store/features/layout/layout";
+import { PropsWithClassName } from "@/shared/types/util";
 import { Container } from "./components";
 
 export const DividerCornerRadius = ({ className }: PropsWithClassName) => {

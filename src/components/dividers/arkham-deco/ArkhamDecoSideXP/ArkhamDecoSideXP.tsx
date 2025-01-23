@@ -1,7 +1,7 @@
-import { IXPCost } from '@/types/game';
+import { IXPCost } from '@/shared/types/game';
 import S from './ArkhamDecoSideXP.module.scss';
 import { range } from 'ramda';
-import { MAX_XP } from '@/constants/xp';
+import { MAX_XP } from '@/shared/config/xp';
 import FullBar from './images/xp-full.svg?react';
 import SmallBar from './images/xp-small.svg?react';
 import classNames from 'classnames';

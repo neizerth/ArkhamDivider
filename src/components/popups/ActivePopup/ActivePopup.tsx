@@ -1,7 +1,7 @@
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { selectActivePopupId } from "@/store/features/app/app";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectActivePopupId } from "@/app/store/features/app/app";
 import { IconSelectPopup } from "../iconSelect/IconSelectPopup/IconSelectPopup";
-import { PopupType } from "@/types/ui";
+import { PopupType } from "@/shared/types/ui";
 
 export const ActivePopup = () => {
   const id = useAppSelector(selectActivePopupId);

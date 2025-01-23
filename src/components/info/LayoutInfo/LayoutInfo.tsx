@@ -1,9 +1,9 @@
-import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import S from './LayoutInfo.module.scss';
-import { selectCategoryId, selectLayout } from '@/store/features/layout/layout';
+import { selectCategoryId, selectLayout } from '@/app/store/features/layout/layout';
 import { AuthorInfo, Container, UITranslationRequest } from '@/components';
 import { useTranslation } from 'react-i18next';
-import { getCategoryById } from '@/features/layouts/common';
+import { getCategoryById } from '@/shared/lib/features/layouts/common';
 
 export type LayoutInfoProps = {
 

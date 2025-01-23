@@ -1,7 +1,7 @@
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import S from './ArkhamesqueClassicDividerCanvas.module.scss';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import { Stage, Layer, Image } from 'react-konva';
 import { getBleedCanvasSize } from './features/size';
 import classNames from 'classnames';
@@ -9,8 +9,8 @@ import { ArkhamesqueClassicDividerCanvasIcon as Icon } from './ArkhamesqueClassi
 import { memo, useEffect, useRef, useState } from 'react';
 import useImage from 'use-image';
 import Konva from 'konva';
-import { ARKHAMESQUE_RENDER_DEBUG } from '@/constants/app';
-import { selectIcons } from '@/store/features/icons/icons';
+import { ARKHAMESQUE_RENDER_DEBUG } from '@/shared/config/app';
+import { selectIcons } from '@/app/store/features/icons/icons';
 import { propEq } from 'ramda';
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {

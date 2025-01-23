@@ -7,7 +7,7 @@ import ColorHorizontal from './scenario__color_horizontal.svg?react'
 import vertical from './scenario_vertical.jpg';
 import horizontal from './scenario_horizontal.jpg';
 
-import { LayoutOrientation } from '@/types/layouts';
+import { LayoutOrientation } from '@/shared/types/layouts';
 
 export const scenarioImages = [
   {

@@ -2,7 +2,7 @@ import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { contacts } from './contacts';
 import S from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
-import { PATREON_LINK } from '@/constants/app';
+import { PATREON_LINK } from '@/shared/config/app';
 
 const GAME_URL = "https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/";
 const FFG_URL = "https://www.fantasyflightgames.com/";

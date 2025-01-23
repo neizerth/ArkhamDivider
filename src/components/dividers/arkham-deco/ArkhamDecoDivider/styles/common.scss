@@ -1,4 +1,4 @@
-@import "../../../../../sass/mixins.scss";
+@import "@/app/sass/mixins.scss";
 
 .container {
   --offset: 0mm;
@@ -8,11 +8,26 @@
   // border-radius: 4mm;
   // overflow: hidden;
 
-  font-family: 'Conkordia', 'Arkhamic', sans-serif;
+  font-family: 'Teutonic', 'Arkhamic', sans-serif;
 
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
+
+.ru {
+  font-family: 'Conkordia', 'Arkhamic', sans-serif;
+}
+
+.zh,
+.zh-cn {
+  font-family: 'STXingkai', sans-serif;
+}
+
+.ko {
+  font-family: 'SanCn', sans-serif;
+  font-weight: bold;
+}
+
 
 .card {
   display: none;
@@ -333,7 +348,7 @@
 }
 
 .specialIcon {
-  font-size: 2.5mm;
+  font-size: 2.9mm;
   line-height: 1;
   display: flex;
   align-items: center;

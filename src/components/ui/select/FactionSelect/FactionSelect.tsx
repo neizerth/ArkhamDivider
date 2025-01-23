@@ -1,9 +1,9 @@
 import { Icon, ToggleSelect } from '@/components';
 import S from './FactionSelect.module.scss';
-import factions from '@/data/factions.json';
+import factions from '@/shared/data/factions.json';
 import classNames from 'classnames';
 import { ToggleSelectItem, ToggleSelectItemProps } from '../ToggleSelect/ToggleSelect';
-import { IFaction } from "@/types/game";
+import { IFaction } from "@/shared/types/game";
 
 
 

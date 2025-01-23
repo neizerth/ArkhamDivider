@@ -1,13 +1,13 @@
 import { Page, Row, ZoomView, DividerMemo } from '@/components';
 
 import S from './Layout.module.scss';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDividers } from '@/store/features/dividers/dividers';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectDividers } from '@/app/store/features/dividers/dividers';
 
 import classNames from 'classnames';
-import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/store/features/print/print';
-import { splitIntoPages } from '@/features/print';
-import { selectZoom } from '@/store/features/layout/layout';
+import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/app/store/features/print/print';
+import { splitIntoPages } from '@/shared/lib/features/print';
+import { selectZoom } from '@/app/store/features/layout/layout';
 import { prop } from 'ramda';
 
 export type LayoutProps = {

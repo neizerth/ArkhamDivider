@@ -1,4 +1,4 @@
-import { IIconTransform } from "@/types/icons";
+import { IIconTransform } from "@/shared/types/icons";
 import styled, { css } from "styled-components";
 
 export const Container = styled.div<{

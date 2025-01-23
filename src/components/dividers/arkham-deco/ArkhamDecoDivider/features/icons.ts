@@ -1,5 +1,5 @@
-import { ArkhamDecoDividerType } from "@/data/layouts/arkham-deco";
-import { DividerType, IDivider } from "@/types/dividers";
+import { ArkhamDecoDividerType } from "@/shared/data/layouts/arkham-deco";
+import { DividerType, IDivider } from "@/shared/types/dividers";
 
 export const STORY_DIVIDERS = [DividerType.ENCOUNTER, DividerType.SCENARIO];
 

@@ -1,16 +1,16 @@
-import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import S from './PrintSettings.module.scss';
 
 import { Checkbox, Row } from '@/components';
-import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { 
   selectBleed, 
   selectDoubleSided, 
   setBleed, 
   setDoubleSided,
-} from '@/store/features/print/print';
+} from '@/app/store/features/print/print';
 import { useTranslation } from 'react-i18next';
-import { selectExport } from '@/store/features/app/app';
+import { selectExport } from '@/app/store/features/app/app';
 
 export type PrintSettingsProps = {
 

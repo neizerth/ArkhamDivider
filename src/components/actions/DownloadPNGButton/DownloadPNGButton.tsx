@@ -1,8 +1,8 @@
-import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { DownloadButton } from '../DownloadButton/DownloadButton';
-import { selectLayout } from '@/store/features/layout/layout';
-import { getSimilarBleed } from '@/features/render/getSimilarBleed';
-import { createZipRenderer } from '@/features/zip/createZipRenderer';
+import { selectLayout } from '@/app/store/features/layout/layout';
+import { getSimilarBleed } from '@/shared/lib/features/render/getSimilarBleed';
+import { createZipRenderer } from '@/shared/lib/features/zip/createZipRenderer';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/Badge/Badge';
 // import S from './DownloadPNGButton.module.scss';

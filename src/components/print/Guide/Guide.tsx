@@ -1,6 +1,6 @@
-import { GuideType } from '@/types/print';
+import { GuideType } from '@/shared/types/print';
 import S from './Guide.module.scss';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import classNames from 'classnames';
 
 export type GuideProps = PropsWithClassName & {

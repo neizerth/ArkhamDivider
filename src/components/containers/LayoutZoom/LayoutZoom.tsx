@@ -1,15 +1,15 @@
 import { Icon } from '@/components';
 import S from './LayoutZoom.module.scss';
 import Select from 'react-select';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectZoom, setZoom } from '@/store/features/layout/layout';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectZoom, setZoom } from '@/app/store/features/layout/layout';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import classNames from 'classnames';
-import { toArrayIf } from '@/util/common';
-import { IS_DEVELOPMENT } from '@/constants/app';
+import { toArrayIf } from '@/shared/lib/features/util/common';
+import { IS_DEVELOPMENT } from '@/shared/config/app';
 import { useMemo } from 'react';
-import { getWebToPrintScale } from '@/util/units';
-import { selectExport } from '@/store/features/app/app';
+import { getWebToPrintScale } from '@/shared/lib/features/util/units';
+import { selectExport } from '@/app/store/features/app/app';
 
 export type LayoutZoomProps = {
 

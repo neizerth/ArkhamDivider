@@ -1,28 +1,28 @@
 import S from './ArkhamesqueClassicDivider.module.scss';
 import classNames from 'classnames';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
-import { useStoryTranslation } from '@/hooks/useStoryTranslation';
-import { useIconSelect } from '@/hooks/useIconSelect';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { getDividerData } from './data/getDividerData';
 import { useSelector } from 'react-redux';
-import { selectArkhamesqueData } from '@/store/features/dividers/arkhamesque/arkhamesque';
+import { selectArkhamesqueData } from '@/app/store/features/dividers/arkhamesque/arkhamesque';
 import { DividerText } from '../../common/DividerText/DividerText';
 import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
 import { DividerMenu } from '../../common/DividerMenu/DividerMenu';
-import { selectLanguage } from '@/store/features/language/language';
+import { selectLanguage } from '@/app/store/features/language/language';
 import { TextFit } from '@/components/ui/behavior/TextFit/TextFit';
-import { XPCost } from '@/types/game';
+import { XPCost } from '@/shared/types/game';
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from '../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle';
 import type { DividerProps } from '../../common/Divider/Divider';
 import { ArkhamesqueClassicDividerCanvasMemo as Canvas } from '../ArkhamesqueClassicDividerCanvas/ArkhamesqueClassicDividerCanvas';
-import { addLoadIndex, removeDivider, selectLoadIndex, setNextLoadIndex } from '@/store/features/dividers/dividers';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { addLoadIndex, removeDivider, selectLoadIndex, setNextLoadIndex } from '@/app/store/features/dividers/dividers';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
-import { delay } from '@/util/common';
+import { delay } from '@/shared/lib/features/util/common';
 import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectCornerRadius } from '@/store/features/print/print';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectCornerRadius } from '@/app/store/features/print/print';
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 

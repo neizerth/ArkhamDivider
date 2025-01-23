@@ -1,8 +1,8 @@
 import S from './LayoutFilter.module.scss';
 
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectCategoryId, selectLayout, selectType } from '@/store/features/layout/layout';
-import { getLayouts } from '@/features/layouts/common';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectCategoryId, selectLayout, selectType } from '@/app/store/features/layout/layout';
+import { getLayouts } from '@/shared/lib/features/layouts/common';
 import { isNotNil, prop, uniq } from 'ramda';
 import { LayoutColorToggle } from '../LayoutColorToggle/LayoutColorToggle';
 import { LayoutOrientationToggle } from '../LayoutOrientationToggle/LayoutOrientationToggle';

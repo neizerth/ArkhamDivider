@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 // import S from './WithLayoutSupport.module.scss';
-import { useLayoutSupport } from '@/hooks/stories/useLayoutSupport';
+import { useLayoutSupport } from '@/shared/lib/hooks/stories/useLayoutSupport';
 import { useTranslation } from 'react-i18next';
 import { Container } from '@/components';
 

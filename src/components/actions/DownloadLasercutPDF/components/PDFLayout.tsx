@@ -1,12 +1,12 @@
-import { splitIntoPages } from "@/features/print";
+import { splitIntoPages } from "@/shared/lib/features/print";
 import { Document, Image, Page, StyleSheet, View } from '@react-pdf/renderer';
-import { uniqId } from "@/util/common";
-import { PageOrientation, PageSizeType, PrintPageSize } from "@/types/print";
-import { IEqualLayoutBleed, ILayout } from "@/types/layouts";
-import { toPrintSize } from "@/util/units";
+import { uniqId } from "@/shared/lib/features/util/common";
+import { PageOrientation, PageSizeType, PrintPageSize } from "@/shared/types/print";
+import { IEqualLayoutBleed, ILayout } from "@/shared/types/layouts";
+import { toPrintSize } from "@/shared/lib/features/util/units";
 import { PDFRow as Row } from "./PDFRow";
 import { PDFPageGuides as PageGuides } from "./guides/PDFPageGuides";
-import { IDivider } from "@/types/dividers";
+import { IDivider } from "@/shared/types/dividers";
 
 const styles = StyleSheet.create({
   page: {

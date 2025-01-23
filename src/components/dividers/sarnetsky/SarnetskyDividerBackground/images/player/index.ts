@@ -1,4 +1,4 @@
-import { LayoutOrientation } from '@/types/layouts';
+import { LayoutOrientation } from '@/shared/types/layouts';
 import guardian from './guardian.jpg';
 import multiclass from './multiclass.jpg';
 import mystic from './mystic.jpg'
@@ -8,7 +8,7 @@ import seeker from './seeker.jpg'
 import survivor from './survivor.jpg'
 import customizations from './customizations.jpg'
 import weakness from './weakness.jpg'
-import { DividerType } from '@/types/dividers';
+import { DividerType } from '@/shared/types/dividers';
 
 export const playerImages = [
     {

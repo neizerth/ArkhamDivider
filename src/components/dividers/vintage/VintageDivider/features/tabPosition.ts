@@ -1,4 +1,4 @@
-import { DividerType, IDivider } from "@/types/dividers";
+import { DividerType, IDivider } from "@/shared/types/dividers";
 import { prop, propEq } from "ramda";
 
 export type TabPosition = 'left' | 'right' | 'center';

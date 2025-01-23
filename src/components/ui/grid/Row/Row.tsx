@@ -1,6 +1,6 @@
 import { ElementType, PropsWithChildren } from 'react';
 import S from './Row.module.scss';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import classNames from 'classnames';
 
 export type RowProps = PropsWithClassName & PropsWithChildren & {

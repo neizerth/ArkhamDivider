@@ -1,21 +1,21 @@
 import S from './StorySelect.module.scss';
 import Select from 'react-select';
 
-import { IStory } from '@/types/api';
-import { isChallenge, isSideContent, isCampaign } from '@/store/features/stories/criteria';
+import { IStory } from '@/shared/types/api';
+import { isChallenge, isSideContent, isCampaign } from '@/app/store/features/stories/criteria';
 import { StorySelectOption } from '../StorySelectOption/StorySelectOption';
 import { StorySelectSingleValue } from '../StorySelectSingleValue/StorySelectSingleValue';
 import { ascend, descend, prop, sortWith } from 'ramda';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import classNames from 'classnames';
-import { useAppNavigate } from '@/hooks/useAppNavigate';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectStory } from '@/store/features/dividers/dividers';
-import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { useAppNavigate } from '@/shared/lib/hooks/useAppNavigate';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectStory } from '@/app/store/features/dividers/dividers';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
 import { Row } from '@/components/ui/grid/Row/Row';
 import { IconButton } from '@/components/ui/IconButton/IconButton';
-import { ButtonType } from '@/types/ui';
-import { toArrayIf } from '@/util/common';
+import { ButtonType } from '@/shared/types/ui';
+import { toArrayIf } from '@/shared/lib/features/util/common';
 
 export type StorySelectProps = PropsWithClassName & {
   stories: IStory[]

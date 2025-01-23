@@ -1,17 +1,17 @@
 // import S from './DownloadLasercutPDF.module.scss';
 
 import { DownloadButton } from "../DownloadButton/DownloadButton";
-import { useAppSelector } from "@/hooks/useAppSelector";
-import { selectLayout } from "@/store/features/layout/layout";
-import { getSimilarBleed } from "@/features/render/getSimilarBleed";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectLayout } from "@/app/store/features/layout/layout";
+import { getSimilarBleed } from "@/shared/lib/features/render/getSimilarBleed";
 import { useEffect, useMemo, useState } from "react";
 import { pdf } from "@react-pdf/renderer";
 import { PDFLayout } from "./components/PDFLayout";
 import { PDFDownloader } from "./features/PDFDownloader";
 import { saveAs } from "file-saver";
-import { selectCornerRadius, selectDoubleSided, selectPageSizeType } from "@/store/features/print/print";
-import { selectDividers } from '@/store/features/dividers/dividers';
-import { getLayoutGrid } from '@/features/layouts/getLayoutGrid';
+import { selectCornerRadius, selectDoubleSided, selectPageSizeType } from "@/app/store/features/print/print";
+import { selectDividers } from '@/app/store/features/dividers/dividers';
+import { getLayoutGrid } from '@/shared/lib/features/layouts/getLayoutGrid';
 import { Badge } from '@/components';
 
 export type DownloadLasercutPDFProps = {

@@ -2,17 +2,17 @@ import S from './Invocation2018Divider.module.scss';
 import { backgrounds } from './backgrounds';
 import { omit } from 'ramda';
 import { ClassicDivider, Icon } from '@/components';
-import { propsEquals } from '@/util/criteria';
+import { propsEquals } from '@/shared/lib/features/util/criteria';
 import { Invocation2018DividerXPCost } from '../Invocation2018DividerXPCost/Invocation2018DividerXPCost';
 import { ClassicDividerSideXP } from '../../classic/xp/ClassicDividerSideXP/ClassicDividerSideXP';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import classNames from 'classnames';
 import iconBg from './images/icon-bg.png';
-import { useIconSelect } from '@/hooks/useIconSelect';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
-import { selectLanguage } from '@/store/features/language/language';
-import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { selectLanguage } from '@/app/store/features/language/language';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
 
 export type Invocation2018DividerProps = DividerProps;
 

@@ -1,6 +1,6 @@
-import { DividerType } from '@/types/dividers';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { DividerType } from '@/shared/types/dividers';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import { propEq } from 'ramda';
 import { playerImages } from './images/player';
 import S from './SarnetskyDividerBackground.module.scss';

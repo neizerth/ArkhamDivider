@@ -1,10 +1,10 @@
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import S from './ClassicDividerIconXPCost.module.scss';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import classNames from 'classnames';
-import { CardType, IXPCost } from '@/types/game';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { CardType, IXPCost } from '@/shared/types/game';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
 
 export type ClassicDividerSkillXPCostProps = PropsWithClassName & {
   xpCost: IXPCost

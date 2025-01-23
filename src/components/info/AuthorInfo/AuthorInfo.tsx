@@ -1,4 +1,4 @@
-import { ILayoutAuthor } from '@/types/layouts';
+import { ILayoutAuthor } from '@/shared/types/layouts';
 import S from './AuthorInfo.module.scss';
 import { Icon } from '@/components';
 import { useTranslation } from 'react-i18next';

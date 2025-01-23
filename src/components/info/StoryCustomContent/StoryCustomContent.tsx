@@ -1,12 +1,12 @@
-import { ICustomContent } from '@/types/api';
+import { ICustomContent } from '@/shared/types/api';
 import S from './StoryCustomContent.module.scss';
 import { useTranslation } from 'react-i18next';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import classNames from 'classnames';
 import { Col, LanguageFlag } from '@/components';
 import { prop } from 'ramda';
-import { selectLanguage } from '@/store/features/language/language';
-import { useAppSelector } from '@/hooks/useAppSelector';
+import { selectLanguage } from '@/app/store/features/language/language';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { Panel } from '@/components/ui/Panel/Panel';
 
 export type StoryCustomContentProps = PropsWithClassName & {
