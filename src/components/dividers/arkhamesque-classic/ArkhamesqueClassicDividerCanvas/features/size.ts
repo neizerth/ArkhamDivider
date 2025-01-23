@@ -1,7 +1,7 @@
-import { IIcon } from "@/types/api";
-import { ILayoutBleed } from "@/types/layouts";
-import { IBox, IBoxOffset } from "@/types/units";
-import { toPrintSize } from "@/util/units";
+import { IIcon } from "@/shared/types/api";
+import { ILayoutBleed } from "@/shared/types/layouts";
+import { IBox, IBoxOffset } from "@/shared/types/units";
+import { toPrintSize } from "@/shared/lib/features/util/units";
 
 export type IIconContainer = IBox & {
   x: number

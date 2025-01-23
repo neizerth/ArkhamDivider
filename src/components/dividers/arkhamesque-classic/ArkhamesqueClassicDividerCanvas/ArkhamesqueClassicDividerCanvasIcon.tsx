@@ -1,10 +1,10 @@
 import { Text } from "react-konva"
 import { IIconContainer } from "./features/size"
 import { getIconScale } from "@/components/ui/icons/FontIcon/getIconScale"
-import icons, { ICON_SIZE } from '@/data/icons';
+import icons, { ICON_SIZE } from '@/shared/data/icons';
 import { propEq } from "ramda"
-import { IconScaleFactor } from "@/types/icons";
-import { IIcon } from "@/types/api";
+import { IconScaleFactor } from "@/shared/types/icons";
+import { IIcon } from "@/shared/types/api";
 
 export type ArkhamesqueClassicDividerCanvasIconProps = {
   icon: IIcon

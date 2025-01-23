@@ -9,6 +9,26 @@
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
 }
 
+.ko {
+  font-family: 'SanCn', sans-serif;
+  font-weight: bold;
+
+  .scenarioTitle {
+    font-family: inherit;
+    font-style: normal;
+  }
+}
+
+.zh,
+.zh-cn {
+  font-family: 'STXingkai', sans-serif;
+
+  .scenarioTitle {
+    font-family: inherit;
+    font-style: normal;
+  }
+}
+
 
 .background {
   position: absolute;

@@ -6,20 +6,20 @@ import { backgrounds } from './backgrounds';
 import { Icon, DividerMenu, DividerText, DividerContent, NotExportable } from '@/components';
 import classNames from 'classnames';
 
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLanguage } from '@/store/features/language/language';
-import { selectLayout } from '@/store/features/layout/layout';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLanguage } from '@/app/store/features/language/language';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import { ClassicDividerStatus } from '../ClassicDividerStatus/ClassicDividerStatus';
 import { ClassicDividerIconXPCost } from '../xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost';
-import { propsEquals } from '@/util/criteria';
+import { propsEquals } from '@/shared/lib/features/util/criteria';
 import { ClassicDividerSideXP } from '../xp/ClassicDividerSideXP/ClassicDividerSideXP';
-import { definedIf } from '@/util/common';
-import { useIconSelect } from '@/hooks/useIconSelect';
+import { definedIf } from '@/shared/lib/features/util/common';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
-import { useStoryTranslation } from '@/hooks/useStoryTranslation';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
 import { CircleIcon } from '@/components/ui/icons/CircleIcon/CircleIcon';
 import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
-import { selectCornerRadius } from '@/store/features/print/print';
+import { selectCornerRadius } from '@/app/store/features/print/print';
 
 export type ClassicDividerProps = DividerProps & PropsWithChildren &{
 	titleStroke?: boolean

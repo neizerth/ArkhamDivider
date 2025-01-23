@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 import S from './LayoutMenu.module.scss';
 import { Container } from '@/components';
 import { PropsWithChildren } from 'react';
-import { LayoutType } from '@/types/layouts';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout, selectType } from '@/store/features/layout/layout';
+import { LayoutType } from '@/shared/types/layouts';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout, selectType } from '@/app/store/features/layout/layout';
 import classNames from 'classnames';
-import { useAppNavigate } from '@/hooks/useAppNavigate';
+import { useAppNavigate } from '@/shared/lib/hooks/useAppNavigate';
 import { menu } from './menu';
 
 export type LayoutMenuItemProps = PropsWithChildren & {

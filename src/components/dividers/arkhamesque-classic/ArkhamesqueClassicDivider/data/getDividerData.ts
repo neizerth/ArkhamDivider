@@ -1,4 +1,4 @@
-import { DividerType, IDivider } from "@/types/dividers"
+import { DividerType, IDivider } from "@/shared/types/dividers"
 import { IArkhamesqueBuild, IArkhamesquePlayerCategory, IArkhamesqueStoriesCategory, IArkhamesqueStoryScenario } from "arkhamesque-classic-divider-data"
 import { getStoryDividerData } from "./getStoryDividerData";
 import { getPlayerDividerData } from "./getPlayerDividerData";

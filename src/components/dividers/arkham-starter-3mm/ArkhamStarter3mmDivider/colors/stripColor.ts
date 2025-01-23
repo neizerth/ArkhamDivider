@@ -1,8 +1,8 @@
-import { isChallenge, isSideContent } from "@/store/features/stories/criteria";
-import { IDivider } from "@/types/dividers";
-import { IRGBAColor } from "@/types/ui";
-import { Mapping } from "@/types/util";
-import { rgba256 } from "@/util/colors";
+import { isChallenge, isSideContent } from "@/app/store/features/stories/criteria";
+import { IDivider } from "@/shared/types/dividers";
+import { IRGBAColor } from "@/shared/types/ui";
+import { Mapping } from "@/shared/types/util";
+import { rgba256 } from "@/shared/lib/features/util/colors";
 
 export const customStripColor: Mapping<IRGBAColor> = {
   'zaw': { r: 0.6509804, g: 0.48235294, b: 0.39607844, a: 1 },

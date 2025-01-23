@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import S from './AppSettings.module.scss';
 import { LayoutFilter, LanguageSelect, PrintSettings, Row, Button, Icon } from '@/components';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectDividers, selectLoadQueue } from '@/store/features/dividers/dividers';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectDividers, selectLoadQueue } from '@/app/store/features/dividers/dividers';
 import { AdditionalSettings } from '../AdditionalSettings/AdditionalSettings';
 import classNames from 'classnames';
-import { selectLayout } from '@/store/features/layout/layout';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import { useState } from 'react';
 
 export const AppSettings = () => {

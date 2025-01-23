@@ -1,4 +1,4 @@
-import { DividerType } from '@/types/dividers';
+import { DividerType } from '@/shared/types/dividers';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
 import S from './ArkhamDecoDivider.module.scss';
 import paper from './images/paper.png'
@@ -20,19 +20,19 @@ import tabTentacles from './images/tab-tentacles.png';
 
 import classNames from 'classnames';
 import { DividerMenu, DividerText, Icon, NotExportable } from '@/components';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLanguage } from '@/store/features/language/language';
-import { selectLayout } from '@/store/features/layout/layout';
-import { useIconSelect } from '@/hooks/useIconSelect';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLanguage } from '@/app/store/features/language/language';
+import { selectLayout } from '@/app/store/features/layout/layout';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 import { ArkhamDecoSideXP } from '../ArkhamDecoSideXP/ArkhamDecoSideXP';
-import { getXPDisplayValue } from '@/features/xp';
-import { ArkhamDecoDividerType } from '@/data/layouts/arkham-deco';
+import { getXPDisplayValue } from '@/shared/lib/features/xp';
+import { ArkhamDecoDividerType } from '@/shared/data/layouts/arkham-deco';
 import { DividerProps } from '../../common/Divider/Divider';
-import { useStoryTranslation } from '@/hooks/useStoryTranslation';
-import { XPCost } from '@/types/game';
-import { LayoutOrientation } from '@/types/layouts';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
+import { XPCost } from '@/shared/types/game';
+import { LayoutOrientation } from '@/shared/types/layouts';
 import { getDefaultLineIcon, getDefaultSpecialIcon } from './features/icons';
-import { selectCornerRadius } from '@/store/features/print/print';
+import { selectCornerRadius } from '@/app/store/features/print/print';
 import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
 
 export const ArkhamDecoDivider = ({
@@ -111,7 +111,7 @@ export const ArkhamDecoDivider = ({
         S[`type_${layoutType}`],
         S[`size_${layoutSize}`],
         xpCost ? S.xp : S.noXP,
-        S[`language_${realLanguage}`],
+        S[realLanguage],
         S[`orientation_${orientation}`],
         className
       )}

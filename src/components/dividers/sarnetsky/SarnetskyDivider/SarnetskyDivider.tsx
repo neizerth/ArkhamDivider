@@ -1,23 +1,23 @@
 import S from './SarnetskyDivider.module.scss';
 
-import { DividerType } from '@/types/dividers';
+import { DividerType } from '@/shared/types/dividers';
 import { DividerContent, DividerMenu, DividerText, Icon, NotExportable } from '@/components';
 import classNames from 'classnames';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import { SarnetskyDividerBackground as DividerBackground } from '../SarnetskyDividerBackground/SarnetskyDividerBackground';
-import { selectLanguage } from '@/store/features/language/language';
+import { selectLanguage } from '@/app/store/features/language/language';
 import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from '../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters';
 import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from '../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters';
-import { LayoutOrientation } from '@/types/layouts';
+import { LayoutOrientation } from '@/shared/types/layouts';
 import { SarnetskyDividerXPCost } from '../xp/SarnetskyDividerXPCost/SarnetskyDividerXPCost';
 import { SarnetskyDividerSideXP } from '../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP';
 import { SarnetskyDividerXPText } from '../xp/SarnetskyDividerXPText/SarnetskyDividerXPText';
 import { SarnetskyDividerMainIcon as MainIcon } from '../SarnetskyDividerMainIcon/SarnetskyDividerMainIcon';
-import { useIconSelect } from '@/hooks/useIconSelect';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 import { DividerProps } from '../../common/Divider/Divider';
-import { useStoryTranslation } from '@/hooks/useStoryTranslation';
-import { selectCornerRadius } from '@/store/features/print/print';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
+import { selectCornerRadius } from '@/app/store/features/print/print';
 import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
 
 export const ENCOUNTER_ROW_SIZE = 7;

@@ -1,21 +1,21 @@
 import { Popup, PopupProps } from '@/components/ui/Popup/Popup';
 import S from './IconSelectPopup.module.scss';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectIcons, selectPopupIcon, setPopupIcon } from '@/store/features/icons/icons';
-import { selectStories } from '@/store/features/stories/stories';
-import { selectEncounterSets } from '@/store/features/encounterSets/encounterSets';
-import { getIconGroups } from '@/features/icons/getIconGroups';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectIcons, selectPopupIcon, setPopupIcon } from '@/app/store/features/icons/icons';
+import { selectStories } from '@/app/store/features/stories/stories';
+import { selectEncounterSets } from '@/app/store/features/encounterSets/encounterSets';
+import { getIconGroups } from '@/shared/lib/features/icons/getIconGroups';
 import { useTranslation } from 'react-i18next';
 import { Button, Col, Icon, Row } from '@/components';
 import { createRef, useMemo, useRef, useState } from 'react';
-import { ButtonType } from '@/types/ui';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { clearActivePopupId } from '@/store/features/app/app';
+import { ButtonType } from '@/shared/types/ui';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { clearActivePopupId } from '@/app/store/features/app/app';
 import { IconSelectView } from '../IconSelectView/IconSelectView';
 import { IconSelectNav } from '../IconSelectNav/IconSelectNav';
 import { IconSelectPreview } from '../IconSelectPreview/IconSelectPreview';
 import classNames from 'classnames';
-import { useScrollSpy } from '@/hooks/useScollSpy';
+import { useScrollSpy } from '@/shared/lib/hooks/useScollSpy';
 
 export type IconSelectPopupProps = PopupProps & {
 

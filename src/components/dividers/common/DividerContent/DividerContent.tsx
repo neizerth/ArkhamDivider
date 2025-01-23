@@ -1,10 +1,10 @@
 import { Guides } from '@/components/print/Guides/Guides';
 import S from './DividerContent.module.scss';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import { PropsWithChildren } from 'react';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
-import { selectBleed } from '@/store/features/print/print';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
+import { selectBleed } from '@/app/store/features/print/print';
 
 import { Wrapper, GuidesContent, Content } from './components';
 import classNames from 'classnames';

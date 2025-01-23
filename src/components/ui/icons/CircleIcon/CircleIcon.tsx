@@ -1,12 +1,12 @@
 import { propEq } from 'ramda';
 import { Icon, IconProps } from '../Icon/Icon';
 import S from './CircleIcon.module.scss';
-import icons, { ICON_LAYOUT_HEIGHT } from '@/data/icons'
+import icons, { ICON_LAYOUT_HEIGHT } from '@/shared/data/icons'
 import classNames from 'classnames';
 import { Container } from './components';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectBleed } from '@/store/features/print/print';
-import { selectLayout } from '@/store/features/layout/layout';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectBleed } from '@/app/store/features/print/print';
+import { selectLayout } from '@/app/store/features/layout/layout';
 
 export type CircleIconProps = Omit<IconProps, 'scaleType'> & {
   type?: string

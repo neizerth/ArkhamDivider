@@ -1,10 +1,10 @@
-import { DividerSubtype } from "@/types/dividers";
+import { DividerSubtype } from "@/shared/types/dividers";
 import { GetDividerDataOptions } from "./getDividerData";
 import { getDividerImage } from "./getDividerImage";
 import { descend, propEq } from "ramda";
-import { Single } from "@/types/util";
-import { propsEquals } from "@/util/criteria";
-import { CardType, XPCost } from "@/types/game";
+import { Single } from "@/shared/types/util";
+import { propsEquals } from "@/shared/lib/features/util/criteria";
+import { CardType, XPCost } from "@/shared/types/game";
 
 const COMMON_SUBTYPES = [
   DividerSubtype.BONDED,

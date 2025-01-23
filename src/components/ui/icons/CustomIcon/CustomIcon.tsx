@@ -1,4 +1,4 @@
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import S from './CustomIcon.module.scss';
 
 export type CustomIconProps = PropsWithClassName & {

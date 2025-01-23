@@ -4,16 +4,16 @@ import { XPCostSelect } from '@/components';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { ICardType, IXPCost, IFaction } from '@/types/game';
-import { ButtonType } from '@/types/ui';
-import { createToggleHanlder } from '@/util/forms';
-import { addPlayerDividers } from '@/store/features/addDividers/addDividers';
-import { useAppDispatch } from '@/hooks/useAppDispatch';
-import { removeAllDividers, selectStory } from '@/store/features/dividers/dividers';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLayout } from '@/store/features/layout/layout';
+import { ICardType, IXPCost, IFaction } from '@/shared/types/game';
+import { ButtonType } from '@/shared/types/ui';
+import { createToggleHanlder } from '@/shared/lib/features/util/forms';
+import { addPlayerDividers } from '@/app/store/features/addDividers/addDividers';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { removeAllDividers, selectStory } from '@/app/store/features/dividers/dividers';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLayout } from '@/app/store/features/layout/layout';
 import { isNil } from 'ramda';
-import { selectStories } from '@/store/features/stories/stories';
+import { selectStories } from '@/app/store/features/stories/stories';
 
 export type AddPlayerDividersProps = {
 

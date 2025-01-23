@@ -1,11 +1,11 @@
-import { IXPCost } from "@/types/game";
+import { IXPCost } from "@/shared/types/game";
 import { ToggleSelect, ToggleSelectItem, ToggleSelectItemProps } from '../ToggleSelect/ToggleSelect';
 import S from './XPCostSelect.module.scss';
-import { fixedXPCosts } from "@/data/fixedXPCosts";
+import { fixedXPCosts } from "@/shared/data/fixedXPCosts";
 import { Col, IconButton, Row, XPSlider } from "@/components";
-import { ButtonType } from "@/types/ui";
+import { ButtonType } from "@/shared/types/ui";
 import { useState } from "react";
-import { getXPDisplayValue } from "@/features/xp";
+import { getXPDisplayValue } from "@/shared/lib/features/xp";
 import { propEq } from "ramda";
 
 export type XPCostSelectProps = {

@@ -1,4 +1,4 @@
-import { ARKHAMESQUE_URL } from "@/constants/app";
+import { ARKHAMESQUE_URL } from "@/shared/config/app";
 import { identity } from "ramda";
 
 export const getDividerImage = (data: (string | undefined | false)[]) => {

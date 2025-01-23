@@ -55,11 +55,11 @@
 }
 
 .zh,
-.zh-cn,
-.ko {
+.zh-cn {
+  font-family: 'STXingkai', sans-serif;
   .title {
-    font-size: 3.8mm;
-    top: 6.5mm
+    top: 6.5mm;
+    font-size: 3.5mm;
   }
 }
 
@@ -68,9 +68,20 @@
   position: relative;
 }
 
-.ru .title {
+.ru {
   font-family: 'Conkordia', 'Arkhamic', sans-serif;
-  top: 6.8mm
+  .title {
+    top: 6.8mm
+  }
+}
+
+.ko {
+  font-family: 'SanCn', sans-serif;
+  font-weight: bold;
+  .title {
+    top: 6.8mm;
+    font-size: 3.5mm;
+  }
 }
 
 .previewHandler {

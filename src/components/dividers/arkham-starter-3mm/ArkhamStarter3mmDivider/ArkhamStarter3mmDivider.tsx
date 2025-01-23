@@ -7,16 +7,16 @@ import classNames from 'classnames';
 import { ArkhamStarter3mmDividerStrip as Strip } from '../ArkhamStarter3mmDividerStrip/ArkhamStarter3mmDividerStrip';
 import { getSecondaryStripColor, getStripColor } from './colors/stripColor';
 import { useEffect, useState } from 'react';
-import { selectLanguage } from '@/store/features/language/language';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { useIconSelect } from '@/hooks/useIconSelect';
+import { selectLanguage } from '@/app/store/features/language/language';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 import { ArkhamStarter3mmPlayerCorner as PlayerCorner } from '../ArkhamStarter3mmPlayerCorner/ArkhamStarter3mmPlayerCorner';
 import { getPlayerCornerColor } from './colors/playerCornerColor';
 import { DividerProps } from '../../common/Divider/Divider';
-import { useStoryTranslation } from '@/hooks/useStoryTranslation';
-import { DividerType } from '@/types/dividers';
-import { XPCost } from '@/types/game';
-import { selectCornerRadius } from '@/store/features/print/print';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
+import { DividerType } from '@/shared/types/dividers';
+import { XPCost } from '@/shared/types/game';
+import { selectCornerRadius } from '@/app/store/features/print/print';
 import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
 
 export const ArkhamStarter3mmDivider = (props: DividerProps) => {

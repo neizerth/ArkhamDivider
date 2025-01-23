@@ -1,4 +1,4 @@
-@import "../../../../../sass/mixins.scss";
+@import "@/app/sass/mixins.scss";
 
 .container {
   font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
@@ -17,12 +17,14 @@
   }
 }
 
-.ko,
-.zn,
+.ko {
+  font-family: 'SanCn', sans-serif;
+  font-weight: bold;
+}
+
+.zh,
 .zh-cn {
-  .title {
-    top: 6.5mm;
-  }
+  font-family: 'STXingkai', sans-serif;
 }
 
 .title {

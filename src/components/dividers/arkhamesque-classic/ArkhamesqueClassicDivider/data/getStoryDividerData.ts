@@ -1,8 +1,8 @@
-import { getArkhamesqueClassicStory } from "@/store/features/dividers/arkhamesque/criteria";
+import { getArkhamesqueClassicStory } from "@/app/store/features/dividers/arkhamesque/criteria";
 import { getDividerImage } from "./getDividerImage";
 import { GetDividerDataOptions } from "./getDividerData";
 import { propEq } from "ramda";
-import { DividerType } from "@/types/dividers";
+import { DividerType } from "@/shared/types/dividers";
 
 
 export const getStoryDividerData = ({

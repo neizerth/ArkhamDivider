@@ -1,7 +1,7 @@
-import { ICardType } from '@/types/game';
+import { ICardType } from '@/shared/types/game';
 import { ToggleSelect, ToggleSelectItem, ToggleSelectItemProps } from '../ToggleSelect/ToggleSelect';
 // import S from './PlayerCardTypeSelect.module.scss';
-import { playerCardTypes } from '@/data/playerCardTypes';
+import { playerCardTypes } from '@/shared/data/playerCardTypes';
 import { useTranslation } from 'react-i18next';
 
 export const PlayerCardTypeSelectItem = (props: ToggleSelectItemProps<ICardType>) => {

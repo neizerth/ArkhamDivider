@@ -1,6 +1,6 @@
-import { UseStoryTranslateFunction } from "@/hooks/useStoryTranslation";
-import { DividerType, IDivider } from "@/types/dividers";
-import factions from '@/data/factions.json';
+import { UseStoryTranslateFunction } from "@/shared/lib/hooks/useStoryTranslation";
+import { DividerType, IDivider } from "@/shared/types/dividers";
+import factions from '@/shared/data/factions.json';
 import { propEq } from "ramda";
 
 export const getPlayerTopTitle = ({

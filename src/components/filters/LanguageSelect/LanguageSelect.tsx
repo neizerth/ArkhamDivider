@@ -1,9 +1,9 @@
-import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import S from './LanguageSelect.module.scss';
-import { selectAvailableLanguages, selectLanguage } from '@/store/features/language/language';
+import { selectAvailableLanguages, selectLanguage } from '@/app/store/features/language/language';
 import Select, { OptionProps, SingleValueProps, components } from 'react-select';
 import { LanguageFlag } from '@/components/ui/LanguageFlag/LanguageFlag';
-import { useAppNavigate } from '@/hooks/useAppNavigate';
+import { useAppNavigate } from '@/shared/lib/hooks/useAppNavigate';
 
 export const LanguageSelectSingleValue = (props: SingleValueProps<{
   label: string,

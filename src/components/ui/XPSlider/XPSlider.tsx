@@ -1,8 +1,8 @@
-import { Defined } from '@/types/util';
+import { Defined } from '@/shared/types/util';
 import S from './XPSlider.module.scss';
 import ReactSlider, { ReactSliderProps } from 'react-slider';
 import classNames from 'classnames';
-import { MAX_XP } from '@/constants/xp';
+import { MAX_XP } from '@/shared/config/xp';
 
 export type XPSliderTrackDefinition = Defined<ReactSliderProps<number[]>['renderTrack']>
 

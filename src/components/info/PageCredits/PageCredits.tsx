@@ -1,13 +1,13 @@
 import S from './PageCredits.module.scss';
 import { Icon, Row } from '@/components';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import classNames from 'classnames';
 import {QRCodeSVG} from 'qrcode.react';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectLanguage } from '@/store/features/language/language';
-import { getCategoryById } from '@/features/layouts/common';
-import { selectCategoryId } from '@/store/features/layout/layout';
-import { BOOSTY_LINK } from '@/constants/app';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectLanguage } from '@/app/store/features/language/language';
+import { getCategoryById } from '@/shared/lib/features/layouts/common';
+import { selectCategoryId } from '@/app/store/features/layout/layout';
+import { BOOSTY_LINK } from '@/shared/config/app';
 import { useTranslation } from 'react-i18next';
 
 export const CREDITS_HEIGHT = 20;

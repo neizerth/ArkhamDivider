@@ -1,4 +1,4 @@
-import { IEqualLayoutBleed } from "@/types/layouts"
+import { IEqualLayoutBleed } from "@/shared/types/layouts"
 import { View, ViewProps } from "@react-pdf/renderer"
 import { PropsWithChildren } from "react"
 import { Style } from "../types"

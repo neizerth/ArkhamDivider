@@ -1,10 +1,10 @@
 import S from './CornerRadiusSettings.module.scss';
 import icon from './images/icon.svg'
-import { useAppDispatch } from '@/hooks/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Checkbox } from '@/components/forms/Checkbox/Checkbox';
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { selectCornerRadius, setCornerRadius } from '@/store/features/print/print';
-import { selectExport } from '@/store/features/app/app';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectCornerRadius, setCornerRadius } from '@/app/store/features/print/print';
+import { selectExport } from '@/app/store/features/app/app';
 
 export type CornerRadiusSettingsProps = {
 

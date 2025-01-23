@@ -1,4 +1,4 @@
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import S from './Upload.module.scss';
 import classNames from 'classnames';
 import { PropsWithChildren } from 'react';

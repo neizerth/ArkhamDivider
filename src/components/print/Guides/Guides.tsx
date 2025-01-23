@@ -1,8 +1,8 @@
 import S from './Guides.module.scss';
-import { PropsWithClassName } from '@/types/util';
+import { PropsWithClassName } from '@/shared/types/util';
 import classNames from 'classnames';
 import { Guide } from '@/components';
-import { GuideType } from '@/types/print';
+import { GuideType } from '@/shared/types/print';
 
 const DEFAULT_GUIDE_TYPE = 'cross';
 
