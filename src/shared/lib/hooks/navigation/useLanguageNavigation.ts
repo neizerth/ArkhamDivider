@@ -1,4 +1,7 @@
-import { changeLanguage, selectAvailableLanguages } from "@/app/store/features/language/language";
+import {
+	changeLanguage,
+	selectAvailableLanguages,
+} from "@/app/store/features/language/language";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../useAppDispatch";
@@ -7,23 +10,22 @@ import { useAppSelector } from "../useAppSelector";
 import { selectLoading } from "@/app/store/features/app/app";
 
 export const useLanguageNavigation = () => {
-  const dispatch = useAppDispatch();
-  const { i18n } = useTranslation();
-  const params = useParams();
-  const availableLangauges = useAppSelector(selectAvailableLanguages)
-  const loading = useAppSelector(selectLoading);
+	const dispatch = useAppDispatch();
+	const { i18n } = useTranslation();
+	const params = useParams();
+	const availableLangauges = useAppSelector(selectAvailableLanguages);
+	const loading = useAppSelector(selectLoading);
 
-  const { language } = params;
+	const { language } = params;
 
-  useEffect(() => {
-    if (!language || loading) {
-      return;
-    }
-    if (!availableLangauges.includes(language)) {
-      return;
-    }
-    i18n.changeLanguage(language);
-    dispatch(changeLanguage(language));
-
-  }, [language, loading]);
-}
+	useEffect(() => {
+		if (!language || loading) {
+			return;
+		}
+		if (!availableLangauges.includes(language)) {
+			return;
+		}
+		i18n.changeLanguage(language);
+		dispatch(changeLanguage(language));
+	}, [language, loading]);
+};

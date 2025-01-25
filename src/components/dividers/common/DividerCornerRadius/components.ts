@@ -1,9 +1,9 @@
-import { DEFAULT_CORNER_RADIUS } from "@/shared/config/print"
-import { ILayout } from "@/shared/types/layouts"
-import styled, { css } from "styled-components"
+import { DEFAULT_CORNER_RADIUS } from "@/shared/config/print";
+import { ILayout } from "@/shared/types/layouts";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div<{
-  $layout: ILayout
+	$layout: ILayout;
 }>`
   position: absolute;
   border-width: 1px;
@@ -17,4 +17,4 @@ export const Container = styled.div<{
     right: calc(${$layout.bleed.right}mm - 1px);
     bottom: calc(${$layout.bleed.bottom}mm - 1px);
   `}
-`
+`;

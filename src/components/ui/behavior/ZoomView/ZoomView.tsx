@@ -1,38 +1,28 @@
-import { PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { Area, Container } from './components';
-
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
+import { Area, Container } from "./components";
 
 export type ZoomViewProps = PropsWithChildren & {
-  zoom: number
-}
+	zoom: number;
+};
 
-export const ZoomView = ({
-  zoom,
-  children
-}: ZoomViewProps) => {
-  const areaRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number>();
+export const ZoomView = ({ zoom, children }: ZoomViewProps) => {
+	const areaRef = useRef<HTMLDivElement>(null);
+	const [height, setHeight] = useState<number>();
 
-  useEffect(() => {
-    if (!areaRef.current) {
-      return;
-    }
+	useEffect(() => {
+		if (!areaRef.current) {
+			return;
+		}
 
-    const rect = areaRef.current.getBoundingClientRect();
-    setHeight(rect.height);
+		const rect = areaRef.current.getBoundingClientRect();
+		setHeight(rect.height);
+	}, [areaRef, zoom]);
 
-  }, [areaRef, zoom]);
-
-  return (
-    <Container 
-      $height={height}
-    >
-      <Area 
-        $zoom={zoom}
-        ref={areaRef}
-      >
-        {children}
-      </Area>
-    </Container>
-  );
-}
+	return (
+		<Container $height={height}>
+			<Area $zoom={zoom} ref={areaRef}>
+				{children}
+			</Area>
+		</Container>
+	);
+};

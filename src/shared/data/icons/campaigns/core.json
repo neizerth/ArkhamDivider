@@ -1,129 +1,129 @@
 [
-  {
-    "icon": "chilling_cold",
-    "top": 6,
-    "left": 2
-  },
-  {
-    "icon": "nightgaunts",
-    "top": 2,
-    "left": 0
-  },
-  {
-    "icon": "dark_cult",
-    "top": 1,
-    "scale": 1.2
-  },
-  {
-    "icon": "locked_doors",
-    "top": 2,
-    "left": 1
-  },
-  {
-    "icon": "cult_of_umordoth",
-    "top": 2,
-    "left": -1
-  },
-  {
-    "icon": "ancient_evils",
-    "scale": 1.1,
-    "top": 3,
-    "left": 1
-  },
-  {
-    "icon": "striking_fear",
-    "scale": 1.1,
-    "top": 5,
-    "left": 3
-  },
-  {
-    "icon": "ghouls",
-    "top": 4,
-    "left": -1
-  },
-  {
-    "icon": "agents_of_yog",
-    "top": -2,
-    "left": 4
-  },
-  {
-    "icon": "agents_of_shub",
-    "top": 1,
-    "left": 1,
-    "scale": 0.87
-  },
-  {
-    "icon": "agents_of_shub",
-    "left": 1,
-    "scale": 0.8,
-    "type": "vintage"
-  },
-  {
-    "icon": "agents_of_cthulhu",
-    "top": -1,
-    "scale": 1.17
-  },
-  {
-    "icon": "agents_of_hastur",
-    "scale": 1.05,
-    "top": -2,
-    "left": 5
-  },
-  {
-    "icon": "rats",
-    "scale": 1.15,
-    "top": 2
-  },
-  {
-    "icon": "core",
-    "scale": 1.15
-  },
-  {
-    "icon": "the_gathering",
-    "top": -2,
-    "left": -4
-  },
-  {
-    "icon": "the_devourer_below",
-    "scale": 1.1,
-    "top": 1,
-    "left": 3
-  },
-  {
-    "icon": "return_to_the_devourer_below"
-  },
-  {
-    "icon": "ghouls_of_umrdhoth",
-    "scale": 1.05,
-    "top": 4,
-    "left": 1
-  },
-  {
-    "icon": "the_devourers_cult",
-    "scale": 1.2,
-    "left": 2
-  },
-  {
-    "icon": "return_to_the_gathering"
-  },
-  {
-    "icon": "rtnotz"
-  },
-  {
-    "icon": "rtnotz",
-    "type": "vintage",
-    "scale": 1.15,
-    "top": 3
-  },
-  {
-    "icon": "return_to_the_midnight_masks"
-  },
-  {
-    "icon": "midnight_masks",
-    "scale": 1.1,
-    "top": -1
-  },
-  {
-    "icon": "return_cult"
-  }
+	{
+		"icon": "chilling_cold",
+		"top": 6,
+		"left": 2
+	},
+	{
+		"icon": "nightgaunts",
+		"top": 2,
+		"left": 0
+	},
+	{
+		"icon": "dark_cult",
+		"top": 1,
+		"scale": 1.2
+	},
+	{
+		"icon": "locked_doors",
+		"top": 2,
+		"left": 1
+	},
+	{
+		"icon": "cult_of_umordoth",
+		"top": 2,
+		"left": -1
+	},
+	{
+		"icon": "ancient_evils",
+		"scale": 1.1,
+		"top": 3,
+		"left": 1
+	},
+	{
+		"icon": "striking_fear",
+		"scale": 1.1,
+		"top": 5,
+		"left": 3
+	},
+	{
+		"icon": "ghouls",
+		"top": 4,
+		"left": -1
+	},
+	{
+		"icon": "agents_of_yog",
+		"top": -2,
+		"left": 4
+	},
+	{
+		"icon": "agents_of_shub",
+		"top": 1,
+		"left": 1,
+		"scale": 0.87
+	},
+	{
+		"icon": "agents_of_shub",
+		"left": 1,
+		"scale": 0.8,
+		"type": "vintage"
+	},
+	{
+		"icon": "agents_of_cthulhu",
+		"top": -1,
+		"scale": 1.17
+	},
+	{
+		"icon": "agents_of_hastur",
+		"scale": 1.05,
+		"top": -2,
+		"left": 5
+	},
+	{
+		"icon": "rats",
+		"scale": 1.15,
+		"top": 2
+	},
+	{
+		"icon": "core",
+		"scale": 1.15
+	},
+	{
+		"icon": "the_gathering",
+		"top": -2,
+		"left": -4
+	},
+	{
+		"icon": "the_devourer_below",
+		"scale": 1.1,
+		"top": 1,
+		"left": 3
+	},
+	{
+		"icon": "return_to_the_devourer_below"
+	},
+	{
+		"icon": "ghouls_of_umrdhoth",
+		"scale": 1.05,
+		"top": 4,
+		"left": 1
+	},
+	{
+		"icon": "the_devourers_cult",
+		"scale": 1.2,
+		"left": 2
+	},
+	{
+		"icon": "return_to_the_gathering"
+	},
+	{
+		"icon": "rtnotz"
+	},
+	{
+		"icon": "rtnotz",
+		"type": "vintage",
+		"scale": 1.15,
+		"top": 3
+	},
+	{
+		"icon": "return_to_the_midnight_masks"
+	},
+	{
+		"icon": "midnight_masks",
+		"scale": 1.1,
+		"top": -1
+	},
+	{
+		"icon": "return_cult"
+	}
 ]

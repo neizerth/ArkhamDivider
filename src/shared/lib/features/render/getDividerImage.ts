@@ -1,70 +1,69 @@
-import { ColorScheme, ImageFormat } from '@/shared/types/image';
-import { ILayoutBleed } from '@/shared/types/layouts';
-import { RenderResponse } from '@/shared/types/render';
-import { toPrintSize } from '@/shared/lib/features/util/units';
-import domToImage from 'dom-to-image';
-import { getVips } from '../image/vips';
+import { ColorScheme, ImageFormat } from "@/shared/types/image";
+import { ILayoutBleed } from "@/shared/types/layouts";
+import { RenderResponse } from "@/shared/types/render";
+import { toPrintSize } from "@/shared/lib/features/util/units";
+import domToImage from "dom-to-image";
+import { getVips } from "../image/vips";
 
 export type GetDividerImageOptions = {
-  node: Element
-  scale: number
-  name: string
-  bleed: ILayoutBleed
-  imageFormat: ImageFormat
-  colorScheme?: ColorScheme
-}
+	node: Element;
+	scale: number;
+	name: string;
+	bleed: ILayoutBleed;
+	imageFormat: ImageFormat;
+	colorScheme?: ColorScheme;
+};
 
 export const getDividerImage = async ({
-  node,
-  scale,
-  name,
-  bleed,
-  imageFormat,
-  colorScheme
+	node,
+	scale,
+	name,
+	bleed,
+	imageFormat,
+	colorScheme,
 }: GetDividerImageOptions): Promise<RenderResponse> => {
-  const rect = node.getBoundingClientRect();
-  
-  const width = rect.width * scale;
-  const height = rect.height * scale;
+	const rect = node.getBoundingClientRect();
 
-  const blob = await domToImage.toBlob(node, {
-    width,
-    height,
-    style: {
-      transform: `scale(${scale})`,
-      transformOrigin: 'top left'
-    }
-  });
+	const width = rect.width * scale;
+	const height = rect.height * scale;
 
-  const cropLeft = toPrintSize(bleed.left);
-  const cropTop = toPrintSize(bleed.top);
-  const cropWidth = toPrintSize(bleed.width);
-  const cropHeight = toPrintSize(bleed.height);
+	const blob = await domToImage.toBlob(node, {
+		width,
+		height,
+		style: {
+			transform: `scale(${scale})`,
+			transformOrigin: "top left",
+		},
+	});
 
-  const source = await blob.arrayBuffer();
-  const vips = await getVips();
-  let image = vips.Image.newFromBuffer(source)
-    .crop(
-      cropLeft,
-      cropTop,
-      cropWidth,
-      cropHeight
-    );
-  
-  if (colorScheme) {
-    image = image.iccTransform(colorScheme);
-  }
+	const cropLeft = toPrintSize(bleed.left);
+	const cropTop = toPrintSize(bleed.top);
+	const cropWidth = toPrintSize(bleed.width);
+	const cropHeight = toPrintSize(bleed.height);
 
-  const ext = '.' + imageFormat;
+	const source = await blob.arrayBuffer();
+	const vips = await getVips();
+	let image = vips.Image.newFromBuffer(source).crop(
+		cropLeft,
+		cropTop,
+		cropWidth,
+		cropHeight,
+	);
 
-  const contents = image.writeToBuffer(ext);
+	if (colorScheme) {
+		image = image.iccTransform(colorScheme);
+	}
 
-  const filename = name + ext;
+	const ext = "." + imageFormat;
 
-  image.delete();
+	const contents = image.writeToBuffer(ext);
 
-  return {
-    filename,
-    contents
-  }
-}
+	const filename = name + ext;
+
+	image.delete();
+
+	return {
+		filename,
+		contents,
+	};
+};

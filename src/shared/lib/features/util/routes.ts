@@ -1,54 +1,46 @@
-import { DEFAULT_LANGUAGE } from "@/shared/config/i18n"
+import { DEFAULT_LANGUAGE } from "@/shared/config/i18n";
 
 export type RouteOptions = {
-  layoutId?: string
-  storyId?: string
-  type?: string
-  language?: string
-  categoryId?: string
-}
+	layoutId?: string;
+	storyId?: string;
+	type?: string;
+	language?: string;
+	categoryId?: string;
+};
 
 export const createRoute = (options: RouteOptions) => {
-  const { 
-    layoutId, 
-    categoryId,
-    language = DEFAULT_LANGUAGE
-  } = options;
+	const { layoutId, categoryId, language = DEFAULT_LANGUAGE } = options;
 
-  if (layoutId) {
-    return createLayoutRoute(options);
-  }
+	if (layoutId) {
+		return createLayoutRoute(options);
+	}
 
-  if (categoryId) {
-    return createCategoryRoute(options);
-  }
+	if (categoryId) {
+		return createCategoryRoute(options);
+	}
 
-  return '/' + language;
-}
+	return "/" + language;
+};
 
 export const createLayoutRoute = (options: RouteOptions) => {
-  const {
-    language = DEFAULT_LANGUAGE,
-    storyId,
-    type = 'scenario',
-    layoutId
-  } = options;
+	const {
+		language = DEFAULT_LANGUAGE,
+		storyId,
+		type = "scenario",
+		layoutId,
+	} = options;
 
-  const path = '/' + language + '/layout/' + layoutId + '/' + type;
-  
-  if (!storyId) {
-    return path;
-  }
+	const path = "/" + language + "/layout/" + layoutId + "/" + type;
 
-  return path + '/' + storyId;
-}
+	if (!storyId) {
+		return path;
+	}
+
+	return path + "/" + storyId;
+};
 
 export const createCategoryRoute = (options: RouteOptions) => {
-  const {
-    language = DEFAULT_LANGUAGE,
-    categoryId,
-  } = options;
-  
-  return '/' + language + '/category/' + categoryId;
-}
+	const { language = DEFAULT_LANGUAGE, categoryId } = options;
 
+	return "/" + language + "/category/" + categoryId;
+};

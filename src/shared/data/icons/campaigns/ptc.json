@@ -1,152 +1,152 @@
 [
-  {
-    "icon": "carcosa"
-  },
-  {
-    "icon": "evil_portents",
-    "left": -1,
-    "scale": 0.9
-  },
-  {
-    "icon": "byakhee",
-    "top": 1,
-    "left": 2
-  },
-  {
-    "icon": "the_stranger",
-    "scale": 0.87,
-    "top": -1,
-    "left": 1
-  },
-  {
-    "icon": "cult_of_the_yellow_sign",
-    "top": -2,
-    "left": 0
-  },
-  {
-    "icon": "hasturs_gift",
-    "top": 2,
-    "left": 2
-  },
-  {
-    "icon": "decay_and_filth",
-    "top": -3
-  },
-  {
-    "icon": "hasturs_envoys",
-    "top": -4,
-    "left": 0
-  },
-  {
-    "icon": "hauntings",
-    "top": 1,
-    "left": 1
-  },
-  {
-    "icon": "the_vortex_above",
-    "top": -1,
-    "left": 0
-  },
-  {
-    "icon": "the_flood_below",
-    "scale": 1.1,
-    "top": 1,
-    "left": 1
-  },
-  {
-    "icon": "inhabitants_of_carcosa",
-    "scale": 1.2,
-    "top": -1
-  },
-  {
-    "icon": "delusions",
-    "scale": 1.15,
-    "top": 2
-  },
-  {
-    "icon": "maddening_delusions",
-    "top": 3,
-    "left": 1
-  },
-  {
-    "icon": "neurotic_fear",
-    "top": 1,
-    "left": 0
-  },
-  {
-    "icon": "delusory_evils",
-    "top": -1,
-    "left": 1
-  },
-  {
-    "icon": "decaying_reality",
-    "top": 2,
-    "left": -2
-  },
-  {
-    "icon": "curtain_call",
-    "top": 2
-  },
-  {
-    "icon": "the_last_king",
-    "top": 2,
-    "left": 4
-  },
-  {
-    "icon": "echoes_of_the_past",
-    "top": 1,
-    "left": -1,
-    "scale": 0.87
-  },
-  {
-    "icon": "the_unspeakable_oath",
-    "top": -3,
-    "left": -3
-  },
-  {
-    "icon": "a_phantom_of_truth",
-    "left": 1,
-    "scale": 1.2
-  },
-  {
-    "icon": "the_pallid_mask",
-    "left": 1
-  },
-  {
-    "icon": "black_stars_rise",
-    "top": -4
-  },
-  {
-    "icon": "dim_carcosa",
-    "top": 7,
-    "left": 2
-  },
-  {
-    "icon": "return_to_the_unspeakable_oath"
-  },
-  {
-    "icon": "return_to_curtain_call"
-  },
-  {
-    "icon": "return_to_the_last_king",
-    "scale": 1.02
-  },
-  {
-    "icon": "return_to_echoes_of_the_past"
-  },
-  {
-    "icon": "return_to_the_phantom_of_truth"
-  },
-  {
-    "icon": "return_to_the_pallid_mask"
-  },
-  {
-    "icon": "return_to_black_stars_rise"
-  },
-  {
-    "icon": "return_to_dim_carcosa"
-  },
-  {
-    "icon": "return_to_the_path_to_carcosa"
-  }
+	{
+		"icon": "carcosa"
+	},
+	{
+		"icon": "evil_portents",
+		"left": -1,
+		"scale": 0.9
+	},
+	{
+		"icon": "byakhee",
+		"top": 1,
+		"left": 2
+	},
+	{
+		"icon": "the_stranger",
+		"scale": 0.87,
+		"top": -1,
+		"left": 1
+	},
+	{
+		"icon": "cult_of_the_yellow_sign",
+		"top": -2,
+		"left": 0
+	},
+	{
+		"icon": "hasturs_gift",
+		"top": 2,
+		"left": 2
+	},
+	{
+		"icon": "decay_and_filth",
+		"top": -3
+	},
+	{
+		"icon": "hasturs_envoys",
+		"top": -4,
+		"left": 0
+	},
+	{
+		"icon": "hauntings",
+		"top": 1,
+		"left": 1
+	},
+	{
+		"icon": "the_vortex_above",
+		"top": -1,
+		"left": 0
+	},
+	{
+		"icon": "the_flood_below",
+		"scale": 1.1,
+		"top": 1,
+		"left": 1
+	},
+	{
+		"icon": "inhabitants_of_carcosa",
+		"scale": 1.2,
+		"top": -1
+	},
+	{
+		"icon": "delusions",
+		"scale": 1.15,
+		"top": 2
+	},
+	{
+		"icon": "maddening_delusions",
+		"top": 3,
+		"left": 1
+	},
+	{
+		"icon": "neurotic_fear",
+		"top": 1,
+		"left": 0
+	},
+	{
+		"icon": "delusory_evils",
+		"top": -1,
+		"left": 1
+	},
+	{
+		"icon": "decaying_reality",
+		"top": 2,
+		"left": -2
+	},
+	{
+		"icon": "curtain_call",
+		"top": 2
+	},
+	{
+		"icon": "the_last_king",
+		"top": 2,
+		"left": 4
+	},
+	{
+		"icon": "echoes_of_the_past",
+		"top": 1,
+		"left": -1,
+		"scale": 0.87
+	},
+	{
+		"icon": "the_unspeakable_oath",
+		"top": -3,
+		"left": -3
+	},
+	{
+		"icon": "a_phantom_of_truth",
+		"left": 1,
+		"scale": 1.2
+	},
+	{
+		"icon": "the_pallid_mask",
+		"left": 1
+	},
+	{
+		"icon": "black_stars_rise",
+		"top": -4
+	},
+	{
+		"icon": "dim_carcosa",
+		"top": 7,
+		"left": 2
+	},
+	{
+		"icon": "return_to_the_unspeakable_oath"
+	},
+	{
+		"icon": "return_to_curtain_call"
+	},
+	{
+		"icon": "return_to_the_last_king",
+		"scale": 1.02
+	},
+	{
+		"icon": "return_to_echoes_of_the_past"
+	},
+	{
+		"icon": "return_to_the_phantom_of_truth"
+	},
+	{
+		"icon": "return_to_the_pallid_mask"
+	},
+	{
+		"icon": "return_to_black_stars_rise"
+	},
+	{
+		"icon": "return_to_dim_carcosa"
+	},
+	{
+		"icon": "return_to_the_path_to_carcosa"
+	}
 ]

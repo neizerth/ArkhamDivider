@@ -1,7 +1,4 @@
-import campaigns from './campaigns';
-import side from './side.json';
+import campaigns from "./campaigns";
+import side from "./side.json";
 
-export default [
-  ...campaigns,
-  ...side
-]
+export default [...campaigns, ...side];

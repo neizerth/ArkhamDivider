@@ -1,71 +1,86 @@
-import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
-import S from './LanguageSelect.module.scss';
-import { selectAvailableLanguages, selectLanguage } from '@/app/store/features/language/language';
-import Select, { OptionProps, SingleValueProps, components } from 'react-select';
-import { LanguageFlag } from '@/components/ui/LanguageFlag/LanguageFlag';
-import { useAppNavigate } from '@/shared/lib/hooks/useAppNavigate';
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import S from "./LanguageSelect.module.scss";
+import {
+	selectAvailableLanguages,
+	selectLanguage,
+} from "@/app/store/features/language/language";
+import Select, {
+	OptionProps,
+	SingleValueProps,
+	components,
+} from "react-select";
+import { LanguageFlag } from "@/components/ui/LanguageFlag/LanguageFlag";
+import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 
-export const LanguageSelectSingleValue = (props: SingleValueProps<{
-  label: string,
-  value: string
-}>) => {
-  const { value } = props.data;
-  return (
-    <components.SingleValue {...props}>
-      <div className={S.value}>
-        <LanguageFlag displayTitle={false} language={value} imageClassName={S.flag}/>
-      </div>
-    </components.SingleValue>
-  )
-}
+export const LanguageSelectSingleValue = (
+	props: SingleValueProps<{
+		label: string;
+		value: string;
+	}>,
+) => {
+	const { value } = props.data;
+	return (
+		<components.SingleValue {...props}>
+			<div className={S.value}>
+				<LanguageFlag
+					displayTitle={false}
+					language={value}
+					imageClassName={S.flag}
+				/>
+			</div>
+		</components.SingleValue>
+	);
+};
 
-export const LanguageSelectOption = (props: OptionProps<{
-  label: string,
-  value: string
-}>) => {
-  const { value } = props.data;
-  return (
-    <components.Option {...props}>
-      <div className={S.value}>
-        <LanguageFlag language={value} imageClassName={S.flag}/>
-      </div>
-    </components.Option>
-  )
-}
+export const LanguageSelectOption = (
+	props: OptionProps<{
+		label: string;
+		value: string;
+	}>,
+) => {
+	const { value } = props.data;
+	return (
+		<components.Option {...props}>
+			<div className={S.value}>
+				<LanguageFlag language={value} imageClassName={S.flag} />
+			</div>
+		</components.Option>
+	);
+};
 
 export const LanguageSelect = () => {
-  const availableLanguages = useAppSelector(selectAvailableLanguages);
-  const language = useAppSelector(selectLanguage);
-  
-  const navigate = useAppNavigate()
+	const availableLanguages = useAppSelector(selectAvailableLanguages);
+	const language = useAppSelector(selectLanguage);
 
-  const changeCurrentLanguage = (language: string) => {
-    navigate({ language })
-  }
+	const navigate = useAppNavigate();
 
-  const options = availableLanguages.map(value => ({
-    value,
-    label: value
-  }));
+	const changeCurrentLanguage = (language: string) => {
+		navigate({ language });
+	};
 
-  const languageValue = {
-    value: language,
-    label: language
-  }
+	const options = availableLanguages.map((value) => ({
+		value,
+		label: value,
+	}));
 
-  const components = {
-    Option: LanguageSelectOption,
-    SingleValue: LanguageSelectSingleValue
-  }
+	const languageValue = {
+		value: language,
+		label: language,
+	};
 
-  return (
-    <Select 
-      className={S.container} 
-      options={options} 
-      value={languageValue} 
-      components={components}
-      isMulti={false}
-      onChange={item => item && changeCurrentLanguage(item.value)}
-    />
-  );
-}
+	const components = {
+		Option: LanguageSelectOption,
+		SingleValue: LanguageSelectSingleValue,
+	};
+
+	return (
+		<Select
+			className={S.container}
+			options={options}
+			value={languageValue}
+			components={components}
+			isMulti={false}
+			onChange={(item) => item && changeCurrentLanguage(item.value)}
+		/>
+	);
+};

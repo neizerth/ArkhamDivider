@@ -1,46 +1,42 @@
-import { Page, Row, ZoomView, DividerMemo } from '@/components';
+import { Page, Row, ZoomView, DividerMemo } from "@/components";
 
-import S from './Layout.module.scss';
-import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
-import { selectDividers } from '@/app/store/features/dividers/dividers';
+import S from "./Layout.module.scss";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectDividers } from "@/app/store/features/dividers/dividers";
 
-import classNames from 'classnames';
-import { selectDoubleSided, selectItemsPerPage, selectRowsPerPage } from '@/app/store/features/print/print';
-import { splitIntoPages } from '@/shared/lib/features/print';
-import { selectZoom } from '@/app/store/features/layout/layout';
-import { prop } from 'ramda';
+import classNames from "classnames";
+import {
+	selectDoubleSided,
+	selectItemsPerPage,
+	selectRowsPerPage,
+} from "@/app/store/features/print/print";
+import { splitIntoPages } from "@/shared/lib/features/print";
+import { selectZoom } from "@/app/store/features/layout/layout";
+import { prop } from "ramda";
 
-export type LayoutProps = {
-}
-
-export const Layout = ({ }: LayoutProps) => {
-
+export const Layout = () => {
 	const dividers = useAppSelector(selectDividers);
 	const doubleSidedPrint = useAppSelector(selectDoubleSided);
 	const zoom = useAppSelector(selectZoom);
 	const groupSize = useAppSelector(selectItemsPerPage);
 	const rowSize = useAppSelector(selectRowsPerPage);
-
+	
 	const pages = splitIntoPages(dividers, {
 		doubleSidedPrint,
-		groupSize, 
-		rowSize
+		groupSize,
+		rowSize,
 	});
 
 	const pagesTotal = pages[pages.length - 1]?.pageNumber || 0;
-	
-	const ids = dividers
-		.filter(({ backId }) => !backId)
-		.map(prop('id'));
-		
+
+	const ids = dividers.filter(({ backId }) => !backId).map(prop("id"));
+
 	return (
 		<div className={S.container}>
-			<ZoomView
-				zoom={zoom}
-			>
+			<ZoomView zoom={zoom}>
 				<div className={S.groups}>
 					{pages.map(({ side, rows, pageNumber }, pageIndex) => (
-						<Page 
+						<Page
 							className={S.page}
 							side={side}
 							showPageSide={doubleSidedPrint}
@@ -52,9 +48,9 @@ export const Layout = ({ }: LayoutProps) => {
 						>
 							<div className={S.group}>
 								{rows.map((row, rowIndex) => (
-									<Row 
+									<Row
 										gap={false}
-										className={classNames(S.row, S[`row_side_${side}`])} 
+										className={classNames(S.row, S[`row_side_${side}`])}
 										key={rowIndex}
 									>
 										{row.map((divider) => (
@@ -74,4 +70,4 @@ export const Layout = ({ }: LayoutProps) => {
 			</ZoomView>
 		</div>
 	);
-}
+};

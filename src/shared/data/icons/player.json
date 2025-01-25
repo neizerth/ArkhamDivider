@@ -1,23 +1,23 @@
 [
-  {
-    "icon": "rogue",
-    "scale": 0.9
-  },
-  {
-    "icon": "ally_inverted",
-    "top": -4
-  },
-  {
-    "icon": "skill_wild",
-    "scale": 0.7
-  },
-  {
-    "icon": "clue",
-    "left": -8
-  },
-  {
-    "icon": "stopwatch",
-    "scale": 0.9,
-    "left": -1
-  }
+	{
+		"icon": "rogue",
+		"scale": 0.9
+	},
+	{
+		"icon": "ally_inverted",
+		"top": -4
+	},
+	{
+		"icon": "skill_wild",
+		"scale": 0.7
+	},
+	{
+		"icon": "clue",
+		"left": -8
+	},
+	{
+		"icon": "stopwatch",
+		"scale": 0.9,
+		"left": -1
+	}
 ]

@@ -1,42 +1,42 @@
 [
-  {
-    "icon": "grand_compass",
-    "top": -5
-  },
-  {
-    "icon": "deep_dreams",
-    "scale": 0.85,
-    "top": 2
-  },
-  {
-    "icon": "private_lives",
-    "top": -3,
-    "left": 2
-  },
-  {
-    "icon": "across_dreadful_waters",
-    "left": 1,
-    "top": 1
-  },
-  {
-    "icon": "crumbling_masonry",
-    "top": 3
-  },
-  {
-    "icon": "architects_of_chaos",
-    "left": 2
-  },
-  {
-    "icon": "shadowy_agents",
-    "top": -3
-  },
-  {
-    "icon": "archaic_evils",
-    "top": 2,
-    "left": 1
-  },
-  {
-    "icon": "zcf",
-    "top": -3
-  }
+	{
+		"icon": "grand_compass",
+		"top": -5
+	},
+	{
+		"icon": "deep_dreams",
+		"scale": 0.85,
+		"top": 2
+	},
+	{
+		"icon": "private_lives",
+		"top": -3,
+		"left": 2
+	},
+	{
+		"icon": "across_dreadful_waters",
+		"left": 1,
+		"top": 1
+	},
+	{
+		"icon": "crumbling_masonry",
+		"top": 3
+	},
+	{
+		"icon": "architects_of_chaos",
+		"left": 2
+	},
+	{
+		"icon": "shadowy_agents",
+		"top": -3
+	},
+	{
+		"icon": "archaic_evils",
+		"top": 2,
+		"left": 1
+	},
+	{
+		"icon": "zcf",
+		"top": -3
+	}
 ]

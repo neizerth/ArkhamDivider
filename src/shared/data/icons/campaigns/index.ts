@@ -10,14 +10,14 @@ import tsk from "./tsk.json";
 import fhv from "./fhv.json";
 
 export default [
-  ...core,
-  ...dwl,
-  ...ptc,
-  ...tfa,
-  ...tcu,
-  ...tde,
-  ...tic,
-  ...eoe,
-  ...tsk,
-  ...fhv
-]
+	...core,
+	...dwl,
+	...ptc,
+	...tfa,
+	...tcu,
+	...tde,
+	...tic,
+	...eoe,
+	...tsk,
+	...fhv,
+];

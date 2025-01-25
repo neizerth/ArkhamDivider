@@ -1,32 +1,31 @@
-import { IEncounterSet } from '@/shared/types/api';
-import { createSliceSelector, createSliceSetter } from '@/shared/lib/features/util/slice';
-import { createSlice } from '@reduxjs/toolkit';
+import { IEncounterSet } from "@/shared/types/api";
+import {
+	createSliceSelector,
+	createSliceSetter,
+} from "@/shared/lib/features/util/slice";
+import { createSlice } from "@reduxjs/toolkit";
 
 export type IEncounterSetsState = {
-  list: IEncounterSet[]
-}
+	list: IEncounterSet[];
+};
 
 const initialState: IEncounterSetsState = {
-  list: []
+	list: [],
 };
 
 export const encounterSets = createSlice({
-  name: 'encounterSets',
-  initialState,
-  reducers: {
-    setEncounterSets: createSliceSetter('list')
-  },
-  selectors: {
-    selectEncounterSets: createSliceSelector('list')
-  }
+	name: "encounterSets",
+	initialState,
+	reducers: {
+		setEncounterSets: createSliceSetter("list"),
+	},
+	selectors: {
+		selectEncounterSets: createSliceSelector("list"),
+	},
 });
 
-export const {
-  setEncounterSets
-} = encounterSets.actions;
+export const { setEncounterSets } = encounterSets.actions;
 
-export const {
-  selectEncounterSets
-} = encounterSets.selectors;
+export const { selectEncounterSets } = encounterSets.selectors;
 
 export default encounterSets.reducer;

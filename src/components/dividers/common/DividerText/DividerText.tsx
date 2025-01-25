@@ -1,161 +1,149 @@
-import { Icon } from '@/components';
-import S from './DividerText.module.scss';
-import { ReactEventHandler, useEffect, useState } from 'react';
-import { PropsWithClassName } from '@/shared/types/util';
-import classNames from 'classnames';
+import { Icon } from "@/components";
+import S from "./DividerText.module.scss";
+import { ReactEventHandler, useEffect, useState } from "react";
+import { PropsWithClassName } from "@/shared/types/util";
+import classNames from "classnames";
 import useFitText from "use-fit-text";
 
 export type DividerTextProps = PropsWithClassName & {
-  inputClassName?: string
-  iconClassName?: string
-  strokeClassName?: string
-  wrapperClassName?: string
-  lineClassName?: (count: number) => string
+	inputClassName?: string;
+	iconClassName?: string;
+	strokeClassName?: string;
+	wrapperClassName?: string;
+	lineClassName?: (count: number) => string;
 
-  fixedFontSize?: boolean
-  minFontSize?: number
-  maxFontSize?: number
+	fixedFontSize?: boolean;
+	minFontSize?: number;
+	maxFontSize?: number;
 
-  onClear?: CallableFunction
-  onChange?: (value: string) => void
-  defaultValue: string
-  fullHeight?: boolean
+	onClear?: CallableFunction;
+	onChange?: (value: string) => void;
+	defaultValue: string;
+	fullHeight?: boolean;
 
-  stroke?: boolean
+	stroke?: boolean;
 
-  clearPosition?: 'inside' | 'outside'
-}
+	clearPosition?: "inside" | "outside";
+};
 
 const toText = (html: string): string => {
-  const container = document.createElement('div');
-  container.innerHTML = html.replace(/<br\/?>/, '\n');
-  return container.textContent || '';
-}
-
+	const container = document.createElement("div");
+	container.innerHTML = html.replace(/<br\/?>/, "\n");
+	return container.textContent || "";
+};
 
 export const DividerText = ({
-  stroke = false,
-  strokeClassName,
-  fixedFontSize = true,
-  fullHeight = true,
-  onClear,
-  defaultValue,
-  className,
-  wrapperClassName,
-  inputClassName,
-  minFontSize,
-  maxFontSize,
-  clearPosition = 'inside',
-  onChange
+	stroke = false,
+	strokeClassName,
+	fixedFontSize = true,
+	fullHeight = true,
+	onClear,
+	defaultValue,
+	className,
+	wrapperClassName,
+	inputClassName,
+	minFontSize,
+	maxFontSize,
+	clearPosition = "inside",
+	onChange,
 }: DividerTextProps) => {
+	const [_, setInitialValue] = useState(defaultValue);
+	const [text, setText] = useState(defaultValue);
+	// const ref = useRef<HTMLDivElement>(null)
 
-  const [_, setInitialValue] = useState(defaultValue);
-  const [text, setText] = useState(defaultValue); 
-  // const ref = useRef<HTMLDivElement>(null)
+	const { fontSize, ref } = useFitText({
+		minFontSize,
+		maxFontSize,
+	});
+	// console.log({ linesValue });
 
-  const { fontSize, ref } = useFitText({
-    minFontSize,
-    maxFontSize
-  });
-  // console.log({ linesValue });
+	const onValueChange = (value: string) => {
+		setText(value);
 
-  const onValueChange = (value: string) => {
-    setText(value);
+		if (!onChange) {
+			return;
+		}
 
-    if (!onChange) {
-      return;
-    }
+		onChange(value);
+	};
 
-    onChange(value);
-  }
+	const setDefaultValue = (value: string) => {
+		if (!ref.current) {
+			return;
+		}
+		if (ref.current.textContent === value) {
+			return;
+		}
+		ref.current.textContent = value;
 
-  const setDefaultValue = (value: string) => {
-    if (!ref.current) {
-      return;
-    }
-    if (ref.current.textContent === value) {
-      return;
-    }
-    ref.current.textContent = value;
+		onValueChange(value);
+		setInitialValue(value);
+	};
 
-    onValueChange(value);
-    setInitialValue(value);
-  }
-
-  const onTitleChange: ReactEventHandler = e => {
+	const onTitleChange: ReactEventHandler = (e) => {
 		const target = e.target as HTMLDivElement;
-    const contents = target.textContent || '';
-    const nextValue = toText(contents);
+		const contents = target.textContent || "";
+		const nextValue = toText(contents);
 
-    if (!nextValue.trim()) {
-      return clear();
-    }
+		if (!nextValue.trim()) {
+			return clear();
+		}
 
-    onValueChange(nextValue);
-	}
+		onValueChange(nextValue);
+	};
 
-  const clear = () => {
+	const clear = () => {
+		setDefaultValue(defaultValue);
 
-    setDefaultValue(defaultValue);
+		if (!onClear) {
+			return;
+		}
+		onClear();
+	};
 
-    if (!onClear) {
-      return;
-    }
-    onClear();
-  }
-    
-  useEffect(() => {
-    setDefaultValue(defaultValue);
-  }, [defaultValue]);
+	useEffect(() => {
+		setDefaultValue(defaultValue);
+	}, [defaultValue]);
 
-  const style = fixedFontSize ? {} : {
-    fontSize,
-    // lineHeight 
-  }
+	const style = fixedFontSize
+		? {}
+		: {
+				fontSize,
+				// lineHeight
+			};
 
-  return (
-    <div className={classNames(
-      S.container,
-      fullHeight && S.fullHeight,
-      className
-    )}>
-      <div 
-        className={classNames(
-          S.wrapper, 
-          !fixedFontSize && S.wrapper_dynamic,
-          wrapperClassName
-        )}
-      >
-        <div
-          contentEditable 
-          spellCheck={false}
-          suppressContentEditableWarning
-          className={classNames(S.input, inputClassName)}
-          onInput={onTitleChange}
-          style={style}
-          ref={ref}
-        />
-        {stroke && (
-          <div 
-            className={classNames(
-              S.stroke,
-              strokeClassName
-            )}
-            style={style}
-          >
-            {text}
-          </div>
-        )}
-      </div>
-      <div 
-        className={classNames(
-          S.clear,
-          S[`clear_${clearPosition}`]
-        )} 
-        onClick={clear}
-      >
-        <Icon className={S.icon} icon="dismiss"/>
-      </div>
-    </div>
-  );
-}
+	return (
+		<div
+			className={classNames(S.container, fullHeight && S.fullHeight, className)}
+		>
+			<div
+				className={classNames(
+					S.wrapper,
+					!fixedFontSize && S.wrapper_dynamic,
+					wrapperClassName,
+				)}
+			>
+				<div
+					contentEditable
+					spellCheck={false}
+					suppressContentEditableWarning
+					className={classNames(S.input, inputClassName)}
+					onInput={onTitleChange}
+					style={style}
+					ref={ref}
+				/>
+				{stroke && (
+					<div className={classNames(S.stroke, strokeClassName)} style={style}>
+						{text}
+					</div>
+				)}
+			</div>
+			<div
+				className={classNames(S.clear, S[`clear_${clearPosition}`])}
+				onClick={clear}
+			>
+				<Icon className={S.icon} icon="dismiss" />
+			</div>
+		</div>
+	);
+};

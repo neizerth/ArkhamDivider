@@ -5,66 +5,50 @@ import { FirstParam } from "@/shared/types/util";
 import { toArrayIfExists, uniqId } from "@/shared/lib/features/util/common";
 import { DividerType } from "@/shared/types/dividers";
 
-type IGetSizeOptions = FirstParam<typeof getScenarioSize>
-type IGetScenarioDividersOptions = Omit<IGetSizeOptions, 'scenario'> & {
-  includeCampaignIcon: boolean
-  story: IStory
-  includeScenarios: boolean
-}
+type IGetSizeOptions = FirstParam<typeof getScenarioSize>;
+type IGetScenarioDividersOptions = Omit<IGetSizeOptions, "scenario"> & {
+	includeCampaignIcon: boolean;
+	story: IStory;
+	includeScenarios: boolean;
+};
 
-export const getStoryScenarios = ({
-  scenario,
-  scenarios = []
-}: IStory) => [
-  ...toArrayIfExists(scenario),
-  ...scenarios
-]
+export const getStoryScenarios = ({ scenario, scenarios = [] }: IStory) => [
+	...toArrayIfExists(scenario),
+	...scenarios,
+];
 
 export const getScenarioDividers = (options: IGetScenarioDividersOptions) => {
-  const { 
-    story, 
-    includeScenarios,
-    includeCampaignIcon
-  } = options;
+	const { story, includeScenarios, includeCampaignIcon } = options;
 
-  if (!includeScenarios) {
-    return [];
-  }
+	if (!includeScenarios) {
+		return [];
+	}
 
-  const { icon } = story;
-  const scenarios = getStoryScenarios(story);
+	const { icon } = story;
+	const scenarios = getStoryScenarios(story);
 
-  const campaignIcon = icon;
+	const campaignIcon = icon;
 
-  return sortWith(
-    [
-      ascend(({ number = Infinity }) => number)
-    ],
-    scenarios
-  )
-  .map((scenario: IScenario) => {
-    const {
-      id,
-      scenario_name,
-      icon
-    } = scenario;
-  
-    const sizeData = getScenarioSize({
-      scenario,
-      ...options
-    });
+	return sortWith([ascend(({ number = Infinity }) => number)], scenarios).map(
+		(scenario: IScenario) => {
+			const { id, scenario_name, icon } = scenario;
 
-    return {
-      ...sizeData,
-      id: uniqId() + id,
-      story,
-      scenario,
-      name: scenario_name,
-      icon,
-      campaignIcon,
-      type: DividerType.SCENARIO,
-      displayCampaignIcon: includeCampaignIcon
-    }
-  })
+			const sizeData = getScenarioSize({
+				scenario,
+				...options,
+			});
 
-}
+			return {
+				...sizeData,
+				id: uniqId() + id,
+				story,
+				scenario,
+				name: scenario_name,
+				icon,
+				campaignIcon,
+				type: DividerType.SCENARIO,
+				displayCampaignIcon: includeCampaignIcon,
+			};
+		},
+	);
+};

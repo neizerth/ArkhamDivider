@@ -8,32 +8,30 @@ import { selectStories } from "@/app/store/features/stories/stories";
 import { propEq } from "ramda";
 
 export const useStoryNavigation = () => {
-  const { storyId } = useParams();
-  const dispatch = useAppDispatch();
-  const currentStory = useAppSelector(selectStory);
-  const loading = useAppSelector(selectLoading);
-  const stories = useAppSelector(selectStories);
+	const { storyId } = useParams();
+	const dispatch = useAppDispatch();
+	const currentStory = useAppSelector(selectStory);
+	const loading = useAppSelector(selectLoading);
+	const stories = useAppSelector(selectStories);
 
+	useEffect(() => {
+		if (loading) {
+			return;
+		}
+		if (storyId === currentStory?.code) {
+			return;
+		}
+		if (!storyId) {
+			dispatch(setStory());
+			return;
+		}
 
-  useEffect(() => {
-    if (loading) {
-      return;
-    }
-    if (storyId === currentStory?.code) {
-      return;
-    }
-    if (!storyId) {
-      dispatch(setStory());
-      return;
-    }
+		const story = stories.find(propEq(storyId, "code"));
 
-    const story = stories.find(propEq(storyId, 'code'));
-    
-    if (!story) {
-      return;
-    }
-    
-    dispatch(setStory(story));
+		if (!story) {
+			return;
+		}
 
-  }, [storyId, loading]);
-}
+		dispatch(setStory(story));
+	}, [storyId, loading]);
+};

@@ -7,4 +7,4 @@ export const VintageDividerTabCornerRadius = styled(DividerCornerRadius)`
   z-index: 2;
   clip-path: inset(0 0 2px 0);
   border-color: rgba(255, 255, 255, 0.5);
-`
+`;

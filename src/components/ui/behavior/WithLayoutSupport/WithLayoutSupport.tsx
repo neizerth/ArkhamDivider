@@ -1,27 +1,25 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren } from "react";
 // import S from './WithLayoutSupport.module.scss';
-import { useLayoutSupport } from '@/shared/lib/hooks/stories/useLayoutSupport';
-import { useTranslation } from 'react-i18next';
-import { Container } from '@/components';
+import { useLayoutSupport } from "@/shared/lib/hooks/stories/useLayoutSupport";
+import { useTranslation } from "react-i18next";
+import { Container } from "@/components";
 
 export type WithLayoutSupportProps = PropsWithChildren & {
-  fallback?: boolean
-}
+	fallback?: boolean;
+};
 
 export const WithLayoutSupport = ({
-  children,
-  fallback
+	children,
+	fallback,
 }: WithLayoutSupportProps) => {
-  const { t } = useTranslation();
-  const supported = useLayoutSupport();
-  return (
-    <>
-      {supported && children}
-      {!supported && fallback && (
-        <Container>
-          {t('Campaign is not supported')}
-        </Container>
-      )}
-    </>
-  );
-}
+	const { t } = useTranslation();
+	const supported = useLayoutSupport();
+	return (
+		<>
+			{supported && children}
+			{!supported && fallback && (
+				<Container>{t("Campaign is not supported")}</Container>
+			)}
+		</>
+	);
+};

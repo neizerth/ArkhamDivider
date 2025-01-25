@@ -1,62 +1,62 @@
 [
-  {
-    "icon": "bloodborne-agents_of_oedon",
-    "top": 3,
-    "left": -1
-  },
-  {
-    "icon": "bloodborne-agents_of_ebrietas",
-    "top": 1,
-    "left": -1
-  },
-  {
-    "icon": "bloodborne-agents_of_paleblood",
-    "scale": 1.1,
-    "top": 1,
-    "left": 1
-  },
-  {
-    "icon": "bloodborne-welcome_to_yharnam",
-    "top": -3
-  },
-  {
-    "icon": "bloodborne-radiance",
-    "top": -4
-  },
-  {
-    "icon": "bloodborne-great_deep_sea",
-    "top": 4,
-    "left": -1
-  },
-  {
-    "icon": "bloodborne-hunters_of_yharnam",
-    "left": -1
-  },
-  {
-    "icon": "bloodborne-oedon_writhe",
-    "left": -1,
-    "top": 1
-  },
-  {
-    "icon": "bloodborne-silent_prayer",
-    "left": 4,
-    "top": 1
-  },
-  {
-    "icon": "bloodborne-blood_rapture",
-    "top": -2 
-  },
-  {
-    "icon": "bloodborne-quests",
-    "scale": 0.8,
-    "left": 2
-  },
-  {
-    "icon": "bloodborne-the_hunt_begins",
-    "top": -0.5
-  },
-  {
-    "icon": "bloodborne-fear_the_old_blood",
-    "top": -3
-  }
+	{
+		"icon": "bloodborne-agents_of_oedon",
+		"top": 3,
+		"left": -1
+	},
+	{
+		"icon": "bloodborne-agents_of_ebrietas",
+		"top": 1,
+		"left": -1
+	},
+	{
+		"icon": "bloodborne-agents_of_paleblood",
+		"scale": 1.1,
+		"top": 1,
+		"left": 1
+	},
+	{
+		"icon": "bloodborne-welcome_to_yharnam",
+		"top": -3
+	},
+	{
+		"icon": "bloodborne-radiance",
+		"top": -4
+	},
+	{
+		"icon": "bloodborne-great_deep_sea",
+		"top": 4,
+		"left": -1
+	},
+	{
+		"icon": "bloodborne-hunters_of_yharnam",
+		"left": -1
+	},
+	{
+		"icon": "bloodborne-oedon_writhe",
+		"left": -1,
+		"top": 1
+	},
+	{
+		"icon": "bloodborne-silent_prayer",
+		"left": 4,
+		"top": 1
+	},
+	{
+		"icon": "bloodborne-blood_rapture",
+		"top": -2
+	},
+	{
+		"icon": "bloodborne-quests",
+		"scale": 0.8,
+		"left": 2
+	},
+	{
+		"icon": "bloodborne-the_hunt_begins",
+		"top": -0.5
+	},
+	{
+		"icon": "bloodborne-fear_the_old_blood",
+		"top": -3
+	}
 ]

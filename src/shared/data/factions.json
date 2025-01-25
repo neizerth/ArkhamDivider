@@ -1,37 +1,37 @@
 [
-  {
-    "id": "guardian",
-    "name": "Guardian",
-    "icon": "guardian"
-  },
-  {
-    "id": "seeker",
-    "name": "Seeker",
-    "icon": "seeker"
-  },
-  {
-    "id": "rogue",
-    "name": "Rogue",
-    "icon": "rogue"
-  },
-  {
-    "id": "mystic",
-    "name": "Mystic",
-    "icon": "mystic_alt"
-  },
-  {
-    "id": "survivor",
-    "name": "Survivor",
-    "icon": "survivor"
-  },
-  {
-    "id": "neutral",
-    "name": "Neutral",
-    "icon": "class_neutral"
-  },
-  {
-    "id": "multiclass",
-    "name": "Multi-class",
-    "icon": "multiclass"
-  }
+	{
+		"id": "guardian",
+		"name": "Guardian",
+		"icon": "guardian"
+	},
+	{
+		"id": "seeker",
+		"name": "Seeker",
+		"icon": "seeker"
+	},
+	{
+		"id": "rogue",
+		"name": "Rogue",
+		"icon": "rogue"
+	},
+	{
+		"id": "mystic",
+		"name": "Mystic",
+		"icon": "mystic_alt"
+	},
+	{
+		"id": "survivor",
+		"name": "Survivor",
+		"icon": "survivor"
+	},
+	{
+		"id": "neutral",
+		"name": "Neutral",
+		"icon": "class_neutral"
+	},
+	{
+		"id": "multiclass",
+		"name": "Multi-class",
+		"icon": "multiclass"
+	}
 ]

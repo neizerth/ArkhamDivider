@@ -1,122 +1,122 @@
-import { useEffect, useState } from 'react';
-import { useAppDispatch } from './useAppDispatch';
-import { setZoom } from '@/app/store/features/layout/layout';
-import { selectExport, setExport } from '@/app/store/features/app/app';
-import { useAppSelector } from './useAppSelector';
-import { selectBleed, setBleed } from '@/app/store/features/print/print';
-import { DividerNodeRenderer } from '@/shared/lib/features/render/DividerNodeRenderer';
-import { OnRenderEventData } from '@/shared/types/render';
-import { delay } from '@/shared/lib/features/util/common';
+import { useEffect, useState } from "react";
+import { useAppDispatch } from "./useAppDispatch";
+import { setZoom } from "@/app/store/features/layout/layout";
+import { selectExport, setExport } from "@/app/store/features/app/app";
+import { useAppSelector } from "./useAppSelector";
+import { selectBleed, setBleed } from "@/app/store/features/print/print";
+import { DividerNodeRenderer } from "@/shared/lib/features/render/DividerNodeRenderer";
+import { OnRenderEventData } from "@/shared/types/render";
+import { delay } from "@/shared/lib/features/util/common";
 
-type DownloadStatus = 'working' | 'complete' | 'initial' | 'cancelled' | 'error' | 'ready';
+type DownloadStatus =
+	| "working"
+	| "complete"
+	| "initial"
+	| "cancelled"
+	| "error"
+	| "ready";
 
 export const useDownloadDividers = ({
-  renderer
+	renderer,
 }: {
-  renderer: DividerNodeRenderer
+	renderer: DividerNodeRenderer;
 }) => {
-  const dispatch = useAppDispatch();
-  const useBleed = useAppSelector(selectBleed);
-  const isExport = useAppSelector(selectExport);
-  const [defaultBleed, setDefaultBleed] = useState(useBleed);
+	const dispatch = useAppDispatch();
+	const useBleed = useAppSelector(selectBleed);
+	const isExport = useAppSelector(selectExport);
+	const [defaultBleed, setDefaultBleed] = useState(useBleed);
 
-  useEffect(() => {
-    if (isExport) {
-      return;
-    }
-    setDefaultBleed(useBleed);
-  }, [useBleed, isExport]);
+	useEffect(() => {
+		if (isExport) {
+			return;
+		}
+		setDefaultBleed(useBleed);
+	}, [useBleed, isExport]);
 
-  const [progress, setProgress] = useState({
-    done: 0,
-    total: 0
-  });
+	const [progress, setProgress] = useState({
+		done: 0,
+		total: 0,
+	});
 
-  const [status, setStatus] = useState<DownloadStatus>('initial');
+	const [status, setStatus] = useState<DownloadStatus>("initial");
 
-  const cancel = async () => {
-    console.log('cancelled');
-    renderer.cancel();
-  }
+	const cancel = async () => {
+		console.log("cancelled");
+		renderer.cancel();
+	};
 
-  const onCancel = async () => {
-    console.log('onCancel');
-    setStatus('cancelled');
-    onFinally();
-  }
+	const onCancel = async () => {
+		console.log("onCancel");
+		setStatus("cancelled");
+		onFinally();
+	};
 
-  const onFinally = () => {
-    dispatch(setBleed(defaultBleed));
-    dispatch(setExport(false));
+	const onFinally = () => {
+		dispatch(setBleed(defaultBleed));
+		dispatch(setExport(false));
 
-    setProgress({
-      done: 0,
-      total: 0
-    });
-  }
+		setProgress({
+			done: 0,
+			total: 0,
+		});
+	};
 
-  useEffect(() => {
-    if (isExport && status === 'ready') {
-      onStart();
-    }
-    
-  }, [isExport, status])
+	useEffect(() => {
+		if (isExport && status === "ready") {
+			onStart();
+		}
+	}, [isExport, status]);
 
-  const onStart = async () => {
-    console.log('started');
-    try {
-      await delay(100);
-      await process();
-      setStatus('complete');
-    }
-    catch (error) {
-      console.error('Error downloading dividers:', error);
-      setStatus('error');
-    }
-    finally {
-      onFinally();
-    }
-  }
+	const onStart = async () => {
+		console.log("started");
+		try {
+			await delay(100);
+			await process();
+			setStatus("complete");
+		} catch (error) {
+			console.error("Error downloading dividers:", error);
+			setStatus("error");
+		} finally {
+			onFinally();
+		}
+	};
 
-  const onRender = ({ done, total }: OnRenderEventData) => {
-    setProgress({ done, total })
-  }
+	const onRender = ({ done, total }: OnRenderEventData) => {
+		setProgress({ done, total });
+	};
 
-  const onDone = () => {
-    dispatch(setExport(false));
-    
-    renderer
-      .off('render', onRender)
-      .off('done', onDone)
-      .off('cancel', onCancel);
-  }
+	const onDone = () => {
+		dispatch(setExport(false));
 
-  const download = async () => {
-    dispatch(setZoom(100));
-    dispatch(setExport(true));
-    dispatch(setBleed(true));
-    setStatus('ready');
-  }
+		renderer
+			.off("render", onRender)
+			.off("done", onDone)
+			.off("cancel", onCancel);
+	};
 
-  const process = async () => {
-    if (progress.done !== progress.total) {
-      return;
-    }
+	const download = async () => {
+		dispatch(setZoom(100));
+		dispatch(setExport(true));
+		dispatch(setBleed(true));
+		setStatus("ready");
+	};
 
-    setStatus('working'); 
+	const process = async () => {
+		if (progress.done !== progress.total) {
+			return;
+		}
 
-    renderer
-      .on('render', onRender)
-      .on('done', onDone)
-      .on('cancel', onCancel);
+		setStatus("working");
 
-    await renderer.run();
-  }
+		renderer.on("render", onRender).on("done", onDone).on("cancel", onCancel);
 
-  return {
-    download,
-    progress,
-    cancel,
-    status
-  };
-}
+		await renderer.run();
+	};
+
+	return {
+		download,
+		progress,
+		cancel,
+		status,
+	};
+};

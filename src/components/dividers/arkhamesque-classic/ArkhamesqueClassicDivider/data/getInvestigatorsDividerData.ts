@@ -1,39 +1,38 @@
 import { propEq } from "ramda";
-import { GetDividerDataOptions } from "./getDividerData";
+import type { GetDividerDataOptions } from "./getDividerData";
 import { getDividerImage } from "./getDividerImage";
 
 export const getInvestigatorsDividerData = ({
-  data,
-  divider
+	data,
+	divider,
 }: GetDividerDataOptions) => {
-  const { investigator } = divider;
+	const { investigator } = divider;
 
-  if (!investigator) {
-    return;
-  }
+	if (!investigator) {
+		return;
+	}
 
-  const investigators = data.investigators.map(
-    category => category.data.map(item => ({
-      prefix: category.prefix,
-      ...item
-    }))
-  ).flat();
+	const investigators = data.investigators.flatMap((category) =>
+		category.data.map((item) => ({
+			prefix: category.prefix,
+			...item,
+		})),
+	);
 
-  const item = investigators.find(
-    propEq(investigator.code, 'code')
-  );
+	const getInvestigatorById = (id?: string) =>
+		id && investigators.find(propEq(id, "code"));
 
-  if (!item) {
-    return;
-  }
+	const { code, alternate_of } = investigator;
 
-  return {
-    image: getDividerImage([
-      data.prefix,
-      item.prefix,
-      item.name
-    ]),
-    icon: false
-  }
-  // const 
-}
+	const item = getInvestigatorById(code) || getInvestigatorById(alternate_of);
+
+	if (!item) {
+		return;
+	}
+
+	return {
+		image: getDividerImage([data.prefix, item.prefix, item.name]),
+		icon: false,
+	};
+	// const
+};

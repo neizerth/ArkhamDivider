@@ -1,15 +1,17 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 type ContainerProps = {
-  $height?: number
-}
+	$height?: number;
+};
 
 type ZoomProps = {
-  $zoom: number
-}
+	$zoom: number;
+};
 
 export const Container = styled.div<ContainerProps>`
-  ${({ $height }) => $height && css`
+  ${({ $height }) =>
+		$height &&
+		css`
     min-height: ${$height + 20}px;
   `}
   overflow-x: auto;
@@ -19,7 +21,7 @@ export const Container = styled.div<ContainerProps>`
     padding: 0;
     min-height: auto;
   }
-`
+`;
 
 export const Area = styled.div<ZoomProps>`
   ${({ $zoom }) => css`

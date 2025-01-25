@@ -1,68 +1,68 @@
 [
-  {
-    "icon": "blood_spilled_in_salem-atrocities",
-    "top": 10,
-    "left": 1
-  },
-  {
-    "icon": "blood_spilled_in_salem-blood_spilled_in_salem_set",
-    "left": -3,
-    "top": 1
-  },
-  {
-    "icon": "blood_spilled_in_salem",
-    "top": 2
-  },
-  {
-    "icon": "knightfall",
-    "top": 2
-  },
-  {
-    "icon": "the_nameless_city-ancient_hazards",
-    "left": 3
-  },
-  {
-    "icon": "inhospitable_locality",
-    "top": 4
-  },
-  {
-    "icon": "the_nameless_city-cosmic_truth",
-    "top": 3
-  },
-  {
-    "icon": "stranger_things-upside_down",
-    "top": 1,
-    "left": -0.5
-  },
-  {
-    "icon": "the_collector",
-    "top": 2
-  },
-  {
-    "icon": "the_festival",
-    "top": -2
-  },
-  {
-    "icon": "meteoric_phenomenon",
-    "top": 2,
-    "left": -2
-  },
-  {
-    "icon": "the_nameless_city",
-    "top": -2
-  },
-  {
-    "icon": "wendigos_myth",
-    "top": 2
-  },
-  {
-    "icon": "return_to_the_wendigo-spoils_of_hanninah",
-    "scale": 0.65,
-    "left": 2,
-    "top": 14
-  },
-  {
-    "icon": "return_to_consternation_on_the_constellation-save_our_ship",
-    "scale": 0.8
-  }
+	{
+		"icon": "blood_spilled_in_salem-atrocities",
+		"top": 10,
+		"left": 1
+	},
+	{
+		"icon": "blood_spilled_in_salem-blood_spilled_in_salem_set",
+		"left": -3,
+		"top": 1
+	},
+	{
+		"icon": "blood_spilled_in_salem",
+		"top": 2
+	},
+	{
+		"icon": "knightfall",
+		"top": 2
+	},
+	{
+		"icon": "the_nameless_city-ancient_hazards",
+		"left": 3
+	},
+	{
+		"icon": "inhospitable_locality",
+		"top": 4
+	},
+	{
+		"icon": "the_nameless_city-cosmic_truth",
+		"top": 3
+	},
+	{
+		"icon": "stranger_things-upside_down",
+		"top": 1,
+		"left": -0.5
+	},
+	{
+		"icon": "the_collector",
+		"top": 2
+	},
+	{
+		"icon": "the_festival",
+		"top": -2
+	},
+	{
+		"icon": "meteoric_phenomenon",
+		"top": 2,
+		"left": -2
+	},
+	{
+		"icon": "the_nameless_city",
+		"top": -2
+	},
+	{
+		"icon": "wendigos_myth",
+		"top": 2
+	},
+	{
+		"icon": "return_to_the_wendigo-spoils_of_hanninah",
+		"scale": 0.65,
+		"left": 2,
+		"top": 14
+	},
+	{
+		"icon": "return_to_consternation_on_the_constellation-save_our_ship",
+		"scale": 0.8
+	}
 ]

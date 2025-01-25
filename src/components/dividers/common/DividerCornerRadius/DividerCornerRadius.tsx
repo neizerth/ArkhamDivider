@@ -4,11 +4,6 @@ import { PropsWithClassName } from "@/shared/types/util";
 import { Container } from "./components";
 
 export const DividerCornerRadius = ({ className }: PropsWithClassName) => {
-  const layout = useAppSelector(selectLayout);
-  return (
-    <Container
-      className={className}
-      $layout={layout}
-    />
-  )
-}
+	const layout = useAppSelector(selectLayout);
+	return <Container className={className} $layout={layout} />;
+};

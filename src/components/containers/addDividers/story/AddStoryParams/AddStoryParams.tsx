@@ -1,178 +1,179 @@
-import { IStory } from '@/shared/types/api';
-import S from './AddStoryParams.module.scss';
-import { Checkbox, Col, Icon, Row } from '@/components';
-import { selectStories } from '@/app/store/features/stories/stories';
-import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
-import { safePropEq } from '@/shared/lib/features/util/criteria';
-import { createToggleHanlder } from '@/shared/lib/features/util/forms';
+import { IStory } from "@/shared/types/api";
+import S from "./AddStoryParams.module.scss";
+import { Checkbox, Col, Icon, Row } from "@/components";
+import { selectStories } from "@/app/store/features/stories/stories";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { safePropEq } from "@/shared/lib/features/util/criteria";
+import { createToggleHanlder } from "@/shared/lib/features/util/forms";
 // import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { selectLayout } from '@/app/store/features/layout/layout';
-import { isNil } from 'ramda';
-import { 
-  getExtraEncounterDividersIcons, 
-  getRequiredEncounterDividersIcons, 
-  getScenarioDividerIcons
-} from '@/shared/lib/features/dividers/story/icons';
-import { selectEncounterSets } from '@/app/store/features/encounterSets/encounterSets';
-import { getCampaignDividersCount } from '@/shared/lib/features/dividers/story/count';
-import { FirstParam } from '@/shared/types/util';
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import { selectLayout } from "@/app/store/features/layout/layout";
+import { isNil } from "ramda";
+import {
+	getExtraEncounterDividersIcons,
+	getRequiredEncounterDividersIcons,
+	getScenarioDividerIcons,
+} from "@/shared/lib/features/dividers/story/icons";
+import { selectEncounterSets } from "@/app/store/features/encounterSets/encounterSets";
+import { getCampaignDividersCount } from "@/shared/lib/features/dividers/story/count";
+import { FirstParam } from "@/shared/types/util";
 
 export type ToggleFunction = (value: boolean) => void;
 
 export type IAddStoryParamsForm = {
-  includeExtraSets: boolean
-  includeReturnSets: boolean
-  includeScenarios: boolean
-  includeEncounterSize: boolean
-  includeCampaignIcon: boolean
-  includeScenarioEncounterSet: boolean
-  includeScenarioSize: boolean
-  includeCampaign: boolean
-  includeEncounters: boolean
-}
+	includeExtraSets: boolean;
+	includeReturnSets: boolean;
+	includeScenarios: boolean;
+	includeEncounterSize: boolean;
+	includeCampaignIcon: boolean;
+	includeScenarioEncounterSet: boolean;
+	includeScenarioSize: boolean;
+	includeCampaign: boolean;
+	includeEncounters: boolean;
+};
 
 export type AddStoryParamsProps = {
-  story: IStory
-  defaultValue: IAddStoryParamsForm
-  onChange: (form: IAddStoryParamsForm) => void
-}
+	story: IStory;
+	defaultValue: IAddStoryParamsForm;
+	onChange: (form: IAddStoryParamsForm) => void;
+};
 
-export const AddStoryParams = ({ 
-  story, 
-  defaultValue,
-  onChange,
+export const AddStoryParams = ({
+	story,
+	defaultValue,
+	onChange,
 }: AddStoryParamsProps) => {
-  const { t } = useTranslation();
-  
-  const encounterSets = useAppSelector(selectEncounterSets);
-  const stories = useAppSelector(selectStories);
-  const { campaignOptions } = useAppSelector(selectLayout);
-  
-  const [form, setForm] = useState(defaultValue);
+	const { t } = useTranslation();
 
-  const haveExtraDividers = story.extra_encounter_sets.length > 0;
+	const encounterSets = useAppSelector(selectEncounterSets);
+	const stories = useAppSelector(selectStories);
+	const { campaignOptions } = useAppSelector(selectLayout);
 
-  const returnStories = stories.filter(safePropEq(story.code, 'return_to_code'));
-  const haveReturnCycle = returnStories.length > 0;
+	const [form, setForm] = useState(defaultValue);
 
-  const onToggle = createToggleHanlder(
-    form, 
-    form => {
-      setForm(form);
-      onChange(form);
-    }
-  );
+	const haveExtraDividers = story.extra_encounter_sets.length > 0;
 
-  const check = (prop: FirstParam<typeof onToggle>) => ({
-    ...onToggle(prop),
-    labelClassName: S.label
-  });
+	const returnStories = stories.filter(
+		safePropEq(story.code, "return_to_code"),
+	);
+	const haveReturnCycle = returnStories.length > 0;
 
-  const includeEncounterSize = isNil(campaignOptions?.includeEncounterSize)
-  const includeScenarioSize = form.includeScenarios && isNil(campaignOptions?.includeScenarioSize);
+	const onToggle = createToggleHanlder(form, (form) => {
+		setForm(form);
+		onChange(form);
+	});
 
-  const showSize = story.is_size_supported && (includeEncounterSize || includeScenarioSize)
+	const check = (prop: FirstParam<typeof onToggle>) => ({
+		...onToggle(prop),
+		labelClassName: S.label,
+	});
 
-  const showAdditional = haveExtraDividers || showSize;
+	const includeEncounterSize = isNil(campaignOptions?.includeEncounterSize);
+	const includeScenarioSize =
+		form.includeScenarios && isNil(campaignOptions?.includeScenarioSize);
 
-  const encountersCountOptions = {
-    encounterSets,
-    story,
-    includeScenarioEncounterSet: form.includeScenarioEncounterSet
-  }
+	const showSize =
+		story.is_size_supported && (includeEncounterSize || includeScenarioSize);
 
-  const encountersCount = getRequiredEncounterDividersIcons({
-    encounterSets,
-    story,
-    includeScenarioEncounterSet: form.includeScenarioEncounterSet
-  }).length;
+	const showAdditional = haveExtraDividers || showSize;
 
-  const extraCount = getExtraEncounterDividersIcons(encountersCountOptions).length;
-  const scenariosCount = getScenarioDividerIcons(story).length;
-  const campaignsCount = getCampaignDividersCount(story);
+	const encountersCountOptions = {
+		encounterSets,
+		story,
+		includeScenarioEncounterSet: form.includeScenarioEncounterSet,
+	};
 
-  return (
-    <div className={S.container}>
-      <Col>
-        <Row wrap className={S.controls}>
-          <div className={S.checkboxGroup}>
-            <h3 className={S.title}>{t('Campaign')}</h3>
-            <Col wrap className={S.checks}>
-              <Checkbox {...check('includeEncounters')}>
-                {t('Encounter Dividers')} ({encountersCount})
-              </Checkbox>
-              <Checkbox {...check('includeCampaign')}>
-                {t('Campaign Divider')} ({campaignsCount})
-              </Checkbox>
-              {isNil(campaignOptions?.includeCampaignIcon) && (
-                <Checkbox {...check('includeCampaignIcon')}>
-                  {t('Campaign Icon')}
-                </Checkbox>
-              )}
-              
-            </Col>
-          </div>
-          <div className={S.checkboxGroup}>
-            <h3 className={S.title}>{t('Scenario')}</h3>
-            <Col wrap className={S.checks}>
-              <Checkbox {...check('includeScenarios')}>
-                {t('Scenario Dividers')} ({scenariosCount})
-              </Checkbox>
-              <Checkbox {...check('includeScenarioEncounterSet')}>
-                {t('Scenario Encounter Divider')} ({scenariosCount})
-              </Checkbox>
-            </Col>
-          </div>
-          {showAdditional && (
-            <div className={S.checkboxGroup}>
-              <h3 className={S.title}>{t('Additional')}</h3>
-              <Col wrap className={S.checks}>
-                {haveExtraDividers && (
-                  <Checkbox {...check('includeExtraSets')}>
-                    {t('Extra Dividers')} ({extraCount})
-                  </Checkbox>
-                )}
-                {showSize && (
-                  <>
-                    {includeEncounterSize && (
-                      <Checkbox {...check('includeEncounterSize')}>
-                        {t('Encounter Size')}
-                      </Checkbox>
-                    )}
-                    {includeScenarioSize && (
-                      <Checkbox {...check('includeScenarioSize')}>
-                      {t('Scenario Size')}
-                      </Checkbox>
-                    )}
-                  
-                  </>
-                )}
-              </Col>
-            </div>
-          )}
-        </Row>
-        {haveReturnCycle && (
-          <Row>
-            <Checkbox 
-              {...check('includeReturnSets')}
-              labelClassName={S.returnLabel}
-            >
-              <span className={S.label}>{t('Include Return Set:')}</span>
+	const encountersCount = getRequiredEncounterDividersIcons({
+		encounterSets,
+		story,
+		includeScenarioEncounterSet: form.includeScenarioEncounterSet,
+	}).length;
 
-              <span className={S.returnStories}>
-                {returnStories.map(({ code, name, is_official }) => (
-                  <span className={S.return} key={code}>
-                    {t(name)} {is_official && <Icon icon='ffg' className={S.official}/>}
-                  </span>
-                ))}
-              </span>
-            </Checkbox>
-          
-          </Row>
-        )}
-      </Col>
-    </div>
-  );
-}
+	const extraCount = getExtraEncounterDividersIcons(
+		encountersCountOptions,
+	).length;
+	const scenariosCount = getScenarioDividerIcons(story).length;
+	const campaignsCount = getCampaignDividersCount(story);
+
+	return (
+		<div className={S.container}>
+			<Col>
+				<Row wrap className={S.controls}>
+					<div className={S.checkboxGroup}>
+						<h3 className={S.title}>{t("Campaign")}</h3>
+						<Col wrap className={S.checks}>
+							<Checkbox {...check("includeEncounters")}>
+								{t("Encounter Dividers")} ({encountersCount})
+							</Checkbox>
+							<Checkbox {...check("includeCampaign")}>
+								{t("Campaign Divider")} ({campaignsCount})
+							</Checkbox>
+							{isNil(campaignOptions?.includeCampaignIcon) && (
+								<Checkbox {...check("includeCampaignIcon")}>
+									{t("Campaign Icon")}
+								</Checkbox>
+							)}
+						</Col>
+					</div>
+					<div className={S.checkboxGroup}>
+						<h3 className={S.title}>{t("Scenario")}</h3>
+						<Col wrap className={S.checks}>
+							<Checkbox {...check("includeScenarios")}>
+								{t("Scenario Dividers")} ({scenariosCount})
+							</Checkbox>
+							<Checkbox {...check("includeScenarioEncounterSet")}>
+								{t("Scenario Encounter Divider")} ({scenariosCount})
+							</Checkbox>
+						</Col>
+					</div>
+					{showAdditional && (
+						<div className={S.checkboxGroup}>
+							<h3 className={S.title}>{t("Additional")}</h3>
+							<Col wrap className={S.checks}>
+								{haveExtraDividers && (
+									<Checkbox {...check("includeExtraSets")}>
+										{t("Extra Dividers")} ({extraCount})
+									</Checkbox>
+								)}
+								{showSize && (
+									<>
+										{includeEncounterSize && (
+											<Checkbox {...check("includeEncounterSize")}>
+												{t("Encounter Size")}
+											</Checkbox>
+										)}
+										{includeScenarioSize && (
+											<Checkbox {...check("includeScenarioSize")}>
+												{t("Scenario Size")}
+											</Checkbox>
+										)}
+									</>
+								)}
+							</Col>
+						</div>
+					)}
+				</Row>
+				{haveReturnCycle && (
+					<Row>
+						<Checkbox
+							{...check("includeReturnSets")}
+							labelClassName={S.returnLabel}
+						>
+							<span className={S.label}>{t("Include Return Set:")}</span>
+
+							<span className={S.returnStories}>
+								{returnStories.map(({ code, name, is_official }) => (
+									<span className={S.return} key={code}>
+										{t(name)}{" "}
+										{is_official && <Icon icon="ffg" className={S.official} />}
+									</span>
+								))}
+							</span>
+						</Checkbox>
+					</Row>
+				)}
+			</Col>
+		</div>
+	);
+};

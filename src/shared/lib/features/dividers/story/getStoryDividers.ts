@@ -8,40 +8,37 @@ import { AddStoryDividersOptions } from "@/app/store/features/addDividers/addDiv
 import { getCampaignDividers } from "./getCampaignDividers";
 
 export type IGetStoryDividersOptions = AddStoryDividersOptions & {
-  encounterSets: IEncounterSet[]
-  returnStories?: IStory[]
-}
+	encounterSets: IEncounterSet[];
+	returnStories?: IStory[];
+};
 
 export const getStoryDividers = (options: IGetStoryDividersOptions) => {
-  
-  const {
-    returnStories = [],
-    includeScenarios,
-  } = options;
+	const { returnStories = [], includeScenarios } = options;
 
-  const scenarioDividers: IDivider[] = getScenarioDividers(options);
-  
-  const encounterDividers: IDivider[] = getEncounterDividers({
-    ...options,
-  })
+	const scenarioDividers: IDivider[] = getScenarioDividers(options);
 
-  const returnSetDividers: IDivider[] = returnStories.map(story => getStoryDividers({
-    ...options,
-    story,
-    returnStories: [],
-  }))
-  .flat();
+	const encounterDividers: IDivider[] = getEncounterDividers({
+		...options,
+	});
 
-  const campaignDividers: IDivider[] = getCampaignDividers(options);
-  
-  const dividers = [
-    ...campaignDividers,
-    ...arrayIf(includeScenarios, scenarioDividers),
-    ...encounterDividers,
-    ...returnSetDividers
-  ];
+	const returnSetDividers: IDivider[] = returnStories
+		.map((story) =>
+			getStoryDividers({
+				...options,
+				story,
+				returnStories: [],
+			}),
+		)
+		.flat();
 
-  return sortWith([
-    ascend(prop('type')),
-  ], dividers);
-}
+	const campaignDividers: IDivider[] = getCampaignDividers(options);
+
+	const dividers = [
+		...campaignDividers,
+		...arrayIf(includeScenarios, scenarioDividers),
+		...encounterDividers,
+		...returnSetDividers,
+	];
+
+	return sortWith([ascend(prop("type"))], dividers);
+};

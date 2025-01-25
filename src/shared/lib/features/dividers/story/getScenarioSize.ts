@@ -3,36 +3,36 @@ import { IEncounterSet, IScenario } from "@/shared/types/api";
 import { SCENARIO_TYPES } from "@/app/store/features/encounterSets/constants";
 
 export const getScenarioSize = ({
-  scenario,
-  encounterSets,
-  includeScenarioSize,
-  includeScenarioEncounterSet
+	scenario,
+	encounterSets,
+	includeScenarioSize,
+	includeScenarioEncounterSet,
 }: {
-  scenario: IScenario
-  includeScenarioSize: boolean
-  includeScenarioEncounterSet: boolean
-  encounterSets: IEncounterSet[]
+	scenario: IScenario;
+	includeScenarioSize: boolean;
+	includeScenarioEncounterSet: boolean;
+	encounterSets: IEncounterSet[];
 }) => {
-  if (!includeScenarioSize) {
-    return {}
-  };
-  const { icon } = scenario; 
-  const encounter = encounterSets.find(safePropEq(icon, 'icon'));
+	if (!includeScenarioSize) {
+		return {};
+	}
+	const { icon } = scenario;
+	const encounter = encounterSets.find(safePropEq(icon, "icon"));
 
-  if (!encounter?.types || !includeScenarioEncounterSet) {
-    return {
-      size: encounter?.size
-    }
-  }
+	if (!encounter?.types || !includeScenarioEncounterSet) {
+		return {
+			size: encounter?.size,
+		};
+	}
 
-  const { types } = encounter;
+	const { types } = encounter;
 
-  const size = types
-    .filter(({ type }) => SCENARIO_TYPES.includes(type))
-    .reduce((total, { size }) => total + size, 0);
+	const size = types
+		.filter(({ type }) => SCENARIO_TYPES.includes(type))
+		.reduce((total, { size }) => total + size, 0);
 
-  return { 
-    size,
-    totalSize: encounter.size 
-  };
-}
+	return {
+		size,
+		totalSize: encounter.size,
+	};
+};

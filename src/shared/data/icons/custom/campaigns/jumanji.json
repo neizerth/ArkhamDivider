@@ -1,37 +1,37 @@
 [
-  {
-    "icon": "jumanji-bats",
-    "top": 4
-  },
-  {
-    "icon": "jumanji-gameplay",
-    "top": 2
-  },
-  {
-    "icon": "jumanji-call_of_jumanji",
-    "top": 2,
-    "left": -5
-  },
-  {
-    "icon": "jumanji-home_invasion",
-    "top": 1,
-    "left": 3
-  },
-  {
-    "icon": "jumanji-hunter",
-    "top": 2
-  },
-  {
-    "icon": "jumanji-urban_jungle",
-    "top": 4
-  },
-  {
-    "icon": "jumanji-game_night",
-    "left": 1,
-    "top": 2
-  },
-  {
-    "icon": "jumanji-force_of_nature",
-    "top": -1
-  }
+	{
+		"icon": "jumanji-bats",
+		"top": 4
+	},
+	{
+		"icon": "jumanji-gameplay",
+		"top": 2
+	},
+	{
+		"icon": "jumanji-call_of_jumanji",
+		"top": 2,
+		"left": -5
+	},
+	{
+		"icon": "jumanji-home_invasion",
+		"top": 1,
+		"left": 3
+	},
+	{
+		"icon": "jumanji-hunter",
+		"top": 2
+	},
+	{
+		"icon": "jumanji-urban_jungle",
+		"top": 4
+	},
+	{
+		"icon": "jumanji-game_night",
+		"left": 1,
+		"top": 2
+	},
+	{
+		"icon": "jumanji-force_of_nature",
+		"top": -1
+	}
 ]

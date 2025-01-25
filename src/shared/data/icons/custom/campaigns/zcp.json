@@ -1,22 +1,22 @@
 [
-  {
-    "icon": "tenuous_allies",
-    "top": -2,
-    "left": 1
-  },
-  {
-    "icon": "unbound_power",
-    "top": -6,
-    "left": 2
-  },
-  {
-    "icon": "late_risers",
-    "top": -2,
-    "left": 0
-  },
-  {
-    "icon": "call_of_the_plaguebearer",
-    "top": 2,
-    "left": -4
-  }
+	{
+		"icon": "tenuous_allies",
+		"top": -2,
+		"left": 1
+	},
+	{
+		"icon": "unbound_power",
+		"top": -6,
+		"left": 2
+	},
+	{
+		"icon": "late_risers",
+		"top": -2,
+		"left": 0
+	},
+	{
+		"icon": "call_of_the_plaguebearer",
+		"top": 2,
+		"left": -4
+	}
 ]

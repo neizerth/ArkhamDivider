@@ -5,10 +5,9 @@ import { useCategoryNavigation } from "./navigation/useCategoryNavigation";
 import { useStoryNavigation } from "./navigation/useStoryNavigation";
 
 export const useAppNavigation = () => {
-
-  useLanguageNavigation();
-  useLayoutNavigation();
-  useTypeNavigation();
-  useCategoryNavigation();
-  useStoryNavigation();
-}
+	useLanguageNavigation();
+	useLayoutNavigation();
+	useTypeNavigation();
+	useCategoryNavigation();
+	useStoryNavigation();
+};

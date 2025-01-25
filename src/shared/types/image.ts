@@ -1,2 +1,2 @@
-export type ImageFormat = 'png' | 'tiff' | 'jpeg';
-export type ColorScheme = 'rgb' | 'cmyk';
+export type ImageFormat = "png" | "tiff" | "jpeg";
+export type ColorScheme = "rgb" | "cmyk";
