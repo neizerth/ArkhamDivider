@@ -48,8 +48,10 @@ export const useLayoutSupport = () => {
 	}
 
 	if (type === LayoutType.INVESTIGATOR) {
-		const investigators = arkhamesqueData.investigators.flatMap((category) =>
-			category.data.map(prop("code")),
+		const investigators = arkhamesqueData.investigators.flatMap(
+			category => category.data.map(
+				prop("code")
+			)
 		);
 
 		return hasArkhamesqueInvestigatorSupport({

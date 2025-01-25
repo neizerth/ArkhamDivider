@@ -47,9 +47,12 @@ export const hasArkhamesqueInvestigatorSupport = ({
 		return false;
 	}
 
-	return (
-		story.investigators.filter(({ code, alternate_of }) =>
-			investigators.includes(alternate_of || code),
-		).length > 0
-	);
+	const supportedInvestigators = story.investigators
+		.filter(({ code, alternate_of }) =>
+			investigators.includes(code) || (
+				alternate_of && investigators.includes(alternate_of)
+			),
+		);
+
+	return supportedInvestigators.length > 0;
 };
