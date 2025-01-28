@@ -1,12 +1,9 @@
-import {
-	createSliceSelector,
-	createSliceSetter,
-} from "@/shared/lib/features/util/slice";
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { DEFAULT_LAYOUT, selectLayout, setLayout } from "../layout/layout";
 import { PageOrientation, PageSizeType } from "@/shared/types/print";
 import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
-import { AppThunk } from "@/app/store";
+import { AppThunk } from "@/shared/store";
+import { createSliceState } from "redux-toolkit-helpers";
 
 export type IPrintState = {
 	doubleSided: boolean;
@@ -34,25 +31,7 @@ const initialState: IPrintState = {
 
 export const print = createSlice({
 	name: "print",
-	initialState,
-	reducers: {
-		setRowsPerPage: createSliceSetter("rowsPerPage"),
-		setItemsPerPage: createSliceSetter("itemsPerPage"),
-		setDoubleSided: createSliceSetter("doubleSided"),
-		setBleed: createSliceSetter("bleed"),
-		setPageOrientation: createSliceSetter("pageOrientation"),
-		setPageSizeType: createSliceSetter("pageSizeType"),
-		setCornerRadius: createSliceSetter("cornerRadius"),
-	},
-	selectors: {
-		selectRowsPerPage: createSliceSelector("rowsPerPage"),
-		selectItemsPerPage: createSliceSelector("itemsPerPage"),
-		selectDoubleSided: createSliceSelector("doubleSided"),
-		selectBleed: createSliceSelector("bleed"),
-		selectPageOrientation: createSliceSelector("pageOrientation"),
-		selectPageSizeType: createSliceSelector("pageSizeType"),
-		selectCornerRadius: createSliceSelector("cornerRadius"),
-	},
+	...createSliceState(initialState),
 	extraReducers: (builder) => {
 		builder.addCase(setLayout, (state, action) => {
 			const layout = action.payload;

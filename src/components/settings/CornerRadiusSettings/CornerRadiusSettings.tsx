@@ -6,8 +6,8 @@ import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectCornerRadius,
 	setCornerRadius,
-} from "@/app/store/features/print/print";
-import { selectExport } from "@/app/store/features/app/app";
+} from "@/shared/store/features/print/print";
+import { selectExport } from "@/shared/store/features/app/app";
 
 export type CornerRadiusSettingsProps = {};
 

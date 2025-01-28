@@ -6,7 +6,7 @@ import {
 	isChallenge,
 	isSideContent,
 	isCampaign,
-} from "@/app/store/features/stories/criteria";
+} from "@/shared/store/features/stories/criteria";
 import { StorySelectOption } from "../StorySelectOption/StorySelectOption";
 import { StorySelectSingleValue } from "../StorySelectSingleValue/StorySelectSingleValue";
 import { ascend, descend, prop, sortWith } from "ramda";
@@ -14,7 +14,7 @@ import { PropsWithClassName } from "@/shared/types/util";
 import classNames from "classnames";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectStory } from "@/app/store/features/dividers/dividers";
+import { selectStory } from "@/shared/store/features/dividers/dividers";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
 import { Row } from "@/components/ui/grid/Row/Row";
 import { IconButton } from "@/components/ui/IconButton/IconButton";

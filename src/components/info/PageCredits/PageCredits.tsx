@@ -4,9 +4,9 @@ import { PropsWithClassName } from "@/shared/types/util";
 import classNames from "classnames";
 import { QRCodeSVG } from "qrcode.react";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLanguage } from "@/app/store/features/language/language";
+import { selectLanguage } from "@/shared/store/features/language/language";
 import { getCategoryById } from "@/shared/lib/features/layouts/common";
-import { selectCategoryId } from "@/app/store/features/layout/layout";
+import { selectCategoryId } from "@/shared/store/features/layout/layout";
 import { BOOSTY_LINK } from "@/shared/config/app";
 import { useTranslation } from "react-i18next";
 

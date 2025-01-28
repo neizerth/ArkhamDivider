@@ -1,13 +1,13 @@
-import { selectLanguage } from "@/app/store/features/language/language";
+import { selectLanguage } from "@/shared/store/features/language/language";
 import { useAppSelector } from "./useAppSelector";
 import {
 	selectCategoryId,
 	selectLayout,
 	selectType,
-} from "@/app/store/features/layout/layout";
+} from "@/shared/store/features/layout/layout";
 import { useNavigate, useParams } from "react-router-dom";
 import { createRoute, RouteOptions } from "@/shared/lib/features/util/routes";
-import { selectStory } from "@/app/store/features/dividers/dividers";
+import { selectStory } from "@/shared/store/features/dividers/dividers";
 import { ILayout } from "@/shared/types/layouts";
 
 type AppRouteOptions = RouteOptions & {
@@ -34,12 +34,14 @@ export const useAppNavigate = () => {
 			...params,
 			language,
 			type,
-			categoryId,
 			layoutId,
 			storyId: story?.code,
-			...options,
+			...(categoryId ? { categoryId } : {})
 		};
-		const route = createRoute(routeOptions);
+		const route = createRoute({
+			...routeOptions,
+			...options
+		});
 		navigate(route);
 	};
 };

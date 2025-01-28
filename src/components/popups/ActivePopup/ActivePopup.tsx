@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectActivePopupId } from "@/app/store/features/app/app";
+import { selectActivePopupId } from "@/shared/store/features/app/app";
 import { IconSelectPopup } from "../iconSelect/IconSelectPopup/IconSelectPopup";
 import { PopupType } from "@/shared/types/ui";
 

@@ -1,9 +1,5 @@
 import { fetchCoreData, fetchLanguageData } from "@/shared/api/arkhamDivider";
-import { AppThunk } from "@/app/store";
-import {
-	createSliceSelector,
-	createSliceSetter,
-} from "@/shared/lib/features/util/slice";
+import { AppThunk } from "@/shared/store";
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { setStories } from "../stories/stories";
 import { setIcons } from "../icons/icons";
@@ -19,15 +15,17 @@ import { setCoreTranslations, setCustomTranslations } from "../i18n/i18n";
 import * as translations from "@/shared/translations";
 import { Mapping } from "classnames";
 import { PopupType } from "@/shared/types/ui";
+import { createSliceState } from 'redux-toolkit-helpers';
+import { Nullable } from "@/shared/types/util";
 
 export type IAppState = {
 	export: boolean;
 	loading: boolean;
-	loadingStatus: {
+	loadingStatus: Nullable<{
 		text?: string;
 		progress: number;
-	} | null;
-	activePopupId: PopupType | null;
+	}>;
+	activePopupId: Nullable<PopupType>;
 };
 
 const initialState: IAppState = {
@@ -39,19 +37,7 @@ const initialState: IAppState = {
 
 export const app = createSlice({
 	name: "app",
-	initialState,
-	reducers: {
-		setExport: createSliceSetter("export"),
-		setLoadingStatus: createSliceSetter("loadingStatus"),
-		setLoading: createSliceSetter("loading"),
-		setActivePopupId: createSliceSetter("activePopupId"),
-	},
-	selectors: {
-		selectExport: createSliceSelector("export"),
-		selectLoadingStatus: createSliceSelector("loadingStatus"),
-		selectLoading: createSliceSelector("loading"),
-		selectActivePopupId: createSliceSelector("activePopupId"),
-	},
+	...createSliceState(initialState)
 });
 
 export const clearActivePopupId: ActionCreator<AppThunk> = () => (dispatch) =>

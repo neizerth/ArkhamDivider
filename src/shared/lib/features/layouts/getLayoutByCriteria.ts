@@ -1,6 +1,7 @@
 import { ILayout, ILayoutCriteria, LayoutType } from "@/shared/types/layouts";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { omit } from "ramda";
+import { Nullable } from "@/shared/types/util";
 
 export const getLayoutByCriteria = ({
 	type,
@@ -10,7 +11,7 @@ export const getLayoutByCriteria = ({
 }: {
 	criteria: ILayoutCriteria;
 	type?: LayoutType;
-	categoryId?: string;
+	categoryId: Nullable<string>
 	layout: ILayout;
 }) => {
 	const { orientation, color } = currentLayout;

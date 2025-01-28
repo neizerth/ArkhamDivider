@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../useAppDispatch";
 import { useAppSelector } from "../useAppSelector";
-import { selectStory, setStory } from "@/app/store/features/dividers/dividers";
+import { selectStory, setStory } from "@/shared/store/features/dividers/dividers";
 import { useEffect } from "react";
-import { selectLoading } from "@/app/store/features/app/app";
-import { selectStories } from "@/app/store/features/stories/stories";
+import { selectLoading } from "@/shared/store/features/app/app";
+import { selectStories } from "@/shared/store/features/stories/stories";
 import { propEq } from "ramda";
 
 export const useStoryNavigation = () => {
@@ -22,7 +22,7 @@ export const useStoryNavigation = () => {
 			return;
 		}
 		if (!storyId) {
-			dispatch(setStory());
+			dispatch(setStory(null));
 			return;
 		}
 

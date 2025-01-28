@@ -3,8 +3,8 @@ import { ActionCreator } from "@reduxjs/toolkit";
 import {
 	selectDividers,
 	setDividers,
-} from "@/app/store/features/dividers/dividers";
-import { AppThunk } from "@/app/store";
+} from "@/shared/store/features/dividers/dividers";
+import { AppThunk } from "@/shared/store";
 
 export const moveTab: ActionCreator<AppThunk> =
 	(id: string, tabPosition: TabPosition) => (dispatch, getState) => {

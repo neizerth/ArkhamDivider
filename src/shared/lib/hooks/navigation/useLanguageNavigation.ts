@@ -1,13 +1,13 @@
 import {
 	changeLanguage,
 	selectAvailableLanguages,
-} from "@/app/store/features/language/language";
+} from "@/shared/store/features/language/language";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../useAppDispatch";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../useAppSelector";
-import { selectLoading } from "@/app/store/features/app/app";
+import { selectLoading } from "@/shared/store/features/app/app";
 
 export const useLanguageNavigation = () => {
 	const dispatch = useAppDispatch();

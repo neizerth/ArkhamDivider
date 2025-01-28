@@ -15,16 +15,16 @@ import { useState } from "react";
 import { ICardType, IXPCost, IFaction } from "@/shared/types/game";
 import { ButtonType } from "@/shared/types/ui";
 import { createToggleHanlder } from "@/shared/lib/features/util/forms";
-import { addPlayerDividers } from "@/app/store/features/addDividers/addDividers";
+import { addPlayerDividers } from "@/shared/store/features/addDividers/addDividers";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import {
 	removeAllDividers,
 	selectStory,
-} from "@/app/store/features/dividers/dividers";
+} from "@/shared/store/features/dividers/dividers";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { isNil } from "ramda";
-import { selectStories } from "@/app/store/features/stories/stories";
+import { selectStories } from "@/shared/store/features/stories/stories";
 
 export type AddPlayerDividersProps = {};
 

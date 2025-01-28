@@ -4,7 +4,7 @@ import { arrayIf } from "@/shared/lib/features/util/common";
 import { ascend, prop, sortWith } from "ramda";
 import { getScenarioDividers } from "./getScenarioDividers";
 import { getEncounterDividers } from "./getEncounterDividers";
-import { AddStoryDividersOptions } from "@/app/store/features/addDividers/addDividers";
+import { AddStoryDividersOptions } from "@/shared/store/features/addDividers/addDividers";
 import { getCampaignDividers } from "./getCampaignDividers";
 
 export type IGetStoryDividersOptions = AddStoryDividersOptions & {

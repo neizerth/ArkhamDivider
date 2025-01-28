@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import {
 	copyDivider,
 	removeDivider,
-} from "@/app/store/features/dividers/dividers";
+} from "@/shared/store/features/dividers/dividers";
 import { Icon } from "@/components";
 
 export type DividerMenuProps = PropsWithClassName & {

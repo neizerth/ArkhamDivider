@@ -1,17 +1,15 @@
 import { LayoutType } from "@/shared/types/layouts";
-import {
-	createSliceSelector,
-	createSliceSetter,
-} from "@/shared/lib/features/util/slice";
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 
 import { layouts } from "@/shared/data/layouts";
 import { ILayout } from "@/shared/types/layouts";
 import * as reducers from "./reducers";
 import { safePropEq } from "@/shared/lib/features/util/criteria";
-import { AppSelector, AppThunk } from "@/app/store";
+import { AppSelector, AppThunk } from "@/shared/store";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
+import { Nullable } from "@/shared/types/util";
+import { createSliceState } from "redux-toolkit-helpers";
 
 export const DEFAULT_LAYOUT = layouts.find(
 	safePropEq(true, "isDefault"),
@@ -21,35 +19,27 @@ export type ILayoutState = {
 	layout: ILayout;
 	color: boolean;
 	type: LayoutType;
-	categoryId?: string;
+	categoryId: Nullable<string>;
 	zoom: number;
 };
 
 const initialState: ILayoutState = {
+	categoryId: null,
 	layout: DEFAULT_LAYOUT,
 	color: true,
 	type: LayoutType.SCENARIO,
 	zoom: 100,
 };
 
+const sliceState = createSliceState(initialState);
+
 export const layout = createSlice({
 	name: "layout",
-	initialState,
+	...sliceState,
 	reducers: {
-		...reducers,
-		setLayout: createSliceSetter("layout"),
-		setColor: createSliceSetter("color"),
-
-		setCategoryId: createSliceSetter("categoryId"),
-		setType: createSliceSetter("type"),
-		setZoom: createSliceSetter("zoom"),
-	},
-	selectors: {
-		selectLayout: createSliceSelector("layout"),
-		selectType: createSliceSelector("type"),
-		selectCategoryId: createSliceSelector("categoryId"),
-		selectZoom: createSliceSelector("zoom"),
-	},
+		...sliceState.reducers,
+		...reducers
+	}
 });
 
 export const setLayoutById: ActionCreator<AppThunk> =

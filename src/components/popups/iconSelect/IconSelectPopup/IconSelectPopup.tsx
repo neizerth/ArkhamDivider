@@ -5,16 +5,16 @@ import {
 	selectIcons,
 	selectPopupIcon,
 	setPopupIcon,
-} from "@/app/store/features/icons/icons";
-import { selectStories } from "@/app/store/features/stories/stories";
-import { selectEncounterSets } from "@/app/store/features/encounterSets/encounterSets";
+} from "@/shared/store/features/icons/icons";
+import { selectStories } from "@/shared/store/features/stories/stories";
+import { selectEncounterSets } from "@/shared/store/features/encounterSets/encounterSets";
 import { getIconGroups } from "@/shared/lib/features/icons/getIconGroups";
 import { useTranslation } from "react-i18next";
 import { Button, Col, Icon, Row } from "@/components";
 import { createRef, useMemo, useRef, useState } from "react";
 import { ButtonType } from "@/shared/types/ui";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
-import { clearActivePopupId } from "@/app/store/features/app/app";
+import { clearActivePopupId } from "@/shared/store/features/app/app";
 import { IconSelectView } from "../IconSelectView/IconSelectView";
 import { IconSelectNav } from "../IconSelectNav/IconSelectNav";
 import { IconSelectPreview } from "../IconSelectPreview/IconSelectPreview";

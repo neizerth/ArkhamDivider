@@ -4,7 +4,7 @@ import { IDivider } from "@/shared/types/dividers";
 import { ClassicDivider } from "@/components/dividers/classic/ClassicDivider/ClassicDivider";
 import { Invocation2018Divider } from "@/components/dividers/invocation2018/Invocation2018Divider/Invocation2018Divider";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { SarnetskyDivider } from "@/components/dividers/sarnetsky/SarnetskyDivider/SarnetskyDivider";
 import { ArkhamDecoDivider } from "@/components/dividers/arkham-deco/ArkhamDecoDivider/ArkhamDecoDivider";
 import { ArkhamStarter3mmDivider } from "../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider";

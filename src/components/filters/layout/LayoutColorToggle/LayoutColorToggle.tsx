@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import S from "./LayoutColorToggle.module.scss";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { PropsWithClassName } from "@/shared/types/util";
 import { Color } from "@/components";
 import { getLayouts } from "@/shared/lib/features/layouts/common";

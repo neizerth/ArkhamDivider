@@ -3,13 +3,13 @@ import { useAppSelector } from "./useAppSelector";
 import {
 	selectActivePopupId,
 	setActivePopupId,
-} from "@/app/store/features/app/app";
+} from "@/shared/store/features/app/app";
 import { PopupType } from "@/shared/types/ui";
 import { useAppDispatch } from "./useAppDispatch";
 import {
 	selectPopupIcon,
 	setPopupIcon,
-} from "@/app/store/features/icons/icons";
+} from "@/shared/store/features/icons/icons";
 
 export const useIconSelect = ({
 	defaultIcon,

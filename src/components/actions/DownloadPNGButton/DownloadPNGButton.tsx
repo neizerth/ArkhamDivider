@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { DownloadButton } from "../DownloadButton/DownloadButton";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { getSimilarBleed } from "@/shared/lib/features/render/getSimilarBleed";
 import { createZipRenderer } from "@/shared/lib/features/zip/createZipRenderer";
 import { useTranslation } from "react-i18next";

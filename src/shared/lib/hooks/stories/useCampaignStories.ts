@@ -1,12 +1,12 @@
-import { selectStories } from "@/app/store/features/stories/stories";
+import { selectStories } from "@/shared/store/features/stories/stories";
 import { useAppSelector } from "../useAppSelector";
-import { selectIsArkhamesqueLayout } from "@/app/store/features/layout/layout";
-import { selectArkhamesqueData } from "@/app/store/features/dividers/arkhamesque/arkhamesque";
-import { hasArkhamesqueStorySupport } from "@/app/store/features/dividers/arkhamesque/criteria";
+import { selectIsArkhamesqueLayout } from "@/shared/store/features/layout/layout";
+import { selectArkhamesqueData } from "@/shared/store/features/dividers/arkhamesque/arkhamesque";
+import { hasArkhamesqueStorySupport } from "@/shared/store/features/dividers/arkhamesque/criteria";
 import {
 	selectLanguage,
 	selectTranslatedStories,
-} from "@/app/store/features/language/language";
+} from "@/shared/store/features/language/language";
 import { IStory } from "@/shared/types/api";
 
 export const useCampaignStories = () => {
