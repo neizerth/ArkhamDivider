@@ -5,8 +5,8 @@ import icons, { ICON_LAYOUT_HEIGHT } from "@/shared/data/icons";
 import classNames from "classnames";
 import { Container } from "./components";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectBleed } from "@/app/store/features/print/print";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectBleed } from "@/shared/store/features/print/print";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 
 export type CircleIconProps = Omit<IconProps, "scaleType"> & {
 	type?: string;

@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 // import S from './AddDividers.module.scss';
-import { selectType } from "@/app/store/features/layout/layout";
+import { selectType } from "@/shared/store/features/layout/layout";
 import { LayoutType } from "@/shared/types/layouts";
 import { AddStoryDividers } from "../story/AddStoryDividers/AddStoryDividers";
 import { AddPlayerDividers } from "../AddPlayerDividers/AddPlayerDividers";

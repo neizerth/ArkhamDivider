@@ -18,10 +18,10 @@ import {
 } from "@/components";
 
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectDividers } from "@/app/store/features/dividers/dividers";
+import { selectDividers } from "@/shared/store/features/dividers/dividers";
 import { useAppNavigation } from "@/shared/lib/hooks/useAppNavigation";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
-import { loadAppData } from "@/app/store/features/app/app";
+import { loadAppData } from "@/shared/store/features/app/app";
 import { useEffect } from "react";
 
 import "./index.scss";

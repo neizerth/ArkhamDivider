@@ -12,12 +12,12 @@ import { ButtonType } from "@/shared/types/ui";
 import {
 	removeAllDividers,
 	selectStory,
-} from "@/app/store/features/dividers/dividers";
+} from "@/shared/store/features/dividers/dividers";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useTranslation } from "react-i18next";
-import { addInvestigatorDividers } from "@/app/store/features/addDividers/addDividers";
+import { addInvestigatorDividers } from "@/shared/store/features/addDividers/addDividers";
 import { useInvestigatorStories } from "@/shared/lib/hooks/stories/useInvestigatorStories";
-import { selectStoryInvestigators } from "@/app/store/features/dividers/selectors/selectStoryInvestigators";
+import { selectStoryInvestigators } from "@/shared/store/features/dividers/selectors/selectStoryInvestigators";
 
 export type AddInvestigatorDividersProps = {};
 

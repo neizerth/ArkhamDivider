@@ -2,7 +2,7 @@
 
 import { DownloadButton } from "../DownloadButton/DownloadButton";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { getSimilarBleed } from "@/shared/lib/features/render/getSimilarBleed";
 import { useEffect, useMemo, useState } from "react";
 import { pdf } from "@react-pdf/renderer";
@@ -13,8 +13,8 @@ import {
 	selectCornerRadius,
 	selectDoubleSided,
 	selectPageSizeType,
-} from "@/app/store/features/print/print";
-import { selectDividers } from "@/app/store/features/dividers/dividers";
+} from "@/shared/store/features/print/print";
+import { selectDividers } from "@/shared/store/features/dividers/dividers";
 import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
 import { Badge } from "@/components";
 

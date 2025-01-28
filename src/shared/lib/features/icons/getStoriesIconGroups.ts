@@ -6,7 +6,7 @@ import {
 	isChallenge,
 	isSideCampaign,
 	isSideContent,
-} from "@/app/store/features/stories/criteria";
+} from "@/shared/store/features/stories/criteria";
 
 export const getStoriesIconGroups = ({
 	stories,

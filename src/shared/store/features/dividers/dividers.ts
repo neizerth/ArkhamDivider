@@ -1,7 +1,7 @@
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 
 import { IDividerList } from "@/shared/types/dividers";
-import { AppSelector, AppThunk } from "@/app/store";
+import { AppSelector, AppThunk } from "@/shared/store";
 import { propEq } from "ramda";
 import { uniqId } from "@/shared/lib/features/util/common";
 import { setType } from "../layout/layout";

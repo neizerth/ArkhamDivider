@@ -4,7 +4,7 @@ import { PropsWithClassName } from "@/shared/types/util";
 import classNames from "classnames";
 import { CardType, IXPCost } from "@/shared/types/game";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 
 export type ClassicDividerSkillXPCostProps = PropsWithClassName & {
 	xpCost: IXPCost;

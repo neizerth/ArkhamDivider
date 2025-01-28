@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { makeStore } from "@/app/store";
+import { makeStore } from "@/shared/store";
 
 export type StoreProviderOptions = {
 	children: React.ReactNode;

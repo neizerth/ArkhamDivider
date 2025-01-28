@@ -2,7 +2,7 @@ import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { DEFAULT_LAYOUT, selectLayout, setLayout } from "../layout/layout";
 import { PageOrientation, PageSizeType } from "@/shared/types/print";
 import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
-import { AppThunk } from "@/app/store";
+import { AppThunk } from "@/shared/store";
 import { createSliceState } from "redux-toolkit-helpers";
 
 export type IPrintState = {

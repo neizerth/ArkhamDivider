@@ -10,9 +10,9 @@ import {
 } from "@/components";
 import classNames from "classnames";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { SarnetskyDividerBackground as DividerBackground } from "../SarnetskyDividerBackground/SarnetskyDividerBackground";
-import { selectLanguage } from "@/app/store/features/language/language";
+import { selectLanguage } from "@/shared/store/features/language/language";
 import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from "../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters";
 import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from "../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters";
 import { LayoutOrientation } from "@/shared/types/layouts";
@@ -23,7 +23,7 @@ import { SarnetskyDividerMainIcon as MainIcon } from "../SarnetskyDividerMainIco
 import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
 import { DividerProps } from "../../common/Divider/Divider";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
-import { selectCornerRadius } from "@/app/store/features/print/print";
+import { selectCornerRadius } from "@/shared/store/features/print/print";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
 
 export const ENCOUNTER_ROW_SIZE = 7;

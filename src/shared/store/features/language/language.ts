@@ -1,5 +1,5 @@
 import { DEFAULT_LANGUAGE } from "@/shared/config/i18n";
-import { AppThunk } from "@/app/store";
+import { AppThunk } from "@/shared/store";
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { loadAppTranslations } from "../app/app";
 import { Mapping } from "@/shared/types/util";

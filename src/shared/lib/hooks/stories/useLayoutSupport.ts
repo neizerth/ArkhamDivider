@@ -2,15 +2,15 @@ import {
 	selectCategoryId,
 	selectLayout,
 	selectType,
-} from "@/app/store/features/layout/layout";
+} from "@/shared/store/features/layout/layout";
 import { useAppSelector } from "../useAppSelector";
-import { selectArkhamesqueData } from "@/app/store/features/dividers/arkhamesque/arkhamesque";
+import { selectArkhamesqueData } from "@/shared/store/features/dividers/arkhamesque/arkhamesque";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
 import {
 	hasArkhamesqueInvestigatorSupport,
 	hasArkhamesqueStorySupport,
-} from "@/app/store/features/dividers/arkhamesque/criteria";
-import { selectStory } from "@/app/store/features/dividers/dividers";
+} from "@/shared/store/features/dividers/arkhamesque/criteria";
+import { selectStory } from "@/shared/store/features/dividers/dividers";
 import { LayoutType } from "@/shared/types/layouts";
 import { prop } from "ramda";
 

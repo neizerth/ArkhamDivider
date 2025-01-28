@@ -1,6 +1,6 @@
 import { ArkhamDivider } from "arkham-divider-data";
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
-import { AppThunk } from "@/app/store";
+import { AppThunk } from "@/shared/store";
 import { Nullable } from "@/shared/types/util";
 import { createSliceState } from "redux-toolkit-helpers";
 

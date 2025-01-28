@@ -8,12 +8,12 @@ import {
 	PageCredits,
 } from "@/components/info/PageCredits/PageCredits";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import {
 	selectBleed,
 	selectPageOrientation,
 	selectPageSizeType,
-} from "@/app/store/features/print/print";
+} from "@/shared/store/features/print/print";
 import { Container } from "./components";
 
 export type PageProps = PropsWithClassName &

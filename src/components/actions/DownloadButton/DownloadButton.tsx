@@ -2,9 +2,9 @@ import { ButtonType } from "@/shared/types/ui";
 // import S from './DownloadZIPButton.module.scss';
 import { Icon, IconButton } from "@/components";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectExport } from "@/app/store/features/app/app";
+import { selectExport } from "@/shared/store/features/app/app";
 import { useDownloadDividers } from "@/shared/lib/hooks/useDownloadDividers";
-import { selectDividers } from "@/app/store/features/dividers/dividers";
+import { selectDividers } from "@/shared/store/features/dividers/dividers";
 import { PropsWithChildren } from "react";
 import { DividerNodeRenderer } from "@/shared/lib/features/render/DividerNodeRenderer";
 

@@ -5,7 +5,7 @@ import { PropsWithClassName } from "@/shared/types/util";
 import classNames from "classnames";
 import { Col, LanguageFlag } from "@/components";
 import { prop } from "ramda";
-import { selectLanguage } from "@/app/store/features/language/language";
+import { selectLanguage } from "@/shared/store/features/language/language";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { Panel } from "@/components/ui/Panel/Panel";
 

@@ -1,5 +1,5 @@
 import { fetchArkhamesqueData } from "@/shared/api/arkhamesqueClassic";
-import type { AppThunk } from "@/app/store";
+import type { AppThunk } from "@/shared/store";
 import {
 	type ActionCreator,
 	createSelector,

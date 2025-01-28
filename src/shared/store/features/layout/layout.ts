@@ -5,7 +5,7 @@ import { layouts } from "@/shared/data/layouts";
 import { ILayout } from "@/shared/types/layouts";
 import * as reducers from "./reducers";
 import { safePropEq } from "@/shared/lib/features/util/criteria";
-import { AppSelector, AppThunk } from "@/app/store";
+import { AppSelector, AppThunk } from "@/shared/store";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
 import { Nullable } from "@/shared/types/util";

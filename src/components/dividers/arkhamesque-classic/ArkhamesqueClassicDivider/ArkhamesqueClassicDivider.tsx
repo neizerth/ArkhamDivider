@@ -6,11 +6,11 @@ import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { getDividerData } from "./data/getDividerData";
 import { useSelector } from "react-redux";
-import { selectArkhamesqueData } from "@/app/store/features/dividers/arkhamesque/arkhamesque";
+import { selectArkhamesqueData } from "@/shared/store/features/dividers/arkhamesque/arkhamesque";
 import { DividerText } from "../../common/DividerText/DividerText";
 import { NotExportable } from "@/components/ui/behavior/NotExportable/NotExportable";
 import { DividerMenu } from "../../common/DividerMenu/DividerMenu";
-import { selectLanguage } from "@/app/store/features/language/language";
+import { selectLanguage } from "@/shared/store/features/language/language";
 import { TextFit } from "@/components/ui/behavior/TextFit/TextFit";
 import { XPCost } from "@/shared/types/game";
 import { ArkhamesqueClassicDividerPlayerXPCostTitle as XPCostTitle } from "../ArkhamesqueClassicDividerPlayerXPCostTitle/ArkhamesqueClassicDividerPlayerXPCostTitle";
@@ -21,13 +21,13 @@ import {
 	removeDivider,
 	selectLoadIndex,
 	setNextLoadIndex,
-} from "@/app/store/features/dividers/dividers";
+} from "@/shared/store/features/dividers/dividers";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { Icon } from "@/components/ui/icons/Icon/Icon";
 import { delay } from "@/shared/lib/features/util/common";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectCornerRadius } from "@/app/store/features/print/print";
+import { selectCornerRadius } from "@/shared/store/features/print/print";
 
 export type ArkhamesqueClassicDividerProps = DividerProps;
 

@@ -1,5 +1,5 @@
 import { fetchCoreData, fetchLanguageData } from "@/shared/api/arkhamDivider";
-import { AppThunk } from "@/app/store";
+import { AppThunk } from "@/shared/store";
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { setStories } from "../stories/stories";
 import { setIcons } from "../icons/icons";

@@ -1,4 +1,4 @@
-import type { AppSelector } from "@/app/store";
+import type { AppSelector } from "@/shared/store";
 import type { IInvestigator, IStory } from "@/shared/types/api";
 import { selectIsArkhamesqueLayout } from "../../layout/layout";
 import { selectArkhamesqueClassicInvestigators as selectInvestigators } from "../arkhamesque/arkhamesque";

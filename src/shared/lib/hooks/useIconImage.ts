@@ -1,4 +1,4 @@
-import { selectIcons } from "@/app/store/features/icons/icons";
+import { selectIcons } from "@/shared/store/features/icons/icons";
 import { useAppSelector } from "./useAppSelector";
 import { propEq } from "ramda";
 import { useEffect, useState } from "react";

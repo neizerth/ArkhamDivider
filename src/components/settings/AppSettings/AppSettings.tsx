@@ -12,10 +12,10 @@ import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectDividers,
 	selectLoadQueue,
-} from "@/app/store/features/dividers/dividers";
+} from "@/shared/store/features/dividers/dividers";
 import { AdditionalSettings } from "../AdditionalSettings/AdditionalSettings";
 import classNames from "classnames";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { useState } from "react";
 
 export const AppSettings = () => {

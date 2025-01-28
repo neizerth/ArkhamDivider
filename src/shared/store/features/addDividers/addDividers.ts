@@ -1,4 +1,4 @@
-import { AppThunk } from "@/app/store";
+import { AppThunk } from "@/shared/store";
 import { IInvestigator, IStory } from "@/shared/types/api";
 import { IFaction, ICardType, IXPCost } from "@/shared/types/game";
 import { ActionCreator } from "@reduxjs/toolkit";

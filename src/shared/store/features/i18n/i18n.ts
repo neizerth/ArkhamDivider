@@ -1,4 +1,4 @@
-import { AppThunk } from "@/app/store";
+import { AppThunk } from "@/shared/store";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { addResourceBundle, getStoryNS } from "@/shared/lib/features/util/i18n";
 import { Mapping } from "@/shared/types/util";
