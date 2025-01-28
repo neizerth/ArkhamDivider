@@ -2,9 +2,10 @@ import type { AppSelector } from "@/app/store";
 import type { IInvestigator, IStory } from "@/shared/types/api";
 import { selectIsArkhamesqueLayout } from "../../layout/layout";
 import { selectArkhamesqueClassicInvestigators as selectInvestigators } from "../arkhamesque/arkhamesque";
+import { Nullable } from "@/shared/types/util";
 
 export const selectStoryInvestigators =
-	(story?: IStory): AppSelector<IInvestigator[]> =>
+	(story: Nullable<IStory>): AppSelector<IInvestigator[]> =>
 	(state) => {
 		if (!story) {
 			return [];

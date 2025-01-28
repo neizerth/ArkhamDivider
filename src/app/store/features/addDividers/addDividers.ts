@@ -9,9 +9,10 @@ import { addDividers } from "../dividers/dividers";
 import { getPlayerDividers } from "@/shared/lib/features/dividers/player/getPlayerDividers";
 import { getInvestigatorDividers } from "@/shared/lib/features/dividers/investigator/getInvestigatorDividers";
 import { withReturnTo } from "../stories/criteria";
+import { Nullable } from "@/shared/types/util";
 
 export type AddPlayerDividersOptions = {
-	story?: IStory;
+	story: Nullable<IStory>;
 	factions: IFaction[];
 	xpCosts: IXPCost[];
 	types: ICardType[];

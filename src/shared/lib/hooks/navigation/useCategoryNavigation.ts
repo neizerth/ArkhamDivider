@@ -24,7 +24,7 @@ export const useCategoryNavigation = () => {
 		}
 
 		if (!categoryId) {
-			dispatch(setCategoryId());
+			dispatch(setCategoryId(null));
 			return;
 		}
 

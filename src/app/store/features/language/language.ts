@@ -1,12 +1,9 @@
 import { DEFAULT_LANGUAGE } from "@/shared/config/i18n";
 import { AppThunk } from "@/app/store";
-import {
-	createSliceSelector,
-	createSliceSetter,
-} from "@/shared/lib/features/util/slice";
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { loadAppTranslations } from "../app/app";
 import { Mapping } from "@/shared/types/util";
+import { createSliceState } from "redux-toolkit-helpers";
 
 export type ILanguageState = {
 	language: string;
@@ -24,19 +21,7 @@ const initialState: ILanguageState = {
 
 export const language = createSlice({
 	name: "language",
-	initialState,
-	reducers: {
-		setTranslatedStories: createSliceSetter("translatedStories"),
-		setLoadedTranslations: createSliceSetter("loadedTranslations"),
-		setLanguage: createSliceSetter("language"),
-		setAvailableLanguages: createSliceSetter("availableLanguages"),
-	},
-	selectors: {
-		selectTranslatedStories: createSliceSelector("translatedStories"),
-		selectLoadedTranslations: createSliceSelector("loadedTranslations"),
-		selectLanguage: createSliceSelector("language"),
-		selectAvailableLanguages: createSliceSelector("availableLanguages"),
-	},
+	...createSliceState(initialState)
 });
 
 export const changeLanguage: ActionCreator<AppThunk> =

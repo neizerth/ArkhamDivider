@@ -22,7 +22,7 @@ export const useStoryNavigation = () => {
 			return;
 		}
 		if (!storyId) {
-			dispatch(setStory());
+			dispatch(setStory(null));
 			return;
 		}
 

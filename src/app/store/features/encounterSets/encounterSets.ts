@@ -1,9 +1,6 @@
 import { IEncounterSet } from "@/shared/types/api";
-import {
-	createSliceSelector,
-	createSliceSetter,
-} from "@/shared/lib/features/util/slice";
 import { createSlice } from "@reduxjs/toolkit";
+import { createSliceState } from "redux-toolkit-helpers";
 
 export type IEncounterSetsState = {
 	list: IEncounterSet[];
@@ -15,17 +12,15 @@ const initialState: IEncounterSetsState = {
 
 export const encounterSets = createSlice({
 	name: "encounterSets",
-	initialState,
-	reducers: {
-		setEncounterSets: createSliceSetter("list"),
-	},
-	selectors: {
-		selectEncounterSets: createSliceSelector("list"),
-	},
+	...createSliceState(initialState),
 });
 
-export const { setEncounterSets } = encounterSets.actions;
+export const { 
+	setList: setEncounterSets 
+} = encounterSets.actions;
 
-export const { selectEncounterSets } = encounterSets.selectors;
+export const { 
+	selectList: selectEncounterSets 
+} = encounterSets.selectors;
 
 export default encounterSets.reducer;

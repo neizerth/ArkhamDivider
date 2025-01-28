@@ -1,19 +1,17 @@
 import { fetchArkhamesqueData } from "@/shared/api/arkhamesqueClassic";
 import type { AppThunk } from "@/app/store";
 import {
-	createSliceSelector,
-	createSliceSetter,
-} from "@/shared/lib/features/util/slice";
-import {
 	type ActionCreator,
 	createSelector,
 	createSlice,
 } from "@reduxjs/toolkit";
 import type { IArkhamesqueBuild } from "arkhamesque-classic-divider-data";
 import { prop } from "ramda";
+import { createSliceState } from "redux-toolkit-helpers";
+import { Nullable } from "@/shared/types/util";
 
 export type IArkhamesqueState = {
-	data: IArkhamesqueBuild | null;
+	data: Nullable<IArkhamesqueBuild>;
 };
 
 const initialState: IArkhamesqueState = {
@@ -22,13 +20,7 @@ const initialState: IArkhamesqueState = {
 
 export const arkhamesque = createSlice({
 	name: "arkhamesque",
-	initialState,
-	reducers: {
-		setArkhamesqueData: createSliceSetter("data"),
-	},
-	selectors: {
-		selectArkhamesqueData: createSliceSelector("data"),
-	},
+	...createSliceState(initialState)
 });
 
 export const loadArkhamesqueData: ActionCreator<AppThunk> =
@@ -42,9 +34,13 @@ export const loadArkhamesqueData: ActionCreator<AppThunk> =
 		dispatch(setArkhamesqueData(data));
 	};
 
-export const { setArkhamesqueData } = arkhamesque.actions;
+export const { 
+	setData: setArkhamesqueData 
+} = arkhamesque.actions;
 
-export const { selectArkhamesqueData } = arkhamesque.selectors;
+export const { 
+	selectData: selectArkhamesqueData 
+} = arkhamesque.selectors;
 
 export const selectArkhamesqueClassicInvestigators = createSelector(
 	[selectArkhamesqueData],

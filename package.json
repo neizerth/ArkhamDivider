@@ -35,6 +35,7 @@
     "react-select": "^5.8.0",
     "react-slider": "^2.0.6",
     "readable-stream": "^4.6.0",
+    "redux-toolkit-helpers": "^1.0.2",
     "styled-components": "^6.1.13",
     "throttle-debounce": "^5.0.2",
     "use-fit-text": "^2.4.0",

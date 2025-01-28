@@ -1,9 +1,5 @@
 import { ActionCreator, createSlice } from "@reduxjs/toolkit";
 
-import {
-	createSliceSetter,
-	createSliceSelector,
-} from "@/shared/lib/features/util/slice";
 import { IDividerList } from "@/shared/types/dividers";
 import { AppSelector, AppThunk } from "@/app/store";
 import { propEq } from "ramda";
@@ -11,10 +7,12 @@ import { uniqId } from "@/shared/lib/features/util/common";
 import { setType } from "../layout/layout";
 import * as reducers from "./reducers";
 import { IStory } from "@/shared/types/api";
+import { createSliceState } from "redux-toolkit-helpers";
+import { Nullable } from "@/shared/types/util";
 
 export type IDividersState = {
 	list: IDividerList;
-	story?: IStory;
+	story: Nullable<IStory>;
 	loadQueue: string[];
 	loadIndex: number;
 };
@@ -23,26 +21,20 @@ const initialState: IDividersState = {
 	list: [],
 	loadIndex: 0,
 	loadQueue: [],
+	story: null
 };
+
+const sliceState = createSliceState(initialState);
 
 export const dividers = createSlice({
 	name: "dividers",
-	initialState,
+	...sliceState,
 	reducers: {
-		...reducers,
-		setDividers: createSliceSetter("list"),
-		setStory: createSliceSetter("story"),
-		setLoadQueue: createSliceSetter("loadQueue"),
-	},
-	selectors: {
-		selectDividers: createSliceSelector("list"),
-		selectStory: createSliceSelector("story"),
-		selectLoadQueue: createSliceSelector("loadQueue"),
+		...sliceState.reducers,
+		...reducers
 	},
 	extraReducers(builder) {
-		builder.addCase(setType, (state) => {
-			dividers.caseReducers.removeAllDividers(state);
-		});
+		builder.addCase(setType, reducers.removeAllDividers);
 	},
 });
 
@@ -112,10 +104,17 @@ export const addLoadIndex: ActionCreator<AppThunk> =
 export const selectLoadIndex: AppSelector = ({ dividers }) =>
 	dividers.loadQueue[0];
 
-export const { setDividers, removeAllDividers, setStory, setLoadQueue } =
-	dividers.actions;
+export const { 
+	setList: setDividers,
+	setStory, 
+	setLoadQueue,
+	removeAllDividers,
+} = dividers.actions;
 
-export const { selectDividers, selectStory, selectLoadQueue } =
-	dividers.selectors;
+export const { 
+	selectList: selectDividers, 
+	selectStory, 
+	selectLoadQueue 
+} = dividers.selectors;
 
 export default dividers.reducer;

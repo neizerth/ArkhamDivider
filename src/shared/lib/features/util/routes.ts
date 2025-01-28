@@ -4,8 +4,8 @@ export type RouteOptions = {
 	layoutId?: string;
 	storyId?: string;
 	type?: string;
-	language?: string;
-	categoryId?: string;
+	language?: string
+	categoryId?: string
 };
 
 export const createRoute = (options: RouteOptions) => {

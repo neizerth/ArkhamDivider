@@ -34,12 +34,14 @@ export const useAppNavigate = () => {
 			...params,
 			language,
 			type,
-			categoryId,
 			layoutId,
 			storyId: story?.code,
-			...options,
+			...(categoryId ? { categoryId } : {})
 		};
-		const route = createRoute(routeOptions);
+		const route = createRoute({
+			...routeOptions,
+			...options
+		});
 		navigate(route);
 	};
 };
