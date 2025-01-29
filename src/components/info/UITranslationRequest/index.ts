@@ -1,1 +1,1 @@
-export * from './UITranslationRequest'
+export * from "./UITranslationRequest";

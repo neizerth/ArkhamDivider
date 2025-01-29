@@ -1,1 +1,1 @@
-export * from './PlayerCardTypeSelect'
+export * from "./PlayerCardTypeSelect";

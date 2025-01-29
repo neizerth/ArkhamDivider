@@ -1,1 +1,1 @@
-export * from './PageCredits'
+export * from "./PageCredits";

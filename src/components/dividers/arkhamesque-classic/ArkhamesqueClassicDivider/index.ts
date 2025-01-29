@@ -1,1 +1,1 @@
-export * from './ArkhamesqueClassicDivider'
+export * from "./ArkhamesqueClassicDivider";

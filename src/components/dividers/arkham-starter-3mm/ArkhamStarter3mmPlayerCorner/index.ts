@@ -1,1 +1,1 @@
-export * from './ArkhamStarter3mmPlayerCorner'
+export * from "./ArkhamStarter3mmPlayerCorner";

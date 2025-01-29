@@ -1,1 +1,1 @@
-export * from './LayoutColorToggle'
+export * from "./LayoutColorToggle";

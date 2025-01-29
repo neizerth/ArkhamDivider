@@ -1,1 +1,1 @@
-export * from './IconSelectPreview'
+export * from "./IconSelectPreview";

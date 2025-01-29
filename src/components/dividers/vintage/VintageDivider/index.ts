@@ -1,1 +1,1 @@
-export { VintageDivider } from './VintageDivider'
+export { VintageDivider } from "./VintageDivider";

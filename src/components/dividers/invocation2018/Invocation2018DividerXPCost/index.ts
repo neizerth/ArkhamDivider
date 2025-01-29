@@ -1,1 +1,1 @@
-export * from './Invocation2018DividerXPCost'
+export * from "./Invocation2018DividerXPCost";

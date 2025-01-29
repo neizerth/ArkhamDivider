@@ -1,1 +1,1 @@
-export * from './SarnetskyDividerLinkedScenarioEncounters'
+export * from "./SarnetskyDividerLinkedScenarioEncounters";

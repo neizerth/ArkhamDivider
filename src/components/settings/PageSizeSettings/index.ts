@@ -1,1 +1,1 @@
-export * from './PageSizeSettings'
+export * from "./PageSizeSettings";

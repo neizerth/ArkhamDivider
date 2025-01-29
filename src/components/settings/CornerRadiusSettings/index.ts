@@ -1,1 +1,1 @@
-export * from './CornerRadiusSettings'
+export * from "./CornerRadiusSettings";

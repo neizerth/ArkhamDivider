@@ -1,5 +1,9 @@
 import { AddPlayerDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
-import { DividerSubtype, DividerType, IDivider } from "@/shared/model/types/dividers";
+import {
+	DividerSubtype,
+	DividerType,
+	IDivider,
+} from "@/shared/model/types/dividers";
 import {
 	CardType,
 	ICardType,

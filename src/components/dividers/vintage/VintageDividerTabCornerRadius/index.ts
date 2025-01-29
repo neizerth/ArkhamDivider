@@ -1,1 +1,1 @@
-export { VintageDividerTabCornerRadius } from './VintageDividerTabCornerRadius'
+export { VintageDividerTabCornerRadius } from "./VintageDividerTabCornerRadius";

@@ -1,1 +1,1 @@
-export * from './TextFit'
+export * from "./TextFit";

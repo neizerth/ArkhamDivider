@@ -1,1 +1,1 @@
-export * from './SarnetskyDividerMainIcon'
+export * from "./SarnetskyDividerMainIcon";

@@ -1,1 +1,1 @@
-export * from './CategoryInfo'
+export * from "./CategoryInfo";

@@ -20,7 +20,7 @@ export const Layout = () => {
 	const zoom = useAppSelector(selectZoom);
 	const groupSize = useAppSelector(selectItemsPerPage);
 	const rowSize = useAppSelector(selectRowsPerPage);
-	
+
 	const pages = splitIntoPages(dividers, {
 		doubleSidedPrint,
 		groupSize,

@@ -1,1 +1,1 @@
-export * from './StorySelectOption'
+export * from "./StorySelectOption";

@@ -1,1 +1,1 @@
-export * from './XPSlider'
+export * from "./XPSlider";

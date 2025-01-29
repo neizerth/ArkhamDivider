@@ -1,1 +1,1 @@
-export * from './AddDividers'
+export * from "./AddDividers";

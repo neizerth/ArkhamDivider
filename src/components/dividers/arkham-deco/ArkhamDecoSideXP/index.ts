@@ -1,1 +1,1 @@
-export * from './ArkhamDecoSideXP'
+export * from "./ArkhamDecoSideXP";

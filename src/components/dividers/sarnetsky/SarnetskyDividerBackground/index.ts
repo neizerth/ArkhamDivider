@@ -1,1 +1,1 @@
-export * from './SarnetskyDividerBackground'
+export * from "./SarnetskyDividerBackground";

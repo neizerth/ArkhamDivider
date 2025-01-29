@@ -1,1 +1,1 @@
-export * from './ClassicDividerIconXPCost'
+export * from "./ClassicDividerIconXPCost";

@@ -9,10 +9,7 @@ export const getInvestigatorDividers = ({
 }: {
 	investigators: IInvestigator[];
 }): IDivider[] => {
-	const investigatorGroups = groupBy(
-		prop("name"), 
-		investigators
-	);
+	const investigatorGroups = groupBy(prop("name"), investigators);
 	const data = values(investigatorGroups)
 		.filter(isNotNil)
 		.map((group) => group[0]);

@@ -1,1 +1,1 @@
-export * from './ClassicDividerSideXP'
+export * from "./ClassicDividerSideXP";

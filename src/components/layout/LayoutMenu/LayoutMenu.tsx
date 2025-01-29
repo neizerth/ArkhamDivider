@@ -4,7 +4,10 @@ import { Container } from "@/components";
 import { PropsWithChildren } from "react";
 import { LayoutType } from "@/shared/model/types/layouts";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout, selectType } from "@/shared/lib/store/features/layout/layout";
+import {
+	selectLayout,
+	selectType,
+} from "@/shared/lib/store/features/layout/layout";
 import classNames from "classnames";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 import { menu } from "./menu";

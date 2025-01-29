@@ -1,1 +1,1 @@
-export * from './PrintSettings'
+export * from "./PrintSettings";

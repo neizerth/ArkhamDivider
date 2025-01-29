@@ -1,1 +1,1 @@
-export * from './ToggleSelect'
+export * from "./ToggleSelect";

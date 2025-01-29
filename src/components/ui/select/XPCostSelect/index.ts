@@ -1,1 +1,1 @@
-export * from './XPCostSelect'
+export * from "./XPCostSelect";

@@ -1,4 +1,8 @@
-import { DividerSubtype, DividerType, IDivider } from "@/shared/model/types/dividers";
+import {
+	DividerSubtype,
+	DividerType,
+	IDivider,
+} from "@/shared/model/types/dividers";
 import { CardType } from "@/shared/model/types/game";
 
 export const INVESTIGATOR_ICON_LANGUAGES = ["ko", "zh-cn", "zh"];

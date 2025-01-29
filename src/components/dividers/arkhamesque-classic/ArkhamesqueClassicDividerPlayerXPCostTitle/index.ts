@@ -1,1 +1,1 @@
-export * from './ArkhamesqueClassicDividerPlayerXPCostTitle'
+export * from "./ArkhamesqueClassicDividerPlayerXPCostTitle";

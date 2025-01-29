@@ -1,1 +1,1 @@
-export * from './DownloadCMYKButton'
+export * from "./DownloadCMYKButton";

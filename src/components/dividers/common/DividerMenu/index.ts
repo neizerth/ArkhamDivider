@@ -1,1 +1,1 @@
-export * from './DividerMenu'
+export * from "./DividerMenu";

@@ -1,1 +1,1 @@
-export * from './IconFontStyles'
+export * from "./IconFontStyles";

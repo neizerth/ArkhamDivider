@@ -31,7 +31,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
 
 	const [items, setItems] = useState<Uint8Array[]>([]);
 
-	const name = 'Arkham Divider';
+	const name = "Arkham Divider";
 
 	const downloader = useMemo(() => {
 		return new PDFDownloader({

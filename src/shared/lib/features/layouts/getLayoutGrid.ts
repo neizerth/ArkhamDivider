@@ -1,5 +1,9 @@
 import { ILayout } from "@/shared/model/types/layouts";
-import { PageOrientation, PageSize, PageSizeType } from "@/shared/model/types/print";
+import {
+	PageOrientation,
+	PageSize,
+	PageSizeType,
+} from "@/shared/model/types/print";
 
 export const getLayoutGrid = ({
 	layout,

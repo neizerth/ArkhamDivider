@@ -1,1 +1,1 @@
-export * from './DividerText'
+export * from "./DividerText";

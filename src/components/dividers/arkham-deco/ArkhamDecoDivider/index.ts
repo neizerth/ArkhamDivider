@@ -1,1 +1,1 @@
-export * from './ArkhamDecoDivider'
+export * from "./ArkhamDecoDivider";

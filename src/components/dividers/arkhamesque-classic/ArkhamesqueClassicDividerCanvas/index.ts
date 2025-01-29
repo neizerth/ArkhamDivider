@@ -1,1 +1,1 @@
-export * from './ArkhamesqueClassicDividerCanvas'
+export * from "./ArkhamesqueClassicDividerCanvas";

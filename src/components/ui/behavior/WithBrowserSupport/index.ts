@@ -1,1 +1,1 @@
-export * from './WithBrowserSupport'
+export * from "./WithBrowserSupport";

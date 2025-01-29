@@ -1,1 +1,1 @@
-export * from './AdditionalSettings'
+export * from "./AdditionalSettings";

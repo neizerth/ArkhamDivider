@@ -1,1 +1,1 @@
-export * from './SarnetskyDividerSideXP'
+export * from "./SarnetskyDividerSideXP";

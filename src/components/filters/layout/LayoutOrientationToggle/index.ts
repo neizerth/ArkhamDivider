@@ -1,1 +1,1 @@
-export * from './LayoutOrientationToggle'
+export * from "./LayoutOrientationToggle";

@@ -1,1 +1,1 @@
-export * from './ColorSelect'
+export * from "./ColorSelect";

@@ -1,1 +1,1 @@
-export * from './ArkhamStarter3mmDividerStrip'
+export * from "./ArkhamStarter3mmDividerStrip";

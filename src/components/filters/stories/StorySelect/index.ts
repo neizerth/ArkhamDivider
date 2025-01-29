@@ -1,1 +1,1 @@
-export * from './StorySelect'
+export * from "./StorySelect";

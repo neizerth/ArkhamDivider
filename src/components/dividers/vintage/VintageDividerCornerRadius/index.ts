@@ -1,1 +1,1 @@
-export { VintageDividerCornerRadius } from './VintageDividerCornerRadius'
+export { VintageDividerCornerRadius } from "./VintageDividerCornerRadius";
