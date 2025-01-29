@@ -1,6 +1,5 @@
 import S from "./SarnetskyDivider.module.scss";
 
-import { DividerType } from "@/shared/model/types/dividers";
 import {
 	DividerContent,
 	DividerMenu,
@@ -8,23 +7,24 @@ import {
 	Icon,
 	NotExportable,
 } from "@/components";
-import classNames from "classnames";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/lib/store/features/layout/layout";
-import { SarnetskyDividerBackground as DividerBackground } from "../SarnetskyDividerBackground/SarnetskyDividerBackground";
-import { selectLanguage } from "@/shared/lib/store/features/language/language";
-import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from "../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters";
-import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from "../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters";
-import { LayoutOrientation } from "@/shared/model/types/layouts";
-import { SarnetskyDividerXPCost } from "../xp/SarnetskyDividerXPCost/SarnetskyDividerXPCost";
-import { SarnetskyDividerSideXP } from "../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP";
-import { SarnetskyDividerXPText } from "../xp/SarnetskyDividerXPText/SarnetskyDividerXPText";
-import { SarnetskyDividerMainIcon as MainIcon } from "../SarnetskyDividerMainIcon/SarnetskyDividerMainIcon";
 import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
-import { DividerProps } from "../../common/Divider/Divider";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
+import { selectLanguage } from "@/shared/lib/store/features/language/language";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { selectCornerRadius } from "@/shared/lib/store/features/print/print";
+import { DividerType } from "@/shared/model/types/dividers";
+import { LayoutOrientation } from "@/shared/model/types/layouts";
+import classNames from "classnames";
+import type { DividerProps } from "../../common/Divider/Divider";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
+import { SarnetskyDividerBackground as DividerBackground } from "../SarnetskyDividerBackground/SarnetskyDividerBackground";
+import { SarnetskyDividerMainIcon as MainIcon } from "../SarnetskyDividerMainIcon/SarnetskyDividerMainIcon";
+import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from "../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters";
+import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from "../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters";
+import { SarnetskyDividerSideXP } from "../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP";
+import { SarnetskyDividerXPCost } from "../xp/SarnetskyDividerXPCost/SarnetskyDividerXPCost";
+import { SarnetskyDividerXPText } from "../xp/SarnetskyDividerXPText/SarnetskyDividerXPText";
 
 export const ENCOUNTER_ROW_SIZE = 7;
 

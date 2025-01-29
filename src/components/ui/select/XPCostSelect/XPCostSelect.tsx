@@ -1,16 +1,16 @@
-import { IXPCost } from "@/shared/model/types/game";
+import { Col, IconButton, Row, XPSlider } from "@/components";
+import { fixedXPCosts } from "@/shared/data/fixedXPCosts";
+import { getXPDisplayValue } from "@/shared/lib/features/xp";
+import type { IXPCost } from "@/shared/model/types/game";
+import { ButtonType } from "@/shared/model/types/ui";
+import { propEq } from "ramda";
+import { useState } from "react";
 import {
 	ToggleSelect,
 	ToggleSelectItem,
-	ToggleSelectItemProps,
+	type ToggleSelectItemProps,
 } from "../ToggleSelect/ToggleSelect";
 import S from "./XPCostSelect.module.scss";
-import { fixedXPCosts } from "@/shared/data/fixedXPCosts";
-import { Col, IconButton, Row, XPSlider } from "@/components";
-import { ButtonType } from "@/shared/model/types/ui";
-import { useState } from "react";
-import { getXPDisplayValue } from "@/shared/lib/features/xp";
-import { propEq } from "ramda";
 
 export type XPCostSelectProps = {
 	onChange: (data: IXPCost[]) => void;

@@ -1,17 +1,17 @@
-import { LayoutType } from "@/shared/model/types/layouts";
 import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
+import { LayoutType } from "@/shared/model/types/layouts";
+import { type ActionCreator, createSlice } from "@reduxjs/toolkit";
 
 import { layouts } from "@/shared/data/layouts";
-import { ILayout } from "@/shared/model/types/layouts";
-import * as reducers from "./reducers";
-import { safePropEq } from "@/shared/lib/features/util/criteria";
-import { AppSelector, AppThunk } from "@/shared/lib/store";
-import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
+import { getLayouts } from "@/shared/lib/features/layouts/common";
+import { safePropEq } from "@/shared/lib/features/util/criteria";
+import type { AppSelector, AppThunk } from "@/shared/lib/store";
+import type { ILayout } from "@/shared/model/types/layouts";
+import * as reducers from "./reducers";
 
 export const DEFAULT_LAYOUT = layouts.find(
 	safePropEq(true, "isDefault"),

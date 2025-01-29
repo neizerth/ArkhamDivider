@@ -1,9 +1,9 @@
+import { TextFit } from "@/components/ui/behavior/TextFit/TextFit";
 import classNames from "classnames";
+import { DividerText } from "../../common/DividerText/DividerText";
 import S from "./ArkhamStarter3mmDividerStrip.module.scss";
 import stripBorder from "./images/stripBorder.png";
 import stripInner from "./images/stripInner.png";
-import { DividerText } from "../../common/DividerText/DividerText";
-import { TextFit } from "@/components/ui/behavior/TextFit/TextFit";
 
 export type ArkhamStarter3mmDividerStripProps = {
 	color: string;

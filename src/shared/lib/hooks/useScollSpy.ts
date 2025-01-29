@@ -1,5 +1,6 @@
+import type React from "react";
+import { useEffect, useState } from "react";
 import { throttle } from "throttle-debounce";
-import React, { useState, useEffect } from "react";
 
 export interface useScrollSpyParams {
 	activeSectionDefault?: number;

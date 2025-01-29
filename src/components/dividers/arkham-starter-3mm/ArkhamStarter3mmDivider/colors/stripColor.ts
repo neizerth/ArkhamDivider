@@ -1,11 +1,11 @@
+import { rgba256 } from "@/shared/lib/features/util/colors";
 import {
 	isChallenge,
 	isSideContent,
 } from "@/shared/lib/store/features/stories/criteria";
-import { IDivider } from "@/shared/model/types/dividers";
-import { IRGBAColor } from "@/shared/model/types/ui";
-import { Mapping } from "@/shared/model/types/util";
-import { rgba256 } from "@/shared/lib/features/util/colors";
+import type { IDivider } from "@/shared/model/types/dividers";
+import type { IRGBAColor } from "@/shared/model/types/ui";
+import type { Mapping } from "@/shared/model/types/util";
 
 export const customStripColor: Mapping<IRGBAColor> = {
 	zaw: { r: 0.6509804, g: 0.48235294, b: 0.39607844, a: 1 },

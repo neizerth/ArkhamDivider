@@ -1,5 +1,5 @@
-import { ArkhamDivider } from "arkham-divider-data";
-import { Defined, Single } from "./util";
+import type { ArkhamDivider } from "arkham-divider-data";
+import type { Defined, Single } from "./util";
 
 export type IStory = Single<ArkhamDivider.Core["stories"]> & {
 	supported?: boolean;

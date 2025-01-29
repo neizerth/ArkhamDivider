@@ -1,10 +1,10 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-import S from "./Popup.module.scss";
-import classNames from "classnames";
-import { PropsWithChildren, useRef } from "react";
-import useOnClickOutside from "use-onclickoutside";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { clearActivePopupId } from "@/shared/lib/store/features/app/app";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import { type PropsWithChildren, useRef } from "react";
+import useOnClickOutside from "use-onclickoutside";
+import S from "./Popup.module.scss";
 
 export type PopupProps = PropsWithClassName &
 	PropsWithChildren & {

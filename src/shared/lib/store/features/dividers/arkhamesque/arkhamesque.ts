@@ -1,9 +1,9 @@
 import { fetchArkhamesqueData } from "@/shared/api/arkhamesqueClassic";
-import type { AppThunk } from "@/shared/lib/store";
 import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
+import type { AppThunk } from "@/shared/lib/store";
 import {
 	type ActionCreator,
 	createSelector,

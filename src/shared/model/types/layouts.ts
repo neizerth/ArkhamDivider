@@ -1,8 +1,8 @@
-import {
+import type {
 	AddPlayerDividersOptions,
 	AddStoryDividersOptions,
 } from "@/shared/lib/store/features/addDividers/addDividers";
-import { Mapping } from "./util";
+import type { Mapping } from "./util";
 
 export type ILayoutBleed = {
 	width: number;

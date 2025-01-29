@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import S from "./Nav.module.scss";
 import { useState } from "react";
+import S from "./Nav.module.scss";
 
 export type NavProps<T> = {
 	items: NavItem<T>[];

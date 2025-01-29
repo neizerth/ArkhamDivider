@@ -1,17 +1,17 @@
-import { AddPlayerDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
+import { uniqId } from "@/shared/lib/features/util/common";
+import type { AddPlayerDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
 import {
 	DividerSubtype,
 	DividerType,
-	IDivider,
+	type IDivider,
 } from "@/shared/model/types/dividers";
 import {
 	CardType,
-	ICardType,
-	IFaction,
-	IXPCost,
+	type ICardType,
+	type IFaction,
+	type IXPCost,
 	XPCost,
 } from "@/shared/model/types/game";
-import { uniqId } from "@/shared/lib/features/util/common";
 
 export const getPlayerDividers = (options: AddPlayerDividersOptions) => {
 	const { story } = options;
@@ -38,34 +38,30 @@ export const getPlayerCardDividers = (options: AddPlayerDividersOptions) => {
 
 	const types = [...options.types, ...getAllyType(options)];
 
-	return factions
-		.map((faction) => {
-			return xpCosts
-				.map((xpCost) => {
-					return types
-						.filter(
-							({ type }) =>
-								!(type === CardType.ALL && xpCost.level === XPCost.NO_COST),
-						)
-						.map((type): IDivider => {
-							return {
-								id: uniqId(),
-								name: type.type === CardType.ALL ? faction.name : type.name,
-								icon: type.icon || faction.icon,
-								previewIcon: faction.icon,
-								faction: faction.id,
-								cardType: type.type,
-								type: DividerType.PLAYER,
-								displaySideXP,
-								displayNumericXP,
-								xpCost,
-								subtype: type.subtype || DividerSubtype.CARD,
-							};
-						});
-				})
-				.flat();
-		})
-		.flat();
+	return factions.flatMap((faction) => {
+		return xpCosts.flatMap((xpCost) => {
+			return types
+				.filter(
+					({ type }) =>
+						!(type === CardType.ALL && xpCost.level === XPCost.NO_COST),
+				)
+				.map((type): IDivider => {
+					return {
+						id: uniqId(),
+						name: type.type === CardType.ALL ? faction.name : type.name,
+						icon: type.icon || faction.icon,
+						previewIcon: faction.icon,
+						faction: faction.id,
+						cardType: type.type,
+						type: DividerType.PLAYER,
+						displaySideXP,
+						displayNumericXP,
+						xpCost,
+						subtype: type.subtype || DividerSubtype.CARD,
+					};
+				});
+		});
+	});
 };
 
 export const getAllyType = ({
@@ -100,22 +96,20 @@ export const getUpgradingDividers = ({
 	if (!includeUpgrading) {
 		return [];
 	}
-	return xpCosts
-		.map((xpCost) =>
-			factions.map(
-				(faction): IDivider => ({
-					id: uniqId(),
-					name: "Upgrading",
-					icon: faction.icon,
-					specialIcon: "upgrade",
-					xpCost,
-					faction: faction.id,
-					type: DividerType.PLAYER,
-					subtype: DividerSubtype.UPGRADE,
-				}),
-			),
-		)
-		.flat();
+	return xpCosts.flatMap((xpCost) =>
+		factions.map(
+			(faction): IDivider => ({
+				id: uniqId(),
+				name: "Upgrading",
+				icon: faction.icon,
+				specialIcon: "upgrade",
+				xpCost,
+				faction: faction.id,
+				type: DividerType.PLAYER,
+				subtype: DividerSubtype.UPGRADE,
+			}),
+		),
+	);
 };
 
 export const getCustomizationsDividers = ({
@@ -130,23 +124,21 @@ export const getCustomizationsDividers = ({
 	if (!includeCustomizations) {
 		return [];
 	}
-	return xpCosts
-		.map((xpCost) =>
-			factions.map(
-				(faction): IDivider => ({
-					id: uniqId(),
-					name: "Customizations",
-					tags: ["customizations"],
-					icon: faction.icon,
-					specialIcon: "list",
-					xpCost,
-					faction: faction.id,
-					type: DividerType.PLAYER,
-					subtype: DividerSubtype.CUSTOMIZATIONS,
-				}),
-			),
-		)
-		.flat();
+	return xpCosts.flatMap((xpCost) =>
+		factions.map(
+			(faction): IDivider => ({
+				id: uniqId(),
+				name: "Customizations",
+				tags: ["customizations"],
+				icon: faction.icon,
+				specialIcon: "list",
+				xpCost,
+				faction: faction.id,
+				type: DividerType.PLAYER,
+				subtype: DividerSubtype.CUSTOMIZATIONS,
+			}),
+		),
+	);
 };
 
 export const getBondedDividers = ({
@@ -161,22 +153,20 @@ export const getBondedDividers = ({
 	if (!includeBonded) {
 		return [];
 	}
-	return xpCosts
-		.map((xpCost) =>
-			factions.map(
-				(faction): IDivider => ({
-					id: uniqId(),
-					name: "Bonded",
-					specialIcon: "link",
-					icon: faction.icon,
-					xpCost,
-					faction: faction.id,
-					type: DividerType.PLAYER,
-					subtype: DividerSubtype.BONDED,
-				}),
-			),
-		)
-		.flat();
+	return xpCosts.flatMap((xpCost) =>
+		factions.map(
+			(faction): IDivider => ({
+				id: uniqId(),
+				name: "Bonded",
+				specialIcon: "link",
+				icon: faction.icon,
+				xpCost,
+				faction: faction.id,
+				type: DividerType.PLAYER,
+				subtype: DividerSubtype.BONDED,
+			}),
+		),
+	);
 };
 
 export const getFactionIdDividers = ({
@@ -192,19 +182,17 @@ export const getFactionIdDividers = ({
 		return [];
 	}
 	return [
-		...xpCosts
-			.map((xpCost) =>
-				factions.map((faction) => ({
-					id: uniqId(),
-					name: faction.name,
-					icon: faction.icon,
-					faction: faction.id,
-					xpCost,
-					type: DividerType.PLAYER,
-					subtype: DividerSubtype.FACTION,
-				})),
-			)
-			.flat(),
+		...xpCosts.flatMap((xpCost) =>
+			factions.map((faction) => ({
+				id: uniqId(),
+				name: faction.name,
+				icon: faction.icon,
+				faction: faction.id,
+				xpCost,
+				type: DividerType.PLAYER,
+				subtype: DividerSubtype.FACTION,
+			})),
+		),
 	];
 };
 

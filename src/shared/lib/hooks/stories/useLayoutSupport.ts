@@ -1,18 +1,18 @@
-import {
-	selectCategoryId,
-	selectLayout,
-	selectType,
-} from "@/shared/lib/store/features/layout/layout";
-import { useAppSelector } from "../useAppSelector";
-import { selectArkhamesqueData } from "@/shared/lib/store/features/dividers/arkhamesque/arkhamesque";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
+import { selectArkhamesqueData } from "@/shared/lib/store/features/dividers/arkhamesque/arkhamesque";
 import {
 	hasArkhamesqueInvestigatorSupport,
 	hasArkhamesqueStorySupport,
 } from "@/shared/lib/store/features/dividers/arkhamesque/criteria";
 import { selectStory } from "@/shared/lib/store/features/dividers/dividers";
+import {
+	selectCategoryId,
+	selectLayout,
+	selectType,
+} from "@/shared/lib/store/features/layout/layout";
 import { LayoutType } from "@/shared/model/types/layouts";
 import { prop } from "ramda";
+import { useAppSelector } from "../useAppSelector";
 
 export const useLayoutSupport = () => {
 	const type = useAppSelector(selectType);

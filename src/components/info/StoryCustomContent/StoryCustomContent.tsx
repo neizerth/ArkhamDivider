@@ -1,13 +1,13 @@
-import { ICustomContent } from "@/shared/model/types/api";
-import S from "./StoryCustomContent.module.scss";
-import { useTranslation } from "react-i18next";
-import { PropsWithClassName } from "@/shared/model/types/util";
-import classNames from "classnames";
 import { Col, LanguageFlag } from "@/components";
-import { prop } from "ramda";
-import { selectLanguage } from "@/shared/lib/store/features/language/language";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { Panel } from "@/components/ui/Panel/Panel";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectLanguage } from "@/shared/lib/store/features/language/language";
+import type { ICustomContent } from "@/shared/model/types/api";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import { prop } from "ramda";
+import { useTranslation } from "react-i18next";
+import S from "./StoryCustomContent.module.scss";
 
 export type StoryCustomContentProps = PropsWithClassName & {
 	content: ICustomContent;
@@ -50,6 +50,7 @@ export const StoryCustomContent = ({
 										href={item.link}
 										title={item.name}
 										target="_blank"
+										rel="noreferrer"
 									>
 										<LanguageFlag className={S.flag} language={language} />
 										{item.name && `(${item.name})`}
@@ -68,7 +69,7 @@ export const StoryCustomContent = ({
 															href={user.link}
 															title={user.kind || user.name}
 															target="_blank"
-															rel="nofollow"
+															rel="noreferrer nofollow"
 														>
 															{user.name}
 														</a>

@@ -1,8 +1,8 @@
 import { Panel } from "@/components/ui/Panel/Panel";
+import { REQUESTED_UI_LANGUAGES } from "@/shared/data/ui";
 // import S from './UITranslationRequest.module.scss';
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectLanguage } from "@/shared/lib/store/features/language/language";
-import { REQUESTED_UI_LANGUAGES } from "@/shared/data/ui";
 
 export type UITranslationRequestProps = {};
 

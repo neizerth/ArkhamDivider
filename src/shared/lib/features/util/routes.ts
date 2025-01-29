@@ -19,7 +19,7 @@ export const createRoute = (options: RouteOptions) => {
 		return createCategoryRoute(options);
 	}
 
-	return "/" + language;
+	return `/${language}`;
 };
 
 export const createLayoutRoute = (options: RouteOptions) => {
@@ -30,17 +30,17 @@ export const createLayoutRoute = (options: RouteOptions) => {
 		layoutId,
 	} = options;
 
-	const path = "/" + language + "/layout/" + layoutId + "/" + type;
+	const path = `/${language}/layout/${layoutId}/${type}`;
 
 	if (!storyId) {
 		return path;
 	}
 
-	return path + "/" + storyId;
+	return `${path}/${storyId}`;
 };
 
 export const createCategoryRoute = (options: RouteOptions) => {
 	const { language = DEFAULT_LANGUAGE, categoryId } = options;
 
-	return "/" + language + "/category/" + categoryId;
+	return `/${language}/category/${categoryId}`;
 };

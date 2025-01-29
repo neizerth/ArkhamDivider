@@ -1,10 +1,10 @@
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { DownloadButton } from "../DownloadButton/DownloadButton";
-import { selectLayout } from "@/shared/lib/store/features/layout/layout";
+import { Badge } from "@/components/ui/Badge/Badge";
 import { getSimilarBleed } from "@/shared/lib/features/render/getSimilarBleed";
 import { createZipRenderer } from "@/shared/lib/features/zip/createZipRenderer";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { useTranslation } from "react-i18next";
-import { Badge } from "@/components/ui/Badge/Badge";
+import { DownloadButton } from "../DownloadButton/DownloadButton";
 // import S from './DownloadPNGButton.module.scss';
 
 export type DownloadPNGButtonProps = {};

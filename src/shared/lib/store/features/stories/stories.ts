@@ -2,8 +2,8 @@ import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
+import type { IStory } from "@/shared/model/types/api";
 import { createSlice } from "@reduxjs/toolkit";
-import { IStory } from "@/shared/model/types/api";
 
 export type IStoriesState = {
 	list: IStory[];

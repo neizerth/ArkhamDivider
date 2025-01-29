@@ -1,9 +1,10 @@
-import React, { PropsWithChildren, useState } from "react";
-import S from "./ToggleSelect.module.scss";
-import { append, without } from "ramda";
 import { inArray } from "@/shared/lib/features/util/criteria";
-import { PropsWithClassName } from "@/shared/model/types/util";
+import type { PropsWithClassName } from "@/shared/model/types/util";
 import classNames from "classnames";
+import { append, without } from "ramda";
+import type React from "react";
+import { type PropsWithChildren, useState } from "react";
+import S from "./ToggleSelect.module.scss";
 
 export type ToggleSelectItemProps<T> = PropsWithClassName &
 	PropsWithChildren & {

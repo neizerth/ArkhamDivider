@@ -1,7 +1,7 @@
-import { ColorScheme, ImageFormat } from "@/shared/model/types/image";
-import { ILayoutBleed } from "@/shared/model/types/layouts";
-import { RenderResponse } from "@/shared/model/types/render";
 import { toPrintSize } from "@/shared/lib/features/util/units";
+import type { ColorScheme, ImageFormat } from "@/shared/model/types/image";
+import type { ILayoutBleed } from "@/shared/model/types/layouts";
+import type { RenderResponse } from "@/shared/model/types/render";
 import domToImage from "dom-to-image";
 import { getVips } from "../image/vips";
 
@@ -54,7 +54,7 @@ export const getDividerImage = async ({
 		image = image.iccTransform(colorScheme);
 	}
 
-	const ext = "." + imageFormat;
+	const ext = `.${imageFormat}`;
 
 	const contents = image.writeToBuffer(ext);
 

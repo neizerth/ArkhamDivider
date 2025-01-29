@@ -1,7 +1,7 @@
 import { BASE_PATH } from "@/shared/config/app";
 import {
-	ILayout,
-	ILayoutCategory,
+	type ILayout,
+	type ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
 } from "@/shared/model/types/layouts";
@@ -63,7 +63,7 @@ export const arkhamesqueCategory: ILayoutCategory = {
 	url: "https://boardgamegeek.com/filepage/197199/arkhamesque-classic-horizontal-dividers",
 	author: {
 		name: "smallville247",
-		image: BASE_PATH + "images/authors/troy.png",
+		image: `${BASE_PATH}images/authors/troy.png`,
 		donationUrl: "http://www.patreon.com/smallville247",
 		contacts: [
 			{

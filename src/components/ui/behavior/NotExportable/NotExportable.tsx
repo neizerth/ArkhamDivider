@@ -2,7 +2,7 @@
 
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectExport } from "@/shared/lib/store/features/app/app";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 export const NotExportable = ({ children }: PropsWithChildren) => {
 	const isExport = useAppSelector(selectExport);

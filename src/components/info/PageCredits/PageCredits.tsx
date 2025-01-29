@@ -1,14 +1,14 @@
-import S from "./PageCredits.module.scss";
 import { Icon, Row } from "@/components";
-import { PropsWithClassName } from "@/shared/model/types/util";
-import classNames from "classnames";
-import { QRCodeSVG } from "qrcode.react";
+import { BOOSTY_LINK } from "@/shared/config/app";
+import { getCategoryById } from "@/shared/lib/features/layouts/common";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectLanguage } from "@/shared/lib/store/features/language/language";
-import { getCategoryById } from "@/shared/lib/features/layouts/common";
 import { selectCategoryId } from "@/shared/lib/store/features/layout/layout";
-import { BOOSTY_LINK } from "@/shared/config/app";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import { QRCodeSVG } from "qrcode.react";
 import { useTranslation } from "react-i18next";
+import S from "./PageCredits.module.scss";
 
 export const CREDITS_HEIGHT = 20;
 
@@ -30,14 +30,19 @@ export const PageCreditsGlobal = ({
 				<Icon icon="free" className={classNames(S.icon, S.freeIcon)} />:
 			</span>
 			Spend as many resources as you want&nbsp;to&nbsp;
-			<a href={link} target="_blank">
+			<a href={link} target="_blank" rel="noreferrer">
 				{link}
 			</a>
 			<br />
 			Remember that{" "}
 			<i>
 				{authorLink ? (
-					<a href={authorLink} target="_blank" className={S.author}>
+					<a
+						href={authorLink}
+						target="_blank"
+						className={S.author}
+						rel="noreferrer"
+					>
 						{name}
 					</a>
 				) : (
@@ -61,7 +66,7 @@ export const PageCreditsRU = ({
 				<Icon icon="free" className={classNames(S.icon, S.freeIcon)} />:
 			</span>
 			Вы можете потратить любое число ресурсов на{" "}
-			<a href={link} target="_blank">
+			<a href={link} target="_blank" rel="noreferrer">
 				{link}
 			</a>
 			<br />
@@ -87,7 +92,7 @@ export const PageCredits = ({ className }: PageCreditsProps) => {
 	return (
 		<div className={classNames(S.container, className)}>
 			<div className={S.author}>
-				{author && author.donationUrl && (
+				{author?.donationUrl && (
 					<Component
 						link={author.donationUrl}
 						authorLink={author.url}
@@ -98,7 +103,12 @@ export const PageCredits = ({ className }: PageCreditsProps) => {
 			<div className={S.support}>
 				<div className={S.supportContent}>
 					<span>{t("Support project on Boosty")}</span>
-					<a href={BOOSTY_LINK} target="_blank" className={S.supportLink}>
+					<a
+						href={BOOSTY_LINK}
+						target="_blank"
+						className={S.supportLink}
+						rel="noreferrer"
+					>
 						{BOOSTY_LINK}
 					</a>
 				</div>

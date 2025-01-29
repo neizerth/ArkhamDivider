@@ -1,7 +1,7 @@
-import { prop } from "ramda";
-import { IGetIconGroupsOptions } from "./getIconGroups";
 import { safePropEq } from "@/shared/lib/features/util/criteria";
-import { IIconMainGroup } from "@/shared/model/types/icons";
+import type { IIconMainGroup } from "@/shared/model/types/icons";
+import { prop } from "ramda";
+import type { IGetIconGroupsOptions } from "./getIconGroups";
 
 export const getGameIconGroups = ({
 	icons,

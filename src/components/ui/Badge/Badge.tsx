@@ -1,6 +1,6 @@
 import classNames from "classnames";
+import type { PropsWithChildren } from "react";
 import S from "./Badge.module.scss";
-import { PropsWithChildren } from "react";
 
 export type BadgeProps = PropsWithChildren & {
 	size?: "small" | "medium" | "large";

@@ -1,9 +1,9 @@
-import { ILayoutBleed } from "@/shared/model/types/layouts";
-import { getWebToPrintScale } from "@/shared/lib/features/util/units";
-import { getDividerImage } from "./getDividerImage";
-import { ColorScheme, ImageFormat } from "@/shared/model/types/image";
-import { RenderResponse } from "@/shared/model/types/render";
 import { EventEmitter } from "@/shared/lib/features/events/EventEmitter";
+import { getWebToPrintScale } from "@/shared/lib/features/util/units";
+import type { ColorScheme, ImageFormat } from "@/shared/model/types/image";
+import type { ILayoutBleed } from "@/shared/model/types/layouts";
+import type { RenderResponse } from "@/shared/model/types/render";
+import { getDividerImage } from "./getDividerImage";
 
 export type DividerNodeRendererOptions = {
 	bleed: ILayoutBleed;
@@ -67,7 +67,7 @@ export class DividerNodeRenderer extends EventEmitter {
 		const { scale } = this;
 		const key = this.current;
 		const node = this.nodes[key];
-		const name = key > 9 ? key.toString() : "0" + key;
+		const name = key > 9 ? key.toString() : `0${key}`;
 		const { bleed, imageFormat, colorScheme } = this.options;
 
 		const options = {

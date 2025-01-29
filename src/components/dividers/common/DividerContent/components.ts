@@ -1,4 +1,4 @@
-import { ILayout } from "@/shared/model/types/layouts";
+import type { ILayout } from "@/shared/model/types/layouts";
 import styled, { css } from "styled-components";
 
 type ComponentProps = {

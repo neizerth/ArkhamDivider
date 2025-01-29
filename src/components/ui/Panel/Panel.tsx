@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
-import S from "./Panel.module.scss";
 import classNames from "classnames";
+import type { PropsWithChildren } from "react";
+import S from "./Panel.module.scss";
 
 export type PanelProps = PropsWithChildren & {
 	type?: "info" | "warning" | "normal" | "error";

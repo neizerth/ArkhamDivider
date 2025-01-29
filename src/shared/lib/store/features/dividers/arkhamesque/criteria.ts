@@ -1,5 +1,5 @@
-import { IStory } from "@/shared/model/types/api";
-import { IArkhamesqueBuild } from "arkhamesque-classic-divider-data";
+import type { IStory } from "@/shared/model/types/api";
+import type { IArkhamesqueBuild } from "arkhamesque-classic-divider-data";
 import { propEq } from "ramda";
 
 export const getArkhamesqueClassicStory = ({

@@ -1,9 +1,9 @@
 import {
+	type TabPosition,
 	getTabPosition,
-	TabPosition,
 } from "@/components/dividers/vintage/VintageDivider/features/tabPosition";
-import { IDivider } from "@/shared/model/types/dividers";
 import { toPrintSize } from "@/shared/lib/features/util/units";
+import type { IDivider } from "@/shared/model/types/dividers";
 import { Path } from "@react-pdf/renderer";
 import { propEq } from "ramda";
 import { BLEED_GAP } from "../../../constants";

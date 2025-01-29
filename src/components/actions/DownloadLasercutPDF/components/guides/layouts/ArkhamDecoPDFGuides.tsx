@@ -1,10 +1,13 @@
 import { ArkhamDecoDividerType } from "@/shared/data/layouts/arkham-deco";
-import { ILayout } from "@/shared/model/types/layouts";
-import { IBox } from "@/shared/model/types/units";
 import { toPrintSize } from "@/shared/lib/features/util/units";
+import type { ILayout } from "@/shared/model/types/layouts";
+import type { IBox } from "@/shared/model/types/units";
 import { Path } from "@react-pdf/renderer";
-import { PDFDividerGuides, PDFDividerGuidesProps } from "../PDFDividerGuides";
 import { BLEED_GAP } from "../../../constants";
+import {
+	PDFDividerGuides,
+	type PDFDividerGuidesProps,
+} from "../PDFDividerGuides";
 
 export type ArkhamDecoPDFGuidesProps = PDFDividerGuidesProps & {
 	layout: ILayout;

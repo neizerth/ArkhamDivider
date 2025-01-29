@@ -1,10 +1,10 @@
-import { IXPCost } from "@/shared/model/types/game";
-import S from "./ArkhamDecoSideXP.module.scss";
-import { range } from "ramda";
 import { MAX_XP } from "@/shared/config/xp";
+import type { IXPCost } from "@/shared/model/types/game";
+import classNames from "classnames";
+import { range } from "ramda";
+import S from "./ArkhamDecoSideXP.module.scss";
 import FullBar from "./images/xp-full.svg?react";
 import SmallBar from "./images/xp-small.svg?react";
-import classNames from "classnames";
 
 export type ArkhamDecoSideXPProps = {
 	xpCost: IXPCost;

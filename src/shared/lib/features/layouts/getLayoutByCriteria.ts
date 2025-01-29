@@ -1,9 +1,9 @@
-import {
+import { getLayouts } from "@/shared/lib/features/layouts/common";
+import type {
 	ILayout,
 	ILayoutCriteria,
 	LayoutType,
 } from "@/shared/model/types/layouts";
-import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { omit } from "ramda";
 
 export const getLayoutByCriteria = ({

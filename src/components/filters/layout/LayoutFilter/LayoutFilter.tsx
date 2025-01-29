@@ -1,16 +1,16 @@
 import S from "./LayoutFilter.module.scss";
 
+import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectCategoryId,
 	selectLayout,
 	selectType,
 } from "@/shared/lib/store/features/layout/layout";
-import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { isNotNil, prop, uniq } from "ramda";
+import { LayoutCategorySelect } from "../LayoutCategorySelect/LayoutCategorySelect";
 import { LayoutColorToggle } from "../LayoutColorToggle/LayoutColorToggle";
 import { LayoutOrientationToggle } from "../LayoutOrientationToggle/LayoutOrientationToggle";
-import { LayoutCategorySelect } from "../LayoutCategorySelect/LayoutCategorySelect";
 import { LayoutSelect } from "../LayoutSelect/LayoutSelect";
 
 export const LayoutFilter = () => {

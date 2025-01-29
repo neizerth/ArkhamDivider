@@ -1,7 +1,7 @@
-import { IScenario } from "@/shared/model/types/api";
+import type { IScenario } from "@/shared/model/types/api";
+import { SarnetskyDividerScenarioEncounters } from "../SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters";
 import S from "./SarnetskyDividerLinkedScenarioEncounters.module.scss";
 import { getScenarioGroups } from "./getScenarioGroups";
-import { SarnetskyDividerScenarioEncounters } from "../SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters";
 
 export type SarnetskyDividerLinkedScenarioEncountersProps = {
 	mainScenario: IScenario;

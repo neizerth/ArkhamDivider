@@ -1,14 +1,14 @@
 import { Guides } from "@/components/print/Guides/Guides";
-import S from "./DividerContent.module.scss";
-import { PropsWithClassName } from "@/shared/model/types/util";
-import { PropsWithChildren } from "react";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { selectBleed } from "@/shared/lib/store/features/print/print";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import type { PropsWithChildren } from "react";
+import S from "./DividerContent.module.scss";
 
-import { Wrapper, GuidesContent, Content } from "./components";
-import classNames from "classnames";
 import { NotExportable } from "@/components/ui/behavior/NotExportable/NotExportable";
+import classNames from "classnames";
+import { Content, GuidesContent, Wrapper } from "./components";
 
 export type DividerContentProps = PropsWithClassName & PropsWithChildren & {};
 

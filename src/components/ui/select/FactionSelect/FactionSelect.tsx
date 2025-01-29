@@ -1,12 +1,12 @@
 import { Icon, ToggleSelect } from "@/components";
-import S from "./FactionSelect.module.scss";
 import factions from "@/shared/data/factions.json";
+import type { IFaction } from "@/shared/model/types/game";
 import classNames from "classnames";
 import {
 	ToggleSelectItem,
-	ToggleSelectItemProps,
+	type ToggleSelectItemProps,
 } from "../ToggleSelect/ToggleSelect";
-import { IFaction } from "@/shared/model/types/game";
+import S from "./FactionSelect.module.scss";
 
 export const FactionSelectItem = (props: ToggleSelectItemProps<IFaction>) => {
 	const { value, className, isSelected } = props;

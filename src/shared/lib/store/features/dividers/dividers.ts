@@ -1,16 +1,16 @@
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
+import { type ActionCreator, createSlice } from "@reduxjs/toolkit";
 
-import {
-	createSliceSetter,
-	createSliceSelector,
-} from "@/shared/lib/features/util/slice";
-import { IDividerList } from "@/shared/model/types/dividers";
-import { AppSelector, AppThunk } from "@/shared/lib/store";
-import { propEq } from "ramda";
 import { uniqId } from "@/shared/lib/features/util/common";
+import {
+	createSliceSelector,
+	createSliceSetter,
+} from "@/shared/lib/features/util/slice";
+import type { AppSelector, AppThunk } from "@/shared/lib/store";
+import type { IStory } from "@/shared/model/types/api";
+import type { IDividerList } from "@/shared/model/types/dividers";
+import { propEq } from "ramda";
 import { setType } from "../layout/layout";
 import * as reducers from "./reducers";
-import { IStory } from "@/shared/model/types/api";
 
 export type IDividersState = {
 	list: IDividerList;

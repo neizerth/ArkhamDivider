@@ -1,4 +1,4 @@
-import { IEncounterSet, IScenario } from "@/shared/model/types/api";
+import type { IEncounterSet, IScenario } from "@/shared/model/types/api";
 import { groupBy, isNotNil, prop, propEq, uniq, values } from "ramda";
 
 type IGetEcnounterGroups = {
@@ -28,8 +28,7 @@ export const getEncounterGroups = (options: IGetEcnounterGroups) => {
 		const side = uniq(
 			groups
 				.filter(propEq(false, "is_default"))
-				.map(prop("encounter_sets"))
-				.flat()
+				.flatMap(prop("encounter_sets"))
 				.filter((icon) => !main.includes(icon)),
 		);
 

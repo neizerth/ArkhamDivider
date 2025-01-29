@@ -1,12 +1,12 @@
-import { IBox } from "@/shared/model/types/units";
-import { PDFGuideArea } from "./PDFPageGuides";
-import { toPrintSize } from "@/shared/lib/features/util/units";
 import { DEFAULT_CORNER_RADIUS } from "@/shared/config/print";
-import { IDivider } from "@/shared/model/types/dividers";
-import { ILayout } from "@/shared/model/types/layouts";
-import { PDFDividerGuides } from "./PDFDividerGuides";
-import { COMPONENT_MAP } from "./special";
+import { toPrintSize } from "@/shared/lib/features/util/units";
+import type { IDivider } from "@/shared/model/types/dividers";
+import type { ILayout } from "@/shared/model/types/layouts";
+import type { IBox } from "@/shared/model/types/units";
 import { BLEED_GAP } from "../../constants";
+import { PDFDividerGuides } from "./PDFDividerGuides";
+import type { PDFGuideArea } from "./PDFPageGuides";
+import { COMPONENT_MAP } from "./special";
 
 export const PDFGuideBox = (props: {
 	rowIndex: number;

@@ -1,21 +1,19 @@
 import { Icon } from "@/components";
-import S from "./LayoutZoom.module.scss";
-import Select from "react-select";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectZoom, setZoom } from "@/shared/lib/store/features/layout/layout";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
-import classNames from "classnames";
-import { toArrayIf } from "@/shared/lib/features/util/common";
 import { IS_DEVELOPMENT } from "@/shared/config/app";
-import { useMemo } from "react";
+import { toArrayIf } from "@/shared/lib/features/util/common";
 import { getWebToPrintScale } from "@/shared/lib/features/util/units";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectExport } from "@/shared/lib/store/features/app/app";
-
-export type LayoutZoomProps = {};
+import { selectZoom, setZoom } from "@/shared/lib/store/features/layout/layout";
+import classNames from "classnames";
+import { useMemo } from "react";
+import Select from "react-select";
+import S from "./LayoutZoom.module.scss";
 
 const ZOOM_LEVELS = [100, 125, 150, 200, 250, 300, 350, 400];
 
-export const LayoutZoom = ({}: LayoutZoomProps) => {
+export const LayoutZoom = () => {
 	const dispatch = useAppDispatch();
 	const zoom = useAppSelector(selectZoom);
 	const isExport = useAppSelector(selectExport);

@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import S from "./FontIcon.module.scss";
-import { propEq } from "ramda";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectIcons } from "@/shared/lib/store/features/icons/icons";
+import classNames from "classnames";
+import { propEq } from "ramda";
+import type { IconProps } from "../Icon/Icon";
+import S from "./FontIcon.module.scss";
 import { getIconScale } from "./getIconScale";
-import { IconProps } from "../Icon/Icon";
 
 export type FontIconProps = IconProps;
 

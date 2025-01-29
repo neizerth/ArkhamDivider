@@ -1,6 +1,6 @@
 import classNames from "classnames";
+import type { ComponentProps } from "react";
 import S from "./Checkbox.module.scss";
-import { ComponentProps } from "react";
 
 export type CheckboxProps = ComponentProps<"input"> & {
 	labelClassName?: string;

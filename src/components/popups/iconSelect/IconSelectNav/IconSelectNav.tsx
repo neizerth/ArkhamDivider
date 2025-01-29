@@ -1,7 +1,7 @@
-import { IIconMainGroup } from "@/shared/model/types/icons";
-import S from "./IconSelectNav.module.scss";
+import type { IIconMainGroup } from "@/shared/model/types/icons";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
+import S from "./IconSelectNav.module.scss";
 
 export type IconSelectNavProps = {
 	icon?: string;
@@ -44,7 +44,7 @@ export const IconSelectNav = ({
 					className={classNames(
 						S.item,
 						activeSection === index && S.active,
-						selectedNavIndex == index && S.selected,
+						selectedNavIndex === index && S.selected,
 					)}
 					onClick={() => scrollToSection(index)}
 				>

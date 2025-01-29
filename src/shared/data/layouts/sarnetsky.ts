@@ -1,7 +1,7 @@
 import { BASE_PATH } from "@/shared/config/app";
 import {
-	ILayout,
-	ILayoutCategory,
+	type ILayout,
+	type ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
 } from "@/shared/model/types/layouts";
@@ -65,7 +65,7 @@ export const sarnetskyLayoutCategory: ILayoutCategory = {
 	// unlisted: true,
 	author: {
 		name: "Eugene Sarnetsky",
-		image: BASE_PATH + "images/authors/esarnetsky.jpg",
+		image: `${BASE_PATH}images/authors/esarnetsky.jpg`,
 		donationUrl: "https://www.tinkoff.ru/cf/8OT6GkH6KwE",
 		url: "https://t.me/sarnetsky",
 		contacts: [

@@ -1,8 +1,8 @@
-import { AppThunk } from "@/shared/lib/store";
-import { ActionCreator } from "@reduxjs/toolkit";
 import { addResourceBundle, getStoryNS } from "@/shared/lib/features/util/i18n";
-import { Mapping } from "@/shared/model/types/util";
-import { I18NLanguageBundle } from "@/shared/model/types/i18n";
+import type { AppThunk } from "@/shared/lib/store";
+import type { I18NLanguageBundle } from "@/shared/model/types/i18n";
+import type { Mapping } from "@/shared/model/types/util";
+import type { ActionCreator } from "@reduxjs/toolkit";
 
 export const setTranslations =
 	(ns?: string): ActionCreator<AppThunk> =>

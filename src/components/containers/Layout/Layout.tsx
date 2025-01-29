@@ -1,17 +1,17 @@
-import { Page, Row, ZoomView, DividerMemo } from "@/components";
+import { DividerMemo, Page, Row, ZoomView } from "@/components";
 
-import S from "./Layout.module.scss";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectDividers } from "@/shared/lib/store/features/dividers/dividers";
+import S from "./Layout.module.scss";
 
-import classNames from "classnames";
+import { splitIntoPages } from "@/shared/lib/features/print";
+import { selectZoom } from "@/shared/lib/store/features/layout/layout";
 import {
 	selectDoubleSided,
 	selectItemsPerPage,
 	selectRowsPerPage,
 } from "@/shared/lib/store/features/print/print";
-import { splitIntoPages } from "@/shared/lib/features/print";
-import { selectZoom } from "@/shared/lib/store/features/layout/layout";
+import classNames from "classnames";
 import { prop } from "ramda";
 
 export const Layout = () => {

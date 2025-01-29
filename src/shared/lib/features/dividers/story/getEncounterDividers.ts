@@ -1,9 +1,9 @@
+import { uniqId } from "@/shared/lib/features/util/common";
+import { DividerType } from "@/shared/model/types/dividers";
 import { isNotNil, prop, propEq } from "ramda";
 import { getEncounterSize } from "./getEncounterSize";
-import { uniqId } from "@/shared/lib/features/util/common";
-import { IGetStoryDividersOptions } from "./getStoryDividers";
-import { DividerType } from "@/shared/model/types/dividers";
 import { getStoryScenarios } from "./getScenarioDividers";
+import type { IGetStoryDividersOptions } from "./getStoryDividers";
 
 type IGetEncounterDividersParams = IGetStoryDividersOptions;
 

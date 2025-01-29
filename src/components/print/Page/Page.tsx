@@ -1,12 +1,3 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-import S from "./Page.module.scss";
-import { PropsWithChildren } from "react";
-import classNames from "classnames";
-import {
-	PageOrientation,
-	PageSide,
-	PageSize,
-} from "@/shared/model/types/print";
 import {
 	CREDITS_HEIGHT,
 	PageCredits,
@@ -18,6 +9,15 @@ import {
 	selectPageOrientation,
 	selectPageSizeType,
 } from "@/shared/lib/store/features/print/print";
+import {
+	PageOrientation,
+	PageSide,
+	PageSize,
+} from "@/shared/model/types/print";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import type { PropsWithChildren } from "react";
+import S from "./Page.module.scss";
 import { Container } from "./components";
 
 export type PageProps = PropsWithClassName &

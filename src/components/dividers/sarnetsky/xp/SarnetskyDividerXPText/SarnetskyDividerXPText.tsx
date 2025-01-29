@@ -1,9 +1,9 @@
-import { IXPCost } from "@/shared/model/types/game";
-import S from "./SarnetskyDividerXPText.module.scss";
 import { DividerText } from "@/components/dividers/common/DividerText/DividerText";
-import { upperFirst } from "@/shared/lib/features/util/common";
-import { useTranslation } from "react-i18next";
 import { Icon } from "@/components/ui/icons/Icon/Icon";
+import { upperFirst } from "@/shared/lib/features/util/common";
+import type { IXPCost } from "@/shared/model/types/game";
+import { useTranslation } from "react-i18next";
+import S from "./SarnetskyDividerXPText.module.scss";
 
 export type SarnetskyDividerXPTextProps = {
 	xpCost: IXPCost;

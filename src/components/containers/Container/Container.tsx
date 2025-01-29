@@ -1,7 +1,7 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-import S from "./Container.module.scss";
-import { PropsWithChildren } from "react";
+import type { PropsWithClassName } from "@/shared/model/types/util";
 import classNames from "classnames";
+import type { PropsWithChildren } from "react";
+import S from "./Container.module.scss";
 
 export type ContainerProps = PropsWithClassName & PropsWithChildren;
 

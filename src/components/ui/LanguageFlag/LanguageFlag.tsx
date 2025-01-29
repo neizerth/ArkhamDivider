@@ -1,11 +1,11 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-import languageMapping from "./languageMapping.json";
-import S from "./LanguageFlag.module.scss";
-import { propEq } from "ramda";
-import classNames from "classnames";
 import { CHINA_LANGUAGES } from "@/shared/config/i18n";
 import countries from "@/shared/data/countries.json";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import { propEq } from "ramda";
 import { Flag } from "../Flag/Flag";
+import S from "./LanguageFlag.module.scss";
+import languageMapping from "./languageMapping.json";
 
 export type LanguageFlagProps = PropsWithClassName & {
 	imageClassName?: string;

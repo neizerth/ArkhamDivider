@@ -1,14 +1,14 @@
-import { useParams } from "react-router-dom";
-import { useAppDispatch } from "../useAppDispatch";
-import { useAppSelector } from "../useAppSelector";
+import { selectLoading } from "@/shared/lib/store/features/app/app";
 import {
 	selectStory,
 	setStory,
 } from "@/shared/lib/store/features/dividers/dividers";
-import { useEffect } from "react";
-import { selectLoading } from "@/shared/lib/store/features/app/app";
 import { selectStories } from "@/shared/lib/store/features/stories/stories";
 import { propEq } from "ramda";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../useAppDispatch";
+import { useAppSelector } from "../useAppSelector";
 
 export const useStoryNavigation = () => {
 	const { storyId } = useParams();

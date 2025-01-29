@@ -1,4 +1,4 @@
-import { IPage, PageSide } from "@/shared/model/types/print";
+import { type IPage, PageSide } from "@/shared/model/types/print";
 import { splitIntoGroups, uniqId } from "./util/common";
 
 export type SplitIntoPagesOptions = {

@@ -1,22 +1,22 @@
 // import S from './DownloadLasercutPDF.module.scss';
 
-import { DownloadButton } from "../DownloadButton/DownloadButton";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/lib/store/features/layout/layout";
+import { Badge } from "@/components";
+import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
 import { getSimilarBleed } from "@/shared/lib/features/render/getSimilarBleed";
-import { useEffect, useMemo, useState } from "react";
-import { pdf } from "@react-pdf/renderer";
-import { PDFLayout } from "./components/PDFLayout";
-import { PDFDownloader } from "./features/PDFDownloader";
-import { saveAs } from "file-saver";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectDividers } from "@/shared/lib/store/features/dividers/dividers";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import {
 	selectCornerRadius,
 	selectDoubleSided,
 	selectPageSizeType,
 } from "@/shared/lib/store/features/print/print";
-import { selectDividers } from "@/shared/lib/store/features/dividers/dividers";
-import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
-import { Badge } from "@/components";
+import { pdf } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
+import { useEffect, useMemo, useState } from "react";
+import { DownloadButton } from "../DownloadButton/DownloadButton";
+import { PDFLayout } from "./components/PDFLayout";
+import { PDFDownloader } from "./features/PDFDownloader";
 
 export type DownloadLasercutPDFProps = {};
 

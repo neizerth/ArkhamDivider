@@ -1,5 +1,5 @@
 import { API_URL } from "@/shared/config/app";
-import { ArkhamDivider } from "arkham-divider-data";
+import type { ArkhamDivider } from "arkham-divider-data";
 
 export const fetchData = <T>(path: string) =>
 	<T>fetch(API_URL + path).then((r) => r.json());

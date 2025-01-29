@@ -1,5 +1,5 @@
-import { IScenario } from "@/shared/model/types/api";
 import { getScenarioEncounters } from "@/shared/lib/features/scenario";
+import type { IScenario } from "@/shared/model/types/api";
 import { groupWith } from "ramda";
 
 export const getScenarioGroups = (scenarios: IScenario[]) => {

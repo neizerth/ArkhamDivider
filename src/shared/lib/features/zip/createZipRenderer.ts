@@ -1,9 +1,9 @@
-import JSZip from "jszip";
+import type { ColorScheme, ImageFormat } from "@/shared/model/types/image";
+import type { ILayoutBleed } from "@/shared/model/types/layouts";
+import type { OnRenderEventData } from "@/shared/model/types/render";
 import { saveAs } from "file-saver";
+import JSZip from "jszip";
 import { DividerNodeRenderer } from "../render/DividerNodeRenderer";
-import { ILayoutBleed } from "@/shared/model/types/layouts";
-import { ColorScheme, ImageFormat } from "@/shared/model/types/image";
-import { OnRenderEventData } from "@/shared/model/types/render";
 
 export type RenderOptions = {
 	name: string;

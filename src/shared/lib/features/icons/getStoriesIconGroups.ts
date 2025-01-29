@@ -1,12 +1,12 @@
-import { IStory } from "@/shared/model/types/api";
-import { IGetIconGroupsOptions } from "./getIconGroups";
-import { isNotNil, prop, propEq, uniq } from "ramda";
 import {
-	isMainCampaign,
 	isChallenge,
+	isMainCampaign,
 	isSideCampaign,
 	isSideContent,
 } from "@/shared/lib/store/features/stories/criteria";
+import type { IStory } from "@/shared/model/types/api";
+import { isNotNil, prop, propEq, uniq } from "ramda";
+import type { IGetIconGroupsOptions } from "./getIconGroups";
 
 export const getStoriesIconGroups = ({
 	stories,

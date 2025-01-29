@@ -1,4 +1,4 @@
-import { IDividersState } from "./dividers";
+import type { IDividersState } from "./dividers";
 
 export const removeAllDividers = (state: IDividersState) => {
 	state.loadQueue = [];

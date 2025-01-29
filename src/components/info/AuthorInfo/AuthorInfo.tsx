@@ -1,7 +1,7 @@
-import { ILayoutAuthor } from "@/shared/model/types/layouts";
-import S from "./AuthorInfo.module.scss";
 import { Icon } from "@/components";
+import type { ILayoutAuthor } from "@/shared/model/types/layouts";
 import { useTranslation } from "react-i18next";
+import S from "./AuthorInfo.module.scss";
 
 export type AuthorInfoProps = {
 	author: ILayoutAuthor;
@@ -27,6 +27,7 @@ export const AuthorInfo = ({ author }: AuthorInfoProps) => {
 										className={S.contact}
 										title={contact.title}
 										key={contact.id}
+										rel="noreferrer"
 									>
 										<Icon icon={contact.icon} />
 									</a>
@@ -39,7 +40,12 @@ export const AuthorInfo = ({ author }: AuthorInfoProps) => {
 
 			{author.donationUrl && (
 				<div className={S.donate}>
-					<a className={S.button} href={author.donationUrl} target="_blank">
+					<a
+						className={S.button}
+						href={author.donationUrl}
+						target="_blank"
+						rel="noreferrer"
+					>
 						{t("Support the author")}
 					</a>
 				</div>

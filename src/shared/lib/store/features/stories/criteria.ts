@@ -1,5 +1,5 @@
-import { IStory } from "@/shared/model/types/api";
 import { safePropEq } from "@/shared/lib/features/util/criteria";
+import type { IStory } from "@/shared/model/types/api";
 import { anyPass, propEq } from "ramda";
 
 export const withoutReturns = (story: IStory) => !story.return_to_code;

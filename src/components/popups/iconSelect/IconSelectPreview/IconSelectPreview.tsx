@@ -1,7 +1,7 @@
-import { Upload, Icon, Button } from "@/components";
-import S from "./IconSelectPreview.module.scss";
-import { useTranslation } from "react-i18next";
+import { Button, Icon, Upload } from "@/components";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import S from "./IconSelectPreview.module.scss";
 
 export type IconSelectPreviewProps = {
 	defaultIcon?: string;
@@ -15,7 +15,7 @@ export const IconSelectPreview = ({
 	const [icon, setIcon] = useState(defaultIcon);
 
 	useEffect(() => {
-		const isURL = icon && icon.startsWith("blob:");
+		const isURL = icon?.startsWith("blob:");
 		if (icon !== defaultIcon && isURL) {
 			URL.revokeObjectURL(icon);
 		}

@@ -1,5 +1,5 @@
-import { IIcon } from "@/shared/model/types/api";
-import { IIconContainer } from "./size";
+import type { IIcon } from "@/shared/model/types/api";
+import type { IIconContainer } from "./size";
 
 export const getIconPosition = ({
 	container,

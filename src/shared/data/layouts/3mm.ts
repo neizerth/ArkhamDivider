@@ -1,7 +1,7 @@
 import { BASE_PATH } from "@/shared/config/app";
 import {
-	ILayout,
-	ILayoutCategory,
+	type ILayout,
+	type ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
 } from "@/shared/model/types/layouts";
@@ -36,7 +36,7 @@ export const arkhamStarter3mmLayoutCategory: ILayoutCategory = {
 	info: "The smallest required headroom in the world",
 	author: {
 		name: "5argon",
-		image: BASE_PATH + "images/authors/5argon.png",
+		image: `${BASE_PATH}images/authors/5argon.png`,
 		url: "https://5argon.info/",
 		contacts: [
 			{

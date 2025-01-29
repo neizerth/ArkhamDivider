@@ -1,7 +1,7 @@
-import { ElementType, PropsWithChildren } from "react";
-import S from "./Row.module.scss";
-import { PropsWithClassName } from "@/shared/model/types/util";
+import type { PropsWithClassName } from "@/shared/model/types/util";
 import classNames from "classnames";
+import type { ElementType, PropsWithChildren } from "react";
+import S from "./Row.module.scss";
 
 export type RowProps = PropsWithClassName &
 	PropsWithChildren & {

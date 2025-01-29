@@ -1,8 +1,8 @@
-import { PropsWithChildren } from "react";
-import S from "./StorySelectValue.module.scss";
-import classNames from "classnames";
-import { IStory } from "@/shared/model/types/api";
 import { Icon } from "@/components";
+import type { IStory } from "@/shared/model/types/api";
+import classNames from "classnames";
+import type { PropsWithChildren } from "react";
+import S from "./StorySelectValue.module.scss";
 
 export type StorySelectValueProps = PropsWithChildren & {
 	story: IStory;

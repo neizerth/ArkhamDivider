@@ -1,14 +1,14 @@
-import { selectStories } from "@/shared/lib/store/features/stories/stories";
-import { useAppSelector } from "../useAppSelector";
 import {
-	selectArkhamesqueClassicInvestigators as selectArkhqmesqueInvestigators,
 	selectArkhamesqueData,
+	selectArkhamesqueClassicInvestigators as selectArkhqmesqueInvestigators,
 } from "@/shared/lib/store/features/dividers/arkhamesque/arkhamesque";
-import { selectIsArkhamesqueLayout } from "@/shared/lib/store/features/layout/layout";
 import { hasArkhamesqueInvestigatorSupport } from "@/shared/lib/store/features/dividers/arkhamesque/criteria";
-import { IStory } from "@/shared/model/types/api";
 import { selectLanguage } from "@/shared/lib/store/features/language/language";
+import { selectIsArkhamesqueLayout } from "@/shared/lib/store/features/layout/layout";
+import { selectStories } from "@/shared/lib/store/features/stories/stories";
+import type { IStory } from "@/shared/model/types/api";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "../useAppSelector";
 
 export const useInvestigatorStories = () => {
 	const stories = useAppSelector(selectStories);

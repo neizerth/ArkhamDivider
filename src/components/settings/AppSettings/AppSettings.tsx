@@ -1,22 +1,22 @@
-import { useTranslation } from "react-i18next";
-import S from "./AppSettings.module.scss";
 import {
-	LayoutFilter,
-	LanguageSelect,
-	PrintSettings,
-	Row,
 	Button,
 	Icon,
+	LanguageSelect,
+	LayoutFilter,
+	PrintSettings,
+	Row,
 } from "@/components";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectDividers,
 	selectLoadQueue,
 } from "@/shared/lib/store/features/dividers/dividers";
-import { AdditionalSettings } from "../AdditionalSettings/AdditionalSettings";
-import classNames from "classnames";
 import { selectLayout } from "@/shared/lib/store/features/layout/layout";
+import classNames from "classnames";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { AdditionalSettings } from "../AdditionalSettings/AdditionalSettings";
+import S from "./AppSettings.module.scss";
 
 export const AppSettings = () => {
 	const { t } = useTranslation();
@@ -60,23 +60,21 @@ export const AppSettings = () => {
 								<PrintSettings />
 							</div>
 							{dividers.length > 0 && (
-								<>
-									<Button
-										onClick={print}
-										className={S.printButton}
-										disabled={!canPrint}
-									>
-										{!canPrint && (
-											<>
-												<Icon icon="hour-glass" />
-												...
-											</>
-										)}
-										<Icon icon="printer" />
-										{t("Print")} /
-										<Icon icon="download" /> PDF
-									</Button>
-								</>
+								<Button
+									onClick={print}
+									className={S.printButton}
+									disabled={!canPrint}
+								>
+									{!canPrint && (
+										<>
+											<Icon icon="hour-glass" />
+											...
+										</>
+									)}
+									<Icon icon="printer" />
+									{t("Print")} /
+									<Icon icon="download" /> PDF
+								</Button>
 							)}
 						</Row>
 					</Row>

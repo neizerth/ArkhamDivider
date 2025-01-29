@@ -1,15 +1,15 @@
-import { useTranslation } from "react-i18next";
-import S from "./LayoutMenu.module.scss";
 import { Container } from "@/components";
-import { PropsWithChildren } from "react";
-import { LayoutType } from "@/shared/model/types/layouts";
+import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectLayout,
 	selectType,
 } from "@/shared/lib/store/features/layout/layout";
+import type { LayoutType } from "@/shared/model/types/layouts";
 import classNames from "classnames";
-import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
+import type { PropsWithChildren } from "react";
+import { useTranslation } from "react-i18next";
+import S from "./LayoutMenu.module.scss";
 import { menu } from "./menu";
 
 export type LayoutMenuItemProps = PropsWithChildren & {

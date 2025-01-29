@@ -1,12 +1,12 @@
+import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
 import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
+import type { AppThunk } from "@/shared/lib/store";
+import { type PageOrientation, PageSizeType } from "@/shared/model/types/print";
+import { type ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { DEFAULT_LAYOUT, selectLayout, setLayout } from "../layout/layout";
-import { PageOrientation, PageSizeType } from "@/shared/model/types/print";
-import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
-import { AppThunk } from "@/shared/lib/store";
 
 export type IPrintState = {
 	doubleSided: boolean;

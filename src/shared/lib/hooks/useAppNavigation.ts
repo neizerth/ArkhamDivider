@@ -1,8 +1,8 @@
+import { useCategoryNavigation } from "./navigation/useCategoryNavigation";
 import { useLanguageNavigation } from "./navigation/useLanguageNavigation";
 import { useLayoutNavigation } from "./navigation/useLayoutNavigation";
-import { useTypeNavigation } from "./navigation/useTypeNavigation";
-import { useCategoryNavigation } from "./navigation/useCategoryNavigation";
 import { useStoryNavigation } from "./navigation/useStoryNavigation";
+import { useTypeNavigation } from "./navigation/useTypeNavigation";
 
 export const useAppNavigation = () => {
 	useLanguageNavigation();

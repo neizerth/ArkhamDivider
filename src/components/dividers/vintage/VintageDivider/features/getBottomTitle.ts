@@ -1,11 +1,11 @@
-import { UseStoryTranslateFunction } from "@/shared/lib/hooks/useStoryTranslation";
+import factions from "@/shared/data/factions.json";
+import type { UseStoryTranslateFunction } from "@/shared/lib/hooks/useStoryTranslation";
 import {
 	DividerSubtype,
 	DividerType,
-	IDivider,
+	type IDivider,
 } from "@/shared/model/types/dividers";
 import { CardType } from "@/shared/model/types/game";
-import factions from "@/shared/data/factions.json";
 import { propEq } from "ramda";
 
 export const getBottomTitle = (options: {

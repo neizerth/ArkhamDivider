@@ -1,12 +1,12 @@
-import frameVertical from "./encounter__frame_vertical.png";
 import frameHorizontal from "./encounter__frame_horizontal.png";
+import frameVertical from "./encounter__frame_vertical.png";
 
-import ColorVertical from "./encounter__color_vertical.svg?react";
 import ColorHorizontal from "./encounter__color_horizontal.svg?react";
+import ColorVertical from "./encounter__color_vertical.svg?react";
 
-import vertical from "./encounter_vertical.jpg";
-import horizontal from "./encounter_horizontal.jpg";
 import { LayoutOrientation } from "@/shared/model/types/layouts";
+import horizontal from "./encounter_horizontal.jpg";
+import vertical from "./encounter_vertical.jpg";
 
 export const encounterImages = [
 	{

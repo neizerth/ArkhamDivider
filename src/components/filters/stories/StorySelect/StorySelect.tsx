@@ -1,25 +1,25 @@
-import S from "./StorySelect.module.scss";
 import Select from "react-select";
+import S from "./StorySelect.module.scss";
 
-import { IStory } from "@/shared/model/types/api";
-import {
-	isChallenge,
-	isSideContent,
-	isCampaign,
-} from "@/shared/lib/store/features/stories/criteria";
-import { StorySelectOption } from "../StorySelectOption/StorySelectOption";
-import { StorySelectSingleValue } from "../StorySelectSingleValue/StorySelectSingleValue";
-import { ascend, descend, prop, sortWith } from "ramda";
-import { PropsWithClassName } from "@/shared/model/types/util";
-import classNames from "classnames";
+import { IconButton } from "@/components/ui/IconButton/IconButton";
+import { Row } from "@/components/ui/grid/Row/Row";
+import { toArrayIf } from "@/shared/lib/features/util/common";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectStory } from "@/shared/lib/store/features/dividers/dividers";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
-import { Row } from "@/components/ui/grid/Row/Row";
-import { IconButton } from "@/components/ui/IconButton/IconButton";
+import { selectStory } from "@/shared/lib/store/features/dividers/dividers";
+import {
+	isCampaign,
+	isChallenge,
+	isSideContent,
+} from "@/shared/lib/store/features/stories/criteria";
+import type { IStory } from "@/shared/model/types/api";
 import { ButtonType } from "@/shared/model/types/ui";
-import { toArrayIf } from "@/shared/lib/features/util/common";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import { ascend, descend, prop, sortWith } from "ramda";
+import { StorySelectOption } from "../StorySelectOption/StorySelectOption";
+import { StorySelectSingleValue } from "../StorySelectSingleValue/StorySelectSingleValue";
 
 export type StorySelectProps = PropsWithClassName & {
 	stories: IStory[];
@@ -37,7 +37,7 @@ export const StorySelect = ({
 
 	const data = sortWith(
 		[
-			ascend(({ position }) => position || Infinity),
+			ascend(({ position }) => position || Number.POSITIVE_INFINITY),
 			descend(({ is_official }) => Boolean(is_official)),
 			ascend(prop("name")),
 		],

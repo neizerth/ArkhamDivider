@@ -7,24 +7,24 @@ import {
 	Row,
 	StorySelect,
 } from "@/components";
-import S from "./AddPlayerDividers.module.scss";
 import { XPCostSelect } from "@/components";
-import classNames from "classnames";
-import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { ICardType, IXPCost, IFaction } from "@/shared/model/types/game";
-import { ButtonType } from "@/shared/model/types/ui";
 import { createToggleHanlder } from "@/shared/lib/features/util/forms";
-import { addPlayerDividers } from "@/shared/lib/store/features/addDividers/addDividers";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { addPlayerDividers } from "@/shared/lib/store/features/addDividers/addDividers";
 import {
 	removeAllDividers,
 	selectStory,
 } from "@/shared/lib/store/features/dividers/dividers";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectLayout } from "@/shared/lib/store/features/layout/layout";
-import { isNil } from "ramda";
 import { selectStories } from "@/shared/lib/store/features/stories/stories";
+import type { ICardType, IFaction, IXPCost } from "@/shared/model/types/game";
+import { ButtonType } from "@/shared/model/types/ui";
+import classNames from "classnames";
+import { isNil } from "ramda";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import S from "./AddPlayerDividers.module.scss";
 
 export type AddPlayerDividersProps = {};
 

@@ -1,4 +1,4 @@
-import { DividerSubtype } from "./dividers";
+import type { DividerSubtype } from "./dividers";
 
 export type IFaction = {
 	id: string;

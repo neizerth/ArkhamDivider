@@ -1,8 +1,8 @@
-import { PropsWithChildren } from "react";
+import { Container } from "@/components";
 // import S from './WithLayoutSupport.module.scss';
 import { useLayoutSupport } from "@/shared/lib/hooks/stories/useLayoutSupport";
+import type { PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
-import { Container } from "@/components";
 
 export type WithLayoutSupportProps = PropsWithChildren & {
 	fallback?: boolean;

@@ -1,18 +1,18 @@
-import { PropsWithChildren } from "react";
-import S from "./AppLoader.module.scss";
 import classNames from "classnames";
+import type { PropsWithChildren } from "react";
+import S from "./AppLoader.module.scss";
 
 import { BASE_PATH } from "@/shared/config/app";
 
+import { Progress } from "@/components";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectExport,
 	selectLoading,
 	selectLoadingStatus,
 } from "@/shared/lib/store/features/app/app";
-import { Progress } from "@/components";
 
-const loader = BASE_PATH + "images/loader.gif";
+const loader = `${BASE_PATH}images/loader.gif`;
 
 export type AppLoaderProps = PropsWithChildren & {};
 

@@ -1,25 +1,25 @@
-import { Popup, PopupProps } from "@/components/ui/Popup/Popup";
-import S from "./IconSelectPopup.module.scss";
+import { Button, Col, Icon, Row } from "@/components";
+import { Popup, type PopupProps } from "@/components/ui/Popup/Popup";
+import { getIconGroups } from "@/shared/lib/features/icons/getIconGroups";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { useScrollSpy } from "@/shared/lib/hooks/useScollSpy";
+import { clearActivePopupId } from "@/shared/lib/store/features/app/app";
+import { selectEncounterSets } from "@/shared/lib/store/features/encounterSets/encounterSets";
 import {
 	selectIcons,
 	selectPopupIcon,
 	setPopupIcon,
 } from "@/shared/lib/store/features/icons/icons";
 import { selectStories } from "@/shared/lib/store/features/stories/stories";
-import { selectEncounterSets } from "@/shared/lib/store/features/encounterSets/encounterSets";
-import { getIconGroups } from "@/shared/lib/features/icons/getIconGroups";
-import { useTranslation } from "react-i18next";
-import { Button, Col, Icon, Row } from "@/components";
-import { createRef, useMemo, useRef, useState } from "react";
 import { ButtonType } from "@/shared/model/types/ui";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
-import { clearActivePopupId } from "@/shared/lib/store/features/app/app";
-import { IconSelectView } from "../IconSelectView/IconSelectView";
+import classNames from "classnames";
+import { createRef, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IconSelectNav } from "../IconSelectNav/IconSelectNav";
 import { IconSelectPreview } from "../IconSelectPreview/IconSelectPreview";
-import classNames from "classnames";
-import { useScrollSpy } from "@/shared/lib/hooks/useScollSpy";
+import { IconSelectView } from "../IconSelectView/IconSelectView";
+import S from "./IconSelectPopup.module.scss";
 
 export type IconSelectPopupProps = PopupProps & {};
 

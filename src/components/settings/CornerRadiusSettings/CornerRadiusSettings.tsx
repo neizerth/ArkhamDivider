@@ -1,13 +1,13 @@
-import S from "./CornerRadiusSettings.module.scss";
-import icon from "./images/icon.svg";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { Checkbox } from "@/components/forms/Checkbox/Checkbox";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectExport } from "@/shared/lib/store/features/app/app";
 import {
 	selectCornerRadius,
 	setCornerRadius,
 } from "@/shared/lib/store/features/print/print";
-import { selectExport } from "@/shared/lib/store/features/app/app";
+import S from "./CornerRadiusSettings.module.scss";
+import icon from "./images/icon.svg";
 
 export type CornerRadiusSettingsProps = {};
 

@@ -1,8 +1,8 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-import S from "./ClassicDividerStatus.module.scss";
 import { Icon } from "@/components/ui/icons/Icon/Icon";
-import classNames from "classnames";
 import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import S from "./ClassicDividerStatus.module.scss";
 
 export type ClassicDividerStatusProps = PropsWithClassName & {
 	campaignIcon?: string;

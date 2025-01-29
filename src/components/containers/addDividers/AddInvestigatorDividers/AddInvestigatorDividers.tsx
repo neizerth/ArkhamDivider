@@ -1,5 +1,3 @@
-import { Row } from "@/components/ui/grid/Row/Row";
-import S from "./AddInvestigatorDividers.module.scss";
 import {
 	Col,
 	Container,
@@ -7,17 +5,19 @@ import {
 	StoryCustomContent,
 	StorySelect,
 } from "@/components";
+import { Row } from "@/components/ui/grid/Row/Row";
+import { useInvestigatorStories } from "@/shared/lib/hooks/stories/useInvestigatorStories";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { ButtonType } from "@/shared/model/types/ui";
+import { addInvestigatorDividers } from "@/shared/lib/store/features/addDividers/addDividers";
 import {
 	removeAllDividers,
 	selectStory,
 } from "@/shared/lib/store/features/dividers/dividers";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
-import { useTranslation } from "react-i18next";
-import { addInvestigatorDividers } from "@/shared/lib/store/features/addDividers/addDividers";
-import { useInvestigatorStories } from "@/shared/lib/hooks/stories/useInvestigatorStories";
 import { selectStoryInvestigators } from "@/shared/lib/store/features/dividers/selectors/selectStoryInvestigators";
+import { ButtonType } from "@/shared/model/types/ui";
+import { useTranslation } from "react-i18next";
+import S from "./AddInvestigatorDividers.module.scss";
 
 export type AddInvestigatorDividersProps = {};
 

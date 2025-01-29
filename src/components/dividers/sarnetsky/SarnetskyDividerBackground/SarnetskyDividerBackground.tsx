@@ -1,14 +1,14 @@
-import { DividerType } from "@/shared/model/types/dividers";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectLayout } from "@/shared/lib/store/features/layout/layout";
-import { propEq } from "ramda";
-import { playerImages } from "./images/player";
-import S from "./SarnetskyDividerBackground.module.scss";
-import { ComponentProps, FC } from "react";
-import { scenarioImages } from "./images/scenario";
-import { encounterImages } from "./images/encounter";
-import { DEFAULT_COLOR, storyColors } from "./storyColors";
+import { DividerType } from "@/shared/model/types/dividers";
 import classNames from "classnames";
+import { propEq } from "ramda";
+import type { ComponentProps, FC } from "react";
+import S from "./SarnetskyDividerBackground.module.scss";
+import { encounterImages } from "./images/encounter";
+import { playerImages } from "./images/player";
+import { scenarioImages } from "./images/scenario";
+import { DEFAULT_COLOR, storyColors } from "./storyColors";
 
 export const SarnetskyPlayerBackground = ({
 	id,

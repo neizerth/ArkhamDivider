@@ -1,7 +1,7 @@
 import {
 	DividerSubtype,
 	DividerType,
-	IDivider,
+	type IDivider,
 } from "@/shared/model/types/dividers";
 import { CardType } from "@/shared/model/types/game";
 

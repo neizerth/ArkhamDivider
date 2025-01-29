@@ -1,6 +1,6 @@
+import { ButtonType } from "@/shared/model/types/ui";
 import classNames from "classnames";
 import S from "./Button.module.scss";
-import { ButtonType } from "@/shared/model/types/ui";
 
 export type ButtonProps = React.ComponentProps<"button"> & {
 	buttonType?: ButtonType;

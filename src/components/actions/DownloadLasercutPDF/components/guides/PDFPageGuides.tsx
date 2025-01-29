@@ -1,8 +1,8 @@
-import { IBox } from "@/shared/model/types/units";
-import { Svg, View, ViewProps } from "@react-pdf/renderer";
+import type { IDivider } from "@/shared/model/types/dividers";
+import type { ILayout } from "@/shared/model/types/layouts";
+import type { IBox } from "@/shared/model/types/units";
+import { Svg, View, type ViewProps } from "@react-pdf/renderer";
 import { PDFGuideRow as Row } from "./PDFGuideRow";
-import { IDivider } from "@/shared/model/types/dividers";
-import { ILayout } from "@/shared/model/types/layouts";
 
 export type PDFGuideArea = {
 	width: number;

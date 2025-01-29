@@ -1,8 +1,8 @@
-import { IBox } from "@/shared/model/types/units";
-import { PDFGuideArea } from "./PDFPageGuides";
+import type { IDivider } from "@/shared/model/types/dividers";
+import type { ILayout } from "@/shared/model/types/layouts";
+import type { IBox } from "@/shared/model/types/units";
 import { PDFGuideBox as GuideBox } from "./PDFGuideBox";
-import { IDivider } from "@/shared/model/types/dividers";
-import { ILayout } from "@/shared/model/types/layouts";
+import type { PDFGuideArea } from "./PDFPageGuides";
 
 export const PDFGuideRow = ({
 	items,

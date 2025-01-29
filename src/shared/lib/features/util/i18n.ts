@@ -1,6 +1,6 @@
 import { I18N_NAMESPACE } from "@/shared/config/i18n";
-import { I18NLanguageBundle } from "@/shared/model/types/i18n";
 import i18n from "@/shared/config/i18n";
+import type { I18NLanguageBundle } from "@/shared/model/types/i18n";
 
 export const hasResourceBundle = (
 	language: string,

@@ -1,9 +1,9 @@
 import { Icon } from "@/components";
-import S from "./DividerText.module.scss";
-import { ReactEventHandler, useEffect, useState } from "react";
-import { PropsWithClassName } from "@/shared/model/types/util";
+import type { PropsWithClassName } from "@/shared/model/types/util";
 import classNames from "classnames";
+import { type ReactEventHandler, useEffect, useState } from "react";
 import useFitText from "use-fit-text";
+import S from "./DividerText.module.scss";
 
 export type DividerTextProps = PropsWithClassName & {
 	inputClassName?: string;

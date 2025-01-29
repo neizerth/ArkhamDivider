@@ -1,11 +1,11 @@
-import { IEncounterSet, IStory } from "@/shared/model/types/api";
-import { IDivider } from "@/shared/model/types/dividers";
 import { arrayIf } from "@/shared/lib/features/util/common";
+import type { AddStoryDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
+import type { IEncounterSet, IStory } from "@/shared/model/types/api";
+import type { IDivider } from "@/shared/model/types/dividers";
 import { ascend, prop, sortWith } from "ramda";
-import { getScenarioDividers } from "./getScenarioDividers";
-import { getEncounterDividers } from "./getEncounterDividers";
-import { AddStoryDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
 import { getCampaignDividers } from "./getCampaignDividers";
+import { getEncounterDividers } from "./getEncounterDividers";
+import { getScenarioDividers } from "./getScenarioDividers";
 
 export type IGetStoryDividersOptions = AddStoryDividersOptions & {
 	encounterSets: IEncounterSet[];
@@ -21,15 +21,13 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
 		...options,
 	});
 
-	const returnSetDividers: IDivider[] = returnStories
-		.map((story) =>
-			getStoryDividers({
-				...options,
-				story,
-				returnStories: [],
-			}),
-		)
-		.flat();
+	const returnSetDividers: IDivider[] = returnStories.flatMap((story) =>
+		getStoryDividers({
+			...options,
+			story,
+			returnStories: [],
+		}),
+	);
 
 	const campaignDividers: IDivider[] = getCampaignDividers(options);
 

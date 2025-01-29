@@ -1,11 +1,16 @@
 import { fetchCoreData, fetchLanguageData } from "@/shared/api/arkhamDivider";
-import { AppThunk } from "@/shared/lib/store";
+import { DEFAULT_LANGUAGE } from "@/shared/config/i18n";
+import * as translations from "@/shared/config/translations";
 import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
-import { setStories } from "../stories/stories";
+import type { AppThunk } from "@/shared/lib/store";
+import type { PopupType } from "@/shared/model/types/ui";
+import { type ActionCreator, createSlice } from "@reduxjs/toolkit";
+import type { Mapping } from "classnames";
+import { setEncounterSets } from "../encounterSets/encounterSets";
+import { setCoreTranslations, setCustomTranslations } from "../i18n/i18n";
 import { setIcons } from "../icons/icons";
 import {
 	addTranslatedStories,
@@ -13,12 +18,7 @@ import {
 	setAvailableLanguages,
 	setLoadedTranslations,
 } from "../language/language";
-import { setEncounterSets } from "../encounterSets/encounterSets";
-import { DEFAULT_LANGUAGE } from "@/shared/config/i18n";
-import { setCoreTranslations, setCustomTranslations } from "../i18n/i18n";
-import * as translations from "@/shared/config/translations";
-import { Mapping } from "classnames";
-import { PopupType } from "@/shared/model/types/ui";
+import { setStories } from "../stories/stories";
 
 export type IAppState = {
 	export: boolean;

@@ -6,8 +6,8 @@ import {
 	T_LINK,
 } from "@/shared/config/app";
 import {
-	ILayout,
-	ILayoutCategory,
+	type ILayout,
+	type ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
 } from "@/shared/model/types/layouts";
@@ -194,7 +194,7 @@ export const arkhamDecoCategory: ILayoutCategory = {
 	info: "Compact Dividers",
 	author: {
 		name: "Vladimir Yazykov",
-		image: BASE_PATH + "images/neizerth.jpg",
+		image: `${BASE_PATH}images/neizerth.jpg`,
 		url: "https://github.com/neizerth",
 		donationUrl: PATREON_LINK,
 		contacts: [

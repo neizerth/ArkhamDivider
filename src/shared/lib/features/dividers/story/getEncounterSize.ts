@@ -1,5 +1,5 @@
-import { IEncounterSet } from "@/shared/model/types/api";
 import { SCENARIO_TYPES } from "@/shared/lib/store/features/encounterSets/constants";
+import type { IEncounterSet } from "@/shared/model/types/api";
 
 export const getEncounterSize = ({
 	encounter,

@@ -1,4 +1,4 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
+import type { PropsWithClassName } from "@/shared/model/types/util";
 // import S from './Flag.module.scss';
 
 export type FlagProps = PropsWithClassName & {

@@ -1,18 +1,18 @@
-import S from "./Invocation2018Divider.module.scss";
-import { backgrounds } from "./backgrounds";
-import { omit } from "ramda";
 import { ClassicDivider, Icon } from "@/components";
 import { propsEquals } from "@/shared/lib/features/util/criteria";
-import { Invocation2018DividerXPCost } from "../Invocation2018DividerXPCost/Invocation2018DividerXPCost";
-import { ClassicDividerSideXP } from "../../classic/xp/ClassicDividerSideXP/ClassicDividerSideXP";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
+import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
+import { selectLanguage } from "@/shared/lib/store/features/language/language";
 import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import classNames from "classnames";
+import { omit } from "ramda";
+import { ClassicDividerSideXP } from "../../classic/xp/ClassicDividerSideXP/ClassicDividerSideXP";
+import type { DividerProps } from "../../common/Divider/Divider";
+import { Invocation2018DividerXPCost } from "../Invocation2018DividerXPCost/Invocation2018DividerXPCost";
+import S from "./Invocation2018Divider.module.scss";
+import { backgrounds } from "./backgrounds";
 import iconBg from "./images/icon-bg.png";
-import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
-import { DividerProps } from "../../common/Divider/Divider";
-import { selectLanguage } from "@/shared/lib/store/features/language/language";
-import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
 
 export type Invocation2018DividerProps = DividerProps;
 

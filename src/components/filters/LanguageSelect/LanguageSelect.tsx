@@ -1,16 +1,16 @@
+import { LanguageFlag } from "@/components/ui/LanguageFlag/LanguageFlag";
+import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import S from "./LanguageSelect.module.scss";
 import {
 	selectAvailableLanguages,
 	selectLanguage,
 } from "@/shared/lib/store/features/language/language";
 import Select, {
-	OptionProps,
-	SingleValueProps,
+	type OptionProps,
+	type SingleValueProps,
 	components,
 } from "react-select";
-import { LanguageFlag } from "@/components/ui/LanguageFlag/LanguageFlag";
-import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
+import S from "./LanguageSelect.module.scss";
 
 export const LanguageSelectSingleValue = (
 	props: SingleValueProps<{

@@ -1,12 +1,12 @@
-import { ICardType } from "@/shared/model/types/game";
+// import S from './PlayerCardTypeSelect.module.scss';
+import { playerCardTypes } from "@/shared/data/playerCardTypes";
+import type { ICardType } from "@/shared/model/types/game";
+import { useTranslation } from "react-i18next";
 import {
 	ToggleSelect,
 	ToggleSelectItem,
-	ToggleSelectItemProps,
+	type ToggleSelectItemProps,
 } from "../ToggleSelect/ToggleSelect";
-// import S from './PlayerCardTypeSelect.module.scss';
-import { playerCardTypes } from "@/shared/data/playerCardTypes";
-import { useTranslation } from "react-i18next";
 
 export const PlayerCardTypeSelectItem = (
 	props: ToggleSelectItemProps<ICardType>,

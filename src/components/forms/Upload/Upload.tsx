@@ -1,7 +1,7 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-import S from "./Upload.module.scss";
+import type { PropsWithClassName } from "@/shared/model/types/util";
 import classNames from "classnames";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
+import S from "./Upload.module.scss";
 
 export type UploadProps = PropsWithClassName &
 	PropsWithChildren & {

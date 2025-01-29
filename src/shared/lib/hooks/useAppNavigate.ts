@@ -1,14 +1,17 @@
+import {
+	type RouteOptions,
+	createRoute,
+} from "@/shared/lib/features/util/routes";
+import { selectStory } from "@/shared/lib/store/features/dividers/dividers";
 import { selectLanguage } from "@/shared/lib/store/features/language/language";
-import { useAppSelector } from "./useAppSelector";
 import {
 	selectCategoryId,
 	selectLayout,
 	selectType,
 } from "@/shared/lib/store/features/layout/layout";
+import type { ILayout } from "@/shared/model/types/layouts";
 import { useNavigate, useParams } from "react-router-dom";
-import { createRoute, RouteOptions } from "@/shared/lib/features/util/routes";
-import { selectStory } from "@/shared/lib/store/features/dividers/dividers";
-import { ILayout } from "@/shared/model/types/layouts";
+import { useAppSelector } from "./useAppSelector";
 
 type AppRouteOptions = RouteOptions & {
 	layout?: ILayout;

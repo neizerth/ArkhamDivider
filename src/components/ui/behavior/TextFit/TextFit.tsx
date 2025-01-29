@@ -1,7 +1,7 @@
-import { ComponentProps } from "react";
-import S from "./TextFit.module.scss";
-import useFitText, { TOptions } from "use-fit-text";
 import classNames from "classnames";
+import type { ComponentProps } from "react";
+import useFitText, { type TOptions } from "use-fit-text";
+import S from "./TextFit.module.scss";
 
 export type TextFitProps = ComponentProps<"div"> &
 	TOptions & {

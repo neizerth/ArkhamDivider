@@ -1,5 +1,8 @@
-import { IEqualLayoutBleed, ILayoutBleed } from "@/shared/model/types/layouts";
 import { MIN_BLEED_SIZE } from "@/shared/lib/features/util/units";
+import type {
+	IEqualLayoutBleed,
+	ILayoutBleed,
+} from "@/shared/model/types/layouts";
 
 export const getSimilarBleed = ({
 	top,

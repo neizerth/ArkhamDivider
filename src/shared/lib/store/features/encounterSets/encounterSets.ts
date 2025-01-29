@@ -1,8 +1,8 @@
-import { IEncounterSet } from "@/shared/model/types/api";
 import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
+import type { IEncounterSet } from "@/shared/model/types/api";
 import { createSlice } from "@reduxjs/toolkit";
 
 export type IEncounterSetsState = {

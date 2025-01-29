@@ -1,7 +1,7 @@
 import { BASE_PATH } from "@/shared/config/app";
 import {
-	ILayout,
-	ILayoutCategory,
+	type ILayout,
+	type ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
 } from "@/shared/model/types/layouts";
@@ -108,7 +108,7 @@ export const classicLayoutCategory: ILayoutCategory = {
 	info: "Classic Return To... Dividers",
 	author: {
 		name: "Fantasy Flight Games",
-		image: BASE_PATH + "images/ffg.png",
+		image: `${BASE_PATH}images/ffg.png`,
 		url: "https://www.fantasyflightgames.com/",
 		contacts: [
 			{

@@ -4,36 +4,36 @@ import S from "./ArkhamDecoDivider.module.scss";
 import paper from "./images/paper.png";
 
 import bottomCorner from "./images/bottom-corner.svg";
-import bottomTentacle from "./images/bottom-tentacle.svg";
 import bottomLine from "./images/bottom-line.svg";
-import pattern from "./images/pattern.png";
-import scratches from "./images/scratches.png";
+import bottomTentacle from "./images/bottom-tentacle.svg";
 import centerBorder from "./images/center-border.svg";
-import topLeftCorner from "./images/top-left-corner.png";
-import topRightCorner from "./images/top-right-corner.png";
-import scenarioTopRightCorner from "./images/scenario-top-right-corner.png";
-import topLine from "./images/top-line.png";
+import pattern from "./images/pattern.png";
 import scenarioTentacles from "./images/scenario-tentacles.png";
+import scenarioTopRightCorner from "./images/scenario-top-right-corner.png";
+import scratches from "./images/scratches.png";
+import tabTentacles from "./images/tab-tentacles.png";
 import tabTopCorner from "./images/tab-top-corner.png";
 import tabTopLine from "./images/tab-top-line.png";
-import tabTentacles from "./images/tab-tentacles.png";
+import topLeftCorner from "./images/top-left-corner.png";
+import topLine from "./images/top-line.png";
+import topRightCorner from "./images/top-right-corner.png";
 
-import classNames from "classnames";
 import { DividerMenu, DividerText, Icon, NotExportable } from "@/components";
+import { ArkhamDecoDividerType } from "@/shared/data/layouts/arkham-deco";
+import { getXPDisplayValue } from "@/shared/lib/features/xp";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
+import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
 import { selectLanguage } from "@/shared/lib/store/features/language/language";
 import { selectLayout } from "@/shared/lib/store/features/layout/layout";
-import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
-import { ArkhamDecoSideXP } from "../ArkhamDecoSideXP/ArkhamDecoSideXP";
-import { getXPDisplayValue } from "@/shared/lib/features/xp";
-import { ArkhamDecoDividerType } from "@/shared/data/layouts/arkham-deco";
-import { DividerProps } from "../../common/Divider/Divider";
-import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
+import { selectCornerRadius } from "@/shared/lib/store/features/print/print";
 import { XPCost } from "@/shared/model/types/game";
 import { LayoutOrientation } from "@/shared/model/types/layouts";
-import { getDefaultLineIcon, getDefaultSpecialIcon } from "./features/icons";
-import { selectCornerRadius } from "@/shared/lib/store/features/print/print";
+import classNames from "classnames";
+import type { DividerProps } from "../../common/Divider/Divider";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
+import { ArkhamDecoSideXP } from "../ArkhamDecoSideXP/ArkhamDecoSideXP";
+import { getDefaultLineIcon, getDefaultSpecialIcon } from "./features/icons";
 
 export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
 	const { name = "", type, scenario, xpCost, id, size, className } = props;
@@ -253,21 +253,16 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
 						)}
 
 						{scenario && (
-							<>
-								<div className={S.scenarioCorner}>
-									<div className={S.scenarioName}>
-										{scenario?.number_text || (
-											<div className={S.scenarioIcon}>
-												<Icon icon="typejournal" />
-											</div>
-										)}
-									</div>
-									<img
-										className={S.scenarioTentacles}
-										src={scenarioTentacles}
-									/>
+							<div className={S.scenarioCorner}>
+								<div className={S.scenarioName}>
+									{scenario?.number_text || (
+										<div className={S.scenarioIcon}>
+											<Icon icon="typejournal" />
+										</div>
+									)}
 								</div>
-							</>
+								<img className={S.scenarioTentacles} src={scenarioTentacles} />
+							</div>
 						)}
 
 						{!lineIcon && (!isTab || isVertical) && (
@@ -277,7 +272,7 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
 								alt=""
 							/>
 						)}
-						<div className={S.preview}></div>
+						<div className={S.preview} />
 
 						<img
 							src={isTab ? tabTopCorner : topLeftCorner}

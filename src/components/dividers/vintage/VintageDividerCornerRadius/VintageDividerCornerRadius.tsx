@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
-import { TabPosition } from "../VintageDivider/features/tabPosition";
+import type { TabPosition } from "../VintageDivider/features/tabPosition";
 
 const TAB_WIDTH = 30;
 
@@ -13,29 +13,29 @@ const createPolygon = (expressions: string[]) => {
 const cornerRadiusClipPath: Record<TabPosition, string> = {
 	left: createPolygon([
 		"0% 100%",
-		`0% 4mm`,
-		`4mm 4mm`,
-		`4mm 2px`,
+		"0% 4mm",
+		"4mm 4mm",
+		"4mm 2px",
 		`${TAB_WIDTH}mm 2px`,
-		`100% 0%`,
+		"100% 0%",
 		"100% 100%",
 	]),
 	right: createPolygon([
 		"0% 100%",
-		`0% 0%`,
+		"0% 0%",
 		`${TAB_WIDTH * 2}mm 0`,
 		`${TAB_WIDTH * 2}mm 4mm`,
-		`100% 4mm`,
+		"100% 4mm",
 		"100% 100%",
 	]),
 	center: createPolygon([
 		"0% 100%",
-		`0% 0%`,
+		"0% 0%",
 		`${TAB_WIDTH}mm 0`,
 		`${TAB_WIDTH}mm 2px`,
 		`calc(${TAB_WIDTH * 2}mm + 2px) 2px`,
 		`calc(${TAB_WIDTH * 2}mm + 2px) 0`,
-		`100% 0%`,
+		"100% 0%",
 		"100% 100%",
 	]),
 };

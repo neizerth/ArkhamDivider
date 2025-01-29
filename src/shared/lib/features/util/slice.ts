@@ -1,4 +1,4 @@
-import { PayloadAction } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 export const createSliceSetter =
 	<State, K extends keyof State>(

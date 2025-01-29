@@ -1,7 +1,7 @@
+import factions from "@/shared/data/factions.json";
+import { uniqId } from "@/shared/lib/features/util/common";
 import type { IInvestigator } from "@/shared/model/types/api";
 import { DividerType, type IDivider } from "@/shared/model/types/dividers";
-import { uniqId } from "@/shared/lib/features/util/common";
-import factions from "@/shared/data/factions.json";
 import { groupBy, isNotNil, prop, propEq, values } from "ramda";
 
 export const getInvestigatorDividers = ({

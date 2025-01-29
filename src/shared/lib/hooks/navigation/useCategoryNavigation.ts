@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useAppDispatch } from "../useAppDispatch";
-import { useAppSelector } from "../useAppSelector";
+import { layoutCategories } from "@/shared/data/layouts";
+import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
+import { loadArkhamesqueData } from "@/shared/lib/store/features/dividers/arkhamesque/arkhamesque";
 import {
 	selectCategoryId,
 	setCategoryId,
 } from "@/shared/lib/store/features/layout/layout";
-import { layoutCategories } from "@/shared/data/layouts";
 import { prop } from "ramda";
-import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
-import { loadArkhamesqueData } from "@/shared/lib/store/features/dividers/arkhamesque/arkhamesque";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../useAppDispatch";
+import { useAppSelector } from "../useAppSelector";
 
 export const useCategoryNavigation = () => {
 	const { categoryId } = useParams();

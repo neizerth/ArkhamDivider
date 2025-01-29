@@ -1,5 +1,5 @@
 import {
-	ILayoutCategory,
+	type ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
 } from "@/shared/model/types/layouts";

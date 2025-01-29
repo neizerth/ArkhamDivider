@@ -1,7 +1,7 @@
-import { IXPCost } from "@/shared/model/types/game";
-import S from "./ArkhamesqueClassicDividerPlayerXPCostTitle.module.scss";
 import { MAX_XP } from "@/shared/config/xp";
+import type { IXPCost } from "@/shared/model/types/game";
 import classNames from "classnames";
+import S from "./ArkhamesqueClassicDividerPlayerXPCostTitle.module.scss";
 
 export type ArkhamesqueClassicDividerPlayerXPCostTitleProps = {
 	xpCost: IXPCost;

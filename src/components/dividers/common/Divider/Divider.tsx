@@ -1,15 +1,15 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-// import S from './Divider.module.scss';
-import { IDivider } from "@/shared/model/types/dividers";
+import { ArkhamDecoDivider } from "@/components/dividers/arkham-deco/ArkhamDecoDivider/ArkhamDecoDivider";
 import { ClassicDivider } from "@/components/dividers/classic/ClassicDivider/ClassicDivider";
 import { Invocation2018Divider } from "@/components/dividers/invocation2018/Invocation2018Divider/Invocation2018Divider";
+import { SarnetskyDivider } from "@/components/dividers/sarnetsky/SarnetskyDivider/SarnetskyDivider";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectLayout } from "@/shared/lib/store/features/layout/layout";
-import { SarnetskyDivider } from "@/components/dividers/sarnetsky/SarnetskyDivider/SarnetskyDivider";
-import { ArkhamDecoDivider } from "@/components/dividers/arkham-deco/ArkhamDecoDivider/ArkhamDecoDivider";
+// import S from './Divider.module.scss';
+import type { IDivider } from "@/shared/model/types/dividers";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import { memo } from "react";
 import { ArkhamStarter3mmDivider } from "../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider";
 import { ArkhamesqueClassicDivider } from "../../arkhamesque-classic/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider";
-import { memo } from "react";
 import { VintageDivider } from "../../vintage/VintageDivider/VintageDivider";
 
 export type DividerProps = PropsWithClassName &

@@ -1,17 +1,17 @@
-import Select from "react-select";
+import { layoutCategories } from "@/shared/data/layouts";
+import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
-import S from "./LayoutCategorySelect.module.scss";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectCategoryId,
 	selectLayout,
 } from "@/shared/lib/store/features/layout/layout";
-import { layoutCategories } from "@/shared/data/layouts";
+import type { PropsWithClassName } from "@/shared/model/types/util";
 import classNames from "classnames";
-import { PropsWithClassName } from "@/shared/model/types/util";
 import { propEq } from "ramda";
-import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { useTranslation } from "react-i18next";
+import Select from "react-select";
+import S from "./LayoutCategorySelect.module.scss";
 
 export type LayoutCategorySelectProps = PropsWithClassName & {};
 

@@ -1,17 +1,17 @@
-import { PropsWithClassName } from "@/shared/model/types/util";
-import S from "./ArkhamesqueClassicDividerCanvas.module.scss";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/lib/store/features/layout/layout";
-import { Stage, Layer, Image } from "react-konva";
-import { getBleedCanvasSize } from "./features/size";
-import classNames from "classnames";
-import { ArkhamesqueClassicDividerCanvasIcon as Icon } from "./ArkhamesqueClassicDividerCanvasIcon";
-import { memo, useEffect, useRef, useState } from "react";
-import useImage from "use-image";
-import Konva from "konva";
 import { ARKHAMESQUE_RENDER_DEBUG } from "@/shared/config/app";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectIcons } from "@/shared/lib/store/features/icons/icons";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import classNames from "classnames";
+import type Konva from "konva";
 import { propEq } from "ramda";
+import { memo, useEffect, useRef, useState } from "react";
+import { Image, Layer, Stage } from "react-konva";
+import useImage from "use-image";
+import S from "./ArkhamesqueClassicDividerCanvas.module.scss";
+import { ArkhamesqueClassicDividerCanvasIcon as Icon } from "./ArkhamesqueClassicDividerCanvasIcon";
+import { getBleedCanvasSize } from "./features/size";
 
 export type ArkhamesqueClassicDividerCanvasProps = PropsWithClassName & {
 	previewIcon?: string | false;

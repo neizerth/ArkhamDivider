@@ -1,14 +1,14 @@
-import { AppThunk } from "@/shared/lib/store";
-import { IInvestigator, IStory } from "@/shared/model/types/api";
-import { IFaction, ICardType, IXPCost } from "@/shared/model/types/game";
-import { ActionCreator } from "@reduxjs/toolkit";
-import { selectEncounterSets } from "../encounterSets/encounterSets";
-import { selectStories } from "../stories/stories";
-import { getStoryDividers } from "@/shared/lib/features/dividers/story/getStoryDividers";
-import { addDividers } from "../dividers/dividers";
-import { getPlayerDividers } from "@/shared/lib/features/dividers/player/getPlayerDividers";
 import { getInvestigatorDividers } from "@/shared/lib/features/dividers/investigator/getInvestigatorDividers";
+import { getPlayerDividers } from "@/shared/lib/features/dividers/player/getPlayerDividers";
+import { getStoryDividers } from "@/shared/lib/features/dividers/story/getStoryDividers";
+import type { AppThunk } from "@/shared/lib/store";
+import type { IInvestigator, IStory } from "@/shared/model/types/api";
+import type { ICardType, IFaction, IXPCost } from "@/shared/model/types/game";
+import type { ActionCreator } from "@reduxjs/toolkit";
+import { addDividers } from "../dividers/dividers";
+import { selectEncounterSets } from "../encounterSets/encounterSets";
 import { withReturnTo } from "../stories/criteria";
+import { selectStories } from "../stories/stories";
 
 export type AddPlayerDividersOptions = {
 	story?: IStory;

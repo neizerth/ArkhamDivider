@@ -1,9 +1,9 @@
-import { IIconMainGroup } from "@/shared/model/types/icons";
-import S from "./IconSelectView.module.scss";
 import { Icon } from "@/components/ui/icons/Icon/Icon";
-import { useTranslation } from "react-i18next";
-import { forwardRef, useEffect, useState } from "react";
+import type { IIconMainGroup } from "@/shared/model/types/icons";
 import classNames from "classnames";
+import { forwardRef, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import S from "./IconSelectView.module.scss";
 
 export type IconSelectViewProps = {
 	onChange: (icon: string) => void;

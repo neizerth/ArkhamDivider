@@ -1,4 +1,8 @@
-import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
+import {
+	type Action,
+	type ThunkAction,
+	configureStore,
+} from "@reduxjs/toolkit";
 import * as reducer from "./features";
 
 export type AppThunk<ReturnType = void> = ThunkAction<

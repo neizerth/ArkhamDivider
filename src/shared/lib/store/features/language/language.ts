@@ -1,12 +1,12 @@
 import { DEFAULT_LANGUAGE } from "@/shared/config/i18n";
-import { AppThunk } from "@/shared/lib/store";
 import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
+import type { AppThunk } from "@/shared/lib/store";
+import type { Mapping } from "@/shared/model/types/util";
+import { type ActionCreator, createSlice } from "@reduxjs/toolkit";
 import { loadAppTranslations } from "../app/app";
-import { Mapping } from "@/shared/model/types/util";
 
 export type ILanguageState = {
 	language: string;

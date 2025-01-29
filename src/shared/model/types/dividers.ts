@@ -1,12 +1,12 @@
-import { Mapping } from "classnames";
-import {
+import type { Mapping } from "classnames";
+import type {
 	ICampaign,
 	IEncounterSet,
 	IInvestigator,
 	IScenario,
 	IStory,
 } from "./api";
-import { CardType, IXPCost } from "./game";
+import type { CardType, IXPCost } from "./game";
 
 export enum DividerType {
 	PLAYER = "player",

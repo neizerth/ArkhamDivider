@@ -1,26 +1,26 @@
 import {
-	Container,
-	StorySelect,
 	AddStoryParams,
 	Col,
+	Container,
+	IconButton,
 	Row,
 	StoryCustomContent,
-	IconButton,
+	StorySelect,
 	WithLayoutSupport,
 } from "@/components";
-import S from "./AddStoryDividers.module.scss";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { useState } from "react";
+import { useCampaignStories } from "@/shared/lib/hooks/stories/useCampaignStories";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { addStoryDividers } from "@/shared/lib/store/features/addDividers/addDividers";
 import {
 	removeAllDividers,
 	selectStory,
 } from "@/shared/lib/store/features/dividers/dividers";
-import { ButtonType } from "@/shared/model/types/ui";
-import { useTranslation } from "react-i18next";
-import { addStoryDividers } from "@/shared/lib/store/features/addDividers/addDividers";
 import { withScenario } from "@/shared/lib/store/features/stories/criteria";
-import { useCampaignStories } from "@/shared/lib/hooks/stories/useCampaignStories";
+import { ButtonType } from "@/shared/model/types/ui";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import S from "./AddStoryDividers.module.scss";
 
 export type AddStoryDividersProps = {};
 

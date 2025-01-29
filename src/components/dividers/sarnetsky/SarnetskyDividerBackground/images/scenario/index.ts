@@ -1,11 +1,11 @@
-import frameVertical from "./scenario__frame_vertical.png";
 import frameHorizontal from "./scenario__frame_horizontal.png";
+import frameVertical from "./scenario__frame_vertical.png";
 
-import ColorVertical from "./scenario__color_vertical.svg?react";
 import ColorHorizontal from "./scenario__color_horizontal.svg?react";
+import ColorVertical from "./scenario__color_vertical.svg?react";
 
-import vertical from "./scenario_vertical.jpg";
 import horizontal from "./scenario_horizontal.jpg";
+import vertical from "./scenario_vertical.jpg";
 
 import { LayoutOrientation } from "@/shared/model/types/layouts";
 

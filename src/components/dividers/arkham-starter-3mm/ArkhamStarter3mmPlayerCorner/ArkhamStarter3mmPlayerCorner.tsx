@@ -1,7 +1,7 @@
 import S from "./ArkhamStarter3mmPlayerCorner.module.scss";
 
-import playerBorder from "./images/playerBorder.png";
 import playerInner from "./images/player.png";
+import playerBorder from "./images/playerBorder.png";
 
 export type ArkhamStarter3mmPlayerCornerProps = {
 	color: string;

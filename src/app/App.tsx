@@ -1,27 +1,27 @@
-import { Routes, HashRouter, Route, Outlet } from "react-router-dom";
+import { HashRouter, Outlet, Route, Routes } from "react-router-dom";
 import S from "./App.module.scss";
 import "@/app/fonts";
 
 import {
+	ActivePopup,
+	AddDividers,
 	AppLoader,
 	AppSettings,
-	LayoutMenu,
-	AddDividers,
+	CategoryInfo,
 	Col,
 	Footer,
-	LayoutInfo,
-	CategoryInfo,
-	ActivePopup,
-	WithLayoutSupport,
 	Layout,
+	LayoutInfo,
+	LayoutMenu,
 	WithBrowserSupport,
+	WithLayoutSupport,
 } from "@/components";
 
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectDividers } from "@/shared/lib/store/features/dividers/dividers";
-import { useAppNavigation } from "@/shared/lib/hooks/useAppNavigation";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
+import { useAppNavigation } from "@/shared/lib/hooks/useAppNavigation";
+import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { loadAppData } from "@/shared/lib/store/features/app/app";
+import { selectDividers } from "@/shared/lib/store/features/dividers/dividers";
 import { useEffect } from "react";
 
 import "./index.scss";

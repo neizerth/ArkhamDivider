@@ -1,4 +1,4 @@
-import { Mapping } from "./util";
+import type { Mapping } from "./util";
 
 export type I18NLanguageBundle = Mapping<string>;
 

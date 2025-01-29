@@ -1,7 +1,7 @@
-import { IEqualLayoutBleed } from "@/shared/model/types/layouts";
-import { View, ViewProps } from "@react-pdf/renderer";
-import { PropsWithChildren } from "react";
-import { Style } from "../types";
+import type { IEqualLayoutBleed } from "@/shared/model/types/layouts";
+import { View, type ViewProps } from "@react-pdf/renderer";
+import type { PropsWithChildren } from "react";
+import type { Style } from "../types";
 
 export type PDFRowProps = PropsWithChildren &
 	ViewProps & {

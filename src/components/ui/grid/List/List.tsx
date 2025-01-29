@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithClassName } from "@/shared/model/types/util";
+import type { PropsWithChildren } from "react";
 // import S from './List.module.scss';
 import { Row } from "../Row/Row";
-import { PropsWithClassName } from "@/shared/model/types/util";
 
 export type ListProps = PropsWithChildren & PropsWithClassName;
 

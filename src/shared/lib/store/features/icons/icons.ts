@@ -1,10 +1,10 @@
-import { ArkhamDivider } from "arkham-divider-data";
 import {
 	createSliceSelector,
 	createSliceSetter,
 } from "@/shared/lib/features/util/slice";
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
-import { AppThunk } from "@/shared/lib/store";
+import type { AppThunk } from "@/shared/lib/store";
+import { type ActionCreator, createSlice } from "@reduxjs/toolkit";
+import type { ArkhamDivider } from "arkham-divider-data";
 
 export type Icons = ArkhamDivider.Core["icons"];
 

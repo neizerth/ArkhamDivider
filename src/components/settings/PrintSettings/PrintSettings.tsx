@@ -3,6 +3,7 @@ import S from "./PrintSettings.module.scss";
 
 import { Checkbox, Row } from "@/components";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
+import { selectExport } from "@/shared/lib/store/features/app/app";
 import {
 	selectBleed,
 	selectDoubleSided,
@@ -10,7 +11,6 @@ import {
 	setDoubleSided,
 } from "@/shared/lib/store/features/print/print";
 import { useTranslation } from "react-i18next";
-import { selectExport } from "@/shared/lib/store/features/app/app";
 
 export type PrintSettingsProps = {};
 

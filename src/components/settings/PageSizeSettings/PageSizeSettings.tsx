@@ -1,4 +1,3 @@
-import S from "./PageSizeSettings.module.scss";
 import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
@@ -12,8 +11,9 @@ import {
 	setPageSizeType,
 	setRowsPerPage,
 } from "@/shared/lib/store/features/print/print";
-import { PageSize, PageSizeType } from "@/shared/model/types/print";
+import { PageSize, type PageSizeType } from "@/shared/model/types/print";
 import Select from "react-select";
+import S from "./PageSizeSettings.module.scss";
 
 export type PageSizeSettingsProps = {};
 

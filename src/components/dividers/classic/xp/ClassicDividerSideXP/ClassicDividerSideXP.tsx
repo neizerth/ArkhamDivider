@@ -1,7 +1,7 @@
-import { IXPCost, XPCost } from "@/shared/model/types/game";
-import S from "./ClassicDividerSideXP.module.scss";
-import { range } from "ramda";
+import { type IXPCost, XPCost } from "@/shared/model/types/game";
 import classNames from "classnames";
+import { range } from "ramda";
+import S from "./ClassicDividerSideXP.module.scss";
 import Dot from "./images/dot.svg?react";
 
 export type ClassicDividerSideXPProps = {

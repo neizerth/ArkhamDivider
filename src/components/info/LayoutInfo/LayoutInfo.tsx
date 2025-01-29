@@ -1,12 +1,12 @@
+import { AuthorInfo, Container, UITranslationRequest } from "@/components";
+import { getCategoryById } from "@/shared/lib/features/layouts/common";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import S from "./LayoutInfo.module.scss";
 import {
 	selectCategoryId,
 	selectLayout,
 } from "@/shared/lib/store/features/layout/layout";
-import { AuthorInfo, Container, UITranslationRequest } from "@/components";
 import { useTranslation } from "react-i18next";
-import { getCategoryById } from "@/shared/lib/features/layouts/common";
+import S from "./LayoutInfo.module.scss";
 
 export type LayoutInfoProps = {};
 

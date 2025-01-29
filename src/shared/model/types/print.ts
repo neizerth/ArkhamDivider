@@ -1,5 +1,5 @@
-import { IBox } from "./units";
-import { PrefixedUnion } from "./util";
+import type { IBox } from "./units";
+import type { PrefixedUnion } from "./util";
 
 export enum PageSide {
 	FRONT = "front",

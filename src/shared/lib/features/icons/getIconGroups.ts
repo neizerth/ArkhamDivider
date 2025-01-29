@@ -1,7 +1,7 @@
-import { IEncounterSet, IIcon, IStory } from "@/shared/model/types/api";
-import { getStoriesIconGroups } from "./getStoriesIconGroups";
+import type { IEncounterSet, IIcon, IStory } from "@/shared/model/types/api";
+import type { IIconMainGroup } from "@/shared/model/types/icons";
 import { getGameIconGroups } from "./getGameIconGroups";
-import { IIconMainGroup } from "@/shared/model/types/icons";
+import { getStoriesIconGroups } from "./getStoriesIconGroups";
 
 export type IGetIconGroupsOptions = {
 	icons: IIcon[];

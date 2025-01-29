@@ -1,7 +1,7 @@
-import S from "./Col.module.scss";
 import { Row } from "@/components";
-import { RowProps } from "../Row/Row";
 import classNames from "classnames";
+import type { RowProps } from "../Row/Row";
+import S from "./Col.module.scss";
 
 export type ColProps = RowProps;
 

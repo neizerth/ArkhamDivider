@@ -1,10 +1,10 @@
-import { DividerSubtype } from "@/shared/model/types/dividers";
-import { GetDividerDataOptions } from "./getDividerData";
-import { getDividerImage } from "./getDividerImage";
-import { descend, propEq } from "ramda";
-import { Single } from "@/shared/model/types/util";
 import { propsEquals } from "@/shared/lib/features/util/criteria";
+import { DividerSubtype } from "@/shared/model/types/dividers";
 import { CardType, XPCost } from "@/shared/model/types/game";
+import type { Single } from "@/shared/model/types/util";
+import { descend, propEq } from "ramda";
+import type { GetDividerDataOptions } from "./getDividerData";
+import { getDividerImage } from "./getDividerImage";
 
 const COMMON_SUBTYPES = [
 	DividerSubtype.BONDED,
@@ -21,14 +21,12 @@ export const getPlayerDividerData = ({
 	const { prefix } = data;
 	const { subtype, xpCost, cardType, faction } = divider;
 
-	const items = data.player
-		.map(({ prefix, data }) =>
-			data.map((item) => ({
-				prefix,
-				...item,
-			})),
-		)
-		.flat();
+	const items = data.player.flatMap(({ prefix, data }) =>
+		data.map((item) => ({
+			prefix,
+			...item,
+		})),
+	);
 
 	const sendItem = (item?: Single<typeof items>) =>
 		item && {
@@ -84,7 +82,7 @@ export const getPlayerDividerData = ({
 				}
 				return cardType === CardType.ALL || item.type === cardType;
 			})
-			.toSorted(descend(({ xp = Infinity }) => xp));
+			.toSorted(descend(({ xp = Number.POSITIVE_INFINITY }) => xp));
 
 		if (level === undefined || level === XPCost.NO_COST) {
 			return sendItem(found[0]);

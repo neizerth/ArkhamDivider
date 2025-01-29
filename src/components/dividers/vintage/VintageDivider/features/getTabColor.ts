@@ -1,6 +1,6 @@
 import { isStandalone } from "@/shared/lib/store/features/stories/criteria";
-import { IDivider } from "@/shared/model/types/dividers";
-import { Mapping } from "@/shared/model/types/util";
+import type { IDivider } from "@/shared/model/types/dividers";
+import type { Mapping } from "@/shared/model/types/util";
 
 export const storyColors: Mapping = {
 	core: "#554820",

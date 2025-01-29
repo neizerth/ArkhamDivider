@@ -1,6 +1,6 @@
+import { Color, Row } from "@/components";
 import classNames from "classnames";
 import S from "./ColorSelect.module.scss";
-import { Color, Row } from "@/components";
 
 export type ColorOption<T> = {
 	color: string;
