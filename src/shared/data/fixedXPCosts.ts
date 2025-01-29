@@ -1,4 +1,4 @@
-import { XPCost, IXPCost } from "@/shared/types/game";
+import { XPCost, IXPCost } from "@/shared/model/types/game";
 
 export const fixedXPCosts: IXPCost[] = [
 	XPCost.NO_COST,

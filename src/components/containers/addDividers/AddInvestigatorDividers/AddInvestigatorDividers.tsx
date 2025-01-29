@@ -8,16 +8,16 @@ import {
 	StorySelect,
 } from "@/components";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { ButtonType } from "@/shared/types/ui";
+import { ButtonType } from "@/shared/model/types/ui";
 import {
 	removeAllDividers,
 	selectStory,
-} from "@/shared/store/features/dividers/dividers";
+} from "@/shared/lib/store/features/dividers/dividers";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useTranslation } from "react-i18next";
-import { addInvestigatorDividers } from "@/shared/store/features/addDividers/addDividers";
+import { addInvestigatorDividers } from "@/shared/lib/store/features/addDividers/addDividers";
 import { useInvestigatorStories } from "@/shared/lib/hooks/stories/useInvestigatorStories";
-import { selectStoryInvestigators } from "@/shared/store/features/dividers/selectors/selectStoryInvestigators";
+import { selectStoryInvestigators } from "@/shared/lib/store/features/dividers/selectors/selectStoryInvestigators";
 
 export type AddInvestigatorDividersProps = {};
 

@@ -3,7 +3,7 @@ import S from "./LanguageSelect.module.scss";
 import {
 	selectAvailableLanguages,
 	selectLanguage,
-} from "@/shared/store/features/language/language";
+} from "@/shared/lib/store/features/language/language";
 import Select, {
 	OptionProps,
 	SingleValueProps,

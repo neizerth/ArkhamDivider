@@ -1,12 +1,12 @@
-import { AddPlayerDividersOptions } from "@/shared/store/features/addDividers/addDividers";
-import { DividerSubtype, DividerType, IDivider } from "@/shared/types/dividers";
+import { AddPlayerDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
+import { DividerSubtype, DividerType, IDivider } from "@/shared/model/types/dividers";
 import {
 	CardType,
 	ICardType,
 	IFaction,
 	IXPCost,
 	XPCost,
-} from "@/shared/types/game";
+} from "@/shared/model/types/game";
 import { uniqId } from "@/shared/lib/features/util/common";
 
 export const getPlayerDividers = (options: AddPlayerDividersOptions) => {

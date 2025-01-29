@@ -3,7 +3,7 @@ import {
 	ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
-} from "@/shared/types/layouts";
+} from "@/shared/model/types/layouts";
 
 const vintageBleed = {
 	left: 3,

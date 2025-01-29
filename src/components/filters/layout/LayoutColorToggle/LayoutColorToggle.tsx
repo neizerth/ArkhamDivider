@@ -1,12 +1,12 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import S from "./LayoutColorToggle.module.scss";
-import { selectLayout } from "@/shared/store/features/layout/layout";
-import { PropsWithClassName } from "@/shared/types/util";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
+import { PropsWithClassName } from "@/shared/model/types/util";
 import { Color } from "@/components";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import classNames from "classnames";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
-import { ILayout } from "@/shared/types/layouts";
+import { ILayout } from "@/shared/model/types/layouts";
 
 export type LayoutColorToggleProps = PropsWithClassName & {
 	data: ILayout[];

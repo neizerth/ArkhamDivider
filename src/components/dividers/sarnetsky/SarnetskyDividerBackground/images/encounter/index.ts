@@ -6,7 +6,7 @@ import ColorHorizontal from "./encounter__color_horizontal.svg?react";
 
 import vertical from "./encounter_vertical.jpg";
 import horizontal from "./encounter_horizontal.jpg";
-import { LayoutOrientation } from "@/shared/types/layouts";
+import { LayoutOrientation } from "@/shared/model/types/layouts";
 
 export const encounterImages = [
 	{

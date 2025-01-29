@@ -1,4 +1,4 @@
-import { IXPCost } from "@/shared/types/game";
+import { IXPCost } from "@/shared/model/types/game";
 import S from "./ArkhamesqueClassicDividerPlayerXPCostTitle.module.scss";
 import { MAX_XP } from "@/shared/config/xp";
 import classNames from "classnames";

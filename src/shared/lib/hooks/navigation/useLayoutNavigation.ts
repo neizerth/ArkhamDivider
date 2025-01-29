@@ -3,12 +3,12 @@ import { useAppSelector } from "../useAppSelector";
 import {
 	selectLayout,
 	setLayoutById,
-} from "@/shared/store/features/layout/layout";
+} from "@/shared/lib/store/features/layout/layout";
 import { useEffect } from "react";
 import { useAppDispatch } from "../useAppDispatch";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
 import { getLayoutById } from "@/shared/lib/features/layouts/common";
-import { loadArkhamesqueData } from "@/shared/store/features/dividers/arkhamesque/arkhamesque";
+import { loadArkhamesqueData } from "@/shared/lib/store/features/dividers/arkhamesque/arkhamesque";
 
 export const useLayoutNavigation = () => {
 	const dispatch = useAppDispatch();

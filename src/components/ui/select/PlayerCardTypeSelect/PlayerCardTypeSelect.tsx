@@ -1,4 +1,4 @@
-import { ICardType } from "@/shared/types/game";
+import { ICardType } from "@/shared/model/types/game";
 import {
 	ToggleSelect,
 	ToggleSelectItem,

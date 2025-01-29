@@ -12,19 +12,19 @@ import { XPCostSelect } from "@/components";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { ICardType, IXPCost, IFaction } from "@/shared/types/game";
-import { ButtonType } from "@/shared/types/ui";
+import { ICardType, IXPCost, IFaction } from "@/shared/model/types/game";
+import { ButtonType } from "@/shared/model/types/ui";
 import { createToggleHanlder } from "@/shared/lib/features/util/forms";
-import { addPlayerDividers } from "@/shared/store/features/addDividers/addDividers";
+import { addPlayerDividers } from "@/shared/lib/store/features/addDividers/addDividers";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import {
 	removeAllDividers,
 	selectStory,
-} from "@/shared/store/features/dividers/dividers";
+} from "@/shared/lib/store/features/dividers/dividers";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { isNil } from "ramda";
-import { selectStories } from "@/shared/store/features/stories/stories";
+import { selectStories } from "@/shared/lib/store/features/stories/stories";
 
 export type AddPlayerDividersProps = {};
 

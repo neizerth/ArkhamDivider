@@ -6,12 +6,12 @@ import { propsEquals } from "@/shared/lib/features/util/criteria";
 import { Invocation2018DividerXPCost } from "../Invocation2018DividerXPCost/Invocation2018DividerXPCost";
 import { ClassicDividerSideXP } from "../../classic/xp/ClassicDividerSideXP/ClassicDividerSideXP";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import classNames from "classnames";
 import iconBg from "./images/icon-bg.png";
 import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
 import { DividerProps } from "../../common/Divider/Divider";
-import { selectLanguage } from "@/shared/store/features/language/language";
+import { selectLanguage } from "@/shared/lib/store/features/language/language";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
 
 export type Invocation2018DividerProps = DividerProps;

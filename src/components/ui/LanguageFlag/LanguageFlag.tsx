@@ -1,4 +1,4 @@
-import { PropsWithClassName } from "@/shared/types/util";
+import { PropsWithClassName } from "@/shared/model/types/util";
 import languageMapping from "./languageMapping.json";
 import S from "./LanguageFlag.module.scss";
 import { propEq } from "ramda";

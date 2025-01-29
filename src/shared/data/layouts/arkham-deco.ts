@@ -10,7 +10,7 @@ import {
 	ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
-} from "@/shared/types/layouts";
+} from "@/shared/model/types/layouts";
 
 export enum ArkhamDecoDividerType {
 	TAB = "tab",

@@ -1,9 +1,9 @@
-import { selectIcons } from "@/shared/store/features/icons/icons";
+import { selectIcons } from "@/shared/lib/store/features/icons/icons";
 import { useAppSelector } from "./useAppSelector";
 import { propEq } from "ramda";
 import { useEffect, useState } from "react";
 import { getIconImage } from "@/shared/lib/features/icons/getIconImage";
-import { IIcon } from "@/shared/types/api";
+import { IIcon } from "@/shared/model/types/api";
 
 export type UseIconImageData = {
 	image: HTMLImageElement;

@@ -5,12 +5,12 @@ import {
 	PageOrientation,
 	PageSizeType,
 	PrintPageSize,
-} from "@/shared/types/print";
-import { IEqualLayoutBleed, ILayout } from "@/shared/types/layouts";
+} from "@/shared/model/types/print";
+import { IEqualLayoutBleed, ILayout } from "@/shared/model/types/layouts";
 import { toPrintSize } from "@/shared/lib/features/util/units";
 import { PDFRow as Row } from "./PDFRow";
 import { PDFPageGuides as PageGuides } from "./guides/PDFPageGuides";
-import { IDivider } from "@/shared/types/dividers";
+import { IDivider } from "@/shared/model/types/dividers";
 
 const styles = StyleSheet.create({
 	page: {

@@ -1,7 +1,7 @@
 import { CustomIcon } from "@/components";
-import { PropsWithClassName } from "@/shared/types/util";
+import { PropsWithClassName } from "@/shared/model/types/util";
 import { FontIcon } from "../FontIcon/FontIcon";
-import { IconScaleFactor, IconScaleType } from "@/shared/types/icons";
+import { IconScaleFactor, IconScaleType } from "@/shared/model/types/icons";
 
 export type IconProps = PropsWithClassName & {
 	icon: string;

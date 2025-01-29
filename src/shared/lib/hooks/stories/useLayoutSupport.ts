@@ -2,16 +2,16 @@ import {
 	selectCategoryId,
 	selectLayout,
 	selectType,
-} from "@/shared/store/features/layout/layout";
+} from "@/shared/lib/store/features/layout/layout";
 import { useAppSelector } from "../useAppSelector";
-import { selectArkhamesqueData } from "@/shared/store/features/dividers/arkhamesque/arkhamesque";
+import { selectArkhamesqueData } from "@/shared/lib/store/features/dividers/arkhamesque/arkhamesque";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
 import {
 	hasArkhamesqueInvestigatorSupport,
 	hasArkhamesqueStorySupport,
-} from "@/shared/store/features/dividers/arkhamesque/criteria";
-import { selectStory } from "@/shared/store/features/dividers/dividers";
-import { LayoutType } from "@/shared/types/layouts";
+} from "@/shared/lib/store/features/dividers/arkhamesque/criteria";
+import { selectStory } from "@/shared/lib/store/features/dividers/dividers";
+import { LayoutType } from "@/shared/model/types/layouts";
 import { prop } from "ramda";
 
 export const useLayoutSupport = () => {

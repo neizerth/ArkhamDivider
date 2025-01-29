@@ -1,7 +1,7 @@
 import { SingleValueProps, components } from "react-select";
 
 import { StorySelectValue } from "../StorySelectValue/StorySelectValue";
-import { IStory } from "@/shared/types/api";
+import { IStory } from "@/shared/model/types/api";
 
 export type StorySelectSingleValueProps = SingleValueProps<{
 	label: string;

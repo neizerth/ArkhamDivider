@@ -1,4 +1,4 @@
-import { ILayout, ILayoutCriteria, LayoutType } from "@/shared/types/layouts";
+import { ILayout, ILayoutCriteria, LayoutType } from "@/shared/model/types/layouts";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { omit } from "ramda";
 

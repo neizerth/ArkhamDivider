@@ -5,7 +5,7 @@ import {
 	selectCategoryId,
 	selectLayout,
 	selectType,
-} from "@/shared/store/features/layout/layout";
+} from "@/shared/lib/store/features/layout/layout";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { isNotNil, prop, uniq } from "ramda";
 import { LayoutColorToggle } from "../LayoutColorToggle/LayoutColorToggle";

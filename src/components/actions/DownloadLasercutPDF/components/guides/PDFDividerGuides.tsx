@@ -1,4 +1,4 @@
-import { IBox } from "@/shared/types/units";
+import { IBox } from "@/shared/model/types/units";
 import { Rect } from "@react-pdf/renderer";
 
 export type PDFDividerGuidesProps = IBox & {

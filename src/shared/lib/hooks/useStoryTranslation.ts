@@ -1,4 +1,4 @@
-import { IStory } from "@/shared/types/api";
+import { IStory } from "@/shared/model/types/api";
 import { getStoryNS } from "@/shared/lib/features/util/i18n";
 import { TOptions } from "i18next";
 import { omit } from "ramda";

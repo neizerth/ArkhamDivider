@@ -1,4 +1,4 @@
-import { IScenario } from "@/shared/types/api";
+import { IScenario } from "@/shared/model/types/api";
 import { getScenarioEncounters } from "@/shared/lib/features/scenario";
 import { groupWith } from "ramda";
 

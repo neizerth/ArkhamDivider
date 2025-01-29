@@ -1,4 +1,4 @@
-import { IScenario } from "@/shared/types/api";
+import { IScenario } from "@/shared/model/types/api";
 
 export const getScenarioEncounters = ({
 	encounter_sets = [],

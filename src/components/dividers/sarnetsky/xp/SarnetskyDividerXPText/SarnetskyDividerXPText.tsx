@@ -1,4 +1,4 @@
-import { IXPCost } from "@/shared/types/game";
+import { IXPCost } from "@/shared/model/types/game";
 import S from "./SarnetskyDividerXPText.module.scss";
 import { DividerText } from "@/components/dividers/common/DividerText/DividerText";
 import { upperFirst } from "@/shared/lib/features/util/common";

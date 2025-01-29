@@ -1,9 +1,9 @@
-import { IBox } from "@/shared/types/units";
+import { IBox } from "@/shared/model/types/units";
 import { PDFGuideArea } from "./PDFPageGuides";
 import { toPrintSize } from "@/shared/lib/features/util/units";
 import { DEFAULT_CORNER_RADIUS } from "@/shared/config/print";
-import { IDivider } from "@/shared/types/dividers";
-import { ILayout } from "@/shared/types/layouts";
+import { IDivider } from "@/shared/model/types/dividers";
+import { ILayout } from "@/shared/model/types/layouts";
 import { PDFDividerGuides } from "./PDFDividerGuides";
 import { COMPONENT_MAP } from "./special";
 import { BLEED_GAP } from "../../constants";

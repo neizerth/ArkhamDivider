@@ -1,8 +1,8 @@
 import { range } from "ramda";
 import S from "./Invocation2018DividerXPCost.module.scss";
 import classNames from "classnames";
-import { PropsWithClassName } from "@/shared/types/util";
-import { IXPCost } from "@/shared/types/game";
+import { PropsWithClassName } from "@/shared/model/types/util";
+import { IXPCost } from "@/shared/model/types/game";
 
 export type Invocation2018DividerXPCostProps = PropsWithClassName & {
 	xpCost: IXPCost;

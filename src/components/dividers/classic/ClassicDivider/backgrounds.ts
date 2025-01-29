@@ -1,4 +1,4 @@
-import { LayoutOrientation } from "@/shared/types/layouts";
+import { LayoutOrientation } from "@/shared/model/types/layouts";
 
 import horizontalBgColor from "./images/horizontal.png";
 import horizontalBgGrayscale from "./images/horizontal_bw.png";

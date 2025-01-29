@@ -1,4 +1,4 @@
-import { CardType } from "@/shared/types/game";
+import { CardType } from "@/shared/model/types/game";
 
 export const playerCardTypes = [
 	{

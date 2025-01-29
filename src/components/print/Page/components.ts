@@ -1,5 +1,5 @@
 import { CREDITS_HEIGHT } from "@/components/info/PageCredits/PageCredits";
-import { IBox } from "@/shared/types/units";
+import { IBox } from "@/shared/model/types/units";
 import styled, { css } from "styled-components";
 
 export const Container = styled.div<{

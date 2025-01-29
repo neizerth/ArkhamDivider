@@ -1,4 +1,4 @@
-import { IXPCost } from "@/shared/types/game";
+import { IXPCost } from "@/shared/model/types/game";
 import S from "./ArkhamDecoSideXP.module.scss";
 import { range } from "ramda";
 import { MAX_XP } from "@/shared/config/xp";

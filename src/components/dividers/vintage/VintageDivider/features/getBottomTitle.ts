@@ -1,6 +1,6 @@
 import { UseStoryTranslateFunction } from "@/shared/lib/hooks/useStoryTranslation";
-import { DividerSubtype, DividerType, IDivider } from "@/shared/types/dividers";
-import { CardType } from "@/shared/types/game";
+import { DividerSubtype, DividerType, IDivider } from "@/shared/model/types/dividers";
+import { CardType } from "@/shared/model/types/game";
 import factions from "@/shared/data/factions.json";
 import { propEq } from "ramda";
 

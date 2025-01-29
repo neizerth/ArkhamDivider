@@ -1,9 +1,9 @@
-import { IScenario, IStory } from "@/shared/types/api";
+import { IScenario, IStory } from "@/shared/model/types/api";
 import { ascend, sortWith } from "ramda";
 import { getScenarioSize } from "./getScenarioSize";
-import { FirstParam } from "@/shared/types/util";
+import { FirstParam } from "@/shared/model/types/util";
 import { toArrayIfExists, uniqId } from "@/shared/lib/features/util/common";
-import { DividerType } from "@/shared/types/dividers";
+import { DividerType } from "@/shared/model/types/dividers";
 
 type IGetSizeOptions = FirstParam<typeof getScenarioSize>;
 type IGetScenarioDividersOptions = Omit<IGetSizeOptions, "scenario"> & {

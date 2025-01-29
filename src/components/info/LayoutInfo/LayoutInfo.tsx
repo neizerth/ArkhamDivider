@@ -3,7 +3,7 @@ import S from "./LayoutInfo.module.scss";
 import {
 	selectCategoryId,
 	selectLayout,
-} from "@/shared/store/features/layout/layout";
+} from "@/shared/lib/store/features/layout/layout";
 import { AuthorInfo, Container, UITranslationRequest } from "@/components";
 import { useTranslation } from "react-i18next";
 import { getCategoryById } from "@/shared/lib/features/layouts/common";

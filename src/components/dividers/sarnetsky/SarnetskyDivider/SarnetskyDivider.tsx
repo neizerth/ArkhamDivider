@@ -1,6 +1,6 @@
 import S from "./SarnetskyDivider.module.scss";
 
-import { DividerType } from "@/shared/types/dividers";
+import { DividerType } from "@/shared/model/types/dividers";
 import {
 	DividerContent,
 	DividerMenu,
@@ -10,12 +10,12 @@ import {
 } from "@/components";
 import classNames from "classnames";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { SarnetskyDividerBackground as DividerBackground } from "../SarnetskyDividerBackground/SarnetskyDividerBackground";
-import { selectLanguage } from "@/shared/store/features/language/language";
+import { selectLanguage } from "@/shared/lib/store/features/language/language";
 import { SarnetskyDividerScenarioEncounters as ScenarioEncounters } from "../encounters/SarnetskyDividerScenarioEncounters/SarnetskyDividerScenarioEncounters";
 import { SarnetskyDividerLinkedScenarioEncounters as LinkedScenarioEncounters } from "../encounters/SarnetskyDividerLinkedScenarioEncounters/SarnetskyDividerLinkedScenarioEncounters";
-import { LayoutOrientation } from "@/shared/types/layouts";
+import { LayoutOrientation } from "@/shared/model/types/layouts";
 import { SarnetskyDividerXPCost } from "../xp/SarnetskyDividerXPCost/SarnetskyDividerXPCost";
 import { SarnetskyDividerSideXP } from "../xp/SarnetskyDividerSideXP/SarnetskyDividerSideXP";
 import { SarnetskyDividerXPText } from "../xp/SarnetskyDividerXPText/SarnetskyDividerXPText";
@@ -23,7 +23,7 @@ import { SarnetskyDividerMainIcon as MainIcon } from "../SarnetskyDividerMainIco
 import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
 import { DividerProps } from "../../common/Divider/Divider";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
-import { selectCornerRadius } from "@/shared/store/features/print/print";
+import { selectCornerRadius } from "@/shared/lib/store/features/print/print";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
 
 export const ENCOUNTER_ROW_SIZE = 7;

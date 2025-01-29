@@ -1,6 +1,6 @@
 import { ArkhamDecoDividerType } from "@/shared/data/layouts/arkham-deco";
-import { ILayout } from "@/shared/types/layouts";
-import { IBox } from "@/shared/types/units";
+import { ILayout } from "@/shared/model/types/layouts";
+import { IBox } from "@/shared/model/types/units";
 import { toPrintSize } from "@/shared/lib/features/util/units";
 import { Path } from "@react-pdf/renderer";
 import { PDFDividerGuides, PDFDividerGuidesProps } from "../PDFDividerGuides";

@@ -1,4 +1,4 @@
-import { IIconMainGroup } from "@/shared/types/icons";
+import { IIconMainGroup } from "@/shared/model/types/icons";
 import S from "./IconSelectNav.module.scss";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";

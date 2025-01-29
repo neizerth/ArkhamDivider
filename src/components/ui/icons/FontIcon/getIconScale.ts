@@ -1,4 +1,4 @@
-import { IconScaleFactor, IconScaleType } from "@/shared/types/icons";
+import { IconScaleFactor, IconScaleType } from "@/shared/model/types/icons";
 
 export const getIconScale = ({
 	scaleType = "square",

@@ -1,19 +1,19 @@
-import { PropsWithClassName } from "@/shared/types/util";
+import { PropsWithClassName } from "@/shared/model/types/util";
 import S from "./Page.module.scss";
 import { PropsWithChildren } from "react";
 import classNames from "classnames";
-import { PageOrientation, PageSide, PageSize } from "@/shared/types/print";
+import { PageOrientation, PageSide, PageSize } from "@/shared/model/types/print";
 import {
 	CREDITS_HEIGHT,
 	PageCredits,
 } from "@/components/info/PageCredits/PageCredits";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import {
 	selectBleed,
 	selectPageOrientation,
 	selectPageSizeType,
-} from "@/shared/store/features/print/print";
+} from "@/shared/lib/store/features/print/print";
 import { Container } from "./components";
 
 export type PageProps = PropsWithClassName &

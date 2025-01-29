@@ -1,4 +1,4 @@
-import { IXPCost } from "@/shared/types/game";
+import { IXPCost } from "@/shared/model/types/game";
 import S from "./SarnetskyDividerSideXP.module.scss";
 import { range } from "ramda";
 import classNames from "classnames";

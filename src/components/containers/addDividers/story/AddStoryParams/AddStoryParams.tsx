@@ -1,23 +1,23 @@
-import { IStory } from "@/shared/types/api";
+import { IStory } from "@/shared/model/types/api";
 import S from "./AddStoryParams.module.scss";
 import { Checkbox, Col, Icon, Row } from "@/components";
-import { selectStories } from "@/shared/store/features/stories/stories";
+import { selectStories } from "@/shared/lib/store/features/stories/stories";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { safePropEq } from "@/shared/lib/features/util/criteria";
 import { createToggleHanlder } from "@/shared/lib/features/util/forms";
 // import { onlyWithScenarioEncounters } from '@/store/features/stories/criteria';
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { isNil } from "ramda";
 import {
 	getExtraEncounterDividersIcons,
 	getRequiredEncounterDividersIcons,
 	getScenarioDividerIcons,
 } from "@/shared/lib/features/dividers/story/icons";
-import { selectEncounterSets } from "@/shared/store/features/encounterSets/encounterSets";
+import { selectEncounterSets } from "@/shared/lib/store/features/encounterSets/encounterSets";
 import { getCampaignDividersCount } from "@/shared/lib/features/dividers/story/count";
-import { FirstParam } from "@/shared/types/util";
+import { FirstParam } from "@/shared/model/types/util";
 
 export type ToggleFunction = (value: boolean) => void;
 

@@ -4,7 +4,7 @@ import {
 	ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
-} from "@/shared/types/layouts";
+} from "@/shared/model/types/layouts";
 
 export const arkhamStarter3mmLayout: ILayout = {
 	id: "3mm",

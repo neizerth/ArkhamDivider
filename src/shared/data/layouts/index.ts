@@ -1,4 +1,4 @@
-import { ILayout, ILayoutCategory } from "@/shared/types/layouts";
+import { ILayout, ILayoutCategory } from "@/shared/model/types/layouts";
 
 import { classicLayouts, classicLayoutCategory } from "./classic";
 import {

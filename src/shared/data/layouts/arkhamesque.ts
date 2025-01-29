@@ -4,7 +4,7 @@ import {
 	ILayoutCategory,
 	LayoutOrientation,
 	LayoutType,
-} from "@/shared/types/layouts";
+} from "@/shared/model/types/layouts";
 
 const arkhamesqueClassicLayoutBase = {
 	types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],

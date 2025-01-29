@@ -1,4 +1,4 @@
-import { DividerType, IDivider } from "@/shared/types/dividers";
+import { DividerType, IDivider } from "@/shared/model/types/dividers";
 import {
 	IArkhamesqueBuild,
 	IArkhamesquePlayerCategory,

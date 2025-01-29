@@ -1,6 +1,6 @@
 import { OptionProps, components } from "react-select";
 
-import { IStory } from "@/shared/types/api";
+import { IStory } from "@/shared/model/types/api";
 import { StorySelectValue } from "@/components";
 
 export type StorySelectOptionProps = OptionProps<{

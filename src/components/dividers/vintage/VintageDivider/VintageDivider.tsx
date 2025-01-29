@@ -1,4 +1,4 @@
-import { DividerType } from "@/shared/types/dividers";
+import { DividerType } from "@/shared/model/types/dividers";
 import S from "./VintageDivider.module.scss";
 import {
 	ClassicDividerSideXP,
@@ -17,7 +17,7 @@ import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectBleed,
 	selectCornerRadius,
-} from "@/shared/store/features/print/print";
+} from "@/shared/lib/store/features/print/print";
 import { CircleIcon } from "@/components/ui/icons/CircleIcon/CircleIcon";
 import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
 import {
@@ -25,19 +25,19 @@ import {
 	getPrevTabPosition,
 	getTabPosition,
 } from "./features/tabPosition";
-import { selectDividers } from "@/shared/store/features/dividers/dividers";
+import { selectDividers } from "@/shared/lib/store/features/dividers/dividers";
 import { getTabColor } from "./features/getTabColor";
 import { getDefaultIcon } from "./features/getDefaultIcon";
 import { DividerProps } from "../../common/Divider/Divider";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
 import { getTopTitle } from "./features/getTopTitle";
-import { selectLanguage } from "@/shared/store/features/language/language";
+import { selectLanguage } from "@/shared/lib/store/features/language/language";
 import { getBottomTitle } from "./features/getBottomTitle";
 import { ClassicDividerEventXPCost } from "../../classic/xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost";
 import { getInvestigatorLetter } from "./features/getInvestigatorLetter";
-import { moveTab } from "@/shared/store/features/dividers/vintage/vintage";
+import { moveTab } from "@/shared/lib/store/features/dividers/vintage/vintage";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { VintageDividerCornerRadius as CornerRadius } from "../VintageDividerCornerRadius/VintageDividerCornerRadius";
 import { VintageDividerTabCornerRadius as TabCornerRadius } from "../VintageDividerTabCornerRadius/VintageDividerTabCornerRadius";
 import { propEq } from "ramda";

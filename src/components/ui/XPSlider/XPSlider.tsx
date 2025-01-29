@@ -1,4 +1,4 @@
-import { Defined } from "@/shared/types/util";
+import { Defined } from "@/shared/model/types/util";
 import S from "./XPSlider.module.scss";
 import ReactSlider, { ReactSliderProps } from "react-slider";
 import classNames from "classnames";

@@ -15,11 +15,11 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import {
 	removeAllDividers,
 	selectStory,
-} from "@/shared/store/features/dividers/dividers";
-import { ButtonType } from "@/shared/types/ui";
+} from "@/shared/lib/store/features/dividers/dividers";
+import { ButtonType } from "@/shared/model/types/ui";
 import { useTranslation } from "react-i18next";
-import { addStoryDividers } from "@/shared/store/features/addDividers/addDividers";
-import { withScenario } from "@/shared/store/features/stories/criteria";
+import { addStoryDividers } from "@/shared/lib/store/features/addDividers/addDividers";
+import { withScenario } from "@/shared/lib/store/features/stories/criteria";
 import { useCampaignStories } from "@/shared/lib/hooks/stories/useCampaignStories";
 
 export type AddStoryDividersProps = {};

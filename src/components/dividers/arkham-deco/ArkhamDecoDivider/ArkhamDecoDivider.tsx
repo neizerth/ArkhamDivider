@@ -1,4 +1,4 @@
-import { DividerType } from "@/shared/types/dividers";
+import { DividerType } from "@/shared/model/types/dividers";
 import { DividerContent } from "../../common/DividerContent/DividerContent";
 import S from "./ArkhamDecoDivider.module.scss";
 import paper from "./images/paper.png";
@@ -21,18 +21,18 @@ import tabTentacles from "./images/tab-tentacles.png";
 import classNames from "classnames";
 import { DividerMenu, DividerText, Icon, NotExportable } from "@/components";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLanguage } from "@/shared/store/features/language/language";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLanguage } from "@/shared/lib/store/features/language/language";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
 import { ArkhamDecoSideXP } from "../ArkhamDecoSideXP/ArkhamDecoSideXP";
 import { getXPDisplayValue } from "@/shared/lib/features/xp";
 import { ArkhamDecoDividerType } from "@/shared/data/layouts/arkham-deco";
 import { DividerProps } from "../../common/Divider/Divider";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
-import { XPCost } from "@/shared/types/game";
-import { LayoutOrientation } from "@/shared/types/layouts";
+import { XPCost } from "@/shared/model/types/game";
+import { LayoutOrientation } from "@/shared/model/types/layouts";
 import { getDefaultLineIcon, getDefaultSpecialIcon } from "./features/icons";
-import { selectCornerRadius } from "@/shared/store/features/print/print";
+import { selectCornerRadius } from "@/shared/lib/store/features/print/print";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
 
 export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {

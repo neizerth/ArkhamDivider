@@ -1,11 +1,11 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import S from "./LayoutOrientationToggle.module.scss";
 import icon from "./images/change-orientation.svg";
-import { selectLayout } from "@/shared/store/features/layout/layout";
-import { ILayout, LayoutOrientation } from "@/shared/types/layouts";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
+import { ILayout, LayoutOrientation } from "@/shared/model/types/layouts";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import classNames from "classnames";
-import { PropsWithClassName } from "@/shared/types/util";
+import { PropsWithClassName } from "@/shared/model/types/util";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 
 export type LayoutOrientationToggleProps = PropsWithClassName & {

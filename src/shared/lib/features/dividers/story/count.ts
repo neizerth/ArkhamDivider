@@ -1,4 +1,4 @@
-import { IStory } from "@/shared/types/api";
+import { IStory } from "@/shared/model/types/api";
 import { prop, uniq } from "ramda";
 
 export const getCampaignDividersCount = ({ name, campaigns = [] }: IStory) =>

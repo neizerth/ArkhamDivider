@@ -1,4 +1,4 @@
-import { IEncounterSet, IScenario } from "@/shared/types/api";
+import { IEncounterSet, IScenario } from "@/shared/model/types/api";
 import { groupBy, isNotNil, prop, propEq, uniq, values } from "ramda";
 
 type IGetEcnounterGroups = {

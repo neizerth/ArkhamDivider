@@ -1,5 +1,5 @@
 import { UseStoryTranslateFunction } from "@/shared/lib/hooks/useStoryTranslation";
-import { DividerType, IDivider } from "@/shared/types/dividers";
+import { DividerType, IDivider } from "@/shared/model/types/dividers";
 import factions from "@/shared/data/factions.json";
 import { propEq } from "ramda";
 

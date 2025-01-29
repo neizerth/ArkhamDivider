@@ -1,8 +1,8 @@
-import { ILayoutBleed } from "@/shared/types/layouts";
+import { ILayoutBleed } from "@/shared/model/types/layouts";
 import { getWebToPrintScale } from "@/shared/lib/features/util/units";
 import { getDividerImage } from "./getDividerImage";
-import { ColorScheme, ImageFormat } from "@/shared/types/image";
-import { RenderResponse } from "@/shared/types/render";
+import { ColorScheme, ImageFormat } from "@/shared/model/types/image";
+import { RenderResponse } from "@/shared/model/types/render";
 import { EventEmitter } from "@/shared/lib/features/events/EventEmitter";
 
 export type DividerNodeRendererOptions = {

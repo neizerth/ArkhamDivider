@@ -3,10 +3,10 @@ import Select from "react-select";
 import S from "./LayoutSelect.module.scss";
 
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectLayout } from "@/shared/lib/store/features/layout/layout";
 import classNames from "classnames";
-import { PropsWithClassName } from "@/shared/types/util";
-import { ILayout } from "@/shared/types/layouts";
+import { PropsWithClassName } from "@/shared/model/types/util";
+import { ILayout } from "@/shared/model/types/layouts";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 import { propEq } from "ramda";
 

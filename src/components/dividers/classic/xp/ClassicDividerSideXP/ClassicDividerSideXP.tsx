@@ -1,4 +1,4 @@
-import { IXPCost, XPCost } from "@/shared/types/game";
+import { IXPCost, XPCost } from "@/shared/model/types/game";
 import S from "./ClassicDividerSideXP.module.scss";
 import { range } from "ramda";
 import classNames from "classnames";

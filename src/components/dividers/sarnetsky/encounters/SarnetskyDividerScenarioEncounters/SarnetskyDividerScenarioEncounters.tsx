@@ -1,10 +1,10 @@
-import { IScenario } from "@/shared/types/api";
+import { IScenario } from "@/shared/model/types/api";
 import S from "./SarnetskyDividerScenarioEncounters.module.scss";
 import { Icon } from "@/components/ui/icons/Icon/Icon";
 import classNames from "classnames";
 import { getEncounterGroups } from "./getEncounterGroups";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectEncounterSets } from "@/shared/store/features/encounterSets/encounterSets";
+import { selectEncounterSets } from "@/shared/lib/store/features/encounterSets/encounterSets";
 import { numberBetween } from "@/shared/lib/features/util/common";
 
 export type SarnetskyDividerScenarioEncountersBaseProps = {

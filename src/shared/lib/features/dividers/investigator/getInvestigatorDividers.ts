@@ -1,5 +1,5 @@
-import type { IInvestigator } from "@/shared/types/api";
-import { DividerType, type IDivider } from "@/shared/types/dividers";
+import type { IInvestigator } from "@/shared/model/types/api";
+import { DividerType, type IDivider } from "@/shared/model/types/dividers";
 import { uniqId } from "@/shared/lib/features/util/common";
 import factions from "@/shared/data/factions.json";
 import { groupBy, isNotNil, prop, propEq, values } from "ramda";

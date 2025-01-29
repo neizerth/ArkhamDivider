@@ -6,7 +6,7 @@ import {
 	ToggleSelectItem,
 	ToggleSelectItemProps,
 } from "../ToggleSelect/ToggleSelect";
-import { IFaction } from "@/shared/types/game";
+import { IFaction } from "@/shared/model/types/game";
 
 export const FactionSelectItem = (props: ToggleSelectItemProps<IFaction>) => {
 	const { value, className, isSelected } = props;

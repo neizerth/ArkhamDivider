@@ -1,4 +1,4 @@
-import { IXPCost } from "@/shared/types/game";
+import { IXPCost } from "@/shared/model/types/game";
 import {
 	ToggleSelect,
 	ToggleSelectItem,
@@ -7,7 +7,7 @@ import {
 import S from "./XPCostSelect.module.scss";
 import { fixedXPCosts } from "@/shared/data/fixedXPCosts";
 import { Col, IconButton, Row, XPSlider } from "@/components";
-import { ButtonType } from "@/shared/types/ui";
+import { ButtonType } from "@/shared/model/types/ui";
 import { useState } from "react";
 import { getXPDisplayValue } from "@/shared/lib/features/xp";
 import { propEq } from "ramda";

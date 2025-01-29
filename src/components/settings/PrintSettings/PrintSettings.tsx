@@ -8,9 +8,9 @@ import {
 	selectDoubleSided,
 	setBleed,
 	setDoubleSided,
-} from "@/shared/store/features/print/print";
+} from "@/shared/lib/store/features/print/print";
 import { useTranslation } from "react-i18next";
-import { selectExport } from "@/shared/store/features/app/app";
+import { selectExport } from "@/shared/lib/store/features/app/app";
 
 export type PrintSettingsProps = {};
 

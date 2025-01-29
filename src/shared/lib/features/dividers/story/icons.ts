@@ -1,4 +1,4 @@
-import { IEncounterSet, IStory } from "@/shared/types/api";
+import { IEncounterSet, IStory } from "@/shared/model/types/api";
 import { isNotNil, prop, propEq, uniq } from "ramda";
 import { getStoryScenarios } from "./getScenarioDividers";
 

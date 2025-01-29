@@ -5,10 +5,10 @@ import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectCategoryId,
 	selectLayout,
-} from "@/shared/store/features/layout/layout";
+} from "@/shared/lib/store/features/layout/layout";
 import { layoutCategories } from "@/shared/data/layouts";
 import classNames from "classnames";
-import { PropsWithClassName } from "@/shared/types/util";
+import { PropsWithClassName } from "@/shared/model/types/util";
 import { propEq } from "ramda";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import { useTranslation } from "react-i18next";

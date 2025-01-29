@@ -4,7 +4,7 @@ import {
 	ILayoutCriteria,
 	LayoutOrientation,
 	LayoutType,
-} from "@/shared/types/layouts";
+} from "@/shared/model/types/layouts";
 import { propsEquals } from "../util/criteria";
 import { isNil, propEq, reject } from "ramda";
 

@@ -3,8 +3,8 @@ import { IIconContainer } from "./features/size";
 import { getIconScale } from "@/components/ui/icons/FontIcon/getIconScale";
 import icons, { ICON_SIZE } from "@/shared/data/icons";
 import { propEq } from "ramda";
-import { IconScaleFactor } from "@/shared/types/icons";
-import { IIcon } from "@/shared/types/api";
+import { IconScaleFactor } from "@/shared/model/types/icons";
+import { IIcon } from "@/shared/model/types/api";
 
 export type ArkhamesqueClassicDividerCanvasIconProps = {
 	icon: IIcon;

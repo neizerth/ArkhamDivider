@@ -1,6 +1,6 @@
-import { ColorScheme, ImageFormat } from "@/shared/types/image";
-import { ILayoutBleed } from "@/shared/types/layouts";
-import { RenderResponse } from "@/shared/types/render";
+import { ColorScheme, ImageFormat } from "@/shared/model/types/image";
+import { ILayoutBleed } from "@/shared/model/types/layouts";
+import { RenderResponse } from "@/shared/model/types/render";
 import { toPrintSize } from "@/shared/lib/features/util/units";
 import domToImage from "dom-to-image";
 import { getVips } from "../image/vips";

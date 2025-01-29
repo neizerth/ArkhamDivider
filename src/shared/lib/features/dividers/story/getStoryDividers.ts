@@ -1,10 +1,10 @@
-import { IEncounterSet, IStory } from "@/shared/types/api";
-import { IDivider } from "@/shared/types/dividers";
+import { IEncounterSet, IStory } from "@/shared/model/types/api";
+import { IDivider } from "@/shared/model/types/dividers";
 import { arrayIf } from "@/shared/lib/features/util/common";
 import { ascend, prop, sortWith } from "ramda";
 import { getScenarioDividers } from "./getScenarioDividers";
 import { getEncounterDividers } from "./getEncounterDividers";
-import { AddStoryDividersOptions } from "@/shared/store/features/addDividers/addDividers";
+import { AddStoryDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
 import { getCampaignDividers } from "./getCampaignDividers";
 
 export type IGetStoryDividersOptions = AddStoryDividersOptions & {

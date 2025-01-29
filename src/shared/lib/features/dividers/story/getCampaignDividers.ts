@@ -1,5 +1,5 @@
-import { AddStoryDividersOptions } from "@/shared/store/features/addDividers/addDividers";
-import { DividerType, IDivider } from "@/shared/types/dividers";
+import { AddStoryDividersOptions } from "@/shared/lib/store/features/addDividers/addDividers";
+import { DividerType, IDivider } from "@/shared/model/types/dividers";
 import { uniqId } from "@/shared/lib/features/util/common";
 
 export const getCampaignDividers = ({

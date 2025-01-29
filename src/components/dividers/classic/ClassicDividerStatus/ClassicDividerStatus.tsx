@@ -1,4 +1,4 @@
-import { PropsWithClassName } from "@/shared/types/util";
+import { PropsWithClassName } from "@/shared/model/types/util";
 import S from "./ClassicDividerStatus.module.scss";
 import { Icon } from "@/components/ui/icons/Icon/Icon";
 import classNames from "classnames";

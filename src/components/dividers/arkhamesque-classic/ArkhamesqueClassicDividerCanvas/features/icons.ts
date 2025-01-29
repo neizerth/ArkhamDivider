@@ -1,4 +1,4 @@
-import { IIcon } from "@/shared/types/api";
+import { IIcon } from "@/shared/model/types/api";
 import { IIconContainer } from "./size";
 
 export const getIconPosition = ({
