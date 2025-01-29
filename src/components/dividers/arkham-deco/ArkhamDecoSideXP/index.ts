@@ -1,0 +1,1 @@
+export { ArkhamDecoSideXP } from './ArkhamDecoSideXP'

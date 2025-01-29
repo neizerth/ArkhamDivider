@@ -1,0 +1,1 @@
+export { ArkhamStarter3mmPlayerCorner } from './ArkhamStarter3mmPlayerCorner'

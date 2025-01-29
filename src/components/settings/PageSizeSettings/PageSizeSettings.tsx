@@ -2,8 +2,8 @@ import S from "./PageSizeSettings.module.scss";
 import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectExport } from "@/app/store/features/app/app";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectExport } from "@/shared/store/features/app/app";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import {
 	selectBleed,
 	selectPageSizeType,
@@ -11,7 +11,7 @@ import {
 	setPageOrientation,
 	setPageSizeType,
 	setRowsPerPage,
-} from "@/app/store/features/print/print";
+} from "@/shared/store/features/print/print";
 import { PageSize, PageSizeType } from "@/shared/types/print";
 import Select from "react-select";
 

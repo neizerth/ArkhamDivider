@@ -1,7 +1,7 @@
 import {
 	AddPlayerDividersOptions,
 	AddStoryDividersOptions,
-} from "@/app/store/features/addDividers/addDividers";
+} from "@/shared/store/features/addDividers/addDividers";
 import { Mapping } from "./util";
 
 export type ILayoutBleed = {

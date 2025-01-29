@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../useAppDispatch";
 import { useEffect } from "react";
-import { selectType, setType } from "@/app/store/features/layout/layout";
+import { selectType, setType } from "@/shared/store/features/layout/layout";
 import { LayoutType } from "@/shared/types/layouts";
 import { useAppSelector } from "../useAppSelector";
 

@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { PropsWithClassName } from "@/shared/types/util";
 import { Container } from "./components";
 

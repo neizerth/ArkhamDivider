@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import S from "./LayoutOrientationToggle.module.scss";
 import icon from "./images/change-orientation.svg";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { ILayout, LayoutOrientation } from "@/shared/types/layouts";
 import { getLayouts } from "@/shared/lib/features/layouts/common";
 import classNames from "classnames";

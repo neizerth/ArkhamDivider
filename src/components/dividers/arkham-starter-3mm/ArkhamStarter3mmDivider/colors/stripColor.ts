@@ -1,7 +1,7 @@
 import {
 	isChallenge,
 	isSideContent,
-} from "@/app/store/features/stories/criteria";
+} from "@/shared/store/features/stories/criteria";
 import { IDivider } from "@/shared/types/dividers";
 import { IRGBAColor } from "@/shared/types/ui";
 import { Mapping } from "@/shared/types/util";

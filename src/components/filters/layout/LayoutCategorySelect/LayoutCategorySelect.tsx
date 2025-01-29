@@ -5,7 +5,7 @@ import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import {
 	selectCategoryId,
 	selectLayout,
-} from "@/app/store/features/layout/layout";
+} from "@/shared/store/features/layout/layout";
 import { layoutCategories } from "@/shared/data/layouts";
 import classNames from "classnames";
 import { PropsWithClassName } from "@/shared/types/util";

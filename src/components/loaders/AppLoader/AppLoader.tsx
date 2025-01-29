@@ -9,7 +9,7 @@ import {
 	selectExport,
 	selectLoading,
 	selectLoadingStatus,
-} from "@/app/store/features/app/app";
+} from "@/shared/store/features/app/app";
 import { Progress } from "@/components";
 
 const loader = BASE_PATH + "images/loader.gif";

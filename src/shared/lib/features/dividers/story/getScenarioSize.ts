@@ -1,6 +1,6 @@
 import { safePropEq } from "@/shared/lib/features/util/criteria";
 import { IEncounterSet, IScenario } from "@/shared/types/api";
-import { SCENARIO_TYPES } from "@/app/store/features/encounterSets/constants";
+import { SCENARIO_TYPES } from "@/shared/store/features/encounterSets/constants";
 
 export const getScenarioSize = ({
 	scenario,

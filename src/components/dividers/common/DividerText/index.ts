@@ -1,0 +1,1 @@
+export { DividerText } from './DividerText'

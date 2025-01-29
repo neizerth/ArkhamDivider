@@ -1,0 +1,1 @@
+export { ClassicDividerSideXP } from './ClassicDividerSideXP'

@@ -1,0 +1,1 @@
+export { SarnetskyDividerBackground } from './SarnetskyDividerBackground'

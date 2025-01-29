@@ -5,11 +5,11 @@ import { useAppSelector } from "../useAppSelector";
 import {
 	selectCategoryId,
 	setCategoryId,
-} from "@/app/store/features/layout/layout";
+} from "@/shared/store/features/layout/layout";
 import { layoutCategories } from "@/shared/data/layouts";
 import { prop } from "ramda";
 import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
-import { loadArkhamesqueData } from "@/app/store/features/dividers/arkhamesque/arkhamesque";
+import { loadArkhamesqueData } from "@/shared/store/features/dividers/arkhamesque/arkhamesque";
 
 export const useCategoryNavigation = () => {
 	const { categoryId } = useParams();

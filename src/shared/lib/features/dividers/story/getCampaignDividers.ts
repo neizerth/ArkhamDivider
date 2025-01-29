@@ -1,4 +1,4 @@
-import { AddStoryDividersOptions } from "@/app/store/features/addDividers/addDividers";
+import { AddStoryDividersOptions } from "@/shared/store/features/addDividers/addDividers";
 import { DividerType, IDivider } from "@/shared/types/dividers";
 import { uniqId } from "@/shared/lib/features/util/common";
 

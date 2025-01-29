@@ -13,8 +13,8 @@ import {
 import classNames from "classnames";
 
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLanguage } from "@/app/store/features/language/language";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLanguage } from "@/shared/store/features/language/language";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { ClassicDividerStatus } from "../ClassicDividerStatus/ClassicDividerStatus";
 import { ClassicDividerIconXPCost } from "../xp/ClassicDividerIconXPCost/ClassicDividerIconXPCost";
 import { propsEquals } from "@/shared/lib/features/util/criteria";
@@ -25,7 +25,7 @@ import { DividerProps } from "../../common/Divider/Divider";
 import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
 import { CircleIcon } from "@/components/ui/icons/CircleIcon/CircleIcon";
 import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
-import { selectCornerRadius } from "@/app/store/features/print/print";
+import { selectCornerRadius } from "@/shared/store/features/print/print";
 
 export type ClassicDividerProps = DividerProps &
 	PropsWithChildren & {

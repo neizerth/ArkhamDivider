@@ -3,8 +3,8 @@ import S from "./DividerContent.module.scss";
 import { PropsWithClassName } from "@/shared/types/util";
 import { PropsWithChildren } from "react";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
-import { selectBleed } from "@/app/store/features/print/print";
+import { selectLayout } from "@/shared/store/features/layout/layout";
+import { selectBleed } from "@/shared/store/features/print/print";
 
 import { Wrapper, GuidesContent, Content } from "./components";
 import classNames from "classnames";

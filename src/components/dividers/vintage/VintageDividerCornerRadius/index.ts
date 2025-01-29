@@ -1,0 +1,1 @@
+export { VintageDividerCornerRadius } from './VintageDividerCornerRadius'

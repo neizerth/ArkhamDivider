@@ -1,4 +1,4 @@
-import { AddPlayerDividersOptions } from "@/app/store/features/addDividers/addDividers";
+import { AddPlayerDividersOptions } from "@/shared/store/features/addDividers/addDividers";
 import { DividerSubtype, DividerType, IDivider } from "@/shared/types/dividers";
 import {
 	CardType,

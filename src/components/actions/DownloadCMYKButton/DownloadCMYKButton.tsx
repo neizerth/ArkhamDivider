@@ -4,7 +4,7 @@ import { createZipRenderer as createZipRenderer } from "@/shared/lib/features/zi
 import { DownloadButton } from "../DownloadButton/DownloadButton";
 import { getSimilarBleed } from "@/shared/lib/features/render/getSimilarBleed";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/app/store/features/layout/layout";
+import { selectLayout } from "@/shared/store/features/layout/layout";
 import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/ui/Badge/Badge";
 
