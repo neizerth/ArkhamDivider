@@ -1,1 +1,1 @@
-export { ClassicDivider } from './ClassicDivider'
+export * from './ClassicDivider'

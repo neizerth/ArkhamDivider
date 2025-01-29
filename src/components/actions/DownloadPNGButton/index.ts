@@ -1,1 +1,1 @@
-export { DownloadPNGButton } from './DownloadPNGButton'
+export * from './DownloadPNGButton'

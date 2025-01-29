@@ -1,1 +1,1 @@
-export { ClassicDividerIconXPCost } from './ClassicDividerIconXPCost'
+export * from './ClassicDividerIconXPCost'

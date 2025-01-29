@@ -1,1 +1,1 @@
-export { StorySelectOption } from './StorySelectOption'
+export * from './StorySelectOption'

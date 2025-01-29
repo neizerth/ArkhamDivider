@@ -1,1 +1,1 @@
-export { AddPlayerDividers } from './AddPlayerDividers'
+export * from './AddPlayerDividers'

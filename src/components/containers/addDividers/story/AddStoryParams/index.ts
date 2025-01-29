@@ -1,1 +1,1 @@
-export { AddStoryParams } from './AddStoryParams'
+export * from './AddStoryParams'

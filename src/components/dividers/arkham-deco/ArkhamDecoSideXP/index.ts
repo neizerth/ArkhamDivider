@@ -1,1 +1,1 @@
-export { ArkhamDecoSideXP } from './ArkhamDecoSideXP'
+export * from './ArkhamDecoSideXP'

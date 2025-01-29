@@ -1,1 +1,1 @@
-export { ClassicDividerStatus } from './ClassicDividerStatus'
+export * from './ClassicDividerStatus'

@@ -1,1 +1,1 @@
-export { DownloadButton } from './DownloadButton'
+export * from './DownloadButton'

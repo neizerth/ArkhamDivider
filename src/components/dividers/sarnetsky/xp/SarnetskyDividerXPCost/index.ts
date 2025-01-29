@@ -1,1 +1,1 @@
-export { SarnetskyDividerXPCost } from './SarnetskyDividerXPCost'
+export * from './SarnetskyDividerXPCost'

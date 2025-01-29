@@ -1,1 +1,1 @@
-export { Invocation2018DividerXPCost } from './Invocation2018DividerXPCost'
+export * from './Invocation2018DividerXPCost'

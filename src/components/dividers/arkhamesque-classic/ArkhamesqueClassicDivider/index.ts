@@ -1,1 +1,1 @@
-export { ArkhamesqueClassicDivider } from './ArkhamesqueClassicDivider'
+export * from './ArkhamesqueClassicDivider'

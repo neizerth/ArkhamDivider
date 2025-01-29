@@ -1,1 +1,1 @@
-export { DividerContent } from './DividerContent'
+export * from './DividerContent'

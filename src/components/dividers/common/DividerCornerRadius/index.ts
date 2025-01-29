@@ -1,1 +1,1 @@
-export { DividerCornerRadius } from './DividerCornerRadius'
+export * from './DividerCornerRadius'

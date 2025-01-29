@@ -1,1 +1,1 @@
-export { SarnetskyDividerXPText } from './SarnetskyDividerXPText'
+export * from './SarnetskyDividerXPText'

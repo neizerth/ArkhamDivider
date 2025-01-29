@@ -1,1 +1,1 @@
-export { StorySelect } from './StorySelect'
+export * from './StorySelect'

@@ -1,1 +1,1 @@
-export { AddDividers } from './AddDividers'
+export * from './AddDividers'

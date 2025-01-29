@@ -1,1 +1,1 @@
-export { ArkhamStarter3mmDivider } from './ArkhamStarter3mmDivider'
+export * from './ArkhamStarter3mmDivider'

@@ -1,1 +1,1 @@
-export { ArkhamesqueClassicDividerCanvas } from './ArkhamesqueClassicDividerCanvas'
+export * from './ArkhamesqueClassicDividerCanvas'

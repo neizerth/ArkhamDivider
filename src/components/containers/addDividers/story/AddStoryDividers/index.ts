@@ -1,1 +1,1 @@
-export { AddStoryDividers } from './AddStoryDividers'
+export * from './AddStoryDividers'

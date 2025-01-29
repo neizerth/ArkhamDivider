@@ -1,1 +1,1 @@
-export { ArkhamDecoDivider } from './ArkhamDecoDivider'
+export * from './ArkhamDecoDivider'

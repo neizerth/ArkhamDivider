@@ -1,1 +1,1 @@
-export { ArkhamStarter3mmPlayerCorner } from './ArkhamStarter3mmPlayerCorner'
+export * from './ArkhamStarter3mmPlayerCorner'

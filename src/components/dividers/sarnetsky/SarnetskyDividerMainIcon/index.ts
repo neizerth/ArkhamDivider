@@ -1,1 +1,1 @@
-export { SarnetskyDividerMainIcon } from './SarnetskyDividerMainIcon'
+export * from './SarnetskyDividerMainIcon'

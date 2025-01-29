@@ -1,1 +1,1 @@
-export { ArkhamesqueClassicDividerPlayerXPCostTitle } from './ArkhamesqueClassicDividerPlayerXPCostTitle'
+export * from './ArkhamesqueClassicDividerPlayerXPCostTitle'

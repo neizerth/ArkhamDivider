@@ -1,1 +1,1 @@
-export { AddInvestigatorDividers } from './AddInvestigatorDividers'
+export * from './AddInvestigatorDividers'

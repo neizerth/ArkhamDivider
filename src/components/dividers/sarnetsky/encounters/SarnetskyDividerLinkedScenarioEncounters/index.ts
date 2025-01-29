@@ -1,1 +1,1 @@
-export { SarnetskyDividerLinkedScenarioEncounters } from './SarnetskyDividerLinkedScenarioEncounters'
+export * from './SarnetskyDividerLinkedScenarioEncounters'
