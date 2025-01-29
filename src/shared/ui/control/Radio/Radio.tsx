@@ -1,5 +1,5 @@
 import { Checkbox } from "@/components";
-import type { CheckboxProps } from "../Checkbox/Checkbox";
+import type { CheckboxProps } from "@/shared/ui";
 
 // import S from './Radio.module.scss';
 

@@ -2,7 +2,7 @@ import Select from "react-select";
 import S from "./StorySelect.module.scss";
 
 import { IconButton } from "@/components/ui/IconButton/IconButton";
-import { Row } from "@/components/ui/grid/Row/Row";
+import { Row } from "@/shared/ui/grid/Row/Row";
 import { toArrayIf } from "@/shared/lib/features/util/common";
 import { useAppNavigate } from "@/shared/lib/hooks/useAppNavigate";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";

@@ -16,7 +16,7 @@ export const IconSelectPreview = ({
 
 	useEffect(() => {
 		const isURL = icon?.startsWith("blob:");
-		if (icon !== defaultIcon && isURL) {
+		if (icon && icon !== defaultIcon && isURL) {
 			URL.revokeObjectURL(icon);
 		}
 

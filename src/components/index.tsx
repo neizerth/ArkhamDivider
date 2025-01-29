@@ -1,4 +1,4 @@
-export { Container } from "./containers/Container/Container";
+export { Container } from "../shared/ui/grid/Container/Container";
 export { Layout } from "./containers/Layout/Layout";
 
 export { LayoutInfo } from "./info/LayoutInfo/LayoutInfo";
@@ -22,9 +22,8 @@ export { DividerMenu } from "./dividers/common/DividerMenu/DividerMenu";
 export { DividerText } from "./dividers/common/DividerText/DividerText";
 export { DividerContent } from "./dividers/common/DividerContent/DividerContent";
 
-export { Row, InlineRow } from "./ui/grid/Row/Row";
-export { Col } from "./ui/grid/Col/Col";
-export { List } from "./ui/grid/List/List";
+export { Row, InlineRow } from "../shared/ui/grid/Row/Row";
+export { Col } from "../shared/ui/grid/Col/Col";
 export { Icon } from "./ui/icons/Icon/Icon";
 export { IconButton } from "./ui/IconButton/IconButton";
 export { Color } from "./ui/Color/Color";
@@ -54,11 +53,11 @@ export { Page } from "./print/Page/Page";
 
 export { AppLoader } from "./loaders/AppLoader/AppLoader";
 
-export { Checkbox } from "./forms/Checkbox/Checkbox";
-export { Button } from "./forms/Button/Button";
+export { Checkbox } from "../shared/ui/control/Checkbox/Checkbox";
+export { Button } from "../shared/ui/control/Button/Button";
 export { ColorSelect } from "./forms/ColorSelect/ColorSelect";
-export { Upload } from "./forms/Upload/Upload";
-export { Input } from "./forms/Input/Input";
+export { FileUpload as Upload } from "../shared/ui/control/FileUpload/FileUpload";
+export { Input } from "../shared/ui/control/Input/Input";
 
 export { LanguageSelect } from "./filters/LanguageSelect/LanguageSelect";
 export { LayoutFilter } from "./filters/layout/LayoutFilter/LayoutFilter";

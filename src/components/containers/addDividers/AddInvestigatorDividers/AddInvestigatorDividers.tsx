@@ -5,7 +5,7 @@ import {
 	StoryCustomContent,
 	StorySelect,
 } from "@/components";
-import { Row } from "@/components/ui/grid/Row/Row";
+import { Row } from "@/shared/ui";
 import { useInvestigatorStories } from "@/shared/lib/hooks/stories/useInvestigatorStories";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";

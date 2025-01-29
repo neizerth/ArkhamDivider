@@ -85,7 +85,7 @@ export const PageCredits = ({ className }: PageCreditsProps) => {
 	const categoryId = useAppSelector(selectCategoryId);
 	const { t } = useTranslation();
 
-	const author = categoryId && getCategoryById(categoryId)?.author;
+	const author = categoryId ? getCategoryById(categoryId)?.author : null;
 
 	const Component = language === "ru" ? PageCreditsRU : PageCreditsGlobal;
 

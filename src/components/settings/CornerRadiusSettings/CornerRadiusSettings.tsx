@@ -1,4 +1,4 @@
-import { Checkbox } from "@/components/forms/Checkbox/Checkbox";
+import { Checkbox } from "@/shared/ui/control/Checkbox/Checkbox";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
 import { selectExport } from "@/shared/lib/store/features/app/app";
