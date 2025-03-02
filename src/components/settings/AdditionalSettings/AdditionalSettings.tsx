@@ -1,10 +1,10 @@
 import { LayoutZoom, Row } from "@/components";
-import { DownloadCMYKButton } from "@/components/actions/DownloadCMYKButton/DownloadCMYKButton";
-import { DownloadLasercutPDF } from "@/components/actions/DownloadLasercutPDF/DownloadLasercutPDF";
-import { DownloadPNGButton } from "@/components/actions/DownloadPNGButton/DownloadPNGButton";
+import { DownloadCMYKButton } from "@/widgets/download/ui/DownloadCMYKButton/DownloadCMYKButton";
+import { DownloadPNGButton } from "@/widgets/download/ui/DownloadPNGButton/DownloadPNGButton";
 import { CornerRadiusSettings } from "../CornerRadiusSettings/CornerRadiusSettings";
 import { PageSizeSettings } from "../PageSizeSettings/PageSizeSettings";
 import S from "./AdditionalSettings.module.scss";
+import { DownloadLasercutPDFButton } from "@/widgets";
 
 export type AdditionalSettingsProps = {};
 
@@ -22,7 +22,7 @@ export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
 					<CornerRadiusSettings />
 				</div>
 				<div className={S.item}>
-					<DownloadLasercutPDF />
+					<DownloadLasercutPDFButton />
 				</div>
 				<div className={S.item}>
 					<DownloadCMYKButton />

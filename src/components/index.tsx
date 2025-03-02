@@ -55,7 +55,6 @@ export { AppLoader } from "./loaders/AppLoader/AppLoader";
 
 export { Checkbox } from "../shared/ui/control/Checkbox/Checkbox";
 export { Button } from "../shared/ui/control/Button/Button";
-export { ColorSelect } from "./forms/ColorSelect/ColorSelect";
 export { FileUpload as Upload } from "../shared/ui/control/FileUpload/FileUpload";
 export { Input } from "../shared/ui/control/Input/Input";
 
