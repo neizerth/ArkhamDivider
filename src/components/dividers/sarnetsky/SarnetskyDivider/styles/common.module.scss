@@ -1,16 +1,16 @@
 .container {
-  font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
+  font-family: "Teutonic", "Conkordia", "Arkhamic", sans-serif;
   position: relative;
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
 
 .ru {
-  font-family: 'Conkordia', 'Arkhamic', sans-serif;
+  font-family: "Conkordia", "Arkhamic", sans-serif;
 }
 
 .ko {
-  font-family: 'SanCn', sans-serif;
+  font-family: "SanCn", sans-serif;
   font-weight: bold;
 
   .scenarioTitle {
@@ -21,14 +21,13 @@
 
 .zh,
 .zh-cn {
-  font-family: 'STXingkai', sans-serif;
+  font-family: "STXingkai", sans-serif;
 
   .scenarioTitle {
     font-family: inherit;
     font-style: normal;
   }
 }
-
 
 .background {
   position: absolute;
@@ -42,14 +41,16 @@
 .titleInput {
   text-align: left;
   padding: 0.2em;
-  &_scenario, &_campaign, &_player, &_investigator {
+  &_scenario,
+  &_campaign,
+  &_player,
+  &_investigator {
     display: grid;
     grid-template-columns: 100%;
     align-items: center;
     justify-items: center;
   }
 }
-
 
 .light {
   color: white;
@@ -68,7 +69,8 @@
     left: 50%;
     transform: translate(-50%, 0);
   }
-  &_type-scenario, &_type-campaign {
+  &_type-scenario,
+  &_type-campaign {
     align-items: center;
     font-size: 1.4em;
     width: 1.2em;
@@ -96,7 +98,8 @@
   right: 5.7mm;
 }
 
-.type_scenario, .type_campaign {
+.type_scenario,
+.type_campaign {
   .campaignIcon {
     font-size: 0.55em;
     width: 1.1em;
@@ -124,7 +127,6 @@
   flex: 1;
 }
 
-
 .title {
   position: absolute;
   z-index: 3;
@@ -135,23 +137,30 @@
     box-sizing: border-box;
     top: 8.7mm;
   }
-  &_scenario, &_campaign, &_player, &_investigator {
+  &_scenario,
+  &_campaign,
+  &_player,
+  &_investigator {
     line-height: 1;
     text-align: center;
     box-sizing: border-box;
   }
-  &_scenario, &_campaign {
+  &_scenario,
+  &_campaign {
     top: 6.9mm;
     left: 15mm;
     height: 8.15mm;
     padding-right: 2.5mm;
   }
-  &_player, &_investigator {
+  &_player,
+  &_investigator {
     top: 7.2mm;
     left: 16mm;
     height: 7.6mm;
   }
-  &_zh, &_zh-cn, &_ko {
+  &_zh,
+  &_zh-cn,
+  &_ko {
     line-height: 1.1;
     padding-top: 0.2em;
     // margin-top: -0.1em;
@@ -164,7 +173,7 @@
   width: 100%;
   padding: 0 7.5mm;
   box-sizing: border-box;
-  font-family: 'Arno Pro', 'Alegreya', sans-serif;
+  font-family: "Arno Pro", "Alegreya", sans-serif;
   font-style: italic;
   text-align: center;
   font-size: 0.63em;
@@ -180,7 +189,7 @@
 
 .menu {
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   color: rgba(0, 0, 0, 0.3);
   padding: 0.5em;
   background: rgba(255, 255, 255, 0.1);
@@ -217,7 +226,7 @@
   text-align: center;
   font-size: 0.63em;
   line-height: 1.05;
-  font-family: 'Arno Pro', 'Alegreya', sans-serif;
+  font-family: "Arno Pro", "Alegreya", sans-serif;
 }
 
 .cornerRadius {
