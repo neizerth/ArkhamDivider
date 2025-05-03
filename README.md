@@ -45,6 +45,8 @@ npm run dev
 
 @TengounPlan - Spanish translation
 
+@Zoltirico - Italian translation
+
 ### Design
 
 @5argon - 3mm Divider design template
