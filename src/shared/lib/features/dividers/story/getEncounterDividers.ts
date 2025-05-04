@@ -8,86 +8,90 @@ import { getStoryScenarios } from "./getScenarioDividers";
 type IGetEncounterDividersParams = IGetStoryDividersOptions;
 
 export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
-	const {
-		story,
-		includeExtraSets,
-		includeScenarioEncounterSet,
-		includeCampaignIcon,
-		includeEncounters,
-		encounterSets,
-	} = options;
+  const {
+    story,
+    includeExtraSets,
+    includeScenarioEncounterSet,
+    includeCampaignIcon,
+    includeEncounters,
+    encounterSets,
+  } = options;
 
-	if (!includeEncounters && !includeScenarioEncounterSet && !includeExtraSets) {
-		return [];
-	}
+  if (!includeEncounters && !includeScenarioEncounterSet && !includeExtraSets) {
+    return [];
+  }
 
-	const { icon, encounter_sets, extra_encounter_sets } = story;
+  const { icon, encounter_sets, extra_encounter_sets } = story;
 
-	const scenarios = getStoryScenarios(story);
-	const scenarioNames = scenarios.map(prop("scenario_name"));
+  const scenarios = getStoryScenarios(story);
+  const scenarioNames = scenarios.map(prop("scenario_name"));
 
-	const campaignIcon = icon;
+  const campaignIcon = icon;
 
-	const extraEncounters = includeExtraSets ? extra_encounter_sets : [];
+  const extraEncounters = includeExtraSets ? extra_encounter_sets : [];
 
-	const encounters = [...encounter_sets, ...extraEncounters];
+  const encounters = [...encounter_sets, ...extraEncounters];
 
-	const encounterDividers = encounters
-		.map((code) => {
-			const isExtra = extra_encounter_sets.includes(code);
-			const encounter = encounterSets.find(propEq(code, "code"));
+  const encounterDividers = encounters
+    .map((code) => {
+      const isExtra = extra_encounter_sets.includes(code);
+      const encounter = encounterSets.find(propEq(code, "code"));
 
-			if (!encounter) {
-				return;
-			}
+      if (!encounter) {
+        return;
+      }
 
-			const { name, icon } = encounter;
+      const { name, icon } = encounter;
 
-			const isScenario = Boolean(icon) && scenarioNames.includes(name);
+      const isScenario = Boolean(icon) && scenarioNames.includes(name);
 
-			if (!includeScenarioEncounterSet && isScenario) {
-				return;
-			}
+      if (!includeScenarioEncounterSet && isScenario) {
+        return;
+      }
 
-			if (!isScenario && !includeEncounters && !includeExtraSets) {
-				return;
-			}
+      if (!isScenario && !includeEncounters && !includeExtraSets) {
+        return;
+      }
 
-			const sizeData = getEncounterSize({
-				...options,
-				isExtra,
-				encounter,
-			});
+      if (!includeEncounters && !isExtra) {
+        return;
+      }
 
-			return {
-				id: uniqId() + code,
-				...sizeData,
-				story,
-				name,
-				icon,
-				campaignIcon,
-				encounterSet: encounter,
-				type: DividerType.ENCOUNTER,
-				displayCampaignIcon: includeCampaignIcon,
-			};
-		})
-		.filter(isNotNil);
+      const sizeData = getEncounterSize({
+        ...options,
+        isExtra,
+        encounter,
+      });
 
-	if (!includeScenarioEncounterSet) {
-		return encounterDividers;
-	}
+      return {
+        id: uniqId() + code,
+        ...sizeData,
+        story,
+        name,
+        icon,
+        campaignIcon,
+        encounterSet: encounter,
+        type: DividerType.ENCOUNTER,
+        displayCampaignIcon: includeCampaignIcon,
+      };
+    })
+    .filter(isNotNil);
 
-	const scenarioEncounterDividers = scenarios
-		.filter(({ icon }) => !encounterDividers.find(propEq(icon, "icon")))
-		.map(({ scenario_name, id, icon }) => ({
-			id: uniqId() + id,
-			story,
-			name: scenario_name,
-			icon,
-			campaignIcon,
-			type: DividerType.ENCOUNTER,
-			displayCampaignIcon: includeCampaignIcon,
-		}));
+  if (!includeScenarioEncounterSet) {
+    return encounterDividers;
+  }
 
-	return [...encounterDividers, ...scenarioEncounterDividers];
+  const scenarioEncounterDividers = scenarios
+    .filter(({ icon }) => !encounterDividers.find(propEq(icon, "icon")))
+    .map(({ scenario_name, id, icon }) => ({
+      id: uniqId() + id,
+      story,
+      name: scenario_name,
+      icon,
+      campaignIcon,
+      type: DividerType.ENCOUNTER,
+      displayCampaignIcon: includeCampaignIcon,
+    }));
+
+  return [...encounterDividers, ...scenarioEncounterDividers];
 };
