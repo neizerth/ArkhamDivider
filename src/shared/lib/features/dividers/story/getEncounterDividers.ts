@@ -24,7 +24,9 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
   const { icon, encounter_sets, extra_encounter_sets } = story;
 
   const scenarios = getStoryScenarios(story);
-  const scenarioNames = scenarios.map(prop("scenario_name")).map(toLower);
+  const scenarioNames = scenarios.map(({ scenario_name }) =>
+    scenario_name.toLowerCase()
+  );
 
   const campaignIcon = icon;
 
@@ -42,9 +44,8 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
       }
 
       const { name, icon } = encounter;
-
-      const isScenario =
-        Boolean(icon) && scenarioNames.includes(name.toLowerCase());
+      const encounterName = name.toLowerCase();
+      const isScenario = Boolean(icon) && scenarioNames.includes(encounterName);
 
       if (!includeScenarioEncounterSet && isScenario) {
         return;
