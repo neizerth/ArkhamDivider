@@ -1,4 +1,4 @@
-import { isNotNil, propEq } from "ramda";
+import { isNotNil, propEq, uniq } from "ramda";
 import { getEncounterSize } from "./getEncounterSize";
 import { uniqId } from "@/shared/lib/features/util/common";
 import { IGetStoryDividersOptions } from "./getStoryDividers";
@@ -15,6 +15,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     includeCampaignIcon,
     includeEncounters,
     encounterSets,
+    extraStory,
   } = options;
 
   if (!includeEncounters && !includeScenarioEncounterSet && !includeExtraSets) {
@@ -23,9 +24,13 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
 
   const { icon, encounter_sets, extra_encounter_sets } = story;
 
-  const scenarios = getStoryScenarios(story);
-  const scenarioNames = scenarios.map(({ scenario_name }) =>
-    scenario_name.toLowerCase()
+  const scenarios = [
+    ...getStoryScenarios(story),
+    ...(extraStory ? getStoryScenarios(extraStory) : []),
+  ];
+
+  const scenarioNames = uniq(
+    scenarios.map(({ scenario_name }) => scenario_name.toLowerCase())
   );
 
   const campaignIcon = icon;
