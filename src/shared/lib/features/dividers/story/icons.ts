@@ -5,7 +5,9 @@ import { getStoryScenarios } from "./getScenarioDividers";
 export const getScenarioDividerIcons = (story: IStory) => {
   const scenarios = getStoryScenarios(story);
 
-  return scenarios.map(prop("icon")).filter(isNotNil);
+  const icons = scenarios.map(prop("icon")).filter(isNotNil);
+
+  return uniq(icons);
 };
 
 export const getCampaignDividerIcons = ({ icon, campaigns = [] }: IStory) => {
@@ -85,5 +87,5 @@ export const getEncounterDividerIcons = ({
     .map(prop("icon"))
     .filter(isNotNil);
 
-  return icons;
+  return uniq(icons);
 };
