@@ -1,13 +1,13 @@
 import { IEncounterSet, IStory } from "@/shared/types/api";
-import { isNotNil, prop, propEq, uniq } from "ramda";
+import { isNotNil, prop, propEq, uniq, uniqBy } from "ramda";
 import { getStoryScenarios } from "./getScenarioDividers";
 
 export const getScenarioDividerIcons = (story: IStory) => {
   const scenarios = getStoryScenarios(story);
 
-  const icons = scenarios.map(prop("icon")).filter(isNotNil);
+  const uniqueScenarios = uniqBy(({ full_name }) => full_name, scenarios);
 
-  return uniq(icons);
+  return uniqueScenarios.map(prop("icon")).filter(isNotNil);
 };
 
 export const getCampaignDividerIcons = ({ icon, campaigns = [] }: IStory) => {
@@ -81,11 +81,11 @@ export const getEncounterDividerIcons = ({
     return encounter;
   };
 
-  const icons = encounters
-    .map(filterScenarios)
-    .filter(isNotNil)
-    .map(prop("icon"))
-    .filter(isNotNil);
+  const encountrWithIcons = encounters.map(filterScenarios).filter(isNotNil);
 
-  return uniq(icons);
+  const uniqueEncounters = uniqBy(prop("name"), encountrWithIcons);
+
+  const icons = uniqueEncounters.map(prop("icon")).filter(isNotNil);
+
+  return icons;
 };

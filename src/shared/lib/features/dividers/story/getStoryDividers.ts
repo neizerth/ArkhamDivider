@@ -41,7 +41,7 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
   ];
 
   const uniqueDividers = uniqBy(
-    ({ icon, type }) => `${type}_${icon}`,
+    ({ type, name }) => `${type}_${name}`,
     dividers
   );
 
