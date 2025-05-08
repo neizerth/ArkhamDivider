@@ -1,7 +1,7 @@
 @import "@/app/sass/mixins.scss";
 
 .container {
-  font-family: 'Teutonic', 'Teutonic Extended', 'Arkhamic', sans-serif;
+  font-family: "Teutonic", "Teutonic Extended", "Arkhamic", sans-serif;
   color: #352e1f;
 
   print-color-adjust: exact;
@@ -9,26 +9,25 @@
 }
 
 .ru {
-  font-family: 'Conkordia', 'Arkhamic', sans-serif;
+  font-family: "Conkordia", "Arkhamic", sans-serif;
 }
 
 .zh,
 .zh-cn {
-  font-family: 'STXingkai', sans-serif;
+  font-family: "STXingkai", sans-serif;
   .title {
     height: 2.9mm;
   }
 }
 
 .ko {
-  font-family: 'SanCn';
+  font-family: "SanCn";
   font-weight: bold;
 
   .title {
     height: 2.9mm;
   }
 }
-
 
 .background {
   position: absolute;
@@ -85,7 +84,6 @@
     &_withPlayerStrip {
       bottom: 27mm;
 
-
       .verticalTitleContainer {
         width: 17mm;
       }
@@ -93,11 +91,23 @@
   }
 }
 
+.titleWrapper {
+  width: auto;
+  display: flex;
+  gap: 0.5mm;
+  align-items: center;
+}
+
+.size {
+  left: 100%;
+  font-size: 2mm;
+}
+
 .iconCorner {
   position: absolute;
   z-index: 3;
   cursor: pointer;
-  
+
   &_horizontal {
     top: 0;
     left: 8mm;
@@ -132,6 +142,9 @@
 }
 
 .verticalTitleContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5mm;
   height: 3.5mm;
   width: 27mm;
 }
@@ -180,7 +193,7 @@
 }
 
 .menuInner {
-  gap: 10px; 
+  gap: 10px;
 }
 
 .campaignIcon {
