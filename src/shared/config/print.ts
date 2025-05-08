@@ -1,1 +1,1 @@
-export const DEFAULT_CORNER_RADIUS = 4;
+export const DEFAULT_CORNER_RADIUS = 3;
