@@ -1,6 +1,7 @@
 import { IEncounterSet, IStory } from "@/shared/types/api";
 import { isNotNil, prop, propEq, uniq, uniqBy } from "ramda";
 import { getStoryScenarios } from "./getScenarioDividers";
+import { removePunctuation } from "../../util/common";
 
 export const getScenarioDividerIcons = (story: IStory) => {
   const scenarios = getStoryScenarios(story);
@@ -60,7 +61,7 @@ export const getEncounterDividerIcons = ({
 
   const scenarios = getStoryScenarios(story);
   const scenarioNames = scenarios.map(({ scenario_name }) =>
-    scenario_name.toLowerCase()
+    removePunctuation(scenario_name).toLowerCase()
   );
 
   const filterScenarios = (code: string) => {
@@ -68,7 +69,7 @@ export const getEncounterDividerIcons = ({
     if (!encounter) {
       return;
     }
-    const encounterName = encounter.name.toLowerCase();
+    const encounterName = removePunctuation(encounter.name).toLowerCase();
 
     if (!scenarioNames.includes(encounterName)) {
       return encounter;
