@@ -3,7 +3,7 @@ import { ILayoutBleed } from "@/shared/types/layouts";
 import { RenderResponse } from "@/shared/types/render";
 import { toPrintSize } from "@/shared/lib/features/util/units";
 import domToImage from "dom-to-image";
-import Vips from "wasm-vips";
+import { getVips } from "../image/vips";
 
 export type GetDividerImageOptions = {
   node: Element;
@@ -42,7 +42,7 @@ export const getDividerImage = async ({
   const cropHeight = toPrintSize(bleed.height);
 
   const source = await blob.arrayBuffer();
-  const vips = await Vips();
+  const vips = await getVips();
   const memory = vips.Stats.mem() / 1024;
 
   console.log("used vips memory, Kb", memory);

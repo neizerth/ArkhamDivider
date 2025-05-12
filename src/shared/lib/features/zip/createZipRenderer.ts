@@ -6,47 +6,53 @@ import { ColorScheme, ImageFormat } from "@/shared/types/image";
 import { OnRenderEventData } from "@/shared/types/render";
 
 export type RenderOptions = {
-	name: string;
-	bleed: ILayoutBleed;
-	imageFormat: ImageFormat;
-	colorScheme?: ColorScheme;
+  name: string;
+  bleed: ILayoutBleed;
+  imageFormat: ImageFormat;
+  colorScheme?: ColorScheme;
 };
 
 export type CreateDividerZipOptions = RenderOptions & {
-	name: string;
+  name: string;
 };
 
 export const createZipRenderer = ({
-	bleed,
-	name,
-	imageFormat,
-	colorScheme,
+  bleed,
+  name,
+  imageFormat,
+  colorScheme,
 }: CreateDividerZipOptions) => {
-	let zip = new JSZip();
+  let zip: typeof JSZip | null = null;
 
-	const renderer = new DividerNodeRenderer({
-		bleed,
-		imageFormat,
-		colorScheme,
-	});
+  const renderer = new DividerNodeRenderer({
+    bleed,
+    imageFormat,
+    colorScheme,
+  });
 
-	renderer
-		.on("start", () => (zip = new JSZip()))
-		.on("render", (event: OnRenderEventData) => {
-			const { filename, contents } = event.data;
+  renderer
+    .on("start", () => {
+      zip = new JSZip();
+    })
+    .on("render", (event: OnRenderEventData) => {
+      const { filename, contents } = event.data;
 
-			zip.file(filename, contents, {
-				binary: true,
-			});
-		})
-		.on("done", async () => {
-			const content = await zip.generateAsync({
-				type: "blob",
-			});
+      zip?.file(filename, contents, {
+        binary: true,
+      });
+    })
+    .on("done", async () => {
+      if (!zip) {
+        return;
+      }
+      const content = await zip.generateAsync({
+        type: "blob",
+      });
+      zip = null;
 
-			const zipName = `${name}.zip`;
-			saveAs(content, zipName);
-		});
+      const zipName = `${name}.zip`;
+      saveAs(content, zipName);
+    });
 
-	return renderer;
+  return renderer;
 };
