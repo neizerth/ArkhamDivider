@@ -1,5 +1,5 @@
 import { IEncounterSet } from "@/shared/types/api";
-import { SCENARIO_TYPES } from "@/shared/store/features/encounterSets/constants";
+// import { SCENARIO_TYPES } from "@/shared/store/features/encounterSets/constants";
 
 export const getEncounterSize = ({
 	encounter,
@@ -23,7 +23,7 @@ export const getEncounterSize = ({
 	}
 
 	const size = types
-		.filter(({ type }) => !SCENARIO_TYPES.includes(type))
+		// .filter(({ type }) => !SCENARIO_TYPES.includes(type))
 		.reduce((total, { size }) => total + size, 0);
 
 	return { size };

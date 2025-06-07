@@ -87,11 +87,6 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
     })
     .filter(isNotNil);
 
-  console.log({
-    encounterDividers,
-    scenarioNames,
-  });
-
   if (!includeScenarioEncounterSet) {
     return encounterDividers;
   }
