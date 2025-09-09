@@ -19,6 +19,10 @@ export function Footer(props: FooterProps) {
 					}}
 				/>
 			</C.Disclaimer>
+			<C.Links>
+				<Link href="https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/" />
+				<Link href="https://www.fantasyflightgames.com/" />
+			</C.Links>
 		</C.Container>
 	);
 }

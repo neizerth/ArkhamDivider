@@ -1,6 +1,8 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
-// import * as reducer from "./features";
+import createSagaMiddleware, { type SagaMiddleware } from "redux-saga";
+import { rootSaga } from "./sagas";
+import reducer from "./reducer";
 
 export type AppThunk<ReturnType = void> = ThunkAction<
 	ReturnType,
@@ -9,15 +11,25 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 	Action
 >;
 
+// Тип для saga middleware
+export type SagaMiddlewareType = SagaMiddleware<RootState>;
+
 export type AppSelector<ReturnType = unknown> = (
 	state: RootState,
 ) => ReturnType;
 
-const reducer = {};
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
 	reducer,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			thunk: false, // Отключаем thunk, так как используем saga
+		}).concat(sagaMiddleware),
 });
+
+// Запускаем root saga
+sagaMiddleware.run(rootSaga);
 
 // Infer the type of makeStore
 export type AppStore = typeof store;

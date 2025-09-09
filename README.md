@@ -34,6 +34,34 @@ npm run dev
 
 Your application will be available at `http://localhost:5173`.
 
+## Code Quality
+
+### Formatting and Linting
+
+This project uses Biome for code formatting and linting:
+
+```bash
+# Format code and fix linting issues (recommended)
+npm run format
+
+# Format code only (without linting fixes)
+npm run format:only
+
+# Check for linting issues without fixing
+npm run lint
+
+# Fix linting issues only (without formatting)
+npm run lint:fix
+```
+
+### Type Checking
+
+Run TypeScript type checking:
+
+```bash
+npm run typecheck
+```
+
 ## Building for Production
 
 Create a production build:

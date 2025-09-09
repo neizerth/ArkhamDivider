@@ -25,4 +25,5 @@ export const ArkhamDividerAPI = {
 		return response.data;
 	},
 	getIconUrl: (icon: string) => `${API_URL}/fonts/icons/${icon}.svg`,
+	fontsUrl: `${API_URL}/fonts`,
 };
