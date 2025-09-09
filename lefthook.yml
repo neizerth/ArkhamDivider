@@ -2,12 +2,12 @@ pre-commit:
   parallel: true
   commands:
     format:
-      files: git diff --name-only @{push}
+      files: git diff --cached --name-only
       glob: "*.{js,ts,jsx,tsx}"
       run: npm run format
     types:
-      files: git diff --name-only @{push}
-      glob: "*.{js,ts, jsx, tsx}"
+      files: git diff --cached --name-only
+      glob: "*.{js,ts,jsx,tsx}"
       run: npm run typecheck
 commit-msg:
   parallel: true
