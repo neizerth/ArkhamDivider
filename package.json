@@ -6,23 +6,39 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "format": "npx @biomejs/biome check --write ./slices",
+    "lint": "npx @biomejs/biome check ./slices"
   },
   "dependencies": {
+    "@emotion/css": "^11.13.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2",
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
+    "arkham-divider-data": "^1.2.0",
+    "arkhamesque-classic-divider-data": "^1.0.13",
+    "axios": "^1.11.0",
+    "coi-serviceworker": "^0.1.7",
+    "dom-to-image": "^2.6.0",
     "isbot": "^5.1.27",
+    "qrcode.react": "^4.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.7.1"
+    "react-redux": "^9.2.0",
+    "react-router": "^7.7.1",
+    "use-fit-text": "^2.4.0",
+    "wasm-vips": "^0.0.14"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@react-router/dev": "^7.7.1",
-    "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "tailwindcss": "^4.1.4",
+    "lefthook": "^1.12.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
     "vite-tsconfig-paths": "^5.1.4"
