@@ -6,5 +6,5 @@ export const Main = styled.main`
 `;
 
 export const Container = styled(Stack)`
-  min-height: 100%;
+  min-height: 100vh;
 `;
