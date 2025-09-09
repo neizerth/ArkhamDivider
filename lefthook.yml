@@ -4,7 +4,7 @@ pre-commit:
     format:
       files: git diff --cached --name-only
       glob: "*.{js,ts,jsx,tsx}"
-      run: npm run format
+      run: npm run lint
     types:
       files: git diff --cached --name-only
       glob: "*.{js,ts,jsx,tsx}"

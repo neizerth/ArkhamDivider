@@ -1,8 +1,8 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware, { type SagaMiddleware } from "redux-saga";
-import { rootSaga } from "./sagas";
 import reducer from "./reducer";
+import { rootSaga } from "./sagas";
 
 export type AppThunk<ReturnType = void> = ThunkAction<
 	ReturnType,
