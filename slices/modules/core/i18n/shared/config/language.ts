@@ -1,4 +1,3 @@
-
 export const CHINA_LANGUAGES = ["zh", "zh-cn"];
 export const DEFAULT_LANGUAGE = "en";
 

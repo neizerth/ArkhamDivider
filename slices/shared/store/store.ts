@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 // import * as reducer from "./features";
 
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -16,7 +16,7 @@ export type AppSelector<ReturnType = unknown> = (
 const reducer = {};
 
 export const store = configureStore({
-  reducer,
+	reducer,
 });
 
 // Infer the type of makeStore

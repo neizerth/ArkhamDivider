@@ -1,1 +1,1 @@
-export * from './I18NProvider'
+export * from "./I18NProvider";
