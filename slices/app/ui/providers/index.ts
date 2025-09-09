@@ -1,1 +1,2 @@
-export * from "./AppProvider";
+export * from "./MUIProvider";
+export * from "./StoreProvider";
