@@ -1,27 +1,9 @@
 import path from 'path';
-import { VitePluginRadar } from 'vite-plugin-radar'
 import { vips } from './vips.plugin';
 import { defineConfig } from 'vite';
 import svgr from "vite-plugin-svgr";
 import react from '@vitejs/plugin-react';
 import 'dotenv/config';
-
-const metrica = ((id?: string) => {
-  if (!id) {
-    return;
-  }
-  return [
-    {
-      id,
-      config: {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-      }
-    }
-  ]
-})(process.env.APP_METRIKA_ID);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,10 +16,6 @@ export default defineConfig({
     vips(),
     svgr(), 
     react(),
-    VitePluginRadar({
-      enableDev: false,
-      metrica
-    })
   ],
   base: process.env.APP_BASE_PATH,
   build: {
