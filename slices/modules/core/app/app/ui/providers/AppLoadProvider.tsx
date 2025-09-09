@@ -1,6 +1,7 @@
 import { type PropsWithChildren, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { appStarted, selectAppLoaded } from "../../../shared/lib";
+import { AppLoader } from "../../../shared/ui";
 
 export function AppLoadProvider({ children }: PropsWithChildren) {
 	const dispatch = useAppDispatch();
@@ -10,8 +11,8 @@ export function AppLoadProvider({ children }: PropsWithChildren) {
 		dispatch(appStarted());
 	}, [dispatch]);
 
-	if (appLoaded) {
-		return null;
+	if (!appLoaded) {
+		return <AppLoader />;
 	}
 
 	return children;

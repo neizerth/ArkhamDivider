@@ -1,12 +1,6 @@
-import { all } from "redux-saga/effects";
+import { fork } from "redux-saga/effects";
+import { modulesSaga } from "@/modules/sagas";
 
-// Импортируем все саги здесь
-// import { watchSomeSaga } from "./features/someFeature/sagas";
-
-// Root saga - объединяет все саги
 export function* rootSaga() {
-	yield all([
-		// fork(watchSomeSaga),
-		// Добавляйте другие саги здесь
-	]);
+	yield fork(modulesSaga);
 }
