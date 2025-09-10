@@ -4,6 +4,12 @@ import createSagaMiddleware, { type SagaMiddleware } from "redux-saga";
 import reducer from "./reducer";
 import { rootSaga } from "./sagas";
 
+// Типы для store
+
+export type AppStore = ReturnType<typeof createStore>;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];
+
 export type AppThunk<ReturnType = void> = ThunkAction<
 	ReturnType,
 	RootState,
@@ -11,30 +17,36 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 	Action
 >;
 
-// Тип для saga middleware
-export type SagaMiddlewareType = SagaMiddleware<RootState>;
-
 export type AppSelector<ReturnType = unknown> = (
 	state: RootState,
 ) => ReturnType;
 
+let store: AppStore | null = null;
+let sagaMiddleware: SagaMiddleware | null = null;
+
 export const createStore = () => {
-	const sagaMiddleware = createSagaMiddleware();
+	sagaMiddleware = createSagaMiddleware();
 	const store = configureStore({
 		reducer,
-		middleware: (getDefaultMiddleware) =>
-			getDefaultMiddleware().concat(sagaMiddleware),
+		middleware: (getDefaultMiddleware) => {
+			const middleware = getDefaultMiddleware();
+			if (sagaMiddleware) {
+				middleware.push(sagaMiddleware);
+			}
+			return middleware;
+		},
 	});
 
-	sagaMiddleware.run(rootSaga);
+	if (sagaMiddleware) {
+		sagaMiddleware.run(rootSaga);
+	}
 
 	return store;
 };
 
-export const store = createStore();
-
-// Infer the type of makeStore
-export type AppStore = typeof store;
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore["getState"]>;
-export type AppDispatch = AppStore["dispatch"];
+export const getStore = (): AppStore => {
+	if (!store) {
+		store = createStore();
+	}
+	return store;
+};

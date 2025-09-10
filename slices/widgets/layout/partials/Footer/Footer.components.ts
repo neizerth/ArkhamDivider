@@ -18,4 +18,5 @@ export const Disclaimer = styled(Box)`
 `;
 
 export const Links = styled(Row)`
+	/* font-size: 24px; */
 `;
