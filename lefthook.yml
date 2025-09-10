@@ -8,7 +8,7 @@ pre-commit:
     types:
       files: git diff --cached --name-only
       glob: "*.{js,ts,jsx,tsx}"
-      run: npm run typecheck
+      run: npm run ts:check
 commit-msg:
   parallel: true
   commands:

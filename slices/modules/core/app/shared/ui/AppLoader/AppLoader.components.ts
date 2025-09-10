@@ -15,6 +15,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   object-fit: contain;
+  max-width: 500px;
   width: 100%;
   height: 100%;
 `;

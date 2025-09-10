@@ -18,18 +18,20 @@ export type AppSelector<ReturnType = unknown> = (
 	state: RootState,
 ) => ReturnType;
 
-const sagaMiddleware = createSagaMiddleware();
+export const createStore = () => {
+	const sagaMiddleware = createSagaMiddleware();
+	const store = configureStore({
+		reducer,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware().concat(sagaMiddleware),
+	});
 
-export const store = configureStore({
-	reducer,
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({
-			thunk: false, // Отключаем thunk, так как используем saga
-		}).concat(sagaMiddleware),
-});
+	sagaMiddleware.run(rootSaga);
 
-// Запускаем root saga
-sagaMiddleware.run(rootSaga);
+	return store;
+};
+
+export const store = createStore();
 
 // Infer the type of makeStore
 export type AppStore = typeof store;

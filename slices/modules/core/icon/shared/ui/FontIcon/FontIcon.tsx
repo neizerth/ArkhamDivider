@@ -3,7 +3,7 @@ import { useAppSelector } from "@/shared/lib";
 import { selectIconById } from "../../lib/store/selectors/selectIconById";
 import * as C from "./FontIcon.components";
 
-type FontIconProps = JSX.IntrinsicElements["span"] & {
+export type FontIconProps = JSX.IntrinsicElements["span"] & {
 	icon: string;
 };
 

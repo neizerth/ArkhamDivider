@@ -7,6 +7,12 @@ export const Container = styled("footer")(({ theme }) => ({
 	backgroundColor: theme.palette.background.paper,
 }));
 
+export const Content = styled(Row)(({ theme }) => ({
+	justifyContent: "space-between",
+	padding: theme.spacing(2),
+	backgroundColor: theme.palette.background.paper,
+}));
+
 export const Disclaimer = styled(Box)`
 
 `;

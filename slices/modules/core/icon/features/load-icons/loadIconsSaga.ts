@@ -4,8 +4,8 @@ import { setIcons } from "../../shared/lib";
 import type { IconMapping } from "../../shared/model";
 
 function* worker({ payload }: ReturnType<typeof appDataLoaded>) {
-	const icons = Object.entries(payload.icons).reduce((acc, [id, icon]) => {
-		acc[id] = icon;
+	const icons = Object.values(payload.icons).reduce((acc, item) => {
+		acc[item.icon] = item;
 		return acc;
 	}, {} as IconMapping);
 

@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc",
+    "ts:check": "tsc",
     "format": "npx @biomejs/biome check --write --unsafe ./slices",
     "format:only": "npx @biomejs/biome format --write ./slices",
     "lint": "npx @biomejs/biome check ./slices",
