@@ -2,6 +2,7 @@ import Link from "@mui/material/Link";
 import type { JSX } from "react";
 import { Trans } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
+import { TextLink } from "@/shared/ui";
 import { contacts } from "./contacts";
 import * as C from "./Footer.components";
 
@@ -24,9 +25,9 @@ export function Footer(props: FooterProps) {
 				</C.Disclaimer>
 				<C.Links>
 					{contacts.map(({ icon, url }) => (
-						<Link key={icon} href={url} target="_blank">
+						<TextLink key={icon} href={url} target="_blank">
 							<Icon icon={icon} />
-						</Link>
+						</TextLink>
 					))}
 				</C.Links>
 			</C.Content>

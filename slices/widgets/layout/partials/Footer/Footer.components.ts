@@ -9,7 +9,7 @@ export const Container = styled("footer")(({ theme }) => ({
 
 export const Content = styled(Row)(({ theme }) => ({
 	justifyContent: "space-between",
-	padding: theme.spacing(2),
+	alignItems: "center",
 	backgroundColor: theme.palette.background.paper,
 }));
 
@@ -17,6 +17,7 @@ export const Disclaimer = styled(Box)`
 
 `;
 
-export const Links = styled(Row)`
-	/* font-size: 24px; */
-`;
+export const Links = styled(Row)(({ theme }) => ({
+	gap: theme.spacing(2),
+	fontSize: "28px",
+}));

@@ -21,32 +21,20 @@ export type AppSelector<ReturnType = unknown> = (
 	state: RootState,
 ) => ReturnType;
 
-let store: AppStore | null = null;
-let sagaMiddleware: SagaMiddleware | null = null;
-
 export const createStore = () => {
-	sagaMiddleware = createSagaMiddleware();
+	const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
 	const store = configureStore({
 		reducer,
 		middleware: (getDefaultMiddleware) => {
 			const middleware = getDefaultMiddleware();
-			if (sagaMiddleware) {
-				middleware.push(sagaMiddleware);
-			}
+			middleware.push(sagaMiddleware);
 			return middleware;
 		},
+		// Включаем Redux DevTools
+		devTools: import.meta.env.DEV,
 	});
 
-	if (sagaMiddleware) {
-		sagaMiddleware.run(rootSaga);
-	}
+	sagaMiddleware.run(rootSaga);
 
-	return store;
-};
-
-export const getStore = (): AppStore => {
-	if (!store) {
-		store = createStore();
-	}
 	return store;
 };
