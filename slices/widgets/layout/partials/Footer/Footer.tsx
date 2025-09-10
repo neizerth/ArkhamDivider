@@ -1,4 +1,3 @@
-import Link from "@mui/material/Link";
 import type { JSX } from "react";
 import { Trans } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
@@ -17,15 +16,15 @@ export function Footer(props: FooterProps) {
 						i18nKey="footer.disclaimer"
 						components={{
 							AHLCG: (
-								<Link href="https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/" />
+								<TextLink href="https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/" />
 							),
-							FFG: <Link href="https://www.fantasyflightgames.com/" />,
+							FFG: <TextLink href="https://www.fantasyflightgames.com/" />,
 						}}
 					/>
 				</C.Disclaimer>
 				<C.Links>
 					{contacts.map(({ icon, url }) => (
-						<TextLink key={icon} href={url} target="_blank">
+						<TextLink key={icon} href={url} target="_blank" underline={"none"}>
 							<Icon icon={icon} />
 						</TextLink>
 					))}

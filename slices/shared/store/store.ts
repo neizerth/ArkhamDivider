@@ -30,8 +30,6 @@ export const createStore = () => {
 			middleware.push(sagaMiddleware);
 			return middleware;
 		},
-		// Включаем Redux DevTools
-		devTools: import.meta.env.DEV,
 	});
 
 	sagaMiddleware.run(rootSaga);
