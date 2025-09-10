@@ -9,7 +9,7 @@ export const Container = styled("header")(({ theme }) => ({
 }));
 
 export const Content = styled(Row)(({ theme }) => ({
-	gap: theme.spacing(2),
+	gap: theme.spacing(1),
 	alignItems: "center",
 }));
 
