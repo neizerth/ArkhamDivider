@@ -1,26 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { IStory } from "@/shared/types/api";
-import { createSliceState } from "redux-toolkit-helpers";
+import { createSlice } from '@reduxjs/toolkit';
+import { createSliceState } from 'redux-toolkit-helpers';
+import { IStory } from '@/shared/types/api';
 
 export type IStoriesState = {
-	list: IStory[];
+  list: IStory[];
 };
 
 const initialState: IStoriesState = {
-	list: [],
+  list: [],
 };
 
 export const stories = createSlice({
-	name: "stories",
-	...createSliceState(initialState)
+  name: 'stories',
+  ...createSliceState(initialState),
 });
 
-export const { 
-	setList: setStories 
-} = stories.actions;
+export const { setList: setStories } = stories.actions;
 
-export const { 
-	selectList: selectStories 
-} = stories.selectors;
+export const { selectList: selectStories } = stories.selectors;
 
 export default stories.reducer;

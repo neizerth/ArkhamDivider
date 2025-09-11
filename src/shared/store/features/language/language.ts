@@ -1,71 +1,67 @@
-import { DEFAULT_LANGUAGE } from "@/shared/config/i18n";
-import { AppThunk } from "@/shared/store";
-import { ActionCreator, createSlice } from "@reduxjs/toolkit";
-import { loadAppTranslations } from "../app/app";
-import { Mapping } from "@/shared/types/util";
-import { createSliceState } from "redux-toolkit-helpers";
+import { ActionCreator, createSlice } from '@reduxjs/toolkit';
+import { createSliceState } from 'redux-toolkit-helpers';
+import { DEFAULT_LANGUAGE } from '@/shared/config/i18n';
+import { AppThunk } from '@/shared/store';
+import { Mapping } from '@/shared/types/util';
+import { loadAppTranslations } from '../app/app';
 
 export type ILanguageState = {
-	language: string;
-	availableLanguages: string[];
-	loadedTranslations: string[];
-	translatedStories: Mapping<string[]>;
+  language: string;
+  availableLanguages: string[];
+  loadedTranslations: string[];
+  translatedStories: Mapping<string[]>;
 };
 
 const initialState: ILanguageState = {
-	language: DEFAULT_LANGUAGE,
-	availableLanguages: [],
-	loadedTranslations: [],
-	translatedStories: {},
+  language: DEFAULT_LANGUAGE,
+  availableLanguages: [],
+  loadedTranslations: [],
+  translatedStories: {},
 };
 
 export const language = createSlice({
-	name: "language",
-	...createSliceState(initialState)
+  name: 'language',
+  ...createSliceState(initialState),
 });
 
 export const changeLanguage: ActionCreator<AppThunk> =
-	(language: string) => async (dispatch, getState) => {
-		dispatch(setLanguage(language));
+  (language: string) => async (dispatch, getState) => {
+    dispatch(setLanguage(language));
 
-		if (language === "en") {
-			return;
-		}
+    if (language === 'en') {
+      return;
+    }
 
-		const state = getState();
-		const loadedTranslations = selectLoadedTranslations(state);
+    const state = getState();
+    const loadedTranslations = selectLoadedTranslations(state);
 
-		if (loadedTranslations.includes(language)) {
-			return;
-		}
+    if (loadedTranslations.includes(language)) {
+      return;
+    }
 
-		dispatch(loadAppTranslations(language));
-	};
+    dispatch(loadAppTranslations(language));
+  };
 
 export const addTranslatedStories: ActionCreator<AppThunk> =
-	(language: string, translated: string[]) => async (dispatch, getState) => {
-		const data = selectTranslatedStories(getState());
+  (language: string, translated: string[]) => async (dispatch, getState) => {
+    const data = selectTranslatedStories(getState());
 
-		dispatch(
-			setTranslatedStories({
-				...data,
-				[language]: translated,
-			}),
-		);
-	};
+    dispatch(
+      setTranslatedStories({
+        ...data,
+        [language]: translated,
+      })
+    );
+  };
 
-export const {
-	setLanguage,
-	setAvailableLanguages,
-	setLoadedTranslations,
-	setTranslatedStories,
-} = language.actions;
+export const { setLanguage, setAvailableLanguages, setLoadedTranslations, setTranslatedStories } =
+  language.actions;
 
 export const {
-	selectLanguage,
-	selectAvailableLanguages,
-	selectLoadedTranslations,
-	selectTranslatedStories,
+  selectLanguage,
+  selectAvailableLanguages,
+  selectLoadedTranslations,
+  selectTranslatedStories,
 } = language.selectors;
 
 export default language.reducer;

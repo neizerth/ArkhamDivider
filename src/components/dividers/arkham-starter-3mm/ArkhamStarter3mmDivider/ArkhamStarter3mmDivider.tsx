@@ -1,7 +1,5 @@
-import S from "./ArkhamStarter3mmDivider.module.scss";
-
-import background from "./images/background.png";
-import iconCornerImage from "./images/iconCorner.png";
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 import {
   DividerContent,
   DividerMenu,
@@ -9,26 +7,27 @@ import {
   Icon,
   NotExportable,
   TextFit,
-} from "@/components";
-import classNames from "classnames";
-import { ArkhamStarter3mmDividerStrip as Strip } from "../ArkhamStarter3mmDividerStrip/ArkhamStarter3mmDividerStrip";
-import { getSecondaryStripColor, getStripColor } from "./colors/stripColor";
-import { useEffect, useState } from "react";
-import { selectLanguage } from "@/shared/store/features/language/language";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { useIconSelect } from "@/shared/lib/hooks/useIconSelect";
-import { ArkhamStarter3mmPlayerCorner as PlayerCorner } from "../ArkhamStarter3mmPlayerCorner/ArkhamStarter3mmPlayerCorner";
-import { getPlayerCornerColor } from "./colors/playerCornerColor";
-import { DividerProps } from "../../common/Divider/Divider";
-import { useStoryTranslation } from "@/shared/lib/hooks/useStoryTranslation";
-import { DividerType } from "@/shared/types/dividers";
-import { XPCost } from "@/shared/types/game";
-import { selectCornerRadius } from "@/shared/store/features/print/print";
-import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
+} from '@/components';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
+import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
+import { selectLanguage } from '@/shared/store/features/language/language';
+import { selectCornerRadius } from '@/shared/store/features/print/print';
+import { DividerType } from '@/shared/types/dividers';
+import { XPCost } from '@/shared/types/game';
+import { DividerProps } from '../../common/Divider/Divider';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
+import { ArkhamStarter3mmDividerStrip as Strip } from '../ArkhamStarter3mmDividerStrip/ArkhamStarter3mmDividerStrip';
+import { ArkhamStarter3mmPlayerCorner as PlayerCorner } from '../ArkhamStarter3mmPlayerCorner/ArkhamStarter3mmPlayerCorner';
+import S from './ArkhamStarter3mmDivider.module.scss';
+import { getPlayerCornerColor } from './colors/playerCornerColor';
+import { getSecondaryStripColor, getStripColor } from './colors/stripColor';
+import background from './images/background.png';
+import iconCornerImage from './images/iconCorner.png';
 
 export const ArkhamStarter3mmDivider = (props: DividerProps) => {
   const { t } = useStoryTranslation(props.story);
-  const { story, name = "", xpCost, id, type, className, size } = props;
+  const { story, name = '', xpCost, id, type, className, size } = props;
 
   const cornerRadius = useAppSelector(selectCornerRadius);
   const [previewIcon, setPreviewIcon] = useIconSelect({
@@ -49,16 +48,14 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
   const [title, setTitle] = useState(translatedName);
 
   const language = useAppSelector(selectLanguage);
-  const realLanguage = translatedName === name ? "en" : language;
+  const realLanguage = translatedName === name ? 'en' : language;
 
   useEffect(() => {
     setStoryName(defaultStoryName);
   }, [defaultStoryName]);
 
   const xpDefaultTitle =
-    xpCost?.level && xpCost.max
-      ? t("Lv. {{level}} ~ {{max}}", xpCost)
-      : t("Lv. {{level}}", xpCost);
+    xpCost?.level && xpCost.max ? t('Lv. {{level}} ~ {{max}}', xpCost) : t('Lv. {{level}}', xpCost);
 
   const [xpTitle, setXPTitle] = useState(xpDefaultTitle);
 
@@ -106,12 +103,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
               />
             </div>
             <div className={classNames(S.xpCost, S.xpCost_vertical)}>
-              <div
-                className={classNames(
-                  S.verticalContainer,
-                  S.verticalXPContainer
-                )}
-              >
+              <div className={classNames(S.verticalContainer, S.verticalXPContainer)}>
                 <TextFit text={xpTitle} key={xpTitle} />
               </div>
             </div>
@@ -153,12 +145,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
               className={classNames(S.iconCorner, S.iconCorner_vertical)}
               onClick={setSpecialIcon}
             >
-              <div
-                className={classNames(
-                  S.verticalContainer,
-                  S.verticalIconContainer
-                )}
-              >
+              <div className={classNames(S.verticalContainer, S.verticalIconContainer)}>
                 <img src={iconCornerImage} className={S.iconCornerImage} />
                 <div className={S.icon}>
                   <Icon icon={specialIcon} />
@@ -167,13 +154,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
             </div>
           </>
         )}
-        <div
-          className={classNames(
-            S.title,
-            S.title_horizontal,
-            xpTitle && S.title_withXP
-          )}
-        >
+        <div className={classNames(S.title, S.title_horizontal, xpTitle && S.title_withXP)}>
           <DividerText
             wrapperClassName={S.titleWrapper}
             defaultValue={translatedName}
@@ -192,12 +173,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
             // playerCornerColor && showStrip && S.title_vertical_withPlayerStrip
           )}
         >
-          <div
-            className={classNames(
-              S.verticalContainer,
-              S.verticalTitleContainer
-            )}
-          >
+          <div className={classNames(S.verticalContainer, S.verticalTitleContainer)}>
             <TextFit text={title} key={title} />
             {size && <span className={S.size}>({size})</span>}
           </div>
@@ -222,11 +198,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
               />
             </div>
             <div
-              className={classNames(
-                S.strip,
-                S.strip_horizontal,
-                !showStrip && S.strip_hidden
-              )}
+              className={classNames(S.strip, S.strip_horizontal, !showStrip && S.strip_hidden)}
               // onClick={toggleStrip}
             >
               <Strip

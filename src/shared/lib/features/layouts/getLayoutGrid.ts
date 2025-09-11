@@ -1,49 +1,49 @@
-import { ILayout } from "@/shared/types/layouts";
-import { PageOrientation, PageSize, PageSizeType } from "@/shared/types/print";
+import { ILayout } from '@/shared/types/layouts';
+import { PageOrientation, PageSize, PageSizeType } from '@/shared/types/print';
 
 export const getLayoutGrid = ({
-	layout,
-	bleed,
-	pageSizeType,
+  layout,
+  bleed,
+  pageSizeType,
 }: {
-	layout: ILayout;
-	bleed: boolean;
-	pageSizeType: PageSizeType;
+  layout: ILayout;
+  bleed: boolean;
+  pageSizeType: PageSizeType;
 }) => {
-	const { width, height } = bleed ? layout.bleed : layout;
-	const page = PageSize[pageSizeType];
+  const { width, height } = bleed ? layout.bleed : layout;
+  const page = PageSize[pageSizeType];
 
-	const getOrientationGrid = ({
-		rowSize,
-		colSize,
-		pageOrientation,
-	}: {
-		rowSize: number;
-		colSize: number;
-		pageOrientation: PageOrientation;
-	}) => {
-		const rowsPerPage = Math.floor(rowSize / width);
-		const colsPerPage = Math.floor(colSize / height);
-		const itemsPerPage = rowsPerPage * colsPerPage;
-		return {
-			rowsPerPage,
-			colsPerPage,
-			itemsPerPage,
-			pageOrientation,
-		};
-	};
+  const getOrientationGrid = ({
+    rowSize,
+    colSize,
+    pageOrientation,
+  }: {
+    rowSize: number;
+    colSize: number;
+    pageOrientation: PageOrientation;
+  }) => {
+    const rowsPerPage = Math.floor(rowSize / width);
+    const colsPerPage = Math.floor(colSize / height);
+    const itemsPerPage = rowsPerPage * colsPerPage;
+    return {
+      rowsPerPage,
+      colsPerPage,
+      itemsPerPage,
+      pageOrientation,
+    };
+  };
 
-	const portrait = getOrientationGrid({
-		rowSize: page.width,
-		colSize: page.height,
-		pageOrientation: PageOrientation.PORTRAIT,
-	});
+  const portrait = getOrientationGrid({
+    rowSize: page.width,
+    colSize: page.height,
+    pageOrientation: PageOrientation.PORTRAIT,
+  });
 
-	const landscape = getOrientationGrid({
-		rowSize: page.height,
-		colSize: page.width,
-		pageOrientation: PageOrientation.LANDSCAPE,
-	});
+  const landscape = getOrientationGrid({
+    rowSize: page.height,
+    colSize: page.width,
+    pageOrientation: PageOrientation.LANDSCAPE,
+  });
 
-	return landscape.itemsPerPage > portrait.itemsPerPage ? landscape : portrait;
+  return landscape.itemsPerPage > portrait.itemsPerPage ? landscape : portrait;
 };

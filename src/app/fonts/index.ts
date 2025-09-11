@@ -1,14 +1,14 @@
-import "./Alegreya";
-import "./Arkhamic";
-import "./ArnoPro";
-import "./AtlanticCruise";
+import './Alegreya';
+import './Arkhamic';
+import './ArnoPro';
+import './AtlanticCruise';
 
-import "./Breamcatcher";
-import "./Conkordia";
+import './Breamcatcher';
+import './Conkordia';
 
-import "./LineSeedKR";
-import "./Roboto";
-import "./SanCn";
+import './LineSeedKR';
+import './Roboto';
+import './SanCn';
 
-import "./Teutonic";
-import "./ZhenShuai";
+import './Teutonic';
+import './ZhenShuai';

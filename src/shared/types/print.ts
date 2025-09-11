@@ -1,12 +1,12 @@
-import { detect } from "detect-browser";
-import { IBox } from "./units";
-import { PrefixedUnion } from "./util";
+import { detect } from 'detect-browser';
+import { IBox } from './units';
+import { PrefixedUnion } from './util';
 
 const browser = detect();
 
 export enum PageSide {
-  FRONT = "front",
-  BACK = "back",
+  FRONT = 'front',
+  BACK = 'back',
 }
 
 export type IPage<T> = {
@@ -18,27 +18,27 @@ export type IPage<T> = {
 };
 
 export enum PageOrientation {
-  LANDSCAPE = "landscape",
-  PORTRAIT = "portrait",
+  LANDSCAPE = 'landscape',
+  PORTRAIT = 'portrait',
 }
 
 export enum PageSizeType {
-  A4 = "A4",
-  A3 = "A3",
-  B4 = "B4",
-  B3 = "B3",
-  SRA4 = "SRA4",
-  SRA3 = "SRA3",
-  US_LETTER = "US Letter",
-  US_LEGAL = "US Legal",
-  US_TABLOID = "US Tabloid",
+  A4 = 'A4',
+  A3 = 'A3',
+  B4 = 'B4',
+  B3 = 'B3',
+  SRA4 = 'SRA4',
+  SRA3 = 'SRA3',
+  US_LETTER = 'US Letter',
+  US_LEGAL = 'US Legal',
+  US_TABLOID = 'US Tabloid',
 }
 
 type SupportBox = IBox & {
   unsupported?: boolean;
 };
 
-const isFirefox = browser?.name === "firefox";
+const isFirefox = browser?.name === 'firefox';
 
 /**
  * Page Size in mm
@@ -50,9 +50,9 @@ export const PageSize: Record<PageSizeType, SupportBox> = {
   B3: { width: 353, height: 500, unsupported: isFirefox },
   SRA4: { width: 225, height: 320 },
   SRA3: { width: 320, height: 450, unsupported: isFirefox },
-  "US Letter": { width: 215.9, height: 279.4 },
-  "US Legal": { width: 215.9, height: 355.6 },
-  "US Tabloid": { width: 279.4, height: 431.8, unsupported: isFirefox },
+  'US Letter': { width: 215.9, height: 279.4 },
+  'US Legal': { width: 215.9, height: 355.6 },
+  'US Tabloid': { width: 279.4, height: 431.8, unsupported: isFirefox },
 };
 
 /**
@@ -65,14 +65,14 @@ export const PrintPageSize: Record<PageSizeType, IBox> = {
   B3: { width: 4169, height: 5906 },
   SRA4: { width: 2657, height: 3780 },
   SRA3: { width: 3780, height: 5315 },
-  "US Letter": { width: 2550, height: 3300 },
-  "US Legal": { width: 2550, height: 4200 },
-  "US Tabloid": { width: 3300, height: 5100 },
+  'US Letter': { width: 2550, height: 3300 },
+  'US Legal': { width: 2550, height: 4200 },
+  'US Tabloid': { width: 3300, height: 5100 },
 };
 
-export type GuideCornerType = "tl" | "tr" | "bl" | "br";
+export type GuideCornerType = 'tl' | 'tr' | 'bl' | 'br';
 
-export type GuideInsetTypes = PrefixedUnion<"inset-corner-", GuideCornerType>;
-export type GuideOutsetTypes = PrefixedUnion<"outset-corner-", GuideCornerType>;
+export type GuideInsetTypes = PrefixedUnion<'inset-corner-', GuideCornerType>;
+export type GuideOutsetTypes = PrefixedUnion<'outset-corner-', GuideCornerType>;
 
-export type GuideType = "cross" | "corner" | GuideInsetTypes | GuideOutsetTypes;
+export type GuideType = 'cross' | 'corner' | GuideInsetTypes | GuideOutsetTypes;

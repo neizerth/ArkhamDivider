@@ -1,25 +1,25 @@
-import { PropsWithChildren } from "react";
-import S from "./WithBrowserSupport.module.scss";
-import { detect } from "detect-browser";
-import { Icon } from "../../icons/Icon/Icon";
+import { detect } from 'detect-browser';
+import { PropsWithChildren } from 'react';
+import { Icon } from '../../icons/Icon/Icon';
+import S from './WithBrowserSupport.module.scss';
 
 export type WithBrowserSupportProps = PropsWithChildren;
 
 export const WithBrowserSupport = ({ children }: WithBrowserSupportProps) => {
   const browser = detect();
-  const notSupported = ["safari"].includes(browser?.name || "");
+  const notSupported = ['safari'].includes(browser?.name || '');
   return (
     <>
       {notSupported && (
         <div className={S.container}>
           <div className={S.icons}>
             <div className={S.cross}>
-              <Icon icon={"cross_a"} />
+              <Icon icon={'cross_a'} />
             </div>
-            <Icon className={S.icon} icon={browser?.name || "sphere"} />
+            <Icon className={S.icon} icon={browser?.name || 'sphere'} />
           </div>
           <div>
-            <Icon className={S.icon} icon="chrome" />
+            <Icon className={S.icon} icon='chrome' />
           </div>
         </div>
       )}

@@ -1,64 +1,58 @@
+import { prop } from 'ramda';
+import { arkhamesqueCategory } from '@/shared/data/layouts/arkhamesque';
+import { selectArkhamesqueData } from '@/shared/store/features/dividers/arkhamesque/arkhamesque';
 import {
-	selectCategoryId,
-	selectLayout,
-	selectType,
-} from "@/shared/store/features/layout/layout";
-import { useAppSelector } from "../useAppSelector";
-import { selectArkhamesqueData } from "@/shared/store/features/dividers/arkhamesque/arkhamesque";
-import { arkhamesqueCategory } from "@/shared/data/layouts/arkhamesque";
-import {
-	hasArkhamesqueInvestigatorSupport,
-	hasArkhamesqueStorySupport,
-} from "@/shared/store/features/dividers/arkhamesque/criteria";
-import { selectStory } from "@/shared/store/features/dividers/dividers";
-import { LayoutType } from "@/shared/types/layouts";
-import { prop } from "ramda";
+  hasArkhamesqueInvestigatorSupport,
+  hasArkhamesqueStorySupport,
+} from '@/shared/store/features/dividers/arkhamesque/criteria';
+import { selectStory } from '@/shared/store/features/dividers/dividers';
+import { selectCategoryId, selectLayout, selectType } from '@/shared/store/features/layout/layout';
+import { LayoutType } from '@/shared/types/layouts';
+import { useAppSelector } from '../useAppSelector';
 
 export const useLayoutSupport = () => {
-	const type = useAppSelector(selectType);
-	const story = useAppSelector(selectStory);
-	const arkhamesqueData = useAppSelector(selectArkhamesqueData);
-	const layout = useAppSelector(selectLayout);
-	const defaultCategoryId = useAppSelector(selectCategoryId);
-	const categoryId = defaultCategoryId || layout.categoryId;
+  const type = useAppSelector(selectType);
+  const story = useAppSelector(selectStory);
+  const arkhamesqueData = useAppSelector(selectArkhamesqueData);
+  const layout = useAppSelector(selectLayout);
+  const defaultCategoryId = useAppSelector(selectCategoryId);
+  const categoryId = defaultCategoryId || layout.categoryId;
 
-	if (type === LayoutType.PLAYER) {
-		return true;
-	}
+  if (type === LayoutType.PLAYER) {
+    return true;
+  }
 
-	const isArkhamesqueLayout = categoryId === arkhamesqueCategory.id;
+  const isArkhamesqueLayout = categoryId === arkhamesqueCategory.id;
 
-	if (!story) {
-		return true;
-	}
+  if (!story) {
+    return true;
+  }
 
-	if (!isArkhamesqueLayout) {
-		return true;
-	}
+  if (!isArkhamesqueLayout) {
+    return true;
+  }
 
-	if (!arkhamesqueData) {
-		return false;
-	}
+  if (!arkhamesqueData) {
+    return false;
+  }
 
-	if (type === LayoutType.SCENARIO) {
-		return hasArkhamesqueStorySupport({
-			data: arkhamesqueData,
-			story,
-		});
-	}
+  if (type === LayoutType.SCENARIO) {
+    return hasArkhamesqueStorySupport({
+      data: arkhamesqueData,
+      story,
+    });
+  }
 
-	if (type === LayoutType.INVESTIGATOR) {
-		const investigators = arkhamesqueData.investigators.flatMap(
-			category => category.data.map(
-				prop("code")
-			)
-		);
+  if (type === LayoutType.INVESTIGATOR) {
+    const investigators = arkhamesqueData.investigators.flatMap((category) =>
+      category.data.map(prop('code'))
+    );
 
-		return hasArkhamesqueInvestigatorSupport({
-			investigators,
-			story,
-		});
-	}
+    return hasArkhamesqueInvestigatorSupport({
+      investigators,
+      story,
+    });
+  }
 
-	return false;
+  return false;
 };

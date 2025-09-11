@@ -1,11 +1,11 @@
-import { IEncounterSet, IStory } from "@/shared/types/api";
-import { IDivider } from "@/shared/types/dividers";
-import { arrayIf } from "@/shared/lib/features/util/common";
-import { ascend, prop, sortWith, uniqBy } from "ramda";
-import { getScenarioDividers } from "./getScenarioDividers";
-import { getEncounterDividers } from "./getEncounterDividers";
-import { AddStoryDividersOptions } from "@/shared/store/features/addDividers/addDividers";
-import { getCampaignDividers } from "./getCampaignDividers";
+import { ascend, prop, sortWith, uniqBy } from 'ramda';
+import { arrayIf } from '@/shared/lib/features/util/common';
+import { AddStoryDividersOptions } from '@/shared/store/features/addDividers/addDividers';
+import { IEncounterSet, IStory } from '@/shared/types/api';
+import { IDivider } from '@/shared/types/dividers';
+import { getCampaignDividers } from './getCampaignDividers';
+import { getEncounterDividers } from './getEncounterDividers';
+import { getScenarioDividers } from './getScenarioDividers';
 
 export type IGetStoryDividersOptions = AddStoryDividersOptions & {
   encounterSets: IEncounterSet[];
@@ -40,10 +40,7 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
     ...returnSetDividers,
   ];
 
-  const uniqueDividers = uniqBy(
-    ({ type, name }) => `${type}_${name}`,
-    dividers
-  );
+  const uniqueDividers = uniqBy(({ type, name }) => `${type}_${name}`, dividers);
 
-  return sortWith([ascend(prop("type"))], uniqueDividers);
+  return sortWith([ascend(prop('type'))], uniqueDividers);
 };

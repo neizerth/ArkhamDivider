@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { DividerCornerRadius } from "../../common/DividerCornerRadius/DividerCornerRadius";
+import styled from 'styled-components';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
 
 export const VintageDividerTabCornerRadius = styled(DividerCornerRadius)`
   border-radius: 4mm 4mm 0 0;

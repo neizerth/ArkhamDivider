@@ -1,22 +1,22 @@
 // import S from './DownloadLasercutPDF.module.scss';
 
-import { DownloadButton } from "../DownloadButton/DownloadButton";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectLayout } from "@/shared/store/features/layout/layout";
-import { getSimilarBleed } from "@/shared/lib/features/render/getSimilarBleed";
-import { useEffect, useMemo, useState } from "react";
-import { pdf } from "@react-pdf/renderer";
-import { PDFLayout } from "./components/PDFLayout";
-import { PDFDownloader } from "./features/PDFDownloader";
-import { saveAs } from "file-saver";
+import { pdf } from '@react-pdf/renderer';
+import { saveAs } from 'file-saver';
+import { useEffect, useMemo, useState } from 'react';
+import { Badge } from '@/components';
+import { getLayoutGrid } from '@/shared/lib/features/layouts/getLayoutGrid';
+import { getSimilarBleed } from '@/shared/lib/features/render/getSimilarBleed';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectDividers } from '@/shared/store/features/dividers/dividers';
+import { selectLayout } from '@/shared/store/features/layout/layout';
 import {
   selectCornerRadius,
   selectDoubleSided,
   selectPageSizeType,
-} from "@/shared/store/features/print/print";
-import { selectDividers } from "@/shared/store/features/dividers/dividers";
-import { getLayoutGrid } from "@/shared/lib/features/layouts/getLayoutGrid";
-import { Badge } from "@/components";
+} from '@/shared/store/features/print/print';
+import { DownloadButton } from '../DownloadButton/DownloadButton';
+import { PDFLayout } from './components/PDFLayout';
+import { PDFDownloader } from './features/PDFDownloader';
 
 export type DownloadLasercutPDFProps = {};
 
@@ -35,8 +35,8 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
 
   const downloader = useMemo(() => {
     return new PDFDownloader({
-      imageFormat: "png",
-      colorScheme: "cmyk",
+      imageFormat: 'png',
+      colorScheme: 'cmyk',
       name,
       bleed,
     });
@@ -83,23 +83,14 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
 
     container = null;
     setItems([]);
-  }, [
-    items,
-    doubleSidedPrint,
-    pageSizeType,
-    bleed,
-    name,
-    cornerRadius,
-    dividers,
-    layout,
-  ]);
+  }, [items, doubleSidedPrint, pageSizeType, bleed, name, cornerRadius, dividers, layout]);
 
-  downloader.on("render", setItems);
+  downloader.on('render', setItems);
   // const Container = (data && <PDFLayout data={data} onRender={onRender}/>);
 
   return (
     <DownloadButton renderer={downloader.renderer}>
-      PDF <Badge size={"small"}>HQ</Badge>
+      PDF <Badge size={'small'}>HQ</Badge>
     </DownloadButton>
   );
 };

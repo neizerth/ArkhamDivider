@@ -1,41 +1,35 @@
-import { IXPCost } from "@/shared/types/game";
-import S from "./SarnetskyDividerXPText.module.scss";
-import { DividerText } from "@/components/dividers/common/DividerText/DividerText";
-import { upperFirst } from "@/shared/lib/features/util/common";
-import { useTranslation } from "react-i18next";
-import { Icon } from "@/components/ui/icons/Icon/Icon";
+import { useTranslation } from 'react-i18next';
+import { DividerText } from '@/components/dividers/common/DividerText/DividerText';
+import { Icon } from '@/components/ui/icons/Icon/Icon';
+import { upperFirst } from '@/shared/lib/features/util/common';
+import { IXPCost } from '@/shared/types/game';
+import S from './SarnetskyDividerXPText.module.scss';
 
 export type SarnetskyDividerXPTextProps = {
-	xpCost: IXPCost;
-	faction: string;
-	icon: string;
+  xpCost: IXPCost;
+  faction: string;
+  icon: string;
 };
 
-export const SarnetskyDividerXPText = ({
-	xpCost,
-	faction,
-	icon,
-}: SarnetskyDividerXPTextProps) => {
-	const { t } = useTranslation();
-	const { level, max = level } = xpCost;
-	const cardsKey = `${upperFirst(faction)} Cards`;
-	const cardsText = t(cardsKey);
+export const SarnetskyDividerXPText = ({ xpCost, faction, icon }: SarnetskyDividerXPTextProps) => {
+  const { t } = useTranslation();
+  const { level, max = level } = xpCost;
+  const cardsKey = `${upperFirst(faction)} Cards`;
+  const cardsText = t(cardsKey);
 
-	const levelKey = "Level {{startXp}}";
-	const startXp = max === level ? level : `${level}-${max}`;
-	const levelText = t(levelKey, { startXp });
+  const levelKey = 'Level {{startXp}}';
+  const startXp = max === level ? level : `${level}-${max}`;
+  const levelText = t(levelKey, { startXp });
 
-	return (
-		<div className={S.container}>
-			<div className={S.row}>
-				<DividerText defaultValue={cardsText} inputClassName={S.input} />
-				<div className={S.faction}>
-					(<Icon icon={icon} className={S.icon} />)
-				</div>
-			</div>
-			{level >= 0 && (
-				<DividerText defaultValue={levelText} className={S.input} />
-			)}
-		</div>
-	);
+  return (
+    <div className={S.container}>
+      <div className={S.row}>
+        <DividerText defaultValue={cardsText} inputClassName={S.input} />
+        <div className={S.faction}>
+          (<Icon icon={icon} className={S.icon} />)
+        </div>
+      </div>
+      {level >= 0 && <DividerText defaultValue={levelText} className={S.input} />}
+    </div>
+  );
 };

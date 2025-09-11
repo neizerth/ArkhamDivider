@@ -1,17 +1,17 @@
-import { getLayouts } from "@/shared/lib/features/layouts/common";
-import { CaseReducer, PayloadAction } from "@reduxjs/toolkit";
-import { ILayoutState } from "../layout";
+import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
+import { getLayouts } from '@/shared/lib/features/layouts/common';
+import { ILayoutState } from '../layout';
 
 export const setLayoutById: CaseReducer<ILayoutState, PayloadAction<string>> = (
-	state,
-	{ payload: id },
+  state,
+  { payload: id }
 ) => {
-	const criteria = { id };
-	const [layout] = getLayouts({ criteria });
+  const criteria = { id };
+  const [layout] = getLayouts({ criteria });
 
-	if (!layout) {
-		return;
-	}
+  if (!layout) {
+    return;
+  }
 
-	state.layout = layout;
+  state.layout = layout;
 };

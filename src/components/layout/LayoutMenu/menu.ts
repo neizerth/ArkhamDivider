@@ -1,16 +1,16 @@
-import { LayoutType } from "@/shared/types/layouts";
+import { LayoutType } from '@/shared/types/layouts';
 
 export const menu = [
-	{
-		name: "Campaigns",
-		type: LayoutType.SCENARIO,
-	},
-	{
-		name: "Player Cards",
-		type: LayoutType.PLAYER,
-	},
-	{
-		name: "Investigators",
-		type: LayoutType.INVESTIGATOR,
-	},
+  {
+    name: 'Campaigns',
+    type: LayoutType.SCENARIO,
+  },
+  {
+    name: 'Player Cards',
+    type: LayoutType.PLAYER,
+  },
+  {
+    name: 'Investigators',
+    type: LayoutType.INVESTIGATOR,
+  },
 ];

@@ -1,9 +1,9 @@
-import { isNotNil, propEq, uniq } from "ramda";
-import { getEncounterSize } from "./getEncounterSize";
-import { removePunctuation, uniqId } from "@/shared/lib/features/util/common";
-import { IGetStoryDividersOptions } from "./getStoryDividers";
-import { DividerType } from "@/shared/types/dividers";
-import { getStoryScenarios } from "./getScenarioDividers";
+import { isNotNil, propEq, uniq } from 'ramda';
+import { removePunctuation, uniqId } from '@/shared/lib/features/util/common';
+import { DividerType } from '@/shared/types/dividers';
+import { getEncounterSize } from './getEncounterSize';
+import { getStoryScenarios } from './getScenarioDividers';
+import { IGetStoryDividersOptions } from './getStoryDividers';
 
 type IGetEncounterDividersParams = IGetStoryDividersOptions;
 
@@ -31,9 +31,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
 
   const formatText = (text: string) => removePunctuation(text).toLowerCase();
 
-  const scenarioNames = uniq(
-    scenarios.map(({ scenario_name }) => formatText(scenario_name))
-  );
+  const scenarioNames = uniq(scenarios.map(({ scenario_name }) => formatText(scenario_name)));
 
   const campaignIcon = icon;
 
@@ -44,7 +42,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
   const encounterDividers = encounters
     .map((code) => {
       const isExtra = extra_encounter_sets.includes(code);
-      const encounter = encounterSets.find(propEq(code, "code"));
+      const encounter = encounterSets.find(propEq(code, 'code'));
 
       if (!encounter) {
         return;
@@ -52,8 +50,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
 
       const { name, icon } = encounter;
       const encounterName = name.toLowerCase();
-      const isScenario =
-        Boolean(icon) && scenarioNames.includes(formatText(encounterName));
+      const isScenario = Boolean(icon) && scenarioNames.includes(formatText(encounterName));
 
       if (!includeScenarioEncounterSet && isScenario) {
         return;
@@ -92,7 +89,7 @@ export const getEncounterDividers = (options: IGetEncounterDividersParams) => {
   }
 
   const scenarioEncounterDividers = scenarios
-    .filter(({ icon }) => !encounterDividers.find(propEq(icon, "icon")))
+    .filter(({ icon }) => !encounterDividers.find(propEq(icon, 'icon')))
     .map(({ scenario_name, id, icon }) => ({
       id: uniqId() + id,
       story,

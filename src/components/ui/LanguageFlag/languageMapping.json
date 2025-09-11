@@ -1,14 +1,14 @@
 [
-	{
-		"language": "ko",
-		"country": "KR"
-	},
-	{
-		"language": "en",
-		"country": "US"
-	},
-	{
-		"language": "vi",
-		"country": "VN"
-	}
+  {
+    "language": "ko",
+    "country": "KR"
+  },
+  {
+    "language": "en",
+    "country": "US"
+  },
+  {
+    "language": "vi",
+    "country": "VN"
+  }
 ]

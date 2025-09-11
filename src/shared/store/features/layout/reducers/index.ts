@@ -1,2 +1,2 @@
-export * from "./setLayoutByCriteria";
-export * from "./setLayoutById";
+export * from './setLayoutByCriteria';
+export * from './setLayoutById';

@@ -1,9 +1,9 @@
-import { ColorScheme, ImageFormat } from "@/shared/types/image";
-import { ILayoutBleed } from "@/shared/types/layouts";
-import { RenderResponse } from "@/shared/types/render";
-import { toPrintSize } from "@/shared/lib/features/util/units";
-import domToImage from "dom-to-image";
-import { getVips } from "../image/vips";
+import domToImage from 'dom-to-image';
+import { toPrintSize } from '@/shared/lib/features/util/units';
+import { ColorScheme, ImageFormat } from '@/shared/types/image';
+import { ILayoutBleed } from '@/shared/types/layouts';
+import { RenderResponse } from '@/shared/types/render';
+import { getVips } from '../image/vips';
 
 export type GetDividerImageOptions = {
   node: Element;
@@ -32,7 +32,7 @@ export const getDividerImage = async ({
     height,
     style: {
       transform: `scale(${scale})`,
-      transformOrigin: "top left",
+      transformOrigin: 'top left',
     },
   });
 
@@ -45,20 +45,15 @@ export const getDividerImage = async ({
   const vips = await getVips();
   const memory = vips.Stats.mem() / 1024;
 
-  console.log("used vips memory, Kb", memory);
+  console.log('used vips memory, Kb', memory);
 
-  let image = vips.Image.newFromBuffer(source).crop(
-    cropLeft,
-    cropTop,
-    cropWidth,
-    cropHeight
-  );
+  let image = vips.Image.newFromBuffer(source).crop(cropLeft, cropTop, cropWidth, cropHeight);
 
   if (colorScheme) {
     image = image.iccTransform(colorScheme);
   }
 
-  const ext = "." + imageFormat;
+  const ext = `.${imageFormat}`;
 
   const contents = image.writeToBuffer(ext);
 

@@ -1,23 +1,23 @@
-import { ILayout } from "@/shared/types/layouts";
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
+import { ILayout } from '@/shared/types/layouts';
 
 type ComponentProps = {
-	$layout: ILayout;
-	$bleed: boolean;
+  $layout: ILayout;
+  $bleed: boolean;
 };
 
 export const GuidesContent = styled.div<ComponentProps>`
   ${({ $bleed, $layout }) =>
-		$bleed &&
-		css`
+    $bleed &&
+    css`
     width: ${$layout.width}mm;
     height: ${$layout.height}mm;
     top: ${$layout.bleed.top}mm;
     left: ${$layout.bleed.left}mm;
   `}
   ${({ $bleed }) =>
-		!$bleed &&
-		css`
+    !$bleed &&
+    css`
     width: 100%;
     height: 100%;
     top: 0;
@@ -27,8 +27,8 @@ export const GuidesContent = styled.div<ComponentProps>`
 
 export const Wrapper = styled.div<ComponentProps>`
   ${({ $bleed, $layout }) =>
-		!$bleed &&
-		css`
+    !$bleed &&
+    css`
     width: ${$layout.width}mm;
     height: ${$layout.height}mm;
     overflow: hidden;
@@ -37,14 +37,14 @@ export const Wrapper = styled.div<ComponentProps>`
 
 export const Content = styled.div<ComponentProps>`
   ${({ $layout, $bleed }) =>
-		$bleed &&
-		css`
+    $bleed &&
+    css`
     width: ${$layout.bleed.width}mm;
     height: ${$layout.bleed.height}mm;
   `}
   ${({ $bleed, $layout }) =>
-		!$bleed &&
-		css`
+    !$bleed &&
+    css`
     top: -${$layout.bleed.top}mm;
     left: -${$layout.bleed.left}mm;
 

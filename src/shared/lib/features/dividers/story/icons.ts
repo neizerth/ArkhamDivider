@@ -1,18 +1,18 @@
-import { IEncounterSet, IStory } from "@/shared/types/api";
-import { isNotNil, prop, propEq, uniq, uniqBy } from "ramda";
-import { getStoryScenarios } from "./getScenarioDividers";
-import { removePunctuation } from "../../util/common";
+import { isNotNil, prop, propEq, uniq, uniqBy } from 'ramda';
+import { IEncounterSet, IStory } from '@/shared/types/api';
+import { removePunctuation } from '../../util/common';
+import { getStoryScenarios } from './getScenarioDividers';
 
 export const getScenarioDividerIcons = (story: IStory) => {
   const scenarios = getStoryScenarios(story);
 
   const uniqueScenarios = uniqBy(({ full_name }) => full_name, scenarios);
 
-  return uniqueScenarios.map(prop("icon")).filter(isNotNil);
+  return uniqueScenarios.map(prop('icon')).filter(isNotNil);
 };
 
 export const getCampaignDividerIcons = ({ icon, campaigns = [] }: IStory) => {
-  return uniq([icon, ...campaigns.map(prop("icon"))]).filter(isNotNil);
+  return uniq([icon, ...campaigns.map(prop('icon'))]).filter(isNotNil);
 };
 
 export type IGetCommonEncounterDividerIconsOptions = {
@@ -21,10 +21,9 @@ export type IGetCommonEncounterDividerIconsOptions = {
   includeScenarioEncounterSet: boolean;
 };
 
-export type IGetEncounterDividerIconsOptions =
-  IGetCommonEncounterDividerIconsOptions & {
-    encounters: string[];
-  };
+export type IGetEncounterDividerIconsOptions = IGetCommonEncounterDividerIconsOptions & {
+  encounters: string[];
+};
 
 export const getRequiredEncounterDividersIcons = ({
   story,
@@ -56,8 +55,7 @@ export const getEncounterDividerIcons = ({
   encounters,
   includeScenarioEncounterSet,
 }: IGetEncounterDividerIconsOptions) => {
-  const toEncounterSet = (code: string) =>
-    encounterSets.find(propEq(code, "code"));
+  const toEncounterSet = (code: string) => encounterSets.find(propEq(code, 'code'));
 
   const scenarios = getStoryScenarios(story);
   const scenarioNames = scenarios.map(({ scenario_name }) =>
@@ -84,9 +82,9 @@ export const getEncounterDividerIcons = ({
 
   const encountrWithIcons = encounters.map(filterScenarios).filter(isNotNil);
 
-  const uniqueEncounters = uniqBy(prop("name"), encountrWithIcons);
+  const uniqueEncounters = uniqBy(prop('name'), encountrWithIcons);
 
-  const icons = uniqueEncounters.map(prop("icon")).filter(isNotNil);
+  const icons = uniqueEncounters.map(prop('icon')).filter(isNotNil);
 
   return icons;
 };

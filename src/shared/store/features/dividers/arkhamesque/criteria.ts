@@ -1,58 +1,51 @@
-import { IStory } from "@/shared/types/api";
-import { IArkhamesqueBuild } from "arkhamesque-classic-divider-data";
-import { propEq } from "ramda";
+import { IArkhamesqueBuild } from 'arkhamesque-classic-divider-data';
+import { propEq } from 'ramda';
+import { IStory } from '@/shared/types/api';
 
 export const getArkhamesqueClassicStory = ({
-	code,
-	data,
+  code,
+  data,
 }: {
-	data: IArkhamesqueBuild;
-	code: string;
+  data: IArkhamesqueBuild;
+  code: string;
 }) => {
-	for (const category of data.stories) {
-		for (const story of category.data) {
-			if (story.code === code) {
-				return {
-					category,
-					story,
-				};
-			}
-		}
-	}
+  for (const category of data.stories) {
+    for (const story of category.data) {
+      if (story.code === code) {
+        return {
+          category,
+          story,
+        };
+      }
+    }
+  }
 };
 
 export type HasArkhamesqueSupportOptions = {
-	story: IStory;
-	data: IArkhamesqueBuild;
+  story: IStory;
+  data: IArkhamesqueBuild;
 };
 
-export const hasArkhamesqueStorySupport = ({
-	story,
-	data,
-}: HasArkhamesqueSupportOptions) => {
-	const id = story.return_to_code || story.code;
-	return data.stories.some((category) =>
-		category.data.some(propEq(id, "code")),
-	);
+export const hasArkhamesqueStorySupport = ({ story, data }: HasArkhamesqueSupportOptions) => {
+  const id = story.return_to_code || story.code;
+  return data.stories.some((category) => category.data.some(propEq(id, 'code')));
 };
 
 export const hasArkhamesqueInvestigatorSupport = ({
-	story,
-	investigators,
+  story,
+  investigators,
 }: {
-	story: IStory;
-	investigators: string[];
+  story: IStory;
+  investigators: string[];
 }) => {
-	if (story.investigators.length === 0) {
-		return false;
-	}
+  if (story.investigators.length === 0) {
+    return false;
+  }
 
-	const supportedInvestigators = story.investigators
-		.filter(({ code, alternate_of }) =>
-			investigators.includes(code) || (
-				alternate_of && investigators.includes(alternate_of)
-			),
-		);
+  const supportedInvestigators = story.investigators.filter(
+    ({ code, alternate_of }) =>
+      investigators.includes(code) || (alternate_of && investigators.includes(alternate_of))
+  );
 
-	return supportedInvestigators.length > 0;
+  return supportedInvestigators.length > 0;
 };

@@ -1,20 +1,20 @@
-import { PayloadAction, CaseReducer } from "@reduxjs/toolkit";
-import { ILayoutState } from "../layout";
-import { ILayoutCriteria } from "@/shared/types/layouts";
-import { getLayoutByCriteria } from "@/shared/lib/features/layouts/getLayoutByCriteria";
+import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
+import { getLayoutByCriteria } from '@/shared/lib/features/layouts/getLayoutByCriteria';
+import { ILayoutCriteria } from '@/shared/types/layouts';
+import { ILayoutState } from '../layout';
 
-export const setLayoutByCriteria: CaseReducer<
-	ILayoutState,
-	PayloadAction<ILayoutCriteria>
-> = (state, { payload: criteria }) => {
-	const layout = getLayoutByCriteria({
-		...state,
-		criteria,
-	});
+export const setLayoutByCriteria: CaseReducer<ILayoutState, PayloadAction<ILayoutCriteria>> = (
+  state,
+  { payload: criteria }
+) => {
+  const layout = getLayoutByCriteria({
+    ...state,
+    criteria,
+  });
 
-	if (!layout) {
-		return;
-	}
+  if (!layout) {
+    return;
+  }
 
-	state.layout = layout;
+  state.layout = layout;
 };

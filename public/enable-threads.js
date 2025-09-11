@@ -3,20 +3,20 @@
 
 /* Edited version of: coi-serviceworker v0.1.6 - Guido Zuidhof, licensed under MIT */
 // From here: https://github.com/gzuidhof/coi-serviceworker
-if (typeof window === "undefined") {
-  self.addEventListener("install", () => self.skipWaiting());
-  self.addEventListener("activate", (e) => e.waitUntil(self.clients.claim()));
+if (typeof window === 'undefined') {
+  self.addEventListener('install', () => self.skipWaiting());
+  self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()));
 
   async function handleFetch(request) {
-    if (request.cache === "only-if-cached" && request.mode !== "same-origin") {
+    if (request.cache === 'only-if-cached' && request.mode !== 'same-origin') {
       return;
     }
 
-    if (request.mode === "no-cors") {
+    if (request.mode === 'no-cors') {
       // We need to set `credentials` to "omit" for no-cors requests, per this comment: https://bugs.chromium.org/p/chromium/issues/detail?id=1309901#c7
       request = new Request(request.url, {
         cache: request.cache,
-        credentials: "omit",
+        credentials: 'omit',
         headers: request.headers,
         integrity: request.integrity,
         destination: request.destination,
@@ -30,15 +30,15 @@ if (typeof window === "undefined") {
       });
     }
 
-    let r = await fetch(request).catch((e) => console.error(e));
+    const r = await fetch(request).catch((e) => console.error(e));
 
     if (r.status === 0) {
       return r;
     }
 
     const headers = new Headers(r.headers);
-    headers.set("Cross-Origin-Embedder-Policy", "credentialless"); // or: require-corp
-    headers.set("Cross-Origin-Opener-Policy", "same-origin");
+    headers.set('Cross-Origin-Embedder-Policy', 'credentialless'); // or: require-corp
+    headers.set('Cross-Origin-Opener-Policy', 'same-origin');
 
     return new Response(r.body, {
       status: r.status,
@@ -47,31 +47,27 @@ if (typeof window === "undefined") {
     });
   }
 
-  self.addEventListener("fetch", function (e) {
+  self.addEventListener('fetch', (e) => {
     e.respondWith(handleFetch(e.request)); // respondWith must be executed synchonously (but can be passed a Promise)
   });
 } else {
-  (async function () {
+  (async () => {
     if (window.crossOriginIsolated !== false) return;
 
-    let registration = await navigator.serviceWorker
+    const registration = await navigator.serviceWorker
       .register(window.document.currentScript.src)
-      .catch((e) =>
-        console.error("COOP/COEP Service Worker failed to register:", e)
-      );
+      .catch((e) => console.error('COOP/COEP Service Worker failed to register:', e));
     if (registration) {
-      console.log("COOP/COEP Service Worker registered", registration.scope);
+      console.log('COOP/COEP Service Worker registered', registration.scope);
 
-      registration.addEventListener("updatefound", () => {
-        console.log(
-          "Reloading page to make use of updated COOP/COEP Service Worker."
-        );
+      registration.addEventListener('updatefound', () => {
+        console.log('Reloading page to make use of updated COOP/COEP Service Worker.');
         window.location.reload();
       });
 
       // If the registration is active, but it's not controlling the page
       if (registration.active && !navigator.serviceWorker.controller) {
-        console.log("Reloading page to make use of COOP/COEP Service Worker.");
+        console.log('Reloading page to make use of COOP/COEP Service Worker.');
         window.location.reload();
       }
     }

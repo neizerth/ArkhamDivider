@@ -1,48 +1,48 @@
 [
-	{
-		"icon": "agents_of_aforgomon",
-		"top": 1,
-		"left": 0
-	},
-	{
-		"icon": "myriad",
-		"top": 1,
-		"left": -1
-	},
-	{
-		"icon": "paradox",
-		"top": -3,
-		"left": 0
-	},
-	{
-		"icon": "nyctophobia",
-		"left": -2
-	},
-	{
-		"icon": "missions",
-		"scale": 0.9
-	},
-	{
-		"icon": "a_year_to_plan",
-		"scale": 0.9
-	},
-	{
-		"icon": "time_runs_out",
-		"scale": 0.8
-	},
-	{
-		"icon": "the_myriad_gentleman",
-		"scale": 0.95
-	},
-	{
-		"icon": "night_of_the_ritual",
-		"top": 2,
-		"left": 1
-	},
-	{
-		"icon": "night_of_fire",
-		"scale": 1.25,
-		"top": 1,
-		"left": 0
-	}
+  {
+    "icon": "agents_of_aforgomon",
+    "top": 1,
+    "left": 0
+  },
+  {
+    "icon": "myriad",
+    "top": 1,
+    "left": -1
+  },
+  {
+    "icon": "paradox",
+    "top": -3,
+    "left": 0
+  },
+  {
+    "icon": "nyctophobia",
+    "left": -2
+  },
+  {
+    "icon": "missions",
+    "scale": 0.9
+  },
+  {
+    "icon": "a_year_to_plan",
+    "scale": 0.9
+  },
+  {
+    "icon": "time_runs_out",
+    "scale": 0.8
+  },
+  {
+    "icon": "the_myriad_gentleman",
+    "scale": 0.95
+  },
+  {
+    "icon": "night_of_the_ritual",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "night_of_fire",
+    "scale": 1.25,
+    "top": 1,
+    "left": 0
+  }
 ]

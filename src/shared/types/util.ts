@@ -1,5 +1,5 @@
 export type PropsWithClassName = {
-	className?: string;
+  className?: string;
 };
 
 export type Mapping<T = string | undefined> = Record<string, T>;
@@ -11,10 +11,7 @@ export type FirstParam<F extends (arg: any) => unknown> = Parameters<F>[0];
 
 export type Defined<T> = Exclude<T, undefined>;
 
-export type PrefixedUnion<
-	Prefix extends string,
-	Values extends string,
-> = `${Prefix}${Values}`;
+export type PrefixedUnion<Prefix extends string, Values extends string> = `${Prefix}${Values}`;
 
 export type Nullable<T> = T | null;
 

@@ -1,89 +1,85 @@
-import React, { PropsWithChildren, useState } from "react";
-import S from "./ToggleSelect.module.scss";
-import { append, without } from "ramda";
-import { inArray } from "@/shared/lib/features/util/criteria";
-import { PropsWithClassName } from "@/shared/types/util";
-import classNames from "classnames";
+import classNames from 'classnames';
+import { append, without } from 'ramda';
+import React, { PropsWithChildren, useState } from 'react';
+import { inArray } from '@/shared/lib/features/util/criteria';
+import { PropsWithClassName } from '@/shared/types/util';
+import S from './ToggleSelect.module.scss';
 
 export type ToggleSelectItemProps<T> = PropsWithClassName &
-	PropsWithChildren & {
-		selectedClassName?: string;
-		isSelected?: boolean;
-		onToggle: () => void;
-		value: T;
-		index: number;
-	};
+  PropsWithChildren & {
+    selectedClassName?: string;
+    isSelected?: boolean;
+    onToggle: () => void;
+    value: T;
+    index: number;
+  };
 
 export function ToggleSelectItem<T>({
-	className,
-	selectedClassName,
-	onToggle,
-	isSelected,
-	children,
+  className,
+  selectedClassName,
+  onToggle,
+  isSelected,
+  children,
 }: ToggleSelectItemProps<T>) {
-	const classList = classNames(
-		S.item,
-		className,
-		isSelected && [selectedClassName, S.selected],
-	);
-	return (
-		<div className={classList} onClick={onToggle}>
-			{children}
-		</div>
-	);
+  const classList = classNames(S.item, className, isSelected && [selectedClassName, S.selected]);
+  return (
+    <div className={classList} onClick={onToggle}>
+      {children}
+    </div>
+  );
 }
 
 export type ToggleSelectProps<T> = PropsWithClassName & {
-	selectedItemClassName?: string;
-	itemClassName?: string;
-	value?: T[];
-	defaultSelectedIndexes?: number[];
-	onChange: (selected: T[]) => void;
-	components?: {
-		Item: React.FC<ToggleSelectItemProps<T>>;
-	};
+  selectedItemClassName?: string;
+  itemClassName?: string;
+  value?: T[];
+  defaultSelectedIndexes?: number[];
+  onChange: (selected: T[]) => void;
+  components?: {
+    Item: React.FC<ToggleSelectItemProps<T>>;
+  };
 };
 
 export function ToggleSelect<T>({
-	className,
-	value = [],
-	defaultSelectedIndexes = [],
-	selectedItemClassName,
-	itemClassName,
-	onChange,
-	components = {
-		Item: ToggleSelectItem,
-	},
+  className,
+  value = [],
+  defaultSelectedIndexes = [],
+  selectedItemClassName,
+  itemClassName,
+  onChange,
+  components = {
+    Item: ToggleSelectItem,
+  },
 }: ToggleSelectProps<T>) {
-	const { Item } = components;
-	const [selected, setSelected] = useState<number[]>(defaultSelectedIndexes);
+  const { Item } = components;
+  const [selected, setSelected] = useState<number[]>(defaultSelectedIndexes);
 
-	const getIsSelected = inArray(selected);
+  const getIsSelected = inArray(selected);
 
-	const toggleFaction = (id: number) => {
-		const isSelected = getIsSelected(id);
+  const toggleFaction = (id: number) => {
+    const isSelected = getIsSelected(id);
 
-		const data = isSelected ? without([id], selected) : append(id, selected);
+    const data = isSelected ? without([id], selected) : append(id, selected);
 
-		setSelected(data);
-		onChange(data.map((index) => value[index]));
-	};
+    setSelected(data);
+    onChange(data.map((index) => value[index]));
+  };
 
-	return (
-		<div className={classNames(S.container, className)}>
-			{value.map((item, index) => (
-				<Item
-					key={index}
-					className={itemClassName}
-					selectedClassName={selectedItemClassName}
-					isSelected={getIsSelected(index)}
-					onToggle={() => toggleFaction(index)}
-					value={item}
-					index={index}
-				>
-					{index}
-				</Item>
-			))}
-		</div>
-	);
+  return (
+    <div className={classNames(S.container, className)}>
+      {value.map((item, index) => (
+        <Item
+          key={index}
+          className={itemClassName}
+          selectedClassName={selectedItemClassName}
+          isSelected={getIsSelected(index)}
+          onToggle={() => toggleFaction(index)}
+          value={item}
+          index={index}
+        >
+          {index}
+        </Item>
+      ))}
+    </div>
+  );
 }

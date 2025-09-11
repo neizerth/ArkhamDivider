@@ -1,14 +1,9 @@
-import { Icon } from "@/components";
-import S from "./DividerText.module.scss";
-import {
-  PropsWithChildren,
-  ReactEventHandler,
-  useEffect,
-  useState,
-} from "react";
-import { PropsWithClassName } from "@/shared/types/util";
-import classNames from "classnames";
-import useFitText from "use-fit-text";
+import classNames from 'classnames';
+import { PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
+import useFitText from 'use-fit-text';
+import { Icon } from '@/components';
+import { PropsWithClassName } from '@/shared/types/util';
+import S from './DividerText.module.scss';
 
 export type DividerTextProps = PropsWithClassName &
   PropsWithChildren & {
@@ -29,13 +24,13 @@ export type DividerTextProps = PropsWithClassName &
 
     stroke?: boolean;
 
-    clearPosition?: "inside" | "outside";
+    clearPosition?: 'inside' | 'outside';
   };
 
 const toText = (html: string): string => {
-  const container = document.createElement("div");
-  container.innerHTML = html.replace(/<br\/?>/, "\n");
-  return container.textContent || "";
+  const container = document.createElement('div');
+  container.innerHTML = html.replace(/<br\/?>/, '\n');
+  return container.textContent || '';
 };
 
 export const DividerText = ({
@@ -50,7 +45,7 @@ export const DividerText = ({
   inputClassName,
   minFontSize,
   maxFontSize,
-  clearPosition = "inside",
+  clearPosition = 'inside',
   onChange,
   children,
 }: DividerTextProps) => {
@@ -89,7 +84,7 @@ export const DividerText = ({
 
   const onTitleChange: ReactEventHandler = (e) => {
     const target = e.target as HTMLDivElement;
-    const contents = target.textContent || "";
+    const contents = target.textContent || '';
     const nextValue = toText(contents);
 
     if (!nextValue.trim()) {
@@ -110,7 +105,7 @@ export const DividerText = ({
 
   useEffect(() => {
     setDefaultValue(defaultValue);
-  }, [defaultValue]);
+  }, [defaultValue, setDefaultValue]);
 
   const style = fixedFontSize
     ? {}
@@ -120,16 +115,8 @@ export const DividerText = ({
       };
 
   return (
-    <div
-      className={classNames(S.container, fullHeight && S.fullHeight, className)}
-    >
-      <div
-        className={classNames(
-          S.wrapper,
-          !fixedFontSize && S.wrapper_dynamic,
-          wrapperClassName
-        )}
-      >
+    <div className={classNames(S.container, fullHeight && S.fullHeight, className)}>
+      <div className={classNames(S.wrapper, !fixedFontSize && S.wrapper_dynamic, wrapperClassName)}>
         <div
           contentEditable
           spellCheck={false}
@@ -146,11 +133,8 @@ export const DividerText = ({
           </div>
         )}
       </div>
-      <div
-        className={classNames(S.clear, S[`clear_${clearPosition}`])}
-        onClick={clear}
-      >
-        <Icon className={S.icon} icon="dismiss" />
+      <div className={classNames(S.clear, S[`clear_${clearPosition}`])} onClick={clear}>
+        <Icon className={S.icon} icon='dismiss' />
       </div>
     </div>
   );

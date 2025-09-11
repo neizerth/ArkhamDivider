@@ -1,9 +1,9 @@
-import JSZip from "jszip";
-import { saveAs } from "file-saver";
-import { DividerNodeRenderer } from "../render/DividerNodeRenderer";
-import { ILayoutBleed } from "@/shared/types/layouts";
-import { ColorScheme, ImageFormat } from "@/shared/types/image";
-import { OnRenderEventData } from "@/shared/types/render";
+import { saveAs } from 'file-saver';
+import JSZip from 'jszip';
+import { ColorScheme, ImageFormat } from '@/shared/types/image';
+import { ILayoutBleed } from '@/shared/types/layouts';
+import { OnRenderEventData } from '@/shared/types/render';
+import { DividerNodeRenderer } from '../render/DividerNodeRenderer';
 
 export type RenderOptions = {
   name: string;
@@ -31,22 +31,22 @@ export const createZipRenderer = ({
   });
 
   renderer
-    .on("start", () => {
+    .on('start', () => {
       zip = new JSZip();
     })
-    .on("render", (event: OnRenderEventData) => {
+    .on('render', (event: OnRenderEventData) => {
       const { filename, contents } = event.data;
 
       zip?.file(filename, contents, {
         binary: true,
       });
     })
-    .on("done", async () => {
+    .on('done', async () => {
       if (!zip) {
         return;
       }
       const content = await zip.generateAsync({
-        type: "blob",
+        type: 'blob',
       });
       zip = null;
 

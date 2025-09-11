@@ -1,5 +1,5 @@
-import { IStory } from "@/shared/types/api";
-import { prop, uniq } from "ramda";
+import { prop, uniq } from 'ramda';
+import { IStory } from '@/shared/types/api';
 
 export const getCampaignDividersCount = ({ name, campaigns = [] }: IStory) =>
-	uniq([name, ...campaigns.map(prop("name"))]).length;
+  uniq([name, ...campaigns.map(prop('name'))]).length;

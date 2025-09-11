@@ -1,7 +1,6 @@
-import { curry, isNil, prop } from "ramda";
+import { curry, isNil, prop } from 'ramda';
 
-export const delay = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
   const groups: T[][] = [];
@@ -11,19 +10,14 @@ export const splitIntoGroups = <T>(data: T[], groupSize: number): T[][] => {
   return groups;
 };
 
-export const arrayIf = <T>(condition: boolean, data: T[]): T[] =>
-  condition ? data : [];
+export const arrayIf = <T>(condition: boolean, data: T[]): T[] => (condition ? data : []);
 
-export const arrayIfFn = <T>(
-  condition: () => boolean,
-  getData: () => T[]
-): T[] => (condition() ? getData() : []);
+export const arrayIfFn = <T>(condition: () => boolean, getData: () => T[]): T[] =>
+  condition() ? getData() : [];
 
-export const toArrayIf = <T>(condition: boolean, item: T): T[] =>
-  condition ? [item] : [];
+export const toArrayIf = <T>(condition: boolean, item: T): T[] => (condition ? [item] : []);
 
-export const toArrayIfExists = <T>(item: T | undefined) =>
-  isNil(item) ? [] : [item];
+export const toArrayIfExists = <T>(item: T | undefined) => (isNil(item) ? [] : [item]);
 
 export const safeProp = curry(
   <T, K extends PropertyKey>(name: K, defaultValue: T, obj: Record<K, T>) => {
@@ -45,23 +39,19 @@ export const definedIf = <T>(value: T, condition: boolean) => {
   }
 };
 
-export const strIfDefined = (value: string) => value || "";
+export const strIfDefined = (value: string) => value || '';
 
-export const pxToNumber = (x: string) => +x.replace("px", "");
+export const pxToNumber = (x: string) => +x.replace('px', '');
 
-export const numberBetween = (min: number, max: number) => (x: number) =>
-  x >= min && x < max;
+export const numberBetween = (min: number, max: number) => (x: number) => x >= min && x < max;
 
 export const minmax = (min: number, max: number) => (value: number) =>
   Math.max(min, Math.min(value, max));
 
-export const isDefined = <T>(value: T | undefined): value is T =>
-  value !== undefined;
+export const isDefined = <T>(value: T | undefined): value is T => value !== undefined;
 
-export const capitalize = (value: string) =>
-  value[0].toUpperCase() + value.substring(1);
+export const capitalize = (value: string) => value[0].toUpperCase() + value.substring(1);
 
 export const firstLetter = (value: string) => value[0];
 
-export const removePunctuation = (text: string) =>
-  text.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
+export const removePunctuation = (text: string) => text.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, '');

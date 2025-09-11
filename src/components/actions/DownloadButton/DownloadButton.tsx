@@ -1,58 +1,58 @@
-import { ButtonType } from "@/shared/types/ui";
+import { PropsWithChildren } from 'react';
 // import S from './DownloadZIPButton.module.scss';
-import { Icon, IconButton } from "@/components";
-import { useAppSelector } from "@/shared/lib/hooks/useAppSelector";
-import { selectExport } from "@/shared/store/features/app/app";
-import { useDownloadDividers } from "@/shared/lib/hooks/useDownloadDividers";
-import { selectDividers } from "@/shared/store/features/dividers/dividers";
-import { PropsWithChildren } from "react";
-import { DividerNodeRenderer } from "@/shared/lib/features/render/DividerNodeRenderer";
+import { Icon, IconButton } from '@/components';
+import { DividerNodeRenderer } from '@/shared/lib/features/render/DividerNodeRenderer';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { useDownloadDividers } from '@/shared/lib/hooks/useDownloadDividers';
+import { selectExport } from '@/shared/store/features/app/app';
+import { selectDividers } from '@/shared/store/features/dividers/dividers';
+import { ButtonType } from '@/shared/types/ui';
 
 export type DownloadZIPButtonProps = PropsWithChildren & {
-	renderer: DividerNodeRenderer;
-	icon?: string;
+  renderer: DividerNodeRenderer;
+  icon?: string;
 };
 
 export const DownloadButton = ({
-	icon = "download",
-	renderer,
-	children,
+  icon = 'download',
+  renderer,
+  children,
 }: DownloadZIPButtonProps) => {
-	const { download, progress, cancel, status } = useDownloadDividers({
-		renderer,
-	});
+  const { download, progress, cancel, status } = useDownloadDividers({
+    renderer,
+  });
 
-	const isExport = useAppSelector(selectExport);
-	const dividers = useAppSelector(selectDividers);
+  const isExport = useAppSelector(selectExport);
+  const dividers = useAppSelector(selectDividers);
 
-	const isDone = progress.done === progress.total;
-	const isDisabled = dividers.length === 0;
-	const isWorking = status === "working";
+  const isDone = progress.done === progress.total;
+  const isDisabled = dividers.length === 0;
+  const isWorking = status === 'working';
 
-	const onClick = () => {
-		if (isExport && !isWorking) {
-			return;
-		}
-		if (isWorking) {
-			return cancel();
-		}
-		download();
-	};
+  const onClick = () => {
+    if (isExport && !isWorking) {
+      return;
+    }
+    if (isWorking) {
+      return cancel();
+    }
+    download();
+  };
 
-	return (
-		<IconButton
-			onClick={onClick}
-			buttonType={isWorking ? ButtonType.DANGER : ButtonType.SECONDARY}
-			icon={icon}
-			disabled={isDisabled}
-		>
-			{children}{" "}
-			{isWorking && !isDone && (
-				<>
-					{progress.done} / {progress.total}
-				</>
-			)}
-			{isWorking && isExport && <Icon icon="hour-glass" />}
-		</IconButton>
-	);
+  return (
+    <IconButton
+      onClick={onClick}
+      buttonType={isWorking ? ButtonType.DANGER : ButtonType.SECONDARY}
+      icon={icon}
+      disabled={isDisabled}
+    >
+      {children}{' '}
+      {isWorking && !isDone && (
+        <>
+          {progress.done} / {progress.total}
+        </>
+      )}
+      {isWorking && isExport && <Icon icon='hour-glass' />}
+    </IconButton>
+  );
 };

@@ -1,97 +1,97 @@
 [
-	{
-		"icon": "dream",
-		"top": 4
-	},
-	{
-		"icon": "agents_of_nyarlathotep",
-		"left": 0
-	},
-	{
-		"icon": "zoogs",
-		"top": 4
-	},
-	{
-		"icon": "dreamers_curse",
-		"top": 1
-	},
-	{
-		"icon": "dreamlands",
-		"top": 2,
-		"left": 0
-	},
-	{
-		"icon": "corsairs",
-		"top": 5,
-		"left": -0.5
-	},
-	{
-		"icon": "spiders",
-		"scale": 0.95,
-		"top": 0,
-		"left": 0
-	},
-	{
-		"icon": "whispers_of_hypnos",
-		"top": 4,
-		"left": 1
-	},
-	{
-		"icon": "creatures_of_the_underworld"
-	},
-	{
-		"icon": "merging_realities",
-		"left": 1
-	},
-	{
-		"icon": "terror_of_the_vale",
-		"top": 0
-	},
-	{
-		"icon": "descent_into_the_pitch",
-		"top": -4
-	},
-	{
-		"icon": "agents_of_atlach_nacha",
-		"left": 1
-	},
-	{
-		"icon": "beyond_the_gates_of_sleep",
-		"top": -1,
-		"left": 2
-	},
-	{
-		"icon": "a_thousand_shapes_of_horror",
-		"scale": 0.85,
-		"top": -1,
-		"left": -2
-	},
-	{
-		"icon": "dark_side_of_the_moon",
-		"top": -10,
-		"left": -1
-	},
-	{
-		"icon": "point_of_no_return",
-		"top": -4
-	},
-	{
-		"icon": "waking_nightmare",
-		"top": 1,
-		"left": -6.5
-	},
-	{
-		"icon": "the_search_for_kadath",
-		"left": -2
-	},
-	{
-		"icon": "where_gods_dwell",
-		"top": -5,
-		"left": 1
-	},
-	{
-		"icon": "weaver_of_the_cosmos",
-		"top": -1,
-		"left": 2
-	}
+  {
+    "icon": "dream",
+    "top": 4
+  },
+  {
+    "icon": "agents_of_nyarlathotep",
+    "left": 0
+  },
+  {
+    "icon": "zoogs",
+    "top": 4
+  },
+  {
+    "icon": "dreamers_curse",
+    "top": 1
+  },
+  {
+    "icon": "dreamlands",
+    "top": 2,
+    "left": 0
+  },
+  {
+    "icon": "corsairs",
+    "top": 5,
+    "left": -0.5
+  },
+  {
+    "icon": "spiders",
+    "scale": 0.95,
+    "top": 0,
+    "left": 0
+  },
+  {
+    "icon": "whispers_of_hypnos",
+    "top": 4,
+    "left": 1
+  },
+  {
+    "icon": "creatures_of_the_underworld"
+  },
+  {
+    "icon": "merging_realities",
+    "left": 1
+  },
+  {
+    "icon": "terror_of_the_vale",
+    "top": 0
+  },
+  {
+    "icon": "descent_into_the_pitch",
+    "top": -4
+  },
+  {
+    "icon": "agents_of_atlach_nacha",
+    "left": 1
+  },
+  {
+    "icon": "beyond_the_gates_of_sleep",
+    "top": -1,
+    "left": 2
+  },
+  {
+    "icon": "a_thousand_shapes_of_horror",
+    "scale": 0.85,
+    "top": -1,
+    "left": -2
+  },
+  {
+    "icon": "dark_side_of_the_moon",
+    "top": -10,
+    "left": -1
+  },
+  {
+    "icon": "point_of_no_return",
+    "top": -4
+  },
+  {
+    "icon": "waking_nightmare",
+    "top": 1,
+    "left": -6.5
+  },
+  {
+    "icon": "the_search_for_kadath",
+    "left": -2
+  },
+  {
+    "icon": "where_gods_dwell",
+    "top": -5,
+    "left": 1
+  },
+  {
+    "icon": "weaver_of_the_cosmos",
+    "top": -1,
+    "left": 2
+  }
 ]

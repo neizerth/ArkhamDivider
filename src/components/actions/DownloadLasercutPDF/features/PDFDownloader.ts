@@ -1,8 +1,8 @@
-import { EventEmitter } from "@/shared/lib/features/events/EventEmitter";
-import { DividerNodeRenderer } from "@/shared/lib/features/render/DividerNodeRenderer";
-import { ColorScheme, ImageFormat } from "@/shared/types/image";
-import { ILayoutBleed } from "@/shared/types/layouts";
-import { OnRenderEventData } from "@/shared/types/render";
+import { EventEmitter } from '@/shared/lib/features/events/EventEmitter';
+import { DividerNodeRenderer } from '@/shared/lib/features/render/DividerNodeRenderer';
+import { ColorScheme, ImageFormat } from '@/shared/types/image';
+import { ILayoutBleed } from '@/shared/types/layouts';
+import { OnRenderEventData } from '@/shared/types/render';
 
 export class PDFDownloader extends EventEmitter {
   protected _renderer: DividerNodeRenderer;
@@ -26,14 +26,14 @@ export class PDFDownloader extends EventEmitter {
     const renderer = new DividerNodeRenderer(this.options);
 
     renderer
-      .on("start", () => {
+      .on('start', () => {
         this.items = [];
       })
-      .on("render", ({ data }: OnRenderEventData) => {
+      .on('render', ({ data }: OnRenderEventData) => {
         this.items.push(data.contents);
       })
-      .on("done", () => {
-        this.emit("render", this.items);
+      .on('done', () => {
+        this.emit('render', this.items);
         this.items = [];
       });
 

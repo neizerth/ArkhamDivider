@@ -1,108 +1,108 @@
 [
-	{
-		"icon": "fhvc",
-		"top": 1,
-		"left": 2
-	},
-	{
-		"icon": "the_first_day",
-		"scale": 0.85,
-		"top": 2,
-		"left": 2
-	},
-	{
-		"icon": "day_of_rest",
-		"top": 3,
-		"left": 2
-	},
-	{
-		"icon": "the_vale",
-		"top": 2
-	},
-	{
-		"icon": "fire",
-		"top": 0,
-		"left": 2
-	},
-	{
-		"icon": "the_longest_night",
-		"scale": 1.1,
-		"top": 1
-	},
-	{
-		"icon": "agents_of_the_colour",
-		"top": 3,
-		"left": 3
-	},
-	{
-		"icon": "transfiguration",
-		"top": 2,
-		"left": 0
-	},
-	{
-		"icon": "mutations"
-	},
-	{
-		"icon": "blight",
-		"left": -1,
-		"top": -2
-	},
-	{
-		"icon": "myconids",
-		"top": 2,
-		"left": 1
-	},
-	{
-		"icon": "the_forest",
-		"top": 3,
-		"left": 3
-	},
-	{
-		"icon": "heirlooms",
-		"top": 2
-	},
-	{
-		"icon": "day_of_rain",
-		"top": -4
-	},
-	{
-		"icon": "the_second_day",
-		"scale": 0.85,
-		"top": 2,
-		"left": 2
-	},
-	{
-		"icon": "the_final_day",
-		"scale": 0.85,
-		"top": 2,
-		"left": 2
-	},
-	{
-		"icon": "day_of_the_feast",
-		"top": 8
-	},
-	{
-		"icon": "hemlock_house",
-		"scale": 0.9,
-		"top": 1,
-		"left": 2
-	},
-	{
-		"icon": "the_silent_heath",
-		"top": 0
-	},
-	{
-		"icon": "the_lost_sister",
-		"top": -2
-	},
-	{
-		"icon": "the_twisted_hollow",
-		"top": -1,
-		"left": -1
-	},
-	{
-		"icon": "fate_of_the_vale",
-		"top": 3,
-		"left": -1
-	}
+  {
+    "icon": "fhvc",
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "the_first_day",
+    "scale": 0.85,
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "day_of_rest",
+    "top": 3,
+    "left": 2
+  },
+  {
+    "icon": "the_vale",
+    "top": 2
+  },
+  {
+    "icon": "fire",
+    "top": 0,
+    "left": 2
+  },
+  {
+    "icon": "the_longest_night",
+    "scale": 1.1,
+    "top": 1
+  },
+  {
+    "icon": "agents_of_the_colour",
+    "top": 3,
+    "left": 3
+  },
+  {
+    "icon": "transfiguration",
+    "top": 2,
+    "left": 0
+  },
+  {
+    "icon": "mutations"
+  },
+  {
+    "icon": "blight",
+    "left": -1,
+    "top": -2
+  },
+  {
+    "icon": "myconids",
+    "top": 2,
+    "left": 1
+  },
+  {
+    "icon": "the_forest",
+    "top": 3,
+    "left": 3
+  },
+  {
+    "icon": "heirlooms",
+    "top": 2
+  },
+  {
+    "icon": "day_of_rain",
+    "top": -4
+  },
+  {
+    "icon": "the_second_day",
+    "scale": 0.85,
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "the_final_day",
+    "scale": 0.85,
+    "top": 2,
+    "left": 2
+  },
+  {
+    "icon": "day_of_the_feast",
+    "top": 8
+  },
+  {
+    "icon": "hemlock_house",
+    "scale": 0.9,
+    "top": 1,
+    "left": 2
+  },
+  {
+    "icon": "the_silent_heath",
+    "top": 0
+  },
+  {
+    "icon": "the_lost_sister",
+    "top": -2
+  },
+  {
+    "icon": "the_twisted_hollow",
+    "top": -1,
+    "left": -1
+  },
+  {
+    "icon": "fate_of_the_vale",
+    "top": 3,
+    "left": -1
+  }
 ]
