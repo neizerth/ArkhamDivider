@@ -41,6 +41,10 @@ export type AddStoryDividersOptions = {
 	includeEncounters: boolean;
 };
 
+export type AddInvestigatorDividersOptions = {
+	doubleSided: boolean;
+};
+
 export type AddInvestigatorDividers = {
 	investigators: IInvestigator[];
 };

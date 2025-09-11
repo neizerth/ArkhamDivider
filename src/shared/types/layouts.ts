@@ -1,4 +1,5 @@
 import {
+	AddInvestigatorDividersOptions,
 	AddPlayerDividersOptions,
 	AddStoryDividersOptions,
 } from "@/shared/store/features/addDividers/addDividers";
@@ -30,6 +31,7 @@ export type ILayout = {
 	maxCreditsGroupSize?: number;
 	campaignOptions?: Partial<AddStoryDividersOptions>;
 	playerOptions?: Partial<AddPlayerDividersOptions>;
+	investigatorOptions?: Partial<AddInvestigatorDividersOptions>;
 	customParams?: Record<string, unknown>;
 	async?: boolean;
 };

@@ -32,6 +32,9 @@ export const investigatorTokensLayout: ILayout = {
     width: 28,
     height: 28,
   },
+	investigatorOptions: {
+		doubleSided: true,
+	},
 }
 
 export const investigatorTokensLayoutCategory: ILayoutCategory = {
