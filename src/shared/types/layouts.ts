@@ -2,7 +2,6 @@ import {
 	AddPlayerDividersOptions,
 	AddStoryDividersOptions,
 } from "@/shared/store/features/addDividers/addDividers";
-import { Mapping } from "./util";
 
 export type ILayoutBleed = {
 	width: number;
@@ -31,7 +30,7 @@ export type ILayout = {
 	maxCreditsGroupSize?: number;
 	campaignOptions?: Partial<AddStoryDividersOptions>;
 	playerOptions?: Partial<AddPlayerDividersOptions>;
-	customParams?: Mapping;
+	customParams?: Record<string, unknown>;
 	async?: boolean;
 };
 

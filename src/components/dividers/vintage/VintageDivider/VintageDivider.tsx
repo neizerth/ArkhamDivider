@@ -49,7 +49,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
 
 	const dispatch = useAppDispatch();
 	const { customParams = {} } = useAppSelector(selectLayout);
-	const { size = "medium" } = customParams;
+	const size = customParams?.size as string || "medium";
 	const isLarge = size === "large";
 	// const currentPosition = tabPositions[backId || id];
 

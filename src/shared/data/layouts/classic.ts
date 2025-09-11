@@ -25,6 +25,19 @@ export const horizontal = {
 	},
 };
 
+export const horizontalHQ = {
+	width: 89,
+	height: 76,
+	bleed: {
+		width: 97,
+		height: 84,
+		top: 3.2,
+		left: 4,
+		right: 4.1,
+		bottom: 4.6,
+	},
+};
+
 export const vertical = {
 	height: 100,
 	width: 63,
@@ -60,6 +73,17 @@ export const classicLayouts: ILayout[] = [
 		orientation: LayoutOrientation.HORIZONTAL,
 		color: true,
 		isDefault: true,
+	},
+	{
+		...common,
+		...horizontalHQ,
+		id: "classic-horizontal-hq",
+		title: "HQ",
+		orientation: LayoutOrientation.HORIZONTAL,
+		color: true,
+		customParams: {
+			hq: true,
+		}
 	},
 	{
 		...common,

@@ -8,9 +8,7 @@ const GAME_URL =
 	"https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/";
 const FFG_URL = "https://www.fantasyflightgames.com/";
 
-export type FooterProps = {};
-
-export const Footer = ({}: FooterProps) => {
+export const Footer = () => {
 	const { t } = useTranslation();
 
 	return (

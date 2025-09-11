@@ -64,12 +64,15 @@ export const ClassicDivider = ({
 		defaultIcon: props.previewIcon || props.icon,
 	});
 
+	const hq = layout.customParams?.hq || false;
+
 	const background =
 		props.background ||
 		backgrounds.find(
 			propsEquals({
 				orientation,
 				color,
+				hq
 			}),
 		)?.src;
 
@@ -86,6 +89,7 @@ export const ClassicDivider = ({
 
 	const containerClassName = classNames(
 		S.container,
+		S[layout.id],
 		S[realLanguage],
 		S[orientation],
 		S[type],
