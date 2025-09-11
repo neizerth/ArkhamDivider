@@ -10,6 +10,7 @@ import { arkhamDecoCategory, arkhamDecoLayouts } from "./arkham-deco";
 import { arkhamStarter3mmLayout, arkhamStarter3mmLayoutCategory } from "./3mm";
 import { arkhamesqueCategory, arkhamesqueClassicLayouts } from "./arkhamesque";
 import { vintageLayouts, vintageLayoutCategory } from "./vintage";
+import { investigatorTokensLayout, investigatorTokensLayoutCategory } from "./investigator-tokens";
 
 export const layouts: ILayout[] = [
 	...classicLayouts,
@@ -19,6 +20,7 @@ export const layouts: ILayout[] = [
 	...arkhamesqueClassicLayouts,
 	...vintageLayouts,
 	arkhamStarter3mmLayout,
+	investigatorTokensLayout,
 ];
 
 export const layoutCategories: ILayoutCategory[] = [
@@ -29,4 +31,5 @@ export const layoutCategories: ILayoutCategory[] = [
 	arkhamDecoCategory,
 	arkhamStarter3mmLayoutCategory,
 	vintageLayoutCategory,
+	investigatorTokensLayoutCategory,
 ];

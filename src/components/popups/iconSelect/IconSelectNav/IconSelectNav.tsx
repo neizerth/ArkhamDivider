@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 export type IconSelectNavProps = {
 	icon?: string;
 	iconGroups: IIconMainGroup[];
-	sectionRefs?: React.RefObject<HTMLDivElement>[];
+	sectionRefs?: React.RefObject<HTMLDivElement | null>[];
 	activeSection?: number;
 };
 

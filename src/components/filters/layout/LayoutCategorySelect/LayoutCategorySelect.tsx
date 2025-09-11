@@ -52,7 +52,7 @@ export const LayoutCategorySelect = ({
 			options={options}
 			value={value}
 			placeholder={t("Choose an option")}
-			onChange={(item) => item && setCategoryId(item.value)}
+   onChange={(item: any) => item && setCategoryId(item.value)}
 		/>
 	);
 };

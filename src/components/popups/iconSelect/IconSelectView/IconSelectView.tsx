@@ -9,7 +9,7 @@ export type IconSelectViewProps = {
 	onChange: (icon: string) => void;
 	defaultIcon?: string;
 	iconGroups: IIconMainGroup[];
-	sectionRefs: React.RefObject<HTMLDivElement>[];
+	sectionRefs: React.RefObject<HTMLDivElement | null>[];
 };
 
 export const IconSelectView = forwardRef(

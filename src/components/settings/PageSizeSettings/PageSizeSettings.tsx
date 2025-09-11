@@ -50,7 +50,7 @@ export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
   return (
     <Select
       className={S.select}
-      onChange={(item) => item && onChange(item.value)}
+      onChange={(item: any) => item && onChange(item.value)}
       options={options}
       value={value}
       isDisabled={isExport}

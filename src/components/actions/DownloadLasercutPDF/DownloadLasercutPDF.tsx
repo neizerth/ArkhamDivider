@@ -58,7 +58,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
       pageSizeType,
     });
 
-    let container: JSX.Element | null = (
+    let container: React.ReactElement | null = (
       <PDFLayout
         data={data}
         doubleSidedPrint={doubleSidedPrint}

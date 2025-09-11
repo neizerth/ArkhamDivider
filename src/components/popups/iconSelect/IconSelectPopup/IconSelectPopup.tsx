@@ -45,10 +45,10 @@ export const IconSelectPopup = ({
 	});
 
 	const viewRef = useRef<HTMLDivElement>(null);
-	const sectionRefs = useRef<React.RefObject<HTMLDivElement>[]>([]);
+	const sectionRefs = useRef<React.RefObject<HTMLDivElement | null>[]>([]);
 
 	if (sectionRefs.current.length === 0) {
-		sectionRefs.current = iconGroups.map(() => createRef<HTMLDivElement>());
+		sectionRefs.current = iconGroups.map(() => createRef<HTMLDivElement | null>());
 	}
 
 	const activeSection = useScrollSpy({

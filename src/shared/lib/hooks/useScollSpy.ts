@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 export interface useScrollSpyParams {
 	activeSectionDefault?: number;
 	offsetPx?: number;
-	sectionElementRefs: React.RefObject<HTMLElement>[];
+	sectionElementRefs: React.RefObject<HTMLElement | null>[];
 	throttleMs?: number;
-	scrollingElement?: React.RefObject<HTMLElement>;
+	scrollingElement?: React.RefObject<HTMLElement | null>;
 }
 export const useScrollSpy = ({
 	activeSectionDefault = 0,

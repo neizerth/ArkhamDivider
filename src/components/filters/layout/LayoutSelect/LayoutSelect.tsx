@@ -41,7 +41,7 @@ export const LayoutSelect = ({ className, data }: LayoutSelectProps) => {
 			className={containerClassName}
 			value={value}
 			options={options}
-			onChange={(item) => item && setLayoutId(item.value)}
+   onChange={(item: any) => item && setLayoutId(item.value)}
 		/>
 	);
 };

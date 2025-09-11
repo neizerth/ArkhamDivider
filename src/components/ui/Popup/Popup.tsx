@@ -21,11 +21,11 @@ export const Popup = ({
 	contentClassName,
 }: PopupProps) => {
 	const dispatch = useAppDispatch();
-	const ref = useRef(null);
+	const ref = useRef<HTMLDivElement>(null);
 
 	const close = () => dispatch(clearActivePopupId());
 
-	useOnClickOutside(ref, close);
+	useOnClickOutside(ref as React.RefObject<HTMLElement>, close);
 
 	return (
 		<>

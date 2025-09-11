@@ -80,7 +80,7 @@ export const LanguageSelect = () => {
 			value={languageValue}
 			components={components}
 			isMulti={false}
-			onChange={(item) => item && changeCurrentLanguage(item.value)}
+   onChange={(item: any) => item && changeCurrentLanguage(item.value)}
 		/>
 	);
 };

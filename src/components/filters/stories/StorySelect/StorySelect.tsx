@@ -116,12 +116,12 @@ export const StorySelect = ({
 		<Row className={classNames(S.container, className)}>
 			<Select
 				isMulti={false}
-				onChange={(item) => onChange(item?.value)}
+				onChange={(item: any) => onChange(item?.value)}
 				className={classNames(S.select)}
 				placeholder={t("Select Campaign")}
 				options={groups}
 				value={value}
-				getOptionLabel={({ value }) => labels.get(value.code)}
+				getOptionLabel={({ value }: any) => labels.get(value.code)}
 				components={components}
 			/>
 

@@ -68,7 +68,7 @@ export const LayoutZoom = ({}: LayoutZoomProps) => {
 				options={options}
 				value={value}
 				isDisabled={isExport}
-				onChange={(item) => item && onChange(item.value)}
+				onChange={(item: any) => item && onChange(item.value)}
 			/>
 			<div
 				className={classNames(
