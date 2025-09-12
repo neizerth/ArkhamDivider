@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { DividerNodeRenderer } from '@/shared/lib/features/render/DividerNodeRenderer';
 import { delay } from '@/shared/lib/features/util/common';
 import { selectExport, setExport } from '@/shared/store/features/app/app';
@@ -35,13 +35,7 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
     renderer.cancel();
   };
 
-  const onCancel = async () => {
-    console.log('onCancel');
-    setStatus('cancelled');
-    onFinally();
-  };
-
-  const onFinally = () => {
+  const onFinally = useCallback(() => {
     dispatch(setBleed(defaultBleed));
     dispatch(setExport(false));
 
@@ -49,46 +43,25 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
       done: 0,
       total: 0,
     });
-  };
+  }, [dispatch, defaultBleed]);
 
-  const onStart = async () => {
-    console.log('started');
-    try {
-      await delay(100);
-      await process();
-      setStatus('complete');
-    } catch (error) {
-      console.error('Error downloading dividers:', error);
-      setStatus('error');
-    } finally {
-      onFinally();
-    }
-  };
+  const onCancel = useCallback(async () => {
+    console.log('onCancel');
+    setStatus('cancelled');
+    onFinally();
+  }, [onFinally]);
 
-  useEffect(() => {
-    if (isExport && status === 'ready') {
-      onStart();
-    }
-  }, [isExport, status, onStart]);
-
-  const onRender = ({ done, total }: OnRenderEventData) => {
+  const onRender = useCallback(({ done, total }: OnRenderEventData) => {
     setProgress({ done, total });
-  };
+  }, []);
 
-  const onDone = () => {
+  const onDone = useCallback(() => {
     dispatch(setExport(false));
 
     renderer.off('render', onRender).off('done', onDone).off('cancel', onCancel);
-  };
+  }, [dispatch, renderer, onRender, onCancel]);
 
-  const download = async () => {
-    dispatch(setZoom(100));
-    dispatch(setExport(true));
-    dispatch(setBleed(true));
-    setStatus('ready');
-  };
-
-  const process = async () => {
+  const process = useCallback(async () => {
     if (progress.done !== progress.total) {
       return;
     }
@@ -98,6 +71,41 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
     renderer.on('render', onRender).on('done', onDone).on('cancel', onCancel);
 
     await renderer.run();
+  }, [progress.done, progress.total, renderer, onRender, onDone, onCancel]);
+
+  const onStart = useCallback(async () => {
+    console.log('started');
+    try {
+      await delay(100);
+      await process();
+      setStatus('complete');
+    } catch (error) {
+      console.error('Error downloading dividers:');
+      console.error(error);
+
+      // Log more detailed error information
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
+      }
+
+      setStatus('error');
+    } finally {
+      onFinally();
+    }
+  }, [onFinally, process]);
+
+  useEffect(() => {
+    if (isExport && status === 'ready') {
+      onStart();
+    }
+  }, [isExport, status, onStart]);
+
+  const download = async () => {
+    dispatch(setZoom(100));
+    dispatch(setExport(true));
+    dispatch(setBleed(true));
+    setStatus('ready');
   };
 
   return {

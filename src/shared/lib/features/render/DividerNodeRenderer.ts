@@ -14,7 +14,7 @@ export type DividerNodeRendererOptions = {
 export type DividerNodeRendererStatus = 'running' | 'initial' | 'done' | 'cancelled';
 
 export class DividerNodeRenderer extends EventEmitter {
-  protected nodes: Element[] = [];
+  protected nodes: HTMLElement[] = [];
   protected current = 0;
   readonly scale = getWebToPrintScale();
   protected cancelled = false;
@@ -32,7 +32,7 @@ export class DividerNodeRenderer extends EventEmitter {
 
     this.current = 0;
     this.cancelled = false;
-    this.nodes = [...document.querySelectorAll('.page .divider')];
+    this.nodes = [...(document.querySelectorAll('.page .divider') as NodeListOf<HTMLElement>)];
 
     if (this.nodes.length > 0) {
       await this.next();
