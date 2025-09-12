@@ -161,6 +161,8 @@
   z-index: 4;
   left: -0.8mm;
   top: -2mm;
+  border: none;
+  background: none;
   &:hover {
     filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.8));
   }
@@ -206,6 +208,8 @@
   position: absolute;
   z-index: 3;
   font-size: 2.2mm;
+  border: none;
+  background: none;
   &_horizontal {
     left: 22mm;
     top: 3.9mm;
