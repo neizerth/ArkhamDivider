@@ -1,4 +1,5 @@
 import domToImage from 'dom-to-image';
+import * as htmlToImage from 'html-to-image';
 import { toPrintSize } from '@/shared/lib/features/util/units';
 import { ColorScheme, ImageFormat } from '@/shared/types/image';
 import { ILayoutBleed } from '@/shared/types/layouts';
@@ -6,7 +7,7 @@ import { RenderResponse } from '@/shared/types/render';
 import { getVips } from '../image/vips';
 
 export type GetDividerImageOptions = {
-  node: Element;
+  node: HTMLElement;
   scale: number;
   name: string;
   bleed: ILayoutBleed;
@@ -27,7 +28,9 @@ export const getDividerImage = async ({
   const width = rect.width * scale;
   const height = rect.height * scale;
 
-  const blob = await domToImage.toBlob(node, {
+  console.log('downloading blob', node);
+
+  const blob = await htmlToImage.toBlob(node, {
     width,
     height,
     style: {
@@ -35,6 +38,8 @@ export const getDividerImage = async ({
       transformOrigin: 'top left',
     },
   });
+
+  console.log('blob', blob);
 
   const cropLeft = toPrintSize(bleed.left);
   const cropTop = toPrintSize(bleed.top);
