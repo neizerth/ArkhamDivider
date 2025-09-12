@@ -1,4 +1,4 @@
-@import "@/app/sass/mixins.scss";
+@use "@/app/sass/mixins.scss" as mixins;
 
 .tabHeader {
   position: absolute;
@@ -62,7 +62,7 @@
   position: absolute;
   z-index: 5;
 
-  @include clipX(7mm, 39mm);
+  @include mixins.clipX(7mm, 39mm);
   top: 4.3mm;
   &_left {
     left: 3.9mm;
@@ -73,7 +73,7 @@
     right: 3.9mm;
     height: 2.4mm;
     transform: scale(-1, 1);
-    @include clipX(5mm, 39mm);
+    @include mixins.clipX(5mm, 39mm);
   }
 }
 
@@ -107,13 +107,13 @@
   }
   .tabTopLine {
     top: 3.2mm;
-    @include clipX(5.8mm, 39mm);
+    @include mixins.clipX(5.8mm, 39mm);
   }
   .topLine {
     // --offset: -1.93mm;
     --offset: -1.95mm;
     z-index: 7;
-    @include clipX(40mm, 55mm);
+    @include mixins.clipX(40mm, 55mm);
     &_scenario,
     &_campaign,
     &_encounter,
@@ -307,7 +307,7 @@
     }
 
     .tabTopLine {
-      @include clipX(10mm, 43.5mm);
+      @include mixins.clipX(10mm, 43.5mm);
     }
   }
 }

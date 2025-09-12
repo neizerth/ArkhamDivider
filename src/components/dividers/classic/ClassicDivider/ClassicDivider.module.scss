@@ -1,5 +1,5 @@
-@import './styles/common.module.scss';
-@import './styles/icons.module.scss';
+@use './styles/common.module.scss';
+@use './styles/icons.module.scss';
 // @import url('./styles/common.module.scss');
-@import './styles/vertical.module.scss';
-@import './styles/horizontal.module.scss';
+@use './styles/vertical.module.scss';
+@use './styles/horizontal.module.scss';

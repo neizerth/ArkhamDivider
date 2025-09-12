@@ -1,4 +1,4 @@
-@import "@/app/sass/mixins.scss";
+@use "@/app/sass/mixins.scss" as mixins;
 
 .container {
   --height: 27.8mm;
@@ -32,7 +32,7 @@
 }
 
 .text {
-  @include textStroke(#352e1f, 4, 0.05mm);
+  @include mixins.textStroke(#352e1f, 4, 0.05mm);
 }
 
 

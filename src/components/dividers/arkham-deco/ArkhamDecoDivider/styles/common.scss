@@ -1,4 +1,4 @@
-@import "@/app/sass/mixins.scss";
+@use "@/app/sass/mixins.scss" as mixins;
 
 .container {
   --offset: 0mm;
@@ -256,10 +256,10 @@
   z-index: 2;
   top: calc(var(--offset) + 4.8mm);
   left: -0.05mm;
-  @include clipX(10.9mm, 85.1mm);
+  @include mixins.clipX(10.9mm, 85.1mm);
   width: 94.4mm;
   &_scenario {
-    @include clipX(10.9mm, 82mm);
+    @include mixins.clipX(10.9mm, 82mm);
   }
 }
 

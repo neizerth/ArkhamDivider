@@ -29,7 +29,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
   const cornerRadius = useAppSelector(selectCornerRadius);
   const dividers = useAppSelector(selectDividers);
 
-  const [items, setItems] = useState<Uint8Array[]>([]);
+  const [items, setItems] = useState<BlobPart[]>([]);
 
   const name = `Arkham Divider`;
 

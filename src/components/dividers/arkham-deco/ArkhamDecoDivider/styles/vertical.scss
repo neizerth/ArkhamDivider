@@ -1,4 +1,5 @@
 
+@use "@/app/sass/mixins.scss" as mixins;
 
 .orientation_vertical {
   --offset: 0mm;
@@ -20,14 +21,14 @@
     --offset: -2.15mm;
     // --offset: -1.95mm;
     left: -22.4mm;
-    @include clipX(44mm, 65mm);
+    @include mixins.clipX(44mm, 65mm);
     transform: scale(0.7);
     // width: 94.1mm;
     width: 107mm;
     // display: block;
     display: none;
     &_scenario {
-      @include clipX(26.2mm, 68.2mm);
+      @include mixins.clipX(26.2mm, 68.2mm);
     }
     &_investigator {
       display: none;
@@ -51,7 +52,7 @@
 
   .tabTopLine {
 
-    @include clipX(23mm, 43.5mm);
+    @include mixins.clipX(23mm, 43.5mm);
     // display: none;
     &_left {
       left: -16mm;

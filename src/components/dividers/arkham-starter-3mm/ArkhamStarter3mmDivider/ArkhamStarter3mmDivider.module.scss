@@ -1,4 +1,4 @@
-@import "@/app/sass/mixins.scss";
+@use "@/app/sass/mixins.scss" as mixins;
 
 .container {
   font-family: "Teutonic", "Teutonic Extended", "Arkhamic", sans-serif;

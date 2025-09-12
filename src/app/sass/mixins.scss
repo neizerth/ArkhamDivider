@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:list';
 
 @mixin clipX($left: 0%, $right: 100%) {
   clip-path: polygon($left 0, $right 0, $right 100%, $left 100%);
@@ -13,7 +14,7 @@
     $x: math.cos($angle) * $size;
     $y: math.sin($angle) * $size;
     
-    $value: append($value, $x*$unit $y*$unit $color, comma);
+    $value: list.append($value, $x*$unit $y*$unit $color, comma);
     $angle: $angle + $step;
   }
   text-shadow: $value;
@@ -28,7 +29,7 @@
     $x: math.cos($angle) * $size;
     $y: math.sin($angle) * $size;
     
-    $value: append($value, $x*$unit $y*$unit $spread $color, comma);
+    $value: list.append($value, $x*$unit $y*$unit $spread $color, comma);
     $angle: $angle + $step;
   }
   text-shadow: $value;

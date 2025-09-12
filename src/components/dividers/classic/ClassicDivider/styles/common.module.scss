@@ -1,4 +1,4 @@
-@import "@/app/sass/mixins.scss";
+@use "@/app/sass/mixins.scss" as mixins;
 
 .container {
   font-family: 'Teutonic', 'Conkordia', 'Arkhamic', sans-serif;
@@ -169,19 +169,19 @@
 .textStroke {
   box-sizing: border-box;
   color: transparent;
-  @include clipX(0, 15mm);
+  @include mixins.clipX(0, 15mm);
 }
 
 
 .grayscale {
   .textStroke {
-    @include textStroke(white);
+    @include mixins.textStroke(white);
   }
 }
 
 .color {
   .textStroke {
-    @include textStroke(rgba(228, 208, 156, 0.7));
+    @include mixins.textStroke(rgba(228, 208, 156, 0.7));
   }
 }
 
