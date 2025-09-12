@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import { useEffect, useMemo, useState } from 'react';
 import { Badge } from '@/components';
 import { cleanupVips } from '@/shared/lib/features/image/vips';
+import { destroyObject } from '@/shared/lib/features/memory/memoryUtils';
 import { getLayoutGrid } from '@/shared/lib/features/layouts/getLayoutGrid';
 import { getSimilarBleed } from '@/shared/lib/features/render/getSimilarBleed';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
@@ -84,15 +85,11 @@ export const DownloadLasercutPDF = () => {
           URL.revokeObjectURL(url);
         }
 
-        // Clean up PDF blob (if close method exists)
-        if ('close' in blob && typeof blob.close === 'function') {
-          blob.close();
-        }
+        // Clean up PDF blob
+        destroyObject(blob);
 
-        // Clean up PDF object (if destroy method exists)
-        if ('destroy' in asPdf && typeof asPdf.destroy === 'function') {
-          asPdf.destroy();
-        }
+        // Clean up PDF object
+        destroyObject(asPdf);
       })
       .catch((error) => {
         console.error('PDF generation failed:', error);
@@ -102,10 +99,8 @@ export const DownloadLasercutPDF = () => {
           URL.revokeObjectURL(url);
         }
 
-        // Clean up PDF object even on error (if destroy method exists)
-        if ('destroy' in asPdf && typeof asPdf.destroy === 'function') {
-          asPdf.destroy();
-        }
+        // Clean up PDF object even on error
+        destroyObject(asPdf);
       });
 
     container = null;

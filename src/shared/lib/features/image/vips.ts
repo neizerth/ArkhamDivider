@@ -1,5 +1,6 @@
 import type Vips from 'wasm-vips';
 import { Nullable } from '@/shared/types/util';
+import { forceGarbageCollection } from '../memory/memoryUtils';
 
 let vips: Nullable<typeof Vips> = null;
 
@@ -13,10 +14,7 @@ export const getVips = async () => {
   const memoryUsage = vips ? vips.Stats.mem() / Mb : 0;
 
   if (memoryUsage > MAX_MEMORY) {
-    // Force garbage collection if available
-    if (typeof globalThis.gc === 'function') {
-      globalThis.gc();
-    }
+    forceGarbageCollection();
     vips = null;
   }
 
@@ -31,10 +29,7 @@ export const getVips = async () => {
 
 export const cleanupVips = () => {
   if (vips) {
-    // Force garbage collection if available
-    if (typeof globalThis.gc === 'function') {
-      globalThis.gc();
-    }
+    forceGarbageCollection();
     vips = null;
   }
 };

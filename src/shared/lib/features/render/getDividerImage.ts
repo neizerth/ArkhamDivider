@@ -4,6 +4,7 @@ import { ColorScheme, ImageFormat } from '@/shared/types/image';
 import { ILayoutBleed } from '@/shared/types/layouts';
 import { RenderResponse } from '@/shared/types/render';
 import { getVips } from '../image/vips';
+import { forceGarbageCollection, closeBlob } from '../memory/memoryUtils';
 
 export type GetDividerImageOptions = {
   node: HTMLElement;
@@ -66,15 +67,11 @@ export const getDividerImage = async ({
   // Clean up VIPS image
   image.delete();
 
-  // Clean up blob to free memory (if close method exists)
-  if ('close' in blob && typeof blob.close === 'function') {
-    blob.close();
-  }
+  // Clean up blob to free memory
+  closeBlob(blob);
 
   // Force garbage collection if available
-  if (typeof globalThis.gc === 'function') {
-    globalThis.gc();
-  }
+  forceGarbageCollection();
 
   return {
     filename,
