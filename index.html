@@ -20,12 +20,17 @@
         justify-content: center;
         align-items: center;
       }
+      .loader__image {
+        max-width: 100%;
+        max-height: 50vh;
+        object-fit: contain;
+      }
     </style>
   </head>
   <body>
     <div id="root">
       <div class="loader">
-        <img src="/images/loader.gif" />
+        <img src="/images/loader.gif" class="loader__image" />
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
