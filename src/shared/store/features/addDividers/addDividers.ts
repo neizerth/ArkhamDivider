@@ -10,6 +10,7 @@ import { addDividers } from '../dividers/dividers';
 import { selectEncounterSets } from '../encounterSets/encounterSets';
 import { withReturnTo } from '../stories/criteria';
 import { selectStories } from '../stories/stories';
+import { selectLayout } from '../layout/layout';
 
 export type AddPlayerDividersOptions = {
   story: Nullable<IStory>;
@@ -43,16 +44,23 @@ export type AddStoryDividersOptions = {
 
 export type AddInvestigatorDividersOptions = {
   doubleSided: boolean;
+  duplicateCodes: Record<string, number>;
 };
 
-export type AddInvestigatorDividers = {
+export type AddInvestigatorDividers = Partial<AddInvestigatorDividersOptions> & {
   investigators: IInvestigator[];
 };
 
 export const addInvestigatorDividers =
   (options: AddInvestigatorDividers): ActionCreator<AppThunk> =>
-  (dispatch) => {
-    const dividers = getInvestigatorDividers(options);
+  (dispatch, getState) => {
+    const state = getState();
+    const layout = selectLayout(state);
+    const dividers = getInvestigatorDividers({
+      ...options,
+      doubleSided: layout.investigatorOptions?.doubleSided || options.doubleSided,
+      duplicateCodes: layout.investigatorOptions?.duplicateCodes || options.duplicateCodes,
+    });
     return dispatch(addDividers(dividers));
   };
 

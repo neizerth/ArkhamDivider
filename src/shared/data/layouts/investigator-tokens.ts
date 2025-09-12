@@ -24,11 +24,15 @@ export const investigatorTokensLayout: ILayout = {
   title: 'Standart',
   bleed: {
     ...bleed,
-    width: 28,
-    height: 28,
+    width: 31,
+    height: 31,
   },
   investigatorOptions: {
     doubleSided: true,
+    duplicateCodes: {
+      '04244': 4,
+      '10661': 4,
+    },
   },
 };
 

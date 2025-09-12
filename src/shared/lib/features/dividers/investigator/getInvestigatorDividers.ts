@@ -7,9 +7,11 @@ import { DividerType, type IDivider } from '@/shared/types/dividers';
 export const getInvestigatorDividers = ({
   investigators,
   doubleSided = false,
+  duplicateCodes = {},
 }: {
   investigators: IInvestigator[];
   doubleSided?: boolean;
+  duplicateCodes?: Record<string, number>;
 }): IDivider[] => {
   const investigatorGroups = groupBy(
     ({ faction_code, name }) => `${name}-${faction_code}`,
@@ -20,15 +22,16 @@ export const getInvestigatorDividers = ({
     .map((group) => group[0]);
 
   const sideA = data
-    .map((investigator) => {
+    .flatMap((investigator) => {
       const { name, faction_code } = investigator;
 
       const faction = factions.find(propEq(faction_code, 'id'));
       if (!faction) {
         return;
       }
+      const count = duplicateCodes[investigator.code] || 1;
       const { icon } = faction;
-      return {
+      return Array.from({ length: count }, () => ({
         id: uniqId(),
         faction: faction.id,
         investigator,
@@ -36,14 +39,15 @@ export const getInvestigatorDividers = ({
         specialIcon: 'per_investigator',
         name,
         icon,
-      };
+      }));
     })
     .filter(isNotNil);
 
   const sideB = doubleSided
     ? sideA.map((divider) => ({
         ...divider,
-        backId: uniqId(),
+        id: uniqId(),
+        backId: divider.id,
       }))
     : [];
 

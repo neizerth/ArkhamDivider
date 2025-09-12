@@ -11,6 +11,7 @@ import { PropsWithClassName } from '@/shared/types/util';
 import { ArkhamStarter3mmDivider } from '../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider';
 import { ArkhamesqueClassicDivider } from '../../arkhamesque-classic/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider';
 import { VintageDivider } from '../../vintage/VintageDivider/VintageDivider';
+import { InvestigatorTokensDivider } from '../../investigator-tokens/InvestigatorTokensDivider/InvestigatorTokensDivider';
 
 export type DividerProps = PropsWithClassName &
   IDivider & {
@@ -29,6 +30,7 @@ export const Divider = (props: DividerProps) => {
       {categoryId === '3mm' && <ArkhamStarter3mmDivider {...props} />}
       {categoryId === 'arkhamesque-classic' && <ArkhamesqueClassicDivider {...props} />}
       {categoryId === 'vintage' && <VintageDivider {...props} />}
+      {categoryId === 'investigator-tokens' && <InvestigatorTokensDivider {...props} />}
     </>
   );
 };
