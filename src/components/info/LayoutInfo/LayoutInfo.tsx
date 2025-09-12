@@ -5,9 +5,7 @@ import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectCategoryId, selectLayout } from '@/shared/store/features/layout/layout';
 import S from './LayoutInfo.module.scss';
 
-export type LayoutInfoProps = {};
-
-export const LayoutInfo = ({}: LayoutInfoProps) => {
+export const LayoutInfo = () => {
   const { t } = useTranslation();
   const layout = useAppSelector(selectLayout);
   const currentCategoryId = useAppSelector(selectCategoryId);

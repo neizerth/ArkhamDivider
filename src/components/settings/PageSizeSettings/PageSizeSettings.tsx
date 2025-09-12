@@ -15,9 +15,7 @@ import {
 import { PageSize, PageSizeType } from '@/shared/types/print';
 import S from './PageSizeSettings.module.scss';
 
-export type PageSizeSettingsProps = {};
-
-export const PageSizeSettings = ({}: PageSizeSettingsProps) => {
+export const PageSizeSettings = () => {
   const dispatch = useAppDispatch();
   const pageSizeType = useAppSelector(selectPageSizeType);
   const layout = useAppSelector(selectLayout);

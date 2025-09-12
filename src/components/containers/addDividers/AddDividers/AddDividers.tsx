@@ -6,9 +6,7 @@ import { AddInvestigatorDividers } from '../AddInvestigatorDividers/AddInvestiga
 import { AddPlayerDividers } from '../AddPlayerDividers/AddPlayerDividers';
 import { AddStoryDividers } from '../story/AddStoryDividers/AddStoryDividers';
 
-export type AddDividersProps = {};
-
-export const AddDividers = ({}: AddDividersProps) => {
+export const AddDividers = () => {
   const type = useAppSelector(selectType);
   return (
     <>

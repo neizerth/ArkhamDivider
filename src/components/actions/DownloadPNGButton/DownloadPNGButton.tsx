@@ -7,9 +7,7 @@ import { selectLayout } from '@/shared/store/features/layout/layout';
 import { DownloadButton } from '../DownloadButton/DownloadButton';
 // import S from './DownloadPNGButton.module.scss';
 
-export type DownloadPNGButtonProps = {};
-
-export const DownloadPNGButton = ({}: DownloadPNGButtonProps) => {
+export const DownloadPNGButton = () => {
   const { t } = useTranslation();
 
   const layout = useAppSelector(selectLayout);

@@ -11,8 +11,6 @@ import {
 } from '@/shared/store/features/print/print';
 import S from './PrintSettings.module.scss';
 
-export type PrintSettingsProps = {};
-
 export const PrintSettings = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();

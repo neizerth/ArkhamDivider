@@ -4,9 +4,7 @@ import { REQUESTED_UI_LANGUAGES } from '@/shared/data/ui';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectLanguage } from '@/shared/store/features/language/language';
 
-export type UITranslationRequestProps = {};
-
-export const UITranslationRequest = ({}: UITranslationRequestProps) => {
+export const UITranslationRequest = () => {
   const language = useAppSelector(selectLanguage);
   const showPanel = REQUESTED_UI_LANGUAGES.includes(language);
 

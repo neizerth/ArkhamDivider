@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import S from './CategoriesMenu.module.scss';
 
-export type CategoriesMenuProps = {};
-
-export const CategoriesMenu = ({}: CategoriesMenuProps) => {
+export const CategoriesMenu = () => {
   const { t } = useTranslation();
 
   return (

@@ -92,7 +92,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
             <DividerMenu id={id} className={S.menuInner} />
           </div>
         </NotExportable>
-        <img className={S.background} src={background} />
+        <img className={S.background} src={background} alt='' />
         {showXPCost && xpTitle && (
           <>
             <div className={classNames(S.xpCost, S.xpCost_horizontal)}>
@@ -110,24 +110,26 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
           </>
         )}
         {!playerIcon && isPlayer && playerCornerColor && (
-          <div className={S.playerCorner} onClick={setPlayerIcon}>
+          <button className={S.playerCorner} onClick={setPlayerIcon} type='button'>
             <PlayerCorner color={playerCornerColor} />
-          </div>
+          </button>
         )}
         {isPlayer && campaignIcon && (
           <>
-            <div
+            <button
               className={classNames(S.campaignIcon, S.campaignIcon_horizontal)}
               onClick={setCampaignIcon}
+              type='button'
             >
               <Icon icon={campaignIcon} />
-            </div>
-            <div
+            </button>
+            <button
               className={classNames(S.campaignIcon, S.campaignIcon_vertical)}
               onClick={setCampaignIcon}
+              type='button'
             >
               <Icon icon={campaignIcon} />
-            </div>
+            </button>
           </>
         )}
         {specialIcon && (
@@ -135,8 +137,11 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
             <div
               className={classNames(S.iconCorner, S.iconCorner_horizontal)}
               onClick={setSpecialIcon}
+              onKeyDown={(e) => e.key === 'Enter' && setSpecialIcon()}
+              role='button'
+              tabIndex={0}
             >
-              <img src={iconCornerImage} className={S.iconCornerImage} />
+              <img src={iconCornerImage} className={S.iconCornerImage} alt='' />
               <div className={S.icon}>
                 <Icon icon={specialIcon} />
               </div>
@@ -144,9 +149,12 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
             <div
               className={classNames(S.iconCorner, S.iconCorner_vertical)}
               onClick={setSpecialIcon}
+              onKeyDown={(e) => e.key === 'Enter' && setSpecialIcon()}
+              role='button'
+              tabIndex={0}
             >
               <div className={classNames(S.verticalContainer, S.verticalIconContainer)}>
-                <img src={iconCornerImage} className={S.iconCornerImage} />
+                <img src={iconCornerImage} className={S.iconCornerImage} alt='' />
                 <div className={S.icon}>
                   <Icon icon={specialIcon} />
                 </div>

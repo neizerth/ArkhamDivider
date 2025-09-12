@@ -6,9 +6,7 @@ import { selectCornerRadius, setCornerRadius } from '@/shared/store/features/pri
 import S from './CornerRadiusSettings.module.scss';
 import icon from './images/icon.svg';
 
-export type CornerRadiusSettingsProps = {};
-
-export const CornerRadiusSettings = ({}: CornerRadiusSettingsProps) => {
+export const CornerRadiusSettings = () => {
   const dispatch = useAppDispatch();
   const cornerRadius = useAppSelector(selectCornerRadius);
   const isExport = useAppSelector(selectExport);

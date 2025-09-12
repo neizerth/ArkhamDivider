@@ -11,11 +11,9 @@ import { selectExport } from '@/shared/store/features/app/app';
 import { selectZoom, setZoom } from '@/shared/store/features/layout/layout';
 import S from './LayoutZoom.module.scss';
 
-export type LayoutZoomProps = {};
-
 const ZOOM_LEVELS = [100, 125, 150, 200, 250, 300, 350, 400];
 
-export const LayoutZoom = ({}: LayoutZoomProps) => {
+export const LayoutZoom = () => {
   const dispatch = useAppDispatch();
   const zoom = useAppSelector(selectZoom);
   const isExport = useAppSelector(selectExport);
@@ -53,23 +51,30 @@ export const LayoutZoom = ({}: LayoutZoomProps) => {
 
   return (
     <div className={S.container}>
-      <div className={classNames(S.zoomButton, zoom === LEVELS[0] && S.disabled)} onClick={zoomIn}>
+      <button
+        className={classNames(S.zoomButton, zoom === LEVELS[0] && S.disabled)}
+        onClick={zoomIn}
+        type='button'
+        disabled={isExport}
+      >
         <Icon icon='zoom-out' />
-      </div>
+      </button>
       <Select
         isMulti={false}
         className={S.select}
         options={options}
         value={value}
         isDisabled={isExport}
-        onChange={(item: any) => item && onChange(item.value)}
+        onChange={(item: { value: number } | null) => item && onChange(item.value)}
       />
-      <div
+      <button
         className={classNames(S.zoomButton, zoom === LEVELS[LEVELS.length - 1] && S.disabled)}
         onClick={zoomOut}
+        type='button'
+        disabled={isExport}
       >
         <Icon icon='zoom-in' className={S.zoomButton} />
-      </div>
+      </button>
     </div>
   );
 };
