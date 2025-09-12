@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { DividerNodeRenderer } from '@/shared/lib/features/render/DividerNodeRenderer';
 import { delay } from '@/shared/lib/features/util/common';
 import { selectExport, setExport } from '@/shared/store/features/app/app';
@@ -51,7 +51,7 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
     });
   };
 
-  const onStart = async () => {
+  const onStart = useCallback(async () => {
     console.log('started');
     try {
       await delay(100);
@@ -63,7 +63,7 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
     } finally {
       onFinally();
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (isExport && status === 'ready') {
