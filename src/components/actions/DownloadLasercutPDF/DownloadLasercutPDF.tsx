@@ -18,9 +18,7 @@ import { DownloadButton } from '../DownloadButton/DownloadButton';
 import { PDFLayout } from './components/PDFLayout';
 import { PDFDownloader } from './features/PDFDownloader';
 
-export type DownloadLasercutPDFProps = {};
-
-export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
+export const DownloadLasercutPDF = () => {
   const layout = useAppSelector(selectLayout);
   const bleed = getSimilarBleed(layout.bleed);
 
@@ -40,7 +38,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
       name,
       bleed,
     });
-  }, [bleed, name]);
+  }, [bleed]);
 
   useEffect(() => {
     if (items.length === 0) {
@@ -78,7 +76,9 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
     asPdf.toBlob().then((blob) => {
       saveAs(blob, `${name}.pdf`);
 
-      data.forEach((url) => URL.revokeObjectURL(url));
+      for (const url of data) {
+        URL.revokeObjectURL(url);
+      }
     });
 
     container = null;

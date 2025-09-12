@@ -10,8 +10,8 @@ import { IDivider } from '@/shared/types/dividers';
 import { PropsWithClassName } from '@/shared/types/util';
 import { ArkhamStarter3mmDivider } from '../../arkham-starter-3mm/ArkhamStarter3mmDivider/ArkhamStarter3mmDivider';
 import { ArkhamesqueClassicDivider } from '../../arkhamesque-classic/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider';
-import { VintageDivider } from '../../vintage/VintageDivider/VintageDivider';
 import { InvestigatorTokensDivider } from '../../investigator-tokens/InvestigatorTokensDivider/InvestigatorTokensDivider';
+import { VintageDivider } from '../../vintage/VintageDivider/VintageDivider';
 
 export type DividerProps = PropsWithClassName &
   IDivider & {

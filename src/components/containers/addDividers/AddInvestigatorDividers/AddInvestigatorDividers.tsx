@@ -10,9 +10,7 @@ import { selectStoryInvestigators } from '@/shared/store/features/dividers/selec
 import { ButtonType } from '@/shared/types/ui';
 import S from './AddInvestigatorDividers.module.scss';
 
-export type AddInvestigatorDividersProps = {};
-
-export const AddInvestigatorDividers = ({}: AddInvestigatorDividersProps) => {
+export const AddInvestigatorDividers = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 

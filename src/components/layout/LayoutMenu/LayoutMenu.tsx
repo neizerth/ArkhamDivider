@@ -43,9 +43,7 @@ export const LayoutMenuItem = ({ type, children, disabled }: LayoutMenuItemProps
   );
 };
 
-export type LayoutMenuProps = {};
-
-export const LayoutMenu = ({}: LayoutMenuProps) => {
+export const LayoutMenu = () => {
   const { t } = useTranslation();
 
   const { types } = useAppSelector(selectLayout);

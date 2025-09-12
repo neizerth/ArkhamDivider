@@ -23,9 +23,7 @@ import { ICardType, IFaction, IXPCost } from '@/shared/types/game';
 import { ButtonType } from '@/shared/types/ui';
 import S from './AddPlayerDividers.module.scss';
 
-export type AddPlayerDividersProps = {};
-
-export const AddPlayerDividers = ({}: AddPlayerDividersProps) => {
+export const AddPlayerDividers = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { playerOptions } = useAppSelector(selectLayout);

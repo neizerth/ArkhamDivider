@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import { DividerProps } from '../../common/Divider/Divider';
-import { DividerContent } from '../../common/DividerContent/DividerContent';
-import S from './InvestigatorTokensDivider.module.scss';
-import { getDividerBackground } from './background';
+import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectCornerRadius } from '@/shared/store/features/print/print';
-import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
+import { DividerProps } from '../../common/Divider/Divider';
+import { DividerContent } from '../../common/DividerContent/DividerContent';
+import { getDividerBackground } from './background';
+import S from './InvestigatorTokensDivider.module.scss';
 
 export const InvestigatorTokensDivider = (props: DividerProps) => {
   const { investigator, backId } = props;

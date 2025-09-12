@@ -19,9 +19,7 @@ import { withScenario } from '@/shared/store/features/stories/criteria';
 import { ButtonType } from '@/shared/types/ui';
 import S from './AddStoryDividers.module.scss';
 
-export type AddStoryDividersProps = {};
-
-export const AddStoryDividers = ({}: AddStoryDividersProps) => {
+export const AddStoryDividers = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const story = useAppSelector(selectStory);

@@ -6,9 +6,7 @@ import { CornerRadiusSettings } from '../CornerRadiusSettings/CornerRadiusSettin
 import { PageSizeSettings } from '../PageSizeSettings/PageSizeSettings';
 import S from './AdditionalSettings.module.scss';
 
-export type AdditionalSettingsProps = {};
-
-export const AdditionalSettings = ({}: AdditionalSettingsProps) => {
+export const AdditionalSettings = () => {
   return (
     <div className={S.container}>
       <Row gap='responsive' className={S.row} wrap={true}>

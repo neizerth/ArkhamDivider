@@ -8,9 +8,9 @@ import { ICardType, IFaction, IXPCost } from '@/shared/types/game';
 import { Nullable } from '@/shared/types/util';
 import { addDividers } from '../dividers/dividers';
 import { selectEncounterSets } from '../encounterSets/encounterSets';
+import { selectLayout } from '../layout/layout';
 import { withReturnTo } from '../stories/criteria';
 import { selectStories } from '../stories/stories';
-import { selectLayout } from '../layout/layout';
 
 export type AddPlayerDividersOptions = {
   story: Nullable<IStory>;

@@ -66,10 +66,10 @@ export const ArkhamStarter3mmDividerStrip = ({
         <div className={S.inner}>
           <div className={S.color} style={{ backgroundColor: color }} />
           <div className={S.secondaryColor} style={{ backgroundColor: secondaryColor }} />
-          <img className={classNames(S.stripInner)} src={stripInner} />
+          <img className={classNames(S.stripInner)} src={stripInner} alt='' />
         </div>
 
-        <img className={classNames(S.stripBorder)} src={stripBorder} />
+        <img className={classNames(S.stripBorder)} src={stripBorder} alt='' />
       </div>
     </div>
   );

@@ -141,6 +141,12 @@
   transform-origin: top left;
 }
 
+.verticalTitleText {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .verticalTitleContainer {
   display: flex;
   align-items: center;

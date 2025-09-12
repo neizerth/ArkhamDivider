@@ -8,9 +8,7 @@ import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectLayout } from '@/shared/store/features/layout/layout';
 import { DownloadButton } from '../DownloadButton/DownloadButton';
 
-export type DownloadCMYKButtonProps = {};
-
-export const DownloadCMYKButton = ({}: DownloadCMYKButtonProps) => {
+export const DownloadCMYKButton = () => {
   const { t } = useTranslation();
 
   const layout = useAppSelector(selectLayout);

@@ -106,9 +106,10 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
         <div className={S.wrapper}>
           <div className={S.card} />
           {!lineIcon && (
-            <div
+            <button
               className={classNames(S.topLineHandler, S[`topLineHandler_${type}`])}
               onClick={selectLineIcon}
+              type='button'
             />
           )}
           <NotExportable>
@@ -119,13 +120,14 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
 
           {color && <img src={paper} alt='' className={S.paper} />}
 
-          <div
+          <button
             className={classNames(
               S.specialCorner,
               xpCost && [specialIcon ? S.specialCorner_withXPIcon : S.specialCorner_noXPIcon],
               S[`specialCorner_${type}`]
             )}
             onClick={selectSpecialIcon}
+            type='button'
           >
             <div className={S.specialIcon}>
               {specialIcon && <Icon icon={specialIcon} />}
@@ -137,7 +139,7 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
               )}
               {!specialIcon && !xpCost && !isTab && '—'}
             </div>
-          </div>
+          </button>
 
           <div
             className={classNames(S.title, S[`title_${type}`], displaySideXP && S.title_withSideXP)}
@@ -150,17 +152,21 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
             />
           </div>
 
-          <div className={S.previewIcon} onClick={selectPreviewIcon}>
+          <button className={S.previewIcon} onClick={selectPreviewIcon} type='button'>
             {previewIcon && <Icon icon={previewIcon} />}
-          </div>
+          </button>
 
           {lineIcon && (
-            <div className={S.lineIcon} onClick={selectLineIcon}>
+            <button className={S.lineIcon} onClick={selectLineIcon} type='button'>
               <Icon icon={lineIcon} />
-            </div>
+            </button>
           )}
 
-          <div className={classNames(S.pattern, S.patternHandler)} onClick={selectIcon} />
+          <button
+            className={classNames(S.pattern, S.patternHandler)}
+            onClick={selectIcon}
+            type='button'
+          />
 
           {size && (
             <div className={S.size}>
@@ -191,10 +197,12 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
                 <img
                   className={classNames(S.tabTentacles, S.tabTentacles_left)}
                   src={tabTentacles}
+                  alt=''
                 />
                 <img
                   className={classNames(S.tabTentacles, S.tabTentacles_right)}
                   src={tabTentacles}
+                  alt=''
                 />
               </>
             )}
@@ -208,6 +216,7 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
                     specialIcon ? S.tabTopLine_special : S.tabTopLine_noSpecial
                   )}
                   src={tabTopLine}
+                  alt=''
                 />
                 <img
                   className={classNames(
@@ -216,6 +225,7 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
                     specialIcon ? S.tabTopLine_special : S.tabTopLine_noSpecial
                   )}
                   src={tabTopLine}
+                  alt=''
                 />
               </>
             )}
@@ -235,7 +245,7 @@ export const ArkhamDecoDivider = ({ ...props }: DividerProps) => {
                     </div>
                   )}
                 </div>
-                <img className={S.scenarioTentacles} src={scenarioTentacles} />
+                <img className={S.scenarioTentacles} src={scenarioTentacles} alt='' />
               </div>
             )}
 
