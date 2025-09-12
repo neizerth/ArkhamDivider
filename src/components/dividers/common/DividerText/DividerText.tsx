@@ -1,5 +1,12 @@
 import classNames from 'classnames';
-import { PropsWithChildren, ReactEventHandler, useEffect, useState } from 'react';
+import {
+  PropsWithChildren,
+  ReactEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import useFitText from 'use-fit-text';
 import { Icon } from '@/components';
 import { PropsWithClassName } from '@/shared/types/util';
@@ -49,60 +56,65 @@ export const DividerText = ({
   onChange,
   children,
 }: DividerTextProps) => {
-  const [_, setInitialValue] = useState(defaultValue);
   const [text, setText] = useState(defaultValue);
-  // const ref = useRef<HTMLDivElement>(null)
+  const isUpdatingRef = useRef(false);
 
   const { fontSize, ref } = useFitText({
     minFontSize,
     maxFontSize,
   });
-  // console.log({ linesValue });
 
-  const onValueChange = (value: string) => {
-    setText(value);
+  const onValueChange = useCallback(
+    (value: string) => {
+      setText(value);
+      onChange?.(value);
+    },
+    [onChange]
+  );
 
-    if (!onChange) {
-      return;
-    }
+  const setDefaultValue = useCallback(
+    (value: string) => {
+      if (!ref.current || isUpdatingRef.current) {
+        return;
+      }
 
-    onChange(value);
-  };
+      if (ref.current.textContent === value) {
+        return;
+      }
 
-  const setDefaultValue = (value: string) => {
-    if (!ref.current) {
-      return;
-    }
-    if (ref.current.textContent === value) {
-      return;
-    }
-    ref.current.textContent = value;
+      isUpdatingRef.current = true;
+      ref.current.textContent = value;
+      onValueChange(value);
+      isUpdatingRef.current = false;
+    },
+    [ref, onValueChange]
+  );
 
-    onValueChange(value);
-    setInitialValue(value);
-  };
-
-  const onTitleChange: ReactEventHandler = (e) => {
-    const target = e.target as HTMLDivElement;
-    const contents = target.textContent || '';
-    const nextValue = toText(contents);
-
-    if (!nextValue.trim()) {
-      return clear();
-    }
-
-    onValueChange(nextValue);
-  };
-
-  const clear = () => {
+  const clear = useCallback(() => {
     setDefaultValue(defaultValue);
+    onClear?.();
+  }, [defaultValue, setDefaultValue, onClear]);
 
-    if (!onClear) {
-      return;
-    }
-    onClear();
-  };
+  const onTitleChange: ReactEventHandler = useCallback(
+    (e) => {
+      if (isUpdatingRef.current) {
+        return;
+      }
 
+      const target = e.target as HTMLDivElement;
+      const contents = target.textContent || '';
+      const nextValue = toText(contents);
+
+      if (!nextValue.trim()) {
+        return clear();
+      }
+
+      onValueChange(nextValue);
+    },
+    [onValueChange, clear]
+  );
+
+  // Инициализация и обновление при изменении defaultValue
   useEffect(() => {
     setDefaultValue(defaultValue);
   }, [defaultValue, setDefaultValue]);
@@ -133,9 +145,13 @@ export const DividerText = ({
           </div>
         )}
       </div>
-      <div className={classNames(S.clear, S[`clear_${clearPosition}`])} onClick={clear}>
+      <button
+        className={classNames(S.clear, S[`clear_${clearPosition}`])}
+        onClick={clear}
+        type='button'
+      >
         <Icon className={S.icon} icon='dismiss' />
-      </div>
+      </button>
     </div>
   );
 };
