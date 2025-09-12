@@ -70,7 +70,7 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^7.1.5",
-    "vite-plugin-radar": "^0.9.6",
+    "vite-plugin-radar": "^0.10.1",
     "vite-plugin-svgr": "^4.2.0"
   }
 }
