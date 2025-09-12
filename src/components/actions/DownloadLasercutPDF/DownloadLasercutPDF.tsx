@@ -5,13 +5,15 @@ import { saveAs } from 'file-saver';
 import { useEffect, useMemo, useState } from 'react';
 import { Badge } from '@/components';
 import { cleanupVips } from '@/shared/lib/features/image/vips';
-import { destroyObject } from '@/shared/lib/features/memory/memoryUtils';
 import { getLayoutGrid } from '@/shared/lib/features/layouts/getLayoutGrid';
+import { destroyObject } from '@/shared/lib/features/memory/memoryUtils';
+import { getEmptyBleed } from '@/shared/lib/features/render/getEmptyBleed';
 import { getSimilarBleed } from '@/shared/lib/features/render/getSimilarBleed';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectDividers } from '@/shared/store/features/dividers/dividers';
 import { selectLayout } from '@/shared/store/features/layout/layout';
 import {
+  selectBleed,
   selectCornerRadius,
   selectDoubleSided,
   selectPageSizeType,
@@ -22,7 +24,8 @@ import { PDFDownloader } from './features/PDFDownloader';
 
 export const DownloadLasercutPDF = () => {
   const layout = useAppSelector(selectLayout);
-  const bleed = getSimilarBleed(layout.bleed);
+  const useBleed = useAppSelector(selectBleed);
+  const bleed = useBleed ? getSimilarBleed(layout.bleed) : getEmptyBleed(layout.bleed);
 
   const doubleSidedPrint = useAppSelector(selectDoubleSided);
   const pageSizeType = useAppSelector(selectPageSizeType);
@@ -52,6 +55,8 @@ export const DownloadLasercutPDF = () => {
       return URL.createObjectURL(blob);
     });
 
+    console.log('data', data);
+
     const { rowsPerPage, itemsPerPage, pageOrientation } = getLayoutGrid({
       layout,
       bleed: true,
@@ -78,6 +83,7 @@ export const DownloadLasercutPDF = () => {
     asPdf
       .toBlob()
       .then((blob) => {
+        console.log('blob', blob);
         saveAs(blob, `${name}.pdf`);
 
         // Clean up object URLs
@@ -109,6 +115,7 @@ export const DownloadLasercutPDF = () => {
 
   useEffect(() => {
     const handleRender = (items: BlobPart[]) => {
+      console.log('handleRender', items);
       setItems(items);
     };
 

@@ -4,7 +4,7 @@ import { ColorScheme, ImageFormat } from '@/shared/types/image';
 import { ILayoutBleed } from '@/shared/types/layouts';
 import { RenderResponse } from '@/shared/types/render';
 import { getVips } from '../image/vips';
-import { forceGarbageCollection, closeBlob } from '../memory/memoryUtils';
+import { closeBlob, forceGarbageCollection } from '../memory/memoryUtils';
 
 export type GetDividerImageOptions = {
   node: HTMLElement;
@@ -13,6 +13,7 @@ export type GetDividerImageOptions = {
   bleed: ILayoutBleed;
   imageFormat: ImageFormat;
   colorScheme?: ColorScheme;
+  useBleed: boolean;
 };
 
 export const getDividerImage = async ({
@@ -22,6 +23,7 @@ export const getDividerImage = async ({
   bleed,
   imageFormat,
   colorScheme,
+  useBleed,
 }: GetDividerImageOptions): Promise<RenderResponse> => {
   const rect = node.getBoundingClientRect();
 
@@ -52,7 +54,11 @@ export const getDividerImage = async ({
 
   console.log('used vips memory, Kb', memory);
 
-  let image = vips.Image.newFromBuffer(source).crop(cropLeft, cropTop, cropWidth, cropHeight);
+  let image = vips.Image.newFromBuffer(source);
+
+  if (useBleed) {
+    image = image.crop(cropLeft, cropTop, cropWidth, cropHeight);
+  }
 
   if (colorScheme) {
     image = image.iccTransform(colorScheme);

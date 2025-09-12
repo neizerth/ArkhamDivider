@@ -22,8 +22,8 @@ export const PDFGuideBox = (props: {
   const { rowIndex, rowSize, colSize, colIndex, area, pageSize, cornerRadius, dividers, layout } =
     props;
 
-  const bleedGap = toPrintSize(BLEED_GAP);
   const { bleedSize } = area;
+  const bleedGap = bleedSize > 0 ? toPrintSize(BLEED_GAP) : 0;
 
   const index = rowIndex * colSize + colIndex;
 
@@ -45,6 +45,8 @@ export const PDFGuideBox = (props: {
   const { categoryId } = layout;
 
   const Component = categoryId in COMPONENT_MAP ? COMPONENT_MAP[categoryId] : PDFDividerGuides;
+
+  console.log('PDF Component', Component.name);
 
   const componentProps = {
     x: left,

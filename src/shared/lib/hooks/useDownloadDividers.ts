@@ -3,7 +3,7 @@ import { DividerNodeRenderer } from '@/shared/lib/features/render/DividerNodeRen
 import { delay } from '@/shared/lib/features/util/common';
 import { selectExport, setExport } from '@/shared/store/features/app/app';
 import { setZoom } from '@/shared/store/features/layout/layout';
-import { selectBleed, setBleed } from '@/shared/store/features/print/print';
+import { selectBleed } from '@/shared/store/features/print/print';
 import { OnRenderEventData } from '@/shared/types/render';
 import { useAppDispatch } from './useAppDispatch';
 import { useAppSelector } from './useAppSelector';
@@ -14,7 +14,7 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
   const dispatch = useAppDispatch();
   const useBleed = useAppSelector(selectBleed);
   const isExport = useAppSelector(selectExport);
-  const [defaultBleed, setDefaultBleed] = useState(useBleed);
+  const [_defaultBleed, setDefaultBleed] = useState(useBleed);
 
   useEffect(() => {
     if (isExport) {
@@ -36,14 +36,13 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
   };
 
   const onFinally = useCallback(() => {
-    dispatch(setBleed(defaultBleed));
     dispatch(setExport(false));
 
     setProgress({
       done: 0,
       total: 0,
     });
-  }, [dispatch, defaultBleed]);
+  }, [dispatch]);
 
   const onCancel = useCallback(async () => {
     console.log('onCancel');
@@ -70,8 +69,10 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
 
     renderer.on('render', onRender).on('done', onDone).on('cancel', onCancel);
 
-    await renderer.run();
-  }, [progress.done, progress.total, renderer, onRender, onDone, onCancel]);
+    await renderer.run({
+      bleed: useBleed,
+    });
+  }, [progress.done, progress.total, renderer, onRender, onDone, onCancel, useBleed]);
 
   const onStart = useCallback(async () => {
     console.log('started');
@@ -82,12 +83,6 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
     } catch (error) {
       console.error('Error downloading dividers:');
       console.error(error);
-
-      // Log more detailed error information
-      if (error instanceof Error) {
-        console.error('Error message:', error.message);
-        console.error('Error stack:', error.stack);
-      }
 
       setStatus('error');
     } finally {
@@ -104,7 +99,6 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
   const download = async () => {
     dispatch(setZoom(100));
     dispatch(setExport(true));
-    dispatch(setBleed(true));
     setStatus('ready');
   };
 

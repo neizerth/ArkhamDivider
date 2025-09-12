@@ -11,6 +11,10 @@ export type DividerNodeRendererOptions = {
   colorScheme?: ColorScheme;
 };
 
+export type DividerNodeRendererRunOptions = {
+  bleed: boolean;
+};
+
 export type DividerNodeRendererStatus = 'running' | 'initial' | 'done' | 'cancelled';
 
 export class DividerNodeRenderer extends EventEmitter {
@@ -19,6 +23,7 @@ export class DividerNodeRenderer extends EventEmitter {
   readonly scale = getWebToPrintScale();
   protected cancelled = false;
   protected status: DividerNodeRendererStatus = 'initial';
+  protected bleed = true;
   constructor(protected options: DividerNodeRendererOptions) {
     super();
   }
@@ -27,7 +32,8 @@ export class DividerNodeRenderer extends EventEmitter {
     return this.status;
   }
 
-  async run() {
+  async run({ bleed }: DividerNodeRendererRunOptions) {
+    this.bleed = bleed;
     await this.onStart();
 
     this.current = 0;
@@ -73,6 +79,7 @@ export class DividerNodeRenderer extends EventEmitter {
       bleed,
       imageFormat,
       colorScheme,
+      useBleed: this.bleed,
     };
 
     return getDividerImage(options);
