@@ -13,6 +13,10 @@ export const getVips = async () => {
   const memoryUsage = vips ? vips.Stats.mem() / Mb : 0;
 
   if (memoryUsage > MAX_MEMORY) {
+    // Force garbage collection if available
+    if (typeof globalThis.gc === 'function') {
+      globalThis.gc();
+    }
     vips = null;
   }
 
@@ -23,4 +27,14 @@ export const getVips = async () => {
   }
 
   return vips;
+};
+
+export const cleanupVips = () => {
+  if (vips) {
+    // Force garbage collection if available
+    if (typeof globalThis.gc === 'function') {
+      globalThis.gc();
+    }
+    vips = null;
+  }
 };

@@ -82,6 +82,7 @@ export class DividerNodeRenderer extends EventEmitter {
     this.cancelled = true;
     await this.onCancel();
   }
+
   async onStart() {
     this.status = 'running';
     this.emit('start');

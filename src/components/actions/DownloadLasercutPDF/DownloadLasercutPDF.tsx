@@ -4,6 +4,7 @@ import { pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
 import { useEffect, useMemo, useState } from 'react';
 import { Badge } from '@/components';
+import { cleanupVips } from '@/shared/lib/features/image/vips';
 import { getLayoutGrid } from '@/shared/lib/features/layouts/getLayoutGrid';
 import { getSimilarBleed } from '@/shared/lib/features/render/getSimilarBleed';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
@@ -73,20 +74,59 @@ export const DownloadLasercutPDF = () => {
     const asPdf = pdf(); // {} is important, throws without an argument
     asPdf.updateContainer(container);
 
-    asPdf.toBlob().then((blob) => {
-      saveAs(blob, `${name}.pdf`);
+    asPdf
+      .toBlob()
+      .then((blob) => {
+        saveAs(blob, `${name}.pdf`);
 
-      for (const url of data) {
-        URL.revokeObjectURL(url);
-      }
-    });
+        // Clean up object URLs
+        for (const url of data) {
+          URL.revokeObjectURL(url);
+        }
+
+        // Clean up PDF blob (if close method exists)
+        if ('close' in blob && typeof blob.close === 'function') {
+          blob.close();
+        }
+
+        // Clean up PDF object (if destroy method exists)
+        if ('destroy' in asPdf && typeof asPdf.destroy === 'function') {
+          asPdf.destroy();
+        }
+      })
+      .catch((error) => {
+        console.error('PDF generation failed:', error);
+
+        // Clean up object URLs even on error
+        for (const url of data) {
+          URL.revokeObjectURL(url);
+        }
+
+        // Clean up PDF object even on error (if destroy method exists)
+        if ('destroy' in asPdf && typeof asPdf.destroy === 'function') {
+          asPdf.destroy();
+        }
+      });
 
     container = null;
     setItems([]);
   }, [items, doubleSidedPrint, pageSizeType, bleed, cornerRadius, dividers, layout]);
 
-  downloader.on('render', setItems);
-  // const Container = (data && <PDFLayout data={data} onRender={onRender}/>);
+  useEffect(() => {
+    const handleRender = (items: BlobPart[]) => {
+      setItems(items);
+    };
+
+    downloader.on('render', handleRender);
+
+    return () => {
+      downloader.off('render', handleRender);
+      // Clean up downloader when component unmounts
+      downloader.destroy();
+      // Clean up VIPS memory
+      cleanupVips();
+    };
+  }, [downloader]);
 
   return (
     <DownloadButton renderer={downloader.renderer}>

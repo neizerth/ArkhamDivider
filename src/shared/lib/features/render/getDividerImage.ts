@@ -1,4 +1,3 @@
-import domToImage from 'dom-to-image';
 import * as htmlToImage from 'html-to-image';
 import { toPrintSize } from '@/shared/lib/features/util/units';
 import { ColorScheme, ImageFormat } from '@/shared/types/image';
@@ -28,8 +27,6 @@ export const getDividerImage = async ({
   const width = rect.width * scale;
   const height = rect.height * scale;
 
-  console.log('downloading blob', node);
-
   const blob = await htmlToImage.toBlob(node, {
     width,
     height,
@@ -39,7 +36,9 @@ export const getDividerImage = async ({
     },
   });
 
-  console.log('blob', blob);
+  if (!blob) {
+    throw new Error('Failed to create blob');
+  }
 
   const cropLeft = toPrintSize(bleed.left);
   const cropTop = toPrintSize(bleed.top);
@@ -64,7 +63,18 @@ export const getDividerImage = async ({
 
   const filename = name + ext;
 
+  // Clean up VIPS image
   image.delete();
+
+  // Clean up blob to free memory (if close method exists)
+  if ('close' in blob && typeof blob.close === 'function') {
+    blob.close();
+  }
+
+  // Force garbage collection if available
+  if (typeof globalThis.gc === 'function') {
+    globalThis.gc();
+  }
 
   return {
     filename,
