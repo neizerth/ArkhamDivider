@@ -182,7 +182,7 @@ export const ArkhamStarter3mmDivider = (props: DividerProps) => {
           )}
         >
           <div className={classNames(S.verticalContainer, S.verticalTitleContainer)}>
-            <TextFit text={title} key={title} />
+            <TextFit text={title} key={title} className={S.verticalTitleText} />
             {size && <span className={S.size}>({size})</span>}
           </div>
         </div>
