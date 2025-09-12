@@ -1,5 +1,4 @@
 .container {
-  // resize: horizontal;
   max-width: 100%;
   padding-right: 8px;
   position: relative;
@@ -11,44 +10,62 @@
 }
 
 .slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
   width: 100%;
   height: 25px;
-  border-radius: 25px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .track {
-  top: 0;
-  bottom: 0;
-  border-radius: 25px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-  &_before,
-  &_after {
-    // background-color: rgb(240, 240, 240);
-  }
-  &_active {
-    // box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
-    // background-color: #fff;
-    background-color: rgb(224, 224, 224);
-    // background-color: rgb(255 205 72);
-  }
+  background-color: rgb(240, 240, 240);
+  position: relative;
+  flex-grow: 1;
+  border-radius: 6px;
+  height: 6px;
+}
+
+.range {
+  position: absolute;
+  background-color: rgb(220 220 220);
+  border-radius: 6px;
+  height: 100%;
 }
 
 .thumb {
-  line-height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   background-color: white;
-  font-size: 0.8em;
-  text-align: center;
+  border: 2px solid var(--color-background, #fff);
   border-radius: 50%;
-
-  z-index: 1;
-  // color: b;
-  outline: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  cursor: grab;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: rgb(250 250 250);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  &:focus {
+    outline: none;
+    background-color: rgb(250 250 250);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  &:active {
+    cursor: grabbing;
+    background-color: rgb(250 250 250);
+  }
+}
+
+.value {
+  font-size: 15px;
+  color: #333;
+  pointer-events: none;
+  user-select: none;
 }

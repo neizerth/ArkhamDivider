@@ -40,7 +40,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
       name,
       bleed,
     });
-  }, [layout]);
+  }, [bleed, name]);
 
   useEffect(() => {
     if (items.length === 0) {
@@ -83,7 +83,7 @@ export const DownloadLasercutPDF = ({}: DownloadLasercutPDFProps) => {
 
     container = null;
     setItems([]);
-  }, [items, doubleSidedPrint, pageSizeType, bleed, name, cornerRadius, dividers, layout]);
+  }, [items, doubleSidedPrint, pageSizeType, bleed, cornerRadius, dividers, layout]);
 
   downloader.on('render', setItems);
   // const Container = (data && <PDFLayout data={data} onRender={onRender}/>);

@@ -25,7 +25,7 @@ export const XPCostItem = (props: ToggleSelectItemProps<IXPCost>) => {
 };
 
 export const XPCostSelect = (props: XPCostSelectProps) => {
-  const defaultRangeValue: [number, number] = [1, 2];
+  const defaultRangeValue: [number, number] = [0, 5];
   const [currentRange, setRange] = useState<IXPCostRange>(defaultRangeValue);
   const [data, setData] = useState<IXPCost[]>([]);
 
@@ -81,9 +81,9 @@ export const XPCostSelect = (props: XPCostSelectProps) => {
       </Row>
       <div className={S.ranges}>
         {ranges.map(({ value }) => (
-          <div className={S.range} key={value} onClick={() => removeRange(value)}>
+          <button className={S.range} key={value} onClick={() => removeRange(value)} type='button'>
             {value}
-          </div>
+          </button>
         ))}
       </div>
     </Col>

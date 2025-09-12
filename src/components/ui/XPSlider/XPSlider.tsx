@@ -1,30 +1,7 @@
-import classNames from 'classnames';
-import ReactSlider, { ReactSliderProps } from 'react-slider';
+import * as Slider from '@radix-ui/react-slider';
+import { useState } from 'react';
 import { MAX_XP } from '@/shared/config/xp';
-import { Defined } from '@/shared/types/util';
 import S from './XPSlider.module.scss';
-
-export type XPSliderTrackDefinition = Defined<ReactSliderProps<number[]>['renderTrack']>;
-
-export const XPSliderTrack: XPSliderTrackDefinition = ({ className, ...props }, state) => {
-  const { index } = state;
-  const trackIds = ['before', 'active', 'after'];
-  const trackId = trackIds[index] || 'area';
-  return (
-    <div {...props} key={index} className={classNames(S.track, S[`track_${trackId}`], className)} />
-  );
-};
-
-export type XPSliderThumbDefinition = Defined<ReactSliderProps<number[]>['renderThumb']>;
-
-export const XPSliderThumb: XPSliderThumbDefinition = ({ className, ...props }, state) => {
-  const { index } = state;
-  return (
-    <div {...props} className={classNames(S.thumb, className)} key={index}>
-      {state.valueNow}
-    </div>
-  );
-};
 
 export type XPSliderProps = {
   onChange: (value: [number, number]) => void;
@@ -32,18 +9,36 @@ export type XPSliderProps = {
 };
 
 export const XPSlider = ({ onChange, defaultValue }: XPSliderProps) => {
+  const [currentValue, setCurrentValue] = useState<[number, number]>(defaultValue || [0, MAX_XP]);
+
+  const handleValueChange = (value: number[]) => {
+    if (value.length === 2) {
+      const newValue: [number, number] = [value[0], value[1]];
+      setCurrentValue(newValue);
+      onChange(newValue);
+    }
+  };
+
   return (
     <div className={S.container}>
-      <ReactSlider
+      <Slider.Root
         className={S.slider}
-        minDistance={1}
         min={0}
         max={MAX_XP}
-        onChange={onChange}
+        step={1}
         defaultValue={defaultValue}
-        renderTrack={XPSliderTrack}
-        renderThumb={XPSliderThumb}
-      />
+        onValueChange={handleValueChange}
+      >
+        <Slider.Track className={S.track}>
+          <Slider.Range className={S.range} />
+        </Slider.Track>
+        <Slider.Thumb className={S.thumb} aria-label='Minimum value'>
+          <span className={S.value}>{currentValue[0]}</span>
+        </Slider.Thumb>
+        <Slider.Thumb className={S.thumb} aria-label='Maximum value'>
+          <span className={S.value}>{currentValue[1]}</span>
+        </Slider.Thumb>
+      </Slider.Root>
     </div>
   );
 };
