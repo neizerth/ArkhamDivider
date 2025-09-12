@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { PropsWithChildren, useRef } from 'react';
-import useOnClickOutside from 'use-onclickoutside';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useOnClickOutside } from '@/shared/lib/hooks/useOnClickOutside';
 import { clearActivePopupId } from '@/shared/store/features/app/app';
 import { PropsWithClassName } from '@/shared/types/util';
 import S from './Popup.module.scss';
@@ -25,7 +25,7 @@ export const Popup = ({
 
   const close = () => dispatch(clearActivePopupId());
 
-  useOnClickOutside(ref as React.RefObject<HTMLElement>, close);
+  useOnClickOutside(ref, close);
 
   return (
     <>
