@@ -39,12 +39,13 @@
 }
 
 .titleInput {
-  text-align: left;
+  // text-align: left;
   padding: 0.2em;
   &_scenario,
   &_campaign,
   &_player,
   &_investigator {
+    // text-align: center;
     display: grid;
     grid-template-columns: 100%;
     align-items: center;

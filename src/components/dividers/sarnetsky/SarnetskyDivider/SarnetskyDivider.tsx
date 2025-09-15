@@ -75,6 +75,8 @@ export const SarnetskyDivider = (props: DividerProps) => {
 
   const titleInputClassName = classNames(S.titleInput, S[`titleInput_${type}`]);
 
+  console.log(titleInputClassName);
+
   const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 10;
   const showIcon = (isScenario || isEncounter) && icon;
 
