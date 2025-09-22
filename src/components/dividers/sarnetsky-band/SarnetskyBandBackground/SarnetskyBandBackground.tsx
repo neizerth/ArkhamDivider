@@ -6,11 +6,20 @@ import { DividerType } from '@/shared/types/dividers';
 
 import ScenarioVariable from './images/scenario/scenario-variable.svg?react';
 import EncounterVariable from './images/encounter/encounter.svg?react';
+import StandaloneVariable from './images/standalone/standalone-variable.svg?react';
+import { selectLayout } from '@/shared/store/features/layout/layout';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 
 export const SarnetskyBandBackground = (props: DividerProps) => {
   const { type, story, scenario } = props;
 
-  const backgroundClassName = classNames(props.className, S.background, S[`background_${type}`]);
+  const layout = useAppSelector(selectLayout);
+
+  const isStandalone = layout.id === 'sarnetsky-band_standalone';
+
+  const backgroundClassName = classNames(props.className, S.background, S[`background_${type}`], {
+    [S.background_standalone]: isStandalone,
+  });
   const code = story?.return_to_code || story?.code || '';
   const color = storyColors[code] || DEFAULT_COLOR;
 
@@ -18,7 +27,11 @@ export const SarnetskyBandBackground = (props: DividerProps) => {
 
   const isScenario = type === DividerType.SCENARIO;
 
-  const Variable = isScenario ? ScenarioVariable : EncounterVariable;
+  const Variable = isStandalone
+    ? StandaloneVariable
+    : isScenario
+      ? ScenarioVariable
+      : EncounterVariable;
 
   return (
     <div className={S.background}>

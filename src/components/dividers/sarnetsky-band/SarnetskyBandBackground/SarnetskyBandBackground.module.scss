@@ -11,7 +11,11 @@
   &_scenario {
     background-image: url('./images/scenario/scenario-frame.svg');
   }
+  &_standalone {
+    background-image: url('./images/standalone/standalone-frame.svg');
+  }
 }
+
 
 .texture {
   position: absolute;

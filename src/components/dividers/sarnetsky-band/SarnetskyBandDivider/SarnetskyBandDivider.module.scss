@@ -7,7 +7,7 @@
 
 .ru {
   font-family: "Conkordia", "Arkhamic", sans-serif;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .line {
@@ -40,8 +40,9 @@
 .text {
   flex: 1;
   width: 100%;
-  font-size: 24px;
+  font-size: 22px;
   height: 10mm;
+  box-sizing: border-box;
 }
 
 .input {
@@ -50,7 +51,7 @@
 }
 
 
-.scenario {
+.scenario, .standalone {
   .content {
     width: auto;
     left: auto;
@@ -63,14 +64,32 @@
   .text {
     width: 63mm;
     text-align: center;
+    padding: 0 2mm;
   }
 
   .input {
     justify-content: center;
   }
-  
 }
 
+.standalone {
+  .content {
+    right: 152.9mm;
+  }
+}
+
+.menu {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 20mm;
+  transform: translate(0, -50%);
+  opacity: 0.4;
+}
+
+.menuContainer {
+  gap: 10px;
+}
 
 .icon {
   width: 9.93mm;
@@ -80,6 +99,7 @@
   justify-content: center;
   align-items: center;
   font-size: 8.3mm;
+  padding-top: 0.5mm;
   cursor: pointer;
   &:hover {
     opacity: 0.6;

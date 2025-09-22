@@ -10,16 +10,24 @@ import { SarnetskyBandBackground } from '../SarnetskyBandBackground/SarnetskyBan
 import { DividerText } from '../../common/DividerText/DividerText';
 import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
 import { DividerType } from '@/shared/types/dividers';
+import { selectLayout } from '@/shared/store/features/layout/layout';
+import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
+import { DividerMenu } from '../../common/DividerMenu/DividerMenu';
 
 export const SarnetskyBandDivider = (props: DividerProps) => {
   const language = useAppSelector(selectLanguage);
-  const { type, story, size = 0 } = props;
+  const layout = useAppSelector(selectLayout);
+
+  const isStandalone = layout.id === 'sarnetsky-band_standalone';
+  const { type, story, size = 0, id } = props;
 
   const { t } = useStoryTranslation(story);
 
   const name = t(props.name || '');
 
-  const containerClassName = classNames(S.container, S[language], S[type]);
+  const containerClassName = classNames(S.container, S[language], S[type], {
+    [S.standalone]: isStandalone,
+  });
 
   const isScenario = type === DividerType.SCENARIO;
 
@@ -27,7 +35,7 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
     defaultIcon: props.icon,
   });
 
-  const gap = isScenario ? Math.max(size * 0.234, 4) : 4;
+  const gap = isScenario || isStandalone ? Math.max(size * 0.234, 4) : 4;
 
   return (
     <div className={containerClassName}>
@@ -46,6 +54,11 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
             />
           </div>
         </div>
+        <NotExportable>
+          <div className={S.menu}>
+            <DividerMenu id={id} className={S.menuContainer} />
+          </div>
+        </NotExportable>
       </DividerContent>
     </div>
   );

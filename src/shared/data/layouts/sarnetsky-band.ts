@@ -52,6 +52,7 @@ export const sarnetskyBandLayouts: ILayout[] = [
 export const sarnetskyBandLayoutCategory: ILayoutCategory = {
   id: 'sarnetsky-band',
   name: 'Bands by @sarnetsky',
+  info: 'Note: Use Standalone size for large card packs',
   // unlisted: true,
   author: {
     name: 'Eugene Sarnetsky',
