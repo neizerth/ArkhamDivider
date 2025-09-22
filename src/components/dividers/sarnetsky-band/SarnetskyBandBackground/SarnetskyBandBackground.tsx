@@ -9,6 +9,7 @@ import EncounterVariable from './images/encounter/encounter.svg?react';
 import StandaloneVariable from './images/standalone/standalone-variable.svg?react';
 import { selectLayout } from '@/shared/store/features/layout/layout';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { isNotNil } from 'ramda';
 
 export const SarnetskyBandBackground = (props: DividerProps & { concealed?: boolean }) => {
   const { type, story, scenario, concealed } = props;
@@ -24,7 +25,9 @@ export const SarnetskyBandBackground = (props: DividerProps & { concealed?: bool
   const code = story?.return_to_code || story?.code || '';
   const color = storyColors[code] || DEFAULT_COLOR;
 
-  const index = scenario?.number || 1;
+  const scenarios = [story?.scenario, ...(story?.scenarios || [])].filter(isNotNil);
+
+  const index = scenarios.findIndex((s) => s?.id === scenario?.id) + 1;
 
   const isScenario = type === DividerType.SCENARIO;
 

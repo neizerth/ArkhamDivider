@@ -26,6 +26,7 @@
 }
 
 .content {
+  padding-top: 0.5mm;
   position: absolute;
   z-index: 4;
   height: 100%;
@@ -40,8 +41,7 @@
 .text {
   flex: 1;
   width: 100%;
-  font-size: 22px;
-  height: 10mm;
+  font-size: 20px;
   box-sizing: border-box;
 }
 
@@ -49,7 +49,6 @@
   display: grid;
   align-items: center;
 }
-
 
 .scenario, .standalone {
   .content {
@@ -120,7 +119,6 @@
   justify-content: center;
   align-items: center;
   font-size: 8.3mm;
-  padding-top: 0.5mm;
   cursor: pointer;
   &:hover {
     opacity: 0.6;

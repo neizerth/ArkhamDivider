@@ -56,8 +56,8 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
             <DividerText
               defaultValue={name}
               inputClassName={S.input}
-              fixedFontSize={false}
-              minFontSize={88}
+              fullHeight={false}
+              className={S.inputContainer}
             />
           </div>
         </div>
