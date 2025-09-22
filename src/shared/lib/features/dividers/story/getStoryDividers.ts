@@ -6,6 +6,7 @@ import { IDivider } from '@/shared/types/dividers';
 import { getCampaignDividers } from './getCampaignDividers';
 import { getEncounterDividers } from './getEncounterDividers';
 import { getScenarioDividers } from './getScenarioDividers';
+import { getExtraStoryDividers } from './getExtraStoryDividers';
 
 export type IGetStoryDividersOptions = AddStoryDividersOptions & {
   encounterSets: IEncounterSet[];
@@ -33,11 +34,14 @@ export const getStoryDividers = (options: IGetStoryDividersOptions) => {
 
   const campaignDividers: IDivider[] = getCampaignDividers(options);
 
+  const extraDividers: IDivider[] = getExtraStoryDividers(options);
+
   const dividers = [
     ...campaignDividers,
     ...arrayIf(includeScenarios, scenarioDividers),
     ...encounterDividers,
     ...returnSetDividers,
+    ...extraDividers,
   ];
 
   const uniqueDividers = uniqBy(({ type, name }) => `${type}_${name}`, dividers);

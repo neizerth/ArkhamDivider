@@ -22,7 +22,7 @@ export const LayoutInfo = () => {
           {t('Size')}: {width}x{height}
           {t('mm')}
         </div>
-        {category?.info && <div className={S.info}>{category.info}</div>}
+        {category?.info && <div className={S.info}>{t(category.info)}</div>}
         {author && (
           <>
             <div className={S.rule} />

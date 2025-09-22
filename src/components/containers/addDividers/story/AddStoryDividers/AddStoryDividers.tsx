@@ -18,11 +18,14 @@ import { removeAllDividers, selectStory } from '@/shared/store/features/dividers
 import { withScenario } from '@/shared/store/features/stories/criteria';
 import { ButtonType } from '@/shared/types/ui';
 import S from './AddStoryDividers.module.scss';
+import { selectLayout } from '@/shared/store/features/layout/layout';
 
 export const AddStoryDividers = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const story = useAppSelector(selectStory);
+
+  const { campaignOptions } = useAppSelector(selectLayout);
 
   const allStories = useCampaignStories();
 
@@ -32,11 +35,11 @@ export const AddStoryDividers = () => {
     includeExtraSets: false,
     includeReturnSets: true,
     includeScenarios: true,
-    includeEncounterSize: false,
+    includeEncounterSize: campaignOptions?.includeEncounterSize ?? false,
     includeCampaignIcon: false,
     includeScenarioEncounterSet: false,
-    includeScenarioSize: false,
-    includeCampaign: true,
+    includeScenarioSize: campaignOptions?.includeScenarioSize ?? false,
+    includeCampaign: campaignOptions?.includeCampaign ?? true,
     includeEncounters: true,
   });
 

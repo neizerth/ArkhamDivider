@@ -10,7 +10,7 @@ import { selectCategoryId } from '@/shared/store/features/layout/layout';
 import { PropsWithClassName } from '@/shared/types/util';
 import S from './PageCredits.module.scss';
 
-export const CREDITS_HEIGHT = 20;
+export const CREDITS_HEIGHT = 25;
 
 export type PageCreditsLocalProps = PropsWithClassName & {
   link: string;
