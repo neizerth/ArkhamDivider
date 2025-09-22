@@ -78,6 +78,27 @@
   }
 }
 
+.concealed {
+  .content {
+    left: 76.5mm;
+    width: 26mm;
+  }
+  .text {
+    font-size: 4.5mm;
+    text-align: center;
+  }
+  &.standalone {
+    .content {
+      left: 107.8mm;
+      width: 37mm;
+    }
+    .text {
+      font-size: 6mm;
+    }
+  }
+}
+
+
 .menu {
   position: absolute;
   z-index: 5;
@@ -105,4 +126,3 @@
     opacity: 0.6;
   }
 }
-

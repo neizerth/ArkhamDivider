@@ -25,8 +25,12 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
 
   const name = t(props.name || '');
 
+  const isConcealed =
+    type === DividerType.ENCOUNTER && story?.code === 'tsk' && props?.customParams?.concealed;
+
   const containerClassName = classNames(S.container, S[language], S[type], {
     [S.standalone]: isStandalone,
+    [S.concealed]: isConcealed,
   });
 
   const isScenario = type === DividerType.SCENARIO;
@@ -40,11 +44,14 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
   return (
     <div className={containerClassName}>
       <DividerContent>
-        <SarnetskyBandBackground {...props} className={S.backround} />
+        <SarnetskyBandBackground {...props} className={S.backround} concealed={isConcealed} />
+        {isConcealed && <div className={S.concealedBackground} />}
         <div className={S.content} style={{ gap: `${gap}mm` }}>
-          <div className={S.icon} onClick={selectIcon}>
-            <CircleIcon icon={icon || ''} className={S.iconItem} />
-          </div>
+          {!isConcealed && (
+            <div className={S.icon} onClick={selectIcon}>
+              <CircleIcon icon={icon || ''} className={S.iconItem} />
+            </div>
+          )}
           <div className={S.text}>
             <DividerText
               defaultValue={name}

@@ -16,7 +16,7 @@ const campaignOptions = {
 
 export const sarnetskyBandLayouts: ILayout[] = [
   {
-    id: 'sarnetsky-band_standart',
+    id: 'sarnetsky-band_campaign',
     categoryId: 'sarnetsky-band',
     width: 200,
     height: 25,

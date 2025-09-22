@@ -38,3 +38,15 @@
   left: 0;
   top: 0;
 }
+
+.concealedBackground {
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-image: url('./images/concealed/concealed-bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

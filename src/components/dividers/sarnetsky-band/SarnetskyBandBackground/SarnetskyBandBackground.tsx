@@ -10,8 +10,8 @@ import StandaloneVariable from './images/standalone/standalone-variable.svg?reac
 import { selectLayout } from '@/shared/store/features/layout/layout';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 
-export const SarnetskyBandBackground = (props: DividerProps) => {
-  const { type, story, scenario } = props;
+export const SarnetskyBandBackground = (props: DividerProps & { concealed?: boolean }) => {
+  const { type, story, scenario, concealed } = props;
 
   const layout = useAppSelector(selectLayout);
 
@@ -19,6 +19,7 @@ export const SarnetskyBandBackground = (props: DividerProps) => {
 
   const backgroundClassName = classNames(props.className, S.background, S[`background_${type}`], {
     [S.background_standalone]: isStandalone,
+    [S.background_concealed]: concealed,
   });
   const code = story?.return_to_code || story?.code || '';
   const color = storyColors[code] || DEFAULT_COLOR;
@@ -35,11 +36,17 @@ export const SarnetskyBandBackground = (props: DividerProps) => {
 
   return (
     <div className={S.background}>
-      <div className={backgroundClassName} />
-      {isScenario && (
-        <div className={S.texture} style={{ backgroundPositionY: `${index * 100}%` }} />
+      {concealed ? (
+        <div className={S.concealedBackground} />
+      ) : (
+        <>
+          <div className={backgroundClassName} />
+          {isScenario && (
+            <div className={S.texture} style={{ backgroundPositionY: `${index * 100}%` }} />
+          )}
+          <Variable className={S.variable} fill={color} />
+        </>
       )}
-      <Variable className={S.variable} fill={color} />
     </div>
   );
 };
