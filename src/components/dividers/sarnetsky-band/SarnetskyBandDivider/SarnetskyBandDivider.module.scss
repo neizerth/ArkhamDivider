@@ -1,0 +1,88 @@
+.container {
+  font-family: "Teutonic", "Conkordia", "Arkhamic", sans-serif;
+  // position: relative;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.ru {
+  font-family: "Conkordia", "Arkhamic", sans-serif;
+  line-height: 1.1;
+}
+
+.line {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 1.4mm;
+  left: 0;
+  background-color: #000;
+  &_top {
+    top: 3.4mm;
+  } 
+  &_bottom {
+    bottom: 3.2mm;
+  }
+}
+
+.content {
+  position: absolute;
+  z-index: 4;
+  height: 100%;
+  // width: 100%;
+  display: flex;
+  align-items: center;
+  left: 60mm;
+  gap: 4mm;
+  width: 63mm;
+}
+
+.text {
+  flex: 1;
+  width: 100%;
+  font-size: 24px;
+  height: 10mm;
+}
+
+.input {
+  display: grid;
+  align-items: center;
+}
+
+
+.scenario {
+  .content {
+    width: auto;
+    left: auto;
+    right: 56.8mm;
+    justify-content: flex-end;
+  }
+  .icon {
+    order: 1;
+  }
+  .text {
+    width: 63mm;
+    text-align: center;
+  }
+
+  .input {
+    justify-content: center;
+  }
+  
+}
+
+
+.icon {
+  width: 9.93mm;
+  height: 9.93mm;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8.3mm;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+

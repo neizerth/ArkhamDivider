@@ -12,6 +12,7 @@ import { ArkhamStarter3mmDivider } from '../../arkham-starter-3mm/ArkhamStarter3
 import { ArkhamesqueClassicDivider } from '../../arkhamesque-classic/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider';
 import { InvestigatorTokensDivider } from '../../investigator-tokens/InvestigatorTokensDivider/InvestigatorTokensDivider';
 import { VintageDivider } from '../../vintage/VintageDivider/VintageDivider';
+import { SarnetskyBandDivider } from '../../sarnetsky-band/SarnetskyBandDivider/SarnetskyBandDivider';
 
 export type DividerProps = PropsWithClassName &
   IDivider & {
@@ -31,6 +32,7 @@ export const Divider = (props: DividerProps) => {
       {categoryId === 'arkhamesque-classic' && <ArkhamesqueClassicDivider {...props} />}
       {categoryId === 'vintage' && <VintageDivider {...props} />}
       {categoryId === 'investigator-tokens' && <InvestigatorTokensDivider {...props} />}
+      {categoryId === 'sarnetsky-band' && <SarnetskyBandDivider {...props} />}
     </>
   );
 };

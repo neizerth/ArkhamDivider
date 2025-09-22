@@ -96,11 +96,15 @@ export const AddStoryParams = ({ story, defaultValue, onChange }: AddStoryParams
               <Checkbox {...check('includeEncounters')}>
                 {t('Encounter Dividers')} ({encountersCount})
               </Checkbox>
-              <Checkbox {...check('includeCampaign')}>
-                {t('Campaign Divider')} ({campaignsCount})
-              </Checkbox>
-              {isNil(campaignOptions?.includeCampaignIcon) && (
-                <Checkbox {...check('includeCampaignIcon')}>{t('Campaign Icon')}</Checkbox>
+              {campaignOptions?.includeCampaign !== false && (
+                <>
+                  <Checkbox {...check('includeCampaign')}>
+                    {t('Campaign Divider')} ({campaignsCount})
+                  </Checkbox>
+                  {isNil(campaignOptions?.includeCampaignIcon) && (
+                    <Checkbox {...check('includeCampaignIcon')}>{t('Campaign Icon')}</Checkbox>
+                  )}
+                </>
               )}
             </Col>
           </div>
