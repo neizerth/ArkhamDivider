@@ -33,26 +33,30 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
     [S.concealed]: isConcealed,
   });
 
-  const isScenario = type === DividerType.SCENARIO;
-
   const [icon, selectIcon] = useIconSelect({
     defaultIcon: props.icon,
   });
 
-  const gap = isScenario || isStandalone ? Math.max(size * 0.234, 4) : 4;
+  const right = Math.max(size * 0.234) + 4.9;
+
+  // const gap = isVariableSize ? Math.max(size * 0.234, 4) : 4;
+
+  // const gap = isScenario || isStandalone ? 0 : 0.8;
+
+  // const
 
   return (
     <div className={containerClassName}>
       <DividerContent>
         <SarnetskyBandBackground {...props} className={S.backround} concealed={isConcealed} />
         {isConcealed && <div className={S.concealedBackground} />}
-        <div className={S.content} style={{ gap: `${gap}mm` }}>
+        <div className={S.content}>
           {!isConcealed && (
             <div className={S.icon} onClick={selectIcon}>
               <CircleIcon icon={icon || ''} className={S.iconItem} />
             </div>
           )}
-          <div className={S.text}>
+          <div className={S.text} style={{ right: `${right}mm` }} title={`size: ${size}`}>
             <DividerText
               defaultValue={name}
               inputClassName={S.input}

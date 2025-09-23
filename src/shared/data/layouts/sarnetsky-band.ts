@@ -53,7 +53,7 @@ export const sarnetskyBandLayoutCategory: ILayoutCategory = {
   id: 'sarnetsky-band',
   name: 'Bands by @sarnetsky',
   info: 'Note: Use Standalone size for large card packs',
-  unlisted: true,
+  // unlisted: true,
   author: {
     name: 'Eugene Sarnetsky',
     image: `${BASE_PATH}images/authors/esarnetsky.jpg`,

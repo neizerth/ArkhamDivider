@@ -35,10 +35,10 @@ export const AddStoryDividers = () => {
     includeExtraSets: false,
     includeReturnSets: true,
     includeScenarios: true,
-    includeEncounterSize: campaignOptions?.includeEncounterSize ?? false,
+    includeEncounterSize: false,
     includeCampaignIcon: false,
     includeScenarioEncounterSet: false,
-    includeScenarioSize: campaignOptions?.includeScenarioSize ?? false,
+    includeScenarioSize: false,
     includeCampaign: campaignOptions?.includeCampaign ?? true,
     includeEncounters: true,
   });
@@ -51,6 +51,7 @@ export const AddStoryDividers = () => {
       addStoryDividers({
         story,
         ...form,
+        ...campaignOptions,
       })
     );
   };

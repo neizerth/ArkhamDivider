@@ -36,18 +36,33 @@
   left: 60mm;
   gap: 4mm;
   width: 63mm;
+  gap: 4mm;
 }
 
 .text {
   flex: 1;
   width: 100%;
-  font-size: 20px;
+  font-size: 15px;
   box-sizing: border-box;
 }
 
 .input {
   display: grid;
   align-items: center;
+}
+
+.icon {
+  width: 9.93mm;
+  height: 9.93mm;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7mm;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
 }
 
 .scenario, .standalone {
@@ -61,13 +76,24 @@
     order: 1;
   }
   .text {
-    width: 63mm;
+    position: absolute;
+    right: 4.9mm;
+    width: 60mm;
     text-align: center;
     padding: 0 2mm;
   }
 
   .input {
     justify-content: center;
+  }
+}
+
+.scenario {
+  .icon {
+    font-size: 9mm;
+  }
+  .text {
+    font-size: 17.6px;
   }
 }
 
@@ -111,16 +137,3 @@
   gap: 10px;
 }
 
-.icon {
-  width: 9.93mm;
-  height: 9.93mm;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 8.3mm;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.6;
-  }
-}
