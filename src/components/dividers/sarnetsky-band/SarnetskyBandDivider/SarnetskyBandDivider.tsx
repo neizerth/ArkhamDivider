@@ -23,8 +23,6 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
 
   const size = props.size || 0;
 
-  const offsetSize = Math.max(size, 10);
-
   const { t } = useStoryTranslation(story);
 
   const name = t(props.name || '');
@@ -41,7 +39,7 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
     defaultIcon: props.icon,
   });
 
-  const right = Math.max(offsetSize * 0.234) + 4.9;
+  const right = Math.max(size * 0.234) + 4.9;
 
   // const gap = isVariableSize ? Math.max(size * 0.234, 4) : 4;
 

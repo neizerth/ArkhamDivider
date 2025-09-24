@@ -10,6 +10,17 @@
   line-height: 1;
 }
 
+
+.ko {
+  font-family: "SanCn", sans-serif;
+  font-weight: bold;
+}
+
+.zh,
+.zh-cn {
+  font-family: "STXingkai", sans-serif;
+}
+
 .line {
   position: absolute;
   z-index: 1;
