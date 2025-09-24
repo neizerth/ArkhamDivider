@@ -8,7 +8,7 @@ export function Header(props: HeaderProps) {
 		<C.Container {...props}>
 			<C.Content>
 				<C.Logo />
-				<C.Language />
+				<C.Language sx={{ display: { xs: "none", md: "block" } }} />
 			</C.Content>
 		</C.Container>
 	);

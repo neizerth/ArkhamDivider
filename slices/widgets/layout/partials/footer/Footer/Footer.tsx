@@ -1,8 +1,8 @@
 import type { JSX } from "react";
 import { Trans } from "react-i18next";
-import { Icon } from "@/modules/core/icon/shared/ui";
 import { TextLink } from "@/shared/ui";
-import { contacts } from "./contacts";
+import { FooterMenu } from "../FooterMenu";
+import { ProjectLinks } from "../ProjectLinks";
 import * as C from "./Footer.components";
 
 type FooterProps = JSX.IntrinsicElements["footer"];
@@ -22,13 +22,10 @@ export function Footer(props: FooterProps) {
 						}}
 					/>
 				</C.Disclaimer>
-				<C.Links>
-					{contacts.map(({ icon, url }) => (
-						<TextLink key={icon} href={url} target="_blank" underline={"none"}>
-							<Icon icon={icon} />
-						</TextLink>
-					))}
-				</C.Links>
+				<C.Right>
+					<FooterMenu />
+					<ProjectLinks />
+				</C.Right>
 			</C.Content>
 		</C.Container>
 	);

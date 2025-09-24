@@ -17,6 +17,4 @@ export const Logo = styled(BaseLogo)`
 	width: 50px;
 `;
 
-export const Language = styled(LanguageSwitch)`
-	
-`;
+export const Language = styled(LanguageSwitch)``;

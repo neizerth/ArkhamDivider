@@ -5,7 +5,6 @@ import { Flag as BaseFlag } from "@/shared/ui";
 
 export const Container = styled(Box)(({ theme }) => ({
 	gap: theme.spacing(1),
-	padding: theme.spacing(1),
 }));
 
 export const Flag = styled(BaseFlag)`
@@ -26,9 +25,10 @@ export const DropDown = styled(Box)(({ theme }) => ({
 	top: theme.spacing(-1),
 	left: 0,
 	overflow: "auto",
+	height: "230px",
 	maxHeight: "50vh",
 	backgroundColor: theme.palette.background.paper,
-	borderRadius: theme.shape.borderRadius,
+	borderRadius: 30,
 	boxShadow: theme.shadows[1],
 }));
 

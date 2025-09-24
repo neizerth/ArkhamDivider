@@ -1,6 +1,6 @@
 import { BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/shared/config";
 
-export const contacts = [
+export const donations = [
 	{
 		icon: "boosty",
 		url: BOOSTY_LINK,
@@ -13,6 +13,9 @@ export const contacts = [
 		icon: "t_bank",
 		url: T_LINK,
 	},
+];
+
+export const contacts = [
 	{
 		icon: "github",
 		url: "https://github.com/neizerth",

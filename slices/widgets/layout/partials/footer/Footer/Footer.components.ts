@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import { Row, TextLink } from "@/shared/ui";
+import { Row } from "@/shared/ui";
 
 export const Container = styled("footer")(({ theme }) => ({
 	padding: theme.spacing(2),
@@ -22,13 +22,9 @@ export const Disclaimer = styled(Box)`
 	flex: 1
 `;
 
-export const Links = styled(Row)(({ theme }) => ({
-	flexWrap: "wrap",
-	justifyContent: "center",
-	gap: theme.spacing(2),
-	fontSize: "1.5rem",
-}));
-
-export const IconLink = styled(TextLink)(({ theme }) => ({
-	color: theme.palette.primary.dark,
-}));
+export const Right = styled(Row)`
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: ${({ theme }) => theme.spacing(3)};
+`;

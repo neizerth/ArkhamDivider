@@ -1,5 +1,5 @@
 import { equals, reject } from "ramda";
-import { useState } from "react";
+import { type JSX, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useClickOutside } from "@/shared/lib";
 import {
@@ -9,7 +9,7 @@ import {
 } from "../../../shared/store";
 import * as C from "./LanguageSwitch.components";
 
-export function LanguageSwitch() {
+export function LanguageSwitch(props: JSX.IntrinsicElements["div"]) {
 	const dispatch = useAppDispatch();
 	const language = useSelector(selectLanguage);
 	const languages = useSelector(selectAvailableLanguages);
@@ -40,7 +40,7 @@ export function LanguageSwitch() {
 	const ref = useClickOutside<HTMLDivElement>(close);
 
 	return (
-		<C.Container>
+		<C.Container {...props}>
 			<C.Content ref={ref}>
 				<C.Flag code={language} onClick={toggleShow} />
 				{show && (
