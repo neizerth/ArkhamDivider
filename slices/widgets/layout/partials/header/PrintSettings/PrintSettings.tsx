@@ -11,6 +11,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import Switch from "@mui/material/Switch";
 import { type JSX, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { createClickAwayListener } from "@/shared/lib";
 import { PageSizeSelect } from "../PageSizeSelect";
 import Bleed from "./images/bleed.svg?react";
 import CornerRadius from "./images/corner-radius.svg?react";
@@ -24,12 +25,11 @@ export function PrintSettings(props: PrintSettingsProps) {
 	const anchorRef = useRef<HTMLButtonElement>(null);
 
 	const toggle = () => setOpen(!open);
-	const close = (event: MouseEvent | TouchEvent) => {
-		if (anchorRef.current?.contains(event.target as Node)) {
-			return;
-		}
-		setOpen(false);
-	};
+
+	const close = createClickAwayListener({
+		callback: () => setOpen(false),
+		ignore: anchorRef.current,
+	});
 
 	return (
 		<C.Container {...props}>

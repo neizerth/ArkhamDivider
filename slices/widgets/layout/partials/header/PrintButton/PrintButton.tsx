@@ -7,6 +7,7 @@ import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import { useRef, useState } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
+import { createClickAwayListener } from "@/shared/lib";
 import * as C from "./PrintButton.components";
 
 type PrintButtonProps = ButtonGroupProps;
@@ -16,7 +17,10 @@ export function PrintButton(props: PrintButtonProps) {
 	const anchorRef = useRef<HTMLDivElement>(null);
 
 	const toggle = () => setOpen(!open);
-	const close = () => setOpen(false);
+	const close = createClickAwayListener({
+		callback: () => setOpen(false),
+		ignore: anchorRef.current,
+	});
 
 	return (
 		<>
