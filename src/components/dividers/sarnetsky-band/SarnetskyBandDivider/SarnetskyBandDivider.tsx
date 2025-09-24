@@ -19,7 +19,9 @@ export const SarnetskyBandDivider = (props: DividerProps) => {
   const layout = useAppSelector(selectLayout);
 
   const isStandalone = layout.id === 'sarnetsky-band_standalone';
-  const { type, story, size = 0, id } = props;
+  const { type, story, id } = props;
+
+  const size = Math.min(props.size || 0, 10);
 
   const { t } = useStoryTranslation(story);
 
