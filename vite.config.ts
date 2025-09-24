@@ -21,7 +21,7 @@ const metrica = ((id?: string) => {
       },
     },
   ];
-})(process.env.APP_METRIKA_ID);
+})(process.env.VITE_APP_METRIKA_ID);
 
 // https://vitejs.dev/config/
 export default defineConfig({
