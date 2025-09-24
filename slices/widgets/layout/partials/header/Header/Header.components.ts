@@ -8,13 +8,18 @@ export const Container = styled("header")(({ theme }) => ({
 	boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
 }));
 
-export const Content = styled(Row)(({ theme }) => ({
-	gap: theme.spacing(1),
-	alignItems: "center",
-}));
+export const Content = styled(Row)`
+	align-items: center;
+	justify-content: space-between;
+	gap: ${({ theme }) => theme.spacing(1)};
+`;
 
 export const Logo = styled(BaseLogo)`
-	width: 50px;
+	width: 40px;
 `;
 
 export const Language = styled(LanguageSwitch)``;
+
+export const Section = styled(Row)`
+	gap: ${({ theme }) => theme.spacing(1)};
+`;

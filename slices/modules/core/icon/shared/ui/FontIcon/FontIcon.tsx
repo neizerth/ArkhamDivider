@@ -14,5 +14,5 @@ export function FontIcon(props: FontIconProps) {
 
 	const char = String.fromCharCode(icon.code);
 
-	return <C.Container>{char}</C.Container>;
+	return <C.Container className={props.className}>{char}</C.Container>;
 }

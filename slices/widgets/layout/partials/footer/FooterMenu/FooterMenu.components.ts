@@ -7,6 +7,7 @@ export const Container = styled("nav")`
 	justify-content: center;
 	align-items: center;
 	gap: ${({ theme }) => theme.spacing(1)};
+	font-size: ${({ theme }) => theme.typography.body2.fontSize};
 `;
 
 export const Item = styled(Link)`

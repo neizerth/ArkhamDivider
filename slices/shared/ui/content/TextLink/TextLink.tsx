@@ -7,4 +7,7 @@ export const TextLink = styled(Link)`
   &:not(:hover) {
     color: inherit;
   }
+  &:hover {
+    color: ${({ theme }) => theme.palette.primary.dark};
+  }
 `;
