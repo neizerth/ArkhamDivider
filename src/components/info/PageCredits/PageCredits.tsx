@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { QRCodeSVG } from 'qrcode.react';
 import { useTranslation } from 'react-i18next';
 import { Icon, Row } from '@/components';
-import { BOOSTY_LINK } from '@/shared/config/app';
+import { BOOSTY_LINK, PATREON_LINK } from '@/shared/config/app';
 import { getCategoryById } from '@/shared/lib/features/layouts/common';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectLanguage } from '@/shared/store/features/language/language';
@@ -73,6 +73,9 @@ export const PageCredits = ({ className }: PageCreditsProps) => {
 
   const Component = language === 'ru' ? PageCreditsRU : PageCreditsGlobal;
 
+  const platform = language === 'ru' ? 'Boosty' : 'Patreon';
+  const link = language === 'ru' ? BOOSTY_LINK : PATREON_LINK;
+
   return (
     <div className={classNames(S.container, className)}>
       <div className={S.author}>
@@ -82,12 +85,12 @@ export const PageCredits = ({ className }: PageCreditsProps) => {
       </div>
       <div className={S.support}>
         <div className={S.supportContent}>
-          <span>{t('Support project on Boosty')}</span>
-          <a href={BOOSTY_LINK} target='_blank' className={S.supportLink}>
-            {BOOSTY_LINK}
+          <span>{t('Support project on {{platform}}', { platform })}</span>
+          <a href={link} target='_blank' className={S.supportLink}>
+            {link}
           </a>
         </div>
-        <QRCodeSVG value={BOOSTY_LINK} className={S.qr} />
+        <QRCodeSVG value={link} className={S.qr} />
       </div>
     </div>
   );
