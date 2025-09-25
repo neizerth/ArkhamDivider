@@ -7,10 +7,16 @@ import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import { useRef, useState } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
+import { theme } from "@/shared/config";
 import { createClickAwayListener } from "@/shared/lib";
 import * as C from "./PrintButton.components";
 
 type PrintButtonProps = ButtonGroupProps;
+
+const sx = {
+	backgroundColor: theme.palette.primary.light,
+	"&:hover": { backgroundColor: theme.palette.primary.main },
+};
 
 export function PrintButton(props: PrintButtonProps) {
 	const [open, setOpen] = useState(false);
@@ -24,12 +30,12 @@ export function PrintButton(props: PrintButtonProps) {
 
 	return (
 		<>
-			<C.Group {...props} variant="contained" color="primary" ref={anchorRef}>
-				<Button onClick={print}>
+			<C.Group {...props} variant="contained" ref={anchorRef}>
+				<Button onClick={print} sx={sx}>
 					<Icon icon="printer" />
 					&nbsp; Print / &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
 				</Button>
-				<Button size="small" onClick={toggle}>
+				<Button size="small" onClick={toggle} sx={sx}>
 					<Icon icon="download" />
 				</Button>
 			</C.Group>

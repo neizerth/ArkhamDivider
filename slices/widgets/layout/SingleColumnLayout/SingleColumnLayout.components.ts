@@ -7,4 +7,5 @@ export const Main = styled.main`
 
 export const Container = styled(Stack)`
   min-height: 100vh;
+  height: 500px;
 `;

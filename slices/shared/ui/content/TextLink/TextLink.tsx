@@ -8,6 +8,6 @@ export const TextLink = styled(Link)`
     color: inherit;
   }
   &:hover {
-    color: ${({ theme }) => theme.palette.primary.dark};
+    color: ${({ theme }) => theme.palette.primary.main};
   }
 `;

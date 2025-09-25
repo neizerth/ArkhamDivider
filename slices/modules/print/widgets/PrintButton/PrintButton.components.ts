@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 
 export const Group = styled(ButtonGroup)(({ theme }) => ({
 	boxShadow: theme.shadows[1],
+	whiteSpace: "nowrap",
 }));
 
 export const ContextMenu = styled(Popper)`

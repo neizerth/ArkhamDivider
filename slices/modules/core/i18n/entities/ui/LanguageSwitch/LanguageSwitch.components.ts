@@ -9,7 +9,7 @@ export const Container = styled(Box)(({ theme }) => ({
 }));
 
 export const Flag = styled(BaseFlag)`
-  font-size: 30px;
+  font-size: 24px;
   line-height: 1;
   height: 1em;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);

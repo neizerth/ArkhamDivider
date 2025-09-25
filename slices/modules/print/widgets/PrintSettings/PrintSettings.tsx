@@ -1,8 +1,11 @@
 import AddIcon from "@mui/icons-material/Add";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import ImportContactsIcon from "@mui/icons-material/ImportContactsOutlined";
+import LanguageIcon from "@mui/icons-material/Language";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -11,6 +14,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import Switch from "@mui/material/Switch";
 import { type JSX, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { LanguageSelect } from "@/modules/core/i18n/entities/ui/LanguageSelect";
 import { createClickAwayListener } from "@/shared/lib";
 import { PageSizeSelect } from "../PageSizeSelect";
 import Bleed from "./images/bleed.svg?react";
@@ -27,7 +31,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 	const toggle = () => setOpen(!open);
 
 	const close = createClickAwayListener({
-		callback: () => setOpen(false),
+		callback: () => void 0,
 		ignore: anchorRef.current,
 	});
 
@@ -47,7 +51,18 @@ export function PrintSettings(props: PrintSettingsProps) {
 						<Paper>
 							<ClickAwayListener onClickAway={close}>
 								<List>
-									<PageSizeSelect />
+									<ListItem>
+										<ListItemIcon>
+											<LanguageIcon />
+										</ListItemIcon>
+										<LanguageSelect fullWidth />
+									</ListItem>
+									<ListItem>
+										<ListItemIcon>
+											<DescriptionOutlinedIcon />
+										</ListItemIcon>
+										<PageSizeSelect fullWidth />
+									</ListItem>
 									<ListItemButton>
 										<ListItemIcon>
 											<ImportContactsIcon />
