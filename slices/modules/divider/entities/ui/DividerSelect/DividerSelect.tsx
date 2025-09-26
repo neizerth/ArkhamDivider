@@ -6,6 +6,8 @@ import Select from "@mui/material/Select";
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
 
+import * as C from "./DividerSelect.components";
+
 type DividerSelectProps = FormControlProps;
 
 export function DividerSelect(props: DividerSelectProps) {
@@ -29,12 +31,15 @@ export function DividerSelect(props: DividerSelectProps) {
 				<MenuItem value="eugene-sarnetsky">@sarnetsky</MenuItem>
 				<MenuItem value="arkham-deco">Arkham Deco</MenuItem>
 				<MenuItem value="3mm">3mm</MenuItem>
-				<MenuItem value="vintage-tabbed">Vintage</MenuItem>
+				<MenuItem value="vintage-tabbed">
+					Vintage&nbsp;
+					<C.Tab />
+				</MenuItem>
 				<ListSubheader>{t(`Bands`)}</ListSubheader>
 				<MenuItem value="sarnetsky-bands">@sarnetsky</MenuItem>
 				<ListSubheader>{t(`Stickers`)}</ListSubheader>
-				<MenuItem value="divider-stickers">Divider Stickers</MenuItem>
-				<MenuItem value="icon-stickers">Icon Stickers</MenuItem>
+				<MenuItem value="divider-stickers">Deckbox</MenuItem>
+				<MenuItem value="icon-stickers">{t(`Icon Stickers`)}</MenuItem>
 				<ListSubheader>{t(`Album Bookmarks`)}</ListSubheader>
 				<MenuItem value="classic-bookmarks">Classic</MenuItem>
 				<MenuItem value="invocation-2018-bookmarks">Invocation 2018</MenuItem>
