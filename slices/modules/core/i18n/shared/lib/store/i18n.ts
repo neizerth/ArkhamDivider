@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
-import { DEFAULT_LANGUAGE } from "../config";
+import { DEFAULT_LANGUAGE } from "../../config";
 
 export type I18nState = {
 	language: string;

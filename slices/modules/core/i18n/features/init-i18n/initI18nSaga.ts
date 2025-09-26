@@ -1,6 +1,6 @@
 import { put, takeEvery } from "redux-saga/effects";
 import { appDataLoaded } from "@/modules/core/app/shared/lib";
-import { setAvailableLanguages, setLanguage } from "../../shared/store";
+import { setAvailableLanguages, setLanguage } from "../../shared/lib/store";
 import { detectLanguage } from "./detectLanguage";
 
 function* worker({ payload }: ReturnType<typeof appDataLoaded>) {

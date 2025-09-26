@@ -13,7 +13,7 @@ import {
 	selectAvailableLanguages,
 	selectLanguage,
 	setLanguage,
-} from "../../../shared/store";
+} from "../../../shared/lib/store";
 
 type LanguageSelectProps = FormControlProps;
 

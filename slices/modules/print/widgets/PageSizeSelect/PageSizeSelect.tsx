@@ -4,7 +4,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
+import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { pageSizeFormats } from "../../shared/config";
+import { selectPageSize, setPageSize } from "../../shared/lib/store/print";
 import type { PageFormatType } from "../../shared/model";
 import * as C from "./PageSizeSelect.components";
 
@@ -13,8 +15,14 @@ type PageSizeSelectProps = FormControlProps;
 export function PageSizeSelect(props: PageSizeSelectProps) {
 	const { t } = useTranslation();
 	const id = useId();
+	const dispatch = useAppDispatch();
+	const pageSize = useAppSelector(selectPageSize);
 
 	const label = t(`Page Size`);
+
+	const handleChange = (value: PageFormatType) => {
+		dispatch(setPageSize(value));
+	};
 
 	return (
 		<FormControl {...props}>
@@ -22,6 +30,8 @@ export function PageSizeSelect(props: PageSizeSelectProps) {
 			<Select
 				labelId={id}
 				label={label}
+				value={pageSize}
+				onChange={(event) => handleChange(event.target.value)}
 				renderValue={(value: PageFormatType) => {
 					const format = pageSizeFormats.find((f) => f.type === value);
 					return format?.name || value;

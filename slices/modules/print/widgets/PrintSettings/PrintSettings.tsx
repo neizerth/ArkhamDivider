@@ -10,10 +10,20 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import SvgIcon from "@mui/material/SvgIcon";
-import Switch from "@mui/material/Switch";
 import { type JSX, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "@/modules/core/i18n/entities/ui/LanguageSelect";
+import { StoreSwitch } from "@/shared/ui";
+import {
+	selectBleedEnabled,
+	selectCropMarksEnabled,
+	selectDoubleSidePrintEnabled,
+	selectShowCornerRadius,
+	setBleedEnabled,
+	setCropMarksEnabled,
+	setDoubleSidePrintEnabled,
+	setShowCornerRadius,
+} from "../../shared/lib";
 import { PageSizeSelect } from "../PageSizeSelect";
 import Bleed from "./images/bleed.svg?react";
 import CornerRadius from "./images/corner-radius.svg?react";
@@ -59,17 +69,13 @@ export function PrintSettings(props: PrintSettingsProps) {
 								</ListItem>
 								<ListItemButton>
 									<ListItemIcon>
-										<ImportContactsIcon />
-									</ListItemIcon>
-									<ListItemText primary={t(`2 sides`)} />
-									<Switch />
-								</ListItemButton>
-								<ListItemButton>
-									<ListItemIcon>
 										<AddIcon />
 									</ListItemIcon>
 									<ListItemText primary={t(`Crop marks`)} />
-									<Switch />
+									<StoreSwitch
+										actionCreator={setCropMarksEnabled}
+										selector={selectCropMarksEnabled}
+									/>
 								</ListItemButton>
 								<ListItemButton>
 									<ListItemIcon>
@@ -78,8 +84,12 @@ export function PrintSettings(props: PrintSettingsProps) {
 										</SvgIcon>
 									</ListItemIcon>
 									<ListItemText primary={t(`Bleed`)} />
-									<Switch />
+									<StoreSwitch
+										actionCreator={setBleedEnabled}
+										selector={selectBleedEnabled}
+									/>
 								</ListItemButton>
+
 								<ListItemButton>
 									<ListItemIcon>
 										<SvgIcon>
@@ -87,7 +97,20 @@ export function PrintSettings(props: PrintSettingsProps) {
 										</SvgIcon>
 									</ListItemIcon>
 									<ListItemText primary={t(`Corner radius`)} />
-									<Switch />
+									<StoreSwitch
+										actionCreator={setShowCornerRadius}
+										selector={selectShowCornerRadius}
+									/>
+								</ListItemButton>
+								<ListItemButton>
+									<ListItemIcon>
+										<ImportContactsIcon />
+									</ListItemIcon>
+									<ListItemText primary={t(`2 sides`)} />
+									<StoreSwitch
+										actionCreator={setDoubleSidePrintEnabled}
+										selector={selectDoubleSidePrintEnabled}
+									/>
 								</ListItemButton>
 							</List>
 						</Paper>

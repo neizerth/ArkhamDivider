@@ -1,5 +1,5 @@
 import { appReducer } from "./app/shared/lib";
-import { i18nReducer } from "./i18n/shared/store";
+import { i18nReducer } from "./i18n/shared/lib";
 import { iconsReducer } from "./icon/shared/lib";
 
 export const coreModulesReducer = {
