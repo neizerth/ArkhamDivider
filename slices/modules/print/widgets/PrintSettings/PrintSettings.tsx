@@ -2,7 +2,6 @@ import AddIcon from "@mui/icons-material/Add";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import ImportContactsIcon from "@mui/icons-material/ImportContactsOutlined";
 import LanguageIcon from "@mui/icons-material/Language";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -15,7 +14,6 @@ import Switch from "@mui/material/Switch";
 import { type JSX, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "@/modules/core/i18n/entities/ui/LanguageSelect";
-import { createClickAwayListener } from "@/shared/lib";
 import { PageSizeSelect } from "../PageSizeSelect";
 import Bleed from "./images/bleed.svg?react";
 import CornerRadius from "./images/corner-radius.svg?react";
@@ -29,11 +27,6 @@ export function PrintSettings(props: PrintSettingsProps) {
 	const anchorRef = useRef<HTMLButtonElement>(null);
 
 	const toggle = () => setOpen(!open);
-
-	const close = createClickAwayListener({
-		callback: () => void 0,
-		ignore: anchorRef.current,
-	});
 
 	return (
 		<C.Container {...props}>
@@ -49,54 +42,52 @@ export function PrintSettings(props: PrintSettingsProps) {
 				{({ TransitionProps }) => (
 					<Grow {...TransitionProps}>
 						<Paper>
-							<ClickAwayListener onClickAway={close}>
-								<List>
-									<ListItem>
-										<ListItemIcon>
-											<LanguageIcon />
-										</ListItemIcon>
-										<LanguageSelect fullWidth />
-									</ListItem>
-									<ListItem>
-										<ListItemIcon>
-											<DescriptionOutlinedIcon />
-										</ListItemIcon>
-										<PageSizeSelect fullWidth />
-									</ListItem>
-									<ListItemButton>
-										<ListItemIcon>
-											<ImportContactsIcon />
-										</ListItemIcon>
-										<ListItemText primary={t(`2 sides`)} />
-										<Switch />
-									</ListItemButton>
-									<ListItemButton>
-										<ListItemIcon>
-											<AddIcon />
-										</ListItemIcon>
-										<ListItemText primary={t(`Crop marks`)} />
-										<Switch />
-									</ListItemButton>
-									<ListItemButton>
-										<ListItemIcon>
-											<SvgIcon>
-												<Bleed />
-											</SvgIcon>
-										</ListItemIcon>
-										<ListItemText primary={t(`Bleed`)} />
-										<Switch />
-									</ListItemButton>
-									<ListItemButton>
-										<ListItemIcon>
-											<SvgIcon>
-												<CornerRadius />
-											</SvgIcon>
-										</ListItemIcon>
-										<ListItemText primary={t(`Corner radius`)} />
-										<Switch />
-									</ListItemButton>
-								</List>
-							</ClickAwayListener>
+							<List>
+								<ListItem>
+									<ListItemIcon>
+										<LanguageIcon />
+									</ListItemIcon>
+									<LanguageSelect fullWidth />
+								</ListItem>
+								<ListItem>
+									<ListItemIcon>
+										<DescriptionOutlinedIcon />
+									</ListItemIcon>
+									<PageSizeSelect fullWidth />
+								</ListItem>
+								<ListItemButton>
+									<ListItemIcon>
+										<ImportContactsIcon />
+									</ListItemIcon>
+									<ListItemText primary={t(`2 sides`)} />
+									<Switch />
+								</ListItemButton>
+								<ListItemButton>
+									<ListItemIcon>
+										<AddIcon />
+									</ListItemIcon>
+									<ListItemText primary={t(`Crop marks`)} />
+									<Switch />
+								</ListItemButton>
+								<ListItemButton>
+									<ListItemIcon>
+										<SvgIcon>
+											<Bleed />
+										</SvgIcon>
+									</ListItemIcon>
+									<ListItemText primary={t(`Bleed`)} />
+									<Switch />
+								</ListItemButton>
+								<ListItemButton>
+									<ListItemIcon>
+										<SvgIcon>
+											<CornerRadius />
+										</SvgIcon>
+									</ListItemIcon>
+									<ListItemText primary={t(`Corner radius`)} />
+									<Switch />
+								</ListItemButton>
+							</List>
 						</Paper>
 					</Grow>
 				)}
