@@ -18,6 +18,10 @@ export const Logo = styled(BaseLogo)`
 `;
 
 export const Section = styled(Row)`
-	gap: ${({ theme }) => theme.spacing(2)};
 	flex: 1;
+`;
+
+export const SecondaryContent = styled(Row)`
+	flex: 1;
+	justify-content: space-between;
 `;

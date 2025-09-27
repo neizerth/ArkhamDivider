@@ -1,2 +1,1 @@
 export * from "./StoreSelect";
-export * from "./StoreSwitch";

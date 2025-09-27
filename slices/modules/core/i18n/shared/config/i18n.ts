@@ -7,7 +7,10 @@ export const i18n = createInstance();
 
 const resources = Object.entries(translations).reduce((acc, [key, value]) => {
 	acc[key] = {
-		[i18nNamespace.default]: value,
+		[i18nNamespace.default]: {
+			...translations.en,
+			...value,
+		},
 	};
 	return acc;
 }, {} as Resource);

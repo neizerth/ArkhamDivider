@@ -2,10 +2,13 @@ import FormControl, { type FormControlProps } from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import ListSubheader from "@mui/material/ListSubheader";
 import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
-
+import {
+	selectDividerVariant,
+	setDividerVariant,
+} from "@/modules/divider/shared/lib";
+import { StoreSelect } from "@/shared/ui";
 import * as C from "./DividerSelect.components";
 
 type DividerSelectProps = FormControlProps;
@@ -14,18 +17,20 @@ export function DividerSelect(props: DividerSelectProps) {
 	const { t } = useTranslation();
 	const id = useId();
 
-	const label = t(`Type`);
+	const label = t(`Select Type`);
 
 	return (
-		<FormControl
-			{...props}
-			fullWidth
-			sx={{ maxWidth: "200px", minWidth: "80px" }}
-		>
+		<FormControl {...props} fullWidth sx={{ maxWidth: "250px" }}>
 			<InputLabel id={id}>{label}</InputLabel>
-			<Select labelId={id} label={label} fullWidth>
+			<StoreSelect
+				actionCreator={setDividerVariant}
+				selector={selectDividerVariant}
+				labelId={id}
+				label={label}
+				fullWidth
+			>
 				<ListSubheader>{t`Dividers`}</ListSubheader>
-				<MenuItem value="return-to">Classic</MenuItem>
+				<MenuItem value="classic">Classic</MenuItem>
 				<MenuItem value="invocation-2018">Invocation 2018</MenuItem>
 				<MenuItem value="arkhamesque">Arkhamesque Classic</MenuItem>
 				<MenuItem value="eugene-sarnetsky">@sarnetsky</MenuItem>
@@ -47,7 +52,7 @@ export function DividerSelect(props: DividerSelectProps) {
 				<MenuItem value="investigator-tokens">
 					{t(`Investigator Tokens`)}
 				</MenuItem>
-			</Select>
+			</StoreSelect>
 		</FormControl>
 	);
 }
