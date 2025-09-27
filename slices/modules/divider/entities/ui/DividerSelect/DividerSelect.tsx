@@ -41,8 +41,8 @@ export function DividerSelect(props: DividerSelectProps) {
 				<MenuItem value="divider-stickers">Deckbox</MenuItem>
 				<MenuItem value="icon-stickers">{t(`Icon Stickers`)}</MenuItem>
 				<ListSubheader>{t(`Album Bookmarks`)}</ListSubheader>
-				<MenuItem value="classic-bookmarks">Classic</MenuItem>
-				<MenuItem value="invocation-2018-bookmarks">Invocation 2018</MenuItem>
+				<MenuItem value="classic-album">Classic</MenuItem>
+				<MenuItem value="invocation-2018-album">Invocation 2018</MenuItem>
 				<ListSubheader>{t(`Other`)}</ListSubheader>
 				<MenuItem value="investigator-tokens">
 					{t(`Investigator Tokens`)}

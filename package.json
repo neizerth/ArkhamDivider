@@ -27,6 +27,7 @@
     "arkhamesque-classic-divider-data": "^1.0.13",
     "axios": "^1.11.0",
     "coi-serviceworker": "^0.1.7",
+    "color": "^5.0.2",
     "dom-to-image": "^2.6.0",
     "flag-icons": "^7.5.0",
     "i18next": "^25.5.2",

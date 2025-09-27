@@ -8,7 +8,7 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 	return (
 		<C.Container {...props}>
 			<C.Button variant="text">
-				<Icon icon="paintbrush" />
+				<Icon icon="equalizer" />
 			</C.Button>
 		</C.Container>
 	);

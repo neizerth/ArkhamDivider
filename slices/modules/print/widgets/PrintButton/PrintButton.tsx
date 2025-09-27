@@ -14,8 +14,8 @@ import * as C from "./PrintButton.components";
 type PrintButtonProps = ButtonGroupProps;
 
 const sx = {
-	backgroundColor: theme.palette.primary.light,
-	"&:hover": { backgroundColor: theme.palette.primary.main },
+	backgroundColor: theme.palette.primary.main,
+	"&:hover": { backgroundColor: theme.palette.primary.dark },
 };
 
 export function PrintButton(props: PrintButtonProps) {

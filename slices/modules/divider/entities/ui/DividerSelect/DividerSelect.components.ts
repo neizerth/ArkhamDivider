@@ -12,10 +12,8 @@ export const Item = styled(MenuItem)`
 
 export const DividerIcon = styled(WebAssetIcon)(({ theme }) => ({
 	fontSize: "1em",
-	color: theme.palette.grey[500],
 }));
 
 export const Tab = styled(TabIcon)(({ theme }) => ({
 	fontSize: "1em",
-	color: theme.palette.grey[500],
 }));
