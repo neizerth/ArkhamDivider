@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Logo as BaseLogo, Row } from "@/shared/ui";
 
 export const Container = styled("header")(({ theme }) => ({
-	padding: theme.spacing(2),
+	paddingBlock: theme.spacing(2),
 	boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
 }));
 

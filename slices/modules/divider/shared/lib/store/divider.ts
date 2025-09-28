@@ -2,12 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
 
 export type DividerState = {
-	dividerVariant: string;
+	dividerVariant: string | null;
 	dividerLayout: string | null;
 };
 
 const initialState: DividerState = {
-	dividerVariant: "classic",
+	dividerVariant: null,
 	dividerLayout: null,
 };
 

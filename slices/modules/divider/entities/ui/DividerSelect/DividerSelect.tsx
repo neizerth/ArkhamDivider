@@ -20,11 +20,16 @@ export function DividerSelect(props: DividerSelectProps) {
 	const label = t(`Select Type`);
 
 	return (
-		<FormControl {...props} fullWidth sx={{ maxWidth: "250px" }}>
+		<FormControl
+			{...props}
+			fullWidth
+			sx={{ maxWidth: "250px", minWidth: "100px" }}
+		>
 			<InputLabel id={id}>{label}</InputLabel>
 			<StoreSelect
 				actionCreator={setDividerVariant}
 				selector={selectDividerVariant}
+				defaultValue={""}
 				labelId={id}
 				label={label}
 				fullWidth

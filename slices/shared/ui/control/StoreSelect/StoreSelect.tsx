@@ -15,12 +15,16 @@ type StoreSelectProps<T = unknown> = Omit<
 export function StoreSelect<T = unknown>({
 	actionCreator,
 	selector,
+	defaultValue,
 	...props
 }: StoreSelectProps<T>) {
-	const value = useAppSelector(selector);
+	const value = useAppSelector(selector) ?? "";
 	const dispatch = useAppDispatch();
 
-	const onChange = (value: T) => dispatch(actionCreator(value));
+	const onChange = (value: T) => {
+		if (!value) return;
+		dispatch(actionCreator(value));
+	};
 
 	return (
 		<Select

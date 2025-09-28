@@ -1,12 +1,14 @@
-import type { PropsWithChildren } from "react";
+import type { JSX } from "react";
 import { Footer, Header } from "../partials";
 import * as C from "./SingleColumnLayout.components";
 
-export function SingleColumnLayout({ children }: PropsWithChildren) {
+type SingleColumnLayoutProps = JSX.IntrinsicElements["main"];
+
+export function SingleColumnLayout(props: SingleColumnLayoutProps) {
 	return (
 		<C.Container>
 			<Header />
-			<C.Main>{children}</C.Main>
+			<C.Main {...props} />
 			<Footer />
 		</C.Container>
 	);

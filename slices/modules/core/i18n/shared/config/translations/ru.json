@@ -45,5 +45,11 @@
 	"Dividers": "Разделители",
 	"Investigator Tokens": "Жетоны сыщиков",
 	"Icon Stickers": "Иконки",
-	"Select Type": "Выберите тип"
+	"Select Type": "Выберите тип",
+	"Compatible with": "Совместимые с",
+	"Custom Storage": "Поиск по размеру",
+	"Divider size": "Размер разделителя",
+	"Width": "Ширина",
+	"Height": "Высота",
+	"Search": "Поиск"
 }
