@@ -1,0 +1,44 @@
+[
+	{
+		"id": "classic",
+		"title": "Classic",
+		"image": "/images/divider/render/classic.avif",
+		"url": "/layout/classic"
+	},
+	{
+		"id": "invocation-2018",
+		"title": "Invocation 2018",
+		"image": "/images/divider/render/invocation-2018.avif",
+		"url": "/layout/invocation-2018"
+	},
+	{
+		"id": "arkhamesque",
+		"title": "Arkhamesque Classic",
+		"image": "/images/divider/render/arkhamesque.avif",
+		"url": "/layout/arkhamesque"
+	},
+	{
+		"id": "sarnetsky",
+		"title": "@sarnetsky",
+		"image": "/images/divider/render/sarnetsky.avif",
+		"url": "/layout/sarnetsky"
+	},
+	{
+		"id": "arkham-deco",
+		"title": "Arkham Deco",
+		"image": "/images/divider/render/arkham-deco.avif",
+		"url": "/layout/arkham-deco"
+	},
+	{
+		"id": "3mm",
+		"title": "3mm",
+		"image": "/images/divider/render/3mm.avif",
+		"url": "/layout/3mm"
+	},
+	{
+		"id": "vintage",
+		"title": "Vintage",
+		"image": "/images/divider/render/vintage.avif",
+		"url": "/layout/vintage"
+	}
+]

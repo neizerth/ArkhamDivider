@@ -22,7 +22,7 @@ export function CustomStorageSearch(props: CustomStorageSearchProps) {
 				</Divider>
 
 				<Typography variant="body1" textAlign="center">
-					{t("Divider size")}
+					{t("Max divider size")}
 				</Typography>
 				<Form action="/search/custom">
 					<Row

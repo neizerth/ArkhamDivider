@@ -35,12 +35,26 @@ export function DividerSelect(props: DividerSelectProps) {
 				fullWidth
 			>
 				<ListSubheader>{t`Dividers`}</ListSubheader>
-				<MenuItem value="classic">Classic</MenuItem>
-				<MenuItem value="invocation-2018">Invocation 2018</MenuItem>
+				<MenuItem value="classic">
+					Classic&nbsp;
+					<C.Contrast />
+					<C.Vertical />
+				</MenuItem>
+				<MenuItem value="invocation-2018">
+					Invocation 2018&nbsp;
+					<C.Vertical />
+				</MenuItem>
 				<MenuItem value="arkhamesque">Arkhamesque Classic</MenuItem>
 				<MenuItem value="eugene-sarnetsky">@sarnetsky</MenuItem>
-				<MenuItem value="arkham-deco">Arkham Deco</MenuItem>
-				<MenuItem value="3mm">3mm</MenuItem>
+				<MenuItem value="arkham-deco">
+					Arkham Deco&nbsp;
+					<C.Contrast />
+					<C.Vertical />
+				</MenuItem>
+				<MenuItem value="3mm">
+					3mm&nbsp;
+					<C.Vertical />
+				</MenuItem>
 				<MenuItem value="vintage-tabbed">
 					Vintage&nbsp;
 					<C.Tab />

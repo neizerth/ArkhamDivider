@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import { Link as BaseLink } from "react-router";
+import { Link as BaseLink } from "@/modules/core/router/entities/ui";
 
 export const Container = styled("section")`
 
