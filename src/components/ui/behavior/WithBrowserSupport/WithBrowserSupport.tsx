@@ -12,15 +12,7 @@ export const WithBrowserSupport = ({ children }: WithBrowserSupportProps) => {
     <>
       {notSupported && (
         <div className={S.container}>
-          <div className={S.icons}>
-            <div className={S.cross}>
-              <Icon icon={'cross_a'} />
-            </div>
-            <Icon className={S.icon} icon={browser?.name || 'sphere'} />
-          </div>
-          <div>
-            <Icon className={S.icon} icon='chrome' />
-          </div>
+          <div>This browser is not supported.</div>
         </div>
       )}
       {!notSupported && children}
