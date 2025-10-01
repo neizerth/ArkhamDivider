@@ -5,48 +5,32 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
+import { Link } from "@/modules/core/router/entities/ui";
 import { useResponsiveGap } from "@/shared/lib";
 import { SectionTitle } from "@/shared/ui";
-import * as C from "./SectionList.components";
+import * as C from "./DividerList.components";
+import dividers from "./dividers.json";
 
-type SectionItem = {
-	id: string;
-	image: string;
-	url: string;
-	title: string;
-};
+const height = 200;
 
-type SectionListProps = {
-	title: string;
-	columns: Record<string, number>;
-	data: SectionItem[];
-	showTitle?: boolean;
-	height?: number;
-};
-
-export function SectionList({
-	title,
-	columns,
-	data,
-	showTitle = false,
-	height = 140,
-}: SectionListProps) {
-	const { t } = useTranslation();
+export function DividerList() {
 	const getSpacing = useResponsiveGap(2);
+	const columns = { xs: 2, sm: 3, md: 4 };
 
 	const width = getSpacing(columns);
-
+	const { t } = useTranslation();
 	return (
 		<C.Container>
 			<Container>
-				<SectionTitle>{t(title)}</SectionTitle>
+				<SectionTitle>{t("Dividers")}</SectionTitle>
 				<Stack gap={2} flexDirection="row" flexWrap="wrap">
-					{data.map((item) => (
-						<C.Link
+					{dividers.map((item) => (
+						<Link
 							key={item.id}
 							to={item.url}
 							sx={{
 								width,
+								textDecoration: "none",
 							}}
 						>
 							<Card key={item.id}>
@@ -56,14 +40,12 @@ export function SectionList({
 										image={item.image}
 										title={item.title}
 									/>
-									{showTitle && (
-										<Typography variant="body2" textAlign="center">
-											{item.title}
-										</Typography>
-									)}
+									<Typography variant="body2" textAlign="center">
+										{item.title}
+									</Typography>
 								</Box>
 							</Card>
-						</C.Link>
+						</Link>
 					))}
 				</Stack>
 			</Container>

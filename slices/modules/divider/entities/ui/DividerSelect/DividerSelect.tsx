@@ -45,7 +45,10 @@ export function DividerSelect(props: DividerSelectProps) {
 					<C.Vertical />
 				</MenuItem>
 				<MenuItem value="arkhamesque">Arkhamesque Classic</MenuItem>
-				<MenuItem value="eugene-sarnetsky">@sarnetsky</MenuItem>
+				<MenuItem value="eugene-sarnetsky">
+					@sarnetsky&nbsp;
+					<C.Vertical />
+				</MenuItem>
 				<MenuItem value="arkham-deco">
 					Arkham Deco&nbsp;
 					<C.Contrast />

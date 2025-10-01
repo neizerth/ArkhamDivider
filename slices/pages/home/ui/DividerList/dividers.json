@@ -3,25 +3,40 @@
 		"id": "classic",
 		"title": "Classic",
 		"image": "/images/divider/render/classic.avif",
-		"url": "/layout/classic"
+		"url": "/layout/classic",
+		"horizontal": ["89x76"],
+		"vertical": ["63x100", "65x100"]
 	},
 	{
 		"id": "invocation-2018",
 		"title": "Invocation 2018",
 		"image": "/images/divider/render/invocation-2018.avif",
-		"url": "/layout/invocation-2018"
+		"url": "/layout/invocation-2018",
+		"horizontal": true,
+		"vertical": true
 	},
 	{
 		"id": "arkhamesque",
 		"title": "Arkhamesque Classic",
 		"image": "/images/divider/render/arkhamesque.avif",
-		"url": "/layout/arkhamesque"
+		"url": "/layout/arkhamesque",
+		"horizontal": true,
+		"vertical": false
 	},
 	{
 		"id": "sarnetsky",
 		"title": "@sarnetsky",
 		"image": "/images/divider/render/sarnetsky.avif",
-		"url": "/layout/sarnetsky"
+		"url": "/layout/sarnetsky",
+		"horizontal": true,
+		"vertical": true
+	},
+
+	{
+		"id": "ryno",
+		"title": "Ryno style",
+		"image": "/images/divider/render/ryno.avif",
+		"url": "/layout/ryno"
 	},
 	{
 		"id": "arkham-deco",
