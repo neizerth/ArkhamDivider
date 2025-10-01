@@ -1,6 +1,5 @@
 import { detect } from 'detect-browser';
 import { PropsWithChildren } from 'react';
-import { Icon } from '../../icons/Icon/Icon';
 import S from './WithBrowserSupport.module.scss';
 
 export type WithBrowserSupportProps = PropsWithChildren;
