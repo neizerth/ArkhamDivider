@@ -1,3 +1,5 @@
+@use "@/app/sass/mixins.scss" as mixins;
+
 .horizontal {
 
   .title {
@@ -45,6 +47,13 @@
 
 .classic-horizontal-hq {
   .icon_small {
-    right: 5.5mm;
+    top: 4.4mm;
+    right: 4.2mm;
+  }
+  .title {
+    top: 5.2mm;
+  }
+  .textStroke {
+    @include mixins.textStroke(rgba(208, 192, 165, 0.7));
   }
 }

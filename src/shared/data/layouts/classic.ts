@@ -24,12 +24,12 @@ export const horizontalHQ = {
   width: 89,
   height: 76,
   bleed: {
-    width: 97,
-    height: 84,
-    top: 3.2,
-    left: 4,
-    right: 4.1,
-    bottom: 4.6,
+    width: 95,
+    height: 82,
+    top: 3,
+    left: 3,
+    right: 3,
+    bottom: 3,
   },
 };
 
