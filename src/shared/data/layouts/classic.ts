@@ -21,10 +21,10 @@ export const horizontal = {
 };
 
 export const horizontalHQ = {
-  width: 89,
+  width: 88,
   height: 76,
   bleed: {
-    width: 95,
+    width: 94,
     height: 82,
     top: 3,
     left: 3,
