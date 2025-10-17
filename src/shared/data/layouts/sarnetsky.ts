@@ -38,7 +38,7 @@ export const sarnetskyLayouts: ILayout[] = [
     width: 63,
     height: 105,
     title: 'Made by @sarnetsky',
-    types: [LayoutType.SCENARIO, LayoutType.PLAYER, LayoutType.INVESTIGATOR],
+    types: [LayoutType.SCENARIO],
     orientation: LayoutOrientation.VERTICAL,
     color: true,
     bleed: {
