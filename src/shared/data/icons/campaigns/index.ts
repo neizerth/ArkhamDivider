@@ -8,5 +8,18 @@ import tde from './tde.json';
 import tfa from './tfa.json';
 import tic from './tic.json';
 import tsk from './tsk.json';
+import tdc from './tdc.json';
 
-export default [...core, ...dwl, ...ptc, ...tfa, ...tcu, ...tde, ...tic, ...eoe, ...tsk, ...fhv];
+export default [
+  ...core,
+  ...dwl,
+  ...ptc,
+  ...tfa,
+  ...tcu,
+  ...tde,
+  ...tic,
+  ...eoe,
+  ...tsk,
+  ...fhv,
+  ...tdc,
+];

@@ -6,8 +6,9 @@
   },
   {
     "icon": "nightgaunts",
-    "top": 2,
-    "left": 2
+    "top": 1,
+    "left": 1,
+    "scale": 1.2
   },
   {
     "icon": "dark_cult",
