@@ -11,12 +11,6 @@ import { BLEED_GAP } from '../../../constants';
 const TAB_WIDTH = 30 + BLEED_GAP * 2;
 const TAB_HEIGHT = 10.3;
 
-const TAB_RECTS: Record<TabPosition, number> = {
-  left: 0,
-  center: TAB_WIDTH - BLEED_GAP * 2,
-  right: TAB_WIDTH * 2 - BLEED_GAP * 4,
-};
-
 export const VintagePDFGuides = ({
   divider,
   dividers,
@@ -26,6 +20,7 @@ export const VintagePDFGuides = ({
   height,
   radius,
   topCornerRadius = 0,
+  bleedSize,
 }: {
   x: number;
   y: number;
@@ -35,8 +30,19 @@ export const VintagePDFGuides = ({
   height: number;
   divider: IDivider;
   dividers: IDivider[];
+  bleedSize: number;
 }) => {
   const { backId } = divider;
+
+  const useBleed = bleedSize > 0;
+
+  const bleedShift = useBleed ? bleedSize : 3;
+
+  const TAB_RECTS: Record<TabPosition, number> = {
+    left: 0,
+    center: TAB_WIDTH - BLEED_GAP * 2 + bleedShift,
+    right: TAB_WIDTH * 2 - BLEED_GAP * 4 + bleedShift * 1.5,
+  };
 
   const tabProps = backId ? dividers.find(propEq(backId, 'id')) : divider;
   const currentPosition = tabProps?.customParams?.tabPosition as TabPosition;

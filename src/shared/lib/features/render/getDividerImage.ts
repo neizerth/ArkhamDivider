@@ -20,10 +20,8 @@ export const getDividerImage = async ({
   node,
   scale,
   name,
-  bleed,
   imageFormat,
   colorScheme,
-  useBleed,
 }: GetDividerImageOptions): Promise<RenderResponse> => {
   const rect = node.getBoundingClientRect();
 
@@ -43,11 +41,6 @@ export const getDividerImage = async ({
     throw new Error('Failed to create blob');
   }
 
-  const cropLeft = toPrintSize(bleed.left);
-  const cropTop = toPrintSize(bleed.top);
-  const cropWidth = toPrintSize(bleed.width);
-  const cropHeight = toPrintSize(bleed.height);
-
   const source = await blob.arrayBuffer();
   const vips = await getVips();
   const memory = vips.Stats.mem() / 1024;
@@ -55,10 +48,6 @@ export const getDividerImage = async ({
   console.log('used vips memory, Kb', memory);
 
   let image = vips.Image.newFromBuffer(source);
-
-  if (useBleed) {
-    image = image.crop(cropLeft, cropTop, cropWidth, cropHeight);
-  }
 
   if (colorScheme) {
     image = image.iccTransform(colorScheme);

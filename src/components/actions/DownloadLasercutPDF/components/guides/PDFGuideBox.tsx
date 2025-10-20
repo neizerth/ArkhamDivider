@@ -57,6 +57,7 @@ export const PDFGuideBox = (props: {
     divider,
     dividers,
     layout,
+    bleedSize,
   };
 
   return <Component {...componentProps} />;
