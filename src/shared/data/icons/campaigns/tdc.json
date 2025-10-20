@@ -6,5 +6,9 @@
   {
     "icon": "star_spawn",
     "left": 2
+  },
+  {
+    "icon": "dreams",
+    "left": 1
   }
 ]

@@ -38,6 +38,7 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
   const onFinally = useCallback(() => {
     dispatch(setExport(false));
 
+    document.body.classList.remove('export');
     setProgress({
       done: 0,
       total: 0,
@@ -56,6 +57,8 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
 
   const onDone = useCallback(() => {
     dispatch(setExport(false));
+
+    document.body.classList.remove('export');
 
     renderer.off('render', onRender).off('done', onDone).off('cancel', onCancel);
   }, [dispatch, renderer, onRender, onCancel]);
@@ -99,6 +102,7 @@ export const useDownloadDividers = ({ renderer }: { renderer: DividerNodeRendere
   const download = async () => {
     dispatch(setZoom(100));
     dispatch(setExport(true));
+    document.body.classList.add('export');
     setStatus('ready');
   };
 

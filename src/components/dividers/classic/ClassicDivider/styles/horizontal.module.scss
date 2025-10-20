@@ -45,11 +45,50 @@
   }
 }
 
+:global(.export) {
+  .classic-horizontal-hq {
+    .icon_small {
+      &_dogs_of_war {
+        margin-right: -0.3%;
+      }
+
+      &_beyond_the_beyond {
+        margin-top: 0.2%;
+      }
+      &_refractions {
+        margin-right: -0.4%;
+      }
+      &_day_of_the_feast {
+        margin-right: -0.3%;
+      }
+      &_hemlock_house {
+        margin-right: 0.1%;
+      }
+      &_dreams {
+        margin-right: -0.2%;
+      }
+    }
+  }
+}
+
 .classic-horizontal-hq {
   .icon_small {
     top: 4.4mm;
     right: 3.8mm;
     margin-top: -0.1%;
+    margin-right: -0.1%;
+    &_elder_things {
+      margin-right: -0.2%;
+    }
+    &_tekeli_li {
+      margin-right: -0.3%;
+    }
+    &_the_heart_of_madness {
+      margin-right: -0.3%;
+    }
+    &_dogs_of_war {
+      margin-right: -0.1%;
+    }
   }
   .icon_large {
     opacity: 0.06;
