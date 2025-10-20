@@ -122,7 +122,8 @@
   {
     "icon": "fog_over_innsmouth",
     "scale": 0.95,
-    "left": 1
+    "left": 1,
+    "top": -2
   },
   {
     "icon": "return_to_a_light_in_the_fog",
