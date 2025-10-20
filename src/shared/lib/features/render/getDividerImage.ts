@@ -1,5 +1,4 @@
 import * as htmlToImage from 'html-to-image';
-import { toPrintSize } from '@/shared/lib/features/util/units';
 import { ColorScheme, ImageFormat } from '@/shared/types/image';
 import { ILayoutBleed } from '@/shared/types/layouts';
 import { RenderResponse } from '@/shared/types/render';
