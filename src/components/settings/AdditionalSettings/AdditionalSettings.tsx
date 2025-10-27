@@ -5,6 +5,7 @@ import { DownloadPNGButton } from '@/components/actions/DownloadPNGButton/Downlo
 import { CornerRadiusSettings } from '../CornerRadiusSettings/CornerRadiusSettings';
 import { PageSizeSettings } from '../PageSizeSettings/PageSizeSettings';
 import S from './AdditionalSettings.module.scss';
+import { CropMarksSettings } from '../CropMarksSettings/CropMarksSettings';
 
 export const AdditionalSettings = () => {
   return (
@@ -18,6 +19,9 @@ export const AdditionalSettings = () => {
         </div>
         <div className={S.item}>
           <CornerRadiusSettings />
+        </div>
+        <div className={S.item}>
+          <CropMarksSettings />
         </div>
         <div className={S.item}>
           <DownloadLasercutPDF />

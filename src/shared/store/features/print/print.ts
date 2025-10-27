@@ -13,6 +13,7 @@ export type IPrintState = {
   rowsPerPage: number;
   pageSizeType: PageSizeType;
   pageOrientation: PageOrientation;
+  cropMarks: boolean;
 };
 
 const defaultGrid = getLayoutGrid({
@@ -24,6 +25,7 @@ const defaultGrid = getLayoutGrid({
 const initialState: IPrintState = {
   doubleSided: false,
   bleed: false,
+  cropMarks: true,
   pageSizeType: PageSizeType.A4,
   cornerRadius: false,
   ...defaultGrid,
@@ -73,6 +75,7 @@ export const {
   setPageOrientation,
   setPageSizeType,
   setCornerRadius,
+  setCropMarks,
 } = print.actions;
 
 export const {
@@ -83,6 +86,7 @@ export const {
   selectPageOrientation,
   selectPageSizeType,
   selectCornerRadius,
+  selectCropMarks,
 } = print.selectors;
 
 export default print.reducer;

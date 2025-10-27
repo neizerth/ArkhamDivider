@@ -3,6 +3,8 @@ import { Guide } from '@/components';
 import { GuideType } from '@/shared/types/print';
 import { PropsWithClassName } from '@/shared/types/util';
 import S from './Guides.module.scss';
+import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
+import { selectCropMarks } from '@/shared/store/features/print/print';
 
 const DEFAULT_GUIDE_TYPE = 'cross';
 
@@ -25,24 +27,35 @@ export const Guides = ({
   bottomLeft = DEFAULT_GUIDE_TYPE,
   bottomRight = DEFAULT_GUIDE_TYPE,
 }: GuidesProps) => {
+  const show = useAppSelector(selectCropMarks);
   return (
     <div className={classNames(S.container, className)}>
       {topLeft && (
-        <Guide className={classNames(guideClassName, S.guide, S.guide_topLeft)} type={topLeft} />
+        <Guide
+          className={classNames(guideClassName, S.guide, S.guide_topLeft)}
+          type={topLeft}
+          show={show}
+        />
       )}
       {topRight && (
-        <Guide className={classNames(guideClassName, S.guide, S.guide_topRight)} type={topRight} />
+        <Guide
+          className={classNames(guideClassName, S.guide, S.guide_topRight)}
+          type={topRight}
+          show={show}
+        />
       )}
       {bottomLeft && (
         <Guide
           className={classNames(guideClassName, S.guide, S.guide_bottomLeft)}
           type={bottomLeft}
+          show={show}
         />
       )}
       {bottomRight && (
         <Guide
           className={classNames(guideClassName, S.guide, S.guide_bottomRight)}
           type={bottomRight}
+          show={show}
         />
       )}
     </div>

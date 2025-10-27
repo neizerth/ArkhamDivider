@@ -6,15 +6,18 @@ import S from './Guide.module.scss';
 export type GuideProps = PropsWithClassName & {
   type?: GuideType;
   inset?: boolean;
+  show?: boolean;
 };
 
-export const Guide = ({ className, type = 'cross' }: GuideProps) => {
+export const Guide = ({ className, type = 'cross', show = true }: GuideProps) => {
   return (
     <div className={classNames(S.container, S[type], className)}>
-      <div className={S.lines}>
-        <div className={S.horizontal} />
-        <div className={S.vertical} />
-      </div>
+      {show && (
+        <div className={S.lines}>
+          <div className={S.horizontal} />
+          <div className={S.vertical} />
+        </div>
+      )}
     </div>
   );
 };
