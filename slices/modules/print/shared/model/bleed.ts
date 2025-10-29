@@ -1,8 +1,1 @@
-export type Bleed = {
-	width: number;
-	height: number;
-	top: number;
-	right: number;
-	bottom: number;
-	left: number;
-};
+export type { BoxPosition as Bleed } from "@/shared/model";

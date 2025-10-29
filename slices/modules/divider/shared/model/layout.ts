@@ -1,5 +1,5 @@
 import type { SleeveSize } from "@/entities/sleeve/model";
-import type { Bleed } from "@/modules/print/shared/model/bleed";
+import type { BoxPosition, BoxSize } from "@/shared/model";
 
 export type DividerLayoutSleeve = {
 	id: string;
@@ -10,13 +10,24 @@ export type DividerLayoutSleeve = {
 export type DividerLayout<Params = void> = {
 	id: string;
 	categoryId: string;
+	groupId: string;
 	name: string;
 	image?: string;
 	orientation: "horizontal" | "vertical";
 	color: boolean;
-	width: number;
-	height: number;
-	bleed: Bleed;
+	size: BoxSize;
+	position?: Partial<BoxPosition>;
+	bleed: number;
 	sleeves: DividerLayoutSleeve[];
 	params?: Params;
+};
+
+export type LayoutGroup = {
+	id: string;
+	name: string;
+	size: BoxSize;
+	layouts: DividerLayout[];
+	hasGrayscale: boolean;
+	hasColor: boolean;
+	canBeSleeved: boolean;
 };

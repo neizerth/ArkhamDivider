@@ -1,2 +1,2 @@
-export * from "./box";
+export * from "./dpi";
 export * from "./size";

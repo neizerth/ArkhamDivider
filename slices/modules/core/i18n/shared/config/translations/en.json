@@ -1,3 +1,7 @@
 {
-	"footer.disclaimer": "<AHLCG>Arkham Horror: The Card Game™</AHLCG> and all related content © <FFG>Fantasy Flight Games (FFG)</FFG>. This site is not produced, endorsed by or affiliated with FFG."
+	"footer.disclaimer": "<AHLCG>Arkham Horror: The Card Game™</AHLCG> and all related content © <FFG>Fantasy Flight Games (FFG)</FFG>. This site is not produced, endorsed by or affiliated with FFG.",
+	"orientation.horizontal": "Horizontal",
+	"orientation.vertical": "Vertical",
+	"divider.canBeSleeved": "Can be sleeved",
+	"divider.hasGrayscale": "Has low ink version"
 }

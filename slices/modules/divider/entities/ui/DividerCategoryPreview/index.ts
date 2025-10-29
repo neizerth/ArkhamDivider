@@ -1,2 +1,1 @@
 export * from "./DividerCategoryPreview";
-export * from "./DividerSelect";

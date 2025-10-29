@@ -51,5 +51,9 @@
 	"Max divider size": "Максимальный размер разделителя",
 	"Width": "Ширина",
 	"Height": "Высота",
-	"Search": "Поиск"
+	"Search": "Поиск",
+	"orientation.horizontal": "Горизонтальные",
+	"orientation.vertical": "Вертикальные",
+	"divider.canBeSleeved": "Подходит для протекторов",
+	"divider.hasGrayscale": "Есть ч/б версия"
 }

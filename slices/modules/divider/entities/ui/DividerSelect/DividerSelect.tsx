@@ -9,7 +9,6 @@ import {
 	setDividerVariant,
 } from "@/modules/divider/shared/lib";
 import { StoreSelect } from "@/shared/ui";
-import * as C from "./DividerSelect.components";
 
 type DividerSelectProps = FormControlProps;
 
@@ -35,33 +34,13 @@ export function DividerSelect(props: DividerSelectProps) {
 				fullWidth
 			>
 				<ListSubheader>{t`Dividers`}</ListSubheader>
-				<MenuItem value="classic">
-					Classic&nbsp;
-					<C.Contrast />
-					<C.Vertical />
-				</MenuItem>
-				<MenuItem value="invocation-2018">
-					Invocation 2018&nbsp;
-					<C.Vertical />
-				</MenuItem>
+				<MenuItem value="classic">Classic</MenuItem>
+				<MenuItem value="invocation-2018">Invocation 2018</MenuItem>
 				<MenuItem value="arkhamesque">Arkhamesque Classic</MenuItem>
-				<MenuItem value="eugene-sarnetsky">
-					@sarnetsky&nbsp;
-					<C.Vertical />
-				</MenuItem>
-				<MenuItem value="arkham-deco">
-					Arkham Deco&nbsp;
-					<C.Contrast />
-					<C.Vertical />
-				</MenuItem>
-				<MenuItem value="3mm">
-					3mm&nbsp;
-					<C.Vertical />
-				</MenuItem>
-				<MenuItem value="vintage-tabbed">
-					Vintage&nbsp;
-					<C.Tab />
-				</MenuItem>
+				<MenuItem value="eugene-sarnetsky">@sarnetsky</MenuItem>
+				<MenuItem value="arkham-deco">Arkham Deco</MenuItem>
+				<MenuItem value="3mm">3mm</MenuItem>
+				<MenuItem value="vintage-tabbed">Vintage</MenuItem>
 				<ListSubheader>{t(`Bands`)}</ListSubheader>
 				<MenuItem value="sarnetsky-bands">@sarnetsky</MenuItem>
 				<ListSubheader>{t(`Stickers`)}</ListSubheader>
