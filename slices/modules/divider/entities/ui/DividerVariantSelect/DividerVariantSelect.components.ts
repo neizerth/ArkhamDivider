@@ -1,4 +1,4 @@
-import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import BaseButton from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 
@@ -15,6 +15,6 @@ export const Button = styled(BaseButton)`
   min-width: auto;
 `;
 
-export const BrandingIcon = styled(FilterAltOutlinedIcon)`
+export const BrandingIcon = styled(SettingsSuggestIcon)`
   font-size: 26px;
 `;

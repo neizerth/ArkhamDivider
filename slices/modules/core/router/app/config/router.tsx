@@ -11,6 +11,10 @@ export const router = createHashRouter([
 		path: "/:language",
 		children: [
 			{
+				index: true,
+				element: <HomePage />,
+			},
+			{
 				path: "layout/:layoutId",
 				element: <LayoutPage />,
 			},

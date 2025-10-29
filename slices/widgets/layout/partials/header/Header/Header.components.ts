@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import { Link } from "@/modules/core/router/entities/ui";
 import { Logo as BaseLogo, Row } from "@/shared/ui";
 
 export const Container = styled("header")(({ theme }) => ({
@@ -24,4 +25,10 @@ export const Section = styled(Row)`
 export const SecondaryContent = styled(Row)`
 	flex: 1;
 	justify-content: space-between;
+`;
+
+export const LogoLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

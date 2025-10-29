@@ -3,7 +3,7 @@ import type { SleeveSize } from "../model";
 const createSleeveSize = (
 	width: number,
 	height: number,
-	title = `${width}x${height}`,
+	title?: string,
 ): SleeveSize => {
 	const id = `${width}x${height}`;
 	return {

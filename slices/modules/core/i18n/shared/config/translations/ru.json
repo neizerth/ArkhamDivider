@@ -55,5 +55,8 @@
 	"orientation.horizontal": "Горизонтальные",
 	"orientation.vertical": "Вертикальные",
 	"divider.canBeSleeved": "Подходит для протекторов",
-	"divider.hasGrayscale": "Есть ч/б версия"
+	"divider.hasGrayscale": "Есть ч/б версия",
+	"Language": "Язык",
+	"Sleeves": "Протекторы",
+	"layout.classic.sleeve.largeCCG.description": "Потребуется вручную подрезать верхнюю часть протектора"
 }

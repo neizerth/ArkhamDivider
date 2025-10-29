@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { layoutRoute } from "@/modules/core/router/entities/lib";
 import type { LayoutGroup } from "@/modules/divider/shared/model";
 import { Row } from "@/shared/ui";
+import { getBoxSize } from "@/shared/util";
 import * as C from "./DividerLayoutGroupPreview.components";
 
 type DividerLayoutGroupPreviewProps = {
@@ -16,10 +17,10 @@ export function DividerLayoutGroupPreview({
 }: DividerLayoutGroupPreviewProps) {
 	const { t } = useTranslation();
 	const [firstLayout] = group.layouts;
-	const name = `${group.size.width}x${group.size.height}`;
+	const name = getBoxSize(group.size);
 	return (
 		<C.Container to={layoutRoute(firstLayout.id)}>
-			<C.Chip gap={1} alignItems="center">
+			<C.Chip gap={0.5} alignItems="center">
 				<Typography variant="body2">{name}</Typography>
 				<Row alignItems="center">
 					{group.hasGrayscale && (

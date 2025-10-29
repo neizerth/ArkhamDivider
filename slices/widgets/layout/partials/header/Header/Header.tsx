@@ -19,7 +19,9 @@ export function Header(props: HeaderProps) {
 			<Container>
 				<C.Content>
 					<C.Section flex={1} gap={2}>
-						<C.Logo />
+						<C.LogoLink to="/">
+							<C.Logo />
+						</C.LogoLink>
 						<C.Section flex={1} gap={1}>
 							<DividerSelect />
 							{!isMobile && <DividerVariantSelect />}

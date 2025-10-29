@@ -14,7 +14,9 @@ export const createLayoutGroups = (layouts: DividerLayout[]): LayoutGroup[] => {
 
 			const hasGrayscale = layouts.some(propEq(false, "color"));
 			const hasColor = layouts.some(propEq(true, "color"));
-			const canBeSleeved = layouts.some(({ sleeves }) => sleeves.length > 0);
+			const canBeSleeved = layouts.some(
+				({ sleeves }) => sleeves && sleeves.length > 0,
+			);
 
 			return {
 				id,

@@ -3,5 +3,6 @@
 	"orientation.horizontal": "Horizontal",
 	"orientation.vertical": "Vertical",
 	"divider.canBeSleeved": "Can be sleeved",
-	"divider.hasGrayscale": "Has low ink version"
+	"divider.hasGrayscale": "Has low ink version",
+	"layout.classic.sleeve.largeCCG.description": "Will need to be cut manually from the top of the sleeve"
 }

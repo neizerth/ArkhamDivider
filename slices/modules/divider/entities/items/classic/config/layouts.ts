@@ -55,7 +55,6 @@ const verticalLayout: DividerLayout = {
 	position: {
 		left: 2,
 	},
-	sleeves: [],
 };
 
 const verticalBW: DividerLayout = {

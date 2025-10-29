@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { theme } from "@/shared/config";
 import { createClickAwayListener } from "@/shared/lib";
@@ -19,6 +20,7 @@ const sx = {
 };
 
 export function PrintButton(props: PrintButtonProps) {
+	const { t } = useTranslation();
 	const [open, setOpen] = useState(false);
 	const anchorRef = useRef<HTMLDivElement>(null);
 
@@ -33,7 +35,7 @@ export function PrintButton(props: PrintButtonProps) {
 			<C.Group {...props} variant="contained" ref={anchorRef}>
 				<Button onClick={print} sx={sx}>
 					<Icon icon="printer" />
-					&nbsp; Print / &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
+					&nbsp; {t`Print`} / &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
 				</Button>
 				<Button size="small" onClick={toggle} sx={sx}>
 					<Icon icon="download" />

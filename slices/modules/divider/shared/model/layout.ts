@@ -1,5 +1,5 @@
 import type { SleeveSize } from "@/entities/sleeve/model";
-import type { BoxPosition, BoxSize } from "@/shared/model";
+import type { Author, BoxPosition, BoxSize } from "@/shared/model";
 
 export type DividerLayoutSleeve = {
 	id: string;
@@ -12,13 +12,14 @@ export type DividerLayout<Params = void> = {
 	categoryId: string;
 	groupId: string;
 	name: string;
+	authors?: Author[];
 	image?: string;
 	orientation: "horizontal" | "vertical";
 	color: boolean;
 	size: BoxSize;
 	position?: Partial<BoxPosition>;
 	bleed: number;
-	sleeves: DividerLayoutSleeve[];
+	sleeves?: DividerLayoutSleeve[];
 	params?: Params;
 };
 
