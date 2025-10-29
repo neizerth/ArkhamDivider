@@ -20,7 +20,7 @@ export function Header(props: HeaderProps) {
 				<C.Content>
 					<C.Section flex={1} gap={2}>
 						<C.Logo />
-						<C.Section flex={1} gap={2}>
+						<C.Section flex={1} gap={1}>
 							<DividerSelect />
 							{!isMobile && <DividerVariantSelect />}
 						</C.Section>
