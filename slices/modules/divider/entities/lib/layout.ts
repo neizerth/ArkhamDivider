@@ -14,3 +14,19 @@ export const getLayoutAuthors = (layout: DividerLayout) => {
 	const category = getCategoryById(categoryId);
 	return category?.authors;
 };
+
+export const getLayoutImage = (layout: DividerLayout) => {
+	const { image, categoryId } = layout;
+	if (image) {
+		return image;
+	}
+
+	const category = getCategoryById(categoryId);
+	return category?.image;
+};
+
+export const getLayoutGroup = (layout: DividerLayout) => {
+	const { groupId, categoryId } = layout;
+	const category = getCategoryById(categoryId);
+	return category?.groups.find(whereId(groupId));
+};

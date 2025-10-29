@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -5,6 +6,7 @@ import Grow from "@mui/material/Grow";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
@@ -52,6 +54,15 @@ export function PrintButton(props: PrintButtonProps) {
 						<Paper>
 							<ClickAwayListener onClickAway={close}>
 								<MenuList>
+									<Box
+										textAlign="center"
+										paddingBottom={1}
+										borderBottom={1}
+										borderColor="divider"
+										color="text.secondary"
+									>
+										<Typography variant="body2">300 DPI</Typography>
+									</Box>
 									<MenuItem>
 										<Icon icon="file-pdf" /> &nbsp; PDF <C.HQ>HQ</C.HQ>
 									</MenuItem>

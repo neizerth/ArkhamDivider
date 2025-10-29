@@ -8,4 +8,10 @@ export type DividerCategory = {
 	authors: Author[];
 	layouts: DividerLayout[];
 	groups: LayoutGroup[];
+	hasGrayscale: boolean;
+	hasColor: boolean;
+	hasVertical: boolean;
+	hasHorizontal: boolean;
+	hasOrientationVariants: boolean;
+	hasColorVariants: boolean;
 };

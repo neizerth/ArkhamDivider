@@ -1,14 +1,15 @@
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
-import Container from "@mui/material/Container";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 import type { DividerLayout } from "@/modules/divider/shared/model";
-import { Row, Separator } from "@/shared/ui";
+import { Row } from "@/shared/ui";
 import { getBoxSize } from "@/shared/util";
 import { getLayoutAuthors } from "../../../lib";
 import { DividerLayoutAuthorInfo as Author } from "../DividerLayoutAuthorInfo";
 import { DividerLayoutSleeveInfo as Sleeve } from "../DividerLayoutSleeveInfo";
+import * as C from "./DividerLayoutInfo.components";
 
 type DividerLayoutInfoProps = {
 	layout: DividerLayout;
@@ -23,26 +24,8 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 	const size = getBoxSize(layout.size);
 
 	return (
-		<Container>
-			<Stack gap={2}>
-				<Row gap={2}>
-					<Row alignItems="center" gap={1}>
-						<OpenInFullIcon />
-						<Typography variant="body1">
-							{size}
-							{t`mm`}
-						</Typography>
-					</Row>
-					<Separator />
-					{sleeves && (
-						<Row alignItems="center" gap={1}>
-							<Typography variant="subtitle1">{t`Sleeves`}:</Typography>
-							{sleeves.map((sleeve) => (
-								<Sleeve key={sleeve.id} sleeve={sleeve} />
-							))}
-						</Row>
-					)}
-				</Row>
+		<Row alignItems="center" justifyContent="space-between">
+			<Stack gap={6}>
 				{authors && (
 					<Stack gap={1}>
 						{authors.map((author) => (
@@ -50,7 +33,30 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 						))}
 					</Stack>
 				)}
+				<Stack gap={2}>
+					<Row alignItems="center" gap={2}>
+						<C.Icon title={t`Size`}>
+							<OpenInFullIcon />
+						</C.Icon>
+						<Typography variant="body1">
+							{size}
+							{t`mm`}
+						</Typography>
+					</Row>
+					{sleeves && (
+						<Row alignItems="center" gap={2}>
+							<C.Icon title={t`Sleeves`}>
+								<ShieldOutlinedIcon />
+							</C.Icon>
+							<Row gap={1}>
+								{sleeves.map((sleeve) => (
+									<Sleeve key={sleeve.id} sleeve={sleeve} />
+								))}
+							</Row>
+						</Row>
+					)}
+				</Stack>
 			</Stack>
-		</Container>
+		</Row>
 	);
 }
