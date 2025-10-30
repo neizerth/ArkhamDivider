@@ -16,12 +16,12 @@ const investigatorTokensLayoutCommon = {
   color: true,
 };
 
-export const investigatorTokensLayout: ILayout = {
+export const investigatorTokensDoubleLayout: ILayout = {
   ...investigatorTokensLayoutCommon,
   id: 'investigator-tokens',
   width: 25,
   height: 25,
-  title: 'Standart',
+  title: 'Color + B&W',
   bleed: {
     ...bleed,
     width: 31,
@@ -35,6 +35,23 @@ export const investigatorTokensLayout: ILayout = {
     },
   },
 };
+
+export const investigatorTokensSingleLayout: ILayout = {
+  ...investigatorTokensDoubleLayout,
+  id: 'investigator-tokens-color',
+  title: 'Color',
+  investigatorOptions: {
+    duplicateCodes: {
+      '04244': 4,
+      '10661': 4,
+    },
+  },
+};
+
+export const investigatorTokensLayouts = [
+  investigatorTokensDoubleLayout,
+  investigatorTokensSingleLayout,
+];
 
 export const investigatorTokensLayoutCategory: ILayoutCategory = {
   id: 'investigator-tokens',

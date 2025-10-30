@@ -6,9 +6,10 @@ import { DividerProps } from '../../common/Divider/Divider';
 import { DividerContent } from '../../common/DividerContent/DividerContent';
 import { getDividerBackground } from './background';
 import S from './InvestigatorTokensDivider.module.scss';
+import { DividerMenu } from '../../common/DividerMenu/DividerMenu';
 
 export const InvestigatorTokensDivider = (props: DividerProps) => {
-  const { investigator, backId } = props;
+  const { investigator, backId, id } = props;
 
   const cornerRadius = useAppSelector(selectCornerRadius);
 
@@ -30,7 +31,10 @@ export const InvestigatorTokensDivider = (props: DividerProps) => {
           alt={investigator.name}
           className={classNames(S.background, back && S.backgroundBack)}
         />
-        <NotExportable>{cornerRadius && <div className={S.cornerRadius} />}</NotExportable>
+        <NotExportable>
+          {cornerRadius && <div className={S.cornerRadius} />}
+          <DividerMenu className={S.menu} id={id} />
+        </NotExportable>
       </DividerContent>
     </div>
   );
