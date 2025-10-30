@@ -38,8 +38,6 @@ export function PrintSettings(props: PrintSettingsProps) {
 
 	const toggle = () => setOpen(!open);
 
-	console.log(t(`Bleed`));
-
 	return (
 		<C.Container {...props}>
 			<C.Button variant="text" ref={anchorRef} onClick={toggle}>
