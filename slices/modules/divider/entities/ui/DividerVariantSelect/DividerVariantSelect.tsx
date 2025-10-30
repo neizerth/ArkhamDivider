@@ -1,14 +1,19 @@
 import ContrastOutlinedIcon from "@mui/icons-material/ContrastOutlined";
+import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
-import { type JSX, useMemo, useRef, useState } from "react";
+import { type JSX, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Select } from "@/shared/ui";
-import { useRouterLayout } from "../../lib";
+import {
+	useDividerColorData,
+	useDividerOrientationData,
+	useRouterLayout,
+} from "../../lib";
 import * as C from "./DividerVariantSelect.components";
 
 type DividerVariantSelectProps = JSX.IntrinsicElements["div"];
@@ -19,35 +24,8 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 	const [open, setOpen] = useState(false);
 	const anchorRef = useRef<HTMLButtonElement>(null);
 
-	const colorData = useMemo(() => {
-		return [
-			{
-				id: "grayscale",
-				label: t("color.grayscale"),
-				value: "grayscale",
-			},
-			{
-				id: "color",
-				label: t("color.color"),
-				value: "color",
-			},
-		];
-	}, [t]);
-
-	const orientationData = useMemo(() => {
-		return [
-			{
-				id: "horizontal",
-				label: t("orientation.horizontal"),
-				value: "horizontal",
-			},
-			{
-				id: "vertical",
-				label: t("orientation.vertical"),
-				value: "vertical",
-			},
-		];
-	}, [t]);
+	const colorData = useDividerColorData();
+	const orientationData = useDividerOrientationData();
 
 	if (!data) {
 		return null;
@@ -77,19 +55,25 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 											data={colorData}
 											label={t("Color")}
 											defaultValue={"color"}
+											containerSx={{
+												width: "100%",
+											}}
 										/>
 									</ListItem>
 								)}
 								{category.hasOrientationVariants && (
 									<ListItem>
 										<ListItemIcon>
-											<C.OrientationIcon icon="exhaust" />
+											<FlipCameraAndroidIcon />
 										</ListItemIcon>
 
 										<Select
 											data={orientationData}
 											label={t("Orientation")}
 											defaultValue={"horizontal"}
+											sx={{
+												width: "100%",
+											}}
 										/>
 									</ListItem>
 								)}

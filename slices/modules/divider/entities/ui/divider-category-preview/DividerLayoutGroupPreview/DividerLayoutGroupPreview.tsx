@@ -3,13 +3,13 @@ import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 import { layoutRoute } from "@/modules/core/router/entities/lib";
-import type { LayoutGroup } from "@/modules/divider/shared/model";
+import type { DividerLayoutGroup } from "@/modules/divider/shared/model";
 import { Row } from "@/shared/ui";
 import { getBoxSize } from "@/shared/util";
 import * as C from "./DividerLayoutGroupPreview.components";
 
 type DividerLayoutGroupPreviewProps = {
-	group: LayoutGroup;
+	group: DividerLayoutGroup;
 };
 
 export function DividerLayoutGroupPreview({

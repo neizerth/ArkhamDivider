@@ -34,20 +34,35 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 					</Stack>
 				)}
 				<Stack gap={2}>
-					<Row alignItems="center" gap={2}>
-						<C.Icon title={t`Size`}>
-							<OpenInFullIcon />
-						</C.Icon>
+					<Row alignItems="center" gap={3}>
+						<Row
+							alignItems="center"
+							justifyContent="flex-end"
+							gap={1}
+							minWidth={120}
+						>
+							<Typography variant="body2">{t`Size`}</Typography>
+							<C.Icon title={t`Size`}>
+								<OpenInFullIcon />
+							</C.Icon>
+						</Row>
 						<Typography variant="body1">
-							{size}
-							{t`mm`}
+							{size} {t`mm`}
 						</Typography>
 					</Row>
 					{sleeves && (
-						<Row alignItems="center" gap={2}>
-							<C.Icon title={t`Sleeves`}>
-								<ShieldOutlinedIcon />
-							</C.Icon>
+						<Row alignItems="center" gap={3}>
+							<Row
+								alignItems="center"
+								justifyContent="flex-end"
+								gap={1}
+								minWidth={120}
+							>
+								<Typography variant="body2">{t`Sleeves`}</Typography>
+								<C.Icon title={t`Sleeves`}>
+									<ShieldOutlinedIcon />
+								</C.Icon>
+							</Row>
 							<Row gap={1}>
 								{sleeves.map((sleeve) => (
 									<Sleeve key={sleeve.id} sleeve={sleeve} />

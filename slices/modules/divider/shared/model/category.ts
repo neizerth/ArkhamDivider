@@ -1,13 +1,21 @@
 import type { Author } from "@/shared/model";
-import type { DividerLayout, LayoutGroup } from "./layout";
+import type { DividerLayout, DividerLayoutGroup } from "./layout";
+
+export type DividerCategoryType =
+	| "divider"
+	| "band"
+	| "sticker"
+	| "album"
+	| "other";
 
 export type DividerCategory = {
 	id: string;
+	type: DividerCategoryType;
 	name: string;
 	image: string;
 	authors: Author[];
 	layouts: DividerLayout[];
-	groups: LayoutGroup[];
+	groups: DividerLayoutGroup[];
 	hasGrayscale: boolean;
 	hasColor: boolean;
 	hasVertical: boolean;

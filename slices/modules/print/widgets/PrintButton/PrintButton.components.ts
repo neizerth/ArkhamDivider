@@ -11,7 +11,7 @@ export const ContextMenu = styled(Popper)`
   z-index: 1;
 `;
 
-export const HQ = styled("span")(({ theme }) => ({
+export const Badge = styled("span")(({ theme }) => ({
 	color: theme.palette.grey[600],
 	border: `1px solid ${theme.palette.grey[600]}`,
 	borderRadius: theme.shape.borderRadius,

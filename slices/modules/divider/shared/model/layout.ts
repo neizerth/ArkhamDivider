@@ -7,8 +7,11 @@ export type DividerLayoutSleeve = {
 	description?: string;
 };
 
+export type DividerLayoutType = "scenario" | "player" | "investigator";
+
 export type DividerLayout<Params = void> = {
 	id: string;
+	types: DividerLayoutType[];
 	categoryId: string;
 	groupId: string;
 	name: string;
@@ -23,7 +26,7 @@ export type DividerLayout<Params = void> = {
 	params?: Params;
 };
 
-export type LayoutGroup = {
+export type DividerLayoutGroup = {
 	id: string;
 	name: string;
 	size: BoxSize;

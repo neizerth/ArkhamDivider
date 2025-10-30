@@ -1,10 +1,16 @@
 import { largeCCG, sleeve65x100, sleeve76x88 } from "@/entities/sleeve/config";
-import type { DividerLayout } from "@/modules/divider/shared/model";
+import type {
+	DividerLayout,
+	DividerLayoutType,
+} from "@/modules/divider/shared/model";
 import { createSize } from "@/shared/util";
 import { classicCategoryId } from "./common";
 
+const types: DividerLayoutType[] = ["scenario", "player", "investigator"];
+
 const horizontalLayout: DividerLayout = {
 	id: "classic-horizontal",
+	types,
 	categoryId: classicCategoryId,
 	groupId: "classic-horizontal",
 	name: "Classic",
@@ -44,6 +50,7 @@ const horizontalHQBW: DividerLayout = {
 
 const verticalLayout: DividerLayout = {
 	id: "classic-vertical",
+	types,
 	categoryId: classicCategoryId,
 	groupId: "classic-vertical",
 	name: "63x100",

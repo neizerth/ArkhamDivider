@@ -64,10 +64,10 @@ export function PrintButton(props: PrintButtonProps) {
 										<Typography variant="body2">300 DPI</Typography>
 									</Box>
 									<MenuItem>
-										<Icon icon="file-pdf" /> &nbsp; PDF <C.HQ>HQ</C.HQ>
+										<Icon icon="file-pdf" /> &nbsp; PDF
 									</MenuItem>
 									<MenuItem>
-										<Icon icon="file-zip" /> &nbsp; TIFF
+										<Icon icon="file-zip" /> &nbsp; TIFF<C.Badge>CMYK</C.Badge>
 									</MenuItem>
 									<MenuItem>
 										<Icon icon="file-zip" /> &nbsp; PNG

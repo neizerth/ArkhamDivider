@@ -1,14 +1,16 @@
 import { groupBy, prop, propEq } from "ramda";
-import type { DividerLayout, LayoutGroup } from "../../model";
+import type { DividerLayout, DividerLayoutGroup } from "../../model";
 
-export const createLayoutGroups = (layouts: DividerLayout[]): LayoutGroup[] => {
+export const createLayoutGroups = (
+	layouts: DividerLayout[],
+): DividerLayoutGroup[] => {
 	const groups = groupBy(prop("groupId"), layouts);
 	return Object.entries(groups)
 		.filter((entry): entry is [string, DividerLayout[]] => {
 			const [, layouts] = entry;
 			return Boolean(layouts && layouts.length > 0);
 		})
-		.map(([id, layouts]): LayoutGroup => {
+		.map(([id, layouts]): DividerLayoutGroup => {
 			const [firstLayout] = layouts;
 			const { name, size } = firstLayout;
 

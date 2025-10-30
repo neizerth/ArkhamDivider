@@ -6,6 +6,7 @@ import { classicLayouts } from "./layouts";
 
 export const classicCategory: DividerCategory = createDividerCategory({
 	id: classicCategoryId,
+	type: "divider",
 	authors: [FFGCredits],
 	name: "Classic",
 	image: "/images/divider/render/classic.avif",
