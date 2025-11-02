@@ -1,10 +1,18 @@
+import classNames from 'classnames';
 import S from './NotExportable.module.scss';
 
 import { PropsWithChildren } from 'react';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectExport } from '@/shared/store/features/app/app';
 
-export const NotExportable = ({ children }: PropsWithChildren) => {
+export type NotExportableProps = PropsWithChildren & {
+  printable?: boolean;
+};
+
+export const NotExportable = ({ children, printable = true }: NotExportableProps) => {
   const isExport = useAppSelector(selectExport);
-  return <div className={S.container}>{!isExport && children}</div>;
+
+  const className = classNames(S.container, !printable && S.notPrintable);
+
+  return <div className={className}>{!isExport && children}</div>;
 };
