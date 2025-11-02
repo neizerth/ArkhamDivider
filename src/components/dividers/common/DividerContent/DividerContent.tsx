@@ -22,11 +22,9 @@ export const DividerContent = ({ children, className }: DividerContentProps) => 
 
   return (
     <div className={classNames(S.container, useBleed && 'divider', className)}>
-      <NotExportable>
-        <GuidesContent className={S.guides} {...styledProps}>
-          <Guides className={S.guidesContent} guideClassName={S.guide} />
-        </GuidesContent>
-      </NotExportable>
+      <GuidesContent className={S.guides} {...styledProps}>
+        <Guides className={S.guidesContent} guideClassName={S.guide} />
+      </GuidesContent>
       <Wrapper className={classNames(S.wrapper, !useBleed && 'divider')} {...styledProps}>
         <Content className={S.divider} {...styledProps}>
           {children}
