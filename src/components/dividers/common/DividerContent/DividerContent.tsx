@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 import { Guides } from '@/components/print/Guides/Guides';
-import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectLayout } from '@/shared/store/features/layout/layout';
 import { selectBleed } from '@/shared/store/features/print/print';
