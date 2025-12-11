@@ -18,9 +18,20 @@ export const PDFGuideBox = (props: {
   pageSize: IBox;
   dividers: IDivider[];
   layout: ILayout;
+  back?: boolean;
 }) => {
-  const { rowIndex, rowSize, colSize, colIndex, area, pageSize, cornerRadius, dividers, layout } =
-    props;
+  const {
+    rowIndex,
+    rowSize,
+    colSize,
+    colIndex,
+    area,
+    pageSize,
+    cornerRadius,
+    dividers,
+    layout,
+    back,
+  } = props;
 
   const { bleedSize } = area;
   const bleedGap = bleedSize > 0 ? toPrintSize(BLEED_GAP) : 0;
@@ -33,10 +44,12 @@ export const PDFGuideBox = (props: {
   const contentWidth = colSize * area.width;
   const contentHeight = rowSize * area.height;
 
+  const relativeRight = area.width * (colSize - colIndex - 1);
   const relativeLeft = area.width * colIndex;
   const relativeTop = area.height * rowIndex;
 
-  const left = (pageSize.width - contentWidth) / 2 + bleedSize + relativeLeft - bleedGap;
+  const relativeX = back ? relativeRight : relativeLeft;
+  const left = (pageSize.width - contentWidth) / 2 + bleedSize + relativeX - bleedGap;
   const top = (pageSize.height - contentHeight) / 2 + bleedSize + relativeTop - bleedGap;
 
   const radius = cornerRadius ? toPrintSize(DEFAULT_CORNER_RADIUS) : 0;

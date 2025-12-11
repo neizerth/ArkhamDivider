@@ -17,9 +17,10 @@ export type PDFPageGuidesProps = ViewProps & {
   cornerRadius: boolean;
   dividers: IDivider[];
   layout: ILayout;
+  back?: boolean;
 };
 
-export const PDFPageGuides = ({ rows, style, ...props }: PDFPageGuidesProps) => {
+export const PDFPageGuides = ({ rows, style, back, ...props }: PDFPageGuidesProps) => {
   const { pageSize } = props;
   const colSize = Math.max(...rows.map(({ length }) => length));
   const rowSize = rows.length;
@@ -34,6 +35,7 @@ export const PDFPageGuides = ({ rows, style, ...props }: PDFPageGuidesProps) => 
             rowSize={rowSize}
             colSize={colSize}
             items={row}
+            back={back}
             {...props}
           />
         ))}

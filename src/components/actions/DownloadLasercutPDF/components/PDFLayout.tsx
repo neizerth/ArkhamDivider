@@ -4,7 +4,7 @@ import { uniqId } from '@/shared/lib/features/util/common';
 import { toPrintSize } from '@/shared/lib/features/util/units';
 import { IDivider } from '@/shared/types/dividers';
 import { IEqualLayoutBleed, ILayout } from '@/shared/types/layouts';
-import { PageOrientation, PageSizeType, PrintPageSize } from '@/shared/types/print';
+import { PageOrientation, PageSide, PageSizeType, PrintPageSize } from '@/shared/types/print';
 import { PDFPageGuides as PageGuides } from './guides/PDFPageGuides';
 import { PDFRow as Row } from './PDFRow';
 
@@ -51,6 +51,7 @@ export const PDFLayout = ({
   cornerRadius,
   dividers,
   layout,
+  pageOrientation,
 }: PDFLayoutOptions) => {
   const items = data.map((src) => ({
     id: uniqId(),
@@ -63,7 +64,18 @@ export const PDFLayout = ({
     rowSize,
   });
 
-  const pageSize = PrintPageSize[pageSizeType];
+  const basePageBox = PrintPageSize[pageSizeType];
+
+  console.log('pageOrientation', pageOrientation);
+
+  const pageSize =
+    pageOrientation === PageOrientation.PORTRAIT
+      ? basePageBox
+      : {
+          width: basePageBox.height,
+          height: basePageBox.width,
+        };
+
   const size: [number, number] = [pageSize.width, pageSize.height];
 
   const dividerWithBleedStyle = {
@@ -76,10 +88,18 @@ export const PDFLayout = ({
     bleedSize: Math.round(toPrintSize(bleed.size)),
   };
 
+  console.log({
+    pageSize,
+    size,
+    layout,
+    guideArea,
+    bleed,
+  });
+
   return (
     <Document>
-      {pages.map(({ rows }, pageIndex) => (
-        <Page size={size} key={pageIndex} style={[styles.page]}>
+      {pages.map(({ rows, side }, pageIndex) => (
+        <Page key={pageIndex} size={size} style={[styles.page]} wrap={false}>
           <PageGuides
             area={guideArea}
             rows={rows}
@@ -88,15 +108,27 @@ export const PDFLayout = ({
             cornerRadius={cornerRadius}
             dividers={dividers}
             layout={layout}
+            back={side === PageSide.BACK}
           />
-          <View style={styles.content}>
-            {rows.map((row, rowIndex) => (
-              <Row key={rowIndex}>
-                {row.map((divider) => (
-                  <Image key={divider.id} src={divider.src} style={dividerWithBleedStyle} />
-                ))}
-              </Row>
-            ))}
+          <View
+            style={{
+              width: pageSize.width,
+              height: pageSize.height,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'white',
+            }}
+          >
+            <View style={styles.content}>
+              {rows.map((row, rowIndex) => (
+                <Row key={rowIndex} back={side === PageSide.BACK}>
+                  {row.map((divider) => (
+                    <Image key={divider.id} src={divider.src} style={dividerWithBleedStyle} />
+                  ))}
+                </Row>
+              ))}
+            </View>
           </View>
         </Page>
       ))}

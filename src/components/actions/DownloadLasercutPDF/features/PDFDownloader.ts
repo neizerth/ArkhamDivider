@@ -38,6 +38,7 @@ export class PDFDownloader extends EventEmitter {
     };
 
     const doneHandler = () => {
+      console.log('renderer: done');
       this.emit('render', this.items);
       this.items = [];
     };

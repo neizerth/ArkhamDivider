@@ -6,9 +6,10 @@ import { Style } from '../types';
 export type PDFRowProps = PropsWithChildren &
   ViewProps & {
     bleed?: IEqualLayoutBleed;
+    back?: boolean;
   };
 
-const style: Style = {
+const rowStyle: Style = {
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'nowrap',
@@ -16,7 +17,14 @@ const style: Style = {
   zIndex: -1,
 };
 
-export const PDFRow = (props: PDFRowProps) => {
-  // const styles
+const backStyle: Style = {
+  justifyContent: 'flex-end',
+};
+
+export const PDFRow = ({ back, ...props }: PDFRowProps) => {
+  const style: Style = {
+    ...rowStyle,
+    ...(back && backStyle),
+  };
   return <View {...props} style={style} />;
 };

@@ -25,7 +25,17 @@ import { PDFDownloader } from './features/PDFDownloader';
 export const DownloadLasercutPDF = () => {
   const layout = useAppSelector(selectLayout);
   const useBleed = useAppSelector(selectBleed);
-  const bleed = useBleed ? getSimilarBleed(layout.bleed) : getEmptyBleed(layout.bleed);
+
+  const bleed = useMemo(() => {
+    if (useBleed) {
+      return getSimilarBleed(layout.bleed);
+    }
+    return getEmptyBleed({
+      ...layout.bleed,
+      width: layout.width,
+      height: layout.height,
+    });
+  }, [useBleed, layout]);
 
   const doubleSidedPrint = useAppSelector(selectDoubleSided);
   const pageSizeType = useAppSelector(selectPageSizeType);
@@ -37,6 +47,7 @@ export const DownloadLasercutPDF = () => {
   const name = `Arkham Divider`;
 
   const downloader = useMemo(() => {
+    console.log('PDF: creating downloader');
     return new PDFDownloader({
       imageFormat: 'png',
       colorScheme: 'cmyk',
@@ -46,20 +57,21 @@ export const DownloadLasercutPDF = () => {
   }, [bleed]);
 
   useEffect(() => {
+    console.log('PDF: useEffect');
     if (items.length === 0) {
+      console.log('PDF: no items');
       return;
     }
+    console.log('PDF: processing items');
 
     const data = items.map((item) => {
       const blob = new Blob([item]);
       return URL.createObjectURL(blob);
     });
 
-    console.log('data', data);
-
     const { rowsPerPage, itemsPerPage, pageOrientation } = getLayoutGrid({
       layout,
-      bleed: true,
+      bleed: bleed.size > 0,
       pageSizeType,
     });
 
@@ -107,13 +119,16 @@ export const DownloadLasercutPDF = () => {
 
         // Clean up PDF object even on error
         destroyObject(asPdf);
-      });
+      })
+      .finally(() => {
+        container = null;
 
-    container = null;
-    setItems([]);
+        setItems([]);
+      });
   }, [items, doubleSidedPrint, pageSizeType, bleed, cornerRadius, dividers, layout]);
 
   useEffect(() => {
+    console.log('PDF: useEffect downloader');
     const handleRender = (items: BlobPart[]) => {
       console.log('handleRender', items);
       setItems(items);
@@ -122,10 +137,10 @@ export const DownloadLasercutPDF = () => {
     downloader.on('render', handleRender);
 
     return () => {
+      console.log('PDF: unmounting');
       downloader.off('render', handleRender);
-      // Clean up downloader when component unmounts
-      downloader.destroy();
-      // Clean up VIPS memory
+      // Do not destroy renderer here: StrictMode double-mount unhooks core
+      // renderer listeners, so keep it alive and only clear VIPS memory.
       cleanupVips();
     };
   }, [downloader]);

@@ -9,6 +9,7 @@ export const PDFGuideRow = ({
   ...props
 }: {
   items: unknown[];
+  back?: boolean;
   area: PDFGuideArea;
   rowIndex: number;
   colSize: number;

@@ -4,6 +4,7 @@ import { ILayoutBleed } from '@/shared/types/layouts';
 import { RenderResponse } from '@/shared/types/render';
 import { getVips } from '../image/vips';
 import { closeBlob, forceGarbageCollection } from '../memory/memoryUtils';
+import { delay } from '../util/common';
 
 export type GetDividerImageOptions = {
   node: HTMLElement;
@@ -58,14 +59,16 @@ export const getDividerImage = async ({
 
   const filename = name + ext;
 
-  // Clean up VIPS image
-  image.delete();
+  delay(100).then(() => {
+    // Clean up VIPS image
+    // image.delete();
 
-  // Clean up blob to free memory
-  closeBlob(blob);
+    // Clean up blob to free memory
+    closeBlob(blob);
 
-  // Force garbage collection if available
-  forceGarbageCollection();
+    // Force garbage collection if available
+    forceGarbageCollection();
+  });
 
   return {
     filename,
