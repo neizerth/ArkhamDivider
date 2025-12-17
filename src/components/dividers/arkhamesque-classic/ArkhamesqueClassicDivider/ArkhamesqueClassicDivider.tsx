@@ -145,7 +145,7 @@ export const ArkhamesqueClassicDivider = (props: ArkhamesqueClassicDividerProps)
                   <div className={S.specialHandler} onClick={selectSpecialIcon} />
                 )}
 
-                <NotExportable>
+                <NotExportable printable={false}>
                   <DividerMenu id={id} className={S.menu} />
                 </NotExportable>
               </div>
