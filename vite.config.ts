@@ -34,10 +34,14 @@ export default defineConfig({
     vips(),
     svgr(),
     react(),
-    radar({
-      enableDev: false,
-      metrica,
-    }),
+    ...(metrica
+      ? [
+          radar({
+            enableDev: false,
+            metrica,
+          }),
+        ]
+      : []),
   ],
   base: process.env.APP_BASE_PATH,
   build: {
@@ -52,7 +56,7 @@ export default defineConfig({
   },
   server: {
     headers: {
-      'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Embedder-Policy': 'credentialless',
       'Cross-Origin-Opener-Policy': 'same-origin',
     },
   },
