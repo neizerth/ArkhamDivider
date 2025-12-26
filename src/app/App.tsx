@@ -24,6 +24,7 @@ import { loadAppData } from '@/shared/store/features/app/app';
 import { selectDividers } from '@/shared/store/features/dividers/dividers';
 
 import './index.scss';
+import { Announce } from '@/components/layout/Announce/Announce';
 
 const App = () => {
   return (
@@ -74,6 +75,7 @@ const AppLayout = () => {
         <Col className={S.container}>
           <AppSettings />
           <Col className={S.content}>
+            <Announce />
             <Outlet />
             <LayoutMenu />
             <div className={S.addDividers}>
