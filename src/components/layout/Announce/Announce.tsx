@@ -11,7 +11,7 @@ export const Announce = () => {
   return (
     <div className={S.container}>
       <NotExportable>
-        <Row className={S.announce}>
+        <Row className={S.announce} wrap>
           {t('Digital Investigator Board')}: <br />
           <a
             href='https://play.google.com/store/apps/details?id=com.arkhaminvestigator'
