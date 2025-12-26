@@ -27,6 +27,7 @@ export const Announce = () => {
           >
             <img src={'/images/ai.ios.svg'} alt='Arkham Investigator Board' height={30} />
           </a>
+          <a href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>{t('iOS Unlock')}</a>
         </Row>
         <ArkhamCardsRuAnnounce />
       </NotExportable>
