@@ -4,6 +4,8 @@ import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectLanguage } from '@/shared/store/features/language/language';
 import { Row } from '@/components/ui/grid/Row/Row';
 import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
+import { Col } from '@/components/ui/grid/Col/Col';
+import classNames from 'classnames';
 
 export const Announce = () => {
   const { t } = useTranslation();
@@ -11,7 +13,7 @@ export const Announce = () => {
   return (
     <div className={S.container}>
       <NotExportable>
-        <Row className={S.announce} wrap>
+        <Row className={classNames(S.announce, S.investigator)} wrap>
           {t('Digital Investigator Board')}: <br />
           <a
             href='https://play.google.com/store/apps/details?id=com.arkhaminvestigator'
@@ -20,14 +22,16 @@ export const Announce = () => {
           >
             <img src={'/images/ai.android.svg'} alt='Arkham Investigator Board' height={30} />
           </a>
-          <a
-            href='https://apps.apple.com/us/app/ah-investigator/id6753330970'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <img src={'/images/ai.ios.svg'} alt='Arkham Investigator Board' height={30} />
-          </a>
-          <a href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>{t('iOS Unlock')}</a>
+          <Col className={S.ios}>
+            <a
+              href='https://apps.apple.com/us/app/ah-investigator/id6753330970'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <img src={'/images/ai.ios.svg'} alt='Arkham Investigator Board' height={30} />
+            </a>
+            <a href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>{t('iOS Unlock')}</a>
+          </Col>
         </Row>
         <ArkhamCardsRuAnnounce />
       </NotExportable>
