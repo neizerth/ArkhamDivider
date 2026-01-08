@@ -31,36 +31,20 @@ jobs:
           APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
           APP_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
 
-      - name: 📂 Setup SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: 📂 Display Public Key
+      - name: 📂 Setup SSH Key
         run: |
-          echo "=== Public Key (must be in server's ~/.ssh/authorized_keys) ==="
-          PUBLIC_KEY=$(ssh-add -L | head -n 1)
-          echo "$PUBLIC_KEY"
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keygen -y -f ~/.ssh/id_ed25519 > ~/.ssh/id_ed25519.pub
           echo ""
-          echo "=== Copy this EXACT line to server ==="
-          echo "$PUBLIC_KEY" | tr -d '\n'
-          echo ""
-          echo ""
-          echo "=== Commands to run on server ==="
-          echo "mkdir -p ~/.ssh && chmod 700 ~/.ssh"
-          echo "echo '$PUBLIC_KEY' >> ~/.ssh/authorized_keys"
-          echo "chmod 600 ~/.ssh/authorized_keys"
-          echo "chown -R \$USER:\$USER ~/.ssh"
-          echo ""
-          echo "=== Verify on server ==="
-          echo "cat ~/.ssh/authorized_keys | grep 'github-actions-arkham-divider'"
-          echo ""
-          echo "=== Key Fingerprint ==="
-          ssh-add -l || echo "No keys in agent"
+          echo "=== Public Key (for verification) ==="
+          cat ~/.ssh/id_ed25519.pub
 
       - name: 📂 Sync files via rsync
         run: |
           rsync -avz --delete \
-            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes" \
             ./dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}
