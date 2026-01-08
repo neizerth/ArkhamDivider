@@ -38,11 +38,32 @@ jobs:
 
       - name: 📂 Display Public Key
         run: |
-          echo "=== Public Key (add this to server's ~/.ssh/authorized_keys) ==="
+          echo "=== Public Key (must be in server's ~/.ssh/authorized_keys) ==="
           ssh-add -L || echo "No keys in agent"
           echo ""
           echo "=== Key Fingerprint ==="
           ssh-add -l || echo "No keys in agent"
+
+      - name: 📂 Verify SSH Connection
+        run: |
+          echo "Testing SSH connection to ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PORT || 22 }}"
+          ssh -Tvvv -p ${{ secrets.SSH_PORT || 22 }} \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
+            -o BatchMode=yes \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "echo 'Connection successful'" || {
+            echo ""
+            echo "❌ SSH connection failed!"
+            echo ""
+            echo "Please verify on the server:"
+            echo "1. Key is in ~/.ssh/authorized_keys (for user: ${{ secrets.SSH_USER }})"
+            echo "2. File permissions: chmod 600 ~/.ssh/authorized_keys"
+            echo "3. Directory permissions: chmod 700 ~/.ssh"
+            echo "4. SELinux context (if enabled): restorecon -R ~/.ssh"
+            echo ""
+            exit 1
+          }
 
       - name: 📂 Sync files via rsync
         run: |
