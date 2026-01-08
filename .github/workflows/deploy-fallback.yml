@@ -35,20 +35,18 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          log-public-key: true
 
-      - name: 📂 Test SSH Connection
+      - name: 📂 Display Public Key
         run: |
-          ssh -v -p ${{ secrets.SSH_PORT || 22 }} \
-            -o StrictHostKeyChecking=no \
-            -o UserKnownHostsFile=/dev/null \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "echo 'SSH connection successful'"
-        continue-on-error: true
+          echo "=== Public Key (add this to server's ~/.ssh/authorized_keys) ==="
+          ssh-add -L || echo "No keys in agent"
+          echo ""
+          echo "=== Key Fingerprint ==="
+          ssh-add -l || echo "No keys in agent"
 
       - name: 📂 Sync files via rsync
         run: |
           rsync -avz --delete \
-            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -v" \
+            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             ./dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}
