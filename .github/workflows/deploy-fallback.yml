@@ -1,5 +1,5 @@
-  # Simple workflow for deploying static content to GitHub Pages
-name: Deploy Fallback Content via FTP
+  # Simple workflow for deploying static content via rsync/SSH
+name: Deploy Fallback Content via rsync
 
 on:
   # Runs on pushes targeting the default branch
@@ -12,9 +12,6 @@ on:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,11 +29,14 @@ jobs:
           APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
           APP_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      - name: 📂 Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          local-dir: ./dist/
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: 📂 Sync files via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no" \
+            ./dist/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}
