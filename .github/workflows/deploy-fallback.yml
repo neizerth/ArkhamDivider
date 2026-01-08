@@ -13,9 +13,8 @@ jobs:
   # Single deploy job since we're just deploying
   deploy:
     runs-on: ubuntu-latest
-    # Uncomment if SSH_PRIVATE_KEY secret is in environment "github-pages":
-    # environment:
-    #   name: github-pages
+    environment:
+      name: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,29 +31,24 @@ jobs:
           APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
           APP_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
 
-      - name: 📂 Check SSH Key Secret
-        run: |
-          if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
-            echo "❌ ERROR: SSH_PRIVATE_KEY secret not found or empty"
-            echo ""
-            echo "Check:"
-            echo "1. Settings → Secrets and variables → Actions"
-            echo "2. Make sure the secret is named exactly SSH_PRIVATE_KEY"
-            echo "3. If secret is in environment, add environment to job"
-            exit 1
-          else
-            echo "✅ SSH_PRIVATE_KEY secret found"
-          fi
-
       - name: 📂 Setup SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           log-public-key: true
 
+      - name: 📂 Test SSH Connection
+        run: |
+          ssh -v -p ${{ secrets.SSH_PORT || 22 }} \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "echo 'SSH connection successful'"
+        continue-on-error: true
+
       - name: 📂 Sync files via rsync
         run: |
           rsync -avz --delete \
-            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no" \
+            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -v" \
             ./dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}
