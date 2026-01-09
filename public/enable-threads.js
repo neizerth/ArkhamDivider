@@ -32,7 +32,7 @@ if (typeof window === 'undefined') {
 
     const r = await fetch(request).catch((e) => console.error(e));
 
-    if (r.status === 0) {
+    if (!r || r.status === 0) {
       return r;
     }
 
