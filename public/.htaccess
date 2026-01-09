@@ -1,2 +1,3 @@
 Header set Cross-Origin-Opener-Policy "same-origin"
 Header set Cross-Origin-Embedder-Policy "require-corp"
+AddType application/wasm .wasm
