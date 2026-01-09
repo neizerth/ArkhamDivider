@@ -41,6 +41,11 @@ export function vips(): Plugin {
       }
     },
     closeBundle() {
+      // Copy WASM files
+      fs.copyFileSync(
+        path.join(__dirname, 'node_modules/wasm-vips/lib/vips.wasm'),
+        path.join(outDir, 'assets/vips.wasm')
+      );
       fs.copyFileSync(
         path.join(__dirname, 'node_modules/wasm-vips/lib/vips-jxl.wasm'),
         path.join(outDir, 'assets/vips-jxl.wasm')
@@ -52,6 +57,11 @@ export function vips(): Plugin {
       fs.copyFileSync(
         path.join(__dirname, 'node_modules/wasm-vips/lib/vips-resvg.wasm'),
         path.join(outDir, 'assets/vips-resvg.wasm')
+      );
+      // Copy JS file (needed for wasm-vips to work)
+      fs.copyFileSync(
+        path.join(__dirname, 'node_modules/wasm-vips/lib/vips-es6.js'),
+        path.join(outDir, 'assets/vips-es6.js')
       );
     },
   };
