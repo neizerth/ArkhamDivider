@@ -9,20 +9,30 @@
 .announce {
   padding: 10px;
 
-
   border: 1px solid #e7e7e7;
   border-radius: 5px;
 }
 
 .investigator {
   display: flex;
+  align-items: center;
   gap: 10px;
+  padding-bottom: 30px;
 }
 
 .ios {
+  position: relative;
   text-align: center;
   justify-content: center;
   gap: 5px;
+}
+
+.unlock {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  color: #000;
 }
 
 .link {

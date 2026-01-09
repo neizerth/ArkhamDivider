@@ -30,7 +30,7 @@ export const Announce = () => {
             >
               <img src={'/images/ai.ios.svg'} alt='Arkham Investigator Board' height={30} />
             </a>
-            <a className={S.link} href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>
+            <a className={S.unlock} href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>
               {t('iOS Unlock')}
             </a>
           </Col>
