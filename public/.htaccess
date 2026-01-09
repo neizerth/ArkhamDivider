@@ -1,3 +1,8 @@
-Header set Cross-Origin-Opener-Policy "same-origin"
-Header set Cross-Origin-Embedder-Policy "require-corp"
+# Cross-Origin Embedder Policy and Cross-Origin Opener Policy for SharedArrayBuffer support
+<IfModule mod_headers.c>
+  Header set Cross-Origin-Opener-Policy "same-origin"
+  Header set Cross-Origin-Embedder-Policy "credentialless"
+</IfModule>
+
+# WASM MIME type
 AddType application/wasm .wasm
