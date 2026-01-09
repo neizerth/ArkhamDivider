@@ -20,19 +20,29 @@ export type DividerProps = PropsWithClassName &
     rowIndex: number;
   };
 
+const DividerMap: Record<string, React.ComponentType<DividerProps>> = {
+  classic: ClassicDivider,
+  invocation2018: Invocation2018Divider,
+  sarnetsky: SarnetskyDivider,
+  'arkham-deco': ArkhamDecoDivider,
+  '3mm': ArkhamStarter3mmDivider,
+  'arkhamesque-classic': ArkhamesqueClassicDivider,
+  vintage: VintageDivider,
+  'investigator-tokens': InvestigatorTokensDivider,
+  'sarnetsky-band': SarnetskyBandDivider,
+};
+
 export const Divider = (props: DividerProps) => {
   const { categoryId } = useAppSelector(selectLayout);
+  const DividerComponent = DividerMap[categoryId];
+
+  if (!DividerComponent) {
+    return null;
+  }
+
   return (
     <>
-      {categoryId === 'classic' && <ClassicDivider {...props} />}
-      {categoryId === 'invocation2018' && <Invocation2018Divider {...props} />}
-      {categoryId === 'sarnetsky' && <SarnetskyDivider {...props} />}
-      {categoryId === 'arkham-deco' && <ArkhamDecoDivider {...props} />}
-      {categoryId === '3mm' && <ArkhamStarter3mmDivider {...props} />}
-      {categoryId === 'arkhamesque-classic' && <ArkhamesqueClassicDivider {...props} />}
-      {categoryId === 'vintage' && <VintageDivider {...props} />}
-      {categoryId === 'investigator-tokens' && <InvestigatorTokensDivider {...props} />}
-      {categoryId === 'sarnetsky-band' && <SarnetskyBandDivider {...props} />}
+      {DividerComponent && <DividerComponent {...props} />}
     </>
   );
 };
