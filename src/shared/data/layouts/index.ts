@@ -8,6 +8,7 @@ import { invocation2018LayoutCategory, invocation2018Layouts } from './invocatio
 import { sarnetskyLayoutCategory, sarnetskyLayouts } from './sarnetsky';
 import { vintageLayoutCategory, vintageLayouts } from './vintage';
 import { sarnetskyBandLayoutCategory, sarnetskyBandLayouts } from './sarnetsky-band';
+import { rynoLayoutCategory, rynoLayouts } from './ryno';
 
 export const layouts: ILayout[] = [
   ...classicLayouts,
@@ -18,6 +19,7 @@ export const layouts: ILayout[] = [
   ...vintageLayouts,
   ...sarnetskyBandLayouts,
   ...investigatorTokensLayouts,
+  ...rynoLayouts,
   arkhamStarter3mmLayout,
 ];
 
@@ -28,6 +30,7 @@ export const layoutCategories: ILayoutCategory[] = [
   sarnetskyLayoutCategory,
   sarnetskyBandLayoutCategory,
   arkhamDecoCategory,
+  rynoLayoutCategory,
   arkhamStarter3mmLayoutCategory,
   vintageLayoutCategory,
   investigatorTokensLayoutCategory,

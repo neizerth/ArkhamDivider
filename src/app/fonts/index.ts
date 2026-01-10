@@ -12,3 +12,4 @@ import './SanCn';
 
 import './Teutonic';
 import './ZhenShuai';
+import './AGaramondPro';

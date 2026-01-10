@@ -18,6 +18,7 @@ export type DividerTextProps = PropsWithClassName &
     iconClassName?: string;
     strokeClassName?: string;
     wrapperClassName?: string;
+    clearClassName?: string;
     lineClassName?: (count: number) => string;
 
     fixedFontSize?: boolean;
@@ -50,6 +51,7 @@ export const DividerText = ({
   className,
   wrapperClassName,
   inputClassName,
+  clearClassName,
   minFontSize,
   maxFontSize,
   clearPosition = 'inside',
@@ -146,7 +148,7 @@ export const DividerText = ({
         )}
       </div>
       <button
-        className={classNames(S.clear, S[`clear_${clearPosition}`])}
+        className={classNames(S.clear, S[`clear_${clearPosition}`], clearClassName)}
         onClick={clear}
         type='button'
       >

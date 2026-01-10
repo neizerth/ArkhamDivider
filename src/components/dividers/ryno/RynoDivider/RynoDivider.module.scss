@@ -1,0 +1,238 @@
+.container {
+  position: relative;
+}
+.horizontal {
+  .largeIcon {
+    top: 28mm;
+  }
+}
+
+.assets {
+  position: absolute;
+  height: 100%;
+  top: -3mm;
+  left: -3mm;
+  right: -3mm;
+  bottom: -3mm;
+}
+
+.vertical {
+  .assets {
+    right: -3.5mm;
+  }
+}
+
+.assetsContainer {
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bleed .assets {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+.header {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+}
+
+.body {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  left: 0mm;
+  right: 0mm;
+  bottom: -6mm;
+}
+
+.bleed .body {
+  bottom: 0mm;
+}
+
+.corner {
+  position: absolute;
+  z-index: 4;
+  height: 30mm;
+}
+
+.icon {
+  cursor: pointer;
+  position: absolute;
+  z-index: 3;
+  left: 4.2mm;
+  top: 3.8mm;
+  font-size: 8.1mm;
+  width: 8.9mm;
+  height: 8.9mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+.largeIcon {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 43mm;
+  color: black;
+  opacity: 0.04;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.02;
+  }
+}
+
+.vertical, .verticalXL {
+  .largeIcon {
+    top: 36mm;
+    font-size: 36mm;
+  }
+}
+
+.campaignIcon {
+  position: absolute;
+  z-index: 3;
+  right: 5.2mm;
+  top: 5.4mm;
+  font-size: 5.6mm;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.storyTitle {
+  font-family: "AGaramondPro", "Arno Pro", serif;
+  font-weight: bold;
+  font-size: 3mm;
+  line-height: 1;
+  position: absolute;
+  z-index: 3;
+  left: 15.3mm;
+  right: 14mm;
+  top: 4.5mm;
+  height: 1em;
+  color: white;
+  filter: drop-shadow(0 8px 13px rgba(0, 0, 0, 0.47));
+}
+
+.title {
+  font-family: 'Arkhamic', "Teutonic", sans-serif;
+  font-size: 4mm;
+  filter: drop-shadow(0 8px 13px rgba(0, 0, 0, 0.47));
+  font-size: 5mm;
+  position: absolute;
+  z-index: 3;
+  left: 15.3mm;
+  right: 14mm;
+  top: 6mm;
+  height: 1em;
+  color: white;
+  &_withStory {
+    top: 7.7mm;
+  }
+}
+
+.storyTitleInput, .titleInput {
+  &:hover, &:focus {
+    outline-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.titleClear {
+  color: white;
+  right: 0em;
+}
+
+.factionIcon {
+  position: absolute;
+  z-index: 3;
+  left: 5.2mm;
+  top: 4.7mm;
+  height: 8mm;
+  width: 8mm;
+  object-fit: contain;
+}
+
+.xp {
+  position: absolute;
+  z-index: 3;
+  right: 4.5mm;
+  top: 4.2mm;
+  width: 8.5mm;
+  height: 8.5mm;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.xpInner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.xpValue {
+  font-family: 'Arkhamic', sans-serif;
+  position: absolute;
+  z-index: 3;
+  top: 0.3mm;
+  left: 1.4mm;
+  width: 5.7mm;
+  height: 5.7mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3mm;
+  line-height: 1;
+  color: white;
+  text-shadow: 0 0 1mm rgba(0, 0, 0, 0.4);
+}
+
+.xpLevels {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 1mm;
+  font-size: 7mm;
+}
+
+.lightLevel {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  bottom: 0;
+}
+
+.maxLevel {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #646464;
+  bottom: 0;
+}
