@@ -32,7 +32,7 @@ if (typeof window === 'undefined') {
 
     const r = await fetch(request).catch((e) => console.error(e));
 
-    if (r.status === 0) {
+    if (!r || r.status === 0) {
       return r;
     }
 
@@ -52,24 +52,36 @@ if (typeof window === 'undefined') {
   });
 } else {
   (async () => {
-    if (window.crossOriginIsolated !== false) return;
+    // Always try to register service worker to add COEP headers to assets
+    if (!('serviceWorker' in navigator)) {
+      console.warn('Service Workers are not supported in this browser');
+      return;
+    }
 
-    const registration = await navigator.serviceWorker
-      .register(window.document.currentScript.src)
-      .catch((e) => console.error('COOP/COEP Service Worker failed to register:', e));
-    if (registration) {
-      console.log('COOP/COEP Service Worker registered', registration.scope);
+    try {
+      const registration = await navigator.serviceWorker
+        .register(window.document.currentScript.src)
+        .catch((e) => {
+          console.error('COOP/COEP Service Worker failed to register:', e);
+          return null;
+        });
+      
+      if (registration) {
+        console.log('COOP/COEP Service Worker registered', registration.scope);
 
-      registration.addEventListener('updatefound', () => {
-        console.log('Reloading page to make use of updated COOP/COEP Service Worker.');
-        window.location.reload();
-      });
+        registration.addEventListener('updatefound', () => {
+          console.log('Reloading page to make use of updated COOP/COEP Service Worker.');
+          window.location.reload();
+        });
 
-      // If the registration is active, but it's not controlling the page
-      if (registration.active && !navigator.serviceWorker.controller) {
-        console.log('Reloading page to make use of COOP/COEP Service Worker.');
-        window.location.reload();
+        // If the registration is active, but it's not controlling the page
+        if (registration.active && !navigator.serviceWorker.controller) {
+          console.log('Reloading page to make use of COOP/COEP Service Worker.');
+          window.location.reload();
+        }
       }
+    } catch (e) {
+      console.error('Error registering service worker:', e);
     }
   })();
 }
