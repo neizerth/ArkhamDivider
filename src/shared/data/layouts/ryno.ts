@@ -93,7 +93,6 @@ export const rynoLayoutCategory: ILayoutCategory = {
   id: 'ryno',
   name: 'Ryno',
   info: 'Ryno Style Dividers',
-  unlisted: true,
   author: {
     name: 'Ryno',
     url: 'https://boardgamegeek.com/profile/ryno80',
