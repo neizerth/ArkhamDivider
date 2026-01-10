@@ -106,7 +106,7 @@ export const rynoLayoutCategory: ILayoutCategory = {
       {
         id: 'etsy',
         icon: 'link',
-        url: 'boardGameGoodies.shop',
+        url: 'https://boardGameGoodies.shop',
       },
       {
         id: 'facebook',
