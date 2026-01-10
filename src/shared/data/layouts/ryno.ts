@@ -116,7 +116,7 @@ export const rynoLayoutCategory: ILayoutCategory = {
       {
         id: 'email',
         icon: 'mail',
-        url: 'Rmessick@gmail.com',
+        url: 'mailto:Rmessick@gmail.com',
       }
     ],
   },
