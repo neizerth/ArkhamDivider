@@ -7,19 +7,23 @@ import { useState } from 'react';
 import { useStoryTranslation } from '@/shared/lib/hooks/useStoryTranslation';
 import { images } from './images';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
-import { selectBleed } from '@/shared/store/features/print/print';
+import { selectBleed, selectCornerRadius } from '@/shared/store/features/print/print';
 import { Icon } from '@/components/ui/icons/Icon/Icon';
 import { CircleIcon } from '@/components/ui/icons/CircleIcon/CircleIcon';
 import { useIconSelect } from '@/shared/lib/hooks/useIconSelect';
 import { selectLayout } from '@/shared/store/features/layout/layout';
 import { getHeaderFilter } from './getHeaderFilter';
 import { DividerType } from '@/shared/types/dividers';
+import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExportable';
+import { DividerCornerRadius } from '../../common/DividerCornerRadius/DividerCornerRadius';
+import { DividerMenu } from '../../common/DividerMenu/DividerMenu';
 
 type RynoDividerType = 'horizontal' | 'vertical' | 'verticalXL';
 
 export const RynoDivider = (props: DividerProps) => {
   const bleed = useAppSelector(selectBleed);
-  const { name = '', story } = props;
+  const cornerRadius = useAppSelector(selectCornerRadius);
+  const { name = '', story, id } = props;
   const { t } = useStoryTranslation(story);
   const layout = useAppSelector(selectLayout);
 
@@ -148,6 +152,12 @@ export const RynoDivider = (props: DividerProps) => {
               }
             </div>
           </div>
+        )}
+        {cornerRadius && (
+          <NotExportable>
+            <DividerMenu id={id} className={S.menu} />
+            <DividerCornerRadius className={S.cornerRadius} />
+          </NotExportable>
         )}
       </DividerContent>
     </div>

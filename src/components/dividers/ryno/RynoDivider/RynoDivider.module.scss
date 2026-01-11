@@ -239,3 +239,19 @@
   color: #646464;
   bottom: 0;
 }
+
+.cornerRadius {
+  position: absolute;
+  z-index: 4;
+  border-color: red;
+}
+
+.menu {
+  position: absolute;
+  z-index: 4;
+  border-color: red;
+  top: 18mm;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 10px;
+}
