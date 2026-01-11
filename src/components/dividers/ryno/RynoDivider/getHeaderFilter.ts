@@ -37,7 +37,7 @@ const factions: Record<string, number> = {
   guardian: 214,
   seeker: 37,
   rogue: 110,
-  neutral: 59,
+  neutral: Infinity,
   mystic: 264,
   survivor: 359,
   multiclass: 49,
