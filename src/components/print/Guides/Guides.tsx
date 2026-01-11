@@ -5,6 +5,8 @@ import { PropsWithClassName } from '@/shared/types/util';
 import S from './Guides.module.scss';
 import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectCropMarks } from '@/shared/store/features/print/print';
+import { selectExport } from '@/shared/store/features/app/app';
+
 
 const DEFAULT_GUIDE_TYPE = 'cross';
 
@@ -28,6 +30,12 @@ export const Guides = ({
   bottomRight = DEFAULT_GUIDE_TYPE,
 }: GuidesProps) => {
   const show = useAppSelector(selectCropMarks);
+  const isExport = useAppSelector(selectExport);
+
+  if (isExport) {
+    return null;
+  }
+
   return (
     <div className={classNames(S.container, className)}>
       {topLeft && (
