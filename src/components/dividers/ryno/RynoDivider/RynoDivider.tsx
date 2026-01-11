@@ -28,7 +28,7 @@ export const RynoDivider = (props: DividerProps) => {
   });
 
   const [largeIcon, selectLargeIcon] = useIconSelect({
-    defaultIcon: props.campaignIcon,
+    defaultIcon: props.campaignIcon ?? props.faction,
   });
 
   const [campaignIcon, selectCampaignIcon] = useIconSelect({
