@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   content: {
     position: 'relative',
-    zIndex: -1,
+    zIndex: 1,
   },
   guides: {
     position: 'absolute',
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     top: 0,
     width: '100%',
     height: '100%',
+    zIndex: -1,
   },
 });
 
@@ -99,7 +100,7 @@ export const PDFLayout = ({
   return (
     <Document>
       {pages.map(({ rows, side }, pageIndex) => (
-        <Page key={pageIndex} size={size} style={[styles.page]} wrap={false}>
+        <Page key={pageIndex} size={size} style={[styles.page, { backgroundColor: 'white' }]} wrap={false}>
           <PageGuides
             area={guideArea}
             rows={rows}
@@ -117,12 +118,13 @@ export const PDFLayout = ({
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: 'white',
+              position: 'relative',
+              zIndex: 1,
             }}
           >
             <View style={styles.content}>
               {rows.map((row, rowIndex) => (
-                <Row key={rowIndex} back={side === PageSide.BACK}>
+                <Row key={rowIndex} back={side === PageSide.BACK} style={{ zIndex: 1, position: 'relative' }}>
                   {row.map((divider) => (
                     <Image key={divider.id} src={divider.src} style={dividerWithBleedStyle} />
                   ))}
