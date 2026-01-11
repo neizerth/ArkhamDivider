@@ -29,6 +29,7 @@ export const AddInvestigatorDividers = () => {
     dispatch(
       addInvestigatorDividers({
         investigators,
+        story,
       })
     );
   };

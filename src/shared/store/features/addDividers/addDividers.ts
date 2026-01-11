@@ -45,6 +45,7 @@ export type AddStoryDividersOptions = {
 export type AddInvestigatorDividersOptions = {
   doubleSided: boolean;
   duplicateCodes: Record<string, number>;
+  includeStoryIcon: boolean;
 };
 
 export type AddInvestigatorDividers = Partial<AddInvestigatorDividersOptions> & {
@@ -52,7 +53,7 @@ export type AddInvestigatorDividers = Partial<AddInvestigatorDividersOptions> & 
 };
 
 export const addInvestigatorDividers =
-  (options: AddInvestigatorDividers): ActionCreator<AppThunk> =>
+  (options: AddInvestigatorDividers & { story: IStory }): ActionCreator<AppThunk> =>
   (dispatch, getState) => {
     const state = getState();
     const layout = selectLayout(state);
@@ -60,6 +61,7 @@ export const addInvestigatorDividers =
       ...options,
       doubleSided: layout.investigatorOptions?.doubleSided || options.doubleSided,
       duplicateCodes: layout.investigatorOptions?.duplicateCodes || options.duplicateCodes,
+      includeStoryIcon: layout.investigatorOptions?.includeStoryIcon || options.includeStoryIcon,
     });
     return dispatch(addDividers(dividers));
   };

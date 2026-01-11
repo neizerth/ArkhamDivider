@@ -14,6 +14,9 @@ export const common = {
   playerOptions: {
     storySupported: true,
   },
+  investigatorOptions: {
+    includeStoryIcon: true,
+  },
 };
 
 const bleedSize = {
@@ -53,7 +56,6 @@ export const verticalXL = {
   },
 };
 
-
 export const rynoLayouts: ILayout[] = [
   {
     ...common,
@@ -64,7 +66,7 @@ export const rynoLayouts: ILayout[] = [
     isDefault: true,
     customParams: {
       type: 'horizontal',
-    }
+    },
   },
   {
     ...common,
@@ -75,7 +77,7 @@ export const rynoLayouts: ILayout[] = [
     color: true,
     customParams: {
       type: 'vertical',
-    }
+    },
   },
   {
     ...common,
@@ -85,7 +87,7 @@ export const rynoLayouts: ILayout[] = [
     orientation: LayoutOrientation.VERTICAL,
     customParams: {
       type: 'verticalXL',
-    }
+    },
   },
 ];
 
@@ -117,7 +119,7 @@ export const rynoLayoutCategory: ILayoutCategory = {
         id: 'email',
         icon: 'mail',
         url: 'mailto:Rmessick@gmail.com',
-      }
+      },
     ],
   },
 };

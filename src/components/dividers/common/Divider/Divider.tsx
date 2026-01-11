@@ -21,7 +21,6 @@ export type DividerProps = PropsWithClassName &
     rowIndex: number;
   };
 
-
 export const Divider = (props: DividerProps) => {
   const { categoryId } = useAppSelector(selectLayout);
 

@@ -25,8 +25,9 @@ export const ClassicDividerSkillXPCost = ({
             className={classNames(S.skillBackground)}
             scaleType={false}
           />
-          {level > 0 && (<Icon
-            icon={`s_level_${level}`}
+          {level > 0 && (
+            <Icon
+              icon={`s_level_${level}`}
               className={classNames(S.lightLevel)}
               scaleType={false}
             />
