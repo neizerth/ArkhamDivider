@@ -36,14 +36,15 @@
   position: relative;
   text-align: center;
   justify-content: center;
+  text-align: center;
   gap: 5px;
 }
 
 .unlock {
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   color: #000;
 }
 
