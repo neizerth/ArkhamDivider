@@ -29,9 +29,10 @@ import { getInvestigatorLetter } from './features/getInvestigatorLetter';
 import { getTabColor } from './features/getTabColor';
 import { getTopTitle } from './features/getTopTitle';
 import { getNextTabPosition, getPrevTabPosition, getTabPosition } from './features/tabPosition';
-import bodyBackground from './images/body.png';
+import bodyStandardBackground from './images/body.png';
 import iconBackground from './images/icon-background.png';
 import tabBackground from './images/tab.png';
+import bodyLargeBackground from './images/body_large.png';
 import S from './VintageDivider.module.scss';
 
 export type VintageDividerProps = DividerProps;
@@ -43,6 +44,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
   const { customParams = {} } = useAppSelector(selectLayout);
   const size = (customParams?.size as string) || 'medium';
   const isLarge = size === 'large';
+  const bodyBackground = isLarge ? bodyLargeBackground : bodyStandardBackground;
   // const currentPosition = tabPositions[backId || id];
 
   const { t } = useStoryTranslation(props.story);
@@ -164,7 +166,6 @@ export const VintageDivider = (props: VintageDividerProps) => {
           </div>
         </div>
         {bleed && <div className={S.bodyBleed} />}
-        {isLarge && <div className={S.bottomBacground} />}
         <NotExportable>
           {tabPosition !== 'left' && (
             <Guides
