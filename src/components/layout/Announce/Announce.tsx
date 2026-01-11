@@ -15,25 +15,27 @@ export const Announce = () => {
       <NotExportable>
         <Row className={classNames(S.announce, S.investigator)} wrap>
           {t('Digital Investigator Board')}: <br />
-          <a
-            href='https://play.google.com/store/apps/details?id=com.arkhaminvestigator'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <img src={'/images/ai.android.svg'} alt='Arkham Investigator Board' height={30} />
-          </a>
-          <Col className={S.ios}>
+          <Row className={S.download}>
             <a
-              href='https://apps.apple.com/us/app/ah-investigator/id6753330970'
+              href='https://play.google.com/store/apps/details?id=com.arkhaminvestigator'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <img src={'/images/ai.ios.svg'} alt='Arkham Investigator Board' height={30} />
+              <img src={'/images/ai.android.svg'} alt='Arkham Investigator Board' height={30} />
             </a>
-            <a className={S.unlock} href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>
-              {t('iOS Unlock')}
-            </a>
-          </Col>
+            <Col className={S.ios}>
+              <a
+                href='https://apps.apple.com/us/app/ah-investigator/id6753330970'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <img src={'/images/ai.ios.svg'} alt='Arkham Investigator Board' height={30} />
+              </a>
+              <a className={S.unlock} href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>
+                {t('iOS Unlock')}
+              </a>
+            </Col>
+          </Row>
         </Row>
         <ArkhamCardsRuAnnounce />
       </NotExportable>
