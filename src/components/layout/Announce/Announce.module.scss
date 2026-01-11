@@ -38,7 +38,6 @@
   justify-content: center;
   text-align: center;
   gap: 5px;
-  white-space: nowrap;
 }
 
 .unlock {
@@ -47,6 +46,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: #000;
+  white-space: nowrap;
 }
 
 .link {

@@ -7,8 +7,15 @@ import { NotExportable } from '@/components/ui/behavior/NotExportable/NotExporta
 import { Col } from '@/components/ui/grid/Col/Col';
 import classNames from 'classnames';
 
+const patreonLink = 'https://www.patreon.com/posts/how-to-unlock-on-142409401';
+const boostyLink = 'https://boosty.to/arkham.divider/posts/6a50a341-6d31-4acb-bd8d-880a48027197';
+
 export const Announce = () => {
   const { t } = useTranslation();
+
+  const language = useAppSelector(selectLanguage);
+
+  const link = language === 'ru' ? boostyLink : patreonLink;
 
   return (
     <div className={S.container}>
@@ -34,7 +41,7 @@ export const Announce = () => {
               >
                 <img src={'/images/ai.ios.svg'} alt='Arkham Investigator Board' height={30} />
               </a>
-              <a className={S.unlock} href='https://www.patreon.com/posts/how-to-unlock-on-142409401'>
+              <a className={S.unlock} href={link} target='_blank' rel='noopener noreferrer'>
                 {t('iOS Unlock')}
               </a>
             </Col>
