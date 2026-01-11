@@ -27,8 +27,10 @@ export const RynoDivider = (props: DividerProps) => {
     defaultIcon: props.icon,
   });
 
+  const factionIcon = props.faction ? props.faction === 'mystic' ? 'mystic_alt' : props.faction : undefined;
+
   const [largeIcon, selectLargeIcon] = useIconSelect({
-    defaultIcon: props.campaignIcon ?? props.faction,
+    defaultIcon: props.campaignIcon ?? factionIcon,
   });
 
   const [campaignIcon, selectCampaignIcon] = useIconSelect({
