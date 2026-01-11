@@ -51,6 +51,22 @@ export const vintageLayouts: ILayout[] = [
       size: 'large',
     },
   },
+  {
+    ...vintageLayoutCommon,
+    id: 'vintage-vertical',
+    orientation: LayoutOrientation.VERTICAL,
+    width: 66,
+    height: 107.3,
+    title: 'Vertical',
+    bleed: {
+      ...vintageBleed,
+      width: 72,
+      height: 113.3,
+    },
+    customParams: {
+      type: 'vertical',
+    },
+  },
 ];
 
 export const vintageLayoutCategory: ILayoutCategory = {

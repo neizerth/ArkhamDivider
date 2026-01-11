@@ -13,7 +13,7 @@ export const common = {
   },
   playerOptions: {
     storySupported: true,
-  }
+  },
 };
 
 const bleedSize = {

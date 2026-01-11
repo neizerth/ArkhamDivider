@@ -17,6 +17,46 @@
   }
 }
 
+.vertical {
+  // --tab-width: 28mm;
+  .bottomTitle {
+    top: 47.8mm;
+    left: 10mm;
+    right: 10mm;
+  }
+  .tabGuides {
+    --tab-width: 28mm;
+  }
+  .tab {
+
+    clip-path: inset(0 7mm 0 7mm);
+    &_left {
+      left: -4mm;
+    }
+    &_right {
+      right: -4mm;
+    }
+  }
+  &.bleed {
+    .tab {
+      clip-path: inset(0 4mm 0 4mm);
+    }
+    .tabCornerRadius {
+      left: 7mm;
+      right: 7mm;
+    }
+  }
+  .moveTab {
+    &_left {
+      left: 8mm;
+    }
+    &_right {
+      right: 8mm;
+    }
+  }
+}
+
+
 .ru {
   font-family: 'Breamcatcher', sans-serif;
   .topTitle {
@@ -144,6 +184,7 @@
   font-size: 8mm;
   box-sizing: border-box;
 }
+
 
 .bottomTitleText {
   // display: flex;

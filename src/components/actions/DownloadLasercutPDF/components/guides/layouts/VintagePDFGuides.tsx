@@ -7,8 +7,8 @@ import {
 import { toPrintSize } from '@/shared/lib/features/util/units';
 import { IDivider } from '@/shared/types/dividers';
 import { BLEED_GAP } from '../../../constants';
+import { ILayout, LayoutOrientation } from '@/shared/types/layouts';
 
-const TAB_WIDTH = 30 + BLEED_GAP * 2;
 const TAB_HEIGHT = 10.3;
 
 export const VintagePDFGuides = ({
@@ -21,6 +21,7 @@ export const VintagePDFGuides = ({
   radius,
   topCornerRadius = 0,
   bleedSize,
+  layout,
 }: {
   x: number;
   y: number;
@@ -31,7 +32,12 @@ export const VintagePDFGuides = ({
   divider: IDivider;
   dividers: IDivider[];
   bleedSize: number;
+  layout: ILayout;
 }) => {
+  const vertical = layout.orientation === LayoutOrientation.VERTICAL;
+  const tabWidth = vertical ? 22 : 30;
+  const TAB_WIDTH = tabWidth + BLEED_GAP * 2;
+
   const { backId } = divider;
 
   const useBleed = bleedSize > 0;

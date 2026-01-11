@@ -33,7 +33,9 @@ import bodyStandardBackground from './images/body.png';
 import iconBackground from './images/icon-background.png';
 import tabBackground from './images/tab.png';
 import bodyLargeBackground from './images/body_large.png';
+import bodyVerticalBackground from './images/body_vertical.png';
 import S from './VintageDivider.module.scss';
+import { LayoutOrientation } from '@/shared/types/layouts';
 
 export type VintageDividerProps = DividerProps;
 
@@ -41,10 +43,15 @@ export const VintageDivider = (props: VintageDividerProps) => {
   const { id, backId, xpCost, displayNumericXP = false, type } = props;
 
   const dispatch = useAppDispatch();
-  const { customParams = {} } = useAppSelector(selectLayout);
+  const { customParams = {}, orientation } = useAppSelector(selectLayout);
   const size = (customParams?.size as string) || 'medium';
   const isLarge = size === 'large';
-  const bodyBackground = isLarge ? bodyLargeBackground : bodyStandardBackground;
+  const isVertical = orientation === LayoutOrientation.VERTICAL;
+  const bodyBackground = isVertical
+    ? bodyVerticalBackground
+    : isLarge
+      ? bodyLargeBackground
+      : bodyStandardBackground;
   // const currentPosition = tabPositions[backId || id];
 
   const { t } = useStoryTranslation(props.story);
@@ -91,7 +98,14 @@ export const VintageDivider = (props: VintageDividerProps) => {
 
   return (
     <div
-      className={classNames(S.container, S[language], S[tabPosition], S[size], bleed && S.bleed)}
+      className={classNames(
+        S.container,
+        S[language],
+        S[tabPosition],
+        S[size],
+        bleed && S.bleed,
+        isVertical && S.vertical
+      )}
       data-position={tabPosition}
     >
       <DividerContent className={S.content}>
@@ -121,7 +135,7 @@ export const VintageDivider = (props: VintageDividerProps) => {
 
         <div className={classNames(S.tab, S[`tab_${tabPosition}`])}>
           <NotExportable>
-            {cornerRadius && <TabCornerRadius />}
+            {cornerRadius && <TabCornerRadius className={S.tabCornerRadius} />}
             {tabPosition !== 'left' && !backId && (
               <div className={classNames(S.moveTab, S.moveTab_left)} onClick={moveLeft}>
                 <Icon icon='action' className={S.moveIcon} />
