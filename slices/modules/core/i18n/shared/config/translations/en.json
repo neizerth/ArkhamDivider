@@ -5,10 +5,10 @@
 	"divider.canBeSleeved": "Can be sleeved",
 	"divider.hasGrayscale": "Has low ink version",
 	"layout.classic.sleeve.largeCCG.description": "Will need to be cut manually from the top of the sleeve",
-	"Orientation": "Ориентация",
-	"Language": "Язык",
-	"Sleeves": "Протекторы",
-	"Color": "Цвет",
+	"Orientation": "Orientation",
+	"Language": "Language",
+	"Sleeves": "Sleeves",
+	"Color": "Color",
 	"color.grayscale": "Grayscale",
 	"color.color": "Color"
 }
