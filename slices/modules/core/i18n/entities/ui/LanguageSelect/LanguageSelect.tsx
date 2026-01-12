@@ -4,15 +4,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { useId } from "react";
+import { useCallback, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Flag } from "@/shared/ui";
 import { languageLabels } from "../../../shared/config";
 import {
+	changeLanguage,
 	selectAvailableLanguages,
 	selectLanguage,
-	setLanguage,
 } from "../../../shared/lib/store";
 
 type LanguageSelectProps = FormControlProps;
@@ -23,12 +23,14 @@ export function LanguageSelect(props: LanguageSelectProps) {
 	const languages = useAppSelector(selectAvailableLanguages);
 	const language = useAppSelector(selectLanguage);
 	const id = useId();
-
 	const label = t(`Language`);
 
-	const changeLanguage = (language: string) => {
-		dispatch(setLanguage(language));
-	};
+	const handleLanguageChange = useCallback(
+		(language: string) => {
+			dispatch(changeLanguage(language));
+		},
+		[dispatch],
+	);
 
 	return (
 		<FormControl {...props}>
@@ -44,7 +46,7 @@ export function LanguageSelect(props: LanguageSelectProps) {
 					width: "100%",
 				}}
 				onChange={(event) => {
-					changeLanguage(event.target.value);
+					handleLanguageChange(event.target.value);
 				}}
 			>
 				{languages.map((language) => (

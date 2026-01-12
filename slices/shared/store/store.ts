@@ -1,12 +1,14 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import createSagaMiddleware, { type SagaMiddleware } from "redux-saga";
+import { router } from "@/modules/core/router/app/config";
+import migrations from "./migrations";
 import reducer from "./reducer";
 import { rootSaga } from "./sagas";
 
-// Типы для store
-
-export type AppStore = ReturnType<typeof createStore>;
+export type AppStore = ReturnType<typeof createStore>["store"];
 export type RootState = ReturnType<AppStore["getState"]>;
 export type AppDispatch = AppStore["dispatch"];
 
@@ -21,18 +23,48 @@ export type AppSelector<ReturnType = unknown> = (
 	state: RootState,
 ) => ReturnType;
 
+const persistConfig = {
+	key: "root",
+	storage,
+	migrations,
+	version: 0,
+	blacklist: ["story", "divider"],
+};
+
+const rootReducer = combineReducers(reducer);
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export const createStore = () => {
 	const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
+
+	sagaMiddleware.setContext({
+		router,
+	});
+
 	const store = configureStore({
-		reducer,
+		reducer: persistedReducer,
 		middleware: (getDefaultMiddleware) => {
-			const middleware = getDefaultMiddleware();
+			const middleware = getDefaultMiddleware({
+				serializableCheck: {
+					ignoredActions: [
+						"persist/PERSIST",
+						"persist/REHYDRATE",
+						"persist/REGISTER",
+						"persist/PAUSE",
+						"persist/PURGE",
+						"persist/FLUSH",
+					],
+				},
+			});
 			middleware.push(sagaMiddleware);
 			return middleware;
 		},
 	});
 
+	const persistor = persistStore(store);
+
 	sagaMiddleware.run(rootSaga);
 
-	return store;
+	return { store, persistor };
 };

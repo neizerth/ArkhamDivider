@@ -1,23 +1,32 @@
 import { createHashRouter } from "react-router";
 import { HomePage } from "@/pages/home/ui";
 import { LayoutPage } from "@/pages/layout/ui";
+import { Root } from "../ui/Root";
 
 export const router = createHashRouter([
 	{
 		path: "/",
-		element: <HomePage />,
-	},
-	{
-		path: "/:language",
+		element: <Root />,
 		children: [
 			{
 				index: true,
 				element: <HomePage />,
 			},
 			{
-				path: "layout/:layoutId",
-				element: <LayoutPage />,
+				path: ":language",
+				children: [
+					{
+						index: true,
+						element: <HomePage />,
+					},
+					{
+						path: "layout/:layoutId",
+						element: <LayoutPage />,
+					},
+				],
 			},
 		],
 	},
 ]);
+
+export type AppRouter = typeof router;
