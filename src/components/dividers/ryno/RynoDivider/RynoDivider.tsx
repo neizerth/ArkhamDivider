@@ -73,17 +73,17 @@ export const RynoDivider = (props: DividerProps) => {
 
   return (
     <div className={containerClassName}>
-      <div className={S.assetsContainer}>
-        <div className={S.assets}>
-          {showCorner && <img className={S.corner} src={assets.corner} alt={title} />}
-          {hasFaction && isGenericFaction && (
-            <img className={S.factionIcon} src={factionImage} alt={props.faction} />
-          )}
-          <img className={S.header} src={assets.header} alt={title} style={headerStyle} />
-          <img className={S.body} src={assets.body} alt={title} />
-        </div>
-      </div>
       <DividerContent>
+        <div className={S.assetsContainer}>
+          <div className={S.assets}>
+            {showCorner && <img className={S.corner} src={assets.corner} alt={title} />}
+            {hasFaction && isGenericFaction && (
+              <img className={S.factionIcon} src={factionImage} alt={props.faction} />
+            )}
+            <img className={S.header} src={assets.header} alt={title} style={headerStyle} />
+            <img className={S.body} src={assets.body} alt={title} />
+          </div>
+        </div>
         {story && (
           <div className={S.storyTitle}>
             <DividerText

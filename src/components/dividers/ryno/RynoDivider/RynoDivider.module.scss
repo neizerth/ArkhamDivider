@@ -13,15 +13,15 @@
 .assets {
   position: absolute;
   height: 100%;
-  top: -3mm;
-  left: -3mm;
-  right: -3mm;
-  bottom: -3mm;
+  top: -0mm;
+  left: -0mm;
+  right: -0mm;
+  bottom: -0mm;
 }
 
 .vertical {
   .assets {
-    right: -3.5mm;
+    right: -0.5mm;
   }
 }
 
@@ -57,7 +57,7 @@
   width: 100%;
   left: 0mm;
   right: 0mm;
-  bottom: -6mm;
+  bottom: 0mm;
 }
 
 .bleed .body {
