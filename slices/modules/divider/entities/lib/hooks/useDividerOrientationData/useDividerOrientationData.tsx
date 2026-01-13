@@ -1,7 +1,7 @@
-import CropLandscapeIcon from "@mui/icons-material/CropLandscape";
-import CropPortraitIcon from "@mui/icons-material/CropPortrait";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import Horizontal from "./images/horizontal.svg?react";
+import Vertical from "./images/vertical.svg?react";
 
 export function useDividerOrientationData() {
 	const { t } = useTranslation();
@@ -11,13 +11,13 @@ export function useDividerOrientationData() {
 				id: "horizontal",
 				label: t("orientation.horizontal"),
 				value: "horizontal",
-				icon: <CropLandscapeIcon />,
+				icon: <Horizontal />,
 			},
 			{
 				id: "vertical",
 				label: t("orientation.vertical"),
 				value: "vertical",
-				icon: <CropPortraitIcon />,
+				icon: <Vertical />,
 			},
 		];
 	}, [t]);

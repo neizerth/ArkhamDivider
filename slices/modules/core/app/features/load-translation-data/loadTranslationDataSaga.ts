@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { setLanguage } from "@/modules/core/i18n/shared/lib";
-import { ArkhamDividerAPI } from "@/shared/api/ArkhamDividerAPI";
+import { ArkhamDividerAPI } from "@/shared/api";
 import type { ReturnAwaited } from "@/shared/model";
 import { appTranslationsLoaded } from "../../shared/lib";
 

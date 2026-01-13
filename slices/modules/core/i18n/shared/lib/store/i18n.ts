@@ -5,11 +5,13 @@ import { DEFAULT_LANGUAGE } from "../../config";
 export type I18nState = {
 	language: string;
 	availableLanguages: string[];
+	translatedStories: string[];
 };
 
 const initialState: I18nState = {
 	language: DEFAULT_LANGUAGE,
 	availableLanguages: [DEFAULT_LANGUAGE],
+	translatedStories: [],
 };
 
 export const i18n = createSlice({
@@ -17,8 +19,13 @@ export const i18n = createSlice({
 	...createSliceState(initialState),
 });
 
-export const { setLanguage, setAvailableLanguages } = i18n.actions;
+export const { setLanguage, setAvailableLanguages, setTranslatedStories } =
+	i18n.actions;
 
-export const { selectLanguage, selectAvailableLanguages } = i18n.selectors;
+export const {
+	selectLanguage,
+	selectAvailableLanguages,
+	selectTranslatedStories,
+} = i18n.selectors;
 
 export default i18n.reducer;

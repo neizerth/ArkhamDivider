@@ -1,5 +1,6 @@
 import { put, select, takeEvery } from "redux-saga/effects";
 import { appDataLoaded } from "@/modules/core/app/shared/lib";
+import { changeLanguageBundle } from "../../entities/lib/store/features/changeLanguageBundle";
 import {
 	selectLanguage,
 	setAvailableLanguages,
@@ -14,6 +15,7 @@ function* worker({ payload }: ReturnType<typeof appDataLoaded>) {
 		yield select(selectLanguage);
 
 	if (currentLanguage) {
+		yield put(changeLanguageBundle(currentLanguage));
 		return;
 	}
 

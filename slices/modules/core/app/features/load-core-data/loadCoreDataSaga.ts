@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { ArkhamDividerAPI } from "@/shared/api/ArkhamDividerAPI";
+import { ArkhamDividerAPI } from "@/shared/api";
 import type { ReturnAwaited } from "@/shared/model";
 import { appDataLoaded, appStarted, setAppLoaded } from "../../shared/lib";
 

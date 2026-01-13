@@ -1,7 +1,7 @@
 import { put, select, takeEvery } from "redux-saga/effects";
 import { getLocationLanguage } from "@/modules/core/router/entities/lib";
 import { locationChanged } from "@/modules/core/router/entities/lib/store/features/changeLocation";
-import { i18n } from "../../shared/config";
+import { changeLanguageBundle } from "../../entities/lib/store/features/changeLanguageBundle";
 import { selectLanguage, setLanguage } from "../../shared/lib";
 
 function* worker({ payload }: ReturnType<typeof locationChanged>) {
@@ -18,7 +18,7 @@ function* worker({ payload }: ReturnType<typeof locationChanged>) {
 
 	yield put(setLanguage(language));
 
-	i18n.changeLanguage(language);
+	yield put(changeLanguageBundle(language));
 }
 
 export function* setLanguageOnRouteChangeSaga() {

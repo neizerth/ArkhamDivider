@@ -1,6 +1,6 @@
 import { injectGlobal } from "@emotion/css";
 import { styled } from "@mui/material/styles";
-import { ArkhamDividerAPI } from "@/shared/api/ArkhamDividerAPI";
+import { ArkhamDividerAPI } from "@/shared/api";
 
 const { fontsUrl } = ArkhamDividerAPI;
 

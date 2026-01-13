@@ -3,7 +3,10 @@ import { appDataLoaded } from "@/modules/core/app/shared/lib";
 import { setStories } from "../../shared/lib";
 
 function* worker({ payload }: ReturnType<typeof appDataLoaded>) {
-	const { stories } = payload;
+	const stories = payload.stories.map((story) => ({
+		...story,
+		translated: true,
+	}));
 
 	yield put(setStories(stories));
 }

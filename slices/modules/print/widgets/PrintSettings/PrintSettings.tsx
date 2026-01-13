@@ -13,6 +13,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import { type JSX, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "@/modules/core/i18n/entities/ui/LanguageSelect";
+import { useBooleanAction } from "@/shared/lib";
 import { StoreSwitch } from "@/shared/ui";
 import {
 	selectBleedEnabled,
@@ -37,6 +38,23 @@ export function PrintSettings(props: PrintSettingsProps) {
 	const anchorRef = useRef<HTMLButtonElement>(null);
 
 	const toggle = () => setOpen(!open);
+
+	const { toggle: toggleCropMarksEnabled } = useBooleanAction({
+		actionCreator: setCropMarksEnabled,
+		selector: selectCropMarksEnabled,
+	});
+	const { toggle: toggleBleedEnabled } = useBooleanAction({
+		actionCreator: setBleedEnabled,
+		selector: selectBleedEnabled,
+	});
+	const { toggle: toggleShowCornerRadius } = useBooleanAction({
+		actionCreator: setShowCornerRadius,
+		selector: selectShowCornerRadius,
+	});
+	const { toggle: toggleDoubleSidePrintEnabled } = useBooleanAction({
+		actionCreator: setDoubleSidePrintEnabled,
+		selector: selectDoubleSidePrintEnabled,
+	});
 
 	return (
 		<C.Container {...props}>
@@ -65,7 +83,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 									</ListItemIcon>
 									<PageSizeSelect fullWidth />
 								</ListItem>
-								<ListItemButton>
+								<ListItemButton onClick={toggleCropMarksEnabled}>
 									<ListItemIcon>
 										<AddIcon />
 									</ListItemIcon>
@@ -75,7 +93,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 										selector={selectCropMarksEnabled}
 									/>
 								</ListItemButton>
-								<ListItemButton>
+								<ListItemButton onClick={toggleBleedEnabled}>
 									<ListItemIcon>
 										<SvgIcon>
 											<Bleed />
@@ -88,7 +106,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 									/>
 								</ListItemButton>
 
-								<ListItemButton>
+								<ListItemButton onClick={toggleShowCornerRadius}>
 									<ListItemIcon>
 										<SvgIcon>
 											<CornerRadius />
@@ -100,7 +118,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 										selector={selectShowCornerRadius}
 									/>
 								</ListItemButton>
-								<ListItemButton>
+								<ListItemButton onClick={toggleDoubleSidePrintEnabled}>
 									<ListItemIcon>
 										<ImportContactsIcon />
 									</ListItemIcon>

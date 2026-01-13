@@ -61,7 +61,11 @@
 	"Language": "Язык",
 	"Sleeves": "Протекторы",
 	"layout.classic.sleeve.largeCCG.description": "Потребуется вручную подрезать верх протектора",
-	"Color": "Цвет",
+	"Color": "Цветность",
 	"color.grayscale": "Ч/б",
-	"color.color": "Цветной"
+	"color.color": "Цветной",
+	"Select Campaign": "Выберите кампанию",
+	"Campaigns": "Кампании",
+	"Side Scenarios": "Сценарии",
+	"Challenge Scenarios": "Сценарии испытаний"
 }
