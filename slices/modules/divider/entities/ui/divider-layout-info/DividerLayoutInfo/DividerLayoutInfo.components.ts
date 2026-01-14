@@ -9,3 +9,10 @@ export const Icon = styled("span")`
   align-items: center;
   justify-content: center;
 `;
+
+export const Label = styled("span")`
+  display: none;
+  @media (min-width: ${({ theme }) => theme.breakpoints.up("sm")}) {
+    display: block;
+  }
+`;

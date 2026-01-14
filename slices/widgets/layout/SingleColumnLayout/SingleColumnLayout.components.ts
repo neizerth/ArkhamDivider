@@ -8,6 +8,5 @@ export const Main = styled("main")`
 
 export const Container = styled(Stack)(({ theme }) => ({
 	minHeight: "100vh",
-	overflow: "hidden",
 	paddingTop: theme.spacing(12),
 }));

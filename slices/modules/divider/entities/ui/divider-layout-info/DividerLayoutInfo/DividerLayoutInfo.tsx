@@ -16,6 +16,25 @@ type DividerLayoutInfoProps = {
 	layout: DividerLayout;
 };
 
+const optionTitleSx = {
+	minWidth: { xs: 0, sm: 120 },
+	width: { xs: "100%", sm: "auto" },
+	alignItems: "center",
+	justifyContent: { xs: "flex-start", sm: "flex-end" },
+	gap: 1,
+} as const;
+
+const optionSx = {
+	alignItems: "center",
+	justifyContent: { xs: "flex-start", sm: "flex-end" },
+	gap: { xs: 1, sm: 3 },
+	flexWrap: "wrap",
+} as const;
+
+const optionLabelSx = {
+	order: { xs: 2, sm: 0 },
+} as const;
+
 export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 	const { t } = useTranslation();
 
@@ -35,20 +54,11 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 					</Stack>
 				)}
 				<Stack gap={2}>
-					<Row alignItems="center" gap={3} flex={1}>
-						<Row
-							alignItems="center"
-							justifyContent="flex-end"
-							gap={1}
-							sx={{
-								minWidth: { xs: 0, sm: 120 },
-							}}
-						>
+					<Row sx={optionSx}>
+						<Row sx={optionTitleSx}>
 							<Typography
 								variant="body2"
-								sx={{
-									display: { xs: "none", sm: "block" },
-								}}
+								sx={optionLabelSx}
 							>{t`Size`}</Typography>
 							<C.Icon title={t`Size`}>
 								<OpenInFullIcon />
@@ -59,20 +69,11 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 						</Typography>
 					</Row>
 					{sleeves && (
-						<Row gap={3}>
-							<Row
-								alignItems="center"
-								justifyContent="flex-end"
-								gap={1}
-								sx={{
-									minWidth: { xs: 0, sm: 120 },
-								}}
-							>
+						<Row sx={optionSx}>
+							<Row sx={optionTitleSx}>
 								<Typography
 									variant="body2"
-									sx={{
-										display: { xs: "none", sm: "block" },
-									}}
+									sx={optionLabelSx}
 								>{t`Sleeves`}</Typography>
 								<C.Icon title={t`Sleeves`}>
 									<ShieldOutlinedIcon />
