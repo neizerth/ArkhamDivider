@@ -53,7 +53,7 @@ const verticalLayout: DividerLayout = {
 	types,
 	categoryId: classicCategoryId,
 	groupId: "classic-vertical",
-	name: "63x100",
+	name: "Classic",
 	image: "/images/divider/render/classic.avif",
 	orientation: "vertical",
 	color: false,

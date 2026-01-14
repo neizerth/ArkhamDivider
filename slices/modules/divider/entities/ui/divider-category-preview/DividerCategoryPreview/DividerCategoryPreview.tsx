@@ -21,11 +21,12 @@ export function DividerCategoryPreview({ category }: DividerCategoryProps) {
 	const vertical = layouts.filter(propEq("vertical", "orientation"));
 
 	const [firstLayout] = layouts;
+	const layoutId = firstLayout.id;
 
 	return (
 		<Card>
 			<Box padding={2}>
-				<Link to={layoutRoute(firstLayout.id)}>
+				<Link to={layoutRoute({ layoutId })}>
 					<CardMedia
 						sx={{ height: 200, backgroundSize: "contain" }}
 						image={category.image}

@@ -4,10 +4,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 import MenuItem from "@mui/material/MenuItem";
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
-import {
-	selectDividerVariant,
-	setDividerVariant,
-} from "@/modules/divider/shared/lib";
+import { selectCategoryId, setCategoryId } from "@/modules/divider/shared/lib";
 import { StoreSelect } from "@/shared/ui";
 
 type DividerSelectProps = FormControlProps;
@@ -26,8 +23,8 @@ export function DividerSelect(props: DividerSelectProps) {
 		>
 			<InputLabel id={id}>{label}</InputLabel>
 			<StoreSelect
-				actionCreator={setDividerVariant}
-				selector={selectDividerVariant}
+				actionCreator={setCategoryId}
+				selector={selectCategoryId}
 				defaultValue={""}
 				labelId={id}
 				label={label}

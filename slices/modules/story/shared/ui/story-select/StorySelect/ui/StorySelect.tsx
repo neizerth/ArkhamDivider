@@ -26,23 +26,36 @@ type BaseSelectProps = AutocompleteProps<SelectItem, false, false, false>;
 
 type RenderOption = Defined<BaseSelectProps["renderOption"]>;
 
+type OnChange = Defined<BaseSelectProps["onChange"]>;
+
 type StorySelectProps = Omit<
 	BaseSelectProps,
-	"options" | "renderInput" | "renderOption" | "renderValue"
+	| "options"
+	| "renderInput"
+	| "renderOption"
+	| "renderValue"
+	| "onChange"
+	| "value"
 > & {
+	value?: string | null;
 	containerSx?: SxProps<Theme>;
 	controlSx?: SxProps<Theme>;
 	stories: Story[];
 	nullable?: boolean;
+	onChange?: (code: string | null) => void;
 };
 
 export function StorySelect({
 	stories,
 	containerSx = {},
 	controlSx = {},
+	onChange: onChangeProp,
+	value: valueProp,
 	...props
 }: StorySelectProps) {
 	const options = useStoryData(stories);
+
+	const value = options.find((option) => option.code === valueProp) || null;
 
 	const { t } = useTranslation();
 	const label = t("Select Campaign");
@@ -52,6 +65,14 @@ export function StorySelect({
 			return <TextField {...props} label={label} />;
 		},
 		[label],
+	);
+
+	const onChange: OnChange = useCallback(
+		(_, value) => {
+			const code = value?.code ?? null;
+			onChangeProp?.(code);
+		},
+		[onChangeProp],
 	);
 
 	const renderItem = useCallback((story: SelectItem) => {
@@ -97,10 +118,12 @@ export function StorySelect({
 				<Autocomplete
 					{...props}
 					options={options}
+					value={value}
 					renderInput={renderInput}
 					renderOption={renderOption}
 					renderValue={renderItem}
 					groupBy={prop("group")}
+					onChange={onChange}
 					getOptionLabel={prop("name")}
 				/>
 			</FormControl>

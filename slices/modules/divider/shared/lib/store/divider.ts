@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
+import type { DividerType } from "../../model";
 
 export type DividerState = {
-	dividerVariant: string | null;
-	dividerLayout: string | null;
+	layoutId: string | null;
+	categoryId: string | null;
+	dividerType: DividerType | null;
 };
 
 const initialState: DividerState = {
-	dividerVariant: null,
-	dividerLayout: null,
+	layoutId: null,
+	categoryId: null,
+	dividerType: null,
 };
 
 export const divider = createSlice({
@@ -16,8 +19,9 @@ export const divider = createSlice({
 	...createSliceState(initialState),
 });
 
-export const { setDividerVariant, setDividerLayout } = divider.actions;
+export const { setLayoutId, setCategoryId, setDividerType } = divider.actions;
 
-export const { selectDividerVariant, selectDividerLayout } = divider.selectors;
+export const { selectLayoutId, selectCategoryId, selectDividerType } =
+	divider.selectors;
 
 export default divider.reducer;

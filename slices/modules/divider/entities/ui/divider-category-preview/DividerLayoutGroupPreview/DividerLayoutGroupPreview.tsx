@@ -17,9 +17,10 @@ export function DividerLayoutGroupPreview({
 }: DividerLayoutGroupPreviewProps) {
 	const { t } = useTranslation();
 	const [firstLayout] = group.layouts;
+	const layoutId = firstLayout.id;
 	const name = getBoxSize(group.size);
 	return (
-		<C.Container to={layoutRoute(firstLayout.id)}>
+		<C.Container to={layoutRoute({ layoutId })}>
 			<C.Chip gap={0.5} alignItems="center">
 				<Typography variant="body2">{name}</Typography>
 				<Row alignItems="center">

@@ -1,28 +1,23 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import type { Story } from "../../model";
+import { createSlice } from "@reduxjs/toolkit";
+import { createSliceState } from "redux-toolkit-helpers";
 
-const storyAdapter = createEntityAdapter({
-	selectId: (story: Story) => story.code,
-	sortComparer: (a: Story, b: Story) => a.code.localeCompare(b.code),
-});
+type StoryState = {
+	storyCode: string | null;
+};
 
-const selectors = storyAdapter.getSelectors();
+const initialState: StoryState = {
+	storyCode: null,
+};
 
-const initialState = storyAdapter.getInitialState();
+const state = createSliceState(initialState);
 
 export const story = createSlice({
 	name: "story",
-	initialState,
-	reducers: {
-		setStories: storyAdapter.setAll,
-	},
-	selectors: {
-		selectStories: selectors.selectAll,
-	},
+	...state,
 });
 
-export const { setStories } = story.actions;
+export const { setStoryCode } = story.actions;
 
-export const { selectStories } = story.selectors;
+export const { selectStoryCode } = story.selectors;
 
 export default story.reducer;

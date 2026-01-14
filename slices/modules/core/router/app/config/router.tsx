@@ -23,6 +23,14 @@ export const router = createHashRouter([
 						path: "layout/:layoutId",
 						element: <LayoutPage />,
 					},
+					{
+						path: "layout/:layoutId/:dividerType",
+						element: <LayoutPage />,
+					},
+					{
+						path: "layout/:layoutId/:dividerType/:storyCode",
+						element: <LayoutPage />,
+					},
 				],
 			},
 		],
