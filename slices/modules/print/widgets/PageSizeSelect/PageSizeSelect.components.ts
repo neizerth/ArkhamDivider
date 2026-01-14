@@ -2,9 +2,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { styled } from "@mui/material/styles";
 import { Row } from "@/shared/ui";
 
-export const Label = styled("div")(({ theme }) => ({
-	color: theme.palette.grey[500],
-}));
+export const Label = styled("div")``;
 
 export const Item = styled(Row)(({ theme }) => ({
 	flex: 1,
@@ -12,6 +10,7 @@ export const Item = styled(Row)(({ theme }) => ({
 	justifyContent: "space-between",
 }));
 
-export const Size = styled(ListItemText)`
-  text-align: right;
-`;
+export const Size = styled(ListItemText)(({ theme }) => ({
+	color: theme.palette.grey[500],
+	textAlign: "right",
+}));

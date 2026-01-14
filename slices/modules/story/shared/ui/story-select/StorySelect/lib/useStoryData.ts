@@ -1,5 +1,4 @@
 import { anyPass, ascend, complement, descend, prop, sortWith } from "ramda";
-import { compact } from "ramda-adjunct";
 import { useCallback, useMemo } from "react";
 import {
 	isChallengeStory,
@@ -14,7 +13,7 @@ const restFilter = complement(
 	anyPass([isMainCampaign, isSideContent, isChallengeStory, isReturnPack]),
 );
 
-export const useStoryGroups = (stories: Story[]) => {
+export const useStoryData = (stories: Story[]) => {
 	const { t, translateStory } = useStoryTranslation();
 
 	const data = useMemo(() => {
@@ -29,7 +28,7 @@ export const useStoryGroups = (stories: Story[]) => {
 	}, [stories]);
 
 	const mapStory = useCallback(
-		(story: Story) => {
+		(group: string) => (story: Story) => {
 			const name = translateStory(story.name, story);
 			const translated = story.name !== name;
 
@@ -37,14 +36,15 @@ export const useStoryGroups = (stories: Story[]) => {
 				...story,
 				translated,
 				name: t(story.name),
+				group: t(group),
 			};
 		},
 		[translateStory, t],
 	);
 
 	const getStories = useCallback(
-		(filter: (story: Story) => boolean) => {
-			const stories = data.filter(filter).map(mapStory);
+		(group: string, filter: (story: Story) => boolean) => {
+			const stories = data.filter(filter).map(mapStory(group));
 
 			return sortWith([descend(prop("translated"))], stories);
 		},
@@ -52,39 +52,19 @@ export const useStoryGroups = (stories: Story[]) => {
 	);
 
 	return useMemo(() => {
-		const campaigns = getStories(isMainCampaign);
-		const sideScenarios = getStories(isSideContent);
-		const challenges = getStories(isChallengeStory);
-		const returnCampaigns = getStories(isReturnPack);
+		const campaigns = getStories("Campaigns", isMainCampaign);
+		const sideScenarios = getStories("Side Scenarios", isSideContent);
+		const challenges = getStories("Challenge Scenarios", isChallengeStory);
+		const returnCampaigns = getStories("Return Packs", isReturnPack);
 
-		const rest = getStories(restFilter);
+		const rest = getStories("Other", restFilter);
 
-		return compact([
-			{
-				id: "campaigns",
-				label: "Campaigns",
-				stories: campaigns,
-			},
-			{
-				id: "return-packs",
-				label: "Return Packs",
-				stories: returnCampaigns,
-			},
-			{
-				id: "side-scenarios",
-				label: "Side Scenarios",
-				stories: sideScenarios,
-			},
-			{
-				id: "challenge-scenarios",
-				label: "Challenge Scenarios",
-				stories: challenges,
-			},
-			rest.length > 0 && {
-				id: "other",
-				label: "Other",
-				stories: rest,
-			},
-		]);
+		return [
+			...campaigns,
+			...sideScenarios,
+			...challenges,
+			...returnCampaigns,
+			...rest,
+		];
 	}, [getStories]);
 };

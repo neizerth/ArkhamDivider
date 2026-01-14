@@ -1,9 +1,6 @@
-import ContrastOutlinedIcon from "@mui/icons-material/ContrastOutlined";
-import FlipCameraAndroidIcon from "@mui/icons-material/FlipCameraAndroid";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import { type JSX, useRef, useState } from "react";
@@ -47,10 +44,6 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 							<List>
 								{category.hasGrayscale && (
 									<ListItem>
-										<ListItemIcon>
-											<ContrastOutlinedIcon />
-										</ListItemIcon>
-
 										<Select
 											data={colorData}
 											label={t("Color")}
@@ -63,10 +56,6 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 								)}
 								{category.hasOrientationVariants && (
 									<ListItem>
-										<ListItemIcon>
-											<FlipCameraAndroidIcon />
-										</ListItemIcon>
-
 										<Select
 											data={orientationData}
 											label={t("Orientation")}

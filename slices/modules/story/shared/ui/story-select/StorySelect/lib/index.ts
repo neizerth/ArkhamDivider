@@ -1,1 +1,1 @@
-export * from "./useStoryGroups";
+export * from "./useStoryData";
