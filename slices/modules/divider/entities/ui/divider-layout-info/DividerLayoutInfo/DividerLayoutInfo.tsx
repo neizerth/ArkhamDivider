@@ -45,7 +45,7 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 
 	return (
 		<Row alignItems="center" justifyContent="space-between">
-			<Stack gap={6}>
+			<Stack gap={6} padding={{ xs: 1, sm: 0 }}>
 				{authors && (
 					<Stack gap={1}>
 						{authors.map((author) => (

@@ -39,7 +39,7 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 					<SectionTitle>{layout.name}</SectionTitle>
 					<Stack gap={4}>
 						<DividerLayoutInfo layout={layout} />
-						<Row gap={2} flexWrap="wrap">
+						<Row gap={2} flexWrap="wrap" alignItems="center">
 							<StorySelect
 								fullWidth
 								value={storyCode}
@@ -48,14 +48,20 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 								containerSx={{ width: "100%", flex: 1 }}
 							/>
 							{storyCode && (
-								<Row flex={0} gap={2}>
-									<Button variant="contained">
+								<Row flex={{ xs: 1, sm: 0 }} gap={2}>
+									<Button
+										variant="contained"
+										sx={{ width: { xs: "100%", sm: "auto" } }}
+									>
 										<Row gap={0.5} alignItems="center">
 											<Icon icon="check" />
 											<span> {t("Generate")}</span>
 										</Row>
 									</Button>
-									<Button variant="contained">
+									<Button
+										variant="contained"
+										sx={{ width: { xs: "100%", sm: "auto" } }}
+									>
 										<Row gap={0.5} alignItems="center">
 											<Icon icon="plus" />
 											<span> {t("Add")}</span>
