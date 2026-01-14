@@ -1,23 +1,24 @@
 import { put, takeEvery } from "redux-saga/effects";
-import {
-	getLocationDividerType,
-	getLocationLayoutId,
-} from "@/modules/core/router/entities/lib";
-import { locationChanged } from "@/modules/core/router/entities/lib/store/features/changeLocation";
+import { setLocationParams } from "@/modules/core/router/shared/lib";
 import { getLayoutById } from "../../entities/lib";
-import { setCategoryId, setDividerType, setLayoutId } from "../../shared/lib";
+import {
+	isDividerType,
+	setCategoryId,
+	setDividerType,
+	setLayoutId,
+} from "../../shared/lib";
 
-function* worker({ payload }: ReturnType<typeof locationChanged>) {
-	const { location } = payload;
-	if (!location) {
+function* worker({ payload }: ReturnType<typeof setLocationParams>) {
+	if (!payload) {
 		return;
 	}
-	const layoutId = getLocationLayoutId(location);
-	const dividerType = getLocationDividerType(location);
+
+	const { layoutId, dividerType } = payload;
 
 	if (!layoutId) {
 		return;
 	}
+
 	const layout = getLayoutById(layoutId);
 
 	if (!layout) {
@@ -25,9 +26,14 @@ function* worker({ payload }: ReturnType<typeof locationChanged>) {
 	}
 	yield put(setLayoutId(layoutId));
 	yield put(setCategoryId(layout.categoryId));
+
+	if (!isDividerType(dividerType)) {
+		return;
+	}
+
 	yield put(setDividerType(dividerType));
 }
 
 export function* setDividerLayoutOnRouteChangeSaga() {
-	yield takeEvery(locationChanged.match, worker);
+	yield takeEvery(setLocationParams.match, worker);
 }

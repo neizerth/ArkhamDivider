@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { Location } from "react-router";
+import type { Location, Params } from "react-router";
 import { createSliceState } from "redux-toolkit-helpers";
 
 export type RouterState = {
 	location: Location | null;
+	locationParams: Readonly<Params<string>> | null;
 };
 
 const initialState: RouterState = {
 	location: null,
+	locationParams: null,
 };
 
 export const router = createSlice({
@@ -15,8 +17,8 @@ export const router = createSlice({
 	...createSliceState(initialState),
 });
 
-export const { setLocation } = router.actions;
+export const { setLocation, setLocationParams } = router.actions;
 
-export const { selectLocation } = router.selectors;
+export const { selectLocation, selectLocationParams } = router.selectors;
 
 export default router.reducer;

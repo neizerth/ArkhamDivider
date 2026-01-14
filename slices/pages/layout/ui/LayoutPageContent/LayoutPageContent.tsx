@@ -35,33 +35,33 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 	return (
 		<SingleColumnLayout>
 			<Stack gap={8} paddingBlock={8}>
-				<Container>
+				<Container sx={{ paddingInline: { xs: 1, sm: 2 } }}>
 					<SectionTitle>{layout.name}</SectionTitle>
 					<Stack gap={4}>
 						<DividerLayoutInfo layout={layout} />
-						<Row gap={2}>
+						<Row gap={2} flexWrap="wrap">
 							<StorySelect
 								fullWidth
 								value={storyCode}
 								stories={stories}
 								onChange={onChangeStory}
-								containerSx={{ width: "100%" }}
+								containerSx={{ width: "100%", flex: 1 }}
 							/>
 							{storyCode && (
-								<>
-									<Button variant="contained" sx={{ padding: 2 }}>
+								<Row flex={0} gap={2}>
+									<Button variant="contained">
 										<Row gap={0.5} alignItems="center">
 											<Icon icon="check" />
 											<span> {t("Generate")}</span>
 										</Row>
 									</Button>
-									<Button variant="contained" sx={{ padding: 2 }}>
+									<Button variant="contained">
 										<Row gap={0.5} alignItems="center">
 											<Icon icon="plus" />
 											<span> {t("Add")}</span>
 										</Row>
 									</Button>
-								</>
+								</Row>
 							)}
 						</Row>
 					</Stack>

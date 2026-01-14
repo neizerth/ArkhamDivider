@@ -12,7 +12,7 @@ export function SingleColumnLayout(props: SingleColumnLayoutProps) {
 	return (
 		<C.Container>
 			<Header />
-			<C.Main {...props} sx={{ padding: 2, ...sx }} />
+			<C.Main {...props} sx={{ padding: { xs: 0, sm: 2 }, ...sx }} />
 			<Footer />
 		</C.Container>
 	);

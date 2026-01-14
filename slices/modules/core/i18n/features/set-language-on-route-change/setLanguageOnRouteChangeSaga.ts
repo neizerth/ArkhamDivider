@@ -1,16 +1,17 @@
 import { put, select, takeEvery } from "redux-saga/effects";
-import { getLocationLanguage } from "@/modules/core/router/entities/lib";
-import { locationChanged } from "@/modules/core/router/entities/lib/store/features/changeLocation";
+import { setLocationParams } from "@/modules/core/router/shared/lib";
 import { changeLanguageBundle } from "../../entities/lib/store/features/changeLanguageBundle";
 import { selectLanguage, setLanguage } from "../../shared/lib";
 
-function* worker({ payload }: ReturnType<typeof locationChanged>) {
-	const { location } = payload;
+function* worker({ payload }: ReturnType<typeof setLocationParams>) {
+	if (!payload) {
+		return;
+	}
+
+	const { language } = payload;
 
 	const currentLanguage: ReturnType<typeof selectLanguage> =
 		yield select(selectLanguage);
-
-	const language = getLocationLanguage(location);
 
 	if (currentLanguage === language || !language) {
 		return;
@@ -22,5 +23,5 @@ function* worker({ payload }: ReturnType<typeof locationChanged>) {
 }
 
 export function* setLanguageOnRouteChangeSaga() {
-	yield takeEvery(locationChanged.match, worker);
+	yield takeEvery(setLocationParams.match, worker);
 }

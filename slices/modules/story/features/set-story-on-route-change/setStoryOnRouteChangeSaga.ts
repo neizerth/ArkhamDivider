@@ -1,13 +1,14 @@
 import { propEq } from "ramda";
 import { put, select, takeEvery } from "redux-saga/effects";
-import { getLocationStoryCode } from "@/modules/core/router/entities/lib";
-import { locationChanged } from "@/modules/core/router/entities/lib/store/features/changeLocation";
+import { setLocationParams } from "@/modules/core/router/shared/lib";
 import { selectStories, setStoryCode } from "@/modules/story/shared/lib";
 
-function* worker({ payload }: ReturnType<typeof locationChanged>) {
-	const { location } = payload;
-	const storyCode = getLocationStoryCode(location);
+function* worker({ payload }: ReturnType<typeof setLocationParams>) {
+	if (!payload) {
+		return;
+	}
 
+	const { storyCode } = payload;
 	const stories: ReturnType<typeof selectStories> = yield select(selectStories);
 
 	const story = stories.find(propEq(storyCode, "code"));
@@ -17,5 +18,5 @@ function* worker({ payload }: ReturnType<typeof locationChanged>) {
 }
 
 export function* setStoryOnRouteChangeSaga() {
-	yield takeEvery(locationChanged.match, worker);
+	yield takeEvery(setLocationParams.match, worker);
 }
