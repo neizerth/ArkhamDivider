@@ -18,7 +18,7 @@ export function DividerLayoutAuthorInfo({
 			<Stack gap={1}>
 				<Typography variant="h6">{author.name}</Typography>
 				{contacts && (
-					<Row gap={2}>
+					<Row gap={2} alignItems="center">
 						{contacts.map((contact) => (
 							<TextLink
 								key={contact.id}
@@ -26,6 +26,7 @@ export function DividerLayoutAuthorInfo({
 								title={contact.title}
 								target="_blank"
 								rel="noopener noreferrer"
+								display="inline-flex"
 							>
 								<Icon icon={contact.icon} />
 							</TextLink>
