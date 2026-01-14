@@ -6,7 +6,8 @@ export const Main = styled("main")`
   margin-bottom: ${({ theme }) => theme.spacing(8)};
 `;
 
-export const Container = styled(Stack)`
-  min-height: 100vh;
-  height: 500px;
-`;
+export const Container = styled(Stack)(({ theme }) => ({
+	minHeight: "100vh",
+	overflow: "hidden",
+	paddingTop: theme.spacing(12),
+}));

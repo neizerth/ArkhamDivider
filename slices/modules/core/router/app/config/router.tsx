@@ -24,11 +24,15 @@ export const router = createHashRouter([
 						element: <LayoutPage />,
 					},
 					{
-						path: "layout/:layoutId/:dividerType",
+						path: "layout/:layoutId/:dividerType(campaign|player|investigator)",
 						element: <LayoutPage />,
 					},
 					{
-						path: "layout/:layoutId/:dividerType/:storyCode",
+						path: "layout/:layoutId/:dividerType(campaign|player|investigator)/:storyCode",
+						element: <LayoutPage />,
+					},
+					{
+						path: "layout/:layoutId/:storyCode",
 						element: <LayoutPage />,
 					},
 				],

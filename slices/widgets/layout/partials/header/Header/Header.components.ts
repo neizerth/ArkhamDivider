@@ -5,6 +5,12 @@ import { Logo as BaseLogo, Row } from "@/shared/ui";
 export const Container = styled("header")(({ theme }) => ({
 	paddingBlock: theme.spacing(2),
 	boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
+	position: "fixed",
+	backgroundColor: theme.palette.background.paper,
+	zIndex: theme.zIndex.appBar,
+	width: "100%",
+	top: 0,
+	left: 0,
 }));
 
 export const Content = styled(Row)`
