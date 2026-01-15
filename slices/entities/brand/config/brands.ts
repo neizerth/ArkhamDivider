@@ -18,5 +18,6 @@ export const brands: Brand[] = [
 		url: "/brand/meeple-house",
 		image: "/images/brands/meeple-house.png",
 		title: "Meeple House",
+		locales: ["ru"],
 	},
 ];

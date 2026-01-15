@@ -3,4 +3,5 @@ export type Brand = {
 	url: string;
 	image: string;
 	title: string;
+	locales?: string[];
 };
