@@ -1,5 +1,6 @@
 import { getContext, select, takeEvery } from "redux-saga/effects";
 import { changeLanguage } from "@/modules/core/i18n/shared/lib";
+import { replaceLocationLanguage } from "@/modules/core/router/entities/lib";
 import type { AppRouter } from "../../../router/app/config";
 import { selectLocation } from "../../../router/shared/lib";
 
@@ -13,7 +14,7 @@ function* worker({ payload }: ReturnType<typeof changeLanguage>) {
 		return;
 	}
 
-	const pathname = location.pathname.replace(/^\/[\w-]+/, `/${payload}`);
+	const pathname = replaceLocationLanguage(location, payload);
 
 	router.navigate(pathname);
 }

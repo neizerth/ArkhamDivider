@@ -1,4 +1,4 @@
-import type { DividerType } from "@/modules/divider/shared/model";
+import type { DividerLayoutType } from "@/modules/divider/shared/model";
 import { createRoutePart } from "./logic";
 
 export const categoryRoute = ({
@@ -22,14 +22,19 @@ export const layoutRoute = ({
 	layoutId: string;
 	storyCode?: string | null;
 	language?: string;
-	dividerType?: DividerType | null;
+	dividerType?: DividerLayoutType | null;
 }) => {
 	const prefix = createRoutePart(language);
 
 	if (storyCode) {
 		const storyCodePart = createRoutePart(storyCode);
-		const dividerTypePart = createRoutePart(dividerType);
+		const dividerTypePart = createRoutePart(dividerType ?? "scenario");
 		return `${prefix}/layout/${layoutId}${storyCodePart}${dividerTypePart}`;
+	}
+
+	if (dividerType) {
+		const dividerTypePart = createRoutePart(dividerType);
+		return `${prefix}/layout/${layoutId}${dividerTypePart}`;
 	}
 
 	return `${prefix}/layout/${layoutId}`;

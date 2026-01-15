@@ -1,7 +1,16 @@
 import { createHashRouter } from "react-router";
+import { dividerTypes } from "@/modules/divider/shared/config";
 import { HomePage } from "@/pages/home/ui";
 import { LayoutPage } from "@/pages/layout/ui";
 import { Root } from "../ui/Root";
+
+const _dividerTypePaths = dividerTypes.map(
+	(path) =>
+		({
+			path,
+			element: <LayoutPage />,
+		}) as const,
+);
 
 export const router = createHashRouter([
 	{
@@ -22,18 +31,21 @@ export const router = createHashRouter([
 					{
 						path: "layout/:layoutId",
 						element: <LayoutPage />,
-					},
-					{
-						path: "layout/:layoutId/:dividerType(campaign|player|investigator)",
-						element: <LayoutPage />,
-					},
-					{
-						path: "layout/:layoutId/:dividerType(campaign|player|investigator)/:storyCode",
-						element: <LayoutPage />,
-					},
-					{
-						path: "layout/:layoutId/:storyCode",
-						element: <LayoutPage />,
+						children: [
+							{
+								path: ":dividerType",
+								element: <LayoutPage />,
+							},
+							{
+								path: ":storyCode",
+								children: [
+									{
+										path: ":dividerType",
+										element: <LayoutPage />,
+									},
+								],
+							},
+						],
 					},
 				],
 			},

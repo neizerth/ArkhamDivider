@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { DividerType } from "../../model";
+import type { DividerLayoutType } from "../../model";
 
 export type DividerState = {
 	layoutId: string | null;
 	categoryId: string | null;
-	dividerType: DividerType | null;
+	dividerType: DividerLayoutType | null;
 };
 
 const initialState: DividerState = {
