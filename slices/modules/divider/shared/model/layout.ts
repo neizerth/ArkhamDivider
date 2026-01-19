@@ -24,6 +24,8 @@ export type DividerLayout<Params = void> = {
 	bleed: number;
 	sleeves?: DividerLayoutSleeve[];
 	params?: Params;
+	cardCountSupport?: boolean;
+	campaignIconSupport?: boolean;
 };
 
 export type DividerLayoutGroup = {

@@ -18,6 +18,27 @@ export const theme = createTheme({
 	palette,
 	typography: {},
 	components: {
+		MuiTabs: {
+			styleOverrides: {
+				root: {
+					".MuiTabs-list": {
+						justifyContent: "center",
+					},
+					"&:has(.MuiTabs-scrollButtons) .MuiTabs-list": {
+						justifyContent: "flex-start",
+					},
+				},
+			},
+		},
+		MuiAutocomplete: {
+			styleOverrides: {
+				root: {
+					".MuiAutocomplete-inputRoot .MuiAutocomplete-input": {
+						minWidth: 0,
+					},
+				},
+			},
+		},
 		MuiSelect: {
 			styleOverrides: {
 				select: {

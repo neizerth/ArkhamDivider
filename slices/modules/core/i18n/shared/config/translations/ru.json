@@ -1,7 +1,7 @@
 {
 	"Extra Dividers": "Разделители других наборов",
 	"Scenario Dividers": "Разделители сценариев",
-	"Scenario Encounter Divider": "Разделители контактов сценария",
+	"Scenario Encounter Dividers": "Разделители контактов сценария",
 	"Encounter Size": "Число карт на разделителе контактов",
 	"Scenario Size": "Число карт на разделителе сценария",
 	"Include Return Set:": "Включить возвращение:",
@@ -71,6 +71,6 @@
 	"Campaigns": "Кампании",
 	"Side Scenarios": "Сценарии",
 	"Challenge Scenarios": "Сценарии-испытания",
-	"Bookmark Stickers": "Для закладок альбома",
+	"Bookmark Stickers": "Закладки альбома",
 	"Layout not found": "Дизайн-макет не найден"
 }

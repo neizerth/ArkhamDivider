@@ -6,3 +6,5 @@ export type Defined<T> = Exclude<T, undefined>;
 export type GenericFunction = (...args: any) => any;
 
 export type ReturnAwaited<T extends GenericFunction> = Awaited<ReturnType<T>>;
+
+export type WithId<T = string> = { id: T };

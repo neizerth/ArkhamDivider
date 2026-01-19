@@ -29,6 +29,8 @@ const horizontalLayout: DividerLayout = {
 			description: "layout.classic.sleeve.largeCCG.description",
 		},
 	],
+	cardCountSupport: true,
+	campaignIconSupport: true,
 };
 
 const horizontalBW: DividerLayout = {

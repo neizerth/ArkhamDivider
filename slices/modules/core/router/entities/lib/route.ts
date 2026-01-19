@@ -1,3 +1,4 @@
+import { getDividerType } from "@/modules/divider/shared/lib";
 import type { DividerLayoutType } from "@/modules/divider/shared/model";
 import { createRoutePart } from "./logic";
 
@@ -28,7 +29,7 @@ export const layoutRoute = ({
 
 	if (storyCode) {
 		const storyCodePart = createRoutePart(storyCode);
-		const dividerTypePart = createRoutePart(dividerType ?? "scenario");
+		const dividerTypePart = createRoutePart(getDividerType(dividerType));
 		return `${prefix}/layout/${layoutId}${storyCodePart}${dividerTypePart}`;
 	}
 

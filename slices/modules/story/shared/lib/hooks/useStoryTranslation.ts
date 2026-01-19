@@ -3,7 +3,7 @@ import { omit } from "ramda";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import type { Story } from "../../model";
-import { getStoryNS } from "../logic";
+import { getStoryI18nNamespace } from "../logic";
 
 const omitNS = omit(["ns"]);
 
@@ -13,7 +13,7 @@ export type UseStoryTranslateFunction = (
 ) => string;
 
 export const useStoryTranslation = (story?: Story) => {
-	const storyNs = story && getStoryNS(story.code);
+	const storyNs = story && getStoryI18nNamespace(story.code);
 
 	const i18n = useTranslation();
 
@@ -41,7 +41,7 @@ export const useStoryTranslation = (story?: Story) => {
 	const translateStory = useCallback(
 		(text: string, story?: Story) =>
 			translate(text, {
-				ns: story && getStoryNS(story.code),
+				ns: story && getStoryI18nNamespace(story.code),
 			}),
 		[translate],
 	);

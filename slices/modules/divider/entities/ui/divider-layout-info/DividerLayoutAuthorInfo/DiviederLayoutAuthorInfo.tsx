@@ -13,7 +13,13 @@ export function DividerLayoutAuthorInfo({
 }: DividerLayoutAuthorInfoProps) {
 	const { contacts } = author;
 	return (
-		<Row gap={2} alignItems="center">
+		<Row
+			gap={2}
+			sx={{
+				alignItems: "center",
+				justifyContent: { xs: "center", sm: "flex-start" },
+			}}
+		>
 			<img src={author.image} height={60} alt={author.name} />
 			<Stack gap={1}>
 				<Typography variant="h6">{author.name}</Typography>

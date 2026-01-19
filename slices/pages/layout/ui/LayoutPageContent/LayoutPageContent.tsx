@@ -18,9 +18,11 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 			<Stack gap={8} paddingBlock={8}>
 				<Container sx={{ paddingInline: { xs: 1, sm: 2 } }}>
 					<SectionTitle>{layout.name}</SectionTitle>
-					<Stack gap={4}>
-						<DividerLayoutInfo layout={layout} />
-						<DividerTypeNav />
+					<Stack gap={4} paddingTop={3}>
+						<Stack>
+							<DividerLayoutInfo layout={layout} />
+							<DividerTypeNav />
+						</Stack>
 						<DividerLayoutOptions />
 					</Stack>
 				</Container>

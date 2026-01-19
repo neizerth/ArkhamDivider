@@ -3,15 +3,18 @@ import Tabs, { type TabsProps } from "@mui/material/Tabs";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { dividerTypes } from "@/modules/divider/shared/config";
-import { selectDividerType, selectLayout } from "@/modules/divider/shared/lib";
-import { changeDividerType } from "@/modules/divider/shared/model";
+import {
+	changeDividerType,
+	selectCurrentDividerType,
+	selectLayout,
+} from "@/modules/divider/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 
 type DividerTypeNavProps = Omit<TabsProps, "value" | "onChange">;
 export function DividerTypeNav(props: DividerTypeNavProps) {
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
-	const selectedType = useAppSelector(selectDividerType) ?? "scenario";
+	const selectedType = useAppSelector(selectCurrentDividerType);
 	const layout = useAppSelector(selectLayout);
 	const supportedTypes = layout?.types ?? [];
 	const value = dividerTypes.indexOf(selectedType);
@@ -26,7 +29,6 @@ export function DividerTypeNav(props: DividerTypeNavProps) {
 
 	return (
 		<Tabs
-			centered
 			textColor="inherit"
 			variant="scrollable"
 			scrollButtons="auto"

@@ -36,8 +36,9 @@ export function PrintButton(props: PrintButtonProps) {
 		<>
 			<C.Group {...props} variant="contained" ref={anchorRef}>
 				<Button onClick={print} sx={sx}>
-					<Icon icon="printer" />
-					&nbsp; {t`Print`} / &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
+					<Icon icon="printer" /> &nbsp;
+					<Box sx={{ display: { xs: "none", sm: "inline" } }}>{t`Print`}</Box>
+					&nbsp;/ &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
 				</Button>
 				<Button size="small" onClick={toggle} sx={sx}>
 					<Icon icon="download" />

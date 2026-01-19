@@ -1,11 +1,8 @@
-import type {
-	AutocompleteProps,
-	AutocompleteRenderInputParams,
-} from "@mui/material/Autocomplete";
+import type { AutocompleteProps } from "@mui/material/Autocomplete";
 import Autocomplete from "@mui/material/Autocomplete";
 import FormControl from "@mui/material/FormControl";
 import type { SxProps, Theme } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
+import TextField, { type TextFieldProps } from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { prop } from "ramda";
 import { useCallback } from "react";
@@ -47,8 +44,8 @@ type StorySelectProps = Omit<
 
 export function StorySelect({
 	stories,
-	containerSx = {},
-	controlSx = {},
+	containerSx,
+	controlSx,
 	onChange: onChangeProp,
 	value: valueProp,
 	...props
@@ -61,7 +58,7 @@ export function StorySelect({
 	const label = t("Select Campaign");
 
 	const renderInput = useCallback(
-		(props: AutocompleteRenderInputParams) => {
+		(props: TextFieldProps) => {
 			return <TextField {...props} label={label} />;
 		},
 		[label],
@@ -117,6 +114,9 @@ export function StorySelect({
 			<FormControl sx={{ width: "100%", ...controlSx }}>
 				<Autocomplete
 					{...props}
+					sx={{
+						minWidth: 280,
+					}}
 					options={options}
 					value={value}
 					renderInput={renderInput}
@@ -125,6 +125,7 @@ export function StorySelect({
 					groupBy={prop("group")}
 					onChange={onChange}
 					getOptionLabel={prop("name")}
+					openOnFocus
 				/>
 			</FormControl>
 		</Row>
