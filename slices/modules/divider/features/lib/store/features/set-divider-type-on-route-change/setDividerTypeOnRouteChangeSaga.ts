@@ -1,6 +1,6 @@
 import { put, takeEvery } from "redux-saga/effects";
 import { setLocationParams } from "@/modules/core/router/shared/lib";
-import { isDividerType, setDividerType } from "../../shared/lib";
+import { isDividerType, setDividerType } from "../../../../../shared/lib";
 
 function* worker({ payload }: ReturnType<typeof setLocationParams>) {
 	if (!payload) {

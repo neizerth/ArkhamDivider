@@ -47,7 +47,7 @@ export const {
 	addManyDividers,
 } = dividers.actions;
 
-export const { selectAll: selectAllDividers, selectById: selectDividerById } =
+export const { selectAll: selectDividers, selectById: selectDividerById } =
 	selectors;
 
 export default dividers.reducer;

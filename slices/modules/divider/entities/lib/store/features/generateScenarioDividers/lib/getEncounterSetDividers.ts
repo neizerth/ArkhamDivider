@@ -76,9 +76,9 @@ export const getEncounterSetDividers = ({
 			title: encounterSet.name,
 			icon: encounterSet.icon,
 			cardsCount,
-			story,
-			layout,
-			category,
+			storyCode: story.code,
+			layoutId: layout.id,
+			categoryId: category.id,
 		};
 	});
 
@@ -103,9 +103,9 @@ export const getEncounterSetDividers = ({
 				title,
 				icon,
 				cardsCount,
-				story,
-				layout,
-				category,
+				storyCode: story.code,
+				layoutId: layout.id,
+				categoryId: category.id,
 			};
 		},
 	);

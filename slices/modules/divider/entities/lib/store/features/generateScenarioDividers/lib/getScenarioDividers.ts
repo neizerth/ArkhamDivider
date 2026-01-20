@@ -43,12 +43,12 @@ export const getScenarioDividers = ({
 			id: v4(),
 			type: "scenario",
 			side: "front",
-			layout,
-			category,
+			layoutId: layout.id,
+			categoryId: category.id,
 			title,
 			icon,
 			cardsCount,
-			story,
+			storyCode: story.code,
 		};
 	});
 };

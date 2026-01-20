@@ -21,7 +21,7 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 				>
 					<SectionTitle>{layout.name}</SectionTitle>
 					<Stack gap={4} paddingTop={3}>
-						<Stack>
+						<Stack gap={2}>
 							<DividerLayoutInfo layout={layout} />
 							<DividerTypeNav />
 						</Stack>

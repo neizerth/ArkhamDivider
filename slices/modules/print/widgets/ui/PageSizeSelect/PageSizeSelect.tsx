@@ -5,9 +5,9 @@ import Select from "@mui/material/Select";
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
-import { pageSizeFormats } from "../../shared/config";
-import { selectPageSize, setPageSize } from "../../shared/lib/store/print";
-import type { PageFormatType } from "../../shared/model";
+import { pageSizeFormats } from "../../../shared/config";
+import { selectPageSize, setPageSize } from "../../../shared/lib/store/print";
+import type { PageFormatType } from "../../../shared/model";
 import * as C from "./PageSizeSelect.components";
 
 type PageSizeSelectProps = FormControlProps;

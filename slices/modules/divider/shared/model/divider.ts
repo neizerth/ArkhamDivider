@@ -34,31 +34,51 @@ export type DividerSubtype =
 	| "upgrade"
 	| "ally";
 
-export type Divider<Params = void> = {
+export type ScenarioDividerData = {
+	type: "scenario" | "campaign" | "encounter";
+	storyCode: string;
+	cardsCount?: number;
+};
+
+export type PlayerDividerData = {
+	type: "player";
+	subtype: DividerSubtype;
+	faction: Faction;
+	cardType?: CardType;
+	storyCode?: string;
+	xpCost?: XPCost;
+};
+
+export type InvestigatorDividerData = {
+	type: "investigator";
+	storyCode: string;
+	investigator: Investigator;
+};
+
+export type BaseDividerData<Params = void> = {
 	id: string;
 	side: Side;
-	layout: DividerLayout;
-	category: DividerCategory;
+	layoutId: string;
+	categoryId: string;
 	title: string;
 	icon?: string;
 	params?: Params;
+};
+
+export type Divider<Params = void> = BaseDividerData<Params> &
+	(PlayerDividerData | ScenarioDividerData | InvestigatorDividerData);
+
+export type DividerWithRelations<Params = void> = BaseDividerData<Params> & {
+	layout: DividerLayout;
+	category: DividerCategory;
 } & (
-	| {
-			type: "player";
-			subtype: DividerSubtype;
-			faction: Faction;
-			cardType?: CardType;
-			story?: StoryWithRelations;
-			xpCost?: XPCost;
-	  }
-	| {
-			type: "scenario" | "campaign" | "encounter";
-			story: StoryWithRelations;
-			cardsCount?: number;
-	  }
-	| {
-			type: "investigator";
-			story: StoryWithRelations;
-			investigator: Investigator;
-	  }
-);
+		| (PlayerDividerData & {
+				story?: StoryWithRelations;
+		  })
+		| (ScenarioDividerData & {
+				story: StoryWithRelations;
+		  })
+		| (InvestigatorDividerData & {
+				story: StoryWithRelations;
+		  })
+	);

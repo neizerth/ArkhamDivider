@@ -4,8 +4,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import type { JSX } from "react";
 import { DividerSelect } from "@/modules/divider/entities/ui";
 import { DividerVariantSelect } from "@/modules/divider/entities/ui/DividerVariantSelect";
-import { PrintButton } from "@/modules/print/widgets/PrintButton";
-import { PrintSettings } from "@/modules/print/widgets/PrintSettings";
+import { PrintButton, PrintSettings } from "@/modules/print/widgets/ui";
 import * as C from "./Header.components";
 
 type HeaderProps = JSX.IntrinsicElements["header"];

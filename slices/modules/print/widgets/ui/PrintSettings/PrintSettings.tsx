@@ -24,7 +24,7 @@ import {
 	setCropMarksEnabled,
 	setDoubleSidePrintEnabled,
 	setShowCornerRadius,
-} from "../../shared/lib";
+} from "../../../shared/lib";
 import { PageSizeSelect } from "../PageSizeSelect";
 import Bleed from "./images/bleed.svg?react";
 import CornerRadius from "./images/corner-radius.svg?react";
