@@ -9,13 +9,13 @@ import {
 	type GenerateScenarioDividersParams,
 	generateScenarioDividers,
 } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
-import { selectLayout } from "@/modules/divider/shared/lib";
-import type { GenerateDividersMode } from "@/modules/divider/shared/model";
 import {
-	changeStoryCode,
-	selectStories,
-	selectStory,
-} from "@/modules/story/shared/lib";
+	selectLayout,
+	selectScenarioParams,
+} from "@/modules/divider/shared/lib";
+import type { GenerateDividersMode } from "@/modules/divider/shared/model";
+import { selectStoryWithRelations } from "@/modules/story/entities/lib";
+import { changeStoryCode, selectStories } from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui/story-select/StorySelect/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
@@ -25,10 +25,14 @@ import * as C from "./ScenarioDividerOptions.components";
 export function ScenarioDividerOptions(props: BoxProps) {
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
-	const story = useAppSelector(selectStory);
+	const story = useAppSelector(selectStoryWithRelations);
 	const stories = useAppSelector(selectStories);
 	const layout = useAppSelector(selectLayout);
-	const { register, handleSubmit } = useForm<GenerateScenarioDividersParams>();
+	const defaultValues = useAppSelector(selectScenarioParams);
+
+	const { register, handleSubmit } = useForm<GenerateScenarioDividersParams>({
+		defaultValues,
+	});
 
 	const onChangeStory = useCallback(
 		(code: string | null) => {
@@ -89,6 +93,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 							story={story}
 							onSubmit={console.log}
 							register={register}
+							defaultValues={defaultValues}
 						/>
 					)}
 				</Stack>

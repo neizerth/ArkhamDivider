@@ -1,6 +1,6 @@
 import type { CardType } from "@/shared/model";
 
-export const storyCardTypes: CardType[] = [
+export const scenarioCardTypes: CardType[] = [
 	"scenario",
 	"agenda",
 	"act",

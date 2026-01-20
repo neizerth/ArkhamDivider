@@ -14,6 +14,7 @@ export type GenerateScenarioDividersParams = {
 	encounterSize: boolean;
 	scenarioSize: boolean;
 	extraEncounterSets: boolean;
+	returnSet: boolean;
 };
 
 export const generateScenarioDividers =

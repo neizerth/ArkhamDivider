@@ -6,7 +6,6 @@ import type {
 	DividerLayout,
 } from "@/modules/divider/shared/model";
 import { getScenarioCardsCount } from "@/modules/story/entities/lib";
-import { getStoryScenarios } from "@/modules/story/shared/lib/logic/getStoryScenarios";
 import type {
 	StoryScenarioWithRelations,
 	StoryWithRelations,
@@ -16,21 +15,20 @@ type Optons = {
 	layout: DividerLayout;
 	category: DividerCategory;
 	story: StoryWithRelations;
-	onlyEncounterSet?: boolean;
+	exceptEncounterCards?: boolean;
 };
 
 export const getScenarioDividers = ({
 	story,
 	layout,
 	category,
-	onlyEncounterSet = false,
+	exceptEncounterCards = false,
 }: Optons) => {
-	const scenarios = getStoryScenarios(story);
-
 	const sortFilter = ascend<StoryScenarioWithRelations>(
 		({ number = Infinity }) => number,
 	);
-	const sortedScenarios = sortWith([sortFilter], scenarios);
+
+	const sortedScenarios = sortWith([sortFilter], story.scenarios);
 
 	return sortedScenarios.map((scenario): Divider => {
 		const { icon } = scenario;
@@ -38,7 +36,7 @@ export const getScenarioDividers = ({
 
 		const cardsCount = getScenarioCardsCount({
 			scenario,
-			onlyEncounterSet,
+			cardTypes: exceptEncounterCards ? "scenario" : "all",
 		});
 
 		return {

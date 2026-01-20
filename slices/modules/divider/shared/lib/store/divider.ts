@@ -7,14 +7,17 @@ export type DividerState = {
 	layoutId: string | null;
 	categoryId: string | null;
 	dividerType: DividerLayoutType | null;
-	scenarioParams: GenerateScenarioDividersParams | null;
+	scenarioParams: Partial<GenerateScenarioDividersParams>;
 };
 
 const initialState: DividerState = {
 	layoutId: null,
 	categoryId: null,
 	dividerType: null,
-	scenarioParams: null,
+	scenarioParams: {
+		encounterDividers: true,
+		scenarioDividers: true,
+	},
 };
 
 export const divider = createSlice({

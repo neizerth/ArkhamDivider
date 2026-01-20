@@ -10,7 +10,7 @@ type FooterProps = JSX.IntrinsicElements["footer"];
 
 export function Footer(props: FooterProps) {
 	return (
-		<C.Container {...props}>
+		<C.Container {...props} sx={{ displayPrint: "none" }}>
 			<Container>
 				<C.Content>
 					<C.Disclaimer>

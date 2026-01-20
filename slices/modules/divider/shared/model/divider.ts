@@ -1,5 +1,5 @@
 import type { Story, StoryWithRelations } from "@/modules/story/shared/model";
-import type { Single } from "@/shared/model";
+import type { Side, Single } from "@/shared/model";
 import type { DividerCategory } from "./category";
 import type { DividerLayout } from "./layout";
 
@@ -36,7 +36,7 @@ export type DividerSubtype =
 
 export type Divider<Params = void> = {
 	id: string;
-	side: "front" | "back";
+	side: Side;
 	layout: DividerLayout;
 	category: DividerCategory;
 	title: string;

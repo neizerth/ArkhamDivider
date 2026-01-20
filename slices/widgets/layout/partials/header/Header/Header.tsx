@@ -15,7 +15,7 @@ export function Header(props: HeaderProps) {
 
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	return (
-		<C.Container {...props}>
+		<C.Container {...props} sx={{ displayPrint: "none" }}>
 			<Container sx={{ paddingInline: { xs: 1, sm: 2 } }}>
 				<C.Content>
 					<C.Section flex={1} gap={2}>

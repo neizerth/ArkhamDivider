@@ -6,14 +6,15 @@ import type { UseFormRegister } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import type { GenerateScenarioDividersParams } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
 import type { DividerLayout } from "@/modules/divider/shared/model";
-import type { Story } from "@/modules/story/shared/model";
+import type { StoryWithRelations } from "@/modules/story/shared/model";
 import * as C from "./ScenarioDividerOptionsForm.components";
 
 type ScenarioDividerOptionsFormProps = GridProps & {
 	layout: DividerLayout;
-	story: Story;
+	story: StoryWithRelations;
 	onSubmit: (params: GenerateScenarioDividersParams) => void;
 	register: UseFormRegister<GenerateScenarioDividersParams>;
+	defaultValues: Partial<GenerateScenarioDividersParams>;
 };
 
 export function ScenarioDividerOptionsForm({
@@ -21,6 +22,7 @@ export function ScenarioDividerOptionsForm({
 	story,
 	onSubmit,
 	register,
+	defaultValues,
 	...props
 }: ScenarioDividerOptionsFormProps) {
 	const { t } = useTranslation();
@@ -32,23 +34,27 @@ export function ScenarioDividerOptionsForm({
 	const columnSize = 12 / (showAdditionalOptions ? 3 : 2);
 	const size = { xs: 12, sm: 6, md: columnSize } as const;
 
+	const { returnStory } = story;
+
 	return (
 		<Grid container {...props}>
 			<Grid size={size}>
 				<C.Header>{t("Campaign")}</C.Header>
 				<FormControlLabel
-					control={<Checkbox />}
+					control={<Checkbox defaultChecked={defaultValues.campaignDivider} />}
 					label={t("Campaign Divider")}
 					{...register("campaignDivider")}
 				/>
 				<FormControlLabel
-					control={<Checkbox />}
+					control={
+						<Checkbox defaultChecked={defaultValues.encounterDividers} />
+					}
 					label={t("Encounter Dividers")}
 					{...register("encounterDividers")}
 				/>
 				{campaignIconSupport && (
 					<FormControlLabel
-						control={<Checkbox />}
+						control={<Checkbox defaultChecked={defaultValues.campaignIcon} />}
 						label={t("Campaign Icon")}
 						{...register("campaignIcon")}
 					/>
@@ -57,12 +63,16 @@ export function ScenarioDividerOptionsForm({
 			<Grid size={size}>
 				<C.Header>{t("Scenario")}</C.Header>
 				<FormControlLabel
-					control={<Checkbox />}
+					control={<Checkbox defaultChecked={defaultValues.scenarioDividers} />}
 					label={t("Scenario Dividers")}
 					{...register("scenarioDividers")}
 				/>
 				<FormControlLabel
-					control={<Checkbox />}
+					control={
+						<Checkbox
+							defaultChecked={defaultValues.scenarioEncounterDividers}
+						/>
+					}
 					label={t("Scenario Encounter Dividers")}
 					{...register("scenarioEncounterDividers")}
 				/>
@@ -75,12 +85,16 @@ export function ScenarioDividerOptionsForm({
 						{cardCountSupport && (
 							<>
 								<FormControlLabel
-									control={<Checkbox />}
+									control={
+										<Checkbox defaultChecked={defaultValues.encounterSize} />
+									}
 									label={t("Encounter Size")}
 									{...register("encounterSize")}
 								/>
 								<FormControlLabel
-									control={<Checkbox />}
+									control={
+										<Checkbox defaultChecked={defaultValues.scenarioSize} />
+									}
 									label={t("Scenario Size")}
 									{...register("scenarioSize")}
 								/>
@@ -88,7 +102,9 @@ export function ScenarioDividerOptionsForm({
 						)}
 						{hasExtraEncounterSets && (
 							<FormControlLabel
-								control={<Checkbox />}
+								control={
+									<Checkbox defaultChecked={defaultValues.extraEncounterSets} />
+								}
 								label={t("Extra Dividers")}
 								{...register("extraEncounterSets")}
 							/>
@@ -96,6 +112,15 @@ export function ScenarioDividerOptionsForm({
 					</Stack>
 				</Grid>
 			)}
+			<Grid size={12}>
+				{returnStory && (
+					<FormControlLabel
+						control={<Checkbox defaultChecked={defaultValues.returnSet} />}
+						label={`${t("Include Return Set")}: ${t(returnStory.name)}`}
+						{...register("returnSet")}
+					/>
+				)}
+			</Grid>
 		</Grid>
 	);
 }

@@ -1,25 +1,25 @@
 import { getEncounterSetCardsCount } from "@/modules/encounterSet/shared/lib/logic";
-import { storyCardTypes } from "@/modules/story/shared/config";
+import { scenarioCardTypes } from "@/modules/story/shared/config";
 import type { StoryScenarioWithRelations } from "@/modules/story/shared/model";
 
 type Options = {
 	scenario: StoryScenarioWithRelations;
-	onlyEncounterSet: boolean;
+	cardTypes: "encounter" | "scenario" | "all";
 };
 
-export const getScenarioCardsCount = ({
-	scenario,
-	onlyEncounterSet = false,
-}: Options): number | undefined => {
-	const { encounterSet } = scenario;
+export const getScenarioCardsCount = (options: Options): number | undefined => {
+	const { encounterSet } = options.scenario;
 	if (!encounterSet) {
 		return;
 	}
 
-	const types = onlyEncounterSet ? storyCardTypes : [];
+	const cardTypes = options.cardTypes === "scenario" ? scenarioCardTypes : [];
+	const exceptTypes =
+		options.cardTypes === "encounter" ? scenarioCardTypes : [];
 
 	return getEncounterSetCardsCount({
 		encounterSet,
-		types,
+		cardTypes,
+		exceptTypes,
 	});
 };
