@@ -1,7 +1,5 @@
 import type { Story, StoryWithRelations } from "@/modules/story/shared/model";
 import type { Side, Single } from "@/shared/model";
-import type { DividerCategory } from "./category";
-import type { DividerLayout } from "./layout";
 
 export type Investigator = Single<Story["investigators"]>;
 
@@ -58,8 +56,6 @@ export type InvestigatorDividerData = {
 export type BaseDividerData<Params = void> = {
 	id: string;
 	side: Side;
-	layoutId: string;
-	categoryId: string;
 	title: string;
 	icon?: string;
 	params?: Params;
@@ -68,10 +64,8 @@ export type BaseDividerData<Params = void> = {
 export type Divider<Params = void> = BaseDividerData<Params> &
 	(PlayerDividerData | ScenarioDividerData | InvestigatorDividerData);
 
-export type DividerWithRelations<Params = void> = BaseDividerData<Params> & {
-	layout: DividerLayout;
-	category: DividerCategory;
-} & (
+export type DividerWithRelations<Params = void> = BaseDividerData<Params> &
+	(
 		| (PlayerDividerData & {
 				story?: StoryWithRelations;
 		  })

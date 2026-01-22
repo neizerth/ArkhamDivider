@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import {
@@ -6,6 +7,7 @@ import {
 } from "@/modules/divider/entities/ui";
 import { DividerLayoutOptions } from "@/modules/divider/entities/ui/divider-layout-options";
 import type { DividerLayout } from "@/modules/divider/shared/model";
+import { PrintableContent } from "@/modules/print/widgets/ui";
 import { SectionTitle } from "@/shared/ui";
 import { SingleColumnLayout } from "@/widgets/layout/SingleColumnLayout";
 
@@ -15,19 +17,20 @@ type LayoutPageContentProps = {
 export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 	return (
 		<SingleColumnLayout>
-			<Stack gap={8} paddingBlock={8}>
-				<Container
-					sx={{ paddingInline: { xs: 1, sm: 2 }, displayPrint: "none" }}
-				>
-					<SectionTitle>{layout.name}</SectionTitle>
-					<Stack gap={4} paddingTop={3}>
-						<Stack gap={2}>
-							<DividerLayoutInfo layout={layout} />
-							<DividerTypeNav />
+			<Stack sx={{ paddingInline: 2, paddingBlock: 8, gap: 4 }}>
+				<Container>
+					<Box sx={{ displayPrint: "none" }}>
+						<SectionTitle>{layout.name}</SectionTitle>
+						<Stack gap={4} paddingTop={3}>
+							<Stack gap={2}>
+								<DividerLayoutInfo layout={layout} />
+								<DividerTypeNav />
+							</Stack>
+							<DividerLayoutOptions />
 						</Stack>
-						<DividerLayoutOptions />
-					</Stack>
+					</Box>
 				</Container>
+				<PrintableContent />
 			</Stack>
 		</SingleColumnLayout>
 	);

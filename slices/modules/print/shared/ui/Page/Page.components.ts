@@ -1,9 +1,8 @@
 import { css } from "@emotion/css";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import type { Side } from "@/shared/model";
 
-export const Page = styled(Box)<{ side: Side }>`
+export const Page = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,29 +12,9 @@ export const Page = styled(Box)<{ side: Side }>`
     page-break-inside: avoid;
     overflow: visible;
   }
-    
-  ${({ side }) =>
-		side === "front" &&
-		css`
-    @media screen {
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-      &:hover {
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-      }
-    }
-  `}
-  ${({ side }) =>
-		side === "back" &&
-		css`
-    background-color: #f3f3f3;
-    @media screen {
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.1);
-    
-      &:hover {
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.1);
-      }
-    }
-  `}
+  @media screen {
+    border-radius: 5px;
+  }
 `;
 
 export const Counter = styled(Box)<{ rotated?: boolean }>`

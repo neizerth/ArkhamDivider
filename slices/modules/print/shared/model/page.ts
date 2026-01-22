@@ -1,4 +1,5 @@
-import type { BoxSize } from "@/shared/model";
+import type { BoxSize, Side } from "@/shared/model";
+import type { PrintSize } from "./size";
 
 type CommonFormat = "A" | "B" | "SRA";
 type CommonSize = 4 | 3;
@@ -9,15 +10,30 @@ export type PageFormatType =
 	| "Legal"
 	| "Tabloid";
 
-export type PageFormatSize = {
-	// page size in mm
-	mm: BoxSize;
-	// page size in px at 300 dpi
-	px: BoxSize;
-};
-
 export type PageFormat = {
 	type: PageFormatType;
 	name: string;
-	size: PageFormatSize;
+	size: PrintSize;
+};
+
+export type PageLayoutRow<T> = {
+	id: string;
+	items: T[];
+};
+
+export type PageLayout<T> = {
+	id: string;
+	number: number;
+	total: number;
+	side: Side;
+	items: PageLayoutRow<T>[];
+	itemsCount: number;
+	isLast: boolean;
+	size: BoxSize;
+};
+
+export type PageLayoutGrid = {
+	size: BoxSize;
+	rows: number;
+	cols: number;
 };

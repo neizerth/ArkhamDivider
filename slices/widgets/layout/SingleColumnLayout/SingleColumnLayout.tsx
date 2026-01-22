@@ -8,11 +8,10 @@ type SingleColumnLayoutProps = JSX.IntrinsicElements["main"] & {
 };
 
 export function SingleColumnLayout(props: SingleColumnLayoutProps) {
-	const { sx = {} } = props;
 	return (
 		<C.Container>
 			<Header />
-			<C.Main {...props} sx={{ padding: { xs: 0, sm: 2 }, ...sx }} />
+			<C.Main {...props} />
 			<Footer />
 		</C.Container>
 	);

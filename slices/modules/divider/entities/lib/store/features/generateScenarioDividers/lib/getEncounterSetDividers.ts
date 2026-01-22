@@ -1,11 +1,7 @@
 import { prop, uniqBy } from "ramda";
 import { compact } from "ramda-adjunct";
 import { v4 } from "uuid";
-import type {
-	Divider,
-	DividerCategory,
-	DividerLayout,
-} from "@/modules/divider/shared/model";
+import type { Divider } from "@/modules/divider/shared/model";
 import { getEncounterSetCardsCount } from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import { getScenarioCardsCount } from "@/modules/story/entities/lib";
@@ -13,8 +9,6 @@ import type { StoryWithRelations } from "@/modules/story/shared/model";
 
 type Options = {
 	story: StoryWithRelations;
-	layout: DividerLayout;
-	category: DividerCategory;
 	includeReturnStory: boolean;
 	includeExtraEncounterSets: boolean;
 	includeScenarioEncounterSets: boolean;
@@ -24,8 +18,6 @@ const uniqSets = (sets: EncounterSet[]) => uniqBy(prop("code"), compact(sets));
 
 export const getEncounterSetDividers = ({
 	story,
-	layout,
-	category,
 	includeReturnStory = false,
 	includeScenarioEncounterSets = false,
 	includeExtraEncounterSets = false,
@@ -77,8 +69,6 @@ export const getEncounterSetDividers = ({
 			icon: encounterSet.icon,
 			cardsCount,
 			storyCode: story.code,
-			layoutId: layout.id,
-			categoryId: category.id,
 		};
 	});
 
@@ -104,8 +94,6 @@ export const getEncounterSetDividers = ({
 				icon,
 				cardsCount,
 				storyCode: story.code,
-				layoutId: layout.id,
-				categoryId: category.id,
 			};
 		},
 	);

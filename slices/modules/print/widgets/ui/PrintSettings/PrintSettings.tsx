@@ -2,6 +2,7 @@ import AddIcon from "@mui/icons-material/Add";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import ImportContactsIcon from "@mui/icons-material/ImportContactsOutlined";
 import LanguageIcon from "@mui/icons-material/Language";
+import LooksOneIcon from "@mui/icons-material/LooksOneOutlined";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -20,10 +21,12 @@ import {
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
 	selectShowCornerRadius,
+	selectSingleItemPerPage,
 	setBleedEnabled,
 	setCropMarksEnabled,
 	setDoubleSidePrintEnabled,
 	setShowCornerRadius,
+	setSingleItemPerPage,
 } from "../../../shared/lib";
 import { PageSizeSelect } from "../PageSizeSelect";
 import Bleed from "./images/bleed.svg?react";
@@ -54,6 +57,10 @@ export function PrintSettings(props: PrintSettingsProps) {
 	const { toggle: toggleDoubleSidePrintEnabled } = useBooleanAction({
 		actionCreator: setDoubleSidePrintEnabled,
 		selector: selectDoubleSidePrintEnabled,
+	});
+	const { toggle: toggleSingleItemPerPage } = useBooleanAction({
+		actionCreator: setSingleItemPerPage,
+		selector: selectSingleItemPerPage,
 	});
 
 	return (
@@ -126,6 +133,16 @@ export function PrintSettings(props: PrintSettingsProps) {
 									<StoreSwitch
 										actionCreator={setDoubleSidePrintEnabled}
 										selector={selectDoubleSidePrintEnabled}
+									/>
+								</ListItemButton>
+								<ListItemButton onClick={toggleSingleItemPerPage}>
+									<ListItemIcon>
+										<LooksOneIcon />
+									</ListItemIcon>
+									<ListItemText primary={t(`One per page`)} />
+									<StoreSwitch
+										actionCreator={setSingleItemPerPage}
+										selector={selectSingleItemPerPage}
 									/>
 								</ListItemButton>
 							</List>

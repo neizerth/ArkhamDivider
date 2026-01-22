@@ -1,7 +1,7 @@
 import { createSize as size } from "@/shared/util";
-import type { PageFormat, PageFormatSize, PageFormatType } from "../model";
+import type { PageFormat, PageFormatType, PrintSize } from "../model";
 
-export const PageSize: Record<PageFormatType, PageFormatSize> = {
+export const PageSize: Record<PageFormatType, PrintSize> = {
 	A4: {
 		mm: size(210, 297),
 		px: size(2480, 3508),

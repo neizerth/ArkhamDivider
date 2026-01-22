@@ -10,8 +10,9 @@ import Typography from "@mui/material/Typography";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
+import { selectLayout } from "@/modules/divider/shared/lib";
 import { theme } from "@/shared/config";
-import { createClickAwayListener } from "@/shared/lib";
+import { createClickAwayListener, useAppSelector } from "@/shared/lib";
 import * as C from "./PrintButton.components";
 
 type PrintButtonProps = ButtonGroupProps;
@@ -23,6 +24,7 @@ const sx = {
 
 export function PrintButton(props: PrintButtonProps) {
 	const { t } = useTranslation();
+	const _layout = useAppSelector(selectLayout);
 	const [open, setOpen] = useState(false);
 	const anchorRef = useRef<HTMLDivElement>(null);
 

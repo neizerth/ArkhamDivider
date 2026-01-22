@@ -4,13 +4,16 @@ import {
 	type PayloadAction,
 } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
+import type { RootState } from "@/shared/store";
 import type { Divider } from "../../model";
 
 const adapter = createEntityAdapter<Divider>();
 
+const initialState = adapter.getInitialState();
+
 export const dividers = createSlice({
 	name: "dividers",
-	initialState: adapter.getInitialState(),
+	initialState,
 	reducers: {
 		setDividers: adapter.setAll,
 		addDivider: adapter.addOne,
@@ -37,7 +40,7 @@ export const dividers = createSlice({
 	},
 });
 
-const selectors = adapter.getSelectors();
+const selectors = adapter.getSelectors<RootState>((state) => state.dividers);
 
 export const {
 	setDividers,

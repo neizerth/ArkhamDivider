@@ -1,23 +1,15 @@
 import { v4 } from "uuid";
-import type {
-	Divider,
-	DividerCategory,
-	DividerLayout,
-} from "@/modules/divider/shared/model";
+import type { Divider } from "@/modules/divider/shared/model";
 import { getEncounterSetCardsCount } from "@/modules/encounterSet/shared/lib/logic";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 
 type Options = {
 	story: StoryWithRelations;
-	layout: DividerLayout;
-	category: DividerCategory;
 	includeReturnStory: boolean;
 };
 
 const storyToDivider = ({
 	story,
-	layout,
-	category,
 }: Omit<Options, "includeReturnStory">): Divider => {
 	const cardsCount = story.encounterSets.reduce((acc, encounterSet) => {
 		const count = getEncounterSetCardsCount({ encounterSet }) ?? 0;
@@ -29,8 +21,6 @@ const storyToDivider = ({
 		type: "scenario",
 		side: "front",
 		storyCode: story.code,
-		layoutId: layout.id,
-		categoryId: category.id,
 		title: story.name,
 		icon: story.icon,
 		cardsCount,

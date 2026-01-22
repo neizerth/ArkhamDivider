@@ -1,5 +1,4 @@
 import { isNotEmpty } from "ramda";
-import { getCategoryById, getLayoutById } from "@/modules/divider/entities/lib";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import { createStoryWithRelations } from "@/modules/story/entities/lib";
 import type { Story } from "@/modules/story/shared/model";
@@ -18,19 +17,6 @@ export const getDividersWithRelations = ({
 }: Options) => {
 	return dividers
 		.map((divider) => {
-			const layout = getLayoutById(divider.layoutId);
-			const category = getCategoryById(divider.categoryId);
-
-			if (!layout || !category) {
-				return null;
-			}
-
-			const base = {
-				...divider,
-				layout,
-				category,
-			};
-
 			const story = createStoryWithRelations({
 				stories,
 				code: divider.storyCode,
@@ -42,7 +28,7 @@ export const getDividersWithRelations = ({
 			}
 
 			return {
-				...base,
+				...divider,
 				story,
 			} as DividerWithRelations;
 		})

@@ -9,6 +9,7 @@ export type PrintSize = {
 	mm: BoxSize;
 	px: BoxSize;
 };
+
 export type PrintPosition = {
 	mm: BoxPosition;
 	px: BoxPosition;

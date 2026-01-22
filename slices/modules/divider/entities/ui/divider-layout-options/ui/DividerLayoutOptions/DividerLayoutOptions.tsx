@@ -1,6 +1,6 @@
 import type { BoxProps } from "@mui/material/Box";
 import type { FC } from "react";
-import { selectCurrentDividerType } from "@/modules/divider/shared/lib";
+import { selectDividerType } from "@/modules/divider/shared/lib";
 import type { DividerLayoutType } from "@/modules/divider/shared/model";
 import { useAppSelector } from "@/shared/lib";
 import { InvestigatorDividerOptions } from "../InvestigatorDividerOptions";
@@ -16,7 +16,7 @@ const dividerTypeMap: Record<DividerLayoutType, FC<BoxProps>> = {
 };
 
 export function DividerLayoutOptions(props: DividerLayoutOptionsProps) {
-	const dividerType = useAppSelector(selectCurrentDividerType);
+	const dividerType = useAppSelector(selectDividerType);
 	const Component = dividerTypeMap[dividerType];
 	return <Component {...props} />;
 }

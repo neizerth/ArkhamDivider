@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { PageFormatType } from "../../model";
+import type { Orientation } from "@/shared/model";
+import type { PageFormatType, PageLayoutGrid } from "../../model";
 
 export type PrintState = {
 	cropMarksEnabled: boolean;
@@ -8,6 +9,9 @@ export type PrintState = {
 	showCornerRadius: boolean;
 	doubleSidePrintEnabled: boolean;
 	pageSize: PageFormatType;
+	singleItemPerPage: boolean;
+	orientation: Orientation;
+	pageLayoutGrid: PageLayoutGrid | null;
 };
 
 const initialState: PrintState = {
@@ -16,6 +20,9 @@ const initialState: PrintState = {
 	showCornerRadius: false,
 	doubleSidePrintEnabled: false,
 	pageSize: "A4",
+	singleItemPerPage: false,
+	orientation: "portrait",
+	pageLayoutGrid: null,
 };
 
 export const print = createSlice({
@@ -29,6 +36,9 @@ export const {
 	setShowCornerRadius,
 	setDoubleSidePrintEnabled,
 	setPageSize,
+	setSingleItemPerPage,
+	setPageLayoutGrid,
+	setOrientation,
 } = print.actions;
 
 export const {
@@ -37,6 +47,9 @@ export const {
 	selectShowCornerRadius,
 	selectDoubleSidePrintEnabled,
 	selectPageSize,
+	selectSingleItemPerPage,
+	selectPageLayoutGrid,
+	selectOrientation,
 } = print.selectors;
 
 export default print.reducer;
