@@ -2,6 +2,7 @@ import { put, select, takeEvery } from "redux-saga/effects";
 import { getDividerLayoutGrid } from "@/modules/divider/entities/lib";
 import { selectLayout, setLayoutId } from "@/modules/divider/shared/lib";
 import {
+	selectBleedEnabled,
 	selectPageFormat,
 	setOrientation,
 	setPageLayoutGrid,
@@ -23,9 +24,13 @@ function* worker() {
 		return;
 	}
 
+	const withBleed: ReturnType<typeof selectBleedEnabled> =
+		yield select(selectBleedEnabled);
+
 	const { rotated, ...grid } = getDividerLayoutGrid({
 		layout,
 		pageFormat,
+		withBleed,
 	});
 
 	const orientation: Orientation = rotated ? "landscape" : "portrait";

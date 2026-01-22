@@ -5,6 +5,13 @@ export const createSize = (width: number, height: number) => ({
 	height,
 });
 
+export const expandRectSize = (size: BoxSize, value: number) => {
+	return {
+		width: size.width + value * 2,
+		height: size.height + value * 2,
+	};
+};
+
 export const getBoxSize = (size: BoxSize): string => {
 	return `${size.width}x${size.height}`;
 };
@@ -33,18 +40,16 @@ export const getBoxGrid = (size: BoxSize, unitSize: BoxSize) => {
 		unitSize,
 	);
 
-	console.log({ original, rotated });
-
-	if (original.units > rotated.units) {
+	if (rotated.units > original.units) {
 		return {
-			...original,
-			rotated: false,
+			...rotated,
+			rotated: true,
 		};
 	}
 
 	return {
-		...rotated,
-		rotated: true,
+		...original,
+		rotated: false,
 	};
 };
 
