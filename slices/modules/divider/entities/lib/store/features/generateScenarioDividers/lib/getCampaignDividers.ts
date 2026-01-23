@@ -8,9 +8,7 @@ type Options = {
 	includeReturnStory: boolean;
 };
 
-const storyToDivider = ({
-	story,
-}: Omit<Options, "includeReturnStory">): Divider => {
+const storyToDivider = (story: StoryWithRelations): Divider => {
 	const cardsCount = story.encounterSets.reduce((acc, encounterSet) => {
 		const count = getEncounterSetCardsCount({ encounterSet }) ?? 0;
 		return acc + count;
@@ -28,16 +26,16 @@ const storyToDivider = ({
 };
 
 export const getCampaignDividers = (options: Options): Divider[] => {
-	const { includeReturnStory } = options;
+	const { includeReturnStory, story } = options;
 	const { returnStory } = options.story;
 
-	const storyDivider = storyToDivider(options);
+	const storyDivider = storyToDivider(story);
 
 	if (!includeReturnStory || !returnStory) {
 		return [storyDivider];
 	}
 
-	const returnStoryDivider = storyToDivider({ ...options, story: returnStory });
+	const returnStoryDivider = storyToDivider(returnStory);
 
 	return [storyDivider, returnStoryDivider];
 };

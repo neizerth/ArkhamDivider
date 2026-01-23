@@ -12,6 +12,7 @@ import {
 import {
 	selectLayout,
 	selectScenarioParams,
+	setScenarioParams,
 } from "@/modules/divider/shared/lib";
 import type { GenerateDividersMode } from "@/modules/divider/shared/model";
 import { selectStoryWithRelations } from "@/modules/story/entities/lib";
@@ -30,9 +31,15 @@ export function ScenarioDividerOptions(props: BoxProps) {
 	const layout = useAppSelector(selectLayout);
 	const defaultValues = useAppSelector(selectScenarioParams);
 
-	const { register, handleSubmit } = useForm<GenerateScenarioDividersParams>({
-		defaultValues,
-	});
+	const { register, handleSubmit, getValues } =
+		useForm<GenerateScenarioDividersParams>({
+			defaultValues,
+		});
+
+	const onParamsChange = useCallback(() => {
+		const params = getValues();
+		dispatch(setScenarioParams(params));
+	}, [getValues, dispatch]);
 
 	const onChangeStory = useCallback(
 		(code: string | null) => {
@@ -94,6 +101,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 							onSubmit={console.log}
 							register={register}
 							defaultValues={defaultValues}
+							onChange={onParamsChange}
 						/>
 					)}
 				</Stack>

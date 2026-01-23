@@ -53,8 +53,6 @@ const getFrontLayouts = <T>({
 	const itemsPerPage = singleItemPerPage ? 1 : rows * cols;
 	const totalPages = Math.ceil(data.length / itemsPerPage);
 
-	console.log({ data, itemsPerPage, totalPages });
-
 	for (let i = 0; i < data.length; i += itemsPerPage) {
 		const chunk = data.slice(i, i + itemsPerPage);
 		const isLast = i + itemsPerPage >= data.length;

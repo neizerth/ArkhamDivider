@@ -1,9 +1,5 @@
 import { put, select, takeEvery } from "redux-saga/effects";
-import {
-	addManyDividers,
-	setDividers,
-	setScenarioParams,
-} from "@/modules/divider/shared/lib";
+import { addManyDividers, setDividers } from "@/modules/divider/shared/lib";
 import { selectStoryWithRelations } from "@/modules/story/entities/lib";
 import { generateScenarioDividers } from "./generateScenarioDividers";
 import {
@@ -20,8 +16,6 @@ function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
 	if (!story) {
 		return;
 	}
-
-	yield put(setScenarioParams(payload));
 
 	const campaignDividers = payload.campaignDivider
 		? getCampaignDividers({

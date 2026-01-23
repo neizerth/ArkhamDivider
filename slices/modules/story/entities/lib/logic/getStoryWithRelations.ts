@@ -1,6 +1,6 @@
 import { isNotNil } from "ramda";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
-import { getStoryScenarios } from "@/modules/story/shared/lib/logic/getStoryScenarios";
+import { getStoryScenarios } from "@/modules/story/shared/lib";
 import type {
 	Story,
 	StoryScenario,

@@ -4,6 +4,10 @@ import type { Defined, Single } from "@/shared/model";
 
 export type Story = Single<ArkhamDivider.Core["stories"]> & {
 	translated: boolean;
+	return_code?: string;
+	return_scenarios?: StoryScenario[];
+	return_scenario_encounter_sets?: string[];
+	return_encounter_sets?: string[];
 };
 
 export type StoryScenario = Defined<Story["scenario"]>;
