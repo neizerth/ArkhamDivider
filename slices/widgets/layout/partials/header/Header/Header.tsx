@@ -2,8 +2,10 @@ import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import type { JSX } from "react";
-import { DividerSelect } from "@/modules/divider/entities/ui";
-import { DividerVariantSelect } from "@/modules/divider/entities/ui/DividerVariantSelect";
+import {
+	DividerSelect,
+	DividerVariantSelect,
+} from "@/modules/divider/entities/ui";
 import { PrintButton, PrintSettings } from "@/modules/print/widgets/ui";
 import * as C from "./Header.components";
 

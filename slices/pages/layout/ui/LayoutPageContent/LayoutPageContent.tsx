@@ -5,7 +5,7 @@ import {
 	DividerLayoutInfo,
 	DividerTypeNav,
 } from "@/modules/divider/entities/ui";
-import { DividerLayoutOptions } from "@/modules/divider/entities/ui/divider-layout-options";
+import { DividerLayoutOptions } from "@/modules/divider/entities/ui/details/divider-layout-options";
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import { PrintableContent } from "@/modules/print/widgets/ui";
 import { SectionTitle } from "@/shared/ui";

@@ -10,7 +10,7 @@ import {
 	useDividerColorData,
 	useDividerOrientationData,
 	useRouterLayout,
-} from "../../lib";
+} from "../../../lib";
 import * as C from "./DividerVariantSelect.components";
 
 type DividerVariantSelectProps = JSX.IntrinsicElements["div"];

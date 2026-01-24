@@ -6,7 +6,7 @@ import {
 import type { Divider } from "@/modules/divider/shared/model";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
-import { dividerComponents } from "../../items";
+import { dividerComponents } from "../../../items";
 
 type DividerViewProps = Divider;
 
