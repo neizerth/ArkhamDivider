@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { pick } from "ramda";
 import type { DividerLayout } from "@/modules/divider/shared/model";
@@ -42,7 +41,7 @@ export function PrintablePage<T extends WithId>({
 				{items.map((row) => (
 					<Row key={row.id}>
 						{row.items.map((item) => (
-							<Box
+							<Row
 								key={item.id}
 								sx={{
 									aspectRatio: unitAspectRatio,
@@ -50,7 +49,7 @@ export function PrintablePage<T extends WithId>({
 								}}
 							>
 								<Component {...item} />
-							</Box>
+							</Row>
 						))}
 					</Row>
 				))}

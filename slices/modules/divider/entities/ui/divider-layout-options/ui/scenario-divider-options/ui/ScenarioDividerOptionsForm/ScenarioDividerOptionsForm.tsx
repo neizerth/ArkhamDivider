@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid, { type GridProps } from "@mui/material/Grid";
@@ -15,7 +14,6 @@ import type { GenerateScenarioDividersParams } from "@/modules/divider/entities/
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 import { useAppSelector } from "@/shared/lib";
-import { Row } from "@/shared/ui";
 import * as C from "./ScenarioDividerOptionsForm.components";
 
 type ScenarioDividerOptionsFormProps = GridProps & {
@@ -133,12 +131,10 @@ export function ScenarioDividerOptionsForm({
 					<FormControlLabel
 						control={<Checkbox defaultChecked={defaultValues.returnSet} />}
 						label={
-							<Row alignItems="center" gap={0.5}>
-								<Box>
-									{t`Include Return Set`}: {t(returnStory.name)}
-								</Box>
-								<OfficialIcon />
-							</Row>
+							<>
+								{t`Include Return Set`}: {t(returnStory.name)}{" "}
+								<OfficialIcon sx={{ position: "relative", top: 3 }} />
+							</>
 						}
 						{...register("returnSet")}
 					/>

@@ -1,3 +1,5 @@
+import Bleed from "@assets/images/bleed.svg?react";
+import CornerRadius from "@assets/images/corner-radius.svg?react";
 import AddIcon from "@mui/icons-material/Add";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import ImportContactsIcon from "@mui/icons-material/ImportContactsOutlined";
@@ -29,8 +31,6 @@ import {
 	setSingleItemPerPage,
 } from "../../../shared/lib";
 import { PageSizeSelect } from "../PageSizeSelect";
-import Bleed from "./images/bleed.svg?react";
-import CornerRadius from "./images/corner-radius.svg?react";
 import * as C from "./PrintSettings.components";
 
 type PrintSettingsProps = JSX.IntrinsicElements["div"];

@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { omit } from "ramda";
 import { createSliceState } from "redux-toolkit-helpers";
 import type { Orientation } from "@/shared/model";
-import type { PageFormatType, PageLayoutGrid } from "../../model";
+import type { DPI, PageFormatType, PageLayoutGrid } from "../../model";
 
 export type PrintState = {
+	dpi: DPI;
 	cropMarksEnabled: boolean;
 	bleedEnabled: boolean;
 	showCornerRadius: boolean;
@@ -15,6 +17,7 @@ export type PrintState = {
 };
 
 const initialState: PrintState = {
+	dpi: 300,
 	cropMarksEnabled: true,
 	bleedEnabled: true,
 	showCornerRadius: false,
@@ -25,9 +28,19 @@ const initialState: PrintState = {
 	pageLayoutGrid: null,
 };
 
+const state = createSliceState(initialState);
+
 export const print = createSlice({
 	name: "print",
-	...createSliceState(initialState),
+	...state,
+	reducers: {
+		...omit(["setDpi"], state.reducers),
+		setDPI: state.reducers.setDpi,
+	},
+	selectors: {
+		...omit(["selectDpi"], state.selectors),
+		selectDPI: state.selectors.selectDpi,
+	},
 });
 
 export const {
@@ -39,6 +52,7 @@ export const {
 	setSingleItemPerPage,
 	setPageLayoutGrid,
 	setOrientation,
+	setDPI,
 } = print.actions;
 
 export const {
@@ -50,6 +64,7 @@ export const {
 	selectSingleItemPerPage,
 	selectPageLayoutGrid,
 	selectOrientation,
+	selectDPI,
 } = print.selectors;
 
 export default print.reducer;

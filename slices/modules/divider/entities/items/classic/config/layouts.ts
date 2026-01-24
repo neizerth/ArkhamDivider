@@ -17,6 +17,12 @@ const horizontalLayout: DividerLayout = {
 	orientation: "horizontal",
 	color: false,
 	size: createSize(88, 76.2),
+	printSize: {
+		300: {
+			size: createSize(1039, 900),
+			bleedSize: createSize(1110, 971),
+		},
+	},
 	bleed: 3,
 	sleeves: [
 		{
@@ -31,21 +37,34 @@ const horizontalLayout: DividerLayout = {
 	],
 	cardCountSupport: true,
 	campaignIconSupport: true,
+	params: {
+		background: "/images/divider/background/classic/horizontal.png",
+	},
 };
 
 const horizontalBW: DividerLayout = {
 	...horizontalLayout,
 	id: "classic-horizontal-bw",
 	color: false,
+	params: {
+		background: "/images/divider/background/classic/horizontal_bw.png",
+	},
 };
 
 const horizontalHQ: DividerLayout = {
 	...horizontalLayout,
 	id: "classic-horizontal-hq",
+	printSize: {
+		...horizontalLayout.printSize,
+		600: {
+			size: createSize(2079, 1800),
+			bleedSize: createSize(2220, 1942),
+		},
+	},
 };
 
 const horizontalHQBW: DividerLayout = {
-	...horizontalLayout,
+	...horizontalHQ,
 	id: "classic-horizontal-hq-bw",
 	color: false,
 };
@@ -60,10 +79,13 @@ const verticalLayout: DividerLayout = {
 	orientation: "vertical",
 	color: false,
 	size: createSize(63, 100),
-	bleed: 3,
-	position: {
-		left: 2,
+	printSize: {
+		300: {
+			size: createSize(744, 1181),
+			bleedSize: createSize(815, 1252),
+		},
 	},
+	bleed: 3,
 };
 
 const verticalBW: DividerLayout = {
@@ -77,8 +99,11 @@ const vertical65x100: DividerLayout = {
 	id: "classic-vertical-sleeves",
 	groupId: "classic-vertical-sleeves",
 	size: createSize(65, 100),
-	position: {
-		left: 0,
+	printSize: {
+		300: {
+			size: createSize(768, 1181),
+			bleedSize: createSize(839, 1252),
+		},
 	},
 	sleeves: [
 		{

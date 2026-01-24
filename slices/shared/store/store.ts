@@ -1,10 +1,10 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { persistReducer, persistStore } from "redux-persist";
+import { createMigrate, persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import createSagaMiddleware, { type SagaMiddleware } from "redux-saga";
 import { router } from "@/modules/core/router/app/config";
-import migrations from "./migrations";
+import { currentMigrationVersion, migrationManifest } from "./migrations";
 import reducer from "./reducer";
 import { rootSaga } from "./sagas";
 
@@ -26,8 +26,8 @@ export type AppSelector<ReturnType = unknown> = (
 const persistConfig = {
 	key: "root",
 	storage,
-	migrations,
-	version: 0,
+	migrate: createMigrate(migrationManifest, { debug: false }),
+	version: currentMigrationVersion,
 	blacklist: ["story", "divider"],
 };
 

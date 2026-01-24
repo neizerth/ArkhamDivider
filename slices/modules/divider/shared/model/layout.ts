@@ -1,5 +1,6 @@
 import type { SleeveSize } from "@/entities/sleeve/model";
-import type { Author, BoxPosition, BoxSize } from "@/shared/model";
+import type { DPI } from "@/modules/print/shared/model";
+import type { Author, BoxSize } from "@/shared/model";
 
 export type DividerLayoutSleeve = {
 	id: string;
@@ -9,7 +10,16 @@ export type DividerLayoutSleeve = {
 
 export type DividerLayoutType = "scenario" | "player" | "investigator";
 
-export type DividerLayout<Params = void> = {
+export type DividerPrintSizeItem = {
+	/** The size of the divider in px at the given DPI */
+	size: BoxSize;
+	/** The size of the bleed in px at the given DPI */
+	bleedSize: BoxSize;
+};
+
+export type DividerPrintSize = Partial<Record<DPI, DividerPrintSizeItem>>;
+
+export type DividerLayout = {
 	id: string;
 	types: DividerLayoutType[];
 	categoryId: string;
@@ -20,10 +30,10 @@ export type DividerLayout<Params = void> = {
 	orientation: "horizontal" | "vertical";
 	color: boolean;
 	size: BoxSize;
-	position?: Partial<BoxPosition>;
+	printSize: DividerPrintSize;
 	bleed: number;
 	sleeves?: DividerLayoutSleeve[];
-	params?: Params;
+	params?: Record<string, unknown>;
 	cardCountSupport?: boolean;
 	campaignIconSupport?: boolean;
 };

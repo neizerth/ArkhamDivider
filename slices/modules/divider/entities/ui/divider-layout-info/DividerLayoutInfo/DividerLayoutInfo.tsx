@@ -1,3 +1,4 @@
+import BleedIcon from "@assets/images/bleed.svg?react";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import Box from "@mui/material/Box";
@@ -5,6 +6,8 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 import type { DividerLayout } from "@/modules/divider/shared/model";
+import { selectBleedEnabled } from "@/modules/print/shared/lib";
+import { useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
 import { getBoxSize } from "@/shared/util";
 import { getLayoutAuthors } from "../../../lib";
@@ -18,16 +21,20 @@ type DividerLayoutInfoProps = {
 
 const optionTitleSx = {
 	minWidth: { xs: 0, sm: 120 },
-	width: { xs: "100%", sm: "auto" },
 	alignItems: "center",
 	justifyContent: { xs: "flex-start", sm: "flex-end" },
 	gap: 1,
 } as const;
 
+const sleevesTitleSx = {
+	...optionTitleSx,
+	width: { xs: "100%", sm: "auto" },
+} as const;
+
 const optionSx = {
 	alignItems: "center",
 	justifyContent: { xs: "flex-start", sm: "flex-end" },
-	gap: { xs: 1, sm: 3 },
+	gap: 2,
 	flexWrap: "wrap",
 } as const;
 
@@ -37,6 +44,7 @@ const optionLabelSx = {
 
 export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 	const { t } = useTranslation();
+	const bleedEnabled = useAppSelector(selectBleedEnabled);
 
 	const { sleeves } = layout;
 
@@ -68,9 +76,25 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 							{size} {t`mm`}
 						</Typography>
 					</Row>
-					{sleeves && (
+					{bleedEnabled && (
 						<Row sx={optionSx}>
 							<Row sx={optionTitleSx}>
+								<Typography
+									variant="body2"
+									sx={optionLabelSx}
+								>{t`Bleed`}</Typography>
+								<C.Icon title={t`Bleed`}>
+									<BleedIcon width={24} height={24} />
+								</C.Icon>
+							</Row>
+							<Typography variant="body1" flex={1}>
+								{layout.bleed} {t`mm`}
+							</Typography>
+						</Row>
+					)}
+					{sleeves && (
+						<Row sx={optionSx}>
+							<Row sx={sleevesTitleSx}>
 								<Typography
 									variant="body2"
 									sx={optionLabelSx}
