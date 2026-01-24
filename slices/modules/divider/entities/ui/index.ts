@@ -1,4 +1,6 @@
+export * from "./DividerBackground";
 export * from "./DividerContainer";
+export * from "./DividerContent";
 export * from "./DividerSelect";
 export * from "./DividerTypeNav";
 export * from "./DividerVariantSelect";

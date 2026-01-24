@@ -1,8 +1,10 @@
-import { DividerContainer } from "@/modules/divider/entities/ui";
-import { DividerContent } from "@/modules/divider/entities/ui/DividerContent";
+import {
+	DividerBackground as Background,
+	DividerContainer as Container,
+	DividerContent as Content,
+} from "@/modules/divider/entities/ui";
 import { selectLayout } from "@/modules/divider/shared/lib";
 import type { Divider, DividerLayout } from "@/modules/divider/shared/model";
-import { absoluteFill } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib";
 
 type ClassicDividerProps = Divider;
@@ -16,16 +18,9 @@ export function ClassicDivider(_props: ClassicDividerProps) {
 	const { background } = layout.params as ClassicLayoutParams;
 
 	return (
-		<DividerContainer>
-			<img
-				style={{
-					...absoluteFill,
-					zIndex: 1,
-				}}
-				src={background}
-				alt={layout.name}
-			/>
-			<DividerContent zIndex={2}>classic</DividerContent>
-		</DividerContainer>
+		<Container>
+			<Background src={background} alt={layout.name} />
+			<Content>classic</Content>
+		</Container>
 	);
 }
