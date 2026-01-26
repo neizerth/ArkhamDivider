@@ -23,6 +23,7 @@ export const selectPrintableLayoutSize = createSelector(
 		return {
 			mm,
 			area: printSize.size,
+			bleedArea: printSize.bleedSize,
 			size,
 			bleedEnabled,
 			originalBleed,

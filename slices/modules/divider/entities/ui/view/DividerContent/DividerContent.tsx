@@ -17,10 +17,12 @@ export function DividerContent(props: DividerContentProps) {
 	return (
 		<Box
 			sx={{
-				position: "relative",
+				position: "absolute",
 				zIndex: 2,
 				top: offset,
 				left: offset,
+				right: offset,
+				bottom: offset,
 				...sxProps,
 			}}
 			{...props}

@@ -1,1 +1,2 @@
-export * from "./OfficialIcon/OfficialIcon";
+export * from "./IconCorrection";
+export * from "./OfficialIcon";

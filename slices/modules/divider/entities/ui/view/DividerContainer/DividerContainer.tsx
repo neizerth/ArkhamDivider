@@ -15,7 +15,7 @@ export function DividerContainer({ children }: DividerContainerProps) {
 		return null;
 	}
 
-	const { originalBleed } = printableSize;
+	const { originalBleed, bleedArea } = printableSize;
 
 	const wrapperProps = bleedEnabled
 		? fullSize
@@ -27,23 +27,15 @@ export function DividerContainer({ children }: DividerContainerProps) {
 	const contentProps = bleedEnabled
 		? fullSize
 		: {
+				...bleedArea,
 				top: -originalBleed,
 				left: -originalBleed,
 			};
 
 	return (
-		<Box {...fullSize} position="relative" className="divider-container">
-			<Box
-				{...wrapperProps}
-				position="relative"
-				className="divider-container-wrapper"
-			>
-				<Box
-					{...contentProps}
-					{...fullSize}
-					position="relative"
-					className="divider-container-content"
-				>
+		<Box {...fullSize} position="relative">
+			<Box {...wrapperProps} position="relative">
+				<Box {...contentProps} position="relative">
 					{children}
 				</Box>
 			</Box>

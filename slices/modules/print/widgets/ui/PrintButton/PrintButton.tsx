@@ -7,10 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
-import { selectLayout } from "@/modules/divider/shared/lib";
+import {
+	getSupportedLayoutDPI,
+	selectLayout,
+} from "@/modules/divider/shared/lib";
 import { theme } from "@/shared/config";
 import { createClickAwayListener, useAppSelector } from "@/shared/lib";
 import * as C from "./PrintButton.components";
@@ -24,7 +27,8 @@ const sx = {
 
 export function PrintButton(props: PrintButtonProps) {
 	const { t } = useTranslation();
-	const _layout = useAppSelector(selectLayout);
+	const layout = useAppSelector(selectLayout);
+	const supportedDPI = getSupportedLayoutDPI(layout);
 	const [open, setOpen] = useState(false);
 	const anchorRef = useRef<HTMLDivElement>(null);
 
@@ -57,24 +61,29 @@ export function PrintButton(props: PrintButtonProps) {
 						<Paper>
 							<ClickAwayListener onClickAway={close}>
 								<MenuList>
-									<Box
-										textAlign="center"
-										paddingBottom={1}
-										borderBottom={1}
-										borderColor="divider"
-										color="text.secondary"
-									>
-										<Typography variant="body2">300 DPI</Typography>
-									</Box>
-									<MenuItem>
-										<Icon icon="file-pdf" /> &nbsp; PDF
-									</MenuItem>
-									<MenuItem>
-										<Icon icon="file-zip" /> &nbsp; TIFF<C.Badge>CMYK</C.Badge>
-									</MenuItem>
-									<MenuItem>
-										<Icon icon="file-zip" /> &nbsp; PNG
-									</MenuItem>
+									{supportedDPI.map((dpi) => (
+										<Fragment key={dpi}>
+											<Box
+												textAlign="center"
+												paddingBottom={1}
+												borderBottom={1}
+												borderColor="divider"
+												color="text.secondary"
+											>
+												<Typography variant="body2">{dpi} DPI</Typography>
+											</Box>
+											<MenuItem>
+												<Icon icon="file-pdf" /> &nbsp; PDF
+											</MenuItem>
+											<MenuItem>
+												<Icon icon="file-zip" /> &nbsp; TIFF
+												<C.Badge>CMYK</C.Badge>
+											</MenuItem>
+											<MenuItem>
+												<Icon icon="file-zip" /> &nbsp; PNG
+											</MenuItem>
+										</Fragment>
+									))}
 								</MenuList>
 							</ClickAwayListener>
 						</Paper>

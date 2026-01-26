@@ -1,5 +1,10 @@
 import type { BoxSize } from "../model";
 
+export const createSquareSize = (size: number) => ({
+	width: size,
+	height: size,
+});
+
 export const createSize = (width: number, height: number) => ({
 	width,
 	height,

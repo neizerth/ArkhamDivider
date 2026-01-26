@@ -11,3 +11,13 @@ export type IconScaleFactor = {
 	circled?: number;
 	regular?: number;
 };
+
+export type IconName = string;
+
+export type IconPositionManifest = Record<IconName, IconPosition>;
+
+export type IconPosition = {
+	scale?: number;
+	left?: number;
+	top?: number;
+};

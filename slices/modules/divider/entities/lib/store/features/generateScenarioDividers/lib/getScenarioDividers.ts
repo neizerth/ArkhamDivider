@@ -2,6 +2,7 @@ import { ascend, sortWith } from "ramda";
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
 import { getScenarioCardsCount } from "@/modules/story/entities/lib";
+import { getStoryScenarios } from "@/modules/story/shared/lib";
 import type {
 	StoryScenarioWithRelations,
 	StoryWithRelations,
@@ -10,17 +11,28 @@ import type {
 type Optons = {
 	story: StoryWithRelations;
 	exceptEncounterCards?: boolean;
+	includeReturnStory?: boolean;
 };
 
 export const getScenarioDividers = ({
 	story,
 	exceptEncounterCards = false,
+	includeReturnStory = false,
 }: Optons) => {
 	const sortFilter = ascend<StoryScenarioWithRelations>(
 		({ number = Infinity }) => number,
 	);
 
-	const sortedScenarios = sortWith([sortFilter], story.scenarios);
+	const baseScenarios = getStoryScenarios(story);
+	const returnScenarios = story.returnStory
+		? getStoryScenarios(story.returnStory)
+		: [];
+
+	const scenarios = includeReturnStory
+		? [...baseScenarios, ...returnScenarios]
+		: baseScenarios;
+
+	const sortedScenarios = sortWith([sortFilter], scenarios);
 
 	return sortedScenarios.map((scenario): Divider => {
 		const { icon } = scenario;

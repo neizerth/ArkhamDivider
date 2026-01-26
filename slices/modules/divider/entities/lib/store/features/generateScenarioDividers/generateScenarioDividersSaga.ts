@@ -28,6 +28,7 @@ function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
 		? getScenarioDividers({
 				story,
 				exceptEncounterCards: payload.scenarioEncounterDividers,
+				includeReturnStory: payload.returnSet,
 			})
 		: [];
 

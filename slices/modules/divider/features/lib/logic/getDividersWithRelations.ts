@@ -1,4 +1,4 @@
-import { isNotEmpty } from "ramda";
+import { isNotNil } from "ramda";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import { createStoryWithRelations } from "@/modules/story/entities/lib";
 import type { Story } from "@/modules/story/shared/model";
@@ -32,5 +32,5 @@ export const getDividersWithRelations = ({
 				story,
 			} as DividerWithRelations;
 		})
-		.filter(isNotEmpty);
+		.filter(isNotNil);
 };

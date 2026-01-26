@@ -1,4 +1,5 @@
 import { injectGlobal } from "@emotion/css";
+import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import { ArkhamDividerAPI } from "@/shared/api";
 
@@ -19,7 +20,8 @@ injectGlobal`
   }
 `;
 
-export const Container = styled("span")`
+export const Container = styled(Box)`
+  display: inline-block;
   font-family: ArkhamIcons;
   user-select: none;
   line-height: 1;

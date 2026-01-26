@@ -39,8 +39,8 @@ export const useStoryTranslation = (story?: Story) => {
 	);
 
 	const translateStory = useCallback(
-		(text: string, story?: Story) =>
-			translate(text, {
+		(text?: string, story?: Story) =>
+			translate(text ?? "", {
 				ns: story && getStoryI18nNamespace(story.code),
 			}),
 		[translate],
