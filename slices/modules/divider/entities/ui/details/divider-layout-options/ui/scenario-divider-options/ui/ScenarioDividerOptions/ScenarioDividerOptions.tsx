@@ -31,7 +31,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 	const layout = useAppSelector(selectLayout);
 	const defaultValues = useAppSelector(selectScenarioParams);
 
-	const { register, handleSubmit, getValues } =
+	const { control, handleSubmit, getValues } =
 		useForm<GenerateScenarioDividersParams>({
 			defaultValues,
 		});
@@ -99,7 +99,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 							layout={layout}
 							story={story}
 							onSubmit={console.log}
-							register={register}
+							control={control}
 							defaultValues={defaultValues}
 							onChange={onParamsChange}
 						/>

@@ -1,5 +1,6 @@
 import Box, { type BoxProps } from "@mui/material/Box";
 import { useCallback, useEffect, useRef } from "react";
+import { sanitizeHTML } from "@/shared/util";
 
 export type BoxInputProps = BoxProps & {
 	onValueChange?: (value: string) => void;
@@ -16,6 +17,7 @@ export function BoxInput({
 }: BoxInputProps) {
 	const defaultRef = useRef<HTMLDivElement>(null);
 	const ref = (props.ref as React.RefObject<HTMLDivElement>) ?? defaultRef;
+
 	const defaultContent = defaultValue ?? value ?? "";
 
 	const setValue = useCallback(
@@ -34,7 +36,8 @@ export function BoxInput({
 
 	const onChange = useCallback(
 		(event: React.FormEvent<HTMLDivElement>) => {
-			onValueChangeProp?.(event.currentTarget.innerText);
+			const value = sanitizeHTML(event.currentTarget.innerText);
+			onValueChangeProp?.(value);
 			onChangeProp?.(event);
 		},
 		[onChangeProp, onValueChangeProp],

@@ -15,7 +15,15 @@ import type {
 import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
 import { useAppSelector } from "@/shared/lib";
-import { getIconSx, getTextSx } from "./ClassicDivider.styles";
+import { classicDividerTextColor } from "../../config/common";
+import { ClassicDividerStats } from "../ClassicDividerStats/ClassicDividerStats";
+import {
+	getBackgroundIconSx,
+	getDividerStatsSx,
+	getIconSx,
+	getStrokeSx,
+	getTextSx,
+} from "./ClassicDivider.styles";
 
 type ClassicLayoutParams = {
 	background: string;
@@ -27,16 +35,29 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const { translateStory } = useStoryTranslation(story);
 	const { background } = layout.params as ClassicLayoutParams;
 	const mm = usePrintUnitCallback();
+
 	const titleSx = useLocaleSx(getTextSx);
 	const iconSx = usePrintSx(getIconSx);
+	const backgroundIconSx = usePrintSx(getBackgroundIconSx);
+	const dividerStatsSx = usePrintSx(getDividerStatsSx);
+	const strokeSx = usePrintSx(getStrokeSx);
 
-	const title = translateStory(props?.title);
+	const translatedTitle = translateStory(props?.title);
 
 	return (
 		<Container>
 			<Background src={background} alt={layout.name} />
-			<Content>
-				<DividerText sx={titleSx} value={title} fit />
+			<Content sx={{ color: classicDividerTextColor }}>
+				<DividerText
+					sx={titleSx}
+					value={translatedTitle}
+					fitTextOptions={{
+						minFontSize: 8,
+					}}
+					strokeSx={strokeSx}
+					stroke
+					fit
+				/>
 				<Box sx={iconSx}>
 					{icon && (
 						<IconCorrection
@@ -47,6 +68,10 @@ export function ClassicDivider(props: DividerWithRelations) {
 						/>
 					)}
 				</Box>
+				<Box sx={backgroundIconSx}>
+					{icon && <IconCorrection icon={icon} fontSize={mm(50)} />}
+				</Box>
+				<ClassicDividerStats divider={props} sx={dividerStatsSx} />
 			</Content>
 		</Container>
 	);

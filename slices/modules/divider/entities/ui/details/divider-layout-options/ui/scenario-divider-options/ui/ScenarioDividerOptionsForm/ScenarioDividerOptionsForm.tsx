@@ -2,7 +2,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid, { type GridProps } from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
-import type { UseFormRegister } from "react-hook-form";
+import { type Control, Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { OfficialIcon } from "@/modules/core/icon/entities/ui";
 import {
@@ -20,7 +20,7 @@ type ScenarioDividerOptionsFormProps = GridProps & {
 	layout: DividerLayout;
 	story: StoryWithRelations;
 	onSubmit: (params: GenerateScenarioDividersParams) => void;
-	register: UseFormRegister<GenerateScenarioDividersParams>;
+	control: Control<GenerateScenarioDividersParams>;
 	defaultValues: Partial<GenerateScenarioDividersParams>;
 };
 
@@ -28,7 +28,7 @@ export function ScenarioDividerOptionsForm({
 	layout,
 	story,
 	onSubmit,
-	register,
+	control,
 	defaultValues,
 	...props
 }: ScenarioDividerOptionsFormProps) {
@@ -54,41 +54,60 @@ export function ScenarioDividerOptionsForm({
 		<Grid container {...props}>
 			<Grid size={size}>
 				<C.Header>{t("Campaign")}</C.Header>
-				<FormControlLabel
-					control={<Checkbox defaultChecked={defaultValues.campaignDivider} />}
-					label={`${t("Campaign Divider")} (${campaignDividerCount})`}
-					{...register("campaignDivider")}
+				<Controller
+					name="campaignDivider"
+					control={control}
+					render={({ field }) => (
+						<FormControlLabel
+							control={<Checkbox {...field} checked={field.value ?? false} />}
+							label={`${t("Campaign Divider")} (${campaignDividerCount})`}
+						/>
+					)}
 				/>
-				<FormControlLabel
-					control={
-						<Checkbox defaultChecked={defaultValues.encounterDividers} />
-					}
-					label={`${t("Encounter Dividers")} (${encounterSetDividerCount})`}
-					{...register("encounterDividers")}
+				<Controller
+					name="encounterDividers"
+					control={control}
+					render={({ field }) => (
+						<FormControlLabel
+							control={<Checkbox {...field} checked={field.value ?? false} />}
+							label={`${t("Encounter Dividers")} (${encounterSetDividerCount})`}
+						/>
+					)}
 				/>
 				{campaignIconSupport && (
-					<FormControlLabel
-						control={<Checkbox defaultChecked={defaultValues.campaignIcon} />}
-						label={t("Campaign Icon")}
-						{...register("campaignIcon")}
+					<Controller
+						name="campaignIcon"
+						control={control}
+						render={({ field }) => (
+							<FormControlLabel
+								control={<Checkbox {...field} checked={field.value ?? false} />}
+								label={t("Campaign Icon")}
+							/>
+						)}
 					/>
 				)}
 			</Grid>
 			<Grid size={size}>
 				<C.Header>{t("Scenario")}</C.Header>
-				<FormControlLabel
-					control={<Checkbox defaultChecked={defaultValues.scenarioDividers} />}
-					label={`${t("Scenario Dividers")} (${scenarioDividerCount})`}
-					{...register("scenarioDividers")}
-				/>
-				<FormControlLabel
-					control={
-						<Checkbox
-							defaultChecked={defaultValues.scenarioEncounterDividers}
+				<Controller
+					name="scenarioDividers"
+					control={control}
+					render={({ field }) => (
+						<FormControlLabel
+							control={<Checkbox {...field} checked={field.value ?? false} />}
+							label={`${t("Scenario Dividers")} (${scenarioDividerCount})`}
 						/>
-					}
-					label={`${t("Scenario Encounter Dividers")} (${scenarioDividerCount})`}
-					{...register("scenarioEncounterDividers")}
+					)}
+				/>
+				<Controller
+					name="scenarioEncounterDividers"
+					control={control}
+					render={({ field }) => (
+						<FormControlLabel
+							control={<Checkbox {...field} checked={field.value ?? false} />}
+							label={`${t("Scenario Encounter Dividers")} (${scenarioDividerCount})`}
+						/>
+					)}
 				/>
 			</Grid>
 			{showAdditionalOptions && (
@@ -98,29 +117,44 @@ export function ScenarioDividerOptionsForm({
 					<Stack gap={1}>
 						{cardCountSupport && (
 							<>
-								<FormControlLabel
-									control={
-										<Checkbox defaultChecked={defaultValues.encounterSize} />
-									}
-									label={t("Encounter Size")}
-									{...register("encounterSize")}
+								<Controller
+									name="encounterSize"
+									control={control}
+									render={({ field }) => (
+										<FormControlLabel
+											control={
+												<Checkbox {...field} checked={field.value ?? false} />
+											}
+											label={t("Encounter Size")}
+										/>
+									)}
 								/>
-								<FormControlLabel
-									control={
-										<Checkbox defaultChecked={defaultValues.scenarioSize} />
-									}
-									label={t("Scenario Size")}
-									{...register("scenarioSize")}
+								<Controller
+									name="scenarioSize"
+									control={control}
+									render={({ field }) => (
+										<FormControlLabel
+											control={
+												<Checkbox {...field} checked={field.value ?? false} />
+											}
+											label={t("Scenario Size")}
+										/>
+									)}
 								/>
 							</>
 						)}
 						{hasExtraEncounterSets && (
-							<FormControlLabel
-								control={
-									<Checkbox defaultChecked={defaultValues.extraEncounterSets} />
-								}
-								label={t("Extra Dividers")}
-								{...register("extraEncounterSets")}
+							<Controller
+								name="extraEncounterSets"
+								control={control}
+								render={({ field }) => (
+									<FormControlLabel
+										control={
+											<Checkbox {...field} checked={field.value ?? false} />
+										}
+										label={t("Extra Dividers")}
+									/>
+								)}
 							/>
 						)}
 					</Stack>
@@ -128,15 +162,20 @@ export function ScenarioDividerOptionsForm({
 			)}
 			<Grid size={12}>
 				{returnStory && (
-					<FormControlLabel
-						control={<Checkbox defaultChecked={defaultValues.returnSet} />}
-						label={
-							<>
-								{t`Include Return Set`}: {t(returnStory.name)}{" "}
-								<OfficialIcon sx={{ position: "relative", top: 3 }} />
-							</>
-						}
-						{...register("returnSet")}
+					<Controller
+						name="returnSet"
+						control={control}
+						render={({ field }) => (
+							<FormControlLabel
+								control={<Checkbox {...field} checked={field.value ?? false} />}
+								label={
+									<>
+										{t`Include Return Set`}: {t(returnStory.name)}{" "}
+										<OfficialIcon sx={{ position: "relative", top: 3 }} />
+									</>
+								}
+							/>
+						)}
 					/>
 				)}
 			</Grid>

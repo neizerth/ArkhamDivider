@@ -1,2 +1,1 @@
-export * from "./ClassicDivider";
 export * from "./ClassicDividerStats";

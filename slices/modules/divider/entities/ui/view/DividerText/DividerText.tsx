@@ -1,14 +1,12 @@
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
-import type useFitText from "use-fit-text";
-import { BoxInput, type BoxInputProps, FitInput } from "@/shared/ui/control";
+import { BoxInput, FitInput, type FitInputProps } from "@/shared/ui/control";
 
-type UseFitTextOptions = Parameters<typeof useFitText>[0];
-
-type DividerTextProps = BoxInputProps & {
-	fitTextOptions?: UseFitTextOptions;
+type DividerTextProps = FitInputProps & {
 	inputSx?: SxProps;
 	fit?: boolean;
+	stroke?: boolean;
+	strokeSx?: SxProps;
 };
 
 export function DividerText({
@@ -16,7 +14,9 @@ export function DividerText({
 	inputSx,
 	value,
 	defaultValue,
-	fit = false,
+	fit,
+	stroke,
+	strokeSx,
 	...props
 }: DividerTextProps) {
 	return (
@@ -27,6 +27,8 @@ export function DividerText({
 					fitTextOptions={fitTextOptions}
 					value={value}
 					defaultValue={defaultValue}
+					stroke={stroke}
+					strokeSx={strokeSx}
 				/>
 			) : (
 				<BoxInput sx={inputSx} value={value} defaultValue={defaultValue} />

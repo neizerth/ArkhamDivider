@@ -16,11 +16,11 @@ const horizontalLayout: DividerLayout = {
 	name: "Classic",
 	orientation: "horizontal",
 	color: false,
-	size: createSize(88, 76.2),
+	size: createSize(89, 76.2),
 	printSize: {
 		300: {
-			size: createSize(1039, 900),
-			bleedSize: createSize(1110, 971),
+			size: createSize(1051, 900),
+			bleedSize: createSize(1122, 971),
 		},
 	},
 	bleed: 3,
@@ -54,8 +54,12 @@ const horizontalBW: DividerLayout = {
 const horizontalHQ: DividerLayout = {
 	...horizontalLayout,
 	id: "classic-horizontal-hq",
+	size: createSize(88, 76),
 	printSize: {
-		...horizontalLayout.printSize,
+		300: {
+			size: createSize(1039, 900),
+			bleedSize: createSize(1110, 971),
+		},
 		600: {
 			size: createSize(2079, 1800),
 			bleedSize: createSize(2220, 1942),
