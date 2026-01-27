@@ -58,8 +58,8 @@ const getFrontLayouts = <T>({
 		const isLast = i + itemsPerPage >= data.length;
 
 		const items: PageLayoutRow<T>[] = [];
-		for (let j = 0; j < chunk.length; j += rows) {
-			const row = chunk.slice(j, j + rows);
+		for (let j = 0; j < chunk.length; j += cols) {
+			const row = chunk.slice(j, j + cols);
 
 			items.push({
 				id: v4(),

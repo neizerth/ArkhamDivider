@@ -25,8 +25,10 @@ export function ClassicDividerStats({
 		selectShowCardsCount(state, divider.id),
 	);
 
-	const textSx = usePrintSx(getTextSx);
-	const sx = usePrintSx(getSx);
+	const getPrintSx = usePrintSx();
+
+	const textSx = getPrintSx(getTextSx);
+	const sx = getPrintSx(getSx);
 	if (!divider.story?.icon) {
 		return null;
 	}

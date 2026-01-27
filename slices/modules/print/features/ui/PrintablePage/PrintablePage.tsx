@@ -43,19 +43,22 @@ export function PrintablePage<T extends WithId>({
 			<Stack sx={containerSx}>
 				{rows.map((rowIndex) => (
 					<Row key={rowIndex}>
-						{cols.map((colIndex) => (
-							<Row
-								key={colIndex}
-								sx={{
-									aspectRatio: unitAspectRatio,
-									width: "100%",
-								}}
-							>
-								{items[rowIndex]?.items[colIndex] && (
-									<Component {...items[rowIndex]?.items[colIndex]} />
-								)}
-							</Row>
-						))}
+						{cols.map((colIndex) => {
+							const row = items[rowIndex];
+							const item = row?.items[colIndex];
+
+							return (
+								<Row
+									key={colIndex}
+									sx={{
+										aspectRatio: unitAspectRatio,
+										width: "100%",
+									}}
+								>
+									{item && <Component {...item} />}
+								</Row>
+							);
+						})}
 					</Row>
 				))}
 			</Stack>

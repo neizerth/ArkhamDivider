@@ -4,10 +4,11 @@ import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { IconCorrection as Icon } from "@/modules/core/icon/entities/ui";
 import {
 	DividerBackground as Background,
+	DividerCardsInfo as CardsInfo,
 	DividerContainer as Container,
 	DividerContent as Content,
-	DividerCardsInfo,
 	DividerText,
+	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { selectLayout } from "@/modules/divider/shared/lib";
 import type {
@@ -18,14 +19,16 @@ import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { classicDividerTextColor } from "../../config/common";
-import { ClassicDividerStats } from "../ClassicDividerStats/ClassicDividerStats";
+import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import {
 	getBackgroundIconSx,
 	getDividerCardsSx,
 	getDividerStatsSx,
 	getIconSx,
+	getMenuSx,
 	getStrokeSx,
 	getTextSx,
+	getTitleClearSx,
 } from "./ClassicDivider.styles";
 
 type ClassicLayoutParams = {
@@ -43,12 +46,17 @@ export function ClassicDivider(props: DividerWithRelations) {
 		setShowCardsInfo(!showCardsInfo);
 	}, [showCardsInfo]);
 
-	const titleSx = useLocaleSx(getTextSx);
-	const iconSx = usePrintSx(getIconSx);
-	const backgroundIconSx = usePrintSx(getBackgroundIconSx);
-	const dividerStatsSx = usePrintSx(getDividerStatsSx);
-	const strokeSx = usePrintSx(getStrokeSx);
-	const dividerCardsSx = usePrintSx(getDividerCardsSx);
+	const getLocaleSx = useLocaleSx();
+	const titleSx = getLocaleSx(getTextSx);
+
+	const getPrintSx = usePrintSx();
+	const iconSx = getPrintSx(getIconSx);
+	const backgroundIconSx = getPrintSx(getBackgroundIconSx);
+	const dividerStatsSx = getPrintSx(getDividerStatsSx);
+	const strokeSx = getPrintSx(getStrokeSx);
+	const dividerCardsSx = getPrintSx(getDividerCardsSx);
+	const titleClearSx = getPrintSx(getTitleClearSx);
+	const menuSx = getPrintSx(getMenuSx);
 
 	const translatedTitle = translateStory(props?.title);
 
@@ -61,10 +69,12 @@ export function ClassicDivider(props: DividerWithRelations) {
 				<DividerText
 					sx={titleSx}
 					value={translatedTitle}
+					defaultValue={translatedTitle}
 					fitTextOptions={{
 						minFontSize: 8,
 					}}
 					strokeSx={strokeSx}
+					clearProps={{ sx: titleClearSx }}
 					stroke
 					fit
 				/>
@@ -81,14 +91,11 @@ export function ClassicDivider(props: DividerWithRelations) {
 				<Box sx={backgroundIconSx}>
 					{icon && <Icon icon={icon} fontSize={mm(50)} />}
 				</Box>
-				<ClassicDividerStats
-					divider={props}
-					sx={dividerStatsSx}
-					onClick={toggleCardsInfo}
-				/>
+				<Stats divider={props} sx={dividerStatsSx} onClick={toggleCardsInfo} />
 				{showCardsInfo && (
-					<DividerCardsInfo sx={dividerCardsSx} divider={props} />
+					<CardsInfo sx={dividerCardsSx} divider={props} zIndex={2} />
 				)}
+				<Menu dividerId={props.id} sx={menuSx} />
 			</Content>
 		</Container>
 	);

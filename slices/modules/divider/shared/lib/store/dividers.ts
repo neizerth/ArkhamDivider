@@ -22,20 +22,23 @@ export const dividers = createSlice({
 		addManyDividers: adapter.addMany,
 		copyDivider(
 			state,
-			action: PayloadAction<{ id: string; params: Partial<Divider> }>,
+			action: PayloadAction<{ id: string; params?: Partial<Divider> }>,
 		) {
 			const { id, params } = action.payload;
 			const divider = adapter.getSelectors().selectById(state, id);
 			if (!divider) {
 				return;
 			}
+			const newId = v4();
 			const data = {
 				...divider,
 				...params,
-				id: v4(),
+				id: newId,
 			} as Divider;
 
-			adapter.addOne(state, data);
+			const sourceIndex = state.ids.indexOf(id);
+			state.ids.splice(sourceIndex + 1, 0, newId);
+			state.entities[newId] = data;
 		},
 	},
 });
@@ -48,6 +51,7 @@ export const {
 	updateDivider,
 	deleteDivider,
 	addManyDividers,
+	copyDivider,
 } = dividers.actions;
 
 export const { selectAll: selectDividers, selectById: selectDividerById } =

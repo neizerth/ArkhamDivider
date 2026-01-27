@@ -3,6 +3,9 @@ import type { IconPositionManifest } from "../../../model";
 import { returnPosition } from "../common";
 
 export default {
+	core: {
+		left: percent(3),
+	},
 	chilling_cold: {
 		left: percent(4),
 		top: percent(1),

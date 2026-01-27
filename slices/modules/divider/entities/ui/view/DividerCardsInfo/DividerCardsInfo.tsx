@@ -1,5 +1,5 @@
-import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
+import Stack, { type StackProps } from "@mui/material/Stack";
 import type { SxProps } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
@@ -7,13 +7,14 @@ import { usePrintSx } from "@/modules/print/shared/lib";
 import { getDividerCards, getDividerCardsCount } from "../../../lib/logic";
 import { getSx } from "./DividerCardsInfo.styles";
 
-type DividerCardsInfoProps = BoxProps & {
+type DividerCardsInfoProps = Omit<StackProps, "divider"> & {
 	divider: DividerWithRelations;
 };
 
 export function DividerCardsInfo({ divider, ...props }: DividerCardsInfoProps) {
 	const { t } = useTranslation();
-	const containerSx = usePrintSx(getSx);
+	const getPrintSx = usePrintSx();
+	const containerSx = getPrintSx(getSx);
 	const cards = getDividerCards(divider);
 	const cardsCount = getDividerCardsCount(divider);
 
@@ -23,18 +24,20 @@ export function DividerCardsInfo({ divider, ...props }: DividerCardsInfoProps) {
 	} as SxProps;
 
 	return (
-		<Box {...props} sx={sx}>
-			<Box display="flex" flexWrap="wrap" gap={1}>
+		<Stack {...props} sx={sx} displayPrint="none">
+			<Box display="flex" flexWrap="wrap" gap={2}>
 				{cards.map((card, index) => (
 					<Box key={card.type} display="inline-block">
 						<i>{t(`card.type.${card.type}`)}</i> ({card.size})
-						{index < cards.length - 1 && ", "}
+						<i>{index < cards.length - 1 && ", "}</i>
 					</Box>
 				))}
 			</Box>
-			<b>
-				{t`cards.total`}: {cardsCount}
-			</b>
-		</Box>
+			<Box>
+				<b>
+					{t`cards.total`}: {cardsCount}
+				</b>
+			</Box>
+		</Stack>
 	);
 }

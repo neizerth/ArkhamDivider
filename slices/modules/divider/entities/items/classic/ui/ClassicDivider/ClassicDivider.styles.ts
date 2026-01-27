@@ -1,6 +1,8 @@
+import { alpha } from "@mui/material/styles";
 import type { LocaleSxCallback } from "@/modules/core/i18n/shared/model";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
 import { percent } from "@/shared/util";
+import { classicDividerTextColor } from "../../config/common";
 
 export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 	default: {
@@ -70,4 +72,21 @@ export const getDividerCardsSx: PrintSxCallback = ({ mm }) => ({
 	transform: "translate(-50%, -50%)",
 	width: mm(60),
 	height: mm(40),
+});
+
+export const getTitleClearSx: PrintSxCallback = ({ mm }) => ({
+	top: `calc(100% + ${mm(1)})`,
+	background: classicDividerTextColor,
+	color: "#fdf8e3",
+	"&:hover": {
+		background: alpha(classicDividerTextColor, 0.5),
+	},
+});
+
+export const getMenuSx: PrintSxCallback = ({ mm }) => ({
+	position: "absolute",
+	flexDirection: "column",
+	top: mm(17),
+	left: mm(6),
+	opacity: percent(50),
 });

@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import type { IconButtonProps } from "@mui/material/IconButton";
 import type { SxProps } from "@mui/material/styles";
 import { BoxInput, FitInput, type FitInputProps } from "@/shared/ui/control";
 
@@ -7,6 +8,7 @@ type DividerTextProps = FitInputProps & {
 	fit?: boolean;
 	stroke?: boolean;
 	strokeSx?: SxProps;
+	clearProps?: IconButtonProps;
 };
 
 export function DividerText({
@@ -17,6 +19,7 @@ export function DividerText({
 	fit,
 	stroke,
 	strokeSx,
+	clearProps,
 	...props
 }: DividerTextProps) {
 	return (
@@ -29,9 +32,15 @@ export function DividerText({
 					defaultValue={defaultValue}
 					stroke={stroke}
 					strokeSx={strokeSx}
+					clearProps={clearProps}
 				/>
 			) : (
-				<BoxInput sx={inputSx} value={value} defaultValue={defaultValue} />
+				<BoxInput
+					sx={inputSx}
+					value={value}
+					defaultValue={defaultValue}
+					clearProps={clearProps}
+				/>
 			)}
 		</Box>
 	);
