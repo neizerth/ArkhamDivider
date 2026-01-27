@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import { memo } from "react";
 import {
 	selectCategoryId,
 	selectPrintableLayoutSize,
@@ -44,3 +45,5 @@ export function DividerView(props: DividerViewProps) {
 		</Box>
 	);
 }
+
+export const DividerViewMemo = memo(DividerView);

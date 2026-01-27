@@ -39,7 +39,7 @@ export function PrintablePage<T extends WithId>({
 	const pageOptions = pick(["side", "number", "total"], pageLayout);
 
 	return (
-		<Page {...pageOptions} {...pageSize}>
+		<Page {...pageOptions} {...pageSize} data-id={pageLayout.number}>
 			<Stack sx={containerSx}>
 				{rows.map((rowIndex) => (
 					<Row key={rowIndex}>

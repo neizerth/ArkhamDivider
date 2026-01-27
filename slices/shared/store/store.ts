@@ -28,7 +28,7 @@ const persistConfig = {
 	storage,
 	migrate: createMigrate(migrationManifest, { debug: false }),
 	version: currentMigrationVersion,
-	blacklist: ["story"],
+	blacklist: ["story", "dividerLayouts"],
 };
 
 const rootReducer = combineReducers(reducer);
