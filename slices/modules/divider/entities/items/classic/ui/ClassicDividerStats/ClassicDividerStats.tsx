@@ -38,8 +38,9 @@ export function ClassicDividerStats({
 	const cardsCount = getDividerCardsCount(divider);
 
 	const showCount =
-		(scenarioParams.encounterSize && divider.type === "encounter") ||
-		(scenarioParams.scenarioSize && divider.type === "scenario");
+		((scenarioParams.encounterSize && divider.type === "encounter") ||
+			(scenarioParams.scenarioSize && divider.type === "scenario")) &&
+		Boolean(cardsCount);
 
 	const gap = mm(showCampaignIcon ? 0.5 : 0.4);
 

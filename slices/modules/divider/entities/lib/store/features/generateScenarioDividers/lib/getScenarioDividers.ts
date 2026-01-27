@@ -43,6 +43,8 @@ export const getScenarioDividers = ({
 			cardTypes: exceptEncounterCards ? "scenario" : "all",
 		});
 
+		console.log("cardsCount", cardsCount);
+
 		return {
 			id: v4(),
 			type: "scenario",
