@@ -78,6 +78,7 @@ const getFrontLayouts = <T>({
 			isLast,
 			total: totalPages,
 			size,
+			grid: layoutGrid,
 		};
 		pageLayouts.push(pageLayout);
 	}

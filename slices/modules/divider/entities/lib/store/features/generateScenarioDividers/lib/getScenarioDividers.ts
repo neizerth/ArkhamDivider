@@ -1,7 +1,7 @@
 import { ascend, sortWith } from "ramda";
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
-import { getScenarioCardsCount } from "@/modules/story/entities/lib";
+import { getScenarioCards } from "@/modules/story/entities/lib";
 import { getStoryScenarios } from "@/modules/story/shared/lib";
 import type {
 	StoryScenarioWithRelations,
@@ -38,12 +38,13 @@ export const getScenarioDividers = ({
 		const { icon } = scenario;
 		const title = scenario.scenario_name;
 
-		const cardsCount = getScenarioCardsCount({
+		const params = {
 			scenario,
 			cardTypes: exceptEncounterCards ? "scenario" : "all",
-		});
+		} as const;
 
-		console.log("cardsCount", cardsCount);
+		const cards = getScenarioCards(params);
+		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
 
 		return {
 			id: v4(),
@@ -52,6 +53,7 @@ export const getScenarioDividers = ({
 			title,
 			icon,
 			cardsCount,
+			cards,
 			storyCode: story.code,
 		};
 	});

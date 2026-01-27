@@ -10,8 +10,8 @@ export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 		position: "absolute",
 		top: mm(2.6),
 		height: mm(6.5),
-		left: mm(7.66),
-		right: mm(9.16),
+		left: mm(8.66),
+		right: mm(10.16),
 	},
 	ru: {
 		fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
@@ -58,6 +58,16 @@ export const getStrokeSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	color: "transparent",
 	clipPath: `polygon(0 0, ${mm(9.5)} 0, ${mm(9.5)} 100%, 0 100%)`,
-	WebkitTextStroke: `${mm(0.25)} #cab686`,
+	WebkitTextStroke: `${mm(0.4)} #cab686`,
 	zIndex: -1,
+});
+
+export const getDividerCardsSx: PrintSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 2,
+	left: "50%",
+	top: "50%",
+	transform: "translate(-50%, -50%)",
+	width: mm(60),
+	height: mm(40),
 });

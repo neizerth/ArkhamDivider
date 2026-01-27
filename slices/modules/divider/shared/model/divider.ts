@@ -1,3 +1,4 @@
+import type { EncounterSetTypeEntry } from "@/modules/encounterSet/shared/model";
 import type { Story, StoryWithRelations } from "@/modules/story/shared/model";
 import type { Side, Single } from "@/shared/model";
 
@@ -32,10 +33,18 @@ export type DividerSubtype =
 	| "upgrade"
 	| "ally";
 
+export type DividerType =
+	| "scenario"
+	| "campaign"
+	| "encounter"
+	| "player"
+	| "investigator";
+
 export type ScenarioDividerData = {
 	type: "scenario" | "campaign" | "encounter";
 	storyCode: string;
 	cardsCount?: number;
+	cards?: EncounterSetTypeEntry[];
 };
 
 export type PlayerDividerData = {

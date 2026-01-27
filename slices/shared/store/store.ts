@@ -46,16 +46,8 @@ export const createStore = () => {
 		reducer: persistedReducer,
 		middleware: (getDefaultMiddleware) => {
 			const middleware = getDefaultMiddleware({
-				serializableCheck: {
-					ignoredActions: [
-						"persist/PERSIST",
-						"persist/REHYDRATE",
-						"persist/REGISTER",
-						"persist/PAUSE",
-						"persist/PURGE",
-						"persist/FLUSH",
-					],
-				},
+				serializableCheck: false,
+				immutableCheck: false,
 			});
 			middleware.push(sagaMiddleware);
 			return middleware;

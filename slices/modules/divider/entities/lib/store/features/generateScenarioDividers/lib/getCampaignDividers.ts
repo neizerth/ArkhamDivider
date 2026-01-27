@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
-import { getEncounterSetCardsCount } from "@/modules/encounterSet/shared/lib/logic";
+import { getCampaignCards } from "@/modules/story/entities/lib";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 
 type Options = {
@@ -9,10 +9,8 @@ type Options = {
 };
 
 const storyToDivider = (story: StoryWithRelations): Divider => {
-	const cardsCount = story.encounterSets.reduce((acc, encounterSet) => {
-		const count = getEncounterSetCardsCount({ encounterSet }) ?? 0;
-		return acc + count;
-	}, 0);
+	const cards = getCampaignCards(story);
+	const cardsCount = cards.reduce((acc, { size }) => acc + size, 0);
 
 	return {
 		id: v4(),
@@ -21,6 +19,7 @@ const storyToDivider = (story: StoryWithRelations): Divider => {
 		storyCode: story.code,
 		title: story.name,
 		icon: story.icon,
+		cards,
 		cardsCount,
 	};
 };

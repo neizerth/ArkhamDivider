@@ -29,6 +29,7 @@ export type PageLayout<T> = {
 	items: PageLayoutRow<T>[];
 	itemsCount: number;
 	isLast: boolean;
+	grid: PageLayoutGrid;
 	size: BoxSize;
 };
 

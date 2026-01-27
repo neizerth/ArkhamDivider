@@ -2,9 +2,9 @@ import { prop, uniqBy } from "ramda";
 import { compact } from "ramda-adjunct";
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
-import { getEncounterSetCardsCount } from "@/modules/encounterSet/shared/lib/logic";
+import { getEncounterSetCards } from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
-import { getScenarioCardsCount } from "@/modules/story/entities/lib";
+import { getScenarioCards } from "@/modules/story/entities/lib";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 
 type Options = {
@@ -60,7 +60,8 @@ export const getEncounterSetDividers = ({
 	});
 
 	const ecnounterSetDividers = encounters.map((encounterSet): Divider => {
-		const cardsCount = getEncounterSetCardsCount({ encounterSet });
+		const cards = getEncounterSetCards({ encounterSet });
+		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
 		return {
 			id: v4(),
 			side: "front",
@@ -68,6 +69,7 @@ export const getEncounterSetDividers = ({
 			title: encounterSet.name,
 			icon: encounterSet.icon,
 			cardsCount,
+			cards,
 			storyCode: story.code,
 		};
 	});
@@ -81,10 +83,12 @@ export const getEncounterSetDividers = ({
 			const { icon } = scenario;
 			const title = scenario.scenario_name;
 
-			const cardsCount = getScenarioCardsCount({
+			const cards = getScenarioCards({
 				scenario,
 				cardTypes: "encounter",
 			});
+
+			const cardsCount = cards.reduce((total, { size }) => total + size, 0);
 
 			return {
 				id: v4(),
@@ -93,6 +97,7 @@ export const getEncounterSetDividers = ({
 				title,
 				icon,
 				cardsCount,
+				cards,
 				storyCode: story.code,
 			};
 		},

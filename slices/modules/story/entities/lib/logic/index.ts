@@ -1,3 +1,3 @@
+export * from "./cards";
 export * from "./createStoryWithRelations";
-export * from "./getScenarioCardsCount";
 export * from "./getStoryWithRelations";

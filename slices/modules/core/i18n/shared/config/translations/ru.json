@@ -73,5 +73,15 @@
 	"Challenge Scenarios": "Сценарии-испытания",
 	"Bookmark Stickers": "Закладки альбома",
 	"Layout not found": "Дизайн-макет не найден",
-	"One per page": "Один на страницу"
+	"One per page": "Один на страницу",
+	"card.type.scenario": "Сценарий",
+	"card.type.treachery": "Слабость",
+	"card.type.agenda": "Замысел",
+	"card.type.act": "Сцена",
+	"card.type.location": "Локация",
+	"card.type.asset": "Актив",
+	"card.type.enemy": "Враг",
+	"card.type.investigator": "Сыщик",
+	"card.type.story": "Сюжет",
+	"cards.total": "Всего карт"
 }

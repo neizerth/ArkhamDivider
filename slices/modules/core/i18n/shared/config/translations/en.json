@@ -35,5 +35,15 @@
 	"Numeric XP": "Numeric XP",
 	"Side XP": "Side XP",
 	"Additional": "Additional",
-	"One per page": "One per page"
+	"One per page": "One per page",
+	"card.type.scenario": "Scenario",
+	"card.type.treachery": "Treachery",
+	"card.type.agenda": "Agenda",
+	"card.type.act": "Act",
+	"card.type.location": "Location",
+	"card.type.asset": "Asset",
+	"card.type.enemy": "Enemy",
+	"card.type.investigator": "Investigator",
+	"card.type.story": "Story",
+	"cards.total": "Total"
 }

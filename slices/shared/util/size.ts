@@ -23,13 +23,13 @@ export const getBoxSize = (size: BoxSize): string => {
 
 export const getStaticBoxGrid = (containerSize: BoxSize, unitSize: BoxSize) => {
 	const { width, height } = unitSize;
-	const rows = Math.floor(containerSize.width / width);
-	const cols = Math.floor(containerSize.height / height);
+	const cols = Math.floor(containerSize.width / width);
+	const rows = Math.floor(containerSize.height / height);
 	const units = rows * cols;
 
 	const size = {
-		width: Math.round(width * rows),
-		height: Math.round(height * cols),
+		width: Math.round(width * cols),
+		height: Math.round(height * rows),
 	};
 
 	return { rows, cols, units, size };

@@ -1,5 +1,5 @@
 import Stack from "@mui/material/Stack";
-import { pick } from "ramda";
+import { pick, range } from "ramda";
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import type { PageFormat, PageLayout } from "@/modules/print/shared/model";
 import { Page } from "@/modules/print/shared/ui";
@@ -20,7 +20,10 @@ export function PrintablePage<T extends WithId>({
 	layout,
 	Component,
 }: PrintablePageProps<T>) {
-	const { items, size } = pageLayout;
+	const { items, size, grid } = pageLayout;
+	const rows = range(0, grid.rows);
+	const cols = range(0, grid.cols);
+
 	const pageSize = pageFormat.size.mm;
 	const containerSize = getRelativeBoxSize(pageSize, size);
 	const layoutSize = layout.size;
@@ -38,17 +41,19 @@ export function PrintablePage<T extends WithId>({
 	return (
 		<Page {...pageOptions} {...pageSize}>
 			<Stack sx={containerSx}>
-				{items.map((row) => (
-					<Row key={row.id}>
-						{row.items.map((item) => (
+				{rows.map((rowIndex) => (
+					<Row key={rowIndex}>
+						{cols.map((colIndex) => (
 							<Row
-								key={item.id}
+								key={colIndex}
 								sx={{
 									aspectRatio: unitAspectRatio,
 									width: "100%",
 								}}
 							>
-								<Component {...item} />
+								{items[rowIndex]?.items[colIndex] && (
+									<Component {...items[rowIndex]?.items[colIndex]} />
+								)}
 							</Row>
 						))}
 					</Row>

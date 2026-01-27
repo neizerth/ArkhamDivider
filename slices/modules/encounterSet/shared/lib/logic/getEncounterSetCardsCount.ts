@@ -1,34 +1,13 @@
-import type { CardType } from "@/shared/model";
-import type { EncounterSet } from "../../model";
+import {
+	type GetEncounterSetCardsOptions,
+	getEncounterSetCards,
+} from "./getEncounterSetCards";
 
-type Options = {
-	encounterSet: EncounterSet;
-	cardTypes?: CardType[];
-	exceptTypes?: CardType[];
-};
+type Options = GetEncounterSetCardsOptions;
 
-export const getEncounterSetCardsCount = ({
-	encounterSet,
-	cardTypes = [],
-	exceptTypes = [],
-}: Options): number | undefined => {
-	if (!encounterSet.types) {
-		return encounterSet.size;
-	}
-
-	const encounterTypes =
-		exceptTypes.length > 0
-			? encounterSet.types.filter(
-					({ type }) => !exceptTypes.includes(type as CardType),
-				)
-			: encounterSet.types;
-
-	const encounterSetTypes =
-		cardTypes.length > 0
-			? encounterTypes.filter(({ type }) =>
-					cardTypes.includes(type as CardType),
-				)
-			: encounterTypes;
-
-	return encounterSetTypes.reduce((total, { size }) => total + size, 0);
+export const getEncounterSetCardsCount = (options: Options): number => {
+	return getEncounterSetCards(options).reduce(
+		(total, { size }) => total + size,
+		0,
+	);
 };
