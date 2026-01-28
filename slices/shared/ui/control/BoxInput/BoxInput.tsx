@@ -81,6 +81,10 @@ export function BoxInput({
 	const sx = {
 		...props.sx,
 		outline: "none",
+		"*": {
+			fontSize: "inherit!important",
+			letterSpacing: "inherit!important",
+		},
 	} as SxProps;
 
 	const containerSx = {
@@ -89,7 +93,6 @@ export function BoxInput({
 		position: "relative",
 		lineHeight: 1,
 		...containerSxProp,
-		...props.sx,
 	} as SxProps;
 
 	const clearSx = {

@@ -57,6 +57,7 @@ export function FitInput({
 		width: "100%",
 		height: "100%",
 		fontSize,
+		lineHeight: 1,
 		zIndex: -1,
 	} as SxProps;
 
