@@ -1,5 +1,4 @@
 import Container from "@mui/material/Container";
-import LinearProgress from "@mui/material/LinearProgress";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import type { JSX } from "react";
@@ -8,6 +7,7 @@ import {
 	DividerVariantSelect,
 } from "@/modules/divider/entities/ui";
 import { PrintButton, PrintSettings } from "@/modules/print/widgets/ui";
+import { RenderProgress } from "@/modules/render/entities/ui";
 import { selectDividerRenderId } from "@/modules/render/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import * as C from "./Header.components";
@@ -43,13 +43,12 @@ export function Header(props: HeaderProps) {
 				</C.Content>
 			</Container>
 			{exportId && (
-				<LinearProgress
+				<RenderProgress
 					sx={{
 						position: "absolute",
 						bottom: 0,
 						left: 0,
 						right: 0,
-						zIndex: 1000,
 					}}
 				/>
 			)}

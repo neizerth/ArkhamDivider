@@ -4,7 +4,7 @@ import { call } from "ramda";
 import { put, select, takeEvery } from "redux-saga/effects";
 import { selectDividerById, selectLayout } from "@/modules/divider/shared/lib";
 import { selectDPI } from "@/modules/print/shared/lib";
-import { setDividerRenderId } from "@/modules/render/shared/lib";
+import { finishRender, startRender } from "@/modules/render/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
 import { downloadDividerAsImage } from "./downloadDividerAsImage";
 
@@ -24,13 +24,13 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 	const dpi: ReturnType<typeof selectDPI> = yield select(selectDPI);
 	const scale = dpi / 96;
 
-	yield put(setDividerRenderId(payload));
+	yield put(startRender({ dividerId: payload }));
 
 	const render = () => domToPng(node, { scale });
 
 	const dataUrl: ReturnAwaited<typeof domToPng> = yield call(render);
 
-	yield put(setDividerRenderId(null));
+	yield put(finishRender());
 
 	const filename = `${divider.title}.png`;
 
