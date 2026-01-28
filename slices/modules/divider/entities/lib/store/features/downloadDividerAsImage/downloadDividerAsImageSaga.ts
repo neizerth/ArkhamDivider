@@ -4,6 +4,7 @@ import { call } from "ramda";
 import { put, select, takeEvery } from "redux-saga/effects";
 import {
 	selectDividerById,
+	selectLayout,
 	setExportDividerId,
 } from "@/modules/divider/shared/lib";
 import { selectDPI } from "@/modules/print/shared/lib";
@@ -17,7 +18,9 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 		payload,
 	);
 
-	if (!node || !divider) {
+	const layout: ReturnType<typeof selectLayout> = yield select(selectLayout);
+
+	if (!node || !divider || !layout) {
 		return;
 	}
 

@@ -44,6 +44,7 @@ export function DividerView(props: DividerViewProps) {
 						...absoluteFill,
 						overflow: "hidden",
 					}}
+					data-divider-id={props.id}
 				>
 					<Box
 						sx={{
@@ -57,7 +58,6 @@ export function DividerView(props: DividerViewProps) {
 								zoom: printScale,
 							},
 						}}
-						data-divider-id={props.id}
 					>
 						<Component {...props} />
 					</Box>

@@ -3,7 +3,7 @@ import { useAppSelector } from "@/shared/lib";
 import { selectExportDividerId } from "../../lib";
 
 type DividerNotExportableProps = PropsWithChildren & {
-	id: string;
+	id?: string;
 };
 
 export function DividerNotExportable({
@@ -11,6 +11,10 @@ export function DividerNotExportable({
 	id,
 }: DividerNotExportableProps) {
 	const exportDividerId = useAppSelector(selectExportDividerId);
+
+	if (exportDividerId && !id) {
+		return null;
+	}
 
 	if (exportDividerId === id) {
 		return null;

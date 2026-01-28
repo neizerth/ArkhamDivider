@@ -7,7 +7,7 @@ export default {
 		left: percent(3),
 	},
 	chilling_cold: {
-		left: percent(4),
+		left: percent(6),
 		top: percent(1),
 		scale: percent(90),
 	},
