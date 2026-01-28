@@ -39,7 +39,13 @@ export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 						{url}
 					</Link>
 				</Box>
-				<Link href={url} target="_blank">
+				<Link
+					href={url}
+					target="_blank"
+					sx={{
+						":hover": { opacity: 0.6 },
+					}}
+				>
 					<QRCodeSVG value={url} width={mm(20)} height={mm(20)} />
 				</Link>
 			</Row>

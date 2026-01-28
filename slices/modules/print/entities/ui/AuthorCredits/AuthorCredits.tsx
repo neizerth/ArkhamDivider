@@ -34,7 +34,13 @@ export function AuthorCredits({
 	return (
 		<Box {...props}>
 			<Row gap={mm(4)} alignItems="center">
-				<Link href={donationUrl} target="_blank">
+				<Link
+					href={donationUrl}
+					target="_blank"
+					sx={{
+						":hover": { opacity: 0.6 },
+					}}
+				>
 					<QRCodeSVG value={donationUrl} width={mm(20)} height={mm(20)} />
 				</Link>
 				<Box fontSize={mm(3)}>
