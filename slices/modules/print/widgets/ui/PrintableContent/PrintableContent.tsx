@@ -1,17 +1,21 @@
 import Stack, { type StackProps } from "@mui/material/Stack";
-import { useSelector } from "react-redux";
 import { selectDividerPageLayouts } from "@/modules/divider/entities/lib";
 import { DividerViewMemo as DividerView } from "@/modules/divider/entities/ui";
 import { selectLayout } from "@/modules/divider/shared/lib";
 import { PrintablePage } from "@/modules/print/features/ui";
-import { selectOrientedPageFormat } from "@/modules/print/shared/lib";
+import {
+	selectDoubleSidePrintEnabled,
+	selectOrientedPageFormat,
+} from "@/modules/print/shared/lib";
+import { useAppSelector } from "@/shared/lib";
 
 type PrintableContentProps = StackProps;
 
 export function PrintableContent(props: PrintableContentProps) {
-	const pageLayouts = useSelector(selectDividerPageLayouts);
-	const layout = useSelector(selectLayout);
-	const pageFormat = useSelector(selectOrientedPageFormat);
+	const doubleSided = useAppSelector(selectDoubleSidePrintEnabled);
+	const pageLayouts = useAppSelector(selectDividerPageLayouts);
+	const layout = useAppSelector(selectLayout);
+	const pageFormat = useAppSelector(selectOrientedPageFormat);
 
 	if (!pageFormat || !layout) {
 		return null;
@@ -33,10 +37,11 @@ export function PrintableContent(props: PrintableContentProps) {
 		>
 			{pageLayouts.map((pageLayout) => (
 				<PrintablePage
-					key={pageLayout.number}
+					key={`${pageLayout.number}-${pageLayout.side}`}
 					pageLayout={pageLayout}
 					pageFormat={pageFormat}
 					layout={layout}
+					showSide={doubleSided}
 					Component={DividerView}
 				/>
 			))}

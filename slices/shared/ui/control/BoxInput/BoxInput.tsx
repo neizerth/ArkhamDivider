@@ -94,6 +94,9 @@ export function BoxInput({
 		color: "white",
 		top: "100%",
 		zIndex: 1,
+		"@media print": {
+			display: "none",
+		},
 		...clearProps?.sx,
 	} as SxProps;
 

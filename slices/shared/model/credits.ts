@@ -5,6 +5,7 @@ export type Author = {
 	role?: string;
 	image?: string;
 	donationUrl?: string;
+	contactUrl?: string;
 	contacts?: Contact[];
 };
 

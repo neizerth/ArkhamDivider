@@ -13,3 +13,6 @@ export const in2px = (inches: number, dpi = DEFAULT_PRINT_DPI) => {
 export const mm2px = (mm: number, dpi = DEFAULT_PRINT_DPI) => {
 	return Math.round((mm * dpi) / INCH_TO_MM);
 };
+
+export const fromPx = (scale: number) => (value: number) =>
+	`${value * scale}px`;

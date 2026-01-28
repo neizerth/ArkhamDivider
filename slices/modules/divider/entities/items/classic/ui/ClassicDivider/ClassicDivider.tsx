@@ -4,6 +4,7 @@ import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { IconCorrection as Icon } from "@/modules/core/icon/entities/ui";
 import {
 	DividerBackground as Background,
+	DividerCardsInfo as CardsInfo,
 	DividerContainer as Container,
 	DividerContent as Content,
 	DividerText,
@@ -18,6 +19,7 @@ import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { classicDividerTextColor } from "../../config/common";
+import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import {
 	getBackgroundIconSx,
 	getDividerCardsSx,
@@ -40,7 +42,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const mm = usePrintUnitCallback();
 	const [showCardsInfo, setShowCardsInfo] = useState(false);
 
-	const _toggleCardsInfo = useCallback(() => {
+	const toggleCardsInfo = useCallback(() => {
 		setShowCardsInfo(!showCardsInfo);
 	}, [showCardsInfo]);
 
@@ -49,10 +51,10 @@ export function ClassicDivider(props: DividerWithRelations) {
 
 	const getPrintSx = usePrintSx();
 	const iconSx = getPrintSx(getIconSx);
-	const _backgroundIconSx = getPrintSx(getBackgroundIconSx);
-	const _dividerStatsSx = getPrintSx(getDividerStatsSx);
+	const backgroundIconSx = getPrintSx(getBackgroundIconSx);
+	const dividerStatsSx = getPrintSx(getDividerStatsSx);
 	const strokeSx = getPrintSx(getStrokeSx);
-	const _dividerCardsSx = getPrintSx(getDividerCardsSx);
+	const dividerCardsSx = getPrintSx(getDividerCardsSx);
 	const titleClearSx = getPrintSx(getTitleClearSx);
 	const menuSx = getPrintSx(getMenuSx);
 
@@ -91,14 +93,14 @@ export function ClassicDivider(props: DividerWithRelations) {
 					)}
 				</Box>
 				<Menu dividerId={props.id} sx={menuSx} />
-				{/* <Stats divider={props} sx={dividerStatsSx} onClick={toggleCardsInfo} /> */}
+				<Stats divider={props} sx={dividerStatsSx} onClick={toggleCardsInfo} />
 
-				{/* <Box sx={backgroundIconSx}>
+				<Box sx={backgroundIconSx}>
 					{icon && <Icon icon={icon} fontSize={mm(50)} />}
 				</Box>
 				{showCardsInfo && (
 					<CardsInfo sx={dividerCardsSx} divider={props} zIndex={2} />
-				)}*/}
+				)}
 			</Content>
 		</Container>
 	);

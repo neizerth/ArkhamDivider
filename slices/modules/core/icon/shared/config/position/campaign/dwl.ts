@@ -11,7 +11,7 @@ export default {
 	return_to_the_dunwich_legacy: returnPosition,
 	blood_on_the_altar: {
 		top: percent(-2),
-		left: percent(5),
+		left: percent(4),
 		scale: percent(109),
 	},
 	dunwich: {
@@ -56,7 +56,7 @@ export default {
 		left: percent(4),
 	},
 	the_house_always_wins: {
-		left: percent(5),
+		left: percent(3),
 		top: percent(-4),
 	},
 	bad_luck: {

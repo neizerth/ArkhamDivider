@@ -11,8 +11,8 @@ export function DividerContent(props: DividerContentProps) {
 	if (!layoutSize) {
 		return null;
 	}
-	const { originalBleed } = layoutSize;
-	const offset = 0;
+	const { originalBleed, bleedEnabled } = layoutSize;
+	const offset = bleedEnabled ? originalBleed : 0;
 	const sxProps = {
 		...props.sx,
 		position: "absolute",

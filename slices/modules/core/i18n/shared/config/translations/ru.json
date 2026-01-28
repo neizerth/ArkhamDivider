@@ -83,5 +83,6 @@
 	"card.type.enemy": "Враг",
 	"card.type.investigator": "Сыщик",
 	"card.type.story": "Сюжет",
-	"cards.total": "Всего карт"
+	"cards.total": "Всего карт",
+	"credits.author.description": "<icon/>: Вы можете потратить любое<br/>число ресурсов <donationLink>по адресу</donationLink><br/><i>Запомните, что <author>{{name}}</author><br/>вам благодарен</i>"
 }

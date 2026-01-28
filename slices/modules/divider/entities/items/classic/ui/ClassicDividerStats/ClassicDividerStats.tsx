@@ -8,7 +8,7 @@ import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Row, type RowProps } from "@/shared/ui";
-import { getSx, getTextSx } from "./ClassicDivider.styles";
+import { getSx, getTextSx, getTotalIconSx } from "./ClassicDivider.styles";
 
 type ClassicDividerStatsProps = Omit<RowProps, "divider"> & {
 	divider: DividerWithRelations;
@@ -28,6 +28,7 @@ export function ClassicDividerStats({
 	const getPrintSx = usePrintSx();
 
 	const textSx = getPrintSx(getTextSx);
+	const totalIconSx = getPrintSx(getTotalIconSx);
 	const sx = getPrintSx(getSx);
 	if (!divider.story?.icon) {
 		return null;
@@ -53,7 +54,7 @@ export function ClassicDividerStats({
 			{showCampaignIcon ? (
 				<IconCorrection icon={icon} fontSize={mm(3)} />
 			) : (
-				showCardsCount && "∑"
+				showCardsCount && <Box sx={totalIconSx}>∑</Box>
 			)}
 			{showCardsCount && <Box sx={textSx}>{cardsCount}</Box>}
 		</Row>

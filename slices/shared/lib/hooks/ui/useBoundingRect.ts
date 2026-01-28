@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useBoundingRect<T extends HTMLElement>() {
-	const ref = useRef<T>(null);
+export function useBoundingRect<T extends HTMLElement>(
+	defaultRef?: React.RefObject<T>,
+) {
+	const currentRef = useRef<T>(null);
+	const ref = defaultRef ?? currentRef;
 	const [rect, setRect] = useState<DOMRect | null>(null);
 
 	useEffect(() => {
@@ -18,7 +21,7 @@ export function useBoundingRect<T extends HTMLElement>() {
 
 		observer.observe(node);
 		return () => observer.disconnect();
-	}, []);
+	}, [ref.current]);
 
 	return [ref, rect] as const;
 }

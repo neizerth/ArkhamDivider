@@ -29,8 +29,10 @@ export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	right: mm(0.9),
 	width: mm(8.33),
 	height: mm(8.33),
-	":hover": {
-		opacity: percent(70),
+	"@media screen": {
+		":hover": {
+			opacity: percent(70),
+		},
 	},
 });
 
@@ -45,8 +47,10 @@ export const getBackgroundIconSx: PrintSxCallback = ({ mm }) => ({
 	top: `calc(${mm(3)} + 50%)`,
 	left: `calc(50%)`,
 	transform: "translate(-50%, -50%)",
-	":hover": {
-		opacity: percent(3),
+	"@media screen": {
+		":hover": {
+			opacity: percent(3),
+		},
 	},
 });
 
@@ -67,19 +71,21 @@ export const getStrokeSx: PrintSxCallback = ({ mm }) => ({
 export const getDividerCardsSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 2,
-	left: "50%",
-	top: "50%",
+	left: mm(50),
+	top: mm(38),
 	transform: "translate(-50%, -50%)",
 	width: mm(60),
-	height: mm(40),
+	height: mm(50),
 });
 
 export const getTitleClearSx: PrintSxCallback = ({ mm }) => ({
 	top: `calc(100% + ${mm(1)})`,
 	background: classicDividerTextColor,
 	color: "#fdf8e3",
-	"&:hover": {
-		background: alpha(classicDividerTextColor, 0.5),
+	"@media screen": {
+		"&:hover": {
+			background: alpha(classicDividerTextColor, 0.5),
+		},
 	},
 });
 

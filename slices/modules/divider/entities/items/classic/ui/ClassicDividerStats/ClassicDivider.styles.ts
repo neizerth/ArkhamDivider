@@ -16,3 +16,8 @@ export const getSx: PrintSxCallback = ({ mm }) => ({
 export const getTextSx: PrintSxCallback = () => ({
 	fontFamily: "ArnoPro, serif",
 });
+
+export const getTotalIconSx: PrintSxCallback = ({ mm }) => ({
+	position: "relative",
+	top: mm(-0.1),
+});

@@ -1,4 +1,4 @@
-import { BOOSTY_LINK, PAYPAL_LINK, T_LINK } from "@/shared/config";
+import { BOOSTY_LINK, PATREON_LINK, T_LINK } from "@/shared/config";
 
 export const donations = [
 	{
@@ -6,8 +6,8 @@ export const donations = [
 		url: BOOSTY_LINK,
 	},
 	{
-		icon: "paypal",
-		url: PAYPAL_LINK,
+		icon: "patreon",
+		url: PATREON_LINK,
 	},
 	{
 		icon: "t_bank",

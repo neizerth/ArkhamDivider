@@ -3,7 +3,9 @@ import { styled } from "@mui/material/styles";
 
 export const Main = styled("main")`
   flex-grow: 1;
-  margin-bottom: ${({ theme }) => theme.spacing(8)};
+	@media screen {
+  	margin-bottom: ${({ theme }) => theme.spacing(8)};
+	}
 `;
 
 export const Container = styled(Stack)(({ theme }) => ({

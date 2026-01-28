@@ -11,15 +11,16 @@ export function DividerBackground(props: DividerBackgroundProps) {
 	if (!layoutSize) {
 		return null;
 	}
-	const { originalBleed } = layoutSize;
+	const { originalBleed, bleedEnabled } = layoutSize;
+	const offset = bleedEnabled ? 0 : originalBleed;
 
 	const sx = {
 		zIndex: 1,
 		position: "absolute",
-		top: -originalBleed,
-		left: -originalBleed,
-		right: -originalBleed,
-		bottom: -originalBleed,
+		top: -offset,
+		left: -offset,
+		right: -offset,
+		bottom: -offset,
 		...props.sx,
 	} as SxProps;
 	return <Box {...props} component="img" sx={sx} />;

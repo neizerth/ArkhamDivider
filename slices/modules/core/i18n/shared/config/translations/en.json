@@ -45,5 +45,6 @@
 	"card.type.enemy": "Enemy",
 	"card.type.investigator": "Investigator",
 	"card.type.story": "Story",
-	"cards.total": "Total"
+	"cards.total": "Total",
+	"credits.author.description": "<icon/>: You can spend any number<br/>of resources <donationLink>on this address</donationLink><br/><i>Remember, <author>{{name}}</author><br/>is grateful to you</i>"
 }

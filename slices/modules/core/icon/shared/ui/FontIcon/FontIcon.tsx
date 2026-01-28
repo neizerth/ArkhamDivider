@@ -31,6 +31,7 @@ export function FontIcon(props: FontIconProps) {
 
 	return (
 		<C.Container
+			title={props.icon}
 			data-icon={props.icon}
 			className={props.className}
 			sx={sx}

@@ -52,9 +52,9 @@ export function DividerView(props: DividerViewProps) {
 							top: 0,
 							left: 0,
 							transformOrigin: "top left",
-							transform: `scale(${scale})`,
+							zoom: scale,
 							"@media print": {
-								transform: `scale(${printScale})`,
+								zoom: printScale,
 							},
 						}}
 					>
