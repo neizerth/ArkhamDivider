@@ -7,15 +7,21 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { Fragment, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import {
 	getSupportedLayoutDPI,
 	selectLayout,
 } from "@/modules/divider/shared/lib";
+import type { DPI } from "@/modules/print/shared/model";
+import { downloadDividersAsPDF } from "@/modules/render/features/download-dividers-as-pdf";
 import { theme } from "@/shared/config";
-import { createClickAwayListener, useAppSelector } from "@/shared/lib";
+import {
+	createClickAwayListener,
+	useAppDispatch,
+	useAppSelector,
+} from "@/shared/lib";
 import * as C from "./PrintButton.components";
 
 type PrintButtonProps = ButtonGroupProps;
@@ -27,6 +33,7 @@ const sx = {
 
 export function PrintButton(props: PrintButtonProps) {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout);
 	const supportedDPI = getSupportedLayoutDPI(layout);
 	const [open, setOpen] = useState(false);
@@ -37,6 +44,13 @@ export function PrintButton(props: PrintButtonProps) {
 		callback: () => setOpen(false),
 		ignore: anchorRef.current,
 	});
+
+	const download = useCallback(
+		(dpi?: DPI) => () => {
+			dispatch(downloadDividersAsPDF({ dpi }));
+		},
+		[dispatch],
+	);
 
 	return (
 		<>
@@ -61,29 +75,28 @@ export function PrintButton(props: PrintButtonProps) {
 						<Paper>
 							<ClickAwayListener onClickAway={close}>
 								<MenuList>
-									{supportedDPI.map((dpi) => (
-										<Fragment key={dpi}>
-											<Box
-												textAlign="center"
-												paddingBottom={1}
-												borderBottom={1}
-												borderColor="divider"
-												color="text.secondary"
-											>
-												<Typography variant="body2">{dpi} DPI</Typography>
-											</Box>
-											<MenuItem>
-												<Icon icon="file-pdf" /> &nbsp; PDF
-											</MenuItem>
-											<MenuItem>
-												<Icon icon="file-zip" /> &nbsp; TIFF
-												<C.Badge>CMYK</C.Badge>
-											</MenuItem>
-											<MenuItem>
-												<Icon icon="file-zip" /> &nbsp; PNG
-											</MenuItem>
-										</Fragment>
-									))}
+									{supportedDPI.flatMap((dpi) => [
+										<Box
+											key={`${dpi}-header`}
+											textAlign="center"
+											paddingBottom={1}
+											borderBottom={1}
+											borderColor="divider"
+											color="text.secondary"
+										>
+											<Typography variant="body2">{dpi} DPI</Typography>
+										</Box>,
+										<MenuItem key={`${dpi}-pdf`} onClick={download(dpi)}>
+											<Icon icon="file-pdf" /> &nbsp; PDF
+										</MenuItem>,
+										<MenuItem key={`${dpi}-tiff`}>
+											<Icon icon="file-zip" /> &nbsp; TIFF
+											<C.Badge>CMYK</C.Badge>
+										</MenuItem>,
+										<MenuItem key={`${dpi}-png`}>
+											<Icon icon="file-zip" /> &nbsp; PNG
+										</MenuItem>,
+									])}
 								</MenuList>
 							</ClickAwayListener>
 						</Paper>

@@ -4,7 +4,7 @@ import type { RenderStatus } from "../../model";
 
 export type RenderState = {
 	hideTextNodes: boolean;
-	hideImageNodes: boolean;
+	hideIconNodes: boolean;
 	dividerRenderId: string | null;
 	renderProgress: number | null;
 	renderProgressTotal: number | null;
@@ -14,7 +14,7 @@ export type RenderState = {
 
 const initialState: RenderState = {
 	hideTextNodes: false,
-	hideImageNodes: false,
+	hideIconNodes: false,
 	dividerRenderId: null,
 	renderProgress: null,
 	renderProgressTotal: null,
@@ -50,11 +50,13 @@ export const render = createSlice({
 			state.dividerRenderId = dividerId;
 		},
 		finishRender(state) {
-			state.renderStatus = "success";
+			state.renderStatus = "idle";
 			state.renderStatusMessage = null;
 			state.renderProgress = null;
 			state.renderProgressTotal = null;
 			state.dividerRenderId = null;
+			state.hideTextNodes = false;
+			state.hideIconNodes = false;
 		},
 		errorRender(state, action: PayloadAction<string>) {
 			state.renderStatus = "error";
@@ -66,7 +68,7 @@ export const render = createSlice({
 export const {
 	setDividerRenderId,
 	setHideTextNodes,
-	setHideImageNodes,
+	setHideIconNodes,
 	setRenderProgress,
 	setRenderProgressTotal,
 	setRenderStatus,
@@ -79,7 +81,7 @@ export const {
 export const {
 	selectDividerRenderId,
 	selectHideTextNodes,
-	selectHideImageNodes,
+	selectHideIconNodes,
 	selectRenderProgress,
 	selectRenderProgressTotal,
 	selectRenderStatusMessage,

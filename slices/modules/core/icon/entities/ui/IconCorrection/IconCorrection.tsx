@@ -5,7 +5,7 @@ import { getIconCorrectionSx } from "../../../shared/lib";
 import type { IconPositionManifest } from "../../../shared/model";
 import { Icon, type IconProps } from "../../../shared/ui";
 
-type IconCorrectionProps = Omit<IconProps, "fontSize"> & {
+export type IconCorrectionProps = Omit<IconProps, "fontSize"> & {
 	manifest?: IconPositionManifest;
 	fontSize: number;
 	/** left offset in px */

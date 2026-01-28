@@ -54,7 +54,10 @@ export const {
 	copyDivider,
 } = dividers.actions;
 
-export const { selectAll: selectDividers, selectById: selectDividerById } =
-	selectors;
+export const {
+	selectAll: selectDividers,
+	selectById: selectDividerById,
+	selectIds: selectDividerIds,
+} = selectors;
 
 export default dividers.reducer;

@@ -1,11 +1,13 @@
 import { saveAs } from "file-saver";
-import { domToPng } from "modern-screenshot";
-import { call } from "ramda";
-import { put, select, takeEvery } from "redux-saga/effects";
+import { put, race, select, take, takeEvery } from "redux-saga/effects";
 import { selectDividerById, selectLayout } from "@/modules/divider/shared/lib";
 import { selectDPI } from "@/modules/print/shared/lib";
 import { finishRender, startRender } from "@/modules/render/shared/lib";
-import type { ReturnAwaited } from "@/shared/model";
+import {
+	renderDivider,
+	renderDividerFailure,
+	renderDividerSuccess,
+} from "../renderDivider";
 import { downloadDividerAsImage } from "./downloadDividerAsImage";
 
 function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
@@ -22,19 +24,44 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 	}
 
 	const dpi: ReturnType<typeof selectDPI> = yield select(selectDPI);
-	const scale = dpi / 96;
 
-	yield put(startRender({ dividerId: payload }));
+	yield put(startRender({}));
 
-	const render = () => domToPng(node, { scale });
+	yield put(
+		renderDivider({
+			dividerId: payload,
+			dpi,
+			colorScheme: "rgb",
+			imageFormat: "png",
+		}),
+	);
 
-	const dataUrl: ReturnAwaited<typeof domToPng> = yield call(render);
+	const {
+		success,
+		error,
+	}: {
+		success: ReturnType<typeof renderDividerSuccess>;
+		error: ReturnType<typeof renderDividerFailure>;
+	} = yield race({
+		success: take(renderDividerSuccess.match),
+		error: take(renderDividerFailure.match),
+	});
 
 	yield put(finishRender());
 
+	if (error || !success) {
+		return;
+	}
+
+	if (success.payload.colorScheme !== "rgb") {
+		return;
+	}
+
+	const { contents } = success.payload;
+
 	const filename = `${divider.title}.png`;
 
-	saveAs(dataUrl, filename);
+	saveAs(contents, filename);
 }
 
 export function* downloadDividerAsImageSaga() {

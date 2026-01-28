@@ -16,7 +16,7 @@ type HeaderProps = JSX.IntrinsicElements["header"];
 
 export function Header(props: HeaderProps) {
 	const theme = useTheme();
-	const exportId = useAppSelector(selectDividerRenderId);
+	const _exportId = useAppSelector(selectDividerRenderId);
 
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	return (
@@ -42,16 +42,15 @@ export function Header(props: HeaderProps) {
 					</C.SecondaryContent>
 				</C.Content>
 			</Container>
-			{exportId && (
-				<RenderProgress
-					sx={{
-						position: "absolute",
-						bottom: 0,
-						left: 0,
-						right: 0,
-					}}
-				/>
-			)}
+
+			<RenderProgress
+				sx={{
+					position: "absolute",
+					top: "100%",
+					left: 0,
+					right: 0,
+				}}
+			/>
 		</C.Container>
 	);
 }

@@ -1,5 +1,10 @@
 import { createAction } from "@reduxjs/toolkit";
+import type { DPI } from "@/modules/print/shared/model";
 
-export const downloadDividersAsPDF = createAction(
+type DownloadDividersAsPDFPayload = {
+	dpi?: DPI;
+};
+
+export const downloadDividersAsPDF = createAction<DownloadDividersAsPDFPayload>(
 	`render/downloadDividersAsPDF`,
 );
