@@ -15,4 +15,4 @@ export const mm2px = (mm: number, dpi = DEFAULT_PRINT_DPI) => {
 };
 
 export const fromPx = (scale: number) => (value: number) =>
-	`${value * scale}px`;
+	`${Math.round(value * scale)}px`;

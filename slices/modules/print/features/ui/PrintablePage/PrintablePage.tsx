@@ -61,9 +61,9 @@ export function PrintablePage<T extends WithId>({
 
 	const pageCreditsSx = {
 		position: "absolute",
-		bottom: mm(10),
-		left: mm(10),
-		right: mm(10),
+		bottom: mm(5),
+		left: mm(5),
+		right: mm(5),
 		maxHeight: mm(PAGE_CREDITS_SIZE - 10),
 	};
 

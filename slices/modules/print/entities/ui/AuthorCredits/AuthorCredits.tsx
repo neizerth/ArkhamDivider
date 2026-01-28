@@ -33,7 +33,7 @@ export function AuthorCredits({
 	};
 	return (
 		<Box {...props}>
-			<Row gap={mm(5)} alignItems="center">
+			<Row gap={mm(4)} alignItems="center">
 				<Link href={donationUrl} target="_blank">
 					<QRCodeSVG value={donationUrl} width={mm(20)} height={mm(20)} />
 				</Link>

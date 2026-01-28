@@ -75,7 +75,7 @@ export function Page({
 		<C.Page {...props} sx={sx}>
 			<C.Counter rotated={rotatedCounter} sx={counterSx}>
 				{number}
-				{showSide && `${sideLetter[side]} / ${total}`}
+				{showSide && sideLetter[side]} / {total}
 			</C.Counter>
 			{children}
 		</C.Page>

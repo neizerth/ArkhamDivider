@@ -1,5 +1,6 @@
 import { selectLayoutWithRelations } from "@/modules/divider/shared/lib";
 import { AuthorCredits } from "@/modules/print/entities/ui";
+import { ProjectCredits } from "@/modules/print/entities/ui/ProjectCredits";
 import { useAppSelector } from "@/shared/lib";
 import { Row, type RowProps } from "@/shared/ui";
 
@@ -15,8 +16,10 @@ export function PageCredits({ mmSize, ...props }: PageCreditsProps) {
 	const { authors } = layout;
 	const author = authors.find((author) => author.primary);
 
+	const justifyContent = author?.donationUrl ? "space-between" : "flex-end";
+
 	return (
-		<Row {...props}>
+		<Row {...props} justifyContent={justifyContent}>
 			{author?.donationUrl && (
 				<AuthorCredits
 					mmSize={mmSize}
@@ -25,6 +28,7 @@ export function PageCredits({ mmSize, ...props }: PageCreditsProps) {
 					contactUrl={author.contactUrl}
 				/>
 			)}
+			<ProjectCredits mmSize={mmSize} />
 		</Row>
 	);
 }
