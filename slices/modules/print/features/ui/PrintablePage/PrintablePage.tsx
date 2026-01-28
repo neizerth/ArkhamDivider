@@ -64,7 +64,7 @@ export function PrintablePage<T extends WithId>({
 		bottom: mm(5),
 		left: mm(5),
 		right: mm(5),
-		maxHeight: mm(PAGE_CREDITS_SIZE - 10),
+		maxHeight: mm(PAGE_CREDITS_SIZE - 5),
 	};
 
 	const justifyContent = pageLayout.isLast ? "flex-start" : "center";

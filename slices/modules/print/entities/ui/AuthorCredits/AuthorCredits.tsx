@@ -33,7 +33,7 @@ export function AuthorCredits({
 	};
 	return (
 		<Box {...props}>
-			<Row gap={mm(4)} alignItems="center">
+			<Row gap={mm(4)} alignItems="center" fontFamily="Arno Pro, serif">
 				<Link
 					href={donationUrl}
 					target="_blank"

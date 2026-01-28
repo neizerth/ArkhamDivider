@@ -30,7 +30,7 @@ export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 
 	return (
 		<Box {...props}>
-			<Row gap={mm(4)} alignItems="center">
+			<Row gap={mm(4)} alignItems="center" fontFamily="Arno Pro, serif">
 				<Box fontSize={mm(3)}>
 					<Box textAlign="right">
 						{t("Support project on {{platform}}", { platform })}

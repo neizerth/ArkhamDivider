@@ -6,15 +6,27 @@ import type { IconPositionManifest } from "../../../shared/model";
 import { Icon, type IconProps } from "../../../shared/ui";
 
 type IconCorrectionProps = Omit<IconProps, "fontSize"> & {
-	containerSx?: SxProps;
 	manifest?: IconPositionManifest;
 	fontSize: number;
+	/** left offset in px */
+	left?: number;
+	/** right offset in px */
+	right?: number;
+	/** top offset in px */
+	top?: number;
+	/** bottom offset in px */
+	bottom?: number;
 };
 
 export function IconCorrection({
 	icon,
 	manifest = defaultIconPositionManifest,
 	fontSize,
+	left,
+	right,
+	top,
+	bottom,
+	sx: sxProp,
 	...props
 }: IconCorrectionProps) {
 	const correctionSx = getIconCorrectionSx({
@@ -29,12 +41,16 @@ export function IconCorrection({
 		alignItems: "center",
 		justifyContent: "center",
 		lineHeight: 1,
+		fontSize: `${correctionSx.fontSize}px`,
+		...(left && { left: `${left + correctionSx.left}px` }),
+		...(right && { right: `${right - correctionSx.left}px` }),
+		...(top && { top: `${top + correctionSx.top}px` }),
+		...(bottom && { bottom: `${bottom - correctionSx.top}px` }),
 	};
 
 	const sx = {
 		...baseSx,
-		...(props.containerSx ?? {}),
-		...correctionSx,
+		...sxProp,
 	} as SxProps;
 
 	return (

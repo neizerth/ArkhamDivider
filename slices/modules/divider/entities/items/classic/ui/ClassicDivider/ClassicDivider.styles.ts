@@ -23,13 +23,22 @@ export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 	},
 });
 
+export const getOutlineSx: LocaleSxCallback = ({ mm }) => ({
+	default: {
+		borderWidth: mm(0.3),
+		borderRadius: mm(1),
+		top: mm(-1),
+		bottom: mm(2),
+	},
+});
+
 export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	top: mm(2),
-	right: mm(0.9),
+	// top: mm(2),
+	// right: mm(0.9),
 	width: mm(8.33),
 	height: mm(8.33),
 	"@media screen": {
@@ -47,8 +56,8 @@ export const getBackgroundIconSx: PrintSxCallback = ({ mm }) => ({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	top: `calc(${mm(3)} + 50%)`,
-	left: `calc(50%)`,
+	// top: `calc(${mm(3)} + 50%)`,
+	// left: `calc(50%)`,
 	transform: "translate(-50%, -50%)",
 	"@media screen": {
 		":hover": {

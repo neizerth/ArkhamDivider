@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import { useCallback, useState } from "react";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { IconCorrection as Icon } from "@/modules/core/icon/entities/ui";
@@ -26,6 +25,7 @@ import {
 	getDividerStatsSx,
 	getIconSx,
 	getMenuSx,
+	getOutlineSx,
 	getStrokeSx,
 	getTextSx,
 	getTitleClearSx,
@@ -57,6 +57,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const dividerCardsSx = getPrintSx(getDividerCardsSx);
 	const titleClearSx = getPrintSx(getTitleClearSx);
 	const menuSx = getPrintSx(getMenuSx);
+	const outlineSx = getLocaleSx(getOutlineSx);
 
 	const translatedTitle = translateStory(props?.title);
 
@@ -79,25 +80,34 @@ export function ClassicDivider(props: DividerWithRelations) {
 					}}
 					strokeSx={strokeSx}
 					clearProps={{ sx: titleClearSx }}
+					outlineSx={outlineSx}
+					outline
 					stroke
 					fit
 				/>
-				<Box sx={iconSx} component="span">
-					{icon && (
-						<Icon
-							icon={icon}
-							fontSize={mm(8)}
-							scaleType="circle"
-							scaleFactor={{ circled: 0.9 }}
-						/>
-					)}
-				</Box>
+				{icon && (
+					<Icon
+						icon={icon}
+						sx={iconSx}
+						top={mm(2)}
+						right={mm(0.9)}
+						fontSize={mm(8)}
+						scaleType="circle"
+						scaleFactor={{ circled: 0.9 }}
+					/>
+				)}
 				<Menu dividerId={props.id} sx={menuSx} />
 				<Stats divider={props} sx={dividerStatsSx} onClick={toggleCardsInfo} />
 
-				<Box sx={backgroundIconSx}>
-					{icon && <Icon icon={icon} fontSize={mm(50)} />}
-				</Box>
+				{icon && (
+					<Icon
+						sx={backgroundIconSx}
+						icon={icon}
+						fontSize={mm(50)}
+						top={mm(41.1)}
+						left={mm(44.5)}
+					/>
+				)}
 				{showCardsInfo && (
 					<CardsInfo sx={dividerCardsSx} divider={props} zIndex={2} />
 				)}
