@@ -2,11 +2,11 @@ import Box from "@mui/material/Box";
 import { memo } from "react";
 import {
 	selectCategoryId,
-	selectExportDividerId,
 	selectPrintableLayoutSize,
 } from "@/modules/divider/shared/lib";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { selectWebPrintScale } from "@/modules/print/shared/lib";
+import { selectDividerRenderId } from "@/modules/render/shared/lib";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import { dividerComponents } from "../../../items";
@@ -18,7 +18,7 @@ export function DividerView(props: DividerViewProps) {
 	const layoutSize = useAppSelector(selectPrintableLayoutSize);
 	const categoryId = useAppSelector(selectCategoryId);
 	const printScale = useAppSelector(selectWebPrintScale);
-	const exportId = useAppSelector(selectExportDividerId);
+	const exportId = useAppSelector(selectDividerRenderId);
 	const [ref, rect] = useBoundingRect();
 
 	if (!layoutSize || !categoryId) {

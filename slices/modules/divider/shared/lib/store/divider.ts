@@ -1,15 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { GenerateScenarioDividersParams } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
-import type { DividerLayoutType } from "../../model";
+import type { DividerLayoutType, ScenarioDividerParams } from "../../model";
 import { getDividerType } from "../logic";
 
 export type DividerState = {
 	layoutId: string | null;
 	categoryId: string | null;
 	dividerType: DividerLayoutType | null;
-	scenarioParams: Partial<GenerateScenarioDividersParams>;
-	exportDividerId: string | null;
+	scenarioParams: Partial<ScenarioDividerParams>;
 };
 
 const initialState: DividerState = {
@@ -20,7 +18,6 @@ const initialState: DividerState = {
 		encounterDividers: true,
 		scenarioDividers: true,
 	},
-	exportDividerId: null,
 };
 const state = createSliceState(initialState);
 
@@ -33,20 +30,14 @@ export const divider = createSlice({
 	},
 });
 
-export const {
-	setLayoutId,
-	setCategoryId,
-	setDividerType,
-	setScenarioParams,
-	setExportDividerId,
-} = divider.actions;
+export const { setLayoutId, setCategoryId, setDividerType, setScenarioParams } =
+	divider.actions;
 
 export const {
 	selectLayoutId,
 	selectCategoryId,
 	selectDividerType,
 	selectScenarioParams,
-	selectExportDividerId,
 } = divider.selectors;
 
 export default divider.reducer;

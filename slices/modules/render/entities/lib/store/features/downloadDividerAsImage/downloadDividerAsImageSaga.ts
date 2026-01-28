@@ -2,12 +2,9 @@ import { saveAs } from "file-saver";
 import { domToPng } from "modern-screenshot";
 import { call } from "ramda";
 import { put, select, takeEvery } from "redux-saga/effects";
-import {
-	selectDividerById,
-	selectLayout,
-	setExportDividerId,
-} from "@/modules/divider/shared/lib";
+import { selectDividerById, selectLayout } from "@/modules/divider/shared/lib";
 import { selectDPI } from "@/modules/print/shared/lib";
+import { setDividerRenderId } from "@/modules/render/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
 import { downloadDividerAsImage } from "./downloadDividerAsImage";
 
@@ -27,13 +24,13 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 	const dpi: ReturnType<typeof selectDPI> = yield select(selectDPI);
 	const scale = dpi / 96;
 
-	yield put(setExportDividerId(payload));
+	yield put(setDividerRenderId(payload));
 
 	const render = () => domToPng(node, { scale });
 
 	const dataUrl: ReturnAwaited<typeof domToPng> = yield call(render);
 
-	yield put(setExportDividerId(null));
+	yield put(setDividerRenderId(null));
 
 	const filename = `${divider.title}.png`;
 

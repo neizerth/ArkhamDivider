@@ -5,16 +5,16 @@ import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
-import {
-	type GenerateScenarioDividersParams,
-	generateScenarioDividers,
-} from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
+import { generateScenarioDividers } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
 import {
 	selectLayout,
 	selectScenarioParams,
 	setScenarioParams,
 } from "@/modules/divider/shared/lib";
-import type { GenerateDividersMode } from "@/modules/divider/shared/model";
+import type {
+	GenerateDividersMode,
+	ScenarioDividerParams,
+} from "@/modules/divider/shared/model";
 import { selectStoryWithRelations } from "@/modules/story/entities/lib";
 import { changeStoryCode, selectStories } from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui/story-select/StorySelect/ui";
@@ -31,10 +31,9 @@ export function ScenarioDividerOptions(props: BoxProps) {
 	const layout = useAppSelector(selectLayout);
 	const defaultValues = useAppSelector(selectScenarioParams);
 
-	const { control, handleSubmit, getValues } =
-		useForm<GenerateScenarioDividersParams>({
-			defaultValues,
-		});
+	const { control, handleSubmit, getValues } = useForm<ScenarioDividerParams>({
+		defaultValues,
+	});
 
 	const onParamsChange = useCallback(() => {
 		const params = getValues();

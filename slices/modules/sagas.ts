@@ -2,6 +2,7 @@ import { fork } from "redux-saga/effects";
 import { coreModuleSaga } from "./core/sagas";
 import { dividerSaga } from "./divider/sagas";
 import { encounterSetSaga } from "./encounterSet/sagas";
+import { renderSaga } from "./render/sagas";
 import { storySaga } from "./story/sagas";
 
 export function* modulesSaga() {
@@ -9,4 +10,5 @@ export function* modulesSaga() {
 	yield fork(storySaga);
 	yield fork(dividerSaga);
 	yield fork(encounterSetSaga);
+	yield fork(renderSaga);
 }

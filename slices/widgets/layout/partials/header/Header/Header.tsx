@@ -1,4 +1,5 @@
 import Container from "@mui/material/Container";
+import LinearProgress from "@mui/material/LinearProgress";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import type { JSX } from "react";
@@ -7,12 +8,15 @@ import {
 	DividerVariantSelect,
 } from "@/modules/divider/entities/ui";
 import { PrintButton, PrintSettings } from "@/modules/print/widgets/ui";
+import { selectDividerRenderId } from "@/modules/render/shared/lib";
+import { useAppSelector } from "@/shared/lib";
 import * as C from "./Header.components";
 
 type HeaderProps = JSX.IntrinsicElements["header"];
 
 export function Header(props: HeaderProps) {
 	const theme = useTheme();
+	const exportId = useAppSelector(selectDividerRenderId);
 
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	return (
@@ -38,6 +42,17 @@ export function Header(props: HeaderProps) {
 					</C.SecondaryContent>
 				</C.Content>
 			</Container>
+			{exportId && (
+				<LinearProgress
+					sx={{
+						position: "absolute",
+						bottom: 0,
+						left: 0,
+						right: 0,
+						zIndex: 1000,
+					}}
+				/>
+			)}
 		</C.Container>
 	);
 }

@@ -1,7 +1,9 @@
 import { keyframes } from "@emotion/react";
 import type { SxProps } from "@mui/material/styles";
+import color from "color";
+import { theme } from "@/shared/config";
 
-const glowColor = "rgba(213, 186, 14, 1)";
+const glowColor = color(theme.palette.primary.dark).alpha(1);
 const glowOpacity = {
 	min: 0.2,
 	max: 0.8,
@@ -9,7 +11,7 @@ const glowOpacity = {
 
 const getGlowShadow = (opacity: number, sizes: number[]) => {
 	return sizes
-		.map((size) => `0 0 ${size}px ${glowColor.replace("1)", `${opacity})`)}`)
+		.map((size) => `0 0 ${size}px ${glowColor.alpha(opacity).toString()}`)
 		.join(", ");
 };
 

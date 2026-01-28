@@ -10,8 +10,10 @@ import {
 	selectEncounterSetDividersCount,
 	selectScenarioDividersCount,
 } from "@/modules/divider/entities/lib";
-import type { GenerateScenarioDividersParams } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
-import type { DividerLayout } from "@/modules/divider/shared/model";
+import type {
+	DividerLayout,
+	ScenarioDividerParams,
+} from "@/modules/divider/shared/model";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 import { useAppSelector } from "@/shared/lib";
 import * as C from "./ScenarioDividerOptionsForm.components";
@@ -19,9 +21,9 @@ import * as C from "./ScenarioDividerOptionsForm.components";
 type ScenarioDividerOptionsFormProps = GridProps & {
 	layout: DividerLayout;
 	story: StoryWithRelations;
-	onSubmit: (params: GenerateScenarioDividersParams) => void;
-	control: Control<GenerateScenarioDividersParams>;
-	defaultValues: Partial<GenerateScenarioDividersParams>;
+	onSubmit: (params: ScenarioDividerParams) => void;
+	control: Control<ScenarioDividerParams>;
+	defaultValues: Partial<ScenarioDividerParams>;
 };
 
 export function ScenarioDividerOptionsForm({

@@ -8,8 +8,8 @@ import {
 	selectSingleItemPerPage,
 	usePrintSx,
 } from "@/modules/print/shared/lib";
+import { downloadDividerAsImage } from "@/modules/render/entities/lib/store/features/downloadDividerAsImage";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
-import { downloadDividerAsImage } from "../../../lib/store/features/downloadDividerAsImage";
 import { getButtonSx, getSx } from "./DividerMenu.styles";
 
 type DividerMenuProps = BoxProps & {
