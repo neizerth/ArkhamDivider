@@ -7,17 +7,18 @@ import { classicDividerTextColor } from "../../config/common";
 export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 	default: {
 		fontSize: mm(5),
-		lineHeight: 1.6,
 		fontFamily: "Arkhamic, Teutonic, serif",
 		textAlign: "center",
 		position: "absolute",
-		top: mm(2.6),
-		height: mm(6.5),
+		top: mm(3.8),
+		height: mm(7.5),
 		left: mm(8.66),
 		right: mm(10.16),
 	},
 	ru: {
+		top: mm(4.1),
 		fontSize: mm(4.58),
+		height: mm(7),
 		fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
 	},
 });

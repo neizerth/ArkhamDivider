@@ -78,10 +78,16 @@ export function BoxInput({
 		[props.onBlur],
 	);
 
+	const sx = {
+		...props.sx,
+		outline: "none",
+	} as SxProps;
+
 	const containerSx = {
 		width: "100%",
 		height: "100%",
 		position: "relative",
+		lineHeight: 1,
 		...containerSxProp,
 		...props.sx,
 	} as SxProps;
@@ -106,6 +112,7 @@ export function BoxInput({
 				contentEditable
 				spellCheck={false}
 				{...props}
+				sx={sx}
 				onInput={onChange}
 				onFocus={onFocus}
 				onBlur={onBlur}

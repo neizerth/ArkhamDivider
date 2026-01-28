@@ -9,6 +9,7 @@ export type DividerState = {
 	categoryId: string | null;
 	dividerType: DividerLayoutType | null;
 	scenarioParams: Partial<GenerateScenarioDividersParams>;
+	exportDividerId: string | null;
 };
 
 const initialState: DividerState = {
@@ -19,6 +20,7 @@ const initialState: DividerState = {
 		encounterDividers: true,
 		scenarioDividers: true,
 	},
+	exportDividerId: null,
 };
 const state = createSliceState(initialState);
 
@@ -31,14 +33,20 @@ export const divider = createSlice({
 	},
 });
 
-export const { setLayoutId, setCategoryId, setDividerType, setScenarioParams } =
-	divider.actions;
+export const {
+	setLayoutId,
+	setCategoryId,
+	setDividerType,
+	setScenarioParams,
+	setExportDividerId,
+} = divider.actions;
 
 export const {
 	selectLayoutId,
 	selectCategoryId,
 	selectDividerType,
 	selectScenarioParams,
+	selectExportDividerId,
 } = divider.selectors;
 
 export default divider.reducer;

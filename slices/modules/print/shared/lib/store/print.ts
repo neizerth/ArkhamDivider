@@ -14,6 +14,7 @@ export type PrintState = {
 	singleItemPerPage: boolean;
 	orientation: Orientation;
 	pageLayoutGrid: PageLayoutGrid | null;
+	exportEnabled: boolean;
 };
 
 const initialState: PrintState = {
@@ -26,6 +27,7 @@ const initialState: PrintState = {
 	singleItemPerPage: false,
 	orientation: "portrait",
 	pageLayoutGrid: null,
+	exportEnabled: false,
 };
 
 const state = createSliceState(initialState);
@@ -53,6 +55,7 @@ export const {
 	setPageLayoutGrid,
 	setOrientation,
 	setDPI,
+	setExportEnabled,
 } = print.actions;
 
 export const {
@@ -65,6 +68,7 @@ export const {
 	selectPageLayoutGrid,
 	selectOrientation,
 	selectDPI,
+	selectExportEnabled,
 } = print.selectors;
 
 export default print.reducer;
