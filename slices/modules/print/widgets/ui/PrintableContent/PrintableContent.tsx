@@ -23,8 +23,12 @@ export function PrintableContent(props: PrintableContentProps) {
 		<Stack
 			{...props}
 			sx={{
+				alignItems: "center",
+				justifyContent: "center",
+				"@media screen": {
+					gap: 2,
+				},
 				...sx,
-				gap: 2,
 			}}
 		>
 			{pageLayouts.map((pageLayout) => (

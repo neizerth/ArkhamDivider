@@ -7,10 +7,11 @@ export const Page = styled(Box)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
 
   @media print {
-    page-break-inside: avoid;
-    overflow: visible;
+    page-break-after: always;
+    overflow: hidden;
   }
   @media screen {
     border-radius: 5px;

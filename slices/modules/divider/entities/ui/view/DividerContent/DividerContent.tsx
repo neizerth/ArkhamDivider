@@ -12,7 +12,7 @@ export function DividerContent(props: DividerContentProps) {
 		return null;
 	}
 	const { originalBleed } = layoutSize;
-	const offset = originalBleed;
+	const offset = 0;
 	const sxProps = {
 		...props.sx,
 		position: "absolute",

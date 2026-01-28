@@ -7,7 +7,9 @@ export const Main = styled("main")`
 `;
 
 export const Container = styled(Stack)(({ theme }) => ({
-	minHeight: "100vh",
-	paddingTop: theme.spacing(12),
-	backgroundColor: "#f9f9f9",
+	"@media screen": {
+		minHeight: "100vh",
+		paddingTop: theme.spacing(12),
+		backgroundColor: "#f9f9f9",
+	},
 }));

@@ -42,6 +42,7 @@ export function Page({
 			maxHeight: `${height}mm`,
 		},
 		"@media screen": {
+			width: "100%",
 			...pageSideStyles[side],
 		},
 	};

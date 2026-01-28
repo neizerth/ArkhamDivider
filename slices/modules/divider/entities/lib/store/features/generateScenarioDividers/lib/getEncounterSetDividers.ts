@@ -12,12 +12,14 @@ type Options = {
 	includeReturnStory: boolean;
 	includeExtraEncounterSets: boolean;
 	includeScenarioEncounterSets: boolean;
+	includeEncounterSets: boolean;
 };
 
 const uniqSets = (sets: EncounterSet[]) => uniqBy(prop("code"), compact(sets));
 
 export const getEncounterSetDividers = ({
 	story,
+	includeEncounterSets = false,
 	includeReturnStory = false,
 	includeScenarioEncounterSets = false,
 	includeExtraEncounterSets = false,
@@ -74,7 +76,7 @@ export const getEncounterSetDividers = ({
 		};
 	});
 
-	if (!includeScenarioEncounterSets) {
+	if (!includeScenarioEncounterSets && includeEncounterSets) {
 		return ecnounterSetDividers;
 	}
 
@@ -102,6 +104,10 @@ export const getEncounterSetDividers = ({
 			};
 		},
 	);
+
+	if (!includeEncounterSets && includeScenarioEncounterSets) {
+		return scenarioEncounterSetDividers;
+	}
 
 	return [...ecnounterSetDividers, ...scenarioEncounterSetDividers];
 };

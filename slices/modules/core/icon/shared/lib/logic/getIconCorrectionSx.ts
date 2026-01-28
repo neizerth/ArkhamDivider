@@ -1,4 +1,3 @@
-import type { SxProps } from "@mui/material/styles";
 import type { IconPositionManifest } from "../../model";
 
 type Options = {
@@ -6,11 +5,7 @@ type Options = {
 	manifest: IconPositionManifest;
 	fontSize: number;
 };
-export const getIconCorrectionSx = ({
-	icon,
-	manifest,
-	fontSize,
-}: Options): SxProps => {
+export const getIconCorrectionSx = ({ icon, manifest, fontSize }: Options) => {
 	const position = manifest[icon];
 	if (!position) {
 		return {

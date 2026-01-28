@@ -25,6 +25,7 @@ export function PrintablePage<T extends WithId>({
 	const cols = range(0, grid.cols);
 
 	const pageSize = pageFormat.size.mm;
+
 	const containerSize = getRelativeBoxSize(pageSize, size);
 	const layoutSize = layout.size;
 	const unitAspectRatio = layoutSize.width / layoutSize.height;
@@ -34,13 +35,20 @@ export function PrintablePage<T extends WithId>({
 	const containerSx = {
 		aspectRatio,
 		width: percentage(containerSize.width),
+		"@media print": {
+			width: `${size.width}mm`,
+		},
 	};
 
 	const pageOptions = pick(["side", "number", "total"], pageLayout);
 
 	return (
-		<Page {...pageOptions} {...pageSize} data-id={pageLayout.number}>
-			<Stack sx={containerSx}>
+		<Page {...pageOptions} {...pageSize}>
+			<Stack
+				sx={{
+					...containerSx,
+				}}
+			>
 				{rows.map((rowIndex) => (
 					<Row key={rowIndex}>
 						{cols.map((colIndex) => {

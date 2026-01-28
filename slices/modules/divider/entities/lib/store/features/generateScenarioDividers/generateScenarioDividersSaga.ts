@@ -32,14 +32,16 @@ function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
 			})
 		: [];
 
-	const encounterSetDividers = payload.encounterDividers
-		? getEncounterSetDividers({
-				story,
-				includeReturnStory: payload.returnSet,
-				includeScenarioEncounterSets: payload.scenarioEncounterDividers,
-				includeExtraEncounterSets: payload.extraEncounterSets,
-			})
-		: [];
+	const encounterSetDividers =
+		payload.encounterDividers || payload.scenarioEncounterDividers
+			? getEncounterSetDividers({
+					story,
+					includeEncounterSets: payload.encounterDividers,
+					includeReturnStory: payload.returnSet,
+					includeScenarioEncounterSets: payload.scenarioEncounterDividers,
+					includeExtraEncounterSets: payload.extraEncounterSets,
+				})
+			: [];
 
 	const dividers = [
 		...campaignDividers,

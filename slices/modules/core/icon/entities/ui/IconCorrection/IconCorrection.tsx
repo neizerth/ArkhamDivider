@@ -25,7 +25,7 @@ export function IconCorrection({
 
 	const baseSx: SxProps = {
 		position: "relative",
-		display: "inline-flex",
+		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
 		lineHeight: 1,
