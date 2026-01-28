@@ -2,14 +2,11 @@ import type { PropsWithChildren } from "react";
 import { selectDividerRenderId } from "@/modules/render/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 
-type DividerNotExportableProps = PropsWithChildren & {
+type NotExportableProps = PropsWithChildren & {
 	id?: string;
 };
 
-export function DividerNotExportable({
-	children,
-	id,
-}: DividerNotExportableProps) {
+export function NotExportable({ children, id }: NotExportableProps) {
 	const exportDividerId = useAppSelector(selectDividerRenderId);
 
 	if (exportDividerId && !id) {

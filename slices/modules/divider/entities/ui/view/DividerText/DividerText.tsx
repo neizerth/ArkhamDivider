@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { SxProps } from "@mui/material/styles";
 import { useCallback, useState } from "react";
-import { DividerNotExportable } from "@/modules/divider/shared/ui";
+import { NotExportable } from "@/modules/render/shared/ui";
 import { BoxInput, FitInput, type FitInputProps } from "@/shared/ui/control";
 
 type DividerTextProps = FitInputProps & {
@@ -69,9 +69,9 @@ export function DividerText({
 				<BoxInput sx={inputSx} {...baseProps} />
 			)}
 			{outline && isFocused && (
-				<DividerNotExportable>
+				<NotExportable>
 					<Box sx={outlineSx} displayPrint="none" />
-				</DividerNotExportable>
+				</NotExportable>
 			)}
 		</Box>
 	);
