@@ -1,11 +1,14 @@
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
 import { defaultIconPositionManifest } from "../../../shared/config";
-import { getIconCorrectionSx } from "../../../shared/lib";
+import { getIconCorrection } from "../../../shared/lib";
 import type { IconPositionManifest } from "../../../shared/model";
 import { Icon, type IconProps } from "../../../shared/ui";
 
-export type IconCorrectionProps = Omit<IconProps, "fontSize"> & {
+export type IconCorrectionProps = Omit<
+	IconProps,
+	"fontSize" | "left" | "right" | "top" | "bottom"
+> & {
 	manifest?: IconPositionManifest;
 	fontSize: number;
 	/** left offset in px */
@@ -29,7 +32,7 @@ export function IconCorrection({
 	sx: sxProp,
 	...props
 }: IconCorrectionProps) {
-	const correctionSx = getIconCorrectionSx({
+	const correctionSx = getIconCorrection({
 		icon,
 		manifest,
 		fontSize,

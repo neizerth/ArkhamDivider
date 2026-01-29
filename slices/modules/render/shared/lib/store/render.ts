@@ -1,11 +1,12 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { RenderStatus } from "../../model";
+import type { RenderStatus, RenderType } from "../../model";
 
 export type RenderState = {
 	hideTextNodes: boolean;
 	hideIconNodes: boolean;
 	dividerRenderId: string | null;
+	renderType: RenderType | null;
 	renderProgress: number | null;
 	renderProgressTotal: number | null;
 	renderStatus: RenderStatus;
@@ -16,6 +17,7 @@ const initialState: RenderState = {
 	hideTextNodes: false,
 	hideIconNodes: false,
 	dividerRenderId: null,
+	renderType: null,
 	renderProgress: null,
 	renderProgressTotal: null,
 	renderStatus: "idle",
@@ -29,6 +31,7 @@ type StartRenderPayload = {
 	total?: number;
 	value?: number;
 	dividerId?: string;
+	renderType?: RenderType;
 };
 
 export const render = createSlice({
@@ -42,7 +45,9 @@ export const render = createSlice({
 				total = null,
 				value = 0,
 				dividerId = null,
+				renderType = null,
 			} = action.payload;
+			state.renderType = renderType;
 			state.renderStatus = "pending";
 			state.renderStatusMessage = message;
 			state.renderProgress = value;
@@ -57,6 +62,7 @@ export const render = createSlice({
 			state.dividerRenderId = null;
 			state.hideTextNodes = false;
 			state.hideIconNodes = false;
+			state.renderType = null;
 		},
 		errorRender(state, action: PayloadAction<string>) {
 			state.renderStatus = "error";

@@ -1,11 +1,12 @@
 import type { TOptions } from "i18next";
-import { omit } from "ramda";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import type { Story } from "../../model";
-import { getStoryI18nNamespace } from "../logic";
-
-const omitNS = omit(["ns"]);
+import {
+	getStoryI18nNamespace,
+	translateFallback,
+	translateStory,
+} from "../logic";
 
 export type UseStoryTranslateFunction = (
 	text: string,
@@ -16,39 +17,34 @@ export const useStoryTranslation = (story?: Story) => {
 	const storyNs = story && getStoryI18nNamespace(story.code);
 
 	const i18n = useTranslation();
+	const i18nInstance = i18n.i18n;
 
 	const translate: UseStoryTranslateFunction = useCallback(
 		(text: string, options: TOptions = {}) => {
-			const translation = i18n.t(text, omitNS(options));
-			const { ns = storyNs } = options;
-
-			if (translation && translation !== text) {
-				return translation;
-			}
-
-			if (!ns) {
-				return text;
-			}
-
-			return i18n.t(text, {
-				...options,
-				ns,
+			return translateFallback({
+				i18nInstance,
+				text,
+				options,
+				fallbackNamespace: storyNs,
 			});
 		},
-		[i18n, storyNs],
+		[storyNs, i18nInstance],
 	);
 
-	const translateStory = useCallback(
-		(text?: string, story?: Story) =>
-			translate(text ?? "", {
-				ns: story && getStoryI18nNamespace(story.code),
-			}),
-		[translate],
+	const translateStoryCallback = useCallback(
+		(text?: string, story?: Story) => {
+			return translateStory({
+				i18nInstance,
+				text,
+				story,
+			});
+		},
+		[i18nInstance],
 	);
 
 	return {
 		...i18n,
 		t: translate,
-		translateStory,
+		translateStory: translateStoryCallback,
 	};
 };

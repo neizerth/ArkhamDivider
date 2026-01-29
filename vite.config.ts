@@ -4,7 +4,6 @@ import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { vips } from "./vips.plugin";
 
-
 export default defineConfig({
 	plugins: [
 		vips(),
@@ -29,15 +28,15 @@ export default defineConfig({
 			ignored: ["**/node_modules/**", "**/.git/**"],
 		},
 		headers: {
-      'Cross-Origin-Embedder-Policy': 'credentialless',
-      'Cross-Origin-Opener-Policy': 'same-origin',
-    },
+			"Cross-Origin-Embedder-Policy": "credentialless",
+			"Cross-Origin-Opener-Policy": "same-origin",
+		},
 	},
 	// Оптимизация для лучшей работы HMR
 	optimizeDeps: {
 		// Включаем предварительную оптимизацию для лучшей работы HMR
 		include: ["react", "react-dom", "react-router"],
-    exclude: ['wasm-vips'],
+		exclude: ["wasm-vips"],
 	},
-	assetsInclude: ['**/*.ttf'],
+	assetsInclude: ["**/*.ttf"],
 });

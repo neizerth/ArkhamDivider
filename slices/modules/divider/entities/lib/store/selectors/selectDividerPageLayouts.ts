@@ -1,6 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectDividersWithRelations } from "@/modules/divider/features/lib";
-import { selectLayout } from "@/modules/divider/shared/lib/store/selectors/selectLayout";
 import {
 	selectDoubleSidePrintEnabled,
 	selectPageLayoutGrid,
@@ -11,13 +10,12 @@ import { getDividerPageLayouts } from "../../logic";
 export const selectDividerPageLayouts = createSelector(
 	[
 		selectDividersWithRelations,
-		selectLayout,
 		selectDoubleSidePrintEnabled,
 		selectSingleItemPerPage,
 		selectPageLayoutGrid,
 	],
-	(dividers, layout, doubleSided, singleItemPerPage, layoutGrid) => {
-		if (!layout || !layoutGrid || !dividers) {
+	(dividers, doubleSided, singleItemPerPage, layoutGrid) => {
+		if (!layoutGrid || !dividers) {
 			return [];
 		}
 		return getDividerPageLayouts({

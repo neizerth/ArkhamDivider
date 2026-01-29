@@ -49,12 +49,14 @@ export const getBoxGrid = (size: BoxSize, unitSize: BoxSize) => {
 		return {
 			...rotated,
 			rotated: true,
+			unitSize,
 		};
 	}
 
 	return {
 		...original,
 		rotated: false,
+		unitSize,
 	};
 };
 

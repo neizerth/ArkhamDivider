@@ -53,7 +53,9 @@ const getFrontLayouts = <T>({
 	const itemsPerPage = singleItemPerPage ? 1 : rows * cols;
 	const totalPages = Math.ceil(data.length / itemsPerPage);
 
-	const grid = singleItemPerPage ? { rows: 1, cols: 1, size } : layoutGrid;
+	const grid = singleItemPerPage
+		? { rows: 1, cols: 1, size, unitSize: size }
+		: layoutGrid;
 
 	for (let i = 0; i < data.length; i += itemsPerPage) {
 		const chunk = data.slice(i, i + itemsPerPage);
@@ -79,7 +81,6 @@ const getFrontLayouts = <T>({
 			itemsCount: items.length,
 			isLast,
 			total: totalPages,
-			size,
 			grid,
 		};
 		pageLayouts.push(pageLayout);

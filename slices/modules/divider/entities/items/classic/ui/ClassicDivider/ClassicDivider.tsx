@@ -36,7 +36,7 @@ type ClassicLayoutParams = {
 };
 
 export function ClassicDivider(props: DividerWithRelations) {
-	const { story, icon } = props;
+	const { story, icon, id } = props;
 	const layout = useAppSelector(selectLayout) as DividerLayout;
 	const { translateStory } = useStoryTranslation(story);
 	const mm = usePrintUnitCallback();
@@ -72,6 +72,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 				}}
 			>
 				<DividerText
+					dividerId={id}
 					sx={titleSx}
 					value={translatedTitle}
 					defaultValue={translatedTitle}
@@ -81,12 +82,10 @@ export function ClassicDivider(props: DividerWithRelations) {
 					strokeSx={strokeSx}
 					clearProps={{ sx: titleClearSx }}
 					outlineSx={outlineSx}
-					outline
-					stroke
-					fit
 				/>
 				{icon && (
 					<Icon
+						dividerId={id}
 						icon={icon}
 						sx={iconSx}
 						top={mm(2)}
@@ -96,11 +95,12 @@ export function ClassicDivider(props: DividerWithRelations) {
 						scaleFactor={{ circled: 0.9 }}
 					/>
 				)}
-				<Menu dividerId={props.id} sx={menuSx} />
+				<Menu dividerId={id} sx={menuSx} />
 				<Stats divider={props} sx={dividerStatsSx} onClick={toggleCardsInfo} />
 
 				{icon && (
 					<Icon
+						dividerId={id}
 						sx={backgroundIconSx}
 						icon={icon}
 						fontSize={mm(50)}

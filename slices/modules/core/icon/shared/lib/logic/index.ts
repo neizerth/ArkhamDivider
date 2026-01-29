@@ -1,2 +1,2 @@
-export * from "./getIconCorrectionSx";
+export * from "./getIconCorrection";
 export * from "./scale";

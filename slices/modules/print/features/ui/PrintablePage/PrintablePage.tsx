@@ -1,6 +1,5 @@
 import Stack from "@mui/material/Stack";
 import { pick, range } from "ramda";
-import type { DividerLayout } from "@/modules/divider/shared/model";
 import { PAGE_CREDITS_SIZE } from "@/modules/print/shared/config";
 import {
 	canShowPageCredits,
@@ -16,7 +15,6 @@ import { PageCredits } from "../PageCredits";
 type PrintablePageProps<Props extends WithId> = {
 	pageLayout: PageLayout<Props>;
 	pageFormat: PageFormat;
-	layout: DividerLayout;
 	showSide?: boolean;
 	Component: React.ComponentType<Props>;
 };
@@ -24,30 +22,28 @@ type PrintablePageProps<Props extends WithId> = {
 export function PrintablePage<T extends WithId>({
 	pageLayout,
 	pageFormat,
-	layout,
 	Component,
 	showSide = false,
 }: PrintablePageProps<T>) {
 	const { width } = pageFormat.size.mm;
 	const { ref, mm, size: mmSize } = usePrintUnitByRect({ width });
 
-	const { items, size, grid } = pageLayout;
+	const { items, grid } = pageLayout;
 	const rows = range(0, grid.rows);
 	const cols = range(0, grid.cols);
 
 	const pageSize = pageFormat.size.mm;
 
-	const containerSize = getRelativeBoxSize(pageSize, size);
+	const containerSize = getRelativeBoxSize(pageSize, grid.size);
 	const showCredits = canShowPageCredits({
 		pageSize,
-		areaSize: layout.size,
+		areaSize: grid.unitSize,
 		isLast: pageLayout.isLast,
 	});
 
-	const layoutSize = layout.size;
-	const unitAspectRatio = layoutSize.width / layoutSize.height;
+	const unitAspectRatio = grid.unitSize.width / grid.unitSize.height;
 
-	const aspectRatio = size.width / size.height;
+	const aspectRatio = grid.size.width / grid.size.height;
 
 	const pageOptions = pick(["side", "number", "total"], pageLayout);
 
@@ -55,7 +51,7 @@ export function PrintablePage<T extends WithId>({
 		aspectRatio,
 		width: percentage(containerSize.width),
 		"@media print": {
-			width: `${size.width}mm`,
+			width: `${grid.size.width}mm`,
 		},
 	};
 

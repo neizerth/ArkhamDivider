@@ -5,7 +5,7 @@ type Options = {
 	manifest: IconPositionManifest;
 	fontSize: number;
 };
-export const getIconCorrectionSx = ({ icon, manifest, fontSize }: Options) => {
+export const getIconCorrection = ({ icon, manifest, fontSize }: Options) => {
 	const position = manifest[icon];
 	if (!position) {
 		return {

@@ -1,10 +1,21 @@
+import { isNumber } from "ramda-adjunct";
 import type { Channel } from "redux-saga";
-import { actionChannel, call, put, race, take } from "redux-saga/effects";
+import {
+	actionChannel,
+	call,
+	put,
+	race,
+	select,
+	take,
+} from "redux-saga/effects";
 import {
 	getDividerNodeById,
 	renderCMYKDividerNode,
 	renderDividerNode,
+	selectRenderProgress,
+	selectRenderProgressTotal,
 	setDividerRenderId,
+	setRenderProgress,
 } from "@/modules/render/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
 import {
@@ -20,9 +31,14 @@ function* worker({ payload }: ReturnType<typeof renderDivider>) {
 	const node = getDividerNodeById(dividerId);
 
 	if (!node) {
+		console.error("Node not found");
 		return;
 	}
 
+	const totalProgress: ReturnType<typeof selectRenderProgressTotal> =
+		yield select(selectRenderProgressTotal);
+	const progress: ReturnType<typeof selectRenderProgress> =
+		yield select(selectRenderProgress);
 	try {
 		yield put(setDividerRenderId(dividerId));
 
@@ -53,6 +69,10 @@ function* worker({ payload }: ReturnType<typeof renderDivider>) {
 				}),
 			);
 		}
+
+		if (isNumber(totalProgress) && isNumber(progress)) {
+			yield put(setRenderProgress(progress + 1));
+		}
 	} catch (error) {
 		yield put(
 			renderDividerFailure({
@@ -67,28 +87,30 @@ function* worker({ payload }: ReturnType<typeof renderDivider>) {
 }
 
 export function* renderDividerSaga() {
-	const channel: Channel<typeof renderDivider> = yield actionChannel(
-		renderDivider.match,
-	);
-
 	while (true) {
-		const {
-			request,
-			cancel,
-		}: {
-			request: ReturnType<typeof renderDivider> | undefined;
-			cancel: ReturnType<typeof cancelDividerRendering> | undefined;
-		} = yield race({
-			request: take(channel),
-			cancel: take(cancelDividerRendering.match),
-		});
+		const channel: Channel<typeof renderDivider> = yield actionChannel(
+			renderDivider.match,
+		);
 
-		if (cancel) {
-			break;
-		}
+		while (true) {
+			const {
+				request,
+				cancel,
+			}: {
+				request: ReturnType<typeof renderDivider> | undefined;
+				cancel: ReturnType<typeof cancelDividerRendering> | undefined;
+			} = yield race({
+				request: take(channel),
+				cancel: take(cancelDividerRendering.match),
+			});
 
-		if (request) {
-			yield call(worker, request);
+			if (cancel) {
+				break;
+			}
+
+			if (request) {
+				yield call(worker, request);
+			}
 		}
 	}
 }

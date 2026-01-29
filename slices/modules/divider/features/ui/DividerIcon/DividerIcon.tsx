@@ -2,14 +2,20 @@ import {
 	IconCorrection,
 	type IconCorrectionProps,
 } from "@/modules/core/icon/entities/ui";
-import { selectHideIconNodes } from "@/modules/render/shared/lib";
+import {
+	selectDividerRenderId,
+	selectHideIconNodes,
+} from "@/modules/render/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 
-type DividerIconProps = IconCorrectionProps;
+type DividerIconProps = IconCorrectionProps & {
+	dividerId: string;
+};
 
-export function DividerIcon(props: DividerIconProps) {
+export function DividerIcon({ dividerId, ...props }: DividerIconProps) {
 	const hide = useAppSelector(selectHideIconNodes);
-	if (hide) {
+	const renderId = useAppSelector(selectDividerRenderId);
+	if (hide && renderId === dividerId) {
 		return null;
 	}
 	return <IconCorrection {...props} />;

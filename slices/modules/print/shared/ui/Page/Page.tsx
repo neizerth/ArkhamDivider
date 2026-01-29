@@ -2,7 +2,7 @@ import type { BoxProps } from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
 import type { Side } from "@/shared/model";
 import { PAGE_TOP_PADDING } from "../../config";
-import { fromPx } from "../../lib";
+import { fromPx, getPageCounterText } from "../../lib";
 import * as C from "./Page.components";
 import { pageSideStyles } from "./Page.styles";
 
@@ -12,19 +12,12 @@ type PageProps = Omit<BoxProps, "width" | "height"> & {
 	height: number;
 	number: number;
 	total: number;
-	rotatedCounter?: boolean;
 	showSide?: boolean;
 	mmSize: number;
 };
 
-const sideLetter = {
-	front: "A",
-	back: "B",
-};
-
 export function Page({
 	children,
-	rotatedCounter,
 	showSide,
 	side,
 	total,
@@ -64,19 +57,14 @@ export function Page({
 			fontSize: mm(2.2),
 			top: mm(1.5),
 			right: mm(1.3),
-			...(rotatedCounter && {
-				top: mm(-1.6),
-				right: mm(0.2),
-			}),
 		},
 	};
 
+	const counterText = getPageCounterText({ number, total, showSide, side });
+
 	return (
 		<C.Page {...props} sx={sx}>
-			<C.Counter rotated={rotatedCounter} sx={counterSx}>
-				{number}
-				{showSide && sideLetter[side]} / {total}
-			</C.Counter>
+			<C.Counter sx={counterSx}>{counterText}</C.Counter>
 			{children}
 		</C.Page>
 	);

@@ -30,10 +30,10 @@ export type PageLayout<T> = {
 	itemsCount: number;
 	isLast: boolean;
 	grid: PageLayoutGrid;
-	size: BoxSize;
 };
 
 export type PageLayoutGrid = {
+	unitSize: BoxSize;
 	size: BoxSize;
 	rows: number;
 	cols: number;

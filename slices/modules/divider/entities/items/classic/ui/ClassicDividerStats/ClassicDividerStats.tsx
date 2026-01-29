@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
-import { IconCorrection } from "@/modules/core/icon/entities/ui";
+import { Icon } from "@/modules/core/icon/shared/ui";
 import { getDividerCardsCount } from "@/modules/divider/entities/lib/logic";
 import { selectShowCampaignIcon } from "@/modules/divider/shared/lib";
 import { selectShowCardsCount } from "@/modules/divider/shared/lib/store/selectors/selectShowCardsCount";
@@ -52,7 +52,7 @@ export function ClassicDividerStats({
 	return (
 		<Row {...props} sx={sxProp}>
 			{showCampaignIcon ? (
-				<IconCorrection icon={icon} fontSize={mm(3)} />
+				<Icon icon={icon} fontSize={mm(3)} />
 			) : (
 				showCardsCount && <Box sx={totalIconSx}>∑</Box>
 			)}

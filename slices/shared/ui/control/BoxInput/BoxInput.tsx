@@ -11,6 +11,8 @@ export type BoxInputProps = BoxProps & {
 	onValueChange?: (value: string) => void;
 	defaultValue?: string;
 	value?: string;
+	stroke?: boolean;
+	strokeSx?: SxProps;
 };
 
 export function BoxInput({
@@ -20,6 +22,8 @@ export function BoxInput({
 	onChange: onChangeProp,
 	containerSx: containerSxProp,
 	clearProps,
+	stroke,
+	strokeSx: strokeSxProp,
 	...props
 }: BoxInputProps) {
 	const defaultRef = useRef<HTMLDivElement>(null);
@@ -27,6 +31,8 @@ export function BoxInput({
 	const [isFocused, setIsFocused] = useState(false);
 
 	const defaultContent = value ?? defaultValue ?? "";
+	const [strokeValue, setStrokeValue] = useState(defaultContent);
+
 	const internalValueRef = useRef(defaultValue ?? "");
 
 	const setValue = useCallback(
@@ -47,18 +53,29 @@ export function BoxInput({
 		internalValueRef.current = defaultValue ?? "";
 	}, [defaultValue]);
 
-	const onClear = useCallback(() => {
-		setValue(internalValueRef.current);
-		onValueChangeProp?.(internalValueRef.current);
+	const clear = useCallback(() => {
+		const value = internalValueRef.current;
+		setValue(value);
+		onValueChangeProp?.(value);
+		setStrokeValue(value);
 	}, [onValueChangeProp, setValue]);
 
 	const onChange = useCallback(
 		(event: React.FormEvent<HTMLDivElement>) => {
 			const value = sanitizeHTML(event.currentTarget.innerText);
+
+			if (!value) {
+				clear();
+				return;
+			}
+
 			onValueChangeProp?.(value);
 			onChangeProp?.(event);
+			if (stroke) {
+				setStrokeValue(value);
+			}
 		},
-		[onChangeProp, onValueChangeProp],
+		[clear, onChangeProp, onValueChangeProp, stroke],
 	);
 
 	const onFocus = useCallback(
@@ -109,6 +126,17 @@ export function BoxInput({
 		...clearProps?.sx,
 	} as SxProps;
 
+	const strokeSx = {
+		...strokeSxProp,
+		position: "absolute",
+		top: 0,
+		left: 0,
+		width: "100%",
+		height: "100%",
+		lineHeight: 1,
+		zIndex: -1,
+	} as SxProps;
+
 	return (
 		<Box sx={containerSx}>
 			<Box
@@ -121,8 +149,10 @@ export function BoxInput({
 				onBlur={onBlur}
 				ref={ref}
 			/>
+			{stroke && <Box sx={strokeSx}>{strokeValue}</Box>}
+
 			{isFocused && defaultValue && (
-				<IconButton {...clearProps} sx={clearSx} onClick={onClear}>
+				<IconButton {...clearProps} sx={clearSx} onClick={clear}>
 					<ClearIcon />
 				</IconButton>
 			)}

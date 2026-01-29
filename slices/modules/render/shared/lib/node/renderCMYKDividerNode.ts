@@ -31,10 +31,8 @@ export const renderCMYKDividerNode = async ({
 	const vips = await getVips();
 	const image = vips.Image.newFromBuffer(arrayBuffer);
 	image.iccTransform("cmyk");
-
 	const ext = `.${imageFormat}`;
 
 	const contents = image.writeToBuffer(ext);
-
 	return contents;
 };

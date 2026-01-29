@@ -12,19 +12,25 @@ type RenderDividerPayload = {
 export const renderDivider =
 	createAction<RenderDividerPayload>(`render/renderDivider`);
 
-type RenderDividerSuccessPayload = {
+export type RenderDividerSuccessPayload =
+	| RGBRenderDividerSuccessPayload
+	| CMYKRenderDividerSuccessPayload;
+
+type BaseRenderDividerSuccessPayload = {
 	dividerId: string;
 	imageFormat: ImageFormat;
-} & (
-	| {
-			colorScheme: "rgb";
-			contents: string;
-	  }
-	| {
-			colorScheme: "cmyk";
-			contents: Uint8Array<ArrayBufferLike>;
-	  }
-);
+};
+
+export type RGBRenderDividerSuccessPayload = BaseRenderDividerSuccessPayload & {
+	colorScheme: "rgb";
+	contents: string;
+};
+
+export type CMYKRenderDividerSuccessPayload =
+	BaseRenderDividerSuccessPayload & {
+		colorScheme: "cmyk";
+		contents: Uint8Array<ArrayBufferLike>;
+	};
 
 export const renderDividerSuccess = createAction<RenderDividerSuccessPayload>(
 	`render/renderDividerSuccess`,
