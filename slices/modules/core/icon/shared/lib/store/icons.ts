@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { Icon } from "../../model";
+import type { IconMapping } from "../../model";
 
 export type IconsState = {
-	icons: Record<string, Icon>;
+	icons: IconMapping;
 };
 
 const initialState: IconsState = {

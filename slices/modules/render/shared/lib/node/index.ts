@@ -1,3 +1,3 @@
 export * from "./getDividerNodeById";
-export * from "./renderCMYKDividerNode";
-export * from "./renderDividerNode";
+export * from "./renderCMYKDivider";
+export * from "./renderRGBDivider";

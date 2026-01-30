@@ -1,17 +1,17 @@
 import { saveAs } from "file-saver";
-import { put, race, select, take, takeEvery } from "redux-saga/effects";
+import { call, put, select, takeLatest } from "redux-saga/effects";
 import { selectDividerById, selectLayout } from "@/modules/divider/shared/lib";
 import { selectDPI } from "@/modules/print/shared/lib";
-import { finishRender, startRender } from "@/modules/render/shared/lib";
 import {
-	renderDivider,
-	renderDividerFailure,
-	renderDividerSuccess,
-} from "../renderDivider";
+	renderCMYKDivider,
+	setDividerRenderId,
+	startRender,
+} from "@/modules/render/shared/lib";
+import type { ReturnAwaited } from "@/shared/model";
+
 import { downloadDividerAsImage } from "./downloadDividerAsImage";
 
 function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
-	const node = document.querySelector(`[data-divider-id="${payload}"]`);
 	const divider: ReturnType<typeof selectDividerById> = yield select(
 		selectDividerById,
 		payload,
@@ -19,7 +19,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 
 	const layout: ReturnType<typeof selectLayout> = yield select(selectLayout);
 
-	if (!node || !divider || !layout) {
+	if (!divider || !layout) {
 		return;
 	}
 
@@ -27,43 +27,24 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 
 	yield put(startRender({}));
 
-	yield put(
-		renderDivider({
+	yield put(setDividerRenderId(payload));
+
+	const contents: ReturnAwaited<typeof renderCMYKDivider> = yield call(
+		renderCMYKDivider,
+		{
 			dividerId: payload,
 			dpi,
-			colorScheme: "rgb",
 			imageFormat: "png",
-		}),
+		},
 	);
 
-	const {
-		success,
-		error,
-	}: {
-		success: ReturnType<typeof renderDividerSuccess>;
-		error: ReturnType<typeof renderDividerFailure>;
-	} = yield race({
-		success: take(renderDividerSuccess.match),
-		error: take(renderDividerFailure.match),
-	});
-
-	yield put(finishRender());
-
-	if (error || !success) {
-		return;
-	}
-
-	if (success.payload.colorScheme !== "rgb") {
-		return;
-	}
-
-	const { contents } = success.payload;
+	const blob = new Blob([contents as BlobPart], { type: "image/png" });
 
 	const filename = `${divider.title}.png`;
 
-	saveAs(contents, filename);
+	saveAs(blob, filename);
 }
 
 export function* downloadDividerAsImageSaga() {
-	yield takeEvery(downloadDividerAsImage.match, worker);
+	yield takeLatest(downloadDividerAsImage.match, worker);
 }

@@ -1,30 +1,18 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'Arno Pro';
-    src: local("ArnoPro"), 
-        url('/fonts/ArnoPro/ArnoPro-Caption.woff2') format('woff'), 
-        url('/fonts/ArnoPro/ArnoPro-Caption.woff') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
+export const ArnoPro = createFont({
+	family: "Arno Pro",
+	src: "/fonts/ArnoPro/ArnoPro-Caption.woff2",
+});
 
-  @font-face {
-    font-family: 'Arno Pro';
-    src: local("ArnoPro-Bold"), 
-        url('/fonts/ArnoPro/ArnoPro-Bold.woff2') format('woff'), 
-        url('/fonts/ArnoPro/ArnoPro-Bold.woff') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-  }
+export const ArnoProBold = createFont({
+	family: "Arno Pro",
+	src: "/fonts/ArnoPro/ArnoPro-Bold.woff2",
+	weight: "bold",
+});
 
-  @font-face {
-    font-family: 'Arno Pro';
-    src: local("ArnoPro-BoldItalic"), 
-        url('/fonts/ArnoPro/ArnoPro-BoldItalic.woff2') format('woff'), 
-        url('/fonts/ArnoPro/ArnoPro-BoldItalic.woff') format('woff2');
-    font-weight: bold;
-    font-style: italic;
-  }
-`;
+export const ArnoProBoldItalic = createFont({
+	family: "Arno Pro",
+	src: "/fonts/ArnoPro/ArnoPro-BoldItalic.woff2",
+	style: "italic",
+});

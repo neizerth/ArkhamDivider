@@ -1,10 +1,6 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'Line Seed';
-    src: url('/fonts/LineSeedKR/LineSeedKR-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+export const LineSeedKR = createFont({
+	family: "Line Seed",
+	src: "/fonts/LineSeedKR/LineSeedKR-Regular.woff",
+});

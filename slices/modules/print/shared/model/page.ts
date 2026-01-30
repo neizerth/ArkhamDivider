@@ -29,11 +29,14 @@ export type PageLayout<T> = {
 	items: PageLayoutRow<T>[];
 	itemsCount: number;
 	isLast: boolean;
+	isFirst: boolean;
 	grid: PageLayoutGrid;
 };
 
 export type PageLayoutGrid = {
+	/** Unit size in mm */
 	unitSize: BoxSize;
+	/** Layout size in mm */
 	size: BoxSize;
 	rows: number;
 	cols: number;

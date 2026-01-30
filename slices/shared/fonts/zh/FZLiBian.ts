@@ -1,10 +1,6 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'FZLiBian';
-    src: url('/fonts/FZLiBian/FZLiBian-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+export const FZLiBian = createFont({
+	family: "FZLiBian",
+	src: "/fonts/FZLiBian/FZLiBian-Regular.ttf",
+});

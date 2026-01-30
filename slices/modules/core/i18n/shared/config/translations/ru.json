@@ -85,5 +85,7 @@
 	"card.type.story": "Сюжет",
 	"cards.total": "Всего карт",
 	"render.status.initializing": "Подготовка инструментов...",
+	"render.status.rendering": "Создание изображений...",
+	"render.status.creatingPDF": "Создание PDF...",
 	"credits.author.description": "<icon/>: Вы можете потратить любое<br/>число ресурсов <donationLink>по адресу</donationLink><br/><i>Запомните, что <author>{{name}}</author><br/>вам благодарен</i>"
 }

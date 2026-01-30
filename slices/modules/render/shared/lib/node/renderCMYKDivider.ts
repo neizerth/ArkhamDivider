@@ -5,19 +5,21 @@ import {
 import type { DPI } from "@/modules/print/shared/model";
 import type { ImageFormat } from "../../model";
 import { getVips } from "../getVips";
+import { getDividerNodeById } from "./getDividerNodeById";
 
 type Options = {
-	node: Element;
+	dividerId: string;
 	dpi: DPI;
 	imageFormat?: ImageFormat;
 	renderOptions?: ModernScreenshotOptions;
 };
-export const renderCMYKDividerNode = async ({
-	node,
+export const renderCMYKDivider = async ({
+	dividerId,
 	dpi,
 	imageFormat = "png",
 	renderOptions,
 }: Options) => {
+	const node = getDividerNodeById(dividerId);
 	const scale = dpi / 96;
 	const options = {
 		...renderOptions,

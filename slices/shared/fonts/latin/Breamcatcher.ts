@@ -1,10 +1,6 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'Breamcatcher';
-    src: url('/fonts/Breamcatcher/Breamcatcher.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+export const Breamcatcher = createFont({
+	family: "Breamcatcher",
+	src: "/fonts/Breamcatcher/Breamcatcher.woff",
+});

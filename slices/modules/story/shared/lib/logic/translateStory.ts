@@ -4,7 +4,7 @@ import type { Story } from "../../model";
 import { getStoryI18nNamespace } from "./i18n";
 import { translateFallback } from "./translateFallback";
 
-type Options = {
+export type TranslateStoryOptions = {
 	text?: string;
 	i18nInstance?: i18n;
 	story?: Story;
@@ -16,7 +16,7 @@ export const translateStory = ({
 	text = "",
 	story,
 	options: tOptions,
-}: Options) => {
+}: TranslateStoryOptions) => {
 	const ns = story && getStoryI18nNamespace(story.code);
 
 	const options = { ...tOptions, ns };

@@ -1,10 +1,6 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'Teutonic';
-    src: url('/fonts/Teutonic/Teutonic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+export const Teutonic = createFont({
+	family: "Teutonic",
+	src: "/fonts/Teutonic/Teutonic.ttf",
+});

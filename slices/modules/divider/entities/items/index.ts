@@ -1,5 +1,5 @@
 import { prop } from "ramda";
-import type { DividerRender } from "@/modules/render/shared/model";
+import type { PDFDivider } from "@/modules/pdf/shared/model";
 import type { DividerCategory, DividerWithRelations } from "../../shared/model";
 import { classicCategory } from "./classic/config";
 import { classicCategoryId } from "./classic/config/common";
@@ -16,9 +16,6 @@ export const dividerComponents: Record<
 	[classicCategoryId]: ClassicDivider,
 };
 
-export const dividerPDFComponents: Record<
-	string,
-	React.ComponentType<DividerRender>
-> = {
+export const dividerPDFComponents: Record<string, PDFDivider> = {
 	[classicCategoryId]: ClassicDividerPDF,
 };

@@ -1,17 +1,11 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'Alegreya';
-    src: url('/fonts/Alegreya/Alegreya-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+export const AlegreyaRegular = createFont({
+	family: "Alegreya",
+	src: "/fonts/Alegreya/Alegreya-Regular.ttf",
+});
 
-  @font-face {
-    font-family: 'Alegreya';
-    src: url('/fonts/Alegreya/Alegreya-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-  }
-`;
+export const AlegreyaItalic = createFont({
+	family: "Alegreya",
+	src: "/fonts/Alegreya/Alegreya-Italic.ttf",
+});

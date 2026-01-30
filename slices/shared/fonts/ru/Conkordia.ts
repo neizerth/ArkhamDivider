@@ -1,11 +1,6 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'Conkordia';
-    src: url('/fonts/Conkordia/Conkordia.woff2') format('woff2'), 
-        url('/fonts/Conkordia/Conkordia.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+export const Conkordia = createFont({
+	family: "Conkordia",
+	src: "/fonts/Conkordia/Conkordia.ttf",
+});

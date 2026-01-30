@@ -1,17 +1,12 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'SanCn';
-    src: url('/fonts/SanCn/SanCnM.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+export const SanCn = createFont({
+	family: "SanCn",
+	src: "/fonts/SanCn/SanCnM.ttf",
+});
 
-  @font-face {
-    font-family: 'SanCn';
-    src: url('/fonts/SanCn/SanCnB.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-  }
-`;
+export const SanCnBold = createFont({
+	family: "SanCn",
+	src: "/fonts/SanCn/SanCnB.ttf",
+	weight: "bold",
+});

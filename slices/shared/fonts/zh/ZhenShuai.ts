@@ -1,10 +1,6 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'ZhenShuai';
-    src: url('/fonts/ZhenShuai/ZhenShuai-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+export const ZhenShuai = createFont({
+	family: "ZhenShuai",
+	src: "/fonts/ZhenShuai/ZhenShuai-Regular.woff",
+});

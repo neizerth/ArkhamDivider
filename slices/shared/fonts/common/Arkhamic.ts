@@ -1,10 +1,6 @@
-import { injectGlobal } from "@emotion/css";
+import { createFont } from "../createFont";
 
-injectGlobal`
-  @font-face {
-    font-family: 'Arkhamic';
-    src: url('/fonts/Arkhamic/Arkhamic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
+export const Arkhamic = createFont({
+	family: "Arkhamic",
+	src: "/fonts/Arkhamic/Arkhamic.ttf",
+});

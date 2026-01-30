@@ -60,6 +60,7 @@ const getFrontLayouts = <T>({
 	for (let i = 0; i < data.length; i += itemsPerPage) {
 		const chunk = data.slice(i, i + itemsPerPage);
 		const isLast = i + itemsPerPage >= data.length;
+		const isFirst = i === 0;
 
 		const items: PageLayoutRow<T>[] = [];
 		for (let j = 0; j < chunk.length; j += cols) {
@@ -80,6 +81,7 @@ const getFrontLayouts = <T>({
 			items,
 			itemsCount: items.length,
 			isLast,
+			isFirst,
 			total: totalPages,
 			grid,
 		};

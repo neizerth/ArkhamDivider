@@ -1,10 +1,4 @@
 import { DEFAULT_PRINT_DPI, INCH_TO_MM } from "../../config";
-import type { PrintUnit } from "../../model";
-
-export const createPrintUnit = (mm: number, px: number): PrintUnit => ({
-	px,
-	mm,
-});
 
 export const in2px = (inches: number, dpi = DEFAULT_PRINT_DPI) => {
 	return inches * dpi;
@@ -16,3 +10,8 @@ export const mm2px = (mm: number, dpi = DEFAULT_PRINT_DPI) => {
 
 export const fromPx = (scale: number) => (value: number) =>
 	`${Math.round(value * scale)}px`;
+
+export const fromDPI = (dpi: number) => {
+	const scale = mm2px(1, dpi);
+	return (value: number) => Math.round(value * scale);
+};
