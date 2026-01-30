@@ -15,6 +15,24 @@ export const dividers = createSlice({
 	name: "dividers",
 	initialState,
 	reducers: {
+		setDividerParam: (
+			state,
+			action: PayloadAction<{ id: string; key: string; value: unknown }>,
+		) => {
+			const { id, key, value } = action.payload;
+			const entity = state.entities[id];
+			if (!entity) {
+				return;
+			}
+			const prevParams = entity.params as Record<string, unknown> | undefined;
+			state.entities[id] = {
+				...entity,
+				params: {
+					...(prevParams ?? {}),
+					[key]: value,
+				},
+			} as unknown as Divider;
+		},
 		setDividers: adapter.setAll,
 		addDivider: adapter.addOne,
 		updateDivider: adapter.updateOne,
@@ -52,6 +70,7 @@ export const {
 	deleteDivider,
 	addManyDividers,
 	copyDivider,
+	setDividerParam,
 } = dividers.actions;
 
 export const {

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import {
 	DividerBackground as Background,
@@ -9,14 +9,14 @@ import {
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { selectLayout } from "@/modules/divider/shared/lib";
+import { selectLayout, updateDivider } from "@/modules/divider/shared/lib";
 import type {
 	DividerLayout,
 	DividerWithRelations,
 } from "@/modules/divider/shared/model";
 import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
-import { useAppSelector } from "@/shared/lib";
+import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { classicDividerTextColor } from "../../config/common";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import {
@@ -37,10 +37,13 @@ type ClassicLayoutParams = {
 
 export function ClassicDivider(props: DividerWithRelations) {
 	const { story, icon, id } = props;
+
+	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout) as DividerLayout;
 	const { translateStory } = useStoryTranslation(story);
 	const mm = usePrintUnitCallback();
 	const [showCardsInfo, setShowCardsInfo] = useState(false);
+	const customTitle = useRef(props.customTitle);
 
 	const toggleCardsInfo = useCallback(() => {
 		setShowCardsInfo(!showCardsInfo);
@@ -60,6 +63,24 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const outlineSx = getLocaleSx(getOutlineSx);
 
 	const translatedTitle = translateStory(props?.title);
+	const title = customTitle.current ?? translatedTitle;
+
+	const onFontSizeChange = useCallback(
+		(fontSizeScale: number) => {
+			dispatch(updateDivider({ id, changes: { fontSizeScale } }));
+		},
+		[id, dispatch],
+	);
+
+	const setCustomTitle = useCallback((value: string) => {
+		customTitle.current = value;
+	}, []);
+
+	const onTitleBlur = useCallback(() => {
+		dispatch(
+			updateDivider({ id, changes: { customTitle: customTitle.current } }),
+		);
+	}, [id, dispatch]);
 
 	const { background } = layout.params as ClassicLayoutParams;
 
@@ -74,11 +95,14 @@ export function ClassicDivider(props: DividerWithRelations) {
 				<DividerText
 					dividerId={id}
 					sx={titleSx}
-					value={translatedTitle}
+					value={title}
 					defaultValue={translatedTitle}
 					fitTextOptions={{
 						minFontSize: 8,
+						onFontSizeChange,
 					}}
+					onValueChange={setCustomTitle}
+					onBlur={onTitleBlur}
 					strokeSx={strokeSx}
 					clearProps={{ sx: titleClearSx }}
 					outlineSx={outlineSx}

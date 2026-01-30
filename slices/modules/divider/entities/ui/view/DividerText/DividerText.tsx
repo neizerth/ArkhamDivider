@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { SxProps } from "@mui/material/styles";
-import { useCallback, useState } from "react";
+import { type FocusEventHandler, useCallback, useState } from "react";
 import {
 	selectDividerRenderId,
 	selectHideTextNodes,
@@ -33,6 +33,9 @@ export function DividerText({
 	strokeSx,
 	outline,
 	clearProps,
+	sx,
+	onBlur: onBlurProp,
+	onFocus: onFocusProp,
 	...props
 }: DividerTextProps) {
 	const renderId = useAppSelector(selectDividerRenderId);
@@ -49,13 +52,23 @@ export function DividerText({
 		...outlineSxProp,
 	} as SxProps;
 
-	const onFocus = useCallback(() => {
-		setIsFocused(true);
-	}, []);
+	const onFocus: FocusEventHandler<HTMLDivElement> = useCallback(
+		(e) => {
+			onFocusProp?.(e);
+			setIsFocused(true);
+		},
+		[onFocusProp],
+	);
 
-	const onBlur = useCallback(() => {
-		setIsFocused(false);
-	}, []);
+	const onBlur: FocusEventHandler<HTMLDivElement> = useCallback(
+		(e) => {
+			onBlurProp?.(e);
+			setIsFocused(false);
+		},
+		[onBlurProp],
+	);
+
+	const hidden = hide && dividerId === renderId;
 
 	const baseProps = {
 		onFocus,
@@ -65,16 +78,14 @@ export function DividerText({
 		clearProps,
 		stroke: Boolean(stroke || strokeSx),
 		strokeSx,
+		hidden,
+		...props,
 	};
 
 	const fitText = Boolean(fit || fitTextOptions || inputSx);
 
-	if (hide && dividerId === renderId) {
-		return null;
-	}
-
 	return (
-		<Box position="relative" {...props}>
+		<Box position="relative" sx={sx}>
 			{fitText ? (
 				<FitInput sx={inputSx} fitTextOptions={fitTextOptions} {...baseProps} />
 			) : (

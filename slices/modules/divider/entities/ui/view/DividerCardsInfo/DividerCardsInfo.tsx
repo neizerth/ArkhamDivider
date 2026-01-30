@@ -7,11 +7,14 @@ import { usePrintSx } from "@/modules/print/shared/lib";
 import { getDividerCards, getDividerCardsCount } from "../../../lib/logic";
 import { getSx } from "./DividerCardsInfo.styles";
 
-type DividerCardsInfoProps = Omit<StackProps, "divider"> & {
-	divider: DividerWithRelations;
+type DividerCardsInfoProps<T> = Omit<StackProps, "divider"> & {
+	divider: DividerWithRelations<T>;
 };
 
-export function DividerCardsInfo({ divider, ...props }: DividerCardsInfoProps) {
+export function DividerCardsInfo<T = void>({
+	divider,
+	...props
+}: DividerCardsInfoProps<T>) {
 	const { t } = useTranslation();
 	const getPrintSx = usePrintSx();
 	const containerSx = getPrintSx(getSx);

@@ -66,6 +66,8 @@ export type BaseDividerData<Params = void> = {
 	id: string;
 	side: Side;
 	title: string;
+	fontSizeScale?: number;
+	customTitle?: string;
 	icon?: string;
 	params?: Params;
 };

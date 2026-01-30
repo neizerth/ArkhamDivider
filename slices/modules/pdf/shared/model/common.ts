@@ -23,7 +23,7 @@ export type PDFDividerContext = {
 	bleedEnabled: boolean;
 };
 
-export type PDFDivider = (
-	props: DividerWithRelations,
+export type PDFDivider<T = void> = (
+	props: DividerWithRelations<T>,
 	context: PDFDividerContext,
 ) => void | Promise<void>;

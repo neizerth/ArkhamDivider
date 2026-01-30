@@ -11,11 +11,13 @@ export const dividerLayouts = dividerCategories.flatMap(prop("layouts"));
 
 export const dividerComponents: Record<
 	string,
-	React.ComponentType<DividerWithRelations>
+	// biome-ignore lint/suspicious/noExplicitAny: any is used to allow any type of params
+	React.ComponentType<DividerWithRelations<any>>
 > = {
 	[classicCategoryId]: ClassicDivider,
 };
 
-export const dividerPDFComponents: Record<string, PDFDivider> = {
+// biome-ignore lint/suspicious/noExplicitAny: any is used to allow any type of params
+export const dividerPDFComponents: Record<string, PDFDivider<any>> = {
 	[classicCategoryId]: ClassicDividerPDF,
 };

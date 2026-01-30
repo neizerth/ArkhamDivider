@@ -1,7 +1,7 @@
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { isScenarioDivider } from "../type";
 
-export const getDividerCards = (divider: DividerWithRelations) => {
+export const getDividerCards = <T = void>(divider: DividerWithRelations<T>) => {
 	if (!isScenarioDivider(divider)) {
 		return [];
 	}
