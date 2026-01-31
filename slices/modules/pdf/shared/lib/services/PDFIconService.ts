@@ -1,4 +1,3 @@
-import type { Color } from "pdf-lib";
 import { defaultIconPositionManifest } from "@/modules/core/icon/shared/config";
 import {
 	getIconCorrection,
@@ -9,7 +8,13 @@ import type {
 	IconMapping,
 	IconPositionManifest,
 } from "@/modules/core/icon/shared/model";
-import type { PDFTextService } from "./pdf.text.service";
+import type { DrawTextOptions, PDFTextService } from "./PDFTextService";
+
+export type DrawIconOptions = DrawTextOptions & {
+	icon: string;
+	fontSize: number;
+	manifest?: IconPositionManifest;
+};
 
 export class PDFIconService {
 	constructor(
@@ -33,7 +38,7 @@ export class PDFIconService {
 		});
 	}
 
-	getIcon(
+	protected getIcon(
 		options: BaseIconProps & {
 			x: number;
 			y: number;
@@ -68,35 +73,28 @@ export class PDFIconService {
 		});
 
 		const position = {
-			left: options.x + left,
-			top: options.y + top,
+			x: options.x + left,
+			y: options.y + top,
 		};
 
 		return {
 			content,
-			size: fontSize,
+			fontSize,
 			...position,
 		};
 	}
 
-	async draw(options: {
-		icon: string;
-		x: number;
-		y: number;
-		fontSize: number;
-		color?: Color;
-		manifest?: IconPositionManifest;
-	}) {
+	async draw(options: DrawIconOptions) {
 		const icon = this.getIcon(options);
 		if (!icon) {
 			return;
 		}
-		const { color } = options;
-
-		await this.text.draw(icon.content, {
-			...icon,
-			fontFamily: "ArkhamIcons",
+		const { fontFamily, color } = options;
+		const { content, ...textOptions } = icon;
+		await this.text.draw(content, {
+			fontFamily,
 			color,
+			...textOptions,
 		});
 	}
 }

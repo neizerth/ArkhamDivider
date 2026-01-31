@@ -1,29 +1,26 @@
-import type { PDFPage } from "pdf-lib";
 import type {
 	DividerLayout,
 	DividerWithRelations,
 } from "@/modules/divider/shared/model";
 import type { DPI } from "@/modules/print/shared/model";
-import type { PDFIconService } from "../lib";
-import type { PDFTextService } from "../lib/pdf.text.service";
+import type { BoxSize } from "@/shared/model";
+import type { PDFIconService, PDFTextService } from "../lib";
 
 export type PDFDividerProps = DividerWithRelations;
 export type PDFDividerContext = {
-	page: PDFPage;
 	dpi: DPI;
 	text: PDFTextService;
 	icon: PDFIconService;
-	position: {
-		x: number;
-		y: number;
-	};
-	width: number;
-	height: number;
 	layout: DividerLayout;
 	bleedEnabled: boolean;
 };
 
 export type PDFDivider<T = void> = (
-	props: DividerWithRelations<T>,
+	props: PDFPageLayoutItem<DividerWithRelations<T>>,
 	context: PDFDividerContext,
-) => void | Promise<void>;
+) => Promise<void>;
+
+export type PDFPageLayoutItem<T> = T & {
+	size: BoxSize;
+	position: { x: number; y: number };
+};

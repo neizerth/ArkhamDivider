@@ -4,6 +4,7 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import Stack, { type StackProps } from "@mui/material/Stack";
 import { isNumber } from "ramda-adjunct";
+import { useTranslation } from "react-i18next";
 import {
 	selectRenderProgressValue,
 	selectRenderStatus,
@@ -17,6 +18,7 @@ export function RenderProgress(props: RenderProgressProps) {
 	const status = useAppSelector(selectRenderStatus);
 	const value = useAppSelector(selectRenderProgressValue);
 	const message = useAppSelector(selectRenderStatusMessage);
+	const { t } = useTranslation();
 
 	if (status !== "pending") {
 		return null;
@@ -29,7 +31,7 @@ export function RenderProgress(props: RenderProgressProps) {
 	return (
 		<Stack {...props} alignItems="center" gap={1}>
 			<LinearProgress sx={{ width: "100%" }} {...progressProps} />
-			{message && <Chip label={message} color="primary" />}
+			{message && <Chip label={t(message)} color="primary" />}
 		</Stack>
 	);
 }

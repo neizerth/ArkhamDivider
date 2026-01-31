@@ -14,7 +14,7 @@ export const getDividersWithRelations = ({
 	dividers,
 	stories,
 	encounterSets,
-}: Options) => {
+}: Options): DividerWithRelations[] => {
 	return dividers
 		.map((divider) => {
 			const story = createStoryWithRelations({

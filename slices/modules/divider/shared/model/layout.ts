@@ -36,6 +36,7 @@ export type DividerLayout = {
 	params?: Record<string, unknown>;
 	cardCountSupport?: boolean;
 	campaignIconSupport?: boolean;
+	backgroundSupport?: boolean;
 };
 
 export type DividerLayoutGroup = {
