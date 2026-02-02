@@ -9,3 +9,5 @@ export type BoxPosition = {
 	bottom: number;
 	left: number;
 };
+
+export type BoxRect = BoxSize & BoxPosition;

@@ -1,3 +1,4 @@
+import { getLocaleConfig } from "@/modules/core/i18n/shared/lib";
 import { cmyk } from "@/modules/pdf/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
@@ -7,19 +8,20 @@ const color = cmyk(0, 0, 0, 100);
 
 export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const { story, fontSizeScale = 100 } = props;
-	const { text, unit, icon } = ctx;
+	const { text, unit, icon, language } = ctx;
 	const t = withStoryTranslation(story);
 
+	const textConfig = getLocaleConfig(language, O.text);
 	const title = props.customTitle ?? t(props.title);
 
 	const fontSize = unit.mm((fontSizeScale / 100) * 4.58);
 	const bleed = unit.fromBleed();
 
 	await text.draw(title, {
-		x: bleed.x(O.text.default.left),
-		y: bleed.y(O.text.ru.top),
-		width: bleed.width(O.text.default.left, O.text.default.right),
-		height: unit.mm(O.text.default.height),
+		x: bleed.x(textConfig.left),
+		y: bleed.y(textConfig.top),
+		width: bleed.width(textConfig.left, textConfig.right),
+		height: unit.mm(textConfig.height),
 		fontSize,
 		align: "center",
 		overprint: true,

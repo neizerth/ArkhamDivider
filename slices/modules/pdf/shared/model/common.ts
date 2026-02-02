@@ -15,6 +15,7 @@ export type PDFDividerContext = {
 	unit: PDFUnitService;
 	layout: DividerLayout;
 	bleedEnabled: boolean;
+	language: string;
 };
 
 export type PDFDivider<T = void> = (

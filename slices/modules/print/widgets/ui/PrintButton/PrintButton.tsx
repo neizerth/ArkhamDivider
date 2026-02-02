@@ -88,16 +88,18 @@ export function PrintButton(props: PrintButtonProps) {
 											color="text.secondary"
 										>
 											<Typography variant="body2">{dpi} DPI</Typography>
-											<C.Badge>CMYK</C.Badge>
 										</Box>,
 										<MenuItem key={`${dpi}-pdf`} onClick={download(dpi)}>
 											<Icon icon="file-pdf" /> &nbsp; PDF
+											<C.Badge>CMYK</C.Badge>
 										</MenuItem>,
 										<MenuItem key={`${dpi}-tiff`}>
 											<Icon icon="file-zip" /> &nbsp; TIFF
+											<C.Badge>CMYK</C.Badge>
 										</MenuItem>,
 										<MenuItem key={`${dpi}-jpg`}>
-											<Icon icon="file-zip" /> &nbsp; JPEG
+											<Icon icon="file-zip" /> &nbsp; PNG
+											<C.Badge>RGB</C.Badge>
 										</MenuItem>,
 									])}
 								</MenuList>

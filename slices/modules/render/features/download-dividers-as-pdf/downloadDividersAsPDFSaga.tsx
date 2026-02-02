@@ -40,6 +40,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		singleItemPerPage,
 		icons,
 		bleedEnabled,
+		language,
 	}: ReturnType<typeof selectPDFData> = yield select(selectPDFData);
 
 	const total = dividers.length;
@@ -178,6 +179,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 							text,
 							unit,
 							doc,
+							language,
 						});
 
 					yield call(render);

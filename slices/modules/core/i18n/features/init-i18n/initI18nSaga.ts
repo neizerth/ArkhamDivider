@@ -14,12 +14,12 @@ function* worker({ payload }: ReturnType<typeof appDataLoaded>) {
 	const currentLanguage: ReturnType<typeof selectLanguage> =
 		yield select(selectLanguage);
 
+	yield put(setAvailableLanguages(languages));
+
 	if (currentLanguage) {
 		yield put(changeLanguageBundle(currentLanguage));
 		return;
 	}
-
-	yield put(setAvailableLanguages(languages));
 
 	const language = detectLanguage(languages);
 
