@@ -75,8 +75,17 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	});
 	const writer = fileStream.getWriter();
 
+	let cancelled = false;
+
 	doc.on("data", (chunk) => {
-		writer.write(chunk);
+		writer.write(chunk).catch(() => {
+			cancelled = true;
+			try {
+				(doc as unknown as { destroy(): void }).destroy();
+			} catch {
+				// ignore
+			}
+		});
 	});
 
 	doc.on("end", () => writer.close());
@@ -122,10 +131,14 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const renderComponent = dividerPDFComponents[layout.categoryId];
 
 	try {
-		for (const pdfLayout of pdfLayouts) {
+		renderLoop: for (const pdfLayout of pdfLayouts) {
+			if (cancelled) break;
 			doc.addPage();
 			for (const row of pdfLayout.items) {
 				for (const item of row.items) {
+					if (cancelled) {
+						break renderLoop;
+					}
 					const size = {
 						width: px(item.size.width),
 						height: px(item.size.height),
@@ -190,7 +203,9 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		console.error("error", error);
 	}
 
-	doc.end();
+	if (!cancelled) {
+		doc.end();
+	}
 
 	yield put(finishRender());
 }

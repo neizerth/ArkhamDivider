@@ -2,6 +2,7 @@ import {
 	domToBlob,
 	type Options as ModernScreenshotOptions,
 } from "modern-screenshot";
+import type Vips from "wasm-vips";
 import type { Interpretation } from "wasm-vips";
 import type { DPI } from "@/modules/print/shared/model";
 import type { BoxSize } from "@/shared/model";
@@ -48,7 +49,7 @@ export const renderDivider = async ({
 	const arrayBuffer = await blob.arrayBuffer();
 
 	const vips = await getVips();
-	let image = vips.Image.newFromBuffer(arrayBuffer);
+	let image: Vips.Image | null = vips.Image.newFromBuffer(arrayBuffer);
 
 	if (size) {
 		const scale = size.width / image.width;
@@ -92,6 +93,7 @@ export const renderDivider = async ({
 
 	// Delete image to free memory
 	image.delete();
+	image = null;
 
 	if (!stripIccProfile) {
 		return contents;
@@ -112,9 +114,11 @@ export const renderDivider = async ({
 	});
 
 	image.delete();
+	image = null;
 
 	if (imageFormat === "jpeg") {
 		return setJpegExifResolution(contents, dpi);
 	}
+
 	return contents;
 };

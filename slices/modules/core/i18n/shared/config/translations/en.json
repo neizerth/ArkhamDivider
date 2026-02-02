@@ -46,5 +46,8 @@
 	"card.type.investigator": "Investigator",
 	"card.type.story": "Story",
 	"cards.total": "Total",
+	"render.status.initializing": "Initializing...",
+	"render.status.creatingPDF": "Creating PDF...",
+	"render.status.rendering": "Rendering...",
 	"credits.author.description": "<icon/>: You can spend any number<br/>of resources <donationLink>on this address</donationLink><br/><i>Remember, <author>{{name}}</author><br/>is grateful to you</i>"
 }
