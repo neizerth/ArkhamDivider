@@ -2,6 +2,7 @@ import { alpha } from "@mui/material/styles";
 import type { LocaleSxCallback } from "@/modules/core/i18n/shared/model";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
 import { percent } from "@/shared/util";
+import { classicDividerObjects as O } from "../../config";
 import { classicDividerTextColor } from "../../config/common";
 
 export const getTextSx: LocaleSxCallback = ({ mm }) => ({
@@ -10,15 +11,15 @@ export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 		fontFamily: "Arkhamic, Teutonic, serif",
 		textAlign: "center",
 		position: "absolute",
-		top: mm(3.8),
-		height: mm(7.5),
-		left: mm(8.66),
-		right: mm(10.16),
+		top: mm(O.text.default.top),
+		height: mm(O.text.default.height),
+		left: mm(O.text.default.left),
+		right: mm(O.text.default.right),
 	},
 	ru: {
-		top: mm(4),
-		fontSize: mm(4.58),
-		height: mm(7),
+		top: mm(O.text.ru.top),
+		fontSize: mm(O.text.ru.fontSize),
+		height: mm(O.text.ru.height),
 		fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
 	},
 });
@@ -37,8 +38,8 @@ export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	width: mm(8.33),
-	height: mm(8.33),
+	width: mm(O.icon.size),
+	height: mm(O.icon.size),
 	"@media screen": {
 		":hover": {
 			opacity: percent(70),
@@ -50,11 +51,10 @@ export const getBackgroundIconSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	width: mm(50),
 	height: mm(50),
-	opacity: percent(5),
+	opacity: O.backgroundIcon.opacity,
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	transform: "translate(-50%, -50%)",
 	"@media screen": {
 		":hover": {
 			opacity: percent(3),

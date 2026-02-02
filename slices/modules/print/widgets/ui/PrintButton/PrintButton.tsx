@@ -78,23 +78,26 @@ export function PrintButton(props: PrintButtonProps) {
 									{supportedDPI.flatMap((dpi) => [
 										<Box
 											key={`${dpi}-header`}
-											textAlign="center"
-											paddingBottom={1}
+											display="flex"
+											justifyContent="center"
+											alignItems="center"
+											paddingBlock={1}
+											paddingInline={2}
 											borderBottom={1}
 											borderColor="divider"
 											color="text.secondary"
 										>
 											<Typography variant="body2">{dpi} DPI</Typography>
+											<C.Badge>CMYK</C.Badge>
 										</Box>,
 										<MenuItem key={`${dpi}-pdf`} onClick={download(dpi)}>
 											<Icon icon="file-pdf" /> &nbsp; PDF
 										</MenuItem>,
 										<MenuItem key={`${dpi}-tiff`}>
 											<Icon icon="file-zip" /> &nbsp; TIFF
-											<C.Badge>CMYK</C.Badge>
 										</MenuItem>,
-										<MenuItem key={`${dpi}-png`}>
-											<Icon icon="file-zip" /> &nbsp; PNG
+										<MenuItem key={`${dpi}-jpg`}>
+											<Icon icon="file-zip" /> &nbsp; JPEG
 										</MenuItem>,
 									])}
 								</MenuList>

@@ -1,6 +1,7 @@
 import { cmyk } from "@/modules/pdf/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
+import { classicDividerObjects as O } from "../../config";
 
 const color = cmyk(0, 0, 0, 100);
 
@@ -15,10 +16,10 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const bleed = unit.fromBleed();
 
 	await text.draw(title, {
-		x: bleed.x(8.66),
-		y: bleed.y(4),
-		width: bleed.width(8.66, 10.16),
-		height: unit.mm(7),
+		x: bleed.x(O.text.default.left),
+		y: bleed.y(O.text.ru.top),
+		width: bleed.width(O.text.default.left, O.text.default.right),
+		height: unit.mm(O.text.default.height),
 		fontSize,
 		align: "center",
 		overprint: true,
@@ -28,21 +29,16 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 
 	if (props.icon) {
 		const smallIcon = bleed.box({
-			top: 2,
-			right: 0.9,
-			width: 8.33,
-			height: 8.33,
+			top: O.icon.top,
+			right: O.icon.right,
+			width: O.icon.size,
+			height: O.icon.size,
 		});
 
 		await icon.draw(props.icon, {
 			x: smallIcon.x(),
 			y: smallIcon.y(),
-			iconOptions: {
-				scaleType: "circle",
-				scaleFactor: {
-					circled: 0.9,
-				},
-			},
+			iconOptions: O.icon.params,
 			fontSize: unit.mm(8),
 			width: smallIcon.width(),
 			height: smallIcon.height(),
@@ -55,9 +51,9 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 			y: bleed.y(2),
 			width: bleed.width(),
 			height: bleed.height(),
-			fontSize: unit.mm(50),
+			fontSize: unit.mm(O.backgroundIcon.fontSize),
 			color,
-			opacity: 0.05,
+			opacity: O.backgroundIcon.opacity,
 			overprint: true,
 		});
 	}

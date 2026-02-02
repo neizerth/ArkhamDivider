@@ -17,6 +17,7 @@ import type {
 import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { classicDividerObjects as O } from "../../config";
 import { classicDividerTextColor } from "../../config/common";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import {
@@ -112,11 +113,10 @@ export function ClassicDivider(props: DividerWithRelations) {
 						dividerId={id}
 						icon={icon}
 						sx={iconSx}
-						top={mm(2)}
-						right={mm(0.9)}
-						fontSize={mm(8)}
-						scaleType="circle"
-						scaleFactor={{ circled: 0.9 }}
+						top={mm(O.icon.top)}
+						right={mm(O.icon.right)}
+						fontSize={mm(O.icon.fontSize)}
+						{...O.icon.params}
 					/>
 				)}
 				<Menu dividerId={id} sx={menuSx} />
@@ -127,9 +127,9 @@ export function ClassicDivider(props: DividerWithRelations) {
 						dividerId={id}
 						sx={backgroundIconSx}
 						icon={icon}
-						fontSize={mm(50)}
-						top={mm(41.1)}
-						left={mm(44.5)}
+						fontSize={mm(O.backgroundIcon.fontSize)}
+						top={mm(O.backgroundIcon.top)}
+						left={mm(O.backgroundIcon.left)}
 					/>
 				)}
 				{showCardsInfo && (

@@ -79,6 +79,7 @@ export function DividerText({
 		stroke: Boolean(stroke || strokeSx),
 		strokeSx,
 		hidden,
+		clearable: !renderId,
 		...props,
 	};
 

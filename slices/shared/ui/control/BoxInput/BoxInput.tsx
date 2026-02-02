@@ -7,6 +7,7 @@ import { delay, sanitizeHTML } from "@/shared/util";
 
 export type BoxInputProps = BoxProps & {
 	containerSx?: SxProps;
+	clearable?: boolean;
 	clearProps?: IconButtonProps;
 	onValueChange?: (value: string) => void;
 	defaultValue?: string;
@@ -24,6 +25,7 @@ export function BoxInput({
 	clearProps,
 	stroke,
 	strokeSx: strokeSxProp,
+	clearable = true,
 	...props
 }: BoxInputProps) {
 	const defaultRef = useRef<HTMLDivElement>(null);
@@ -34,6 +36,8 @@ export function BoxInput({
 	const [strokeValue, setStrokeValue] = useState(defaultContent);
 
 	const internalValueRef = useRef(defaultValue ?? "");
+
+	const showClear = clearable && isFocused && defaultValue;
 
 	const setValue = useCallback(
 		(value: string) => {
@@ -151,7 +155,7 @@ export function BoxInput({
 			/>
 			{stroke && <Box sx={strokeSx}>{strokeValue}</Box>}
 
-			{isFocused && defaultValue && (
+			{showClear && (
 				<IconButton {...clearProps} sx={clearSx} onClick={clear}>
 					<ClearIcon />
 				</IconButton>
