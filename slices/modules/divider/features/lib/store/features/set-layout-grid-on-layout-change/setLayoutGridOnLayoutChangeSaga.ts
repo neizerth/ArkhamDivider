@@ -1,6 +1,9 @@
 import { put, select, takeEvery } from "redux-saga/effects";
-import { getDividerLayoutGrid } from "@/modules/divider/entities/lib";
-import { selectLayout, setLayoutId } from "@/modules/divider/shared/lib";
+import {
+	getDividerLayoutGrid,
+	selectLayout,
+} from "@/modules/divider/entities/lib";
+import { setLayoutId } from "@/modules/divider/shared/lib";
 import {
 	selectBleedEnabled,
 	selectPageFormat,

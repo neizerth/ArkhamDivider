@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectCategory } from "./selectCategory";
-import { selectLayout } from "./selectLayout";
+import { selectCategory } from "../../../../entities/lib/store/selectors/selectCategory";
+import { selectLayout } from "../../../../entities/lib/store/selectors/selectLayout";
 
 export const selectLayoutWithRelations = createSelector(
 	[selectLayout, selectCategory],

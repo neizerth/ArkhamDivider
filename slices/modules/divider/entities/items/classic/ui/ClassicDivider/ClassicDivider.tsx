@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
+import { selectLayout } from "@/modules/divider/entities/lib";
 import {
 	DividerBackground as Background,
 	DividerCardsInfo as CardsInfo,
@@ -9,7 +10,7 @@ import {
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { selectLayout, updateDivider } from "@/modules/divider/shared/lib";
+import { updateDivider } from "@/modules/divider/shared/lib";
 import type {
 	DividerLayout,
 	DividerWithRelations,

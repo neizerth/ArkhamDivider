@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { mmSize } from "@/modules/print/shared/config/bleed";
 import { selectBleedEnabled, selectDPI } from "@/modules/print/shared/lib";
-import { selectLayout } from "./selectLayout";
+import { selectLayout } from "../../../../entities/lib/store/selectors/selectLayout";
 
 export const selectPrintableLayoutSize = createSelector(
 	[selectDPI, selectLayout, selectBleedEnabled],

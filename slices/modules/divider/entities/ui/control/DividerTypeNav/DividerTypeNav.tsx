@@ -2,11 +2,11 @@ import Tab from "@mui/material/Tab";
 import Tabs, { type TabsProps } from "@mui/material/Tabs";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { selectLayout } from "@/modules/divider/entities/lib";
 import { dividerTypes } from "@/modules/divider/shared/config";
 import {
 	changeDividerType,
 	selectDividerType,
-	selectLayout,
 } from "@/modules/divider/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 

@@ -2,7 +2,7 @@ import type { PrintSxCallback } from "@/modules/print/shared/model";
 
 export const getSx: PrintSxCallback = () => ({
 	display: "flex",
-	alignItems: "center",
+	alignItems: "flex-start",
 	justifyContent: "center",
 });
 

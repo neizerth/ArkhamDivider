@@ -13,7 +13,7 @@ import { getDividerNodeById } from "./getDividerNodeById";
 
 type Colourspace = keyof typeof Interpretation;
 
-type Options = {
+export type RenderDividerOptions = {
 	dividerId: string;
 	dpi: DPI;
 	imageFormat: ImageFormat;
@@ -25,17 +25,17 @@ type Options = {
 	stripIccProfile?: boolean;
 };
 
-export const renderCMYKDivider = async ({
+export const renderDivider = async ({
 	dividerId,
 	dpi,
 	imageFormat,
 	renderOptions,
-	iccProfile = "cmyk",
+	iccProfile,
 	colourspace,
 	size,
 	quality,
 	stripIccProfile = false,
-}: Options) => {
+}: RenderDividerOptions) => {
 	const node = getDividerNodeById(dividerId);
 	const scale = dpi / 96;
 	const options = {
@@ -55,12 +55,7 @@ export const renderCMYKDivider = async ({
 		image = image.resize(scale);
 	}
 
-	// JPEG needs 8 bit depth
-	if (imageFormat === "jpeg" && image.format !== "uchar") {
-		image = image.cast("uchar");
-	}
-
-	if (!stripIccProfile) {
+	if (!stripIccProfile && iccProfile) {
 		image = await setICCProfile(image, iccProfile);
 	}
 
@@ -69,18 +64,31 @@ export const renderCMYKDivider = async ({
 		image = setColourspace(image, colourspace);
 	}
 
+	// JPEG needs 8 bit depth
+	if (["jpeg", "tiff"].includes(imageFormat) && image.format !== "uchar") {
+		image = image.cast("uchar");
+	}
+
 	const ext = `.${imageFormat}`;
 
 	const writeOptions = {
 		// keep: "all",
 		...(quality ? { Q: quality } : {}),
+		...(imageFormat === "tiff"
+			? { compression: "lzw", predictor: "horizontal" }
+			: {}),
 	};
 
-	// Write to buffer without icc profile
-	let contents = image.writeToBuffer(ext, {
-		...writeOptions,
-		...(stripIccProfile ? { strip: true } : {}),
-	});
+	let contents: Uint8Array<ArrayBufferLike>;
+
+	if (stripIccProfile) {
+		contents = image.writeToBuffer(".jpg", {
+			...writeOptions,
+			strip: true,
+		});
+	} else {
+		contents = image.writeToBuffer(ext, writeOptions);
+	}
 
 	// Delete image to free memory
 	image.delete();
@@ -91,7 +99,9 @@ export const renderCMYKDivider = async ({
 
 	image = vips.Image.newFromBuffer(contents);
 
-	image = await setICCProfile(image, iccProfile);
+	if (iccProfile) {
+		image = await setICCProfile(image, iccProfile);
+	}
 
 	if (imageFormat !== "jpeg") {
 		image = setResolution(image, dpi);

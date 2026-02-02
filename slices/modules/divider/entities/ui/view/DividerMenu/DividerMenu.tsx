@@ -1,5 +1,6 @@
-import Box, { type BoxProps } from "@mui/material/Box";
+import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import Stack, { type StackProps } from "@mui/material/Stack";
 import { useCallback } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { copyDivider, deleteDivider } from "@/modules/divider/shared/lib";
@@ -8,11 +9,14 @@ import {
 	usePrintSx,
 } from "@/modules/print/shared/lib";
 import { downloadDividerAsImage } from "@/modules/render/entities/lib/store/features/downloadDividerAsImage";
+import type { ImageFormat } from "@/modules/render/shared/model";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { useBoolean } from "@/shared/lib/hooks/common";
+import { Row } from "@/shared/ui";
 import { getButtonSx, getSx } from "./DividerMenu.styles";
 
-type DividerMenuProps = BoxProps & {
+type DividerMenuProps = StackProps & {
 	dividerId: string;
 };
 
@@ -22,6 +26,7 @@ export function DividerMenu({
 	...props
 }: DividerMenuProps) {
 	const single = useAppSelector(selectSingleItemPerPage);
+	const [showDownload, setShowDownload] = useBoolean(false);
 	const dispatch = useAppDispatch();
 
 	const copy = useCallback(() => {
@@ -36,9 +41,18 @@ export function DividerMenu({
 		dispatch(deleteDivider(dividerId));
 	}, [dispatch, dividerId]);
 
-	const download = useCallback(() => {
-		dispatch(downloadDividerAsImage(dividerId));
-	}, [dispatch, dividerId]);
+	const download = useCallback(
+		(imageFormat: ImageFormat) => () => {
+			dispatch(
+				downloadDividerAsImage({
+					dividerId,
+					imageFormat,
+				}),
+			);
+			setShowDownload.off();
+		},
+		[dispatch, dividerId, setShowDownload],
+	);
 
 	const getPrintSx = usePrintSx();
 	const containerSx = getPrintSx(getSx);
@@ -48,17 +62,40 @@ export function DividerMenu({
 		...containerSx,
 		...sxProp,
 	};
+
 	return (
-		<Box sx={sx} {...props} displayPrint="none">
+		<Stack {...props} sx={sx} displayPrint="none">
 			<NotExportable id={dividerId}>
 				{!single && (
 					<IconButton sx={buttonSx}>
 						<Icon icon="eye" />
 					</IconButton>
 				)}
-				<IconButton onClick={download} sx={buttonSx}>
-					<Icon icon="download" />
-				</IconButton>
+				<Row position="relative">
+					<IconButton onClick={setShowDownload.toggle} sx={buttonSx}>
+						<Icon icon="download" color={showDownload ? "black" : "inherit"} />
+					</IconButton>
+					{showDownload && (
+						<Row
+							position="absolute"
+							top={0}
+							zIndex={2}
+							left="100%"
+							height="100%"
+						>
+							<IconButton onClick={download("tiff")} sx={buttonSx}>
+								<Box fontSize="0.65em" color="black">
+									TIFF
+								</Box>
+							</IconButton>
+							<IconButton onClick={download("png")} sx={buttonSx}>
+								<Box fontSize="0.65em" color="black">
+									PNG
+								</Box>
+							</IconButton>
+						</Row>
+					)}
+				</Row>
 				<IconButton onClick={copy} sx={buttonSx}>
 					<Icon icon="icomoonfree-copy" />
 				</IconButton>
@@ -66,6 +103,6 @@ export function DividerMenu({
 					<Icon icon="trash" />
 				</IconButton>
 			</NotExportable>
-		</Box>
+		</Stack>
 	);
 }

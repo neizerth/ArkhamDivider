@@ -1,4 +1,4 @@
-import { selectLayout } from "@/modules/divider/shared/lib";
+import { selectLayout } from "@/modules/divider/entities/lib";
 import { useAppSelector } from "@/shared/lib";
 import { LayoutNotFound } from "../LayoutNotFound";
 import { LayoutPageContent } from "../LayoutPageContent";

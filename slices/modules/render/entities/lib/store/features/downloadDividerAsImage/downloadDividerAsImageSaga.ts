@@ -7,7 +7,8 @@ import {
 import { selectDPI } from "@/modules/print/shared/lib";
 import {
 	finishRender,
-	renderCMYKDivider,
+	type RenderDividerOptions,
+	renderDivider,
 	setDividerRenderId,
 	startRender,
 } from "@/modules/render/shared/lib";
@@ -16,9 +17,11 @@ import type { ReturnAwaited } from "@/shared/model";
 import { downloadDividerAsImage } from "./downloadDividerAsImage";
 
 function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
+	const { dividerId, imageFormat } = payload;
+
 	const divider: ReturnType<typeof selectDividerById> = yield select(
 		selectDividerById,
-		payload,
+		dividerId,
 	);
 
 	const printableLayoutSize: ReturnType<typeof selectPrintableLayoutSize> =
@@ -34,28 +37,42 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 
 	yield put(startRender({}));
 
-	yield put(setDividerRenderId(payload));
+	yield put(setDividerRenderId(dividerId));
 
-	const contents: ReturnAwaited<typeof renderCMYKDivider> = yield call(
-		renderCMYKDivider,
-		{
-			dividerId: payload,
-			dpi,
-			imageFormat: "jpeg",
-			iccProfile: "USWebCoatedSWOP.icc",
-			colourspace: "lab",
-			stripIccProfile: true,
-			size,
-		},
+	const isRGB = imageFormat === "png";
+	const isTIFF = imageFormat === "tiff";
+
+	const baseOptions = {
+		dividerId,
+		dpi,
+		imageFormat,
+		size,
+	} as const;
+
+	const options: RenderDividerOptions = isRGB
+		? {
+				...baseOptions,
+				colourspace: "lab",
+			}
+		: {
+				...baseOptions,
+				iccProfile: "USWebCoatedSWOP.icc",
+				stripIccProfile: !isTIFF,
+				...(!isTIFF ? { colourspace: "lab" } : {}),
+			};
+
+	const contents: ReturnAwaited<typeof renderDivider> = yield call(
+		renderDivider,
+		options,
 	);
+
+	const blob = new Blob([contents as BlobPart], {
+		type: `image/${imageFormat}`,
+	});
 
 	yield put(finishRender());
 
-	const blob = new Blob([contents as BlobPart], {
-		type: "image/jpeg",
-	});
-
-	const filename = `${divider.title}.jpg`;
+	const filename = `${divider.title}.${imageFormat}`;
 
 	saveAs(blob, filename);
 }

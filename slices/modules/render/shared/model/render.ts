@@ -13,7 +13,7 @@ export type ExternalICCProfileName = "USWebCoatedSWOP";
 
 export type ExternalICCProfile = `${ExternalICCProfileName}.icc`;
 
-export type ICCProfile = "cmyk" | ExternalICCProfile;
+export type ICCProfile = "srgb" | "cmyk" | "p3" | ExternalICCProfile;
 
 export type Colourspace = keyof typeof Interpretation;
 

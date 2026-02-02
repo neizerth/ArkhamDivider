@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { dividerLayouts } from "@/modules/divider/entities/items";
+import { dividerLayouts } from "@/modules/divider/entities/items/data";
+import { selectLayoutId } from "@/modules/divider/shared/lib";
 import { whereId } from "@/shared/util";
-import { selectLayoutId } from "../divider";
 
 export const selectLayout = createSelector([selectLayoutId], (layoutId) => {
 	if (!layoutId) {

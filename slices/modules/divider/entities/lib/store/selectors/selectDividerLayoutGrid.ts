@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectLayout } from "@/modules/divider/shared/lib/store/selectors/selectLayout";
+import { selectLayout } from "@/modules/divider/entities/lib/store/selectors/selectLayout";
 import { getPageFormat, selectPageSize } from "@/modules/print/shared/lib";
 import { getDividerLayoutGrid } from "../../logic";
 

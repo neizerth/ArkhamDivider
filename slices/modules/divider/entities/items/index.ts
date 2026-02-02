@@ -1,13 +1,10 @@
-import { prop } from "ramda";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
-import type { DividerCategory, DividerWithRelations } from "../../shared/model";
-import { classicCategory } from "./classic/config";
+import type { DividerWithRelations } from "../../shared/model";
 import { classicCategoryId } from "./classic/config/common";
 import { ClassicDivider, ClassicDividerPDF } from "./classic/ui";
+import { dividerCategories, dividerLayouts } from "./data";
 
-export const dividerCategories: DividerCategory[] = [classicCategory];
-
-export const dividerLayouts = dividerCategories.flatMap(prop("layouts"));
+export { dividerCategories, dividerLayouts };
 
 export const dividerComponents: Record<
 	string,

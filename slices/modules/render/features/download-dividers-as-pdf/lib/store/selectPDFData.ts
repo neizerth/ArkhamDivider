@@ -1,7 +1,7 @@
 import { selectLanguage } from "@/modules/core/i18n/shared/lib";
 import { selectIcons } from "@/modules/core/icon/shared/lib";
+import { selectLayout } from "@/modules/divider/entities/lib";
 import { selectDividersWithRelations } from "@/modules/divider/features/lib";
-import { selectLayout } from "@/modules/divider/shared/lib";
 import {
 	selectBleedEnabled,
 	selectDoubleSidePrintEnabled,

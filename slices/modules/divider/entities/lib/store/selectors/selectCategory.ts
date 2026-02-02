@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { dividerCategories } from "@/modules/divider/entities/items";
+import { dividerCategories } from "@/modules/divider/entities/items/data";
+import { selectCategoryId } from "@/modules/divider/shared/lib";
 import { whereId } from "@/shared/util";
-import { selectCategoryId } from "../divider";
 
 export const selectCategory = createSelector(
 	[selectCategoryId],

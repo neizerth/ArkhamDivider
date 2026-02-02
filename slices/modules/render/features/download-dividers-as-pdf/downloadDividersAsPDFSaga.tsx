@@ -18,7 +18,7 @@ import type { ReturnAwaited } from "@/shared/model";
 import {
 	finishRender,
 	getVips,
-	renderCMYKDivider,
+	renderDivider,
 	setDividerRenderId,
 	setHideIconNodes,
 	setHideTextNodes,
@@ -119,7 +119,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const icon = new PDFIconService(text, icons);
 
 	const { backgroundSupport = true } = layout;
-	const renderDivider = dividerPDFComponents[layout.categoryId];
+	const renderComponent = dividerPDFComponents[layout.categoryId];
 
 	try {
 		for (const pdfLayout of pdfLayouts) {
@@ -139,8 +139,8 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 					if (backgroundSupport) {
 						yield put(setDividerRenderId(item.id));
 						const { x, y } = position;
-						let contents: ReturnAwaited<typeof renderCMYKDivider> | null =
-							yield call(renderCMYKDivider, {
+						let contents: ReturnAwaited<typeof renderDivider> | null =
+							yield call(renderDivider, {
 								dividerId: item.id,
 								dpi,
 								imageFormat: "jpeg",
@@ -170,19 +170,16 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 						bleedSize: layout.bleed,
 					});
 
-					const render = () =>
-						renderDivider(item, {
-							dpi,
-							layout,
-							bleedEnabled,
-							icon,
-							text,
-							unit,
-							doc,
-							language,
-						});
-
-					yield call(render);
+					yield call(renderComponent, item, {
+						dpi,
+						layout,
+						bleedEnabled,
+						icon,
+						text,
+						unit,
+						doc,
+						language,
+					});
 
 					progress++;
 					yield put(setRenderProgress(progress));

@@ -101,6 +101,7 @@ export const getTitleClearSx: PrintSxCallback = ({ mm }) => ({
 
 export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
+	zIndex: 1,
 	flexDirection: "column",
 	top: mm(17),
 	left: mm(6),

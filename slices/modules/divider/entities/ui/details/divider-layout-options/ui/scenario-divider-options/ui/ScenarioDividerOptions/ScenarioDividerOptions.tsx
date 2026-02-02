@@ -5,9 +5,9 @@ import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
+import { selectLayout } from "@/modules/divider/entities/lib";
 import { generateScenarioDividers } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
 import {
-	selectLayout,
 	selectScenarioParams,
 	setScenarioParams,
 } from "@/modules/divider/shared/lib";
