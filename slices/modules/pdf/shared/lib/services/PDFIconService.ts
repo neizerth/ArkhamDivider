@@ -1,3 +1,4 @@
+import { omit } from "ramda";
 import { defaultIconPositionManifest } from "@/modules/core/icon/shared/config";
 import {
 	getIconCorrection,
@@ -10,17 +11,27 @@ import type {
 } from "@/modules/core/icon/shared/model";
 import type { DrawTextOptions, PDFTextService } from "./PDFTextService";
 
-export type DrawIconOptions = DrawTextOptions & {
-	icon: string;
+export type DrawIconOptions = Omit<DrawTextOptions, "fontFamily"> & {
+	iconOptions?: Omit<BaseIconProps, "icon">;
+	fontSize: number;
+	manifest?: IconPositionManifest;
+};
+
+export type GetIconOptions = BaseIconProps & {
+	x: number;
+	y: number;
 	fontSize: number;
 	manifest?: IconPositionManifest;
 };
 
 export class PDFIconService {
+	public readonly doc: PDFKit.PDFDocument;
 	constructor(
-		protected readonly text: PDFTextService,
-		protected readonly icons: IconMapping,
-	) {}
+		public readonly text: PDFTextService,
+		public readonly icons: IconMapping,
+	) {
+		this.doc = text.doc;
+	}
 
 	getCorrection({
 		id,
@@ -38,14 +49,7 @@ export class PDFIconService {
 		});
 	}
 
-	protected getIcon(
-		options: BaseIconProps & {
-			x: number;
-			y: number;
-			fontSize: number;
-			manifest?: IconPositionManifest;
-		},
-	) {
+	protected getIcon(options: GetIconOptions) {
 		const id = options.icon;
 		const icon = this.icons[id];
 		if (!icon) {
@@ -59,7 +63,7 @@ export class PDFIconService {
 		const { ratio, circled } = icon;
 		const content = String.fromCharCode(icon.code);
 
-		const size = getIconScale({
+		const scale = getIconScale({
 			scaleType,
 			scaleFactor,
 			ratio,
@@ -68,7 +72,7 @@ export class PDFIconService {
 
 		const { left, top, fontSize } = this.getCorrection({
 			id,
-			fontSize: options.fontSize * size,
+			fontSize: Math.round((options.fontSize * scale) / 100),
 			manifest,
 		});
 
@@ -80,21 +84,49 @@ export class PDFIconService {
 		return {
 			content,
 			fontSize,
+			iconParams: icon,
 			...position,
 		};
 	}
 
-	async draw(options: DrawIconOptions) {
-		const icon = this.getIcon(options);
+	async draw(id: string, options: DrawIconOptions) {
+		const icon = this.getIcon({
+			icon: id,
+			...options,
+			...options.iconOptions,
+		});
 		if (!icon) {
 			return;
 		}
-		const { fontFamily, color } = options;
-		const { content, ...textOptions } = icon;
+		const { width, height } = options;
+		const { content, iconParams, fontSize } = icon;
+
+		let x = icon.x;
+		let y = icon.y;
+
+		const { ratio = 1 } = iconParams;
+
+		if (width) {
+			const iconWidth = ratio * fontSize;
+			x += (width - iconWidth) / 2;
+		}
+
+		if (height) {
+			const iconHeight = fontSize;
+			y += (height - iconHeight) / 2;
+		}
+
+		const restOptions = omit(
+			["width", "height", "iconOptions", "fontSize", "manifest"],
+			options,
+		);
+
 		await this.text.draw(content, {
-			fontFamily,
-			color,
-			...textOptions,
+			fontFamily: "ArkhamIcons",
+			...restOptions,
+			fontSize,
+			x,
+			y,
 		});
 	}
 }

@@ -1,4 +1,3 @@
-import type * as PDFKit from "pdfkit";
 import { fonts } from "@/shared/fonts";
 import type { FontFamily } from "@/shared/model";
 
@@ -9,6 +8,10 @@ export class PDFFontService {
 	constructor(public readonly doc: PDFKit.PDFDocument) {
 		this.currentFont = null;
 		this.registeredFonts = new Set();
+	}
+
+	get(fontFamily: FontFamily) {
+		return fonts[fontFamily];
 	}
 
 	async register(fontFamily: FontFamily) {
@@ -25,14 +28,15 @@ export class PDFFontService {
 			await this.register(fontFamily);
 			this.currentFont = fontFamily;
 
-			return this.doc.font(fontFamily);
+			this.doc.font(fontFamily);
+			return this.get(fontFamily);
 		}
 
 		if (this.currentFont !== fontFamily) {
 			this.currentFont = fontFamily;
-			return this.doc.font(fontFamily);
+			this.doc.font(fontFamily);
 		}
 
-		return this.doc;
+		return this.get(fontFamily);
 	}
 }

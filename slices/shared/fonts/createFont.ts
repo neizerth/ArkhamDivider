@@ -6,6 +6,7 @@ type Options = {
 	weight?: "bold" | "normal";
 	style?: "normal" | "italic";
 	unicodeRange?: string;
+	descentRatio?: number;
 };
 
 type FontFormat = "opentype" | "truetype" | "woff" | "woff2" | "svg";

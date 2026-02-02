@@ -11,8 +11,9 @@ import {
 	PDFFontService,
 	PDFIconService,
 	PDFTextService,
+	PDFUnitService,
 } from "@/modules/pdf/shared/lib";
-import { getPageSizePx } from "@/modules/print/shared/lib";
+import { fromPx2Pt, getPageSizePx } from "@/modules/print/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
 import {
 	finishRender,
@@ -60,7 +61,12 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const fileName = `Arkham Divider.pdf`;
 	const fileStream = streamSaver.createWriteStream(fileName);
 	const pageSize = getPageSizePx({ pageFormat, dpi });
-	const size = [pageSize.width, pageSize.height];
+
+	const px = fromPx2Pt(dpi);
+	const size = [px(pageSize.width), px(pageSize.height)];
+
+	// const size = [pageSize.width, pageSize.height];
+
 	const doc = new PDFDocument({
 		size,
 		autoFirstPage: false,
@@ -114,51 +120,78 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const { backgroundSupport = true } = layout;
 	const renderDivider = dividerPDFComponents[layout.categoryId];
 
-	for (const pdfLayout of pdfLayouts) {
-		doc.addPage();
-		for (const row of pdfLayout.items) {
-			for (const item of row.items) {
-				if (backgroundSupport) {
-					yield put(setDividerRenderId(item.id));
-					const { size } = item;
-					const { x, y } = item.position;
-					let contents: ReturnAwaited<typeof renderCMYKDivider> | null =
-						yield call(renderCMYKDivider, {
-							dividerId: item.id,
+	try {
+		for (const pdfLayout of pdfLayouts) {
+			doc.addPage();
+			for (const row of pdfLayout.items) {
+				for (const item of row.items) {
+					const size = {
+						width: px(item.size.width),
+						height: px(item.size.height),
+					};
+
+					const position = {
+						x: px(item.position.x),
+						y: px(item.position.y),
+					};
+
+					if (backgroundSupport) {
+						yield put(setDividerRenderId(item.id));
+						const { x, y } = position;
+						let contents: ReturnAwaited<typeof renderCMYKDivider> | null =
+							yield call(renderCMYKDivider, {
+								dividerId: item.id,
+								dpi,
+								imageFormat: "jpeg",
+								iccProfile: "USWebCoatedSWOP.icc",
+								colourspace: "lab",
+								stripIccProfile: true,
+								size: item.size,
+								quality: 100,
+							});
+
+						if (!contents) {
+							continue;
+						}
+						let buffer: Buffer | null = Buffer.from(contents);
+						doc.opacity(1);
+
+						doc.image(buffer, x, y, size);
+						buffer = null;
+						contents = null;
+					}
+
+					const unit = new PDFUnitService(doc, {
+						dpi,
+						position,
+						size,
+						bleedEnabled,
+						bleedSize: layout.bleed,
+					});
+
+					const render = () =>
+						renderDivider(item, {
 							dpi,
-							imageFormat: "png",
+							layout,
+							bleedEnabled,
+							icon,
+							text,
+							unit,
+							doc,
 						});
 
-					if (!contents) {
-						continue;
-					}
-					let buffer: Buffer | null = Buffer.from(contents);
-					doc.image(buffer, x, y, {
-						...size,
-					});
-					buffer = null;
-					contents = null;
+					yield call(render);
+
+					progress++;
+					yield put(setRenderProgress(progress));
 				}
-
-				const render = () =>
-					renderDivider(item, {
-						dpi,
-						layout,
-						bleedEnabled,
-						icon,
-						text,
-					});
-
-				yield call(render);
-
-				progress++;
-				yield put(setRenderProgress(progress));
 			}
 		}
+	} catch (error) {
+		console.error("error", error);
 	}
 
 	doc.end();
-	console.log("document ended");
 
 	yield put(finishRender());
 }

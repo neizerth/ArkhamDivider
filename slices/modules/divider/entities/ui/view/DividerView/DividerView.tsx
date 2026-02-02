@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import { memo } from "react";
+import { Icon } from "@/modules/core/icon/shared/ui";
 import {
 	selectCategoryId,
 	selectPrintableLayoutSize,
@@ -10,7 +11,7 @@ import { selectDividerRenderId } from "@/modules/render/shared/lib";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import { dividerComponents } from "../../../items";
-import { outlineSx } from "./DividerView.styles";
+import { iconSx, outlineSx, renderContainerSx } from "./DividerView.styles";
 
 type DividerViewProps = DividerWithRelations;
 
@@ -18,7 +19,7 @@ export function DividerView(props: DividerViewProps) {
 	const layoutSize = useAppSelector(selectPrintableLayoutSize);
 	const categoryId = useAppSelector(selectCategoryId);
 	const printScale = useAppSelector(selectWebPrintScale);
-	const exportId = useAppSelector(selectDividerRenderId);
+	const renderId = useAppSelector(selectDividerRenderId);
 	const [ref, rect] = useBoundingRect();
 
 	if (!layoutSize || !categoryId) {
@@ -30,7 +31,8 @@ export function DividerView(props: DividerViewProps) {
 		return null;
 	}
 	const { size } = layoutSize;
-	const scale = rect ? rect.width / size.width : 1;
+	const isRendering = renderId === props.id;
+	const scale = !isRendering && rect ? rect.width / size.width : 1;
 
 	return (
 		<Box
@@ -40,16 +42,21 @@ export function DividerView(props: DividerViewProps) {
 				width: "100%",
 			}}
 		>
-			{exportId === props.id && <Box sx={outlineSx} />}
+			{isRendering && (
+				<Box sx={renderContainerSx}>
+					<Box sx={outlineSx} />
+					<Icon sx={iconSx} icon="spinner3" />
+				</Box>
+			)}
 			{rect && (
 				<Box
 					sx={{
 						...absoluteFill,
 						overflow: "hidden",
 					}}
-					data-divider-id={props.id}
 				>
 					<Box
+						data-divider-id={props.id}
 						sx={{
 							...size,
 							position: "absolute",

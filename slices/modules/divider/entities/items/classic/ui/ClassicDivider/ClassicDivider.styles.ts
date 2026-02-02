@@ -16,7 +16,7 @@ export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 		right: mm(10.16),
 	},
 	ru: {
-		top: mm(4.1),
+		top: mm(4),
 		fontSize: mm(4.58),
 		height: mm(7),
 		fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
@@ -37,8 +37,6 @@ export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	// top: mm(2),
-	// right: mm(0.9),
 	width: mm(8.33),
 	height: mm(8.33),
 	"@media screen": {
@@ -56,8 +54,6 @@ export const getBackgroundIconSx: PrintSxCallback = ({ mm }) => ({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	// top: `calc(${mm(3)} + 50%)`,
-	// left: `calc(50%)`,
 	transform: "translate(-50%, -50%)",
 	"@media screen": {
 		":hover": {

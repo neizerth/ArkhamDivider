@@ -1,7 +1,7 @@
 import { keyframes } from "@emotion/react";
 import type { SxProps } from "@mui/material/styles";
 import color from "color";
-import { theme } from "@/shared/config";
+import { absoluteFill, theme } from "@/shared/config";
 
 const glowColor = color(theme.palette.primary.dark).alpha(1);
 const glowOpacity = {
@@ -27,15 +27,45 @@ const glow = keyframes({
 	},
 });
 
-const glowOffset = 5;
+const glowOffset = 3;
 
 export const outlineSx: SxProps = {
 	position: "absolute",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
 	top: glowOffset,
 	left: glowOffset,
-	right: 5,
-	bottom: 5,
+	right: glowOffset,
+	bottom: glowOffset,
 	borderRadius: 1,
-	zIndex: 2,
+	zIndex: 1,
 	animation: `${glow} 2s ease-in-out infinite`,
+};
+
+export const renderContainerSx: SxProps = {
+	...absoluteFill,
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	background: "#f9f9f9",
+	zIndex: 2,
+};
+
+const spinner = keyframes({
+	"0%": {
+		transform: "rotate(0deg)",
+	},
+	"100%": {
+		transform: "rotate(360deg)",
+	},
+});
+
+export const iconSx: SxProps = {
+	position: "relative",
+	zIndex: 2,
+	fontSize: 40,
+	color: theme.palette.primary.dark,
+	opacity: 0.4,
+	animation: `${spinner} 2s ease-in-out infinite`,
 };

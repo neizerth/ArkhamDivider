@@ -1,5 +1,3 @@
-import type * as PDFKit from "pdfkit";
-
 export class PDFOverprintService {
 	private lastPage: PDFKit.PDFPage | null = null;
 	private ref: PDFKit.PDFKitReference | null = null;
@@ -13,7 +11,8 @@ export class PDFOverprintService {
 		if (page !== this.lastPage) {
 			this.lastPage = page;
 			this.id += 1;
-			this.name = `Gs${this.id}`;
+			// Use unique prefix so we don't overwrite PDFKit's Gs1, Gs2 (from doc.opacity etc.)
+			this.name = `OP${this.id}`;
 			this.ref = this.doc.ref({
 				Type: "ExtGState",
 				OP: true,

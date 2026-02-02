@@ -1,9 +1,14 @@
+import type { ICCProfile } from "../../model";
 import { getVips } from "../getVips";
 
-const loadedProfiles: string[] = [];
+const loadedProfiles: ICCProfile[] = [];
+const externalProfiles: ICCProfile[] = ["USWebCoatedSWOP.icc"];
 
-export const setupIccProfile = async (filename: string) => {
-	if (loadedProfiles.includes(filename)) {
+export const loadICCProfile = async (filename: ICCProfile) => {
+	if (
+		loadedProfiles.includes(filename) ||
+		!externalProfiles.includes(filename)
+	) {
 		return;
 	}
 

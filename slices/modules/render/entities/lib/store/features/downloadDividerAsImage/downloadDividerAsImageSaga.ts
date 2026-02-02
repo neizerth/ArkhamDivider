@@ -1,8 +1,12 @@
 import { saveAs } from "file-saver";
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { selectDividerById, selectLayout } from "@/modules/divider/shared/lib";
+import {
+	selectDividerById,
+	selectPrintableLayoutSize,
+} from "@/modules/divider/shared/lib";
 import { selectDPI } from "@/modules/print/shared/lib";
 import {
+	finishRender,
 	renderCMYKDivider,
 	setDividerRenderId,
 	startRender,
@@ -17,11 +21,14 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 		payload,
 	);
 
-	const layout: ReturnType<typeof selectLayout> = yield select(selectLayout);
+	const printableLayoutSize: ReturnType<typeof selectPrintableLayoutSize> =
+		yield select(selectPrintableLayoutSize);
 
-	if (!divider || !layout) {
+	if (!divider || !printableLayoutSize) {
 		return;
 	}
+
+	const { size } = printableLayoutSize;
 
 	const dpi: ReturnType<typeof selectDPI> = yield select(selectDPI);
 
@@ -34,13 +41,21 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 		{
 			dividerId: payload,
 			dpi,
-			imageFormat: "png",
+			imageFormat: "jpeg",
+			iccProfile: "USWebCoatedSWOP.icc",
+			colourspace: "lab",
+			stripIccProfile: true,
+			size,
 		},
 	);
 
-	const blob = new Blob([contents as BlobPart], { type: "image/png" });
+	yield put(finishRender());
 
-	const filename = `${divider.title}.png`;
+	const blob = new Blob([contents as BlobPart], {
+		type: "image/jpeg",
+	});
+
+	const filename = `${divider.title}.jpg`;
 
 	saveAs(blob, filename);
 }

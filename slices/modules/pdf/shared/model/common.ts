@@ -4,13 +4,15 @@ import type {
 } from "@/modules/divider/shared/model";
 import type { DPI } from "@/modules/print/shared/model";
 import type { BoxSize } from "@/shared/model";
-import type { PDFIconService, PDFTextService } from "../lib";
+import type { PDFIconService, PDFTextService, PDFUnitService } from "../lib";
 
 export type PDFDividerProps = DividerWithRelations;
 export type PDFDividerContext = {
 	dpi: DPI;
+	doc: PDFKit.PDFDocument;
 	text: PDFTextService;
 	icon: PDFIconService;
+	unit: PDFUnitService;
 	layout: DividerLayout;
 	bleedEnabled: boolean;
 };

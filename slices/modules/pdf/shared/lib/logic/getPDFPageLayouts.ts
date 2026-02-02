@@ -40,8 +40,8 @@ export const getPDFPageLayouts = <T>({
 					return null;
 				}
 
-				const x = layoutOffset.x + rowIndex * size.width;
-				const y = layoutOffset.y + colIndex * size.height;
+				const x = layoutOffset.x + colIndex * size.width;
+				const y = layoutOffset.y + rowIndex * size.height;
 				const position = {
 					x,
 					y,
