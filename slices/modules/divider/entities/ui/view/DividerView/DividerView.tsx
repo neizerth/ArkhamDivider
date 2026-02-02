@@ -62,6 +62,7 @@ export function DividerView(props: DividerViewProps) {
 							position: "absolute",
 							top: 0,
 							left: 0,
+							letterSpacing: 0,
 							transformOrigin: "top left",
 							zoom: scale,
 							"@media print": {

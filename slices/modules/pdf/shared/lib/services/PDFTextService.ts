@@ -35,7 +35,7 @@ export class PDFTextService {
 
 		const font = await this.font.load(fontFamily);
 		const { descentRatio = 0 } = font;
-		const y = yBase - Math.round(fontSize * descentRatio);
+		const y = yBase - fontSize * descentRatio;
 		const { doc } = this.font;
 
 		doc.fontSize(fontSize);

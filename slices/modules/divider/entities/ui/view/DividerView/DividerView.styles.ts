@@ -49,7 +49,7 @@ export const renderContainerSx: SxProps = {
 	alignItems: "center",
 	justifyContent: "center",
 	background: "#f9f9f9",
-	zIndex: 2,
+	zIndex: 100,
 };
 
 const spinner = keyframes({
