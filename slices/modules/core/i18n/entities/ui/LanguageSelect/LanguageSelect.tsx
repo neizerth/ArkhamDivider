@@ -3,7 +3,7 @@ import InputLabel from "@mui/material/InputLabel";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import Select, { type SelectProps } from "@mui/material/Select";
 import { useCallback, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
@@ -15,9 +15,17 @@ import {
 	selectLanguage,
 } from "../../../shared/lib/store";
 
-type LanguageSelectProps = FormControlProps;
+type LanguageSelectProps = Omit<
+	SelectProps<string>,
+	"renderValue" | "onChange" | "value"
+> & {
+	containerProps?: FormControlProps;
+};
 
-export function LanguageSelect(props: LanguageSelectProps) {
+export function LanguageSelect({
+	containerProps,
+	...props
+}: LanguageSelectProps) {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const languages = useAppSelector(selectAvailableLanguages);
@@ -33,9 +41,10 @@ export function LanguageSelect(props: LanguageSelectProps) {
 	);
 
 	return (
-		<FormControl {...props}>
+		<FormControl {...containerProps}>
 			<InputLabel id={id}>{label}</InputLabel>
 			<Select
+				{...props}
 				labelId={id}
 				label={label}
 				value={language}

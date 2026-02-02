@@ -1,7 +1,7 @@
 import FormControl, { type FormControlProps } from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import Select, { type SelectProps } from "@mui/material/Select";
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
@@ -10,9 +10,14 @@ import { selectPageSize, setPageSize } from "../../../shared/lib/store/print";
 import type { PageFormatType } from "../../../shared/model";
 import * as C from "./PageSizeSelect.components";
 
-type PageSizeSelectProps = FormControlProps;
+type PageSizeSelectProps = SelectProps<PageFormatType> & {
+	containerProps?: FormControlProps;
+};
 
-export function PageSizeSelect(props: PageSizeSelectProps) {
+export function PageSizeSelect({
+	containerProps,
+	...props
+}: PageSizeSelectProps) {
 	const { t } = useTranslation();
 	const id = useId();
 	const dispatch = useAppDispatch();
@@ -25,9 +30,10 @@ export function PageSizeSelect(props: PageSizeSelectProps) {
 	};
 
 	return (
-		<FormControl {...props}>
+		<FormControl {...containerProps}>
 			<InputLabel id={id}>{label}</InputLabel>
 			<Select
+				{...props}
 				labelId={id}
 				label={label}
 				value={pageSize}
