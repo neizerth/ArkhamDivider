@@ -6,3 +6,4 @@ export * from "./promise";
 export * from "./size";
 export * from "./string";
 export * from "./system";
+export * from "./time";

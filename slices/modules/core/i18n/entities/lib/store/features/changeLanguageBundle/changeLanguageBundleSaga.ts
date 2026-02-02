@@ -1,4 +1,4 @@
-import { call, takeEvery } from "redux-saga/effects";
+import { retry, takeEvery } from "redux-saga/effects";
 import {
 	DEFAULT_LANGUAGE,
 	i18n,
@@ -7,6 +7,7 @@ import {
 import { getTranslationBundle } from "@/modules/core/i18n/shared/lib";
 import { ArkhamDividerAPI } from "@/shared/api";
 import type { ReturnAwaited } from "@/shared/model";
+import { seconds } from "@/shared/util";
 import { changeLanguageBundle } from "./changeLanguageBundle";
 
 const { getTranslations } = ArkhamDividerAPI;
@@ -16,7 +17,11 @@ function* worker({ payload }: ReturnType<typeof changeLanguageBundle>) {
 		return;
 	}
 
-	const translations: ReturnAwaited<typeof getTranslations> = yield call(
+	const times = 3;
+
+	const translations: ReturnAwaited<typeof getTranslations> = yield retry(
+		times,
+		seconds(1),
 		getTranslations,
 		payload,
 	);
