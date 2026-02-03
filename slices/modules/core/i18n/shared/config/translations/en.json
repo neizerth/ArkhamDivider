@@ -36,11 +36,13 @@
 	"Side XP": "Side XP",
 	"Additional": "Additional",
 	"One per page": "One per page",
+	"card.type": "Card type",
 	"card.type.scenario": "Scenario",
 	"card.type.treachery": "Treachery",
 	"card.type.agenda": "Agenda",
 	"card.type.act": "Act",
 	"card.type.location": "Location",
+	"card.type.empty": "Not set",
 	"card.type.asset": "Asset",
 	"card.type.enemy": "Enemy",
 	"card.type.investigator": "Investigator",
@@ -49,5 +51,13 @@
 	"render.status.initializing": "Initializing...",
 	"render.status.creatingPDF": "Creating PDF...",
 	"render.status.rendering": "Rendering...",
-	"credits.author.description": "<icon/>: You can spend any number<br/>of resources <donationLink>on this address</donationLink><br/><i>Remember, <author>{{name}}</author><br/>is grateful to you</i>"
+	"credits.author.description": "<icon/>: You can spend any number<br/>of resources <donationLink>on this address</donationLink><br/><i>Remember, <author>{{name}}</author><br/>is grateful to you</i>",
+	"divider.subtype.faction": "Faction Dividers",
+	"divider.subtype.investigators": "Faction Investigators",
+	"divider.subtype.weakness": "Weaknesses",
+	"divider.subtype.basic_weakness": "Basic Weaknesses",
+	"divider.subtype.bonded": "Bonded Cards",
+	"divider.subtype.customizations": "Customizations",
+	"divider.subtype.upgrade": "Upgrades",
+	"divider.subtype.ally": "Allies"
 }

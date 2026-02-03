@@ -79,6 +79,7 @@ export function DividerMenu({
 						<Row
 							position="absolute"
 							top={0}
+							gap={2}
 							zIndex={2}
 							left="100%"
 							height="100%"
@@ -86,6 +87,11 @@ export function DividerMenu({
 							<IconButton onClick={download("tiff")} sx={buttonSx}>
 								<Box fontSize="0.65em" color="black">
 									TIFF
+								</Box>
+							</IconButton>
+							<IconButton onClick={download("jpeg")} sx={buttonSx}>
+								<Box fontSize="0.65em" color="black">
+									JPEG
 								</Box>
 							</IconButton>
 							<IconButton onClick={download("png")} sx={buttonSx}>

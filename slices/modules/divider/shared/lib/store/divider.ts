@@ -1,6 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { DividerLayoutType, ScenarioDividerParams } from "../../model";
+import { factions } from "@/modules/faction/shared/config";
+import { cardTypes } from "../../config";
+
+import type {
+	DividerLayoutType,
+	PlayerDividerParams,
+	ScenarioDividerParams,
+} from "../../model";
 import { getDividerType } from "../logic";
 
 export type DividerState = {
@@ -8,6 +15,7 @@ export type DividerState = {
 	categoryId: string | null;
 	dividerType: DividerLayoutType | null;
 	scenarioParams: Partial<ScenarioDividerParams>;
+	playerParams: Partial<PlayerDividerParams>;
 };
 
 const initialState: DividerState = {
@@ -17,6 +25,13 @@ const initialState: DividerState = {
 	scenarioParams: {
 		encounterDividers: true,
 		scenarioDividers: true,
+	},
+	playerParams: {
+		factions,
+		cardTypes,
+		subtypes: [],
+		sideXP: false,
+		numericXP: false,
 	},
 };
 const state = createSliceState(initialState);
@@ -30,14 +45,20 @@ export const divider = createSlice({
 	},
 });
 
-export const { setLayoutId, setCategoryId, setDividerType, setScenarioParams } =
-	divider.actions;
+export const {
+	setLayoutId,
+	setCategoryId,
+	setDividerType,
+	setScenarioParams,
+	setPlayerParams,
+} = divider.actions;
 
 export const {
 	selectLayoutId,
 	selectCategoryId,
 	selectDividerType,
 	selectScenarioParams,
+	selectPlayerParams,
 } = divider.selectors;
 
 export default divider.reducer;

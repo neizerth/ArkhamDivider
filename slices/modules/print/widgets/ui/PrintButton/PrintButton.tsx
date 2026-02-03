@@ -95,6 +95,10 @@ export function PrintButton(props: PrintButtonProps) {
 											<Icon icon="file-zip" /> &nbsp; TIFF
 											<C.Badge>CMYK</C.Badge>
 										</MenuItem>,
+										<MenuItem key={`${dpi}-jpeg`}>
+											<Icon icon="file-zip" /> &nbsp; JPEG
+											<C.Badge>CMYK</C.Badge>
+										</MenuItem>,
 										<MenuItem key={`${dpi}-jpg`}>
 											<Icon icon="file-zip" /> &nbsp; PNG
 											<C.Badge>RGB</C.Badge>

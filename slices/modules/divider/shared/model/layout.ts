@@ -37,6 +37,7 @@ export type DividerLayout = {
 	cardCountSupport?: boolean;
 	campaignIconSupport?: boolean;
 	backgroundSupport?: boolean;
+	playerStorySupport?: boolean;
 };
 
 export type DividerLayoutGroup = {

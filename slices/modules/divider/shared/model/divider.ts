@@ -1,4 +1,5 @@
 import type { EncounterSetTypeEntry } from "@/modules/encounterSet/shared/model";
+import type { Faction } from "@/modules/faction/shared/model";
 import type { Story, StoryWithRelations } from "@/modules/story/shared/model";
 import type { Side, Single } from "@/shared/model";
 
@@ -6,20 +7,28 @@ export type Investigator = Single<Story["investigators"]>;
 
 export type CardType = "asset" | "event" | "skill";
 
-export type Faction =
-	| "mystic"
-	| "guardian"
-	| "rogue"
-	| "neutral"
-	| "seeker"
-	| "survivor"
-	| "multiclass";
+export type CardSlot =
+	| "hand"
+	| "hand_x2"
+	| "arcane"
+	| "arcane_x2"
+	| "accessory"
+	| "body"
+	| "ally";
 
-export type XPCost = {
+export type XPCost = FixedXPCost | RangeXPCost;
+
+export type FixedXPCost = {
+	type: "fixed";
+	name: string;
 	value: string;
-	max?: number;
-	level: number;
-	fixed: boolean;
+};
+
+export type RangeXPCost = {
+	type: "range";
+	name: "string";
+	min: number;
+	max: number;
 };
 
 export type DividerSubtype =
@@ -30,8 +39,7 @@ export type DividerSubtype =
 	| "basic_weakness"
 	| "bonded"
 	| "customizations"
-	| "upgrade"
-	| "ally";
+	| "upgrade";
 
 export type DividerType =
 	| "scenario"
@@ -49,8 +57,9 @@ export type ScenarioDividerData = {
 
 export type PlayerDividerData = {
 	type: "player";
-	subtype: DividerSubtype;
 	faction: Faction;
+	cardSlot?: CardSlot;
+	subtype?: DividerSubtype;
 	cardType?: CardType;
 	storyCode?: string;
 	xpCost?: XPCost;
