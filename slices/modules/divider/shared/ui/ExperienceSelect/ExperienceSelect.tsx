@@ -100,16 +100,16 @@ export function ExperienceSelect({
 					<Row
 						sx={{
 							gap: {
-								xs: 2,
+								xs: 1,
 								md: 0,
 							},
 						}}
 						flexWrap="wrap"
 						alignItems="flex-start"
+						justifyContent="center"
 					>
 						<Box paddingInline={2} flex={1} minWidth={300}>
 							<Slider
-								getAriaLabel={() => "Temperature range"}
 								value={rangeValue}
 								min={0}
 								max={5}
@@ -117,21 +117,31 @@ export function ExperienceSelect({
 								onChange={handleRangeChange}
 							/>
 						</Box>
-						<Button
-							variant="contained"
-							color="primary"
-							onClick={handleRangeAdd}
-						>
-							<Row gap={0.5} alignItems="center">
-								<Icon icon={`plus`} />
-								<Box sx={{ display: { xs: "inline-block", sm: "none" } }}>
-									{t("Add")}
-								</Box>
-							</Row>
-						</Button>
+						<Box paddingTop={0.7}>
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={handleRangeAdd}
+							>
+								<Row gap={0.5} alignItems="center">
+									<Icon icon={`plus`} />
+									<Box sx={{ display: { xs: "inline-block", sm: "none" } }}>
+										{t("Add")}
+									</Box>
+								</Row>
+							</Button>
+						</Box>
 					</Row>
 					{value.length > 0 && (
-						<Row gap={1}>
+						<Row
+							gap={1}
+							sx={{
+								"@media (max-width: 499px)": {
+									order: -1,
+								},
+							}}
+							paddingInline={1.5}
+						>
 							{value.map((range, index) => (
 								<Chip
 									key={range.name}

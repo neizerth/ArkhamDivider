@@ -1,5 +1,6 @@
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Stack from "@mui/material/Stack";
 import Switch from "@mui/material/Switch";
@@ -180,7 +181,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 						))}
 					</Row>
 					{selectedCardTypes.includes("asset") && (
-						<>
+						<Stack gap={1}>
 							<Row
 								justifyContent="center"
 								alignItems="stretch"
@@ -197,6 +198,9 @@ export function PlayerDividerOptions(props: BoxProps) {
 									/>
 								))}
 							</Row>
+							<Box>
+								<Divider sx={{ margin: "auto", maxWidth: 300 }} />
+							</Box>
 
 							<Row
 								alignItems="stretch"
@@ -213,7 +217,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 								{renderSubtype("customizations")}
 								{renderSubtype("upgrade")}
 							</Row>
-						</>
+						</Stack>
 					)}
 					<Row
 						sx={{
