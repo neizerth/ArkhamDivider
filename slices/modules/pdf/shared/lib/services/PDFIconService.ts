@@ -14,14 +14,14 @@ import type { DrawTextOptions, PDFTextService } from "./PDFTextService";
 export type DrawIconOptions = Omit<DrawTextOptions, "fontFamily"> & {
 	iconOptions?: Omit<BaseIconProps, "icon">;
 	fontSize: number;
-	manifest?: IconPositionManifest;
+	manifest?: IconPositionManifest | false;
 };
 
 export type GetIconOptions = BaseIconProps & {
 	x: number;
 	y: number;
 	fontSize: number;
-	manifest?: IconPositionManifest;
+	manifest?: IconPositionManifest | false;
 };
 
 export class PDFIconService {
@@ -70,22 +70,34 @@ export class PDFIconService {
 			circled,
 		});
 
-		const { left, top, fontSize } = this.getCorrection({
-			id,
-			fontSize: Math.round((options.fontSize * scale) / 100),
-			manifest,
-		});
+		const initialFontSize = Math.round((options.fontSize * scale) / 100);
 
-		const position = {
-			x: options.x + left,
-			y: options.y + top,
-		};
+		if (manifest) {
+			const { left, top, fontSize } = this.getCorrection({
+				id,
+				fontSize: initialFontSize,
+				manifest,
+			});
+
+			const position = {
+				x: options.x + left,
+				y: options.y + top,
+			};
+
+			return {
+				content,
+				fontSize,
+				iconParams: icon,
+				...position,
+			};
+		}
 
 		return {
 			content,
-			fontSize,
+			fontSize: initialFontSize,
 			iconParams: icon,
-			...position,
+			x: options.x,
+			y: options.y,
 		};
 	}
 

@@ -1,18 +1,20 @@
 import { v4 } from "uuid";
+import { cardSlotNames, cardTypeItems } from "@/modules/divider/shared/config";
 import type {
 	Divider,
 	PlayerDividerParams,
 } from "@/modules/divider/shared/model";
-import { cardSlotNames } from "@/modules/faction/shared/config";
+import { nullableCollection } from "@/shared/util";
 import { getDividerSubtypeData } from "./getDividerSubtype";
 
 export const getPlayerDividers = ({
 	factions,
 	subtypes,
 	cardSlots,
+	cardTypes,
 	...options
 }: PlayerDividerParams) => {
-	const xpCosts = options.xpCosts.length === 0 ? [null] : options.xpCosts;
+	const xpCosts = nullableCollection(options.xpCosts);
 
 	const dividers: Divider[] = [];
 
@@ -44,6 +46,17 @@ export const getPlayerDividers = ({
 					icon,
 					customIcon: icon,
 					xpCost,
+				});
+			}
+			for (const cardType of cardTypes) {
+				const item = cardTypeItems[cardType];
+				dividers.push({
+					id: v4(),
+					type: "player",
+					side: "front",
+					...item,
+					faction,
+					cardType,
 				});
 			}
 		}

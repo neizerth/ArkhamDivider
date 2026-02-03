@@ -19,6 +19,7 @@ export type IconCorrectionProps = Omit<
 	top?: number;
 	/** bottom offset in px */
 	bottom?: number;
+	disableCorrection?: boolean;
 };
 
 export function IconCorrection({
@@ -29,10 +30,11 @@ export function IconCorrection({
 	right,
 	top,
 	bottom,
+	disableCorrection = false,
 	sx: sxProp,
 	...props
 }: IconCorrectionProps) {
-	const correctionSx = getIconCorrection({
+	const correction = getIconCorrection({
 		icon,
 		manifest,
 		fontSize,
@@ -44,15 +46,27 @@ export function IconCorrection({
 		alignItems: "center",
 		justifyContent: "center",
 		lineHeight: 1,
-		fontSize: `${correctionSx.fontSize}px`,
-		...(left && { left: `${left + correctionSx.left}px` }),
-		...(right && { right: `${right - correctionSx.left}px` }),
-		...(top && { top: `${top + correctionSx.top}px` }),
-		...(bottom && { bottom: `${bottom - correctionSx.top}px` }),
 	};
+
+	const correctionSx = disableCorrection
+		? {
+				fontSize: `${correction.fontSize}px`,
+				...(left && { left: `${left}px` }),
+				...(right && { right: `${right}px` }),
+				...(top && { top: `${top}px` }),
+				...(bottom && { bottom: `${bottom}px` }),
+			}
+		: {
+				fontSize: `${correction.fontSize}px`,
+				...(left && { left: `${left + correction.left}px` }),
+				...(right && { right: `${right - correction.left}px` }),
+				...(top && { top: `${top + correction.top}px` }),
+				...(bottom && { bottom: `${bottom - correction.top}px` }),
+			};
 
 	const sx = {
 		...baseSx,
+		...correctionSx,
 		...sxProp,
 	} as SxProps;
 

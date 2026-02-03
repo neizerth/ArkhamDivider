@@ -1,4 +1,5 @@
 export * from "./box";
+export * from "./collection";
 export * from "./criteria";
 export * from "./number";
 export * from "./object";

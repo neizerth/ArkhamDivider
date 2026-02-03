@@ -1,6 +1,6 @@
 import { percent } from "@/shared/util";
 import type { IconPositionManifest } from "../../../model";
-import { returnPosition } from "../common";
+import { returnPosition } from "../util";
 
 export default {
 	core: {

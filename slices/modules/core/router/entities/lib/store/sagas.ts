@@ -1,6 +1,6 @@
-import { fork } from "redux-saga/effects";
+import { spawn } from "redux-saga/effects";
 import { changeLocationSaga } from "./features/changeLocation/changeLocationSaga";
 
 export function* routerEntitiesSaga() {
-	yield fork(changeLocationSaga);
+	yield spawn(changeLocationSaga);
 }

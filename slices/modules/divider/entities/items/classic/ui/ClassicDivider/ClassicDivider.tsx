@@ -132,6 +132,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 						fontSize={mm(O.backgroundIcon.fontSize)}
 						top={mm(O.backgroundIcon.top)}
 						left={mm(O.backgroundIcon.left)}
+						disableCorrection
 					/>
 				)}
 				{showCardsInfo && (

@@ -18,7 +18,7 @@ export const subtypes: DividerSubtypeItem[] = [
 	},
 	{
 		type: "customizations",
-		icon: "customizations",
+		icon: "pencil",
 		name: "Customizations",
 	},
 	{

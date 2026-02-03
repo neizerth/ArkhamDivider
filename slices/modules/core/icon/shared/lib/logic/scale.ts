@@ -41,7 +41,9 @@ export const getSquareScale = ({
 }) => {
 	const scale = scaleFactor.regular || scaleFactor.all || 1;
 	const fullSize = 100 * scale;
-	return ratio > 1 ? fullSize / ratio : fullSize;
+
+	const squareScale = ratio > 1 ? fullSize / ratio : fullSize;
+	return squareScale;
 };
 
 export const getCircleScale = ({

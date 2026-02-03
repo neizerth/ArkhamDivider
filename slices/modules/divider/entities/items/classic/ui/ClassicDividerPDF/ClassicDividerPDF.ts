@@ -55,6 +55,7 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 			width: bleed.width(),
 			height: bleed.height(),
 			fontSize: unit.mm(O.backgroundIcon.fontSize),
+			manifest: false,
 			color,
 			opacity: O.backgroundIcon.opacity,
 			overprint: true,
