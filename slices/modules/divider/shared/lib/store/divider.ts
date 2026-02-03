@@ -30,7 +30,6 @@ const initialState: DividerState = {
 		factions,
 		cardTypes,
 		subtypes: [],
-		sideXP: false,
 		numericXP: false,
 		xpCosts: [],
 	},
