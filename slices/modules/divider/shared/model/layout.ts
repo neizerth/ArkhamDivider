@@ -38,6 +38,7 @@ export type DividerLayout = {
 	campaignIconSupport?: boolean;
 	backgroundSupport?: boolean;
 	playerStorySupport?: boolean;
+	numericXPSupport?: boolean;
 };
 
 export type DividerLayoutGroup = {

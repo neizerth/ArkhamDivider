@@ -21,7 +21,6 @@ import * as C from "./ScenarioDividerOptionsForm.components";
 type ScenarioDividerOptionsFormProps = GridProps & {
 	layout: DividerLayout;
 	story: StoryWithRelations;
-	onSubmit: (params: ScenarioDividerParams) => void;
 	control: Control<ScenarioDividerParams>;
 	defaultValues: Partial<ScenarioDividerParams>;
 };
@@ -29,7 +28,6 @@ type ScenarioDividerOptionsFormProps = GridProps & {
 export function ScenarioDividerOptionsForm({
 	layout,
 	story,
-	onSubmit,
 	control,
 	defaultValues,
 	...props

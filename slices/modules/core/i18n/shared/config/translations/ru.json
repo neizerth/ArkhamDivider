@@ -96,8 +96,9 @@
 	"divider.subtype.investigators": "Сыщики",
 	"divider.subtype.weakness": "Слабости",
 	"divider.subtype.basic_weakness": "Базовые слабости",
-	"divider.subtype.bonded": "Связанные карты",
+	"divider.subtype.bonded": "Зависимые",
 	"divider.subtype.customizations": "Адаптации",
 	"divider.subtype.upgrade": "Улучшения",
-	"divider.subtype.ally": "Союзники"
+	"divider.subtype.ally": "Союзники",
+	"Upgrade": "Улучшения"
 }

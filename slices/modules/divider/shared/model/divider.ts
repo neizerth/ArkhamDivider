@@ -34,12 +34,17 @@ export type RangeXPCost = {
 export type DividerSubtype =
 	| "faction"
 	| "investigators"
-	| "card"
 	| "weakness"
 	| "basic_weakness"
 	| "bonded"
 	| "customizations"
 	| "upgrade";
+
+export type DividerSubtypeItem = {
+	type: DividerSubtype;
+	icon: string;
+	name: string;
+};
 
 export type DividerType =
 	| "scenario"
@@ -58,11 +63,11 @@ export type ScenarioDividerData = {
 export type PlayerDividerData = {
 	type: "player";
 	faction: Faction;
-	cardSlot?: CardSlot;
-	subtype?: DividerSubtype;
-	cardType?: CardType;
+	cardSlot?: CardSlot | null;
+	subtype?: DividerSubtype | null;
+	cardType?: CardType | null;
+	xpCost?: XPCost | null;
 	storyCode?: string;
-	xpCost?: XPCost;
 };
 
 export type InvestigatorDividerData = {
@@ -78,6 +83,7 @@ export type BaseDividerData<Params = void> = {
 	fontSizeScale?: number;
 	customTitle?: string;
 	icon?: string;
+	customIcon?: string;
 	params?: Params;
 };
 

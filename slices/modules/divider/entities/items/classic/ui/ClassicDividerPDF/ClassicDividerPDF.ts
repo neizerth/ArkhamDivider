@@ -8,7 +8,8 @@ const color = cmyk(0, 0, 0, 100);
 
 export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const { story, fontSizeScale = 100 } = props;
-	const { text, unit, icon, language } = ctx;
+	const icon = props.customIcon ?? props.icon;
+	const { text, unit, language } = ctx;
 	const t = withStoryTranslation(story);
 
 	const textConfig = getLocaleConfig(language, O.text);
@@ -29,7 +30,7 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 		color,
 	});
 
-	if (props.icon) {
+	if (icon) {
 		const smallIcon = bleed.box({
 			top: O.icon.top,
 			right: O.icon.right,
@@ -37,7 +38,7 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 			height: O.icon.size,
 		});
 
-		await icon.draw(props.icon, {
+		await ctx.icon.draw(icon, {
 			x: smallIcon.x(),
 			y: smallIcon.y(),
 			iconOptions: O.icon.params,
@@ -48,7 +49,7 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 			color,
 		});
 
-		await icon.draw(props.icon, {
+		await ctx.icon.draw(icon, {
 			x: bleed.x(),
 			y: bleed.y(2),
 			width: bleed.width(),

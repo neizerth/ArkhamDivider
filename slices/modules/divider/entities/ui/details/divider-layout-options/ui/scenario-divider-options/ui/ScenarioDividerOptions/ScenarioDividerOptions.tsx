@@ -97,7 +97,6 @@ export function ScenarioDividerOptions(props: BoxProps) {
 						<ScenarioDividerOptionsForm
 							layout={layout}
 							story={story}
-							onSubmit={console.log}
 							control={control}
 							defaultValues={defaultValues}
 							onChange={onParamsChange}

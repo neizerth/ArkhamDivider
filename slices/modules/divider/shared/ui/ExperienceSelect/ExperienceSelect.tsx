@@ -93,7 +93,13 @@ export function ExperienceSelect({
 				justifyContent="center"
 				gap={1}
 			>
-				<Typography paddingBlock={1} variant="body1">
+				<Typography
+					paddingBlock={1}
+					variant="body2"
+					textTransform="uppercase"
+					fontWeight={500}
+					paddingInline={1}
+				>
 					{label}
 				</Typography>
 				<Stack gap={2} flex={1} maxWidth={600}>
@@ -133,15 +139,7 @@ export function ExperienceSelect({
 						</Box>
 					</Row>
 					{value.length > 0 && (
-						<Row
-							gap={1}
-							sx={{
-								"@media (max-width: 499px)": {
-									order: -1,
-								},
-							}}
-							paddingInline={1.5}
-						>
+						<Row gap={1} paddingInline={1.5}>
 							{value.map((range, index) => (
 								<Chip
 									key={range.name}

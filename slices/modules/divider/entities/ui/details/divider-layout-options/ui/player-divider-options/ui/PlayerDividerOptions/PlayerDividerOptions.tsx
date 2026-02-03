@@ -1,13 +1,16 @@
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Stack from "@mui/material/Stack";
 import Switch from "@mui/material/Switch";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { Icon } from "@/modules/core/icon/shared/ui";
 import { selectLayout } from "@/modules/divider/entities/lib";
+import { generatePlayerDividers } from "@/modules/divider/entities/lib/store/features/generatePlayerDividers";
 import { cardSlots, cardTypes } from "@/modules/divider/shared/config";
 import {
 	selectPlayerParams,
@@ -39,9 +42,17 @@ export function PlayerDividerOptions(props: BoxProps) {
 	const story = useAppSelector(selectStoryWithRelations);
 	const stories = useAppSelector(selectStories);
 
-	const { control, getValues, setValue } = useForm<PlayerDividerParams>({
+	const { control, getValues, setValue, watch } = useForm<PlayerDividerParams>({
 		defaultValues,
 	});
+
+	useEffect(() => {
+		dispatch(setPlayerParams(getValues()));
+		const subscription = watch((data) =>
+			dispatch(setPlayerParams(data as PlayerDividerParams)),
+		);
+		return () => subscription.unsubscribe();
+	}, [watch, getValues, dispatch]);
 
 	const selectedCardTypes = getValues("cardTypes") ?? [];
 	const selectedCardSlots = getValues("cardSlots") ?? [];
@@ -124,11 +135,6 @@ export function PlayerDividerOptions(props: BoxProps) {
 		[getValues, setValue, t],
 	);
 
-	const onParamsChange = useCallback(() => {
-		const params = getValues();
-		dispatch(setPlayerParams(params));
-	}, [getValues, dispatch]);
-
 	const onExperienceChange = useCallback(
 		(value: XPCost[]) => {
 			setValue("xpCosts", value);
@@ -136,9 +142,24 @@ export function PlayerDividerOptions(props: BoxProps) {
 		[setValue],
 	);
 
+	const generate = useCallback(
+		(mode: "create" | "add") => {
+			const params = getValues();
+			return () => {
+				dispatch(
+					generatePlayerDividers({
+						...params,
+						mode,
+					}),
+				);
+			};
+		},
+		[dispatch, getValues],
+	);
+
 	return (
 		<Box {...props}>
-			<form onChange={onParamsChange}>
+			<form>
 				<Stack gap={2}>
 					<Row
 						alignItems="center"
@@ -261,6 +282,55 @@ export function PlayerDividerOptions(props: BoxProps) {
 							)}
 						/>
 					</Stack>
+					{layout?.numericXPSupport && (
+						<Stack alignItems="center" justifyContent="center" gap={1}>
+							<Controller
+								control={control}
+								name="numericXP"
+								render={({ field }) => (
+									<FormControlLabel
+										control={
+											<Switch checked={field.value} onChange={field.onChange} />
+										}
+										label={t("Numeric XP")}
+									/>
+								)}
+							/>
+						</Stack>
+					)}
+					<Row
+						justifyContent="center"
+						alignItems="center"
+						gap={1}
+						flexWrap="wrap"
+						marginTop={4}
+					>
+						<Row flex={{ xs: 1, sm: 0 }} gap={2}>
+							<Button
+								variant="contained"
+								sx={{ width: { xs: "100%", sm: "auto" } }}
+								name="mode"
+								value="create"
+								onClick={generate("create")}
+							>
+								<Row gap={0.5} alignItems="center">
+									<Icon icon="check" />
+									<span> {t("Generate")}</span>
+								</Row>
+							</Button>
+							<Button
+								variant="contained"
+								sx={{ width: { xs: "100%", sm: "auto" } }}
+								name="mode"
+								onClick={generate("add")}
+							>
+								<Row gap={0.5} alignItems="center">
+									<Icon icon="plus" />
+									<span> {t("Add")}</span>
+								</Row>
+							</Button>
+						</Row>
+					</Row>
 				</Stack>
 			</form>
 		</Box>

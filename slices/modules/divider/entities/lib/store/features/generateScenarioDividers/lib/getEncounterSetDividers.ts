@@ -64,12 +64,13 @@ export const getEncounterSetDividers = ({
 	const ecnounterSetDividers = encounters.map((encounterSet): Divider => {
 		const cards = getEncounterSetCards({ encounterSet });
 		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
+		const { icon, name } = encounterSet;
 		return {
 			id: v4(),
 			side: "front",
 			type: "encounter",
-			title: encounterSet.name,
-			icon: encounterSet.icon,
+			title: name,
+			icon,
 			cardsCount,
 			cards,
 			storyCode: story.code,

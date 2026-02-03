@@ -17,7 +17,7 @@ type ProjectCreditsProps = BoxProps & {
 export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 	const language = useAppSelector(selectLanguage);
 	const { t } = useTranslation();
-	const { url, platform } = localeData[language];
+	const { url, platform } = localeData[language] ?? localeData.en;
 	const mm = fromPx(mmSize);
 
 	const linkSx: SxProps = {
