@@ -38,4 +38,32 @@ export default {
 		top: percent(-2),
 		left: percent(4),
 	},
+	ally_inverted: {
+		scale: 0.95,
+		top: percent(-3),
+		left: percent(3),
+	},
+	arcane_x2_inverted: {
+		scale: 0.97,
+		top: percent(-1),
+		left: percent(3),
+	},
+	arcane_inverted: {
+		left: percent(4),
+	},
+	accessory_inverted: {
+		top: percent(1),
+		left: percent(12),
+	},
+	body_inverted: {
+		top: percent(-3),
+		left: percent(4),
+	},
+	hand_inverted: {
+		left: percent(5),
+	},
+	hand_x2_inverted: {
+		top: percent(-2),
+		left: percent(4),
+	},
 } as IconPositionManifest;
