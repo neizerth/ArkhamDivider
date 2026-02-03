@@ -21,12 +21,12 @@ export type XPCost = FixedXPCost | RangeXPCost;
 export type FixedXPCost = {
 	type: "fixed";
 	name: string;
-	value: string;
+	value: number;
 };
 
 export type RangeXPCost = {
 	type: "range";
-	name: "string";
+	name: string;
 	min: number;
 	max: number;
 };

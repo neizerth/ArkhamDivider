@@ -32,6 +32,7 @@ const initialState: DividerState = {
 		subtypes: [],
 		sideXP: false,
 		numericXP: false,
+		xpCosts: [],
 	},
 };
 const state = createSliceState(initialState);

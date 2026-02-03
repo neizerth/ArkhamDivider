@@ -17,7 +17,9 @@ import type {
 	CardType,
 	DividerSubtype,
 	PlayerDividerParams,
+	XPCost,
 } from "@/modules/divider/shared/model";
+import { ExperienceSelect } from "@/modules/divider/shared/ui";
 import { factions } from "@/modules/faction/shared/config";
 import { getFactionIcon } from "@/modules/faction/shared/lib";
 import type { Faction } from "@/modules/faction/shared/model";
@@ -126,6 +128,13 @@ export function PlayerDividerOptions(props: BoxProps) {
 		dispatch(setPlayerParams(params));
 	}, [getValues, dispatch]);
 
+	const onExperienceChange = useCallback(
+		(value: XPCost[]) => {
+			setValue("xpCosts", value);
+		},
+		[setValue],
+	);
+
 	return (
 		<Box {...props}>
 			<form onChange={onParamsChange}>
@@ -190,10 +199,15 @@ export function PlayerDividerOptions(props: BoxProps) {
 							</Row>
 
 							<Row
-								justifyContent="center"
 								alignItems="stretch"
 								gap={1}
 								flexWrap="wrap"
+								sx={{
+									justifyContent: {
+										xs: "flex-start",
+										sm: "center",
+									},
+								}}
 							>
 								{renderSubtype("bonded")}
 								{renderSubtype("customizations")}
@@ -202,7 +216,12 @@ export function PlayerDividerOptions(props: BoxProps) {
 						</>
 					)}
 					<Row
-						justifyContent="center"
+						sx={{
+							justifyContent: {
+								xs: "flex-start",
+								sm: "center",
+							},
+						}}
 						alignItems="stretch"
 						gap={1}
 						flexWrap="wrap"
@@ -225,6 +244,19 @@ export function PlayerDividerOptions(props: BoxProps) {
 							/>
 						</Row>
 					)}
+					<Stack alignItems="center" justifyContent="center" gap={1}>
+						<Controller
+							control={control}
+							name="xpCosts"
+							render={({ field }) => (
+								<ExperienceSelect
+									value={field.value ?? []}
+									onChange={onExperienceChange}
+									sx={{ flex: 1 }}
+								/>
+							)}
+						/>
+					</Stack>
 				</Stack>
 			</form>
 		</Box>
