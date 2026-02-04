@@ -35,6 +35,7 @@ export function PrintablePage<T extends WithId>({
 	const pageSize = pageFormat.size.mm;
 
 	const containerSize = getRelativeBoxSize(pageSize, grid.size);
+
 	const showCredits = canShowPageCredits({
 		pageSize,
 		areaSize: grid.unitSize,

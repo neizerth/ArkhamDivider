@@ -3,13 +3,14 @@ import FormControl from "@mui/material/FormControl";
 import type { SxProps, Theme } from "@mui/material/styles";
 import TextField, { type TextFieldProps } from "@mui/material/TextField";
 import { prop } from "ramda";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { Defined } from "@/shared/model";
 import { Row } from "@/shared/ui";
 import type { Story } from "../../../../model";
 import { useStoryData } from "../lib";
 import type { BaseSelectProps, SelectRenderValueCallback } from "../model";
+import { renderGroup } from "./renderGroup";
 import { renderOption } from "./renderOption";
 import { renderStory } from "./renderStory";
 
@@ -91,6 +92,33 @@ export function StorySelect({
 		[],
 	);
 
+	const renderGroupProps = useMemo(() => {
+		if (!props.multiple) {
+			return;
+		}
+		const optionsList = options;
+		return {
+			t,
+			selectable: true,
+			onSelectAll: (group: string) => {
+				const groupCodes = optionsList
+					.filter((o) => o.group === group)
+					.map((o) => o.code);
+				const current = (valueProp ?? []) as string[];
+				const next = [...new Set([...current, ...groupCodes])];
+				props.onChange?.(next);
+			},
+			onSelectNone: (group: string) => {
+				const groupCodes = optionsList
+					.filter((o) => o.group === group)
+					.map((o) => o.code);
+				const current = (valueProp ?? []) as string[];
+				const next = current.filter((c) => !groupCodes.includes(c));
+				props.onChange?.(next);
+			},
+		};
+	}, [props.multiple, props.onChange, options, valueProp, t]);
+
 	return (
 		<Row sx={containerSx}>
 			<FormControl sx={{ width: "100%", ...controlSx }}>
@@ -101,9 +129,11 @@ export function StorySelect({
 					}}
 					options={options}
 					value={value}
+					disableCloseOnSelect={props.multiple}
 					renderInput={renderInput}
 					renderOption={renderOption}
 					renderValue={renderItem}
+					renderGroup={renderGroup(renderGroupProps)}
 					groupBy={prop("group")}
 					onChange={onChange}
 					getOptionLabel={prop("name")}

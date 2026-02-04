@@ -16,24 +16,27 @@ export const renderStory = (
 	getItemProps?: AutocompleteRenderValueGetItemProps<boolean>,
 	index = 0,
 ) => {
-	const props = getItemProps?.({ index });
-	const canDelete = Boolean(props?.onDelete);
+	const itemProps = getItemProps?.({ index });
+	const { onDelete, ...restItemProps } = itemProps ?? {};
+	const canDelete = Boolean(onDelete);
 	const activeSx: SxProps = canDelete
 		? {
 				cursor: "pointer",
-				backgroundColor: "rgba(255, 233, 173, 0.2)",
+				border: {
+					sm: "1px solid rgba(0, 0, 0, 0.2)",
+				},
 				"&:hover": {
-					backgroundColor: "rgba(0, 0, 0, 0.03)",
+					backgroundColor: "rgba(255, 233, 173, 0.2)",
 				},
 			}
 		: {};
 	return (
 		<Row
-			{...props}
+			{...restItemProps}
 			key={story.code}
 			alignItems="center"
 			gap={1}
-			onClick={props?.onDelete}
+			onClick={onDelete}
 			minHeight={"1.5em"}
 			paddingRight={1}
 			paddingBlock={0.5}

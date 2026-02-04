@@ -6,12 +6,13 @@ import {
 	setAvailableLanguages,
 	setLanguage,
 } from "../../shared/lib/store";
+import type { selectCurrentLanguage } from "../../shared/lib/store/selectors";
 import { detectLanguage } from "./detectLanguage";
 
 function* worker({ payload }: ReturnType<typeof appDataLoaded>) {
 	const { languages } = payload;
 
-	const currentLanguage: ReturnType<typeof selectLanguage> =
+	const currentLanguage: ReturnType<typeof selectCurrentLanguage> =
 		yield select(selectLanguage);
 
 	yield put(setAvailableLanguages(languages));

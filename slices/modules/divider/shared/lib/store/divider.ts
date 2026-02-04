@@ -56,6 +56,7 @@ export const {
 	setDividerType,
 	setScenarioParams,
 	setPlayerParams,
+	setInvestigatorParams,
 } = divider.actions;
 
 export const {
@@ -64,6 +65,7 @@ export const {
 	selectDividerType,
 	selectScenarioParams,
 	selectPlayerParams,
+	selectInvestigatorParams,
 } = divider.selectors;
 
 export default divider.reducer;

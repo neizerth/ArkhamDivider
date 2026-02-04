@@ -22,6 +22,8 @@
 	"Seeker Cards": "Карты Искателей",
 	"Survivor Cards": "Карты Мистиков",
 	"Multiclass Cards": "Мультиклассовые карты",
+	"Select All": "Выбрать все",
+	"Select None": "Сбросить",
 	"Size": "Размер",
 	"mm": "мм",
 	"Author": "Автор",
@@ -100,5 +102,11 @@
 	"divider.subtype.customizations": "Адаптации",
 	"divider.subtype.upgrade": "Улучшения",
 	"divider.subtype.ally": "Союзники",
-	"Upgrade": "Улучшения"
+	"Upgrade": "Улучшения",
+	"story.type.all": "Весь контент",
+	"story.type.translated": "На русском",
+	"story.type.official": "Официальные",
+	"story.type.campaign": "Кампании",
+	"story.type.standalone": "Одиночные",
+	"story.type.challenge": "Испытания"
 }

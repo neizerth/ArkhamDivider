@@ -3,12 +3,12 @@ import { createSliceState } from "redux-toolkit-helpers";
 import { DEFAULT_LANGUAGE } from "../../config";
 
 export type I18nState = {
-	language: string;
+	language: string | null;
 	availableLanguages: string[];
 };
 
 const initialState: I18nState = {
-	language: DEFAULT_LANGUAGE,
+	language: null,
 	availableLanguages: [DEFAULT_LANGUAGE],
 };
 

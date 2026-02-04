@@ -3,11 +3,12 @@ import { appTranslationsLoaded } from "@/modules/core/app/shared/lib";
 import { i18n } from "../../shared/config";
 import { i18nNamespace } from "../../shared/config/language";
 import { translations } from "../../shared/config/translations";
-import { selectLanguage } from "../../shared/lib";
+import { selectCurrentLanguage } from "../../shared/lib/store";
 
 function* worker({ payload }: ReturnType<typeof appTranslationsLoaded>) {
-	const language: ReturnType<typeof selectLanguage> =
-		yield select(selectLanguage);
+	const language: ReturnType<typeof selectCurrentLanguage> = yield select(
+		selectCurrentLanguage,
+	);
 
 	if (!language) {
 		return;

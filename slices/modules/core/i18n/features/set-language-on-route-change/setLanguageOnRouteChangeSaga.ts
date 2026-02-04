@@ -1,7 +1,7 @@
 import { put, select, takeEvery } from "redux-saga/effects";
 import { setLocationParams } from "@/modules/core/router/shared/lib";
 import { changeLanguageBundle } from "../../entities/lib/store/features/changeLanguageBundle";
-import { selectLanguage, setLanguage } from "../../shared/lib";
+import { selectCurrentLanguage, setLanguage } from "../../shared/lib";
 
 function* worker({ payload }: ReturnType<typeof setLocationParams>) {
 	if (!payload) {
@@ -10,8 +10,8 @@ function* worker({ payload }: ReturnType<typeof setLocationParams>) {
 
 	const { language } = payload;
 
-	const currentLanguage: ReturnType<typeof selectLanguage> =
-		yield select(selectLanguage);
+	const currentLanguage: ReturnType<typeof selectCurrentLanguage> =
+		yield select(selectCurrentLanguage);
 
 	if (currentLanguage === language || !language) {
 		return;

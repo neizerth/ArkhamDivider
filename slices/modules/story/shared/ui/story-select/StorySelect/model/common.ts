@@ -12,3 +12,6 @@ export type BaseSelectProps<Multiple extends boolean = boolean> =
 
 export type SelectRenderValueCallback<Multiple extends boolean = boolean> =
 	Defined<BaseSelectProps<Multiple>["renderValue"]>;
+
+export type SelectRenderGroupCallback<Multiple extends boolean = boolean> =
+	Defined<BaseSelectProps<Multiple>["renderGroup"]>;

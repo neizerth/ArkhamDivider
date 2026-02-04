@@ -5,13 +5,13 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import { useTranslation } from "react-i18next";
 import { brands } from "@/entities/brand/config";
-import { selectLanguage } from "@/modules/core/i18n/shared/lib/store";
+import { selectCurrentLanguage } from "@/modules/core/i18n/shared/lib/store";
 import { Link } from "@/modules/core/router/entities/ui";
 import { useAppSelector, useResponsiveGap } from "@/shared/lib";
 import { SectionTitle } from "@/shared/ui";
 
 export function BoxCompatibility() {
-	const language = useAppSelector(selectLanguage);
+	const language = useAppSelector(selectCurrentLanguage);
 	const { t } = useTranslation();
 	const getSpacing = useResponsiveGap();
 

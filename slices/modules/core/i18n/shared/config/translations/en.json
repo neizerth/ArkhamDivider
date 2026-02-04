@@ -27,6 +27,8 @@
 	"Encounter Dividers": "Encounter Dividers",
 	"Campaign Icon": "Campaign Icon",
 	"Campaign Divider": "Campaign Divider",
+	"Select All": "Select All",
+	"Select None": "Select None",
 	"Generate": "Generate",
 	"2 sides": "2 sides",
 	"Bleed": "Bleed",
@@ -59,5 +61,11 @@
 	"divider.subtype.bonded": "Bonded Cards",
 	"divider.subtype.customizations": "Customizations",
 	"divider.subtype.upgrade": "Upgrades",
-	"divider.subtype.ally": "Allies"
+	"divider.subtype.ally": "Allies",
+	"story.type.all": "All content",
+	"story.type.translated": "Translated",
+	"story.type.official": "Official",
+	"story.type.campaign": "Campaigns",
+	"story.type.standalone": "Standalone",
+	"story.type.challenge": "Challenges"
 }

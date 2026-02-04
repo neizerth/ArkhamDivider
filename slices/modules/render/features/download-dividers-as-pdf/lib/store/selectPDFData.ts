@@ -1,4 +1,4 @@
-import { selectLanguage } from "@/modules/core/i18n/shared/lib";
+import { selectCurrentLanguage } from "@/modules/core/i18n/shared/lib";
 import { selectIcons } from "@/modules/core/icon/shared/lib";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import { selectDividersWithRelations } from "@/modules/divider/features/lib";
@@ -13,7 +13,7 @@ import type { AppSelector, RootState } from "@/shared/store";
 
 function selectPDFDataImpl(state: RootState) {
 	const icons = selectIcons(state);
-	const language = selectLanguage(state);
+	const language = selectCurrentLanguage(state);
 	const layout = selectLayout(state);
 	const pageFormat = selectOrientedPageFormat(state);
 	const layoutGrid = selectPageLayoutGrid(state);
