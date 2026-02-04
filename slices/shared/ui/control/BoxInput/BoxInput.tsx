@@ -3,6 +3,7 @@ import Box, { type BoxProps } from "@mui/material/Box";
 import IconButton, { type IconButtonProps } from "@mui/material/IconButton";
 import type { SxProps } from "@mui/material/styles";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { setInputCursorAtTheEnd } from "@/shared/lib";
 import { delay, sanitizeHTML } from "@/shared/util";
 
 export type BoxInputProps = BoxProps & {
@@ -60,9 +61,10 @@ export function BoxInput({
 	const clear = useCallback(() => {
 		const value = internalValueRef.current;
 		setValue(value);
+		setInputCursorAtTheEnd(ref.current);
 		onValueChangeProp?.(value);
 		setStrokeValue(value);
-	}, [onValueChangeProp, setValue]);
+	}, [onValueChangeProp, setValue, ref.current]);
 
 	const onChange = useCallback(
 		(event: React.FormEvent<HTMLDivElement>) => {

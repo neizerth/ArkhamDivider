@@ -52,7 +52,6 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 	const options: RenderDividerOptions = isRGB
 		? {
 				...baseOptions,
-				colourspace: "lab",
 			}
 		: {
 				...baseOptions,

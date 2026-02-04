@@ -5,6 +5,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { vips } from "./vips.plugin";
 
 export default defineConfig({
+	worker: {
+		format: "es",
+	},
 	plugins: [
 		vips(),
 		tsconfigPaths(),
@@ -28,8 +31,21 @@ export default defineConfig({
 			ignored: ["**/node_modules/**", "**/.git/**"],
 		},
 		headers: {
-			"Cross-Origin-Embedder-Policy": "credentialless",
+			"Cross-Origin-Embedder-Policy": "require-corp",
 			"Cross-Origin-Opener-Policy": "same-origin",
+		},
+		proxy: {
+			"/arkham-icons": {
+				target: "https://neizerth.github.io/ArkhamDividerData/fonts",
+				changeOrigin: true,
+				rewrite: (path) => path.replace(/^\/arkham-icons/, ""),
+				// Force-add CORP header for Safari on the fly
+				configure: (proxy) => {
+					proxy.on("proxyRes", (proxyRes) => {
+						proxyRes.headers["Cross-Origin-Resource-Policy"] = "cross-origin";
+					});
+				},
+			},
 		},
 	},
 	// Оптимизация для лучшей работы HMR

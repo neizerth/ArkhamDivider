@@ -64,7 +64,7 @@ const spinner = keyframes({
 export const iconSx: SxProps = {
 	position: "relative",
 	zIndex: 2,
-	fontSize: 40,
+	fontSize: 30,
 	color: theme.palette.primary.dark,
 	opacity: 0.4,
 	animation: `${spinner} 2s ease-in-out infinite`,

@@ -7,6 +7,7 @@ type Options = {
 	style?: "normal" | "italic";
 	unicodeRange?: string;
 	descentRatio?: number;
+	inject?: boolean;
 };
 
 type FontFormat = "opentype" | "truetype" | "woff" | "woff2" | "svg";
@@ -26,19 +27,22 @@ export const createFont = (options: Options) => {
 		style = "normal",
 		src,
 		unicodeRange,
+		inject = true,
 	} = options;
 	const extension = src.split(".").pop() as string;
 	const format = formats[extension];
 
-	injectGlobal`
-    @font-face {
-      font-family: ${family};
-      src: url(${src}) format('${format}');
-      font-weight: ${weight};
-      font-style: ${style};
-      ${unicodeRange ? `unicode-range: ${unicodeRange};` : ""}
-    }
-  `;
+	if (inject) {
+		injectGlobal`
+			@font-face {
+				font-family: ${family};
+				src: url(${src}) format('${format}');
+				font-weight: ${weight};
+				font-style: ${style};
+				${unicodeRange ? `unicode-range: ${unicodeRange};` : ""}
+			}
+		`;
+	}
 
 	return {
 		...options,
