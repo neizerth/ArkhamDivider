@@ -1,4 +1,5 @@
 import type { Faction } from "@/modules/faction/shared/model";
+import type { StoryType } from "@/modules/story/shared/model";
 import type { CardSlot, CardType, DividerSubtype, XPCost } from "./divider";
 
 export type GenerateDividersMode = "add" | "create";
@@ -22,4 +23,12 @@ export type PlayerDividerParams = {
 	subtypes: DividerSubtype[];
 	numericXP: boolean;
 	xpCosts: XPCost[];
+};
+
+export type InvestigatorDividerParams = {
+	storyCodes: string[];
+	all?: boolean;
+	translated?: boolean;
+	official?: boolean;
+	storyTypes?: StoryType[];
 };

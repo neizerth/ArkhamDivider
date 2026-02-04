@@ -4,7 +4,7 @@ import type { Story } from "@/modules/story/shared/model";
 import { getStoryWithRelations } from "./getStoryWithRelations";
 
 type Options = {
-	code?: string;
+	code?: string | null;
 	stories: Story[];
 	encounterSets: EncounterSet[];
 };

@@ -5,6 +5,7 @@ import { cardTypes } from "../../config";
 
 import type {
 	DividerLayoutType,
+	InvestigatorDividerParams,
 	PlayerDividerParams,
 	ScenarioDividerParams,
 } from "../../model";
@@ -16,6 +17,7 @@ export type DividerState = {
 	dividerType: DividerLayoutType | null;
 	scenarioParams: Partial<ScenarioDividerParams>;
 	playerParams: Partial<PlayerDividerParams>;
+	investigatorParams: Partial<InvestigatorDividerParams>;
 };
 
 const initialState: DividerState = {
@@ -32,6 +34,9 @@ const initialState: DividerState = {
 		subtypes: [],
 		numericXP: false,
 		xpCosts: [],
+	},
+	investigatorParams: {
+		storyCodes: [],
 	},
 };
 const state = createSliceState(initialState);

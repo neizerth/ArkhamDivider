@@ -3,7 +3,6 @@ import type {
 	CardSlot,
 	CardType,
 	DividerLayoutType,
-	DividerSubtype,
 	FixedXPCost,
 } from "../model";
 
@@ -48,12 +47,4 @@ export const cardSlotNames: Record<CardSlot, string> = {
 	accessory: "Accessory",
 	body: "Body",
 	ally: "Ally",
-};
-
-export const subtypeIcons: Partial<Record<DividerSubtype, string>> = {
-	weakness: "weakness_inverted",
-	basic_weakness: "basic_weakness_inverted",
-	bonded: "bonded_inverted",
-	customizations: "customizations_inverted",
-	upgrade: "upgrade_inverted",
 };

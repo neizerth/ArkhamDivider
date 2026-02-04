@@ -32,6 +32,7 @@ import { selectStories, setStoryCode } from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { CheckboxButton, IconButtonCheckbox, Row } from "@/shared/ui";
+import * as C from "./PlayerDividerOptions.components";
 
 export function PlayerDividerOptions(props: BoxProps) {
 	const dispatch = useAppDispatch();
@@ -161,12 +162,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 		<Box {...props}>
 			<form>
 				<Stack gap={2}>
-					<Row
-						alignItems="center"
-						justifyContent="center"
-						gap={1}
-						flexWrap="wrap"
-					>
+					<C.Row>
 						{factions.map((faction) => (
 							<Controller
 								key={faction}
@@ -175,22 +171,12 @@ export function PlayerDividerOptions(props: BoxProps) {
 								render={() => renderFactionCheckbox(faction)}
 							/>
 						))}
-					</Row>
-					<Row
-						justifyContent="center"
-						alignItems="center"
-						gap={1}
-						flexWrap="wrap"
-					>
+					</C.Row>
+					<C.Row>
 						{renderSubtype("faction")}
 						{renderSubtype("investigators")}
-					</Row>
-					<Row
-						justifyContent="center"
-						alignItems="stretch"
-						gap={1}
-						flexWrap="wrap"
-					>
+					</C.Row>
+					<C.Row>
 						{cardTypes.map((cardType) => (
 							<CheckboxButton
 								key={cardType}
@@ -200,15 +186,10 @@ export function PlayerDividerOptions(props: BoxProps) {
 								{t(`card.type.${cardType}`)}
 							</CheckboxButton>
 						))}
-					</Row>
+					</C.Row>
 					{selectedCardTypes.includes("asset") && (
 						<Stack gap={1}>
-							<Row
-								justifyContent="center"
-								alignItems="stretch"
-								gap={1}
-								flexWrap="wrap"
-							>
+							<C.Row>
 								{cardSlots.map((cardSlot) => (
 									<IconButtonCheckbox
 										key={cardSlot}
@@ -218,15 +199,12 @@ export function PlayerDividerOptions(props: BoxProps) {
 										onChange={() => toggleCardSlot(cardSlot)}
 									/>
 								))}
-							</Row>
+							</C.Row>
 							<Box>
 								<Divider sx={{ margin: "auto", maxWidth: 300 }} />
 							</Box>
 
-							<Row
-								alignItems="stretch"
-								gap={1}
-								flexWrap="wrap"
+							<C.Row
 								sx={{
 									justifyContent: {
 										xs: "flex-start",
@@ -237,39 +215,31 @@ export function PlayerDividerOptions(props: BoxProps) {
 								{renderSubtype("bonded")}
 								{renderSubtype("customizations")}
 								{renderSubtype("upgrade")}
-							</Row>
+							</C.Row>
 						</Stack>
 					)}
-					<Row
+					<C.Row
 						sx={{
 							justifyContent: {
 								xs: "flex-start",
 								sm: "center",
 							},
 						}}
-						alignItems="stretch"
-						gap={1}
-						flexWrap="wrap"
 					>
 						{renderSubtype("weakness")}
 						{renderSubtype("basic_weakness")}
-					</Row>
+					</C.Row>
 					{layout?.playerStorySupport && (
-						<Row
-							justifyContent="center"
-							alignItems="stretch"
-							gap={1}
-							flexWrap="wrap"
-						>
+						<C.Row alignItems="stretch">
 							<StorySelect
 								stories={stories}
 								value={story?.code ?? null}
 								onChange={onChangeStory}
 								containerSx={{ width: "100%", flex: 1 }}
 							/>
-						</Row>
+						</C.Row>
 					)}
-					<Stack alignItems="center" justifyContent="center" gap={1}>
+					<C.Row>
 						<Controller
 							control={control}
 							name="xpCosts"
@@ -281,7 +251,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 								/>
 							)}
 						/>
-					</Stack>
+					</C.Row>
 					{layout?.numericXPSupport && (
 						<Stack alignItems="center" justifyContent="center" gap={1}>
 							<Controller
@@ -298,13 +268,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 							/>
 						</Stack>
 					)}
-					<Row
-						justifyContent="center"
-						alignItems="center"
-						gap={1}
-						flexWrap="wrap"
-						marginTop={4}
-					>
+					<C.Row marginTop={4}>
 						<Row flex={{ xs: 1, sm: 0 }} gap={2}>
 							<Button
 								variant="contained"
@@ -330,7 +294,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 								</Row>
 							</Button>
 						</Row>
-					</Row>
+					</C.Row>
 				</Stack>
 			</form>
 		</Box>

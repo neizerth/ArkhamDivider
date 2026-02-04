@@ -1,5 +1,6 @@
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
@@ -21,7 +22,6 @@ import { StorySelect } from "@/modules/story/shared/ui/story-select/StorySelect/
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
 import { ScenarioDividerOptionsForm } from "../ScenarioDividerOptionsForm";
-import * as C from "./ScenarioDividerOptions.components";
 
 export function ScenarioDividerOptions(props: BoxProps) {
 	const dispatch = useAppDispatch();
@@ -66,7 +66,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 						/>
 						{story && (
 							<Row flex={{ xs: 1, sm: 0 }} gap={2}>
-								<C.Button
+								<Button
 									variant="contained"
 									sx={{ width: { xs: "100%", sm: "auto" } }}
 									name="mode"
@@ -78,8 +78,8 @@ export function ScenarioDividerOptions(props: BoxProps) {
 										<Icon icon="check" />
 										<span> {t("Generate")}</span>
 									</Row>
-								</C.Button>
-								<C.Button
+								</Button>
+								<Button
 									variant="contained"
 									sx={{ width: { xs: "100%", sm: "auto" } }}
 									name="mode"
@@ -89,7 +89,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 										<Icon icon="plus" />
 										<span> {t("Add")}</span>
 									</Row>
-								</C.Button>
+								</Button>
 							</Row>
 						)}
 					</Row>

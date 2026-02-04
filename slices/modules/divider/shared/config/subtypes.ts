@@ -8,7 +8,7 @@ export const subtypes: DividerSubtypeItem[] = [
 	},
 	{
 		type: "weakness",
-		icon: "weakness",
+		icon: "skull",
 		name: "Weakness",
 	},
 	{

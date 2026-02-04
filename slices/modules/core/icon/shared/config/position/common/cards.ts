@@ -22,8 +22,12 @@ export default {
 	},
 	upgrade: {
 		top: percent(-4),
-		left: percent(4),
+		left: percent(3),
 		scale: 0.9,
+	},
+	cog: {
+		top: percent(-1),
+		left: percent(4),
 	},
 	weakness: {
 		top: percent(1),
@@ -65,5 +69,10 @@ export default {
 	hand_x2_inverted: {
 		top: percent(-2),
 		left: percent(4),
+	},
+	skull: {
+		top: percent(-1),
+		left: percent(4),
+		scale: 0.95,
 	},
 } as IconPositionManifest;

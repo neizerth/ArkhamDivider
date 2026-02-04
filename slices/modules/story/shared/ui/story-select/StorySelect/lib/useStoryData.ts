@@ -1,7 +1,6 @@
 import { anyPass, ascend, complement, descend, prop, sortWith } from "ramda";
 import { useCallback, useMemo } from "react";
 import { DEFAULT_LANGUAGE } from "@/modules/core/i18n/shared/config";
-import { selectLanguage } from "@/modules/core/i18n/shared/lib";
 import {
 	isChallengeStory,
 	isMainCampaign,
@@ -9,7 +8,6 @@ import {
 	isSideContent,
 	useStoryTranslation,
 } from "@/modules/story/shared/lib";
-import { useAppSelector } from "@/shared/lib";
 import type { Story } from "../../../../model";
 
 const restFilter = complement(
@@ -17,8 +15,8 @@ const restFilter = complement(
 );
 
 export const useStoryData = (stories: Story[]) => {
-	const { t, translateStory } = useStoryTranslation();
-	const language = useAppSelector(selectLanguage);
+	const { t, translateStory, i18n } = useStoryTranslation();
+	const { language } = i18n;
 	const isDefaultLanguage = language === DEFAULT_LANGUAGE;
 
 	const data = useMemo(() => {
@@ -35,6 +33,7 @@ export const useStoryData = (stories: Story[]) => {
 	const mapStory = useCallback(
 		(group: string) => (story: Story) => {
 			const name = translateStory(story.name, story);
+			console.log(story.name, name);
 			const translated = isDefaultLanguage || story.name !== name;
 
 			return {

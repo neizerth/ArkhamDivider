@@ -24,3 +24,5 @@ export type StoryScenarioWithRelations = StoryScenario & {
 	encounterSets: EncounterSet[];
 	encounterSet?: EncounterSet;
 };
+
+export type StoryType = "campaign" | "standalone" | "challenge";

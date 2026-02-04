@@ -7,13 +7,18 @@ import type {
 import { nullableCollection } from "@/shared/util";
 import { getDividerSubtypeData } from "./getDividerSubtype";
 
+type Options = PlayerDividerParams & {
+	storyCode?: string | null;
+};
+
 export const getPlayerDividers = ({
 	factions,
 	subtypes,
 	cardSlots,
 	cardTypes,
+	storyCode,
 	...options
-}: PlayerDividerParams) => {
+}: Options) => {
 	const xpCosts = nullableCollection(options.xpCosts);
 
 	const dividers: Divider[] = [];
@@ -30,6 +35,7 @@ export const getPlayerDividers = ({
 				type: "player",
 				side: "front",
 				faction,
+				storyCode,
 				...params,
 			});
 		}
@@ -44,8 +50,8 @@ export const getPlayerDividers = ({
 					faction,
 					title,
 					icon,
-					customIcon: icon,
 					xpCost,
+					storyCode,
 				});
 			}
 			for (const cardType of cardTypes) {
@@ -54,9 +60,10 @@ export const getPlayerDividers = ({
 					id: v4(),
 					type: "player",
 					side: "front",
-					...item,
 					faction,
 					cardType,
+					storyCode,
+					...item,
 				});
 			}
 		}

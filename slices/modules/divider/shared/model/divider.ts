@@ -67,7 +67,7 @@ export type PlayerDividerData = {
 	subtype?: DividerSubtype | null;
 	cardType?: CardType | null;
 	xpCost?: XPCost | null;
-	storyCode?: string;
+	storyCode?: string | null;
 };
 
 export type InvestigatorDividerData = {

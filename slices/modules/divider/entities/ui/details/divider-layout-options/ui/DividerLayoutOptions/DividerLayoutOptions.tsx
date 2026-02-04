@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { selectDividerType } from "@/modules/divider/shared/lib";
 import type { DividerLayoutType } from "@/modules/divider/shared/model";
 import { useAppSelector } from "@/shared/lib";
-import { InvestigatorDividerOptions } from "../InvestigatorDividerOptions";
+import { InvestigatorDividerOptions } from "../investigator-divider-options";
 import { PlayerDividerOptions } from "../player-divider-options";
 import { ScenarioDividerOptions } from "../scenario-divider-options";
 
