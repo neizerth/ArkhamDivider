@@ -51,7 +51,7 @@ export function DividerMenu({
 			);
 			setShowDownload.off();
 		},
-		[dispatch, dividerId, setShowDownload],
+		[dispatch, dividerId, setShowDownload.off],
 	);
 
 	const getPrintSx = usePrintSx();
