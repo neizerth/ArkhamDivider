@@ -44,6 +44,11 @@ export const theme = createTheme({
 				select: {
 					colorScheme: "dark",
 				},
+				root: {
+					"&.Mui-selected": {
+						backgroundColor: "blue",
+					},
+				},
 			},
 		},
 		MuiOutlinedInput: {

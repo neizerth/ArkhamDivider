@@ -19,7 +19,7 @@ export function InvestigatorDividerOptions(
 	const stories = useAppSelector(selectStoriesWithInvestigators);
 	const [selectedStoryCodes, setSelectedStoryCodes] = useState<string[]>([]);
 
-	const _onChangeStories = useCallback((codes: string[]) => {
+	const onChangeStories = useCallback((codes: string[]) => {
 		setSelectedStoryCodes(codes);
 	}, []);
 
@@ -36,41 +36,41 @@ export function InvestigatorDividerOptions(
 				<Row gap={2} flexWrap="wrap" alignItems="center">
 					<StorySelect
 						fullWidth
-						// multiple
+						multiple
 						stories={stories}
-						// value={selectedStoryCodes}
-						// onChange={onChangeStories}
+						value={selectedStoryCodes}
+						onChange={onChangeStories}
 						containerSx={{ width: "100%", flex: 1 }}
 					/>
-					{selectedStoryCodes.length > 0 && (
-						<Row gap={2}>
-							<Button
-								variant="contained"
-								sx={{ width: { xs: "100%", sm: "auto" } }}
-								name="mode"
-								type="submit"
-								value="create"
-								onClick={generate("create")}
-							>
-								<Row gap={0.5} alignItems="center">
-									<Icon icon="check" />
-									<span> {t("Generate")}</span>
-								</Row>
-							</Button>
-							<Button
-								variant="contained"
-								sx={{ width: { xs: "100%", sm: "auto" } }}
-								name="mode"
-								onClick={generate("add")}
-							>
-								<Row gap={0.5} alignItems="center">
-									<Icon icon="plus" />
-									<span> {t("Add")}</span>
-								</Row>
-							</Button>
-						</Row>
-					)}
 				</Row>
+				{selectedStoryCodes.length > 0 && (
+					<Row gap={2} alignItems="center" justifyContent="center">
+						<Button
+							variant="contained"
+							sx={{ width: { xs: "100%", sm: "auto" } }}
+							name="mode"
+							type="submit"
+							value="create"
+							onClick={generate("create")}
+						>
+							<Row gap={0.5} alignItems="center">
+								<Icon icon="check" />
+								<span> {t("Generate")}</span>
+							</Row>
+						</Button>
+						<Button
+							variant="contained"
+							sx={{ width: { xs: "100%", sm: "auto" } }}
+							name="mode"
+							onClick={generate("add")}
+						>
+							<Row gap={0.5} alignItems="center">
+								<Icon icon="plus" />
+								<span> {t("Add")}</span>
+							</Row>
+						</Button>
+					</Row>
+				)}
 			</Stack>
 		</Box>
 	);

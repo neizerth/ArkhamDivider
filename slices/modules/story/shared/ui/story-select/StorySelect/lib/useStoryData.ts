@@ -33,7 +33,6 @@ export const useStoryData = (stories: Story[]) => {
 	const mapStory = useCallback(
 		(group: string) => (story: Story) => {
 			const name = translateStory(story.name, story);
-			console.log(story.name, name);
 			const translated = isDefaultLanguage || story.name !== name;
 
 			return {
