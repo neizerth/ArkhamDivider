@@ -1,5 +1,6 @@
 import Bleed from "@assets/images/bleed.svg?react";
 import CornerRadius from "@assets/images/corner-radius.svg?react";
+import Lasercut from "@assets/images/lasercut.svg?react";
 import AddIcon from "@mui/icons-material/Add";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import ImportContactsIcon from "@mui/icons-material/ImportContactsOutlined";
@@ -24,11 +25,13 @@ import {
 	selectBleedEnabled,
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
+	selectLasercutEnabled,
 	selectShowCornerRadius,
 	selectSingleItemPerPage,
 	setBleedEnabled,
 	setCropMarksEnabled,
 	setDoubleSidePrintEnabled,
+	setLasercutEnabled,
 	setShowCornerRadius,
 	setSingleItemPerPage,
 } from "../../../shared/lib";
@@ -71,6 +74,11 @@ export function PrintSettings(props: PrintSettingsProps) {
 	const { toggle: toggleSingleItemPerPage } = useBooleanAction({
 		actionCreator: setSingleItemPerPage,
 		selector: selectSingleItemPerPage,
+	});
+
+	const { toggle: toggleLasercutEnabled } = useBooleanAction({
+		actionCreator: setLasercutEnabled,
+		selector: selectLasercutEnabled,
 	});
 
 	return (
@@ -166,6 +174,16 @@ export function PrintSettings(props: PrintSettingsProps) {
 										<StoreSwitch
 											actionCreator={setSingleItemPerPage}
 											selector={selectSingleItemPerPage}
+										/>
+									</ListItemButton>
+									<ListItemButton onClick={toggleLasercutEnabled}>
+										<ListItemIcon>
+											<Lasercut width={24} />
+										</ListItemIcon>
+										<ListItemText primary={t(`Lasercut`)} />
+										<StoreSwitch
+											actionCreator={setLasercutEnabled}
+											selector={selectLasercutEnabled}
 										/>
 									</ListItemButton>
 								</List>
