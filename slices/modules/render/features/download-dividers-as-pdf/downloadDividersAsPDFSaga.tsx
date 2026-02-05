@@ -41,6 +41,9 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		icons,
 		bleedEnabled,
 		language,
+		scenarioParams,
+		playerParams,
+		investigatorParams,
 	}: ReturnType<typeof selectPDFData> = yield select(selectPDFData);
 
 	const total = dividers.length;
@@ -104,7 +107,12 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		}),
 	);
 
-	yield call(getVips);
+	const vips: Awaited<ReturnType<typeof getVips>> = yield call(getVips);
+	// Reduce vips memory pressure: no operation cache, allow enough tracked mem for 2 images
+	if (typeof vips.Cache !== "undefined") {
+		vips.Cache.max(0);
+		vips.Cache.maxMem(80 * 1024 * 1024);
+	}
 
 	yield put(setRenderStatusMessage("render.status.creatingPDF"));
 	yield put(setHideTextNodes(true));
@@ -192,6 +200,9 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 						unit,
 						doc,
 						language,
+						scenarioParams,
+						playerParams,
+						investigatorParams,
 					});
 
 					progress++;

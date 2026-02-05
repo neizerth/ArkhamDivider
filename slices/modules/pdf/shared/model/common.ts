@@ -1,6 +1,9 @@
 import type {
 	DividerLayout,
 	DividerWithRelations,
+	InvestigatorDividerParams,
+	PlayerDividerParams,
+	ScenarioDividerParams,
 } from "@/modules/divider/shared/model";
 import type { DPI } from "@/modules/print/shared/model";
 import type { BoxSize } from "@/shared/model";
@@ -16,6 +19,9 @@ export type PDFDividerContext = {
 	layout: DividerLayout;
 	bleedEnabled: boolean;
 	language: string;
+	scenarioParams: Partial<ScenarioDividerParams>;
+	playerParams: Partial<PlayerDividerParams>;
+	investigatorParams: Partial<InvestigatorDividerParams>;
 };
 
 export type PDFDivider<T = void> = (

@@ -14,7 +14,7 @@ import { selectLayout } from "@/modules/divider/entities/lib";
 import { getSupportedLayoutDPI } from "@/modules/divider/shared/lib";
 import type { DPI } from "@/modules/print/shared/model";
 import { downloadDividersAsPDF } from "@/modules/render/features/download-dividers-as-pdf";
-import { theme } from "@/shared/config";
+import { isPrintSupported, theme } from "@/shared/config";
 import {
 	createClickAwayListener,
 	useAppDispatch,
@@ -52,16 +52,24 @@ export function PrintButton(props: PrintButtonProps) {
 
 	return (
 		<>
-			<C.Group {...props} variant="contained" ref={anchorRef}>
-				<Button onClick={print} sx={sx}>
-					<Icon icon="printer" /> &nbsp;
-					<Box sx={{ display: { xs: "none", sm: "inline" } }}>{t`Print`}</Box>
-					&nbsp;/ &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
-				</Button>
-				<Button size="small" onClick={toggle} sx={sx}>
-					<Icon icon="download" />
-				</Button>
-			</C.Group>
+			{isPrintSupported ? (
+				<C.Group {...props} variant="contained" ref={anchorRef}>
+					<Button onClick={print} sx={sx}>
+						<Icon icon="printer" /> &nbsp;
+						<Box sx={{ display: { xs: "none", sm: "inline" } }}>{t`Print`}</Box>
+						&nbsp;/ &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
+					</Button>
+					<Button size="small" onClick={toggle} sx={sx}>
+						<Icon icon="download" />
+					</Button>
+				</C.Group>
+			) : (
+				<C.Group {...props} variant="contained" ref={anchorRef}>
+					<Button onClick={toggle} sx={sx}>
+						<Icon icon="download" /> &nbsp; {t`Download`}
+					</Button>
+				</C.Group>
+			)}
 			<C.ContextMenu
 				open={open}
 				transition

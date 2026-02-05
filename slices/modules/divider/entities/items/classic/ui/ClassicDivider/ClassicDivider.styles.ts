@@ -35,9 +35,11 @@ export const getOutlineSx: LocaleSxCallback = ({ mm }) => ({
 
 export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
+	zIndex: 3,
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
+	cursor: "pointer",
 	width: mm(O.icon.size),
 	height: mm(O.icon.size),
 	"@media screen": {
@@ -49,6 +51,7 @@ export const getIconSx: PrintSxCallback = ({ mm }) => ({
 
 export const getBackgroundIconSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
+	cursor: "pointer",
 	width: mm(50),
 	height: mm(50),
 	opacity: O.backgroundIcon.opacity,
@@ -106,4 +109,25 @@ export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	top: mm(17),
 	left: mm(6),
 	opacity: percent(50),
+});
+
+export const getXPSx: PrintSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 2,
+	fontSize: mm(O.xp.container.fontSize),
+	width: mm(O.xp.container.size),
+	height: mm(O.xp.container.size),
+	top: mm(O.xp.container.top),
+	right: mm(O.xp.container.right),
+});
+
+export const getNumericXPSx: PrintSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 3,
+	fontSize: mm(O.xp.side.fontSize),
+	height: mm(O.xp.side.height),
+	top: mm(O.xp.side.top),
+	right: mm(O.xp.side.right),
+	paddingInline: mm(O.xp.side.paddingInline),
+	fontFamily: "Arkhamic, Teutonic, serif",
 });

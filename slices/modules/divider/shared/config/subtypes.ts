@@ -21,9 +21,4 @@ export const subtypes: DividerSubtypeItem[] = [
 		icon: "pencil",
 		name: "Customizations",
 	},
-	{
-		type: "upgrade",
-		icon: "upgrade",
-		name: "Upgrade",
-	},
 ];

@@ -5,5 +5,5 @@ export function getXPRangeName(min: number, max: number) {
 	if (max === 5) {
 		return `${min}+`;
 	}
-	return `${min} - ${max}`;
+	return `${min} – ${max}`;
 }

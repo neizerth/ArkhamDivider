@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import { useCallback, useRef, useState } from "react";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { selectLayout } from "@/modules/divider/entities/lib";
@@ -10,7 +11,10 @@ import {
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { updateDivider } from "@/modules/divider/shared/lib";
+import {
+	selectPlayerParams,
+	updateDivider,
+} from "@/modules/divider/shared/lib";
 import type {
 	DividerLayout,
 	DividerWithRelations,
@@ -20,17 +24,21 @@ import { useStoryTranslation } from "@/modules/story/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { classicDividerObjects as O } from "../../config";
 import { classicDividerTextColor } from "../../config/common";
+import { getIconObject } from "../../lib";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
+import { ClassicDividerXP as XP } from "../ClassicDividerXP";
 import {
 	getBackgroundIconSx,
 	getDividerCardsSx,
 	getDividerStatsSx,
 	getIconSx,
 	getMenuSx,
+	getNumericXPSx,
 	getOutlineSx,
 	getStrokeSx,
 	getTextSx,
 	getTitleClearSx,
+	getXPSx,
 } from "./ClassicDivider.styles";
 
 type ClassicLayoutParams = {
@@ -43,6 +51,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 
 	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout) as DividerLayout;
+	const playerParams = useAppSelector(selectPlayerParams);
 	const { translateStory } = useStoryTranslation(story);
 	const mm = usePrintUnitCallback();
 	const [showCardsInfo, setShowCardsInfo] = useState(false);
@@ -64,6 +73,8 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const titleClearSx = getPrintSx(getTitleClearSx);
 	const menuSx = getPrintSx(getMenuSx);
 	const outlineSx = getLocaleSx(getOutlineSx);
+	const xpSx = getPrintSx(getXPSx);
+	const numericXPSx = getPrintSx(getNumericXPSx);
 
 	const translatedTitle = translateStory(props?.title);
 	const title = customTitle.current ?? translatedTitle;
@@ -86,6 +97,8 @@ export function ClassicDivider(props: DividerWithRelations) {
 	}, [id, dispatch]);
 
 	const { background } = layout.params as ClassicLayoutParams;
+
+	const iconObject = getIconObject(props);
 
 	return (
 		<Container>
@@ -110,19 +123,52 @@ export function ClassicDivider(props: DividerWithRelations) {
 					clearProps={{ sx: titleClearSx }}
 					outlineSx={outlineSx}
 				/>
+
 				{icon && (
 					<Icon
 						dividerId={id}
 						icon={icon}
 						sx={iconSx}
-						top={mm(O.icon.top)}
-						right={mm(O.icon.right)}
-						fontSize={mm(O.icon.fontSize)}
+						top={mm(iconObject.top)}
+						right={mm(iconObject.right)}
+						fontSize={mm(iconObject.fontSize)}
 						{...O.icon.params}
 					/>
 				)}
 				<Menu dividerId={id} sx={menuSx} />
 				<Stats divider={props} sx={dividerStatsSx} onClick={toggleCardsInfo} />
+				{props.type === "player" && (
+					<>
+						<Box fontSize={mm(7)}>
+							{props.subtype && (
+								<XP
+									source="subtype"
+									subtype={props.subtype}
+									sx={xpSx}
+									dividerId={id}
+								/>
+							)}
+							{props.cardType && (
+								<XP
+									source="cardType"
+									cardType={props.cardType}
+									sx={xpSx}
+									dividerId={id}
+									xpCost={props.xpCost}
+								/>
+							)}
+						</Box>
+						{playerParams?.numericXP && props.xpCost && (
+							<DividerText
+								dividerId={id}
+								sx={numericXPSx}
+								value={props.xpCost?.name}
+								outlineSx={outlineSx}
+								readonly
+							/>
+						)}
+					</>
+				)}
 
 				{icon && (
 					<Icon

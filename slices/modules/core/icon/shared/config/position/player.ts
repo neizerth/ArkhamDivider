@@ -9,7 +9,7 @@ export default {
 	},
 	event: {
 		top: percent(-3),
-		left: percent(5),
+		left: percent(4),
 		scale: 0.95,
 	},
 	skill: {

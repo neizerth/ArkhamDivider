@@ -2,6 +2,8 @@ export * from "./createDividerCategory";
 export * from "./createLayoutGroups";
 export * from "./getDividerType";
 export * from "./getSupportedLayoutDPI";
+export * from "./getXPLevel";
 export * from "./getXPRangeName";
 export * from "./isDividerType";
+export * from "./isSkillDivider";
 export * from "./sortXPRanges";

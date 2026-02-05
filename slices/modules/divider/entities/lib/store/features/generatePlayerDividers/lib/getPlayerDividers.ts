@@ -36,6 +36,7 @@ export const getPlayerDividers = ({
 				side: "front",
 				faction,
 				storyCode,
+				subtype,
 				...params,
 			});
 		}
@@ -63,6 +64,7 @@ export const getPlayerDividers = ({
 					faction,
 					cardType,
 					storyCode,
+					xpCost,
 					...item,
 				});
 			}

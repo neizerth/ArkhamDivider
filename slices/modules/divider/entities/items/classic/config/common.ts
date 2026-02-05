@@ -30,6 +30,31 @@ export const classicDividerObjects = {
 				circled: 0.9,
 			},
 		},
+		withXP: {
+			top: 1.7,
+			right: 0.9,
+			fontSize: 7,
+		},
+		skill: {
+			top: 1.2,
+			right: 0.9,
+			fontSize: 6,
+		},
+	},
+	xp: {
+		container: {
+			size: 8.33,
+			fontSize: 8.33,
+			top: 2.3,
+			right: 0.5,
+		},
+		side: {
+			top: 3.8,
+			right: 9.5,
+			fontSize: 5,
+			height: 7.5,
+			paddingInline: 1,
+		},
 	},
 	backgroundIcon: {
 		size: 50,

@@ -9,18 +9,13 @@ import {
 import { useAppSelector } from "@/shared/lib";
 
 type DividerIconProps = IconCorrectionProps & {
-	dividerId: string;
-	keep?: boolean;
+	dividerId?: string;
 };
 
-export function DividerIcon({
-	dividerId,
-	keep = false,
-	...props
-}: DividerIconProps) {
+export function DividerIcon({ dividerId, ...props }: DividerIconProps) {
 	const hide = useAppSelector(selectHideIconNodes);
 	const renderId = useAppSelector(selectDividerRenderId);
-	if (hide && renderId === dividerId && !keep) {
+	if (hide && renderId === dividerId) {
 		return null;
 	}
 	return <IconCorrection {...props} />;

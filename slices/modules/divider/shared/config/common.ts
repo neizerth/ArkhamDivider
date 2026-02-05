@@ -1,9 +1,9 @@
 import { range } from "ramda";
 import type {
 	CardSlot,
-	CardType,
 	DividerLayoutType,
 	FixedXPCost,
+	PlayerCardType,
 } from "../model";
 
 export const dividerTypes: DividerLayoutType[] = [
@@ -12,14 +12,16 @@ export const dividerTypes: DividerLayoutType[] = [
 	"investigator",
 ];
 
-export const cardTypes: CardType[] = ["asset", "event", "skill"];
+export const cardTypes: PlayerCardType[] = ["asset", "event", "skill"];
 
-export const cardTypeItems: Record<CardType, { title: string; icon: string }> =
-	{
-		asset: { title: "Asset", icon: "asset" },
-		event: { title: "Event", icon: "event" },
-		skill: { title: "Skill", icon: "skill" },
-	};
+export const cardTypeItems: Record<
+	PlayerCardType,
+	{ title: string; icon: string }
+> = {
+	asset: { title: "Asset", icon: "asset" },
+	event: { title: "Event", icon: "event" },
+	skill: { title: "Skill", icon: "skill" },
+};
 
 export const cardSlots: CardSlot[] = [
 	"hand",

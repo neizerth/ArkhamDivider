@@ -53,21 +53,29 @@ export const renderDivider = async ({
 
 	if (size) {
 		const scale = size.width / image.width;
-		image = image.resize(scale);
+		const next = image.resize(scale);
+		image.delete();
+		image = next;
 	}
 
 	if (!stripIccProfile && iccProfile) {
-		image = await setICCProfile(image, iccProfile);
+		const next = await setICCProfile(image, iccProfile);
+		image.delete();
+		image = next;
 	}
 
 	// Convert to color space
 	if (colourspace) {
-		image = setColourspace(image, colourspace);
+		const next = setColourspace(image, colourspace);
+		image.delete();
+		image = next;
 	}
 
 	// JPEG needs 8 bit depth
 	if (["jpeg", "tiff"].includes(imageFormat) && image.format !== "uchar") {
-		image = image.cast("uchar");
+		const next = image.cast("uchar");
+		image.delete();
+		image = next;
 	}
 
 	const ext = `.${imageFormat}`;
@@ -102,7 +110,9 @@ export const renderDivider = async ({
 	image = vips.Image.newFromBuffer(contents);
 
 	if (iccProfile) {
-		image = await setICCProfile(image, iccProfile);
+		const next = await setICCProfile(image, iccProfile);
+		image.delete();
+		image = next;
 	}
 
 	if (imageFormat !== "jpeg") {

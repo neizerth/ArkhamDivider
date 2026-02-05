@@ -3,6 +3,11 @@ import { selectIcons } from "@/modules/core/icon/shared/lib";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import { selectDividersWithRelations } from "@/modules/divider/features/lib";
 import {
+	selectInvestigatorParams,
+	selectPlayerParams,
+	selectScenarioParams,
+} from "@/modules/divider/shared/lib";
+import {
 	selectBleedEnabled,
 	selectDoubleSidePrintEnabled,
 	selectOrientedPageFormat,
@@ -21,7 +26,9 @@ function selectPDFDataImpl(state: RootState) {
 	const singleItemPerPage = selectSingleItemPerPage(state);
 	const dividers = selectDividersWithRelations(state);
 	const bleedEnabled = selectBleedEnabled(state);
-
+	const scenarioParams = selectScenarioParams(state);
+	const playerParams = selectPlayerParams(state);
+	const investigatorParams = selectInvestigatorParams(state);
 	return {
 		icons,
 		language,
@@ -32,6 +39,9 @@ function selectPDFDataImpl(state: RootState) {
 		singleItemPerPage,
 		dividers,
 		bleedEnabled,
+		scenarioParams,
+		playerParams,
+		investigatorParams,
 	};
 }
 

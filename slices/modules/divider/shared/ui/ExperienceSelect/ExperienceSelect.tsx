@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { Row } from "@/shared/ui";
 import { fixedXPCosts } from "../../config";
-import { getXPRangeName } from "../../lib";
+import { getXPRangeName, sortXPRanges } from "../../lib";
 import type { XPCost } from "../../model";
 
 type ExperienceSelectProps = Omit<BoxProps, "onChange"> & {
@@ -44,6 +44,13 @@ export function ExperienceSelect({
 		[],
 	);
 
+	const changeValue = useCallback(
+		(value: XPCost[]) => {
+			onChange(sortXPRanges(value));
+		},
+		[onChange],
+	);
+
 	const handleRangeAdd = useCallback(() => {
 		const [min, max] = rangeValue;
 		const fixed = min === max;
@@ -61,14 +68,14 @@ export function ExperienceSelect({
 					max,
 				};
 
-		onChange([...value, cost]);
-	}, [rangeValue, onChange, value]);
+		changeValue([...value, cost]);
+	}, [rangeValue, changeValue, value]);
 
 	const handleRangeRemove = useCallback(
 		(index: number) => {
-			onChange(value.filter((_, i) => i !== index));
+			changeValue(value.filter((_, i) => i !== index));
 		},
-		[onChange, value],
+		[changeValue, value],
 	);
 
 	return (

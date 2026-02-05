@@ -19,6 +19,7 @@ type DividerTextProps = FitInputProps & {
 	strokeSx?: SxProps;
 	outlineSx?: SxProps;
 	clearProps?: IconButtonProps;
+	readonly?: boolean;
 };
 
 export function DividerText({
@@ -36,6 +37,7 @@ export function DividerText({
 	sx,
 	onBlur: onBlurProp,
 	onFocus: onFocusProp,
+	readonly = false,
 	...props
 }: DividerTextProps) {
 	const renderId = useAppSelector(selectDividerRenderId);
@@ -87,7 +89,11 @@ export function DividerText({
 
 	return (
 		<Box position="relative" sx={sx}>
-			{fitText ? (
+			{readonly ? (
+				<Box sx={inputSx} {...props} lineHeight={1} hidden={hidden}>
+					{value}
+				</Box>
+			) : fitText ? (
 				<FitInput sx={inputSx} fitTextOptions={fitTextOptions} {...baseProps} />
 			) : (
 				<BoxInput sx={inputSx} {...baseProps} />

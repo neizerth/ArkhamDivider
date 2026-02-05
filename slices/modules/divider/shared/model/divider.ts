@@ -5,7 +5,7 @@ import type { Side, Single } from "@/shared/model";
 
 export type Investigator = Single<Story["investigators"]>;
 
-export type CardType = "asset" | "event" | "skill";
+export type PlayerCardType = "asset" | "event" | "skill";
 
 export type CardSlot =
 	| "hand"
@@ -37,9 +37,7 @@ export type DividerSubtype =
 	| "weakness"
 	| "basic_weakness"
 	| "bonded"
-	| "customizations"
-	| "upgrade";
-
+	| "customizations";
 export type DividerSubtypeItem = {
 	type: DividerSubtype;
 	icon: string;
@@ -65,7 +63,7 @@ export type PlayerDividerData = {
 	faction: Faction;
 	cardSlot?: CardSlot | null;
 	subtype?: DividerSubtype | null;
-	cardType?: CardType | null;
+	cardType?: PlayerCardType | null;
 	xpCost?: XPCost | null;
 	storyCode?: string | null;
 };

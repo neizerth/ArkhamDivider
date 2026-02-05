@@ -1,5 +1,10 @@
 import type { Faction } from "@/modules/faction/shared/model";
-import type { CardSlot, CardType, DividerSubtype, XPCost } from "./divider";
+import type {
+	CardSlot,
+	DividerSubtype,
+	PlayerCardType,
+	XPCost,
+} from "./divider";
 
 export type GenerateDividersMode = "add" | "create";
 
@@ -17,7 +22,7 @@ export type ScenarioDividerParams = {
 
 export type PlayerDividerParams = {
 	factions: Faction[];
-	cardTypes: CardType[];
+	cardTypes: PlayerCardType[];
 	cardSlots: CardSlot[];
 	subtypes: DividerSubtype[];
 	numericXP: boolean;

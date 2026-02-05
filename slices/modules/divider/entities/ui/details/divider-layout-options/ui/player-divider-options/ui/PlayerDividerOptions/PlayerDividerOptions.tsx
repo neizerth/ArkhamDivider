@@ -18,8 +18,8 @@ import {
 } from "@/modules/divider/shared/lib";
 import type {
 	CardSlot,
-	CardType,
 	DividerSubtype,
+	PlayerCardType,
 	PlayerDividerParams,
 	XPCost,
 } from "@/modules/divider/shared/model";
@@ -66,7 +66,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 	);
 
 	const toggleCardType = useCallback(
-		(cardType: CardType) => {
+		(cardType: PlayerCardType) => {
 			const next = selectedCardTypes.includes(cardType)
 				? selectedCardTypes.filter((c) => c !== cardType)
 				: [...selectedCardTypes, cardType];
@@ -214,7 +214,6 @@ export function PlayerDividerOptions(props: BoxProps) {
 							>
 								{renderSubtype("bonded")}
 								{renderSubtype("customizations")}
-								{renderSubtype("upgrade")}
 							</C.Row>
 						</Stack>
 					)}
