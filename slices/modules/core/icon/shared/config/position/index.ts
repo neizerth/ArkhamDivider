@@ -1,8 +1,10 @@
 import type { IconPositionManifest } from "../../model";
 import campaign from "./campaign";
-import common from "./common";
+import investigator from "./investigator";
+import player from "./player";
 
 export default {
 	...campaign,
-	...common,
+	...player,
+	...investigator,
 } as IconPositionManifest;

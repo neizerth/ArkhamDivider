@@ -35,8 +35,13 @@ const horizontalLayout: DividerLayout = {
 			description: "layout.classic.sleeve.largeCCG.description",
 		},
 	],
-	cardCountSupport: true,
-	campaignIconSupport: true,
+	scenarioParams: {
+		cardCount: true,
+		campaignIcon: true,
+	},
+	playerParams: {
+		numericXP: true,
+	},
 	params: {
 		background: "/images/divider/background/classic/horizontal.png",
 	},

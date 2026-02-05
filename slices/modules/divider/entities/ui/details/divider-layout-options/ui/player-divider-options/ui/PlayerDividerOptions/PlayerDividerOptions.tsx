@@ -229,7 +229,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 						{renderSubtype("weakness")}
 						{renderSubtype("basic_weakness")}
 					</C.Row>
-					{layout?.playerStorySupport && (
+					{layout?.playerParams?.story && (
 						<C.Row alignItems="stretch">
 							<StorySelect
 								stories={stories}
@@ -252,7 +252,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 							)}
 						/>
 					</C.Row>
-					{layout?.numericXPSupport && (
+					{layout?.playerParams?.numericXP && (
 						<Stack alignItems="center" justifyContent="center" gap={1}>
 							<Controller
 								control={control}

@@ -7,19 +7,19 @@ import type {
 import { nullableCollection } from "@/shared/util";
 import { getDividerSubtypeData } from "./getDividerSubtype";
 
-type Options = PlayerDividerParams & {
+type Options = Partial<PlayerDividerParams> & {
 	storyCode?: string | null;
 };
 
 export const getPlayerDividers = ({
-	factions,
-	subtypes,
-	cardSlots,
-	cardTypes,
+	factions = [],
+	subtypes = [],
+	cardSlots = [],
+	cardTypes = [],
 	storyCode,
 	...options
 }: Options) => {
-	const xpCosts = nullableCollection(options.xpCosts);
+	const xpCosts = nullableCollection(options.xpCosts ?? []);
 
 	const dividers: Divider[] = [];
 

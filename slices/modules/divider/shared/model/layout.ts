@@ -34,11 +34,18 @@ export type DividerLayout = {
 	bleed: number;
 	sleeves?: DividerLayoutSleeve[];
 	params?: Record<string, unknown>;
-	cardCountSupport?: boolean;
-	campaignIconSupport?: boolean;
 	backgroundSupport?: boolean;
-	playerStorySupport?: boolean;
-	numericXPSupport?: boolean;
+	scenarioParams?: {
+		campaignIcon?: boolean;
+		cardCount?: boolean;
+	};
+	playerParams?: {
+		story?: boolean;
+		numericXP?: boolean;
+	};
+	investigatorParams?: {
+		duplicateCodes?: Record<string, number>;
+	};
 };
 
 export type DividerLayoutGroup = {

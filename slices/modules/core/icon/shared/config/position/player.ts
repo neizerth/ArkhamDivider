@@ -1,5 +1,5 @@
 import { percent } from "@/shared/util";
-import type { IconPositionManifest } from "../../../model";
+import type { IconPositionManifest } from "../../model";
 
 export default {
 	asset: {
@@ -74,5 +74,11 @@ export default {
 		top: percent(-1),
 		left: percent(4),
 		scale: 0.95,
+	},
+	hand: {
+		left: percent(5),
+	},
+	hand_x2: {
+		left: percent(5),
 	},
 } as IconPositionManifest;

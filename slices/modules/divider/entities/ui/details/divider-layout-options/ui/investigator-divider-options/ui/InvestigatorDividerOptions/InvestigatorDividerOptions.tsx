@@ -6,6 +6,7 @@ import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
+import { generateInvestigatorDividers } from "@/modules/divider/entities/lib/store/features/generateInvestigatorDividers";
 import {
 	selectInvestigatorParams,
 	setInvestigatorParams,
@@ -54,10 +55,16 @@ export function InvestigatorDividerOptions(
 	);
 
 	const generate = useCallback(
-		(_mode: GenerateDividersMode) => () => {
-			// dispatch(generateInvestigatorDividers({ ...getValues(), mode }));
+		(mode: GenerateDividersMode) => () => {
+			const params = getValues();
+			dispatch(
+				generateInvestigatorDividers({
+					...params,
+					mode,
+				}),
+			);
 		},
-		[],
+		[dispatch, getValues],
 	);
 
 	const showGenerateButtons = selectedStoryCodes.length > 0;

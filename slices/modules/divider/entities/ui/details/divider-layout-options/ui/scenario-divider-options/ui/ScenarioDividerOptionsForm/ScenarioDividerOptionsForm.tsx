@@ -40,10 +40,11 @@ export function ScenarioDividerOptionsForm({
 	);
 	const scenarioDividerCount = useAppSelector(selectScenarioDividersCount);
 
-	const { cardCountSupport = false, campaignIconSupport = false } = layout;
+	const { scenarioParams } = layout;
 
 	const hasExtraEncounterSets = story.extra_encounter_sets.length > 0;
-	const showAdditionalOptions = hasExtraEncounterSets || cardCountSupport;
+	const showAdditionalOptions =
+		hasExtraEncounterSets || scenarioParams?.cardCount;
 
 	const columnSize = 12 / (showAdditionalOptions ? 3 : 2);
 	const size = { xs: 12, sm: 6, md: columnSize } as const;
@@ -74,7 +75,7 @@ export function ScenarioDividerOptionsForm({
 						/>
 					)}
 				/>
-				{campaignIconSupport && (
+				{scenarioParams?.campaignIcon && (
 					<Controller
 						name="campaignIcon"
 						control={control}
@@ -115,7 +116,7 @@ export function ScenarioDividerOptionsForm({
 					<C.Header>{t("Additional")}</C.Header>
 
 					<Stack gap={1}>
-						{cardCountSupport && (
+						{scenarioParams?.cardCount && (
 							<>
 								<Controller
 									name="encounterSize"
