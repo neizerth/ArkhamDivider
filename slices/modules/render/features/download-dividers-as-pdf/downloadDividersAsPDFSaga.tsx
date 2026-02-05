@@ -13,7 +13,7 @@ import {
 	PDFTextService,
 	PDFUnitService,
 } from "@/modules/pdf/shared/lib";
-import { fromPx2Pt, getPageSizePx } from "@/modules/print/shared/lib";
+import { fromPx2Pt, getPageSizePx, mm2px } from "@/modules/print/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
 import {
 	finishRender,
@@ -64,15 +64,19 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 
 	const fileName = `Arkham Divider.pdf`;
 	const fileStream = streamSaver.createWriteStream(fileName);
-	const pageSize = getPageSizePx({ pageFormat, dpi });
+	// Page size must be in px for fromPx2Pt; unitSize is in mm, so convert when singleItemPerPage
+	const pageSizePx = singleItemPerPage
+		? {
+				width: mm2px(layoutGrid.unitSize.width, dpi),
+				height: mm2px(layoutGrid.unitSize.height, dpi),
+			}
+		: getPageSizePx({ pageFormat, dpi });
 
 	const px = fromPx2Pt(dpi);
-	const size = [px(pageSize.width), px(pageSize.height)];
-
-	// const size = [pageSize.width, pageSize.height];
+	const pageSizePt = [px(pageSizePx.width), px(pageSizePx.height)] as const;
 
 	const doc = new PDFDocument({
-		size,
+		size: [...pageSizePt],
 		autoFirstPage: false,
 		bufferPages: true,
 	});
@@ -129,7 +133,12 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		},
 	);
 
-	const pdfLayouts = getPDFPageLayouts({ pageLayouts, pageFormat, dpi });
+	const pdfLayouts = getPDFPageLayouts({
+		pageLayouts,
+		pageFormat,
+		dpi,
+		singleItemPerPage,
+	});
 
 	const font = new PDFFontService(doc);
 	const text = new PDFTextService(font);
@@ -147,14 +156,19 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 					if (cancelled) {
 						break renderLoop;
 					}
-					const size = {
+					const itemSizePt = {
 						width: px(item.size.width),
 						height: px(item.size.height),
 					};
 
-					const position = {
+					const positionTopLeft = {
 						x: px(item.position.x),
 						y: px(item.position.y),
+					};
+					// PDF has origin at bottom-left (y up); convert from top-left layout coordinates
+					const position = {
+						x: positionTopLeft.x,
+						y: pageSizePt[1] - positionTopLeft.y - itemSizePt.height,
 					};
 
 					if (backgroundSupport) {
@@ -178,7 +192,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 						let buffer: Buffer | null = Buffer.from(contents);
 						doc.opacity(1);
 
-						doc.image(buffer, x, y, size);
+						doc.image(buffer, x, y, itemSizePt);
 						buffer = null;
 						contents = null;
 					}
@@ -186,7 +200,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 					const unit = new PDFUnitService(doc, {
 						dpi,
 						position,
-						size,
+						size: itemSizePt,
 						bleedEnabled,
 						bleedSize: layout.bleed,
 					});

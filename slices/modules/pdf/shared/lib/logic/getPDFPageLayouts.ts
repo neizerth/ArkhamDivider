@@ -10,6 +10,7 @@ type Options<T> = {
 	pageLayouts: PageLayout<T>[];
 	pageFormat: PageFormat;
 	dpi: DPI;
+	singleItemPerPage: boolean;
 };
 
 type Item<T> = T & {
@@ -23,6 +24,7 @@ export const getPDFPageLayouts = <T>({
 	pageLayouts,
 	pageFormat,
 	dpi,
+	singleItemPerPage,
 }: Options<T>) => {
 	return pageLayouts.map((pageLayout): PDFPageLayout<T> => {
 		const { grid } = pageLayout;
@@ -30,7 +32,12 @@ export const getPDFPageLayouts = <T>({
 		const cols = range(0, grid.cols);
 
 		const size = getUnitSizePx({ pageLayout, dpi });
-		const layoutOffset = getPageLayoutOffsetPx({ pageLayout, dpi, pageFormat });
+		const layoutOffset = getPageLayoutOffsetPx({
+			pageLayout,
+			dpi,
+			pageFormat,
+			singleItemPerPage,
+		});
 		const items = rows.map((rowIndex) => {
 			const colData = cols.map((colIndex): Item<T> | null => {
 				const item: T | undefined =

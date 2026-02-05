@@ -48,13 +48,13 @@ const getFrontLayouts = <T>({
 	layoutGrid,
 	singleItemPerPage,
 }: Options<T>) => {
-	const { rows, cols, size } = layoutGrid;
+	const { rows, cols, unitSize } = layoutGrid;
 	const pageLayouts: PageLayout<T>[] = [];
 	const itemsPerPage = singleItemPerPage ? 1 : rows * cols;
 	const totalPages = Math.ceil(data.length / itemsPerPage);
 
 	const grid = singleItemPerPage
-		? { rows: 1, cols: 1, size, unitSize: size }
+		? { rows: 1, cols: 1, size: unitSize, unitSize }
 		: layoutGrid;
 
 	for (let i = 0; i < data.length; i += itemsPerPage) {

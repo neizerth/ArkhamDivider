@@ -104,12 +104,31 @@ export function ClassicDividerXP(props: ClassicDividerXPProps) {
 								<Icon icon={`${item.levelPrefix}5`} color={"#767676"} />
 							</C.Level>
 							{xpCost?.type === "range" && (
-								<C.Level zIndex={2}>
-									<Icon
-										icon={`${item.levelPrefix}${xpCost.max}`}
-										color={"#fff"}
-									/>
-								</C.Level>
+								<>
+									<C.Level zIndex={2}>
+										<Icon
+											icon={`${item.levelPrefix}${xpCost.max}`}
+											color={"#fff"}
+										/>
+									</C.Level>
+									<C.Level zIndex={2}>
+										<Icon
+											icon={`${item.levelPrefix}${xpCost.min - 1}`}
+											color={"#939393"}
+										/>
+									</C.Level>
+									{isSkill && (
+										<C.Level
+											zIndex={4}
+											sx={{
+												fontSize: "0.83em",
+												transform: "translateY(-0.01em)",
+											}}
+										>
+											<Icon icon={"s_level_0"} color={"#fff"} />
+										</C.Level>
+									)}
+								</>
 							)}
 							{xpCost?.type === "fixed" && isNumber(level) && (
 								<>

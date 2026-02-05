@@ -5,6 +5,7 @@ import { PrintablePage } from "@/modules/print/features/ui";
 import {
 	selectDoubleSidePrintEnabled,
 	selectOrientedPageFormat,
+	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 
@@ -14,6 +15,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const doubleSided = useAppSelector(selectDoubleSidePrintEnabled);
 	const pageLayouts = useAppSelector(selectDividerPageLayouts);
 	const pageFormat = useAppSelector(selectOrientedPageFormat);
+	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
 
 	if (!pageFormat) {
 		return null;
@@ -40,6 +42,7 @@ export function PrintableContent(props: PrintableContentProps) {
 					pageFormat={pageFormat}
 					showSide={doubleSided}
 					Component={DividerView}
+					singleItemPerPage={singleItemPerPage}
 				/>
 			))}
 		</Stack>

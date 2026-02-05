@@ -16,6 +16,7 @@ type PrintablePageProps<Props extends WithId> = {
 	pageLayout: PageLayout<Props>;
 	pageFormat: PageFormat;
 	showSide?: boolean;
+	singleItemPerPage?: boolean;
 	Component: React.ComponentType<Props>;
 };
 
@@ -24,15 +25,15 @@ export function PrintablePage<T extends WithId>({
 	pageFormat,
 	Component,
 	showSide = false,
+	singleItemPerPage = false,
 }: PrintablePageProps<T>) {
-	const { width } = pageFormat.size.mm;
+	const { items, grid } = pageLayout;
+	const pageSize = singleItemPerPage ? grid.unitSize : pageFormat.size.mm;
+	const { width } = pageSize;
 	const { ref, mm, size: mmSize } = usePrintUnitByRect({ width });
 
-	const { items, grid } = pageLayout;
 	const rows = range(0, grid.rows);
 	const cols = range(0, grid.cols);
-
-	const pageSize = pageFormat.size.mm;
 
 	const containerSize = getRelativeBoxSize(pageSize, grid.size);
 
@@ -70,6 +71,7 @@ export function PrintablePage<T extends WithId>({
 		<Page
 			{...pageOptions}
 			{...pageSize}
+			hideCounter={singleItemPerPage}
 			mmSize={mmSize}
 			ref={ref}
 			showSide={showSide}

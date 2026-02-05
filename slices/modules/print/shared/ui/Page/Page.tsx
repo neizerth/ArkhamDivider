@@ -13,12 +13,14 @@ type PageProps = Omit<BoxProps, "width" | "height"> & {
 	number: number;
 	total: number;
 	showSide?: boolean;
+	hideCounter?: boolean;
 	mmSize: number;
 };
 
 export function Page({
 	children,
 	showSide,
+	hideCounter,
 	side,
 	total,
 	number,
@@ -64,7 +66,7 @@ export function Page({
 
 	return (
 		<C.Page {...props} sx={sx}>
-			<C.Counter sx={counterSx}>{counterText}</C.Counter>
+			{!hideCounter && <C.Counter sx={counterSx}>{counterText}</C.Counter>}
 			{children}
 		</C.Page>
 	);

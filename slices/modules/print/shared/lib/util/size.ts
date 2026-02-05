@@ -10,6 +10,10 @@ export const mm2px = (mm: number, dpi = DEFAULT_PRINT_DPI) => {
 	return Math.round((mm * dpi) / INCH_TO_MM);
 };
 
+export const px2mm = (px: number, dpi = DEFAULT_PRINT_DPI) => {
+	return Math.round((px * INCH_TO_MM) / dpi);
+};
+
 export const pt2px = (pt: number, dpi = DEFAULT_PRINT_DPI) => {
 	return Math.round((pt * dpi) / 72);
 };

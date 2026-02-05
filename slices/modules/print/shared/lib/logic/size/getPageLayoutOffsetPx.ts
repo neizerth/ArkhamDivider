@@ -8,10 +8,16 @@ type Options<T> = {
 	pageLayout: PageLayout<T>;
 	pageFormat: PageFormat;
 	dpi: DPI;
+	singleItemPerPage?: boolean;
 };
 
 export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
-	const { dpi, pageLayout, pageFormat } = options;
+	const { dpi, pageLayout, pageFormat, singleItemPerPage } = options;
+
+	if (singleItemPerPage) {
+		return { x: 0, y: 0 };
+	}
+
 	const pageSize = getPageSizePx({ pageFormat, dpi });
 	const layoutSize = getLayoutSizePx({ pageLayout, dpi });
 

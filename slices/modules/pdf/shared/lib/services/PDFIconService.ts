@@ -133,12 +133,14 @@ export class PDFIconService {
 			options,
 		);
 
+		// Single character must not trigger line wrap / new page in PDFKit
 		await this.text.draw(content, {
 			fontFamily: "ArkhamIcons",
 			...restOptions,
 			fontSize,
 			x,
 			y,
+			lineBreak: false,
 		});
 	}
 }
