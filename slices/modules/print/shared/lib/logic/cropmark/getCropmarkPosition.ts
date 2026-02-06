@@ -10,12 +10,11 @@ import type { CropmarkPosition, CropmarkType } from "../../../model";
 
 type Options = CropmarkPosition & {
 	type: CropmarkType;
-	/** bleed size in mm */
 	bleed: number;
-	/** mm size in px or pt */
 	size: number;
-	/** unit size in mm */
 	unitSize: BoxSize;
+	/** first column (bleed=0: outer left in margin, central on boundary) */
+	isFirstCol?: boolean;
 };
 
 const num = (value: unknown) => {
@@ -36,6 +35,7 @@ export const getCropmarkPosition = ({
 	bleed,
 }: Options) => {
 	const mm = multiply(size);
+
 	const offset = mm(CROPMARK_OFFSET + bleed);
 
 	const lineSize = mm(CROPMARK_SIZE);
@@ -44,10 +44,20 @@ export const getCropmarkPosition = ({
 	const width = type === "horizontal" ? lineWidth : lineSize;
 	const height = type === "vertical" ? lineWidth : lineSize;
 
-	// Left: horizontal extends outward (-offset), vertical offset by lineWidth from junction (symmetry with right edge)
-	const leftX = type === "horizontal" ? -offset : lineWidth;
-	// Top/bottom horizontal: offset by lineWidth from seam (same spacing as left/right verticals at junction)
-	const topY = type === "horizontal" ? lineWidth : -offset;
+	const baseOptions = {
+		width,
+		height,
+		left: 0,
+		top: 0,
+	};
+
+	// When bleed=0: gap for outer left/top; central vertical (not first col) on boundary = lefter
+	const gap = bleed === 0 ? mm(CROPMARK_OFFSET) : lineWidth;
+	const topOffset = bleed === 0 ? mm(CROPMARK_OFFSET * 2) : offset;
+	// Left: horizontal extends outward (-offset); vertical: gap, or 0 for central (bleed=0, not first col)
+	const leftX = type === "horizontal" ? -offset : gap;
+	// Top: horizontal at gap from edge, vertical extends outward (higher when bleed=0)
+	const topY = type === "horizontal" ? gap : -topOffset;
 	// Bottom: horizontal offset above seam, vertical offset below edge (same distance as other corners)
 	const bottomY =
 		type === "horizontal"
@@ -60,10 +70,7 @@ export const getCropmarkPosition = ({
 			: mm(unitSize.width) - lineWidth;
 
 	return {
-		width,
-		height,
-		left: 0,
-		top: 0,
+		...baseOptions,
 		...(left && { left: num(left && leftX) }),
 		...(right && { left: num(right && rightX) }),
 		...(top && { top: num(top && topY) }),

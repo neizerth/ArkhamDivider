@@ -1,7 +1,9 @@
 import Stack, { type StackProps } from "@mui/material/Stack";
-import { selectDividerPageLayouts } from "@/modules/divider/entities/lib";
+import {
+	selectDividerPageLayouts,
+	selectLayoutBleed,
+} from "@/modules/divider/entities/lib";
 import { DividerViewMemo as DividerView } from "@/modules/divider/entities/ui";
-import { selectBleedSize } from "@/modules/divider/shared/lib";
 import { PrintablePage } from "@/modules/print/features/ui";
 import {
 	selectCropMarksEnabled,
@@ -21,7 +23,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
 	const previewZoom = useAppSelector(selectPreviewZoom);
 	const cropmarksEnabled = useAppSelector(selectCropMarksEnabled);
-	const bleed = useAppSelector(selectBleedSize);
+	const bleed = useAppSelector(selectLayoutBleed);
 
 	if (!pageFormat) {
 		return null;
