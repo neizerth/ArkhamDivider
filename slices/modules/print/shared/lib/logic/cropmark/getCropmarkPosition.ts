@@ -11,6 +11,7 @@ import type { CropmarkPosition, CropmarkType } from "../../../model";
 type Options = CropmarkPosition & {
 	type: CropmarkType;
 	bleed: number;
+	bleedEnabled: boolean;
 	size: number;
 	unitSize: BoxSize;
 	/** first column (bleed=0: outer left in margin, central on boundary) */
@@ -33,6 +34,7 @@ export const getCropmarkPosition = ({
 	unitSize,
 	type,
 	bleed,
+	bleedEnabled,
 }: Options) => {
 	const mm = multiply(size);
 
@@ -41,36 +43,40 @@ export const getCropmarkPosition = ({
 	const lineSize = mm(CROPMARK_SIZE);
 	const lineWidth = mm(CROPMARK_WIDTH);
 
-	const width = type === "horizontal" ? lineWidth : lineSize;
-	const height = type === "vertical" ? lineWidth : lineSize;
+	let width = 0;
+	let height = 0;
+	let leftX = 0;
+	let rightX = 0;
+	let topY = 0;
+	let bottomY = 0;
 
-	const baseOptions = {
+	if (type === "horizontal") {
+		const yOffset = bleedEnabled ? lineWidth : 0;
+		width = lineWidth;
+		height = lineSize;
+
+		leftX = -offset;
+		rightX = mm(unitSize.width) + lineWidth;
+		topY = yOffset;
+		bottomY = mm(unitSize.height) - yOffset;
+	}
+
+	if (type === "vertical") {
+		const xOffset = bleedEnabled ? lineWidth : 0;
+		width = lineSize;
+		height = lineWidth;
+
+		leftX = xOffset;
+		rightX = mm(unitSize.width) - xOffset;
+		topY = -offset;
+		bottomY = mm(unitSize.height) + lineWidth;
+	}
+
+	return {
 		width,
 		height,
 		left: 0,
 		top: 0,
-	};
-
-	// When bleed=0: gap for outer left/top; central vertical (not first col) on boundary = lefter
-	const gap = bleed === 0 ? mm(CROPMARK_OFFSET) : lineWidth;
-	const topOffset = bleed === 0 ? mm(CROPMARK_OFFSET * 2) : offset;
-	// Left: horizontal extends outward (-offset); vertical: gap, or 0 for central (bleed=0, not first col)
-	const leftX = type === "horizontal" ? -offset : gap;
-	// Top: horizontal at gap from edge, vertical extends outward (higher when bleed=0)
-	const topY = type === "horizontal" ? gap : -topOffset;
-	// Bottom: horizontal offset above seam, vertical offset below edge (same distance as other corners)
-	const bottomY =
-		type === "horizontal"
-			? mm(unitSize.height) - lineWidth
-			: mm(unitSize.height) + lineWidth;
-	// Right: horizontal offset by lineWidth from edge (same as left vertical), vertical at unit right edge
-	const rightX =
-		type === "horizontal"
-			? mm(unitSize.width) + lineWidth
-			: mm(unitSize.width) - lineWidth;
-
-	return {
-		...baseOptions,
 		...(left && { left: num(left && leftX) }),
 		...(right && { left: num(right && rightX) }),
 		...(top && { top: num(top && topY) }),

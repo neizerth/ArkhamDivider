@@ -21,6 +21,7 @@ type PrintablePageProps<Props extends WithId> = {
 	singleItemPerPage?: boolean;
 	hideCropmarks?: boolean;
 	bleed: number;
+	bleedEnabled: boolean;
 	Component: React.ComponentType<Props>;
 };
 
@@ -31,6 +32,7 @@ export function PrintablePage<T extends WithId>({
 	showSide = false,
 	singleItemPerPage = false,
 	hideCropmarks = false,
+	bleedEnabled = false,
 	bleed,
 }: PrintablePageProps<T>) {
 	const { items, grid } = pageLayout;
@@ -98,7 +100,7 @@ export function PrintablePage<T extends WithId>({
 								grid,
 								rowIndex,
 								colIndex,
-								withBleed: bleed > 0,
+								withBleed: bleedEnabled,
 								hidden: hideCropmarks,
 							});
 
@@ -114,6 +116,7 @@ export function PrintablePage<T extends WithId>({
 										mmSize={mmSize}
 										cropmarks={cropmarks}
 										bleed={bleed}
+										bleedEnabled={bleedEnabled}
 										unitSize={grid.unitSize}
 									>
 										{item && <Component {...item} />}

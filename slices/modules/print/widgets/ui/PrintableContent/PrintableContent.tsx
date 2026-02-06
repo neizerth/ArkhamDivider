@@ -6,6 +6,7 @@ import {
 import { DividerViewMemo as DividerView } from "@/modules/divider/entities/ui";
 import { PrintablePage } from "@/modules/print/features/ui";
 import {
+	selectBleedEnabled,
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
 	selectOrientedPageFormat,
@@ -24,6 +25,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const previewZoom = useAppSelector(selectPreviewZoom);
 	const cropmarksEnabled = useAppSelector(selectCropMarksEnabled);
 	const bleed = useAppSelector(selectLayoutBleed);
+	const bleedEnabled = useAppSelector(selectBleedEnabled);
 
 	if (!pageFormat) {
 		return null;
@@ -39,6 +41,7 @@ export function PrintableContent(props: PrintableContentProps) {
 		previewZoom,
 		hideCropmarks: !cropmarksEnabled,
 		bleed,
+		bleedEnabled,
 	};
 
 	return (

@@ -9,6 +9,7 @@ type CropmarksViewProps = BoxProps & {
 	cropmarks: Cropmark[];
 	mmSize: number;
 	bleed: number;
+	bleedEnabled: boolean;
 	/** unit size in mm */
 	unitSize: BoxSize;
 };
@@ -18,6 +19,7 @@ export function CropmarksView({
 	cropmarks,
 	mmSize,
 	bleed,
+	bleedEnabled,
 	unitSize,
 	...props
 }: CropmarksViewProps) {
@@ -33,6 +35,7 @@ export function CropmarksView({
 		bleed,
 		mmSize,
 		unitSize,
+		bleedEnabled,
 	};
 	return (
 		<Box {...props} sx={sx}>

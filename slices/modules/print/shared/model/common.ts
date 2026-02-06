@@ -30,6 +30,7 @@ export type Cropmark = {
 
 export type BaseCropmarkProps = CropmarkPosition & {
 	bleed: number;
+	bleedEnabled: boolean;
 	mmSize: number;
 	unitSize: BoxSize;
 };
