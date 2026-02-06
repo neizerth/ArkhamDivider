@@ -8,7 +8,7 @@ export default function setDefaultZoom(state?: any) {
 		...state,
 		print: {
 			...state.print,
-			previewZoom: null,
+			previewZoom: 100,
 		},
 	};
 }

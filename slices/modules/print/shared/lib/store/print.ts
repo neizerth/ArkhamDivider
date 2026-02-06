@@ -6,7 +6,7 @@ import type { DPI, PageFormatType, PageLayoutGrid } from "../../model";
 
 export type PrintState = {
 	dpi: DPI;
-	previewZoom: number | null;
+	previewZoom: number;
 	cropMarksEnabled: boolean;
 	bleedEnabled: boolean;
 	showCornerRadius: boolean;
@@ -20,7 +20,7 @@ export type PrintState = {
 
 const initialState: PrintState = {
 	dpi: 300,
-	previewZoom: null,
+	previewZoom: 100,
 	cropMarksEnabled: true,
 	bleedEnabled: true,
 	showCornerRadius: false,

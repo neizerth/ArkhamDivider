@@ -9,17 +9,16 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib";
 
 type PagePreviewZoomSelectProps = BoxProps;
 
-export const zoomLevels = [0, 50, 75, 100, 200, 300];
-const defaultZoom = 0;
+export const zoomLevels = [50, 75, 100, 200, 300];
 
 export function PagePreviewZoomSelect(props: PagePreviewZoomSelectProps) {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const zoom = useAppSelector(selectPreviewZoom) ?? defaultZoom;
+	const zoom = useAppSelector(selectPreviewZoom);
 
 	const setZoom = useCallback(
 		(_event: React.MouseEvent<HTMLElement>, value: number) => {
-			dispatch(setPreviewZoom(value || null));
+			dispatch(setPreviewZoom(value));
 		},
 		[dispatch],
 	);
@@ -33,12 +32,12 @@ export function PagePreviewZoomSelect(props: PagePreviewZoomSelectProps) {
 						value={level}
 						sx={{
 							display: {
-								xs: level > 0 && level < 100 ? "none" : "block",
+								xs: level < 100 ? "none" : "block",
 								sm: "block",
 							},
 						}}
 					>
-						{level ? `${level}%` : t("zoom.level.page")}
+						{`${level}%`}
 					</ToggleButton>
 				))}
 			</ToggleButtonGroup>

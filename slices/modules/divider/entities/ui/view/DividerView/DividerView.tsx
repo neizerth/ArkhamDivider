@@ -6,7 +6,10 @@ import {
 	selectPrintableLayoutSize,
 } from "@/modules/divider/shared/lib";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
-import { selectWebPrintScale } from "@/modules/print/shared/lib";
+import {
+	selectPreviewZoom,
+	selectWebPrintScale,
+} from "@/modules/print/shared/lib";
 import { selectDividerRenderId } from "@/modules/render/shared/lib";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
@@ -19,6 +22,7 @@ export function DividerView(props: DividerViewProps) {
 	const layoutSize = useAppSelector(selectPrintableLayoutSize);
 	const categoryId = useAppSelector(selectCategoryId);
 	const printScale = useAppSelector(selectWebPrintScale);
+	const previewZoom = useAppSelector(selectPreviewZoom);
 	const renderId = useAppSelector(selectDividerRenderId);
 	const [ref, rect] = useBoundingRect();
 
@@ -32,7 +36,8 @@ export function DividerView(props: DividerViewProps) {
 	}
 	const { size } = layoutSize;
 	const isRendering = renderId === props.id;
-	const scale = !isRendering && rect ? rect.width / size.width : 1;
+	const scale =
+		!isRendering && rect ? rect.width / size.width : 100 / previewZoom;
 
 	return (
 		<Box

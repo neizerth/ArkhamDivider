@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Stack, { type StackProps } from "@mui/material/Stack";
 import {
 	selectDividerPageLayouts,
@@ -44,25 +45,31 @@ export function PrintableContent(props: PrintableContentProps) {
 		bleedEnabled,
 	};
 
+	const zoom = previewZoom ? previewZoom : 100;
+
 	return (
-		<Stack
-			{...props}
-			sx={{
-				alignItems: "center",
-				justifyContent: "center",
-				"@media screen": {
-					gap: 2,
-				},
-				...sx,
-			}}
-		>
-			{pageLayouts.map((pageLayout) => (
-				<PrintablePage
-					{...pageProps}
-					key={`${pageLayout.number}-${pageLayout.side}`}
-					pageLayout={pageLayout}
-				/>
-			))}
-		</Stack>
+		<Box overflow="auto">
+			<Box width={`${zoom}%`} marginInline="auto">
+				<Stack
+					{...props}
+					sx={{
+						alignItems: "center",
+						justifyContent: "center",
+						"@media screen": {
+							gap: 2,
+						},
+						...sx,
+					}}
+				>
+					{pageLayouts.map((pageLayout) => (
+						<PrintablePage
+							{...pageProps}
+							key={`${pageLayout.number}-${pageLayout.side}`}
+							pageLayout={pageLayout}
+						/>
+					))}
+				</Stack>
+			</Box>
+		</Box>
 	);
 }
