@@ -1,3 +1,4 @@
+import { GlobalStyles } from "@mui/material";
 import Box from "@mui/material/Box";
 import Stack, { type StackProps } from "@mui/material/Stack";
 import {
@@ -7,13 +8,16 @@ import {
 import { DividerViewMemo as DividerView } from "@/modules/divider/entities/ui";
 import { PrintablePage } from "@/modules/print/features/ui";
 import {
+	getPageSize,
 	selectBleedEnabled,
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
 	selectOrientedPageFormat,
+	selectPageLayoutGrid,
 	selectPreviewZoom,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
+
 import { useAppSelector } from "@/shared/lib";
 
 type PrintableContentProps = StackProps;
@@ -27,12 +31,21 @@ export function PrintableContent(props: PrintableContentProps) {
 	const cropmarksEnabled = useAppSelector(selectCropMarksEnabled);
 	const bleed = useAppSelector(selectLayoutBleed);
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
+	const pageLayoutGrid = useAppSelector(selectPageLayoutGrid);
 
-	if (!pageFormat) {
+	if (!pageFormat || !pageLayoutGrid) {
 		return null;
 	}
 
 	const sx = props.sx ?? {};
+
+	const pageSize = getPageSize({
+		units: "mm",
+		pageFormat,
+		unitSize: pageLayoutGrid.unitSize,
+		singleItemPerPage,
+		cropmarksEnabled,
+	});
 
 	const pageProps = {
 		pageFormat,
@@ -40,15 +53,25 @@ export function PrintableContent(props: PrintableContentProps) {
 		Component: DividerView,
 		singleItemPerPage,
 		previewZoom,
-		hideCropmarks: !cropmarksEnabled,
+		cropmarksEnabled,
 		bleed,
 		bleedEnabled,
+		pageSize,
 	};
 
 	const zoom = previewZoom ? previewZoom : 100;
 
 	return (
 		<Box overflow="auto">
+			<GlobalStyles
+				styles={{
+					"@media print": {
+						"@page": {
+							size: `${pageSize.width}mm ${pageSize.height}mm`,
+						},
+					},
+				}}
+			/>
 			<Box width={`${zoom}%`} marginInline="auto">
 				<Stack
 					{...props}

@@ -11,6 +11,7 @@ type Options<T> = {
 	pageFormat: PageFormat;
 	dpi: DPI;
 	singleItemPerPage: boolean;
+	cropmarksEnabled?: boolean;
 };
 
 type Item<T> = T & {
@@ -25,6 +26,7 @@ export const getPDFPageLayouts = <T>({
 	pageFormat,
 	dpi,
 	singleItemPerPage,
+	cropmarksEnabled,
 }: Options<T>) => {
 	return pageLayouts.map((pageLayout): PDFPageLayout<T> => {
 		const { grid } = pageLayout;
@@ -37,6 +39,7 @@ export const getPDFPageLayouts = <T>({
 			dpi,
 			pageFormat,
 			singleItemPerPage,
+			cropmarksEnabled,
 		});
 		const items = rows.map((rowIndex) => {
 			const colData = cols.map((colIndex): Item<T> | null => {

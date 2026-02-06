@@ -2,7 +2,7 @@ import { PAGE_TOP_PADDING } from "../../../config";
 import type { DPI, PageFormat, PageLayout } from "../../../model";
 import { fromDPI } from "../../util";
 import { getLayoutSizePx } from "./getLayoutSizePx";
-import { getPageSizePx } from "./getPageSizePx";
+import { getPageSize } from "./getPageSize";
 import { getUnitSizePx } from "./getUnitSizePx";
 
 type Options<T> = {
@@ -10,12 +10,14 @@ type Options<T> = {
 	pageFormat: PageFormat;
 	dpi: DPI;
 	singleItemPerPage?: boolean;
+	cropmarksEnabled?: boolean;
 };
 
 export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
-	const { dpi, pageLayout, pageFormat, singleItemPerPage } = options;
+	const { dpi, pageLayout, pageFormat, singleItemPerPage, cropmarksEnabled } =
+		options;
 
-	if (singleItemPerPage) {
+	if (singleItemPerPage && !cropmarksEnabled) {
 		return { x: 0, y: 0 };
 	}
 	const unitSize = getUnitSizePx({
@@ -23,12 +25,15 @@ export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
 		dpi,
 	});
 
-	const pageSize = getPageSizePx({
-		pageFormat,
+	const pageSize = getPageSize({
+		units: "px",
 		dpi,
+		pageFormat,
 		unitSize,
 		singleItemPerPage,
+		cropmarksEnabled,
 	});
+
 	const layoutSize = getLayoutSizePx({ pageLayout, dpi });
 
 	const x = (pageSize.width - layoutSize.width) / 2;

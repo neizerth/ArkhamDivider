@@ -4,12 +4,11 @@ import { PAGE_CREDITS_SIZE } from "@/modules/print/shared/config";
 import {
 	canShowPageCredits,
 	getGridCropmarks,
-	getPageSizeMm,
 	usePrintUnitByRect,
 } from "@/modules/print/shared/lib";
 import type { PageFormat, PageLayout } from "@/modules/print/shared/model";
 import { CropmarksView, Page } from "@/modules/print/shared/ui";
-import type { WithId } from "@/shared/model";
+import type { BoxSize, WithId } from "@/shared/model";
 import { Row } from "@/shared/ui";
 import { getRelativeBoxSize } from "@/shared/util";
 import { PageCredits } from "../PageCredits";
@@ -19,28 +18,25 @@ type PrintablePageProps<Props extends WithId> = {
 	pageFormat: PageFormat;
 	showSide?: boolean;
 	singleItemPerPage?: boolean;
-	hideCropmarks?: boolean;
+	cropmarksEnabled?: boolean;
 	bleed: number;
 	bleedEnabled: boolean;
+	pageSize: BoxSize;
 	Component: React.ComponentType<Props>;
 };
 
 export function PrintablePage<T extends WithId>({
 	pageLayout,
-	pageFormat,
 	Component,
 	showSide = false,
 	singleItemPerPage = false,
-	hideCropmarks = false,
+	cropmarksEnabled,
 	bleedEnabled = false,
 	bleed,
+	pageSize,
 }: PrintablePageProps<T>) {
 	const { items, grid } = pageLayout;
-	const pageSize = getPageSizeMm({
-		pageFormat,
-		unitSize: grid.unitSize,
-		singleItemPerPage,
-	});
+
 	const { width } = pageSize;
 	const { ref, mm, mmSize } = usePrintUnitByRect({ width });
 
@@ -101,7 +97,7 @@ export function PrintablePage<T extends WithId>({
 								rowIndex,
 								colIndex,
 								withBleed: bleedEnabled,
-								hidden: hideCropmarks,
+								hidden: !cropmarksEnabled,
 							});
 
 							return (

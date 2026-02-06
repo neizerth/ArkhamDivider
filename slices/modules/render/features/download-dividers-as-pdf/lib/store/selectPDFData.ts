@@ -9,6 +9,7 @@ import {
 } from "@/modules/divider/shared/lib";
 import {
 	selectBleedEnabled,
+	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
 	selectOrientedPageFormat,
 	selectPageLayoutGrid,
@@ -29,6 +30,7 @@ function selectPDFDataImpl(state: RootState) {
 	const scenarioParams = selectScenarioParams(state);
 	const playerParams = selectPlayerParams(state);
 	const investigatorParams = selectInvestigatorParams(state);
+	const cropmarksEnabled = selectCropMarksEnabled(state);
 	return {
 		icons,
 		language,
@@ -42,6 +44,7 @@ function selectPDFDataImpl(state: RootState) {
 		scenarioParams,
 		playerParams,
 		investigatorParams,
+		cropmarksEnabled,
 	};
 }
 

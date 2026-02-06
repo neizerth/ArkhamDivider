@@ -143,14 +143,14 @@ export function ClassicDividerXP(props: ClassicDividerXPProps) {
 											/>
 										</C.Level>
 									)}
-									{isSkill && (
-										<C.Level zIndex={4} sx={{ fontSize: "0.8em" }}>
-											<Icon icon={"s_level_0"} color={"#fff"} />
-										</C.Level>
-									)}
 								</>
 							)}
 						</>
+					)}
+					{isSkill && (
+						<C.Level zIndex={4} sx={{ fontSize: "0.8em" }}>
+							<Icon icon={"s_level_0"} color={"#fff"} />
+						</C.Level>
 					)}
 				</Box>
 			)}

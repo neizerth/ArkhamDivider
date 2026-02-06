@@ -6,6 +6,7 @@ export const Page = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
   margin: 0;
 
   @media print {

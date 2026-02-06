@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import { getSupportedLayoutDPI } from "@/modules/divider/shared/lib";
+import { selectSingleItemPerPage } from "@/modules/print/shared/lib";
 import type { DPI } from "@/modules/print/shared/model";
 import { downloadDividersAsPDF } from "@/modules/render/features/download-dividers-as-pdf";
 import { isPrintSupported, theme } from "@/shared/config";
@@ -33,9 +34,12 @@ export function PrintButton(props: PrintButtonProps) {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout);
+	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
 	const supportedDPI = getSupportedLayoutDPI(layout);
 	const [open, setOpen] = useState(false);
 	const anchorRef = useRef<HTMLDivElement>(null);
+
+	const showPrintButton = isPrintSupported && !singleItemPerPage;
 
 	const toggle = () => setOpen(!open);
 	const close = createClickAwayListener({
@@ -52,7 +56,7 @@ export function PrintButton(props: PrintButtonProps) {
 
 	return (
 		<>
-			{isPrintSupported ? (
+			{showPrintButton ? (
 				<C.Group {...props} variant="contained" ref={anchorRef}>
 					<Button onClick={print} sx={sx}>
 						<Icon icon="printer" /> &nbsp;

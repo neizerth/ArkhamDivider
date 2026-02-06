@@ -16,7 +16,7 @@ import {
 } from "@/modules/pdf/shared/lib";
 import {
 	fromPx2Pt,
-	getPageSizePx,
+	getPageSize,
 	getUnitSizePx,
 } from "@/modules/print/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
@@ -50,6 +50,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		scenarioParams,
 		playerParams,
 		investigatorParams,
+		cropmarksEnabled,
 	}: ReturnType<typeof selectPDFData> = yield select(selectPDFData);
 
 	const total = dividers.length;
@@ -71,11 +72,13 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	});
 
 	// Page size must be in px for fromPx2Pt; unitSize is in mm, so convert when singleItemPerPage
-	const pageSizePx = getPageSizePx({
+	const pageSizePx = getPageSize({
+		units: "px",
 		pageFormat,
 		dpi,
 		unitSize,
 		singleItemPerPage,
+		cropmarksEnabled,
 	});
 
 	const px = fromPx2Pt(dpi);
@@ -140,6 +143,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		pageFormat,
 		dpi,
 		singleItemPerPage,
+		cropmarksEnabled,
 	});
 
 	const font = new PDFFontService(doc);
