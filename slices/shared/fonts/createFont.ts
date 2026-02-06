@@ -1,16 +1,5 @@
 import { injectGlobal } from "@emotion/css";
-
-type Options = {
-	family: string;
-	src: string;
-	weight?: "bold" | "normal";
-	style?: "normal" | "italic";
-	unicodeRange?: string;
-	descentRatio?: number;
-	inject?: boolean;
-};
-
-type FontFormat = "opentype" | "truetype" | "woff" | "woff2" | "svg";
+import type { Font, FontFormat } from "../model";
 
 const formats: Record<string, FontFormat> = {
 	otf: "opentype",
@@ -19,6 +8,8 @@ const formats: Record<string, FontFormat> = {
 	woff2: "woff2",
 	svg: "svg",
 };
+
+type Options = Omit<Font, "format">;
 
 export const createFont = (options: Options) => {
 	const {

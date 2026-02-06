@@ -9,6 +9,8 @@ import { getDividerPageLayouts } from "@/modules/divider/entities/lib/logic";
 import {
 	destroyPDFDocument,
 	getPDFPageLayouts,
+	PDFCounterService,
+	PDFCropmarkService,
 	PDFFontService,
 	PDFIconService,
 	PDFTextService,
@@ -51,6 +53,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		playerParams,
 		investigatorParams,
 		cropmarksEnabled,
+		enablePageCounter,
 	}: ReturnType<typeof selectPDFData> = yield select(selectPDFData);
 
 	const total = dividers.length;
@@ -82,10 +85,13 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	});
 
 	const px = fromPx2Pt(dpi);
-	const pageSizePt = [px(pageSizePx.width), px(pageSizePx.height)] as const;
+	const pageSizePt = {
+		width: px(pageSizePx.width),
+		height: px(pageSizePx.height),
+	};
 
 	const doc = new PDFDocument({
-		size: [...pageSizePt],
+		size: [pageSizePt.width, pageSizePt.height],
 		autoFirstPage: false,
 		bufferPages: true,
 	});
@@ -149,6 +155,11 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const font = new PDFFontService(doc);
 	const text = new PDFTextService(font);
 	const icon = new PDFIconService(text, icons);
+	const cropmarks = new PDFCropmarkService(doc);
+	const counter = new PDFCounterService(text, pageSizePt);
+
+	const hideCounter =
+		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
 
 	const { backgroundSupport = true } = layout;
 	const renderComponent = dividerPDFComponents[layout.categoryId];
@@ -157,28 +168,25 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		renderLoop: for (const pdfLayout of pdfLayouts) {
 			if (cancelled) break;
 			doc.addPage();
-			for (const row of pdfLayout.items) {
-				for (const item of row.items) {
+			for (const [rowIndex, row] of pdfLayout.items.entries()) {
+				for (const [colIndex, item] of row.items.entries()) {
 					if (cancelled) {
 						break renderLoop;
 					}
+
+					yield put(setDividerRenderId(item.id));
+
 					const itemSizePt = {
 						width: px(item.size.width),
 						height: px(item.size.height),
 					};
 
-					const positionTopLeft = {
+					const position = {
 						x: px(item.position.x),
 						y: px(item.position.y),
 					};
-					// PDF has origin at bottom-left (y up); convert from top-left layout coordinates
-					const position = {
-						x: positionTopLeft.x,
-						y: pageSizePt[1] - positionTopLeft.y - itemSizePt.height,
-					};
 
 					if (backgroundSupport) {
-						yield put(setDividerRenderId(item.id));
 						const { x, y } = position;
 						let contents: ReturnAwaited<typeof renderDivider> | null =
 							yield call(renderDivider, {
@@ -224,6 +232,26 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 						playerParams,
 						investigatorParams,
 					});
+
+					if (!hideCounter) {
+						yield call(counter.draw, {
+							number: pdfLayout.number,
+							total: pdfLayout.total,
+							showSide: doubleSided,
+							side: pdfLayout.side,
+						});
+					}
+
+					if (cropmarksEnabled) {
+						cropmarks.draw({
+							grid: pdfLayout.grid,
+							rowIndex,
+							colIndex,
+							bleedEnabled,
+							bleed: layout.bleed,
+							position,
+						});
+					}
 
 					progress++;
 					yield put(setRenderProgress(progress));

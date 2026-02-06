@@ -1,5 +1,5 @@
 import { fonts } from "@/shared/fonts";
-import type { FontFamily } from "@/shared/model";
+import type { DefaultPDFFontFamily, Font, FontFamily } from "@/shared/model";
 
 export class PDFFontService {
 	protected registeredFonts: Set<string>;
@@ -10,11 +10,28 @@ export class PDFFontService {
 		this.registeredFonts = new Set();
 	}
 
-	get(fontFamily: FontFamily) {
+	get(fontFamily: FontFamily): Font {
+		if (PDFFontService.isDefaultFontFamily(fontFamily)) {
+			return {
+				family: fontFamily,
+				src: "default",
+				format: "truetype",
+			};
+		}
 		return fonts[fontFamily];
 	}
 
+	static isDefaultFontFamily(
+		fontFamily: FontFamily,
+	): fontFamily is DefaultPDFFontFamily {
+		return !(fontFamily in fonts);
+	}
+
 	async register(fontFamily: FontFamily) {
+		if (PDFFontService.isDefaultFontFamily(fontFamily)) {
+			this.registeredFonts.add(fontFamily);
+			return;
+		}
 		const font = fonts[fontFamily];
 		const response = await fetch(font.src);
 		const arrayBuffer = await response.arrayBuffer();

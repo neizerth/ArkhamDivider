@@ -54,3 +54,7 @@ export const fromPt2Px = memoize((dpi: DPI) => {
 export const fromMm2Px = memoize((dpi: DPI) => {
 	return (mm: number) => mm2px(mm, dpi);
 });
+
+export const fromMm2Pt = memoize(() => {
+	return (mm: number) => mm2pt(mm);
+});

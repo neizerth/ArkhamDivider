@@ -10,12 +10,13 @@ import type { CropmarkPosition, CropmarkType } from "../../../model";
 
 type Options = CropmarkPosition & {
 	type: CropmarkType;
+	/** Bleed in mm */
 	bleed: number;
 	bleedEnabled: boolean;
-	size: number;
+	/** Size of mm in pt or px*/
+	mmSize: number;
+	/** Unit size in mm */
 	unitSize: BoxSize;
-	/** first column (bleed=0: outer left in margin, central on boundary) */
-	isFirstCol?: boolean;
 };
 
 const num = (value: unknown) => {
@@ -30,7 +31,7 @@ export const getCropmarkPosition = ({
 	right,
 	top,
 	bottom,
-	size,
+	mmSize: size,
 	unitSize,
 	type,
 	bleed,

@@ -1,6 +1,6 @@
 import type { Side } from "@/shared/model";
 
-type Options = {
+export type GetPageCounterTextOptions = {
 	number: number;
 	total: number;
 	showSide?: boolean;
@@ -17,7 +17,7 @@ export const getPageCounterText = ({
 	total,
 	showSide,
 	side,
-}: Options) => {
+}: GetPageCounterTextOptions) => {
 	if (showSide) {
 		return `${number}${pageSideLetter[side]} / ${total}`;
 	}

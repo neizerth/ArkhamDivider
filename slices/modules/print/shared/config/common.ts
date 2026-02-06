@@ -9,6 +9,7 @@ export const PAGE_COUNTER_SIZE = 4;
 export const PAGE_CREDITS_SIZE = 35;
 
 export const PT_TO_MM = INCH_TO_MM / 72;
+export const MM_TO_PT = 72 / INCH_TO_MM;
 
 /** 3mm offset from the unit edge */
 export const CROPMARK_OFFSET = 3;

@@ -12,6 +12,7 @@ import {
 	selectBleedEnabled,
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
+	selectEnablePageCounter,
 	selectOrientedPageFormat,
 	selectPageLayoutGrid,
 	selectPreviewZoom,
@@ -32,6 +33,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const bleed = useAppSelector(selectLayoutBleed);
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 	const pageLayoutGrid = useAppSelector(selectPageLayoutGrid);
+	const enablePageCounter = useAppSelector(selectEnablePageCounter);
 
 	if (!pageFormat || !pageLayoutGrid) {
 		return null;
@@ -57,6 +59,7 @@ export function PrintableContent(props: PrintableContentProps) {
 		bleed,
 		bleedEnabled,
 		pageSize,
+		enablePageCounter,
 	};
 
 	const zoom = previewZoom ? previewZoom : 100;

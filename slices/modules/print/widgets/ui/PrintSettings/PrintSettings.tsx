@@ -6,6 +6,7 @@ import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import ImportContactsIcon from "@mui/icons-material/ImportContactsOutlined";
 import LanguageIcon from "@mui/icons-material/Language";
 import LooksOneIcon from "@mui/icons-material/LooksOneOutlined";
+import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
@@ -25,12 +26,14 @@ import {
 	selectBleedEnabled,
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
+	selectEnablePageCounter,
 	selectLasercutEnabled,
 	selectShowCornerRadius,
 	selectSingleItemPerPage,
 	setBleedEnabled,
 	setCropMarksEnabled,
 	setDoubleSidePrintEnabled,
+	setEnablePageCounter,
 	setLasercutEnabled,
 	setShowCornerRadius,
 	setSingleItemPerPage,
@@ -81,6 +84,11 @@ export function PrintSettings(props: PrintSettingsProps) {
 		selector: selectLasercutEnabled,
 	});
 
+	const { toggle: toggleEnablePageCounter } = useBooleanAction({
+		actionCreator: setEnablePageCounter,
+		selector: selectEnablePageCounter,
+	});
+
 	return (
 		<ClickAwayListener onClickAway={onClickAway}>
 			<C.Container {...props}>
@@ -95,7 +103,12 @@ export function PrintSettings(props: PrintSettingsProps) {
 				>
 					{({ TransitionProps }) => (
 						<Grow {...TransitionProps}>
-							<Paper>
+							<Paper
+								sx={{
+									maxHeight: "calc(100vh - 2rem)",
+									overflow: "auto",
+								}}
+							>
 								<List>
 									<ListItem>
 										<ListItemIcon>
@@ -174,6 +187,16 @@ export function PrintSettings(props: PrintSettingsProps) {
 										<StoreSwitch
 											actionCreator={setSingleItemPerPage}
 											selector={selectSingleItemPerPage}
+										/>
+									</ListItemButton>
+									<ListItemButton onClick={toggleEnablePageCounter}>
+										<ListItemIcon>
+											<PinOutlinedIcon />
+										</ListItemIcon>
+										<ListItemText primary={t(`Page counter`)} />
+										<StoreSwitch
+											actionCreator={setEnablePageCounter}
+											selector={selectEnablePageCounter}
 										/>
 									</ListItemButton>
 									<ListItemButton onClick={toggleLasercutEnabled}>

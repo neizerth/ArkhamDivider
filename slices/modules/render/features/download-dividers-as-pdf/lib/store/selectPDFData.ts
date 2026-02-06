@@ -11,6 +11,7 @@ import {
 	selectBleedEnabled,
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
+	selectEnablePageCounter,
 	selectOrientedPageFormat,
 	selectPageLayoutGrid,
 	selectSingleItemPerPage,
@@ -31,6 +32,7 @@ function selectPDFDataImpl(state: RootState) {
 	const playerParams = selectPlayerParams(state);
 	const investigatorParams = selectInvestigatorParams(state);
 	const cropmarksEnabled = selectCropMarksEnabled(state);
+	const enablePageCounter = selectEnablePageCounter(state);
 	return {
 		icons,
 		language,
@@ -45,6 +47,7 @@ function selectPDFDataImpl(state: RootState) {
 		playerParams,
 		investigatorParams,
 		cropmarksEnabled,
+		enablePageCounter,
 	};
 }
 

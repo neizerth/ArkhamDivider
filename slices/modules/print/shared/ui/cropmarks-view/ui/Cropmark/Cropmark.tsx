@@ -15,7 +15,7 @@ export function Cropmark(props: CropmarkProps) {
 	const { mmSize } = props;
 	const cropmarkSx = getCropmarkPosition({
 		...props,
-		size: mmSize,
+		mmSize: mmSize,
 	});
 
 	const mm = divideBy(mmSize);

@@ -19,6 +19,7 @@ type PrintablePageProps<Props extends WithId> = {
 	showSide?: boolean;
 	singleItemPerPage?: boolean;
 	cropmarksEnabled?: boolean;
+	enablePageCounter?: boolean;
 	bleed: number;
 	bleedEnabled: boolean;
 	pageSize: BoxSize;
@@ -32,6 +33,7 @@ export function PrintablePage<T extends WithId>({
 	singleItemPerPage = false,
 	cropmarksEnabled,
 	bleedEnabled = false,
+	enablePageCounter = true,
 	bleed,
 	pageSize,
 }: PrintablePageProps<T>) {
@@ -75,11 +77,14 @@ export function PrintablePage<T extends WithId>({
 
 	const justifyContent = pageLayout.isLast ? "flex-start" : "center";
 
+	const hideCounter =
+		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
+
 	return (
 		<Page
 			{...pageOptions}
 			{...pageSize}
-			hideCounter={singleItemPerPage}
+			hideCounter={hideCounter}
 			mmSize={mmSize}
 			ref={ref}
 			showSide={showSide}
@@ -96,7 +101,7 @@ export function PrintablePage<T extends WithId>({
 								grid,
 								rowIndex,
 								colIndex,
-								withBleed: bleedEnabled,
+								bleedEnabled: bleedEnabled,
 								hidden: !cropmarksEnabled,
 							});
 

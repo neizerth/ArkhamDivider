@@ -8,7 +8,7 @@ type Options = {
 	};
 	rowIndex: number;
 	colIndex: number;
-	withBleed?: boolean;
+	bleedEnabled?: boolean;
 	hidden?: boolean;
 };
 
@@ -17,7 +17,7 @@ export const getGridCropmarks = (options: Options): Cropmark[] => {
 		grid,
 		rowIndex,
 		colIndex,
-		withBleed = false,
+		bleedEnabled = false,
 		hidden = false,
 	} = options;
 	if (hidden) {
@@ -44,7 +44,7 @@ export const getGridCropmarks = (options: Options): Cropmark[] => {
 				position: "topLeft",
 			}),
 		);
-		if (isLastRow || withBleed) {
+		if (isLastRow || bleedEnabled) {
 			cropmarks.push(
 				getCropmark({
 					type: "horizontal",
@@ -60,7 +60,7 @@ export const getGridCropmarks = (options: Options): Cropmark[] => {
 				position: "topRight",
 			}),
 		);
-		if (isLastRow || withBleed) {
+		if (isLastRow || bleedEnabled) {
 			cropmarks.push(
 				getCropmark({
 					type: "horizontal",
@@ -79,7 +79,7 @@ export const getGridCropmarks = (options: Options): Cropmark[] => {
 				position: "topLeft",
 			}),
 		);
-		if (isLastCol || withBleed) {
+		if (isLastCol || bleedEnabled) {
 			cropmarks.push(
 				getCropmark({
 					type: "vertical",
@@ -96,7 +96,7 @@ export const getGridCropmarks = (options: Options): Cropmark[] => {
 				position: "bottomLeft",
 			}),
 		);
-		if (isLastCol || withBleed) {
+		if (isLastCol || bleedEnabled) {
 			cropmarks.push(
 				getCropmark({
 					type: "vertical",

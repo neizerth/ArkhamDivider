@@ -11,6 +11,7 @@ export type PrintState = {
 	bleedEnabled: boolean;
 	showCornerRadius: boolean;
 	doubleSidePrintEnabled: boolean;
+	enablePageCounter: boolean;
 	lasercutEnabled: boolean;
 	pageSize: PageFormatType;
 	singleItemPerPage: boolean;
@@ -25,6 +26,7 @@ const initialState: PrintState = {
 	bleedEnabled: true,
 	showCornerRadius: false,
 	doubleSidePrintEnabled: false,
+	enablePageCounter: true,
 	lasercutEnabled: false,
 	pageSize: "A4",
 	singleItemPerPage: false,
@@ -56,6 +58,7 @@ export const {
 	setPageSize,
 	setSingleItemPerPage,
 	setPageLayoutGrid,
+	setEnablePageCounter,
 	setOrientation,
 	setPreviewZoom,
 	setDPI,
@@ -70,6 +73,7 @@ export const {
 	selectPageSize,
 	selectSingleItemPerPage,
 	selectPageLayoutGrid,
+	selectEnablePageCounter,
 	selectOrientation,
 	selectPreviewZoom,
 	selectDPI,
