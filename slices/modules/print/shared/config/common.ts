@@ -19,3 +19,5 @@ export const CROPMARK_SIZE = 0.25 * PT_TO_MM; // 0.25pt = 0.25 * 0.352778mm
 export const CROPMARK_WIDTH = 3;
 
 export const SINGLE_ITEM_CROPMARK_OFFSET = 10;
+
+export const DEFAULT_CORNER_RADIUS = 4;

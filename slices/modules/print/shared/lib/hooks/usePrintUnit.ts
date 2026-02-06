@@ -4,7 +4,7 @@ import type { PrintUnitCallback } from "../../model";
 import { getPrintUnit } from "../logic";
 import { selectDPI } from "../store";
 
-export const usePrintSx = (params?: object) => {
+export const usePrintUnit = (params?: object) => {
 	const dpi = useAppSelector(selectDPI);
 	return useCallback(
 		<T>(callbackSx: PrintUnitCallback<T>) => {

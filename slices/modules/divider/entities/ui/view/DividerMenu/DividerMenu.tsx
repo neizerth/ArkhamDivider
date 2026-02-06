@@ -4,7 +4,7 @@ import Stack, { type StackProps } from "@mui/material/Stack";
 import { useCallback } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { copyDivider, deleteDivider } from "@/modules/divider/shared/lib";
-import { usePrintSx } from "@/modules/print/shared/lib";
+import { usePrintUnit } from "@/modules/print/shared/lib";
 import { downloadDividerAsImage } from "@/modules/render/entities/lib/store/features/downloadDividerAsImage";
 import type { ImageFormat } from "@/modules/render/shared/model";
 import { NotExportable } from "@/modules/render/shared/ui";
@@ -50,7 +50,7 @@ export function DividerMenu({
 		[dispatch, dividerId, setShowDownload.off],
 	);
 
-	const getPrintSx = usePrintSx();
+	const getPrintSx = usePrintUnit();
 	const containerSx = getPrintSx(getSx);
 	const buttonSx = getPrintSx(getButtonSx);
 
