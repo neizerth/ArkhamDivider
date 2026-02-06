@@ -7,6 +7,7 @@ import { setLayoutId } from "@/modules/divider/shared/lib";
 import {
 	selectBleedEnabled,
 	selectPageFormat,
+	setBleedEnabled,
 	setOrientation,
 	setPageLayoutGrid,
 	setPageSize,
@@ -45,4 +46,5 @@ function* worker() {
 export function* setLayoutGridOnLayoutChangeSaga() {
 	yield takeEvery(setLayoutId.match, worker);
 	yield takeEvery(setPageSize.match, worker);
+	yield takeEvery(setBleedEnabled.match, worker);
 }
