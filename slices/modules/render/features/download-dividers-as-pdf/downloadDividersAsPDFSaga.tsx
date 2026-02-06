@@ -7,13 +7,18 @@ import streamSaver from "streamsaver";
 import { dividerPDFComponents } from "@/modules/divider/entities/items";
 import { getDividerPageLayouts } from "@/modules/divider/entities/lib/logic";
 import {
+	destroyPDFDocument,
 	getPDFPageLayouts,
 	PDFFontService,
 	PDFIconService,
 	PDFTextService,
 	PDFUnitService,
 } from "@/modules/pdf/shared/lib";
-import { fromPx2Pt, getPageSizePx, mm2px } from "@/modules/print/shared/lib";
+import {
+	fromPx2Pt,
+	getPageSizePx,
+	getUnitSizePx,
+} from "@/modules/print/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
 import {
 	finishRender,
@@ -25,6 +30,7 @@ import {
 	setRenderProgress,
 	setRenderProgressTotal,
 	setRenderStatusMessage,
+	setStreamMitm,
 	startRender,
 } from "../../shared/lib";
 import { downloadDividersAsPDF } from "./downloadDividersAsPDF";
@@ -55,22 +61,22 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 
 	const { dpi = 300 } = payload;
 
-	// Create stream and doc immediately (before any async work) so the download
-	// is started in user gesture context and isn’t blocked by the browser.
-	// Same-origin mitm avoids COEP blocking the cross-origin StreamSaver iframe.
-	if (typeof window !== "undefined") {
-		streamSaver.mitm = `${window.location.origin}/streamsaver/mitm.html?version=2.0.0`;
-	}
+	setStreamMitm();
 
 	const fileName = `Arkham Divider.pdf`;
 	const fileStream = streamSaver.createWriteStream(fileName);
+	const unitSize = getUnitSizePx({
+		unitSize: layoutGrid.unitSize,
+		dpi,
+	});
+
 	// Page size must be in px for fromPx2Pt; unitSize is in mm, so convert when singleItemPerPage
-	const pageSizePx = singleItemPerPage
-		? {
-				width: mm2px(layoutGrid.unitSize.width, dpi),
-				height: mm2px(layoutGrid.unitSize.height, dpi),
-			}
-		: getPageSizePx({ pageFormat, dpi });
+	const pageSizePx = getPageSizePx({
+		pageFormat,
+		dpi,
+		unitSize,
+		singleItemPerPage,
+	});
 
 	const px = fromPx2Pt(dpi);
 	const pageSizePt = [px(pageSizePx.width), px(pageSizePx.height)] as const;
@@ -87,11 +93,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	doc.on("data", (chunk) => {
 		writer.write(chunk).catch(() => {
 			cancelled = true;
-			try {
-				(doc as unknown as { destroy(): void }).destroy();
-			} catch {
-				// ignore
-			}
+			destroyPDFDocument(doc);
 		});
 	});
 
@@ -178,11 +180,11 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 							yield call(renderDivider, {
 								dividerId: item.id,
 								dpi,
+								size: item.size,
 								imageFormat: "jpeg",
 								iccProfile: "USWebCoatedSWOP.icc",
 								colourspace: "lab",
 								stripIccProfile: true,
-								size: item.size,
 								quality: 100,
 							});
 

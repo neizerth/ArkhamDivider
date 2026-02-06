@@ -3,6 +3,7 @@ import type { DPI, PageFormat, PageLayout } from "../../../model";
 import { fromDPI } from "../../util";
 import { getLayoutSizePx } from "./getLayoutSizePx";
 import { getPageSizePx } from "./getPageSizePx";
+import { getUnitSizePx } from "./getUnitSizePx";
 
 type Options<T> = {
 	pageLayout: PageLayout<T>;
@@ -17,8 +18,17 @@ export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
 	if (singleItemPerPage) {
 		return { x: 0, y: 0 };
 	}
+	const unitSize = getUnitSizePx({
+		unitSize: pageLayout.grid.unitSize,
+		dpi,
+	});
 
-	const pageSize = getPageSizePx({ pageFormat, dpi });
+	const pageSize = getPageSizePx({
+		pageFormat,
+		dpi,
+		unitSize,
+		singleItemPerPage,
+	});
 	const layoutSize = getLayoutSizePx({ pageLayout, dpi });
 
 	const x = (pageSize.width - layoutSize.width) / 2;

@@ -1,15 +1,16 @@
-import type { DPI, PageLayout } from "../../../model";
+import type { BoxSize } from "@/shared/model";
+import type { DPI } from "../../../model";
 import { fromDPI } from "../../util";
 
-type Options<T> = {
-	pageLayout: PageLayout<T>;
+type Options = {
+	/** Unit size in mm */
+	unitSize: BoxSize;
 	dpi: DPI;
 };
 
-export const getUnitSizePx = <T>(options: Options<T>) => {
-	const { dpi, pageLayout } = options;
+export const getUnitSizePx = (options: Options) => {
+	const { dpi, unitSize } = options;
 	const mm = fromDPI(dpi);
-	const { unitSize } = pageLayout.grid;
 
 	const width = mm(unitSize.width);
 	const height = mm(unitSize.height);

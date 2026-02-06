@@ -9,3 +9,10 @@ export const PAGE_COUNTER_SIZE = 4;
 export const PAGE_CREDITS_SIZE = 35;
 
 export const PT_TO_MM = INCH_TO_MM / 72;
+
+/** 3mm offset from the unit edge */
+export const CROPMARK_OFFSET = 3;
+/** cropmark size in mm */
+export const CROPMARK_SIZE = 0.25 * PT_TO_MM; // 0.25pt = 0.25 * 0.352778mm
+/** cropmark width in mm */
+export const CROPMARK_WIDTH = 3;

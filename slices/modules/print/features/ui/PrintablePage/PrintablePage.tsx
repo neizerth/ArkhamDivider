@@ -3,13 +3,15 @@ import { pick, range } from "ramda";
 import { PAGE_CREDITS_SIZE } from "@/modules/print/shared/config";
 import {
 	canShowPageCredits,
+	getGridCropmarks,
+	getPageSizeMm,
 	usePrintUnitByRect,
 } from "@/modules/print/shared/lib";
 import type { PageFormat, PageLayout } from "@/modules/print/shared/model";
-import { Page } from "@/modules/print/shared/ui";
+import { CropmarksView, Page } from "@/modules/print/shared/ui";
 import type { WithId } from "@/shared/model";
 import { Row } from "@/shared/ui";
-import { getRelativeBoxSize, percentage } from "@/shared/util";
+import { getRelativeBoxSize } from "@/shared/util";
 import { PageCredits } from "../PageCredits";
 
 type PrintablePageProps<Props extends WithId> = {
@@ -17,6 +19,8 @@ type PrintablePageProps<Props extends WithId> = {
 	pageFormat: PageFormat;
 	showSide?: boolean;
 	singleItemPerPage?: boolean;
+	hideCropmarks?: boolean;
+	bleed: number;
 	Component: React.ComponentType<Props>;
 };
 
@@ -26,11 +30,17 @@ export function PrintablePage<T extends WithId>({
 	Component,
 	showSide = false,
 	singleItemPerPage = false,
+	hideCropmarks = false,
+	bleed,
 }: PrintablePageProps<T>) {
 	const { items, grid } = pageLayout;
-	const pageSize = singleItemPerPage ? grid.unitSize : pageFormat.size.mm;
+	const pageSize = getPageSizeMm({
+		pageFormat,
+		unitSize: grid.unitSize,
+		singleItemPerPage,
+	});
 	const { width } = pageSize;
-	const { ref, mm, size: mmSize } = usePrintUnitByRect({ width });
+	const { ref, mm, mmSize } = usePrintUnitByRect({ width });
 
 	const rows = range(0, grid.rows);
 	const cols = range(0, grid.cols);
@@ -51,7 +61,7 @@ export function PrintablePage<T extends WithId>({
 
 	const contentSx = {
 		aspectRatio,
-		width: percentage(containerSize.width),
+		width: `${containerSize.width}%`,
 		"@media print": {
 			width: `${grid.size.width}mm`,
 		},
@@ -84,6 +94,14 @@ export function PrintablePage<T extends WithId>({
 							const row = items[rowIndex];
 							const item = row?.items[colIndex];
 
+							const cropmarks = getGridCropmarks({
+								grid,
+								rowIndex,
+								colIndex,
+								withBleed: bleed > 0,
+								hidden: hideCropmarks,
+							});
+
 							return (
 								<Row
 									key={colIndex}
@@ -92,7 +110,14 @@ export function PrintablePage<T extends WithId>({
 										width: "100%",
 									}}
 								>
-									{item && <Component {...item} />}
+									<CropmarksView
+										mmSize={mmSize}
+										cropmarks={cropmarks}
+										bleed={bleed}
+										unitSize={grid.unitSize}
+									>
+										{item && <Component {...item} />}
+									</CropmarksView>
 								</Row>
 							);
 						})}

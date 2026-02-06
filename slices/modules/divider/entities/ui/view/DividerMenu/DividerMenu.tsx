@@ -4,14 +4,11 @@ import Stack, { type StackProps } from "@mui/material/Stack";
 import { useCallback } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { copyDivider, deleteDivider } from "@/modules/divider/shared/lib";
-import {
-	selectSingleItemPerPage,
-	usePrintSx,
-} from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { downloadDividerAsImage } from "@/modules/render/entities/lib/store/features/downloadDividerAsImage";
 import type { ImageFormat } from "@/modules/render/shared/model";
 import { NotExportable } from "@/modules/render/shared/ui";
-import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { useAppDispatch } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import { Row } from "@/shared/ui";
 import { getButtonSx, getSx } from "./DividerMenu.styles";
@@ -25,7 +22,6 @@ export function DividerMenu({
 	sx: sxProp,
 	...props
 }: DividerMenuProps) {
-	const single = useAppSelector(selectSingleItemPerPage);
 	const [showDownload, setShowDownload] = useBoolean(false);
 	const dispatch = useAppDispatch();
 
@@ -66,11 +62,6 @@ export function DividerMenu({
 	return (
 		<Stack {...props} sx={sx} displayPrint="none">
 			<NotExportable id={dividerId}>
-				{!single && (
-					<IconButton sx={buttonSx}>
-						<Icon icon="eye" />
-					</IconButton>
-				)}
 				<Row position="relative">
 					<IconButton onClick={setShowDownload.toggle} sx={buttonSx}>
 						<Icon icon="download" color={showDownload ? "black" : "inherit"} />

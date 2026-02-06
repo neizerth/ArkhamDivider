@@ -48,7 +48,11 @@ export class PDFTextService {
 			this.overprintService.enable();
 		}
 
-		doc.text(text, x, y, textOptions);
+		// Prevent PDFKit from wrapping text to a new page (avoids unwanted white pages)
+		doc.text(text, x, y, {
+			...textOptions,
+			lineBreak: false,
+		});
 		if (overprint) {
 			this.overprintService.disable();
 		}

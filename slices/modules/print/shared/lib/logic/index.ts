@@ -1,4 +1,5 @@
 export * from "./canShowPageCredits";
+export * from "./cropmark";
 export * from "./getPageCounterText";
 export * from "./getPageFormat";
 export * from "./getPageFreeSpace";

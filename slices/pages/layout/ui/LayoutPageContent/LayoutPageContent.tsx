@@ -7,6 +7,7 @@ import {
 	DividerTypeNav,
 } from "@/modules/divider/entities/ui";
 import type { DividerLayout } from "@/modules/divider/shared/model";
+import { PagePreviewZoomSelect } from "@/modules/print/entities/ui";
 import { PrintableContent } from "@/modules/print/widgets/ui";
 import { SectionTitle } from "@/shared/ui";
 import { SingleColumnLayout } from "@/widgets/layout/SingleColumnLayout";
@@ -22,7 +23,7 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 					"@media screen": {
 						paddingInline: 2,
 						paddingBlock: 8,
-						gap: 4,
+						gap: 10,
 					},
 				}}
 			>
@@ -45,7 +46,18 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 						</Stack>
 					</Box>
 				</Container>
-				<PrintableContent />
+				<Stack
+					sx={{
+						"@media screen": {
+							gap: 4,
+						},
+					}}
+				>
+					<Box displayPrint="none" margin="auto">
+						<PagePreviewZoomSelect />
+					</Box>
+					<PrintableContent />
+				</Stack>
 			</Stack>
 		</SingleColumnLayout>
 	);

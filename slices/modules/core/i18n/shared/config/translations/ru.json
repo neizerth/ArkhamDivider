@@ -109,5 +109,6 @@
 	"story.type.official": "Официальные",
 	"story.type.campaign": "Кампании",
 	"story.type.standalone": "Одиночные",
-	"story.type.challenge": "Испытания"
+	"story.type.challenge": "Испытания",
+	"zoom.level.page": "На всю страницу"
 }

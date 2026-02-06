@@ -31,7 +31,7 @@ export const getPDFPageLayouts = <T>({
 		const rows = range(0, grid.rows);
 		const cols = range(0, grid.cols);
 
-		const size = getUnitSizePx({ pageLayout, dpi });
+		const size = getUnitSizePx({ unitSize: grid.unitSize, dpi });
 		const layoutOffset = getPageLayoutOffsetPx({
 			pageLayout,
 			dpi,

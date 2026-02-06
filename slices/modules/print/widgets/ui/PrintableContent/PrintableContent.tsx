@@ -1,10 +1,13 @@
 import Stack, { type StackProps } from "@mui/material/Stack";
 import { selectDividerPageLayouts } from "@/modules/divider/entities/lib";
 import { DividerViewMemo as DividerView } from "@/modules/divider/entities/ui";
+import { selectBleedSize } from "@/modules/divider/shared/lib";
 import { PrintablePage } from "@/modules/print/features/ui";
 import {
+	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
 	selectOrientedPageFormat,
+	selectPreviewZoom,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
@@ -16,12 +19,25 @@ export function PrintableContent(props: PrintableContentProps) {
 	const pageLayouts = useAppSelector(selectDividerPageLayouts);
 	const pageFormat = useAppSelector(selectOrientedPageFormat);
 	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
+	const previewZoom = useAppSelector(selectPreviewZoom);
+	const cropmarksEnabled = useAppSelector(selectCropMarksEnabled);
+	const bleed = useAppSelector(selectBleedSize);
 
 	if (!pageFormat) {
 		return null;
 	}
 
 	const sx = props.sx ?? {};
+
+	const pageProps = {
+		pageFormat,
+		showSide: doubleSided,
+		Component: DividerView,
+		singleItemPerPage,
+		previewZoom,
+		hideCropmarks: !cropmarksEnabled,
+		bleed,
+	};
 
 	return (
 		<Stack
@@ -37,12 +53,9 @@ export function PrintableContent(props: PrintableContentProps) {
 		>
 			{pageLayouts.map((pageLayout) => (
 				<PrintablePage
+					{...pageProps}
 					key={`${pageLayout.number}-${pageLayout.side}`}
 					pageLayout={pageLayout}
-					pageFormat={pageFormat}
-					showSide={doubleSided}
-					Component={DividerView}
-					singleItemPerPage={singleItemPerPage}
 				/>
 			))}
 		</Stack>

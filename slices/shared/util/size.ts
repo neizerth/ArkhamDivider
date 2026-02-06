@@ -74,4 +74,4 @@ export const getRelativeBoxSize = (size: BoxSize, unitSize: BoxSize) => {
 	};
 };
 
-export const percentage = (value: number) => `${value}%`;
+export const px = (value: number) => `${value}px`;

@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useMemo } from "react";
 import { useBoundingRect } from "@/shared/lib";
 
 type Options<T extends HTMLElement> = {
@@ -12,15 +12,18 @@ export const usePrintUnitByRect = <T extends HTMLElement>({
 }: Options<T>) => {
 	const [ref, rect] = useBoundingRect(refProp);
 
-	const size = (rect?.width ?? 0) / width;
+	const mmSize = (rect?.width ?? 0) / width;
 
-	const calc = useCallback(
-		(value: number) => {
-			const px = size * value;
+	const calc = useMemo(() => {
+		function calc(value: number) {
+			const px = mmSize * value;
 			return `${px}px`;
-		},
-		[size],
-	);
+		}
+		calc.valueOf = (value: number) => {
+			return mmSize * value;
+		};
+		return calc;
+	}, [mmSize]);
 
-	return { mm: calc, size, ref } as const;
+	return { mm: calc, mmSize, ref } as const;
 };

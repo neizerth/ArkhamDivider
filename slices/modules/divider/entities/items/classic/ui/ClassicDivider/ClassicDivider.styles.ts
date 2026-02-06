@@ -106,7 +106,7 @@ export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 1,
 	flexDirection: "column",
-	top: mm(20),
+	top: mm(22),
 	left: mm(6),
 	opacity: percent(50),
 });

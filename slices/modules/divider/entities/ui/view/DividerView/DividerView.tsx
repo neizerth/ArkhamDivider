@@ -40,6 +40,7 @@ export function DividerView(props: DividerViewProps) {
 			sx={{
 				position: "relative",
 				width: "100%",
+				height: "100%",
 			}}
 		>
 			{isRendering && (
