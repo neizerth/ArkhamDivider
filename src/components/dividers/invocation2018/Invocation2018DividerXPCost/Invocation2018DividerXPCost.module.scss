@@ -9,6 +9,8 @@
 .dot {
   fill: currentColor;
   width: 0.6mm;
+  height: 0.6mm;
+  display: block;
 
   // filter: drop-shadow(0 0 0.1em var(--color));
   box-shadow: 0 0 0.1mm var(--color);

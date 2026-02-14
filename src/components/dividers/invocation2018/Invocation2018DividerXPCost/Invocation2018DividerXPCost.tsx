@@ -31,8 +31,11 @@ export const Invocation2018DividerXPCost = ({
             <svg
               className={S.dot}
               viewBox='0 0 40 40'
+              width='0.6mm'
+              height='0.6mm'
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
             >
               <circle cx='20' cy='20' r='20' />
             </svg>

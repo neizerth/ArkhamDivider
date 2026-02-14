@@ -89,14 +89,6 @@ export const PDFLayout = ({
     bleedSize: Math.round(toPrintSize(bleed.size)),
   };
 
-  console.log({
-    pageSize,
-    size,
-    layout,
-    guideArea,
-    bleed,
-  });
-
   return (
     <Document>
       {pages.map(({ rows, side }, pageIndex) => (
