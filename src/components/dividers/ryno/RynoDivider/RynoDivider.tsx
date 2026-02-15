@@ -157,9 +157,11 @@ export const RynoDivider = (props: DividerProps) => {
             </div>
           </div>
         )}
+        <NotExportable>
+          <DividerMenu id={id} className={S.menu} />
+        </NotExportable>
         {cornerRadius && (
           <NotExportable>
-            <DividerMenu id={id} className={S.menu} />
             <DividerCornerRadius className={S.cornerRadius} />
           </NotExportable>
         )}
