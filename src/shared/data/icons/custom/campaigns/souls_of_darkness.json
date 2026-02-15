@@ -15,5 +15,13 @@
     "icon": "souls_of_darkness-thralls",
     "scale": 1.1,
     "top": -8
+  },
+  {
+    "icon": "souls_of_darkness-crimson_harvest",
+    "scale": 0.85
+  },
+  {
+    "icon": "souls_of_darkness-temple_of_blood",
+    "top": -4
   }
 ]
