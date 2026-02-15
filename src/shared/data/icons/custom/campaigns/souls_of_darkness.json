@@ -1,0 +1,19 @@
+[
+  {
+    "icon": "souls_of_darkness-astral_perils",
+    "scale": 1.2,
+    "top": 5,
+    "left": 0
+  },
+  {
+    "icon": "souls_of_darkness-hounds_of_tindalos",
+    "scale": 1.15,
+    "top": 6,
+    "left": 2
+  },
+  {
+    "icon": "souls_of_darkness-thralls",
+    "scale": 1.1,
+    "top": -8
+  }
+]

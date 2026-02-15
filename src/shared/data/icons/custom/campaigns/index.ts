@@ -7,6 +7,7 @@ import zcf from './zcf.json';
 import zcp from './zcp.json';
 import zdm from './zdm.json';
 import night_of_vespers from './night_of_vespers.json';
+import souls_of_darkness from './souls_of_darkness.json';
 
 export default [
   ...ages_unwound,
@@ -18,4 +19,5 @@ export default [
   ...jumanji,
   ...celtic_rising,
   ...night_of_vespers,
+  ...souls_of_darkness,
 ];
