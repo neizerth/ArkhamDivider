@@ -7,8 +7,11 @@ import { DividerType } from '@/shared/types/dividers';
 import { encounterImages } from './images/encounter';
 import { playerImages } from './images/player';
 import { scenarioImages } from './images/scenario';
+import { backImages } from './images/back';
+
 import S from './SarnetskyDividerBackground.module.scss';
 import { DEFAULT_COLOR, storyColors } from './storyColors';
+import { LayoutOrientation } from '@/shared/types/layouts';
 
 export const SarnetskyPlayerBackground = ({ id }: { id: string }) => {
   const src = playerImages.find(propEq(id, 'id'))?.background;
@@ -62,17 +65,29 @@ export const SarnetskyLayeredBackground = ({
   );
 };
 
+export const SarnetskyBlankBackground = ({ orientation }: { orientation: LayoutOrientation }) => {
+  const background = backImages[orientation];
+  return <img src={background} alt='background' className={S.background} />;
+};
+
 export type SarnetskyDividerBackgroundProps = {
   id: string;
   type: DividerType;
   storyCode?: string;
+  blank?: boolean;
+  orientation: LayoutOrientation;
 };
 
 export const SarnetskyDividerBackground = ({
   id,
   type,
   storyCode,
+  blank,
+  orientation,
 }: SarnetskyDividerBackgroundProps) => {
+  if (blank) {
+    return <SarnetskyBlankBackground orientation={orientation} />;
+  }
   return (
     <>
       {[DividerType.PLAYER, DividerType.INVESTIGATOR].includes(type) && (

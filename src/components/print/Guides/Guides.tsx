@@ -7,7 +7,6 @@ import { useAppSelector } from '@/shared/lib/hooks/useAppSelector';
 import { selectCropMarks } from '@/shared/store/features/print/print';
 import { selectExport } from '@/shared/store/features/app/app';
 
-
 const DEFAULT_GUIDE_TYPE = 'cross';
 
 type GuideConfig = GuideType | false;

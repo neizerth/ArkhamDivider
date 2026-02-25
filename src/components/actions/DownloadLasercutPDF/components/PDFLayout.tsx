@@ -92,7 +92,12 @@ export const PDFLayout = ({
   return (
     <Document>
       {pages.map(({ rows, side }, pageIndex) => (
-        <Page key={pageIndex} size={size} style={[styles.page, { backgroundColor: 'white' }]} wrap={false}>
+        <Page
+          key={pageIndex}
+          size={size}
+          style={[styles.page, { backgroundColor: 'white' }]}
+          wrap={false}
+        >
           <PageGuides
             area={guideArea}
             rows={rows}
@@ -116,7 +121,11 @@ export const PDFLayout = ({
           >
             <View style={styles.content}>
               {rows.map((row, rowIndex) => (
-                <Row key={rowIndex} back={side === PageSide.BACK} style={{ zIndex: 1, position: 'relative' }}>
+                <Row
+                  key={rowIndex}
+                  back={side === PageSide.BACK}
+                  style={{ zIndex: 1, position: 'relative' }}
+                >
                   {row.map((divider) => (
                     <Image key={divider.id} src={divider.src} style={dividerWithBleedStyle} />
                   ))}

@@ -40,7 +40,8 @@ export const SarnetskyDivider = (props: DividerProps) => {
   const { t } = useStoryTranslation(story);
 
   const language = useAppSelector(selectLanguage);
-  const { orientation } = useAppSelector(selectLayout);
+  const layout = useAppSelector(selectLayout);
+  const { orientation, customParams } = layout;
   const cornerRadius = useAppSelector(selectCornerRadius);
 
   const [previewIcon, selectPreviewIcon] = useIconSelect({
@@ -75,7 +76,7 @@ export const SarnetskyDivider = (props: DividerProps) => {
 
   const titleInputClassName = classNames(S.titleInput, S[`titleInput_${type}`]);
 
-  console.log(titleInputClassName);
+  const blank = Boolean(customParams?.blank) && Boolean(props.backId);
 
   const rowSize = orientation === LayoutOrientation.VERTICAL ? 8 : 10;
   const showIcon = (isScenario || isEncounter) && icon;
@@ -88,77 +89,88 @@ export const SarnetskyDivider = (props: DividerProps) => {
             id={tag || faction || icon || ''}
             storyCode={story?.return_to_code || story?.code}
             type={type}
+            blank={blank}
+            orientation={orientation}
           />
         </div>
-        {xpCost && (
+        {!blank && (
           <>
-            <div className={S.xpCost}>
-              <SarnetskyDividerSideXP xpCost={xpCost} />
-            </div>
-            <div className={S.sideXP}>
-              <SarnetskyDividerXPCost xpCost={xpCost} />
-            </div>
-            {faction && icon && (
-              <div className={S.xpTitle}>
-                <SarnetskyDividerXPText xpCost={xpCost} faction={faction} icon={icon} />
+            {xpCost && (
+              <>
+                <div className={S.xpCost}>
+                  <SarnetskyDividerSideXP xpCost={xpCost} />
+                </div>
+                <div className={S.sideXP}>
+                  <SarnetskyDividerXPCost xpCost={xpCost} />
+                </div>
+                {faction && icon && (
+                  <div className={S.xpTitle}>
+                    <SarnetskyDividerXPText xpCost={xpCost} faction={faction} icon={icon} />
+                  </div>
+                )}
+              </>
+            )}
+            {story && scenario && (
+              <div className={S.scenarioTitle}>
+                <DividerText
+                  defaultValue={`${t(story.name)}. \u{200B}${t(scenario.header)}`}
+                  inputClassName={S.scenarioInputTitle}
+                />
               </div>
             )}
-          </>
-        )}
-        {story && scenario && (
-          <div className={S.scenarioTitle}>
-            <DividerText
-              defaultValue={`${t(story.name)}. \u{200B}${t(scenario.header)}`}
-              inputClassName={S.scenarioInputTitle}
-            />
-          </div>
-        )}
-        {showIcon && previewIcon && (
-          <div className={classNames(S.icon, S[`icon_type-${type}`])} onClick={selectPreviewIcon}>
-            <Icon icon={previewIcon} scaleType={isScenario ? 'circle' : 'square'} />
-          </div>
-        )}
-        {isScenario && campaignIcon && (
-          <div className={classNames(S.icon, S.campaignIcon)} onClick={selectCampaignIcon}>
-            <Icon icon={campaignIcon} />
-          </div>
-        )}
-        {name && (
-          <div className={classNames(titleClassName)}>
-            <DividerText
-              defaultValue={translatedName}
-              inputClassName={titleInputClassName}
-              minFontSize={60}
-              fixedFontSize={isEncounter}
-            />
-          </div>
-        )}
-        <div className={S.content}>
-          {showIcon && (
-            <MainIcon className={S.mainIcon} dynamicHeight={Boolean(scenario)} icon={icon} />
-          )}
-          {scenario && (
-            <div className={classNames(S.encounters)}>
-              {!scenario.scenarios && <ScenarioEncounters scenario={scenario} rowSize={rowSize} />}
-              {scenario.scenarios && (
-                <LinkedScenarioEncounters
-                  mainScenario={scenario}
-                  scenarios={scenario.scenarios}
-                  rowSize={rowSize}
+            {showIcon && previewIcon && (
+              <div
+                className={classNames(S.icon, S[`icon_type-${type}`])}
+                onClick={selectPreviewIcon}
+              >
+                <Icon icon={previewIcon} scaleType={isScenario ? 'circle' : 'square'} />
+              </div>
+            )}
+            {isScenario && campaignIcon && (
+              <div className={classNames(S.icon, S.campaignIcon)} onClick={selectCampaignIcon}>
+                <Icon icon={campaignIcon} />
+              </div>
+            )}
+            {name && (
+              <div className={classNames(titleClassName)}>
+                <DividerText
+                  defaultValue={translatedName}
+                  inputClassName={titleInputClassName}
+                  minFontSize={60}
+                  fixedFontSize={isEncounter}
                 />
+              </div>
+            )}
+            <div className={S.content}>
+              {showIcon && (
+                <MainIcon className={S.mainIcon} dynamicHeight={Boolean(scenario)} icon={icon} />
+              )}
+              {scenario && (
+                <div className={classNames(S.encounters)}>
+                  {!scenario.scenarios && (
+                    <ScenarioEncounters scenario={scenario} rowSize={rowSize} />
+                  )}
+                  {scenario.scenarios && (
+                    <LinkedScenarioEncounters
+                      mainScenario={scenario}
+                      scenarios={scenario.scenarios}
+                      rowSize={rowSize}
+                    />
+                  )}
+                </div>
               )}
             </div>
-          )}
-        </div>
-        <NotExportable>
-          <div className={S.menu}>
-            <DividerMenu id={id} className={S.menuContainer} />
-          </div>
-        </NotExportable>
-        {cornerRadius && (
-          <NotExportable>
-            <DividerCornerRadius className={classNames(S.cornerRadius)} />
-          </NotExportable>
+            <NotExportable>
+              <div className={S.menu}>
+                <DividerMenu id={id} className={S.menuContainer} />
+              </div>
+            </NotExportable>
+            {cornerRadius && (
+              <NotExportable>
+                <DividerCornerRadius className={classNames(S.cornerRadius)} />
+              </NotExportable>
+            )}
+          </>
         )}
       </DividerContent>
     </div>
