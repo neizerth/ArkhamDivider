@@ -32,50 +32,53 @@ function IconSelectionListComponent({
 
 	return (
 		<Box {...props}>
-			<Box
-				ref={scrollRef}
-				sx={{
-					paddingRight: {
-						md: 2,
-					},
-				}}
-				maxHeight="calc(100vh - 10rem)"
-				overflow="auto"
-			>
+			<Box borderRadius={1} overflow="hidden">
 				<Box
+					ref={scrollRef}
 					sx={{
-						minHeight: totalSize,
-						width: "100%",
+						maxHeight: "calc(100vh - 10rem)",
+						overflow: "auto",
+
+						paddingRight: {
+							md: 2,
+						},
 					}}
 				>
-					{paddingTop > 0 && (
-						<Box component="div" sx={{ height: paddingTop, width: "100%" }} />
-					)}
-					{virtualItems.map((virtualRow) => {
-						const group = iconGroups[virtualRow.index];
-						const ref = sectionRefs[virtualRow.index];
+					<Box
+						sx={{
+							minHeight: totalSize,
+							width: "100%",
+						}}
+					>
+						{paddingTop > 0 && (
+							<Box component="div" sx={{ height: paddingTop, width: "100%" }} />
+						)}
+						{virtualItems.map((virtualRow) => {
+							const group = iconGroups[virtualRow.index];
+							const ref = sectionRefs[virtualRow.index];
 
-						const handleGroupRef = (el: HTMLDivElement | null) => {
-							virtualizer.measureElement(el as HTMLDivElement | undefined);
-							if (ref && el) {
-								ref.current = el;
-							}
-						};
+							const handleGroupRef = (el: HTMLDivElement | null) => {
+								virtualizer.measureElement(el as HTMLDivElement | undefined);
+								if (ref && el) {
+									ref.current = el;
+								}
+							};
 
-						return (
-							<Box
-								key={group.id}
-								ref={handleGroupRef}
-								data-index={virtualRow.index}
-								sx={{ width: "100%" }}
-							>
-								<IconSelectionGroup group={group} />
-							</Box>
-						);
-					})}
-					{paddingBottom > 0 && (
-						<Box sx={{ height: paddingBottom, width: "100%" }} />
-					)}
+							return (
+								<Box
+									key={group.id}
+									ref={handleGroupRef}
+									data-index={virtualRow.index}
+									sx={{ width: "100%" }}
+								>
+									<IconSelectionGroup group={group} />
+								</Box>
+							);
+						})}
+						{paddingBottom > 0 && (
+							<Box sx={{ height: paddingBottom, width: "100%" }} />
+						)}
+					</Box>
 				</Box>
 			</Box>
 		</Box>

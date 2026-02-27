@@ -15,7 +15,10 @@ export const useIconGroupHeight = ({ containerWidth }: Options) => {
 		(group: IconGroup) => {
 			const gap = em;
 
-			const columnsCount = Math.floor(containerWidth / (ICON_GROUP_SIZE + gap));
+			const columnsCount = Math.max(
+				1,
+				Math.floor(containerWidth / (ICON_GROUP_SIZE + gap)),
+			);
 
 			const subgroupHeight =
 				group.groups.reduce((acc, subgroup) => {

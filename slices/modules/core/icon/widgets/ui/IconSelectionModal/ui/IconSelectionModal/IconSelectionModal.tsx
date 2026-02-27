@@ -5,6 +5,7 @@ import { IconSelectionContext } from "../../../../../shared/ui";
 import { useIconGroups } from "../../lib";
 import type { IconSelectionSectionRef } from "../../model";
 import { IconSelectionList } from "../IconSelectionList";
+import { IconSelectionPreview } from "../IconSelectionPreview";
 
 export function IconSelectionModal() {
 	const { t } = useTranslation();
@@ -29,7 +30,7 @@ export function IconSelectionModal() {
 				<Grid
 					size={{
 						xs: 12,
-						md: 8,
+						md: 9,
 					}}
 				>
 					<IconSelectionList
@@ -37,6 +38,14 @@ export function IconSelectionModal() {
 						sectionRefs={sectionRefs.current}
 						ref={listSectionRef}
 					/>
+				</Grid>
+				<Grid
+					size={{
+						xs: 12,
+						md: 3,
+					}}
+				>
+					<IconSelectionPreview />
 				</Grid>
 			</Grid>
 			<DialogActions>
