@@ -68,5 +68,6 @@
 	"story.type.official": "Official",
 	"story.type.campaign": "Campaigns",
 	"story.type.standalone": "Standalone",
-	"story.type.challenge": "Challenges"
+	"story.type.challenge": "Challenges",
+	"print.cornerRadius": "Corner radius: 4mm"
 }

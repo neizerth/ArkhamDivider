@@ -1,6 +1,7 @@
 export * from "./box";
 export * from "./collection";
 export * from "./criteria";
+export * from "./function";
 export * from "./number";
 export * from "./object";
 export * from "./promise";

@@ -21,3 +21,5 @@ export type IconPosition = {
 	left?: number;
 	top?: number;
 };
+
+export type OnIconSelectedCallback = (icon: string | null) => void;

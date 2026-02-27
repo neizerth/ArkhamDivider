@@ -80,8 +80,8 @@ export type BaseDividerData<Params = void> = {
 	title: string;
 	fontSizeScale?: number;
 	customTitle?: string;
-	icon?: string;
-	customIcon?: string;
+	icon?: string | null;
+	customIcon?: string | null;
 	params?: Params;
 };
 

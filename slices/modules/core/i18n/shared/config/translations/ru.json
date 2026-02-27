@@ -40,7 +40,6 @@
 	"Promotional": "Промо",
 	"Campaign is not supported": "Нет поддержки дизайна для этой кампании",
 	"Crop marks": "Метки обрезки",
-	"Corner radius": "Скругление",
 	"Page Size": "Размер страницы",
 	"Bands": "Ленты",
 	"Stickers": "Наклейки",
@@ -110,5 +109,6 @@
 	"story.type.official": "Официальные",
 	"story.type.campaign": "Кампании",
 	"story.type.standalone": "Одиночные",
-	"story.type.challenge": "Испытания"
+	"story.type.challenge": "Испытания",
+	"print.cornerRadius": "Скругление углов: 4мм"
 }

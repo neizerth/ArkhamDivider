@@ -156,19 +156,6 @@ export function PrintSettings(props: PrintSettingsProps) {
 											selector={selectBleedEnabled}
 										/>
 									</ListItemButton>
-
-									<ListItemButton onClick={toggleShowCornerRadius}>
-										<ListItemIcon>
-											<SvgIcon>
-												<CornerRadius />
-											</SvgIcon>
-										</ListItemIcon>
-										<ListItemText primary={t(`Corner radius`)} />
-										<StoreSwitch
-											actionCreator={setShowCornerRadius}
-											selector={selectShowCornerRadius}
-										/>
-									</ListItemButton>
 									<ListItemButton onClick={toggleDoubleSidePrintEnabled}>
 										<ListItemIcon>
 											<ImportContactsIcon />
@@ -189,14 +176,16 @@ export function PrintSettings(props: PrintSettingsProps) {
 											selector={selectSingleItemPerPage}
 										/>
 									</ListItemButton>
-									<ListItemButton onClick={toggleEnablePageCounter}>
+									<ListItemButton onClick={toggleShowCornerRadius}>
 										<ListItemIcon>
-											<PinOutlinedIcon />
+											<SvgIcon>
+												<CornerRadius />
+											</SvgIcon>
 										</ListItemIcon>
-										<ListItemText primary={t(`Page counter`)} />
+										<ListItemText primary={t(`print.cornerRadius`)} />
 										<StoreSwitch
-											actionCreator={setEnablePageCounter}
-											selector={selectEnablePageCounter}
+											actionCreator={setShowCornerRadius}
+											selector={selectShowCornerRadius}
 										/>
 									</ListItemButton>
 									<ListItemButton onClick={toggleLasercutEnabled}>
@@ -207,6 +196,16 @@ export function PrintSettings(props: PrintSettingsProps) {
 										<StoreSwitch
 											actionCreator={setLasercutEnabled}
 											selector={selectLasercutEnabled}
+										/>
+									</ListItemButton>
+									<ListItemButton onClick={toggleEnablePageCounter}>
+										<ListItemIcon>
+											<PinOutlinedIcon />
+										</ListItemIcon>
+										<ListItemText primary={t(`Page counter`)} />
+										<StoreSwitch
+											actionCreator={setEnablePageCounter}
+											selector={selectEnablePageCounter}
 										/>
 									</ListItemButton>
 								</List>

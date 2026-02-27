@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import { useCallback, useRef, useState } from "react";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
+import { useIconSelection } from "@/modules/core/icon/entities/lib/hooks/useIconSelection";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
 	DividerBackground as Background,
@@ -96,6 +97,14 @@ export function ClassicDivider(props: DividerWithRelations) {
 		);
 	}, [id, dispatch]);
 
+	const selectBackgroundIcon = useIconSelection({
+		icon,
+		onSelected: (icon) => {
+			console.log("selected background icon", icon);
+			// dispatch(updateDivider({ id, changes: { customIcon: icon } }));
+		},
+	});
+
 	const { background } = layout.params as ClassicLayoutParams;
 
 	const iconObject = getIconObject(props);
@@ -178,6 +187,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 						fontSize={mm(O.backgroundIcon.fontSize)}
 						top={mm(O.backgroundIcon.top)}
 						left={mm(O.backgroundIcon.left)}
+						onClick={selectBackgroundIcon}
 						disableCorrection
 					/>
 				)}
