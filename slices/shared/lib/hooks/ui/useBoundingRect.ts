@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useBoundingRect<T extends HTMLElement>(
-	defaultRef?: React.RefObject<T>,
+	defaultRef?: React.RefObject<T | null>,
 ) {
 	const currentRef = useRef<T>(null);
 	const ref = defaultRef ?? currentRef;

@@ -1,13 +1,15 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { GROUP_HEADER_HEIGHT } from "../../config";
 
 export const Header = styled(Box)(({ theme }) => ({
 	backgroundColor: "black",
 	color: "white",
 	fontSize: 24,
+	lineHeight: 1.15,
 	fontWeight: "bold",
 	paddingInline: theme.spacing(2),
-	height: 40,
+	height: GROUP_HEADER_HEIGHT,
 	borderRadius: theme.spacing(1),
 	position: "sticky",
 	top: 0,
@@ -15,17 +17,6 @@ export const Header = styled(Box)(({ theme }) => ({
 	zIndex: 1,
 	display: "flex",
 	alignItems: "center",
-}));
-
-export const Icon = styled(Box)(({ theme }) => ({
-	width: 53,
-	height: 53,
-	borderRadius: theme.spacing(1),
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-	fontSize: 32,
-	cursor: "pointer",
 }));
 
 export const GroupHeader = styled(Header)(({ theme }) => ({

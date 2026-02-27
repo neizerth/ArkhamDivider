@@ -1,2 +1,2 @@
-export * from "./getIconGroups";
-export * from "./useIconGroups";
+export * from "./hooks";
+export * from "./logic";

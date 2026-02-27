@@ -3,7 +3,7 @@ import { selectIcons } from "@/modules/core/icon/shared/lib";
 import { selectEncounterSets } from "@/modules/encounterSet/shared/lib";
 import { selectStories } from "@/modules/story/shared/lib";
 import { useAppSelector } from "@/shared/lib";
-import { getIconGroups } from "./getIconGroups";
+import { getIconGroups } from "../logic/getIconGroups";
 
 export const useIconGroups = () => {
 	const iconMapping = useAppSelector(selectIcons);

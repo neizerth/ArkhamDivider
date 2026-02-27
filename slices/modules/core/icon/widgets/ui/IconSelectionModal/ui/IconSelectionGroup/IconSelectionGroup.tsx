@@ -1,9 +1,9 @@
 import { Box, type BoxProps, Stack } from "@mui/material";
-import { useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
+import { Icon } from "@/modules/core/icon/shared/ui";
 import { Row } from "@/shared/ui";
 import type { IconGroup } from "../../model";
+import { IconSelectionItem } from "../IconSelectionItem/IconSelectionItem";
 import * as C from "./IconSelectionGroup.components";
 
 type IconSelectionGroupProps = BoxProps & {
@@ -14,16 +14,7 @@ export function IconSelectionGroup({
 	group,
 	...props
 }: IconSelectionGroupProps) {
-	const { selectedIcon, setSelectedIcon } = useContext(IconSelectionContext);
-
 	const { t } = useTranslation();
-
-	const selectIcon = useCallback(
-		(icon: string) => () => {
-			setSelectedIcon(icon);
-		},
-		[setSelectedIcon],
-	);
 
 	return (
 		<Box {...props}>
@@ -41,27 +32,19 @@ export function IconSelectionGroup({
 								{t(group.name)}
 							</C.GroupHeader>
 						)}
-						<Row flexWrap="wrap" gap={1}>
-							{group.icons.map((icon) => {
-								const isSelected = selectedIcon === icon;
-								return (
-									<C.Icon
-										key={`${group.id}-${icon}`}
-										title={icon}
-										sx={{
-											backgroundColor: isSelected
-												? "rgb(255, 205, 72)"
-												: "rgb(248, 248, 248)",
-											"&:hover": {
-												border: isSelected ? "none" : "3px solid #e2e2e2",
-											},
-										}}
-										onClick={selectIcon(icon)}
-									>
-										<Icon icon={icon} />
-									</C.Icon>
-								);
-							})}
+						<Row
+							flexWrap="wrap"
+							gap={1}
+							sx={{
+								justifyContent: {
+									xs: "center",
+									md: "flex-start",
+								},
+							}}
+						>
+							{group.icons.map((icon) => (
+								<IconSelectionItem key={`${group.id}-${icon}`} icon={icon} />
+							))}
 						</Row>
 					</Stack>
 				))}

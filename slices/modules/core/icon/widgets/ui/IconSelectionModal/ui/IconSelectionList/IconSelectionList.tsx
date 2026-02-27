@@ -1,4 +1,6 @@
-import { Box, type BoxProps, Stack } from "@mui/material";
+import { Box, type BoxProps } from "@mui/material";
+import { memo, useRef } from "react";
+import { useIconGroups, useVirtualizedIconGroups } from "../../lib";
 import type { IconGroup, IconSelectionSectionRef } from "../../model";
 import { IconSelectionGroup } from "../IconSelectionGroup";
 
@@ -7,24 +9,77 @@ type IconSelectionListProps = BoxProps & {
 	sectionRefs: IconSelectionSectionRef[];
 };
 
-export function IconSelectionList({
+function IconSelectionListComponent({
 	iconGroups,
 	sectionRefs,
 	...props
 }: IconSelectionListProps) {
+	const scrollRef = useRef<HTMLDivElement>(null);
+
+	const groups = useIconGroups();
+
+	const virtualizer = useVirtualizedIconGroups({
+		containerRef: scrollRef,
+		groups,
+	});
+
+	const virtualItems = virtualizer.getVirtualItems();
+	const firstItem = virtualItems[0];
+	const lastItem = virtualItems[virtualItems.length - 1];
+	const totalSize = virtualizer.getTotalSize();
+	const paddingTop = firstItem?.start ?? 0;
+	const paddingBottom = lastItem ? totalSize - lastItem.end : 0;
+
 	return (
 		<Box {...props}>
-			<Box paddingRight={2} maxHeight="calc(100vh - 10rem)" overflow="auto">
-				<Stack gap={1}>
-					{iconGroups.map((group, index) => (
-						<IconSelectionGroup
-							key={group.id}
-							ref={sectionRefs[index]}
-							group={group}
-						/>
-					))}
-				</Stack>
+			<Box
+				ref={scrollRef}
+				sx={{
+					paddingRight: {
+						md: 2,
+					},
+				}}
+				maxHeight="calc(100vh - 10rem)"
+				overflow="auto"
+			>
+				<Box
+					sx={{
+						minHeight: totalSize,
+						width: "100%",
+					}}
+				>
+					{paddingTop > 0 && (
+						<Box component="div" sx={{ height: paddingTop, width: "100%" }} />
+					)}
+					{virtualItems.map((virtualRow) => {
+						const group = iconGroups[virtualRow.index];
+						const ref = sectionRefs[virtualRow.index];
+
+						const handleGroupRef = (el: HTMLDivElement | null) => {
+							virtualizer.measureElement(el as HTMLDivElement | undefined);
+							if (ref && el) {
+								ref.current = el;
+							}
+						};
+
+						return (
+							<Box
+								key={group.id}
+								ref={handleGroupRef}
+								data-index={virtualRow.index}
+								sx={{ width: "100%" }}
+							>
+								<IconSelectionGroup group={group} />
+							</Box>
+						);
+					})}
+					{paddingBottom > 0 && (
+						<Box sx={{ height: paddingBottom, width: "100%" }} />
+					)}
+				</Box>
 			</Box>
 		</Box>
 	);
 }
+
+export const IconSelectionList = memo(IconSelectionListComponent);

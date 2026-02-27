@@ -1,6 +1,6 @@
 import { getIconSetIcons } from "@/modules/core/icon/shared/lib";
 import type { Icon } from "@/modules/core/icon/shared/model";
-import type { IconGroup } from "../../model";
+import type { IconGroup } from "../../../model";
 
 type Options = {
 	icons: Icon[];

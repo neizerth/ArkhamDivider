@@ -24,9 +24,14 @@ export function IconSelectionModal() {
 	}, [onSelectRef, setSelectionActive]);
 
 	return (
-		<Dialog open={open} onClose={onClose}>
+		<Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
 			<Grid container padding={2}>
-				<Grid size={8}>
+				<Grid
+					size={{
+						xs: 12,
+						md: 8,
+					}}
+				>
 					<IconSelectionList
 						iconGroups={iconGroups}
 						sectionRefs={sectionRefs.current}
