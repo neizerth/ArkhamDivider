@@ -3,13 +3,14 @@ import { useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { downloadIcon } from "@/modules/core/icon/shared/lib";
 import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
-import { Row } from "@/shared/ui";
+import { createMediaURL } from "@/modules/core/media/shared/lib";
+import { Row, Upload } from "@/shared/ui";
 import * as C from "./IconSelectionPreview.components";
 
 type IconSelectionPreviewProps = BoxProps;
 
 export function IconSelectionPreview(props: IconSelectionPreviewProps) {
-	const { selectedIcon } = useContext(IconSelectionContext);
+	const { selectedIcon, setSelectedIcon } = useContext(IconSelectionContext);
 	const { t } = useTranslation();
 
 	const downloadSvg = useCallback(() => {
@@ -19,18 +20,38 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 		downloadIcon(selectedIcon);
 	}, [selectedIcon]);
 
+	const handleUpload = useCallback(
+		async (event: React.ChangeEvent<HTMLInputElement>) => {
+			const file = event.target.files?.[0];
+			if (!file) {
+				return;
+			}
+			const url = await createMediaURL(file);
+
+			setSelectedIcon(url);
+		},
+		[setSelectedIcon],
+	);
+
 	return (
 		<Box {...props}>
-			<Stack>
+			<Stack gap={1} justifyContent="center" alignItems="center">
 				<C.Icon>{selectedIcon && <Icon icon={selectedIcon} />}</C.Icon>
 
 				<ButtonGroup variant="contained" color="primary">
-					<Button>
+					<Upload
+						key={selectedIcon}
+						accept="image/*"
+						onChange={handleUpload}
+						sx={{
+							paddingInline: 2,
+						}}
+					>
 						<Row alignItems="center" gap={1}>
 							<Icon icon="upload" />
 							{t("Upload")}
 						</Row>
-					</Button>
+					</Upload>
 					<Button onClick={downloadSvg}>
 						<Row alignItems="center" gap={1}>
 							<Icon icon="download" /> SVG

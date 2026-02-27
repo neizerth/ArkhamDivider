@@ -6,3 +6,5 @@ export * from "./IconButtonCheckbox";
 export * from "./Select";
 export * from "./StoreSelect";
 export * from "./StoreSwitch";
+export * from "./Upload";
+export * from "./VisuallyHiddenInput";

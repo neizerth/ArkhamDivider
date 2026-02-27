@@ -1,4 +1,4 @@
-import { Box, type BoxProps } from "@mui/material";
+import { Box, type BoxProps, Stack } from "@mui/material";
 import { memo, useRef } from "react";
 import { useIconGroups, useVirtualizedIconGroups } from "../../lib";
 import type { IconGroup, IconSelectionSectionRef } from "../../model";
@@ -44,11 +44,12 @@ function IconSelectionListComponent({
 						},
 					}}
 				>
-					<Box
+					<Stack
 						sx={{
 							minHeight: totalSize,
 							width: "100%",
 						}}
+						gap={1}
 					>
 						{paddingTop > 0 && (
 							<Box component="div" sx={{ height: paddingTop, width: "100%" }} />
@@ -78,7 +79,7 @@ function IconSelectionListComponent({
 						{paddingBottom > 0 && (
 							<Box sx={{ height: paddingBottom, width: "100%" }} />
 						)}
-					</Box>
+					</Stack>
 				</Box>
 			</Box>
 		</Box>

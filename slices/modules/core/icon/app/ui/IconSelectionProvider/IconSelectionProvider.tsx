@@ -1,4 +1,12 @@
-import { type PropsWithChildren, useMemo, useRef, useState } from "react";
+import {
+	type PropsWithChildren,
+	useCallback,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
+import { revokeMediaURL } from "@/modules/core/media/shared/lib";
+import { isCustomIcon } from "../../../shared/lib";
 import type { OnIconSelectedCallback } from "../../../shared/model";
 import {
 	IconSelectionContext,
@@ -7,10 +15,20 @@ import {
 import { IconSelectionModal } from "../../../widgets/ui";
 
 export function IconSelectionProvider({ children }: PropsWithChildren) {
-	const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+	const [selectedIcon, setSelectedIconInternal] = useState<string | null>(null);
 	const [defaultIcon, setDefaultIcon] = useState<string | null>(null);
 	const onSelectRef = useRef<OnIconSelectedCallback | null>(null);
 	const [selectionActive, setSelectionActive] = useState(false);
+
+	const setSelectedIcon = useCallback(
+		(icon: string | null) => {
+			if (isCustomIcon(selectedIcon)) {
+				revokeMediaURL(selectedIcon);
+			}
+			setSelectedIconInternal(icon);
+		},
+		[selectedIcon],
+	);
 
 	const value = useMemo(
 		(): IconSelectionContextValue => ({
@@ -22,7 +40,7 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			selectionActive,
 			setSelectionActive,
 		}),
-		[selectedIcon, defaultIcon, selectionActive],
+		[selectedIcon, defaultIcon, selectionActive, setSelectedIcon],
 	);
 
 	return (
