@@ -11,7 +11,11 @@ import {
 import { useTranslation } from "react-i18next";
 import { useScrollSpy } from "@/shared/lib";
 import { IconSelectionContext } from "../../../../../shared/ui";
-import { findGroupIndexByIcon, useIconGroups } from "../../lib";
+import {
+	findGroupIndexByIcon,
+	useIconGroups,
+	useVirtualizedIconGroups,
+} from "../../lib";
 import type { IconSelectionSectionRef } from "../../model";
 import { IconSelectionList } from "../IconSelectionList";
 import { IconSelectionNav } from "../IconSelectionNav";
@@ -25,7 +29,6 @@ export function IconSelectionModal() {
 
 	const listSectionRef = useRef<HTMLDivElement>(null);
 	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-	const scrollToIndexRef = useRef<((index: number) => void) | null>(null);
 	const [scrollContainerReady, setScrollContainerReady] = useState(false);
 	const sectionRefs = useRef<IconSelectionSectionRef[]>([]);
 
@@ -35,10 +38,14 @@ export function IconSelectionModal() {
 		[iconGroups, defaultIcon],
 	);
 
-	const onScrollContainerMount = useCallback((el: HTMLDivElement | null) => {
-		if (el) {
-			setScrollContainerReady(true);
-		}
+	const { virtualizer, scrollToIndex } = useVirtualizedIconGroups({
+		containerRef: scrollContainerRef,
+		groups: iconGroups,
+		measureTrigger: scrollContainerReady,
+	});
+
+	const onScrollContainerMount = useCallback(() => {
+		setScrollContainerReady(true);
 	}, []);
 
 	if (sectionRefs.current.length !== iconGroups.length) {
@@ -56,17 +63,11 @@ export function IconSelectionModal() {
 	});
 
 	useEffect(() => {
-		if (!open) {
+		if (!open || !scrollContainerReady) {
 			return;
 		}
-		// List заполняет scrollToIndexRef при монтировании — скролл после готовности контейнера
-		const id = requestAnimationFrame(() => {
-			requestAnimationFrame(() => {
-				scrollToIndexRef.current?.(defaultSectionIndex);
-			});
-		});
-		return () => cancelAnimationFrame(id);
-	}, [open, defaultSectionIndex]);
+		scrollToIndex(defaultSectionIndex);
+	}, [open, scrollContainerReady, defaultSectionIndex, scrollToIndex]);
 
 	const onClose = useCallback(() => {
 		setScrollContainerReady(false);
@@ -74,9 +75,12 @@ export function IconSelectionModal() {
 		onSelectRef.current = null;
 	}, [onSelectRef, setSelectionActive]);
 
-	const handleSectionClick = useCallback((index: number) => {
-		scrollToIndexRef.current?.(index);
-	}, []);
+	const handleSectionClick = useCallback(
+		(index: number) => {
+			scrollToIndex(index);
+		},
+		[scrollToIndex],
+	);
 
 	return (
 		<Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
@@ -94,7 +98,7 @@ export function IconSelectionModal() {
 						sectionRefs={sectionRefs.current}
 						scrollContainerRef={scrollContainerRef}
 						onScrollContainerMount={onScrollContainerMount}
-						scrollToIndexRef={scrollToIndexRef}
+						virtualizer={virtualizer}
 						ref={listSectionRef}
 					/>
 				</Grid>

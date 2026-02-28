@@ -1,62 +1,30 @@
 import { Box, type BoxProps, Stack } from "@mui/material";
-import type { RefObject } from "react";
-import { forwardRef, memo, useCallback, useEffect, useRef } from "react";
-import { useVirtualizedIconGroups } from "../../lib";
+import type { Virtualizer } from "@tanstack/react-virtual";
+import { type RefObject, useEffect } from "react";
 import type { IconGroup, IconSelectionSectionRef } from "../../model";
 import { IconSelectionGroup } from "../IconSelectionGroup";
 
 type IconSelectionListProps = BoxProps & {
 	iconGroups: IconGroup[];
 	sectionRefs: IconSelectionSectionRef[];
-	/** Ref контейнера скролла — заполняется при монтировании (для scroll spy) */
 	scrollContainerRef?: RefObject<HTMLDivElement | null>;
-	/** Вызывается при монтировании/размонтировании контейнера (для переподписки scroll spy) */
-	onScrollContainerMount?: (el: HTMLDivElement | null) => void;
-	/** Ref для scrollToIndex — заполняется списком для скролла к группе по умолчанию */
-	scrollToIndexRef?: RefObject<((index: number) => void) | null>;
+	onScrollContainerMount?: () => void;
+	virtualizer: Virtualizer<HTMLDivElement, HTMLDivElement>;
+	ref?: React.Ref<HTMLDivElement>;
 };
 
-const IconSelectionListComponent = forwardRef<
-	HTMLDivElement,
-	IconSelectionListProps
->(function IconSelectionListComponent(
-	{
-		iconGroups,
-		sectionRefs,
-		scrollContainerRef,
-		onScrollContainerMount,
-		scrollToIndexRef,
-		...props
-	},
+function IconSelectionListComponent({
+	iconGroups,
+	sectionRefs,
+	scrollContainerRef,
+	onScrollContainerMount,
+	virtualizer,
 	ref,
-) {
-	const scrollRef = useRef<HTMLDivElement | null>(null);
-
-	const setScrollRef = useCallback(
-		(el: HTMLDivElement | null) => {
-			scrollRef.current = el;
-			if (scrollContainerRef) {
-				(scrollContainerRef as { current: HTMLDivElement | null }).current = el;
-			}
-			onScrollContainerMount?.(el);
-		},
-		[scrollContainerRef, onScrollContainerMount],
-	);
-
-	const { virtualizer, scrollToIndex } = useVirtualizedIconGroups({
-		containerRef: scrollRef,
-		groups: iconGroups,
-	});
-
+	...props
+}: IconSelectionListProps) {
 	useEffect(() => {
-		if (!scrollToIndexRef) {
-			return;
-		}
-		scrollToIndexRef.current = scrollToIndex;
-		return () => {
-			scrollToIndexRef.current = null;
-		};
-	}, [scrollToIndexRef, scrollToIndex]);
+		onScrollContainerMount?.();
+	}, [onScrollContainerMount]);
 
 	const virtualItems = virtualizer.getVirtualItems();
 	const firstItem = virtualItems[0];
@@ -69,8 +37,9 @@ const IconSelectionListComponent = forwardRef<
 		<Box ref={ref} {...props}>
 			<Box borderRadius={1} overflow="hidden">
 				<Box
-					ref={setScrollRef}
+					ref={scrollContainerRef}
 					sx={{
+						minHeight: 200,
 						maxHeight: "calc(100vh - 10rem)",
 						overflow: "auto",
 
@@ -90,12 +59,13 @@ const IconSelectionListComponent = forwardRef<
 						)}
 						{virtualItems.map((virtualRow) => {
 							const group = iconGroups[virtualRow.index];
-							const ref = sectionRefs[virtualRow.index];
+							const sectionRef = sectionRefs[virtualRow.index];
 
 							const handleGroupRef = (el: HTMLDivElement | null) => {
 								virtualizer.measureElement(el as HTMLDivElement | undefined);
-								if (ref && el) {
-									ref.current = el;
+								if (sectionRef && el) {
+									(sectionRef as { current: HTMLDivElement | null }).current =
+										el;
 								}
 							};
 
@@ -118,6 +88,6 @@ const IconSelectionListComponent = forwardRef<
 			</Box>
 		</Box>
 	);
-});
+}
 
-export const IconSelectionList = memo(IconSelectionListComponent);
+export const IconSelectionList = IconSelectionListComponent;

@@ -18,14 +18,17 @@ type UseVirtualizerOptions = Partial<
 type Options = UseVirtualizerOptions & {
 	containerRef: RefObject<HTMLDivElement | null>;
 	groups: IconGroup[];
+	/** true когда контейнер смонтирован — перезапускает замер в useBoundingRect */
+	measureTrigger?: boolean;
 };
 
 export const useVirtualizedIconGroups = ({
 	containerRef,
 	groups,
+	measureTrigger,
 	...options
 }: Options) => {
-	const [_, rect] = useBoundingRect(containerRef);
+	const [_, rect] = useBoundingRect(containerRef, measureTrigger);
 	const containerWidth = rect?.width ?? 0;
 
 	const getGroupHeight = useIconGroupHeight({ containerWidth });

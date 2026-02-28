@@ -1,29 +1,41 @@
-import type { DependencyList } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useBoundingRect<T extends HTMLElement>(
 	defaultRef?: React.RefObject<T | null>,
-	effectDeps?: DependencyList,
+	measureTrigger?: boolean,
 ) {
-	const currentRef = useRef<T>(null);
+	const currentRef = useRef<T | null>(null);
 	const ref = defaultRef ?? currentRef;
 	const [rect, setRect] = useState<DOMRect | null>(null);
 
+	// Без measureTrigger: callback ref и node state (для DividerView, usePrintUnitByRect)
+	const [node, setNode] = useState<T | null>(null);
+	const setRefCallback = useCallback(
+		(el: T | null) => {
+			(ref as React.MutableRefObject<T | null>).current = el;
+			setNode(el);
+		},
+		[ref],
+	);
+
 	useEffect(() => {
-		if (!ref.current) {
+		const el = measureTrigger !== undefined ? ref.current : node;
+		if (!el) {
 			return;
 		}
-		const node = ref.current;
 
-		const setBoundingRect = () => setRect(node.getBoundingClientRect());
+		const setBoundingRect = () => setRect(el.getBoundingClientRect());
 
 		setBoundingRect();
 
 		const observer = new ResizeObserver(setBoundingRect);
 
-		observer.observe(node);
+		observer.observe(el);
 		return () => observer.disconnect();
-	}, [ref, ...(effectDeps ?? [])]);
+	}, [ref, measureTrigger, node]);
 
-	return [ref, rect] as const;
+	if (measureTrigger !== undefined) {
+		return [ref, rect] as const;
+	}
+	return [setRefCallback, rect] as const;
 }
