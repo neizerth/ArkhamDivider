@@ -19,33 +19,35 @@ export const useScrollSpy = ({
 	const [activeSection, setActiveSection] = useState(activeSectionDefault);
 
 	const handle = throttle(throttleMs, () => {
-		let currentSectionId = activeSection;
+		const scrollEl = scrollingElement?.current;
+		const threshold =
+			scrollEl instanceof Element
+				? scrollEl.getBoundingClientRect().top + offsetPx
+				: offsetPx;
+
+		let currentSectionId = 0;
 		for (let i = 0; i < sectionElementRefs.length; i += 1) {
 			const section = sectionElementRefs[i].current;
-			// Needs to be a valid DOM Element
-			if (!section || !(section instanceof Element)) continue;
-			// GetBoundingClientRect returns values relative to viewport
-			if (section.getBoundingClientRect().top + offsetPx < 0) {
-				currentSectionId = i;
+			if (!section || !(section instanceof Element)) {
 				continue;
 			}
-			// No need to continue loop, if last element has been detected
-			break;
+			if (section.getBoundingClientRect().top < threshold) {
+				currentSectionId = i;
+			} else {
+				break;
+			}
 		}
-
 		setActiveSection(currentSectionId);
 	});
 
 	useEffect(() => {
 		const scrollable = scrollingElement?.current ?? window;
-		scrollable.addEventListener("scroll", handle);
-
-		// Run initially
-		handle();
-
-		return () => {
-			scrollable.removeEventListener("scroll", handle);
-		};
+		if (scrollable && typeof scrollable.addEventListener === "function") {
+			scrollable.addEventListener("scroll", handle);
+			handle();
+			return () => scrollable.removeEventListener("scroll", handle);
+		}
+		return undefined;
 	}, [scrollingElement, handle]);
 	return activeSection;
 };

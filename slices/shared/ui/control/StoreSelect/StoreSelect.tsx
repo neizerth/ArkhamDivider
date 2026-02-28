@@ -22,7 +22,9 @@ export function StoreSelect<T = unknown>({
 	const dispatch = useAppDispatch();
 
 	const onChange = (value: T) => {
-		if (!value) return;
+		if (!value) {
+			return;
+		}
 		dispatch(actionCreator(value));
 	};
 

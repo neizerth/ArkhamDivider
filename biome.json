@@ -21,6 +21,9 @@
       },
       "correctness": {
         "noUnusedImports": "error"
+      },
+      "style": {
+        "useBlockStatements": "error"
       }
     }
   },

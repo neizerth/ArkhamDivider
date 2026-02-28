@@ -166,7 +166,9 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 
 	try {
 		renderLoop: for (const pdfLayout of pdfLayouts) {
-			if (cancelled) break;
+			if (cancelled) {
+				break;
+			}
 			doc.addPage();
 			for (const [rowIndex, row] of pdfLayout.items.entries()) {
 				for (const [colIndex, item] of row.items.entries()) {
