@@ -44,9 +44,15 @@ export function IconSelectionModal() {
 		measureTrigger: scrollContainerReady,
 	});
 
-	const onScrollContainerMount = useCallback(() => {
-		setScrollContainerReady(true);
-	}, []);
+	useEffect(() => {
+		if (!open) {
+			return;
+		}
+		const id = requestAnimationFrame(() => {
+			requestAnimationFrame(() => setScrollContainerReady(true));
+		});
+		return () => cancelAnimationFrame(id);
+	}, [open]);
 
 	if (sectionRefs.current.length !== iconGroups.length) {
 		sectionRefs.current = iconGroups.map(() =>
@@ -97,7 +103,6 @@ export function IconSelectionModal() {
 						iconGroups={iconGroups}
 						sectionRefs={sectionRefs.current}
 						scrollContainerRef={scrollContainerRef}
-						onScrollContainerMount={onScrollContainerMount}
 						virtualizer={virtualizer}
 						ref={listSectionRef}
 					/>

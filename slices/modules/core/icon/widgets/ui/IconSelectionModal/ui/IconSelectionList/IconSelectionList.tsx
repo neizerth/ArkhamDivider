@@ -1,6 +1,6 @@
 import { Box, type BoxProps, Stack } from "@mui/material";
 import type { Virtualizer } from "@tanstack/react-virtual";
-import { type RefObject, useEffect } from "react";
+import type { RefObject } from "react";
 import type { IconGroup, IconSelectionSectionRef } from "../../model";
 import { IconSelectionGroup } from "../IconSelectionGroup";
 
@@ -8,7 +8,6 @@ type IconSelectionListProps = BoxProps & {
 	iconGroups: IconGroup[];
 	sectionRefs: IconSelectionSectionRef[];
 	scrollContainerRef?: RefObject<HTMLDivElement | null>;
-	onScrollContainerMount?: () => void;
 	virtualizer: Virtualizer<HTMLDivElement, HTMLDivElement>;
 	ref?: React.Ref<HTMLDivElement>;
 };
@@ -17,15 +16,10 @@ function IconSelectionListComponent({
 	iconGroups,
 	sectionRefs,
 	scrollContainerRef,
-	onScrollContainerMount,
 	virtualizer,
 	ref,
 	...props
 }: IconSelectionListProps) {
-	useEffect(() => {
-		onScrollContainerMount?.();
-	}, [onScrollContainerMount]);
-
 	const virtualItems = virtualizer.getVirtualItems();
 	const firstItem = virtualItems[0];
 	const lastItem = virtualItems[virtualItems.length - 1];
