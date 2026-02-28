@@ -8,8 +8,10 @@ import { IconSelectionGroup } from "../IconSelectionGroup";
 type IconSelectionListProps = BoxProps & {
 	iconGroups: IconGroup[];
 	sectionRefs: IconSelectionSectionRef[];
-	/** Ref контейнера скролла — заполняется при монтировании (для Nav/scroll spy) */
+	/** Ref контейнера скролла — заполняется при монтировании (для scroll spy) */
 	scrollContainerRef?: RefObject<HTMLDivElement | null>;
+	/** Вызывается при монтировании/размонтировании контейнера (для переподписки scroll spy) */
+	onScrollContainerMount?: (el: HTMLDivElement | null) => void;
 	/** Ref для scrollToIndex — заполняется списком для скролла к группе по умолчанию */
 	scrollToIndexRef?: RefObject<((index: number) => void) | null>;
 };
@@ -18,7 +20,14 @@ const IconSelectionListComponent = forwardRef<
 	HTMLDivElement,
 	IconSelectionListProps
 >(function IconSelectionListComponent(
-	{ iconGroups, sectionRefs, scrollContainerRef, scrollToIndexRef, ...props },
+	{
+		iconGroups,
+		sectionRefs,
+		scrollContainerRef,
+		onScrollContainerMount,
+		scrollToIndexRef,
+		...props
+	},
 	ref,
 ) {
 	const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -27,10 +36,11 @@ const IconSelectionListComponent = forwardRef<
 		(el: HTMLDivElement | null) => {
 			scrollRef.current = el;
 			if (scrollContainerRef) {
-				scrollContainerRef.current = el;
+				(scrollContainerRef as { current: HTMLDivElement | null }).current = el;
 			}
+			onScrollContainerMount?.(el);
 		},
-		[scrollContainerRef],
+		[scrollContainerRef, onScrollContainerMount],
 	);
 
 	const { virtualizer, scrollToIndex } = useVirtualizedIconGroups({

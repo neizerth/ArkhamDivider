@@ -1,33 +1,21 @@
 import { Box, type BoxProps, Stack } from "@mui/material";
-import { type RefObject, useCallback } from "react";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useScrollSpy } from "@/shared/lib";
 import type { IconGroup } from "../../model";
 
 type IconSelectionNavProps = BoxProps & {
 	iconGroups: IconGroup[];
-	sectionRefs: RefObject<HTMLElement | null>[];
-	scrollContainerRef: RefObject<HTMLDivElement | null>;
 	onSectionClick?: (index: number) => void;
-	activeSectionDefault?: number;
+	activeIndex?: number;
 };
 
 export function IconSelectionNav({
 	iconGroups,
-	sectionRefs,
-	scrollContainerRef,
-	activeSectionDefault = 0,
+	activeIndex = 0,
 	onSectionClick,
 	...props
 }: IconSelectionNavProps) {
 	const { t } = useTranslation();
-
-	const activeSection = useScrollSpy({
-		sectionElementRefs: sectionRefs,
-		scrollingElement: scrollContainerRef,
-		activeSectionDefault,
-		offsetPx: 48,
-	});
 
 	const handleSectionClick = useCallback(
 		(index: number) => () => {
@@ -53,8 +41,8 @@ export function IconSelectionNav({
 							borderRadius: 1,
 							cursor: "pointer",
 							bgcolor:
-								activeSection === index ? "action.selected" : "transparent",
-							fontWeight: activeSection === index ? 600 : 400,
+								activeIndex === index ? "action.selected" : "transparent",
+							fontWeight: activeIndex === index ? 600 : 400,
 							"&:hover": { bgcolor: "action.hover" },
 						}}
 					>

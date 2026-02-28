@@ -6,8 +6,10 @@ import {
 	useEffect,
 	useMemo,
 	useRef,
+	useState,
 } from "react";
 import { useTranslation } from "react-i18next";
+import { useScrollSpy } from "@/shared/lib";
 import { IconSelectionContext } from "../../../../../shared/ui";
 import { findGroupIndexByIcon, useIconGroups } from "../../lib";
 import type { IconSelectionSectionRef } from "../../model";
@@ -24,6 +26,7 @@ export function IconSelectionModal() {
 	const listSectionRef = useRef<HTMLDivElement>(null);
 	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 	const scrollToIndexRef = useRef<((index: number) => void) | null>(null);
+	const [scrollContainerReady, setScrollContainerReady] = useState(false);
 	const sectionRefs = useRef<IconSelectionSectionRef[]>([]);
 
 	const iconGroups = useIconGroups();
@@ -32,11 +35,25 @@ export function IconSelectionModal() {
 		[iconGroups, defaultIcon],
 	);
 
+	const onScrollContainerMount = useCallback((el: HTMLDivElement | null) => {
+		if (el) {
+			setScrollContainerReady(true);
+		}
+	}, []);
+
 	if (sectionRefs.current.length !== iconGroups.length) {
 		sectionRefs.current = iconGroups.map(() =>
 			createRef<HTMLDivElement | null>(),
 		);
 	}
+
+	const activeIndex = useScrollSpy({
+		sectionElementRefs: sectionRefs.current,
+		scrollingElement: scrollContainerRef,
+		scrollingElementReady: scrollContainerReady,
+		activeSectionDefault: defaultSectionIndex,
+		offsetPx: 48,
+	});
 
 	useEffect(() => {
 		if (!open) {
@@ -52,6 +69,7 @@ export function IconSelectionModal() {
 	}, [open, defaultSectionIndex]);
 
 	const onClose = useCallback(() => {
+		setScrollContainerReady(false);
 		setSelectionActive(false);
 		onSelectRef.current = null;
 	}, [onSelectRef, setSelectionActive]);
@@ -75,6 +93,7 @@ export function IconSelectionModal() {
 						iconGroups={iconGroups}
 						sectionRefs={sectionRefs.current}
 						scrollContainerRef={scrollContainerRef}
+						onScrollContainerMount={onScrollContainerMount}
 						scrollToIndexRef={scrollToIndexRef}
 						ref={listSectionRef}
 					/>
@@ -90,10 +109,8 @@ export function IconSelectionModal() {
 						<IconSelectionPreview display={{ xs: "none", sm: "block" }} />
 						<IconSelectionNav
 							iconGroups={iconGroups}
-							sectionRefs={sectionRefs.current}
-							scrollContainerRef={scrollContainerRef}
 							onSectionClick={handleSectionClick}
-							activeSectionDefault={defaultSectionIndex}
+							activeIndex={activeIndex}
 						/>
 					</Stack>
 				</Grid>
