@@ -15,12 +15,12 @@ type HeaderProps = JSX.IntrinsicElements["header"];
 
 export function Header(props: HeaderProps) {
 	const theme = useTheme();
-	const media = theme.breakpoints.only("xs");
-	const isXS = useMediaQuery(media);
+	const mobileMedia = theme.breakpoints.down("md");
+	const isXS = useMediaQuery(theme.breakpoints.only("xs"));
 	const headerVisible = useDisplayOnScroll({
 		offsetDown: 80,
 		offsetUp: 40,
-		media,
+		media: mobileMedia,
 	});
 
 	return (
