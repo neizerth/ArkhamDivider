@@ -19,10 +19,7 @@ export const getSidebarSx = (navActive: boolean): SxProps => ({
 	alignSelf: "stretch",
 	top: 0,
 	left: 0,
-	backgroundColor: {
-		xs: "background.paper",
-		sm: "transparent",
-	},
+	bottom: 0,
 	zIndex: 1,
 	opacity: { xs: navActive ? 1 : 0, sm: 1 },
 	transform: {

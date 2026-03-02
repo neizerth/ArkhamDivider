@@ -3,7 +3,10 @@ import type { SxProps, Theme } from "@mui/material";
 export const getContainerSx = ({ theme }: { theme: Theme }): SxProps => ({
 	display: "flex",
 	flexDirection: "column",
-	flex: 1,
+	flex: {
+		xs: -1,
+		sm: 1,
+	},
 	minHeight: 0,
 	overflow: "hidden",
 	position: "relative",
@@ -12,6 +15,10 @@ export const getContainerSx = ({ theme }: { theme: Theme }): SxProps => ({
 	paddingBottom: {
 		xs: 2,
 		sm: 0,
+	},
+	backgroundColor: {
+		xs: theme.palette.background.paper,
+		sm: "transparent",
 	},
 });
 
@@ -35,9 +42,8 @@ export const getScrollContainerSx = ({
 	left: 0,
 	right: 0,
 	boxShadow: [
-		scrollShadows.top && `inset 0 8px 12px -8px ${theme.palette.grey[400]}`,
-		scrollShadows.bottom &&
-			`inset 0 -10px 16px -4px ${theme.palette.grey[400]}`,
+		scrollShadows.top && `inset 0 8px 12px -8px ${theme.palette.grey[300]}`,
+		scrollShadows.bottom && `inset 0 -8px 12px -4px ${theme.palette.grey[300]}`,
 	]
 		.filter(Boolean)
 		.join(", "),

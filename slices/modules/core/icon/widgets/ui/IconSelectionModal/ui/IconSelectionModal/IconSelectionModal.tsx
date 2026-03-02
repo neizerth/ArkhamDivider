@@ -1,4 +1,12 @@
-import { Box, Button, Dialog, DialogActions, Grid, Stack } from "@mui/material";
+import {
+	Box,
+	Button,
+	ClickAwayListener,
+	Dialog,
+	DialogActions,
+	Grid,
+	Stack,
+} from "@mui/material";
 import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useScrollSpy } from "@/shared/lib";
@@ -142,12 +150,14 @@ export function IconSelectionModal() {
 					>
 						<Stack gap={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
 							<IconSelectionPreview display={{ xs: "none", sm: "block" }} />
-							<IconSelectionNav
-								iconGroups={iconGroups}
-								onSectionClick={handleSectionClick}
-								onClose={setNavActive.toggle}
-								activeIndex={activeIndex}
-							/>
+							<ClickAwayListener onClickAway={setNavActive.off}>
+								<IconSelectionNav
+									iconGroups={iconGroups}
+									onSectionClick={handleSectionClick}
+									onClose={setNavActive.off}
+									activeIndex={activeIndex}
+								/>
+							</ClickAwayListener>
 						</Stack>
 					</Grid>
 				</Grid>
@@ -157,12 +167,18 @@ export function IconSelectionModal() {
 					flexShrink: 0,
 					flexWrap: "wrap",
 					gap: {
-						xs: `0.5em 0`,
-						sm: 0,
+						xs: `0.5em 0em`,
 					},
 				}}
 			>
-				<Button variant="outlined" color="secondary" onClick={onClose}>
+				<Button
+					variant="outlined"
+					color="secondary"
+					onClick={onClose}
+					sx={{
+						marginLeft: { xs: 1 },
+					}}
+				>
 					{t`Cancel`}
 				</Button>
 				{defaultIcon && !isDefaultIcon && (

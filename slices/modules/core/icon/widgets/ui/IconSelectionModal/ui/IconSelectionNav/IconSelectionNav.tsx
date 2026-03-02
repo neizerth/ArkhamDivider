@@ -7,7 +7,7 @@ import {
 	getButtonSx,
 	getContainerSx,
 	getScrollContainerSx,
-} from "./IconSelection.styles";
+} from "./IconSelectionNav.styles";
 
 const SCROLL_SHADOW_THRESHOLD = 4;
 
