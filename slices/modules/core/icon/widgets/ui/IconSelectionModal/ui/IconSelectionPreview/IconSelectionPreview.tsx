@@ -1,5 +1,5 @@
 import { Box, type BoxProps, Button, ButtonGroup, Stack } from "@mui/material";
-import { isString } from "ramda-adjunct";
+import { compact, isString } from "ramda-adjunct";
 import { useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { downloadIcon } from "@/modules/core/icon/entities/lib";
@@ -30,9 +30,12 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 			}
 			const mediaId = await addMedia(file);
 			const mime = file.type;
+			const extension = file.name.split(".").pop()?.toLowerCase();
+
 			const icon = createMediaIcon({
 				mediaId,
 				mime,
+				extension,
 			});
 
 			setSelectedIcon(icon);
@@ -45,26 +48,31 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 		<Box {...props}>
 			<Stack gap={1} justifyContent="center" alignItems="center">
 				<C.Icon>{selectedIcon && <Icon icon={selectedIcon} />}</C.Icon>
-
+			</Stack>
+			<Stack alignItems="center">
 				<ButtonGroup variant="contained" color="primary">
-					<Upload
-						key={iconId}
-						accept="image/*"
-						onChange={handleUpload}
-						sx={{
-							paddingInline: 2,
-						}}
-					>
-						<Row alignItems="center" gap={1}>
-							<Icon icon="upload" />
-							{t("Upload")}
-						</Row>
-					</Upload>
-					<Button onClick={downloadSvg}>
-						<Row alignItems="center" gap={1}>
-							<Icon icon="download" /> SVG
-						</Row>
-					</Button>
+					{compact([
+						<Upload
+							key={iconId}
+							accept="image/*"
+							onChange={handleUpload}
+							sx={{
+								paddingInline: 2,
+							}}
+						>
+							<Row alignItems="center" gap={1}>
+								<Icon icon="upload" />
+								{t("Upload")}
+							</Row>
+						</Upload>,
+						isString(selectedIcon) && (
+							<Button key="download" onClick={downloadSvg}>
+								<Row alignItems="center" gap={1}>
+									<Icon icon="download" /> SVG
+								</Row>
+							</Button>
+						),
+					])}
 				</ButtonGroup>
 			</Stack>
 		</Box>

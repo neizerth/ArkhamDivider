@@ -16,6 +16,7 @@ import { IconSelectionModal } from "../../../widgets/ui";
 export function IconSelectionProvider({ children }: PropsWithChildren) {
 	const [selectedIcon, setSelectedIconInternal] = useState<Icon | null>(null);
 	const [defaultIcon, setDefaultIcon] = useState<Icon | null>(null);
+	const [initialIcon, setInitialIcon] = useState<Icon | null>(null);
 	const onSelectRef = useRef<OnIconSelectedCallback | null>(null);
 	const [selectionActive, setSelectionActive] = useState(false);
 
@@ -33,20 +34,29 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 		[clearSelectedIcon],
 	);
 
+	const save = useCallback(
+		(icon: Icon | null) => {
+			clearSelectedIcon();
+			onSelectRef.current?.(icon);
+			setSelectionActive(false);
+		},
+		[clearSelectedIcon],
+	);
+
 	const select = useCallback(() => {
-		onSelectRef.current?.(selectedIcon);
-		clearSelectedIcon();
-	}, [clearSelectedIcon, selectedIcon]);
+		save(selectedIcon);
+	}, [save, selectedIcon]);
 
 	const reset = useCallback(() => {
-		setSelectedIconInternal(null);
-		setDefaultIcon(defaultIcon);
-	}, [defaultIcon]);
+		save(defaultIcon);
+	}, [save, defaultIcon]);
 
 	const value = useMemo(
 		(): IconSelectionContextValue => ({
 			setSelectedIcon,
 			setDefaultIcon,
+			setInitialIcon,
+			initialIcon,
 			selectedIcon,
 			defaultIcon,
 			onSelectRef,
@@ -58,6 +68,7 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 		}),
 		[
 			selectedIcon,
+			initialIcon,
 			defaultIcon,
 			selectionActive,
 			setSelectedIcon,

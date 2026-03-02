@@ -13,13 +13,19 @@ export function useIconSelection({
 	defaultIcon = icon ?? null,
 	onSelected,
 }: Options) {
-	const { setSelectedIcon, setDefaultIcon, setSelectionActive, onSelectRef } =
-		useContext(IconSelectionContext);
+	const {
+		setSelectedIcon,
+		setDefaultIcon,
+		setInitialIcon,
+		setSelectionActive,
+		onSelectRef,
+	} = useContext(IconSelectionContext);
 
 	return useCallback(() => {
 		console.log("selection start", icon);
 		setSelectedIcon(icon);
 		setDefaultIcon(defaultIcon);
+		setInitialIcon(icon);
 		setSelectionActive(true);
 		onSelectRef.current = onSelected;
 	}, [
@@ -30,5 +36,6 @@ export function useIconSelection({
 		setDefaultIcon,
 		onSelectRef,
 		setSelectionActive,
+		setInitialIcon,
 	]);
 }

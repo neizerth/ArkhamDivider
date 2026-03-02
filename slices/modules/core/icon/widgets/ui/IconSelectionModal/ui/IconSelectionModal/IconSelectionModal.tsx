@@ -26,6 +26,7 @@ import { contentSx, getSidebarSx } from "./IconSelectionModal.styles";
 export function IconSelectionModal() {
 	const { t } = useTranslation();
 	const {
+		initialIcon,
 		defaultIcon,
 		selectedIcon,
 		selectionActive,
@@ -36,7 +37,7 @@ export function IconSelectionModal() {
 		reset,
 	} = useContext(IconSelectionContext);
 	const open = selectionActive;
-	const isDefaultIcon = defaultIcon === selectedIcon;
+	const isDefaultIcon = initialIcon === selectedIcon;
 
 	const listSectionRef = useRef<HTMLDivElement>(null);
 	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -134,7 +135,7 @@ export function IconSelectionModal() {
 						size={{
 							xs: 12,
 							sm: 7,
-							md: 9,
+							md: 8,
 						}}
 						sx={{
 							filter: {
@@ -159,7 +160,7 @@ export function IconSelectionModal() {
 						size={{
 							xs: 12,
 							sm: 5,
-							md: 3,
+							md: 4,
 						}}
 						sx={sidebarSx}
 					>
