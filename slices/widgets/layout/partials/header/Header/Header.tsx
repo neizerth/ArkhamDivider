@@ -8,15 +8,12 @@ import {
 } from "@/modules/divider/entities/ui";
 import { PrintButton, PrintSettings } from "@/modules/print/widgets/ui";
 import { RenderProgress } from "@/modules/render/entities/ui";
-import { selectDividerRenderId } from "@/modules/render/shared/lib";
-import { useAppSelector } from "@/shared/lib";
 import * as C from "./Header.components";
 
 type HeaderProps = JSX.IntrinsicElements["header"];
 
 export function Header(props: HeaderProps) {
 	const theme = useTheme();
-	const _exportId = useAppSelector(selectDividerRenderId);
 
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	return (

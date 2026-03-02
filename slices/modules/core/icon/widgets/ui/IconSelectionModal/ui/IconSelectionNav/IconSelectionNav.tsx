@@ -36,15 +36,18 @@ export function IconSelectionNav({
 
 	return (
 		<Box
+			{...props}
 			sx={{
 				display: "flex",
 				flexDirection: "column",
 				flex: 1,
 				minHeight: 0,
 				overflow: "hidden",
-				...sx,
+				position: "relative",
+				borderRadius: 1,
+				padding: 1,
+				height: "100%",
 			}}
-			{...props}
 		>
 			{onClose && (
 				<Box
@@ -66,38 +69,47 @@ export function IconSelectionNav({
 			)}
 			<Box
 				sx={{
-					flex: 1,
-					minHeight: 0,
 					overflow: "auto",
+
+					position: {
+						xs: "static",
+						sm: "absolute",
+					},
+					top: 0,
+					bottom: 0,
+					left: 0,
+					right: 0,
 				}}
 			>
-				<Stack component="nav" gap={1}>
-					{iconGroups.map((group, index) => (
-						<Box
-							key={group.id}
-							component="button"
-							type="button"
-							ref={(el: HTMLElement | null) => {
-								buttonRefs.current[index] = el;
-							}}
-							onClick={handleSectionClick(index)}
-							sx={{
-								py: 1,
-								px: 2,
-								textAlign: "left",
-								border: "none",
-								borderRadius: 1,
-								cursor: "pointer",
-								bgcolor:
-									activeIndex === index ? "action.selected" : "transparent",
-								fontWeight: activeIndex === index ? 600 : 400,
-								"&:hover": { bgcolor: "action.hover" },
-							}}
-						>
-							{t(group.name)}
-						</Box>
-					))}
-				</Stack>
+				<Box>
+					<Stack component="nav" gap={1}>
+						{iconGroups.map((group, index) => (
+							<Box
+								key={group.id}
+								component="button"
+								type="button"
+								ref={(el: HTMLElement | null) => {
+									buttonRefs.current[index] = el;
+								}}
+								onClick={handleSectionClick(index)}
+								sx={{
+									py: 1,
+									px: 2,
+									textAlign: "left",
+									border: "none",
+									borderRadius: 1,
+									cursor: "pointer",
+									bgcolor:
+										activeIndex === index ? "action.selected" : "transparent",
+									fontWeight: activeIndex === index ? 600 : 400,
+									"&:hover": { bgcolor: "action.hover" },
+								}}
+							>
+								{t(group.name)}
+							</Box>
+						))}
+					</Stack>
+				</Box>
 			</Box>
 		</Box>
 	);

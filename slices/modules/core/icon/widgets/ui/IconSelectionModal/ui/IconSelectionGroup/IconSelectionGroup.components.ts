@@ -5,7 +5,6 @@ import { GROUP_HEADER_HEIGHT } from "../../config";
 export const Header = styled(Box)(({ theme }) => ({
 	backgroundColor: "black",
 	color: "white",
-	fontSize: 24,
 	lineHeight: 0.85,
 	fontWeight: "bold",
 	paddingInline: theme.spacing(2),

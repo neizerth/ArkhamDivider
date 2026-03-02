@@ -4,6 +4,7 @@ import type { Icon, OnIconSelectedCallback } from "../../model";
 export type IconSelectionContextValue = {
 	selectionActive: boolean;
 	setSelectedIcon: (icon: Icon | null) => void;
+	clearSelectedIcon: () => void;
 	setDefaultIcon: (icon: Icon | null) => void;
 	selectedIcon: Icon | null;
 	defaultIcon: Icon | null;
@@ -14,6 +15,7 @@ export type IconSelectionContextValue = {
 export const IconSelectionContext = createContext<IconSelectionContextValue>({
 	selectionActive: false,
 	setSelectedIcon: () => {},
+	clearSelectedIcon: () => {},
 	setDefaultIcon: () => {},
 	selectedIcon: null,
 	defaultIcon: null,

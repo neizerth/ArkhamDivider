@@ -2,11 +2,8 @@ import { Box, type BoxProps, Button, ButtonGroup, Stack } from "@mui/material";
 import { isString } from "ramda-adjunct";
 import { useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
-import {
-	createMediaIcon,
-	downloadIcon,
-	getIconId,
-} from "@/modules/core/icon/shared/lib";
+import { downloadIcon } from "@/modules/core/icon/entities/lib";
+import { createMediaIcon, getIconId } from "@/modules/core/icon/shared/lib";
 import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
 import { addMedia } from "@/modules/core/media/shared/lib";
 import { Row, Upload } from "@/shared/ui";

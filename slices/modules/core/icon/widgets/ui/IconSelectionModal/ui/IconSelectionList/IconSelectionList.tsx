@@ -43,9 +43,8 @@ function IconSelectionListComponent({
 					ref={scrollContainerRef}
 					sx={{
 						minHeight: 200,
-						maxHeight: "calc(100vh - 10rem)",
+						maxHeight: "calc(100vh - 8rem)",
 						overflow: "auto",
-
 						paddingRight: {
 							sm: 2,
 						},

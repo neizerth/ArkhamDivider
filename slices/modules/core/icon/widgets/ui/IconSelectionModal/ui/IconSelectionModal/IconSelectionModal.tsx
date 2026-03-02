@@ -21,6 +21,7 @@ import {
 import { IconSelectionList } from "../IconSelectionList";
 import { IconSelectionNav } from "../IconSelectionNav";
 import { IconSelectionPreview } from "../IconSelectionPreview";
+import { contentSx, getSidebarSx } from "./IconSelectionModal.styles";
 
 export function IconSelectionModal() {
 	const { t } = useTranslation();
@@ -28,8 +29,9 @@ export function IconSelectionModal() {
 		defaultIcon,
 		selectedIcon,
 		selectionActive,
-		setSelectionActive,
+		clearSelectedIcon,
 		onSelectRef,
+		setSelectionActive,
 	} = useContext(IconSelectionContext);
 	const open = selectionActive;
 	const isDefaultIcon = defaultIcon === selectedIcon;
@@ -80,10 +82,12 @@ export function IconSelectionModal() {
 	}, [open, scrollContainerReady, defaultSectionIndex, scrollToIndex]);
 
 	const onClose = useCallback(() => {
-		setScrollContainerReady(false);
+		console.log("onClose");
+		clearSelectedIcon();
 		setSelectionActive(false);
+		setScrollContainerReady(false);
 		onSelectRef.current = null;
-	}, [onSelectRef, setSelectionActive]);
+	}, [onSelectRef, clearSelectedIcon, setSelectionActive]);
 
 	const handleSectionClick = useCallback(
 		(index: number) => {
@@ -95,6 +99,8 @@ export function IconSelectionModal() {
 		[scrollToIndex, setNavActive],
 	);
 
+	const sidebarSx = getSidebarSx(navActive);
+
 	return (
 		<Dialog
 			open={open}
@@ -105,6 +111,7 @@ export function IconSelectionModal() {
 				sx: {
 					display: "flex",
 					flexDirection: "column",
+					height: "calc(100vh - 4rem)",
 					maxHeight: "100vh",
 				},
 			}}
@@ -118,16 +125,7 @@ export function IconSelectionModal() {
 					flexDirection: "column",
 				}}
 			>
-				<Grid
-					container
-					padding={2}
-					position="relative"
-					sx={{
-						flex: 1,
-						minHeight: 0,
-						overflow: "hidden",
-					}}
-				>
+				<Grid container padding={2} position="relative" sx={contentSx}>
 					<Grid
 						size={{
 							xs: 12,
@@ -152,26 +150,7 @@ export function IconSelectionModal() {
 							sm: 5,
 							md: 3,
 						}}
-						sx={{
-							position: {
-								xs: "absolute",
-								sm: "static",
-							},
-							display: {
-								xs: navActive ? "flex" : "none",
-								sm: "flex",
-							},
-							flexDirection: "column",
-							minHeight: 0,
-							maxHeight: "100%",
-							top: 0,
-							left: 0,
-							backgroundColor: {
-								xs: "background.paper",
-								sm: "transparent",
-							},
-							zIndex: 1,
-						}}
+						sx={sidebarSx}
 					>
 						<Stack gap={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
 							<IconSelectionPreview display={{ xs: "none", sm: "block" }} />
@@ -180,10 +159,6 @@ export function IconSelectionModal() {
 								onSectionClick={handleSectionClick}
 								onClose={setNavActive.toggle}
 								activeIndex={activeIndex}
-								sx={{
-									borderRadius: 1,
-									padding: 1,
-								}}
 							/>
 						</Stack>
 					</Grid>

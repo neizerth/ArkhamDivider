@@ -10,13 +10,24 @@ export const getMediaUrl = async (id?: string | null) => {
 	if (url) {
 		return url;
 	}
-	const blob = await getMediaById(id);
+	const blob = await getMediaBlob(id);
 	if (!blob) {
 		return null;
 	}
 	const blobUrl = URL.createObjectURL(blob);
 	urlMap.set(id, blobUrl);
 	return blobUrl;
+};
+
+export const getMediaBlob = async (id?: string | null) => {
+	if (!id) {
+		return null;
+	}
+	const blob = await getMediaById(id);
+	if (!blob) {
+		return null;
+	}
+	return blob;
 };
 
 export const revokeMediaById = (id: string) => {

@@ -31,7 +31,14 @@ export function IconSelectionGroup({
 	return (
 		<Box {...props}>
 			<Stack gap={1}>
-				<C.Header onClick={onHeaderClick}>{t(group.name)}</C.Header>
+				<C.Header
+					onClick={onHeaderClick}
+					sx={{
+						fontSize: { xs: 18, sm: 24 },
+					}}
+				>
+					{t(group.name)}
+				</C.Header>
 				{group.groups.map((group, index) => (
 					<Stack key={`${group.id}-${index}`} gap={1}>
 						{group.name && (

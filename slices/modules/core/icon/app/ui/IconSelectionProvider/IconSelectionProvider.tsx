@@ -19,14 +19,18 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 	const onSelectRef = useRef<OnIconSelectedCallback | null>(null);
 	const [selectionActive, setSelectionActive] = useState(false);
 
+	const clearSelectedIcon = useCallback(() => {
+		if (isMediaItem(selectedIcon)) {
+			revokeMediaById(selectedIcon.mediaId);
+		}
+	}, [selectedIcon]);
+
 	const setSelectedIcon = useCallback(
 		(icon: Icon | null) => {
-			if (isMediaItem(selectedIcon)) {
-				revokeMediaById(selectedIcon.mediaId);
-			}
+			clearSelectedIcon();
 			setSelectedIconInternal(icon);
 		},
-		[selectedIcon],
+		[clearSelectedIcon],
 	);
 
 	const value = useMemo(
@@ -38,8 +42,15 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			onSelectRef,
 			selectionActive,
 			setSelectionActive,
+			clearSelectedIcon,
 		}),
-		[selectedIcon, defaultIcon, selectionActive, setSelectedIcon],
+		[
+			selectedIcon,
+			defaultIcon,
+			selectionActive,
+			setSelectedIcon,
+			clearSelectedIcon,
+		],
 	);
 
 	return (
