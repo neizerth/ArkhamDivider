@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import { useCallback, useRef, useState } from "react";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
-import { useIconSelection } from "@/modules/core/icon/entities/lib/hooks/useIconSelection";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
 	DividerBackground as Background,
@@ -11,6 +10,7 @@ import {
 	DividerText,
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
+import { useDividerIcon } from "@/modules/divider/features/lib/hooks/useDividerIcon";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
 import {
 	selectPlayerParams,
@@ -28,27 +28,14 @@ import { classicDividerTextColor } from "../../config/common";
 import { getIconObject } from "../../lib";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import { ClassicDividerXP as XP } from "../ClassicDividerXP";
-import {
-	getBackgroundIconSx,
-	getDividerCardsSx,
-	getDividerStatsSx,
-	getIconSx,
-	getMenuSx,
-	getNumericXPSx,
-	getOutlineSx,
-	getStrokeSx,
-	getTextSx,
-	getTitleClearSx,
-	getXPSx,
-} from "./ClassicDivider.styles";
+import * as S from "./ClassicDivider.styles";
 
 type ClassicLayoutParams = {
 	background: string;
 };
 
 export function ClassicDivider(props: DividerWithRelations) {
-	const { story, id } = props;
-	const icon = props.icon;
+	const { story, id, icon } = props;
 
 	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout) as DividerLayout;
@@ -63,19 +50,19 @@ export function ClassicDivider(props: DividerWithRelations) {
 	}, [showCardsInfo]);
 
 	const getLocaleSx = useLocaleSx();
-	const titleSx = getLocaleSx(getTextSx);
+	const titleSx = getLocaleSx(S.getTextSx);
 
 	const getPrintSx = usePrintUnit();
-	const iconSx = getPrintSx(getIconSx);
-	const backgroundIconSx = getPrintSx(getBackgroundIconSx);
-	const dividerStatsSx = getPrintSx(getDividerStatsSx);
-	const strokeSx = getPrintSx(getStrokeSx);
-	const dividerCardsSx = getPrintSx(getDividerCardsSx);
-	const titleClearSx = getPrintSx(getTitleClearSx);
-	const menuSx = getPrintSx(getMenuSx);
-	const outlineSx = getLocaleSx(getOutlineSx);
-	const xpSx = getPrintSx(getXPSx);
-	const numericXPSx = getPrintSx(getNumericXPSx);
+	const iconSx = getPrintSx(S.getIconSx);
+	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
+	const dividerStatsSx = getPrintSx(S.getDividerStatsSx);
+	const strokeSx = getPrintSx(S.getStrokeSx);
+	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);
+	const titleClearSx = getPrintSx(S.getTitleClearSx);
+	const menuSx = getPrintSx(S.getMenuSx);
+	const outlineSx = getLocaleSx(S.getOutlineSx);
+	const xpSx = getPrintSx(S.getXPSx);
+	const numericXPSx = getPrintSx(S.getNumericXPSx);
 
 	const translatedTitle = translateStory(props?.title);
 	const title = customTitle.current ?? translatedTitle;
@@ -97,12 +84,13 @@ export function ClassicDivider(props: DividerWithRelations) {
 		);
 	}, [id, dispatch]);
 
-	const selectBackgroundIcon = useIconSelection({
+	const getDividerIcon = useDividerIcon({
+		dividerId: id,
 		icon,
-		onSelected: (icon) => {
-			console.log("selected background icon", icon);
-			// dispatch(updateDivider({ id, changes: { customIcon: icon } }));
-		},
+	});
+
+	const [backgroundIcon, selectBackgroundIcon] = getDividerIcon({
+		customField: "background",
 	});
 
 	const { background } = layout.params as ClassicLayoutParams;
@@ -183,7 +171,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 					<Icon
 						dividerId={id}
 						sx={backgroundIconSx}
-						icon={icon}
+						icon={backgroundIcon}
 						fontSize={mm(O.backgroundIcon.fontSize)}
 						top={mm(O.backgroundIcon.top)}
 						left={mm(O.backgroundIcon.left)}
