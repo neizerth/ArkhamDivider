@@ -1,12 +1,20 @@
 import type { BoxProps } from "@mui/material";
-import { isBlobUrl } from "@/modules/core/media/shared/lib";
-import type { BaseIconProps } from "../../model";
-import { CustomIcon } from "../CustomIcon";
+import { isString } from "ramda-adjunct";
+import type { BaseIconProps, Icon as IconType } from "../../model";
 import { FontIcon } from "../FontIcon";
+import { MediaIcon } from "../MediaIcon";
 
-export type IconProps = BoxProps & BaseIconProps;
+export type IconProps = BoxProps &
+	BaseIconProps & {
+		icon?: IconType | string | null;
+	};
 
-export function Icon(props: IconProps) {
-	const Component = isBlobUrl(props.icon) ? CustomIcon : FontIcon;
-	return <Component {...props} />;
+export function Icon({ icon, ...props }: IconProps) {
+	if (!icon) {
+		return null;
+	}
+	if (isString(icon)) {
+		return <FontIcon icon={icon} {...props} />;
+	}
+	return <MediaIcon mediaId={icon.mediaId} {...props} />;
 }

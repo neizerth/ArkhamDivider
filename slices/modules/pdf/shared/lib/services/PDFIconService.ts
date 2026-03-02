@@ -1,4 +1,5 @@
 import { omit } from "ramda";
+import { isString } from "ramda-adjunct";
 import { defaultIconPositionManifest } from "@/modules/core/icon/shared/config";
 import {
 	getIconCorrection,
@@ -6,6 +7,7 @@ import {
 } from "@/modules/core/icon/shared/lib";
 import type {
 	BaseIconProps,
+	Icon,
 	IconMapping,
 	IconPositionManifest,
 } from "@/modules/core/icon/shared/model";
@@ -18,6 +20,7 @@ export type DrawIconOptions = Omit<DrawTextOptions, "fontFamily"> & {
 };
 
 export type GetIconOptions = BaseIconProps & {
+	icon: string;
 	x: number;
 	y: number;
 	fontSize: number;
@@ -101,7 +104,14 @@ export class PDFIconService {
 		};
 	}
 
-	async draw(id: string, options: DrawIconOptions) {
+	async draw(icon: Icon, options: DrawIconOptions) {
+		if (isString(icon)) {
+			return this.drawFontIcon(icon, options);
+		}
+		return;
+	}
+
+	async drawFontIcon(id: string, options: DrawIconOptions) {
 		const icon = this.getIcon({
 			icon: id,
 			...options,

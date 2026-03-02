@@ -83,7 +83,6 @@ export const getEncounterSetDividers = ({
 
 	const scenarioEncounterSetDividers = story.scenarios.map(
 		(scenario): Divider => {
-			const { icon } = scenario;
 			const title = scenario.scenario_name;
 
 			const cards = getScenarioCards({
@@ -92,6 +91,7 @@ export const getEncounterSetDividers = ({
 			});
 
 			const cardsCount = cards.reduce((total, { size }) => total + size, 0);
+			const { icon } = scenario;
 
 			return {
 				id: v4(),

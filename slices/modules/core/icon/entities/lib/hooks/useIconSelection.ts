@@ -1,10 +1,10 @@
 import { useCallback, useContext } from "react";
-import type { OnIconSelectedCallback } from "../../../shared/model";
+import type { Icon, OnIconSelectedCallback } from "../../../shared/model";
 import { IconSelectionContext } from "../../../shared/ui";
 
 type Options = {
-	icon?: string | null;
-	defaultIcon?: string | null;
+	icon?: Icon | null;
+	defaultIcon?: Icon | null;
 	onSelected: OnIconSelectedCallback;
 };
 

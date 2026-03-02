@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
+import { isString } from "ramda-adjunct";
 import { defaultIconPositionManifest } from "../../../shared/config";
 import { getIconCorrection } from "../../../shared/lib";
 import type { IconPositionManifest } from "../../../shared/model";
@@ -34,17 +35,18 @@ export function IconCorrection({
 	sx: sxProp,
 	...props
 }: IconCorrectionProps) {
-	const correction = fontSize
-		? getIconCorrection({
-				icon,
-				manifest,
-				fontSize,
-			})
-		: {
-				fontSize,
-				top: 0,
-				left: 0,
-			};
+	const correction =
+		fontSize && isString(icon)
+			? getIconCorrection({
+					icon,
+					manifest,
+					fontSize,
+				})
+			: {
+					fontSize,
+					top: 0,
+					left: 0,
+				};
 
 	const baseSx: SxProps = {
 		position: "relative",

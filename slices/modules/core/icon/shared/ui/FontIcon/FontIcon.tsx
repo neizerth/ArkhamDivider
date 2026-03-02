@@ -6,7 +6,10 @@ import { selectIconById } from "../../lib/store/selectors/selectIconById";
 import type { BaseIconProps } from "../../model";
 import * as C from "./FontIcon.components";
 
-export type FontIconProps = BoxProps & BaseIconProps;
+export type FontIconProps = BoxProps &
+	BaseIconProps & {
+		icon: string;
+	};
 export function FontIcon(props: FontIconProps) {
 	const { scaleType, scaleFactor } = props;
 	const icon = useAppSelector((state) => selectIconById(state, props.icon));

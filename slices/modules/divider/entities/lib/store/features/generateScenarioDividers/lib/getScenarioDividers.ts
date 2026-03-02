@@ -35,7 +35,6 @@ export const getScenarioDividers = ({
 	const sortedScenarios = sortWith([sortFilter], scenarios);
 
 	return sortedScenarios.map((scenario): Divider => {
-		const { icon } = scenario;
 		const title = scenario.scenario_name;
 
 		const params = {
@@ -45,6 +44,8 @@ export const getScenarioDividers = ({
 
 		const cards = getScenarioCards(params);
 		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
+
+		const { icon } = scenario;
 
 		return {
 			id: v4(),

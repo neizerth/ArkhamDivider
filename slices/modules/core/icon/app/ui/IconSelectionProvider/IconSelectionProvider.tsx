@@ -5,8 +5,8 @@ import {
 	useRef,
 	useState,
 } from "react";
-import { isBlobUrl, revokeMediaUrl } from "@/modules/core/media/shared/lib";
-import type { OnIconSelectedCallback } from "../../../shared/model";
+import { isMediaItem, revokeMediaById } from "@/modules/core/media/shared/lib";
+import type { Icon, OnIconSelectedCallback } from "../../../shared/model";
 import {
 	IconSelectionContext,
 	type IconSelectionContextValue,
@@ -14,15 +14,15 @@ import {
 import { IconSelectionModal } from "../../../widgets/ui";
 
 export function IconSelectionProvider({ children }: PropsWithChildren) {
-	const [selectedIcon, setSelectedIconInternal] = useState<string | null>(null);
-	const [defaultIcon, setDefaultIcon] = useState<string | null>(null);
+	const [selectedIcon, setSelectedIconInternal] = useState<Icon | null>(null);
+	const [defaultIcon, setDefaultIcon] = useState<Icon | null>(null);
 	const onSelectRef = useRef<OnIconSelectedCallback | null>(null);
 	const [selectionActive, setSelectionActive] = useState(false);
 
 	const setSelectedIcon = useCallback(
-		(icon: string | null) => {
-			if (isBlobUrl(selectedIcon)) {
-				revokeMediaUrl(selectedIcon);
+		(icon: Icon | null) => {
+			if (isMediaItem(selectedIcon)) {
+				revokeMediaById(selectedIcon.mediaId);
 			}
 			setSelectedIconInternal(icon);
 		},

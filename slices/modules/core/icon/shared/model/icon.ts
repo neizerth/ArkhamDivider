@@ -1,4 +1,5 @@
 import type { ArkhamDivider } from "arkham-divider-data";
+import type { MediaItem } from "@/modules/core/media/shared/model";
 import type { Single } from "@/shared/model";
 
 export type ArkhamDividerIcon = Single<ArkhamDivider.Core["icons"]>;
@@ -6,10 +7,7 @@ export type IconMapping = Record<string, ArkhamDividerIcon>;
 
 export type IconScaleType = "circle" | "square" | false;
 
-export type Icon = {
-	type: "font" | "media";
-	icon: string;
-};
+export type Icon = string | MediaItem;
 
 export type IconScaleFactor = {
 	all?: number;
