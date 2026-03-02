@@ -23,7 +23,7 @@ export function PagePreviewZoomSelect(props: PagePreviewZoomSelectProps) {
 		[dispatch],
 	);
 
-	const isXS = useMediaQuery(theme.breakpoints.down("sm"));
+	const isXS = useMediaQuery(theme.breakpoints.only("xs"));
 
 	const levels = useMemo(() => {
 		if (isXS) {

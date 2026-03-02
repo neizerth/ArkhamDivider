@@ -8,16 +8,30 @@ import {
 } from "@/modules/divider/entities/ui";
 import { PrintButton, PrintSettings } from "@/modules/print/widgets/ui";
 import { RenderProgress } from "@/modules/render/entities/ui";
+import { useDisplayOnScroll } from "@/shared/lib/hooks/ui";
 import * as C from "./Header.components";
 
 type HeaderProps = JSX.IntrinsicElements["header"];
 
 export function Header(props: HeaderProps) {
 	const theme = useTheme();
+	const media = theme.breakpoints.only("xs");
+	const isXS = useMediaQuery(media);
+	const headerVisible = useDisplayOnScroll({
+		offsetDown: 80,
+		offsetUp: 40,
+		media,
+	});
 
-	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	return (
-		<C.Container {...props} sx={{ displayPrint: "none" }}>
+		<C.Container
+			{...props}
+			sx={{
+				displayPrint: "none",
+				transform: headerVisible ? "translateY(0)" : "translateY(-100%)",
+				transition: "transform 0.25s ease-in-out",
+			}}
+		>
 			<Container sx={{ paddingInline: { xs: 1, sm: 2 } }}>
 				<C.Content>
 					<C.Section flex={1} gap={2}>
@@ -26,12 +40,12 @@ export function Header(props: HeaderProps) {
 						</C.LogoLink>
 						<C.Section flex={1} gap={1}>
 							<DividerSelect />
-							{!isMobile && <DividerVariantSelect />}
+							{!isXS && <DividerVariantSelect />}
 						</C.Section>
 					</C.Section>
 
 					<C.SecondaryContent>
-						{isMobile && <DividerVariantSelect />}
+						{isXS && <DividerVariantSelect />}
 						<C.Section justifyContent="flex-end" sx={{ gap: { xs: 1, sm: 2 } }}>
 							<PrintSettings />
 							<PrintButton />
