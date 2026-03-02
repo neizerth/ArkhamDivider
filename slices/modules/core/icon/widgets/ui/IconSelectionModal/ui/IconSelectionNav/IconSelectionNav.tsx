@@ -96,7 +96,7 @@ export function IconSelectionNav({
 	} as SxProps;
 
 	return (
-		<Box {...props} sx={sx}>
+		<Box {...props} sx={containerSx}>
 			{onClose && (
 				<Box
 					sx={{
