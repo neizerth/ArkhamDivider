@@ -12,10 +12,7 @@ export const getSidebarSx = (navActive: boolean): SxProps => ({
 		xs: "absolute",
 		sm: "static",
 	},
-	display: {
-		xs: navActive ? "flex" : "none",
-		sm: "flex",
-	},
+	display: "flex",
 	flexDirection: "column",
 	minHeight: 0,
 	overflow: "hidden",
@@ -27,4 +24,14 @@ export const getSidebarSx = (navActive: boolean): SxProps => ({
 		sm: "transparent",
 	},
 	zIndex: 1,
+	opacity: { xs: navActive ? 1 : 0, sm: 1 },
+	transform: {
+		xs: navActive ? "translateX(0)" : "translateX(-100%)",
+		sm: "none",
+	},
+	pointerEvents: { xs: navActive ? "auto" : "none", sm: "auto" },
+	transition: {
+		xs: "opacity 0.25s ease, transform 0.25s ease",
+		sm: "none",
+	},
 });

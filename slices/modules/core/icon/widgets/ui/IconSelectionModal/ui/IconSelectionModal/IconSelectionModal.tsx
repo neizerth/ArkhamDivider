@@ -107,12 +107,14 @@ export function IconSelectionModal() {
 			onClose={onClose}
 			maxWidth="md"
 			fullWidth
-			PaperProps={{
-				sx: {
-					display: "flex",
-					flexDirection: "column",
-					height: "calc(100vh - 4rem)",
-					maxHeight: "100vh",
+			slotProps={{
+				paper: {
+					sx: {
+						display: "flex",
+						flexDirection: "column",
+						height: "calc(100vh - 4rem)",
+						maxHeight: "100vh",
+					},
 				},
 			}}
 		>
@@ -131,6 +133,13 @@ export function IconSelectionModal() {
 							xs: 12,
 							sm: 7,
 							md: 9,
+						}}
+						sx={{
+							filter: {
+								xs: navActive ? "blur(10px)" : "none",
+								sm: "none",
+							},
+							transition: "filter 0.2s ease",
 						}}
 					>
 						<IconSelectionList

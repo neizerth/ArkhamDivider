@@ -4,8 +4,8 @@ import {
 } from "@tanstack/react-virtual";
 import { type RefObject, useCallback } from "react";
 import { useBoundingRect } from "@/shared/lib";
-import { LIST_GROUP_GAP } from "../../../config";
-import type { IconGroup } from "../../../model";
+import { LIST_GROUP_GAP } from "../../config";
+import type { IconGroup } from "../../model";
 import { useIconGroupHeight } from "./useIconGroupHeight";
 
 type UseVirtualizerOptions = Partial<

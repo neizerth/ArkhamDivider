@@ -1,6 +1,6 @@
 import { isString } from "ramda-adjunct";
 import type { Icon } from "@/modules/core/icon/shared/model";
-import type { IconGroup } from "../../../model";
+import type { IconGroup } from "../../model";
 
 export function findGroupIndexByIcon(
 	groups: IconGroup[],

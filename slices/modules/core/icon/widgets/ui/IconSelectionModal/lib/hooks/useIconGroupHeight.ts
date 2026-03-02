@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import { useCallback } from "react";
-import { GROUP_HEADER_HEIGHT, ICON_GROUP_SIZE } from "../../../config";
-import type { IconGroup, IconSubgroup } from "../../../model";
+import { GROUP_HEADER_HEIGHT, ICON_GROUP_SIZE } from "../../config";
+import type { IconGroup, IconSubgroup } from "../../model";
 
 type Options = {
 	containerWidth: number;

@@ -6,8 +6,8 @@ import {
 	factionIcons,
 	slotIcons,
 	statsIcons,
-} from "../../../config/icons";
-import type { IconGroup } from "../../../model";
+} from "../../config/icons";
+import type { IconGroup } from "../../model";
 
 type Options = {
 	icons: ArkhamDividerIcon[];

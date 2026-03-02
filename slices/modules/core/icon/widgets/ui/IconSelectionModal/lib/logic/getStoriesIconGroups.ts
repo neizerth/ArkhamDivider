@@ -8,7 +8,7 @@ import {
 	isSideContent,
 } from "@/modules/story/shared/lib";
 import type { Story } from "@/modules/story/shared/model";
-import type { IconGroup } from "../../../model";
+import type { IconGroup } from "../../model";
 import { getStoryIconSubgroup } from "./getStoryIconSubgroup";
 
 type Options = {

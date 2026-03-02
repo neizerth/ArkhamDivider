@@ -1,6 +1,6 @@
 import { isNotNil, prop, uniq } from "ramda";
 import type { Story } from "@/modules/story/shared/model";
-import type { IconSubgroup } from "../../../model";
+import type { IconSubgroup } from "../../model";
 
 export const getStoryIconSubgroup =
 	(toIcon: (name: string) => string | undefined) =>

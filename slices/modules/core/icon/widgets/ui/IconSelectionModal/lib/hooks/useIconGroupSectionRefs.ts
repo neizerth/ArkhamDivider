@@ -1,5 +1,5 @@
 import { createRef, useRef } from "react";
-import type { IconGroup, IconSelectionSectionRef } from "../../../model";
+import type { IconGroup, IconSelectionSectionRef } from "../../model";
 
 export const useIconGroupSectionRefs = (iconGroups: IconGroup[]) => {
 	const sectionRefs = useRef<IconSelectionSectionRef[]>([]);

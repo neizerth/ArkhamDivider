@@ -1,8 +1,15 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, type BoxProps, IconButton, Stack } from "@mui/material";
-import { useCallback, useEffect, useRef } from "react";
+import { Box, type BoxProps, IconButton, Stack, useTheme } from "@mui/material";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { IconGroup } from "../../model";
+import {
+	getButtonSx,
+	getContainerSx,
+	getScrollContainerSx,
+} from "./IconSelection.styles";
+
+const SCROLL_SHADOW_THRESHOLD = 4;
 
 type IconSelectionNavProps = BoxProps & {
 	iconGroups: IconGroup[];
@@ -20,7 +27,44 @@ export function IconSelectionNav({
 	...props
 }: IconSelectionNavProps) {
 	const { t } = useTranslation();
+	const theme = useTheme();
 	const buttonRefs = useRef<(HTMLElement | null)[]>([]);
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const [scrollShadows, setScrollShadows] = useState({
+		top: false,
+		bottom: false,
+	});
+
+	const updateScrollShadows = useCallback(() => {
+		const el = scrollRef.current;
+		if (!el) {
+			return;
+		}
+		const { scrollTop, scrollHeight, clientHeight } = el;
+		const canScrollUp = scrollTop > SCROLL_SHADOW_THRESHOLD;
+		const canScrollDown =
+			scrollTop + clientHeight < scrollHeight - SCROLL_SHADOW_THRESHOLD;
+		setScrollShadows((prev) =>
+			prev.top !== canScrollUp || prev.bottom !== canScrollDown
+				? { top: canScrollUp, bottom: canScrollDown }
+				: prev,
+		);
+	}, []);
+
+	useEffect(() => {
+		const el = scrollRef.current;
+		if (!el) {
+			return;
+		}
+		updateScrollShadows();
+		const observer = new ResizeObserver(updateScrollShadows);
+		observer.observe(el);
+		el.addEventListener("scroll", updateScrollShadows, { passive: true });
+		return () => {
+			observer.disconnect();
+			el.removeEventListener("scroll", updateScrollShadows);
+		};
+	}, [updateScrollShadows]);
 
 	const handleSectionClick = useCallback(
 		(index: number) => () => {
@@ -34,21 +78,15 @@ export function IconSelectionNav({
 		el?.scrollIntoView({ block: "nearest", behavior: "smooth" });
 	}, [activeIndex]);
 
+	const scrollContainerSx = getScrollContainerSx({
+		theme,
+		scrollShadows,
+	});
+
+	const containerSx = getContainerSx({ theme });
+
 	return (
-		<Box
-			{...props}
-			sx={{
-				display: "flex",
-				flexDirection: "column",
-				flex: 1,
-				minHeight: 0,
-				overflow: "hidden",
-				position: "relative",
-				borderRadius: 1,
-				padding: 1,
-				height: "100%",
-			}}
-		>
+		<Box {...props} sx={containerSx}>
 			{onClose && (
 				<Box
 					sx={{
@@ -67,20 +105,7 @@ export function IconSelectionNav({
 					</IconButton>
 				</Box>
 			)}
-			<Box
-				sx={{
-					overflow: "auto",
-
-					position: {
-						xs: "static",
-						sm: "absolute",
-					},
-					top: 0,
-					bottom: 0,
-					left: 0,
-					right: 0,
-				}}
-			>
+			<Box ref={scrollRef} sx={scrollContainerSx}>
 				<Box>
 					<Stack component="nav" gap={1}>
 						{iconGroups.map((group, index) => (
@@ -92,18 +117,7 @@ export function IconSelectionNav({
 									buttonRefs.current[index] = el;
 								}}
 								onClick={handleSectionClick(index)}
-								sx={{
-									py: 1,
-									px: 2,
-									textAlign: "left",
-									border: "none",
-									borderRadius: 1,
-									cursor: "pointer",
-									bgcolor:
-										activeIndex === index ? "action.selected" : "transparent",
-									fontWeight: activeIndex === index ? 600 : 400,
-									"&:hover": { bgcolor: "action.hover" },
-								}}
+								sx={getButtonSx(activeIndex === index)}
 							>
 								{t(group.name)}
 							</Box>
