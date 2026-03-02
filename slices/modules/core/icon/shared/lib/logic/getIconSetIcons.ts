@@ -1,8 +1,8 @@
 import { prop } from "ramda";
-import type { Icon } from "../../model";
+import type { ArkhamDividerIcon } from "../../model";
 
 type Options = {
-	icons: Icon[];
+	icons: ArkhamDividerIcon[];
 	iconSet: string;
 };
 

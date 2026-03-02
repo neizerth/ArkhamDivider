@@ -1,4 +1,5 @@
 import { Box, type BoxProps, Stack } from "@mui/material";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { Row } from "@/shared/ui";
@@ -8,22 +9,33 @@ import * as C from "./IconSelectionGroup.components";
 
 type IconSelectionGroupProps = BoxProps & {
 	group: IconGroup;
+	onHeaderClick: () => void;
+	onGroupHeaderClick?: (index: number) => void;
 };
 
 export function IconSelectionGroup({
 	group,
+	onHeaderClick,
+	onGroupHeaderClick,
 	...props
 }: IconSelectionGroupProps) {
 	const { t } = useTranslation();
 
+	const handleGroupHeaderClick = useCallback(
+		(index: number) => () => {
+			onGroupHeaderClick?.(index);
+		},
+		[onGroupHeaderClick],
+	);
+
 	return (
 		<Box {...props}>
 			<Stack gap={1}>
-				<C.Header>{t(group.name)}</C.Header>
+				<C.Header onClick={onHeaderClick}>{t(group.name)}</C.Header>
 				{group.groups.map((group, index) => (
 					<Stack key={`${group.id}-${index}`} gap={1}>
 						{group.name && (
-							<C.GroupHeader>
+							<C.GroupHeader onClick={handleGroupHeaderClick(index)}>
 								{group.icon && (
 									<C.GroupIcon>
 										<Icon icon={group.icon} />

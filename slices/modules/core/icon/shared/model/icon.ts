@@ -1,10 +1,15 @@
 import type { ArkhamDivider } from "arkham-divider-data";
 import type { Single } from "@/shared/model";
 
-export type Icon = Single<ArkhamDivider.Core["icons"]>;
-export type IconMapping = Record<string, Icon>;
+export type ArkhamDividerIcon = Single<ArkhamDivider.Core["icons"]>;
+export type IconMapping = Record<string, ArkhamDividerIcon>;
 
 export type IconScaleType = "circle" | "square" | false;
+
+export type Icon = {
+	type: "font" | "media";
+	icon: string;
+};
 
 export type IconScaleFactor = {
 	all?: number;

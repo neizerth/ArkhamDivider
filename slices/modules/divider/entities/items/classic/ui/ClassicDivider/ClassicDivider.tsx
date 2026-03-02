@@ -48,7 +48,7 @@ type ClassicLayoutParams = {
 
 export function ClassicDivider(props: DividerWithRelations) {
 	const { story, id } = props;
-	const icon = props.customIcon ?? props.icon;
+	const icon = props.icon;
 
 	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout) as DividerLayout;

@@ -81,7 +81,6 @@ export type BaseDividerData<Params = void> = {
 	fontSizeScale?: number;
 	customTitle?: string;
 	icon?: string | null;
-	customIcon?: string | null;
 	params?: Params;
 };
 

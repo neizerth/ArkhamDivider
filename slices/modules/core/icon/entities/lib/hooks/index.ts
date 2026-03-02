@@ -1,1 +1,1 @@
-export * from "./useCustomIcon";
+export * from "./useIconId";

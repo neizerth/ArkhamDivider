@@ -9,7 +9,7 @@ const color = cmyk(0, 0, 0, 100);
 
 export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const { story, fontSizeScale = 100 } = props;
-	const icon = props.customIcon ?? props.icon;
+	const icon = props.icon;
 	const { text, unit, language, playerParams } = ctx;
 	const t = withStoryTranslation(story);
 

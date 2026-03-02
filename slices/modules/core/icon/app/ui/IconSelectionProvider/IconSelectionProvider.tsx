@@ -5,8 +5,7 @@ import {
 	useRef,
 	useState,
 } from "react";
-import { revokeMediaURL } from "@/modules/core/media/shared/lib";
-import { isCustomIcon } from "../../../shared/lib";
+import { isBlobUrl, revokeMediaUrl } from "@/modules/core/media/shared/lib";
 import type { OnIconSelectedCallback } from "../../../shared/model";
 import {
 	IconSelectionContext,
@@ -22,8 +21,8 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 
 	const setSelectedIcon = useCallback(
 		(icon: string | null) => {
-			if (isCustomIcon(selectedIcon)) {
-				revokeMediaURL(selectedIcon);
+			if (isBlobUrl(selectedIcon)) {
+				revokeMediaUrl(selectedIcon);
 			}
 			setSelectedIconInternal(icon);
 		},

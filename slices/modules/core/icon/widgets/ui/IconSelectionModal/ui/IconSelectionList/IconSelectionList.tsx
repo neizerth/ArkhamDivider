@@ -4,11 +4,18 @@ import type { RefObject } from "react";
 import type { IconGroup, IconSelectionSectionRef } from "../../model";
 import { IconSelectionGroup } from "../IconSelectionGroup";
 
+type RefElement = HTMLDivElement | null;
+
 type IconSelectionListProps = BoxProps & {
 	iconGroups: IconGroup[];
 	sectionRefs: IconSelectionSectionRef[];
-	scrollContainerRef?: RefObject<HTMLDivElement | null>;
+	scrollContainerRef?: RefObject<RefElement>;
 	virtualizer: Virtualizer<HTMLDivElement, HTMLDivElement>;
+	onSectionHeaderClick?: (index: number) => void;
+	onSectionSubgroupHeaderClick?: (
+		groupIndex: number,
+		subgroupIndex: number,
+	) => void;
 	ref?: React.Ref<HTMLDivElement>;
 };
 
@@ -17,6 +24,8 @@ function IconSelectionListComponent({
 	sectionRefs,
 	scrollContainerRef,
 	virtualizer,
+	onSectionHeaderClick,
+	onSectionSubgroupHeaderClick,
 	ref,
 	...props
 }: IconSelectionListProps) {
@@ -55,12 +64,19 @@ function IconSelectionListComponent({
 							const group = iconGroups[virtualRow.index];
 							const sectionRef = sectionRefs[virtualRow.index];
 
-							const handleGroupRef = (el: HTMLDivElement | null) => {
-								virtualizer.measureElement(el as HTMLDivElement | undefined);
+							const handleGroupRef = (el: RefElement) => {
+								virtualizer.measureElement(el);
 								if (sectionRef && el) {
-									(sectionRef as { current: HTMLDivElement | null }).current =
-										el;
+									sectionRef.current = el;
 								}
+							};
+
+							const handleHeaderClick = () => {
+								onSectionHeaderClick?.(virtualRow.index);
+							};
+
+							const handleGroupHeaderClick = (subgroupIndex: number) => {
+								onSectionSubgroupHeaderClick?.(virtualRow.index, subgroupIndex);
 							};
 
 							return (
@@ -70,7 +86,11 @@ function IconSelectionListComponent({
 									data-index={virtualRow.index}
 									sx={{ width: "100%", pb: 1 }}
 								>
-									<IconSelectionGroup group={group} />
+									<IconSelectionGroup
+										group={group}
+										onHeaderClick={handleHeaderClick}
+										onGroupHeaderClick={handleGroupHeaderClick}
+									/>
 								</Box>
 							);
 						})}

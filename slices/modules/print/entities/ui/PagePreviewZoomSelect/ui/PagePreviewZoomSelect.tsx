@@ -1,8 +1,9 @@
+import { useMediaQuery, useTheme } from "@mui/material";
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { selectPreviewZoom, setPreviewZoom } from "@/modules/print/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 
@@ -12,6 +13,7 @@ export const zoomLevels = [50, 75, 100, 200, 300];
 
 export function PagePreviewZoomSelect(props: PagePreviewZoomSelectProps) {
 	const dispatch = useAppDispatch();
+	const theme = useTheme();
 	const zoom = useAppSelector(selectPreviewZoom);
 
 	const setZoom = useCallback(
@@ -21,20 +23,20 @@ export function PagePreviewZoomSelect(props: PagePreviewZoomSelectProps) {
 		[dispatch],
 	);
 
+	const isXS = useMediaQuery(theme.breakpoints.down("sm"));
+
+	const levels = useMemo(() => {
+		if (isXS) {
+			return zoomLevels.filter((level) => level >= 100);
+		}
+		return zoomLevels;
+	}, [isXS]);
+
 	return (
 		<Box {...props}>
 			<ToggleButtonGroup size="small" value={zoom} onChange={setZoom} exclusive>
-				{zoomLevels.map((level) => (
-					<ToggleButton
-						key={level}
-						value={level}
-						sx={{
-							display: {
-								xs: level < 100 ? "none" : "block",
-								sm: "block",
-							},
-						}}
-					>
+				{levels.map((level) => (
+					<ToggleButton key={level} value={level}>
 						{`${level}%`}
 					</ToggleButton>
 				))}

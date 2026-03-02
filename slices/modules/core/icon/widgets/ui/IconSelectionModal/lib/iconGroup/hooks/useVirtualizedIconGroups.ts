@@ -4,7 +4,7 @@ import {
 } from "@tanstack/react-virtual";
 import { type RefObject, useCallback } from "react";
 import { useBoundingRect } from "@/shared/lib";
-import { GROUP_HEADER_HEIGHT, LIST_GROUP_GAP } from "../../../config";
+import { LIST_GROUP_GAP } from "../../../config";
 import type { IconGroup } from "../../../model";
 import { useIconGroupHeight } from "./useIconGroupHeight";
 
@@ -18,7 +18,6 @@ type UseVirtualizerOptions = Partial<
 type Options = UseVirtualizerOptions & {
 	containerRef: RefObject<HTMLDivElement | null>;
 	groups: IconGroup[];
-	/** true когда контейнер смонтирован — перезапускает замер в useBoundingRect */
 	measureTrigger?: boolean;
 };
 
@@ -51,8 +50,8 @@ export const useVirtualizedIconGroups = ({
 
 			if (offsetInfo) {
 				const [offset] = offsetInfo;
-				const nudge = offset - GROUP_HEADER_HEIGHT;
-				const scrollOffset = Math.max(0, nudge);
+				const scrollPadding = 0;
+				const scrollOffset = Math.max(0, offset - scrollPadding);
 				virtualizer.scrollToOffset(scrollOffset, { behavior: "auto" });
 				return;
 			}

@@ -1,5 +1,5 @@
 import { getIconSetIcons } from "@/modules/core/icon/shared/lib";
-import type { Icon } from "@/modules/core/icon/shared/model";
+import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import {
 	arkhamSlimIgnoredIcons,
 	arkhamSlimSpecialIcons,
@@ -10,7 +10,7 @@ import {
 import type { IconGroup } from "../../../model";
 
 type Options = {
-	icons: Icon[];
+	icons: ArkhamDividerIcon[];
 };
 
 export const getGameIconGroups = ({ icons }: Options): IconGroup[] => {

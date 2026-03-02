@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { getMediaURL } from "../mediaURL";
+import { getMediaUrl } from "../mediaUrl";
 
-export const useMediaURL = (id: string) => {
-	const [url, setUrl] = useState<string | null>(null);
+export const useMediaUrl = (id?: string | null) => {
+	const [url, setUrl] = useState<string | null>(id ?? null);
 
 	useEffect(() => {
 		if (!id) {
 			return;
 		}
-		getMediaURL(id).then(setUrl);
+		getMediaUrl(id).then(setUrl);
 	}, [id]);
 
 	return url;

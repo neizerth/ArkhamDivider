@@ -3,7 +3,7 @@ import { useCallback, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { downloadIcon } from "@/modules/core/icon/shared/lib";
 import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
-import { createMediaURL } from "@/modules/core/media/shared/lib";
+import { createMediaUrl } from "@/modules/core/media/shared/lib";
 import { Row, Upload } from "@/shared/ui";
 import * as C from "./IconSelectionPreview.components";
 
@@ -26,7 +26,7 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 			if (!file) {
 				return;
 			}
-			const url = await createMediaURL(file);
+			const url = await createMediaUrl(file);
 
 			setSelectedIcon(url);
 		},

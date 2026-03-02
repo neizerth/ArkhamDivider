@@ -4,7 +4,7 @@ import { mediaStore } from "../config";
 export const addMedia = async (media: Blob) => {
 	const id = v4();
 	await mediaStore.setItem<Blob>(id, media);
-	return id;
+	return `media:${id}`;
 };
 
 export const getMediaById = async (id: string) => {

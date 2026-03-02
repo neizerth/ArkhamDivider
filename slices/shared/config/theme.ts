@@ -12,6 +12,11 @@ const palette = {
 		dark: "rgb(202, 147, 8)",
 		light: "rgb(255, 233, 173)",
 	},
+	secondary: {
+		main: "#2e2622",
+		dark: "#2e2622",
+		light: "#423a35",
+	},
 };
 
 export const theme = createTheme({

@@ -1,1 +1,1 @@
-export * from "./useMediaURL";
+export * from "./useMediaUrl";

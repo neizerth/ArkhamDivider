@@ -1,8 +1,15 @@
+import { isBlobUrl } from "./isBlobUrl";
 import { addMedia, deleteMediaById, getMediaById } from "./media";
 
 const urlMap = new Map<string, string>();
 
-export const getMediaURL = async (id: string) => {
+export const getMediaUrl = async (id?: string | null) => {
+	if (!id) {
+		return null;
+	}
+	if (!isBlobUrl(id)) {
+		return null;
+	}
 	const url = urlMap.get(id);
 	if (url) {
 		return url;
@@ -16,7 +23,7 @@ export const getMediaURL = async (id: string) => {
 	return blobUrl;
 };
 
-export const revokeMediaURL = (url: string) => {
+export const revokeMediaUrl = (url: string) => {
 	URL.revokeObjectURL(url);
 
 	const entry = Object.entries(urlMap).find(([_, blobUrl]) => url === blobUrl);
@@ -29,7 +36,7 @@ export const revokeMediaURL = (url: string) => {
 	deleteMediaById(id);
 };
 
-export const createMediaURL = async (blob: Blob) => {
+export const createMediaUrl = async (blob: Blob) => {
 	const id = await addMedia(blob);
-	return getMediaURL(id);
+	return getMediaUrl(id);
 };

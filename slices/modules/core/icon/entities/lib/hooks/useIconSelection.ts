@@ -10,7 +10,7 @@ type Options = {
 
 export function useIconSelection({
 	icon = null,
-	defaultIcon = null,
+	defaultIcon = icon ?? null,
 	onSelected,
 }: Options) {
 	const { setSelectedIcon, setDefaultIcon, setSelectionActive, onSelectRef } =

@@ -8,7 +8,6 @@ export function useBoundingRect<T extends HTMLElement>(
 	const ref = defaultRef ?? currentRef;
 	const [rect, setRect] = useState<DOMRect | null>(null);
 
-	// Без measureTrigger: callback ref и node state (для DividerView, usePrintUnitByRect)
 	const [node, setNode] = useState<T | null>(null);
 	const setRefCallback = useCallback(
 		(el: T | null) => {

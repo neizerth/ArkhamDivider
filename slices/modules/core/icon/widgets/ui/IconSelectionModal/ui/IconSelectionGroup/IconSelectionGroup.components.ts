@@ -6,7 +6,7 @@ export const Header = styled(Box)(({ theme }) => ({
 	backgroundColor: "black",
 	color: "white",
 	fontSize: 24,
-	lineHeight: 1.15,
+	lineHeight: 0.85,
 	fontWeight: "bold",
 	paddingInline: theme.spacing(2),
 	height: GROUP_HEADER_HEIGHT,
@@ -22,6 +22,7 @@ export const Header = styled(Box)(({ theme }) => ({
 export const GroupHeader = styled(Header)(({ theme }) => ({
 	gap: theme.spacing(1),
 	fontSize: 16,
+	lineHeight: 1.15,
 }));
 
 export const GroupIcon = styled(Box)(() => ({

@@ -1,5 +1,5 @@
 import { propEq } from "ramda";
-import type { Icon } from "@/modules/core/icon/shared/model";
+import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import {
 	isChallengeStory,
@@ -12,7 +12,7 @@ import type { IconGroup } from "../../../model";
 import { getStoryIconSubgroup } from "./getStoryIconSubgroup";
 
 type Options = {
-	icons: Icon[];
+	icons: ArkhamDividerIcon[];
 	encounterSets: EncounterSet[];
 	stories: Story[];
 };
