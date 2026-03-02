@@ -2,7 +2,7 @@ import {
 	type ReactVirtualizerOptions,
 	useVirtualizer,
 } from "@tanstack/react-virtual";
-import { type RefObject, useCallback } from "react";
+import { useCallback } from "react";
 import { useBoundingRect } from "@/shared/lib";
 import { LIST_GROUP_GAP } from "../../config";
 import type { IconGroup } from "../../model";
@@ -16,18 +16,12 @@ type UseVirtualizerOptions = Partial<
 >;
 
 type Options = UseVirtualizerOptions & {
-	containerRef: RefObject<HTMLDivElement | null>;
 	groups: IconGroup[];
-	measureTrigger?: boolean;
 };
 
-export const useVirtualizedIconGroups = ({
-	containerRef,
-	groups,
-	measureTrigger,
-	...options
-}: Options) => {
-	const [_, rect] = useBoundingRect(containerRef, measureTrigger);
+export const useVirtualizedIconGroups = ({ groups, ...options }: Options) => {
+	const [scrollContainerRef, rect] = useBoundingRect<HTMLDivElement>();
+
 	const containerWidth = rect?.width ?? 0;
 
 	const getGroupHeight = useIconGroupHeight({ containerWidth });
@@ -37,10 +31,11 @@ export const useVirtualizedIconGroups = ({
 	const virtualizer = useVirtualizer({
 		...options,
 		count,
-		getScrollElement: () => containerRef.current,
+		getScrollElement: () => scrollContainerRef.current,
 		estimateSize: (index) => {
 			const group = groups[index];
-			return getGroupHeight(group) + LIST_GROUP_GAP;
+			const height = getGroupHeight(group) + LIST_GROUP_GAP;
+			return height;
 		},
 	});
 
@@ -67,5 +62,6 @@ export const useVirtualizedIconGroups = ({
 	return {
 		virtualizer,
 		scrollToIndex,
+		scrollContainerRef,
 	};
 };

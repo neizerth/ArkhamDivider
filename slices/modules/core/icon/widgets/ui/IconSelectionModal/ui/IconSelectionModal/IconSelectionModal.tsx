@@ -1,12 +1,5 @@
 import { Box, Button, Dialog, DialogActions, Grid, Stack } from "@mui/material";
-import {
-	useCallback,
-	useContext,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from "react";
+import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useScrollSpy } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
@@ -26,7 +19,6 @@ import { contentSx, getSidebarSx } from "./IconSelectionModal.styles";
 export function IconSelectionModal() {
 	const { t } = useTranslation();
 	const {
-		initialIcon,
 		defaultIcon,
 		selectedIcon,
 		selectionActive,
@@ -37,11 +29,9 @@ export function IconSelectionModal() {
 		reset,
 	} = useContext(IconSelectionContext);
 	const open = selectionActive;
-	const isDefaultIcon = initialIcon === selectedIcon;
+	const isDefaultIcon = defaultIcon === selectedIcon;
 
 	const listSectionRef = useRef<HTMLDivElement>(null);
-	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-	const [scrollContainerReady, setScrollContainerReady] = useState(false);
 
 	const [navActive, setNavActive] = useBoolean(false);
 
@@ -53,42 +43,28 @@ export function IconSelectionModal() {
 		[iconGroups, defaultIcon],
 	);
 
-	const { virtualizer, scrollToIndex } = useVirtualizedIconGroups({
-		containerRef: scrollContainerRef,
-		groups: iconGroups,
-		measureTrigger: scrollContainerReady,
+	const { virtualizer, scrollToIndex, scrollContainerRef } =
+		useVirtualizedIconGroups({
+			groups: iconGroups,
+		});
+
+	const activeIndex = useScrollSpy({
+		sectionElementRefs: sectionRefs.current,
+		scrollingElement: scrollContainerRef,
+		activeSectionDefault: defaultSectionIndex,
+		offsetPx: 48,
 	});
 
 	useEffect(() => {
 		if (!open) {
 			return;
 		}
-		const id = requestAnimationFrame(() => {
-			requestAnimationFrame(() => setScrollContainerReady(true));
-		});
-		return () => cancelAnimationFrame(id);
-	}, [open]);
-
-	const activeIndex = useScrollSpy({
-		sectionElementRefs: sectionRefs.current,
-		scrollingElement: scrollContainerRef,
-		scrollingElementReady: scrollContainerReady,
-		activeSectionDefault: defaultSectionIndex,
-		offsetPx: 48,
-	});
-
-	useEffect(() => {
-		if (!open || !scrollContainerReady) {
-			return;
-		}
 		scrollToIndex(defaultSectionIndex);
-	}, [open, scrollContainerReady, defaultSectionIndex, scrollToIndex]);
+	}, [open, defaultSectionIndex, scrollToIndex]);
 
 	const onClose = useCallback(() => {
-		console.log("onClose");
 		clearSelectedIcon();
 		setSelectionActive(false);
-		setScrollContainerReady(false);
 		onSelectRef.current = null;
 	}, [onSelectRef, clearSelectedIcon, setSelectionActive]);
 

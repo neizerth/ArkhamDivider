@@ -45,7 +45,7 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 	return useCallback(
 		({
 			customField,
-			defaultIcon = options.defaultIcon,
+			defaultIcon = options.defaultIcon ?? currentIcon,
 		}: {
 			customField: string;
 			defaultIcon?: Icon | null;
