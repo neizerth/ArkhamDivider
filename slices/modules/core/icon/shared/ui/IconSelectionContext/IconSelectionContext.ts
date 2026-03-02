@@ -6,6 +6,8 @@ export type IconSelectionContextValue = {
 	setSelectedIcon: (icon: Icon | null) => void;
 	clearSelectedIcon: () => void;
 	setDefaultIcon: (icon: Icon | null) => void;
+	select: () => void;
+	reset: () => void;
 	selectedIcon: Icon | null;
 	defaultIcon: Icon | null;
 	setSelectionActive: (active: boolean) => void;
@@ -17,6 +19,8 @@ export const IconSelectionContext = createContext<IconSelectionContextValue>({
 	setSelectedIcon: () => {},
 	clearSelectedIcon: () => {},
 	setDefaultIcon: () => {},
+	select: () => {},
+	reset: () => {},
 	selectedIcon: null,
 	defaultIcon: null,
 	setSelectionActive: () => {},

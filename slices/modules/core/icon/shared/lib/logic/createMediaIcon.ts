@@ -1,11 +1,14 @@
 import type { Icon } from "../../model";
 
-export const createMediaIcon = (mediaId?: string | null): Icon | null => {
+type Options = {
+	mediaId?: string;
+	mime: string;
+};
+
+export const createMediaIcon = (options: Options): Icon | null => {
+	const { mediaId } = options;
 	if (!mediaId) {
 		return null;
 	}
-	return {
-		type: "media",
-		mediaId,
-	};
+	return { ...options, type: "media", mediaId };
 };

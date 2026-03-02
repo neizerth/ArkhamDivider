@@ -33,6 +33,16 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 		[clearSelectedIcon],
 	);
 
+	const select = useCallback(() => {
+		onSelectRef.current?.(selectedIcon);
+		clearSelectedIcon();
+	}, [clearSelectedIcon, selectedIcon]);
+
+	const reset = useCallback(() => {
+		setSelectedIconInternal(null);
+		setDefaultIcon(defaultIcon);
+	}, [defaultIcon]);
+
 	const value = useMemo(
 		(): IconSelectionContextValue => ({
 			setSelectedIcon,
@@ -41,6 +51,8 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			defaultIcon,
 			onSelectRef,
 			selectionActive,
+			select,
+			reset,
 			setSelectionActive,
 			clearSelectedIcon,
 		}),
@@ -50,6 +62,8 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			selectionActive,
 			setSelectedIcon,
 			clearSelectedIcon,
+			select,
+			reset,
 		],
 	);
 

@@ -32,6 +32,8 @@ export function IconSelectionModal() {
 		clearSelectedIcon,
 		onSelectRef,
 		setSelectionActive,
+		select,
+		reset,
 	} = useContext(IconSelectionContext);
 	const open = selectionActive;
 	const isDefaultIcon = defaultIcon === selectedIcon;
@@ -190,7 +192,7 @@ export function IconSelectionModal() {
 					<Button
 						variant="contained"
 						color="secondary"
-						onClick={onClose}
+						onClick={reset}
 						sx={{ order: { xs: -1, sm: 0 } }}
 					>
 						<Row alignItems="center" gap={1}>
@@ -199,7 +201,7 @@ export function IconSelectionModal() {
 						</Row>
 					</Button>
 				)}
-				<Button variant="contained" color="primary" onClick={onClose}>
+				<Button variant="contained" color="primary" onClick={select}>
 					{t`Ok`}
 				</Button>
 			</DialogActions>

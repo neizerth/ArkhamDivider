@@ -29,9 +29,12 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 				return;
 			}
 			const mediaId = await addMedia(file);
-			const icon = createMediaIcon(mediaId);
+			const mime = file.type;
+			const icon = createMediaIcon({
+				mediaId,
+				mime,
+			});
 
-			console.log("media icon", icon);
 			setSelectedIcon(icon);
 		},
 		[setSelectedIcon],
