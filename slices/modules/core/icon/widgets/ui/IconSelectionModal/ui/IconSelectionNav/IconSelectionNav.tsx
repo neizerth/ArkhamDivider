@@ -1,5 +1,12 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, type BoxProps, IconButton, Stack, useTheme } from "@mui/material";
+import {
+	Box,
+	type BoxProps,
+	IconButton,
+	Stack,
+	type SxProps,
+	useTheme,
+} from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { IconGroup } from "../../model";
@@ -83,10 +90,13 @@ export function IconSelectionNav({
 		scrollShadows,
 	});
 
-	const containerSx = getContainerSx({ theme });
+	const containerSx = {
+		...getContainerSx({ theme }),
+		...sx,
+	} as SxProps;
 
 	return (
-		<Box {...props} sx={containerSx}>
+		<Box {...props} sx={sx}>
 			{onClose && (
 				<Box
 					sx={{

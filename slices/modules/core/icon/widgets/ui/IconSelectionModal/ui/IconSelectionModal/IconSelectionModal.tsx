@@ -1,14 +1,7 @@
-import {
-	Box,
-	Button,
-	ClickAwayListener,
-	Dialog,
-	DialogActions,
-	Grid,
-	Stack,
-} from "@mui/material";
+import { Box, Button, Dialog, DialogActions, Grid, Stack } from "@mui/material";
 import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { absoluteFill } from "@/shared/config";
 import { useScrollSpy } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import { Row } from "@/shared/ui";
@@ -78,7 +71,7 @@ export function IconSelectionModal() {
 
 	const handleSectionClick = useCallback(
 		(index: number) => {
-			setNavActive.toggle();
+			setNavActive.off();
 			requestAnimationFrame(() => {
 				requestAnimationFrame(() => scrollToIndex(index));
 			});
@@ -134,8 +127,8 @@ export function IconSelectionModal() {
 							iconGroups={iconGroups}
 							sectionRefs={sectionRefs.current}
 							scrollContainerRef={scrollContainerRef}
-							onSectionHeaderClick={setNavActive.toggle}
-							onSectionSubgroupHeaderClick={setNavActive.toggle}
+							onSectionHeaderClick={setNavActive.on}
+							onSectionSubgroupHeaderClick={setNavActive.on}
 							virtualizer={virtualizer}
 							ref={listSectionRef}
 						/>
@@ -150,14 +143,23 @@ export function IconSelectionModal() {
 					>
 						<Stack gap={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
 							<IconSelectionPreview display={{ xs: "none", sm: "block" }} />
-							<ClickAwayListener onClickAway={setNavActive.off}>
-								<IconSelectionNav
-									iconGroups={iconGroups}
-									onSectionClick={handleSectionClick}
-									onClose={setNavActive.off}
-									activeIndex={activeIndex}
-								/>
-							</ClickAwayListener>
+							<IconSelectionNav
+								iconGroups={iconGroups}
+								onSectionClick={handleSectionClick}
+								onClose={setNavActive.off}
+								activeIndex={activeIndex}
+								sx={{
+									zIndex: 2,
+								}}
+							/>
+							<Box
+								onClick={setNavActive.off}
+								sx={{
+									...absoluteFill,
+									zIndex: 1,
+									display: { xs: "block", sm: "none" },
+								}}
+							/>
 						</Stack>
 					</Grid>
 				</Grid>
