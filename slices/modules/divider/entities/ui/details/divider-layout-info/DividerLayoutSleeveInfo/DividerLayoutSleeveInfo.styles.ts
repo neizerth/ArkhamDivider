@@ -2,7 +2,6 @@ import type { SxProps } from "@mui/material";
 
 export const optionSx: SxProps = {
 	alignItems: "center",
-	justifyContent: { xs: "flex-start" },
 	gap: 2,
 	flexWrap: "wrap",
 };
