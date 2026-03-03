@@ -10,7 +10,7 @@ const color = cmyk(0, 0, 0, 100);
 
 export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const { story, fontSizeScale = 100 } = props;
-	const { text, unit, language, playerParams } = ctx;
+	const { text, lasercut, unit, language, playerParams } = ctx;
 	const t = withStoryTranslation(story);
 
 	const textConfig = getLocaleConfig(language, O.text);
@@ -20,6 +20,13 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const bleed = unit.fromBleed();
 
 	const iconObject = getIconObject(props);
+
+	lasercut.drawRect({
+		x: bleed.x(),
+		y: bleed.y(),
+		width: bleed.width(),
+		height: bleed.height(),
+	});
 
 	await text.draw(title, {
 		x: bleed.x(textConfig.left),

@@ -13,6 +13,7 @@ import {
 	PDFCropmarkService,
 	PDFFontService,
 	PDFIconService,
+	PDFLasercutService,
 	PDFTextService,
 	PDFUnitService,
 } from "@/modules/pdf/shared/lib";
@@ -54,6 +55,8 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 		investigatorParams,
 		cropmarksEnabled,
 		enablePageCounter,
+		cornerRadiusEnabled,
+		lasercutEnabled,
 	}: ReturnType<typeof selectPDFData> = yield select(selectPDFData);
 
 	const total = dividers.length;
@@ -155,6 +158,10 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const font = new PDFFontService(doc);
 	const text = new PDFTextService(font);
 	const icon = new PDFIconService(text, icons);
+	const lasercut = new PDFLasercutService(doc, {
+		cornerRadiusEnabled,
+		enabled: lasercutEnabled,
+	});
 	const cropmarks = new PDFCropmarkService(doc);
 	const counter = new PDFCounterService(text, pageSizePt);
 
@@ -228,6 +235,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 						icon,
 						text,
 						unit,
+						lasercut,
 						doc,
 						language,
 						scenarioParams,

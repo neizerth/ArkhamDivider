@@ -7,7 +7,12 @@ import type {
 } from "@/modules/divider/shared/model";
 import type { DPI } from "@/modules/print/shared/model";
 import type { BoxSize } from "@/shared/model";
-import type { PDFIconService, PDFTextService, PDFUnitService } from "../lib";
+import type {
+	PDFIconService,
+	PDFLasercutService,
+	PDFTextService,
+	PDFUnitService,
+} from "../lib";
 
 export type PDFDividerProps = DividerWithRelations;
 export type PDFDividerContext = {
@@ -16,6 +21,7 @@ export type PDFDividerContext = {
 	text: PDFTextService;
 	icon: PDFIconService;
 	unit: PDFUnitService;
+	lasercut: PDFLasercutService;
 	layout: DividerLayout;
 	bleedEnabled: boolean;
 	language: string;

@@ -12,8 +12,10 @@ import {
 	selectCropMarksEnabled,
 	selectDoubleSidePrintEnabled,
 	selectEnablePageCounter,
+	selectLasercutEnabled,
 	selectOrientedPageFormat,
 	selectPageLayoutGrid,
+	selectShowCornerRadius,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
 import type { AppSelector, RootState } from "@/shared/store";
@@ -33,6 +35,8 @@ function selectPDFDataImpl(state: RootState) {
 	const investigatorParams = selectInvestigatorParams(state);
 	const cropmarksEnabled = selectCropMarksEnabled(state);
 	const enablePageCounter = selectEnablePageCounter(state);
+	const cornerRadiusEnabled = selectShowCornerRadius(state);
+	const lasercutEnabled = selectLasercutEnabled(state);
 	return {
 		icons,
 		language,
@@ -48,6 +52,8 @@ function selectPDFDataImpl(state: RootState) {
 		investigatorParams,
 		cropmarksEnabled,
 		enablePageCounter,
+		cornerRadiusEnabled,
+		lasercutEnabled,
 	};
 }
 
