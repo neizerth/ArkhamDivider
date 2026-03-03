@@ -1,10 +1,12 @@
 import ContrastOutlinedIcon from "@mui/icons-material/ContrastOutlined";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import { useTranslation } from "react-i18next";
+import { IconPopover } from "@/modules/core/icon/shared/ui";
 import { dividerCategories } from "@/modules/divider/entities/items";
 import { DividerCategoryPreview } from "@/modules/divider/entities/ui";
 import { useResponsiveGap } from "@/shared/lib";
@@ -24,9 +26,22 @@ export function DividerList() {
 				<Stack gap={2}>
 					<Row gap={2} flexWrap="wrap">
 						<Chip
-							label={t("divider.canBeSleeved")}
+							label={
+								<Row alignItems="center">
+									{t("divider.canBeSleeved")}
+									<IconPopover
+										ariaLabel={t("info.sleeves")}
+										description={
+											<Typography variant="body2">
+												{t("info.sleeves")}
+											</Typography>
+										}
+									/>
+								</Row>
+							}
 							icon={<ShieldOutlinedIcon />}
 						/>
+
 						<Chip
 							label={t("divider.hasGrayscale")}
 							icon={<ContrastOutlinedIcon />}

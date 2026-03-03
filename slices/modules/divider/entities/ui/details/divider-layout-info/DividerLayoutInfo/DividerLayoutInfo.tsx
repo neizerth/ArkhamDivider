@@ -1,5 +1,4 @@
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -15,7 +14,7 @@ import { Row } from "@/shared/ui";
 import { getBoxSize } from "@/shared/util";
 import { BleedInfo } from "../BleedInfo";
 import { DividerLayoutAuthorInfo as Author } from "../DividerLayoutAuthorInfo";
-import { DividerLayoutSleeveInfo as Sleeve } from "../DividerLayoutSleeveInfo";
+import { DividerLayoutSleeveInfo } from "../DividerLayoutSleeveInfo/DividerLayoutSleeveInfo";
 import * as C from "./DividerLayoutInfo.components";
 
 type DividerLayoutInfoProps = {
@@ -28,11 +27,6 @@ const optionTitleSx = {
 	alignItems: "center",
 	justifyContent: { xs: "flex-start", sm: "flex-end" },
 	gap: 1,
-} as const;
-
-const sleevesTitleSx = {
-	...optionTitleSx,
-	width: { xs: "100%", sm: "auto" },
 } as const;
 
 const optionSx = {
@@ -104,32 +98,7 @@ export function DividerLayoutInfo({
 							</Typography>
 						</Row>
 						{bleedEnabled && <BleedInfo bleed={layout.bleed} />}
-						{sleeves && (
-							<Row sx={optionSx}>
-								<Row sx={sleevesTitleSx}>
-									<Typography
-										variant="body2"
-										sx={optionLabelSx}
-									>{t`Sleeves`}</Typography>
-									<C.Icon title={t`Sleeves`}>
-										<ShieldOutlinedIcon />
-									</C.Icon>
-								</Row>
-								<Box position={"relative"}>
-									<Box
-										sx={{
-											overflow: "scroll",
-										}}
-									>
-										<Row gap={1}>
-											{sleeves.map((sleeve) => (
-												<Sleeve key={sleeve.id} sleeve={sleeve} />
-											))}
-										</Row>
-									</Box>
-								</Box>
-							</Row>
-						)}
+						{sleeves && <DividerLayoutSleeveInfo sleeves={sleeves} />}
 					</Stack>
 				</Stack>
 				{image && (

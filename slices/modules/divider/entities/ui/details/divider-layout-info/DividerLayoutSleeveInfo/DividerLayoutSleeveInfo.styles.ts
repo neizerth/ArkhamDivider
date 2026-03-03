@@ -2,13 +2,14 @@ import type { SxProps } from "@mui/material";
 
 export const optionSx: SxProps = {
 	alignItems: "center",
-	justifyContent: { xs: "flex-start", sm: "flex-end" },
+	justifyContent: { xs: "flex-start" },
 	gap: 2,
 	flexWrap: "wrap",
 };
 
 export const optionTitleSx: SxProps = {
 	minWidth: { xs: 0, sm: 120 },
+	width: { xs: "100%", sm: "auto" },
 	alignItems: "center",
 	justifyContent: { xs: "flex-start", sm: "flex-end" },
 	gap: 1,
