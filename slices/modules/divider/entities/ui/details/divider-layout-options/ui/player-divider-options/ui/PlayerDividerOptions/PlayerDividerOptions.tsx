@@ -32,6 +32,7 @@ import { selectStories, setStoryCode } from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { CheckboxButton, IconButtonCheckbox, Row } from "@/shared/ui";
+import { preventDefault } from "@/shared/util";
 import * as C from "./PlayerDividerOptions.components";
 
 export function PlayerDividerOptions(props: BoxProps) {
@@ -160,7 +161,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 
 	return (
 		<Box {...props}>
-			<form>
+			<form onSubmit={preventDefault}>
 				<Stack gap={2}>
 					<C.Row>
 						{factions.map((faction) => (

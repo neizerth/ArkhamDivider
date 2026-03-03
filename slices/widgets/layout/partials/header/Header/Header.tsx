@@ -11,9 +11,11 @@ import { RenderProgress } from "@/modules/render/entities/ui";
 import { useDisplayOnScroll } from "@/shared/lib/hooks/ui";
 import * as C from "./Header.components";
 
-type HeaderProps = JSX.IntrinsicElements["header"];
+type HeaderProps = JSX.IntrinsicElements["header"] & {
+	printable?: boolean;
+};
 
-export function Header(props: HeaderProps) {
+export function Header({ printable, ...props }: HeaderProps) {
 	const theme = useTheme();
 	const mobileMedia = theme.breakpoints.down("md");
 	const isXS = useMediaQuery(theme.breakpoints.only("xs"));
@@ -40,16 +42,21 @@ export function Header(props: HeaderProps) {
 						</C.LogoLink>
 						<C.Section flex={1} gap={1}>
 							<DividerSelect />
-							{!isXS && <DividerVariantSelect />}
+							{!isXS && printable && <DividerVariantSelect />}
 						</C.Section>
 					</C.Section>
 
 					<C.SecondaryContent>
-						{isXS && <DividerVariantSelect />}
-						<C.Section justifyContent="flex-end" sx={{ gap: { xs: 1, sm: 2 } }}>
-							<PrintSettings />
-							<PrintButton />
-						</C.Section>
+						{isXS && printable && <DividerVariantSelect />}
+						{printable && (
+							<C.Section
+								justifyContent="flex-end"
+								sx={{ gap: { xs: 1, sm: 2 } }}
+							>
+								<PrintSettings />
+								<PrintButton />
+							</C.Section>
+						)}
 					</C.SecondaryContent>
 				</C.Content>
 			</Container>

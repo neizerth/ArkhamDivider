@@ -88,11 +88,17 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	}
 
 	if (backgroundIcon) {
+		const bgIconBox = bleed.box({
+			top: O.backgroundIcon.top,
+			left: O.backgroundIcon.left,
+			width: O.backgroundIcon.size,
+			height: O.backgroundIcon.size,
+		});
 		await ctx.icon.draw(backgroundIcon, {
-			x: bleed.x(),
-			y: bleed.y(2),
-			width: bleed.width(),
-			height: bleed.height(),
+			x: bgIconBox.x(),
+			y: bgIconBox.y(),
+			width: bgIconBox.width(),
+			height: bgIconBox.height(),
 			fontSize: unit.mm(O.backgroundIcon.fontSize),
 			manifest: false,
 			color,

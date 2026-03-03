@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { throttle } from "@/shared/util";
 
 export type Options = {
-	/** Пикселей прокрутки вниз — после этого скрываем */
+	/** Scroll down this many px — then hide */
 	offsetDown: number;
-	/** Пикселей прокрутки вверх — после этого показываем */
+	/** Scroll up this many px — then show */
 	offsetUp: number;
 	media: string;
 	throttleMs?: number;

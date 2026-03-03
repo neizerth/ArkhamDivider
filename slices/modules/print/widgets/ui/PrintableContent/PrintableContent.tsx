@@ -35,7 +35,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const pageLayoutGrid = useAppSelector(selectPageLayoutGrid);
 	const enablePageCounter = useAppSelector(selectEnablePageCounter);
 
-	if (!pageFormat || !pageLayoutGrid) {
+	if (!pageFormat || !pageLayoutGrid || pageLayouts.length === 0) {
 		return null;
 	}
 

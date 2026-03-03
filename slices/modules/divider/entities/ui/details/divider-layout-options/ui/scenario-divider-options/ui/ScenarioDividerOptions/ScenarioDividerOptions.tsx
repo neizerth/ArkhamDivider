@@ -21,6 +21,7 @@ import { changeStoryCode, selectStories } from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui/story-select/StorySelect/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
+import { preventDefault } from "@/shared/util";
 import { ScenarioDividerOptionsForm } from "../ScenarioDividerOptionsForm";
 
 export function ScenarioDividerOptions(props: BoxProps) {
@@ -54,7 +55,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 
 	return (
 		<Box {...props}>
-			<form>
+			<form onSubmit={preventDefault}>
 				<Stack gap={2}>
 					<Row gap={2} flexWrap="wrap" alignItems="center">
 						<StorySelect

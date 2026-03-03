@@ -2,11 +2,9 @@ import { createSelector } from "@reduxjs/toolkit";
 import { isInvestigatorStory } from "../../criteria";
 import { selectStories } from "../stories";
 
-export const selectStoriesWithInvestigators = createSelector(
+export const selectScenarioStories = createSelector(
 	[selectStories],
 	(stories) => {
-		return stories.filter(
-			(story) => story.investigators.length > 0 && isInvestigatorStory(story),
-		);
+		return stories.filter((story) => !isInvestigatorStory(story));
 	},
 );

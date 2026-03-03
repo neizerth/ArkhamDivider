@@ -160,6 +160,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const icon = new PDFIconService(text, icons);
 	const lasercut = new PDFLasercutService(doc, {
 		cornerRadiusEnabled,
+		bleedEnabled,
 		enabled: lasercutEnabled,
 	});
 	const cropmarks = new PDFCropmarkService(doc);

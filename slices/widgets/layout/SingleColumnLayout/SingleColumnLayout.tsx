@@ -5,12 +5,13 @@ import * as C from "./SingleColumnLayout.components";
 
 type SingleColumnLayoutProps = JSX.IntrinsicElements["main"] & {
 	sx?: SxProps<Theme>;
+	printable?: boolean;
 };
 
 export function SingleColumnLayout(props: SingleColumnLayoutProps) {
 	return (
 		<C.Container>
-			<Header />
+			<Header printable={props.printable} />
 			<C.Main {...props} />
 			<Footer />
 		</C.Container>

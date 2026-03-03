@@ -16,7 +16,7 @@ type LayoutPageContentProps = {
 };
 export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 	return (
-		<SingleColumnLayout>
+		<SingleColumnLayout printable>
 			<Stack
 				sx={{
 					"@media screen": {

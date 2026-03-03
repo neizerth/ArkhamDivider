@@ -1,6 +1,6 @@
 import { REHYDRATE } from "redux-persist";
 import { select, take, takeEvery } from "redux-saga/effects";
-import { reveokeMediaExceptFor } from "@/modules/core/media/shared/lib";
+import { revokeMediaExceptFor } from "@/modules/core/media/shared/lib";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
 	addDivider,
@@ -28,7 +28,7 @@ function* worker() {
 
 	// console.log("usedMediaIds", usedMediaIds);
 
-	reveokeMediaExceptFor(usedMediaIds);
+	revokeMediaExceptFor(usedMediaIds);
 }
 
 export function* clearUnusedDividerIcons() {

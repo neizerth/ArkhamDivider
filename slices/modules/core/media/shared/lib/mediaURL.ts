@@ -41,7 +41,7 @@ export const revokeMediaById = (id: string) => {
 	URL.revokeObjectURL(url);
 };
 
-export const reveokeMediaExceptFor = async (usedIds: string[]) => {
+export const revokeMediaExceptFor = async (usedIds: string[]) => {
 	const allIds = await getMediaIds();
 	const unusedIds = allIds.filter((id) => !usedIds.includes(id));
 	for (const id of unusedIds) {

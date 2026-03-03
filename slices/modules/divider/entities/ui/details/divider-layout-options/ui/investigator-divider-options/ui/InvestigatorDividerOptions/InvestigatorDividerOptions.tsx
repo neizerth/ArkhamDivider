@@ -18,6 +18,7 @@ import { selectStoriesWithInvestigators } from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
+import { preventDefault } from "@/shared/util";
 import * as C from "./InvestigatorDividerOptions.components";
 
 type InvestigatorDividerOptionsProps = BoxProps;
@@ -68,7 +69,7 @@ export function InvestigatorDividerOptions(
 
 	return (
 		<Box {...props}>
-			<form>
+			<form onSubmit={preventDefault}>
 				<Row gap={2} flexWrap="wrap" alignItems="center">
 					<C.Row flex={1} minWidth={300}>
 						<StorySelect

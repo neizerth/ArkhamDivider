@@ -7,3 +7,7 @@ export const cmyk = (
 ) => {
 	return [cyan, magenta, yellow, key] as [number, number, number, number];
 };
+
+export const rgb = (red: number, green: number, blue: number) => {
+	return [red, green, blue] as [number, number, number];
+};

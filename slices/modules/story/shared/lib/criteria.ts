@@ -13,6 +13,8 @@ export const isChallengeStory = eqStoryType("challenge");
 export const isStandaloneStory = eqStoryType("standalone");
 export const isPromoStory = eqStoryType("promo");
 
+export const isInvestigatorStory = eqStoryType("investigators");
+
 export const isCampaign = anyPass([isCampaignContent, isSideCampaign]);
 
 export const isMainCampaign = (story: Story) =>

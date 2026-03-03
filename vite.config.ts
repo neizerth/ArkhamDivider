@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
+import mkcert from "vite-plugin-mkcert";
 import { vips } from "./vips.plugin";
 
 export default defineConfig({
@@ -12,23 +13,23 @@ export default defineConfig({
 		vips(),
 		tsconfigPaths(),
 		react({
-			// Включаем Fast Refresh для лучшей поддержки HMR
-			// По умолчанию уже включен, но явно указываем для надежности
+			// Enable Fast Refresh for better HMR support
+			// Default is already on; set explicitly for reliability
 			jsxRuntime: "automatic",
 		}),
+		mkcert(),
 		svgr(),
 	],
 	server: {
-		host: "127.0.0.1",
 		hmr: {
-			// Улучшаем HMR для лучшей работы с React компонентами
+			// Improve HMR for React components
 			overlay: true,
-			// Явно указываем порт для HMR (если нужно)
+			// Optional: set HMR port explicitly
 			// clientPort: 5173,
 		},
-		// Отключаем полную перезагрузку при ошибках, используем только HMR
+		// Disable full reload on errors; use HMR only
 		watch: {
-			// Игнорируем изменения в node_modules и других ненужных файлах
+			// Ignore changes in node_modules and other unnecessary paths
 			ignored: ["**/node_modules/**", "**/.git/**"],
 		},
 		headers: {
@@ -49,9 +50,9 @@ export default defineConfig({
 			},
 		},
 	},
-	// Оптимизация для лучшей работы HMR
+	// Optimize deps for better HMR
 	optimizeDeps: {
-		// Включаем предварительную оптимизацию для лучшей работы HMR
+		// Pre-bundle these for faster HMR
 		include: ["react", "react-dom", "react-router"],
 		exclude: ["wasm-vips"],
 	},
