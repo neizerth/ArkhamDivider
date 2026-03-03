@@ -16,7 +16,6 @@ import { IconSelectionModal } from "../../../widgets/ui";
 export function IconSelectionProvider({ children }: PropsWithChildren) {
 	const [selectedIcon, setSelectedIconInternal] = useState<Icon | null>(null);
 	const [defaultIcon, setDefaultIcon] = useState<Icon | null>(null);
-	const [initialIcon, setInitialIcon] = useState<Icon | null>(null);
 	const onSelectRef = useRef<OnIconSelectedCallback | null>(null);
 	const [selectionActive, setSelectionActive] = useState(false);
 
@@ -28,15 +27,17 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 
 	const setSelectedIcon = useCallback(
 		(icon: Icon | null) => {
-			clearSelectedIcon();
+			if (!selectedIcon) {
+				clearSelectedIcon();
+			}
 			setSelectedIconInternal(icon);
 		},
-		[clearSelectedIcon],
+		[clearSelectedIcon, selectedIcon],
 	);
 
 	const save = useCallback((icon: Icon | null) => {
-		onSelectRef.current?.(icon);
 		setSelectionActive(false);
+		onSelectRef.current?.(icon);
 	}, []);
 
 	const select = useCallback(() => {
@@ -51,8 +52,6 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 		(): IconSelectionContextValue => ({
 			setSelectedIcon,
 			setDefaultIcon,
-			setInitialIcon,
-			initialIcon,
 			selectedIcon,
 			defaultIcon,
 			onSelectRef,
@@ -64,7 +63,6 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 		}),
 		[
 			selectedIcon,
-			initialIcon,
 			defaultIcon,
 			selectionActive,
 			setSelectedIcon,

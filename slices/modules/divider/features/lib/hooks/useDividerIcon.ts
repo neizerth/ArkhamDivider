@@ -9,6 +9,7 @@ import {
 	setDividerParam,
 } from "@/modules/divider/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { getDividerIcon } from "../logic";
 
 type Options = Omit<UseIconSelectionOptions, "onSelected"> & {
 	dividerId: string;
@@ -47,15 +48,13 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 			param: string;
 			defaultIcon?: Icon | null;
 		}) => {
-			const customIcon = divider?.params?.[param];
-			const icon = (customIcon ?? currentIcon) as Icon | undefined;
+			const icon = getDividerIcon({
+				divider,
+				param,
+				defaultIcon,
+			});
 
 			const start = () => {
-				console.log("start selection", {
-					icon,
-					defaultIcon,
-				});
-
 				startSelection({
 					icon,
 					defaultIcon,

@@ -23,7 +23,6 @@ export function IconSelectionModal() {
 		defaultIcon,
 		selectedIcon,
 		selectionActive,
-		clearSelectedIcon,
 		onSelectRef,
 		setSelectionActive,
 		select,
@@ -64,10 +63,9 @@ export function IconSelectionModal() {
 	}, [open, defaultSectionIndex, scrollToIndex]);
 
 	const onClose = useCallback(() => {
-		clearSelectedIcon();
 		setSelectionActive(false);
 		onSelectRef.current = null;
-	}, [onSelectRef, clearSelectedIcon, setSelectionActive]);
+	}, [onSelectRef, setSelectionActive]);
 
 	const handleSectionClick = useCallback(
 		(index: number) => {

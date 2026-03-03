@@ -12,6 +12,10 @@ export type MediaIcon = MediaItem & {
 	ratio: number;
 };
 
+export type RenderedMediaIcon = MediaIcon & {
+	blob: Blob;
+};
+
 export type Icon = string | MediaIcon;
 
 export type IconScaleFactor = {

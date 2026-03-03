@@ -1,4 +1,5 @@
 import { getLocaleConfig } from "@/modules/core/i18n/shared/lib";
+import { getDividerIcon } from "@/modules/divider/features/lib";
 import { cmyk } from "@/modules/pdf/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
@@ -9,7 +10,6 @@ const color = cmyk(0, 0, 0, 100);
 
 export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const { story, fontSizeScale = 100 } = props;
-	const icon = props.icon;
 	const { text, unit, language, playerParams } = ctx;
 	const t = withStoryTranslation(story);
 
@@ -48,6 +48,18 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 		});
 	}
 
+	const backgroundIcon = getDividerIcon({
+		divider: props,
+		param: "background",
+		defaultIcon: props.icon,
+	});
+
+	const icon = getDividerIcon({
+		divider: props,
+		param: "icon",
+		defaultIcon: props.icon,
+	});
+
 	if (icon) {
 		const smallIcon = bleed.box({
 			top: iconObject.top,
@@ -66,8 +78,10 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 			overprint: true,
 			color,
 		});
+	}
 
-		await ctx.icon.draw(icon, {
+	if (backgroundIcon) {
+		await ctx.icon.draw(backgroundIcon, {
 			x: bleed.x(),
 			y: bleed.y(2),
 			width: bleed.width(),
