@@ -8,11 +8,11 @@ import { useCallback, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Flag } from "@/shared/ui";
-import { languageLabels } from "../../../shared/config";
-import { selectCurrentLanguage } from "../../../shared/lib";
+import { DEFAULT_LANGUAGE, languageLabels } from "../../../shared/config";
 import {
 	changeLanguage,
 	selectAvailableLanguages,
+	selectLanguage,
 } from "../../../shared/lib/store";
 
 type LanguageSelectProps = Omit<
@@ -29,7 +29,7 @@ export function LanguageSelect({
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const languages = useAppSelector(selectAvailableLanguages);
-	const language = useAppSelector(selectCurrentLanguage);
+	const language = useAppSelector(selectLanguage) ?? DEFAULT_LANGUAGE;
 	const id = useId();
 	const label = t(`Language`);
 

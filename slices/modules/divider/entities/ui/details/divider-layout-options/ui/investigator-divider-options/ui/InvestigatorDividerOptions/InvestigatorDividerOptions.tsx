@@ -19,6 +19,7 @@ import { StorySelect } from "@/modules/story/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
 import { preventDefault } from "@/shared/util";
+import { formButtonSx } from "../../../DividerLayoutOptions/DividerLayoutOptions.styles";
 import * as C from "./InvestigatorDividerOptions.components";
 
 type InvestigatorDividerOptionsProps = BoxProps;
@@ -104,7 +105,7 @@ export function InvestigatorDividerOptions(
 							>
 								<Button
 									variant="contained"
-									sx={{ width: { xs: "100%", sm: "auto" } }}
+									sx={formButtonSx}
 									name="mode"
 									type="submit"
 									value="create"
@@ -117,7 +118,7 @@ export function InvestigatorDividerOptions(
 								</Button>
 								<Button
 									variant="contained"
-									sx={{ width: { xs: "100%", sm: "auto" } }}
+									sx={formButtonSx}
 									name="mode"
 									onClick={generate("add")}
 								>

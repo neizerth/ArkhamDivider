@@ -5,7 +5,10 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 import { getLayoutAuthors } from "@/modules/divider/entities/lib";
-import type { DividerLayout } from "@/modules/divider/shared/model";
+import type {
+	DividerCategory,
+	DividerLayout,
+} from "@/modules/divider/shared/model";
 import { selectBleedEnabled } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
@@ -17,6 +20,7 @@ import * as C from "./DividerLayoutInfo.components";
 
 type DividerLayoutInfoProps = {
 	layout: DividerLayout;
+	category: DividerCategory;
 };
 
 const optionTitleSx = {
@@ -33,7 +37,6 @@ const sleevesTitleSx = {
 
 const optionSx = {
 	alignItems: "center",
-	justifyContent: { xs: "flex-start", sm: "flex-end" },
 	gap: 2,
 	flexWrap: "wrap",
 } as const;
@@ -42,68 +45,119 @@ const optionLabelSx = {
 	order: { xs: 2, sm: 0 },
 } as const;
 
-export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
+export function DividerLayoutInfo({
+	layout,
+	category,
+}: DividerLayoutInfoProps) {
 	const { t } = useTranslation();
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 	const { sleeves } = layout;
 
 	const authors = getLayoutAuthors(layout);
 	const size = getBoxSize(layout.size);
+	const image = layout.image ?? category.image;
 
 	return (
-		<Row alignItems="center" justifyContent="space-between">
-			<Stack gap={6} padding={{ xs: 1, sm: 0 }}>
-				{authors && (
-					<Stack gap={1}>
-						{authors.map((author) => (
-							<Author key={author.id} author={author} />
-						))}
-					</Stack>
-				)}
-				<Stack gap={2}>
-					<Row sx={optionSx}>
-						<Row sx={optionTitleSx}>
-							<Typography
-								variant="body2"
-								sx={optionLabelSx}
-							>{t`Size`}</Typography>
-							<C.Icon title={t`Size`}>
-								<OpenInFullIcon />
-							</C.Icon>
-						</Row>
-						<Typography variant="body1" flex={1}>
-							{size} {t`mm`}
-						</Typography>
-					</Row>
-					{bleedEnabled && <BleedInfo bleed={layout.bleed} />}
-					{sleeves && (
+		<Stack gap={2}>
+			<Row
+				sx={{
+					flexDirection: {
+						xs: "column",
+						sm: "row",
+					},
+					gap: {
+						xs: 0,
+						sm: 1,
+						md: 2,
+					},
+					justifyContent: "space-between",
+					alignItems: "center",
+				}}
+			>
+				<Stack
+					sx={{
+						flex: 1,
+						padding: { xs: 1, sm: 0 },
+						gap: 6,
+					}}
+				>
+					{authors && (
+						<Stack gap={1}>
+							{authors.map((author) => (
+								<Author key={author.id} author={author} />
+							))}
+						</Stack>
+					)}
+					<Stack gap={2}>
 						<Row sx={optionSx}>
-							<Row sx={sleevesTitleSx}>
+							<Row sx={optionTitleSx}>
 								<Typography
 									variant="body2"
 									sx={optionLabelSx}
-								>{t`Sleeves`}</Typography>
-								<C.Icon title={t`Sleeves`}>
-									<ShieldOutlinedIcon />
+								>{t`Size`}</Typography>
+								<C.Icon title={t`Size`}>
+									<OpenInFullIcon />
 								</C.Icon>
 							</Row>
-							<Box position={"relative"}>
-								<Box
-									sx={{
-										overflow: "scroll",
-									}}
-								>
-									<Row gap={1}>
-										{sleeves.map((sleeve) => (
-											<Sleeve key={sleeve.id} sleeve={sleeve} />
-										))}
-									</Row>
-								</Box>
-							</Box>
+							<Typography variant="body1" flex={1}>
+								{size} {t`mm`}
+							</Typography>
 						</Row>
-					)}
+						{bleedEnabled && <BleedInfo bleed={layout.bleed} />}
+						{sleeves && (
+							<Row sx={optionSx}>
+								<Row sx={sleevesTitleSx}>
+									<Typography
+										variant="body2"
+										sx={optionLabelSx}
+									>{t`Sleeves`}</Typography>
+									<C.Icon title={t`Sleeves`}>
+										<ShieldOutlinedIcon />
+									</C.Icon>
+								</Row>
+								<Box position={"relative"}>
+									<Box
+										sx={{
+											overflow: "scroll",
+										}}
+									>
+										<Row gap={1}>
+											{sleeves.map((sleeve) => (
+												<Sleeve key={sleeve.id} sleeve={sleeve} />
+											))}
+										</Row>
+									</Box>
+								</Box>
+							</Row>
+						)}
+					</Stack>
 				</Stack>
-			</Stack>
-		</Row>
+				{image && (
+					<Stack gap={1}>
+						<Row
+							gap={2}
+							sx={{
+								flex: 1,
+								justifyContent: {
+									xs: "center",
+									sm: "flex-end",
+								},
+							}}
+						>
+							<Box
+								component="img"
+								src={image}
+								alt="layout"
+								sx={{ maxWidth: 300 }}
+							/>
+						</Row>
+
+						<Typography variant="body2" textAlign="center">
+							{t(`category.${category.id}.description`)}
+						</Typography>
+					</Stack>
+				)}
+			</Row>
+		</Stack>
 	);
 }

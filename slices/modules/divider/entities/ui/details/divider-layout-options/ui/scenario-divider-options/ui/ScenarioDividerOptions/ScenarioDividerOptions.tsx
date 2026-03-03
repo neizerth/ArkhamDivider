@@ -17,7 +17,10 @@ import type {
 	ScenarioDividerParams,
 } from "@/modules/divider/shared/model";
 import { selectStoryWithRelations } from "@/modules/story/entities/lib";
-import { changeStoryCode, selectStories } from "@/modules/story/shared/lib";
+import {
+	changeStoryCode,
+	selectScenarioStories,
+} from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui/story-select/StorySelect/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
@@ -28,7 +31,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	const story = useAppSelector(selectStoryWithRelations);
-	const stories = useAppSelector(selectStories);
+	const stories = useAppSelector(selectScenarioStories);
 	const layout = useAppSelector(selectLayout);
 	const defaultValues = useAppSelector(selectScenarioParams);
 
@@ -58,24 +61,35 @@ export function ScenarioDividerOptions(props: BoxProps) {
 			<form onSubmit={preventDefault}>
 				<Stack gap={2}>
 					<Row gap={2} flexWrap="wrap" alignItems="center">
-						<StorySelect
-							fullWidth
-							value={story?.code}
-							stories={stories}
-							onChange={onChangeStory}
-							containerSx={{ width: "100%", minWidth: 400, flex: 1 }}
-						/>
+						<Box sx={{ flex: 1 }}>
+							<StorySelect
+								fullWidth
+								value={story?.code}
+								stories={stories}
+								onChange={onChangeStory}
+								containerSx={{
+									width: "100%",
+									minWidth: {
+										xs: "auto",
+										sm: 320,
+									},
+								}}
+							/>
+						</Box>
 						{story && (
 							<Row
 								sx={{
-									flex: { xs: 1, md: 0 },
+									flex: { xs: 1, sm: 0 },
 									gap: 2,
 									justifyContent: "center",
 								}}
 							>
 								<Button
 									variant="contained"
-									sx={{ width: { xs: "100%", sm: "auto" } }}
+									sx={{
+										width: { xs: "100%", sm: "auto" },
+										whiteSpace: "nowrap",
+									}}
 									name="mode"
 									type="submit"
 									value="create"
@@ -88,7 +102,10 @@ export function ScenarioDividerOptions(props: BoxProps) {
 								</Button>
 								<Button
 									variant="contained"
-									sx={{ width: { xs: "100%", sm: "auto" } }}
+									sx={{
+										width: { xs: "100%", sm: "auto" },
+										whiteSpace: "nowrap",
+									}}
 									name="mode"
 									onClick={generate("add")}
 								>

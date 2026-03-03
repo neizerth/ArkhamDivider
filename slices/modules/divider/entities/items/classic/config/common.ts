@@ -18,6 +18,12 @@ export const classicDividerObjects = {
 			fontSize: 4.58,
 			height: 7,
 		},
+		cn: {
+			fontSize: 4.5,
+		},
+		ko: {
+			top: 3.6,
+		},
 	},
 	icon: {
 		size: 8.33,

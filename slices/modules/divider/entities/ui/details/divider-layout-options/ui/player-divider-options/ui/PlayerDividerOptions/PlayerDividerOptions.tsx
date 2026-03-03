@@ -33,6 +33,7 @@ import { StorySelect } from "@/modules/story/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { CheckboxButton, IconButtonCheckbox, Row } from "@/shared/ui";
 import { preventDefault } from "@/shared/util";
+import { formButtonSx } from "../../../DividerLayoutOptions/DividerLayoutOptions.styles";
 import * as C from "./PlayerDividerOptions.components";
 
 export function PlayerDividerOptions(props: BoxProps) {
@@ -272,7 +273,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 						<Row flex={{ xs: 1, sm: 0 }} gap={2}>
 							<Button
 								variant="contained"
-								sx={{ width: { xs: "100%", sm: "auto" } }}
+								sx={formButtonSx}
 								name="mode"
 								value="create"
 								onClick={generate("create")}
@@ -284,7 +285,7 @@ export function PlayerDividerOptions(props: BoxProps) {
 							</Button>
 							<Button
 								variant="contained"
-								sx={{ width: { xs: "100%", sm: "auto" } }}
+								sx={formButtonSx}
 								name="mode"
 								onClick={generate("add")}
 							>

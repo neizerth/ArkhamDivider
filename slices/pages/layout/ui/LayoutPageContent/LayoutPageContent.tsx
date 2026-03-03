@@ -6,15 +6,22 @@ import {
 	DividerLayoutOptions,
 	DividerTypeNav,
 } from "@/modules/divider/entities/ui";
-import type { DividerLayout } from "@/modules/divider/shared/model";
+import type {
+	DividerCategory,
+	DividerLayout,
+} from "@/modules/divider/shared/model";
 import { PrintableContent } from "@/modules/print/widgets/ui";
 import { SectionTitle } from "@/shared/ui";
 import { SingleColumnLayout } from "@/widgets/layout/SingleColumnLayout";
 
 type LayoutPageContentProps = {
 	layout: DividerLayout;
+	category: DividerCategory;
 };
-export function LayoutPageContent({ layout }: LayoutPageContentProps) {
+export function LayoutPageContent({
+	layout,
+	category,
+}: LayoutPageContentProps) {
 	return (
 		<SingleColumnLayout printable>
 			<Stack
@@ -37,7 +44,7 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 							}}
 						>
 							<Stack gap={2}>
-								<DividerLayoutInfo layout={layout} />
+								<DividerLayoutInfo layout={layout} category={category} />
 								<DividerTypeNav />
 							</Stack>
 							<DividerLayoutOptions />

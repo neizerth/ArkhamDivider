@@ -22,6 +22,14 @@ export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 		height: mm(O.text.ru.height),
 		fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
 	},
+	cn: {
+		fontSize: mm(O.text.cn.fontSize),
+		fontFamily: "STXingkai, serif",
+	},
+	ko: {
+		top: mm(O.text.ko.top),
+		fontFamily: "SanCn, serif",
+	},
 });
 
 export const getOutlineSx: LocaleSxCallback = ({ mm }) => ({

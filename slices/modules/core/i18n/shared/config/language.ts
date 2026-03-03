@@ -18,5 +18,5 @@ export const languageLabels: Record<string, string> = {
 	ru: "Русский",
 	vi: "Tiếng Việt",
 	zh: "繁體中文",
-	"zh-cn": "简体中文",
+	zh_cn: "简体中文",
 };

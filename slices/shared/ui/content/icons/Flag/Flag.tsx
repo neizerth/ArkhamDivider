@@ -12,7 +12,7 @@ const flagMapping: Record<string, string> = {
 	ko: "kr",
 	zh: "cn",
 	vi: "vn",
-	"zh-cn": "cn",
+	zh_cn: "cn",
 };
 
 export function Flag({ code, ...props }: FlagProps) {

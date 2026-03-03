@@ -7,7 +7,7 @@ type Options = {
 	defaultIcon?: Icon | null;
 };
 export const getDividerIcon = ({ divider, param, defaultIcon }: Options) => {
-	const customIcon = divider.params?.[param];
+	const customIcon = divider?.params?.[param];
 	const icon = (customIcon ?? defaultIcon) as Icon | undefined;
 	return icon;
 };

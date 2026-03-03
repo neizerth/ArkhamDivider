@@ -48,11 +48,13 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 			param: string;
 			defaultIcon?: Icon | null;
 		}) => {
-			const icon = getDividerIcon({
-				divider,
-				param,
-				defaultIcon,
-			});
+			const icon =
+				divider &&
+				getDividerIcon({
+					divider,
+					param,
+					defaultIcon,
+				});
 
 			const start = () => {
 				startSelection({

@@ -93,6 +93,15 @@ export function ClassicDivider(props: DividerWithRelations) {
 		param: "background",
 	});
 
+	const [smallIcon, selectSmallIcon] = getDividerIcon({
+		param: "icon",
+	});
+
+	const [_largeIcon, _selectLargeIcon] = getDividerIcon({
+		param: "icon",
+		defaultIcon: icon,
+	});
+
 	const { background } = layout.params as ClassicLayoutParams;
 
 	const iconObject = getIconObject(props);
@@ -121,15 +130,16 @@ export function ClassicDivider(props: DividerWithRelations) {
 					outlineSx={outlineSx}
 				/>
 
-				{icon && (
+				{smallIcon && (
 					<Icon
 						dividerId={id}
-						icon={icon}
+						icon={smallIcon}
 						sx={iconSx}
 						top={mm(iconObject.top)}
 						right={mm(iconObject.right)}
 						fontSize={mm(iconObject.fontSize)}
 						{...O.icon.params}
+						onClick={selectSmallIcon}
 					/>
 				)}
 				<Menu dividerId={id} sx={menuSx} />
@@ -167,7 +177,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 					</>
 				)}
 
-				{icon && (
+				{backgroundIcon && (
 					<Icon
 						dividerId={id}
 						sx={backgroundIconSx}

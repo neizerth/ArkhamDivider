@@ -29,8 +29,8 @@ const getBackLayouts = <T>(frontLayouts: PageLayout<T>[]) => {
 	for (const frontLayout of frontLayouts) {
 		const items = frontLayout.items.map((row) => ({
 			...row,
-			items: row.items.reverse(),
 			id: v4(),
+			items: row.items.toReversed(),
 		}));
 		const backLayout: PageLayout<T> = {
 			...frontLayout,
