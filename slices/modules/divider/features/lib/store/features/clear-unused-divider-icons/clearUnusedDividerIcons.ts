@@ -1,4 +1,5 @@
-import { select, takeEvery } from "redux-saga/effects";
+import { REHYDRATE } from "redux-persist";
+import { select, take, takeEvery } from "redux-saga/effects";
 import { reveokeMediaExceptFor } from "@/modules/core/media/shared/lib";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
@@ -25,10 +26,13 @@ function* worker() {
 		.filter((icon) => typeof icon !== "string")
 		.map((icon) => icon.mediaId as string);
 
+	// console.log("usedMediaIds", usedMediaIds);
+
 	reveokeMediaExceptFor(usedMediaIds);
 }
 
 export function* clearUnusedDividerIcons() {
+	yield take(REHYDRATE);
 	yield takeEvery(addManyDividers.match, worker);
 	yield takeEvery(deleteAllDividers.match, worker);
 	yield takeEvery(updateDivider.match, worker);

@@ -34,14 +34,10 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 		[clearSelectedIcon],
 	);
 
-	const save = useCallback(
-		(icon: Icon | null) => {
-			clearSelectedIcon();
-			onSelectRef.current?.(icon);
-			setSelectionActive(false);
-		},
-		[clearSelectedIcon],
-	);
+	const save = useCallback((icon: Icon | null) => {
+		onSelectRef.current?.(icon);
+		setSelectionActive(false);
+	}, []);
 
 	const select = useCallback(() => {
 		save(selectedIcon);

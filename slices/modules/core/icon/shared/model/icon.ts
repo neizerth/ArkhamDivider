@@ -7,7 +7,12 @@ export type IconMapping = Record<string, ArkhamDividerIcon>;
 
 export type IconScaleType = "circle" | "square" | false;
 
-export type Icon = string | MediaItem;
+export type MediaIcon = MediaItem & {
+	fallback?: string | null;
+	ratio: number;
+};
+
+export type Icon = string | MediaIcon;
 
 export type IconScaleFactor = {
 	all?: number;

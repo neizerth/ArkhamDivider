@@ -16,5 +16,7 @@ export function Icon({ icon, ...props }: IconProps) {
 	if (isString(icon)) {
 		return <FontIcon icon={icon} {...props} />;
 	}
-	return <MediaIcon mediaId={icon.mediaId} {...props} />;
+	return (
+		<MediaIcon mediaId={icon.mediaId} fallback={icon.fallback} {...props} />
+	);
 }

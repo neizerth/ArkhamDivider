@@ -90,7 +90,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	});
 
 	const [backgroundIcon, selectBackgroundIcon] = getDividerIcon({
-		customField: "background",
+		param: "background",
 	});
 
 	const { background } = layout.params as ClassicLayoutParams;

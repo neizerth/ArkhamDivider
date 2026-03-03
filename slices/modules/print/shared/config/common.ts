@@ -20,4 +20,4 @@ export const CROPMARK_WIDTH = 3;
 
 export const SINGLE_ITEM_CROPMARK_OFFSET = 10;
 
-export const DEFAULT_CORNER_RADIUS = 4;
+export const DEFAULT_CORNER_RADIUS = 3;

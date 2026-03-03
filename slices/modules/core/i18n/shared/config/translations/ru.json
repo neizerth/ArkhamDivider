@@ -113,5 +113,5 @@
 	"story.type.campaign": "Кампании",
 	"story.type.standalone": "Одиночные",
 	"story.type.challenge": "Испытания",
-	"print.cornerRadius": "Скругление углов: 4мм"
+	"print.cornerRadius": "Скругление углов: 3мм"
 }

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef } from "react";
 import {
 	type UseIconSelectionOptions,
 	useIconSelection,
@@ -16,26 +16,23 @@ type Options = Omit<UseIconSelectionOptions, "onSelected"> & {
 
 export function useDividerIcon({ dividerId, ...options }: Options) {
 	const dispatch = useAppDispatch();
-	const [customField, setCustomField] = useState<string | null>(null);
+	const customFieldRef = useRef<string | null>(null);
 	const divider = useAppSelector((state) =>
 		selectDividerById(state, dividerId),
 	);
 
-	const onSelected = useCallback(
-		(icon: Icon | null) => {
-			if (!customField) {
-				return;
-			}
+	const handleIconSelected = useCallback(
+		({ icon, param }: { icon: Icon | null; param: string }) => {
 			dispatch(
 				setDividerParam({
 					id: dividerId,
-					key: customField,
+					key: param,
 					value: icon,
 				}),
 			);
-			setCustomField(null);
+			customFieldRef.current = null;
 		},
-		[dividerId, customField, dispatch],
+		[dividerId, dispatch],
 	);
 
 	const startSelection = useIconSelection();
@@ -44,27 +41,38 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 
 	return useCallback(
 		({
-			customField,
+			param,
 			defaultIcon = options.defaultIcon ?? currentIcon,
 		}: {
-			customField: string;
+			param: string;
 			defaultIcon?: Icon | null;
 		}) => {
-			const customIcon = divider?.params?.[customField];
+			const customIcon = divider?.params?.[param];
 			const icon = (customIcon ?? currentIcon) as Icon | undefined;
 
 			const start = () => {
-				setCustomField(customField);
+				console.log("start selection", {
+					icon,
+					defaultIcon,
+				});
 
 				startSelection({
 					icon,
 					defaultIcon,
-					onSelected,
+					onSelected(icon) {
+						handleIconSelected({ icon, param });
+					},
 				});
 			};
 
 			return [icon, start] as const;
 		},
-		[startSelection, divider, currentIcon, onSelected, options.defaultIcon],
+		[
+			startSelection,
+			divider,
+			currentIcon,
+			handleIconSelected,
+			options.defaultIcon,
+		],
 	);
 }

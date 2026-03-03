@@ -72,5 +72,5 @@
 	"story.type.campaign": "Campaigns",
 	"story.type.standalone": "Standalone",
 	"story.type.challenge": "Challenges",
-	"print.cornerRadius": "Corner radius: 4mm"
+	"print.cornerRadius": "Corner radius: 3mm"
 }

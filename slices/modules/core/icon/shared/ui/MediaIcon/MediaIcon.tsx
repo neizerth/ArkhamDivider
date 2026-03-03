@@ -1,13 +1,15 @@
 import { Box, type BoxProps, type SxProps } from "@mui/material";
 import { useMediaUrl } from "@/modules/core/media/shared/lib";
 import type { BaseIconProps } from "../../model";
+import { FontIcon } from "../FontIcon";
 
 type CustomIconProps = BoxProps &
 	BaseIconProps & {
 		mediaId: string;
+		fallback?: string | null;
 	};
 
-export function MediaIcon({ mediaId, ...props }: CustomIconProps) {
+export function MediaIcon({ mediaId, fallback, ...props }: CustomIconProps) {
 	const sx = {
 		...props.sx,
 		objectFit: "contain",
@@ -16,13 +18,8 @@ export function MediaIcon({ mediaId, ...props }: CustomIconProps) {
 
 	const url = useMediaUrl(mediaId);
 
-	console.log("media icon url", {
-		url,
-		mediaId,
-	});
-
 	if (!url) {
-		return null;
+		return fallback && <FontIcon icon={fallback} {...props} />;
 	}
 
 	return <Box {...props} component="img" src={url} sx={sx} />;

@@ -1,5 +1,6 @@
 import { omit } from "ramda";
 import { isString } from "ramda-adjunct";
+import SVGtoPDF from "svg-to-pdfkit";
 import { defaultIconPositionManifest } from "@/modules/core/icon/shared/config";
 import {
 	getIconCorrection,
@@ -10,7 +11,9 @@ import type {
 	Icon,
 	IconMapping,
 	IconPositionManifest,
+	MediaIcon,
 } from "@/modules/core/icon/shared/model";
+import { getMediaBlob } from "@/modules/core/media/shared/lib";
 import type { DrawTextOptions, PDFTextService } from "./PDFTextService";
 
 export type DrawIconOptions = Omit<DrawTextOptions, "fontFamily"> & {
@@ -108,8 +111,36 @@ export class PDFIconService {
 		if (isString(icon)) {
 			return this.drawFontIcon(icon, options);
 		}
-		return;
+		return this.drawMediaIcon(icon, options);
 	}
+
+	async drawMediaIcon(icon: MediaIcon, options: DrawIconOptions) {
+		const { mediaId } = icon;
+		const blob = await getMediaBlob(mediaId);
+		if (!blob) {
+			return icon.fallback && this.drawFontIcon(icon.fallback, options);
+		}
+		const isSVG = icon.mime.startsWith("image/svg");
+		if (isSVG) {
+			return this.drawSVGIcon(blob, options);
+		}
+		return this.drawImageIcon(blob, options);
+	}
+
+	async drawSVGIcon(blob: Blob, options: DrawIconOptions) {
+		const svgString = await blob.text();
+		const { x, y, width, height, fontSize } = options;
+		const size = width ?? height ?? fontSize;
+		const w = size ?? fontSize;
+		const h = size ?? fontSize;
+		SVGtoPDF(this.doc, svgString, x, y, {
+			width: w,
+			height: h,
+			preserveAspectRatio: "xMidYMid meet",
+		});
+	}
+
+	async drawImageIcon(_blob: Blob, _options: DrawIconOptions) {}
 
 	async drawFontIcon(id: string, options: DrawIconOptions) {
 		const icon = this.getIcon({

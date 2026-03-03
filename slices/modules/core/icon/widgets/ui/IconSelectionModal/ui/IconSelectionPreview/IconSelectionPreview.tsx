@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 import { downloadIcon } from "@/modules/core/icon/entities/lib";
 import { createMediaIcon, getIconId } from "@/modules/core/icon/shared/lib";
 import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
-import { addMedia } from "@/modules/core/media/shared/lib";
 import { Row, Upload } from "@/shared/ui";
 import * as C from "./IconSelectionPreview.components";
 
 type IconSelectionPreviewProps = BoxProps;
 
 export function IconSelectionPreview(props: IconSelectionPreviewProps) {
-	const { selectedIcon, setSelectedIcon } = useContext(IconSelectionContext);
+	const { selectedIcon, defaultIcon, setSelectedIcon } =
+		useContext(IconSelectionContext);
 	const { t } = useTranslation();
 
 	const downloadSvg = useCallback(() => {
@@ -28,19 +28,13 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 			if (!file) {
 				return;
 			}
-			const mediaId = await addMedia(file);
-			const mime = file.type;
-			const extension = file.name.split(".").pop()?.toLowerCase();
-
-			const icon = createMediaIcon({
-				mediaId,
-				mime,
-				extension,
-			});
-
-			setSelectedIcon(icon);
+			const icon = await createMediaIcon({ file, defaultIcon });
+			if (icon) {
+				setSelectedIcon(icon);
+			}
+			event.target.value = "";
 		},
-		[setSelectedIcon],
+		[setSelectedIcon, defaultIcon],
 	);
 	const iconId = getIconId(selectedIcon) ?? "upload";
 
