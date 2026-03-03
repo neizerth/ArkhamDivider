@@ -6,6 +6,7 @@ import {
 	selectLayoutBleed,
 } from "@/modules/divider/entities/lib";
 import { DividerViewMemo as DividerView } from "@/modules/divider/entities/ui";
+import { PagePreviewZoomSelect } from "@/modules/print/entities/ui";
 import { PrintablePage } from "@/modules/print/features/ui";
 import {
 	getPageSize,
@@ -18,7 +19,6 @@ import {
 	selectPreviewZoom,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
-
 import { useAppSelector } from "@/shared/lib";
 
 type PrintableContentProps = StackProps;
@@ -65,7 +65,17 @@ export function PrintableContent(props: PrintableContentProps) {
 	const zoom = previewZoom ? previewZoom : 100;
 
 	return (
-		<Box overflow="auto">
+		<Stack
+			sx={{
+				"@media screen": {
+					gap: 4,
+					padding: 2,
+				},
+			}}
+		>
+			<Stack justifyContent="center" alignItems="center" displayPrint="none">
+				<PagePreviewZoomSelect />
+			</Stack>
 			<GlobalStyles
 				styles={{
 					"@media print": {
@@ -96,6 +106,6 @@ export function PrintableContent(props: PrintableContentProps) {
 					))}
 				</Stack>
 			</Box>
-		</Box>
+		</Stack>
 	);
 }

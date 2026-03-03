@@ -7,7 +7,6 @@ import {
 	DividerTypeNav,
 } from "@/modules/divider/entities/ui";
 import type { DividerLayout } from "@/modules/divider/shared/model";
-import { PagePreviewZoomSelect } from "@/modules/print/entities/ui";
 import { PrintableContent } from "@/modules/print/widgets/ui";
 import { SectionTitle } from "@/shared/ui";
 import { SingleColumnLayout } from "@/widgets/layout/SingleColumnLayout";
@@ -52,9 +51,6 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 						},
 					}}
 				>
-					<Box displayPrint="none" margin="auto">
-						<PagePreviewZoomSelect />
-					</Box>
 					<PrintableContent />
 				</Stack>
 			</Stack>
