@@ -1,4 +1,4 @@
-import { deleteMediaById, getMediaById } from "./media";
+import { deleteMediaById, getMediaById, getMediaIds } from "./media";
 
 const urlMap = new Map<string, string>();
 
@@ -39,4 +39,12 @@ export const revokeMediaById = (id: string) => {
 		return;
 	}
 	URL.revokeObjectURL(url);
+};
+
+export const reveokeMediaExceptFor = async (usedIds: string[]) => {
+	const allIds = await getMediaIds();
+	const unusedIds = allIds.filter((id) => !usedIds.includes(id));
+	for (const id of unusedIds) {
+		revokeMediaById(id);
+	}
 };

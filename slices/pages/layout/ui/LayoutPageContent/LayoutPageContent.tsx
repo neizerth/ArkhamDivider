@@ -21,7 +21,6 @@ export function LayoutPageContent({ layout }: LayoutPageContentProps) {
 			<Stack
 				sx={{
 					"@media screen": {
-						paddingInline: 2,
 						paddingBlock: 8,
 						gap: 10,
 					},

@@ -12,6 +12,10 @@ export const getMediaById = async (id: string) => {
 	return mediaUrl;
 };
 
+export const getMediaIds = async () => {
+	return await mediaStore.keys();
+};
+
 export const deleteMediaById = async (id: string) => {
 	await mediaStore.removeItem(id);
 };

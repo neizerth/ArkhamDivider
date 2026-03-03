@@ -1,7 +1,7 @@
 import { whereId } from "@/shared/util";
 import type { DividerLayout } from "../../shared/model";
 import { dividerLayouts } from "../items";
-import { getCategoryById } from "./category";
+import { getCategoryById } from "./logic/getCategoryById";
 
 export const getLayoutById = (id: string) => dividerLayouts.find(whereId(id));
 

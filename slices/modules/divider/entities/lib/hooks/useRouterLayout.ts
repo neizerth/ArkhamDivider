@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
-import { getCategoryById } from "../category";
 import { getLayoutById } from "../layout";
+import { getCategoryById } from "../logic/getCategoryById";
 
 export const useRouterLayout = () => {
 	const params = useParams();

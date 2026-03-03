@@ -35,6 +35,7 @@ export type DividerLayout = {
 	sleeves?: DividerLayoutSleeve[];
 	params?: Record<string, unknown>;
 	backgroundSupport?: boolean;
+	iconParams?: string[];
 	scenarioParams?: {
 		campaignIcon?: boolean;
 		cardCount?: boolean;

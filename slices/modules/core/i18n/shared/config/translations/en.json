@@ -65,6 +65,7 @@
 	"divider.subtype.bonded": "Bonded Cards",
 	"divider.subtype.customizations": "Customizations",
 	"divider.subtype.ally": "Allies",
+	"info.bleed": "Bleed is needed to remove white borders from the divider edges due to the inevitable error of the knife in 1–2 mm",
 	"story.type.all": "All content",
 	"story.type.translated": "Translated",
 	"story.type.official": "Official",

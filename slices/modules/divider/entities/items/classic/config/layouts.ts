@@ -45,6 +45,7 @@ const horizontalLayout: DividerLayout = {
 	params: {
 		background: "/images/divider/background/classic/horizontal.png",
 	},
+	iconParams: ["icon", "background"],
 };
 
 const horizontalBW: DividerLayout = {
@@ -95,6 +96,7 @@ const verticalLayout: DividerLayout = {
 		},
 	},
 	bleed: 3,
+	iconParams: ["icon", "background"],
 };
 
 const verticalBW: DividerLayout = {

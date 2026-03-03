@@ -37,6 +37,7 @@ export const dividers = createSlice({
 		addDivider: adapter.addOne,
 		updateDivider: adapter.updateOne,
 		deleteDivider: adapter.removeOne,
+		deleteAllDividers: adapter.removeAll,
 		addManyDividers: adapter.addMany,
 		copyDivider(
 			state,
@@ -71,6 +72,7 @@ export const {
 	addManyDividers,
 	copyDivider,
 	setDividerParam,
+	deleteAllDividers,
 } = dividers.actions;
 
 export const {

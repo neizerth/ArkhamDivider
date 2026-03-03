@@ -1,4 +1,3 @@
-import BleedIcon from "@assets/images/bleed.svg?react";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import Box from "@mui/material/Box";
@@ -11,6 +10,7 @@ import { selectBleedEnabled } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
 import { getBoxSize } from "@/shared/util";
+import { BleedInfo } from "../BleedInfo";
 import { DividerLayoutAuthorInfo as Author } from "../DividerLayoutAuthorInfo";
 import { DividerLayoutSleeveInfo as Sleeve } from "../DividerLayoutSleeveInfo";
 import * as C from "./DividerLayoutInfo.components";
@@ -45,7 +45,6 @@ const optionLabelSx = {
 export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 	const { t } = useTranslation();
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
-
 	const { sleeves } = layout;
 
 	const authors = getLayoutAuthors(layout);
@@ -76,22 +75,7 @@ export function DividerLayoutInfo({ layout }: DividerLayoutInfoProps) {
 							{size} {t`mm`}
 						</Typography>
 					</Row>
-					{bleedEnabled && (
-						<Row sx={optionSx}>
-							<Row sx={optionTitleSx}>
-								<Typography
-									variant="body2"
-									sx={optionLabelSx}
-								>{t`Bleed`}</Typography>
-								<C.Icon title={t`Bleed`}>
-									<BleedIcon width={24} height={24} />
-								</C.Icon>
-							</Row>
-							<Typography variant="body1" flex={1}>
-								{layout.bleed} {t`mm`}
-							</Typography>
-						</Row>
-					)}
+					{bleedEnabled && <BleedInfo bleed={layout.bleed} />}
 					{sleeves && (
 						<Row sx={optionSx}>
 							<Row sx={sleevesTitleSx}>
