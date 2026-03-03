@@ -8,5 +8,7 @@ export const setStreamMitm = () => {
 	if (isUndefined(window)) {
 		return;
 	}
-	streamSaver.mitm = `${window.location.origin}/streamsaver/mitm.html?version=2.0.0`;
+
+	const mitmUrl = `${window.location.origin}/streamsaver/mitm.html?version=2.0.0`;
+	streamSaver.mitm = mitmUrl;
 };

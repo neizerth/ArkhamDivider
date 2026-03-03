@@ -2,7 +2,7 @@ import { Buffer } from "buffer";
 import PDFDocument from "pdfkit/js/pdfkit.standalone.js";
 import { last } from "ramda";
 
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { call, delay, put, select, takeLatest } from "redux-saga/effects";
 import streamSaver from "streamsaver";
 import { dividerPDFComponents } from "@/modules/divider/entities/items";
 import { getDividerPageLayouts } from "@/modules/divider/entities/lib/logic";
@@ -184,6 +184,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 					}
 
 					yield put(setDividerRenderId(item.id));
+					yield delay(10);
 
 					const itemSizePt = {
 						width: px(item.size.width),

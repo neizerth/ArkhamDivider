@@ -19,6 +19,7 @@ export default defineConfig({
 		svgr(),
 	],
 	server: {
+		host: "127.0.0.1",
 		hmr: {
 			// Улучшаем HMR для лучшей работы с React компонентами
 			overlay: true,
