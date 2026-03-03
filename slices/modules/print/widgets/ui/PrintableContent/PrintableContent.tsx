@@ -69,7 +69,6 @@ export function PrintableContent(props: PrintableContentProps) {
 			sx={{
 				"@media screen": {
 					gap: 4,
-					padding: 2,
 				},
 			}}
 		>
@@ -85,26 +84,35 @@ export function PrintableContent(props: PrintableContentProps) {
 					},
 				}}
 			/>
-			<Box width={`${zoom}%`} marginInline="auto">
-				<Stack
-					{...props}
-					sx={{
-						alignItems: "center",
-						justifyContent: "center",
-						"@media screen": {
-							gap: 2,
-						},
-						...sx,
-					}}
-				>
-					{pageLayouts.map((pageLayout) => (
-						<PrintablePage
-							{...pageProps}
-							key={`${pageLayout.number}-${pageLayout.side}`}
-							pageLayout={pageLayout}
-						/>
-					))}
-				</Stack>
+			<Box
+				overflow="auto"
+				sx={{
+					"@media screen": {
+						padding: 2,
+					},
+				}}
+			>
+				<Box width={`${zoom}%`} marginInline="auto">
+					<Stack
+						{...props}
+						sx={{
+							alignItems: "center",
+							justifyContent: "center",
+							"@media screen": {
+								gap: 2,
+							},
+							...sx,
+						}}
+					>
+						{pageLayouts.map((pageLayout) => (
+							<PrintablePage
+								{...pageProps}
+								key={`${pageLayout.number}-${pageLayout.side}`}
+								pageLayout={pageLayout}
+							/>
+						))}
+					</Stack>
+				</Box>
 			</Box>
 		</Stack>
 	);

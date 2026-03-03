@@ -65,7 +65,13 @@ export function ScenarioDividerOptions(props: BoxProps) {
 							containerSx={{ width: "100%", minWidth: 400, flex: 1 }}
 						/>
 						{story && (
-							<Row flex={{ xs: 1, md: 0 }} gap={2} justifyContent="center">
+							<Row
+								sx={{
+									flex: { xs: 1, md: 0 },
+									gap: 2,
+									justifyContent: "center",
+								}}
+							>
 								<Button
 									variant="contained"
 									sx={{ width: { xs: "100%", sm: "auto" } }}

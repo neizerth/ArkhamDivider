@@ -1,7 +1,6 @@
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -22,8 +21,6 @@ import { Row } from "@/shared/ui";
 import * as C from "./InvestigatorDividerOptions.components";
 
 type InvestigatorDividerOptionsProps = BoxProps;
-
-const _storyCategories = ["all", "translated", "official"] as const;
 
 export function InvestigatorDividerOptions(
 	props: InvestigatorDividerOptionsProps,
@@ -72,8 +69,8 @@ export function InvestigatorDividerOptions(
 	return (
 		<Box {...props}>
 			<form>
-				<Stack gap={2}>
-					<C.Row>
+				<Row gap={2} flexWrap="wrap" alignItems="center">
+					<C.Row flex={1} minWidth={300}>
 						<StorySelect
 							fullWidth
 							multiple
@@ -86,13 +83,24 @@ export function InvestigatorDividerOptions(
 					{showGenerateButtons && (
 						<C.Row
 							sx={{
+								flex: { xs: 1, sm: 0 },
 								justifyContent: {
-									xs: "flex-start",
-									sm: "center",
+									xs: "center",
+									sm: "flex-start",
 								},
 							}}
 						>
-							<Row gap={2} alignItems="center">
+							<Row
+								sx={{
+									gap: 2,
+									alignItems: "center",
+									justifyContent: {
+										xs: "center",
+										sm: "flex-start",
+									},
+									flex: { xs: 1, sm: 0 },
+								}}
+							>
 								<Button
 									variant="contained"
 									sx={{ width: { xs: "100%", sm: "auto" } }}
@@ -120,7 +128,7 @@ export function InvestigatorDividerOptions(
 							</Row>
 						</C.Row>
 					)}
-				</Stack>
+				</Row>
 			</form>
 		</Box>
 	);
