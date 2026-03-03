@@ -31,6 +31,7 @@ export const cardSlots: CardSlot[] = [
 	"arcane",
 	"arcane_x2",
 	"ally",
+	"head",
 ];
 
 export const fixedXPCosts: FixedXPCost[] = range(0, 6).map((value) => {
@@ -49,4 +50,5 @@ export const cardSlotNames: Record<CardSlot, string> = {
 	accessory: "Accessory",
 	body: "Body",
 	ally: "Ally",
+	head: "Head",
 };

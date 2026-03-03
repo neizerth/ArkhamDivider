@@ -1,3 +1,4 @@
+import type { SelectProps } from "@mui/material";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
@@ -6,19 +7,30 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import { type JSX, useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
+import type { Defined, Single } from "@/shared/model";
 import { Select } from "@/shared/ui";
 import {
+	selectLayout,
 	useDividerColorData,
 	useDividerOrientationData,
 	useRouterLayout,
 } from "../../../lib";
+import { changeLayoutColor } from "../../../lib/store/features/changeLayoutColor/changeLayoutColor";
+import { changeLayoutOrientation } from "../../../lib/store/features/changeLayoutOrientation/changeLayoutOrientation";
 import * as C from "./DividerVariantSelect.components";
 
 type DividerVariantSelectProps = JSX.IntrinsicElements["div"];
 export function DividerVariantSelect(props: DividerVariantSelectProps) {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
 	const data = useRouterLayout();
+
+	const layout = useAppSelector(selectLayout);
+
+	const color = layout?.color ?? true;
+	const orientation = layout?.orientation ?? "horizontal";
 
 	const [open, setOpen] = useState(false);
 	const [selectOpen, setSelectOpen] = useBoolean(false);
@@ -33,6 +45,30 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 		}
 		setOpen(false);
 	}, [selectOpen]);
+
+	type ColorValue = Single<typeof colorData>;
+	type ColorChangeCallback = Defined<SelectProps["onChange"]>;
+
+	const handleColorChange = useCallback<ColorChangeCallback>(
+		(event) => {
+			const target = event.target as never as ColorValue;
+			dispatch(changeLayoutColor(target.value === "color"));
+		},
+		[dispatch],
+	);
+
+	type OrientationValue = Single<typeof orientationData>;
+	const handleOrientationChange = useCallback<Defined<SelectProps["onChange"]>>(
+		(event) => {
+			const value = (event.target as never as OrientationValue).value;
+			dispatch(
+				changeLayoutOrientation(
+					value === "vertical" ? "vertical" : "horizontal",
+				),
+			);
+		},
+		[dispatch],
+	);
 
 	if (!data) {
 		return null;
@@ -64,8 +100,10 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 												onOpen={setSelectOpen.on}
 												onClose={setSelectOpen.off}
 												data={colorData}
+												onChange={handleColorChange}
 												label={t("Color")}
 												defaultValue={"color"}
+												value={color ? "color" : "grayscale"}
 												containerSx={{
 													width: "100%",
 												}}
@@ -78,8 +116,10 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 												onOpen={setSelectOpen.on}
 												onClose={setSelectOpen.off}
 												data={orientationData}
+												onChange={handleOrientationChange}
 												label={t("Orientation")}
 												defaultValue={"horizontal"}
+												value={orientation}
 												sx={{
 													width: "100%",
 												}}

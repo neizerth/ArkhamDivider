@@ -81,11 +81,14 @@ export const getDividerStatsSx: PrintSxCallback = ({ mm }) => ({
 
 const strokeClipSize = 8.5;
 
-export const getStrokeSx: PrintSxCallback = ({ mm }) => ({
+export const getStrokeSx: PrintSxCallback<{ color?: boolean }> = ({
+	mm,
+	color = true,
+}) => ({
 	position: "absolute",
 	color: "transparent",
 	clipPath: `polygon(0 0, ${mm(strokeClipSize)} 0, ${mm(strokeClipSize)} 100%, 0 100%)`,
-	WebkitTextStroke: `${mm(0.4)} #cab686`,
+	WebkitTextStroke: `${mm(0.4)} ${color ? "#cab686" : "#fff"}`,
 	zIndex: -1,
 });
 

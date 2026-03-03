@@ -3,14 +3,16 @@ import type { BoxSize } from "@/shared/model";
 
 export type DPI = 300 | 600 | 1200;
 
-export type PrintUnitProps = {
+export type PrintUnitProps<T = object> = T & {
 	mm: (value: number) => string;
 	dpi: DPI;
 };
 
-export type PrintUnitCallback<T> = (props: PrintUnitProps) => T;
+export type PrintUnitCallback<T, Input = object> = (
+	props: PrintUnitProps<Input>,
+) => T;
 
-export type PrintSxCallback = PrintUnitCallback<SxProps>;
+export type PrintSxCallback<T = object> = PrintUnitCallback<SxProps, T>;
 
 type XPosition = "left" | "right";
 type YPosition = "top" | "bottom";

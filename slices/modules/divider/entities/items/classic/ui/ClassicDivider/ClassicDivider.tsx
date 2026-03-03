@@ -52,7 +52,10 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const getLocaleSx = useLocaleSx();
 	const titleSx = getLocaleSx(S.getTextSx);
 
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintUnit({
+		color: layout.color,
+	});
+
 	const iconSx = getPrintSx(S.getIconSx);
 	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
 	const dividerStatsSx = getPrintSx(S.getDividerStatsSx);

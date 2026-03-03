@@ -15,7 +15,7 @@ const horizontalLayout: DividerLayout = {
 	groupId: "classic-horizontal",
 	name: "Classic",
 	orientation: "horizontal",
-	color: false,
+	color: true,
 	size: createSize(89, 76.2),
 	printSize: {
 		300: {
@@ -73,12 +73,6 @@ const horizontalHQ: DividerLayout = {
 	},
 };
 
-const horizontalHQBW: DividerLayout = {
-	...horizontalHQ,
-	id: "classic-horizontal-hq-bw",
-	color: false,
-};
-
 const verticalLayout: DividerLayout = {
 	id: "classic-vertical",
 	types,
@@ -87,7 +81,7 @@ const verticalLayout: DividerLayout = {
 	name: "Classic",
 	image: "/images/divider/render/classic.avif",
 	orientation: "vertical",
-	color: false,
+	color: true,
 	size: createSize(63, 100),
 	printSize: {
 		300: {
@@ -97,12 +91,18 @@ const verticalLayout: DividerLayout = {
 	},
 	bleed: 3,
 	iconParams: ["icon", "background"],
+	params: {
+		background: "/images/divider/background/classic/vertical.png",
+	},
 };
 
 const verticalBW: DividerLayout = {
 	...verticalLayout,
 	id: "classic-vertical-bw",
 	color: false,
+	params: {
+		background: "/images/divider/background/classic/vertical_bw.png",
+	},
 };
 
 const vertical65x100: DividerLayout = {
@@ -134,7 +134,6 @@ export const classicLayouts: DividerLayout[] = [
 	horizontalLayout,
 	horizontalHQ,
 	horizontalBW,
-	horizontalHQBW,
 	verticalLayout,
 	verticalBW,
 	vertical65x100,

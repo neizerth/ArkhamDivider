@@ -15,7 +15,8 @@ export type CardSlot =
 	| "arcane_x2"
 	| "accessory"
 	| "body"
-	| "ally";
+	| "ally"
+	| "head";
 
 export type XPCost = FixedXPCost | RangeXPCost;
 
