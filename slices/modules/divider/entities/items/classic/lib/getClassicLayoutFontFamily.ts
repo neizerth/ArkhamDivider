@@ -5,7 +5,7 @@ export const getClassicLayoutFontFamily = (language: string): FontFamily => {
 		case "ru":
 			return "Conkordia";
 		case "cn":
-			return "STXingkai";
+			return "FZLiBian";
 		case "ko":
 			return "SanCn";
 	}

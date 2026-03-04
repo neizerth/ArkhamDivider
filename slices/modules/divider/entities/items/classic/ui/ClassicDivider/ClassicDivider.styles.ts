@@ -28,12 +28,11 @@ export const getTextSx: ClassicDividerLocaleCallback = ({
 		fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
 	},
 	cn: {
-		fontSize: mm(O.text.cn.fontSize),
-		fontFamily: "STXingkai, serif",
+		fontFamily: "FZLiBian, Arkhamic, Teutonic, serif",
 	},
 	ko: {
 		top: mm(O.text.ko.top),
-		fontFamily: "SanCn, serif",
+		fontFamily: "SanCn, Arkhamic, Teutonic, serif",
 	},
 });
 
