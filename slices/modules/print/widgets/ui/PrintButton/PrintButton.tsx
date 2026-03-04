@@ -16,7 +16,9 @@ import { selectLayout } from "@/modules/divider/entities/lib";
 import { getSupportedLayoutDPI } from "@/modules/divider/shared/lib";
 import { selectSingleItemPerPage } from "@/modules/print/shared/lib";
 import type { DPI } from "@/modules/print/shared/model";
+import { downloadDividersAsImages } from "@/modules/render/features/download-dividers-as-images/downloadDividersAsImages";
 import { downloadDividersAsPDF } from "@/modules/render/features/download-dividers-as-pdf";
+import type { ImageFormat } from "@/modules/render/shared/model";
 import { isPrintSupported, theme } from "@/shared/config";
 import {
 	createClickAwayListener,
@@ -58,12 +60,13 @@ export function PrintButton(props: PrintButtonProps) {
 		ignore: anchorRef.current,
 	});
 
-	const download = useCallback(
-		(dpi?: DPI) => () => {
-			dispatch(downloadDividersAsPDF({ dpi }));
-		},
-		[dispatch],
-	);
+	const download = useCallback(() => {
+		dispatch(downloadDividersAsPDF({ dpi }));
+	}, [dispatch, dpi]);
+
+	const downloadImages = (imageFormat: ImageFormat) => () => {
+		dispatch(downloadDividersAsImages({ imageFormat, dpi }));
+	};
 
 	return (
 		<>
@@ -129,19 +132,28 @@ export function PrintButton(props: PrintButtonProps) {
 												<Typography variant="body2">{dpi} DPI</Typography>
 											)}
 										</Box>,
-										<MenuItem key={`${dpi}-pdf`} onClick={download(dpi)}>
+										<MenuItem key={`${dpi}-pdf`} onClick={download}>
 											<Icon icon="file-pdf" /> &nbsp; PDF
 											<C.Badge>CMYK</C.Badge>
 										</MenuItem>,
-										<MenuItem key={`${dpi}-tiff`}>
+										<MenuItem
+											key={`${dpi}-tiff`}
+											onClick={downloadImages("tiff")}
+										>
 											<Icon icon="file-zip" /> &nbsp; TIFF
 											<C.Badge>CMYK</C.Badge>
 										</MenuItem>,
-										<MenuItem key={`${dpi}-jpeg`}>
+										<MenuItem
+											key={`${dpi}-jpeg`}
+											onClick={downloadImages("jpeg")}
+										>
 											<Icon icon="file-zip" /> &nbsp; JPEG
 											<C.Badge>CMYK</C.Badge>
 										</MenuItem>,
-										<MenuItem key={`${dpi}-jpg`}>
+										<MenuItem
+											key={`${dpi}-jpg`}
+											onClick={downloadImages("png")}
+										>
 											<Icon icon="file-zip" /> &nbsp; PNG
 											<C.Badge>RGB</C.Badge>
 										</MenuItem>,
