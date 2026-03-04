@@ -3,14 +3,19 @@ import { getDividerIcon } from "@/modules/divider/features/lib";
 import { cmyk } from "@/modules/pdf/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
-import { classicDividerHorizontalObjects as O } from "../../../config";
-import { getIconObject } from "../../../lib";
+import {
+	getClassicLayoutFontFamily,
+	getClassicLayoutObjects,
+	getIconObject,
+} from "../../../lib";
 
 const color = cmyk(0, 0, 0, 100);
 
 export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const { story, fontSizeScale = 100 } = props;
-	const { text, lasercut, unit, language, playerParams } = ctx;
+	const { text, lasercut, unit, language, playerParams, layout } = ctx;
+
+	const O = getClassicLayoutObjects(layout);
 	const t = withStoryTranslation(story);
 
 	const textConfig = getLocaleConfig(language, O.text);
@@ -19,7 +24,10 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 	const fontSize = unit.mm((fontSizeScale / 100) * 4.58);
 	const bleed = unit.fromBleed();
 
-	const iconObject = getIconObject(props);
+	const iconObject = getIconObject({
+		...props,
+		layout,
+	});
 
 	lasercut.drawRect({
 		x: bleed.x(),
@@ -27,6 +35,8 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 		width: bleed.width(),
 		height: bleed.height(),
 	});
+
+	const fontFamily = getClassicLayoutFontFamily(language);
 
 	await text.draw(title, {
 		x: bleed.x(textConfig.left),
@@ -36,7 +46,7 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 		fontSize,
 		align: "center",
 		overprint: true,
-		fontFamily: "Conkordia",
+		fontFamily,
 		color,
 	});
 

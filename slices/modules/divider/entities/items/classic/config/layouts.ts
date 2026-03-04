@@ -60,16 +60,20 @@ const horizontalBW: DividerLayout = {
 const horizontalHQ: DividerLayout = {
 	...horizontalLayout,
 	id: "classic-horizontal-hq",
+	name: "Classic HQ",
 	size: createSize(88, 76),
 	printSize: {
 		300: {
-			size: createSize(1039, 900),
-			bleedSize: createSize(1110, 971),
+			size: createSize(1039, 898),
+			bleedSize: createSize(1110, 969),
 		},
 		600: {
-			size: createSize(2079, 1800),
-			bleedSize: createSize(2220, 1942),
+			size: createSize(2079, 1795),
+			bleedSize: createSize(2220, 1937),
 		},
+	},
+	params: {
+		background: "/images/divider/background/classic/horizontal_hq.png",
 	},
 };
 
@@ -137,8 +141,8 @@ const vertical65x100BW: DividerLayout = {
 };
 
 export const classicLayouts: DividerLayout[] = [
-	horizontalLayout,
 	horizontalHQ,
+	horizontalLayout,
 	horizontalBW,
 	verticalLayout,
 	verticalBW,

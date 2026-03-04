@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import { type JSX, useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { changeLayoutId } from "@/modules/divider/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import type { Defined, Single } from "@/shared/model";
@@ -16,9 +17,10 @@ import {
 	useDividerColorData,
 	useDividerOrientationData,
 	useRouterLayout,
-} from "../../../lib";
-import { changeLayoutColor } from "../../../lib/store/features/changeLayoutColor/changeLayoutColor";
-import { changeLayoutOrientation } from "../../../lib/store/features/changeLayoutOrientation/changeLayoutOrientation";
+} from "../../../../lib";
+import { changeLayoutColor } from "../../../../lib/store/features/changeLayoutColor/changeLayoutColor";
+import { changeLayoutOrientation } from "../../../../lib/store/features/changeLayoutOrientation/changeLayoutOrientation";
+import { useDividerVariants } from "../lib";
 import * as C from "./DividerVariantSelect.components";
 
 type DividerVariantSelectProps = JSX.IntrinsicElements["div"];
@@ -38,6 +40,7 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 
 	const colorData = useDividerColorData();
 	const orientationData = useDividerOrientationData();
+	const variants = useDividerVariants();
 
 	const onClickAway = useCallback(() => {
 		if (selectOpen) {
@@ -66,6 +69,14 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 					value === "vertical" ? "vertical" : "horizontal",
 				),
 			);
+		},
+		[dispatch],
+	);
+	type VariantValue = Single<typeof variants>;
+	const handleVariantChange = useCallback<Defined<SelectProps["onChange"]>>(
+		(event) => {
+			const value = (event.target as never as VariantValue).value;
+			dispatch(changeLayoutId(value));
 		},
 		[dispatch],
 	);
@@ -121,6 +132,21 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 												defaultValue={"horizontal"}
 												value={orientation}
 												sx={{
+													width: "100%",
+												}}
+											/>
+										</ListItem>
+									)}
+									{variants.length > 1 && (
+										<ListItem>
+											<Select
+												onOpen={setSelectOpen.on}
+												onClose={setSelectOpen.off}
+												data={variants}
+												onChange={handleVariantChange}
+												value={layout?.id}
+												label={t("Variant")}
+												containerSx={{
 													width: "100%",
 												}}
 											/>

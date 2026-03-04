@@ -103,7 +103,10 @@ export function ClassicDivider(props: DividerWithRelations) {
 
 	const { background } = layout.params as ClassicLayoutParams;
 
-	const iconObject = getIconObject(props);
+	const iconObject = getIconObject({
+		...props,
+		layout,
+	});
 
 	return (
 		<Container>

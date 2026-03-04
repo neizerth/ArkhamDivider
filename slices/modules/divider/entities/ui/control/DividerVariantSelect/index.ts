@@ -1,1 +1,1 @@
-export * from "./DividerVariantSelect";
+export * from "./ui";

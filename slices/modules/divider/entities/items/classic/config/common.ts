@@ -73,6 +73,37 @@ export const classicDividerHorizontalObjects = {
 
 export const classicDividerHorizontalHQObjects = {
 	...classicDividerHorizontalObjects,
+	text: {
+		...classicDividerHorizontalObjects.text,
+		default: {
+			...classicDividerHorizontalObjects.text.default,
+			top: 3.3,
+		},
+		ru: {
+			...classicDividerHorizontalObjects.text.ru,
+			top: 3.5,
+		},
+		ko: {
+			...classicDividerHorizontalObjects.text.ko,
+			top: 3.1,
+		},
+	},
+	icon: {
+		...classicDividerHorizontalObjects.icon,
+		top: 1.5,
+		withXP: {
+			...classicDividerHorizontalObjects.icon.withXP,
+			top: 1.2,
+		},
+		skill: {
+			...classicDividerHorizontalObjects.icon.skill,
+			top: 0.7,
+		},
+	},
+	backgroundIcon: {
+		...classicDividerHorizontalObjects.backgroundIcon,
+		top: 15.6,
+	},
 };
 
 export const classicDividerVertical63Objects = {
