@@ -3,7 +3,7 @@ import { getDividerIcon } from "@/modules/divider/features/lib";
 import { cmyk } from "@/modules/pdf/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
-import { classicDividerObjects as O } from "../../../config";
+import { classicDividerHorizontalObjects as O } from "../../../config";
 import { getIconObject } from "../../../lib";
 
 const color = cmyk(0, 0, 0, 100);

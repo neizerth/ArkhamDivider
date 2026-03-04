@@ -23,16 +23,12 @@ import type {
 import { usePrintUnit, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
-import { classicDividerObjects as O } from "../../config";
 import { classicDividerTextColor } from "../../config/common";
-import { getIconObject } from "../../lib";
+import { getClassicLayoutObjects, getIconObject } from "../../lib";
+import type { ClassicLayoutParams } from "../../model";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import { ClassicDividerXP as XP } from "../ClassicDividerXP";
 import * as S from "./ClassicDivider.styles";
-
-type ClassicLayoutParams = {
-	background: string;
-};
 
 export function ClassicDivider(props: DividerWithRelations) {
 	const { story, id, icon } = props;
@@ -45,16 +41,21 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const [showCardsInfo, setShowCardsInfo] = useState(false);
 	const customTitle = useRef(props.customTitle);
 
+	const O = getClassicLayoutObjects(layout);
+
 	const toggleCardsInfo = useCallback(() => {
 		setShowCardsInfo(!showCardsInfo);
 	}, [showCardsInfo]);
 
-	const getLocaleSx = useLocaleSx();
+	const sxOptions = {
+		color: layout.color,
+		objects: O,
+	};
+
+	const getLocaleSx = useLocaleSx(sxOptions);
 	const titleSx = getLocaleSx(S.getTextSx);
 
-	const getPrintSx = usePrintUnit({
-		color: layout.color,
-	});
+	const getPrintSx = usePrintUnit(sxOptions);
 
 	const iconSx = getPrintSx(S.getIconSx);
 	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
@@ -63,7 +64,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);
 	const titleClearSx = getPrintSx(S.getTitleClearSx);
 	const menuSx = getPrintSx(S.getMenuSx);
-	const outlineSx = getLocaleSx(S.getOutlineSx);
+	const outlineSx = getPrintSx(S.getOutlineSx);
 	const xpSx = getPrintSx(S.getXPSx);
 	const numericXPSx = getPrintSx(S.getNumericXPSx);
 
@@ -98,11 +99,6 @@ export function ClassicDivider(props: DividerWithRelations) {
 
 	const [smallIcon, selectSmallIcon] = getDividerIcon({
 		param: "icon",
-	});
-
-	const [_largeIcon, _selectLargeIcon] = getDividerIcon({
-		param: "icon",
-		defaultIcon: icon,
 	});
 
 	const { background } = layout.params as ClassicLayoutParams;

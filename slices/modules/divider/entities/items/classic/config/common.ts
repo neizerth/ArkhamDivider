@@ -4,7 +4,7 @@ export const classicCategoryId = "classic";
 
 export const classicDividerTextColor = "#2e2622";
 
-export const classicDividerObjects = {
+export const classicDividerHorizontalObjects = {
 	text: {
 		default: {
 			top: 3.8,
@@ -70,3 +70,30 @@ export const classicDividerObjects = {
 		opacity: percent(5),
 	},
 } as const;
+
+export const classicDividerHorizontalHQObjects = {
+	...classicDividerHorizontalObjects,
+};
+
+export const classicDividerVertical63Objects = {
+	...classicDividerHorizontalObjects,
+	backgroundIcon: {
+		...classicDividerHorizontalObjects.backgroundIcon,
+		top: 25,
+		left: 6.5,
+	},
+};
+
+export const classicDividerVertical65Objects = {
+	...classicDividerVertical63Objects,
+	backgroundIcon: {
+		...classicDividerVertical63Objects.backgroundIcon,
+		left: 7.5,
+	},
+};
+
+export const classicDividerObjects = {
+	horizontal: classicDividerHorizontalObjects,
+	vertical63: classicDividerVertical63Objects,
+	vertical65: classicDividerVertical65Objects,
+};

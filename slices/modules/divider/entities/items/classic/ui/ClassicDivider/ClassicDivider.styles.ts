@@ -1,11 +1,15 @@
 import { alpha } from "@mui/material/styles";
-import type { LocaleSxCallback } from "@/modules/core/i18n/shared/model";
-import type { PrintSxCallback } from "@/modules/print/shared/model";
 import { percent } from "@/shared/util";
-import { classicDividerObjects as O } from "../../config";
 import { classicDividerTextColor } from "../../config/common";
+import type {
+	ClassicDividerLocaleCallback,
+	ClassicDividerSxCallback,
+} from "../../model";
 
-export const getTextSx: LocaleSxCallback = ({ mm }) => ({
+export const getTextSx: ClassicDividerLocaleCallback = ({
+	mm,
+	objects: O,
+}) => ({
 	default: {
 		fontSize: mm(5),
 		fontFamily: "Arkhamic, Teutonic, serif",
@@ -32,16 +36,14 @@ export const getTextSx: LocaleSxCallback = ({ mm }) => ({
 	},
 });
 
-export const getOutlineSx: LocaleSxCallback = ({ mm }) => ({
-	default: {
-		borderWidth: mm(0.3),
-		borderRadius: mm(1),
-		top: mm(-1),
-		bottom: mm(2),
-	},
+export const getOutlineSx: ClassicDividerSxCallback = ({ mm }) => ({
+	borderWidth: mm(0.3),
+	borderRadius: mm(1),
+	top: mm(-1),
+	bottom: mm(2),
 });
 
-export const getIconSx: PrintSxCallback = ({ mm }) => ({
+export const getIconSx: ClassicDividerSxCallback = ({ mm, objects: O }) => ({
 	position: "absolute",
 	zIndex: 3,
 	display: "flex",
@@ -57,7 +59,10 @@ export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	},
 });
 
-export const getBackgroundIconSx: PrintSxCallback = ({ mm }) => ({
+export const getBackgroundIconSx: ClassicDividerSxCallback = ({
+	mm,
+	objects: O,
+}) => ({
 	position: "absolute",
 	cursor: "pointer",
 	width: mm(50),
@@ -73,7 +78,7 @@ export const getBackgroundIconSx: PrintSxCallback = ({ mm }) => ({
 	},
 });
 
-export const getDividerStatsSx: PrintSxCallback = ({ mm }) => ({
+export const getDividerStatsSx: ClassicDividerSxCallback = ({ mm }) => ({
 	position: "absolute",
 	bottom: mm(6.7),
 	right: mm(2.5),
@@ -81,10 +86,7 @@ export const getDividerStatsSx: PrintSxCallback = ({ mm }) => ({
 
 const strokeClipSize = 8.5;
 
-export const getStrokeSx: PrintSxCallback<{ color?: boolean }> = ({
-	mm,
-	color = true,
-}) => ({
+export const getStrokeSx: ClassicDividerSxCallback = ({ mm, color }) => ({
 	position: "absolute",
 	color: "transparent",
 	clipPath: `polygon(0 0, ${mm(strokeClipSize)} 0, ${mm(strokeClipSize)} 100%, 0 100%)`,
@@ -92,17 +94,16 @@ export const getStrokeSx: PrintSxCallback<{ color?: boolean }> = ({
 	zIndex: -1,
 });
 
-export const getDividerCardsSx: PrintSxCallback = ({ mm }) => ({
+export const getDividerCardsSx: ClassicDividerSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 2,
-	left: mm(50),
-	top: mm(38),
-	transform: "translate(-50%, -50%)",
-	width: mm(60),
-	height: mm(50),
+	left: mm(17),
+	right: mm(8),
+	top: mm(18),
+	bottom: mm(15),
 });
 
-export const getTitleClearSx: PrintSxCallback = ({ mm }) => ({
+export const getTitleClearSx: ClassicDividerSxCallback = ({ mm }) => ({
 	top: `calc(100% + ${mm(1)})`,
 	background: classicDividerTextColor,
 	color: "#fdf8e3",
@@ -113,7 +114,7 @@ export const getTitleClearSx: PrintSxCallback = ({ mm }) => ({
 	},
 });
 
-export const getMenuSx: PrintSxCallback = ({ mm }) => ({
+export const getMenuSx: ClassicDividerSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 1,
 	flexDirection: "column",
@@ -122,7 +123,7 @@ export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	opacity: percent(50),
 });
 
-export const getXPSx: PrintSxCallback = ({ mm }) => ({
+export const getXPSx: ClassicDividerSxCallback = ({ mm, objects: O }) => ({
 	position: "absolute",
 	zIndex: 2,
 	fontSize: mm(O.xp.container.fontSize),
@@ -132,7 +133,10 @@ export const getXPSx: PrintSxCallback = ({ mm }) => ({
 	right: mm(O.xp.container.right),
 });
 
-export const getNumericXPSx: PrintSxCallback = ({ mm }) => ({
+export const getNumericXPSx: ClassicDividerSxCallback = ({
+	mm,
+	objects: O,
+}) => ({
 	position: "absolute",
 	zIndex: 3,
 	fontSize: mm(O.xp.side.fontSize),

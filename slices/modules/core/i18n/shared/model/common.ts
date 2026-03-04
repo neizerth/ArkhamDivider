@@ -8,4 +8,6 @@ export type LocaleConfig<T> = Record<string, unknown> & {
 };
 
 export type LocaleSx = LocaleConfig<SxProps>;
-export type LocaleSxCallback = (props: PrintUnitProps) => LocaleSx;
+export type LocaleSxCallback<T = object> = (
+	props: PrintUnitProps<T>,
+) => LocaleSx;

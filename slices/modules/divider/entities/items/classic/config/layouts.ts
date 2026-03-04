@@ -92,7 +92,7 @@ const verticalLayout: DividerLayout = {
 	bleed: 3,
 	iconParams: ["icon", "background"],
 	params: {
-		background: "/images/divider/background/classic/vertical.png",
+		background: "/images/divider/background/classic/vertical_63.png",
 	},
 };
 
@@ -101,7 +101,7 @@ const verticalBW: DividerLayout = {
 	id: "classic-vertical-bw",
 	color: false,
 	params: {
-		background: "/images/divider/background/classic/vertical_bw.png",
+		background: "/images/divider/background/classic/vertical_63-bw.png",
 	},
 };
 
@@ -122,12 +122,18 @@ const vertical65x100: DividerLayout = {
 			size: sleeve65x100,
 		},
 	],
+	params: {
+		background: "/images/divider/background/classic/vertical_65.png",
+	},
 };
 
 const vertical65x100BW: DividerLayout = {
 	...vertical65x100,
 	id: "classic-vertical-65x100-bw",
 	color: false,
+	params: {
+		background: "/images/divider/background/classic/vertical_65-bw.png",
+	},
 };
 
 export const classicLayouts: DividerLayout[] = [

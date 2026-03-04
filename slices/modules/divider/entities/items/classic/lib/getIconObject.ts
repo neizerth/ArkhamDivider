@@ -4,7 +4,7 @@ import {
 	hasSubtypeWithXP,
 } from "@/modules/divider/shared/lib/logic/icon";
 import type { Divider } from "@/modules/divider/shared/model";
-import { classicDividerObjects as O } from "../config";
+import { classicDividerHorizontalObjects as O } from "../config";
 
 export const getIconObject = (props: Divider) => {
 	if (isSkillDivider(props)) {
