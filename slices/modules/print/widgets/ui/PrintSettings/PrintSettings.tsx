@@ -190,7 +190,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 									</ListItemButton>
 									<ListItemButton onClick={toggleLasercutEnabled}>
 										<ListItemIcon>
-											<Lasercut width={24} />
+											<Lasercut width={24} height={24} />
 										</ListItemIcon>
 										<ListItemText primary={t(`Lasercut`)} />
 										<StoreSwitch
