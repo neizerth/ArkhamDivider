@@ -91,6 +91,9 @@ export const classicDividerHorizontalHQObjects = {
 	icon: {
 		...classicDividerHorizontalObjects.icon,
 		top: 1.5,
+		right: 1,
+		// size: 8.6,
+		fontSize: 7.9,
 		withXP: {
 			...classicDividerHorizontalObjects.icon.withXP,
 			top: 1.2,

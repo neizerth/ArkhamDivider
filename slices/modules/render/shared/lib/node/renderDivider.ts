@@ -38,10 +38,11 @@ export const renderDivider = async ({
 	stripIccProfile = false,
 }: RenderDividerOptions) => {
 	const node = getDividerNodeById(dividerId);
-	const scale = dpi / 96;
+	// const scale = dpi / 96;
 	const options = {
 		...renderOptions,
-		scale,
+		// scale,
+		maximumCanvasSize: 60_000,
 	};
 
 	const blob = await domToBlob(node, options);

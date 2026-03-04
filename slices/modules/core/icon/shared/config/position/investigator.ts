@@ -27,9 +27,7 @@ export default {
 		left: percent(4),
 	},
 	neutral: {
-		top: percent(-3),
 		left: percent(5),
-		scale: 0.9,
 	},
 	multiclass: {
 		left: percent(5),

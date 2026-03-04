@@ -6,8 +6,10 @@ import Grow from "@mui/material/Grow";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Typography from "@mui/material/Typography";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { selectLayout } from "@/modules/divider/entities/lib";
@@ -35,7 +37,16 @@ export function PrintButton(props: PrintButtonProps) {
 	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout);
 	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
-	const supportedDPI = getSupportedLayoutDPI(layout);
+	const supportedDPI = useMemo(() => getSupportedLayoutDPI(layout), [layout]);
+
+	const defaultDPI = supportedDPI[0] ?? 300;
+
+	const [dpi, setDPI] = useState<DPI>(defaultDPI);
+
+	useEffect(() => {
+		setDPI(defaultDPI);
+	}, [defaultDPI]);
+
 	const [open, setOpen] = useState(false);
 	const anchorRef = useRef<HTMLDivElement>(null);
 
@@ -85,7 +96,7 @@ export function PrintButton(props: PrintButtonProps) {
 						<Paper>
 							<ClickAwayListener onClickAway={close}>
 								<MenuList>
-									{supportedDPI.flatMap((dpi) => [
+									{[
 										<Box
 											key={`${dpi}-header`}
 											display="flex"
@@ -97,7 +108,26 @@ export function PrintButton(props: PrintButtonProps) {
 											borderColor="divider"
 											color="text.secondary"
 										>
-											<Typography variant="body2">{dpi} DPI</Typography>
+											{supportedDPI.length > 1 ? (
+												<ToggleButtonGroup
+													size="small"
+													value={dpi}
+													exclusive
+													onChange={(_, value) => {
+														if (value != null) {
+															setDPI(value);
+														}
+													}}
+												>
+													{supportedDPI.map((d) => (
+														<ToggleButton key={d} value={d}>
+															{d} DPI
+														</ToggleButton>
+													))}
+												</ToggleButtonGroup>
+											) : (
+												<Typography variant="body2">{dpi} DPI</Typography>
+											)}
 										</Box>,
 										<MenuItem key={`${dpi}-pdf`} onClick={download(dpi)}>
 											<Icon icon="file-pdf" /> &nbsp; PDF
@@ -115,7 +145,7 @@ export function PrintButton(props: PrintButtonProps) {
 											<Icon icon="file-zip" /> &nbsp; PNG
 											<C.Badge>RGB</C.Badge>
 										</MenuItem>,
-									])}
+									]}
 								</MenuList>
 							</ClickAwayListener>
 						</Paper>

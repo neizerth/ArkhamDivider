@@ -71,9 +71,13 @@ const horizontalHQ: DividerLayout = {
 			size: createSize(2079, 1795),
 			bleedSize: createSize(2220, 1937),
 		},
+		1200: {
+			size: createSize(4157, 3591),
+			bleedSize: createSize(4441, 3874),
+		},
 	},
 	params: {
-		background: "/images/divider/background/classic/horizontal_hq.png",
+		background: "/images/divider/background/classic/horizontal_hq.avif",
 	},
 };
 

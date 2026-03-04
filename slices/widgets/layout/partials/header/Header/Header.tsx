@@ -48,15 +48,11 @@ export function Header({ printable, ...props }: HeaderProps) {
 
 					<C.SecondaryContent>
 						{isXS && printable && <DividerVariantSelect />}
-						{printable && (
-							<C.Section
-								justifyContent="flex-end"
-								sx={{ gap: { xs: 1, sm: 2 } }}
-							>
-								<PrintSettings />
-								<PrintButton />
-							</C.Section>
-						)}
+
+						<C.Section justifyContent="flex-end" sx={{ gap: { xs: 1, sm: 2 } }}>
+							<PrintSettings />
+							{printable && <PrintButton />}
+						</C.Section>
 					</C.SecondaryContent>
 				</C.Content>
 			</Container>
