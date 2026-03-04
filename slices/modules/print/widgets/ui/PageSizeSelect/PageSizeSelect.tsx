@@ -51,7 +51,8 @@ export function PageSizeSelect({
 						<C.Item>
 							<C.Label>{format.name}</C.Label>
 							<C.Size>
-								{format.size.mm.width} x {format.size.mm.height}mm
+								{format.size.mm.width} x {format.size.mm.height}
+								{t`mm`}
 							</C.Size>
 						</C.Item>
 					</MenuItem>
