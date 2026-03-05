@@ -1,4 +1,5 @@
 import { put, takeEvery } from "redux-saga/effects";
+import { v4 } from "uuid";
 import { appDataLoaded } from "@/modules/core/app/shared/lib";
 import { getStoryScenarios, setStories } from "../../shared/lib";
 
@@ -12,6 +13,7 @@ function* worker({ payload }: ReturnType<typeof appDataLoaded>) {
 
 		return {
 			...story,
+			id: v4(),
 			translated: true,
 			return_code: returnStory?.code,
 			return_scenarios: returnScenarios,

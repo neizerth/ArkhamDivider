@@ -3,6 +3,7 @@ import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import type { Defined, Single } from "@/shared/model";
 
 export type Story = Single<ArkhamDivider.Core["stories"]> & {
+	id: string;
 	translated: boolean;
 	return_code?: string;
 	return_scenarios?: StoryScenario[];
