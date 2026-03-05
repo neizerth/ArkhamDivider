@@ -169,7 +169,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const hideCounter =
 		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
 
-	const { background } = layout;
+	const { background = true } = layout;
 	const renderComponent = dividerPDFComponents[layout.categoryId];
 
 	try {
