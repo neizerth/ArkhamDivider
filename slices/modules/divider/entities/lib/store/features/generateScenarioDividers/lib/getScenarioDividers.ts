@@ -1,4 +1,4 @@
-import { ascend, sortWith } from "ramda";
+import { ascend, prop, sortWith } from "ramda";
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
 import { getScenarioCards } from "@/modules/story/entities/lib";
@@ -34,6 +34,16 @@ export const getScenarioDividers = ({
 
 	const sortedScenarios = sortWith([sortFilter], scenarios);
 
+	const returnScenarioCodes = returnScenarios.map(prop("id"));
+
+	const getScenarioStoryCode = (scenario: StoryScenarioWithRelations) => {
+		if (returnScenarioCodes.includes(scenario.id)) {
+			return story.returnStory?.code ?? story.code;
+		}
+
+		return story.code;
+	};
+
 	return sortedScenarios.map((scenario): Divider => {
 		const title = scenario.scenario_name;
 
@@ -47,6 +57,8 @@ export const getScenarioDividers = ({
 
 		const { icon } = scenario;
 
+		const storyCode = getScenarioStoryCode(scenario);
+
 		return {
 			id: v4(),
 			type: "scenario",
@@ -55,7 +67,7 @@ export const getScenarioDividers = ({
 			icon,
 			cardsCount,
 			cards,
-			storyCode: story.code,
+			storyCode,
 		};
 	});
 };

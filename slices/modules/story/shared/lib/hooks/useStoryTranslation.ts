@@ -13,8 +13,8 @@ export type UseStoryTranslateFunction = (
 	options?: TOptions,
 ) => string;
 
-export const useStoryTranslation = (story?: Story) => {
-	const storyNs = story && getStoryI18nNamespace(story.code);
+export const useStoryTranslation = (defaultStory?: Story) => {
+	const storyNs = defaultStory && getStoryI18nNamespace(defaultStory.code);
 
 	const i18n = useTranslation();
 	const i18nInstance = i18n.i18n;
@@ -32,14 +32,14 @@ export const useStoryTranslation = (story?: Story) => {
 	);
 
 	const translateStoryCallback = useCallback(
-		(text?: string, story?: Story) => {
+		(text?: string, story = defaultStory) => {
 			return translateStory({
 				i18nInstance,
 				text,
 				story,
 			});
 		},
-		[i18nInstance],
+		[i18nInstance, defaultStory],
 	);
 
 	return {

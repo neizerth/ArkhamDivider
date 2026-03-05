@@ -5,6 +5,7 @@ import {
 	i18nNamespace,
 } from "@/modules/core/i18n/shared/config";
 import { getTranslationBundle } from "@/modules/core/i18n/shared/lib";
+import { getStoryI18nNamespace } from "@/modules/story/shared/lib";
 import { ArkhamDividerAPI } from "@/shared/api";
 import type { ReturnAwaited } from "@/shared/model";
 import { seconds } from "@/shared/util";
@@ -29,6 +30,16 @@ function* worker({ payload }: ReturnType<typeof changeLanguageBundle>) {
 	const bundle = getTranslationBundle(translations);
 
 	i18n.addResourceBundle(payload, i18nNamespace.default, bundle, true, false);
+
+	for (const [code, mapping] of Object.entries(translations.custom)) {
+		if (!mapping) {
+			continue;
+		}
+		const namespace = getStoryI18nNamespace(code);
+
+		i18n.addResourceBundle(payload, namespace, mapping, true, false);
+	}
+
 	i18n.changeLanguage(payload);
 }
 

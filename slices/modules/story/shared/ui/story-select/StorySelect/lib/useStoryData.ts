@@ -73,9 +73,9 @@ export const useStoryData = (stories: Story[]) => {
 		return [
 			...coreSet,
 			...campaigns,
+			...returnCampaigns,
 			...sideScenarios,
 			...challenges,
-			...returnCampaigns,
 			...rest,
 		];
 	}, [getStories]);
