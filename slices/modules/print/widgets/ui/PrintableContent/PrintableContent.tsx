@@ -20,6 +20,7 @@ import {
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
+import { Debounce } from "@/shared/ui";
 
 type PrintableContentProps = StackProps;
 
@@ -64,6 +65,8 @@ export function PrintableContent(props: PrintableContentProps) {
 
 	const zoom = previewZoom ? previewZoom : 100;
 
+	const debounceValue = `${pageLayouts.length}-${pageFormat.type}-${singleItemPerPage}-${previewZoom}`;
+
 	return (
 		<Stack
 			sx={{
@@ -75,45 +78,47 @@ export function PrintableContent(props: PrintableContentProps) {
 			<Stack justifyContent="center" alignItems="center" displayPrint="none">
 				<PagePreviewZoomSelect />
 			</Stack>
-			<GlobalStyles
-				styles={{
-					"@media print": {
-						"@page": {
-							size: `${pageSize.width}mm ${pageSize.height}mm`,
-						},
-					},
-				}}
-			/>
-			<Box
-				overflow="auto"
-				sx={{
-					"@media screen": {
-						padding: 2,
-					},
-				}}
-			>
-				<Box width={`${zoom}%`} marginInline="auto">
-					<Stack
-						{...props}
-						sx={{
-							alignItems: "center",
-							justifyContent: "center",
-							"@media screen": {
-								gap: 2,
+			<Debounce key={debounceValue} delay={200}>
+				<GlobalStyles
+					styles={{
+						"@media print": {
+							"@page": {
+								size: `${pageSize.width}mm ${pageSize.height}mm`,
 							},
-							...sx,
-						}}
-					>
-						{pageLayouts.map((pageLayout) => (
-							<PrintablePage
-								{...pageProps}
-								key={`${pageLayout.number}-${pageLayout.side}`}
-								pageLayout={pageLayout}
-							/>
-						))}
-					</Stack>
+						},
+					}}
+				/>
+				<Box
+					overflow="auto"
+					sx={{
+						"@media screen": {
+							padding: 2,
+						},
+					}}
+				>
+					<Box width={`${zoom}%`} marginInline="auto">
+						<Stack
+							{...props}
+							sx={{
+								alignItems: "center",
+								justifyContent: "center",
+								"@media screen": {
+									gap: 2,
+								},
+								...sx,
+							}}
+						>
+							{pageLayouts.map((pageLayout) => (
+								<PrintablePage
+									{...pageProps}
+									key={`${pageLayout.number}-${pageLayout.side}`}
+									pageLayout={pageLayout}
+								/>
+							))}
+						</Stack>
+					</Box>
 				</Box>
-			</Box>
+			</Debounce>
 		</Stack>
 	);
 }
