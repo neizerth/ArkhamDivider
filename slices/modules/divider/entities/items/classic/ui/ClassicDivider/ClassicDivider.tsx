@@ -30,7 +30,6 @@ import {
 } from "@/shared/lib";
 import { classicDividerTextColor } from "../../config/common";
 import { getClassicLayoutObjects, getIconObject } from "../../lib";
-import type { ClassicLayoutParams } from "../../model";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import { ClassicDividerXP as XP } from "../ClassicDividerXP";
 import * as S from "./ClassicDivider.styles";
@@ -40,6 +39,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 
 	const dispatch = useAppDispatch();
 	const layout = useAppSelector(selectLayout) as DividerLayout;
+	const { background } = layout;
 	const playerParams = useAppSelector(selectPlayerParams);
 	const { translateStory } = useStoryTranslation(story);
 	const mm = usePrintUnitCallback();
@@ -106,8 +106,6 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const [smallIcon, selectSmallIcon] = getDividerIcon({
 		param: "icon",
 	});
-
-	const { background } = layout.params as ClassicLayoutParams;
 
 	const iconObject = getIconObject({
 		...props,

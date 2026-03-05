@@ -34,7 +34,7 @@ export type DividerLayout = {
 	bleed: number;
 	sleeves?: DividerLayoutSleeve[];
 	params?: Record<string, unknown>;
-	backgroundSupport?: boolean;
+	background?: string;
 	iconParams?: string[];
 	scenarioParams?: {
 		campaignIcon?: boolean;

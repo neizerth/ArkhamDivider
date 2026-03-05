@@ -42,9 +42,7 @@ const horizontalLayout: DividerLayout = {
 	playerParams: {
 		numericXP: true,
 	},
-	params: {
-		background: "/images/divider/background/classic/horizontal.png",
-	},
+	background: "/images/divider/background/classic/horizontal.png",
 	iconParams: ["icon", "background"],
 };
 
@@ -52,9 +50,7 @@ const horizontalBW: DividerLayout = {
 	...horizontalLayout,
 	id: "classic-horizontal-bw",
 	color: false,
-	params: {
-		background: "/images/divider/background/classic/horizontal_bw.png",
-	},
+	background: "/images/divider/background/classic/horizontal_bw.png",
 };
 
 const horizontalHQ: DividerLayout = {
@@ -76,9 +72,7 @@ const horizontalHQ: DividerLayout = {
 			bleedSize: createSize(4441, 3874),
 		},
 	},
-	params: {
-		background: "/images/divider/background/classic/horizontal_hq.avif",
-	},
+	background: "/images/divider/background/classic/horizontal_hq.avif",
 };
 
 const verticalLayout: DividerLayout = {
@@ -99,18 +93,14 @@ const verticalLayout: DividerLayout = {
 	},
 	bleed: 3,
 	iconParams: ["icon", "background"],
-	params: {
-		background: "/images/divider/background/classic/vertical_63.png",
-	},
+	background: "/images/divider/background/classic/vertical_63.png",
 };
 
 const verticalBW: DividerLayout = {
 	...verticalLayout,
 	id: "classic-vertical-bw",
 	color: false,
-	params: {
-		background: "/images/divider/background/classic/vertical_63-bw.png",
-	},
+	background: "/images/divider/background/classic/vertical_63-bw.png",
 };
 
 const vertical65x100: DividerLayout = {
@@ -130,18 +120,14 @@ const vertical65x100: DividerLayout = {
 			size: sleeve65x100,
 		},
 	],
-	params: {
-		background: "/images/divider/background/classic/vertical_65.png",
-	},
+	background: "/images/divider/background/classic/vertical_65.png",
 };
 
 const vertical65x100BW: DividerLayout = {
 	...vertical65x100,
 	id: "classic-vertical-65x100-bw",
 	color: false,
-	params: {
-		background: "/images/divider/background/classic/vertical_65-bw.png",
-	},
+	background: "/images/divider/background/classic/vertical_65-bw.png",
 };
 
 export const classicLayouts: DividerLayout[] = [

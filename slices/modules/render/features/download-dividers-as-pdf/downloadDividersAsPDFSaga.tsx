@@ -169,7 +169,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 	const hideCounter =
 		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
 
-	const { backgroundSupport = true } = layout;
+	const { background } = layout;
 	const renderComponent = dividerPDFComponents[layout.categoryId];
 
 	try {
@@ -197,7 +197,7 @@ function* worker({ payload }: ReturnType<typeof downloadDividersAsPDF>) {
 						y: px(item.position.y),
 					};
 
-					if (backgroundSupport) {
+					if (background) {
 						const { x, y } = position;
 						let contents: ReturnAwaited<typeof renderDivider> | null =
 							yield call(renderDivider, {
