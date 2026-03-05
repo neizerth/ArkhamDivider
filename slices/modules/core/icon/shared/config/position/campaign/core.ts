@@ -18,8 +18,8 @@ export default {
 		left: percent(5),
 	},
 	striking_fear: {
-		top: percent(2),
-		left: percent(6),
+		top: percent(2.5),
+		left: percent(7),
 	},
 	ghouls: {
 		top: percent(2),
@@ -41,7 +41,7 @@ export default {
 	},
 	agents_of_hastur: {
 		top: percent(-2),
-		left: percent(3),
+		left: percent(5),
 	},
 	the_gathering: {
 		top: percent(-3),

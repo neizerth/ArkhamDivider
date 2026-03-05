@@ -14,7 +14,8 @@ export type ClassicDividerParams = Partial<{
 
 export type ClassicDividerObjects = ReturnType<typeof getClassicLayoutObjects>;
 
-type ClassicDividerCallbackProps = {
+export type ClassicDividerCallbackProps = {
+	layoutId: string;
 	color: boolean;
 	objects: ClassicDividerObjects;
 };

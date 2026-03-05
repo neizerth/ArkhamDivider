@@ -15,10 +15,15 @@ export const isPromoStory = eqStoryType("promo");
 
 export const isInvestigatorStory = eqStoryType("investigators");
 
-export const isCampaign = anyPass([isCampaignContent, isSideCampaign]);
-
 export const isMainCampaign = (story: Story) =>
 	isCampaign(story) && !isReturnPack(story);
+
+export const isCoreSet = (story: Story) => story.code.startsWith("core");
+
+const campaignFilter = anyPass([isCampaignContent, isSideCampaign]);
+
+export const isCampaign = (story: Story) =>
+	campaignFilter(story) && !isCoreSet(story);
 
 export const isCustom = (story: Story) => Boolean(story.custom_content);
 export const withScenario = ({

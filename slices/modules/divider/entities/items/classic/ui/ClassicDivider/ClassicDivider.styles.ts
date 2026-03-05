@@ -2,6 +2,7 @@ import { alpha } from "@mui/material/styles";
 import { percent } from "@/shared/util";
 import { classicDividerTextColor } from "../../config/common";
 import type {
+	ClassicDividerCallbackProps,
 	ClassicDividerLocaleCallback,
 	ClassicDividerSxCallback,
 } from "../../model";
@@ -85,14 +86,25 @@ export const getDividerStatsSx: ClassicDividerSxCallback = ({ mm }) => ({
 });
 
 const strokeClipSize = 8.5;
+const getStrokeColor = ({ color, layoutId }: ClassicDividerCallbackProps) => {
+	if (layoutId === "classic-horizontal-hq") {
+		return "#b9a387";
+	}
 
-export const getStrokeSx: ClassicDividerSxCallback = ({ mm, color }) => ({
-	position: "absolute",
-	color: "transparent",
-	clipPath: `polygon(0 0, ${mm(strokeClipSize)} 0, ${mm(strokeClipSize)} 100%, 0 100%)`,
-	WebkitTextStroke: `${mm(0.4)} ${color ? "#cab686" : "#fff"}`,
-	zIndex: -1,
-});
+	return color ? "#cab686" : "#fff";
+};
+
+export const getStrokeSx: ClassicDividerSxCallback = (props) => {
+	const { mm } = props;
+
+	return {
+		position: "absolute",
+		color: "transparent",
+		clipPath: `polygon(0 0, ${mm(strokeClipSize)} 0, ${mm(strokeClipSize)} 100%, 0 100%)`,
+		WebkitTextStroke: `${mm(0.4)} ${getStrokeColor(props)}`,
+		zIndex: -1,
+	};
+};
 
 export const getDividerCardsSx: ClassicDividerSxCallback = ({ mm }) => ({
 	position: "absolute",

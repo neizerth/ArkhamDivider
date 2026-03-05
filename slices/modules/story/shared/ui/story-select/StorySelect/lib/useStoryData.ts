@@ -3,6 +3,7 @@ import { useCallback, useMemo } from "react";
 import { DEFAULT_LANGUAGE } from "@/modules/core/i18n/shared/config";
 import {
 	isChallengeStory,
+	isCoreSet,
 	isMainCampaign,
 	isReturnPack,
 	isSideContent,
@@ -11,7 +12,13 @@ import {
 import type { Story } from "../../../../model";
 
 const restFilter = complement(
-	anyPass([isMainCampaign, isSideContent, isChallengeStory, isReturnPack]),
+	anyPass([
+		isMainCampaign,
+		isSideContent,
+		isChallengeStory,
+		isReturnPack,
+		isCoreSet,
+	]),
 );
 
 export const useStoryData = (stories: Story[]) => {
@@ -55,6 +62,7 @@ export const useStoryData = (stories: Story[]) => {
 	);
 
 	return useMemo(() => {
+		const coreSet = getStories("Core Set", isCoreSet);
 		const campaigns = getStories("Campaigns", isMainCampaign);
 		const sideScenarios = getStories("Side Scenarios", isSideContent);
 		const challenges = getStories("Challenge Scenarios", isChallengeStory);
@@ -63,6 +71,7 @@ export const useStoryData = (stories: Story[]) => {
 		const rest = getStories("Other", restFilter);
 
 		return [
+			...coreSet,
 			...campaigns,
 			...sideScenarios,
 			...challenges,

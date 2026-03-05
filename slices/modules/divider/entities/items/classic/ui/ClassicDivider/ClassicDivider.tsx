@@ -22,7 +22,12 @@ import type {
 } from "@/modules/divider/shared/model";
 import { usePrintUnit, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
-import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import {
+	copyToClipboard,
+	useAppDispatch,
+	useAppSelector,
+	usePreventDefault,
+} from "@/shared/lib";
 import { classicDividerTextColor } from "../../config/common";
 import { getClassicLayoutObjects, getIconObject } from "../../lib";
 import type { ClassicLayoutParams } from "../../model";
@@ -50,6 +55,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const sxOptions = {
 		color: layout.color,
 		objects: O,
+		layoutId: layout.id,
 	};
 
 	const getLocaleSx = useLocaleSx(sxOptions);
@@ -108,6 +114,8 @@ export function ClassicDivider(props: DividerWithRelations) {
 		layout,
 	});
 
+	const copy = usePreventDefault(copyToClipboard);
+
 	return (
 		<Container>
 			<Background src={background} alt={layout.name} />
@@ -142,6 +150,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 						fontSize={mm(iconObject.fontSize)}
 						{...O.icon.params}
 						onClick={selectSmallIcon}
+						onContextMenu={copy(smallIcon)}
 					/>
 				)}
 				<Menu dividerId={id} sx={menuSx} />
