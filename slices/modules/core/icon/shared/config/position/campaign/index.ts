@@ -1,5 +1,6 @@
 import core from "./core";
 import dwl from "./dwl";
+import eoe from "./eoe";
 import ptc from "./ptc";
 import tcu from "./tcu";
 import tde from "./tde";
@@ -14,4 +15,5 @@ export default {
 	...tfa,
 	...tde,
 	...tic,
+	...eoe,
 };
