@@ -59,7 +59,12 @@ export function IconSelectionModal() {
 		if (!open) {
 			return;
 		}
-		scrollToIndex(defaultSectionIndex);
+		// Defer scroll until after Dialog is mounted and layout is ready (same as handleSectionClick)
+		const raf1 = requestAnimationFrame(() => {
+			console.log("scrollToIndex", defaultSectionIndex);
+			requestAnimationFrame(() => scrollToIndex(defaultSectionIndex));
+		});
+		return () => cancelAnimationFrame(raf1);
 	}, [open, defaultSectionIndex, scrollToIndex]);
 
 	const onClose = useCallback(() => {

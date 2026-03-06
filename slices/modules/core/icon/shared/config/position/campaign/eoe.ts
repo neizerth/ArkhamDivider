@@ -90,4 +90,9 @@ export default {
 		left: percent(4),
 		scale: 1.1,
 	},
+	eoe: {
+		top: percent(-3),
+		left: percent(4),
+		scale: 1.1,
+	},
 } as IconPositionManifest;
