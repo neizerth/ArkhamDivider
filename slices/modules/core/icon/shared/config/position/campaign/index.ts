@@ -4,6 +4,7 @@ import eoe from "./eoe";
 import fhv from "./fhv";
 import ptc from "./ptc";
 import tcu from "./tcu";
+import tdc from "./tdc";
 import tde from "./tde";
 import tfa from "./tfa";
 import tic from "./tic";
@@ -20,4 +21,5 @@ export default {
 	...eoe,
 	...tsk,
 	...fhv,
+	...tdc,
 };
