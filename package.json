@@ -5,6 +5,7 @@
   "scripts": {
     "font:install": "tsx ./scripts/install-font.ts",
     "dev": "vite",
+    "postinstall": "sh ./scripts/postinstall.sh",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "ts:check": "tsc",
