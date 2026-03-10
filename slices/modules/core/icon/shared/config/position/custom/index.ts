@@ -1,5 +1,5 @@
-import zau from "./campaign/zau";
+import campaign from "./campaign";
 
 export default {
-	...zau,
+	...campaign,
 };
