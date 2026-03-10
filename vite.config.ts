@@ -1,9 +1,14 @@
 import react from "@vitejs/plugin-react";
+import dotenv from "dotenv";
 import { defineConfig } from "vite";
+import mkcert from "vite-plugin-mkcert";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
-import mkcert from "vite-plugin-mkcert";
 import { vips } from "./vips.plugin";
+
+dotenv.config({
+	path: [".env", ".env.local"],
+});
 
 export default defineConfig({
 	worker: {
@@ -35,19 +40,6 @@ export default defineConfig({
 		headers: {
 			"Cross-Origin-Embedder-Policy": "require-corp",
 			"Cross-Origin-Opener-Policy": "same-origin",
-		},
-		proxy: {
-			"/arkham-icons": {
-				target: "https://neizerth.github.io/ArkhamDividerData/fonts",
-				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/arkham-icons/, ""),
-				// Force-add CORP header for Safari on the fly
-				configure: (proxy) => {
-					proxy.on("proxyRes", (proxyRes) => {
-						proxyRes.headers["Cross-Origin-Resource-Policy"] = "cross-origin";
-					});
-				},
-			},
 		},
 	},
 	// Optimize deps for better HMR
