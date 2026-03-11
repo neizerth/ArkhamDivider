@@ -6,5 +6,12 @@ export const sanitizeHTML = (html: string): string => {
 
 export const prefix =
 	(prefix: string) =>
-	(templateStrings: TemplateStringsArray, ..._substitutions: unknown[]) =>
-		`${prefix}${templateStrings[0]}`;
+	(
+		templateStrings: TemplateStringsArray | string,
+		..._substitutions: unknown[]
+	) => {
+		if (typeof templateStrings === "string") {
+			return `${prefix}${templateStrings}`;
+		}
+		return `${prefix}${templateStrings[0]}`;
+	};
