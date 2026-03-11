@@ -1,14 +1,7 @@
-import { percent, prefix } from "@/shared/util";
+import { percent } from "@/shared/util";
 import type { IconPositionManifest } from "../../../../model";
 
-const _p = prefix("celtic_rising-");
-
-export default {
-	celtic_rising: {
-		top: percent(-2),
-		left: percent(4),
-		scale: percent(90),
-	},
+export const icons: IconPositionManifest = {
 	frozen_winds: {
 		top: percent(-2),
 		left: percent(5),
@@ -116,4 +109,18 @@ export default {
 		top: percent(-4),
 		left: percent(3),
 	},
-} as IconPositionManifest;
+};
+
+const prefixed = Object.entries(icons).reduce((acc, [key, value]) => {
+	acc[`celtic_rising-${key}`] = value;
+	return acc;
+}, {} as IconPositionManifest);
+
+export default {
+	celtic_rising: {
+		top: percent(-2),
+		left: percent(3),
+		scale: percent(90),
+	},
+	...prefixed,
+};
