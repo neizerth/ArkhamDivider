@@ -48,8 +48,8 @@ export const classicDividerHorizontalObjects = {
 		container: {
 			size: 8.33,
 			fontSize: 8.33,
-			top: 2.3,
-			right: 0.5,
+			top: 1.6,
+			right: 0.8,
 		},
 		side: {
 			top: 3.8,

@@ -6,6 +6,7 @@ import { withStoryTranslation } from "@/modules/story/shared/lib";
 import {
 	getClassicLayoutFontFamily,
 	getClassicLayoutObjects,
+	getDefaultSmallIcon,
 	getIconObject,
 } from "../../../lib";
 
@@ -71,27 +72,29 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 		defaultIcon: props.icon,
 	});
 
-	const icon = getDividerIcon({
+	const defaultSmallIcon = getDefaultSmallIcon(props);
+
+	const smallIcon = getDividerIcon({
 		divider: props,
 		param: "icon",
-		defaultIcon: props.icon,
+		defaultIcon: defaultSmallIcon,
 	});
 
-	if (icon) {
-		const smallIcon = bleed.box({
+	if (smallIcon) {
+		const view = bleed.box({
 			top: iconObject.top,
 			right: iconObject.right,
 			width: O.icon.size,
 			height: O.icon.size,
 		});
 
-		await ctx.icon.draw(icon, {
-			x: smallIcon.x(),
-			y: smallIcon.y(),
+		await ctx.icon.draw(smallIcon, {
+			x: view.x(),
+			y: view.y(),
 			iconOptions: O.icon.params,
 			fontSize: unit.mm(iconObject.fontSize),
-			width: smallIcon.width(),
-			height: smallIcon.height(),
+			width: view.width(),
+			height: view.height(),
 			overprint: true,
 			color,
 		});

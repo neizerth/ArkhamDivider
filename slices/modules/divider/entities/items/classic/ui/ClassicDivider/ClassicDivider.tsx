@@ -29,7 +29,11 @@ import {
 	usePreventDefault,
 } from "@/shared/lib";
 import { classicDividerTextColor } from "../../config/common";
-import { getClassicLayoutObjects, getIconObject } from "../../lib";
+import {
+	getClassicLayoutObjects,
+	getDefaultSmallIcon,
+	getIconObject,
+} from "../../lib";
 import type { ClassicLayoutParams } from "../../model";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import { ClassicDividerXP as XP } from "../ClassicDividerXP";
@@ -104,8 +108,11 @@ export function ClassicDivider(props: DividerWithRelations) {
 		param: "background",
 	});
 
+	const defaultSmallIcon = getDefaultSmallIcon(props);
+
 	const [smallIcon, selectSmallIcon] = getDividerIcon({
 		param: "icon",
+		defaultIcon: defaultSmallIcon,
 	});
 
 	const iconObject = getIconObject({
