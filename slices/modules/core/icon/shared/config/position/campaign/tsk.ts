@@ -5,11 +5,11 @@ export default {
 	tskc: {
 		top: percent(-2),
 		left: percent(3),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	crimson_conspiracy: {
 		top: percent(-1),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	dark_veiling: {
 		top: percent(-2),
@@ -18,14 +18,14 @@ export default {
 	outsiders: {
 		top: percent(-2),
 		left: percent(4),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	shadow_of_a_doubt: {
 		left: percent(4),
 	},
 	strange_happenings: {
 		top: percent(-2),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	scarlet_sorcery: {
 		top: percent(-2),
@@ -35,7 +35,7 @@ export default {
 		left: percent(1),
 	},
 	mysteries_abound: {
-		scale: 0.95,
+		scale: percent(95),
 	},
 	mysteries_resolved: {
 		top: percent(-2),
@@ -54,21 +54,21 @@ export default {
 	cleanup_crew: {
 		top: percent(-2),
 		left: percent(2),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	secret_war: {
 		top: percent(-2),
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	spatial_anomaly: {
 		left: percent(2),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	beyond_the_beyond: {
 		top: percent(-2),
 		left: percent(4),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	red_coterie: {
 		top: percent(-4),
@@ -95,7 +95,7 @@ export default {
 	},
 	on_thin_ice: {
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	dogs_of_war: {
 		left: percent(4),
@@ -110,7 +110,7 @@ export default {
 	congress_of_the_keys: {
 		top: percent(-2),
 		left: percent(3),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	tsk: {
 		top: percent(-4),

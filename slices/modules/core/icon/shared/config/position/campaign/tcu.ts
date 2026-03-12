@@ -10,7 +10,7 @@ export default {
 	the_watcher: {
 		top: percent(-1),
 		left: percent(4),
-		scale: 0.85,
+		scale: percent(85),
 	},
 	music_of_the_damned: {
 		top: percent(3),
@@ -19,7 +19,7 @@ export default {
 	agents_of_azathoth: {
 		left: percent(6),
 		top: percent(-3),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	anettes_coven: {
 		top: percent(-2),
@@ -51,7 +51,7 @@ export default {
 	threatening_evil: {
 		top: percent(-1),
 		left: percent(6),
-		scale: 1.05,
+		scale: percent(105),
 	},
 	city_of_the_damned: {
 		top: percent(4),
@@ -59,7 +59,7 @@ export default {
 	},
 	the_circle_undone: {
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	inexorable_fate: {
 		left: percent(3),
@@ -71,7 +71,7 @@ export default {
 	witchwork: {
 		left: percent(4.5),
 		top: percent(-2),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	the_witching_hour: {
 		left: percent(4),
@@ -86,7 +86,7 @@ export default {
 	},
 	the_wages_of_sin: {
 		left: percent(1),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	city_of_sins: {
 		top: percent(3),
@@ -95,7 +95,7 @@ export default {
 	for_the_greater_good: {
 		top: percent(-1),
 		left: percent(4),
-		scale: 0.87,
+		scale: percent(87),
 	},
 	return_to_for_the_greater_good: returnPosition,
 	union_and_disillusion: {
@@ -117,10 +117,10 @@ export default {
 	return_to_union_and_disillusion: returnPosition,
 	return_to_in_the_clutches_of_chaos: returnPosition,
 	the_secret_name: {
-		scale: 0.92,
+		scale: percent(92),
 	},
 	secrets_of_the_universe: {
-		scale: 0.9,
+		scale: percent(90),
 		left: percent(6),
 	},
 	return_to_the_wages_of_sin: returnPosition,

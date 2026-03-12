@@ -12,7 +12,7 @@ export default {
 	nameless_horrors: {
 		top: percent(-2),
 		left: percent(3),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	penguins: {
 		top: percent(-2),
@@ -26,12 +26,12 @@ export default {
 	silence_and_mystery: {
 		top: percent(-4),
 		left: percent(2),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	expedition_team: {
 		top: percent(-2),
 		left: percent(4),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	agents_of_the_unknown: {
 		left: percent(4),
@@ -43,7 +43,7 @@ export default {
 	ice_and_death: {
 		top: percent(-2),
 		left: percent(4),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	deadly_weather: {
 		top: percent(-2),
@@ -57,7 +57,7 @@ export default {
 	},
 	sleeping_nightmares: {
 		left: percent(4),
-		scale: 1.15,
+		scale: percent(115),
 	},
 	the_heart_of_madness: returnPosition,
 	stirring_in_the_deep: {
@@ -76,23 +76,23 @@ export default {
 	city_of_the_elder_things: {
 		top: percent(4),
 		left: percent(3),
-		scale: 1.05,
+		scale: percent(105),
 	},
 	the_great_seal: {
 		top: percent(2),
 		left: percent(6),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	fatal_mirage: {
 		left: percent(3),
 	},
 	eoe_campaign: {
 		left: percent(4),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	eoe: {
 		top: percent(-3),
 		left: percent(4),
-		scale: 1.1,
+		scale: percent(110),
 	},
 } as IconPositionManifest;

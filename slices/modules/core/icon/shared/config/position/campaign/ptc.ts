@@ -11,7 +11,7 @@ export default {
 	evil_portents: {
 		left: percent(2),
 		top: percent(-2),
-		scale: 0.89,
+		scale: percent(89),
 	},
 	byakhee: {
 		top: percent(1),
@@ -20,12 +20,12 @@ export default {
 	the_stranger: {
 		top: percent(-1),
 		left: percent(6),
-		scale: 0.89,
+		scale: percent(89),
 	},
 	inhabitants_of_carcosa: {
 		left: percent(5),
 		top: percent(-3),
-		scale: 1.07,
+		scale: percent(107),
 	},
 	the_flood_below: {
 		top: percent(-1),
@@ -34,7 +34,7 @@ export default {
 	the_vortex_above: {
 		left: percent(5),
 		top: percent(1),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	delusions: {
 		left: percent(4),
@@ -52,12 +52,12 @@ export default {
 	decay_and_filth: {
 		top: percent(-3),
 		left: percent(4),
-		scale: 0.97,
+		scale: percent(97),
 	},
 	hasturs_envoys: {
 		top: percent(-6),
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	delusory_evils: {
 		left: percent(4),
@@ -80,19 +80,19 @@ export default {
 	the_last_king: {
 		top: percent(1),
 		left: percent(5),
-		scale: 0.97,
+		scale: percent(97),
 	},
 	return_to_the_last_king: returnPosition,
 	echoes_of_the_past: {
 		top: percent(-1),
 		left: percent(4),
-		scale: 0.93,
+		scale: percent(93),
 	},
 	return_to_echoes_of_the_past: returnPosition,
 	the_unspeakable_oath: {
 		top: percent(-6),
 		left: percent(1),
-		scale: 0.97,
+		scale: percent(97),
 	},
 	return_to_the_unspeakable_oath: returnPosition,
 	a_phantom_of_truth: {

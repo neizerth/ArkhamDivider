@@ -14,7 +14,7 @@ export default {
 	creatures_from_below: {
 		top: percent(-3),
 		left: percent(4),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	flooded_caves: {
 		top: percent(-2),
@@ -35,7 +35,7 @@ export default {
 	fog_over_innsmouth: {
 		top: percent(-5),
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	shattered_memories: {
 		top: percent(-1),
@@ -52,7 +52,7 @@ export default {
 	innsmouth_haze: {
 		top: percent(-2),
 		left: percent(4),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	stalkers_of_cthulhu: {
 		top: percent(3),
@@ -83,12 +83,12 @@ export default {
 	horror_in_high_gear: {
 		top: percent(-1),
 		left: percent(4),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	return_to_horror_in_high_gear: returnPosition,
 	a_light_in_the_fog: {
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	return_to_a_light_in_the_fog: returnPosition,
 	lair_of_dagon: {

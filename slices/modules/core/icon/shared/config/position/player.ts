@@ -5,12 +5,12 @@ export default {
 	asset: {
 		top: percent(-3),
 		left: percent(3),
-		scale: 0.94,
+		scale: percent(94),
 	},
 	event: {
 		top: percent(-3),
 		left: percent(4),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	skill: {
 		top: percent(-1),
@@ -18,12 +18,12 @@ export default {
 	},
 	bonded: {
 		left: percent(4),
-		scale: 0.87,
+		scale: percent(87),
 	},
 	upgrade: {
 		top: percent(-4),
 		left: percent(3),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	cog: {
 		top: percent(-1),
@@ -32,23 +32,23 @@ export default {
 	weakness: {
 		top: percent(1),
 		left: percent(4),
-		scale: 0.97,
+		scale: percent(97),
 	},
 	list: {
-		scale: 0.7,
+		scale: percent(70),
 	},
 	pencil: {
-		scale: 0.85,
+		scale: percent(85),
 		top: percent(-2),
 		left: percent(4),
 	},
 	ally_inverted: {
-		scale: 0.95,
+		scale: percent(95),
 		top: percent(-3),
 		left: percent(3),
 	},
 	arcane_x2_inverted: {
-		scale: 0.97,
+		scale: percent(97),
 		top: percent(-1),
 		left: percent(3),
 	},
@@ -73,7 +73,7 @@ export default {
 	skull: {
 		top: percent(-1),
 		left: percent(4),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	hand: {
 		left: percent(5),

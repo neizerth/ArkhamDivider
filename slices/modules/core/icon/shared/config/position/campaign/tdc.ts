@@ -17,28 +17,28 @@ export default {
 		left: percent(2),
 	},
 	deep_ones: {
-		scale: 0.9,
+		scale: percent(90),
 	},
 	tdc_flood: {
 		left: percent(2),
 	},
 	rlyeh: {
 		left: percent(2),
-		scale: 0.85,
+		scale: percent(85),
 	},
 	star_spawn: {
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	the_inescapable: {
 		top: percent(-6),
 		left: percent(2),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	undersea_creatures: {
 		top: percent(3),
 		left: percent(2),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	alien_machinery: {
 		left: percent(2),
@@ -62,12 +62,12 @@ export default {
 		left: percent(2),
 	},
 	one_last_job: {
-		scale: 0.9,
+		scale: percent(90),
 	},
 	the_western_wall: {
 		top: percent(-2),
 		left: percent(2),
-		scale: 1.05,
+		scale: percent(105),
 	},
 	the_drowned_quarter: {
 		left: percent(2),

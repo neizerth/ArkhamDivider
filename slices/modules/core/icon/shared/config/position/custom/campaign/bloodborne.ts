@@ -1,5 +1,6 @@
 import { percent } from "@/shared/util";
 import type { IconPositionManifest } from "../../../../model";
+import { prefixIcons } from "../../util";
 
 const icons: IconPositionManifest = {
 	agents_of_amygdala: {
@@ -178,10 +179,7 @@ const icons: IconPositionManifest = {
 	},
 };
 
-const prefixed = Object.entries(icons).reduce((acc, [key, value]) => {
-	acc[`bloodborne-${key}`] = value;
-	return acc;
-}, {} as IconPositionManifest);
+const prefixed = prefixIcons("bloodborne", icons);
 
 export default {
 	bloodborne: {

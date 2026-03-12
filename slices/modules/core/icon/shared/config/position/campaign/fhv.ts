@@ -5,14 +5,14 @@ export default {
 	the_first_day: {
 		top: percent(-1),
 		left: percent(3),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	residents: {
 		top: percent(-3),
 	},
 	the_vale: {
 		left: percent(3),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	horrors_in_the_rock: {
 		top: percent(-1),
@@ -35,7 +35,7 @@ export default {
 	mutations: {
 		top: percent(-1),
 		left: percent(3),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	myconids: {
 		top: percent(3),
@@ -51,12 +51,12 @@ export default {
 	the_second_day: {
 		top: percent(-1),
 		left: percent(3),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	the_final_day: {
 		top: percent(-1),
 		left: percent(3),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	day_of_rest: {
 		left: percent(3),
@@ -65,7 +65,7 @@ export default {
 		left: percent(3),
 	},
 	hemlock_house: {
-		scale: 0.93,
+		scale: percent(93),
 	},
 	the_silent_heath: {
 		top: percent(-2),
@@ -84,12 +84,12 @@ export default {
 	},
 	day_of_rain: {
 		top: percent(-3),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	the_longest_night: {
 		top: percent(-2),
 		left: percent(2),
-		scale: 1.03,
+		scale: percent(103),
 	},
 	day_of_the_feast: {
 		left: percent(4),
@@ -100,7 +100,7 @@ export default {
 	},
 	fate_of_the_vale: {
 		left: percent(1),
-		scale: 1.1,
+		scale: percent(110),
 	},
 	fhvc: {
 		top: percent(-2),

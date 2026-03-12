@@ -8,12 +8,12 @@ export default {
 	},
 	rogue: {
 		left: percent(4),
-		scale: 0.9,
+		scale: percent(90),
 	},
 	seeker: {
 		top: percent(-2),
 		left: percent(6),
-		scale: 0.95,
+		scale: percent(95),
 	},
 	survivor: {
 		top: percent(2),
