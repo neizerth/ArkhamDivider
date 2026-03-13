@@ -16,7 +16,8 @@ export type CardSlot =
 	| "accessory"
 	| "body"
 	| "ally"
-	| "head";
+	| "head"
+	| "tarot";
 
 export type XPCost = FixedXPCost | RangeXPCost;
 

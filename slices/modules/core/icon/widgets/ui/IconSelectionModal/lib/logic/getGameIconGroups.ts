@@ -1,6 +1,7 @@
 import { getIconSetIcons } from "@/modules/core/icon/shared/lib";
 import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import {
+	arkhamCardsIgnoredIcons,
 	arkhamSlimIgnoredIcons,
 	arkhamSlimSpecialIcons,
 	factionIcons,
@@ -26,12 +27,17 @@ export const getGameIconGroups = ({ icons }: Options): IconGroup[] => {
 		.filter((icon) => !arkhamSlimIgnoredIcons.includes(icon))
 		.concat(arkhamSlimSpecialIcons);
 
+	const arkhamCardsIcons = getIconSetIcons({
+		icons,
+		iconSet: "App",
+	}).filter((icon) => !arkhamCardsIgnoredIcons.includes(icon));
+
 	return [
 		createIconGroup("Faction", factionIcons),
 		createIconGroup("Slot", slotIcons),
 		createIconGroup("Stats", statsIcons),
 		createIconSetGroup("Cost"),
-		createIconSetGroup("Arkham Cards", "App"),
+		createIconGroup("Arkham Cards", arkhamCardsIcons),
 		createIconGroup("Other", arkhamSlimIcons),
 	];
 };

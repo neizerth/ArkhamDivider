@@ -6,7 +6,7 @@ type Options = {
 	fontSize: number;
 };
 export const getIconCorrection = ({ icon, manifest, fontSize }: Options) => {
-	const position = manifest[icon];
+	const position = manifest[icon] ?? manifest.initial;
 	if (!position) {
 		return {
 			fontSize,

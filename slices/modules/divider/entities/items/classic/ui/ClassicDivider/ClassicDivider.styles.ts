@@ -21,7 +21,6 @@ export const getTextSx: ClassicDividerLocaleCallback = ({
 		left: mm(O.text.default.left),
 		right: mm(O.text.default.right),
 		color: classicDividerTextColor,
-		whiteSpace: "nowrap",
 	},
 	ru: {
 		top: mm(O.text.ru.top),

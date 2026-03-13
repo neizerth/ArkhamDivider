@@ -30,6 +30,7 @@ export const cardSlots: CardSlot[] = [
 	"accessory",
 	"arcane",
 	"arcane_x2",
+	"tarot",
 	"ally",
 	"head",
 ];
@@ -51,4 +52,5 @@ export const cardSlotNames: Record<CardSlot, string> = {
 	body: "Body",
 	ally: "Ally",
 	head: "Head",
+	tarot: "Tarot",
 };

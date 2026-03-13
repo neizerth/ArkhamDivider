@@ -55,6 +55,8 @@
 	"card.type.empty": "Not set",
 	"card.type.asset": "Asset",
 	"card.type.enemy": "Enemy",
+	"card.type.event": "Event",
+	"card.type.skill": "Skill",
 	"card.type.investigator": "Investigator",
 	"card.type.story": "Story",
 	"cards.total": "Total",

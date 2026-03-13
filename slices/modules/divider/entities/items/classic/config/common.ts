@@ -25,8 +25,8 @@ export const classicDividerHorizontalObjects = {
 	icon: {
 		size: 8.33,
 		fontSize: 8,
-		top: 2,
-		right: 0.9,
+		top: 2.2,
+		right: 0.85,
 		params: {
 			scaleType: "circle",
 			scaleFactor: {

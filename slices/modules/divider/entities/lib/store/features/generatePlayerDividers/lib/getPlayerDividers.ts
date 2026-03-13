@@ -14,11 +14,12 @@ type Options = Partial<PlayerDividerParams> & {
 export const getPlayerDividers = ({
 	factions = [],
 	subtypes = [],
-	cardSlots = [],
 	cardTypes = [],
 	storyCode,
 	...options
 }: Options) => {
+	const cardSlots =
+		options.cardSlots && cardTypes.includes("asset") ? options.cardSlots : [];
 	const xpCosts = nullableCollection(options.xpCosts ?? []);
 
 	const dividers: Divider[] = [];

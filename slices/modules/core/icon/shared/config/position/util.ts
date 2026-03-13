@@ -12,3 +12,9 @@ export const prefixIcons = (prefix: string, icons: IconPositionManifest) => {
 		return acc;
 	}, {} as IconPositionManifest);
 };
+
+export const initialIcon = {
+	left: percent(4),
+	top: percent(-2),
+	scale: percent(90),
+};
