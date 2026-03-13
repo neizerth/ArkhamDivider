@@ -85,7 +85,7 @@ export const getDividerStatsSx: ClassicDividerSxCallback = ({ mm }) => ({
 	right: mm(2.5),
 });
 
-const strokeClipSize = 8.5;
+const strokeClipSize = 11.3;
 const getStrokeColor = ({ color, layoutId }: ClassicDividerCallbackProps) => {
 	if (layoutId === "classic-horizontal-hq") {
 		return "#b9a387";

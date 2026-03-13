@@ -14,7 +14,7 @@ import type {
 	GenerateDividersMode,
 	InvestigatorDividerParams,
 } from "@/modules/divider/shared/model";
-import { selectStoriesWithInvestigators } from "@/modules/story/shared/lib";
+import { selectInvestigatorStories } from "@/modules/story/shared/lib";
 import { StorySelect } from "@/modules/story/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
@@ -30,7 +30,7 @@ export function InvestigatorDividerOptions(
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 	const defaultValues = useAppSelector(selectInvestigatorParams);
-	const stories = useAppSelector(selectStoriesWithInvestigators);
+	const stories = useAppSelector(selectInvestigatorStories);
 
 	const { getValues, setValue, watch } = useForm<InvestigatorDividerParams>({
 		defaultValues,
