@@ -28,5 +28,10 @@ export function FitInput({ fitTextOptions, ...props }: FitInputProps) {
 		height: "100%",
 	} as SxProps;
 
-	return <BoxInput {...props} sx={sx} ref={ref} />;
+	const strokeSx = {
+		...props.strokeSx,
+		fontSize,
+	} as SxProps;
+
+	return <BoxInput {...props} sx={sx} strokeSx={strokeSx} ref={ref} />;
 }
