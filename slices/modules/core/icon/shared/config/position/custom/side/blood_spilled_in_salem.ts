@@ -1,5 +1,5 @@
 import { percent } from "@/shared/util";
-import type { IconPositionManifest } from "../../../model";
+import type { IconPositionManifest } from "../../../../model";
 
 export default {
 	blood_spilled_in_salem: {

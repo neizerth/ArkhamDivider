@@ -1,5 +1,6 @@
 import type { IconPositionManifest } from "../../model";
 import campaign from "./campaign";
+import challenge from "./challenge";
 import custom from "./custom";
 import investigator from "./investigator";
 import player from "./player";
@@ -11,4 +12,5 @@ export default {
 	...investigator,
 	...custom,
 	...side,
+	...challenge,
 } as IconPositionManifest;

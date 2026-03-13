@@ -1,5 +1,5 @@
 import { percent } from "@/shared/util";
-import type { IconPositionManifest } from "../../../model";
+import type { IconPositionManifest } from "../../../../model";
 
 export default {
 	consternation_on_the_constellation: {
