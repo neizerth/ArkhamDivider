@@ -1,4 +1,5 @@
 import core from "./core";
+import core_2026 from "./core_2026";
 import dwl from "./dwl";
 import eoe from "./eoe";
 import fhv from "./fhv";
@@ -22,4 +23,5 @@ export default {
 	...tsk,
 	...fhv,
 	...tdc,
+	...core_2026,
 };

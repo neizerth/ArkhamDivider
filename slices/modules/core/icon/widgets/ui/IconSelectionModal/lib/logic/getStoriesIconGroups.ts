@@ -3,6 +3,8 @@ import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import {
 	isChallengeStory,
+	isCoreSet,
+	isInvestigatorStory,
 	isMainCampaign,
 	isSideCampaign,
 	isSideContent,
@@ -32,7 +34,9 @@ export const getStoriesIconGroups = ({
 		return icons.find(propEq(name, "icon"))?.icon;
 	};
 	const campaignGroups = stories.filter(
-		(story) => isMainCampaign(story) || isSideCampaign(story),
+		(story) =>
+			(isMainCampaign(story) || isSideCampaign(story) || isCoreSet(story)) &&
+			!isInvestigatorStory(story),
 	);
 	const sideGroups = stories.filter(isSideContent);
 	const challengeGroups = stories.filter(isChallengeStory);

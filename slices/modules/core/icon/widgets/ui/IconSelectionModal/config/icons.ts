@@ -12,30 +12,27 @@ export const factionIcons = [
 	"class_seeker",
 	"class_mystic",
 	"class_survivor",
-	"class_neutral",
 ];
 
 export const slotIcons = [
-	"hand",
 	"hand_inverted",
-	"hand_x2",
 	"hand_x2_inverted",
-	"arcane",
 	"arcane_inverted",
-	"arcane_x2",
 	"arcane_x2_inverted",
-	"tarot",
 	"tarot_inverted",
-	"accessory",
 	"accessory_inverted",
-	"body",
 	"body_inverted",
-	"ally",
 	"ally_inverted",
-	"tarot",
-	"tarot_inverted",
-	"head",
 	"head_inverted",
+];
+
+export const locationIcons = [
+	"triangle",
+	"square",
+	"heart",
+	"diamond",
+	"app-moon",
+	"clover",
 ];
 
 export const statsIcons = [
@@ -50,22 +47,70 @@ export const statsIcons = [
 	"skill_wild",
 	"skill_wild_inverted",
 	"health",
-	"health_inverted",
 	"sanity",
-	"sanity_inverted",
 ];
 
 export const arkhamSlimSpecialIcons = [
 	"cardicons-parallel",
-	"token_sealed_outline",
 	"unique",
+	"core_2026",
 	"asset",
 	"event",
 	"skill",
 ];
 
+export const tokenIcons = [
+	"tablet",
+	"skull",
+	"cultist",
+	"elder_thing",
+	"elder_sign",
+	"auto_fail",
+	"bless",
+	"curse",
+	"frost",
+	"moon",
+	"token_sealed_outline",
+];
+
+export const signIcons = [
+	"seal_e",
+	"seal_d",
+	"seal_c",
+	"seal_b",
+	"seal_a",
+	"tdc_rune_a",
+	"tdc_rune_b",
+	"tdc_rune_c",
+	"tdc_rune_d",
+	"tdc_rune_e",
+	"tdc_rune_f",
+	"tdc_rune_g",
+	"tdc_rune_h",
+	"tdc_rune_i",
+	"tdc_rune_j",
+	"tdc_rune_k",
+	"tdc_rune_l",
+	"tdc_rune_m",
+	"tdc_rune_n",
+	"tdc_rune_o",
+	"tdc_rune_p",
+	"tdc_rune_q",
+	"tdc_rune_r",
+	"tdc_rune_s",
+	"tdc_rune_t",
+	"tdc_rune_u",
+	"tdc_rune_v",
+	"tdc_rune_w",
+	"tdc_rune_x",
+	"tdc_rune_y",
+	"tdc_rune_z",
+];
+
 export const arkhamSlimIgnoredIcons = [
 	...factionIcons,
+	...tokenIcons,
+	...signIcons,
 	"willpower",
 	"intellect",
 	"combat",
@@ -74,6 +119,7 @@ export const arkhamSlimIgnoredIcons = [
 ];
 
 export const arkhamCardsIgnoredIcons = [
+	...locationIcons,
 	"multiclass",
 	"level_none",
 	"level_0",

@@ -5,8 +5,11 @@ import {
 	arkhamSlimIgnoredIcons,
 	arkhamSlimSpecialIcons,
 	factionIcons,
+	locationIcons,
+	signIcons,
 	slotIcons,
 	statsIcons,
+	tokenIcons,
 } from "../../config/icons";
 import type { IconGroup } from "../../model";
 
@@ -37,8 +40,11 @@ export const getGameIconGroups = ({ icons }: Options): IconGroup[] => {
 		createIconGroup("Slot", slotIcons),
 		createIconGroup("Stats", statsIcons),
 		createIconSetGroup("Cost"),
-		createIconGroup("Arkham Cards", arkhamCardsIcons),
+		createIconGroup("Location", locationIcons),
+		createIconGroup("Tokens", tokenIcons),
+		createIconGroup("Signs", signIcons),
 		createIconGroup("Other", arkhamSlimIcons),
+		createIconGroup("Arkham Cards", arkhamCardsIcons),
 	];
 };
 

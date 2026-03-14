@@ -1,5 +1,5 @@
 import { Box, Button, Dialog, DialogActions, Grid, Stack } from "@mui/material";
-import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
+import { useCallback, useContext, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { absoluteFill } from "@/shared/config";
 import { useScrollSpy } from "@/shared/lib";
@@ -39,13 +39,15 @@ export function IconSelectionModal() {
 	const sectionRefs = useIconGroupSectionRefs(iconGroups);
 
 	const defaultSectionIndex = useMemo(
-		() => findGroupIndexByIcon(iconGroups, defaultIcon),
-		[iconGroups, defaultIcon],
+		() => findGroupIndexByIcon(iconGroups, selectedIcon ?? defaultIcon),
+		[iconGroups, defaultIcon, selectedIcon],
 	);
 
 	const { virtualizer, scrollToIndex, scrollContainerRef } =
 		useVirtualizedIconGroups({
 			groups: iconGroups,
+			initialScrollIndex: open ? defaultSectionIndex : undefined,
+			initialScrollActive: open,
 		});
 
 	const activeIndex = useScrollSpy({
@@ -54,18 +56,6 @@ export function IconSelectionModal() {
 		activeSectionDefault: defaultSectionIndex,
 		offsetPx: 48,
 	});
-
-	useEffect(() => {
-		if (!open) {
-			return;
-		}
-		// Defer scroll until after Dialog is mounted and layout is ready (same as handleSectionClick)
-		const raf1 = requestAnimationFrame(() => {
-			console.log("scrollToIndex", defaultSectionIndex);
-			requestAnimationFrame(() => scrollToIndex(defaultSectionIndex));
-		});
-		return () => cancelAnimationFrame(raf1);
-	}, [open, defaultSectionIndex, scrollToIndex]);
 
 	const onClose = useCallback(() => {
 		setSelectionActive(false);
