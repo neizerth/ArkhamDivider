@@ -1,2 +1,1 @@
 export * from "./CustomStoryContentInfo";
-export * from "./story-select";

@@ -2,7 +2,9 @@ import type { ArkhamDivider } from "arkham-divider-data";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import type { Defined, Single } from "@/shared/model";
 
-export type Story = Single<ArkhamDivider.Core["stories"]> & {
+type StoryBase = Single<ArkhamDivider.Core["stories"]>;
+
+export type Story = StoryBase & {
 	id: string;
 	translated: boolean;
 	return_code?: string;
@@ -25,5 +27,7 @@ export type StoryScenarioWithRelations = StoryScenario & {
 	encounterSets: EncounterSet[];
 	encounterSet?: EncounterSet;
 };
+
+export type StoryCustomContent = Defined<StoryBase["custom_content"]>;
 
 export type StoryType = "campaign" | "standalone" | "challenge";

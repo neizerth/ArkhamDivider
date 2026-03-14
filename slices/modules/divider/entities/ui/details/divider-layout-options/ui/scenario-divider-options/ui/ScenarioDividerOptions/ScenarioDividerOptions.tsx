@@ -21,6 +21,7 @@ import {
 	changeStoryCode,
 	selectScenarioStories,
 } from "@/modules/story/shared/lib";
+import { CustomStoryContentInfo } from "@/modules/story/shared/ui";
 import { StorySelect } from "@/modules/story/shared/ui/story-select/StorySelect/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Row } from "@/shared/ui";
@@ -125,6 +126,9 @@ export function ScenarioDividerOptions(props: BoxProps) {
 							defaultValues={defaultValues}
 							onChange={onParamsChange}
 						/>
+					)}
+					{story?.custom_content && (
+						<CustomStoryContentInfo content={story.custom_content} />
 					)}
 				</Stack>
 			</form>

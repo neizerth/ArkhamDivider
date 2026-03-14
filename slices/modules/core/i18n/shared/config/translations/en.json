@@ -81,5 +81,9 @@
 	"story.type.campaign": "Campaigns",
 	"story.type.standalone": "Standalone",
 	"story.type.challenge": "Challenges",
-	"print.cornerRadius": "Corner radius: 3mm"
+	"print.cornerRadius": "Corner radius: 3mm",
+	"customStory.fanMadeBy": "Fan-made scenario by {{creator}}",
+	"customStory.translationHelp": "Please, help me with the content translation to your language. Contact me using one of the links at the bottom of the page.",
+	"customStory.download": "Download print and play cards",
+	"customStory.translatedBy": "Translated by"
 }
