@@ -28,9 +28,9 @@ export function CustomStoryContentInfo({
 	const { creators, download_links } = content;
 	const creator = creators.map(prop("name")).join(", ");
 
-	const isTranslated =
-		story?.translated === true ||
-		download_links.some((link) => language === link.language);
+	const isTranslated = download_links.some(
+		(link) => language === link.language,
+	);
 
 	return (
 		<Box {...boxProps}>
