@@ -3,6 +3,7 @@ import { propEq } from 'ramda';
 import {
   ClassicDividerSideXP,
   DividerContent,
+  DividerMenu,
   DividerText,
   Guides,
   Icon,
@@ -199,6 +200,9 @@ export const VintageDivider = (props: VintageDividerProps) => {
               bottomRight='inset-corner-br'
             />
           )}
+        </NotExportable>
+        <NotExportable>
+          <DividerMenu id={id} className={S.menu} />
         </NotExportable>
         <img src={bodyBackground} alt='' className={S.body} />
         {cornerRadius && (

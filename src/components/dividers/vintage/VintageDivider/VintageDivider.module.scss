@@ -357,3 +357,13 @@
 .tabCornerRadius {
   border-color: rgba(255, 255, 255, 0.5);
 }
+
+.menu {
+  position: absolute;
+  z-index: 5;
+  top: 24mm;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 10px;
+  opacity: 0.6;
+}
