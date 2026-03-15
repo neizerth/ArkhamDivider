@@ -64,7 +64,7 @@ export function DividerMenu({
 			<NotExportable id={dividerId}>
 				<Row position="relative">
 					<IconButton onClick={setShowDownload.toggle} sx={buttonSx}>
-						<Icon icon="download" color={showDownload ? "black" : "inherit"} />
+						<Icon icon="download" />
 					</IconButton>
 					{showDownload && (
 						<Row
@@ -76,19 +76,13 @@ export function DividerMenu({
 							height="100%"
 						>
 							<IconButton onClick={download("tiff")} sx={buttonSx}>
-								<Box fontSize="0.65em" color="black">
-									TIFF
-								</Box>
+								<Box fontSize="0.65em">TIFF</Box>
 							</IconButton>
 							<IconButton onClick={download("jpeg")} sx={buttonSx}>
-								<Box fontSize="0.65em" color="black">
-									JPEG
-								</Box>
+								<Box fontSize="0.65em">JPEG</Box>
 							</IconButton>
 							<IconButton onClick={download("png")} sx={buttonSx}>
-								<Box fontSize="0.65em" color="black">
-									PNG
-								</Box>
+								<Box fontSize="0.65em">PNG</Box>
 							</IconButton>
 						</Row>
 					)}

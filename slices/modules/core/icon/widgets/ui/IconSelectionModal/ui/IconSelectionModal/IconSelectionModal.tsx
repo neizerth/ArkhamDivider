@@ -176,7 +176,7 @@ export function IconSelectionModal() {
 				>
 					{t`Cancel`}
 				</Button>
-				{defaultIcon && !isDefaultIcon && (
+				{!isDefaultIcon && (
 					<Button
 						variant="contained"
 						color="secondary"

@@ -22,7 +22,7 @@ export function CustomStoryContentInfo({
 	...boxProps
 }: CustomStoryContentInfoProps) {
 	const { t } = useTranslation();
-	const story = useAppSelector(selectStory);
+	const _story = useAppSelector(selectStory);
 	const language = useAppSelector(selectLanguage) ?? "en";
 
 	const { creators, download_links } = content;

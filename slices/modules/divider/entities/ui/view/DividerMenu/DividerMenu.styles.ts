@@ -10,4 +10,5 @@ export const getButtonSx: PrintSxCallback = ({ mm }) => ({
 	fontSize: mm(6),
 	width: mm(11),
 	height: mm(11),
+	color: "inherit",
 });

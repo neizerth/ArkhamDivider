@@ -8,7 +8,7 @@ export const classicCategory: DividerCategory = createDividerCategory({
 	id: classicCategoryId,
 	type: "divider",
 	authors: [FFGCredits],
-	name: "Classic",
+	name: "Return To",
 	image: "/images/divider/render/classic.avif",
 	layouts: classicLayouts,
 });

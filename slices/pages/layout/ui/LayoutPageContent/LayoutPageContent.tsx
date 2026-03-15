@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
+import { useTranslation } from "react-i18next";
 import {
 	DividerLayoutInfo,
 	DividerLayoutOptions,
@@ -22,6 +23,7 @@ export function LayoutPageContent({
 	layout,
 	category,
 }: LayoutPageContentProps) {
+	const { t } = useTranslation();
 	return (
 		<SingleColumnLayout printable>
 			<Stack
@@ -34,7 +36,7 @@ export function LayoutPageContent({
 			>
 				<Container>
 					<Box sx={{ displayPrint: "none" }}>
-						<SectionTitle>{layout.name}</SectionTitle>
+						<SectionTitle>{t(layout.name)}</SectionTitle>
 						<Stack
 							sx={{
 								"@media screen": {

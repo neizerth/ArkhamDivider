@@ -35,14 +35,18 @@ export function DividerCategoryPreview({ category }: DividerCategoryProps) {
 				</Link>
 				<Stack gap={1}>
 					<Typography variant="h6" textAlign="center">
-						{name}
+						{t(name)}
 					</Typography>
 					<Stack gap={1}>
-						<LayoutList
-							layouts={horizontal}
-							title={t`orientation.horizontal`}
-						/>
-						<LayoutList layouts={vertical} title={t`orientation.vertical`} />
+						{category.hasHorizontal && (
+							<LayoutList
+								layouts={horizontal}
+								title={t`orientation.horizontal`}
+							/>
+						)}
+						{category.hasVertical && (
+							<LayoutList layouts={vertical} title={t`orientation.vertical`} />
+						)}
 					</Stack>
 				</Stack>
 			</Box>

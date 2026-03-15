@@ -30,6 +30,7 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 	const data = useRouterLayout();
 
 	const layout = useAppSelector(selectLayout);
+	const category = data?.category;
 
 	const color = layout?.color ?? true;
 	const orientation = layout?.orientation ?? "horizontal";
@@ -38,8 +39,8 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 	const [selectOpen, setSelectOpen] = useBoolean(false);
 	const anchorRef = useRef<HTMLButtonElement>(null);
 
-	const colorData = useDividerColorData();
-	const orientationData = useDividerOrientationData();
+	const colorData = useDividerColorData(category);
+	const orientationData = useDividerOrientationData(category);
 	const variants = useDividerVariants();
 
 	const onClickAway = useCallback(() => {
@@ -81,11 +82,9 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 		[dispatch],
 	);
 
-	if (!data) {
+	if (!category) {
 		return null;
 	}
-
-	const { category } = data;
 
 	const toggle = () => setOpen(!open);
 
@@ -131,7 +130,7 @@ export function DividerVariantSelect(props: DividerVariantSelectProps) {
 												label={t("Orientation")}
 												defaultValue={"horizontal"}
 												value={orientation}
-												sx={{
+												containerSx={{
 													width: "100%",
 												}}
 											/>

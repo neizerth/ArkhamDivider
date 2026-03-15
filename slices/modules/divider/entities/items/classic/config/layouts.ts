@@ -13,7 +13,7 @@ const horizontalLayout: DividerLayout = {
 	types,
 	categoryId: classicCategoryId,
 	groupId: "classic-horizontal",
-	name: "Classic",
+	name: "Reworked by @fabula_rasa",
 	orientation: "horizontal",
 	color: true,
 	size: createSize(89, 76.2),
@@ -60,7 +60,7 @@ const horizontalBW: DividerLayout = {
 const horizontalHQ: DividerLayout = {
 	...horizontalLayout,
 	id: "classic-horizontal-hq",
-	name: "Classic HQ",
+	name: "Return To",
 	size: createSize(88, 76),
 	printSize: {
 		300: {

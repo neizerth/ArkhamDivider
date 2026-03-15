@@ -73,6 +73,7 @@ export type PlayerDividerData = {
 
 export type InvestigatorDividerData = {
 	type: "investigator";
+	faction: Faction;
 	storyCode: string;
 	investigator: Investigator;
 };
