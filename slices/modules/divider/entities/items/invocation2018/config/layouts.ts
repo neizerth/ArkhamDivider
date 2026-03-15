@@ -36,10 +36,6 @@ const horizontal: DividerLayout = {
 			description: "layout.classic.sleeve.largeCCG.description",
 		},
 	],
-	scenarioParams: {
-		cardCount: true,
-		campaignIcon: true,
-	},
 	playerParams: {
 		numericXP: true,
 	},
@@ -62,6 +58,9 @@ const vertical63: DividerLayout = {
 			bleedSize: createSize(815, 1252),
 		},
 	},
+	playerParams: {
+		numericXP: true,
+	},
 	bleed: 3,
 	iconParams: ["icon"],
 };
@@ -83,5 +82,8 @@ const vertical65: DividerLayout = {
 			size: sleeve65x100,
 		},
 	],
+	playerParams: {
+		numericXP: true,
+	},
 };
 export const invocation2018Layouts = [horizontal, vertical63, vertical65];
