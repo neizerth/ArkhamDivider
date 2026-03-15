@@ -49,6 +49,7 @@ export function Invocation2018Divider(props: DividerWithRelations) {
 	const faction = "faction" in props ? props.faction : void null;
 
 	const sxOptions = {
+		orientation: layout.orientation,
 		color: layout.color,
 		objects: O,
 		faction,
@@ -60,7 +61,6 @@ export function Invocation2018Divider(props: DividerWithRelations) {
 	const getPrintSx = usePrintUnit(sxOptions);
 
 	const iconSx = getPrintSx(S.getIconSx);
-	const _dividerStatsSx = getPrintSx(S.getDividerStatsSx);
 	const strokeSx = getPrintSx(S.getStrokeSx);
 	const titleClearSx = getPrintSx(S.getTitleClearSx);
 	const menuSx = getPrintSx(S.getMenuSx);

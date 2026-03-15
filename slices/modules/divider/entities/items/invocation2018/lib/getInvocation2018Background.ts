@@ -12,9 +12,13 @@ export const getInvocation2018Background = (props: Options) => {
 	}
 	const { faction } = divider;
 	const { orientation } = layout;
-	const prefix = `/images/divider/background/invocation/${orientation}/${faction}`;
+	const orientationPrefix =
+		orientation === "vertical" ? `vertical/${layout.size.width}` : "horizontal";
+
+	const prefix = `/images/divider/background/invocation/${orientationPrefix}/${faction}`;
+	const ext = ".avif";
 	if (divider.type === "player" && divider.xpCost) {
-		return `${prefix}_xp.png`;
+		return `${prefix}_xp${ext}`;
 	}
-	return `${prefix}.png`;
+	return `${prefix}${ext}`;
 };

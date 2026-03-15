@@ -19,6 +19,8 @@ export type DividerPrintSizeItem = {
 
 export type DividerPrintSize = Partial<Record<DPI, DividerPrintSizeItem>>;
 
+export type DividerOrientation = "horizontal" | "vertical";
+
 export type DividerLayout = {
 	id: string;
 	types: DividerLayoutType[];
@@ -27,7 +29,7 @@ export type DividerLayout = {
 	name: string;
 	authors?: Author[];
 	image?: string;
-	orientation: "horizontal" | "vertical";
+	orientation: DividerOrientation;
 	color: boolean;
 	size: BoxSize;
 	printSize: DividerPrintSize;

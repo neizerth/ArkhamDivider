@@ -49,6 +49,18 @@ export const invocation2018DividerHorizontalObjects = {
 	xp: xpObject,
 };
 
+const verticalXPObject = {
+	...xpObject,
+	container: {
+		...xpObject.container,
+		right: 2.2,
+	},
+	side: {
+		...xpObject.side,
+		top: 3.6,
+	},
+};
+
 export const invocation2018DividerVertical63Objects = {
 	...classicDividerVertical63Objects,
 	text: {
@@ -59,7 +71,7 @@ export const invocation2018DividerVertical63Objects = {
 		},
 	},
 	icon: iconObject,
-	xp: xpObject,
+	xp: verticalXPObject,
 };
 
 export const invocation2018DividerVertical65Objects = {
@@ -72,5 +84,15 @@ export const invocation2018DividerVertical65Objects = {
 		},
 	},
 	icon: iconObject,
-	xp: xpObject,
+	xp: {
+		...verticalXPObject,
+		container: {
+			...verticalXPObject.container,
+			right: 3.3,
+		},
+		side: {
+			...verticalXPObject.side,
+			right: 12,
+		},
+	},
 };

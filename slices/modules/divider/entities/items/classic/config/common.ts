@@ -48,7 +48,7 @@ export const classicDividerHorizontalObjects = {
 		container: {
 			size: 8.33,
 			fontSize: 8.33,
-			top: 1.6,
+			top: 2.1,
 			right: 0.8,
 		},
 		side: {
@@ -89,7 +89,6 @@ export const classicDividerHorizontalHQObjects = {
 		...classicDividerHorizontalObjects.icon,
 		top: 1.5,
 		right: 1,
-		// size: 8.6,
 		fontSize: 7.9,
 		withXP: {
 			...classicDividerHorizontalObjects.icon.withXP,
@@ -103,6 +102,14 @@ export const classicDividerHorizontalHQObjects = {
 	backgroundIcon: {
 		...classicDividerHorizontalObjects.backgroundIcon,
 		top: 15.6,
+	},
+	xp: {
+		...classicDividerHorizontalObjects.xp,
+		container: {
+			...classicDividerHorizontalObjects.xp.container,
+			top: 1.7,
+			fontSize: 7.8,
+		},
 	},
 };
 
@@ -120,6 +127,23 @@ export const classicDividerVertical65Objects = {
 	backgroundIcon: {
 		...classicDividerVertical63Objects.backgroundIcon,
 		left: 7.5,
+	},
+	icon: {
+		...classicDividerVertical63Objects.icon,
+		withXP: {
+			...classicDividerVertical63Objects.icon.withXP,
+			right: 2,
+		},
+	},
+	xp: {
+		container: {
+			...classicDividerHorizontalObjects.xp.container,
+			right: 1.8,
+		},
+		side: {
+			...classicDividerHorizontalObjects.xp.side,
+			right: 11,
+		},
 	},
 };
 

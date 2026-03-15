@@ -95,12 +95,6 @@ export const getIconBackgroundSx: Invocation2018DividerSxCallback = ({
 	right: mm(1.6),
 });
 
-export const getDividerStatsSx: Invocation2018DividerSxCallback = ({ mm }) => ({
-	position: "absolute",
-	bottom: mm(6.7),
-	right: mm(2.5),
-});
-
 const strokeClipSize = 11.3;
 
 export const getStrokeSx: Invocation2018DividerSxCallback = (props) => {
@@ -141,12 +135,13 @@ const getFactionMenuColor = (faction: Faction = "neutral") => {
 
 export const getMenuSx: Invocation2018DividerSxCallback = ({
 	mm,
+	orientation,
 	faction,
 }) => ({
 	position: "absolute",
 	zIndex: 1,
 	flexDirection: "column",
-	top: mm(22),
+	top: orientation === "horizontal" ? mm(22) : mm(32),
 	left: mm(6),
 	color: getFactionMenuColor(faction),
 	filter: "drop-shadow(2px 2px 5px #000)",

@@ -43,7 +43,7 @@ const horizontalLayout: DividerLayout = {
 		numericXP: true,
 	},
 	params: {
-		background: "/images/divider/background/classic/horizontal.png",
+		background: "/images/divider/background/classic/horizontal.avif",
 	},
 	iconParams: ["icon", "background"],
 };
@@ -53,7 +53,7 @@ const horizontalBW: DividerLayout = {
 	id: "classic-horizontal-bw",
 	color: false,
 	params: {
-		background: "/images/divider/background/classic/horizontal_bw.png",
+		background: "/images/divider/background/classic/horizontal_bw.avif",
 	},
 };
 
@@ -86,7 +86,7 @@ const verticalLayout: DividerLayout = {
 	types,
 	categoryId: classicCategoryId,
 	groupId: "classic-vertical",
-	name: "Classic",
+	name: "63x100",
 	image: "/images/divider/render/classic.avif",
 	orientation: "vertical",
 	color: true,
@@ -100,7 +100,7 @@ const verticalLayout: DividerLayout = {
 	bleed: 3,
 	iconParams: ["icon", "background"],
 	params: {
-		background: "/images/divider/background/classic/vertical_63.png",
+		background: "/images/divider/background/classic/vertical_63.avif",
 	},
 };
 
@@ -109,13 +109,14 @@ const verticalBW: DividerLayout = {
 	id: "classic-vertical-bw",
 	color: false,
 	params: {
-		background: "/images/divider/background/classic/vertical_63-bw.png",
+		background: "/images/divider/background/classic/vertical_63-bw.avif",
 	},
 };
 
 const vertical65x100: DividerLayout = {
 	...verticalLayout,
 	id: "classic-vertical-sleeves",
+	name: "65x100",
 	groupId: "classic-vertical-sleeves",
 	size: createSize(65, 100),
 	printSize: {
@@ -131,7 +132,7 @@ const vertical65x100: DividerLayout = {
 		},
 	],
 	params: {
-		background: "/images/divider/background/classic/vertical_65.png",
+		background: "/images/divider/background/classic/vertical_65.avif",
 	},
 };
 
@@ -140,7 +141,7 @@ const vertical65x100BW: DividerLayout = {
 	id: "classic-vertical-65x100-bw",
 	color: false,
 	params: {
-		background: "/images/divider/background/classic/vertical_65-bw.png",
+		background: "/images/divider/background/classic/vertical_65-bw.avif",
 	},
 };
 
