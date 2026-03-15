@@ -35,12 +35,36 @@ export const getStaticBoxGrid = (containerSize: BoxSize, unitSize: BoxSize) => {
 	return { rows, cols, units, size };
 };
 
-export const getBoxGrid = (size: BoxSize, unitSize: BoxSize) => {
-	const original = getStaticBoxGrid(size, unitSize);
+export const getBoxGrid = ({
+	size,
+	unitSize,
+	padding,
+}: {
+	size: BoxSize;
+	unitSize: BoxSize;
+	padding: {
+		inline?: number;
+		block?: number;
+	};
+}) => {
+	const { inline = 0, block = 0 } = padding;
+
+	const originalSize = {
+		width: size.width - inline * 2,
+		height: size.height - block * 2,
+	};
+
+	const original = getStaticBoxGrid(originalSize, unitSize);
+
+	const rotatedSize = {
+		width: size.height - inline * 2,
+		height: size.width - block * 2,
+	};
+
 	const rotated = getStaticBoxGrid(
 		{
-			width: size.height,
-			height: size.width,
+			width: rotatedSize.width,
+			height: rotatedSize.height,
 		},
 		unitSize,
 	);

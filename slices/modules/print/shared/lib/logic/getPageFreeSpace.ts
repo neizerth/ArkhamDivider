@@ -1,5 +1,5 @@
 import type { BoxSize } from "@/shared/model";
-import { PAGE_TOP_PADDING } from "../../config";
+import { PAGE_PADDING_BLOCK } from "../../config";
 
 export type GetPageFreeSpaceOptions = {
 	pageSize: BoxSize;
@@ -18,7 +18,7 @@ export const getPageFreeSpace = ({
 	};
 
 	if (isLast) {
-		spaceSize.height -= PAGE_TOP_PADDING;
+		spaceSize.height -= PAGE_PADDING_BLOCK * 2;
 	}
 
 	return spaceSize;

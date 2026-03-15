@@ -11,7 +11,7 @@ const types: DividerLayoutType[] = ["player", "investigator"];
 
 const horizontal: DividerLayout = {
 	id: "invocation2018-horizontal",
-	name: "Horizontal",
+	name: "Invocation 2018",
 	orientation: "horizontal",
 	color: true,
 	size: createSize(89, 76.2),
