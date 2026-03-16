@@ -26,6 +26,12 @@
         object-fit: contain;
       }
     </style>
+    <script>
+      const isGithubPages = window.location.hostname.includes('.github.io');
+      if (isGithubPages) {
+        window.location.href = 'https://arkham-divider.com';
+      }
+    </script>
   </head>
   <body>
     <div id="root">
