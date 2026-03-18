@@ -72,6 +72,14 @@
   top: 0;
 }
 
+.playerCorner {
+  position: absolute;
+  z-index: 4;
+  height: 8.5mm;
+  left: 4.5mm;
+  top: 4.2mm;
+}
+
 .icon {
   cursor: pointer;
   position: absolute;

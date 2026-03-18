@@ -16,7 +16,7 @@ const campaigns: Record<string, number> = {
 
   empty: 37,
   challenge: 23,
-  standalone: Infinity, // Серый цвет - hue не определен, hue-rotate не применяется
+  standalone: Infinity, // gray color - hue is not defined, hue-rotate is not applied
 };
 
 const standalone: Record<string, number> = {

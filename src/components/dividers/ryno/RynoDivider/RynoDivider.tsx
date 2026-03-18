@@ -67,20 +67,28 @@ export const RynoDivider = (props: DividerProps) => {
   const isGenericFaction = props.faction && !['multiclass'].includes(props.faction);
   const factionImage = `/images/faction/${props.faction}.png`;
 
-  const showCorner = !hasFaction || (hasFaction && !isGenericFaction);
+  const showPlayerCorner = hasFaction && !isGenericFaction;
+  const showScenarioCorner = !hasFaction;
+
+  const showCorner = showScenarioCorner || showPlayerCorner;
 
   const isInvestigator = props.type === DividerType.INVESTIGATOR;
+
+  const headerImage = hasFaction ? assets.playerHeader : assets.header;
 
   return (
     <div className={containerClassName}>
       <DividerContent>
         <div className={S.assetsContainer}>
           <div className={S.assets}>
-            {showCorner && <img className={S.corner} src={assets.corner} alt={title} />}
+            {showScenarioCorner && <img className={S.corner} src={assets.corner} alt={title} />}
+            {showPlayerCorner && (
+              <img className={S.playerCorner} src={images.playerCorner} alt={title} />
+            )}
             {hasFaction && isGenericFaction && (
               <img className={S.factionIcon} src={factionImage} alt={props.faction} />
             )}
-            <img className={S.header} src={assets.header} alt={title} style={headerStyle} />
+            <img className={S.header} src={headerImage} alt={title} style={headerStyle} />
             <img className={S.body} src={assets.body} alt={title} />
           </div>
         </div>
