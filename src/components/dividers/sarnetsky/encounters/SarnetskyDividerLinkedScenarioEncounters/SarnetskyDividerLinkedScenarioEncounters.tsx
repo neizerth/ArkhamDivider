@@ -27,9 +27,9 @@ export const SarnetskyDividerLinkedScenarioEncounters = ({
       )}
       {scenarioGroups.length > 1 && (
         <div className={S.group}>
-          {scenarioGroups.map((group, index) => (
+          {scenarioGroups.map((group) => (
             <SarnetskyDividerScenarioEncounters
-              key={index}
+              key={group[0].id}
               showName
               mainScenario={mainScenario}
               scenario={group[0]}

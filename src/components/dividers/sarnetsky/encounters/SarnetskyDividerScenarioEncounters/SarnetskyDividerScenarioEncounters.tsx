@@ -27,15 +27,20 @@ export const SarnetskyDividerScenarioEncounters = (
     encounterSets,
   });
 
+  const visibleGroups = groups.filter((g) => g.main.length > 0 || g.side.length > 0);
+
+  if (visibleGroups.length === 0) {
+    return null;
+  }
+
   return (
-    <div className={classNames(S.groups, groups.length > 1 && S.groups_multiple)}>
-      {groups.map((group, index) => (
+    <div className={classNames(S.groups, visibleGroups.length > 1 && S.groups_multiple)}>
+      {visibleGroups.map((group) => (
         <SarnetskyDividerGroupedEncounters
           {...props}
-          key={index}
+          key={`${scenario.id}_${group.version_text}_${group.version_number}`}
           name={scenario.part_text || group.version_number.toString()}
-          showName={showName || groups.length > 1}
-          // name={group.version_text}
+          showName={showName || visibleGroups.length > 1}
           mainEncounters={group.main}
           sideEncounters={group.side}
         />
@@ -58,6 +63,7 @@ export const SarnetskyDividerGroupedEncounters = ({
   const mainSize = mainEncounters.length;
   const sideSize = sideEncounters.length;
   const totalSize = mainSize + sideSize;
+  const hasSide = sideSize > 0;
   const between = numberBetween(rowSize, rowSize + 2);
 
   const getGroupClass = ({ length }: string[]) => {
@@ -80,7 +86,14 @@ export const SarnetskyDividerGroupedEncounters = ({
       {showName && <div className={S.name}>{name}:</div>}
       <div className={wrapperClassName}>
         {mainEncounters.length > 0 && (
-          <div className={classNames(S.main, getGroupClass(mainEncounters))} style={groupStyle}>
+          <div
+            className={classNames(
+              S.main,
+              getGroupClass(mainEncounters),
+              hasSide && S.main_withSide
+            )}
+            style={groupStyle}
+          >
             {mainEncounters.map((icon) => (
               <div className={classNames(S.encounter, S.encounter_main)} key={`main_${icon}`}>
                 <Icon icon={icon} />

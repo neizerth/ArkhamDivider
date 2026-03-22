@@ -67,6 +67,9 @@
   justify-content: center;
   position: relative;
   flex-grow: 1;
+}
+
+.main_withSide {
   &::before {
     content: '';
     position: absolute;
@@ -85,7 +88,7 @@
     width: calc(50%);
     left: 50%;
     transform: translate(-50%, 0);
-  
+
     bottom: calc(-1 * var(--row-gap) * 0.5 - 0.5px);
   }
 }
