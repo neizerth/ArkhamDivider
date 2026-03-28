@@ -65,27 +65,12 @@ const ArkhamCardsRuAnnounce = () => {
       ⚠️ Сообщество собирает средства на озвучку художественного текста в кампаниях и сценариях.{' '}
       <br />
       <br />
-      Сбор на озвучку (Если возникают трудности с нижеперечисленными способами обращайтесь к{' '}
-      <a className={S.link} href='https://t.me/Aahz7' target='_blank' rel='noopener noreferrer'>
-        @Aahz7
-      </a>
-      ): <br />
+      Сбор на озвучку: <br />
       <ul>
-        <li>По номеру телефона (+7 994 432 22 14)</li>
         <li>
           <a
             className={S.link}
-            href='https://messenger.online.sberbank.ru/sl/rgONgm2VJesBMZNMh'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Сбер
-          </a>
-        </li>
-        <li>
-          <a
-            className={S.link}
-            href='https://boosty.to/arkhamhorror_thecardgame/single-payment/donation/367040/target?share=target_linkhttps://boosty.to/arkhamhorror_thecardgame/single-payment/donation/367040/target?share=target_link'
+            href='https://boosty.to/arkhamhorror_thecardgame/single-payment/donation/367040/target?share=target_link'
             target='_blank'
             rel='noopener noreferrer'
           >

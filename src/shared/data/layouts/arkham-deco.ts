@@ -1,4 +1,4 @@
-import { BASE_PATH, BOOSTY_LINK, PATREON_LINK, PAYPAL_LINK, T_LINK } from '@/shared/config/app';
+import { BASE_PATH, BOOSTY_LINK, PATREON_LINK, T_LINK } from '@/shared/config/app';
 import { ILayout, ILayoutCategory, LayoutOrientation, LayoutType } from '@/shared/types/layouts';
 
 export enum ArkhamDecoDividerType {
@@ -191,11 +191,6 @@ export const arkhamDecoCategory: ILayoutCategory = {
         id: 'patreon',
         icon: 'patreon',
         url: PATREON_LINK,
-      },
-      {
-        id: 'paypal',
-        icon: 'paypal',
-        url: PAYPAL_LINK,
       },
       {
         id: 'boosty',

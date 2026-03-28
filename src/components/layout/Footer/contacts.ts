@@ -1,13 +1,9 @@
-import { BOOSTY_LINK, PAYPAL_LINK, T_LINK } from '@/shared/config/app';
+import { BOOSTY_LINK, T_LINK } from '@/shared/config/app';
 
 export const contacts = [
   {
     icon: 'boosty',
     url: BOOSTY_LINK,
-  },
-  {
-    icon: 'paypal',
-    url: PAYPAL_LINK,
   },
   {
     icon: 't_bank',
