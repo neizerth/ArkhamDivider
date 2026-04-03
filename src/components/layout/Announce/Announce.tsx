@@ -78,6 +78,16 @@ const ArkhamCardsRuAnnounce = () => {
           </a>{' '}
           (комиссия до 12%)
         </li>
+        <li>
+          <a
+            className={S.link}
+            href='https://www.tbank.ru/cf/2Icb3EoNfVI'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Т-Банк
+          </a>
+        </li>
       </ul>
     </p>
   );
