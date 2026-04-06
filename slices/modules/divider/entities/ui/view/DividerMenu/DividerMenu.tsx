@@ -1,3 +1,4 @@
+import type { SxProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Stack, { type StackProps } from "@mui/material/Stack";
@@ -14,6 +15,7 @@ import { Row } from "@/shared/ui";
 import { getButtonSx, getSx } from "./DividerMenu.styles";
 
 type DividerMenuProps = StackProps & {
+	actionsSx?: SxProps;
 	dividerId: string;
 	inline?: boolean;
 };
@@ -21,6 +23,7 @@ type DividerMenuProps = StackProps & {
 export function DividerMenu({
 	dividerId,
 	sx: sxProp,
+	actionsSx,
 	inline = false,
 	...props
 }: DividerMenuProps) {
@@ -62,13 +65,13 @@ export function DividerMenu({
 	};
 
 	return (
-		<Stack
-			{...props}
-			sx={sx}
-			displayPrint="none"
-			flexDirection={inline ? "row" : "column"}
-		>
-			<NotExportable id={dividerId}>
+		<NotExportable id={dividerId}>
+			<Stack
+				{...props}
+				sx={sx}
+				displayPrint="none"
+				flexDirection={inline ? "row" : "column"}
+			>
 				<Row position="relative">
 					<IconButton onClick={setShowDownload.toggle} sx={buttonSx}>
 						<Icon icon="download" />
@@ -81,6 +84,7 @@ export function DividerMenu({
 							zIndex={2}
 							sx={{
 								[inline ? "right" : "left"]: "100%",
+								...actionsSx,
 							}}
 							height="100%"
 						>
@@ -102,7 +106,7 @@ export function DividerMenu({
 				<IconButton onClick={remove} sx={buttonSx}>
 					<Icon icon="trash" />
 				</IconButton>
-			</NotExportable>
-		</Stack>
+			</Stack>
+		</NotExportable>
 	);
 }

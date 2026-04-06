@@ -46,15 +46,16 @@ export function DividerSelect(props: DividerSelectProps) {
 				<C.Subheader>{t(`Bands`)}</C.Subheader>
 
 				<MenuItem value="sarnetsky-band">{t(`Eugene Sarnetsky`)}</MenuItem>
+				<C.Subheader>{t(`Stickers`)}</C.Subheader>
+				<MenuItem value="tcg-divider-sticker">
+					{t(`category.tcg-divider-sticker.name`)}
+				</MenuItem>
 				<C.Subheader>{t(`Other`)}</C.Subheader>
 				<MenuItem value="investigator-tokens">
 					{t(`Investigator Tokens`)}
 				</MenuItem>
+
 				{/*
-				
-				
-				<ListSubheader>{t(`Stickers`)}</ListSubheader>
-				<MenuItem value="divider-stickers">Deckbox</MenuItem>
 				<MenuItem value="icon-stickers">{t(`Icon Stickers`)}</MenuItem>
 				<MenuItem value="bookmark-stickers">{t(`Bookmark Stickers`)}</MenuItem>
 				<ListSubheader>{t(`Album Bookmarks`)}</ListSubheader>

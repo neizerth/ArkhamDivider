@@ -10,8 +10,17 @@ type Options = {
 	faction: Faction;
 };
 export const getDividerSubtypeData = ({ subtype, faction }: Options) => {
-	const isFaction = subtype === "faction" || subtype === "investigators";
+	const isFaction = subtype === "faction";
+	const isInvestigator = subtype === "investigators";
 	const item = subtypes.find(propEq(subtype, "type"));
+
+	if (isInvestigator) {
+		const title = factionNames[faction];
+		return {
+			title,
+			icon: "investigator",
+		};
+	}
 	if (isFaction || !item) {
 		const icon = getFactionIcon(faction);
 		const title = factionNames[faction];

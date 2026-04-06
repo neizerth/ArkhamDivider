@@ -1,0 +1,1 @@
+export const <FTName | camelcase>CategoryId = "<FTName>";

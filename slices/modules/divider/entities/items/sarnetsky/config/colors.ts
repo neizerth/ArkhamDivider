@@ -1,5 +1,6 @@
 export const sarnetskyColors: Record<string, string> = {
 	core: "#00759C",
+	core_2026: "#008d92",
 	dwl: "#6D9548",
 	ptc: "#5B579C",
 	tfa: "#A45F9C",
@@ -10,6 +11,7 @@ export const sarnetskyColors: Record<string, string> = {
 	tsk: "#B7265E",
 	fhv: "#f36f32",
 	tdc: "#5C672B",
+	cob: "#a07f45",
 	default: "#B2AAA2",
 };
 

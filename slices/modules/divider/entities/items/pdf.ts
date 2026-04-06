@@ -19,6 +19,8 @@ import { sarnetskyCategoryId } from "./sarnetsky/config";
 import { SarnetskyDividerPDF } from "./sarnetsky/ui";
 import { sarnetskyBandCategoryId } from "./sarnetsky-band/config";
 import { SarnetskyBandDividerPDF } from "./sarnetsky-band/ui";
+import { tcgDividerStickerCategoryId } from "./tcg-divider-sticker/config";
+import { TCGDividerStickerPDF } from "./tcg-divider-sticker/ui/pdf";
 import { vintageDividerCategoryId } from "./vintage/config/common";
 import { VintageDividerPDF } from "./vintage/ui/pdf";
 
@@ -35,4 +37,5 @@ export const dividerPDFComponents: Record<string, PDFDivider<any>> = {
 	[arkhamStarterDividerCategoryId]: ArkhamStarterDividerPDF,
 	[vintageDividerCategoryId]: VintageDividerPDF,
 	[chapter2CategoryId]: Chapter2DividerPDF,
+	[tcgDividerStickerCategoryId]: TCGDividerStickerPDF,
 };

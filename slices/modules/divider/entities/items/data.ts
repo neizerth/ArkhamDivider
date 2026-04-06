@@ -10,6 +10,7 @@ import { invocation2018Category } from "./invocation2018/config";
 import { rynoCategory } from "./ryno/config";
 import { sarnetskyCategory } from "./sarnetsky/config/category";
 import { sarnetskyBandCategory } from "./sarnetsky-band/config";
+import { tcgDividerStickerCategory } from "./tcg-divider-sticker/config";
 import { vintageCategory } from "./vintage/config";
 
 /** Categories/layouts only — no UI imports. Use this from shared to avoid circular deps. */
@@ -25,6 +26,7 @@ export const dividerCategories: DividerCategory[] = [
 	vintageCategory,
 	sarnetskyBandCategory,
 	investigatorTokensCategory,
+	tcgDividerStickerCategory,
 ];
 
 export const dividerLayouts = dividerCategories.flatMap(prop("layouts"));

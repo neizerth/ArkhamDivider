@@ -44,6 +44,7 @@ export function DividerVariantSelectDropdown(
 	const colorData = useDividerColorData(category);
 	const orientationData = useDividerOrientationData(category);
 	const variants = useDividerVariants();
+	const hasColorVariants = category?.hasColorVariants ?? false;
 
 	const onClickAway = useCallback(() => {
 		if (selectOpen) {
@@ -106,7 +107,7 @@ export function DividerVariantSelectDropdown(
 						<Grow {...TransitionProps}>
 							<Paper>
 								<List>
-									{category.hasGrayscale && (
+									{hasColorVariants && (
 										<ListItem>
 											<Select
 												onOpen={setSelectOpen.on}

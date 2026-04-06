@@ -15,6 +15,7 @@
 	"Numeric XP": "Отображать опыт числом",
 	"Side XP": "Опыт сбоку",
 	"Additional": "Дополнительно",
+	"Multiclass": "Мультиклассовый",
 	"cards.faction.mystic": "Карты Мистиков",
 	"cards.faction.guardian": "Карты Хранителей",
 	"cards.faction.rogue": "Карты Ловкачей",
@@ -192,5 +193,9 @@
 	"iOS Unlock": "Разблокировка",
 	"home.projectInfo.title": "Несколько слов о проекте",
 	"category.chapter2.description": "Разделители Главы 2",
-	"Set to all": "Для всех"
+	"Set to all": "Для всех",
+	"divider.tcg-divider-sticker.name": "Наклейки на ККИ-разделители",
+	"category.tcg-divider-sticker.description": "Стикеры для пластиковых ККИ-разделителей. Их можно найти на Ozon или AliExpress",
+	"divider.tcg-divider-sticker.description": "Стикеры для пластиковых ККИ-разделителей размером 70x95мм. Их можно найти на Ozon или AliExpress",
+	"divider.tcg-divider-sticker.large.description": "Стикеры для пластиковых ККИ-разделителей размером 70x107мм"
 }
