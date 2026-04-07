@@ -103,6 +103,13 @@ const verticalLayout: DividerLayout = {
 	params: {
 		background: "/images/divider/background/classic/vertical_63.avif",
 	},
+	scenarioParams: {
+		cardCount: true,
+		campaignIcon: true,
+	},
+	playerParams: {
+		numericXP: true,
+	},
 };
 
 const verticalBW: DividerLayout = {
