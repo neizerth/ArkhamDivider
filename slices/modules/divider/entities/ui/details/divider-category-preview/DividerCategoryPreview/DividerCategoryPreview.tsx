@@ -30,7 +30,7 @@ export function DividerCategoryPreview({ category }: DividerCategoryProps) {
 					<CardMedia
 						sx={{ height: 200, backgroundSize: "contain" }}
 						image={category.image}
-						title={name}
+						title={t(name)}
 					/>
 				</Link>
 				<Stack gap={1}>
