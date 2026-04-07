@@ -1,17 +1,15 @@
-import type { LocaleSxCallback } from "@/modules/core/i18n/shared/model";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
-import { tcgDividerStickerObjects as O } from "../../config/common";
-import {
-	getTCGDividerStickerSideIconObject,
-	getTCGDividerStickerTitleObject,
-} from "../../lib";
+import type {
+	TCGDividerStickerLocaleSxCallback,
+	TCGDividerStickerSxCallback,
+} from "../../model";
 
-export const getIconSx: PrintSxCallback = ({ mm }) => ({
+export const getIconSx: TCGDividerStickerSxCallback = ({ mm, objects: O }) => ({
 	position: "absolute",
 	left: mm(O.icon.left),
 	top: mm(O.icon.top),
+	bottom: mm(O.icon.bottom),
 	width: mm(O.icon.width),
-	height: mm(O.icon.height),
 	fontSize: mm(O.icon.fontSize),
 	cursor: "pointer",
 	"&:hover": {
@@ -24,25 +22,22 @@ export const getContentSx: PrintSxCallback = () => ({
 	borderBottomRightRadius: 0,
 });
 
-export const getTitleSx: LocaleSxCallback<{ withXP: boolean }> = ({
+export const getTitleSx: TCGDividerStickerLocaleSxCallback = ({
 	mm,
-	withXP,
+	objects,
 }) => {
-	const T = getTCGDividerStickerTitleObject(withXP);
+	const T = objects.title;
 	return {
 		default: {
 			fontFamily: "Arkhamic, Teutonic, serif",
 			position: "absolute",
 			top: mm(T.top),
 			bottom: mm(T.bottom),
-			height: mm(T.height),
 			left: mm(T.left),
 			right: mm(T.right),
 			fontSize: mm(T.fontSize),
 		},
 		ru: {
-			fontSize: mm(T.fontSize),
-			height: mm(T.height),
 			fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
 		},
 		cn: {
@@ -54,13 +49,18 @@ export const getTitleSx: LocaleSxCallback<{ withXP: boolean }> = ({
 	};
 };
 
-export const getClearSx: PrintSxCallback = ({ mm }) => ({
+export const getClearSx: TCGDividerStickerSxCallback = ({
+	mm,
+	objects: O,
+}) => ({
 	position: "absolute",
+	zIndex: 4,
 	left: "auto",
-	right: mm(-1),
-	width: mm(3),
-	height: mm(3),
-	top: mm(1.5),
+	right: mm(O.clear.right),
+	width: mm(3.5),
+	height: mm(3.5),
+	top: `calc(50% + ${mm(O.clear.top)})`,
+	transform: "translateY(-50%)",
 });
 
 export const getOutlineSx: PrintSxCallback = ({ mm }) => ({
@@ -69,36 +69,36 @@ export const getOutlineSx: PrintSxCallback = ({ mm }) => ({
 	borderRadius: mm(1),
 	left: mm(-1),
 	right: mm(-1),
-	top: 0,
-	bottom: 0,
+	top: mm(0.1),
+	bottom: mm(0.1),
 });
 
-export const getXPCostSx: PrintSxCallback = ({ mm }) => ({
+export const getXPCostSx: TCGDividerStickerSxCallback = ({
+	mm,
+	objects: O,
+}) => ({
 	position: "absolute",
 	display: "flex",
 	alignItems: "center",
 	lineHeight: 1,
 	top: 0,
-	right: mm(2),
+	right: mm(O.xp.right),
 	bottom: mm(0),
-	fontSize: mm(5),
+	fontSize: mm(O.xp.fontSize),
 	fontFamily: "Arkhamic, Teutonic, serif",
 	letterSpacing: mm(0.1),
-	width: mm(10),
+	width: mm(O.xp.width),
 });
 
-export const getSideIconSx: PrintSxCallback<{ withXP: boolean }> = ({
-	mm,
-	withXP,
-}) => {
-	const I = getTCGDividerStickerSideIconObject(withXP);
+export const getSideIconSx: TCGDividerStickerSxCallback = ({ mm, objects }) => {
+	const SI = objects.sideIcon;
 	return {
 		position: "absolute",
-		right: mm(I.right),
-		top: mm(I.top),
-		width: mm(I.width),
-		height: mm(I.height),
-		fontSize: mm(I.fontSize),
+		right: mm(SI.right),
+		top: mm(SI.top),
+		bottom: mm(SI.bottom),
+		width: mm(SI.width),
+		fontSize: mm(SI.fontSize),
 		cursor: "pointer",
 		"&:hover": {
 			opacity: 0.5,
@@ -106,20 +106,36 @@ export const getSideIconSx: PrintSxCallback<{ withXP: boolean }> = ({
 	};
 };
 
-export const getMenuSx: PrintSxCallback<{
-	isPlayer?: boolean;
-	withXP?: boolean;
-}> = ({ mm, isPlayer, withXP }) => ({
-	position: "absolute",
-	zIndex: 4,
-	right: mm(isPlayer && withXP ? 40 : 3),
-	top: mm(1),
-	bottom: mm(0.5),
-	fontSize: mm(4),
-	zoom: 0.5,
-	backgroundColor: "white",
-	opacity: 0.2,
-	"&:hover": {
-		opacity: 1,
-	},
-});
+export const getMenuSx: TCGDividerStickerSxCallback = ({ mm, objects }) => {
+	const M = objects.menu;
+	return {
+		position: "absolute",
+		justifyContent: "center",
+		alignItems: "center",
+		zIndex: 4,
+		right: mm(M.right),
+		top: mm(M.top),
+		bottom: mm(M.bottom),
+		zoom: M.zoom,
+		opacity: 0.2,
+		backgroundColor: "white",
+		"&:hover": {
+			opacity: 1,
+		},
+	};
+};
+
+export const getScenarioSx: TCGDividerStickerSxCallback = ({ mm, objects }) => {
+	const S = objects.scenario;
+	return {
+		position: "absolute",
+		display: "flex",
+		alignItems: "center",
+		right: mm(S.right),
+		top: mm(S.top),
+		bottom: mm(S.bottom),
+		width: mm(S.width),
+		fontSize: mm(S.fontSize),
+		fontFamily: "Arkhamic, Teutonic, serif",
+	};
+};

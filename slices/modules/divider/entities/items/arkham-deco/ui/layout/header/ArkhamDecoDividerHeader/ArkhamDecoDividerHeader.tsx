@@ -3,7 +3,7 @@ import { useDividerRender } from "@/modules/divider/entities/lib";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import { selectPlayerParams } from "@/modules/divider/shared/lib";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import {
 	selectLasercutEnabled,
 	usePrintUnit,

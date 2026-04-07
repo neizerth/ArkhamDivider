@@ -5,7 +5,7 @@ import {
 	getDividerFaction,
 	getDividerSubtype,
 	getDividerXPCost,
-} from "@/modules/divider/shared/lib/logic/params";
+} from "@/modules/divider/shared/lib/logic";
 import type {
 	DrawIconOptions,
 	DrawTextOptions,

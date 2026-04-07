@@ -16,6 +16,7 @@ function* worker({ payload }: ReturnType<typeof changeLayoutColor>) {
 	const [first] = sortWith(
 		[
 			descend(propEq(payload, "color")),
+			descend(propEq(layout.name, "name")),
 			descend(propEq(layout.orientation, "orientation")),
 			descend(propEq(layout.groupId, "groupId")),
 			// ignore current layout

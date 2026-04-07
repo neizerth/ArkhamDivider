@@ -1,4 +1,5 @@
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import ScreenRotationIcon from "@mui/icons-material/ScreenRotation";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -100,6 +101,20 @@ export function DividerLayoutInfo({
 							</Row>
 							<Typography variant="body1" flex={1}>
 								{size} {t`mm`}
+							</Typography>
+						</Row>
+						<Row sx={optionSx}>
+							<Row sx={optionTitleSx}>
+								<Typography
+									variant="body2"
+									sx={optionLabelSx}
+								>{t`Orientation`}</Typography>
+								<C.Icon title={t`Orientation`}>
+									<ScreenRotationIcon />
+								</C.Icon>
+							</Row>
+							<Typography variant="body1" flex={1}>
+								{t(`orientation.${layout.orientation}`)}
 							</Typography>
 						</Row>
 						{bleedEnabled && <BleedInfo bleed={layout.bleed} />}

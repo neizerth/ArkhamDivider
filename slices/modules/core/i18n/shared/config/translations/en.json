@@ -197,9 +197,9 @@
 	"home.projectInfo.title": "A few words about this project",
 	"category.chapter2.description": "Chapter 2 dividers",
 	"category.tcg-divider-sticker.name": "TCG divider stickers",
-	"divider.tcg-divider-sticker.name": "2.7x3.8\" divider",
-	"category.tcg-divider-sticker.description": "Stickers for plastic TCG-dividers. You can find them at Amazon or Walmart",
-	"divider.tcg-divider-sticker.description": "Stickers for plastic TCG-dividers size 2.7x3.8\". You can find them at Amazon or Walmart",
-	"divider.tcg-divider-sticker.large.description": "Stickers for plastic TCG-dividers size 2.7x4.25\". You can find them at Amazon or Walmart",
-	"divider.tcg-divider-sticker.large.name": "2.7x3.25\" divider"
+	"category.tcg-divider-sticker.description": "Stickers for TCG-dividers. You can find them at Amazon or Walmart",
+	"divider.tcg-divider-sticker.70x95.name": "2.7x3.8\" divider",
+	"divider.tcg-divider-sticker.70x95.description": "Stickers for plastic TCG-dividers size 2.7x3.8\". You can find them at Amazon or Walmart",
+	"divider.tcg-divider-sticker.70x107.description": "Stickers for plastic TCG-dividers size 2.7x4.25\". You can find them at Amazon or Walmart",
+	"divider.tcg-divider-sticker.70x107.name": "2.7x3.25\" divider"
 }

@@ -2,7 +2,7 @@ import { cmyk } from "@/modules/core/color/shared/lib";
 import { i18n } from "@/modules/core/i18n/shared/config/i18n";
 import { getDividerIcon } from "@/modules/divider/features/lib";
 import { getDefaultDividerFontFamily } from "@/modules/divider/shared/lib";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
 import {

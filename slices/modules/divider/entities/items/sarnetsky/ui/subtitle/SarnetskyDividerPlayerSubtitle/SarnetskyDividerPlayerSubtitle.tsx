@@ -5,7 +5,7 @@ import {
 	getDividerFaction,
 	getXPCostRangeName,
 } from "@/modules/divider/shared/lib";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import { getFactionIcon } from "@/modules/faction/shared/lib";
 import { usePrintUnit } from "@/modules/print/shared/lib";
 import { useSarnetskyDividerContext } from "../../SarnetskyDividerContext";

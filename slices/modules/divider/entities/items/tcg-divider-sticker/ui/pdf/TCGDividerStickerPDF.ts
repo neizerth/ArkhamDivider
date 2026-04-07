@@ -1,38 +1,39 @@
 import { cmyk } from "@/modules/core/color/shared/lib";
 import { getDividerIcon } from "@/modules/divider/features/lib";
 import { getDefaultDividerFontFamily } from "@/modules/divider/shared/lib";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
-import { tcgDividerStickerObjects as O } from "../../config";
 import {
 	getDefaultTCGDividerSideIcon,
 	getDefaultTCGDividerStickerIcon,
-	getTCGDividerStickerSideIconObject,
-	getTCGDividerStickerTitleObject,
+	getTCGDividerStickerLayoutObjects,
 } from "../../lib";
-import type { TCGDividerStickerProps } from "../../model";
+import type {
+	TCGDividerStickerLayout,
+	TCGDividerStickerProps,
+} from "../../model";
 
 const blackInk = cmyk(0, 0, 0, 100);
 
 const iconOverprint = { overprint: true, color: blackInk } as const;
 
-/** Matches `getXPCostSx` in TCGDividerSticker.styles (mm). */
-const xpRight = 2;
-const xpWidth = 10;
-const xpFontSize = 5;
-
 export const TCGDividerStickerPDF: PDFDivider<
 	TCGDividerStickerProps["params"]
 > = async (props, ctx) => {
 	const { story, fontSizeScale = 100 } = props;
-	const { text, lasercut, unit, language, playerParams, icon } = ctx;
+	const { text, lasercut, unit, language, icon, layout } = ctx;
 
 	const xpCost = getDividerXPCost(props);
 	const withXP = Boolean(xpCost);
-
-	const T = getTCGDividerStickerTitleObject(withXP);
-	const I = getTCGDividerStickerSideIconObject(withXP);
+	const withScenario = props.type === "scenario";
+	const O = getTCGDividerStickerLayoutObjects({
+		layout: layout as TCGDividerStickerLayout,
+		withXP,
+		withScenario,
+	});
+	const T = O.title;
+	const SI = O.sideIcon;
 
 	const t = withStoryTranslation(story);
 	const title = props.customTitle ?? t(props.title);
@@ -44,6 +45,10 @@ export const TCGDividerStickerPDF: PDFDivider<
 		y: bleed.y(),
 		width: bleed.width(),
 		height: bleed.height(),
+		cornerRadius: {
+			bottomLeft: 0,
+			bottomRight: 0,
+		},
 	});
 
 	const defaultIcon = getDefaultTCGDividerStickerIcon(props);
@@ -54,18 +59,18 @@ export const TCGDividerStickerPDF: PDFDivider<
 	});
 
 	if (mainIcon) {
-		const box = bleed.box({
+		const iconBox = bleed.box({
 			top: O.icon.top,
 			left: O.icon.left,
 			width: O.icon.width,
-			height: O.icon.height,
+			bottom: O.icon.bottom,
 		});
 		await icon.draw(mainIcon, {
 			...iconOverprint,
-			x: box.x(),
-			y: box.y(),
-			width: box.width(),
-			height: box.height(),
+			x: iconBox.x(),
+			y: iconBox.y(),
+			width: iconBox.width(),
+			height: iconBox.height(),
 			fontSize: unit.mm(O.icon.fontSize),
 			iconOptions: { scaleType: "circle" },
 			manifest: false,
@@ -73,34 +78,18 @@ export const TCGDividerStickerPDF: PDFDivider<
 	}
 
 	const fontFamily = getDefaultDividerFontFamily(language);
-	const textHeight = unit.mm(T.height);
 
 	await text.draw(title, {
 		x: bleed.x(T.left),
 		y: bleed.y(T.top),
 		width: bleed.width(T.left, T.right),
-		height: textHeight,
+		height: bleed.height(T.top, T.bottom),
 		fontSize: unit.mm((fontSizeScale / 100) * T.fontSize),
 		align: "center",
 		overprint: true,
 		fontFamily,
 		color: blackInk,
 	});
-
-	if (playerParams.numericXP && props.type === "player" && xpCost) {
-		await text.draw(xpCost.name, {
-			x: bleed.right(xpRight) - unit.mm(xpWidth),
-			y: bleed.y(),
-			width: unit.mm(xpWidth),
-			height: bleed.height(),
-			fontSize: unit.mm(xpFontSize),
-			fontFamily: "Arkhamic",
-			align: "center",
-			baseline: "middle",
-			overprint: true,
-			color: blackInk,
-		});
-	}
 
 	const sideIcon = getDividerIcon({
 		divider: props,
@@ -109,19 +98,27 @@ export const TCGDividerStickerPDF: PDFDivider<
 	});
 
 	if (sideIcon) {
-		const box = bleed.box({
-			top: I.top,
-			right: I.right,
-			width: I.width,
-			height: I.height,
-		});
+		const sideBox =
+			"height" in SI && typeof SI.height === "number"
+				? bleed.box({
+						top: SI.top,
+						right: SI.right,
+						width: SI.width,
+						height: SI.height,
+					})
+				: bleed.box({
+						top: SI.top,
+						right: SI.right,
+						width: SI.width,
+						bottom: SI.bottom,
+					});
 		await icon.draw(sideIcon, {
 			...iconOverprint,
-			x: box.x(),
-			y: box.y(),
-			width: box.width(),
-			height: box.height(),
-			fontSize: unit.mm(I.fontSize),
+			x: sideBox.x(),
+			y: sideBox.y(),
+			width: sideBox.width(),
+			height: sideBox.height(),
+			fontSize: unit.mm(SI.fontSize),
 			iconOptions: { scaleType: "circle" },
 			manifest: false,
 		});

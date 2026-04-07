@@ -1,5 +1,6 @@
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import { createSize } from "@/shared/util";
+import type { TCGDividerStickerLayout } from "../model";
 import { tcgDividerStickerCategoryId } from "./common";
 
 const horizontal: DividerLayout = {
@@ -21,7 +22,7 @@ const horizontal: DividerLayout = {
 	iconParams: ["icon", "sideIcon"],
 };
 
-const vertical: DividerLayout = {
+const vertical: TCGDividerStickerLayout = {
 	...horizontal,
 	id: "tcg-vertical",
 	groupId: "vertical",
@@ -31,11 +32,12 @@ const vertical: DividerLayout = {
 	size: createSize(53, 7),
 };
 
-const horizontalSmall: DividerLayout = {
+const horizontalSmall: TCGDividerStickerLayout = {
 	...horizontal,
-	id: "tcg-small",
-	name: "divider.tcg-divider-sticker.name",
-	description: "divider.tcg-divider-sticker.description",
+	id: "tcg-70x95",
+	name: "divider.tcg-divider-sticker.70x95.name",
+	description: "divider.tcg-divider-sticker.70x95.description",
+	image: "/images/divider/render/tcg-divider-sticker/70x95.avif",
 	size: createSize(74, 7),
 	printSize: {
 		300: {
@@ -43,13 +45,17 @@ const horizontalSmall: DividerLayout = {
 			bleedSize: createSize(945, 154),
 		},
 	},
+	params: {
+		dividerType: "70x95",
+	},
 };
 
-const verticalSmall: DividerLayout = {
+const verticalSmall: TCGDividerStickerLayout = {
 	...vertical,
-	id: "tcg-vertical-small",
-	name: "divider.tcg-divider-sticker.name",
-	description: "divider.tcg-divider-sticker.description",
+	id: "tcg-vertical-70x95",
+	name: "divider.tcg-divider-sticker.70x95.name",
+	description: "divider.tcg-divider-sticker.70x95.description",
+	image: "/images/divider/render/tcg-divider-sticker/70x95.avif",
 	orientation: "vertical",
 	size: createSize(50, 7),
 	printSize: {
@@ -58,35 +64,46 @@ const verticalSmall: DividerLayout = {
 			bleedSize: createSize(661, 154),
 		},
 	},
+	params: {
+		dividerType: "70x95",
+	},
 };
 
-const horizontalLarge: DividerLayout = {
+const horizontalLarge: TCGDividerStickerLayout = {
 	...horizontal,
-	id: "tcg-large",
-	name: "divider.tcg-divider-sticker.large.name",
-	description: "divider.tcg-divider-sticker.large.description",
+	id: "tcg-70x107",
+	name: "divider.tcg-divider-sticker.70x107.name",
+	description: "divider.tcg-divider-sticker.70x107.description",
+	image: "/images/divider/render/tcg-divider-sticker/70x107.avif",
 	size: createSize(104, 19),
-	groupId: "large",
+	groupId: "70x107",
 	printSize: {
 		300: {
 			size: createSize(1228, 224),
 			bleedSize: createSize(1299, 295),
 		},
 	},
+	params: {
+		dividerType: "70x107",
+	},
 };
 
-const verticalLarge: DividerLayout = {
-	...horizontal,
-	id: "tcg-vertical-large",
-	name: "divider.tcg-divider-sticker.large.name",
-	description: "divider.tcg-divider-sticker.large.description",
+const verticalLarge: TCGDividerStickerLayout = {
+	...horizontalLarge,
+	id: "tcg-vertical-70x107",
+	name: "divider.tcg-divider-sticker.70x107.name",
+	description: "divider.tcg-divider-sticker.70x107.description",
+	image: "/images/divider/render/tcg-divider-sticker/70x107.avif",
 	orientation: "vertical",
-	size: createSize(67, 19),
+	size: createSize(66, 7),
 	printSize: {
 		300: {
-			size: createSize(791, 224),
-			bleedSize: createSize(862, 295),
+			size: createSize(780, 83),
+			bleedSize: createSize(850, 154),
 		},
+	},
+	params: {
+		dividerType: "70x107",
 	},
 };
 

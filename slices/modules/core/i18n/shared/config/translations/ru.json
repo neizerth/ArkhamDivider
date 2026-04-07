@@ -194,8 +194,10 @@
 	"home.projectInfo.title": "Несколько слов о проекте",
 	"category.chapter2.description": "Разделители Главы 2",
 	"Set to all": "Для всех",
-	"divider.tcg-divider-sticker.name": "Наклейки на ККИ-разделители",
-	"category.tcg-divider-sticker.description": "Стикеры для пластиковых ККИ-разделителей. Их можно найти на Ozon или AliExpress",
-	"divider.tcg-divider-sticker.description": "Стикеры для пластиковых ККИ-разделителей размером 70x95мм. Их можно найти на Ozon или AliExpress",
-	"divider.tcg-divider-sticker.large.description": "Стикеры для пластиковых ККИ-разделителей размером 70x107мм"
+	"category.tcg-divider-sticker.name": "Наклейки на ККИ-разделители",
+	"category.tcg-divider-sticker.description": "Стикеры для ККИ-разделителей. Их можно найти на Ozon или AliExpress",
+	"divider.tcg-divider-sticker.70x95.name": "Для разделителей 70x95",
+	"divider.tcg-divider-sticker.70x95.description": "Стикеры для пластиковых ККИ-разделителей размером 70x95мм. Их можно найти на Ozon или AliExpress",
+	"divider.tcg-divider-sticker.70x107.name": "Для разделителей 70x107",
+	"divider.tcg-divider-sticker.70x107.description": "Стикеры для пластиковых ККИ-разделителей размером 70x107мм"
 }

@@ -1,7 +1,7 @@
 import { Box, type BoxProps } from "@mui/material";
 import { getDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import { usePrintUnit } from "@/modules/print/shared/lib";
 import {
 	get3mmDividerDefaultIcon,

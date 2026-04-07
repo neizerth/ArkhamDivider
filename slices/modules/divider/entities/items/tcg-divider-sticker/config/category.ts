@@ -9,7 +9,7 @@ export const tcgDividerStickerCategory: DividerCategory = createDividerCategory(
 		id: tcgDividerStickerCategoryId,
 		type: "sticker",
 		name: "category.tcg-divider-sticker.name",
-		image: "/images/divider/render/tcg-divider-sticker.avif",
+		image: "/images/divider/render/tcg-divider-sticker/category.avif",
 		layouts: tcgDividerStickerLayouts,
 		authors: [VladimirYazykovCredits],
 	},

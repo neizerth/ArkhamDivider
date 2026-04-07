@@ -1,5 +1,5 @@
 import { mergeDeepRight } from "ramda";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import {
 	arkhamStarterLayoutObjects as O,
 	arkhamStarterSharedPositions as P,

@@ -15,8 +15,9 @@ function* worker({ payload }: ReturnType<typeof changeLayoutOrientation>) {
 
 	const [first] = sortWith(
 		[
-			descend(propEq(layout.color, "color")),
 			descend(propEq(payload, "orientation")),
+			descend(propEq(layout.name, "name")),
+			descend(propEq(layout.color, "color")),
 			descend(propEq(layout.groupId, "groupId")),
 			ascend(propEq(layout.id, "id")),
 		],

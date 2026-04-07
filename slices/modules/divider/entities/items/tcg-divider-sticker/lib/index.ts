@@ -1,4 +1,2 @@
-export * from "./getDefaultTCGDividerSideIcon";
-export * from "./getDefaultTCGDividerStickerIcon";
-export * from "./getTCGDividerStickerSideIconObject";
-export * from "./getTCGDividerStickerTitleObject";
+export * from "./hooks";
+export * from "./logic";

@@ -9,34 +9,35 @@ import {
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import { usePrintUnit } from "@/modules/print/shared/lib";
 import { absoluteFill } from "@/shared/config";
 import {
 	getDefaultTCGDividerStickerIcon as getDefaultIcon,
 	getDefaultTCGDividerSideIcon as getDefaultSideIcon,
+	useTCGDividerStickerSxOptions,
 } from "../../lib";
 import type { TCGDividerStickerProps } from "../../model";
 import * as S from "./TCGDividerSticker.styles";
 
 export function TCGDividerSticker(props: TCGDividerStickerProps) {
+	const sxOptions = useTCGDividerStickerSxOptions(props);
+
 	const defaultIcon = getDefaultIcon(props);
 
 	const xpCost = getDividerXPCost(props);
-	const withXP = Boolean(xpCost);
+	const getPrintSx = usePrintUnit(sxOptions);
+	const getLocaleSx = useLocaleSx(sxOptions);
 
-	const isPlayer = props.type === "player";
-
-	const getPrintSx = usePrintUnit();
-	const getLocaleSx = useLocaleSx();
 	const iconSx = getPrintSx(S.getIconSx);
 	const contentSx = getPrintSx(S.getContentSx);
-	const titleSx = getLocaleSx(S.getTitleSx, { withXP });
+	const titleSx = getLocaleSx(S.getTitleSx);
 	const clearSx = getPrintSx(S.getClearSx);
 	const outlineSx = getPrintSx(S.getOutlineSx);
 	const xpCostSx = getPrintSx(S.getXPCostSx);
-	const sideIconSx = getPrintSx(S.getSideIconSx, { withXP });
-	const menuSx = getPrintSx(S.getMenuSx, { isPlayer, withXP });
+	const sideIconSx = getPrintSx(S.getSideIconSx);
+	const menuSx = getPrintSx(S.getMenuSx);
+	const scenarioSx = getPrintSx(S.getScenarioSx);
 
 	const getDividerIcon = useDividerIcon({
 		dividerId: props.id,
@@ -82,13 +83,7 @@ export function TCGDividerSticker(props: TCGDividerStickerProps) {
 					clearProps={{ sx: clearSx }}
 					outlineSx={outlineSx}
 				/>
-				<Icon
-					dividerId={props.id}
-					icon={icon}
-					onClick={setIcon}
-					sx={iconSx}
-					visible
-				/>
+				<Icon dividerId={props.id} icon={icon} onClick={setIcon} sx={iconSx} />
 
 				{sideIcon && (
 					<Icon
@@ -96,11 +91,13 @@ export function TCGDividerSticker(props: TCGDividerStickerProps) {
 						icon={sideIcon}
 						onClick={setSideIcon}
 						sx={sideIconSx}
-						visible
 					/>
 				)}
 
 				{xpCost && <Box sx={xpCostSx}>{xpCost.name}</Box>}
+				{props.type === "scenario" && (
+					<Box sx={scenarioSx}>{props.scenario.number_text}</Box>
+				)}
 				<DividerMenu
 					dividerId={props.id}
 					sx={menuSx}

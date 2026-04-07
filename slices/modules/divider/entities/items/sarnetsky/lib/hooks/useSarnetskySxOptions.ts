@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import { getDividerFaction } from "@/modules/divider/shared/lib";
-import { getDividerXPCost } from "@/modules/divider/shared/lib/logic/params";
+import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import { useAppSelector } from "@/shared/lib";
 import type {

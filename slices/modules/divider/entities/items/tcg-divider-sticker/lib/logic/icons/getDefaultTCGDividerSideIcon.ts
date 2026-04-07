@@ -1,4 +1,4 @@
-import type { TCGDividerStickerProps } from "../model";
+import type { TCGDividerStickerProps } from "../../../model";
 
 export const getDefaultTCGDividerSideIcon = (props: TCGDividerStickerProps) => {
 	if (props.layoutType !== "player") {
