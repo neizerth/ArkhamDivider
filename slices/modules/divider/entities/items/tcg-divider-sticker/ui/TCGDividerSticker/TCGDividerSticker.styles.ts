@@ -116,7 +116,8 @@ export const getMenuSx: TCGDividerStickerSxCallback = ({ mm, objects }) => {
 		right: mm(M.right),
 		top: mm(M.top),
 		bottom: mm(M.bottom),
-		zoom: M.zoom,
+		transform: `scale(${M.zoom})`,
+		transformOrigin: "center right",
 		opacity: 0.2,
 		backgroundColor: "white",
 		"&:hover": {

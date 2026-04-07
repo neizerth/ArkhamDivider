@@ -18,13 +18,13 @@ export const containerSx: PrintSxCallback = () => ({
 });
 
 export const getMenuSx: PrintSxCallback = ({ mm }) => ({
-	zoom: 0.5,
 	color: "white",
 	position: "absolute",
 	zIndex: 2,
 	left: mm(1),
 	top: "50%",
-	transform: "translateY(-50%)",
+	transform: "translateY(-50%) scale(0.5)",
+	transformOrigin: "left center",
 	width: "100%",
 	height: "100%",
 });
