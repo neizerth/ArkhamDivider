@@ -28,6 +28,9 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+        env:
+          DATA_URL: ${{ secrets.DATA_URL }}
+          VITE_ARKHAMESQUE_URL: ${{ secrets.VITE_ARKHAMESQUE_URL }}
       - name: Build
         run: npm run build
         env:
