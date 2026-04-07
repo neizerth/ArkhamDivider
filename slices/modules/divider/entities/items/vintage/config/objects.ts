@@ -38,7 +38,11 @@ export const vintageDividerObjects = {
 export const vintageDividerVerticalObjects = mergeDeepRight(
 	vintageDividerObjects,
 	{
-		title: {},
+		title: {
+			default: {
+				top: 44.7,
+			},
+		},
 		tab: {
 			width: 22,
 		},
