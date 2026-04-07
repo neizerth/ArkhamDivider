@@ -8,7 +8,7 @@ export const horizontalRynoLayoutObjects = {
 	icons: {
 		left: {
 			top: 0.8,
-			left: 1.3,
+			left: 1.2,
 			fontSize: 7.8,
 			width: 8.9,
 			height: 8.9,

@@ -1,4 +1,5 @@
 import type { FontFamily } from "@/shared/model";
+import type { PDFColor } from "../../model";
 import type { PDFFontService } from "./PDFFontService";
 import { PDFOverprintService } from "./PDFOverprintService";
 
@@ -8,7 +9,7 @@ export type DrawTextOptions = PDFKit.Mixins.TextOptions & {
 	x: number;
 	y: number;
 	overprint?: boolean;
-	color: [number, number, number, number];
+	color: PDFColor;
 	opacity?: number;
 };
 

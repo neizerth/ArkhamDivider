@@ -47,3 +47,8 @@ export type PDFPageLayoutItem<T> = T & {
 	size: BoxSize;
 	position: { x: number; y: number };
 };
+
+export type PDFKitCMYKColor = [number, number, number, number];
+export type PDFKitRGBColor = [number, number, number];
+
+export type PDFColor = PDFKitCMYKColor | PDFKitRGBColor;

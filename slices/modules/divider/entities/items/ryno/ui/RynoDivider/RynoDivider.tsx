@@ -85,6 +85,7 @@ export function RynoDivider(props: RynoDividerProps) {
 					)}
 					{showLeftIcon && (
 						<Icon
+							dividerId={props.id}
 							icon={leftIcon}
 							sx={leftIconSx}
 							scaleType="circle"
@@ -92,9 +93,15 @@ export function RynoDivider(props: RynoDividerProps) {
 						/>
 					)}
 					{rightIcon && (
-						<Icon icon={rightIcon} sx={rightIconSx} onClick={selectRightIcon} />
+						<Icon
+							dividerId={props.id}
+							icon={rightIcon}
+							sx={rightIconSx}
+							onClick={selectRightIcon}
+						/>
 					)}
 					<Icon
+						dividerId={props.id}
 						icon={backgroundIcon}
 						sx={backgroundIconSx}
 						onClick={selectBackgroundIcon}

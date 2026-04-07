@@ -1,5 +1,6 @@
 import { Buffer } from "buffer";
 import { cmyk } from "@/modules/core/color/shared/lib";
+import type { PDFColor } from "../../model";
 import { PDFOverprintService } from "./PDFOverprintService";
 
 export type DrawImageOptions = {
@@ -12,7 +13,7 @@ export type DrawImageOptions = {
 
 export type DrawSVGOptions = DrawImageOptions & {
 	overprint?: boolean;
-	color?: [number, number, number, number];
+	color?: PDFColor;
 };
 
 export class PDFImageService {
