@@ -1,0 +1,176 @@
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import Paper from "@mui/material/Paper";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Typography from "@mui/material/Typography";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Icon } from "@/modules/core/icon/shared/ui";
+import { selectLayout } from "@/modules/divider/entities/lib";
+import {
+	getSupportedLayoutDPI,
+	selectDividersTotal,
+} from "@/modules/divider/shared/lib";
+import { selectSingleItemPerPage } from "@/modules/print/shared/lib";
+import type { DPI } from "@/modules/print/shared/model";
+import { downloadDividersAsImages } from "@/modules/render/features/download-dividers-as-images/downloadDividersAsImages";
+import { downloadDividersAsPDF } from "@/modules/render/features/download-dividers-as-pdf";
+import type { ImageFormat } from "@/modules/render/shared/model";
+import { isPrintSupported, theme } from "@/shared/config";
+import {
+	createClickAwayListener,
+	useAppDispatch,
+	useAppSelector,
+} from "@/shared/lib";
+import * as C from "./PrintButton.components";
+
+type PrintButtonProps = ButtonGroupProps;
+
+const sx = {
+	backgroundColor: theme.palette.primary.main,
+	"&:hover": { backgroundColor: theme.palette.primary.dark },
+};
+
+export function PrintButton(props: PrintButtonProps) {
+	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
+	const layout = useAppSelector(selectLayout);
+	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
+	const supportedDPI = useMemo(() => getSupportedLayoutDPI(layout), [layout]);
+
+	const dividersCount = useAppSelector(selectDividersTotal);
+	const disabled = dividersCount === 0;
+
+	const defaultDPI = supportedDPI[0] ?? 300;
+
+	const [dpi, setDPI] = useState<DPI>(defaultDPI);
+
+	useEffect(() => {
+		setDPI(defaultDPI);
+	}, [defaultDPI]);
+
+	const [open, setOpen] = useState(false);
+	const anchorRef = useRef<HTMLDivElement>(null);
+
+	const showPrintButton = isPrintSupported && !singleItemPerPage;
+
+	const toggle = () => setOpen(!open);
+	const close = createClickAwayListener({
+		callback: () => setOpen(false),
+		ignore: anchorRef.current,
+	});
+
+	const download = useCallback(() => {
+		dispatch(downloadDividersAsPDF({ dpi }));
+		setOpen(false);
+	}, [dispatch, dpi]);
+
+	const downloadImages = (imageFormat: ImageFormat) => () => {
+		dispatch(downloadDividersAsImages({ imageFormat, dpi }));
+	};
+
+	return (
+		<>
+			{showPrintButton ? (
+				<C.Group {...props} variant="contained" ref={anchorRef}>
+					<Button onClick={print} sx={sx} disabled={disabled}>
+						<Icon icon="printer" /> &nbsp;
+						<Box sx={{ display: { xs: "none", sm: "inline" } }}>{t`Print`}</Box>
+						&nbsp;/ &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
+					</Button>
+					<Button size="small" onClick={toggle} sx={sx} disabled={disabled}>
+						<Icon icon="download" />
+					</Button>
+				</C.Group>
+			) : (
+				<C.Group {...props} variant="contained" ref={anchorRef}>
+					<Button onClick={toggle} sx={sx} disabled={disabled}>
+						<Icon icon="download" /> &nbsp; {t`Download`}
+					</Button>
+				</C.Group>
+			)}
+			<C.ContextMenu
+				open={open}
+				transition
+				disablePortal
+				anchorEl={anchorRef.current}
+			>
+				{({ TransitionProps }) => (
+					<Grow {...TransitionProps}>
+						<Paper>
+							<ClickAwayListener onClickAway={close}>
+								<MenuList>
+									{[
+										<Box
+											key={`${dpi}-header`}
+											display="flex"
+											justifyContent="center"
+											alignItems="center"
+											paddingBlock={1}
+											paddingInline={2}
+											borderBottom={1}
+											borderColor="divider"
+											color="text.secondary"
+										>
+											{supportedDPI.length > 1 ? (
+												<ToggleButtonGroup
+													size="small"
+													value={dpi}
+													exclusive
+													onChange={(_, value) => {
+														if (value != null) {
+															setDPI(value);
+														}
+													}}
+												>
+													{supportedDPI.map((d) => (
+														<ToggleButton key={d} value={d}>
+															{d} DPI
+														</ToggleButton>
+													))}
+												</ToggleButtonGroup>
+											) : (
+												<Typography variant="body2">{dpi} DPI</Typography>
+											)}
+										</Box>,
+										<MenuItem key={`${dpi}-pdf`} onClick={download}>
+											<Icon icon="file-pdf" /> &nbsp; PDF
+											<C.Badge>CMYK</C.Badge>
+										</MenuItem>,
+										<MenuItem
+											key={`${dpi}-tiff`}
+											onClick={downloadImages("tiff")}
+										>
+											<Icon icon="file-zip" /> &nbsp; TIFF
+											<C.Badge>CMYK</C.Badge>
+										</MenuItem>,
+										<MenuItem
+											key={`${dpi}-jpeg`}
+											onClick={downloadImages("jpeg")}
+										>
+											<Icon icon="file-zip" /> &nbsp; JPEG
+											<C.Badge>CMYK</C.Badge>
+										</MenuItem>,
+										<MenuItem
+											key={`${dpi}-jpg`}
+											onClick={downloadImages("png")}
+										>
+											<Icon icon="file-zip" /> &nbsp; PNG
+											<C.Badge>RGB</C.Badge>
+										</MenuItem>,
+									]}
+								</MenuList>
+							</ClickAwayListener>
+						</Paper>
+					</Grow>
+				)}
+			</C.ContextMenu>
+		</>
+	);
+}

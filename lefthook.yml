@@ -1,0 +1,16 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      files: git diff --cached --name-only
+      glob: "*.{js,ts,jsx,tsx}"
+      run: npm run lint
+    types:
+      files: git diff --cached --name-only
+      glob: "*.{js,ts,jsx,tsx}"
+      run: npm run ts:check
+commit-msg:
+  parallel: true
+  commands:
+    commitlint:
+      run: npx commitlint --edit

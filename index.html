@@ -1,10 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <!-- Icon for light theme -->
+    <link rel="icon" href="/favicon.ico" media="(prefers-color-scheme: light)">
+
+    <!-- Icon for dark theme -->
+    <link rel="icon" href="/favicon-dark.ico?v=0.1" media="(prefers-color-scheme: dark)">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Divider" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arkham Divider</title>
     <!-- coi -->
@@ -14,24 +23,21 @@
       }
       .loader {
         background-color: #eeeef1;
-        width: 100vw;
-        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
       }
+
       .loader__image {
-        max-width: 100%;
-        max-height: 50vh;
         object-fit: contain;
+        max-width: 500px;
+        width: 100%;
+        height: 100%;
       }
     </style>
-    <script>
-      const isGithubPages = window.location.hostname.includes('.github.io');
-      if (isGithubPages) {
-        window.location.href = 'https://arkham-divider.com';
-      }
-    </script>
   </head>
   <body>
     <div id="root">

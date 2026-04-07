@@ -1,3 +1,9 @@
+.DS_Store
+
+# React Router
+/.react-router/
+/build/
+
 # Logs
 logs
 *.log
@@ -22,3 +28,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.env.*

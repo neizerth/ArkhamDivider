@@ -1,0 +1,203 @@
+import ClearIcon from "@mui/icons-material/Clear";
+import Box, { type BoxProps } from "@mui/material/Box";
+import IconButton, { type IconButtonProps } from "@mui/material/IconButton";
+import type { SxProps } from "@mui/material/styles";
+import { isString } from "ramda-adjunct";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { getStyleProp, setInputCursorAtTheEnd } from "@/shared/lib";
+import { delay, sanitizeHTML } from "@/shared/util";
+
+export type BoxInputProps = BoxProps & {
+	containerSx?: SxProps;
+	clearable?: boolean;
+	clearProps?: IconButtonProps;
+	onValueChange?: (value: string) => void;
+	defaultValue?: string;
+	value?: string;
+	stroke?: boolean;
+	strokeSx?: SxProps;
+};
+
+export function BoxInput({
+	defaultValue,
+	value,
+	onValueChange: onValueChangeProp,
+	onChange: onChangeProp,
+	containerSx: containerSxProp,
+	clearProps,
+	stroke,
+	strokeSx: strokeSxProp,
+	clearable = true,
+	...props
+}: BoxInputProps) {
+	const defaultRef = useRef<HTMLDivElement>(null);
+	const ref = (props.ref as React.RefObject<HTMLDivElement>) ?? defaultRef;
+	const [isFocused, setIsFocused] = useState(false);
+
+	const defaultContent = value ?? defaultValue ?? "";
+	const [strokeValue, setStrokeValue] = useState(defaultContent);
+
+	const internalValueRef = useRef(defaultValue ?? "");
+
+	const showClear = clearable && isFocused && defaultValue;
+
+	const setValue = useCallback(
+		(value: string) => {
+			if (!ref.current) {
+				return;
+			}
+			ref.current.textContent = value;
+		},
+		[ref],
+	);
+
+	useEffect(() => {
+		// While focused, the contentEditable DOM is the source of truth.
+		// Re-applying `textContent` on every controlled update would reset caret position.
+		if (isFocused) {
+			return;
+		}
+		setValue(defaultContent);
+		setStrokeValue(defaultContent);
+	}, [defaultContent, setValue, isFocused]);
+
+	useEffect(() => {
+		// In controlled mode, value is source of truth.
+		// Late defaultValue updates (e.g. translation loading) must not override it.
+		if (isString(value)) {
+			return;
+		}
+		if (!isString(defaultValue)) {
+			return;
+		}
+		if (isFocused) {
+			return;
+		}
+		setValue(defaultValue);
+		setStrokeValue(defaultValue);
+		internalValueRef.current = defaultValue;
+	}, [defaultValue, value, setValue, isFocused]);
+
+	const clear = useCallback(() => {
+		const value = internalValueRef.current;
+		setValue(value);
+		setInputCursorAtTheEnd(ref.current);
+		onValueChangeProp?.(value);
+		setStrokeValue(value);
+	}, [onValueChangeProp, setValue, ref.current]);
+
+	const onChange = useCallback(
+		(event: React.FormEvent<HTMLDivElement>) => {
+			const value = sanitizeHTML(event.currentTarget.innerText);
+
+			if (!value) {
+				clear();
+				return;
+			}
+
+			onValueChangeProp?.(value);
+			onChangeProp?.(event);
+			if (stroke) {
+				setStrokeValue(value);
+			}
+		},
+		[clear, onChangeProp, onValueChangeProp, stroke],
+	);
+
+	const onFocus = useCallback(
+		(event: React.FocusEvent<HTMLDivElement>) => {
+			setIsFocused(true);
+			props.onFocus?.(event);
+		},
+		[props.onFocus],
+	);
+
+	const onBlur = useCallback(
+		(event: React.FocusEvent<HTMLDivElement>) => {
+			// delay is used to prevent the icon button from being hidden immediately
+			delay(300).then(() => setIsFocused(false));
+			props.onBlur?.(event);
+		},
+		[props.onBlur],
+	);
+
+	const positionProps: SxProps = {
+		display: "grid",
+		gridTemplateColumns: "100%",
+		alignItems: "center",
+	};
+
+	const sx = {
+		...positionProps,
+		...props.sx,
+		outline: "none",
+		opacity: props.hidden ? 0 : 1,
+		visibility: props.hidden ? "hidden" : "visible",
+		pointerEvents: props.hidden ? "none" : "auto",
+		"*": {
+			fontSize: "inherit!important",
+			letterSpacing: "inherit!important",
+		},
+	} as SxProps;
+
+	// const { lineHeight  = 1} = sx;
+	const lineHeight =
+		getStyleProp({ props, prop: "lineHeight", sx: containerSxProp }) ?? 1;
+
+	const containerSx = {
+		lineHeight,
+		width: "100%",
+		height: "100%",
+		position: "relative",
+		...containerSxProp,
+	} as SxProps;
+
+	const clearSx = {
+		position: "absolute",
+		left: "50%",
+		transform: "translateX(-50%)",
+		background: "black",
+		color: "white",
+		top: "100%",
+		zIndex: 1,
+		"@media print": {
+			display: "none",
+		},
+		...clearProps?.sx,
+	} as SxProps;
+
+	const strokeSx = {
+		...strokeSxProp,
+		...positionProps,
+		lineHeight,
+		position: "absolute",
+		top: 0,
+		left: 0,
+		width: "100%",
+		height: "100%",
+		zIndex: -1,
+	} as SxProps;
+
+	return (
+		<Box sx={containerSx}>
+			<Box
+				contentEditable
+				spellCheck={false}
+				{...props}
+				sx={sx}
+				onInput={onChange}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				ref={ref}
+			/>
+
+			{stroke && !props.hidden && <Box sx={strokeSx}>{strokeValue}</Box>}
+
+			{showClear && (
+				<IconButton {...clearProps} sx={clearSx} onClick={clear}>
+					<ClearIcon />
+				</IconButton>
+			)}
+		</Box>
+	);
+}

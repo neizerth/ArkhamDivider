@@ -1,0 +1,31 @@
+import type { ICCProfile } from "../../model";
+import { getVips } from "../vips/getVips";
+
+const loadedProfiles: ICCProfile[] = [];
+const externalProfiles: ICCProfile[] = [
+	"USWebCoatedSWOP.icc",
+	"ISOcoated_v2_300_eci.icc",
+];
+
+export const loadICCProfile = async (filename: ICCProfile) => {
+	if (
+		loadedProfiles.includes(filename) ||
+		!externalProfiles.includes(filename)
+	) {
+		return;
+	}
+
+	const vips = await getVips();
+
+	const url = `/icc-profiles/${filename}`;
+	const response = await fetch(url);
+	const buffer = await response.arrayBuffer();
+
+	const profile = new Uint8Array(buffer);
+
+	if ("FS" in vips) {
+		// biome-ignore lint/suspicious/noExplicitAny: forgotten FS typing
+		await (vips as any).FS.writeFile(filename, profile);
+		loadedProfiles.push(filename);
+	}
+};

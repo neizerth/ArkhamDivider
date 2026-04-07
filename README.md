@@ -1,64 +1,115 @@
-# Arkham Divider: Divider Constructor App
+# Welcome to React Router!
 
-https://neizerth.github.io/ArkhamDivider
+A modern, production-ready template for building full-stack React applications using React Router.
 
-## Installation
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
-1. create `.env.local` in project root with
+## Features
 
-```txt
-VITE_BASE_URL="https://neizerth.github.io/ArkhamDividerData"
-VITE_ARKHAMESQUE_URL="https://neizerth.github.io/ArkhamesqueDividerData"
-```
+- 🚀 Server-side rendering
+- ⚡️ Hot Module Replacement (HMR)
+- 📦 Asset bundling and optimization
+- 🔄 Data loading and mutations
+- 🔒 TypeScript by default
+- 🎉 TailwindCSS for styling
+- 📖 [React Router docs](https://reactrouter.com/)
 
-2. install dependencies
+## Getting Started
+
+### Installation
+
+Install the dependencies:
 
 ```bash
 npm install
 ```
 
-3. run locally
+### Development
+
+Start the development server with HMR:
 
 ```bash
 npm run dev
 ```
 
-## Hall of fame
+Your application will be available at `http://localhost:5173`.
 
-### Data
+## Code Quality
 
-@zzorba - Arkham Cards project
+### Formatting and Linting
 
-@kamalisk - ArkhamDB project
+This project uses Biome for code formatting and linting:
 
-### UI
+```bash
+# Format code and fix linting issues (recommended)
+npm run format
 
-@zzorba - Icomoon project
+# Format code only (without linting fixes)
+npm run format:only
 
-### UI Translations
+# Check for linting issues without fixing
+npm run lint
 
-@fspoettel, @Chr1Z93 - German translation
+# Fix linting issues only (without formatting)
+npm run lint:fix
+```
 
-@Dedcap - French translation
+### Type Checking
 
-@Warenhari - Polish translation
+Run TypeScript type checking:
 
-@TengounPlan - Spanish translation
+```bash
+npm run typecheck
+```
 
-@Zoltirico - Italian translation
+## Building for Production
 
-### Design
+Create a production build:
 
-@5argon - 3mm Divider design template
+```bash
+npm run build
+```
 
-@smallville247 - Arkhamesque design template
+## Deployment
 
-@Sarnetsky - Eugene Sarnetsky design template
+### Docker Deployment
 
-### Testing
+To build and run using Docker:
 
-@fspoettel, @5argon, @polochamps
+```bash
+docker build -t my-app .
 
-### Consulting
+# Run the container
+docker run -p 3000:3000 my-app
+```
 
-@w1ne_kun - Printing details 
+The containerized application can be deployed to any platform that supports Docker, including:
+
+- AWS ECS
+- Google Cloud Run
+- Azure Container Apps
+- Digital Ocean App Platform
+- Fly.io
+- Railway
+
+### DIY Deployment
+
+If you're familiar with deploying Node applications, the built-in app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+```
+├── package.json
+├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
+├── build/
+│   ├── client/    # Static assets
+│   └── server/    # Server-side code
+```
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+
+---
+
+Built with ❤️ using React Router.

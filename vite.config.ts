@@ -1,63 +1,67 @@
-import path from 'node:path';
-import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
-import { VitePluginRadar as radar } from 'vite-plugin-radar';
-import svgr from 'vite-plugin-svgr';
-import { vips } from './vips.plugin';
-import 'dotenv/config';
+import react from "@vitejs/plugin-react";
+import dotenv from "dotenv";
+import { defineConfig } from "vite";
+import mkcert from "vite-plugin-mkcert";
+import svgr from "vite-plugin-svgr";
+import tsconfigPaths from "vite-tsconfig-paths";
+import { vips } from "./vips.plugin";
 
-const metrica = ((id?: string) => {
-  if (!id) {
-    return;
-  }
-  return [
-    {
-      id,
-      config: {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true,
-      },
-    },
-  ];
-})(process.env.VITE_METRIKA_ID);
+dotenv.config({
+	path: [".env", ".env.local"],
+});
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-  plugins: [
-    vips(),
-    svgr(),
-    react(),
-    ...(metrica
-      ? [
-          radar({
-            enableDev: false,
-            metrica,
-          }),
-        ]
-      : []),
-  ],
-  base: process.env.APP_BASE_PATH,
-  build: {
-    outDir: process.env.APP_BUILD_DIR || 'dist',
-  },
-  preview: {
-    port: Number(process.env.APP_PREVIEW_PORT) || 8080,
-  },
-  assetsInclude: ['**/*.ttf'],
-  optimizeDeps: {
-    exclude: ['wasm-vips'],
-  },
-  server: {
-    headers: {
-      'Cross-Origin-Embedder-Policy': 'credentialless',
-      'Cross-Origin-Opener-Policy': 'same-origin',
-    },
-  },
+	worker: {
+		format: "es",
+	},
+	plugins: [
+		vips(),
+		tsconfigPaths(),
+		react({
+			// Enable Fast Refresh for better HMR support
+			// Default is already on; set explicitly for reliability
+			jsxRuntime: "automatic",
+		}),
+		mkcert(),
+		svgr(),
+	],
+	server: {
+		hmr: {
+			// Improve HMR for React components
+			overlay: true,
+			// Optional: set HMR port explicitly
+			// clientPort: 5173,
+		},
+		// Disable full reload on errors; use HMR only
+		watch: {
+			// Ignore changes in node_modules and other unnecessary paths
+			ignored: ["**/node_modules/**", "**/.git/**"],
+		},
+		headers: {
+			"Cross-Origin-Embedder-Policy": "require-corp",
+			"Cross-Origin-Opener-Policy": "same-origin",
+		},
+	},
+	// Optimize deps for better HMR
+	optimizeDeps: {
+		// Pre-bundle these for faster HMR
+		include: ["react", "react-dom", "react-router"],
+		exclude: ["wasm-vips"],
+	},
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks(id) {
+					if (!id.includes("node_modules")) {
+						return;
+					}
+					// Keep node_modules in a single vendor chunk to avoid
+					// circular chunk dependencies (e.g. react-vendor <-> mui-vendor)
+					// that can happen with fine-grained manual chunking.
+					return "vendor";
+				},
+			},
+		},
+	},
+	assetsInclude: ["**/*.ttf"],
 });

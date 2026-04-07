@@ -1,75 +1,35 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.3/schema.json",
   "vcs": {
-    "enabled": true,
+    "enabled": false,
     "clientKind": "git",
-    "useIgnoreFile": true
+    "useIgnoreFile": false
   },
   "files": {
     "ignoreUnknown": false
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 100,
-    "lineEnding": "lf"
+    "indentStyle": "tab"
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
-      "style": {
-        "useImportType": "off"
+      "suspicious": {
+        "noConfusingVoidType": "off"
       },
       "correctness": {
-        "useExhaustiveDependencies": "warn",
-        "noEmptyPattern": "warn"
+        "noUnusedImports": "error"
       },
-      "complexity": {
-        "noBannedTypes": "warn"
-      },
-      "suspicious": {
-        "noExplicitAny": "warn",
-        "noArrayIndexKey": "warn",
-        "useIterableCallbackReturn": "warn"
-      },
-      "a11y": {
-        "useAltText": "warn",
-        "noStaticElementInteractions": "warn",
-        "useKeyWithClickEvents": "warn"
+      "style": {
+        "useBlockStatements": "error"
       }
     }
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "single",
-      "jsxQuoteStyle": "single",
-      "semicolons": "always",
-      "trailingCommas": "es5",
-      "bracketSpacing": true,
-      "bracketSameLine": false
-    }
-  },
-  "json": {
-    "formatter": {
-      "indentStyle": "space",
-      "indentWidth": 2
-    }
-  },
-  "css": {
-    "formatter": {
-      "enabled": true,
-      "indentStyle": "space",
-      "indentWidth": 2
-    }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
+      "quoteStyle": "double"
     }
   }
 }

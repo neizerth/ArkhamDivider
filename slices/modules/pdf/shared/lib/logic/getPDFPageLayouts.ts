@@ -1,0 +1,81 @@
+import { range } from "ramda";
+import {
+	getPageLayoutOffsetPx,
+	getUnitSizePx,
+} from "@/modules/print/shared/lib";
+import type { DPI, PageFormat, PageLayout } from "@/modules/print/shared/model";
+import type { BoxSize } from "@/shared/model";
+
+type Options<T> = {
+	pageLayouts: PageLayout<T>[];
+	pageFormat: PageFormat;
+	dpi: DPI;
+	singleItemPerPage: boolean;
+	cropmarksEnabled?: boolean;
+};
+
+type Item<T> = T & {
+	size: BoxSize;
+	position: { x: number; y: number };
+};
+
+export type PDFPageLayout<T> = PageLayout<Item<T>>;
+
+export const getPDFPageLayouts = <T>({
+	pageLayouts,
+	pageFormat,
+	dpi,
+	singleItemPerPage,
+	cropmarksEnabled,
+}: Options<T>) => {
+	return pageLayouts.map((pageLayout): PDFPageLayout<T> => {
+		const { grid } = pageLayout;
+		const rows = range(0, grid.rows);
+		const cols = range(0, grid.cols);
+
+		const size = getUnitSizePx({ unitSize: grid.unitSize, dpi });
+		const layoutOffset = getPageLayoutOffsetPx({
+			pageLayout,
+			dpi,
+			pageFormat,
+			singleItemPerPage,
+			cropmarksEnabled,
+		});
+		const items = rows.map((rowIndex) => {
+			const colData = cols.map((colIndex): Item<T> | undefined => {
+				const item: T | undefined =
+					pageLayout?.items[rowIndex]?.items[colIndex];
+
+				if (!item) {
+					return undefined;
+				}
+
+				const x = layoutOffset.x + colIndex * size.width;
+				const y = layoutOffset.y + rowIndex * size.height;
+				const position = {
+					x,
+					y,
+				};
+
+				return {
+					...item,
+					size,
+					position,
+				};
+			});
+
+			const row = pageLayout?.items[rowIndex];
+
+			return {
+				...row,
+				items: colData,
+				layoutOffset,
+			};
+		});
+
+		return {
+			...pageLayout,
+			items,
+		};
+	});
+};
