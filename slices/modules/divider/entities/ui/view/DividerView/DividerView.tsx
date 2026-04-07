@@ -70,9 +70,10 @@ export function DividerView(props: DividerViewProps) {
 							left: 0,
 							letterSpacing: 0,
 							transformOrigin: "top left",
-							zoom: scale,
+							transform: `scale(${scale})`,
+							willChange: "transform",
 							"@media print": {
-								zoom: printScale,
+								transform: `scale(${printScale})`,
 							},
 						}}
 					>
