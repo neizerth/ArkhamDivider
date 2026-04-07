@@ -5,6 +5,9 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ['main']
+  # Runs twice per day (UTC)
+  schedule:
+    - cron: '0 3,15 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
