@@ -33,6 +33,8 @@ jobs:
         env:
           APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
           APP_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
+          DATA_URL: ${{ secrets.DATA_URL }}
+          VITE_ARKHAMESQUE_URL: ${{ secrets.VITE_ARKHAMESQUE_URL }}
       - name: Install enable-threads service worker
         run: |
           cp public/enable-threads.js dist/
