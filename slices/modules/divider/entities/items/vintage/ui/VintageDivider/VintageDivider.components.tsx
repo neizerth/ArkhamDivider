@@ -18,7 +18,7 @@ const bodyMap: Record<string, string> = {
 
 export const Body = () => {
 	const { layout } = useVintageDividerContext();
-	const id = bodyMap[layout.id];
+	const id = bodyMap[layout.id] ?? bodyMap.vintage;
 
 	const getPrintSx = usePrintUnit();
 	const sx = getPrintSx(S.getBodySx);

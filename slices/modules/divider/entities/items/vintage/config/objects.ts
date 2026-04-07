@@ -42,5 +42,8 @@ export const vintageDividerVerticalObjects = mergeDeepRight(
 		tab: {
 			width: 22,
 		},
+		icon: {
+			left: 7.1,
+		},
 	},
 );

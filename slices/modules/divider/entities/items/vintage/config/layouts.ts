@@ -41,7 +41,7 @@ const horizontalLargeLayout: VintageDividerLayout = {
 
 const verticalLayout: VintageDividerLayout = {
 	...horizontalLayout,
-	id: "vertical",
+	id: "vintage-vertical",
 	orientation: "vertical",
 	size: createSize(66, 107.3),
 	printSize: {

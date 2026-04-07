@@ -22,7 +22,7 @@ export const getShiftSx: VintageDividerSxCallback<{
 }> = ({ mm, position }) => ({
 	position: "absolute",
 	top: mm(4),
-	[position]: mm(5),
+	[position]: mm(2),
 	fontSize: mm(3),
 	color: "white",
 	transform: position === "left" ? "rotate(180deg)" : "none",
