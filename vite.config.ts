@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import dotenv from "dotenv";
 import { defineConfig } from "vite";
 import mkcert from "vite-plugin-mkcert";
+import { VitePluginRadar } from "vite-plugin-radar";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { vips } from "./vips.plugin";
@@ -10,6 +11,8 @@ dotenv.config({
 	path: [".env", ".env.local"],
 });
 
+const metricaId = process.env.APP_METRIKA_ID || process.env.VITE_METRIKA_ID;
+
 export default defineConfig({
 	worker: {
 		format: "es",
@@ -17,6 +20,13 @@ export default defineConfig({
 	plugins: [
 		vips(),
 		tsconfigPaths(),
+		VitePluginRadar({
+			metrica: metricaId
+				? {
+						id: metricaId,
+					}
+				: void 0,
+		}),
 		react({
 			// Enable Fast Refresh for better HMR support
 			// Default is already on; set explicitly for reliability
