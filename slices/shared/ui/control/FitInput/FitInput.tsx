@@ -2,6 +2,7 @@ import type { SxProps } from "@mui/material/styles";
 import { useEffect } from "react";
 import useFitText from "use-fit-text";
 import { BoxInput, type BoxInputProps } from "../BoxInput";
+import { useRemeasureOnFontsLoaded } from "./useRemeasureOnFontsLoaded";
 
 type UseFitTextOptions = Parameters<typeof useFitText>[0] & {
 	onFontSizeChange?: (fontSize: number) => void;
@@ -15,6 +16,7 @@ export type FitInputProps = BoxInputProps & {
 
 export function FitInput({ fitTextOptions, ...props }: FitInputProps) {
 	const { ref, fontSize } = useFitText(fitTextOptions);
+	useRemeasureOnFontsLoaded(ref as React.MutableRefObject<HTMLElement | null>);
 
 	useEffect(() => {
 		const value = Number(fontSize.replace("%", ""));
