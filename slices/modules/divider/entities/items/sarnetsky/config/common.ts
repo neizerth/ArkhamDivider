@@ -34,7 +34,7 @@ const rightHorizontalIcon: SarnetskyIcon = {
 	id: "right",
 	type: "campaign",
 	fontSize: 2.4,
-	width: 3.2,
+	width: 3.1,
 	height: 6.1,
 	right: 2.7,
 	top: 5.9,
