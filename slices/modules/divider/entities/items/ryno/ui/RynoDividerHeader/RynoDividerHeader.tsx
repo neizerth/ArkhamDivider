@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerText } from "@/modules/divider/entities/lib";
 import { DividerText } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import {
 	getRynoDividerDefaultSubtitle,
 	showRynoDividerSubtitle,
@@ -19,7 +19,7 @@ export function RynoDividerHeader() {
 	const sxOptions = useRynoDividerSxOptions();
 	const { t } = useTranslation();
 	const getLocaleSx = useLocaleSx(sxOptions);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	const showSubtitle = showRynoDividerSubtitle(divider);
 

@@ -1,6 +1,6 @@
 import { Box, type BoxProps, type SxProps, Tooltip } from "@mui/material";
 import { useCallback } from "react";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import { ColorPickerModal } from "../ColorPickerModal";
 import * as S from "./ColorPicker.styles";
@@ -24,7 +24,7 @@ export function ColorPicker({
 }: ColorPickerProps) {
 	const color = value ?? defaultValue;
 
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const sxProp = getPrintSx(S.getSx);
 	const [open, setOpen] = useBoolean(false);
 

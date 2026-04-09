@@ -1,6 +1,6 @@
 import { Box, type BoxProps, type SxProps } from "@mui/material";
 import { rgba256 } from "@/modules/core/color/shared/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { Image } from "@/shared/ui";
 import { prefix } from "@/shared/util";
 import { arkhamStarterDividerBaseUrl } from "../../config";
@@ -18,7 +18,7 @@ export function ArkhamStarterDividerPlayerCorner(
 	props: ArkhamStarterDividerPlayerCornerProps,
 ) {
 	const { divider } = useArkhamStarterDividerContext();
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const colorSxStyle = getPrintSx(S.getColorSx);
 
 	const defaultColorObject = getDefaultColor(divider);

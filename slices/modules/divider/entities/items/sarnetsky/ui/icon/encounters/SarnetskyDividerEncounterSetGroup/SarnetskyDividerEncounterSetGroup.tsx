@@ -5,7 +5,7 @@ import {
 	useDividerRender,
 } from "@/modules/divider/entities/lib";
 import type { EncounterSetGroup } from "@/modules/encounterSet/shared/model";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 
 import { Row, type RowProps } from "@/shared/ui";
 import { useSarnetskyDividerContext } from "../../../SarnetskyDividerContext";
@@ -35,7 +35,7 @@ export function SarnetskyDividerEncounterSetGroup({
 	const mainSize = group.main.length;
 	const sideSize = group.side.length;
 
-	const getPrintSx = usePrintUnit({
+	const getPrintSx = usePrintSx({
 		...sxOptions,
 		mainSize,
 		sideSize,

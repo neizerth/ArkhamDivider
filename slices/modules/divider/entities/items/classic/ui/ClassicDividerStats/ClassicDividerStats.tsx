@@ -5,7 +5,7 @@ import { getDividerCardsCount } from "@/modules/divider/entities/lib/logic";
 import { selectShowCampaignIcon } from "@/modules/divider/shared/lib";
 import { selectShowCardsCount } from "@/modules/divider/shared/lib/store/selectors/selectShowCardsCount";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Row, type RowProps } from "@/shared/ui";
 import * as S from "./ClassicDividerStats.styles";
@@ -23,7 +23,7 @@ export function ClassicDividerStats({
 		selectShowCardsCount(state, divider.id),
 	);
 
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 
 	const textSx = getPrintSx(S.getTextSx);
 	const totalIconSx = getPrintSx(S.getTotalIconSx);

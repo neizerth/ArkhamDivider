@@ -4,7 +4,7 @@ import { Icon } from "@/modules/core/icon/shared/ui";
 import { getDividerCardsCount } from "@/modules/divider/entities/lib/logic";
 import { selectShowCampaignIcon } from "@/modules/divider/shared/lib";
 import { selectShowCardsCount } from "@/modules/divider/shared/lib/store/selectors/selectShowCardsCount";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Row, type RowProps } from "@/shared/ui";
 import type { ArkhamDecoDividerProps } from "../../model";
@@ -26,7 +26,7 @@ export function ArkhamDecoDividerCardsCount({
 		selectShowCardsCount(state, divider.id),
 	);
 
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	const textSx = getPrintSx(S.getTextSx);
 	const iconSx = getPrintSx(S.getIconSx);

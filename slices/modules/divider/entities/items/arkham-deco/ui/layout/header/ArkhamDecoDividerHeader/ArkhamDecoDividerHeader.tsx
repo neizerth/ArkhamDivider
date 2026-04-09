@@ -4,10 +4,7 @@ import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import { selectPlayerParams } from "@/modules/divider/shared/lib";
 import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
-import {
-	selectLasercutEnabled,
-	usePrintUnit,
-} from "@/modules/print/shared/lib";
+import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { getArkhamDecoIcons, showArkhamDecoRightIcon } from "../../../../lib";
 import { useArkhamDecoDividerContext } from "../../../ArkhamDecoDividerContext";
@@ -29,7 +26,7 @@ export function ArkhamDecoDividerHeader(props: ArkhamDecoDividerHeaderProps) {
 	const { tab } = layout.params ?? {};
 	const { numericXP = false, sideXP = false } =
 		useAppSelector(selectPlayerParams);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	const I = getArkhamDecoIcons({ divider, layout });
 

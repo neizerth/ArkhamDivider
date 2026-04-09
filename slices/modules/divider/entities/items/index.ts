@@ -3,6 +3,8 @@ import { arkhamStarterDividerCategoryId } from "./3mm/config";
 import { ArkhamStarterDivider } from "./3mm/ui";
 import { arkhamDecoCategoryId } from "./arkham-deco/config";
 import { ArkhamDecoDivider } from "./arkham-deco/ui";
+import { arkhamIndexCategoryId } from "./arkham-index/config";
+import { ArkhamIndexDivider } from "./arkham-index/ui";
 import { arkhamesqueClassicCategoryId } from "./arkhamesque-classic/config";
 import { ArkhamesqueClassicDivider } from "./arkhamesque-classic/ui";
 import { chapter2CategoryId } from "./chapter2/config";
@@ -44,4 +46,5 @@ export const dividerComponents: Record<
 	[investigatorTokensCategoryId]: InvestigatorToken,
 	[chapter2CategoryId]: Chapter2Divider,
 	[tcgDividerStickerCategoryId]: TCGDividerSticker,
+	[arkhamIndexCategoryId]: ArkhamIndexDivider,
 };

@@ -9,7 +9,7 @@ import {
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import { deleteDivider } from "@/modules/divider/shared/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { Image } from "@/shared/ui";
 import {
@@ -34,7 +34,7 @@ export function ArkhamesqueClassicDivider(
 	props: ArkhamesqueClassicDividerProps,
 ) {
 	const dispatch = useAppDispatch();
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
 	const leftIconSx = getPrintSx(S.getLeftIconSx);
 	const bottomIconSx = getPrintSx(S.getBottomIconSx);

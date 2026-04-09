@@ -3,7 +3,7 @@ import Stack, { type StackProps } from "@mui/material/Stack";
 import type { SxProps } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { getDividerCards, getDividerCardsCount } from "../../../lib/logic";
 import { getSx } from "./DividerCardsInfo.styles";
 
@@ -16,7 +16,7 @@ export function DividerCardsInfo<T = void>({
 	...props
 }: DividerCardsInfoProps<T>) {
 	const { t } = useTranslation();
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const containerSx = getPrintSx(getSx);
 	const cards = getDividerCards(divider);
 	const cardsCount = getDividerCardsCount(divider);

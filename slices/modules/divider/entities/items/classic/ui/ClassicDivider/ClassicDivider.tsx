@@ -17,7 +17,7 @@ import type {
 	DividerLayout,
 	DividerWithRelations,
 } from "@/modules/divider/shared/model";
-import { usePrintUnit, usePrintUnitCallback } from "@/modules/print/shared/lib";
+import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import {
 	copyToClipboard,
 	useAppSelector,
@@ -64,7 +64,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const getLocaleSx = useLocaleSx(sxOptions);
 	const titleSx = getLocaleSx(S.getTextSx);
 
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	const iconSx = getPrintSx(S.getIconSx);
 	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);

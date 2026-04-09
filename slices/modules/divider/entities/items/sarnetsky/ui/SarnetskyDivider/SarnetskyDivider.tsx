@@ -6,7 +6,7 @@ import {
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { selectScenarioParams } from "@/modules/divider/shared/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppSelector } from "@/shared/lib";
 import { useSarnetskySxOptions } from "../../lib";
@@ -31,7 +31,7 @@ export function SarnetskyDivider(props: SarnetskyDividerProps) {
 	const { singleSide = false } = useAppSelector(selectScenarioParams);
 
 	const sxOptions = useSarnetskySxOptions(props);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const sx = getPrintSx(S.getSx);
 	const titleSx = getPrintSx(S.getTitleSx);
 	const radialXPSx = getPrintSx(S.getRadialXPSx);

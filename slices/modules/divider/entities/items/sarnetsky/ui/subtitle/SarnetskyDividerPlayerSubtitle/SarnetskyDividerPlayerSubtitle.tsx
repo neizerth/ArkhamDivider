@@ -7,7 +7,7 @@ import {
 } from "@/modules/divider/shared/lib";
 import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import { getFactionIcon } from "@/modules/faction/shared/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useSarnetskyDividerContext } from "../../SarnetskyDividerContext";
 import * as S from "./SarnetskyDividerPlayerSubtitle.styles";
 
@@ -22,7 +22,7 @@ export function SarnetskyDividerPlayerSubtitle(
 	const xpCost = getDividerXPCost(divider);
 
 	const factionIcon = faction && getFactionIcon(faction);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const sxProp = getPrintSx(S.getSx);
 	const iconSx = getPrintSx(S.getIconSx);
 

@@ -2,7 +2,7 @@ import type { BoxProps } from "@mui/material";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerText } from "@/modules/divider/entities/lib";
 import { DividerText } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useSarnetskyBandContext } from "../SarnetskyBandContext";
 import * as S from "./SarnetskyBandTitle.styles";
 
@@ -22,7 +22,7 @@ export function SarnetskyBandTitle(props: SarnetskyBandTitleProps) {
 	});
 
 	const getLocaleSx = useLocaleSx(sxOptions);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	const inputSx = getLocaleSx(S.getInputSx);
 	const outlineSx = getPrintSx(S.getOutlineSx);

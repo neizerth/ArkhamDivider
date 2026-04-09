@@ -11,7 +11,7 @@ import {
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import type { DividerLayout } from "@/modules/divider/shared/model";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import {
 	getChapter2DividerDefaultColor,
@@ -26,7 +26,7 @@ export function Chapter2Divider(props: Chapter2DividerProps) {
 	const defaultIcon = getChapter2DividerDefaultIcon(props);
 	const layout = useAppSelector(selectLayout) as DividerLayout;
 
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const iconSx = getPrintSx(S.getIconSx);
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
 	const overlaySx = getPrintSx(S.getOverlaySx);

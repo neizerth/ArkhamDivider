@@ -1,8 +1,10 @@
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import ScreenRotationIcon from "@mui/icons-material/ScreenRotation";
+import { Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import {
 	getLayoutAuthors,
@@ -83,8 +85,11 @@ export function DividerLayoutInfo({
 				>
 					{authors && (
 						<Stack gap={1}>
-							{authors.map((author) => (
-								<Author key={author.id} author={author} />
+							{authors.map((author, index) => (
+								<Fragment key={author.id}>
+									{index !== 0 && <Divider sx={{ maxWidth: 300, margin: 2 }} />}
+									<Author author={author} />
+								</Fragment>
 							))}
 						</Stack>
 					)}

@@ -9,7 +9,7 @@ import {
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { selectScenarioParams } from "@/modules/divider/shared/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { arkhamDecoAssetUrl } from "../../config";
 import { useArkhamDecoSxOptions } from "../../lib";
@@ -37,7 +37,7 @@ const backgroundUrl = `${arkhamDecoAssetUrl}/paper.avif`;
 export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 	const sxOptions = useArkhamDecoSxOptions(props);
 	const { objects } = sxOptions;
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const layout = useAppSelector(selectLayout) as ArkhamDecoDividerLayout;
 	const { orientation } = layout;
 	const { singleSide = false } = useAppSelector(selectScenarioParams);

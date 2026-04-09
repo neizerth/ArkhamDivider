@@ -1,4 +1,4 @@
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { Image } from "@/shared/ui";
 import { prefix } from "@/shared/util";
 import { arkhamDecoAssetUrl } from "../../../config";
@@ -8,7 +8,7 @@ import * as S from "./ArkhamDecoDividerFooter.styles";
 const asset = prefix(arkhamDecoAssetUrl);
 
 export function ArkhamDecoDividerFooter() {
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const lineSx = getPrintSx(S.getBottomLineSx);
 
 	return (

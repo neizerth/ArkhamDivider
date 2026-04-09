@@ -8,7 +8,7 @@ import {
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { Image } from "@/shared/ui";
 import {
 	getRynoDividerDefaultHeaderColor,
@@ -31,7 +31,7 @@ export function RynoDivider(props: RynoDividerProps) {
 	const sxOptions = useRynoDividerSxOptions();
 
 	const images = useRynoDividerImages(layoutType);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const bodySx = getPrintSx(S.getBodySx);
 	const cornerSx = getPrintSx(S.getCornerSx);
 	const leftIconSx = getPrintSx(S.getLeftIconSx);

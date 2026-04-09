@@ -1,6 +1,6 @@
 import { Box, type BoxProps, type SxProps } from "@mui/material";
 import { rgba256 } from "@/modules/core/color/shared/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { Image } from "@/shared/ui";
 import { prefix } from "@/shared/util";
 import { arkhamStarterDividerBaseUrl as baseUrl } from "../../config";
@@ -18,7 +18,7 @@ export function ArkhamStarterDividerStrip({
 }: ArkhamStarterDividerStripProps) {
 	const { divider } = useArkhamStarterDividerContext();
 
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const sxStyle = getPrintSx(S.getSx);
 	const colorSxStyles = getPrintSx(S.getColorSx);
 

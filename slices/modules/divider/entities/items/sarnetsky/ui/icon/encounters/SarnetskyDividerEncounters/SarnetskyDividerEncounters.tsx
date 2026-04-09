@@ -1,7 +1,7 @@
 import { Stack, type StackProps } from "@mui/material";
 import { useMemo } from "react";
 import { useDividerIconRects } from "@/modules/divider/entities/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useScenarioEncounterSetGroups } from "@/modules/story/entities/lib";
 import type { StoryScenario } from "@/modules/story/shared/model";
 import { useSarnetskyDividerContext } from "../../../SarnetskyDividerContext";
@@ -22,7 +22,7 @@ export function SarnetskyDividerEncounters({
 	const groups = useScenarioEncounterSetGroups(scenario);
 	const rows = groups.length;
 
-	const getPrintSx = usePrintUnit({
+	const getPrintSx = usePrintSx({
 		rows,
 	});
 

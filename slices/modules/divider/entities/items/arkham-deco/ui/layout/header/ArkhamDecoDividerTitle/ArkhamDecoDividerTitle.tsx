@@ -2,7 +2,7 @@ import { Box, type BoxProps } from "@mui/material";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerText } from "@/modules/divider/entities/lib";
 import { DividerText } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useArkhamDecoDividerContext } from "../../../ArkhamDecoDividerContext";
 import * as S from "./ArkhamDecoDividerTitle.styles";
 
@@ -13,7 +13,7 @@ export function ArkhamDecoDividerTitle(props: ArkhamDecoDividerTitleProps) {
 
 	const getLocaleSx = useLocaleSx(sxOptions);
 	const titleSx = getLocaleSx(S.getTitleSx);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const titleClearSx = getPrintSx(S.getTitleClearSx);
 	const outlineSx = getPrintSx(S.getOutlineSx);
 

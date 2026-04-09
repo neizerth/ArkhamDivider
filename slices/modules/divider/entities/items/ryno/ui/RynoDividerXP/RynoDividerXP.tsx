@@ -2,7 +2,7 @@ import { Box, type BoxProps } from "@mui/material";
 import type { SxProps } from "@mui/material/styles";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { getXPLevel } from "@/modules/divider/shared/lib";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { rynoDividerAssetsBaseUrl } from "../../config";
 import { useRynoDividerContext } from "../RynoDividerContext";
 import * as S from "./RynoDividerXP.styles";
@@ -13,7 +13,7 @@ const xpSrc = `${rynoDividerAssetsBaseUrl}/xp.avif`;
 
 export function RynoDividerXP(props: RynoDividerXPProps) {
 	const { divider } = useRynoDividerContext();
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 
 	if (divider.type !== "player" || !divider.xpCost) {
 		return null;

@@ -2,7 +2,7 @@ import type { SxProps } from "@mui/material";
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
 import { Fragment } from "react";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { Image } from "@/shared/ui";
 import { sarnetskyBandImages } from "../../config/common";
 import type { SarnetskyBandImage } from "../../model";
@@ -19,7 +19,7 @@ export function SarnetskyBandBackground({
 }: SarnetskyBandBackgroundProps) {
 	const { sxOptions, divider } = useSarnetskyBandContext();
 	const { type } = sxOptions;
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	const frameSx = getPrintSx(S.getFrameSx);
 	const variableSx = getPrintSx(S.getVariableSx);

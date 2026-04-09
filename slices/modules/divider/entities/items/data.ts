@@ -2,6 +2,7 @@ import { prop } from "ramda";
 import type { DividerCategory } from "../../shared/model";
 import { arkhamStarterDividerCategory } from "./3mm/config";
 import { arkhamDecoCategory } from "./arkham-deco/config";
+import { arkhamIndexCategory } from "./arkham-index/config";
 import { arkhamesqueClassicCategory } from "./arkhamesque-classic/config";
 import { chapter2Category } from "./chapter2/config/category";
 import { classicCategory } from "./classic/config";
@@ -27,6 +28,7 @@ export const dividerCategories: DividerCategory[] = [
 	sarnetskyBandCategory,
 	investigatorTokensCategory,
 	tcgDividerStickerCategory,
+	arkhamIndexCategory,
 ];
 
 export const dividerLayouts = dividerCategories.flatMap(prop("layouts"));

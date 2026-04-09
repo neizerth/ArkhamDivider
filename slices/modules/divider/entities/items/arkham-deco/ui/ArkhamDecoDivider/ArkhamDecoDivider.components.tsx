@@ -1,10 +1,7 @@
 import Box from "@mui/material/Box";
 import { DividerContent } from "@/modules/divider/entities/ui";
 import type { DividerOrientation } from "@/modules/divider/shared/model";
-import {
-	selectShowCornerRadius,
-	usePrintUnit,
-} from "@/modules/print/shared/lib";
+import { selectShowCornerRadius, usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Image } from "@/shared/ui";
 import { arkhamDecoAssetUrl } from "../../config";
@@ -12,7 +9,7 @@ import { useArkhamDecoDividerContext } from "../ArkhamDecoDividerContext";
 import * as S from "./ArkhamDecoDivider.styles";
 
 export const SideBorder = ({ position }: { position: "left" | "right" }) => {
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const sx = getPrintSx(S.getSideBorderSx, { position });
 
 	return <Image src={`${arkhamDecoAssetUrl}/center-border.svg`} sx={sx} />;
@@ -90,7 +87,7 @@ export const Scratches = ({
 export const TabCornerRadius = () => {
 	const { sxOptions } = useArkhamDecoDividerContext();
 
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const showCornerRadius = useAppSelector(selectShowCornerRadius);
 	const sx = getPrintSx(S.getTabCornerRadiusSx);
 	if (!showCornerRadius) {

@@ -5,7 +5,7 @@ import {
 	DividerContent as Content,
 	DividerMenu,
 } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { arkhamStarterDividerBaseUrl as baseUrl } from "../../config";
 import {
 	get3mmDividerTitleObject,
@@ -22,7 +22,7 @@ import * as C from "./ArkhamStarterDivider.components";
 import * as S from "./ArkhamStarterDivider.styles";
 
 export function ArkhamStarterDivider(props: ArkhamStarterDividerProps) {
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const headerSx = getPrintSx(S.getHeaderSx);
 	const sideHeaderSx = getPrintSx(S.getSideHeaderSx);
 	const menuSx = getPrintSx(S.getMenuSx);

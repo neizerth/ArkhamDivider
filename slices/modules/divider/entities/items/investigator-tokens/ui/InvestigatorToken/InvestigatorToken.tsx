@@ -6,12 +6,12 @@ import {
 	DividerMenu,
 } from "@/modules/divider/entities/ui";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
-import { useCornerRadius, usePrintUnit } from "@/modules/print/shared/lib";
+import { useCornerRadius, usePrintSx } from "@/modules/print/shared/lib";
 import { InvesigatorTokensAPI } from "@/shared/api";
 import * as S from "./InvestigatorToken.styles";
 
 export function InvestigatorToken(props: DividerWithRelations) {
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const borderRadius = useCornerRadius();
 
 	if (props.layoutType !== "investigator") {

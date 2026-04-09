@@ -10,7 +10,7 @@ import {
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
 import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { absoluteFill } from "@/shared/config";
 import {
 	getDefaultTCGDividerStickerIcon as getDefaultIcon,
@@ -26,7 +26,7 @@ export function TCGDividerSticker(props: TCGDividerStickerProps) {
 	const defaultIcon = getDefaultIcon(props);
 
 	const xpCost = getDividerXPCost(props);
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const getLocaleSx = useLocaleSx(sxOptions);
 
 	const iconSx = getPrintSx(S.getIconSx);

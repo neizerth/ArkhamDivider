@@ -213,3 +213,15 @@ export const BobLafouineCredits: Author = {
 		},
 	],
 };
+
+export const LasTorCredits: Author = {
+	id: "lastor",
+	name: "LasTor",
+	contacts: [
+		{
+			id: "bgg",
+			icon: "bgg",
+			url: "https://boardgamegeek.com/profile/LasTor",
+		},
+	],
+};

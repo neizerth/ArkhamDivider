@@ -3,7 +3,7 @@ import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
 import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import {
 	get3mmDividerDefaultIcon,
 	show3mmDividerIconCorner,
@@ -26,7 +26,7 @@ export function ArkhamStarterDividerHeader({
 	...props
 }: ArkhamStarterDividerTopHeaderProps) {
 	const { divider, titleObject } = useArkhamStarterDividerContext();
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const getLocaleSx = useLocaleSx();
 
 	const titleClearSx = getPrintSx(S.getTitleClearSx);

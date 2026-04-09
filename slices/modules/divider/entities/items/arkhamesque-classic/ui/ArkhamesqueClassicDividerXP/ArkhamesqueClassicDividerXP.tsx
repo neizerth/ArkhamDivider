@@ -1,6 +1,6 @@
 import { Box, type BoxProps } from "@mui/material";
 import type { XPCost } from "@/modules/divider/shared/model";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { getArkhamesqueClassicXPSymbols } from "../../lib";
 import * as S from "./ArkhamesqueClassicDividerXP.styles";
 
@@ -12,7 +12,7 @@ export function ArkhamesqueClassicDividerXP({
 	xpCost,
 	...props
 }: ArkhamesqueClassicDividerXPProps) {
-	const getPrint = usePrintUnit();
+	const getPrint = usePrintSx();
 
 	const { container, symbols } = getArkhamesqueClassicXPSymbols(xpCost);
 	const containerSx = getPrint(S.getContainerSx, container);

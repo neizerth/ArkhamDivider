@@ -9,7 +9,7 @@ import {
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import type { DividerLayout } from "@/modules/divider/shared/model";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import {
 	getSarnetskyBandDefaultColor,
@@ -27,7 +27,7 @@ export function SarnetskyBand(props: SarnetskyBandProps) {
 	const { t } = useTranslation();
 	const sxOptions = useSarnetskyBandSxOptions(props);
 	const layout = useAppSelector(selectLayout) as DividerLayout;
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	const { type } = sxOptions;
 

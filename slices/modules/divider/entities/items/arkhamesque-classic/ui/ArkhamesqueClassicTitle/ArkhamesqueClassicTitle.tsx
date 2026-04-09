@@ -2,7 +2,7 @@ import { Box, type BoxProps } from "@mui/material";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerText } from "@/modules/divider/entities/lib";
 import { DividerText } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useArkhamesqueClassicContext } from "../ArkhamesqueClassicContext";
 import * as S from "./ArkhamesqueClassicTitle.styles";
 
@@ -14,7 +14,7 @@ export function ArkhamesqueClassicTitle(props: ArkhamesqueClassicTitleProps) {
 	const getLocaleSx = useLocaleSx();
 	const titleTextSx = getLocaleSx(S.getTitleTextSx);
 
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const titleClearSx = getPrintSx(S.getTitleClearSx);
 	const outlineSx = getPrintSx(S.getOutlineSx);
 

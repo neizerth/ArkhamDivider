@@ -2,7 +2,7 @@ import type { BoxProps, SxProps } from "@mui/material";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerText } from "@/modules/divider/entities/lib";
 import { DividerText } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { useVintageDividerContext } from "../../VintageDividerContext/VintageDividerContext";
 import * as S from "./VintageDividerTitle.styles";
 
@@ -14,7 +14,7 @@ export function VintageDividerTitle({
 }: VintageDividerTitleProps) {
 	const { divider, sxOptions } = useVintageDividerContext();
 
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const getLocaleSx = useLocaleSx(sxOptions);
 	const sxStyles = getLocaleSx(S.getSx);
 	const outlineSx = getPrintSx(S.getOutlineSx);

@@ -2,7 +2,7 @@ import { Box, type BoxProps, Stack, type SxProps } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useDividerObject } from "@/modules/divider/entities/lib";
 import { DividerColorPicker as ColorPicker } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import {
 	getSarnetskyDefaultOverlayColor as getDefaultOverlayColor,
@@ -33,7 +33,7 @@ export function SarnetskyDividerScenarioContent({
 		containerWidth: layout.size.width,
 	});
 
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 
 	if (divider.layoutType !== "scenario") {
 		return null;

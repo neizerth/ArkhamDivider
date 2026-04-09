@@ -2,7 +2,7 @@ import { Box, type BoxProps } from "@mui/material";
 import { getDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
 import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import {
 	get3mmDividerDefaultIcon,
 	get3mmSideStripPosition,
@@ -26,7 +26,7 @@ export function ArkhamStarterDividerSideHeader(
 	props: ArkhamStarterDividerSideHeaderProps,
 ) {
 	const { divider, titleObject } = useArkhamStarterDividerContext();
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 
 	const side = get3mmSideStripPosition(divider);
 

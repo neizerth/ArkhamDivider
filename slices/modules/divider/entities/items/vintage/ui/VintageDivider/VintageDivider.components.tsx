@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { getDividerTabPosition } from "@/modules/divider/shared/lib/logic/tab";
-import { selectBleedEnabled, usePrintUnit } from "@/modules/print/shared/lib";
+import { selectBleedEnabled, usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Image } from "@/shared/ui";
 import { prefix } from "@/shared/util";
@@ -20,7 +20,7 @@ export const Body = () => {
 	const { layout } = useVintageDividerContext();
 	const id = bodyMap[layout.id] ?? bodyMap.vintage;
 
-	const getPrintSx = usePrintUnit();
+	const getPrintSx = usePrintSx();
 	const sx = getPrintSx(S.getBodySx);
 
 	return <Image src={asset(id)} sx={sx} />;
@@ -49,7 +49,7 @@ export const Tab = ({
 		top: -3,
 	};
 
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const sx = getPrintSx(S.getTabImageSx, {
 		position: tabPosition,
 		bleedEnabled,

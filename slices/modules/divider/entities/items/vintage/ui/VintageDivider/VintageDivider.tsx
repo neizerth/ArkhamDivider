@@ -15,7 +15,7 @@ import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import {
 	selectBleedEnabled,
 	selectShowCornerRadius,
-	usePrintUnit,
+	usePrintSx,
 } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppSelector } from "@/shared/lib";
@@ -51,7 +51,7 @@ export function VintageDivider(props: VintageDividerProps) {
 	const defaultTabColor = getDefaultTabColor(props);
 	const tabColor = props.params?.tabColor ?? defaultTabColor;
 
-	const getPrintSx = usePrintUnit(sxOptions);
+	const getPrintSx = usePrintSx(sxOptions);
 	const getLocaleSx = useLocaleSx(sxOptions);
 
 	const menuSx = getPrintSx(S.getMenuSx);
