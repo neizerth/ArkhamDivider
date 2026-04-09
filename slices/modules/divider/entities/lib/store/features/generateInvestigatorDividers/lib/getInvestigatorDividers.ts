@@ -1,3 +1,4 @@
+import { uniqBy } from "ramda";
 import { v4 } from "uuid";
 import type { Divider, DividerLayout } from "@/modules/divider/shared/model";
 import { getFactionIcon, isFaction } from "@/modules/faction/shared/lib";
@@ -16,7 +17,11 @@ export const getInvestigatorDividers = ({
 		layout.investigatorParams ?? {};
 
 	const front = stories.flatMap((story) => {
-		return story.investigators.flatMap((investigator) => {
+		const investigators = uniqBy(
+			(investigator) => `${investigator.name}-${investigator.faction_code}`,
+			story.investigators,
+		);
+		return investigators.flatMap((investigator) => {
 			const faction = investigator.faction_code;
 			if (!isFaction(faction)) {
 				return [];
