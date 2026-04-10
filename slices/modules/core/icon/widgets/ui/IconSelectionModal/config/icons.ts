@@ -59,6 +59,8 @@ export const arkhamSlimSpecialIcons = [
 	"asset",
 	"event",
 	"skill",
+	"arkham-plus",
+	"minus",
 ];
 
 export const tokenIcons = [
