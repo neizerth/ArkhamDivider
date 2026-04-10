@@ -84,13 +84,17 @@ export function IconSelectionCopyMenu({
 					<Grow {...TransitionProps}>
 						<Paper>
 							<ClickAwayListener onClickAway={onClickAway}>
-								<MenuList dense sx={{ minWidth: 280, py: 0 }}>
+								<MenuList sx={{ py: 0, px: 0, boxShadow: 3 }}>
 									{rows.map((row, index) => (
 										<MenuItem
 											key={row.key}
 											onClick={() => copy(row.value)}
 											divider={index < rows.length - 1}
-											sx={{ py: 1.25, alignItems: "center" }}
+											sx={{
+												py: 1.25,
+												alignItems: "center",
+												boxSizing: "border-box",
+											}}
 										>
 											<Row
 												alignItems="center"
@@ -98,7 +102,11 @@ export function IconSelectionCopyMenu({
 												gap={2}
 												width="100%"
 											>
-												<Typography variant="body2" color="text.secondary">
+												<Typography
+													variant="body2"
+													color="text"
+													fontWeight={500}
+												>
 													{row.label}
 												</Typography>
 												{row.key === "symbol" ? (

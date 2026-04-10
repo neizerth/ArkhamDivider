@@ -133,12 +133,7 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 					</Stack>
 				)}
 				<Stack alignItems="center">
-					<Stack
-						direction="row"
-						alignItems="center"
-						justifyContent="center"
-						gap={0.5}
-					>
+					<Row alignItems="center" justifyContent="center" gap={1}>
 						{toolbarButtons.length > 0 && (
 							<ButtonGroup variant="contained" color="primary">
 								{toolbarButtons}
@@ -147,7 +142,7 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 						{iconInfo && isPreview && (
 							<IconSelectionCopyMenu key="copy" icon={iconInfo} />
 						)}
-					</Stack>
+					</Row>
 				</Stack>
 			</Stack>
 			<Snackbar
