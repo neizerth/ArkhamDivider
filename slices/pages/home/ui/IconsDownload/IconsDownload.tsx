@@ -19,6 +19,9 @@ export function IconsDownload() {
 	const { t } = useTranslation();
 	const svgUrl = url`/icons.zip`;
 	const ttfUrl = url`/icons.ttf`;
+	const woffUrl = url`/icons.woff`;
+	const woff2Url = url`/icons.woff2`;
+
 	const startSelection = useIconSelection();
 	const handleSelect = useCallback(() => {
 		startSelection({
@@ -85,7 +88,7 @@ export function IconsDownload() {
 							{t("icons.download.description")}
 						</Typography>
 					</Stack>
-					<Row gap={2}>
+					<Row gap={2} flexWrap="wrap">
 						<Box component="a" href={svgUrl} style={{ textDecoration: "none" }}>
 							<Button variant="contained" color="primary" size="large">
 								SVG
@@ -96,10 +99,31 @@ export function IconsDownload() {
 								TTF
 							</Button>
 						</Box>
+
+						<Box
+							component="a"
+							href={woffUrl}
+							style={{ textDecoration: "none" }}
+						>
+							<Button variant="contained" color="primary" size="large">
+								WOFF
+							</Button>
+						</Box>
+						<Box
+							component="a"
+							href={woff2Url}
+							style={{ textDecoration: "none" }}
+						>
+							<Button variant="contained" color="primary" size="large">
+								WOFF2
+							</Button>
+						</Box>
+					</Row>
+					<Row>
 						<Button
 							variant="contained"
 							color="primary"
-							size="large"
+							size="small"
 							onClick={handleSelect}
 						>
 							<Row alignItems="center" gap={1}>
