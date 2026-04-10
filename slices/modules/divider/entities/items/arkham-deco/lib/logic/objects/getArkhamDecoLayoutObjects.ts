@@ -7,6 +7,9 @@ import {
 } from "../../../config";
 
 export const getArkhamDecoLayoutObjects = (layoutId: string) => {
+	if (layoutId === "arkham-deco-vertical") {
+		return arkhamDecoVerticalObjects;
+	}
 	if (layoutId === "ucf-standard") {
 		return arkhamDecoUCFStandardObjects;
 	}
@@ -15,9 +18,6 @@ export const getArkhamDecoLayoutObjects = (layoutId: string) => {
 	}
 	if (layoutId === "chapter2") {
 		return arkhamDecoChapter2Objects;
-	}
-	if (layoutId === "vertical") {
-		return arkhamDecoVerticalObjects;
 	}
 	return arkhamDecoHorizontalObjects;
 };

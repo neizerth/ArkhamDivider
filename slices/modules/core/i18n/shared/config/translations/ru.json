@@ -117,6 +117,7 @@
 	"render.status.initializing": "Подготовка инструментов...",
 	"render.status.rendering": "Создание изображений...",
 	"render.status.creatingPDF": "Создание PDF...",
+	"render.status.creatingPDF.progress": "Обработка: {{progress}}/{{total}}",
 	"credits.author.description": "<icon/>: Вы можете потратить любое<br/>число ресурсов <donationLink>по адресу</donationLink><br/><i>Запомните, что <author>{{name}}</author><br/>вам благодарен</i>",
 	"divider.subtype.faction": "Разделители классов",
 	"divider.subtype.investigators": "Сыщики",

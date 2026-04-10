@@ -19,11 +19,13 @@ export const getDividerLayoutGrid = ({
 		: layout.size;
 
 	const pageSize = pageFormat.size.mm;
-	return getBoxGrid({
+	const boxGrid = getBoxGrid({
 		size: pageSize,
 		unitSize: size,
 		padding: {
 			block: PAGE_PADDING_BLOCK,
 		},
 	});
+
+	return boxGrid;
 };

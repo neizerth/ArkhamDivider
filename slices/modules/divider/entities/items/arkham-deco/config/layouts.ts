@@ -54,7 +54,7 @@ const chapter1Layout: ArkhamDecoDividerLayout = {
 
 const chapter2Layout: ArkhamDecoDividerLayout = {
 	...chapter1Layout,
-	id: "chapter2",
+	id: "arkham-deco-chapter2",
 	groupId: "chapter2",
 	name: "divider.arkhamDeco.chapter2",
 	description: "divider.layout.arkham-deco.chapter2.description",

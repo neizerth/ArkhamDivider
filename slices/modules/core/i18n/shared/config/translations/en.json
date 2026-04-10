@@ -73,6 +73,7 @@
 	"cards.total": "Total",
 	"render.status.initializing": "Initializing...",
 	"render.status.creatingPDF": "Creating PDF...",
+	"render.status.creatingPDF.progress": "Rendering: {{progress}}/{{total}}",
 	"render.status.rendering": "Rendering...",
 	"printInfo.doubleSidedNoBleed.title": "Double-sided printing without bleed",
 	"printInfo.doubleSidedNoBleed.body": "Almost any printer has slight alignment errors, so the image on one side may shift. When cutting a double-sided layout, white stripes can appear or the cut line may go into the divider area.",
