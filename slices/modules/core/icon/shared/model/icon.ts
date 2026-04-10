@@ -40,3 +40,5 @@ export type IconRect = BoxRect & {
 	id: string;
 	icon: string;
 };
+
+export type IconSelectionMode = "preview" | "selection";

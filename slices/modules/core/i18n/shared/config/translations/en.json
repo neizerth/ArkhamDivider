@@ -188,6 +188,7 @@
 	"Concealed Cards": "Concealed Cards",
 	"icons.download": "Arkham Horror Icon Set",
 	"icons.download.description": "Daily updated files",
+	"icons.download.preview": "Icon index",
 	"layout.investigatorTokens.standard": "Color + grayscale",
 	"layout.investigatorTokens.colored": "Only color",
 	"category.investigator-tokens.description": "Investigator tokens for coin capsules. Use a 25mm round hole punch for a smooth circle",
@@ -201,5 +202,14 @@
 	"divider.tcg-divider-sticker.70x95.name": "2.7x3.8\" divider",
 	"divider.tcg-divider-sticker.70x95.description": "Stickers for plastic TCG-dividers size 2.7x3.8\". You can find them at Amazon or Walmart",
 	"divider.tcg-divider-sticker.70x107.description": "Stickers for plastic TCG-dividers size 2.7x4.25\". You can find them at Amazon or Walmart",
-	"divider.tcg-divider-sticker.70x107.name": "2.7x3.25\" divider"
+	"divider.tcg-divider-sticker.70x107.name": "2.7x3.25\" divider",
+	"icon.copy": "Copy",
+	"icon.copy.symbol": "Symbol",
+	"icon.copy.html": "HTML",
+	"icon.copy.css": "CSS",
+	"icon.copy.javascript": "JavaScript, JSON",
+	"icon.copy.codepoint": "Codepoint",
+	"icon.copy.name": "Name",
+	"copy.success": "Copied to clipboard",
+	"Card Level": "Card Level"
 }

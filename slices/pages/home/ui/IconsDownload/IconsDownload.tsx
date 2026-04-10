@@ -3,7 +3,10 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useIconSelection } from "@/modules/core/icon/entities/lib";
+import { Icon } from "@/modules/core/icon/shared/ui";
 import { ArkhamDividerAPI } from "@/shared/api";
 import { Image, Row } from "@/shared/ui";
 import { prefix } from "@/shared/util";
@@ -16,6 +19,13 @@ export function IconsDownload() {
 	const { t } = useTranslation();
 	const svgUrl = url`/icons.zip`;
 	const ttfUrl = url`/icons.ttf`;
+	const startSelection = useIconSelection();
+	const handleSelect = useCallback(() => {
+		startSelection({
+			icon: "guardian",
+			mode: "preview",
+		});
+	}, [startSelection]);
 	return (
 		<Container>
 			<Box
@@ -86,6 +96,17 @@ export function IconsDownload() {
 								TTF
 							</Button>
 						</Box>
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={handleSelect}
+						>
+							<Row alignItems="center" gap={1}>
+								<Icon icon="eye" />
+								{t("icons.download.preview")}
+							</Row>
+						</Button>
 					</Row>
 				</Stack>
 			</Box>

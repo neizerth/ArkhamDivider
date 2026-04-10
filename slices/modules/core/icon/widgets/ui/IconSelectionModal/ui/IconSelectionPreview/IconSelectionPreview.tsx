@@ -1,18 +1,41 @@
-import { Box, type BoxProps, Button, ButtonGroup, Stack } from "@mui/material";
+import {
+	Alert,
+	Box,
+	type BoxProps,
+	Button,
+	ButtonGroup,
+	Chip,
+	Snackbar,
+	Stack,
+} from "@mui/material";
 import { compact, isString } from "ramda-adjunct";
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { downloadIcon } from "@/modules/core/icon/entities/lib";
-import { createMediaIcon, getIconId } from "@/modules/core/icon/shared/lib";
+import {
+	createMediaIcon,
+	getIconChar,
+	getIconId,
+} from "@/modules/core/icon/shared/lib";
+import { selectIconById } from "@/modules/core/icon/shared/lib/store/selectors/selectIconById";
 import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
+import { copyToClipboard, useAppSelector } from "@/shared/lib";
 import { Row, Upload } from "@/shared/ui";
+import { IconSelectionCopyMenu } from "../IconSelectionCopyMenu";
 import * as C from "./IconSelectionPreview.components";
 
 type IconSelectionPreviewProps = BoxProps;
 
 export function IconSelectionPreview(props: IconSelectionPreviewProps) {
-	const { selectedIcon, defaultIcon, setSelectedIcon } =
+	const { selectedIcon, defaultIcon, setSelectedIcon, mode } =
 		useContext(IconSelectionContext);
+
+	const [copied, setCopied] = useState(false);
+
+	const iconInfo = useAppSelector((state) =>
+		selectIconById(state, selectedIcon),
+	);
+
 	const { t } = useTranslation();
 
 	const downloadSvg = useCallback(() => {
@@ -36,39 +59,104 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 		},
 		[setSelectedIcon, defaultIcon],
 	);
+
 	const iconId = getIconId(selectedIcon) ?? "upload";
+	const isPreview = mode === "preview";
+
+	const toolbarButtons = useMemo(
+		() =>
+			compact([
+				!isPreview && (
+					<Upload
+						key={iconId}
+						accept="image/*"
+						onChange={handleUpload}
+						sx={{
+							paddingInline: 2,
+						}}
+					>
+						<Row alignItems="center" gap={1}>
+							<Icon icon="upload" />
+							{t("Upload")}
+						</Row>
+					</Upload>
+				),
+				isString(selectedIcon) && (
+					<Button key="download" onClick={downloadSvg}>
+						<Row alignItems="center" gap={1}>
+							<Icon icon="download" /> SVG
+						</Row>
+					</Button>
+				),
+			]),
+		[downloadSvg, handleUpload, iconId, isPreview, selectedIcon, t],
+	);
+
+	const handleIconClick = useCallback(() => {
+		if (!iconInfo) {
+			return;
+		}
+		const char = getIconChar(iconInfo.code);
+		copyToClipboard(char);
+		setCopied(true);
+	}, [iconInfo]);
+
+	const copyName = useCallback(() => {
+		if (!iconInfo) {
+			return;
+		}
+		copyToClipboard(iconInfo.icon);
+		setCopied(true);
+	}, [iconInfo]);
 
 	return (
 		<Box {...props}>
-			<Stack gap={1} justifyContent="center" alignItems="center">
-				<C.Icon>{selectedIcon && <Icon icon={selectedIcon} />}</C.Icon>
+			<Stack gap={1}>
+				<Stack justifyContent="center" alignItems="center">
+					<C.Icon>
+						{selectedIcon && (
+							<Icon
+								icon={selectedIcon}
+								onClick={handleIconClick}
+								sx={{ cursor: iconInfo ? "pointer" : "default" }}
+							/>
+						)}
+					</C.Icon>
+				</Stack>
+				{isString(selectedIcon) && (
+					<Stack alignItems="center">
+						<Chip
+							label={selectedIcon}
+							onClick={copyName}
+							sx={{ cursor: "pointer" }}
+						/>
+					</Stack>
+				)}
+				<Stack alignItems="center">
+					<Stack
+						direction="row"
+						alignItems="center"
+						justifyContent="center"
+						gap={0.5}
+					>
+						{toolbarButtons.length > 0 && (
+							<ButtonGroup variant="contained" color="primary">
+								{toolbarButtons}
+							</ButtonGroup>
+						)}
+						{iconInfo && <IconSelectionCopyMenu key="copy" icon={iconInfo} />}
+					</Stack>
+				</Stack>
 			</Stack>
-			<Stack alignItems="center">
-				<ButtonGroup variant="contained" color="primary">
-					{compact([
-						<Upload
-							key={iconId}
-							accept="image/*"
-							onChange={handleUpload}
-							sx={{
-								paddingInline: 2,
-							}}
-						>
-							<Row alignItems="center" gap={1}>
-								<Icon icon="upload" />
-								{t("Upload")}
-							</Row>
-						</Upload>,
-						isString(selectedIcon) && (
-							<Button key="download" onClick={downloadSvg}>
-								<Row alignItems="center" gap={1}>
-									<Icon icon="download" /> SVG
-								</Row>
-							</Button>
-						),
-					])}
-				</ButtonGroup>
-			</Stack>
+			<Snackbar
+				open={copied}
+				autoHideDuration={3000}
+				onClose={() => setCopied(false)}
+			>
+				<Alert severity="success" onClose={() => setCopied(false)}>
+					{t("copy.success")}
+				</Alert>
+			</Snackbar>
 		</Box>
 	);
 }

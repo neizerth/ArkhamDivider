@@ -1,7 +1,7 @@
 import type { BoxProps } from "@mui/material/Box";
 import { omit } from "ramda";
 import { useAppSelector } from "@/shared/lib";
-import { getIconScale } from "../../lib/logic";
+import { getIconChar, getIconScale } from "../../lib/logic";
 import { selectIconById } from "../../lib/store/selectors/selectIconById";
 import type { BaseIconProps } from "../../model";
 import * as C from "./FontIcon.components";
@@ -27,7 +27,7 @@ export function FontIcon(props: FontIconProps) {
 			});
 	const fontSize = `${size}%`;
 
-	const char = String.fromCharCode(icon.code);
+	const char = getIconChar(icon.code);
 
 	const sx = { fontSize, ...props.sx };
 

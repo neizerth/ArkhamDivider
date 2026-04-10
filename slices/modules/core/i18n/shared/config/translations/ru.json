@@ -185,6 +185,7 @@
 	"Concealed Cards": "Сокрытые карты",
 	"icons.download": "Иконки Ужаса Аркхэма",
 	"icons.download.description": "Файлы обновляются ежедневно",
+	"icons.download.preview": "Список иконок",
 	"layout.investigatorTokens.standard": "Цветные + ч/б",
 	"layout.investigatorTokens.colored": "Только цветные",
 	"category.investigator-tokens.description": "Жетоны сыщиков под капсулы для монет. Используйте фигурный дырокол 25мм для ровного круга",
@@ -199,5 +200,14 @@
 	"divider.tcg-divider-sticker.70x95.name": "Для разделителей 70x95",
 	"divider.tcg-divider-sticker.70x95.description": "Стикеры для пластиковых ККИ-разделителей размером 70x95мм. Их можно найти на Ozon или AliExpress",
 	"divider.tcg-divider-sticker.70x107.name": "Для разделителей 70x107",
-	"divider.tcg-divider-sticker.70x107.description": "Стикеры для пластиковых ККИ-разделителей размером 70x107мм"
+	"divider.tcg-divider-sticker.70x107.description": "Стикеры для пластиковых ККИ-разделителей размером 70x107мм",
+	"icon.copy": "Копировать",
+	"icon.copy.symbol": "Символ",
+	"icon.copy.html": "HTML",
+	"icon.copy.css": "CSS",
+	"icon.copy.javascript": "JavaScript, JSON",
+	"icon.copy.codepoint": "Unicode",
+	"icon.copy.name": "Название",
+	"copy.success": "Скопировано в буфер обмена",
+	"Card Level": "Уровень карты"
 }

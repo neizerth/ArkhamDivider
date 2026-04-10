@@ -27,7 +27,9 @@ export function IconSelectionModal() {
 		setSelectionActive,
 		select,
 		reset,
+		mode,
 	} = useContext(IconSelectionContext);
+	const isPreviewMode = mode === "preview";
 	const open = selectionActive;
 	const isDefaultIcon = defaultIcon === selectedIcon;
 	const prevOpenRef = useRef(open);
@@ -41,7 +43,9 @@ export function IconSelectionModal() {
 
 	const [navActive, setNavActive] = useBoolean(false);
 
-	const iconGroups = useIconGroups();
+	const iconGroups = useIconGroups({
+		mode,
+	});
 	const sectionRefs = useIconGroupSectionRefs(iconGroups);
 
 	const defaultSectionIndex = useMemo(
@@ -141,7 +145,16 @@ export function IconSelectionModal() {
 						sx={sidebarSx}
 					>
 						<Stack gap={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
-							<IconSelectionPreview display={{ xs: "none", sm: "block" }} />
+							<IconSelectionPreview
+								sx={{
+									display: {
+										xs: "none",
+										sm: "block",
+									},
+									position: "relative",
+									zIndex: 3,
+								}}
+							/>
 							<IconSelectionNav
 								iconGroups={iconGroups}
 								onSectionClick={handleSectionClick}
@@ -172,28 +185,32 @@ export function IconSelectionModal() {
 					},
 				}}
 			>
-				<Button
-					variant="outlined"
-					color="secondary"
-					onClick={onClose}
-					sx={{
-						marginLeft: { xs: 1, md: 0 },
-					}}
-				>
-					{t`Cancel`}
-				</Button>
-				{!isDefaultIcon && (
-					<Button
-						variant="contained"
-						color="secondary"
-						onClick={reset}
-						sx={{ order: { xs: -1, sm: 0 } }}
-					>
-						<Row alignItems="center" gap={1}>
-							<Icon icon={defaultIcon} />
-							{t`Default`}
-						</Row>
-					</Button>
+				{!isPreviewMode && (
+					<>
+						<Button
+							variant="outlined"
+							color="secondary"
+							onClick={onClose}
+							sx={{
+								marginLeft: { xs: 1, md: 0 },
+							}}
+						>
+							{t`Cancel`}
+						</Button>
+						{!isDefaultIcon && (
+							<Button
+								variant="contained"
+								color="secondary"
+								onClick={reset}
+								sx={{ order: { xs: -1, sm: 0 } }}
+							>
+								<Row alignItems="center" gap={1}>
+									<Icon icon={defaultIcon} />
+									{t`Default`}
+								</Row>
+							</Button>
+						)}
+					</>
 				)}
 				<Button variant="contained" color="primary" onClick={select}>
 					{t`Ok`}
