@@ -7,16 +7,16 @@ export const getVips = async (): Promise<VipsInstance> => {
 	if (vips) {
 		return vips;
 	}
-	// wasm-vips pthreads need SharedArrayBuffer; Safari only gets that with true
-	// cross-origin isolation (COOP + COEP require-corp). COEP credentialless is
-	// not enough on WebKit — worker init then throws DataCloneError.
+	// wasm-vips pthreads need SharedArrayBuffer → cross-origin isolation (COOP + COEP).
+	// We use COEP `credentialless` so third-party scripts (e.g. Metrika) can load; Chromium
+	// still reports crossOriginIsolated. WebKit may differ — see COEP notes in vite/vercel config.
 	if (
 		typeof globalThis !== "undefined" &&
 		"crossOriginIsolated" in globalThis &&
 		globalThis.crossOriginIsolated === false
 	) {
 		throw new Error(
-			"wasm-vips requires a cross-origin isolated page (COOP/COEP, use require-corp).",
+			"wasm-vips requires a cross-origin isolated page (COOP + COEP, e.g. same-origin + credentialless or require-corp).",
 		);
 	}
 	const module = await import("wasm-vips");
