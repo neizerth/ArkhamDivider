@@ -123,7 +123,7 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 						)}
 					</C.Icon>
 				</Stack>
-				{isString(selectedIcon) && (
+				{isString(selectedIcon) && isPreview && (
 					<Stack alignItems="center">
 						<Chip
 							label={selectedIcon}
@@ -144,7 +144,9 @@ export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 								{toolbarButtons}
 							</ButtonGroup>
 						)}
-						{iconInfo && <IconSelectionCopyMenu key="copy" icon={iconInfo} />}
+						{iconInfo && isPreview && (
+							<IconSelectionCopyMenu key="copy" icon={iconInfo} />
+						)}
 					</Stack>
 				</Stack>
 			</Stack>
