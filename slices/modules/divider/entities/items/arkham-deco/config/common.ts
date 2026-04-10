@@ -115,6 +115,9 @@ export const arkhamDecoVerticalObjects = mergeDeepRight(
 				fontSize: 4,
 			},
 		},
+		centralIcon: {
+			offsetTop: 0.7,
+		},
 		background: {
 			rotated: true,
 			fontSize: 25,
