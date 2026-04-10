@@ -9,6 +9,7 @@ export const factionIcons = [
 	"survivor",
 	"neutral",
 	"multiclass",
+	"multiclass_arkhamesque",
 	"class_guardian",
 	"class_rogue",
 	"class_seeker",
@@ -179,6 +180,18 @@ export const outlinedIcons = [
 	"star-outline",
 	"x-outline",
 	"numNull-outline",
+];
+
+export const outlinedSlotIcons = [
+	"hand",
+	"hand_x2",
+	"arcane",
+	"arcane_x2",
+	"tarot",
+	"accessory",
+	"body",
+	"ally",
+	"head",
 ];
 
 export const cardLevelIcons = [

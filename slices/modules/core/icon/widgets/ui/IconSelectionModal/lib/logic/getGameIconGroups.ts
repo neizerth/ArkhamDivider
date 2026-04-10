@@ -12,6 +12,7 @@ import {
 	factionIcons,
 	locationIcons,
 	outlinedIcons,
+	outlinedSlotIcons,
 	signIcons,
 	slotIcons,
 	statsIcons,
@@ -47,11 +48,13 @@ export const getGameIconGroups = ({ icons, mode }: Options): IconGroup[] => {
 	return compact([
 		createIconGroup("Faction", factionIcons),
 		createIconGroup("Slot", slotIcons),
+		isPreview && createIconGroup("Slot Outline", outlinedSlotIcons),
+
 		createIconGroup("Stats", statsIcons),
 		createIconSetGroup("Cost"),
+
 		isPreview && createIconGroup("Outline", outlinedIcons),
 		isPreview && createIconGroup("Card Level", cardLevelIcons),
-
 		createIconGroup("Location", locationIcons),
 		createIconGroup("Tokens", tokenIcons),
 		createIconGroup("Signs", signIcons),

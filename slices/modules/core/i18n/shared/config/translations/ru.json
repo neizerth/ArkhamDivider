@@ -211,5 +211,6 @@
 	"icon.copy.name": "Название",
 	"copy.success": "Скопировано в буфер обмена",
 	"Card Level": "Уровень карты",
-	"Outline": "Обводка"
+	"Outline": "Обводка",
+	"Slot Outline": "Обводка слота"
 }
