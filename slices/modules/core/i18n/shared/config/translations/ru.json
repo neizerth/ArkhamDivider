@@ -209,5 +209,6 @@
 	"icon.copy.codepoint": "Unicode",
 	"icon.copy.name": "Название",
 	"copy.success": "Скопировано в буфер обмена",
-	"Card Level": "Уровень карты"
+	"Card Level": "Уровень карты",
+	"Outline": "Обводка"
 }
