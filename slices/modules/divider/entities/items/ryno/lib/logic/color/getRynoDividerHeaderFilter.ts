@@ -15,10 +15,7 @@ export const getRynoDividerHeaderFilter = (divider: RynoDividerProps) => {
 	if (isAchromatic(headerColor)) {
 		const l = Color(headerColor).luminosity();
 		const brightness = l * 1 + 2;
-		console.log({
-			l,
-			brightness,
-		});
+
 		return `grayscale(1) brightness(${brightness})`;
 	}
 
