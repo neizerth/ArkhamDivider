@@ -1,5 +1,5 @@
 import Color from "color";
-import type { RGBAColorObject, RGBColor } from "../model";
+import type { CMYKColor, RGBAColor, RGBAColorObject, RGBColor } from "../model";
 
 /** CMYK components 0–100 (PDFKit divides by 100 for PDF). */
 export const cmyk = (
@@ -8,15 +8,29 @@ export const cmyk = (
 	yellow: number,
 	key: number,
 ) => {
-	return [cyan, magenta, yellow, key] as [number, number, number, number];
+	return [cyan, magenta, yellow, key] as CMYKColor;
 };
 
 export const rgb = (red: number, green: number, blue: number) => {
-	return [red, green, blue] as [number, number, number];
+	return [red, green, blue] as RGBColor;
+};
+
+export const rgba = (
+	red: number,
+	green: number,
+	blue: number,
+	alpha: number,
+) => {
+	return [red, green, blue, alpha] as RGBAColor;
 };
 
 /** HSL hue in [0, 360); achromatic → 0. */
-export const rgb2AbsoluteHue = ([r, g, b]: RGBColor): number => {
+export const rgba2AbsoluteHue = ([r, g, b]: [
+	number,
+	number,
+	number,
+	number?,
+]): number => {
 	const rn = r / 255;
 	const gn = g / 255;
 	const bn = b / 255;
@@ -40,9 +54,12 @@ export const rgb2AbsoluteHue = ([r, g, b]: RGBColor): number => {
 	return ((h % 360) + 360) % 360;
 };
 
-export const rgb2Hue = (color: RGBColor, baseColor: RGBColor) => {
-	const hColor = rgb2AbsoluteHue(color);
-	const hBase = rgb2AbsoluteHue(baseColor);
+export const rgba2Hue = (
+	color: RGBColor | RGBAColor,
+	baseColor: RGBColor | RGBAColor,
+) => {
+	const hColor = rgba2AbsoluteHue(color);
+	const hBase = rgba2AbsoluteHue(baseColor);
 	return (hColor - hBase + 360) % 360;
 };
 
@@ -53,6 +70,11 @@ export const rgbTuple2Hex = (color: RGBColor) => {
 export const rgb2Tuple = (value: string): RGBColor => {
 	const color = Color(value).object();
 	return [color.r, color.g, color.b] as RGBColor;
+};
+
+export const rgba2Tuple = (value: string): RGBAColor => {
+	const color = Color(value).object();
+	return [color.r, color.g, color.b, color.a] as RGBAColor;
 };
 
 export const rgba256 = (color: RGBAColorObject) => {
