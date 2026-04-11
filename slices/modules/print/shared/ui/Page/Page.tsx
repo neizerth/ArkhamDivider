@@ -1,7 +1,6 @@
 import type { BoxProps } from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
 import type { Side } from "@/shared/model";
-import { PAGE_PADDING_BLOCK } from "../../config";
 import { fromPx, getPageCounterText } from "../../lib";
 import * as C from "./Page.components";
 import { pageSideStyles } from "./Page.styles";
@@ -30,8 +29,6 @@ export function Page({
 	mmSize,
 	...props
 }: PageProps) {
-	const { justifyContent } = props;
-
 	const mm = fromPx(mmSize);
 
 	const aspectRatio = width / height;
@@ -40,9 +37,6 @@ export function Page({
 		...sxProps,
 		aspectRatio,
 		backgroundColor: "#fff",
-		...(justifyContent === "flex-start" && {
-			paddingTop: mm(PAGE_PADDING_BLOCK),
-		}),
 		"@media print": {
 			width: `${width}mm`,
 			height: `${height}mm`,

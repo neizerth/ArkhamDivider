@@ -4,6 +4,7 @@ import { PAGE_CREDITS_SIZE } from "@/modules/print/shared/config";
 import {
 	canShowPageCredits,
 	getGridCropmarks,
+	getPagePaddingTop,
 	usePrintUnitByRect,
 } from "@/modules/print/shared/lib";
 import type { PageFormat, PageLayout } from "@/modules/print/shared/model";
@@ -54,7 +55,6 @@ export function PrintablePage<T extends WithId>({
 	const showCredits = canShowPageCredits({
 		pageSize,
 		areaSize: usedAreaSize,
-		isLast: pageLayout.isLast,
 	});
 
 	const unitAspectRatio = grid.unitSize.width / grid.unitSize.height;
@@ -83,6 +83,12 @@ export function PrintablePage<T extends WithId>({
 	const hideCounter =
 		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
 
+	const paddingTop = getPagePaddingTop({
+		pageSize,
+		areaSize: usedAreaSize,
+		isLast: pageLayout.isLast,
+	});
+
 	return (
 		<Page
 			{...pageOptions}
@@ -92,6 +98,7 @@ export function PrintablePage<T extends WithId>({
 			ref={ref}
 			showSide={showSide}
 			justifyContent={justifyContent}
+			paddingTop={mm(paddingTop)}
 		>
 			<Stack sx={contentSx}>
 				{rows.map((rowIndex) => (

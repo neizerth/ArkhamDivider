@@ -1,5 +1,5 @@
 import type { DividerLayout } from "@/modules/divider/shared/model";
-import { PAGE_PADDING_BLOCK } from "@/modules/print/shared/config";
+import { MAX_PAGE_PADDING_BLOCK } from "@/modules/print/shared/config";
 import type { PageFormat } from "@/modules/print/shared/model";
 import { expandRectSize, getBoxGrid } from "@/shared/util/size";
 
@@ -23,7 +23,7 @@ export const getDividerLayoutGrid = ({
 		size: pageSize,
 		unitSize: size,
 		padding: {
-			block: PAGE_PADDING_BLOCK,
+			block: MAX_PAGE_PADDING_BLOCK,
 		},
 	});
 

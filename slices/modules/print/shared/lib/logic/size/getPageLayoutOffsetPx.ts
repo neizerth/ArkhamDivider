@@ -1,6 +1,6 @@
-import { PAGE_PADDING_BLOCK } from "../../../config";
 import type { DPI, PageFormat, PageLayout } from "../../../model";
 import { fromDPI } from "../../util";
+import { getPagePaddingTop } from "../getPagePaddingTop";
 import { getLayoutSizePx } from "./getLayoutSizePx";
 import { getPageSize } from "./getPageSize";
 import { getUnitSizePx } from "./getUnitSizePx";
@@ -45,7 +45,13 @@ export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
 	}
 	const mm = fromDPI(dpi);
 
-	const y = mm(PAGE_PADDING_BLOCK);
+	const paddingTop = getPagePaddingTop({
+		pageSize,
+		areaSize: layoutSize,
+		isLast: pageLayout.isLast,
+	});
+
+	const y = mm(paddingTop);
 
 	return { x, y };
 };

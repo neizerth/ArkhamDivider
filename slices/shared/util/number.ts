@@ -4,3 +4,6 @@ export const divideBy = (divisor: number) => (value: number) => value / divisor;
 export const round = (value: number, precision = 2) => {
 	return Number(value.toFixed(precision));
 };
+
+export const minmax = (min: number, max: number) => (value: number) =>
+	Math.min(Math.max(value, min), max);

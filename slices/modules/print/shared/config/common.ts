@@ -3,7 +3,7 @@ export const INCH_TO_MM = 25.4;
 
 /** Page top padding in mm when justified to the top */
 // export const PAGE_PADDING_BLOCK = 10;
-export const PAGE_PADDING_BLOCK = 0;
+export const MAX_PAGE_PADDING_BLOCK = 10;
 /** Counter size in mm including padding */
 export const PAGE_COUNTER_SIZE = 4;
 
