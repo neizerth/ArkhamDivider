@@ -15,9 +15,11 @@ import {
 import type { Orientation } from "@/shared/model";
 
 function* worker() {
+	console.log("Set layout grid on layout change");
 	const layout: ReturnType<typeof selectLayout> = yield select(selectLayout);
 
 	if (!layout) {
+		console.log("No layout");
 		return;
 	}
 
@@ -25,6 +27,7 @@ function* worker() {
 		yield select(selectPageFormat);
 
 	if (!pageFormat) {
+		console.log("No page format");
 		return;
 	}
 

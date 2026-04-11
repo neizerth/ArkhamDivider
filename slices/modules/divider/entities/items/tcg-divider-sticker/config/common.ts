@@ -36,9 +36,9 @@ export const tcgDividerSticker70x95Objects = {
 		width: 10,
 	},
 	scenario: {
-		fontSize: 5,
+		fontSize: 4,
 		right: 2,
-		top: 1,
+		top: 0,
 		bottom: 0,
 		width: 6,
 	},

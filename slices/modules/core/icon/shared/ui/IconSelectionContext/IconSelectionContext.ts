@@ -1,5 +1,9 @@
 import { createContext, type RefObject } from "react";
-import type { Icon, OnIconSelectedCallback } from "../../model";
+import type {
+	Icon,
+	IconSelectionMode,
+	OnIconSelectedCallback,
+} from "../../model";
 
 export type IconSelectionContextValue = {
 	selectionActive: boolean;
@@ -11,6 +15,8 @@ export type IconSelectionContextValue = {
 	selectedIcon: Icon | null;
 	defaultIcon: Icon | null;
 	setSelectionActive: (active: boolean) => void;
+	mode: IconSelectionMode;
+	setMode: (mode: IconSelectionMode) => void;
 	onSelectRef: RefObject<OnIconSelectedCallback | null>;
 };
 
@@ -25,4 +31,6 @@ export const IconSelectionContext = createContext<IconSelectionContextValue>({
 	defaultIcon: null,
 	setSelectionActive: () => {},
 	onSelectRef: { current: null },
+	mode: "selection",
+	setMode: () => {},
 });

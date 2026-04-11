@@ -3,6 +3,7 @@ import type { ArkhamDecoDividerSxCallback } from "../../model";
 
 export const getBackgroundSx: ArkhamDecoDividerSxCallback = ({
 	objects: O,
+	mm,
 }) => {
 	const patterRatio = 3698 / 2570;
 	const { rotated } = O.background;
@@ -10,7 +11,7 @@ export const getBackgroundSx: ArkhamDecoDividerSxCallback = ({
 	if (rotated) {
 		return {
 			objectFit: "contain",
-			width: "100cqh",
+			width: mm(76),
 			aspectRatio: patterRatio,
 			transform: "rotate(90deg)",
 		};

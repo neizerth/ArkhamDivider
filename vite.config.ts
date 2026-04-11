@@ -48,7 +48,9 @@ export default defineConfig({
 			ignored: ["**/node_modules/**", "**/.git/**"],
 		},
 		headers: {
-			"Cross-Origin-Embedder-Policy": "require-corp",
+			// `require-corp` blocks third-party scripts without CORP (e.g. Yandex Metrika).
+			// `credentialless` keeps cross-origin isolation in Chromium for SharedArrayBuffer / wasm-vips.
+			"Cross-Origin-Embedder-Policy": "credentialless",
 			"Cross-Origin-Opener-Policy": "same-origin",
 		},
 	},

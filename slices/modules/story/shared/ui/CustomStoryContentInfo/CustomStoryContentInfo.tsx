@@ -10,14 +10,16 @@ import { useTranslation } from "react-i18next";
 import { selectLanguage } from "@/modules/core/i18n/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Flag, Row } from "@/shared/ui";
-import type { StoryCustomContent } from "../../model";
+import type { StoryCustomContent, StoryWithRelations } from "../../model";
 
 type CustomStoryContentInfoProps = Omit<BoxProps, "content"> & {
 	content: StoryCustomContent;
+	story: StoryWithRelations;
 };
 
 export function CustomStoryContentInfo({
 	content,
+	story,
 	...boxProps
 }: CustomStoryContentInfoProps) {
 	const { t } = useTranslation();
@@ -26,9 +28,9 @@ export function CustomStoryContentInfo({
 	const { creators, download_links } = content;
 	const creator = creators.map(prop("name")).join(", ");
 
-	const isTranslated = download_links.some(
-		(link) => language === link.language,
-	);
+	const isTranslated =
+		story?.translated === true ||
+		download_links.some((link) => language === link.language);
 
 	return (
 		<Box {...boxProps}>

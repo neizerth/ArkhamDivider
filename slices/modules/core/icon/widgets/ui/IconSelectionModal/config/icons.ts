@@ -1,3 +1,5 @@
+import { range } from "ramda";
+
 export const factionIcons = [
 	"guardian",
 	"rogue",
@@ -7,6 +9,7 @@ export const factionIcons = [
 	"survivor",
 	"neutral",
 	"multiclass",
+	"multiclass_arkhamesque",
 	"class_guardian",
 	"class_rogue",
 	"class_seeker",
@@ -53,10 +56,11 @@ export const statsIcons = [
 export const arkhamSlimSpecialIcons = [
 	"cardicons-parallel",
 	"unique",
-	"core_2026",
 	"asset",
 	"event",
 	"skill",
+	"arkham-plus",
+	"minus",
 ];
 
 export const tokenIcons = [
@@ -169,4 +173,56 @@ export const arkhamCardsIgnoredIcons = [
 	"fleur_top_left",
 	"fleur_bottom_right",
 	"fleur_bottom_left",
+];
+
+export const outlinedIcons = [
+	...range(0, 10).map((i) => `num${i}-outline`),
+	"minus-outline",
+	"plus-outline",
+	"star-outline",
+	"x-outline",
+	"numNull-outline",
+];
+
+export const outlinedSlotIcons = [
+	"hand",
+	"hand_x2",
+	"arcane",
+	"arcane_x2",
+	"tarot",
+	"accessory",
+	"body",
+	"ally",
+	"head",
+];
+
+export const cardLevelIcons = [
+	"level_none",
+	"level_0",
+	"level_1",
+	"level_2",
+	"level_3",
+	"level_4",
+	"level_5",
+	"s_frame_background",
+	"s_level_null",
+	"s_level_0",
+	"s_level_1",
+	"s_level_2",
+	"s_level_3",
+	"s_level_4",
+	"s_level_5",
+	"inverted_level_none",
+	"inverted_level_0",
+	"inverted_level_1",
+	"inverted_level_2",
+	"inverted_level_3",
+	"inverted_level_4",
+	"inverted_level_5",
+	"ae_level_null",
+	"ae_level_1",
+	"ae_level_2",
+	"ae_level_3",
+	"ae_level_4",
+	"ae_level_5",
 ];

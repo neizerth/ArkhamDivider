@@ -139,7 +139,10 @@ export function ScenarioDividerOptions(props: BoxProps) {
 						)}
 					</Row>
 					{story?.custom_content && (
-						<CustomStoryContentInfo content={story.custom_content} />
+						<CustomStoryContentInfo
+							content={story.custom_content}
+							story={story}
+						/>
 					)}
 					{story && layout && (
 						<ScenarioDividerOptionsForm

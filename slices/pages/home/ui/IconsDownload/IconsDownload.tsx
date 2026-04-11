@@ -3,7 +3,10 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useIconSelection } from "@/modules/core/icon/entities/lib";
+import { Icon } from "@/modules/core/icon/shared/ui";
 import { ArkhamDividerAPI } from "@/shared/api";
 import { Image, Row } from "@/shared/ui";
 import { prefix } from "@/shared/util";
@@ -16,6 +19,16 @@ export function IconsDownload() {
 	const { t } = useTranslation();
 	const svgUrl = url`/icons.zip`;
 	const ttfUrl = url`/icons.ttf`;
+	const woffUrl = url`/icons.woff`;
+	const woff2Url = url`/icons.woff2`;
+
+	const startSelection = useIconSelection();
+	const handleSelect = useCallback(() => {
+		startSelection({
+			icon: "guardian",
+			mode: "preview",
+		});
+	}, [startSelection]);
 	return (
 		<Container>
 			<Box
@@ -75,7 +88,7 @@ export function IconsDownload() {
 							{t("icons.download.description")}
 						</Typography>
 					</Stack>
-					<Row gap={2}>
+					<Row gap={2} flexWrap="wrap">
 						<Box component="a" href={svgUrl} style={{ textDecoration: "none" }}>
 							<Button variant="contained" color="primary" size="large">
 								SVG
@@ -86,6 +99,38 @@ export function IconsDownload() {
 								TTF
 							</Button>
 						</Box>
+
+						<Box
+							component="a"
+							href={woffUrl}
+							style={{ textDecoration: "none" }}
+						>
+							<Button variant="contained" color="primary" size="large">
+								WOFF
+							</Button>
+						</Box>
+						<Box
+							component="a"
+							href={woff2Url}
+							style={{ textDecoration: "none" }}
+						>
+							<Button variant="contained" color="primary" size="large">
+								WOFF2
+							</Button>
+						</Box>
+					</Row>
+					<Row>
+						<Button
+							variant="contained"
+							color="primary"
+							size="small"
+							onClick={handleSelect}
+						>
+							<Row alignItems="center" gap={1}>
+								<Icon icon="eye" />
+								{t("icons.download.preview")}
+							</Row>
+						</Button>
 					</Row>
 				</Stack>
 			</Box>

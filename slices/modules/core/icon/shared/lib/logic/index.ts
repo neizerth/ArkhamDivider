@@ -1,4 +1,5 @@
 export * from "./createMediaIcon";
+export * from "./format";
 export * from "./getIconCorrection";
 export * from "./getIconId";
 export * from "./getIconSetIcons";

@@ -1,11 +1,16 @@
 import { useMemo } from "react";
 import { selectIcons } from "@/modules/core/icon/shared/lib";
+import type { IconSelectionMode } from "@/modules/core/icon/shared/model";
 import { selectEncounterSets } from "@/modules/encounterSet/shared/lib";
 import { selectStories } from "@/modules/story/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { getIconGroups } from "../logic/getIconGroups";
 
-export const useIconGroups = () => {
+type Options = {
+	mode: IconSelectionMode;
+};
+
+export const useIconGroups = ({ mode }: Options) => {
 	const iconMapping = useAppSelector(selectIcons);
 	const encounterSets = useAppSelector(selectEncounterSets);
 	const stories = useAppSelector(selectStories);
@@ -17,6 +22,7 @@ export const useIconGroups = () => {
 			icons,
 			encounterSets,
 			stories,
+			mode,
 		});
-	}, [iconMapping, encounterSets, stories]);
+	}, [iconMapping, encounterSets, stories, mode]);
 };

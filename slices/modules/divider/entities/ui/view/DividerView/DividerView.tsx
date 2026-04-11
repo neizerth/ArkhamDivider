@@ -80,7 +80,8 @@ export function DividerView(props: DividerViewProps) {
 							transform: `scale(${scale})`,
 							willChange: "transform",
 							"@media print": {
-								transform: `scale(${printScale})`,
+								transform: "none",
+								zoom: printScale,
 							},
 						}}
 					>

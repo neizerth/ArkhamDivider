@@ -6,7 +6,11 @@ import {
 	useState,
 } from "react";
 import { isMediaItem, revokeMediaById } from "@/modules/core/media/shared/lib";
-import type { Icon, OnIconSelectedCallback } from "../../../shared/model";
+import type {
+	Icon,
+	IconSelectionMode,
+	OnIconSelectedCallback,
+} from "../../../shared/model";
 import {
 	IconSelectionContext,
 	type IconSelectionContextValue,
@@ -16,6 +20,7 @@ import { IconSelectionModal } from "../../../widgets/ui";
 export function IconSelectionProvider({ children }: PropsWithChildren) {
 	const [selectedIcon, setSelectedIconInternal] = useState<Icon | null>(null);
 	const [defaultIcon, setDefaultIcon] = useState<Icon | null>(null);
+	const [mode, setMode] = useState<IconSelectionMode>("selection");
 	const onSelectRef = useRef<OnIconSelectedCallback | null>(null);
 	const [selectionActive, setSelectionActive] = useState(false);
 
@@ -60,6 +65,8 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			reset,
 			setSelectionActive,
 			clearSelectedIcon,
+			mode,
+			setMode,
 		}),
 		[
 			selectedIcon,
@@ -69,6 +76,7 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			clearSelectedIcon,
 			select,
 			reset,
+			mode,
 		],
 	);
 

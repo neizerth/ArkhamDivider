@@ -14,6 +14,7 @@ import {
 	take,
 	takeLatest,
 } from "redux-saga/effects";
+import { i18n } from "@/modules/core/i18n/shared/config";
 import { getDividerPageLayouts } from "@/modules/divider/entities/lib/logic";
 import { loadDividerPDFComponent } from "@/modules/divider/entities/lib/runtime";
 import {
@@ -180,7 +181,13 @@ function* pdfDownloadWorker({
 			vips.Cache.maxMem(80 * 1024 * 1024);
 		}
 
-		yield put(setRenderStatusMessage("render.status.creatingPDF"));
+		const progressMessage = i18n.t(`render.status.creatingPDF.progress`, {
+			progress: 1,
+			total,
+		});
+		yield put(setRenderStatusMessage(progressMessage));
+
+		yield put(setRenderStatusMessage(progressMessage));
 		yield put(setHideTextNodes(true));
 		yield put(setHideIconNodes(true));
 		yield put(setRenderProgressTotal(total));
@@ -333,6 +340,13 @@ function* pdfDownloadWorker({
 
 						progress++;
 						yield put(setRenderProgress(progress));
+
+						const message = i18n.t(`render.status.creatingPDF.progress`, {
+							progress: progress + 1,
+							total,
+						});
+
+						yield put(setRenderStatusMessage(message));
 					}
 				}
 			}
@@ -340,6 +354,8 @@ function* pdfDownloadWorker({
 			console.error("error", error);
 			writeFailed = true;
 		}
+
+		yield put(setRenderStatusMessage("render.status.creatingPDF"));
 
 		if (!writeFailed) {
 			doc.end();

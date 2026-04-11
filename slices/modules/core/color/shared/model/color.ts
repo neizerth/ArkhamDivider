@@ -1,4 +1,5 @@
 export type RGBColor = [number, number, number];
+export type RGBAColor = [number, number, number, number];
 export type CMYKColor = [number, number, number, number];
 export type RGBAColorObject = {
 	r: number;
