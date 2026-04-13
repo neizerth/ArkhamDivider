@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import { type PropsWithChildren, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { usePrintUnit } from "@/modules/print/shared/lib";
 import { getDividerCardsNumbers } from "../../../../lib/logic";
 import * as S from "./DividerCardsInfoDetails.styles";
@@ -19,6 +20,8 @@ export function DividerCardsInfoDetails({
 	const closeTimer = useRef<number | null>(null);
 	const getPrintSx = usePrintUnit();
 	const containerSx = getPrintSx(S.getSx);
+
+	const { t } = useTranslation();
 
 	const items = useMemo(() => {
 		return getDividerCardsNumbers(cards).toSorted((a, b) => {
@@ -81,7 +84,7 @@ export function DividerCardsInfoDetails({
 						pointerEvents: "auto",
 					}}
 				>
-					<Box fontWeight={600}>Cards</Box>
+					<Box fontWeight={600}>{t`Cards`}</Box>
 					<Box component="span">
 						{items
 							.map(({ number, count }) => `${number} × ${count}`)
