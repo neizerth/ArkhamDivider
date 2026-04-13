@@ -5,7 +5,6 @@ import {
 	call,
 	cancel,
 	cancelled,
-	delay,
 	fork,
 	join,
 	put,
@@ -49,6 +48,7 @@ import {
 	setRenderProgressTotal,
 	setRenderStatusMessage,
 	startRender,
+	waitForDividerRenderPaint,
 } from "../../shared/lib";
 import {
 	releaseExclusiveDownload,
@@ -254,7 +254,7 @@ function* pdfDownloadWorker({
 						}
 
 						yield put(setDividerRenderId(item.id));
-						yield delay(100);
+						yield call(waitForDividerRenderPaint);
 
 						const itemSizePt = {
 							width: px(item.size.width),

@@ -4,7 +4,6 @@ import {
 	call,
 	cancel,
 	cancelled,
-	delay,
 	fork,
 	join,
 	put,
@@ -29,6 +28,7 @@ import {
 	setRenderProgressTotal,
 	setRenderStatusMessage,
 	startRender,
+	waitForDividerRenderPaint,
 } from "../../../shared/lib";
 import {
 	releaseExclusiveDownload,
@@ -131,7 +131,7 @@ function* zipDownloadWorker({
 				}
 
 				yield put(setDividerRenderId(divider.id));
-				yield delay(10);
+				yield call(waitForDividerRenderPaint);
 
 				const options: RenderDividerOptions = {
 					dividerId: divider.id,

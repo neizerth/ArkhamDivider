@@ -4,6 +4,7 @@ import {
 } from "modern-screenshot";
 import type Vips from "wasm-vips";
 import type { DPI } from "@/modules/print/shared/model";
+import { isSafari } from "@/shared/config";
 import type { BoxSize, Side } from "@/shared/model";
 import {
 	defaultVipsTransformRecord,
@@ -17,6 +18,10 @@ import type {
 import { applyMultipleVipsTransforms, getVips } from "../vips";
 import { transformVipsStep as step, writeVipsBuffer } from "../vips/process";
 import { getDividerNodeById } from "./getDividerNodeById";
+import {
+	nextAnimationFrame,
+	waitForDividerNodePaintReady,
+} from "./waitForDividerCapture";
 
 export type RenderDividerOptions = {
 	dividerId: string;
@@ -45,12 +50,22 @@ export const renderDivider = async ({
 		id: dividerId,
 		side,
 	});
+
+	await waitForDividerNodePaintReady(node);
+
 	// const scale = dpi / 96;
 	const options = {
 		...renderOptions,
 		// scale,
 		maximumCanvasSize: 60_000,
 	};
+
+	// WebKit: first raster of a node is often solid black; a throwaway capture fixes it.
+	if (isSafari) {
+		await domToBlob(node, options);
+		await nextAnimationFrame();
+		await nextAnimationFrame();
+	}
 
 	const blob = await domToBlob(node, options);
 

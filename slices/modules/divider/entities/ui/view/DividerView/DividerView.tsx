@@ -51,8 +51,6 @@ export function DividerView(props: DividerViewProps) {
 		contentWidth: size.width,
 	});
 
-	const scaleSx = getScaleSx(scale);
-
 	return (
 		<Box
 			ref={ref}

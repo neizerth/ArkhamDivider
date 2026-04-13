@@ -1,7 +1,7 @@
 import { keyframes } from "@emotion/react";
 import type { SxProps } from "@mui/material/styles";
 import color from "color";
-import { absoluteFill, browser, theme } from "@/shared/config";
+import { absoluteFill, isMobileSafari, theme } from "@/shared/config";
 
 const glowColor = color(theme.palette.primary.dark).alpha(1);
 const glowOpacity = {
@@ -72,8 +72,7 @@ export const iconSx: SxProps = {
 
 //** Safari doesn't support `zoom` property, so we use `transform: scale()` instead */
 export const getScaleSx = (scale: number) => {
-	const isSafari = browser?.name === "safari";
-	if (isSafari) {
+	if (isMobileSafari) {
 		return {
 			willChange: "transform",
 			transform: `scale(${scale})`,
