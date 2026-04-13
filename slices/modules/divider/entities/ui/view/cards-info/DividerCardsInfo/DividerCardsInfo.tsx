@@ -4,7 +4,8 @@ import type { SxProps } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { usePrintUnit } from "@/modules/print/shared/lib";
-import { getDividerCards, getDividerCardsCount } from "../../../lib/logic";
+import { getDividerCards, getDividerCardsCount } from "../../../../lib/logic";
+import { DividerCardsInfoDetails } from "../DividerCardsInfoDetails";
 import { getSx } from "./DividerCardsInfo.styles";
 
 type DividerCardsInfoProps<T> = Omit<StackProps, "divider"> & {
@@ -31,8 +32,10 @@ export function DividerCardsInfo<T = void>({
 			<Box display="flex" flexWrap="wrap" gap={2}>
 				{cards.map((card, index) => (
 					<Box key={card.type} display="inline-block">
-						<i>{t(`card.type.${card.type}`)}</i> ({card.size})
-						<i>{index < cards.length - 1 && ", "}</i>
+						<DividerCardsInfoDetails cards={card.cards}>
+							<i>{t(`card.type.${card.type}`)}</i>({card.size})
+							<i>{index < cards.length - 1 && ", "}</i>
+						</DividerCardsInfoDetails>
 					</Box>
 				))}
 			</Box>
