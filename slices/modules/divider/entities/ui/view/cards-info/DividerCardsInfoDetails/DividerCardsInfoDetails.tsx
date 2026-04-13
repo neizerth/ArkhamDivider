@@ -61,7 +61,7 @@ export function DividerCardsInfoDetails({
 			<Popper
 				open={open}
 				anchorEl={anchorEl}
-				placement="right"
+				placement="bottom"
 				disablePortal
 				modifiers={[
 					{
