@@ -11,7 +11,6 @@ import {
 	renderDivider,
 	setDividerRenderId,
 	startRender,
-	waitForDividerRenderPaint,
 } from "@/modules/render/shared/lib";
 import type { ReturnAwaited } from "@/shared/model";
 import { downloadDividerAsImage } from "./downloadDividerAsImage";
@@ -40,7 +39,6 @@ function* worker({ payload }: ReturnType<typeof downloadDividerAsImage>) {
 	yield put(startRender({ renderType: "image" }));
 
 	yield put(setDividerRenderId(dividerId));
-	yield call(waitForDividerRenderPaint);
 
 	const contents: ReturnAwaited<typeof renderDivider> = yield call(
 		renderDivider,

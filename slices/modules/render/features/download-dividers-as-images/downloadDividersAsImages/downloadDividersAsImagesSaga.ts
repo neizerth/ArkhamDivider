@@ -28,7 +28,6 @@ import {
 	setRenderProgressTotal,
 	setRenderStatusMessage,
 	startRender,
-	waitForDividerRenderPaint,
 } from "../../../shared/lib";
 import {
 	releaseExclusiveDownload,
@@ -131,7 +130,6 @@ function* zipDownloadWorker({
 				}
 
 				yield put(setDividerRenderId(divider.id));
-				yield call(waitForDividerRenderPaint);
 
 				const options: RenderDividerOptions = {
 					dividerId: divider.id,

@@ -21,6 +21,7 @@ import { getDividerNodeById } from "./getDividerNodeById";
 import {
 	nextAnimationFrame,
 	waitForDividerNodePaintReady,
+	waitForDividerRenderPaint,
 } from "./waitForDividerCapture";
 
 export type RenderDividerOptions = {
@@ -44,6 +45,8 @@ export const renderDivider = async ({
 	imageFormat,
 	transformRecord = defaultVipsTransformRecord,
 }: RenderDividerOptions) => {
+	await waitForDividerRenderPaint();
+
 	const transforms = transformRecord[imageFormat];
 	const writeOptions = writeOptionsRecord[imageFormat];
 	const node = getDividerNodeById({
