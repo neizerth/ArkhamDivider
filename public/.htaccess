@@ -1,6 +1,6 @@
-# COOP + COEP require-corp: cross-origin isolation for SharedArrayBuffer / wasm-vips pthreads.
-# Safari does not treat COEP credentialless as full isolation; use require-corp (see vercel.json).
-# External images/fonts/scripts must be CORP-safe (e.g. Cross-Origin-Resource-Policy: cross-origin).
+# COOP + COEP require-corp: strongest isolation for SharedArrayBuffer / wasm-vips pthreads (often better on Safari).
+# Vercel: same COEP in vercel.json; Metrika POST → /api/metrika/pageview (Node). Apache: POST → /api/metrika/pageview.php + SetEnv APP_METRIKA_ID.
+# With require-corp, cross-origin subresources must be CORP-safe (e.g. Cross-Origin-Resource-Policy: cross-origin).
 <IfModule mod_headers.c>
   Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always set Cross-Origin-Embedder-Policy "require-corp"

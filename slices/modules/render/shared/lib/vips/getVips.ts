@@ -3,20 +3,35 @@ type VipsInstance = Awaited<ReturnType<CreateVips>>;
 
 let vips: VipsInstance | null = null;
 
+const isCrossOriginIsolated = () =>
+	typeof globalThis !== "undefined" &&
+	"crossOriginIsolated" in globalThis &&
+	globalThis.crossOriginIsolated === true;
+
+/**
+ * wasm-vips pthreads need `SharedArrayBuffer`. With COEP `require-corp`,
+ * `crossOriginIsolated` should be true in supporting browsers; we still probe
+ * SAB allocation for engines that only expose the primitive when usable.
+ */
+const canUseSharedArrayBuffer = () => {
+	if (typeof SharedArrayBuffer === "undefined") {
+		return false;
+	}
+	try {
+		new SharedArrayBuffer(1);
+		return true;
+	} catch {
+		return false;
+	}
+};
+
 export const getVips = async (): Promise<VipsInstance> => {
 	if (vips) {
 		return vips;
 	}
-	// wasm-vips pthreads need SharedArrayBuffer → cross-origin isolation (COOP + COEP).
-	// We use COEP `credentialless` so third-party scripts (e.g. Metrika) can load; Chromium
-	// still reports crossOriginIsolated. WebKit may differ — see COEP notes in vite/vercel config.
-	if (
-		typeof globalThis !== "undefined" &&
-		"crossOriginIsolated" in globalThis &&
-		globalThis.crossOriginIsolated === false
-	) {
+	if (!isCrossOriginIsolated() && !canUseSharedArrayBuffer()) {
 		throw new Error(
-			"wasm-vips requires a cross-origin isolated page (COOP + COEP, e.g. same-origin + credentialless or require-corp).",
+			"wasm-vips needs SharedArrayBuffer (COOP: same-origin + COEP require-corp). Ensure the document is cross-origin isolated (headers on the HTML response) or use the coi-serviceworker flow from index.html for static hosts.",
 		);
 	}
 	const module = await import("wasm-vips");

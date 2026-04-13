@@ -40,6 +40,9 @@ jobs:
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
           VITE_INVESTIGATORS_URL: ${{ secrets.VITE_INVESTIGATORS_URL }}
           VITE_ARKHAMESQUE_URL: ${{ secrets.VITE_ARKHAMESQUE_URL }}
+          VITE_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
+          # Apache serves public/api/metrika/pageview.php; Vercel uses /api/metrika/pageview (no .php)
+          VITE_METRIKA_PAGEVIEW_PATH: /api/metrika/pageview.php
       - name: 📂 Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 

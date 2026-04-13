@@ -1,8 +1,7 @@
 import react from "@vitejs/plugin-react";
 import dotenv from "dotenv";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import mkcert from "vite-plugin-mkcert";
-import { VitePluginRadar } from "vite-plugin-radar";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { vips } from "./vips.plugin";
@@ -11,7 +10,24 @@ dotenv.config({
 	path: [".env", ".env.local"],
 });
 
-const metricaId = process.env.APP_METRIKA_ID || process.env.VITE_METRIKA_ID;
+const metrikaPageviewDevStub = (): Plugin => ({
+	name: "metrika-pageview-dev-stub",
+	configureServer(server) {
+		server.middlewares.use((req, res, next) => {
+			const path = req.url?.split("?")[0] ?? "";
+			if (
+				(path.endsWith("/api/metrika/pageview") ||
+					path.endsWith("/api/metrika/pageview.php")) &&
+				req.method === "POST"
+			) {
+				res.statusCode = 204;
+				res.end();
+				return;
+			}
+			next();
+		});
+	},
+});
 
 export default defineConfig({
 	worker: {
@@ -20,13 +36,7 @@ export default defineConfig({
 	plugins: [
 		vips(),
 		tsconfigPaths(),
-		VitePluginRadar({
-			metrica: metricaId
-				? {
-						id: metricaId,
-					}
-				: void 0,
-		}),
+		metrikaPageviewDevStub(),
 		react({
 			// Enable Fast Refresh for better HMR support
 			// Default is already on; set explicitly for reliability
@@ -48,9 +58,9 @@ export default defineConfig({
 			ignored: ["**/node_modules/**", "**/.git/**"],
 		},
 		headers: {
-			// `require-corp` blocks third-party scripts without CORP (e.g. Yandex Metrika).
-			// `credentialless` keeps cross-origin isolation in Chromium for SharedArrayBuffer / wasm-vips.
-			"Cross-Origin-Embedder-Policy": "credentialless",
+			// Full isolation for SharedArrayBuffer / wasm-vips pthreads. Metrika is sent via
+			// same-origin POST to `/api/metrika/pageview` (Vercel serverless → mc.yandex.ru).
+			"Cross-Origin-Embedder-Policy": "require-corp",
 			"Cross-Origin-Opener-Policy": "same-origin",
 		},
 	},

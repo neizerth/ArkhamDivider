@@ -17,7 +17,12 @@ import {
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import { dividerComponents } from "../../../items";
-import { iconSx, outlineSx, renderContainerSx } from "./DividerView.styles";
+import {
+	getScaleSx,
+	iconSx,
+	outlineSx,
+	renderContainerSx,
+} from "./DividerView.styles";
 
 type DividerViewProps = DividerWithRelations;
 
@@ -46,6 +51,8 @@ export function DividerView(props: DividerViewProps) {
 		contentWidth: size.width,
 	});
 
+	const scaleSx = getScaleSx(scale);
+
 	return (
 		<Box
 			ref={ref}
@@ -72,16 +79,14 @@ export function DividerView(props: DividerViewProps) {
 						data-divider-node-id={`${props.id}:${props.side}`}
 						sx={{
 							...size,
+							...getScaleSx(scale),
 							position: "absolute",
 							top: 0,
 							left: 0,
 							letterSpacing: 0,
 							transformOrigin: "top left",
-							transform: `scale(${scale})`,
-							willChange: "transform",
 							"@media print": {
-								transform: "none",
-								zoom: printScale,
+								...getScaleSx(printScale),
 							},
 						}}
 					>
