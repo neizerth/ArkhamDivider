@@ -87,7 +87,12 @@ export function DividerCardsInfoDetails({
 					<Box fontWeight={600}>{t`Cards`}</Box>
 					<Box component="span">
 						{items
-							.map(({ number, count }) => `${number} × ${count}`)
+							.map(({ number, count }) => {
+								if (count === 1) {
+									return number;
+								}
+								return `${number} × ${count}`;
+							})
 							.join(", ")}
 					</Box>
 				</Paper>
