@@ -36,6 +36,7 @@ Big thanks to everyone who contributed knowledge, data, design, and translations
 - @5argon - 3mm Divider design template
 - @smallville247 - Arkhamesque design template
 - @Sarnetsky - Eugene Sarnetsky design template
+- @fabula_rasa - Reworked Return To template 
 
 ### Testing
 
