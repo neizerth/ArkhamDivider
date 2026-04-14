@@ -3,6 +3,7 @@ import type { DividerCategory } from "../../shared/model";
 import { arkhamStarterDividerCategory } from "./3mm/config";
 import { arkhamDecoCategory } from "./arkham-deco/config";
 import { arkhamesqueClassicCategory } from "./arkhamesque-classic/config";
+import { binderBookmarkCategory } from "./binder-bookmark/config";
 import { chapter2Category } from "./chapter2/config/category";
 import { classicCategory } from "./classic/config";
 import { investigatorTokensCategory } from "./investigator-tokens/config";
@@ -27,6 +28,7 @@ export const dividerCategories: DividerCategory[] = [
 	sarnetskyBandCategory,
 	investigatorTokensCategory,
 	tcgDividerStickerCategory,
+	binderBookmarkCategory,
 ];
 
 export const dividerLayouts = dividerCategories.flatMap(prop("layouts"));

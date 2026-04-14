@@ -51,6 +51,9 @@ export function DividerSelect(props: DividerSelectProps) {
 					{t(`category.tcg-divider-sticker.name`)}
 				</MenuItem>
 				<C.Subheader>{t(`Other`)}</C.Subheader>
+				<MenuItem value="binder-bookmark">
+					{t(`category.binder-bookmark.name`)}
+				</MenuItem>
 				<MenuItem value="investigator-tokens">
 					{t(`Investigator Tokens`)}
 				</MenuItem>

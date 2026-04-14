@@ -5,7 +5,7 @@ export type DividerCategoryType =
 	| "divider"
 	| "band"
 	| "sticker"
-	| "album"
+	| "bookmark"
 	| "other";
 
 export type DividerCategory = {

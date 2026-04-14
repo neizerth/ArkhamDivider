@@ -212,5 +212,7 @@
 	"copy.success": "Скопировано в буфер обмена",
 	"Card Level": "Уровень карты",
 	"Outline": "Обводка",
-	"Slot Outline": "Обводка слота"
+	"Slot Outline": "Обводка слота",
+	"category.binder-bookmark.name": "Разделители для альбома",
+	"category.binder-bookmark.description": "Разделители для альбома"
 }

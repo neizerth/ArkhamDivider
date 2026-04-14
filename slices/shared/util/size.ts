@@ -101,3 +101,7 @@ export const getRelativeBoxSize = (size: BoxSize, unitSize: BoxSize) => {
 };
 
 export const px = (value: number) => `${value}px`;
+
+export const isBoxIncludes = (container: BoxSize, box: BoxSize) => {
+	return box.width <= container.width && box.height <= container.height;
+};
