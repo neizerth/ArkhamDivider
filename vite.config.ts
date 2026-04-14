@@ -1,32 +1,14 @@
 import react from "@vitejs/plugin-react";
 import dotenv from "dotenv";
-import { defineConfig, type Plugin } from "vite";
+import { defineConfig } from "vite";
 import mkcert from "vite-plugin-mkcert";
+import { VitePluginRadar } from "vite-plugin-radar";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { vips } from "./vips.plugin";
 
 dotenv.config({
 	path: [".env", ".env.local"],
-});
-
-const metrikaPageviewDevStub = (): Plugin => ({
-	name: "metrika-pageview-dev-stub",
-	configureServer(server) {
-		server.middlewares.use((req, res, next) => {
-			const path = req.url?.split("?")[0] ?? "";
-			if (
-				(path.endsWith("/api/metrika/pageview") ||
-					path.endsWith("/api/metrika/pageview.php")) &&
-				req.method === "POST"
-			) {
-				res.statusCode = 204;
-				res.end();
-				return;
-			}
-			next();
-		});
-	},
 });
 
 export default defineConfig({
@@ -36,7 +18,16 @@ export default defineConfig({
 	plugins: [
 		vips(),
 		tsconfigPaths(),
-		metrikaPageviewDevStub(),
+		VitePluginRadar({
+			enableDev: false,
+			gtm: (process.env.VITE_GTM_ID)
+				? [
+						{
+							id: process.env.VITE_GTM_ID,
+						},
+					]
+				: [],
+		}),
 		react({
 			// Enable Fast Refresh for better HMR support
 			// Default is already on; set explicitly for reliability
@@ -58,8 +49,7 @@ export default defineConfig({
 			ignored: ["**/node_modules/**", "**/.git/**"],
 		},
 		headers: {
-			// Full isolation for SharedArrayBuffer / wasm-vips pthreads. Metrika is sent via
-			// same-origin POST to `/api/metrika/pageview` (Vercel serverless → mc.yandex.ru).
+			// Full isolation for SharedArrayBuffer / wasm-vips pthreads.
 			"Cross-Origin-Embedder-Policy": "require-corp",
 			"Cross-Origin-Opener-Policy": "same-origin",
 		},

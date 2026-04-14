@@ -86,6 +86,7 @@
 		"tsx": "^4.21.0",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.3",
+		"vite-plugin-radar": "^0.10.1",
 		"vite-plugin-mkcert": "^1.17.10",
 		"vite-plugin-node-polyfills": "^0.25.0",
 		"vite-plugin-svgr": "^4.5.0",
