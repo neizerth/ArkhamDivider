@@ -27,6 +27,21 @@ export default defineConfig({
 						},
 					]
 				: [],
+			metrica: process.env.VITE_METRIKA_ID
+				? [
+						{
+							id: process.env.VITE_METRIKA_ID,
+							config: {
+								defer: true,
+								clickmap: true,
+								trackLinks: true,
+								accurateTrackBounce: true,
+								webvisor: true,
+								trackHash: true,
+							},
+						},
+					]
+				: [],
 		}),
 		react({
 			// Enable Fast Refresh for better HMR support

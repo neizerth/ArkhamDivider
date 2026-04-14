@@ -3,4 +3,5 @@
 
 interface ImportMetaEnv {
 	readonly VITE_GTM_ID?: string;
+	readonly VITE_METRIKA_ID?: string;
 }
