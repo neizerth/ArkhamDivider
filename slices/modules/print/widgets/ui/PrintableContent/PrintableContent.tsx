@@ -103,7 +103,15 @@ export function PrintableContent(props: PrintableContentProps) {
 						},
 					}}
 				>
-					<Box width={`${zoom}%`} marginInline="auto">
+					<Box
+						marginInline="auto"
+						sx={{
+							width: `${zoom}%`,
+							"@media print": {
+								width: "100%",
+							},
+						}}
+					>
 						<Stack
 							{...props}
 							sx={{
