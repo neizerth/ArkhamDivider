@@ -47,7 +47,6 @@ export function DividerView(props: DividerViewProps) {
 	const scale = getRenderScale({
 		boundingRect: rect,
 		previewZoom,
-		isRendering,
 		contentWidth: size.width,
 	});
 
