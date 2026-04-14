@@ -1,6 +1,8 @@
 import { alpha } from "@mui/material/styles";
+import type { PlayerCardType } from "@/modules/divider/shared/model";
 import { percent } from "@/shared/util";
 import { classicDividerTextColor } from "../../config/common";
+import { getClassicDividerXPObject } from "../../lib";
 import type {
 	ClassicDividerCallbackProps,
 	ClassicDividerLocaleCallback,
@@ -142,16 +144,20 @@ export const getMenuSx: ClassicDividerSxCallback = ({ mm }) => ({
 	opacity: percent(50),
 });
 
-export const getXPSx: ClassicDividerSxCallback = ({ mm, objects: O }) => ({
-	position: "absolute",
-	zIndex: 2,
-	fontSize: mm(O.xp.container.fontSize),
-	width: mm(O.xp.container.size),
-	height: mm(O.xp.container.size),
-	top: mm(O.xp.container.top),
-	right: mm(O.xp.container.right),
-});
-
+export const getXPSx: ClassicDividerSxCallback<{
+	cardType?: PlayerCardType | null;
+}> = ({ mm, objects, cardType }) => {
+	const O = getClassicDividerXPObject({ objects, cardType });
+	return {
+		position: "absolute",
+		zIndex: 2,
+		fontSize: mm(O.fontSize),
+		width: mm(O.size),
+		height: mm(O.size),
+		top: mm(O.top),
+		right: mm(O.right),
+	};
+};
 export const getNumericXPSx: ClassicDividerSxCallback = ({
 	mm,
 	objects: O,

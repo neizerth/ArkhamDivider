@@ -12,7 +12,10 @@ import {
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { selectPlayerParams } from "@/modules/divider/shared/lib";
+import {
+	getDividerCardType,
+	selectPlayerParams,
+} from "@/modules/divider/shared/lib";
 import type {
 	DividerLayout,
 	DividerWithRelations,
@@ -64,6 +67,8 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const getLocaleSx = useLocaleSx(sxOptions);
 	const titleSx = getLocaleSx(S.getTextSx);
 
+	const cardType = getDividerCardType(props);
+
 	const getPrintSx = usePrintUnit(sxOptions);
 
 	const iconSx = getPrintSx(S.getIconSx);
@@ -74,7 +79,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const titleClearSx = getPrintSx(S.getTitleClearSx);
 	const menuSx = getPrintSx(S.getMenuSx);
 	const outlineSx = getPrintSx(S.getOutlineSx);
-	const xpSx = getPrintSx(S.getXPSx);
+	const xpSx = getPrintSx(S.getXPSx, { cardType });
 	const numericXPSx = getPrintSx(S.getNumericXPSx);
 
 	const {
