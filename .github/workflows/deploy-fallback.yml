@@ -37,6 +37,7 @@ jobs:
           APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
           DATA_URL: ${{ secrets.DATA_URL }}
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_GTM_ID: ${{ secrets.VITE_GTM_ID }}
           VITE_INVESTIGATORS_URL: ${{ secrets.VITE_INVESTIGATORS_URL }}
           VITE_ARKHAMESQUE_URL: ${{ secrets.VITE_ARKHAMESQUE_URL }}
       - name: 📂 Install sshpass
