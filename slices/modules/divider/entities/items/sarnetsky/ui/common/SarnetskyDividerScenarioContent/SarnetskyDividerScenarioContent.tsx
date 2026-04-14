@@ -1,9 +1,13 @@
 import { Box, type BoxProps, Stack, type SxProps } from "@mui/material";
+import { mergeDeepRight } from "ramda";
 import { useTranslation } from "react-i18next";
 import { useDividerObject } from "@/modules/divider/entities/lib";
 import { DividerColorPicker as ColorPicker } from "@/modules/divider/entities/ui";
-import { usePrintUnit } from "@/modules/print/shared/lib";
+import { selectDividerParam } from "@/modules/divider/shared/lib";
+import { usePrintPxCallback, usePrintUnit } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
+import { useAppSelector } from "@/shared/lib";
+import type { BoxRect } from "@/shared/model";
 import {
 	getSarnetskyDefaultOverlayColor as getDefaultOverlayColor,
 	getSarnetskyStoryColor as getStoryColor,
@@ -26,6 +30,10 @@ export function SarnetskyDividerScenarioContent({
 	const { sxOptions, containerRef, divider, layout } =
 		useSarnetskyDividerContext();
 
+	const backgroundRect = useAppSelector(
+		selectDividerParam<BoxRect>({ id: divider.id, key: "backgroundIconRect" }),
+	);
+
 	const ref = useDividerObject({
 		dividerId: divider.id,
 		containerRef,
@@ -33,13 +41,15 @@ export function SarnetskyDividerScenarioContent({
 		containerWidth: layout.size.width,
 	});
 
+	const mm = usePrintPxCallback();
+
 	const getPrintSx = usePrintUnit(sxOptions);
 
 	if (divider.layoutType !== "scenario") {
 		return null;
 	}
 
-	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
+	const backgroundIconSxStyle = getPrintSx(S.getBackgroundIconSx);
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
 	const backgroundContainerSx = getPrintSx(S.getBackgroundContainerSx);
 	const frameColorPickerSx = getPrintSx(S.getFrameColorPickerSx);
@@ -47,6 +57,14 @@ export function SarnetskyDividerScenarioContent({
 
 	const defaultFrameColor = getStoryColor(divider.story);
 	const defaultOverlayColor = getDefaultOverlayColor(divider.icon);
+
+	const printFontSize = mm(backgroundRect?.height ?? 0);
+
+	const backgroundIconSx = mergeDeepRight(backgroundIconSxStyle ?? {}, {
+		"@media print": {
+			fontSize: printFontSize,
+		},
+	}) as SxProps;
 
 	return (
 		<>
