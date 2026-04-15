@@ -5,7 +5,7 @@ export const binderBookmarkBaseUrl =
 export const binderBookmarkObjects = {
 	icon: {
 		top: 3.1,
-		right: 2.4,
+		right: 1.9,
 		width: 7,
 		height: 7,
 		fontSize: 6.5,

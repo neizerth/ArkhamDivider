@@ -45,7 +45,7 @@ export const getTitleBackgroundSx: BinderBookmarkSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 1,
 	top: mm(1.1),
-	left: mm(1.1),
+	left: mm(1.6),
 	height: mm(10),
 });
 
@@ -65,7 +65,7 @@ export const getTopIconBackgroundSx: BinderBookmarkSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 2,
 	top: mm(2.4),
-	right: mm(2.2),
+	right: mm(1.5),
 	height: mm(8),
 	cursor: "pointer",
 	"@media screen": {
@@ -82,24 +82,24 @@ export const getImageIconSx: BinderBookmarkSxCallback = ({ mm, faction }) => {
 		guardian: {
 			width: mm(6.5),
 			top: mm(3.1),
-			right: mm(2.8),
+			right: mm(2.1),
 		},
 		rogue: {
 			top: mm(3.1),
-			right: mm(2.4),
+			right: mm(1.7),
 		},
 		seeker: {
 			top: mm(3),
-			right: mm(2.5),
+			right: mm(1.8),
 			width: mm(6.7),
 		},
 		mystic: {
 			top: mm(3.1),
-			right: mm(2.5),
+			right: mm(1.8),
 		},
 		survivor: {
 			top: mm(4.1),
-			right: mm(2),
+			right: mm(1.3),
 			width: mm(8),
 		},
 	};
@@ -108,7 +108,7 @@ export const getImageIconSx: BinderBookmarkSxCallback = ({ mm, faction }) => {
 		position: "absolute",
 		zIndex: 4,
 		top: mm(2.6),
-		right: mm(1.1),
+		right: mm(0.4),
 		width: mm(7),
 		...factionIconSx[faction],
 		cursor: "pointer",
@@ -140,7 +140,7 @@ export const getXpCostBackgroundSx: BinderBookmarkSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 1,
 	top: mm(2.5),
-	right: mm(2),
+	right: mm(1.5),
 	height: mm(9),
 });
 
@@ -148,7 +148,7 @@ export const getXpCostSx: BinderBookmarkSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 2,
 	top: mm(9.9),
-	right: mm(3.2),
+	right: mm(2.7),
 	fontSize: mm(1.5),
 });
 
