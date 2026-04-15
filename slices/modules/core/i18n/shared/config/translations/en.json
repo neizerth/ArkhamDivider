@@ -215,5 +215,7 @@
 	"Card Level": "Card Level",
 	"Slot Outline": "Slot Outline",
 	"category.binder-bookmark.name": "Binder Bookmarks",
-	"category.binder-bookmark.description": "Bookmarks for binders"
+	"category.binder-bookmark.description": "Bookmarks for binders",
+	"divider.binder-bookmark.pocket.name": "Pocket",
+	"divider.binder-bookmark.pocket.description": "Binder bookmark for single pocket"
 }

@@ -214,5 +214,7 @@
 	"Outline": "Обводка",
 	"Slot Outline": "Обводка слота",
 	"category.binder-bookmark.name": "Разделители для альбома",
-	"category.binder-bookmark.description": "Разделители для альбома"
+	"category.binder-bookmark.description": "Разделители для альбома",
+	"divider.binder-bookmark.pocket.name": "Для ячейки",
+	"divider.binder-bookmark.pocket.description": "Разделитель для вставки в карман листа"
 }
