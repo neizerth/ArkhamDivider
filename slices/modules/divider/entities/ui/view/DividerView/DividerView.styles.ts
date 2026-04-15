@@ -1,7 +1,7 @@
 import { keyframes } from "@emotion/react";
 import type { SxProps } from "@mui/material/styles";
 import color from "color";
-import { absoluteFill, theme } from "@/shared/config";
+import { absoluteFill, isMobileSafari, theme } from "@/shared/config";
 
 const glowColor = color(theme.palette.primary.dark).alpha(1);
 const glowOpacity = {
@@ -70,14 +70,9 @@ export const iconSx: SxProps = {
 	animation: `${spinner} 2s ease-in-out infinite`,
 };
 
-const supportsCssZoom = () =>
-	typeof CSS !== "undefined" && typeof CSS.supports === "function"
-		? CSS.supports("zoom", "1")
-		: true;
-
 //** Some mobile browsers don't support `zoom` reliably; fall back to `transform: scale()` */
 export const getScaleSx = (scale: number) => {
-	if (!supportsCssZoom()) {
+	if (isMobileSafari) {
 		return {
 			willChange: "transform",
 			transform: `scale(${scale})`,
