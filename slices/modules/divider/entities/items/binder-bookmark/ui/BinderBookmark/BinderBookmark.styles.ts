@@ -23,10 +23,13 @@ const factionWidth: Record<Faction, number> = {
 	survivor: 70,
 };
 
-export const getBackgroundIconSx: BinderBookmarkSxCallback = ({ faction }) => ({
+export const getBackgroundIconSx: BinderBookmarkSxCallback = ({
+	mm,
+	faction,
+}) => ({
 	position: "absolute",
 	left: "50%",
-	top: "50%",
+	top: `calc(50% + ${mm(5)})`,
 	transform: "translate(-50%, -50%)",
 	width: `${factionWidth[faction]}%`,
 });
