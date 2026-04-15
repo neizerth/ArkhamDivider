@@ -1,6 +1,44 @@
-import type { DividerLayout } from "@/modules/divider/shared/model";
+import type {
+	DividerLayout,
+	DividerLayoutRenderOptions,
+} from "@/modules/divider/shared/model";
+import {
+	setJpegDPITransform,
+	stripJpegICCTransform,
+} from "@/modules/render/shared/config";
 import { createSize } from "@/shared/util";
 import { binderBookmarkCategoryId } from "./common";
+
+const renderOptions: DividerLayoutRenderOptions = {
+	transformRecord: {
+		jpeg: [
+			{
+				type: "colorspace",
+				value: "srgb",
+			},
+			{
+				type: "colorspace",
+				value: "lab",
+			},
+			stripJpegICCTransform,
+			{
+				type: "cast",
+				value: "uchar",
+			},
+			stripJpegICCTransform,
+			{
+				type: "set-icc",
+				icc: "USWebCoatedSWOP.icc",
+				transformOptions: {
+					embedded: true,
+					intent: 1,
+					black_point_compensation: true,
+				},
+			},
+			setJpegDPITransform,
+		],
+	},
+};
 
 const layout: DividerLayout = {
 	id: "binder-bookmark",
@@ -19,6 +57,7 @@ const layout: DividerLayout = {
 	},
 	bleed: 3,
 	iconParams: ["icon"],
+	renderOptions,
 };
 
 const a4: DividerLayout = {

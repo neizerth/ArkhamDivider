@@ -2,6 +2,7 @@ import {
 	domToBlob,
 	type Options as ModernScreenshotOptions,
 } from "modern-screenshot";
+import { mergeDeepRight } from "ramda";
 import type Vips from "wasm-vips";
 import type { DPI } from "@/modules/print/shared/model";
 import { isSafari } from "@/shared/config";
@@ -32,7 +33,7 @@ export type RenderDividerOptions = {
 	imageFormat: ImageFormat;
 	size: BoxSize;
 	renderOptions?: ModernScreenshotOptions;
-	transformRecord?: VipsTransformRecord;
+	transformRecord?: Partial<VipsTransformRecord>;
 	writeOptionsRecord?: VipsWriteOptionsRecord;
 };
 
@@ -48,7 +49,13 @@ export const renderDivider = async ({
 }: RenderDividerOptions) => {
 	await waitForDividerRenderPaint();
 
-	const transforms = transformRecord[imageFormat];
+	const record = mergeDeepRight(
+		defaultVipsTransformRecord,
+		transformRecord,
+	) as VipsTransformRecord;
+
+	const transforms =
+		record[imageFormat] ?? defaultVipsTransformRecord[imageFormat];
 	const writeOptions = writeOptionsRecord[imageFormat];
 	const node = getDividerNodeById({
 		id: dividerId,

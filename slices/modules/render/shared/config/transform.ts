@@ -18,6 +18,22 @@ export const defaultTIFFWriteOptions: VipsTIFFWriteOptions = {
 
 export const defaultPNGWriteOptions: VipsPNGWriteOptions = {};
 
+export const stripJpegICCTransform: VipsTransform = {
+	type: "strip-icc",
+	options: {
+		imageFormat: "jpeg",
+		writeOptions: defaultJPEGWriteOptions,
+	},
+};
+
+export const setJpegDPITransform: VipsTransform = {
+	type: "set-dpi",
+	options: {
+		imageFormat: "jpeg",
+		writeOptions: defaultJPEGWriteOptions,
+	},
+};
+
 const defaultJPEGRenderTransforms: VipsTransform[] = [
 	{
 		type: "colorspace",
@@ -27,24 +43,12 @@ const defaultJPEGRenderTransforms: VipsTransform[] = [
 		type: "colorspace",
 		value: "lab",
 	},
-	{
-		type: "strip-icc",
-		options: {
-			imageFormat: "jpeg",
-			writeOptions: defaultJPEGWriteOptions,
-		},
-	},
+	stripJpegICCTransform,
 	{
 		type: "cast",
 		value: "uchar",
 	},
-	{
-		type: "strip-icc",
-		options: {
-			imageFormat: "jpeg",
-			writeOptions: defaultJPEGWriteOptions,
-		},
-	},
+	stripJpegICCTransform,
 	{
 		type: "set-icc",
 		icc: "USWebCoatedSWOP.icc",
@@ -52,13 +56,7 @@ const defaultJPEGRenderTransforms: VipsTransform[] = [
 			intent: 1,
 		},
 	},
-	{
-		type: "set-dpi",
-		options: {
-			imageFormat: "jpeg",
-			writeOptions: defaultJPEGWriteOptions,
-		},
-	},
+	setJpegDPITransform,
 ];
 
 export const defaultTIFFRenderTransforms: VipsTransform[] = [

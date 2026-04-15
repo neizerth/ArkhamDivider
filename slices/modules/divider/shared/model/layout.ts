@@ -86,7 +86,7 @@ export type DividerLayoutCompatibility = {
 
 export type DividerLayoutRenderOptions = {
 	writeOptionsRecord?: VipsWriteOptionsRecord;
-	transformRecord?: VipsTransformRecord;
+	transformRecord?: Partial<VipsTransformRecord>;
 };
 
 export type DividerLayoutGroup = {
