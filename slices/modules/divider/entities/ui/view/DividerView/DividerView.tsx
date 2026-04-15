@@ -47,8 +47,8 @@ export function DividerView(props: DividerViewProps) {
 	const scale = getRenderScale({
 		boundingRect: rect,
 		previewZoom,
-		isRendering,
 		contentWidth: size.width,
+		isRendering,
 	});
 
 	return (
@@ -83,6 +83,7 @@ export function DividerView(props: DividerViewProps) {
 							left: 0,
 							letterSpacing: 0,
 							transformOrigin: "top left",
+							overflow: "hidden",
 							"@media print": {
 								...getScaleSx(printScale),
 							},

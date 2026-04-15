@@ -70,7 +70,7 @@ export const iconSx: SxProps = {
 	animation: `${spinner} 2s ease-in-out infinite`,
 };
 
-//** Safari doesn't support `zoom` property, so we use `transform: scale()` instead */
+//** Some mobile browsers don't support `zoom` reliably; fall back to `transform: scale()` */
 export const getScaleSx = (scale: number) => {
 	if (isMobileSafari) {
 		return {

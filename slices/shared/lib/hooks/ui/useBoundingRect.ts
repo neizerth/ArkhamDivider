@@ -14,14 +14,12 @@ export function useBoundingRect<T extends HTMLElement>(
 		}
 
 		const setBoundingRect = () => setRect(node.getBoundingClientRect());
-
 		setBoundingRect();
 
 		const observer = new ResizeObserver(setBoundingRect);
-
 		observer.observe(node);
 		return () => observer.disconnect();
-	}, [ref.current]);
+	}, [ref]);
 
 	return [ref, rect] as const;
 }

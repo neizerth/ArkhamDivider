@@ -33,6 +33,7 @@ export function DividerContent({
 				}
 			: {}),
 		position: "absolute",
+		printColorAdjust: "exact",
 		zIndex: 2,
 		top: offset,
 		left: offset,

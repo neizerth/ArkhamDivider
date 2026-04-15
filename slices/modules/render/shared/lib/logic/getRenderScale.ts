@@ -1,15 +1,15 @@
 type Options = {
 	boundingRect?: DOMRect | null;
 	previewZoom: number;
-	isRendering: boolean;
 	contentWidth: number;
+	isRendering: boolean;
 };
 
 export const getRenderScale = ({
 	boundingRect,
 	previewZoom,
-	isRendering,
 	contentWidth,
+	isRendering,
 }: Options) => {
 	if (isRendering) {
 		return 1;

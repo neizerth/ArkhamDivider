@@ -4,10 +4,12 @@ import { getDefaultDividerFontFamily } from "@/modules/divider/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
 import {
+	getRynoDividerDefaultLeftIcon,
 	getRynoDividerDefaultRightIcon,
 	getRynoDividerDefaultSubtitle,
 	getRynoDividerLayoutObjects,
 	getRynoDividerTitleObject,
+	showRynoDividerLeftIcon,
 	showRynoDividerSubtitle,
 } from "../../../lib";
 import type { RynoDividerParams } from "../../../model";
@@ -49,10 +51,12 @@ export const RynoDividerPDF: PDFDivider<RynoDividerParams> = async (
 
 	const defaultRightIcon = getRynoDividerDefaultRightIcon(props);
 
+	const defaultLeftIcon = getRynoDividerDefaultLeftIcon(props);
+
 	const leftIcon = getDividerIcon({
 		divider: props,
 		param: "leftIcon",
-		defaultIcon: props.icon,
+		defaultIcon: defaultLeftIcon,
 	});
 	const rightIcon = getDividerIcon({
 		divider: props,
@@ -82,8 +86,9 @@ export const RynoDividerPDF: PDFDivider<RynoDividerParams> = async (
 	}
 
 	const showSideIcons = layoutType === "scenario";
+	const showLeftIcon = showRynoDividerLeftIcon(props);
 
-	if (showSideIcons && leftIcon) {
+	if (showLeftIcon && leftIcon) {
 		const view = bleed.box({
 			top: O.icons.left.top,
 			left: O.icons.left.left,
