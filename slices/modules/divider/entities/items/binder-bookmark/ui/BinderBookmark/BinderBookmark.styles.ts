@@ -64,6 +64,12 @@ export const getTopIconBackgroundSx: BinderBookmarkSxCallback = ({ mm }) => ({
 	top: mm(2.4),
 	right: mm(2.2),
 	height: mm(8),
+	cursor: "pointer",
+	"@media screen": {
+		":hover": {
+			opacity: percent(50),
+		},
+	},
 });
 
 export const getImageIconSx: BinderBookmarkSxCallback = ({ mm, faction }) => {
@@ -105,7 +111,7 @@ export const getImageIconSx: BinderBookmarkSxCallback = ({ mm, faction }) => {
 		cursor: "pointer",
 		"@media screen": {
 			":hover": {
-				opacity: percent(30),
+				opacity: percent(50),
 			},
 		},
 	};
@@ -122,7 +128,7 @@ export const getIconSx: BinderBookmarkSxCallback = ({ mm }) => ({
 	cursor: "pointer",
 	"@media screen": {
 		":hover": {
-			opacity: percent(30),
+			opacity: percent(50),
 		},
 	},
 });

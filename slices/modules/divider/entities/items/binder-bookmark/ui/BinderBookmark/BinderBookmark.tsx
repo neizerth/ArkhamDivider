@@ -91,7 +91,11 @@ export function BinderBookmark(props: BinderBookmarkProps) {
 			<Content>
 				<Box sx={headerSx}>
 					<Image src={titleBackgroundUrl} sx={titleBackgroundSx} />
-					<Image src={iconBackgroundUrl} sx={topIconBackgroundSx} />
+					<Image
+						src={iconBackgroundUrl}
+						sx={topIconBackgroundSx}
+						onClick={selectIcon}
+					/>
 					{showIcon && (
 						<Icon
 							dividerId={props.id}
