@@ -1,10 +1,10 @@
 import Stack from "@mui/material/Stack";
 import { SingleColumnLayout } from "@/widgets/layout/SingleColumnLayout";
 import { BandsList } from "../BandsList";
-import { OtherList } from "../BookmarksList";
 import { DividerList } from "../DividerList";
 import { IconsDownload } from "../IconsDownload";
 import { InvestigatorTokensPreview } from "../InvestigatorTokensPreview";
+import { OtherList } from "../OtherList";
 import { ProjectInfo } from "../ProjectInfo";
 import { StickersList } from "../StickersList";
 

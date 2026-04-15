@@ -217,5 +217,6 @@
 	"category.binder-bookmark.name": "Binder Bookmarks",
 	"category.binder-bookmark.description": "Bookmarks for binders",
 	"divider.binder-bookmark.pocket.name": "Pocket",
-	"divider.binder-bookmark.pocket.description": "Binder bookmark for single pocket"
+	"divider.binder-bookmark.pocket.description": "Binder bookmark for single pocket",
+	"Binder Spines": "Binder Spines"
 }

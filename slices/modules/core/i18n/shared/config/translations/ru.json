@@ -216,5 +216,6 @@
 	"category.binder-bookmark.name": "Разделители для альбома",
 	"category.binder-bookmark.description": "Разделители для альбома",
 	"divider.binder-bookmark.pocket.name": "Для ячейки",
-	"divider.binder-bookmark.pocket.description": "Разделитель для вставки в карман листа"
+	"divider.binder-bookmark.pocket.description": "Разделитель для вставки в карман листа",
+	"Binder Spines": "Корешки для альбома"
 }
