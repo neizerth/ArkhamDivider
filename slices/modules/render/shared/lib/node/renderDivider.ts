@@ -18,6 +18,7 @@ import type {
 import { applyMultipleVipsTransforms, getVips } from "../vips";
 import { transformVipsStep as step, writeVipsBuffer } from "../vips/process";
 import { getDividerNodeById } from "./getDividerNodeById";
+import { getNodeCaptureScale } from "./getNodeCaptureScale";
 import {
 	nextAnimationFrame,
 	waitForDividerNodePaintReady,
@@ -56,11 +57,23 @@ export const renderDivider = async ({
 
 	await waitForDividerNodePaintReady(node);
 
-	// const scale = dpi / 96;
-	const options = {
+	// `modern-screenshot` captures at CSS pixel resolution by default (`scale: 1`).
+	// That makes output quality depend on on-screen preview sizing (e.g. preview zoom),
+	// especially on high-DPR mobile devices. The library documents:
+	// DPI = 96 * scale (see `modern-screenshot/dist/index.d.ts`).
+	const nodeRect = (node as HTMLElement).getBoundingClientRect();
+	const maxCanvas = 60_000;
+	const captureScale = getNodeCaptureScale({
+		dpi,
+		nodeRect,
+		size,
+		maximumCanvasSize: maxCanvas,
+	});
+
+	const options: ModernScreenshotOptions = {
 		...renderOptions,
-		// scale,
-		maximumCanvasSize: 60_000,
+		maximumCanvasSize: renderOptions?.maximumCanvasSize ?? maxCanvas,
+		scale: captureScale,
 	};
 
 	// WebKit: first raster of a node is often solid black; a throwaway capture fixes it.
