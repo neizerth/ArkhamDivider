@@ -8,7 +8,7 @@ export const binderBookmarkCategory: DividerCategory = createDividerCategory({
 	id: binderBookmarkCategoryId,
 	type: "bookmark",
 	name: "category.binder-bookmark.name",
-	image: "/images/divider/background/binder-bookmark/category.avif",
+	image: "/images/divider/render/binder-bookmark/category.avif",
 	layouts: binderBookmarkLayouts,
 	authors: [VladimirYazykovCredits],
 });

@@ -93,7 +93,9 @@ const pocket: DividerLayout = {
 	id: "binder-bookmark-pocket",
 	groupId: "pocket",
 	name: "divider.binder-bookmark.pocket.name",
+	previewName: "divider.binder-bookmark.pocket.name",
 	description: "divider.binder-bookmark.pocket.description",
+	image: "/images/divider/render/binder-bookmark/pocket.avif",
 	size: createSize(63, 105),
 	printSize: {
 		300: {
