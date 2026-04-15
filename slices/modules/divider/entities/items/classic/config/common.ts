@@ -104,7 +104,7 @@ export const classicDividerHorizontalHQObjects = mergeDeepRight(
 			},
 		},
 		backgroundIcon: {
-			top: 15.6,
+			top: 15,
 		},
 		xp: {
 			container: {
