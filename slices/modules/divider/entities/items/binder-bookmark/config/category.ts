@@ -8,8 +8,7 @@ export const binderBookmarkCategory: DividerCategory = createDividerCategory({
 	id: binderBookmarkCategoryId,
 	type: "bookmark",
 	name: "category.binder-bookmark.name",
-	// Use an existing public asset as preview image.
-	image: "/images/divider/background/binder-bookmark/neutral.avif",
+	image: "/images/divider/background/binder-bookmark/category.avif",
 	layouts: binderBookmarkLayouts,
 	authors: [VladimirYazykovCredits],
 });

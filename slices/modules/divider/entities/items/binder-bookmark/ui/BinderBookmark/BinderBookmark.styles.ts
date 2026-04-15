@@ -148,3 +148,26 @@ export const getXpCostSx: BinderBookmarkSxCallback = ({ mm }) => ({
 	right: mm(3.2),
 	fontSize: mm(1.5),
 });
+
+const getFactionMenuColor = (faction: Faction = "neutral") => {
+	const palette = {
+		mystic: "#8d7aa6",
+		seeker: "#e8b426",
+		survivor: "#c7705f",
+		guardian: "#1970bc",
+		rogue: "#349334",
+		neutral: "#cab686",
+		multiclass: "#e1c985",
+	};
+	return palette[faction];
+};
+
+export const getMenuSx: BinderBookmarkSxCallback = ({ mm, faction }) => ({
+	position: "absolute",
+	top: "50%",
+	left: mm(2),
+	transform: "translateY(-50%)",
+	zIndex: 4,
+	color: getFactionMenuColor(faction),
+	filter: "drop-shadow(2px 2px 5px #000)",
+});

@@ -10,7 +10,7 @@ import { SectionTitle } from "@/shared/ui";
 
 const stickerCategories = dividerCategories.filter(propEq("sticker", "type"));
 
-export function BookmarksList() {
+export function StickersList() {
 	const getSpacing = useResponsiveGap(2);
 	const columns = { xs: 1, sm: 2, md: 3 };
 
@@ -18,7 +18,7 @@ export function BookmarksList() {
 	const { t } = useTranslation();
 	return (
 		<Container>
-			<SectionTitle>{t("Binder Bookmarks")}</SectionTitle>
+			<SectionTitle>{t("Stickers")}</SectionTitle>
 
 			<Stack gap={2} flexDirection="row" flexWrap="wrap">
 				{stickerCategories.map((category) => (

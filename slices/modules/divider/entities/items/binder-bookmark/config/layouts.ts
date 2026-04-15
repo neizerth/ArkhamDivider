@@ -79,7 +79,6 @@ const duo: DividerLayout = {
 	id: "binder-bookmark-duo",
 	groupId: "duo",
 	name: "2x2",
-	previewName: "2x2",
 	size: createSize(63, 240),
 	printSize: {
 		300: {
@@ -95,11 +94,11 @@ const pocket: DividerLayout = {
 	groupId: "pocket",
 	name: "divider.binder-bookmark.pocket.name",
 	description: "divider.binder-bookmark.pocket.description",
-	size: createSize(63, 110),
+	size: createSize(63, 105),
 	printSize: {
 		300: {
-			size: createSize(744, 1299),
-			bleedSize: createSize(815, 1370),
+			size: createSize(744, 1240),
+			bleedSize: createSize(815, 1311),
 		},
 	},
 };

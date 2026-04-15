@@ -6,6 +6,7 @@ import {
 	DividerBleedView as BleedView,
 	DividerContainer as Container,
 	DividerContent as Content,
+	DividerMenu,
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
@@ -59,6 +60,8 @@ export function BinderBookmark(props: BinderBookmarkProps) {
 	const iconSx = getPrintSx(S.getIconSx);
 	const xpCostBackgroundSx = getPrintSx(S.getXpCostBackgroundSx);
 	const xpCostSx = getPrintSx(S.getXpCostSx);
+	const menuSx = getPrintSx(S.getMenuSx);
+
 	const titleType = xpCost ? "xp" : "default";
 	const titleBackgroundUrl = asset(`/title/${titleType}.avif`);
 
@@ -116,6 +119,7 @@ export function BinderBookmark(props: BinderBookmarkProps) {
 				</Box>
 
 				<Title divider={props} sx={titleSx} />
+				<DividerMenu dividerId={props.id} sx={menuSx} />
 			</Content>
 		</Container>
 	);

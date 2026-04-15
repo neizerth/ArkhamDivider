@@ -1,1 +1,1 @@
-export * from "./StickersList";
+export * from "./BookmarksList";
