@@ -57,9 +57,11 @@ export const getBoxGrid = ({
 }: {
 	size: BoxSize;
 	unitSize: BoxSize;
-	padding: Partial<BoxPosition>;
+	padding?: Partial<BoxPosition>;
 }) => {
-	const { top = 0, right = 0, bottom = 0, left = 0 } = padding;
+	const { top = 0, right = 0, bottom = 0, left = 0 } = padding ?? {};
+
+	console.log("padding", padding);
 
 	const inline = left + right;
 	const block = top + bottom;

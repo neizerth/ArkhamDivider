@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
+import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -22,7 +23,6 @@ import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { isUniformBoxPosition } from "@/shared/util";
 import { selectPagePadding, setPagePadding } from "../../../shared/lib";
 import * as S from "./PagePaddingSelect.styles";
-import { usePagePaddingLabel } from "./usePagePaddingLabel";
 
 type PagePaddingSelectProps = {
 	onOpen?: () => void;
@@ -74,8 +74,6 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 	const paddingAllId = useId();
 	const [open, setOpen] = useState(false);
 	const pagePadding = useAppSelector(selectPagePadding);
-
-	usePagePaddingLabel();
 
 	const { register, handleSubmit, reset, setValue } = useForm<FormValues>({
 		defaultValues: {
@@ -175,55 +173,43 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 		endAdornment: mmEndAdornment,
 	} as const;
 
-	const preview = isUniformBoxPosition(pagePadding) ? (
-		<Typography variant="caption" color="text.secondary">
-			<Box sx={S.previewUniformGridSx}>
-				{pagePadding.top} {t`mm`}
+	const preview = (() => {
+		if (isUniformBoxPosition(pagePadding)) {
+			const value = pagePadding.top;
+			const label = value === 0 ? t`None` : `${value} ${t`mm`}`;
+			return (
+				<Typography
+					component="div"
+					variant="caption"
+					color="text.secondary"
+					sx={S.previewUniformGridSx}
+				>
+					{label}
+				</Typography>
+			);
+		}
+		return (
+			<Box sx={S.previewGridSx}>
+				<Box sx={S.getPreviewNumericCellSx(2, 1)}>{pagePadding.top}</Box>
+				<Box sx={S.getPreviewNumericCellSx(1, 2)}>{pagePadding.left}</Box>
+				<Box sx={S.getPreviewSpacerCellSx(2, 2)} />
+				<Box sx={S.getPreviewNumericCellSx(3, 2)}>{pagePadding.right}</Box>
+				<Box sx={S.getPreviewNumericCellSx(2, 3)}>{pagePadding.bottom}</Box>
 			</Box>
-		</Typography>
-	) : (
-		<Box sx={S.previewGridSx}>
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={S.getPreviewCellSx(2, 1)}
-			>
-				{pagePadding.top}
-			</Typography>
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={S.getPreviewCellSx(1, 2)}
-			>
-				{pagePadding.left}
-			</Typography>
-			<Box sx={S.getPreviewCellSx(2, 2)} />
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={S.getPreviewCellSx(3, 2)}
-			>
-				{pagePadding.right}
-			</Typography>
-			<Typography
-				variant="caption"
-				color="text.secondary"
-				sx={S.getPreviewCellSx(2, 3)}
-			>
-				{pagePadding.bottom}
-			</Typography>
-		</Box>
-	);
+		);
+	})();
 
 	return (
 		<>
-			<ListItemButton onClick={openDialog}>
-				<ListItemIcon>
-					<PaddingOutlinedIcon />
-				</ListItemIcon>
-				<ListItemText primary={t(`Page padding`)} />
-				<ListItemText secondary={preview} />
-			</ListItemButton>
+			<ListItem disablePadding sx={S.pagePaddingListItemSx}>
+				<ListItemButton onClick={openDialog} sx={S.listItemButtonSx}>
+					<ListItemIcon>
+						<PaddingOutlinedIcon />
+					</ListItemIcon>
+					<ListItemText sx={S.listItemTextSx} primary={t(`Page padding`)} />
+					{preview}
+				</ListItemButton>
+			</ListItem>
 			<Dialog open={open} onClose={close} fullWidth maxWidth="xs">
 				<DialogTitle>{t(`Page padding`)}</DialogTitle>
 				<DialogContent sx={S.dialogContentSx}>
@@ -236,6 +222,7 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 							onChange={onChangeAll}
 						>
 							<MenuItem value="custom">{t(`Custom`)}</MenuItem>
+							<MenuItem value="0">{t(`None`)}</MenuItem>
 							{ALL_SIDES_OPTIONS.map((v) => (
 								<MenuItem key={v} value={`${v}`}>
 									{v} {t`mm`}

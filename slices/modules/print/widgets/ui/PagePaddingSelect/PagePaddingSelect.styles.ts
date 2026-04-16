@@ -1,7 +1,18 @@
 import type { SxProps, Theme } from "@mui/material";
 
+export const pagePaddingListItemSx: SxProps = {
+	width: "100%",
+};
+
 export const listItemButtonSx: SxProps = {
-	paddingLeft: 0,
+	display: "flex",
+	width: "100%",
+	justifyContent: "flex-start",
+};
+
+export const listItemTextSx: SxProps = {
+	flex: 1,
+	minWidth: 0,
 };
 
 export const previewGridSx: SxProps = {
@@ -10,9 +21,9 @@ export const previewGridSx: SxProps = {
 	gridTemplateRows: "auto auto auto",
 	alignItems: "center",
 	justifyItems: "center",
-	minWidth: 20,
-	position: "relative",
-	right: -11,
+	columnGap: 0.5,
+	rowGap: 0.25,
+	minWidth: 56,
 };
 
 export const previewUniformGridSx: SxProps = {
@@ -26,6 +37,25 @@ export const getPreviewCellSx = (
 ): SxProps => ({
 	gridColumn,
 	gridRow,
+});
+
+export const getPreviewNumericCellSx = (
+	gridColumn: number,
+	gridRow: number,
+): SxProps => ({
+	...getPreviewCellSx(gridColumn, gridRow),
+	typography: "caption",
+	color: "text.secondary",
+	textAlign: "center",
+});
+
+export const getPreviewSpacerCellSx = (
+	gridColumn: number,
+	gridRow: number,
+): SxProps => ({
+	...getPreviewCellSx(gridColumn, gridRow),
+	minWidth: 6,
+	minHeight: 6,
 });
 
 export const dialogContentSx: SxProps = {

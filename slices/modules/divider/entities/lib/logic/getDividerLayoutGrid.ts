@@ -26,27 +26,26 @@ export const getDividerLayoutGrid = ({
 
 	const pageSize = pageFormat.size.mm;
 
-	const { top, bottom, left, right } = paddingProp ?? {
+	const pagePadding = paddingProp ?? {
 		top: 0,
 		bottom: 0,
 		left: 0,
 		right: 0,
 	};
 
-	const size = modifyRectSize({
-		size: pageSize,
-		top: top,
-		bottom: bottom,
-		left: left,
-		right: right,
-	});
+	const { left, right } = pagePadding;
+
+	const top = Math.max(MAX_PAGE_PADDING_BLOCK, pagePadding.top);
+	const bottom = Math.max(MAX_PAGE_PADDING_BLOCK, pagePadding.bottom);
 
 	const boxGrid = getBoxGrid({
-		size,
+		size: pageSize,
 		unitSize,
 		padding: {
-			top: MAX_PAGE_PADDING_BLOCK,
-			bottom: MAX_PAGE_PADDING_BLOCK,
+			top,
+			bottom,
+			left,
+			right,
 		},
 	});
 
