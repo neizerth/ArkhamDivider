@@ -16,6 +16,7 @@ import {
 	selectEnablePageCounter,
 	selectOrientedPageFormat,
 	selectPageLayoutGrid,
+	selectPagePadding,
 	selectPreviewZoom,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
@@ -37,6 +38,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 	const pageLayoutGrid = useAppSelector(selectPageLayoutGrid);
 	const enablePageCounter = useAppSelector(selectEnablePageCounter);
+	const pagePadding = useAppSelector(selectPagePadding);
 	const story = useAppSelector(selectStory);
 
 	if (!pageFormat || !pageLayoutGrid || pageLayouts.length === 0) {
@@ -68,6 +70,7 @@ export function PrintableContent(props: PrintableContentProps) {
 		bleedEnabled,
 		pageSize,
 		enablePageCounter,
+		pagePadding,
 	};
 
 	const zoom = previewZoom ? previewZoom : 100;

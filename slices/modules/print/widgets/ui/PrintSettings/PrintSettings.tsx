@@ -8,6 +8,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import LinearScaleOutlinedIcon from "@mui/icons-material/LinearScaleOutlined";
 import LooksOneIcon from "@mui/icons-material/LooksOneOutlined";
 import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
+import SpaceBarOutlinedIcon from "@mui/icons-material/SpaceBarOutlined";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
@@ -42,6 +43,7 @@ import {
 	setShowCornerRadius,
 	setSingleItemPerPage,
 } from "../../../shared/lib";
+import { PagePaddingSelect } from "../PagePaddingSelect";
 import { PageSizeSelect } from "../PageSizeSelect";
 import * as C from "./PrintSettings.components";
 
@@ -137,6 +139,18 @@ export function PrintSettings(props: PrintSettingsProps) {
 											<DescriptionOutlinedIcon />
 										</ListItemIcon>
 										<PageSizeSelect
+											onOpen={setSelectOpen.on}
+											onClose={setSelectOpen.off}
+											containerProps={{
+												fullWidth: true,
+											}}
+										/>
+									</ListItem>
+									<ListItem>
+										<ListItemIcon>
+											<SpaceBarOutlinedIcon />
+										</ListItemIcon>
+										<PagePaddingSelect
 											onOpen={setSelectOpen.on}
 											onClose={setSelectOpen.off}
 											containerProps={{

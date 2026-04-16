@@ -218,5 +218,6 @@
 	"category.binder-bookmark.description": "Bookmarks for binders",
 	"divider.binder-bookmark.pocket.name": "Pocket",
 	"divider.binder-bookmark.pocket.description": "Binder bookmark for single pocket",
-	"Binder Spines": "Binder Spines"
+	"Binder Spines": "Binder Spines",
+	"Page padding": "Page padding"
 }

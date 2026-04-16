@@ -1,3 +1,4 @@
+export * from "./PagePaddingSelect";
 export * from "./PageSizeSelect";
 export * from "./PrintableContent";
 export * from "./PrintButton";

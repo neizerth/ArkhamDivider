@@ -16,6 +16,7 @@ import {
 	selectLasercutEnabled,
 	selectOrientedPageFormat,
 	selectPageLayoutGrid,
+	selectPagePadding,
 	selectShowCornerRadius,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
@@ -39,6 +40,7 @@ function selectPDFDataImpl(state: RootState) {
 	const cornerRadiusEnabled = selectShowCornerRadius(state);
 	const lasercutEnabled = selectLasercutEnabled(state);
 	const creaseEnabled = selectCreaseEnabled(state);
+	const pagePadding = selectPagePadding(state);
 	return {
 		icons,
 		language,
@@ -57,6 +59,7 @@ function selectPDFDataImpl(state: RootState) {
 		cornerRadiusEnabled,
 		lasercutEnabled,
 		creaseEnabled,
+		pagePadding,
 	};
 }
 
