@@ -23,7 +23,8 @@ export const getDividerLayoutGrid = ({
 		size: pageSize,
 		unitSize: size,
 		padding: {
-			block: MAX_PAGE_PADDING_BLOCK,
+			top: MAX_PAGE_PADDING_BLOCK,
+			bottom: MAX_PAGE_PADDING_BLOCK,
 		},
 	});
 
