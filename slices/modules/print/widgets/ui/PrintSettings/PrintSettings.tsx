@@ -8,7 +8,6 @@ import LanguageIcon from "@mui/icons-material/Language";
 import LinearScaleOutlinedIcon from "@mui/icons-material/LinearScaleOutlined";
 import LooksOneIcon from "@mui/icons-material/LooksOneOutlined";
 import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
-import SpaceBarOutlinedIcon from "@mui/icons-material/SpaceBarOutlined";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
@@ -146,18 +145,10 @@ export function PrintSettings(props: PrintSettingsProps) {
 											}}
 										/>
 									</ListItem>
-									<ListItem>
-										<ListItemIcon>
-											<SpaceBarOutlinedIcon />
-										</ListItemIcon>
-										<PagePaddingSelect
-											onOpen={setSelectOpen.on}
-											onClose={setSelectOpen.off}
-											containerProps={{
-												fullWidth: true,
-											}}
-										/>
-									</ListItem>
+									<PagePaddingSelect
+										onOpen={setSelectOpen.on}
+										onClose={setSelectOpen.off}
+									/>
 									<ListItemButton onClick={toggleCropMarksEnabled}>
 										<ListItemIcon>
 											<AddIcon />

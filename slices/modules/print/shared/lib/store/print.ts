@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { omit } from "ramda";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { Orientation } from "@/shared/model";
+import type { BoxPosition, Orientation } from "@/shared/model";
 import type { DPI, PageFormatType, PageLayoutGrid } from "../../model";
 
 export type PrintState = {
@@ -17,7 +17,7 @@ export type PrintState = {
 	pageSize: PageFormatType;
 	singleItemPerPage: boolean;
 	orientation: Orientation;
-	pagePadding?: number | null;
+	pagePadding: BoxPosition | null;
 	pageLayoutGrid: PageLayoutGrid | null;
 };
 
@@ -84,7 +84,7 @@ export const {
 	selectOrientation,
 	selectPreviewZoom,
 	selectDPI,
-	selectPagePadding,
+	selectPagePadding: selectInternalPagePadding,
 } = print.selectors;
 
 export default print.reducer;
