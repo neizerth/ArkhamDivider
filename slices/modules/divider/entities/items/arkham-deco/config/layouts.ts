@@ -109,7 +109,7 @@ const ucfStandardLayout: ArkhamDecoDividerLayout = {
 	id: "ucf-standard",
 	groupId: "ucf-standard",
 	name: "divider.arkhamDeco.ucfStandard",
-	previewName: "Meeple House UCF Standard",
+	previewName: "Meeple House UCF Standard GEN1-2",
 	description: "divider.layout.arkham-deco.ucfStandard.description",
 	size: createSize(94, 67),
 	printSize: {
