@@ -10,10 +10,24 @@ export const createSize = (width: number, height: number) => ({
 	height,
 });
 
-export const expandRectSize = (size: BoxSize, value: number) => {
+export const modifyRectSize = (
+	options: { size: BoxSize; value?: number } & Partial<BoxPosition>,
+) => {
+	const {
+		value = 0,
+		top = value,
+		right = value,
+		bottom = value,
+		left = value,
+		size,
+	} = options;
+
+	const inline = left + right;
+	const block = top + bottom;
+
 	return {
-		width: size.width + value * 2,
-		height: size.height + value * 2,
+		width: size.width + inline,
+		height: size.height + block,
 	};
 };
 

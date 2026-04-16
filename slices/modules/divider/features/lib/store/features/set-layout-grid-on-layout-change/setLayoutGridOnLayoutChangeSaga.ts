@@ -7,9 +7,11 @@ import { setLayoutId } from "@/modules/divider/shared/lib";
 import {
 	selectBleedEnabled,
 	selectPageFormat,
+	selectPagePadding,
 	setBleedEnabled,
 	setOrientation,
 	setPageLayoutGrid,
+	setPagePadding,
 	setPageSize,
 } from "@/modules/print/shared/lib";
 import type { Orientation } from "@/shared/model";
@@ -33,11 +35,14 @@ function* worker() {
 
 	const withBleed: ReturnType<typeof selectBleedEnabled> =
 		yield select(selectBleedEnabled);
+	const pagePadding: ReturnType<typeof selectPagePadding> =
+		yield select(selectPagePadding);
 
 	const { rotated, ...grid } = getDividerLayoutGrid({
 		layout,
 		pageFormat,
 		withBleed,
+		pagePadding,
 	});
 
 	const orientation: Orientation = rotated ? "landscape" : "portrait";
@@ -50,4 +55,5 @@ export function* setLayoutGridOnLayoutChangeSaga() {
 	yield takeEvery(setLayoutId.match, worker);
 	yield takeEvery(setPageSize.match, worker);
 	yield takeEvery(setBleedEnabled.match, worker);
+	yield takeEvery(setPagePadding.match, worker);
 }
