@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="refresh" content="0; url=https://arkham-divider.com/" />
+		<link rel="canonical" href="https://arkham-divider.com/" />
+		<title>Loading…</title>
+		<script>
+			const messages = {
+				en: "Loading…",
+				ru: "Загрузка…",
+				fr: "Chargement…",
+				de: "Wird geladen…",
+				es: "Cargando…",
+				it: "Caricamento…",
+				pl: "Ładowanie…",
+				ko: "로딩 중…",
+			};
+
+			const rawLang =
+				(window.navigator.languages && window.navigator.languages[0]) ||
+				window.navigator.language ||
+				"en";
+			const lang = String(rawLang).toLowerCase().split("-")[0] || "en";
+			const msg = messages[lang] || messages.en;
+
+			document.documentElement.lang = lang;
+			document.title = msg;
+
+			const textEl = document.getElementById("loading-text");
+			if (textEl) {
+				textEl.textContent = `${msg} `;
+			}
+
+			window.location.replace("https://arkham-divider.com/");
+		</script>
+	</head>
+	<body>
+		<noscript>
+			<meta http-equiv="refresh" content="0; url=https://arkham-divider.com/" />
+		</noscript>
+		<p>
+			<span id="loading-text">Loading </span
+			><a href="https://arkham-divider.com/">arkham-divider.com</a>…
+		</p>
+	</body>
+</html>
+

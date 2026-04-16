@@ -1,10 +1,10 @@
-import { type PropsWithChildren, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation, useParams } from "react-router";
 import { useAppDispatch } from "@/shared/lib";
 import { changeLocation } from "../../../entities/lib/store/features/changeLocation";
 import { setLocationParams } from "../../../shared/lib";
 
-export function RouterLocationProvider({ children }: PropsWithChildren) {
+export const useRouterLocation = () => {
 	const location = useLocation();
 	const dispatch = useAppDispatch();
 	const params = useParams();
@@ -16,6 +16,4 @@ export function RouterLocationProvider({ children }: PropsWithChildren) {
 	useEffect(() => {
 		dispatch(setLocationParams(params));
 	}, [dispatch, params]);
-
-	return children;
-}
+};

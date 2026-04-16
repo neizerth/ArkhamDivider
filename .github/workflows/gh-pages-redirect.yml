@@ -1,0 +1,49 @@
+name: GitHub Pages Redirect to arkham-divider.com
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: gh-pages-redirect
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Create redirect site
+        run: |
+          set -eu
+          out="dist-redirect"
+          rm -rf "$out"
+          mkdir -p "$out"
+
+          cp "src/gh-pages/index.html" "$out/index.html"
+
+          # Make deep-links work too (GitHub Pages serves 404.html for unknown paths)
+          cp "$out/index.html" "$out/404.html"
+
+          # Ensure Pages doesn't run Jekyll processing
+          touch "$out/.nojekyll"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist-redirect
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

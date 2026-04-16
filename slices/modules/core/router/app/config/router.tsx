@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { createHashRouter } from "react-router";
+import { createBrowserRouter } from "react-router";
 import { Root } from "../ui/Root";
 
 const HomePage = lazy(() =>
@@ -18,7 +18,7 @@ const LayoutPage = lazy(() =>
 );
 
 type HmrData = {
-	router?: ReturnType<typeof createHashRouter>;
+	router?: ReturnType<typeof createBrowserRouter>;
 };
 
 const hot = import.meta.hot;
@@ -26,7 +26,7 @@ const hmrData = hot?.data as HmrData | undefined;
 
 export const router =
 	hmrData?.router ??
-	createHashRouter([
+	createBrowserRouter([
 		{
 			path: "/",
 			element: <Root />,
