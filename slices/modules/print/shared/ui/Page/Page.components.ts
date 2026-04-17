@@ -11,7 +11,8 @@ export const Page = styled(Box)`
 
   @media print {
     page-break-after: always;
-    overflow: hidden;
+    /* Mobile Chrome can clip absolutely-positioned cropmarks more aggressively */
+    overflow: visible;
   }
   @media screen {
     border-radius: 5px;

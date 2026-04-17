@@ -23,6 +23,11 @@ export function Cropmark(props: CropmarkProps) {
 		width: px(cropmarkSx.width),
 		height: px(cropmarkSx.height),
 		backgroundColor: "black",
+		// Help ensure cropmarks appear in mobile print rendering
+		WebkitPrintColorAdjust: "exact",
+		printColorAdjust: "exact",
+		outline: "1px solid black",
+		outlineOffset: "-0.5px",
 	};
 
 	return <Box position="absolute" data-type={props.type} sx={sx} />;
