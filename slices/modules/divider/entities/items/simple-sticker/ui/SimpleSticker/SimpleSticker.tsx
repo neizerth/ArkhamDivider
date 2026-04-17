@@ -4,6 +4,7 @@ import {
 	DividerBleedView as BleedView,
 	DividerContainer as Container,
 	DividerContent as Content,
+	DividerMenu,
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
@@ -62,6 +63,23 @@ export function SimpleSticker(props: SimpleStickerProps) {
 					icon={icon}
 					onClick={setIcon}
 					sx={sx}
+				/>
+				<DividerMenu
+					dividerId={props.id}
+					sx={{
+						position: "absolute",
+						left: 0,
+						top: "50%",
+						transform: "translateY(-50%)",
+						zoom: 0.4,
+						background: "white",
+						opacity: 0.3,
+						"@media screen": {
+							"&:hover": {
+								opacity: 1,
+							},
+						},
+					}}
 				/>
 			</Content>
 		</Container>
