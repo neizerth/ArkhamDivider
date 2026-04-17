@@ -1,5 +1,5 @@
 import type { DividerLayout } from "@/modules/divider/shared/model";
-import { MAX_PAGE_PADDING_BLOCK } from "@/modules/print/shared/config";
+import { MAX_PAGE_MARGIN_BLOCK } from "@/modules/print/shared/config";
 import type { PageFormat } from "@/modules/print/shared/model";
 import type { BoxPosition } from "@/shared/model";
 import { getBoxGrid, modifyRectSize } from "@/shared/util/size";
@@ -8,14 +8,14 @@ type Options = {
 	layout: DividerLayout;
 	pageFormat: PageFormat;
 	withBleed?: boolean;
-	pagePadding: BoxPosition | null;
+	pageMargin: BoxPosition | null;
 };
 
 export const getDividerLayoutGrid = ({
 	layout,
 	pageFormat,
 	withBleed,
-	pagePadding: paddingProp,
+	pageMargin: marginProp,
 }: Options) => {
 	const unitSize = withBleed
 		? modifyRectSize({
@@ -26,17 +26,17 @@ export const getDividerLayoutGrid = ({
 
 	const pageSize = pageFormat.size.mm;
 
-	const pagePadding = paddingProp ?? {
+	const pageMargin = marginProp ?? {
 		top: 0,
 		bottom: 0,
 		left: 0,
 		right: 0,
 	};
 
-	const { left, right } = pagePadding;
+	const { left, right } = pageMargin;
 
-	const top = Math.max(MAX_PAGE_PADDING_BLOCK, pagePadding.top);
-	const bottom = Math.max(MAX_PAGE_PADDING_BLOCK, pagePadding.bottom);
+	const top = Math.max(MAX_PAGE_MARGIN_BLOCK, pageMargin.top);
+	const bottom = Math.max(MAX_PAGE_MARGIN_BLOCK, pageMargin.bottom);
 
 	const boxGrid = getBoxGrid({
 		size: pageSize,

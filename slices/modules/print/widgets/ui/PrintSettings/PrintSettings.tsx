@@ -42,7 +42,7 @@ import {
 	setShowCornerRadius,
 	setSingleItemPerPage,
 } from "../../../shared/lib";
-import { PagePaddingSelect } from "../PagePaddingSelect";
+import { PageMarginSelect } from "../PageMarginSelect";
 import { PageSizeSelect } from "../PageSizeSelect";
 import * as C from "./PrintSettings.components";
 
@@ -145,7 +145,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 											}}
 										/>
 									</ListItem>
-									<PagePaddingSelect
+									<PageMarginSelect
 										onOpen={setSelectOpen.on}
 										onClose={setSelectOpen.off}
 									/>

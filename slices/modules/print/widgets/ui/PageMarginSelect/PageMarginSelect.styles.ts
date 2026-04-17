@@ -1,6 +1,6 @@
 import type { SxProps, Theme } from "@mui/material";
 
-export const pagePaddingListItemSx: SxProps = {
+export const pageMarginListItemSx: SxProps = {
 	width: "100%",
 };
 
@@ -24,6 +24,8 @@ export const previewGridSx: SxProps = {
 	columnGap: 0.5,
 	rowGap: 0.25,
 	minWidth: 56,
+	position: "relative",
+	right: -7,
 };
 
 export const previewUniformGridSx: SxProps = {
@@ -68,7 +70,7 @@ export const formControlSx: SxProps = {
 	marginTop: 0.5,
 };
 
-export const paddingGridSx: SxProps = {
+export const marginGridSx: SxProps = {
 	display: "grid",
 	gridTemplateColumns: "1fr minmax(0, 140px) 1fr",
 	gridTemplateRows: "auto auto auto",
@@ -91,7 +93,7 @@ export const pageLegendSx: SxProps = {
 	typography: "caption",
 };
 
-export const paddingContentPlaceholderSx: SxProps<Theme> = {
+export const marginContentPlaceholderSx: SxProps<Theme> = {
 	gridColumn: 2,
 	gridRow: 2,
 	width: "100%",
@@ -107,7 +109,7 @@ export const paddingContentPlaceholderSx: SxProps<Theme> = {
 	textAlign: "center",
 };
 
-export const getPaddingSideFieldCellSx = (
+export const getMarginSideFieldCellSx = (
 	gridColumn: number,
 	gridRow: number,
 ): SxProps => ({

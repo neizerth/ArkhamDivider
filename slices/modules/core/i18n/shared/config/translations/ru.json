@@ -67,6 +67,8 @@
 	"printInfo.firefoxLargePaper.body": "Печать на бумаге больше A4 в Firefox выходит нечеткой. Для качественной печати создавайте PDF (стрелка рядом с кнопкой Печать).",
 	"printInfo.singleItemPerPage.title": "Один на страницу",
 	"printInfo.singleItemPerPage.body": "Печать в режиме \"Один на страницу\" доступна только при генерации PDF.",
+	"printInfo.sticker.title": "Печать наклеек",
+	"printInfo.sticker.body": "При печати наклеек на обычном принтере плотная бумага может проскальзывать при захвате валом или идти с перекосом. Чтобы это компенсировать, рекомендуется увеличить отступы (поля) в настройках документа и принтера",
 	"Search": "Поиск",
 	"Orientation": "Ориентация",
 	"orientation.horizontal": "Горизонтальная",
@@ -218,5 +220,5 @@
 	"divider.binder-bookmark.pocket.name": "Для ячейки",
 	"divider.binder-bookmark.pocket.description": "Разделитель для вставки в карман листа",
 	"Binder Spines": "Корешки для альбома",
-	"Page padding": "Поля страницы"
+	"Page margin": "Поля страницы"
 }

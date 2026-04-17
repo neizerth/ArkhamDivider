@@ -1,4 +1,4 @@
-import { MAX_PAGE_PADDING_BLOCK, PAGE_CREDITS_SIZE } from "../../config";
+import { MAX_PAGE_MARGIN_BLOCK, PAGE_CREDITS_SIZE } from "../../config";
 import {
 	type GetPageFreeSpaceOptions,
 	getPageFreeSpace,
@@ -7,7 +7,7 @@ import {
 type Options = GetPageFreeSpaceOptions & {
 	isLast: boolean;
 };
-export const getMinPagePaddingTop = (options: Options) => {
+export const getMinPageMarginTop = (options: Options) => {
 	const { isLast } = options;
 	const freeSpace = getPageFreeSpace(options);
 
@@ -17,5 +17,5 @@ export const getMinPagePaddingTop = (options: Options) => {
 
 	const availableSpace = Math.max(0, freeSpace.height - PAGE_CREDITS_SIZE);
 
-	return Math.min(availableSpace, MAX_PAGE_PADDING_BLOCK);
+	return Math.min(availableSpace, MAX_PAGE_MARGIN_BLOCK);
 };

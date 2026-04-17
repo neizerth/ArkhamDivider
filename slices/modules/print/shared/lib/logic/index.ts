@@ -1,6 +1,6 @@
 export * from "./canShowPageCredits";
 export * from "./cropmark";
-export * from "./getMinPagePaddingTop";
+export * from "./getMinPageMarginTop";
 export * from "./getPageCounterText";
 export * from "./getPageFormat";
 export * from "./getPageFreeSpace";

@@ -21,10 +21,10 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { isUniformBoxPosition } from "@/shared/util";
-import { selectPagePadding, setPagePadding } from "../../../shared/lib";
-import * as S from "./PagePaddingSelect.styles";
+import { selectPageMargin, setPageMargin } from "../../../shared/lib";
+import * as S from "./PageMarginSelect.styles";
 
-type PagePaddingSelectProps = {
+type PageMarginSelectProps = {
 	onOpen?: () => void;
 	onClose?: () => void;
 };
@@ -38,6 +38,13 @@ type FormValues = {
 	left: number;
 };
 
+type SideField = {
+	name: keyof FormValues;
+	labelKey: string;
+	gridColumn: number;
+	gridRow: number;
+};
+
 function normalizeNumberInput(value: unknown) {
 	if (value === "" || value == null) {
 		return 0;
@@ -46,34 +53,34 @@ function normalizeNumberInput(value: unknown) {
 	return Number.isFinite(num) ? num : 0;
 }
 
-const SIDE_FIELDS = [
-	{ name: "top" as const, labelKey: "Top" as const, gridColumn: 2, gridRow: 1 },
+const SIDE_FIELDS: SideField[] = [
+	{ name: "top", labelKey: "Top", gridColumn: 2, gridRow: 1 },
 	{
-		name: "left" as const,
-		labelKey: "Left" as const,
+		name: "left",
+		labelKey: "Left",
 		gridColumn: 1,
 		gridRow: 2,
 	},
 	{
-		name: "right" as const,
-		labelKey: "Right" as const,
+		name: "right",
+		labelKey: "Right",
 		gridColumn: 3,
 		gridRow: 2,
 	},
 	{
-		name: "bottom" as const,
-		labelKey: "Bottom" as const,
+		name: "bottom",
+		labelKey: "Bottom",
 		gridColumn: 2,
 		gridRow: 3,
 	},
-] as const;
+];
 
-export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
+export function PageMarginSelect({ onOpen, onClose }: PageMarginSelectProps) {
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
-	const paddingAllId = useId();
+	const marginAllId = useId();
 	const [open, setOpen] = useState(false);
-	const pagePadding = useAppSelector(selectPagePadding);
+	const pageMargin = useAppSelector(selectPageMargin);
 
 	const { register, handleSubmit, reset, setValue } = useForm<FormValues>({
 		defaultValues: {
@@ -126,20 +133,20 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 		if (!open) {
 			return;
 		}
-		const isUniform = isUniformBoxPosition(pagePadding);
+		const isUniform = isUniformBoxPosition(pageMargin);
 		const preset = isUniform
-			? (ALL_SIDES_OPTIONS.find((v) => v === pagePadding.top) ?? null)
+			? (ALL_SIDES_OPTIONS.find((v) => v === pageMargin.top) ?? null)
 			: null;
 
 		setAllSidesMode((preset == null ? "custom" : `${preset}`) as AllSidesMode);
-		reset(pagePadding);
-	}, [open, pagePadding, reset]);
+		reset(pageMargin);
+	}, [open, pageMargin, reset]);
 
 	const onSubmit = (values: FormValues) => {
 		if (allSidesMode !== "custom") {
 			const preset = Number(allSidesMode);
 			dispatch(
-				setPagePadding({
+				setPageMargin({
 					top: preset,
 					right: preset,
 					bottom: preset,
@@ -150,14 +157,7 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 			return;
 		}
 
-		dispatch(
-			setPagePadding({
-				top: normalizeNumberInput(values.top),
-				right: normalizeNumberInput(values.right),
-				bottom: normalizeNumberInput(values.bottom),
-				left: normalizeNumberInput(values.left),
-			}),
-		);
+		dispatch(setPageMargin(values));
 		close();
 	};
 
@@ -174,8 +174,8 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 	} as const;
 
 	const preview = (() => {
-		if (isUniformBoxPosition(pagePadding)) {
-			const value = pagePadding.top;
+		if (isUniformBoxPosition(pageMargin)) {
+			const value = pageMargin.top;
 			const label = value === 0 ? t`None` : `${value} ${t`mm`}`;
 			return (
 				<Typography
@@ -190,33 +190,33 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 		}
 		return (
 			<Box sx={S.previewGridSx}>
-				<Box sx={S.getPreviewNumericCellSx(2, 1)}>{pagePadding.top}</Box>
-				<Box sx={S.getPreviewNumericCellSx(1, 2)}>{pagePadding.left}</Box>
+				<Box sx={S.getPreviewNumericCellSx(2, 1)}>{pageMargin.top}</Box>
+				<Box sx={S.getPreviewNumericCellSx(1, 2)}>{pageMargin.left}</Box>
 				<Box sx={S.getPreviewSpacerCellSx(2, 2)} />
-				<Box sx={S.getPreviewNumericCellSx(3, 2)}>{pagePadding.right}</Box>
-				<Box sx={S.getPreviewNumericCellSx(2, 3)}>{pagePadding.bottom}</Box>
+				<Box sx={S.getPreviewNumericCellSx(3, 2)}>{pageMargin.right}</Box>
+				<Box sx={S.getPreviewNumericCellSx(2, 3)}>{pageMargin.bottom}</Box>
 			</Box>
 		);
 	})();
 
 	return (
 		<>
-			<ListItem disablePadding sx={S.pagePaddingListItemSx}>
+			<ListItem disablePadding sx={S.pageMarginListItemSx}>
 				<ListItemButton onClick={openDialog} sx={S.listItemButtonSx}>
 					<ListItemIcon>
 						<PaddingOutlinedIcon />
 					</ListItemIcon>
-					<ListItemText sx={S.listItemTextSx} primary={t(`Page padding`)} />
+					<ListItemText sx={S.listItemTextSx} primary={t(`Page margin`)} />
 					{preview}
 				</ListItemButton>
 			</ListItem>
 			<Dialog open={open} onClose={close} fullWidth maxWidth="xs">
-				<DialogTitle>{t(`Page padding`)}</DialogTitle>
+				<DialogTitle>{t(`Page margin`)}</DialogTitle>
 				<DialogContent sx={S.dialogContentSx}>
 					<FormControl fullWidth sx={S.formControlSx}>
-						<InputLabel id={paddingAllId}>{t(`All sides`)}</InputLabel>
+						<InputLabel id={marginAllId}>{t(`All sides`)}</InputLabel>
 						<Select<AllSidesMode>
-							labelId={paddingAllId}
+							labelId={marginAllId}
 							label={t(`All sides`)}
 							value={allSidesMode}
 							onChange={onChangeAll}
@@ -234,11 +234,11 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 						<Box component="legend" sx={S.pageLegendSx}>
 							{t(`Page`)}
 						</Box>
-						<Box sx={S.paddingGridSx}>
+						<Box sx={S.marginGridSx}>
 							{SIDE_FIELDS.map(({ name, labelKey, gridColumn, gridRow }) => (
 								<Box
 									key={name}
-									sx={S.getPaddingSideFieldCellSx(gridColumn, gridRow)}
+									sx={S.getMarginSideFieldCellSx(gridColumn, gridRow)}
 								>
 									<TextField
 										label={t(labelKey)}
@@ -254,7 +254,7 @@ export function PagePaddingSelect({ onOpen, onClose }: PagePaddingSelectProps) {
 								</Box>
 							))}
 
-							<Box sx={S.paddingContentPlaceholderSx}>{t(`Content`)}</Box>
+							<Box sx={S.marginContentPlaceholderSx}>{t(`Content`)}</Box>
 						</Box>
 					</Box>
 				</DialogContent>

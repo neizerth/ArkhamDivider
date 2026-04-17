@@ -4,7 +4,7 @@ import { PAGE_CREDITS_SIZE } from "@/modules/print/shared/config";
 import {
 	canShowPageCredits,
 	getGridCropmarks,
-	getMinPagePaddingTop,
+	getMinPageMarginTop,
 	usePrintUnitByRect,
 } from "@/modules/print/shared/lib";
 import type { PageFormat, PageLayout } from "@/modules/print/shared/model";
@@ -25,7 +25,7 @@ type PrintablePageProps<Props extends WithId> = {
 	bleedEnabled: boolean;
 	pageSize: BoxSize;
 	Component: React.ComponentType<Props>;
-	pagePadding: BoxPosition;
+	pageMargin: BoxPosition;
 };
 
 export function PrintablePage<T extends WithId>({
@@ -38,7 +38,7 @@ export function PrintablePage<T extends WithId>({
 	enablePageCounter = true,
 	bleed,
 	pageSize,
-	pagePadding,
+	pageMargin,
 }: PrintablePageProps<T>) {
 	const { items, grid } = pageLayout;
 
@@ -85,13 +85,13 @@ export function PrintablePage<T extends WithId>({
 	const hideCounter =
 		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
 
-	const minPaddingTop = getMinPagePaddingTop({
+	const minMarginTop = getMinPageMarginTop({
 		pageSize,
 		areaSize: usedAreaSize,
 		isLast: pageLayout.isLast,
 	});
 
-	const paddingTop = Math.max(minPaddingTop, pagePadding.top);
+	const paddingTop = Math.max(minMarginTop, pageMargin.top);
 
 	return (
 		<Page
@@ -103,9 +103,9 @@ export function PrintablePage<T extends WithId>({
 			showSide={showSide}
 			justifyContent={justifyContent}
 			paddingTop={mm(paddingTop)}
-			paddingBottom={mm(pagePadding.bottom)}
-			paddingLeft={mm(pagePadding.left)}
-			paddingRight={mm(pagePadding.right)}
+			paddingBottom={mm(pageMargin.bottom)}
+			paddingLeft={mm(pageMargin.left)}
+			paddingRight={mm(pageMargin.right)}
 		>
 			<Stack sx={contentSx}>
 				{rows.map((rowIndex) => (

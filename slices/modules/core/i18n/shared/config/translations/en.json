@@ -81,6 +81,8 @@
 	"printInfo.firefoxLargePaper.body": "Printing on paper larger than A4 in Firefox looks blurry. For best quality, generate a PDF (the arrow next to the Print button).",
 	"printInfo.singleItemPerPage.title": "One per page",
 	"printInfo.singleItemPerPage.body": "Printing in \"One per page\" mode is available only when generating a PDF.",
+	"printInfo.sticker.title": "Printing stickers",
+	"printInfo.sticker.body": "When printing stickers on a regular printer, dense paper may not immediately adhere to the printing roller, and the direction of the paper may deviate. To compensate for this, it is recommended to set the page margins in the settings",
 	"credits.author.description": "<icon/>: You can spend any number<br/>of resources <donationLink>on this address</donationLink><br/><i>Remember, <author>{{name}}</author><br/>is grateful to you</i>",
 	"divider.subtype.faction": "Faction Dividers",
 	"divider.subtype.investigators": "Faction Investigators",
@@ -219,5 +221,5 @@
 	"divider.binder-bookmark.pocket.name": "Pocket",
 	"divider.binder-bookmark.pocket.description": "Binder bookmark for single pocket",
 	"Binder Spines": "Binder Spines",
-	"Page padding": "Page padding"
+	"Page margin": "Page margin"
 }

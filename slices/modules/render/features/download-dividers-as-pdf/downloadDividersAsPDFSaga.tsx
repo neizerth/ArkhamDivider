@@ -85,7 +85,7 @@ function* pdfDownloadWorker({
 		cornerRadiusEnabled,
 		lasercutEnabled,
 		creaseEnabled,
-		pagePadding,
+		pageMargin,
 	}: ReturnType<typeof selectPDFData> = yield select(selectPDFData);
 
 	const total = dividers.length;
@@ -208,7 +208,7 @@ function* pdfDownloadWorker({
 			dpi,
 			singleItemPerPage,
 			cropmarksEnabled,
-			pagePadding,
+			pageMargin,
 		});
 
 		const font = new PDFFontService(doc);

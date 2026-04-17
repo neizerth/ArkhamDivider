@@ -1,9 +1,9 @@
 import { createSelector } from "@reduxjs/toolkit";
 import type { BoxPosition } from "@/shared/model";
 import { sameBoxPosition } from "@/shared/util";
-import { selectInternalPagePadding } from "../print";
+import { selectInternalPageMargin } from "../print";
 
-const ZERO_PADDING: BoxPosition = {
+const ZERO_MARGIN: BoxPosition = {
 	top: 0,
 	right: 0,
 	bottom: 0,
@@ -23,22 +23,22 @@ const isBoxPosition = (value: unknown): value is BoxPosition => {
 	);
 };
 
-export const selectPagePadding = createSelector(
-	[selectInternalPagePadding],
-	(pagePadding) => {
-		if (pagePadding == null) {
-			return ZERO_PADDING;
+export const selectPageMargin = createSelector(
+	[selectInternalPageMargin],
+	(pageMargin) => {
+		if (pageMargin == null) {
+			return ZERO_MARGIN;
 		}
 
-		// Legacy persisted state could store a single numeric padding value.
-		if (typeof pagePadding === "number") {
-			return sameBoxPosition(pagePadding);
+		// Legacy persisted state could store a single numeric value.
+		if (typeof pageMargin === "number") {
+			return sameBoxPosition(pageMargin);
 		}
 
-		if (isBoxPosition(pagePadding)) {
-			return pagePadding;
+		if (isBoxPosition(pageMargin)) {
+			return pageMargin;
 		}
 
-		return ZERO_PADDING;
+		return ZERO_MARGIN;
 	},
 );
