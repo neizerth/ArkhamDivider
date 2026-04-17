@@ -22,6 +22,8 @@ import { sarnetskyCategoryId } from "./sarnetsky/config";
 import { SarnetskyDivider } from "./sarnetsky/ui";
 import { sarnetskyBandCategoryId } from "./sarnetsky-band/config";
 import { SarnetskyBand } from "./sarnetsky-band/ui";
+import { simpleStickerCategoryId } from "./simple-sticker/config";
+import { SimpleSticker } from "./simple-sticker/ui";
 import { tcgDividerStickerCategoryId } from "./tcg-divider-sticker/config";
 import { TCGDividerSticker } from "./tcg-divider-sticker/ui";
 import { vintageDividerCategoryId } from "./vintage/config/common";
@@ -47,4 +49,5 @@ export const dividerComponents: Record<
 	[chapter2CategoryId]: Chapter2Divider,
 	[tcgDividerStickerCategoryId]: TCGDividerSticker,
 	[binderBookmarkCategoryId]: BinderBookmark,
+	[simpleStickerCategoryId]: SimpleSticker,
 };

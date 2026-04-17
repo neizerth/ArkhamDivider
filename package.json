@@ -2,7 +2,7 @@
 	"name": "arkham-divider",
 	"private": true,
 	"type": "module",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"scripts": {
 		"font:install": "tsx ./scripts/install-font.ts",
 		"arkhamesque-classic:load": "tsx ./scripts/load-arkhamesque-classic-data.ts",

@@ -220,5 +220,7 @@
 	"divider.binder-bookmark.pocket.name": "Для ячейки",
 	"divider.binder-bookmark.pocket.description": "Разделитель для вставки в карман листа",
 	"Binder Spines": "Корешки для альбома",
-	"Page margin": "Поля страницы"
+	"Page margin": "Поля страницы",
+	"category.simple-sticker.name": "Наклейки с иконками",
+	"category.simple-sticker.description": "Наклейки под фигурный дырокол"
 }

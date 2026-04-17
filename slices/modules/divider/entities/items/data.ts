@@ -11,6 +11,7 @@ import { invocation2018Category } from "./invocation2018/config";
 import { rynoCategory } from "./ryno/config";
 import { sarnetskyCategory } from "./sarnetsky/config/category";
 import { sarnetskyBandCategory } from "./sarnetsky-band/config";
+import { simpleStickerCategory } from "./simple-sticker/config";
 import { tcgDividerStickerCategory } from "./tcg-divider-sticker/config";
 import { vintageCategory } from "./vintage/config";
 
@@ -29,6 +30,7 @@ export const dividerCategories: DividerCategory[] = [
 	investigatorTokensCategory,
 	tcgDividerStickerCategory,
 	binderBookmarkCategory,
+	simpleStickerCategory,
 ];
 
 export const dividerLayouts = dividerCategories.flatMap(prop("layouts"));

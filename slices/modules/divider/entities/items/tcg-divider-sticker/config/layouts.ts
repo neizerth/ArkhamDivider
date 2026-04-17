@@ -10,7 +10,7 @@ const horizontal: DividerLayout = {
 	groupId: "horizontal",
 	name: "divider.tcg-divider-sticker.lowInk",
 	orientation: "horizontal",
-	color: false,
+	color: true,
 	size: createSize(77, 7),
 	printSize: {
 		300: {

@@ -221,5 +221,7 @@
 	"divider.binder-bookmark.pocket.name": "Pocket",
 	"divider.binder-bookmark.pocket.description": "Binder bookmark for single pocket",
 	"Binder Spines": "Binder Spines",
-	"Page margin": "Page margin"
+	"Page margin": "Page margin",
+	"category.simple-sticker.name": "Simple Stickers",
+	"category.simple-sticker.description": "Simple stickers for round hole punches"
 }

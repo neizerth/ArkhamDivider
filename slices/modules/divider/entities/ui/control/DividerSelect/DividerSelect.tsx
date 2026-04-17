@@ -50,6 +50,9 @@ export function DividerSelect(props: DividerSelectProps) {
 				<MenuItem value="tcg-divider-sticker">
 					{t(`category.tcg-divider-sticker.name`)}
 				</MenuItem>
+				<MenuItem value="simple-sticker">
+					{t(`category.simple-sticker.name`)}
+				</MenuItem>
 				<C.Subheader>{t(`Other`)}</C.Subheader>
 				<MenuItem value="binder-bookmark">
 					{t(`category.binder-bookmark.name`)}
