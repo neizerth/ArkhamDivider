@@ -28,8 +28,6 @@ export function Cropmark(props: CropmarkProps) {
 		"@media print": {
 			// Help ensure cropmarks appear in mobile print rendering
 			printColorAdjust: "exact",
-			// outline: "1px solid black",
-			// outlineOffset: "-0.5px",
 			left: `${mm(cropmarkSx.left)}mm`,
 			top: `${mm(cropmarkSx.top)}mm`,
 			width: `${mm(cropmarkSx.width)}mm`,

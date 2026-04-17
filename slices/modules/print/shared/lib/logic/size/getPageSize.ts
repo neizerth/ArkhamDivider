@@ -20,11 +20,13 @@ type Options = {
 );
 export const getPageSize = (options: Options) => {
 	const { pageFormat, unitSize, singleItemPerPage, cropmarksEnabled } = options;
+	const isMm = options.units === "mm";
+
 	if (singleItemPerPage) {
 		if (!cropmarksEnabled) {
 			return unitSize;
 		}
-		if (options.units === "mm") {
+		if (isMm) {
 			return modifyRectSize({ size: unitSize, value: cropmarkOffset });
 		}
 		const offset = mm2px(cropmarkOffset, options.dpi);
@@ -34,7 +36,8 @@ export const getPageSize = (options: Options) => {
 			value: offset,
 		});
 	}
-	if (options.units === "mm") {
+
+	if (isMm) {
 		return pageFormat.size.mm;
 	}
 	return pageFormat.size[options.dpi];

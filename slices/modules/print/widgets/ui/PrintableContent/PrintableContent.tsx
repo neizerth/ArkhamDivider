@@ -75,7 +75,9 @@ export function PrintableContent(props: PrintableContentProps) {
 
 	const zoom = previewZoom ? previewZoom : 100;
 
-	const debounceValue = `${pageLayouts.length}-${pageFormat.type}-${singleItemPerPage}-${previewZoom}`;
+	const paddingId = JSON.stringify(pagePadding);
+
+	const debounceValue = `${pageLayouts.length}-${pageFormat.type}-${singleItemPerPage}-${previewZoom}-${paddingId}`;
 
 	return (
 		<Stack
