@@ -4,7 +4,7 @@ import { PAGE_CREDITS_SIZE } from "@/modules/print/shared/config";
 import {
 	canShowPageCredits,
 	getGridCropmarks,
-	getPagePaddingTop,
+	getMinPagePaddingTop,
 	usePrintUnitByRect,
 } from "@/modules/print/shared/lib";
 import type { PageFormat, PageLayout } from "@/modules/print/shared/model";
@@ -85,7 +85,7 @@ export function PrintablePage<T extends WithId>({
 	const hideCounter =
 		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
 
-	const minPaddingTop = getPagePaddingTop({
+	const minPaddingTop = getMinPagePaddingTop({
 		pageSize,
 		areaSize: usedAreaSize,
 		isLast: pageLayout.isLast,

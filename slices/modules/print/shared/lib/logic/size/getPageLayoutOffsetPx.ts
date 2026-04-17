@@ -1,7 +1,7 @@
 import type { BoxPosition } from "@/shared/model";
 import type { DPI, PageFormat, PageLayout } from "../../../model";
 import { fromDPI } from "../../util";
-import { getPagePaddingTop } from "../getPagePaddingTop";
+import { getMinPagePaddingTop } from "../getMinPagePaddingTop";
 import { getLayoutSizePx } from "./getLayoutSizePx";
 import { getPageSize } from "./getPageSize";
 import { getUnitSizePx } from "./getUnitSizePx";
@@ -53,7 +53,7 @@ export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
 	}
 	const mm = fromDPI(dpi);
 
-	const minPaddingTop = getPagePaddingTop({
+	const minPaddingTop = getMinPagePaddingTop({
 		pageSize,
 		areaSize: layoutSize,
 		isLast: pageLayout.isLast,

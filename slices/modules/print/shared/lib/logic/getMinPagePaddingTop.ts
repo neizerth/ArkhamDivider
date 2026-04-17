@@ -7,7 +7,7 @@ import {
 type Options = GetPageFreeSpaceOptions & {
 	isLast: boolean;
 };
-export const getPagePaddingTop = (options: Options) => {
+export const getMinPagePaddingTop = (options: Options) => {
 	const { isLast } = options;
 	const freeSpace = getPageFreeSpace(options);
 
