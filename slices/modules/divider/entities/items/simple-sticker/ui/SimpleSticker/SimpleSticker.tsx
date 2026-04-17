@@ -1,8 +1,9 @@
 import type { SxProps } from "@mui/material";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
-	DividerContainer,
-	DividerContent,
+	DividerBleedView as BleedView,
+	DividerContainer as Container,
+	DividerContent as Content,
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
@@ -46,8 +47,9 @@ export function SimpleSticker(props: SimpleStickerProps) {
 	} as SxProps;
 
 	return (
-		<DividerContainer>
-			<DividerContent
+		<Container>
+			<BleedView sx={{ backgroundColor: "white" }} />
+			<Content
 				sx={{
 					borderRadius: "50%",
 					display: "flex",
@@ -61,7 +63,7 @@ export function SimpleSticker(props: SimpleStickerProps) {
 					onClick={setIcon}
 					sx={sx}
 				/>
-			</DividerContent>
-		</DividerContainer>
+			</Content>
+		</Container>
 	);
 }

@@ -24,12 +24,8 @@ export const SimpleStickerPDF: PDFDivider<
 	const stickerIcon = getDividerIcon({
 		divider: props,
 		param: "icon",
-		defaultIcon: props.params?.icon ?? null,
+		defaultIcon: props.icon,
 	});
-
-	if (!stickerIcon) {
-		return;
-	}
 
 	const iconSizeMm = diameterMm * simpleStickerIconScale;
 	const iconOffsetMm = (diameterMm - iconSizeMm) / 2;
@@ -40,6 +36,10 @@ export const SimpleStickerPDF: PDFDivider<
 		width: iconSizeMm,
 		height: iconSizeMm,
 	});
+
+	if (!stickerIcon) {
+		return;
+	}
 
 	await icon.draw(stickerIcon, {
 		x: iconBox.x(),
