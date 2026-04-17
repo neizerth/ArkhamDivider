@@ -82,7 +82,6 @@ export function PrintButton(props: PrintButtonProps) {
 					<Button onClick={print} sx={sx} disabled={disabled}>
 						<Icon icon="printer" /> &nbsp;
 						<Box sx={{ display: { xs: "none", sm: "inline" } }}>{t`Print`}</Box>
-						&nbsp;/ &nbsp; <Icon icon="file-pdf" /> &nbsp; PDF
 					</Button>
 					<Button size="small" onClick={toggle} sx={sx} disabled={disabled}>
 						<Icon icon="download" />
