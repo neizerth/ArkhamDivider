@@ -1,8 +1,6 @@
 name: GitHub Pages Redirect to arkham-divider.com
 
 on:
-  push:
-    branches: ['main']
   workflow_dispatch:
 
 permissions:
