@@ -43,9 +43,19 @@ jobs:
       - name: 📂 Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
+      # Multiline rsync exclude rules (paths under SSH_DIR); with --delete these are not removed on the server.
+      # Repository secret: RSYNC_EXCLUDE_FROM (optional; empty = no extra excludes).
+      - name: 📂 Write rsync exclude rules from secret
+        env:
+          RSYNC_EXCLUDE_FROM: ${{ secrets.RSYNC_EXCLUDE_FROM }}
+        run: |
+          mkdir -p .github
+          printf '%s\n' "$RSYNC_EXCLUDE_FROM" > .github/.rsync-exclude
+
       - name: 📂 Sync files via rsync
         run: |
           sshpass -p '${{ secrets.SSH_PASSWORD }}' rsync -avz --delete \
+            --exclude-from=.github/.rsync-exclude \
             -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             ./dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}
