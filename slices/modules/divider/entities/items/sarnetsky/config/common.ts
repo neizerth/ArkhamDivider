@@ -43,7 +43,7 @@ const rightHorizontalIcon: SarnetskyIcon = {
 const centerHorizontalIcon: SarnetskyIcon = {
 	id: "center",
 	type: "encounter",
-	fontSize: 6.4,
+	fontSize: 6.1,
 	width: 9.8,
 	height: 6.1,
 	right: 39.3,
