@@ -6,6 +6,7 @@ export * from "./function";
 export * from "./number";
 export * from "./object";
 export * from "./promise";
+export * from "./qr";
 export * from "./size";
 export * from "./string";
 export * from "./system";

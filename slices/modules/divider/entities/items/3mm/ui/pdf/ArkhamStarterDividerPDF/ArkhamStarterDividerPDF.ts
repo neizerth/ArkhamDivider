@@ -140,7 +140,8 @@ export const ArkhamStarterDividerPDF: PDFDivider<
 		const fontSize = mm((storyScale / 100) * O.storyTitle.fontSize);
 
 		// Ensure font is loaded into PDFKit state for stroke pass.
-		await text.measureTextWidth(storyTitle, {
+		await text.measureTextWidth({
+			text: storyTitle,
 			fontFamily: storyFontFamily,
 			fontSize,
 		});
@@ -195,7 +196,8 @@ export const ArkhamStarterDividerPDF: PDFDivider<
 		}
 		const xpScale = params?.customXPFontSizeScale ?? 100;
 		const baseFontSize = mm((xpScale / 100) * O.xp.fontSize);
-		const measuredWidth = await text.measureTextWidth(xp, {
+		const measuredWidth = await text.measureTextWidth({
+			text: xp,
 			fontFamily: "Arkhamic",
 			fontSize: baseFontSize,
 		});

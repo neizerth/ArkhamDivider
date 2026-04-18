@@ -42,3 +42,9 @@ export type PageLayoutGrid = {
 	rows: number;
 	cols: number;
 };
+
+/** Page size (mm) + grid area; used with `hasPageCreditsFreeSpace` in print preview and PDF credits. */
+export type PageCreditsVisibilityOptions = {
+	pageLayout: Pick<PageLayout<unknown>, "grid" | "itemsCount">;
+	pageSize: BoxSize;
+};

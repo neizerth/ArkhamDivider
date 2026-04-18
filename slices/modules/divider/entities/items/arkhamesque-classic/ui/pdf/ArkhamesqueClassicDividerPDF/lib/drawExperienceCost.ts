@@ -45,7 +45,8 @@ async function measureXpGlyphs(options: {
 
 	for (const symbol of symbols) {
 		const fontSizeInPoints = millimetersToPoints(symbol.fontSize);
-		const widthInPoints = await textService.measureTextWidth(symbol.char, {
+		const widthInPoints = await textService.measureTextWidth({
+			text: symbol.char,
 			fontFamily: xpFontFamily,
 			fontSize: fontSizeInPoints,
 		});

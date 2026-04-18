@@ -21,6 +21,7 @@ import {
 	getPDFPageLayouts,
 	PDFCounterService,
 	PDFCreaseService,
+	PDFCreditsService,
 	PDFCropmarkService,
 	PDFFontService,
 	PDFIconService,
@@ -222,6 +223,7 @@ function* pdfDownloadWorker({
 		const cropmarks = new PDFCropmarkService(doc);
 		const image = new PDFImageService(doc);
 		const counter = new PDFCounterService(text, pageSizePt);
+		const credits = new PDFCreditsService(doc, text, image);
 		const crease = new PDFCreaseService(doc, { enabled: creaseEnabled });
 
 		const hideCounter =
@@ -244,6 +246,19 @@ function* pdfDownloadWorker({
 					break;
 				}
 				doc.addPage();
+
+				if (layout) {
+					yield call([credits, credits.draw], {
+						pageSize: pageSizePt,
+						pageFormat,
+						layoutGrid,
+						singleItemPerPage,
+						cropmarksEnabled,
+						pdfLayout,
+						layout,
+						language,
+					});
+				}
 				for (const [rowIndex, row] of pdfLayout.items.entries()) {
 					for (const [colIndex, item] of row.items.entries()) {
 						if (writeFailed) {

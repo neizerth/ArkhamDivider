@@ -1,10 +1,11 @@
 import Stack from "@mui/material/Stack";
 import { pick, range } from "ramda";
-import { PAGE_CREDITS_SIZE } from "@/modules/print/shared/config";
+import { creditsParams } from "@/modules/print/shared/config";
 import {
-	canShowPageCredits,
 	getGridCropmarks,
 	getMinPageMarginTop,
+	getPageCreditsAreaSize,
+	hasPageCreditsFreeSpace,
 	usePrintUnitByRect,
 } from "@/modules/print/shared/lib";
 import type { PageFormat, PageLayout } from "@/modules/print/shared/model";
@@ -49,15 +50,9 @@ export function PrintablePage<T extends WithId>({
 	const cols = range(0, grid.cols);
 
 	const containerSize = getRelativeBoxSize(pageSize, grid.size);
-	const usedAreaSize = {
-		width: grid.size.width,
-		height: grid.unitSize.height * pageLayout.itemsCount,
-	};
+	const usedAreaSize = getPageCreditsAreaSize(pageLayout);
 
-	const showCredits = canShowPageCredits({
-		pageSize,
-		areaSize: usedAreaSize,
-	});
+	const showCredits = hasPageCreditsFreeSpace({ pageLayout, pageSize });
 
 	const unitAspectRatio = grid.unitSize.width / grid.unitSize.height;
 
@@ -74,10 +69,10 @@ export function PrintablePage<T extends WithId>({
 
 	const pageCreditsSx = {
 		position: "absolute",
-		bottom: mm(5),
-		left: mm(5),
-		right: mm(5),
-		maxHeight: mm(PAGE_CREDITS_SIZE - 5),
+		bottom: mm(creditsParams.blockPadding),
+		left: mm(creditsParams.blockPadding),
+		right: mm(creditsParams.blockPadding),
+		maxHeight: mm(creditsParams.contentSize - creditsParams.blockPadding),
 	};
 
 	const justifyContent = pageLayout.isLast ? "flex-start" : "center";

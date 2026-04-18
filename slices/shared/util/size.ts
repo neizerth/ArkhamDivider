@@ -61,8 +61,6 @@ export const getBoxGrid = ({
 }) => {
 	const { top = 0, right = 0, bottom = 0, left = 0 } = padding ?? {};
 
-	console.log("padding", padding);
-
 	const inline = left + right;
 	const block = top + bottom;
 

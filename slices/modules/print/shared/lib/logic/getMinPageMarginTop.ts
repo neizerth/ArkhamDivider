@@ -1,4 +1,4 @@
-import { MAX_PAGE_MARGIN_BLOCK, PAGE_CREDITS_SIZE } from "../../config";
+import { creditsParams, MAX_PAGE_MARGIN_BLOCK } from "../../config";
 import {
 	type GetPageFreeSpaceOptions,
 	getPageFreeSpace,
@@ -15,7 +15,10 @@ export const getMinPageMarginTop = (options: Options) => {
 		return 0;
 	}
 
-	const availableSpace = Math.max(0, freeSpace.height - PAGE_CREDITS_SIZE);
+	const availableSpace = Math.max(
+		0,
+		freeSpace.height - creditsParams.contentSize,
+	);
 
 	return Math.min(availableSpace, MAX_PAGE_MARGIN_BLOCK);
 };
