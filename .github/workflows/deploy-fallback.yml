@@ -47,7 +47,7 @@ jobs:
       # Repository secret: RSYNC_EXCLUDE_FROM (optional; empty = no extra excludes).
       - name: 📂 Write rsync exclude rules from secret
         env:
-          RSYNC_EXCLUDE_FROM: ${{ secrets.RSYNC_EXCLUDE_FROM }}
+          RSYNC_EXCLUDE_FROM: ${{ secrets.RSYNC_EXCLUDE }}
         run: |
           mkdir -p .github
           printf '%s\n' "$RSYNC_EXCLUDE_FROM" > .github/.rsync-exclude
