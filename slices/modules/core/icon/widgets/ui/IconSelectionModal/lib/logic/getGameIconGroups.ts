@@ -15,6 +15,7 @@ import {
 	outlinedSlotIcons,
 	signIcons,
 	slotIcons,
+	starterDecksIcons,
 	statsIcons,
 	tokenIcons,
 } from "../../config/icons";
@@ -60,6 +61,7 @@ export const getGameIconGroups = ({ icons, mode }: Options): IconGroup[] => {
 		createIconGroup("Signs", signIcons),
 		createIconGroup("Other", arkhamSlimIcons),
 		createIconGroup("Arkham Cards", arkhamCardsIcons),
+		createIconGroup("Starter Decks", starterDecksIcons),
 	]);
 };
 
