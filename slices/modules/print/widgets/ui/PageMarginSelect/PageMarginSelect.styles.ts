@@ -116,5 +116,8 @@ export const getMarginSideFieldCellSx = (
 	gridColumn,
 	gridRow,
 	width: "100%",
-	minWidth: 80,
+	minWidth: 70,
+	position: "relative",
+	left: "50%",
+	transform: "translateX(-50%)",
 });
