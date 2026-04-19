@@ -2,12 +2,11 @@ import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import type { SxProps } from "@mui/material/styles";
-import { QRCodeSVG } from "qrcode.react";
 import { useTranslation } from "react-i18next";
 import { selectCurrentLanguage } from "@/modules/core/i18n/shared/lib";
 import { fromPx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
-import { Row } from "@/shared/ui";
+import { QR, Row } from "@/shared/ui";
 import { localeData } from "./config";
 
 type ProjectCreditsProps = BoxProps & {
@@ -19,6 +18,7 @@ export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 	const { t } = useTranslation();
 	const { url, platform } = localeData[language] ?? localeData.en;
 	const mm = fromPx(mmSize);
+	const qrSizePx = Math.round(20 * mmSize);
 
 	const linkSx: SxProps = {
 		color: "inherit",
@@ -46,7 +46,7 @@ export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 						":hover": { opacity: 0.6 },
 					}}
 				>
-					<QRCodeSVG value={url} width={mm(20)} height={mm(20)} />
+					<QR url={url} size={qrSizePx} />
 				</Link>
 			</Row>
 		</Box>

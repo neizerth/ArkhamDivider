@@ -2,13 +2,12 @@ import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import type { SxProps } from "@mui/material/styles";
-import { QRCodeSVG } from "qrcode.react";
 import { Trans } from "react-i18next";
 import { useDonationUrl } from "@/entities/common/lib";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { fromPx } from "@/modules/print/shared/lib";
 import type { Author } from "@/shared/model";
-import { Row } from "@/shared/ui";
+import { QR, Row } from "@/shared/ui";
 
 type AuthorCreditsProps = BoxProps & {
 	author: Author;
@@ -33,6 +32,7 @@ export function AuthorCredits({
 	};
 
 	const url = useDonationUrl(donationUrl) as string;
+	const qrSizePx = Math.round(20 * mmSize);
 
 	return (
 		<Box {...props}>
@@ -44,7 +44,7 @@ export function AuthorCredits({
 						":hover": { opacity: 0.6 },
 					}}
 				>
-					<QRCodeSVG value={url} width={mm(20)} height={mm(20)} />
+					<QR url={url} size={qrSizePx} />
 				</Link>
 				<Box fontSize={mm(3)}>
 					<Trans
