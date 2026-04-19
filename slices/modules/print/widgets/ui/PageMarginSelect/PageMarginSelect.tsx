@@ -250,6 +250,7 @@ export function PageMarginSelect({ onOpen, onClose }: PageMarginSelectProps) {
 								>
 									<TextField
 										label={t(labelKey)}
+										sx={S.marginSideTextFieldSx}
 										{...register(name, {
 											setValueAs: normalizeNumberInput,
 										})}
@@ -275,6 +276,7 @@ export function PageMarginSelect({ onOpen, onClose }: PageMarginSelectProps) {
 								>
 									{t(`Content`)}
 								</Box>
+								<Box display={{ xs: "block", sm: "none" }}>{t(`mm`)}</Box>
 							</Box>
 						</Box>
 					</Box>
