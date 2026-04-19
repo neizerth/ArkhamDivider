@@ -15,6 +15,8 @@
 	"divider.chapter2.name": "Chapter 2",
 	"color.grayscale": "Grayscale",
 	"color.color": "Color",
+	"info.lasercut": "Creates a lasercut vector shape, supports corner rounding. Use for rounding dividers with tabs, round stickers, investigator tokens or as a convenient outline for scissors",
+	"info.crease": "Creates a crease line. Protects a divider from cracks in paint/lacquer and deformation when folding",
 	"info.sleeve.customCut.description": "Will need to be cut manually from the top of the sleeve",
 	"layout.sleeve.outerSleeve.description": "Also known as Outer or Character Sleeves. They are made by KMC (CSG Character Sleeve Guard) and Dragon Shield",
 	"Include Return Set": "Include Return Set",
@@ -224,5 +226,6 @@
 	"Page margin": "Page margin",
 	"category.simple-sticker.name": "Simple Stickers",
 	"category.simple-sticker.description": "Simple stickers for round hole punches",
-	"Starter Decks": "Starter Decks"
+	"Starter Decks": "Starter Decks",
+	"PDF-only": "PDF-only"
 }

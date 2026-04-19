@@ -8,6 +8,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import LinearScaleOutlinedIcon from "@mui/icons-material/LinearScaleOutlined";
 import LooksOneIcon from "@mui/icons-material/LooksOneOutlined";
 import PinOutlinedIcon from "@mui/icons-material/PinOutlined";
+import { Box, Chip, Tooltip } from "@mui/material";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import List from "@mui/material/List";
@@ -23,7 +24,7 @@ import { LanguageSelect } from "@/modules/core/i18n/entities/ui/LanguageSelect";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import { useAppSelector, useBooleanAction } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
-import { StoreSwitch } from "@/shared/ui";
+import { Row, StoreSwitch } from "@/shared/ui";
 import {
 	selectBleedEnabled,
 	selectCreaseEnabled,
@@ -203,28 +204,7 @@ export function PrintSettings(props: PrintSettingsProps) {
 											selector={selectShowCornerRadius}
 										/>
 									</ListItemButton>
-									<ListItemButton onClick={toggleLasercutEnabled}>
-										<ListItemIcon>
-											<Lasercut width={24} height={24} />
-										</ListItemIcon>
-										<ListItemText primary={t(`Lasercut`)} />
-										<StoreSwitch
-											actionCreator={setLasercutEnabled}
-											selector={selectLasercutEnabled}
-										/>
-									</ListItemButton>
-									{layout?.creasingTop && (
-										<ListItemButton onClick={toggleCreaseEnabled}>
-											<ListItemIcon>
-												<LinearScaleOutlinedIcon />
-											</ListItemIcon>
-											<ListItemText primary={t(`print.crease`)} />
-											<StoreSwitch
-												actionCreator={setCreaseEnabled}
-												selector={selectCreaseEnabled}
-											/>
-										</ListItemButton>
-									)}
+
 									<ListItemButton onClick={toggleEnablePageCounter}>
 										<ListItemIcon>
 											<PinOutlinedIcon />
@@ -235,6 +215,70 @@ export function PrintSettings(props: PrintSettingsProps) {
 											selector={selectEnablePageCounter}
 										/>
 									</ListItemButton>
+									<ListItemButton onClick={toggleLasercutEnabled}>
+										<ListItemIcon>
+											<Lasercut width={24} height={24} />
+										</ListItemIcon>
+										<ListItemText
+											primary={
+												<Tooltip
+													title={t("info.lasercut")}
+													placement="top"
+													slotProps={{
+														tooltip: {
+															sx: {
+																maxWidth: 320,
+																fontSize: "0.875rem",
+																padding: 1.5,
+															},
+														},
+													}}
+												>
+													<Row alignItems="center" gap={1}>
+														<Box>{t(`Lasercut`)}</Box>
+														<Chip label="PDF" size="small" />
+													</Row>
+												</Tooltip>
+											}
+										/>
+										<StoreSwitch
+											actionCreator={setLasercutEnabled}
+											selector={selectLasercutEnabled}
+										/>
+									</ListItemButton>
+									{layout?.creasingTop && (
+										<ListItemButton onClick={toggleCreaseEnabled}>
+											<ListItemIcon>
+												<LinearScaleOutlinedIcon />
+											</ListItemIcon>
+											<ListItemText
+												primary={
+													<Tooltip
+														title={t("info.crease")}
+														placement="top"
+														slotProps={{
+															tooltip: {
+																sx: {
+																	maxWidth: 320,
+																	fontSize: "0.875rem",
+																	padding: 1.5,
+																},
+															},
+														}}
+													>
+														<Row alignItems="center" gap={1}>
+															<Box>{t(`print.crease`)}</Box>
+															<Chip label="PDF" size="small" />
+														</Row>
+													</Tooltip>
+												}
+											/>
+											<StoreSwitch
+												actionCreator={setCreaseEnabled}
+												selector={selectCreaseEnabled}
+											/>
+										</ListItemButton>
+									)}
 								</List>
 							</Paper>
 						</Grow>
