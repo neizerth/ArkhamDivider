@@ -113,3 +113,5 @@ export function VintageDivider(props: VintageDividerProps) {
 		</VintageDividerContext.Provider>
 	);
 }
+
+export default VintageDivider;

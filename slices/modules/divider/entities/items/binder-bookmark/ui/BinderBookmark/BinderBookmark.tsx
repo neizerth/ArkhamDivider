@@ -124,3 +124,5 @@ export function BinderBookmark(props: BinderBookmarkProps) {
 		</Container>
 	);
 }
+
+export default BinderBookmark;

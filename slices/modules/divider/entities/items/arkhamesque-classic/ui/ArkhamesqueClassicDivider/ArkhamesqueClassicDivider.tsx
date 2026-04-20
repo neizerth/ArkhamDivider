@@ -126,3 +126,5 @@ export function ArkhamesqueClassicDivider(
 		</Context.Provider>
 	);
 }
+
+export default ArkhamesqueClassicDivider;

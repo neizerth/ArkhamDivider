@@ -108,3 +108,5 @@ export function TCGDividerSticker(props: TCGDividerStickerProps) {
 		</Container>
 	);
 }
+
+export default TCGDividerSticker;

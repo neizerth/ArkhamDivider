@@ -104,3 +104,5 @@ export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 		</ArkhamDecoDividerContext.Provider>
 	);
 }
+
+export default ArkhamDecoDivider;

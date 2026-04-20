@@ -199,3 +199,5 @@ export function ClassicDivider(props: DividerWithRelations) {
 		</Container>
 	);
 }
+
+export default ClassicDivider;

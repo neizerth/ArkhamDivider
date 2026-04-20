@@ -18,55 +18,49 @@ import { vintageDividerCategoryId } from "./vintage/config/common";
 
 export { dividerCategories, dividerLayouts, invocation2018CategoryId };
 
-const ClassicDivider = lazy(() =>
-	import("./classic/ui").then((m) => ({ default: m.ClassicDivider })),
+const ClassicDivider = lazy(
+	() => import("./classic/ui/ClassicDivider/ClassicDivider"),
 );
-const Invocation2018Divider = lazy(() =>
-	import("./invocation2018/ui").then((m) => ({
-		default: m.Invocation2018Divider,
-	})),
+const Invocation2018Divider = lazy(
+	() =>
+		import("./invocation2018/ui/Invocation2018Divider/Invocation2018Divider"),
 );
-const SarnetskyDivider = lazy(() =>
-	import("./sarnetsky/ui").then((m) => ({ default: m.SarnetskyDivider })),
+const SarnetskyDivider = lazy(
+	() => import("./sarnetsky/ui/SarnetskyDivider/SarnetskyDivider"),
 );
-const SarnetskyBand = lazy(() =>
-	import("./sarnetsky-band/ui").then((m) => ({ default: m.SarnetskyBand })),
+const SarnetskyBand = lazy(
+	() => import("./sarnetsky-band/ui/SarnetskyBand/SarnetskyBand"),
 );
-const ArkhamDecoDivider = lazy(() =>
-	import("./arkham-deco/ui").then((m) => ({ default: m.ArkhamDecoDivider })),
+const ArkhamDecoDivider = lazy(
+	() => import("./arkham-deco/ui/ArkhamDecoDivider/ArkhamDecoDivider"),
 );
-const RynoDivider = lazy(() =>
-	import("./ryno/ui/RynoDivider").then((m) => ({ default: m.RynoDivider })),
+const RynoDivider = lazy(() => import("./ryno/ui/RynoDivider/RynoDivider"));
+const ArkhamesqueClassicDivider = lazy(
+	() =>
+		import(
+			"./arkhamesque-classic/ui/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider"
+		),
 );
-const ArkhamesqueClassicDivider = lazy(() =>
-	import("./arkhamesque-classic/ui").then((m) => ({
-		default: m.ArkhamesqueClassicDivider,
-	})),
+const ArkhamStarterDivider = lazy(
+	() => import("./3mm/ui/ArkhamStarterDivider/ArkhamStarterDivider"),
 );
-const ArkhamStarterDivider = lazy(() =>
-	import("./3mm/ui").then((m) => ({ default: m.ArkhamStarterDivider })),
+const VintageDivider = lazy(
+	() => import("./vintage/ui/VintageDivider/VintageDivider"),
 );
-const VintageDivider = lazy(() =>
-	import("./vintage/ui").then((m) => ({ default: m.VintageDivider })),
+const InvestigatorToken = lazy(
+	() => import("./investigator-tokens/ui/InvestigatorToken/InvestigatorToken"),
 );
-const InvestigatorToken = lazy(() =>
-	import("./investigator-tokens/ui").then((m) => ({
-		default: m.InvestigatorToken,
-	})),
+const Chapter2Divider = lazy(
+	() => import("./chapter2/ui/Chapter2Divider/Chapter2Divider"),
 );
-const Chapter2Divider = lazy(() =>
-	import("./chapter2/ui").then((m) => ({ default: m.Chapter2Divider })),
+const TCGDividerSticker = lazy(
+	() => import("./tcg-divider-sticker/ui/TCGDividerSticker/TCGDividerSticker"),
 );
-const TCGDividerSticker = lazy(() =>
-	import("./tcg-divider-sticker/ui").then((m) => ({
-		default: m.TCGDividerSticker,
-	})),
+const BinderBookmark = lazy(
+	() => import("./binder-bookmark/ui/BinderBookmark/BinderBookmark"),
 );
-const BinderBookmark = lazy(() =>
-	import("./binder-bookmark/ui").then((m) => ({ default: m.BinderBookmark })),
-);
-const SimpleSticker = lazy(() =>
-	import("./simple-sticker/ui").then((m) => ({ default: m.SimpleSticker })),
+const SimpleSticker = lazy(
+	() => import("./simple-sticker/ui/SimpleSticker/SimpleSticker"),
 );
 
 export const dividerComponents: Record<

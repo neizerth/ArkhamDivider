@@ -85,3 +85,5 @@ export function SimpleSticker(props: SimpleStickerProps) {
 		</Container>
 	);
 }
+
+export default SimpleSticker;

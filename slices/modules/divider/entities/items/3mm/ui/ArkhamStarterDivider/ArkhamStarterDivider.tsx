@@ -48,3 +48,5 @@ export function ArkhamStarterDivider(props: ArkhamStarterDividerProps) {
 		</ArkhamStarterDividerContext.Provider>
 	);
 }
+
+export default ArkhamStarterDivider;
