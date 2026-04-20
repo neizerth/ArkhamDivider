@@ -30,7 +30,7 @@ export const arkhamesqueClassicObjects = {
 		/** Absolute Y position of the scenario number badge (mm). */
 		// top: 4.3,
 		// top: 5,
-		top: 4.3,
+		top: 4.2,
 		/** Absolute X position from the right edge (mm). */
 		right: 7.8,
 		/** Fixed badge width (mm). */

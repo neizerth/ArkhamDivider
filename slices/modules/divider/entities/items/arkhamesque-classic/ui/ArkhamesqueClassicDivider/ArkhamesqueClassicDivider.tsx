@@ -102,6 +102,7 @@ export function ArkhamesqueClassicDivider(
 					)}
 					{showLeftIcon && (
 						<DividerIcon
+							dividerId={props.id}
 							icon={leftIcon}
 							sx={leftIconSx}
 							scaleType="circle"
@@ -112,6 +113,7 @@ export function ArkhamesqueClassicDivider(
 					{showSecondaryIcon && (
 						<Box sx={bottomIconContainerSx}>
 							<DividerIcon
+								dividerId={props.id}
 								icon={bottomIcon}
 								sx={bottomIconSx}
 								scaleType="circle"

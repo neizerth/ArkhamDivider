@@ -34,7 +34,8 @@ export const getArkhamesqueClassicScenarioImage = ({
 	const parts = [
 		categoryPrefix,
 		story.name,
-		scenario ? scenario.name : undefined,
+		scenario ? scenario.name : null,
+		!scenario && divider.story.return_to_code ? story.return_name : null,
 	].filter(isNotNil);
 	const filename = parts.join("");
 
