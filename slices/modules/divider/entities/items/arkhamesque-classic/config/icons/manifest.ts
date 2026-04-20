@@ -4,7 +4,7 @@ import { percent } from "@/shared/util";
 export const arkhamesqueClassicManifest = defaultIconPositionManifest;
 
 const returnPosition = {
-	top: percent(1),
+	top: percent(-1),
 	left: percent(2),
 };
 

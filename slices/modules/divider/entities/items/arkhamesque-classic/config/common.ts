@@ -13,7 +13,7 @@ export const arkhamesqueClassicObjects = {
 		right: 0.6,
 	},
 	bottomIcon: {
-		top: 69.2,
+		top: 69.1,
 		left: 0,
 		right: 0,
 		height: 5.8,
