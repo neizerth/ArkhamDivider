@@ -1,7 +1,7 @@
 import type { SxProps } from "@mui/material";
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import { usePrintUnit } from "@/modules/print/shared/lib";
 import { Image } from "@/shared/ui";
 import { sarnetskyBandImages } from "../../config/common";
@@ -41,16 +41,18 @@ export function SarnetskyBandBackground({
 
 	return (
 		<Box {...props} color={backgroundColor}>
-			{images.map((item) => (
-				<Fragment key={item.type}>
-					{item.type === "background" && (
-						<Image sx={sxMap[item.type]} src={item.src} />
-					)}
-					{item.type !== "background" && side === "front" && (
-						<Box component={item.Component} sx={sxMap[item.type]} />
-					)}
-				</Fragment>
-			))}
+			<Suspense fallback={null}>
+				{images.map((item) => (
+					<Fragment key={item.type}>
+						{item.type === "background" && (
+							<Image sx={sxMap[item.type]} src={item.src} />
+						)}
+						{item.type !== "background" && side === "front" && (
+							<Box component={item.Component} sx={sxMap[item.type]} />
+						)}
+					</Fragment>
+				))}
+			</Suspense>
 		</Box>
 	);
 }

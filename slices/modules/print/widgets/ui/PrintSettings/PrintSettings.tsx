@@ -1,6 +1,3 @@
-import Bleed from "@assets/images/bleed.svg?react";
-import CornerRadius from "@assets/images/corner-radius.svg?react";
-import Lasercut from "@assets/images/lasercut.svg?react";
 import AddIcon from "@mui/icons-material/Add";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import ImportContactsIcon from "@mui/icons-material/ImportContactsOutlined";
@@ -18,7 +15,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import SvgIcon from "@mui/material/SvgIcon";
-import { type JSX, useCallback, useRef, useState } from "react";
+import { type JSX, lazy, Suspense, useCallback, useRef, useState } from "react";
+
+const Bleed = lazy(() => import("@assets/images/bleed.svg?react"));
+const CornerRadius = lazy(
+	() => import("@assets/images/corner-radius.svg?react"),
+);
+const Lasercut = lazy(() => import("@assets/images/lasercut.svg?react"));
+
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "@/modules/core/i18n/entities/ui/LanguageSelect";
 import { selectLayout } from "@/modules/divider/entities/lib";
@@ -121,140 +125,109 @@ export function PrintSettings(props: PrintSettingsProps) {
 									overflow: "auto",
 								}}
 							>
-								<List>
-									<ListItem>
-										<ListItemIcon>
-											<LanguageIcon />
-										</ListItemIcon>
-										<LanguageSelect
-											onOpen={setSelectOpen.on}
-											onClose={setSelectOpen.off}
-											containerProps={{
-												fullWidth: true,
-											}}
-										/>
-									</ListItem>
-									<ListItem>
-										<ListItemIcon>
-											<DescriptionOutlinedIcon />
-										</ListItemIcon>
-										<PageSizeSelect
-											onOpen={setSelectOpen.on}
-											onClose={setSelectOpen.off}
-											containerProps={{
-												fullWidth: true,
-											}}
-										/>
-									</ListItem>
-									<PageMarginSelect
-										onOpen={setSelectOpen.on}
-										onClose={setSelectOpen.off}
-									/>
-									<ListItemButton onClick={toggleCropMarksEnabled}>
-										<ListItemIcon>
-											<AddIcon />
-										</ListItemIcon>
-										<ListItemText primary={t(`Crop marks`)} />
-										<StoreSwitch
-											actionCreator={setCropMarksEnabled}
-											selector={selectCropMarksEnabled}
-										/>
-									</ListItemButton>
-									<ListItemButton onClick={toggleBleedEnabled}>
-										<ListItemIcon>
-											<SvgIcon>
-												<Bleed />
-											</SvgIcon>
-										</ListItemIcon>
-										<ListItemText primary={t(`Bleed`)} />
-										<StoreSwitch
-											actionCreator={setBleedEnabled}
-											selector={selectBleedEnabled}
-										/>
-									</ListItemButton>
-									<ListItemButton onClick={toggleDoubleSidePrintEnabled}>
-										<ListItemIcon>
-											<ImportContactsIcon />
-										</ListItemIcon>
-										<ListItemText primary={t(`2 sides`)} />
-										<StoreSwitch
-											actionCreator={setDoubleSidePrintEnabled}
-											selector={selectDoubleSidePrintEnabled}
-										/>
-									</ListItemButton>
-									<ListItemButton onClick={toggleSingleItemPerPage}>
-										<ListItemIcon>
-											<LooksOneIcon />
-										</ListItemIcon>
-										<ListItemText primary={t(`One per page`)} />
-										<StoreSwitch
-											actionCreator={setSingleItemPerPage}
-											selector={selectSingleItemPerPage}
-										/>
-									</ListItemButton>
-									<ListItemButton onClick={toggleShowCornerRadius}>
-										<ListItemIcon>
-											<SvgIcon>
-												<CornerRadius />
-											</SvgIcon>
-										</ListItemIcon>
-										<ListItemText primary={t(`print.cornerRadius`)} />
-										<StoreSwitch
-											actionCreator={setShowCornerRadius}
-											selector={selectShowCornerRadius}
-										/>
-									</ListItemButton>
-
-									<ListItemButton onClick={toggleEnablePageCounter}>
-										<ListItemIcon>
-											<PinOutlinedIcon />
-										</ListItemIcon>
-										<ListItemText primary={t(`Page counter`)} />
-										<StoreSwitch
-											actionCreator={setEnablePageCounter}
-											selector={selectEnablePageCounter}
-										/>
-									</ListItemButton>
-									<ListItemButton onClick={toggleLasercutEnabled}>
-										<ListItemIcon>
-											<Lasercut width={24} height={24} />
-										</ListItemIcon>
-										<ListItemText
-											primary={
-												<Tooltip
-													title={t("info.lasercut")}
-													placement="top"
-													slotProps={{
-														tooltip: {
-															sx: {
-																maxWidth: 320,
-																fontSize: "0.875rem",
-																padding: 1.5,
-															},
-														},
-													}}
-												>
-													<Row alignItems="center" gap={1}>
-														<Box>{t(`Lasercut`)}</Box>
-														<Chip label="PDF" size="small" />
-													</Row>
-												</Tooltip>
-											}
-										/>
-										<StoreSwitch
-											actionCreator={setLasercutEnabled}
-											selector={selectLasercutEnabled}
-										/>
-									</ListItemButton>
-									{layout?.creasingTop && (
-										<ListItemButton onClick={toggleCreaseEnabled}>
+								<Suspense fallback={null}>
+									<List>
+										<ListItem>
 											<ListItemIcon>
-												<LinearScaleOutlinedIcon />
+												<LanguageIcon />
+											</ListItemIcon>
+											<LanguageSelect
+												onOpen={setSelectOpen.on}
+												onClose={setSelectOpen.off}
+												containerProps={{
+													fullWidth: true,
+												}}
+											/>
+										</ListItem>
+										<ListItem>
+											<ListItemIcon>
+												<DescriptionOutlinedIcon />
+											</ListItemIcon>
+											<PageSizeSelect
+												onOpen={setSelectOpen.on}
+												onClose={setSelectOpen.off}
+												containerProps={{
+													fullWidth: true,
+												}}
+											/>
+										</ListItem>
+										<PageMarginSelect
+											onOpen={setSelectOpen.on}
+											onClose={setSelectOpen.off}
+										/>
+										<ListItemButton onClick={toggleCropMarksEnabled}>
+											<ListItemIcon>
+												<AddIcon />
+											</ListItemIcon>
+											<ListItemText primary={t(`Crop marks`)} />
+											<StoreSwitch
+												actionCreator={setCropMarksEnabled}
+												selector={selectCropMarksEnabled}
+											/>
+										</ListItemButton>
+										<ListItemButton onClick={toggleBleedEnabled}>
+											<ListItemIcon>
+												<SvgIcon>
+													<Bleed />
+												</SvgIcon>
+											</ListItemIcon>
+											<ListItemText primary={t(`Bleed`)} />
+											<StoreSwitch
+												actionCreator={setBleedEnabled}
+												selector={selectBleedEnabled}
+											/>
+										</ListItemButton>
+										<ListItemButton onClick={toggleDoubleSidePrintEnabled}>
+											<ListItemIcon>
+												<ImportContactsIcon />
+											</ListItemIcon>
+											<ListItemText primary={t(`2 sides`)} />
+											<StoreSwitch
+												actionCreator={setDoubleSidePrintEnabled}
+												selector={selectDoubleSidePrintEnabled}
+											/>
+										</ListItemButton>
+										<ListItemButton onClick={toggleSingleItemPerPage}>
+											<ListItemIcon>
+												<LooksOneIcon />
+											</ListItemIcon>
+											<ListItemText primary={t(`One per page`)} />
+											<StoreSwitch
+												actionCreator={setSingleItemPerPage}
+												selector={selectSingleItemPerPage}
+											/>
+										</ListItemButton>
+										<ListItemButton onClick={toggleShowCornerRadius}>
+											<ListItemIcon>
+												<SvgIcon>
+													<CornerRadius />
+												</SvgIcon>
+											</ListItemIcon>
+											<ListItemText primary={t(`print.cornerRadius`)} />
+											<StoreSwitch
+												actionCreator={setShowCornerRadius}
+												selector={selectShowCornerRadius}
+											/>
+										</ListItemButton>
+
+										<ListItemButton onClick={toggleEnablePageCounter}>
+											<ListItemIcon>
+												<PinOutlinedIcon />
+											</ListItemIcon>
+											<ListItemText primary={t(`Page counter`)} />
+											<StoreSwitch
+												actionCreator={setEnablePageCounter}
+												selector={selectEnablePageCounter}
+											/>
+										</ListItemButton>
+										<ListItemButton onClick={toggleLasercutEnabled}>
+											<ListItemIcon>
+												<Lasercut width={24} height={24} />
 											</ListItemIcon>
 											<ListItemText
 												primary={
 													<Tooltip
-														title={t("info.crease")}
+														title={t("info.lasercut")}
 														placement="top"
 														slotProps={{
 															tooltip: {
@@ -267,19 +240,52 @@ export function PrintSettings(props: PrintSettingsProps) {
 														}}
 													>
 														<Row alignItems="center" gap={1}>
-															<Box>{t(`print.crease`)}</Box>
+															<Box>{t(`Lasercut`)}</Box>
 															<Chip label="PDF" size="small" />
 														</Row>
 													</Tooltip>
 												}
 											/>
 											<StoreSwitch
-												actionCreator={setCreaseEnabled}
-												selector={selectCreaseEnabled}
+												actionCreator={setLasercutEnabled}
+												selector={selectLasercutEnabled}
 											/>
 										</ListItemButton>
-									)}
-								</List>
+										{layout?.creasingTop && (
+											<ListItemButton onClick={toggleCreaseEnabled}>
+												<ListItemIcon>
+													<LinearScaleOutlinedIcon />
+												</ListItemIcon>
+												<ListItemText
+													primary={
+														<Tooltip
+															title={t("info.crease")}
+															placement="top"
+															slotProps={{
+																tooltip: {
+																	sx: {
+																		maxWidth: 320,
+																		fontSize: "0.875rem",
+																		padding: 1.5,
+																	},
+																},
+															}}
+														>
+															<Row alignItems="center" gap={1}>
+																<Box>{t(`print.crease`)}</Box>
+																<Chip label="PDF" size="small" />
+															</Row>
+														</Tooltip>
+													}
+												/>
+												<StoreSwitch
+													actionCreator={setCreaseEnabled}
+													selector={selectCreaseEnabled}
+												/>
+											</ListItemButton>
+										)}
+									</List>
+								</Suspense>
 							</Paper>
 						</Grow>
 					)}

@@ -1,4 +1,6 @@
-import frame from "./frame.svg?react";
-import variable from "./variable.svg?react";
+import { lazy } from "react";
 
-export const sarnetskyBandStandaloneAssets = { frame, variable };
+export const sarnetskyBandStandaloneAssets = {
+	frame: lazy(() => import("./frame.svg?react")),
+	variable: lazy(() => import("./variable.svg?react")),
+};
