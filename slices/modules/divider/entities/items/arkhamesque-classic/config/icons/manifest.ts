@@ -5,7 +5,7 @@ export const arkhamesqueClassicManifest = defaultIconPositionManifest;
 
 const returnPosition = {
 	top: percent(-1),
-	left: percent(2),
+	left: percent(2.5),
 };
 
 const returnPositionIconKeys = [

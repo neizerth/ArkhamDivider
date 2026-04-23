@@ -69,8 +69,8 @@ const medium: DividerLayout = {
 	size: createSize(89.25, 77),
 	printSize: {
 		300: {
-			size: createSize(1051, 898),
-			bleedSize: createSize(1122, 969),
+			size: createSize(1054, 909),
+			bleedSize: createSize(1125, 980),
 		},
 	},
 };
