@@ -1,5 +1,5 @@
 import Box, { type BoxProps } from "@mui/material/Box";
-import type { SxProps } from "@mui/material/styles";
+import type { SxProps, Theme } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 import { getQRDataUrl } from "@/shared/util/qr";
 
@@ -34,41 +34,38 @@ export function QR({ url, size, mmSize, sx, ...boxProps }: QRProps) {
 		};
 	}, [url, rasterSize]);
 
+	const placeholderSx = [
+		{
+			width: `${sizePx}px`,
+			height: `${sizePx}px`,
+			flexShrink: 0,
+			"@media print": {
+				width: `${size}mm`,
+				height: `${size}mm`,
+			},
+		} satisfies SxProps<Theme>,
+		...(Array.isArray(sx) ? sx : sx != null ? [sx] : []),
+	] as SxProps<Theme>;
+
+	const imageSx = [
+		{
+			width: `${sizePx}px`,
+			height: `${sizePx}px`,
+			display: "block",
+			flexShrink: 0,
+			"@media print": {
+				width: `${size}mm`,
+				height: `${size}mm`,
+			},
+		} satisfies SxProps<Theme>,
+		...(Array.isArray(sx) ? sx : sx != null ? [sx] : []),
+	] as SxProps<Theme>;
+
 	if (!dataUrl) {
-		return (
-			<Box
-				{...boxProps}
-				sx={{
-					width: `${sizePx}px`,
-					height: `${sizePx}px`,
-					flexShrink: 0,
-					...sx,
-					"@media print": {
-						width: `${size}mm`,
-						height: `${size}mm`,
-					},
-				}}
-			/>
-		);
+		return <Box {...boxProps} sx={placeholderSx} />;
 	}
 
 	return (
-		<Box
-			{...boxProps}
-			alt=""
-			component="img"
-			src={dataUrl}
-			sx={{
-				width: `${sizePx}px`,
-				height: `${sizePx}px`,
-				display: "block",
-				flexShrink: 0,
-				...sx,
-				"@media print": {
-					width: `${size}mm`,
-					height: `${size}mm`,
-				},
-			}}
-		/>
+		<Box {...boxProps} alt="" component="img" src={dataUrl} sx={imageSx} />
 	);
 }
