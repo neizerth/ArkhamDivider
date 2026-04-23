@@ -13,8 +13,8 @@ export const arkhamesqueClassicObjects = {
 		right: 0.6,
 	},
 	bottomIcon: {
-		top: 69.2,
-		left: 0,
+		top: 69.1,
+		left: -0.1,
 		right: 0,
 		height: 5.8,
 		fontSize: 5.4,
@@ -22,7 +22,7 @@ export const arkhamesqueClassicObjects = {
 	title: {
 		fontSize: 4,
 		height: 6,
-		top: 3.8,
+		top: 4.1,
 		left: 16,
 		right: 16,
 	},
@@ -30,7 +30,7 @@ export const arkhamesqueClassicObjects = {
 		/** Absolute Y position of the scenario number badge (mm). */
 		// top: 4.3,
 		// top: 5,
-		top: 4.3,
+		top: 4.2,
 		/** Absolute X position from the right edge (mm). */
 		right: 7.8,
 		/** Fixed badge width (mm). */

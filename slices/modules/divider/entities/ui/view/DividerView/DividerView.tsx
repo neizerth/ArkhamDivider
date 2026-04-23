@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { memo } from "react";
+import { memo, Suspense } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import {
 	selectCategoryId,
@@ -89,7 +89,9 @@ export function DividerView(props: DividerViewProps) {
 							},
 						}}
 					>
-						<Component {...props} />
+						<Suspense fallback={null}>
+							<Component {...props} />
+						</Suspense>
 					</Box>
 				</Box>
 			)}

@@ -6,6 +6,7 @@ import {
 	useState,
 } from "react";
 import { isMediaItem, revokeMediaById } from "@/modules/core/media/shared/lib";
+import { EMPTY_ICON } from "../../../shared/config";
 import type {
 	Icon,
 	IconSelectionMode,
@@ -53,6 +54,10 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 		save(defaultIcon);
 	}, [save, defaultIcon]);
 
+	const clear = useCallback(() => {
+		save(EMPTY_ICON);
+	}, [save]);
+
 	const value = useMemo(
 		(): IconSelectionContextValue => ({
 			setSelectedIcon,
@@ -67,6 +72,7 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			clearSelectedIcon,
 			mode,
 			setMode,
+			clear,
 		}),
 		[
 			selectedIcon,
@@ -77,6 +83,7 @@ export function IconSelectionProvider({ children }: PropsWithChildren) {
 			select,
 			reset,
 			mode,
+			clear,
 		],
 	);
 

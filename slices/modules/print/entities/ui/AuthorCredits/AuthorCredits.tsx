@@ -23,7 +23,6 @@ export function AuthorCredits({
 	const { donationUrl, contactUrl } = author;
 
 	const mm = fromPx(mmSize);
-	const qrSizePx = Math.round(creditsParams.qrDisplaySize * mmSize);
 	const linkSx: SxProps = {
 		color: "inherit",
 		textDecoration: "underline",
@@ -41,6 +40,11 @@ export function AuthorCredits({
 				gap={mm(creditsParams.rowGap)}
 				alignItems="center"
 				fontFamily="Arno Pro, serif"
+				sx={{
+					"@media print": {
+						gap: `${creditsParams.rowGap}mm`,
+					},
+				}}
 			>
 				<Link
 					href={url}
@@ -49,9 +53,14 @@ export function AuthorCredits({
 						":hover": { opacity: 0.6 },
 					}}
 				>
-					<QR url={url} size={qrSizePx} />
+					<QR url={url} size={creditsParams.qrDisplaySize} mmSize={mmSize} />
 				</Link>
-				<Box fontSize={mm(creditsParams.textFontSize)}>
+				<Box
+					fontSize={mm(creditsParams.textFontSize)}
+					sx={{
+						"@media print": { fontSize: `${creditsParams.textFontSize}mm` },
+					}}
+				>
 					<Trans
 						i18nKey="credits.author.description"
 						values={{
@@ -59,7 +68,15 @@ export function AuthorCredits({
 							name: author.name,
 						}}
 						components={{
-							icon: <Icon icon="free" sx={{ fontSize: mm(2) }} />,
+							icon: (
+								<Icon
+									icon="free"
+									sx={{
+										fontSize: mm(2),
+										"@media print": { fontSize: "2mm" },
+									}}
+								/>
+							),
 							author: contactUrl ? (
 								<Link href={contactUrl} sx={linkSx} target="_blank" />
 							) : (

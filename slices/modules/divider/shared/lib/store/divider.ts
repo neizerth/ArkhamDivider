@@ -33,7 +33,25 @@ const initialState: DividerState = {
 		cardTypes,
 		subtypes: [],
 		numericXP: false,
-		xpCosts: [],
+		xpCosts: [
+			{
+				type: "fixed",
+				name: "0",
+				value: 0,
+			},
+			{
+				type: "range",
+				name: "1+",
+				min: 1,
+				max: 2,
+			},
+			{
+				type: "range",
+				name: "3+",
+				min: 3,
+				max: 5,
+			},
+		],
 	},
 	investigatorParams: {
 		storyCodes: [],

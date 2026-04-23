@@ -99,7 +99,10 @@ export const marginContentPlaceholderSx: SxProps<Theme> = {
 	width: "100%",
 	minHeight: 56,
 	borderRadius: 1,
-	border: (theme) => `1px dashed ${theme.palette.divider}`,
+	border: (theme) => ({
+		xs: "none",
+		sm: `1px dashed ${theme.palette.divider}`,
+	}),
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
@@ -109,6 +112,14 @@ export const marginContentPlaceholderSx: SxProps<Theme> = {
 	textAlign: "center",
 };
 
+export const marginSideTextFieldSx: SxProps<Theme> = (theme) => ({
+	[theme.breakpoints.only("xs")]: {
+		"& .MuiInputBase-input": {
+			textAlign: "center",
+		},
+	},
+});
+
 export const getMarginSideFieldCellSx = (
 	gridColumn: number,
 	gridRow: number,
@@ -116,4 +127,8 @@ export const getMarginSideFieldCellSx = (
 	gridColumn,
 	gridRow,
 	width: "100%",
+	minWidth: 67,
+	position: "relative",
+	left: "50%",
+	transform: "translateX(-50%)",
 });

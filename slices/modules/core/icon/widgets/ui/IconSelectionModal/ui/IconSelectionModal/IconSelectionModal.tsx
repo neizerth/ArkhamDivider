@@ -1,11 +1,12 @@
 import { Box, Button, Dialog, DialogActions, Grid, Stack } from "@mui/material";
-import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
 import { absoluteFill } from "@/shared/config";
 import { useScrollSpy } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import { Row } from "@/shared/ui";
-import { Icon, IconSelectionContext } from "../../../../../shared/ui";
+import { Icon, useIconSelectionContext } from "../../../../../shared/ui";
 import {
 	findGroupIndexByIcon,
 	useIconGroupSectionRefs,
@@ -28,7 +29,8 @@ export function IconSelectionModal() {
 		select,
 		reset,
 		mode,
-	} = useContext(IconSelectionContext);
+		clear,
+	} = useIconSelectionContext();
 	const isPreviewMode = mode === "preview";
 	const open = selectionActive;
 	const isDefaultIcon = defaultIcon === selectedIcon;
@@ -197,6 +199,13 @@ export function IconSelectionModal() {
 						>
 							{t`Cancel`}
 						</Button>
+						{!isEmptyIcon(selectedIcon) && (
+							<Button variant="contained" color="error" onClick={clear}>
+								<Row alignItems="center" gap={1}>
+									{t`Remove`}
+								</Row>
+							</Button>
+						)}
 						{!isDefaultIcon && (
 							<Button
 								variant="contained"

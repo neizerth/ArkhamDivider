@@ -82,3 +82,5 @@ export function Chapter2Divider(props: Chapter2DividerProps) {
 		</Container>
 	);
 }
+
+export default Chapter2Divider;

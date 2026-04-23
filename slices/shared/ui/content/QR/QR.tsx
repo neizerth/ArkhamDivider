@@ -5,18 +5,26 @@ import { getQRDataUrl } from "@/shared/util/qr";
 
 type QRProps = Omit<BoxProps, "children"> & {
 	url: string;
-	/** Display size in px (width and height). */
+	/** Display size in mm (width and height). */
 	size: number;
+	mmSize: number;
 	sx?: SxProps;
 };
 
 /** `qrcode` + `toDataURL` — options aligned with PDF via `@/shared/lib/creditsQrRaster`. */
-export function QR({ url, size, sx, ...boxProps }: QRProps) {
+export function QR({ url, size, mmSize, sx, ...boxProps }: QRProps) {
 	const [dataUrl, setDataUrl] = useState<string | null>(null);
+	const sizePx = size * mmSize;
+	// Match PDF generation raster density:
+	// PDF path passes `qrDisplaySize` converted to points; if we pass raw mm here,
+	// Chrome print ends up with a much smaller QR bitmap (e.g. 64px) than PDF (e.g. 113px).
+	// This only affects the internal raster resolution, not the displayed size (still `size` mm).
+	const mmToPt = 72 / 25.4;
+	const rasterSize = size * mmToPt;
 
 	useEffect(() => {
 		let cancelled = false;
-		void getQRDataUrl({ url, size }).then((data) => {
+		void getQRDataUrl({ url, size: rasterSize }).then((data) => {
 			if (!cancelled) {
 				setDataUrl(data);
 			}
@@ -24,17 +32,21 @@ export function QR({ url, size, sx, ...boxProps }: QRProps) {
 		return () => {
 			cancelled = true;
 		};
-	}, [url, size]);
+	}, [url, rasterSize]);
 
 	if (!dataUrl) {
 		return (
 			<Box
 				{...boxProps}
 				sx={{
-					width: size,
-					height: size,
+					width: `${sizePx}px`,
+					height: `${sizePx}px`,
 					flexShrink: 0,
 					...sx,
+					"@media print": {
+						width: `${size}mm`,
+						height: `${size}mm`,
+					},
 				}}
 			/>
 		);
@@ -47,11 +59,15 @@ export function QR({ url, size, sx, ...boxProps }: QRProps) {
 			component="img"
 			src={dataUrl}
 			sx={{
-				width: size,
-				height: size,
+				width: `${sizePx}px`,
+				height: `${sizePx}px`,
 				display: "block",
 				flexShrink: 0,
 				...sx,
+				"@media print": {
+					width: `${size}mm`,
+					height: `${size}mm`,
+				},
 			}}
 		/>
 	);

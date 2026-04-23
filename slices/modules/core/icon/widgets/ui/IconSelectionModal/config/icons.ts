@@ -226,3 +226,16 @@ export const cardLevelIcons = [
 	"ae_level_4",
 	"ae_level_5",
 ];
+
+export const starterDecksIcons = [
+	"nate",
+	"harvey",
+	"winifred",
+	"jacqueline",
+	"stella",
+	"tommy",
+	"carolyn",
+	"andre",
+	"marie",
+	"miguel",
+];

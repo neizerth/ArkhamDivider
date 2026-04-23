@@ -62,20 +62,21 @@ export const invocation2018DividerVertical63Objects = {
 		text: {
 			default: defaultTextObject,
 		},
-		icon: { ...iconObject, right: 1.4 },
+		icon: { ...iconObject, right: 1.7 },
 		xp: verticalXPObject,
 	}),
 };
 
-export const invocation2018DividerVertical65Objects = {
-	...mergeDeepRight(classicDividerVertical65Objects, {
+export const invocation2018DividerVertical65Objects = mergeDeepRight(
+	classicDividerVertical65Objects,
+	{
 		text: {
 			default: defaultTextObject,
 		},
-		icon: { ...iconObject, right: 2.2 },
+		icon: { ...iconObject, right: 2.7 },
 		xp: mergeDeepRight(verticalXPObject, {
 			container: { right: 3.2 },
 			side: { right: 12 },
 		}),
-	}),
-};
+	},
+);

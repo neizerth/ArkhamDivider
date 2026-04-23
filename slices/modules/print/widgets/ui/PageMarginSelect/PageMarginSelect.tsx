@@ -162,14 +162,22 @@ export function PageMarginSelect({ onOpen, onClose }: PageMarginSelectProps) {
 	};
 
 	const mmEndAdornment = (
-		<InputAdornment position="end">
+		<InputAdornment
+			position="end"
+			sx={{
+				display: {
+					xs: "none",
+					sm: "block",
+				},
+			}}
+		>
 			<Typography component="span" variant="body2" color="text.secondary">
 				{t`mm`}
 			</Typography>
 		</InputAdornment>
 	);
 
-	const mmInputProps = {
+	const mmInputSlotProps = {
 		endAdornment: mmEndAdornment,
 	} as const;
 
@@ -242,19 +250,34 @@ export function PageMarginSelect({ onOpen, onClose }: PageMarginSelectProps) {
 								>
 									<TextField
 										label={t(labelKey)}
+										sx={S.marginSideTextFieldSx}
 										{...register(name, {
 											setValueAs: normalizeNumberInput,
 										})}
 										type="number"
 										fullWidth
-										inputProps={{ inputMode: "numeric" }}
-										InputProps={mmInputProps}
+										slotProps={{
+											htmlInput: { inputMode: "numeric" },
+											input: mmInputSlotProps,
+										}}
 										disabled={allSidesMode !== "custom"}
 									/>
 								</Box>
 							))}
 
-							<Box sx={S.marginContentPlaceholderSx}>{t(`Content`)}</Box>
+							<Box sx={S.marginContentPlaceholderSx}>
+								<Box
+									sx={{
+										display: {
+											xs: "none",
+											sm: "block",
+										},
+									}}
+								>
+									{t(`Content`)}
+								</Box>
+								<Box display={{ xs: "block", sm: "none" }}>{t(`mm`)}</Box>
+							</Box>
 						</Box>
 					</Box>
 				</DialogContent>

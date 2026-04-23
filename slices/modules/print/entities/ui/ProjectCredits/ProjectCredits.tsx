@@ -19,7 +19,6 @@ export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 	const { t } = useTranslation();
 	const { url, platform } = localeData[language] ?? localeData.en;
 	const mm = fromPx(mmSize);
-	const qrSize = Math.round(creditsParams.qrDisplaySize * mmSize);
 
 	const linkSx: SxProps = {
 		color: "inherit",
@@ -35,8 +34,18 @@ export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 				gap={mm(creditsParams.rowGap)}
 				alignItems="center"
 				fontFamily="Arno Pro, serif"
+				sx={{
+					"@media print": {
+						gap: `${creditsParams.rowGap}mm`,
+					},
+				}}
 			>
-				<Box fontSize={mm(creditsParams.textFontSize)}>
+				<Box
+					fontSize={mm(creditsParams.textFontSize)}
+					sx={{
+						"@media print": { fontSize: `${creditsParams.textFontSize}mm` },
+					}}
+				>
 					<Box textAlign="right">
 						{t("Support project on {{platform}}", { platform })}
 					</Box>
@@ -51,7 +60,7 @@ export function ProjectCredits({ mmSize, ...props }: ProjectCreditsProps) {
 						":hover": { opacity: 0.6 },
 					}}
 				>
-					<QR url={url} size={qrSize} />
+					<QR url={url} size={creditsParams.qrDisplaySize} mmSize={mmSize} />
 				</Link>
 			</Row>
 		</Box>

@@ -73,6 +73,12 @@ export function PrintablePage<T extends WithId>({
 		left: mm(creditsParams.blockPadding),
 		right: mm(creditsParams.blockPadding),
 		maxHeight: mm(creditsParams.contentSize - creditsParams.blockPadding),
+		"@media print": {
+			bottom: `${creditsParams.blockPadding}mm`,
+			left: `${creditsParams.blockPadding}mm`,
+			right: `${creditsParams.blockPadding}mm`,
+			maxHeight: `${creditsParams.contentSize - creditsParams.blockPadding}mm`,
+		},
 	};
 
 	const justifyContent = pageLayout.isLast ? "flex-start" : "center";

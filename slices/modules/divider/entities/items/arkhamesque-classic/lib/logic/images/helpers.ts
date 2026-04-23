@@ -19,7 +19,7 @@ export const getScenarioCodes = (
 
 export const findScenario = (
 	story: IArkhamesqueStory,
-	code: string | undefined,
+	code?: string | null,
 ) => {
 	if (!code || !story.scenarios) {
 		return;
@@ -37,7 +37,7 @@ export const findStory = (
 	for (const category of data.stories) {
 		const match = category.data.find((s) => s.code === code);
 		if (match) {
-			return match;
+			return { categoryPrefix: category.prefix, story: match };
 		}
 	}
 };

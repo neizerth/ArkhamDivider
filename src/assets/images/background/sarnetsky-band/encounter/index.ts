@@ -1,3 +1,5 @@
-import variable from "./variable.svg?react";
+import { lazy } from "react";
 
-export const sarnetskyBandEncounterAssets = { variable };
+export const sarnetskyBandEncounterAssets = {
+	variable: lazy(() => import("./variable.svg?react")),
+};

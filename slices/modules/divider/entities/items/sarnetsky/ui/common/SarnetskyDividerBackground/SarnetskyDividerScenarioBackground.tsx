@@ -1,6 +1,6 @@
 import { SarnetskyFrame } from "@assets/images/background/sarnetsky";
 import { Box, type BoxProps, type SxProps } from "@mui/material";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import type { DividerType } from "@/modules/divider/shared/model";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
@@ -72,16 +72,18 @@ export function SarnetskyDividerScenarioBackground({
 				sx={{ ...absoluteFill, zIndex: 1, objectFit: "cover" }}
 			/>
 
-			<Color
-				fill={frameColor}
-				style={{
-					...absoluteFill,
-					zIndex: 2,
-					mixBlendMode: "multiply",
-					transform: "translate3d(0, 0, 0)",
-					transition: "fill 0.3s ease-in-out",
-				}}
-			/>
+			<Suspense fallback={null}>
+				<Color
+					fill={frameColor}
+					style={{
+						...absoluteFill,
+						zIndex: 2,
+						mixBlendMode: "multiply",
+						transform: "translate3d(0, 0, 0)",
+						transition: "fill 0.3s ease-in-out",
+					}}
+				/>
+			</Suspense>
 			<Box component="img" src={frameSrc} sx={{ ...absoluteFill, zIndex: 3 }} />
 
 			{overlayColor && (

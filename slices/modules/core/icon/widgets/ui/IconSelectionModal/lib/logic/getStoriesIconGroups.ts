@@ -1,8 +1,7 @@
-import { prop, propEq, uniq } from "ramda";
+import { propEq } from "ramda";
 import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import {
-	isCampaignContent,
 	isChallengeStory,
 	isCoreSet,
 	isInvestigatorStory,
@@ -46,30 +45,9 @@ export const getStoriesIconGroups = ({
 
 	const mapStory = (story: Story) => {
 		const subGroup = toIconGroup(story);
-		if (!isCampaignContent(story)) {
-			return subGroup;
-		}
-		const [id] = subGroup.icons;
-		if (!id) {
-			return subGroup;
-		}
-
-		const iconSet = icons.find(propEq(id, "icon"))?.iconSet;
-
-		if (!iconSet) {
-			return subGroup;
-		}
-
-		const iconSetIcons = icons
-			.filter((i) => i.iconSet === iconSet)
-			.map(prop("icon"));
-
-		const mergedIcons = uniq([...subGroup.icons, ...iconSetIcons]);
-
-		return {
-			...subGroup,
-			icons: mergedIcons,
-		};
+		// NOTE: We intentionally avoid expanding campaign icons by `iconSet`.
+		// Some icon sets include multiple custom campaigns; expanding would mix them.
+		return subGroup;
 	};
 
 	return [

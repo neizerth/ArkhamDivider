@@ -1,35 +1,67 @@
+import { lazy } from "react";
 import type { DividerWithRelations } from "../../shared/model";
 import { arkhamStarterDividerCategoryId } from "./3mm/config";
-import { ArkhamStarterDivider } from "./3mm/ui";
 import { arkhamDecoCategoryId } from "./arkham-deco/config";
-import { ArkhamDecoDivider } from "./arkham-deco/ui";
 import { arkhamesqueClassicCategoryId } from "./arkhamesque-classic/config";
-import { ArkhamesqueClassicDivider } from "./arkhamesque-classic/ui";
 import { binderBookmarkCategoryId } from "./binder-bookmark/config";
-import { BinderBookmark } from "./binder-bookmark/ui";
 import { chapter2CategoryId } from "./chapter2/config";
-import { Chapter2Divider } from "./chapter2/ui";
 import { classicCategoryId } from "./classic/config/common";
-import { ClassicDivider } from "./classic/ui";
 import { dividerCategories, dividerLayouts } from "./data";
 import { investigatorTokensCategoryId } from "./investigator-tokens/config";
-import { InvestigatorToken } from "./investigator-tokens/ui";
 import { invocation2018CategoryId } from "./invocation2018/config";
-import { Invocation2018Divider } from "./invocation2018/ui";
 import { rynoCategoryId } from "./ryno/config";
-import { RynoDivider } from "./ryno/ui/RynoDivider";
 import { sarnetskyCategoryId } from "./sarnetsky/config";
-import { SarnetskyDivider } from "./sarnetsky/ui";
 import { sarnetskyBandCategoryId } from "./sarnetsky-band/config";
-import { SarnetskyBand } from "./sarnetsky-band/ui";
 import { simpleStickerCategoryId } from "./simple-sticker/config";
-import { SimpleSticker } from "./simple-sticker/ui";
 import { tcgDividerStickerCategoryId } from "./tcg-divider-sticker/config";
-import { TCGDividerSticker } from "./tcg-divider-sticker/ui";
 import { vintageDividerCategoryId } from "./vintage/config/common";
-import { VintageDivider } from "./vintage/ui";
 
 export { dividerCategories, dividerLayouts, invocation2018CategoryId };
+
+const ClassicDivider = lazy(
+	() => import("./classic/ui/ClassicDivider/ClassicDivider"),
+);
+const Invocation2018Divider = lazy(
+	() =>
+		import("./invocation2018/ui/Invocation2018Divider/Invocation2018Divider"),
+);
+const SarnetskyDivider = lazy(
+	() => import("./sarnetsky/ui/SarnetskyDivider/SarnetskyDivider"),
+);
+const SarnetskyBand = lazy(
+	() => import("./sarnetsky-band/ui/SarnetskyBand/SarnetskyBand"),
+);
+const ArkhamDecoDivider = lazy(
+	() => import("./arkham-deco/ui/ArkhamDecoDivider/ArkhamDecoDivider"),
+);
+const RynoDivider = lazy(() => import("./ryno/ui/RynoDivider/RynoDivider"));
+const ArkhamesqueClassicDivider = lazy(
+	() =>
+		import(
+			"./arkhamesque-classic/ui/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider"
+		),
+);
+const ArkhamStarterDivider = lazy(
+	() => import("./3mm/ui/ArkhamStarterDivider/ArkhamStarterDivider"),
+);
+const VintageDivider = lazy(
+	() => import("./vintage/ui/VintageDivider/VintageDivider"),
+);
+const InvestigatorToken = lazy(
+	() => import("./investigator-tokens/ui/InvestigatorToken/InvestigatorToken"),
+);
+const Chapter2Divider = lazy(
+	() => import("./chapter2/ui/Chapter2Divider/Chapter2Divider"),
+);
+const TCGDividerSticker = lazy(
+	() => import("./tcg-divider-sticker/ui/TCGDividerSticker/TCGDividerSticker"),
+);
+const BinderBookmark = lazy(
+	() => import("./binder-bookmark/ui/BinderBookmark/BinderBookmark"),
+);
+const SimpleSticker = lazy(
+	() => import("./simple-sticker/ui/SimpleSticker/SimpleSticker"),
+);
 
 export const dividerComponents: Record<
 	string,

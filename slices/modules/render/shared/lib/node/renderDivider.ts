@@ -97,9 +97,13 @@ export const renderDivider = async ({
 	const vips = await getVips();
 	let image: Vips.Image | null = vips.Image.newFromBuffer(arrayBuffer);
 
-	const scale = size.width / image.width;
+	// Ensure output dimensions match requested `size` exactly.
+	// Different browsers/DPIs can produce slightly different raster sizes from the same node.
+	// If we scale only by width, vertical drift accumulates and overlays (icons/text) no longer align.
+	const scaleX = size.width / image.width;
+	const scaleY = size.height / image.height;
 	image = await step(image, async (image) => {
-		return image.resize(scale);
+		return image.resize(scaleX, { vscale: scaleY });
 	});
 
 	image = await applyMultipleVipsTransforms({

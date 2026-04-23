@@ -9,7 +9,7 @@ import {
 	Stack,
 } from "@mui/material";
 import { compact, isString } from "ramda-adjunct";
-import { useCallback, useContext, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { downloadIcon } from "@/modules/core/icon/entities/lib";
 import {
@@ -18,7 +18,7 @@ import {
 	getIconId,
 } from "@/modules/core/icon/shared/lib";
 import { selectIconById } from "@/modules/core/icon/shared/lib/store/selectors/selectIconById";
-import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
+import { Icon, useIconSelectionContext } from "@/modules/core/icon/shared/ui";
 import { copyToClipboard, useAppSelector } from "@/shared/lib";
 import { Row, Upload } from "@/shared/ui";
 import { IconSelectionCopyMenu } from "../IconSelectionCopyMenu";
@@ -28,7 +28,7 @@ type IconSelectionPreviewProps = BoxProps;
 
 export function IconSelectionPreview(props: IconSelectionPreviewProps) {
 	const { selectedIcon, defaultIcon, setSelectedIcon, mode } =
-		useContext(IconSelectionContext);
+		useIconSelectionContext();
 
 	const [copied, setCopied] = useState(false);
 

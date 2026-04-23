@@ -84,3 +84,5 @@ export function SarnetskyDivider(props: SarnetskyDividerProps) {
 		</SarnetskyDividerContext.Provider>
 	);
 }
+
+export default SarnetskyDivider;

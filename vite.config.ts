@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react";
 import dotenv from "dotenv";
+import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import mkcert from "vite-plugin-mkcert";
 import { VitePluginRadar } from "vite-plugin-radar";
@@ -11,7 +12,7 @@ dotenv.config({
 	path: [".env", ".env.local"],
 });
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	worker: {
 		format: "es",
 	},
@@ -50,6 +51,16 @@ export default defineConfig({
 		}),
 		mkcert(),
 		svgr(),
+		...(mode === "analyze"
+			? [
+					visualizer({
+						filename: "dist/stats.html",
+						gzipSize: true,
+						brotliSize: true,
+						open: true,
+					}),
+				]
+			: []),
 	],
 	server: {
 		hmr: {
@@ -91,4 +102,4 @@ export default defineConfig({
 		},
 	},
 	assetsInclude: ["**/*.ttf"],
-});
+}));

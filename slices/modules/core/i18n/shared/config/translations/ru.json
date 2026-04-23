@@ -88,6 +88,8 @@
 	"divider.type.investigator": "Сыщики",
 	"Language": "Язык",
 	"Sleeves": "Протекторы",
+	"info.lasercut": "Создаёт контур для станков с лазерной резкой, поддерживает скругление углов. Используйте для скругления разделителей с вкладками (табами), круглых наклеек, жетонов сыщиков или как удобный контур для ножниц",
+	"info.crease": "Создаёт линию биговки - место сгиба разделителя. Защищает разделитель от заломов, трещин краски/лака и деформации при сложении (фальцовке)",
 	"info.sleeve.customCut.description": "Потребуется вручную подрезать верх протектора",
 	"layout.sleeve.outerSleeve.description": "Протекторы обычно называются Outer Sleeves. Можно найти у KMC (CSG Character Sleeve Guard) и Dragon Shield",
 	"Color": "Цветность",
@@ -222,5 +224,7 @@
 	"Binder Spines": "Корешки для альбома",
 	"Page margin": "Поля страницы",
 	"category.simple-sticker.name": "Наклейки с иконками",
-	"category.simple-sticker.description": "Наклейки под фигурный дырокол"
+	"category.simple-sticker.description": "Наклейки под фигурный дырокол",
+	"Starter Decks": "Стартовые колоды",
+	"PDF-only": "Только для PDF"
 }

@@ -2,6 +2,7 @@ import { Box, type BoxProps } from "@mui/material";
 import { useCallback, useMemo, useRef } from "react";
 import { setDividerParam } from "@/modules/divider/shared/lib";
 import { usePrintUnit } from "@/modules/print/shared/lib";
+import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { FitInput } from "@/shared/ui/control";
 import { getArkhamesqueClassicScenarioNumberText } from "../../lib";
@@ -49,19 +50,21 @@ export function ArkhamesqueClassicScenarioNumber(props: Props) {
 
 	return (
 		<Box sx={sx}>
-			<FitInput
-				{...rest}
-				sx={inputSx}
-				defaultValue={text}
-				clearable={false}
-				// Keep it non-editable: the value comes from build data.
-				contentEditable={false}
-				containerSx={innerContainerSx}
-				fitTextOptions={{
-					minFontSize: 8,
-					onFontSizeChange,
-				}}
-			/>
+			<NotExportable>
+				<FitInput
+					{...rest}
+					sx={inputSx}
+					defaultValue={text}
+					clearable={false}
+					// Keep it non-editable: the value comes from build data.
+					contentEditable={false}
+					containerSx={innerContainerSx}
+					fitTextOptions={{
+						minFontSize: 8,
+						onFontSizeChange,
+					}}
+				/>
+			</NotExportable>
 		</Box>
 	);
 }
