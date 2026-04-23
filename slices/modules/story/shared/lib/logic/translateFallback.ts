@@ -26,8 +26,5 @@ export const translateFallback = ({
 		return text;
 	}
 
-	return i18nInstance.t(text, {
-		...options,
-		ns,
-	});
+	return i18nInstance.t(text, { ...options, ns } as TOptions);
 };
