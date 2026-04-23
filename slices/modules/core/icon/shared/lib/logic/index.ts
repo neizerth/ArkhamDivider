@@ -5,4 +5,5 @@ export * from "./getIconId";
 export * from "./getIconSetIcons";
 export * from "./getImageExtensionByMime";
 export * from "./getImageRatio";
+export * from "./isEmptyIcon";
 export * from "./scale";

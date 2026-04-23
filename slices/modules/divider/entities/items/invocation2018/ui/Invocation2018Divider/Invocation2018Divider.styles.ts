@@ -154,7 +154,7 @@ export const getXPSx: Invocation2018DividerSxCallback = ({
 	objects: O,
 }) => ({
 	position: "absolute",
-	zIndex: 2,
+	zIndex: 3,
 	fontSize: mm(O.xp.container.fontSize),
 	top: mm(O.xp.container.top),
 	right: mm(O.xp.container.right),

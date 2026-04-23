@@ -1,10 +1,10 @@
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import type {
 	Icon,
 	IconSelectionMode,
 	OnIconSelectedCallback,
 } from "../../../shared/model";
-import { IconSelectionContext } from "../../../shared/ui";
+import { useIconSelectionContext } from "../../../shared/ui";
 
 export type UseIconSelectionOptions = {
 	icon?: Icon | null;
@@ -20,7 +20,7 @@ export function useIconSelection() {
 		setSelectionActive,
 		setMode,
 		onSelectRef,
-	} = useContext(IconSelectionContext);
+	} = useIconSelectionContext();
 
 	return useCallback(
 		({
@@ -29,6 +29,7 @@ export function useIconSelection() {
 			mode = "selection",
 			onSelected,
 		}: UseIconSelectionOptions) => {
+			console.log("useIconSelection", icon, defaultIcon, mode, onSelected);
 			setSelectedIcon(icon);
 			setDefaultIcon(defaultIcon);
 			setSelectionActive(true);
