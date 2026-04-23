@@ -1,5 +1,6 @@
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import {
+	classicDividerChapter2Objects,
 	classicDividerHorizontalHQObjects,
 	classicDividerHorizontalObjects,
 	classicDividerVertical63Objects,
@@ -7,6 +8,9 @@ import {
 } from "../config";
 
 export const getClassicLayoutObjects = (layout: DividerLayout) => {
+	if (layout.size.width === 87) {
+		return classicDividerChapter2Objects;
+	}
 	if (layout.id === "classic-horizontal-hq") {
 		return classicDividerHorizontalHQObjects;
 	}

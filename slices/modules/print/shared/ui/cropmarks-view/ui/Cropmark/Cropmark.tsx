@@ -26,6 +26,8 @@ export function Cropmark(props: CropmarkProps) {
 		height: px(cropmarkSx.height),
 		backgroundColor: "black",
 		"@media print": {
+			// Help ensure cropmarks appear in mobile print rendering
+			printColorAdjust: "exact",
 			left: `${mm(cropmarkSx.left)}mm`,
 			top: `${mm(cropmarkSx.top)}mm`,
 			width: `${mm(cropmarkSx.width)}mm`,

@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react";
 import dotenv from "dotenv";
+import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import mkcert from "vite-plugin-mkcert";
 import { VitePluginRadar } from "vite-plugin-radar";
@@ -11,9 +12,7 @@ dotenv.config({
 	path: [".env", ".env.local"],
 });
 
-const metricaId = process.env.APP_METRIKA_ID || process.env.VITE_METRIKA_ID;
-
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	worker: {
 		format: "es",
 	},
@@ -21,11 +20,29 @@ export default defineConfig({
 		vips(),
 		tsconfigPaths(),
 		VitePluginRadar({
-			metrica: metricaId
-				? {
-						id: metricaId,
-					}
-				: void 0,
+			enableDev: false,
+			gtm: (process.env.VITE_GTM_ID)
+				? [
+						{
+							id: process.env.VITE_GTM_ID,
+						},
+					]
+				: [],
+			metrica: process.env.VITE_METRIKA_ID
+				? [
+						{
+							id: process.env.VITE_METRIKA_ID,
+							config: {
+								defer: true,
+								clickmap: true,
+								trackLinks: true,
+								accurateTrackBounce: true,
+								webvisor: true,
+								trackHash: true,
+							},
+						},
+					]
+				: [],
 		}),
 		react({
 			// Enable Fast Refresh for better HMR support
@@ -34,6 +51,16 @@ export default defineConfig({
 		}),
 		mkcert(),
 		svgr(),
+		...(mode === "analyze"
+			? [
+					visualizer({
+						filename: "dist/stats.html",
+						gzipSize: true,
+						brotliSize: true,
+						open: true,
+					}),
+				]
+			: []),
 	],
 	server: {
 		hmr: {
@@ -48,9 +75,8 @@ export default defineConfig({
 			ignored: ["**/node_modules/**", "**/.git/**"],
 		},
 		headers: {
-			// `require-corp` blocks third-party scripts without CORP (e.g. Yandex Metrika).
-			// `credentialless` keeps cross-origin isolation in Chromium for SharedArrayBuffer / wasm-vips.
-			"Cross-Origin-Embedder-Policy": "credentialless",
+			// Full isolation for SharedArrayBuffer / wasm-vips pthreads.
+			"Cross-Origin-Embedder-Policy": "require-corp",
 			"Cross-Origin-Opener-Policy": "same-origin",
 		},
 	},
@@ -76,4 +102,4 @@ export default defineConfig({
 		},
 	},
 	assetsInclude: ["**/*.ttf"],
-});
+}));

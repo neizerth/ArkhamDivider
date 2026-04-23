@@ -25,7 +25,9 @@ export function DividerLayoutGroupPreview({
 	const { t } = useTranslation();
 	const [firstLayout] = group.layouts;
 	const layoutId = firstLayout.id;
-	const name = firstLayout.previewName ?? getBoxSize(group.size);
+	const name = firstLayout.previewName
+		? t(firstLayout.previewName)
+		: getBoxSize(group.size);
 
 	const { hasGrayscale, canBeSleeved, compatibility } = group;
 	const { chapter1Box, chapter2Box, deckBox } = compatibility;

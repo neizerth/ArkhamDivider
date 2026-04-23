@@ -6,6 +6,7 @@ import { removeUnsupportedLayoutDividersSaga } from "./remove-unsupported-layout
 import { setDividerLayoutOnRouteChangeSaga } from "./set-divider-layout-on-route-change/setDividerLayoutOnRouteChangeSaga";
 import { setDividerTypeOnRouteChangeSaga } from "./set-divider-type-on-route-change/setDividerTypeOnRouteChangeSaga";
 import { setLayoutGridOnLayoutChangeSaga } from "./set-layout-grid-on-layout-change/setLayoutGridOnLayoutChangeSaga";
+import { setLayoutPageSizeOnChangeSaga } from "./set-layout-page-size/setLayoutPageSizeOnChangeSaga";
 import { setSupportedArkhamesqueStoriesSaga } from "./set-supported-arkhamesque-classic-stories/setSupportedArkhamesqueStoriesSaga";
 import { setSupportedDividerTypeOnLayoutChangeSaga } from "./set-suppoted-divider-type-on-layout-change/setSupportedDividerTypeOnLayoutChangeSaga";
 
@@ -19,4 +20,5 @@ export function* dividerFeaturesSaga() {
 	yield spawn(removeUnsupportedLayoutDividersSaga);
 	yield spawn(setSupportedDividerTypeOnLayoutChangeSaga);
 	yield spawn(setSupportedArkhamesqueStoriesSaga);
+	yield spawn(setLayoutPageSizeOnChangeSaga);
 }

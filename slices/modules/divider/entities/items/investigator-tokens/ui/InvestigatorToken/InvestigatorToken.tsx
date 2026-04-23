@@ -39,3 +39,5 @@ export function InvestigatorToken(props: DividerWithRelations) {
 		</Container>
 	);
 }
+
+export default InvestigatorToken;

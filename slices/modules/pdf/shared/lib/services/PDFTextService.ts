@@ -22,13 +22,18 @@ export class PDFTextService {
 		this.overprintService = new PDFOverprintService(font.doc);
 	}
 
-	async measureTextWidth(
-		value: string,
-		options: Pick<DrawTextOptions, "fontFamily" | "fontSize">,
-	) {
-		await this.font.load(options.fontFamily);
-		this.doc.fontSize(options.fontSize);
-		return this.doc.widthOfString(value);
+	async measureTextWidth({
+		text,
+		fontFamily,
+		fontSize,
+	}: {
+		text: string;
+		fontFamily: FontFamily;
+		fontSize: number;
+	}) {
+		await this.font.load(fontFamily);
+		this.doc.fontSize(fontSize);
+		return this.doc.widthOfString(text);
 	}
 
 	async draw(text: string, options: DrawTextOptions) {
@@ -62,11 +67,26 @@ export class PDFTextService {
 			this.overprintService.enable();
 		}
 
-		// Prevent PDFKit from wrapping text to a new page (avoids unwanted white pages)
-		doc.text(text, x, y, {
+		// Underline/strike read `options.textWidth` in `_fragment`; without `width` that
+		// value is never set (only LineWrapper sets it), so `renderedWidth` becomes NaN.
+		const textPayload: PDFKit.Mixins.TextOptions & {
+			textWidth?: number;
+			wordCount?: number;
+		} = {
 			...textOptions,
 			lineBreak: false,
-		});
+		};
+
+		const hasUnderlineOrStrike = textPayload.underline || textPayload.strike;
+
+		if (!textPayload.width && hasUnderlineOrStrike) {
+			textPayload.textWidth = doc.widthOfString(text, {
+				features: textPayload.features,
+			});
+			textPayload.wordCount = 1;
+		}
+
+		doc.text(text, x, y, textPayload);
 		if (overprint) {
 			this.overprintService.disable();
 		}

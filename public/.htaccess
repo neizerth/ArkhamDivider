@@ -1,9 +1,18 @@
-# COOP + COEP require-corp: cross-origin isolation for SharedArrayBuffer / wasm-vips pthreads.
-# Safari does not treat COEP credentialless as full isolation; use require-corp (see vercel.json).
-# External images/fonts/scripts must be CORP-safe (e.g. Cross-Origin-Resource-Policy: cross-origin).
+# COOP + COEP require-corp: strongest isolation for SharedArrayBuffer / wasm-vips pthreads (often better on Safari).
+# With require-corp, cross-origin subresources must be CORP-safe (e.g. Cross-Origin-Resource-Policy: cross-origin).
 <IfModule mod_headers.c>
   Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always set Cross-Origin-Embedder-Policy "require-corp"
+</IfModule>
+
+# SPA fallback for BrowserRouter (serve index.html for non-file routes)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If the requested resource isn't a real file or directory, serve index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
 </IfModule>
 
 # WASM MIME type

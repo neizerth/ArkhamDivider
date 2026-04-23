@@ -159,3 +159,5 @@ export function Invocation2018Divider(props: DividerWithRelations) {
 		</Container>
 	);
 }
+
+export default Invocation2018Divider;

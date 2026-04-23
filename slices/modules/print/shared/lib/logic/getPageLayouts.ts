@@ -52,12 +52,18 @@ const getFrontLayouts = <T>({
 }: Options<T>) => {
 	const { rows, unitSize } = layoutGrid;
 	const pageLayouts: PageLayout<T>[] = [];
-	const itemsPerPage = singleItemPerPage ? 1 : rows * layoutGrid.cols;
+	// If unitSize is larger than page, grid rows/cols can become 0.
+	// That would make itemsPerPage=0 and the loop below would never progress.
+	const gridUnits = rows * layoutGrid.cols;
+	const mustFallbackToSingle = !Number.isFinite(gridUnits) || gridUnits <= 0;
+	const itemsPerPage =
+		singleItemPerPage || mustFallbackToSingle ? 1 : gridUnits;
 	const totalPages = Math.ceil(data.length / itemsPerPage);
 
-	const grid = singleItemPerPage
-		? { rows: 1, cols: 1, size: unitSize, unitSize }
-		: layoutGrid;
+	const grid =
+		singleItemPerPage || mustFallbackToSingle
+			? { rows: 1, cols: 1, size: unitSize, unitSize }
+			: layoutGrid;
 
 	// Must match `grid.cols`: `PrintablePage` indexes by `grid.rows` × `grid.cols`.
 	// If we pad rows with the original `layoutGrid.cols` while `grid.cols` is 1,

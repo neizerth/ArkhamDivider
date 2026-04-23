@@ -1,6 +1,9 @@
-import BleedIcon from "@assets/images/bleed.svg?react";
 import Typography from "@mui/material/Typography";
+import { lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
+
+const BleedIcon = lazy(() => import("@assets/images/bleed.svg?react"));
+
 import { IconPopover } from "@/modules/core/icon/shared/ui";
 import { Row } from "@/shared/ui";
 import * as C from "./BleedInfo.components";
@@ -20,7 +23,9 @@ export function BleedInfo({ bleed }: BleedInfoProps) {
 					{t`Bleed`}
 				</Typography>
 				<C.Icon title={t`Bleed`}>
-					<BleedIcon width={24} height={24} />
+					<Suspense fallback={null}>
+						<BleedIcon width={24} height={24} />
+					</Suspense>
 				</C.Icon>
 			</Row>
 			<IconPopover

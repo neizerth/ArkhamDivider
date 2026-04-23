@@ -57,6 +57,40 @@ const horizontalBW: DividerLayout = {
 	},
 };
 
+export const chapter2Layout: DividerLayout = {
+	...horizontalLayout,
+	id: "classic-chapter2",
+	groupId: "chapter2",
+	name: "divider.chapter2.name",
+	orientation: "horizontal",
+	color: true,
+	size: createSize(87, 73),
+	bleed: 3,
+	printSize: {
+		300: {
+			size: createSize(1028, 862),
+			bleedSize: createSize(1098, 933),
+		},
+	},
+	sleeves: null,
+	compatibility: {
+		chapter1Box: true,
+		chapter2Box: true,
+	},
+	params: {
+		background: "/images/divider/background/classic/chapter2.avif",
+	},
+};
+
+export const chapter2BWLayout: DividerLayout = {
+	...chapter2Layout,
+	id: "classic-chapter2-bw",
+	color: false,
+	params: {
+		background: "/images/divider/background/classic/chapter2-bw.avif",
+	},
+};
+
 const horizontalHQ: DividerLayout = {
 	...horizontalLayout,
 	id: "classic-horizontal-hq",
@@ -157,6 +191,8 @@ export const classicLayouts: DividerLayout[] = [
 	horizontalHQ,
 	horizontalLayout,
 	horizontalBW,
+	chapter2Layout,
+	chapter2BWLayout,
 	verticalLayout,
 	verticalBW,
 	vertical65x100,

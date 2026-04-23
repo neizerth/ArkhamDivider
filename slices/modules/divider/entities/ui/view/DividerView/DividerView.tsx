@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { memo } from "react";
+import { memo, Suspense } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import {
 	selectCategoryId,
@@ -17,7 +17,12 @@ import {
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import { dividerComponents } from "../../../items";
-import { iconSx, outlineSx, renderContainerSx } from "./DividerView.styles";
+import {
+	getScaleSx,
+	iconSx,
+	outlineSx,
+	renderContainerSx,
+} from "./DividerView.styles";
 
 type DividerViewProps = DividerWithRelations;
 
@@ -42,8 +47,8 @@ export function DividerView(props: DividerViewProps) {
 	const scale = getRenderScale({
 		boundingRect: rect,
 		previewZoom,
-		isRendering,
 		contentWidth: size.width,
+		isRendering,
 	});
 
 	return (
@@ -72,20 +77,21 @@ export function DividerView(props: DividerViewProps) {
 						data-divider-node-id={`${props.id}:${props.side}`}
 						sx={{
 							...size,
+							...getScaleSx(scale),
 							position: "absolute",
 							top: 0,
 							left: 0,
 							letterSpacing: 0,
 							transformOrigin: "top left",
-							transform: `scale(${scale})`,
-							willChange: "transform",
+							overflow: "hidden",
 							"@media print": {
-								transform: "none",
-								zoom: printScale,
+								...getScaleSx(printScale),
 							},
 						}}
 					>
-						<Component {...props} />
+						<Suspense fallback={null}>
+							<Component {...props} />
+						</Suspense>
 					</Box>
 				</Box>
 			)}

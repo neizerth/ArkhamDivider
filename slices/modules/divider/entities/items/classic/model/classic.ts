@@ -25,5 +25,6 @@ export type ClassicDividerCallbackProps = {
 export type ClassicDividerLocaleCallback =
 	LocaleSxCallback<ClassicDividerCallbackProps>;
 
-export type ClassicDividerSxCallback =
-	PrintSxCallback<ClassicDividerCallbackProps>;
+export type ClassicDividerSxCallback<T = void> = PrintSxCallback<
+	ClassicDividerCallbackProps & T
+>;

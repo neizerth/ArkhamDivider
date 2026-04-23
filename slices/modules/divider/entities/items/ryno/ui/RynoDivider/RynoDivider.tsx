@@ -121,3 +121,5 @@ export function RynoDivider(props: RynoDividerProps) {
 		</RynoDividerContext.Provider>
 	);
 }
+
+export default RynoDivider;

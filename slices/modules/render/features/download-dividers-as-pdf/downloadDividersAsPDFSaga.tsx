@@ -5,7 +5,6 @@ import {
 	call,
 	cancel,
 	cancelled,
-	delay,
 	fork,
 	join,
 	put,
@@ -22,6 +21,7 @@ import {
 	getPDFPageLayouts,
 	PDFCounterService,
 	PDFCreaseService,
+	PDFCreditsService,
 	PDFCropmarkService,
 	PDFFontService,
 	PDFIconService,
@@ -86,6 +86,7 @@ function* pdfDownloadWorker({
 		cornerRadiusEnabled,
 		lasercutEnabled,
 		creaseEnabled,
+		pageMargin,
 	}: ReturnType<typeof selectPDFData> = yield select(selectPDFData);
 
 	const total = dividers.length;
@@ -208,6 +209,7 @@ function* pdfDownloadWorker({
 			dpi,
 			singleItemPerPage,
 			cropmarksEnabled,
+			pageMargin,
 		});
 
 		const font = new PDFFontService(doc);
@@ -221,6 +223,7 @@ function* pdfDownloadWorker({
 		const cropmarks = new PDFCropmarkService(doc);
 		const image = new PDFImageService(doc);
 		const counter = new PDFCounterService(text, pageSizePt);
+		const credits = new PDFCreditsService(doc, text, image);
 		const crease = new PDFCreaseService(doc, { enabled: creaseEnabled });
 
 		const hideCounter =
@@ -243,6 +246,19 @@ function* pdfDownloadWorker({
 					break;
 				}
 				doc.addPage();
+
+				if (layout) {
+					yield call([credits, credits.draw], {
+						pageSize: pageSizePt,
+						pageFormat,
+						layoutGrid,
+						singleItemPerPage,
+						cropmarksEnabled,
+						pdfLayout,
+						layout,
+						language,
+					});
+				}
 				for (const [rowIndex, row] of pdfLayout.items.entries()) {
 					for (const [colIndex, item] of row.items.entries()) {
 						if (writeFailed) {
@@ -254,7 +270,6 @@ function* pdfDownloadWorker({
 						}
 
 						yield put(setDividerRenderId(item.id));
-						yield delay(100);
 
 						const itemSizePt = {
 							width: px(item.size.width),

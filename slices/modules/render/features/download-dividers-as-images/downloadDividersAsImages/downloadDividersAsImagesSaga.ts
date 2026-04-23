@@ -4,7 +4,6 @@ import {
 	call,
 	cancel,
 	cancelled,
-	delay,
 	fork,
 	join,
 	put,
@@ -131,7 +130,6 @@ function* zipDownloadWorker({
 				}
 
 				yield put(setDividerRenderId(divider.id));
-				yield delay(10);
 
 				const options: RenderDividerOptions = {
 					dividerId: divider.id,

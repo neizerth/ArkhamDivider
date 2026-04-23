@@ -25,10 +25,11 @@ export const getArkhamesqueClassicScenarioNumberText = ({
 	}
 
 	const storyCode = divider.story?.return_to_code ?? divider.storyCode;
-	const story = findStory(data, storyCode);
-	if (!story) {
+	const found = findStory(data, storyCode);
+	if (!found) {
 		return fallback;
 	}
+	const { story } = found;
 
 	// Mirrors scenario image matching: map scenario to its build code.
 	const scenarioCode =

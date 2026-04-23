@@ -1,7 +1,7 @@
 import type { BoxProps } from "@mui/material/Box";
 import { omit } from "ramda";
 import { useAppSelector } from "@/shared/lib";
-import { getIconChar, getIconScale } from "../../lib/logic";
+import { getIconChar, getIconScale, isEmptyIcon } from "../../lib/logic";
 import { selectIconById } from "../../lib/store/selectors/selectIconById";
 import type { BaseIconProps } from "../../model";
 import * as C from "./FontIcon.components";
@@ -13,6 +13,13 @@ export type FontIconProps = BoxProps &
 export function FontIcon(props: FontIconProps) {
 	const { scaleType, scaleFactor, resizeDisabled = false } = props;
 	const icon = useAppSelector((state) => selectIconById(state, props.icon));
+
+	const iconProps = omit(["icon", "scaleType", "scaleFactor"], props);
+
+	if (isEmptyIcon(props.icon)) {
+		const sx = { ...props.sx, width: "100%", height: "100%" };
+		return <C.Container sx={sx} {...iconProps} />;
+	}
 
 	if (!icon) {
 		return null;
@@ -30,8 +37,6 @@ export function FontIcon(props: FontIconProps) {
 	const char = getIconChar(icon.code);
 
 	const sx = { fontSize, ...props.sx };
-
-	const iconProps = omit(["icon", "scaleType", "scaleFactor"], props);
 
 	return (
 		<C.Container

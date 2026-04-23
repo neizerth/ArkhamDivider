@@ -1,7 +1,7 @@
 {
 	"rewrites": [
 		{
-			"source": "/((?!assets/|favicon|images/|coi-serviceworker).*)",
+			"source": "/((?!assets/|favicon|images/|coi-serviceworker|api/).*)",
 			"destination": "/index.html"
 		},
 		{
@@ -19,7 +19,7 @@
 				},
 				{
 					"key": "Cross-Origin-Embedder-Policy",
-					"value": "credentialless"
+					"value": "require-corp"
 				},
 				{
 					"key": "X-Content-Type-Options",

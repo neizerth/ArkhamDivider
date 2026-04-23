@@ -8,9 +8,9 @@ const encounterRightIcon: SarnetskyIcon = {
 	type: "encounter",
 	fontSize: 2.8,
 	width: 3.2,
-	height: 6.1,
+	height: 3.2,
 	right: 4.2,
-	top: 1.9,
+	top: 3.05,
 	light: true,
 };
 
@@ -43,7 +43,7 @@ const rightHorizontalIcon: SarnetskyIcon = {
 const centerHorizontalIcon: SarnetskyIcon = {
 	id: "center",
 	type: "encounter",
-	fontSize: 6.4,
+	fontSize: 6.1,
 	width: 9.8,
 	height: 6.1,
 	right: 39.3,

@@ -38,3 +38,5 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		</ArkhamIndexContext.Provider>
 	);
 }
+
+export default ArkhamIndexDivider;

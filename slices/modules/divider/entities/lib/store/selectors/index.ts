@@ -3,5 +3,6 @@ export * from "./selectBleedSize";
 export * from "./selectCategory";
 export * from "./selectDividerLayoutGrid";
 export * from "./selectDividerPageLayouts";
+export * from "./selectDividerSize";
 export * from "./selectLayout";
 export * from "./selectLayoutBleed";

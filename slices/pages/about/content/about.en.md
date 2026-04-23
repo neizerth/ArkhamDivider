@@ -36,12 +36,16 @@ Big thanks to everyone who contributed knowledge, data, design, and translations
 - @5argon - 3mm Divider design template
 - @smallville247 - Arkhamesque design template
 - @Sarnetsky - Eugene Sarnetsky design template
+- @fabula_rasa - Reworked Return To template 
 
 ### Testing
 
-- @fspoettel, @5argon, @polochamps
+- @fspoettel, @5argon, @polochamps, @filden79
 
 ### Consulting
 
 - @w1ne_kun, @sarnetsky - Printing details
 
+### Patrons
+
+@A1exZorin, @RecedingSamson, @kolorono, @Pink_hawk, @felice, The 1 Player Podcast, Andy Lindberg, Nathan Wurschmidt

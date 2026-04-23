@@ -4,6 +4,7 @@ import { arkhamStarterDividerCategory } from "./3mm/config";
 import { arkhamDecoCategory } from "./arkham-deco/config";
 import { arkhamIndexCategory } from "./arkham-index/config";
 import { arkhamesqueClassicCategory } from "./arkhamesque-classic/config";
+import { binderBookmarkCategory } from "./binder-bookmark/config";
 import { chapter2Category } from "./chapter2/config/category";
 import { classicCategory } from "./classic/config";
 import { investigatorTokensCategory } from "./investigator-tokens/config";
@@ -11,6 +12,7 @@ import { invocation2018Category } from "./invocation2018/config";
 import { rynoCategory } from "./ryno/config";
 import { sarnetskyCategory } from "./sarnetsky/config/category";
 import { sarnetskyBandCategory } from "./sarnetsky-band/config";
+import { simpleStickerCategory } from "./simple-sticker/config";
 import { tcgDividerStickerCategory } from "./tcg-divider-sticker/config";
 import { vintageCategory } from "./vintage/config";
 
@@ -28,6 +30,8 @@ export const dividerCategories: DividerCategory[] = [
 	sarnetskyBandCategory,
 	investigatorTokensCategory,
 	tcgDividerStickerCategory,
+	binderBookmarkCategory,
+	simpleStickerCategory,
 	arkhamIndexCategory,
 ];
 

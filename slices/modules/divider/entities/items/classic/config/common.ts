@@ -23,7 +23,7 @@ export const classicDividerHorizontalObjects = {
 		width: 8.33,
 		height: 8.33,
 		fontSize: 8,
-		top: 2,
+		top: 1.9,
 		right: 0.6,
 		params: {
 			scaleType: "circle",
@@ -59,6 +59,10 @@ export const classicDividerHorizontalObjects = {
 			fontSize: 5,
 			height: 7.5,
 			paddingInline: 1,
+		},
+		skill: {
+			top: 2.3,
+			right: 0.8,
 		},
 	},
 	backgroundIcon: {
@@ -96,11 +100,11 @@ export const classicDividerHorizontalHQObjects = mergeDeepRight(
 				fontSize: 7,
 			},
 			skill: {
-				top: 0.7,
+				top: 2.2,
 			},
 		},
 		backgroundIcon: {
-			top: 15.6,
+			top: 15,
 		},
 		xp: {
 			container: {
@@ -110,6 +114,50 @@ export const classicDividerHorizontalHQObjects = mergeDeepRight(
 			side: {
 				top: 3.2,
 			},
+			skill: {
+				top: 1.8,
+				right: 0.8,
+			},
+		},
+	},
+);
+
+export const classicDividerChapter2Objects = mergeDeepRight(
+	classicDividerHorizontalObjects,
+	{
+		icon: {
+			top: 1.6,
+			right: 0.3,
+			withXP: {
+				top: 1.9,
+				right: 0.9,
+			},
+			skill: {
+				top: 2.8,
+				right: 0.9,
+			},
+		},
+		text: {
+			default: {
+				top: 2.3,
+			},
+		},
+		xp: {
+			container: {
+				top: 0.8,
+				right: 0.2,
+			},
+			side: {
+				top: 3.5,
+			},
+			skill: {
+				top: 2.1,
+				right: 0.4,
+			},
+		},
+		backgroundIcon: {
+			top: 13,
+			left: 19,
 		},
 	},
 );

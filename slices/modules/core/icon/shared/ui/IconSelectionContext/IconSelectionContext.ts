@@ -1,4 +1,4 @@
-import { createContext, type RefObject } from "react";
+import { createContext, type RefObject, useContext } from "react";
 import type {
 	Icon,
 	IconSelectionMode,
@@ -12,6 +12,7 @@ export type IconSelectionContextValue = {
 	setDefaultIcon: (icon: Icon | null) => void;
 	select: () => void;
 	reset: () => void;
+	clear: () => void;
 	selectedIcon: Icon | null;
 	defaultIcon: Icon | null;
 	setSelectionActive: (active: boolean) => void;
@@ -27,6 +28,7 @@ export const IconSelectionContext = createContext<IconSelectionContextValue>({
 	setDefaultIcon: () => {},
 	select: () => {},
 	reset: () => {},
+	clear: () => {},
 	selectedIcon: null,
 	defaultIcon: null,
 	setSelectionActive: () => {},
@@ -34,3 +36,7 @@ export const IconSelectionContext = createContext<IconSelectionContextValue>({
 	mode: "selection",
 	setMode: () => {},
 });
+
+export function useIconSelectionContext() {
+	return useContext(IconSelectionContext);
+}

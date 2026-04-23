@@ -4,7 +4,7 @@ import {
 	getUnitSizePx,
 } from "@/modules/print/shared/lib";
 import type { DPI, PageFormat, PageLayout } from "@/modules/print/shared/model";
-import type { BoxSize } from "@/shared/model";
+import type { BoxPosition, BoxSize } from "@/shared/model";
 
 type Options<T> = {
 	pageLayouts: PageLayout<T>[];
@@ -12,6 +12,7 @@ type Options<T> = {
 	dpi: DPI;
 	singleItemPerPage: boolean;
 	cropmarksEnabled?: boolean;
+	pageMargin: BoxPosition;
 };
 
 type Item<T> = T & {
@@ -27,6 +28,7 @@ export const getPDFPageLayouts = <T>({
 	dpi,
 	singleItemPerPage,
 	cropmarksEnabled,
+	pageMargin,
 }: Options<T>) => {
 	return pageLayouts.map((pageLayout): PDFPageLayout<T> => {
 		const { grid } = pageLayout;
@@ -40,6 +42,7 @@ export const getPDFPageLayouts = <T>({
 			pageFormat,
 			singleItemPerPage,
 			cropmarksEnabled,
+			pageMargin,
 		});
 		const items = rows.map((rowIndex) => {
 			const colData = cols.map((colIndex): Item<T> | undefined => {

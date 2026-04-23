@@ -16,6 +16,7 @@ import {
 	selectEnablePageCounter,
 	selectOrientedPageFormat,
 	selectPageLayoutGrid,
+	selectPageMargin,
 	selectPreviewZoom,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib";
@@ -37,6 +38,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 	const pageLayoutGrid = useAppSelector(selectPageLayoutGrid);
 	const enablePageCounter = useAppSelector(selectEnablePageCounter);
+	const pageMargin = useAppSelector(selectPageMargin);
 	const story = useAppSelector(selectStory);
 
 	if (!pageFormat || !pageLayoutGrid || pageLayouts.length === 0) {
@@ -68,11 +70,14 @@ export function PrintableContent(props: PrintableContentProps) {
 		bleedEnabled,
 		pageSize,
 		enablePageCounter,
+		pageMargin,
 	};
 
 	const zoom = previewZoom ? previewZoom : 100;
 
-	const debounceValue = `${pageLayouts.length}-${pageFormat.type}-${singleItemPerPage}-${previewZoom}`;
+	const marginId = JSON.stringify(pageMargin);
+
+	const debounceValue = `${pageLayouts.length}-${pageFormat.type}-${singleItemPerPage}-${previewZoom}-${marginId}`;
 
 	return (
 		<Stack
@@ -103,7 +108,15 @@ export function PrintableContent(props: PrintableContentProps) {
 						},
 					}}
 				>
-					<Box width={`${zoom}%`} marginInline="auto">
+					<Box
+						marginInline="auto"
+						sx={{
+							width: `${zoom}%`,
+							"@media print": {
+								width: "100%",
+							},
+						}}
+					>
 						<Stack
 							{...props}
 							sx={{

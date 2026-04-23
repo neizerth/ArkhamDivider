@@ -35,17 +35,27 @@ jobs:
         run: npm run build
         env:
           APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
-          APP_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
           DATA_URL: ${{ secrets.DATA_URL }}
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+          VITE_GTM_ID: ${{ secrets.VITE_GTM_ID }}
           VITE_INVESTIGATORS_URL: ${{ secrets.VITE_INVESTIGATORS_URL }}
           VITE_ARKHAMESQUE_URL: ${{ secrets.VITE_ARKHAMESQUE_URL }}
       - name: 📂 Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
+      # Multiline rsync exclude rules (paths under SSH_DIR); with --delete these are not removed on the server.
+      # Repository secret: RSYNC_EXCLUDE_FROM (optional; empty = no extra excludes).
+      - name: 📂 Write rsync exclude rules from secret
+        env:
+          RSYNC_EXCLUDE_FROM: ${{ secrets.RSYNC_EXCLUDE }}
+        run: |
+          mkdir -p .github
+          printf '%s\n' "$RSYNC_EXCLUDE_FROM" > .github/.rsync-exclude
+
       - name: 📂 Sync files via rsync
         run: |
           sshpass -p '${{ secrets.SSH_PASSWORD }}' rsync -avz --delete \
+            --exclude-from=.github/.rsync-exclude \
             -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             ./dist/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}

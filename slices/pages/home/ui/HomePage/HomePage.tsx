@@ -4,6 +4,7 @@ import { BandsList } from "../BandsList";
 import { DividerList } from "../DividerList";
 import { IconsDownload } from "../IconsDownload";
 import { InvestigatorTokensPreview } from "../InvestigatorTokensPreview";
+import { OtherList } from "../OtherList";
 import { ProjectInfo } from "../ProjectInfo";
 import { StickersList } from "../StickersList";
 
@@ -15,6 +16,7 @@ export function HomePage() {
 				<DividerList />
 				<BandsList />
 				<StickersList />
+				<OtherList />
 				<InvestigatorTokensPreview />
 				<IconsDownload />
 			</Stack>

@@ -77,3 +77,5 @@ export function SarnetskyBand(props: SarnetskyBandProps) {
 		</SarnetskyBandContext.Provider>
 	);
 }
+
+export default SarnetskyBand;

@@ -8,3 +8,12 @@ export const sameBoxPosition = (size: number): BoxPosition => {
 		bottom: size,
 	};
 };
+
+export const isUniformBoxPosition = ({
+	top,
+	right,
+	bottom,
+	left,
+}: BoxPosition) => {
+	return top === right && right === bottom && bottom === left;
+};

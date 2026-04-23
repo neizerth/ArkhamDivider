@@ -1,14 +1,15 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router";
 import { AppLoader } from "@/modules/core/app/shared/ui";
-import { RouterLocationProvider } from "../RouterLocationProvider";
+import { useHashRedirect, useRouterLocation } from "../../lib";
 
 export function Root() {
+	useRouterLocation();
+	useHashRedirect();
+
 	return (
-		<RouterLocationProvider>
-			<Suspense fallback={<AppLoader />}>
-				<Outlet />
-			</Suspense>
-		</RouterLocationProvider>
+		<Suspense fallback={<AppLoader />}>
+			<Outlet />
+		</Suspense>
 	);
 }

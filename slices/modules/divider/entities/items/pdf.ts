@@ -5,6 +5,8 @@ import { arkhamDecoCategoryId } from "./arkham-deco/config";
 import { ArkhamDecoDividerPDF } from "./arkham-deco/ui";
 import { arkhamesqueClassicCategoryId } from "./arkhamesque-classic/config/common";
 import { ArkhamesqueClassicDividerPDF } from "./arkhamesque-classic/ui/pdf";
+import { binderBookmarkCategoryId } from "./binder-bookmark/config/common";
+import { BinderBookmarkPDF } from "./binder-bookmark/ui/pdf";
 import { chapter2CategoryId } from "./chapter2/config";
 import { Chapter2DividerPDF } from "./chapter2/ui/pdf";
 import { classicCategoryId } from "./classic/config/common";
@@ -19,6 +21,8 @@ import { sarnetskyCategoryId } from "./sarnetsky/config";
 import { SarnetskyDividerPDF } from "./sarnetsky/ui";
 import { sarnetskyBandCategoryId } from "./sarnetsky-band/config";
 import { SarnetskyBandDividerPDF } from "./sarnetsky-band/ui";
+import { simpleStickerCategoryId } from "./simple-sticker/config/common";
+import { SimpleStickerPDF } from "./simple-sticker/ui/pdf";
 import { tcgDividerStickerCategoryId } from "./tcg-divider-sticker/config";
 import { TCGDividerStickerPDF } from "./tcg-divider-sticker/ui/pdf";
 import { vintageDividerCategoryId } from "./vintage/config/common";
@@ -28,6 +32,7 @@ import { VintageDividerPDF } from "./vintage/ui/pdf";
 export const dividerPDFComponents: Record<string, PDFDivider<any>> = {
 	[arkhamesqueClassicCategoryId]: ArkhamesqueClassicDividerPDF,
 	[arkhamDecoCategoryId]: ArkhamDecoDividerPDF,
+	[binderBookmarkCategoryId]: BinderBookmarkPDF,
 	[classicCategoryId]: ClassicDividerPDF,
 	[invocation2018CategoryId]: Invocation2018DividerPDF,
 	[investigatorTokensCategoryId]: InvestigatorTokensDividerPDF,
@@ -38,4 +43,5 @@ export const dividerPDFComponents: Record<string, PDFDivider<any>> = {
 	[vintageDividerCategoryId]: VintageDividerPDF,
 	[chapter2CategoryId]: Chapter2DividerPDF,
 	[tcgDividerStickerCategoryId]: TCGDividerStickerPDF,
+	[simpleStickerCategoryId]: SimpleStickerPDF,
 };

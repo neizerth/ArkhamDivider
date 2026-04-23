@@ -1,5 +1,5 @@
-import { memo, useCallback, useContext } from "react";
-import { Icon, IconSelectionContext } from "@/modules/core/icon/shared/ui";
+import { memo, useCallback } from "react";
+import { Icon, useIconSelectionContext } from "@/modules/core/icon/shared/ui";
 import * as C from "./IconSelectionItem.components";
 import { getIconStyles } from "./IconSelectionItem.styles";
 
@@ -8,7 +8,7 @@ type IconSelectionItemProps = {
 };
 
 const IconSelectionItemComponent = ({ icon }: IconSelectionItemProps) => {
-	const { selectedIcon, setSelectedIcon } = useContext(IconSelectionContext);
+	const { selectedIcon, setSelectedIcon } = useIconSelectionContext();
 	const isSelected = selectedIcon === icon;
 
 	const sx = getIconStyles(isSelected);

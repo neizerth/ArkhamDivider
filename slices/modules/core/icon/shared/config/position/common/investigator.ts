@@ -39,7 +39,8 @@ export default {
 		top: percent(-3),
 	},
 	multiclass: {
-		top: percent(-1),
+		top: percent(-3),
+		scale: percent(80),
 	},
 	rogue: {
 		scale: percent(75),

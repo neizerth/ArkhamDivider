@@ -1,6 +1,7 @@
-import { PAGE_PADDING_BLOCK } from "../../../config";
+import type { BoxPosition } from "@/shared/model";
 import type { DPI, PageFormat, PageLayout } from "../../../model";
 import { fromDPI } from "../../util";
+import { getMinPageMarginTop } from "../getMinPageMarginTop";
 import { getLayoutSizePx } from "./getLayoutSizePx";
 import { getPageSize } from "./getPageSize";
 import { getUnitSizePx } from "./getUnitSizePx";
@@ -11,14 +12,21 @@ type Options<T> = {
 	dpi: DPI;
 	singleItemPerPage?: boolean;
 	cropmarksEnabled?: boolean;
+	pageMargin: BoxPosition;
 };
 
 export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
-	const { dpi, pageLayout, pageFormat, singleItemPerPage, cropmarksEnabled } =
-		options;
+	const {
+		dpi,
+		pageLayout,
+		pageFormat,
+		singleItemPerPage,
+		cropmarksEnabled,
+		pageMargin,
+	} = options;
 
 	if (singleItemPerPage && !cropmarksEnabled) {
-		return { x: 0, y: 0 };
+		return { x: pageMargin.left, y: pageMargin.top };
 	}
 	const unitSize = getUnitSizePx({
 		unitSize: pageLayout.grid.unitSize,
@@ -36,16 +44,24 @@ export const getPageLayoutOffsetPx = <T>(options: Options<T>) => {
 
 	const layoutSize = getLayoutSizePx({ pageLayout, dpi });
 
-	const x = (pageSize.width - layoutSize.width) / 2;
+	const x = pageMargin.left + (pageSize.width - layoutSize.width) / 2;
 
 	if (!pageLayout.isLast) {
-		const y = (pageSize.height - layoutSize.height) / 2;
+		const y = pageMargin.top + (pageSize.height - layoutSize.height) / 2;
 
 		return { x, y };
 	}
 	const mm = fromDPI(dpi);
 
-	const y = mm(PAGE_PADDING_BLOCK);
+	const minMarginTop = getMinPageMarginTop({
+		pageSize,
+		areaSize: layoutSize,
+		isLast: pageLayout.isLast,
+	});
+
+	const topMargin = Math.max(minMarginTop, pageMargin.top);
+
+	const y = mm(topMargin);
 
 	return { x, y };
 };

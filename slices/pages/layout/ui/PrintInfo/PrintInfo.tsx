@@ -1,12 +1,7 @@
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import WarningAmberOutlinedIcon from "@mui/icons-material/WarningAmberOutlined";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import { isFalse } from "ramda-adjunct";
 import { useTranslation } from "react-i18next";
+import { selectCategory } from "@/modules/divider/entities/lib";
 import { selectOrientedPageFormat } from "@/modules/print/shared/lib";
 import {
 	selectBleedEnabled,
@@ -15,6 +10,7 @@ import {
 } from "@/modules/print/shared/lib/store/print";
 import { browser } from "@/shared/config/compatibility";
 import { useAppSelector } from "@/shared/lib";
+import { PrintInfoEntry } from "./PrintInfoEntry";
 
 const A4_AREA_MM2 = 210 * 297;
 
@@ -28,6 +24,7 @@ export function PrintInfo() {
 	const doubleSided = useAppSelector(selectDoubleSidePrintEnabled);
 	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
 	const pageFormat = useAppSelector(selectOrientedPageFormat);
+	const category = useAppSelector(selectCategory);
 
 	const showDoubleSidedWithoutBleed =
 		bleedEnabled === false && doubleSided === true;
@@ -38,89 +35,44 @@ export function PrintInfo() {
 
 	const showSingleItemPerPageInfo = singleItemPerPage === true;
 
-	if (
-		!showDoubleSidedWithoutBleed &&
-		!showFirefoxLargePaperInfo &&
-		!showSingleItemPerPageInfo
-	) {
+	const isSticker = category?.type === "sticker";
+
+	const conditions = [
+		showDoubleSidedWithoutBleed,
+		showFirefoxLargePaperInfo,
+		showSingleItemPerPageInfo,
+		isSticker,
+	];
+
+	const hideContent = conditions.every(isFalse);
+
+	if (hideContent) {
 		return null;
 	}
 
 	return (
 		<Stack gap={1.5} maxWidth="sm" marginInline="auto">
 			{showDoubleSidedWithoutBleed && (
-				<Accordion
-					defaultExpanded
-					sx={{
-						border: "1px solid",
-						borderColor: "warning.light",
-						"&:before": { display: "none" },
-					}}
-				>
-					<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-						<Stack direction="row" alignItems="center" gap={1}>
-							<WarningAmberOutlinedIcon color="warning" fontSize="small" />
-							<Typography fontWeight={600}>
-								{t("printInfo.doubleSidedNoBleed.title")}
-							</Typography>
-						</Stack>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Alert severity="warning" variant="outlined" icon={false}>
-							{t("printInfo.doubleSidedNoBleed.body")}
-						</Alert>
-					</AccordionDetails>
-				</Accordion>
+				<PrintInfoEntry title={t("printInfo.doubleSidedNoBleed.title")}>
+					{t("printInfo.doubleSidedNoBleed.body")}
+				</PrintInfoEntry>
 			)}
 
 			{showFirefoxLargePaperInfo && (
-				<Accordion
-					defaultExpanded
-					sx={{
-						border: "1px solid",
-						borderColor: "warning.light",
-						"&:before": { display: "none" },
-					}}
-				>
-					<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-						<Stack direction="row" alignItems="center" gap={1}>
-							<WarningAmberOutlinedIcon color="warning" fontSize="small" />
-							<Typography fontWeight={600}>
-								{t("printInfo.firefoxLargePaper.title")}
-							</Typography>
-						</Stack>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Alert severity="warning" variant="outlined" icon={false}>
-							{t("printInfo.firefoxLargePaper.body")}
-						</Alert>
-					</AccordionDetails>
-				</Accordion>
+				<PrintInfoEntry title={t("printInfo.firefoxLargePaper.title")}>
+					{t("printInfo.firefoxLargePaper.body")}
+				</PrintInfoEntry>
 			)}
 
 			{showSingleItemPerPageInfo && (
-				<Accordion
-					defaultExpanded
-					sx={{
-						border: "1px solid",
-						borderColor: "warning.light",
-						"&:before": { display: "none" },
-					}}
-				>
-					<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-						<Stack direction="row" alignItems="center" gap={1}>
-							<WarningAmberOutlinedIcon color="warning" fontSize="small" />
-							<Typography fontWeight={600}>
-								{t("printInfo.singleItemPerPage.title")}
-							</Typography>
-						</Stack>
-					</AccordionSummary>
-					<AccordionDetails>
-						<Alert severity="warning" variant="outlined" icon={false}>
-							{t("printInfo.singleItemPerPage.body")}
-						</Alert>
-					</AccordionDetails>
-				</Accordion>
+				<PrintInfoEntry title={t("printInfo.singleItemPerPage.title")}>
+					{t("printInfo.singleItemPerPage.body")}
+				</PrintInfoEntry>
+			)}
+			{isSticker && (
+				<PrintInfoEntry title={t("printInfo.sticker.title")}>
+					{t("printInfo.sticker.body")}
+				</PrintInfoEntry>
 			)}
 		</Stack>
 	);

@@ -1,4 +1,4 @@
-import type { BoxSize } from "../model";
+import type { BoxPosition, BoxSize } from "../model";
 
 export const createSquareSize = (size: number) => ({
 	width: size,
@@ -10,10 +10,24 @@ export const createSize = (width: number, height: number) => ({
 	height,
 });
 
-export const expandRectSize = (size: BoxSize, value: number) => {
+export const modifyRectSize = (
+	options: { size: BoxSize; value?: number } & Partial<BoxPosition>,
+) => {
+	const {
+		value = 0,
+		top = value,
+		right = value,
+		bottom = value,
+		left = value,
+		size,
+	} = options;
+
+	const inline = left + right;
+	const block = top + bottom;
+
 	return {
-		width: size.width + value * 2,
-		height: size.height + value * 2,
+		width: size.width + inline,
+		height: size.height + block,
 	};
 };
 
@@ -43,23 +57,23 @@ export const getBoxGrid = ({
 }: {
 	size: BoxSize;
 	unitSize: BoxSize;
-	padding: {
-		inline?: number;
-		block?: number;
-	};
+	padding?: Partial<BoxPosition>;
 }) => {
-	const { inline = 0, block = 0 } = padding;
+	const { top = 0, right = 0, bottom = 0, left = 0 } = padding ?? {};
+
+	const inline = left + right;
+	const block = top + bottom;
 
 	const originalSize = {
-		width: size.width - inline * 2,
-		height: size.height - block * 2,
+		width: size.width - inline,
+		height: size.height - block,
 	};
 
 	const original = getStaticBoxGrid(originalSize, unitSize);
 
 	const rotatedSize = {
-		width: size.height - inline * 2,
-		height: size.width - block * 2,
+		width: size.height - inline,
+		height: size.width - block,
 	};
 
 	const rotated = getStaticBoxGrid(
@@ -101,3 +115,7 @@ export const getRelativeBoxSize = (size: BoxSize, unitSize: BoxSize) => {
 };
 
 export const px = (value: number) => `${value}px`;
+
+export const isBoxIncludes = (container: BoxSize, box: BoxSize) => {
+	return box.width <= container.width && box.height <= container.height;
+};

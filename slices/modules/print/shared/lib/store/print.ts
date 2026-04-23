@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { omit } from "ramda";
 import { createSliceState } from "redux-toolkit-helpers";
-import type { Orientation } from "@/shared/model";
+import type { BoxPosition, Orientation } from "@/shared/model";
 import type { DPI, PageFormatType, PageLayoutGrid } from "../../model";
 
 export type PrintState = {
@@ -17,6 +17,7 @@ export type PrintState = {
 	pageSize: PageFormatType;
 	singleItemPerPage: boolean;
 	orientation: Orientation;
+	pageMargin: BoxPosition | null;
 	pageLayoutGrid: PageLayoutGrid | null;
 };
 
@@ -34,6 +35,7 @@ const initialState: PrintState = {
 	singleItemPerPage: false,
 	orientation: "portrait",
 	pageLayoutGrid: null,
+	pageMargin: null,
 };
 
 const state = createSliceState(initialState);
@@ -65,6 +67,7 @@ export const {
 	setOrientation,
 	setPreviewZoom,
 	setDPI,
+	setPageMargin,
 } = print.actions;
 
 export const {
@@ -81,6 +84,7 @@ export const {
 	selectOrientation,
 	selectPreviewZoom,
 	selectDPI,
+	selectPageMargin: selectInternalPageMargin,
 } = print.selectors;
 
 export default print.reducer;
