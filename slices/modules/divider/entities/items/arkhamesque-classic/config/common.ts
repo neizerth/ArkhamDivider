@@ -22,7 +22,7 @@ export const arkhamesqueClassicObjects = {
 	title: {
 		fontSize: 4,
 		height: 6,
-		top: 3.8,
+		top: 3.9,
 		left: 16,
 		right: 16,
 	},

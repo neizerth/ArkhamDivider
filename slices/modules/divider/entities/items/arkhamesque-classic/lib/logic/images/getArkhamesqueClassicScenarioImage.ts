@@ -28,7 +28,7 @@ export const getArkhamesqueClassicScenarioImage = ({
 	const scenarioCode =
 		divider.type === "scenario" && "scenario" in divider
 			? divider.scenario?.id
-			: undefined;
+			: null;
 	const scenario = findScenario(story, scenarioCode);
 
 	const parts = [

@@ -19,7 +19,7 @@ export const getScenarioCodes = (
 
 export const findScenario = (
 	story: IArkhamesqueStory,
-	code: string | undefined,
+	code?: string | null,
 ) => {
 	if (!code || !story.scenarios) {
 		return;
