@@ -46,13 +46,15 @@ export function IconSelectionModal() {
 
 	const [navActive, setNavActive] = useBoolean(false);
 
-	const activeIconInfo = useAppSelector((state) =>
-		selectIconById(state, selectedIcon ?? defaultIcon),
+	// Keep icon groups stable while user clicks around.
+	// Otherwise each click can rebuild groups + re-measure the virtualized list.
+	const baseIconInfo = useAppSelector((state) =>
+		selectIconById(state, defaultIcon),
 	);
 
 	const iconGroups = useIconGroups({
 		mode,
-		iconSet: activeIconInfo?.iconSet,
+		iconSet: baseIconInfo?.iconSet,
 	});
 	const sectionRefs = useIconGroupSectionRefs(iconGroups);
 

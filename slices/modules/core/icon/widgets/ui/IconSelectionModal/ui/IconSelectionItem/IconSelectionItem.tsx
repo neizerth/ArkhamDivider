@@ -5,12 +5,14 @@ import { getIconStyles } from "./IconSelectionItem.styles";
 
 type IconSelectionItemProps = {
 	icon: string;
+	isSelected?: boolean;
 };
 
-const IconSelectionItemComponent = ({ icon }: IconSelectionItemProps) => {
-	const { selectedIcon, setSelectedIcon } = useIconSelectionContext();
-	const isSelected = selectedIcon === icon;
-
+const IconSelectionItemComponent = ({
+	icon,
+	isSelected = false,
+}: IconSelectionItemProps) => {
+	const { setSelectedIcon } = useIconSelectionContext();
 	const sx = getIconStyles(isSelected);
 
 	const selectIcon = useCallback(() => {
