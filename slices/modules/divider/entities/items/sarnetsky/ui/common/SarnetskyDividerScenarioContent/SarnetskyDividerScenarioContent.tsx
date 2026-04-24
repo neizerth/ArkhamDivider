@@ -1,13 +1,9 @@
 import { Box, type BoxProps, Stack, type SxProps } from "@mui/material";
-import { mergeDeepRight } from "ramda";
 import { useTranslation } from "react-i18next";
 import { useDividerObject } from "@/modules/divider/entities/lib";
 import { DividerColorPicker as ColorPicker } from "@/modules/divider/entities/ui";
-import { selectDividerParam } from "@/modules/divider/shared/lib";
 import { usePrintUnit } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
-import { useAppSelector } from "@/shared/lib";
-import type { BoxRect } from "@/shared/model";
 import {
 	getSarnetskyDefaultOverlayColor as getDefaultOverlayColor,
 	getSarnetskyStoryColor as getStoryColor,
@@ -29,10 +25,6 @@ export function SarnetskyDividerScenarioContent({
 	const { t } = useTranslation();
 	const { sxOptions, containerRef, divider, layout } =
 		useSarnetskyDividerContext();
-
-	const backgroundRect = useAppSelector(
-		selectDividerParam<BoxRect>({ id: divider.id, key: "backgroundIconRect" }),
-	);
 
 	const ref = useDividerObject({
 		dividerId: divider.id,
@@ -56,16 +48,6 @@ export function SarnetskyDividerScenarioContent({
 	const defaultFrameColor = getStoryColor(divider.story);
 	const defaultOverlayColor = getDefaultOverlayColor(divider.icon);
 
-	// `backgroundRect` is already measured in px (via `getPrintNodeRect`),
-	// so we must not convert it again (mm -> px) or we'll create a feedback loop.
-	const printFontSize = backgroundRect?.height ?? 0;
-
-	const backgroundIconSx = mergeDeepRight(backgroundIconSxStyle ?? {}, {
-		"@media print": {
-			fontSize: printFontSize,
-		},
-	}) as SxProps;
-
 	return (
 		<>
 			{divider.type === "scenario" && (
@@ -76,7 +58,10 @@ export function SarnetskyDividerScenarioContent({
 					<Stack sx={backgroundContainerSx}>
 						<Stack sx={backgroundSx}>
 							<Box sx={{ display: "inline-flex", flex: 1 }} ref={ref}>
-								<BackgroundIcon sx={backgroundIconSx} divider={divider} />
+								<BackgroundIcon
+									sx={(backgroundIconSxStyle ?? {}) as SxProps}
+									divider={divider}
+								/>
 							</Box>
 						</Stack>
 					</Stack>

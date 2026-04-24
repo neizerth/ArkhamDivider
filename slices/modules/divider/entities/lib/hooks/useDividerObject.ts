@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
 	selectDividerParam,
 	setDividerParam,
@@ -28,6 +28,7 @@ export const useDividerObject = ({
 		selectDividerParam<BoxRect>({ id: dividerId, key: param }),
 	);
 	const [ref, rect] = useBoundingRect<HTMLElement>();
+	const lastDispatchedRef = useRef<BoxRect | null>(null);
 
 	useEffect(() => {
 		if (!ref.current || !rect || !containerRef.current || exportId) {
@@ -40,9 +41,21 @@ export const useDividerObject = ({
 			containerWidth,
 		});
 
+		// If layout metrics are unstable (fonts/container queries/etc),
+		// we can end up dispatching the same rect over and over and hit
+		// React's maximum update depth. Guard against re-dispatching.
+		if (
+			lastDispatchedRef.current &&
+			isBoxRectEquals(lastDispatchedRef.current, printRect)
+		) {
+			return;
+		}
+
 		if (currentRect && isBoxRectEquals(currentRect, printRect)) {
 			return;
 		}
+
+		lastDispatchedRef.current = printRect;
 
 		dispatch(
 			setDividerParam({
