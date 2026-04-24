@@ -5,12 +5,14 @@ import type {
 } from "@/modules/divider/shared/model";
 import type { getArkhamIndexDividerLayoutObjects } from "../lib";
 
+export type ArkhamIndexDividerTabSize = number | "full";
+
 export type ArkhamIndexDividerProps = DividerWithRelations<{
 	icon?: Icon | null;
 	customTitle?: string | null;
 	custonFontSizeScale?: number;
 
-	tabSize?: number;
+	tabSize?: ArkhamIndexDividerTabSize;
 	tabIndex?: number;
 }>;
 

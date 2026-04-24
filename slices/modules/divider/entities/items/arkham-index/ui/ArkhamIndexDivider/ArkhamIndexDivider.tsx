@@ -6,26 +6,38 @@ import {
 	DividerContainer as Container,
 	DividerContent as Content,
 } from "@/modules/divider/entities/ui";
+import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { Image } from "@/shared/ui";
 import { arkhamIndexDividerBaseUrl } from "../../config";
 import { useArkhamIndexDividerSxOptions } from "../../lib/hooks";
+import { getArkhamIndexDividerTabSize } from "../../lib/logic";
 import type {
 	ArkhamIndexDividerLayout,
 	ArkhamIndexDividerProps,
 } from "../../model";
 import { ArkhamIndexContext } from "../ArkhamIndexContext";
+import { ArkhamIndexDividerBorder as BackgroundStroke } from "../ArkhamIndexDividerBorder";
 import * as S from "./ArkhamIndexDivider.styles";
 
 export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
+
+	const tabIndex = useAppSelector(
+		selectDividerTabIndex({ id: props.id, tabsCount: 3, side: props.side }),
+	);
+
 	const getPrintSx = usePrintSx();
 	const sxOptions = useArkhamIndexDividerSxOptions();
-
+	const tabSize = getArkhamIndexDividerTabSize(props);
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
+	const backgroundStrokeSx = getPrintSx(S.getBackgroundStrokeSx);
+
 	return (
-		<ArkhamIndexContext.Provider value={{ layout, divider: props, sxOptions }}>
+		<ArkhamIndexContext.Provider
+			value={{ layout, divider: props, tabSize, tabIndex, sxOptions }}
+		>
 			<Container>
 				<BleedView>
 					<Image
@@ -33,7 +45,9 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						sx={backgroundSx}
 					/>
 				</BleedView>
-				<Content hideBorderRadius></Content>
+				<Content hideBorderRadius>
+					<BackgroundStroke sx={backgroundStrokeSx} />
+				</Content>
 			</Container>
 		</ArkhamIndexContext.Provider>
 	);

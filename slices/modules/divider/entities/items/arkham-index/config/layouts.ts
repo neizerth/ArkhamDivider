@@ -20,6 +20,10 @@ const horizontal: ArkhamIndexDividerLayout = {
 	},
 	bleed: 3,
 	iconParams: ["icon", "campaignIcon"],
+	tabs: {
+		type: "fixed",
+		value: 3,
+	},
 };
 
 const compact: ArkhamIndexDividerLayout = {

@@ -37,13 +37,16 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	image?: string;
 	orientation: DividerOrientation;
 	color: boolean;
+	/** The size of the divider in mm */
 	size: BoxSize;
 	printSize: DividerPrintSize;
+	/** The size of the bleed in mm */
 	bleed: number;
 	sleeves?: DividerLayoutSleeve[] | null;
 	params?: Params;
 	background?: boolean;
 	iconParams?: string[];
+	/** The top creasing in mm */
 	creasingTop?: number;
 	scenarioParams?: {
 		campaignIcon?: boolean;

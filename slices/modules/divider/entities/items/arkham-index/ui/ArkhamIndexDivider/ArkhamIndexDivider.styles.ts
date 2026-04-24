@@ -5,3 +5,9 @@ export const getBackgroundSx: PrintSxCallback = () => ({
 	inset: 0,
 	objectFit: "cover",
 });
+
+export const getBackgroundStrokeSx: PrintSxCallback = () => ({
+	position: "absolute",
+	inset: 0,
+	objectFit: "cover",
+});
