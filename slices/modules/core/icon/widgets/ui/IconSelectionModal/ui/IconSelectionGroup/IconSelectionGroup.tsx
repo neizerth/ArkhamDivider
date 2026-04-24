@@ -1,7 +1,7 @@
 import { Box, type BoxProps, Stack } from "@mui/material";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { Icon } from "@/modules/core/icon/shared/ui";
+import { Icon, useIconSelectionContext } from "@/modules/core/icon/shared/ui";
 import { Row } from "@/shared/ui";
 import type { IconGroup } from "../../model";
 import { IconSelectionItem } from "../IconSelectionItem/IconSelectionItem";
@@ -20,6 +20,7 @@ export function IconSelectionGroup({
 	...props
 }: IconSelectionGroupProps) {
 	const { t } = useTranslation();
+	const { selectedIcon } = useIconSelectionContext();
 
 	const handleGroupHeaderClick = useCallback(
 		(index: number) => () => {
@@ -62,7 +63,11 @@ export function IconSelectionGroup({
 							}}
 						>
 							{group.icons.map((icon) => (
-								<IconSelectionItem key={`${group.id}-${icon}`} icon={icon} />
+								<IconSelectionItem
+									key={`${group.id}-${icon}`}
+									icon={icon}
+									isSelected={selectedIcon === icon}
+								/>
 							))}
 						</Row>
 					</Stack>

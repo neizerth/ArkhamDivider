@@ -2,8 +2,9 @@ import { Box, Button, Dialog, DialogActions, Grid, Stack } from "@mui/material";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
+import { selectIconById } from "@/modules/core/icon/shared/lib/store/selectors/selectIconById";
 import { absoluteFill } from "@/shared/config";
-import { useScrollSpy } from "@/shared/lib";
+import { useAppSelector, useScrollSpy } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import { Row } from "@/shared/ui";
 import { Icon, useIconSelectionContext } from "../../../../../shared/ui";
@@ -45,8 +46,15 @@ export function IconSelectionModal() {
 
 	const [navActive, setNavActive] = useBoolean(false);
 
+	// Keep icon groups stable while user clicks around.
+	// Otherwise each click can rebuild groups + re-measure the virtualized list.
+	const baseIconInfo = useAppSelector((state) =>
+		selectIconById(state, defaultIcon),
+	);
+
 	const iconGroups = useIconGroups({
 		mode,
+		iconSet: baseIconInfo?.iconSet,
 	});
 	const sectionRefs = useIconGroupSectionRefs(iconGroups);
 
