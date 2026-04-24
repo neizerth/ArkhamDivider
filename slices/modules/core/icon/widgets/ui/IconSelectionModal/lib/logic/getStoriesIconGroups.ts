@@ -10,6 +10,7 @@ import {
 	isSideContent,
 } from "@/modules/story/shared/lib";
 import type { Story } from "@/modules/story/shared/model";
+import { icoMoonSetId } from "../../config";
 import type { IconGroup } from "../../model";
 import { getStoryIconSubgroup } from "./getStoryIconSubgroup";
 
@@ -17,21 +18,32 @@ type Options = {
 	icons: ArkhamDividerIcon[];
 	encounterSets: EncounterSet[];
 	stories: Story[];
+	iconSet?: string;
 };
 
 export const getStoriesIconGroups = ({
 	stories,
 	icons,
 	encounterSets,
+	iconSet,
 }: Options): IconGroup[] => {
+	const iconsBySet = iconSet
+		? icons.filter((i) => i.iconSet === iconSet)
+		: icons;
+
 	const toIcon = (name: string) => {
-		const icon = encounterSets.find(propEq(name, "code"))?.icon;
+		const icon = encounterSets.find((s) => s.code === name)?.icon;
 
 		if (icon) {
 			return icon;
 		}
 
-		return icons.find(propEq(name, "icon"))?.icon;
+		// `icons` can contain multiple entries with the same `icon` name across icon sets.
+		// Prefer the currently selected icon set to keep search results and groups consistent.
+		return (
+			iconsBySet.find((i) => i.icon === name)?.icon ??
+			icons.find((i) => i.icon === name)?.icon
+		);
 	};
 	const campaignGroups = stories.filter(
 		(story) =>
@@ -45,9 +57,19 @@ export const getStoriesIconGroups = ({
 
 	const mapStory = (story: Story) => {
 		const subGroup = toIconGroup(story);
+		const subgroupIcons = subGroup.icons.filter((id) => {
+			const icon = icons.find(propEq(id, "icon"));
+
+			return icon?.iconSet !== icoMoonSetId;
+		});
+
+		//
 		// NOTE: We intentionally avoid expanding campaign icons by `iconSet`.
 		// Some icon sets include multiple custom campaigns; expanding would mix them.
-		return subGroup;
+		return {
+			...subGroup,
+			icons: subgroupIcons,
+		};
 	};
 
 	return [

@@ -2,8 +2,9 @@ import { Box, Button, Dialog, DialogActions, Grid, Stack } from "@mui/material";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
+import { selectIconById } from "@/modules/core/icon/shared/lib/store/selectors/selectIconById";
 import { absoluteFill } from "@/shared/config";
-import { useScrollSpy } from "@/shared/lib";
+import { useAppSelector, useScrollSpy } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import { Row } from "@/shared/ui";
 import { Icon, useIconSelectionContext } from "../../../../../shared/ui";
@@ -45,8 +46,13 @@ export function IconSelectionModal() {
 
 	const [navActive, setNavActive] = useBoolean(false);
 
+	const activeIconInfo = useAppSelector((state) =>
+		selectIconById(state, selectedIcon ?? defaultIcon),
+	);
+
 	const iconGroups = useIconGroups({
 		mode,
+		iconSet: activeIconInfo?.iconSet,
 	});
 	const sectionRefs = useIconGroupSectionRefs(iconGroups);
 

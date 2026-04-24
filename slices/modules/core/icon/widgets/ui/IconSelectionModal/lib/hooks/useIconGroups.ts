@@ -8,9 +8,10 @@ import { getIconGroups } from "../logic/getIconGroups";
 
 type Options = {
 	mode: IconSelectionMode;
+	iconSet?: string;
 };
 
-export const useIconGroups = ({ mode }: Options) => {
+export const useIconGroups = ({ mode, iconSet }: Options) => {
 	const iconMapping = useAppSelector(selectIcons);
 	const encounterSets = useAppSelector(selectEncounterSets);
 	const stories = useAppSelector(selectStories);
@@ -23,6 +24,7 @@ export const useIconGroups = ({ mode }: Options) => {
 			encounterSets,
 			stories,
 			mode,
+			iconSet,
 		});
-	}, [iconMapping, encounterSets, stories, mode]);
+	}, [iconMapping, encounterSets, stories, mode, iconSet]);
 };

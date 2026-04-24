@@ -12,6 +12,7 @@ type Options = {
 	encounterSets: EncounterSet[];
 	mode: IconSelectionMode;
 	stories: Story[];
+	iconSet?: string;
 };
 
 export const getIconGroups = (options: Options) => {

@@ -5,3 +5,5 @@ export const LIST_GROUP_GAP = 16;
 export const INITIAL_SCROLL_OFFSET_BUFFER_PX = 8;
 /** Delay (ms) before first scroll attempt so dialog and virtualizer are ready. */
 export const INITIAL_SCROLL_DELAY_MS = 150;
+
+export const icoMoonSetId = "IcoMoon - Free";
