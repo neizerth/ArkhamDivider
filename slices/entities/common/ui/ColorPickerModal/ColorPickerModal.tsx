@@ -1,11 +1,11 @@
-import type { ModalProps } from "@mui/material";
 import { Button, Dialog, DialogActions, Stack } from "@mui/material";
+import type { DialogProps } from "@mui/material/Dialog";
 import type { ColorResult } from "@uiw/color-convert";
 import Chrome from "@uiw/react-color-chrome";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-type ColorPickerModalProps = Omit<ModalProps, "children"> & {
+type ColorPickerModalProps = Omit<DialogProps, "children"> & {
 	value?: string;
 	defaultValue?: string;
 	onSelectAll?: ((color?: string) => void) | null;

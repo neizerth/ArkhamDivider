@@ -1,4 +1,3 @@
-import { propEq } from "ramda";
 import { useCallback } from "react";
 import type { IconRect } from "@/modules/core/icon/shared/model";
 import {
@@ -25,7 +24,6 @@ export const useEncounterIcons = ({ dividerId }: Options) => {
 	return useCallback(
 		(icons: IconRect[]) => {
 			if (currentValue && !shouldUpdateIcons(currentValue, icons)) {
-				console.log("icons are the same, skipping update");
 				return;
 			}
 			dispatch(
@@ -41,8 +39,11 @@ export const useEncounterIcons = ({ dividerId }: Options) => {
 };
 
 const shouldUpdateIcons = (a: IconRect[], b: IconRect[]) => {
+	if (a.length !== b.length) {
+		return true;
+	}
 	return a.some((aIcon) => {
-		const bIcon = b.find(propEq(aIcon.id, "id"));
+		const bIcon = b.find((x) => x.id === aIcon.id);
 		if (!bIcon) {
 			return true;
 		}

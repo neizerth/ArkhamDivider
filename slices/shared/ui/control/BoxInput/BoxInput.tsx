@@ -96,7 +96,7 @@ export function BoxInput({
 			}
 
 			onValueChangeProp?.(value);
-			onChangeProp?.(event);
+			onChangeProp?.(event as React.ChangeEvent<HTMLDivElement>);
 			if (stroke) {
 				setStrokeValue(value);
 			}

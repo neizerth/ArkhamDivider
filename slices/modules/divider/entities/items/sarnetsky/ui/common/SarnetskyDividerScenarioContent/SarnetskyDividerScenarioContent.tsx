@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDividerObject } from "@/modules/divider/entities/lib";
 import { DividerColorPicker as ColorPicker } from "@/modules/divider/entities/ui";
 import { selectDividerParam } from "@/modules/divider/shared/lib";
-import { usePrintPxCallback, usePrintSx } from "@/modules/print/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppSelector } from "@/shared/lib";
 import type { BoxRect } from "@/shared/model";
@@ -41,7 +41,6 @@ export function SarnetskyDividerScenarioContent({
 		containerWidth: layout.size.width,
 	});
 
-	const mm = usePrintPxCallback();
 	const getPrintSx = usePrintSx(sxOptions);
 
 	if (divider.layoutType !== "scenario") {
@@ -57,7 +56,9 @@ export function SarnetskyDividerScenarioContent({
 	const defaultFrameColor = getStoryColor(divider.story);
 	const defaultOverlayColor = getDefaultOverlayColor(divider.icon);
 
-	const printFontSize = mm(backgroundRect?.height ?? 0);
+	// `backgroundRect` is already measured in px (via `getPrintNodeRect`),
+	// so we must not convert it again (mm -> px) or we'll create a feedback loop.
+	const printFontSize = backgroundRect?.height ?? 0;
 
 	const backgroundIconSx = mergeDeepRight(backgroundIconSxStyle ?? {}, {
 		"@media print": {

@@ -26,8 +26,11 @@ export const translateFallback = ({
 		return text;
 	}
 
+	// i18n `t` overloads expect `context?: string`, while `TOptions` types `context` as `unknown`.
+	const { context, ...rest } = options;
 	return i18nInstance.t(text, {
-		...options,
+		...rest,
 		ns,
+		...(typeof context === "string" ? { context } : {}),
 	});
 };
