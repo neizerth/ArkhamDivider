@@ -1,5 +1,8 @@
-import { path } from "@/entities/common/lib";
+import { path as d3Path } from "d3-path";
+import { SVGPath } from "@/entities/common/lib";
 import type { ArkhamIndexDividerTabSize } from "../../model";
+
+const path = () => SVGPath.of(d3Path());
 
 export type Options = {
 	width: number;
@@ -31,37 +34,49 @@ const getRoundedPath = ({ width: w, height: h, cornerRadius: r }: Options) => {
 
 const getTabContentWidth = (options: {
 	tabWidths: Record<number, number>;
-	tabSize: number;
+	tabSize: ArkhamIndexDividerTabSize;
 	tabSideWidth: number;
+	width: number;
 }) => {
 	const { tabSideWidth } = options;
-	return getTabWidth(options) - 2 * tabSideWidth;
+	return getArkhamIndexDividerTabWidth(options) - 2 * tabSideWidth;
 };
 
-const getTabWidth = ({
+export const getArkhamIndexDividerTabWidth = ({
 	tabWidths,
 	tabSize,
+	width,
 }: {
 	tabWidths: Record<number, number>;
-	tabSize: number;
+	tabSize: ArkhamIndexDividerTabSize;
+	width: number;
 }) => {
+	if (tabSize === "full") {
+		return width;
+	}
 	return tabWidths[tabSize];
 };
 
-const getTabLeft = ({
+export const getArkhamIndexDividerTabLeft = ({
 	tabSize,
 	tabIndex,
 	width,
 	tabWidths,
 	cornerRadius,
-}: TabbedOptions) => {
-	if (tabIndex === 0 || tabSize === 3) {
+}: {
+	tabSize: ArkhamIndexDividerTabSize;
+	tabIndex: number;
+	width: number;
+	tabWidths: Record<number, number>;
+	cornerRadius: number;
+}) => {
+	if (tabIndex === 0 || tabSize === 3 || tabSize === "full") {
 		return cornerRadius;
 	}
 
 	const lastTabIndex = 3 - tabSize;
 	const isLastTab = tabIndex >= lastTabIndex;
-	const tabWidth = getTabWidth({ tabWidths, tabSize });
+	const tabWidth = getArkhamIndexDividerTabWidth({ tabWidths, tabSize, width });
 
 	if (tabSize === 2 || isLastTab) {
 		return width - tabWidth - cornerRadius;
@@ -81,7 +96,7 @@ const getTabbedPath = (options: TabbedOptions) => {
 
 	const tabContentWidth = getTabContentWidth(options);
 
-	const tabLeft = getTabLeft(options);
+	const tabLeft = getArkhamIndexDividerTabLeft(options);
 	const tabRight = tabLeft + tabSideWidth * 2 + tabContentWidth;
 	const innerLeft = tabLeft + tabSideWidth;
 	const innerRight = innerLeft + tabContentWidth;
@@ -128,15 +143,6 @@ const getTabbedPath = (options: TabbedOptions) => {
 			.closePath()
 			.toString()
 	);
-
-	// .moveTo(tabLeft, tabHeight)
-	// .lineTo(tabRight, tabHeight)
-	// .lineTo(tabRight, height - radius)
-	// .arcTo(width - radius, height, width, height - radius, radius)
-	// .lineTo(radius, height)
-	// .arcTo(0, height, 0, height - radius, radius)
-	// .lineTo(0, tabHeight)
-	// return "";
 };
 
 /**

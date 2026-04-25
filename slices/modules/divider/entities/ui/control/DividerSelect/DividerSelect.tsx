@@ -43,6 +43,7 @@ export function DividerSelect(props: DividerSelectProps) {
 				<MenuItem value="arkham-deco">Arkham Deco</MenuItem>
 				<MenuItem value="3mm">3mm</MenuItem>
 				<MenuItem value="vintage">Vintage</MenuItem>
+				<MenuItem value="arkham-index">Arkham Index</MenuItem>
 				<C.Subheader>{t(`Bands`)}</C.Subheader>
 
 				<MenuItem value="sarnetsky-band">{t(`Eugene Sarnetsky`)}</MenuItem>

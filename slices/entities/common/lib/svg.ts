@@ -1,27 +1,47 @@
-import { path as d3Path, type Path } from "d3-path";
+export interface PathAdapter {
+	moveTo(x: number, y: number): void;
+	lineTo(x: number, y: number): void;
+	quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+	bezierCurveTo(
+		cpx1: number,
+		cpy1: number,
+		cpx2: number,
+		cpy2: number,
+		x: number,
+		y: number,
+	): void;
+	arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+	arc(
+		x: number,
+		y: number,
+		radius: number,
+		startAngle: number,
+		endAngle: number,
+		anticlockwise?: boolean,
+	): void;
+	rect(x: number, y: number, width: number, height: number): void;
+	closePath(): void;
+}
 
 export class SVGPath {
-	readonly #path: Path;
-	constructor() {
-		this.#path = d3Path();
-	}
+	constructor(public readonly adapter: PathAdapter) {}
 
-	static of() {
-		return new SVGPath();
+	static of(adapter: PathAdapter) {
+		return new SVGPath(adapter);
 	}
 
 	moveTo(x: number, y: number) {
-		this.#path.moveTo(x, y);
+		this.adapter.moveTo(x, y);
 		return this;
 	}
 
 	lineTo(x: number, y: number) {
-		this.#path.lineTo(x, y);
+		this.adapter.lineTo(x, y);
 		return this;
 	}
 
 	quadraticCurveTo(cpx: number, cpy: number, x: number, y: number) {
-		this.#path.quadraticCurveTo(cpx, cpy, x, y);
+		this.adapter.quadraticCurveTo(cpx, cpy, x, y);
 		return this;
 	}
 
@@ -33,12 +53,12 @@ export class SVGPath {
 		x: number,
 		y: number,
 	) {
-		this.#path.bezierCurveTo(cpx1, cpy1, cpx2, cpy2, x, y);
+		this.adapter.bezierCurveTo(cpx1, cpy1, cpx2, cpy2, x, y);
 		return this;
 	}
 
 	arcTo(x1: number, y1: number, x2: number, y2: number, radius: number) {
-		this.#path.arcTo(x1, y1, x2, y2, radius);
+		this.adapter.arcTo(x1, y1, x2, y2, radius);
 		return this;
 	}
 
@@ -50,23 +70,21 @@ export class SVGPath {
 		endAngle: number,
 		anticlockwise?: boolean,
 	) {
-		this.#path.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+		this.adapter.arc(x, y, radius, startAngle, endAngle, anticlockwise);
 		return this;
 	}
 
 	rect(x: number, y: number, width: number, height: number) {
-		this.#path.rect(x, y, width, height);
+		this.adapter.rect(x, y, width, height);
 		return this;
 	}
 
 	closePath() {
-		this.#path.closePath();
+		this.adapter.closePath();
 		return this;
 	}
 
 	toString() {
-		return this.#path.toString();
+		return this.adapter.toString();
 	}
 }
-
-export const path = SVGPath.of;

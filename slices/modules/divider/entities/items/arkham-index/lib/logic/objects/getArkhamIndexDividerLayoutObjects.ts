@@ -1,8 +1,8 @@
 import {
 	arkhamIndexDividerHorizontalObjects,
 	arkhamIndexDividerVerticalObjects,
-} from "../../config";
-import type { ArkhamIndexDividerLayout } from "../../model";
+} from "../../../config";
+import type { ArkhamIndexDividerLayout } from "../../../model";
 
 export const getArkhamIndexDividerLayoutObjects = (
 	layout: ArkhamIndexDividerLayout,

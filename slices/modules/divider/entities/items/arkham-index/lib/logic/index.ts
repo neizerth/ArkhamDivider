@@ -1,3 +1,5 @@
 export * from "./getArkhamIndexDividerBackgroundPath";
-export * from "./getArkhamIndexDividerLayoutObjects";
 export * from "./getArkhamIndexDividerTabSize";
+export * from "./objects";
+export * from "./position";
+export * from "./showArkhamIndexDividerTabTitle";

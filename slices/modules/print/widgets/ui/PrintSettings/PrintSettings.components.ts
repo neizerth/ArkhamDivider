@@ -20,6 +20,6 @@ export const Icon = styled(BaseIcon)`
   color: black;
 `;
 
-export const ContextMenu = styled(Popper)`
-  z-index: 1;
-`;
+export const ContextMenu = styled(Popper)(({ theme }) => ({
+	zIndex: theme.zIndex.modal + 1,
+}));

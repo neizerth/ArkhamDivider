@@ -19,6 +19,7 @@ import type {
 } from "../../model";
 import { ArkhamIndexContext } from "../ArkhamIndexContext";
 import { ArkhamIndexDividerBorder as BackgroundStroke } from "../ArkhamIndexDividerBorder";
+import { ArkhamIndexDividerTab as Tab } from "../tab";
 import * as S from "./ArkhamIndexDivider.styles";
 
 export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
@@ -28,9 +29,14 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		selectDividerTabIndex({ id: props.id, tabsCount: 3, side: props.side }),
 	);
 
-	const getPrintSx = usePrintSx();
-	const sxOptions = useArkhamIndexDividerSxOptions();
 	const tabSize = getArkhamIndexDividerTabSize(props);
+
+	const getPrintSx = usePrintSx();
+	const sxOptions = useArkhamIndexDividerSxOptions({
+		divider: props,
+		tabIndex,
+		tabSize,
+	});
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
 	const backgroundStrokeSx = getPrintSx(S.getBackgroundStrokeSx);
 
@@ -47,6 +53,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 				</BleedView>
 				<Content hideBorderRadius>
 					<BackgroundStroke sx={backgroundStrokeSx} />
+					<Tab />
 				</Content>
 			</Container>
 		</ArkhamIndexContext.Provider>

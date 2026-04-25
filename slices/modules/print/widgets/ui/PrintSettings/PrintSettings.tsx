@@ -114,8 +114,30 @@ export function PrintSettings(props: PrintSettingsProps) {
 				<C.ContextMenu
 					open={open}
 					transition
-					disablePortal
 					anchorEl={anchorRef.current}
+					placement="bottom-end"
+					modifiers={[
+						{
+							name: "offset",
+							options: {
+								offset: [0, 8],
+							},
+						},
+						{
+							name: "preventOverflow",
+							options: {
+								boundary: "viewport",
+								padding: 8,
+								altAxis: true,
+							},
+						},
+						{
+							name: "flip",
+							options: {
+								fallbackPlacements: ["top-end", "bottom-start", "top-start"],
+							},
+						},
+					]}
 				>
 					{({ TransitionProps }) => (
 						<Grow {...TransitionProps}>

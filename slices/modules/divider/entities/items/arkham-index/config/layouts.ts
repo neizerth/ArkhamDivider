@@ -8,7 +8,7 @@ const horizontal: ArkhamIndexDividerLayout = {
 	types: ["scenario", "player", "investigator"],
 	categoryId: arkhamIndexCategoryId,
 	groupId: "horizontal",
-	name: "Arkham Index",
+	name: "Medium",
 	orientation: "horizontal",
 	color: true,
 	size: createSize(87, 83),

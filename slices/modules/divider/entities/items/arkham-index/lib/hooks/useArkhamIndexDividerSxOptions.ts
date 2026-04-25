@@ -1,18 +1,34 @@
 import { useMemo } from "react";
+import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
 import { selectLayout } from "@/modules/divider/entities/lib";
+import { getDividerIcon } from "@/modules/divider/features/lib";
 import { useAppSelector } from "@/shared/lib";
 import type {
 	ArkhamIndexDividerLayout,
+	ArkhamIndexDividerProps,
 	ArkhamIndexDividerSxOptions,
+	ArkhamIndexDividerTabSize,
 } from "../../model";
 import { getArkhamIndexDividerLayoutObjects } from "../logic";
 
-export const useArkhamIndexDividerSxOptions = () => {
+type Options = {
+	divider: ArkhamIndexDividerProps;
+	tabIndex: number;
+	tabSize: ArkhamIndexDividerTabSize;
+};
+
+export const useArkhamIndexDividerSxOptions = (options: Options) => {
+	const { divider, tabIndex, tabSize } = options;
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
+	const icon = getDividerIcon({ divider, param: "icon" });
+	const showIcon = !isEmptyIcon(icon);
 
 	return useMemo((): ArkhamIndexDividerSxOptions => {
 		return {
 			objects: getArkhamIndexDividerLayoutObjects(layout),
+			showIcon,
+			tabIndex,
+			tabSize,
 		};
-	}, [layout]);
+	}, [layout, showIcon, tabIndex, tabSize]);
 };

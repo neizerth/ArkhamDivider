@@ -4,10 +4,19 @@ import { useAppSelector } from "@/shared/lib";
 
 type NotExportableProps = PropsWithChildren & {
 	id?: string;
+	visible?: boolean;
 };
 
-export function NotExportable({ children, id }: NotExportableProps) {
+export function NotExportable({
+	children,
+	id,
+	visible = false,
+}: NotExportableProps) {
 	const exportDividerId = useAppSelector(selectDividerRenderId);
+
+	if (visible) {
+		return children;
+	}
 
 	if (exportDividerId && !id) {
 		return null;

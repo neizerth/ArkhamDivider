@@ -1,6 +1,6 @@
 import { Box, type BoxProps } from "@mui/material";
 import { useMemo } from "react";
-import { getArkhamIndexDividerBackgroundPath } from "../../lib";
+import { getArkhamIndexDividerBackgroundPath as getPath } from "../../lib";
 import { useArkhamIndexContext } from "../ArkhamIndexContext";
 
 type ArkhamIndexDividerBorderProps = BoxProps;
@@ -15,7 +15,7 @@ export function ArkhamIndexDividerBorder(props: ArkhamIndexDividerBorderProps) {
 
 	const path = useMemo(
 		() =>
-			getArkhamIndexDividerBackgroundPath({
+			getPath({
 				width,
 				height,
 				cornerRadius,
