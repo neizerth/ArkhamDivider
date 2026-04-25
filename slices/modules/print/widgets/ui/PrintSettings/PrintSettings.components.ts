@@ -21,5 +21,7 @@ export const Icon = styled(BaseIcon)`
 `;
 
 export const ContextMenu = styled(Popper)(({ theme }) => ({
-	zIndex: theme.zIndex.modal + 1,
+	// Must be above header/app-bar, but below MUI modal/menu portals (Select/Menu),
+	// otherwise nested popups render under this popper.
+	zIndex: theme.zIndex.appBar + 1,
 }));
