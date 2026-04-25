@@ -3,15 +3,20 @@ import { useMemo } from "react";
 import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { usePrintSx } from "@/modules/print/shared/lib";
+import { useTabPosition, useTabSize } from "@/modules/divider/shared/lib";
+import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { FitInput, Image } from "@/shared/ui";
 import { arkhamIndexDividerBaseUrl } from "../../../config";
 import {
 	getArkhamIndexDividerIconLeft,
+	getArkhamIndexDividerSideObject,
 	getArkhamIndexDividerTabLeft,
 	getArkhamIndexDividerTabWidth,
+	getArkhamIndexSideText,
 	showArkhamIndexDividerTabTitle,
+	showArkhamIndexSideTextSx,
+	useArkhamIndexIndent,
 } from "../../../lib";
 import { useArkhamIndexContext } from "../../ArkhamIndexContext";
 import { ArkhamIndexDividerTabTitle as TabTitle } from "../ArkhamIndexDividerTabTitle";
@@ -19,6 +24,11 @@ import { ArkhamIndexDividerTabTitle as TabTitle } from "../ArkhamIndexDividerTab
 import * as S from "./ArkhamIndexDividerTab.styles";
 
 const backgroundImage = `${arkhamIndexDividerBaseUrl}/icon-background.avif`;
+
+const leftPosition = { position: "left" } as const;
+const rightPosition = { position: "right" } as const;
+
+const tabSizes = [1, 2, 3, "full"];
 
 export function ArkhamIndexDividerTab() {
 	const { layout, tabSize, tabIndex, divider, sxOptions } =
@@ -29,6 +39,7 @@ export function ArkhamIndexDividerTab() {
 	const iconWidth = sxOptions.objects.icon.width;
 
 	const { cornerRadius } = sxOptions.objects;
+	const tabHeight = sxOptions.objects.tab.height;
 	const { width } = layout.size;
 	const tabWidth = getArkhamIndexDividerTabWidth({
 		tabWidths,
@@ -75,11 +86,31 @@ export function ArkhamIndexDividerTab() {
 
 	const getPrintSx = usePrintSx(tabSxOptions);
 
+	const sideOptions = useMemo(() => {
+		const sideObject = getArkhamIndexDividerSideObject({
+			objects: sxOptions.objects,
+			divider,
+		});
+		return {
+			sideObject,
+		};
+	}, [sxOptions.objects, divider]);
+
+	const showSideText = showArkhamIndexSideTextSx(divider);
+
 	const iconSx = getPrintSx(S.getIconSx);
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
-	const scenarioBackgroundSx = getPrintSx(S.getScenarioBackgroundSx);
-	const scenarioNumberSx = getPrintSx(S.getScenarioNumberSx);
-	const titleSx = getPrintSx(S.getTitleSx);
+	const sideBackgroundSx = getPrintSx(S.getSideBackgroundSx);
+	const sideTextSx = getPrintSx(S.getSideTextSx, sideOptions);
+	const titleSx = getPrintSx(S.getTitleSx, { showSideText });
+	const shiftLeftSx = getPrintSx(S.getShiftSx, leftPosition);
+	const shiftRightSx = getPrintSx(S.getShiftSx, rightPosition);
+	const enlargeSx = getPrintSx(S.getEnlargeSx);
+	const shrinkSx = getPrintSx(S.getShrinkSx, { isFull: tabSize === "full" });
+	const increaseIndentSx = getPrintSx(S.getIncreaseIndentSx);
+	const decreaseIndentSx = getPrintSx(S.getDecreaseIndentSx);
+
+	const { canIncreaseIndent, canDecreaseIndent } = useArkhamIndexIndent();
 
 	const showTitle = showArkhamIndexDividerTabTitle({
 		divider,
@@ -87,10 +118,71 @@ export function ArkhamIndexDividerTab() {
 		showIcon,
 	});
 
+	const { shiftLeft, shiftRight } = useTabPosition({
+		dividerId: divider.id,
+		tabIndex,
+		tabsCount: 3,
+	});
+
+	const { enlarge, shrink, canEnlarge, canShrink } = useTabSize({
+		dividerId: divider.id,
+		sizes: tabSizes,
+		tabSize,
+	});
+
+	const mm = usePrintUnitCallback();
+
+	const sideText = getArkhamIndexSideText(divider);
+
+	const isFullSize = tabSize === "full" || tabSize === 3;
+
+	const showShiftLeft = tabIndex !== 0 && !isFullSize;
+	const showShiftRight = tabIndex !== 3 - (tabSize as number) && !isFullSize;
+
 	return (
 		<>
 			<NotExportable visible={showIcon}>
 				<Image src={backgroundImage} sx={backgroundSx} onClick={selectIcon} />
+				<Box
+					sx={{
+						position: "absolute",
+						top: 0,
+						left: mm(tabLeft),
+						width: mm(tabWidth),
+						height: mm(tabHeight),
+					}}
+				>
+					{showShiftLeft && (
+						<Box onClick={shiftLeft} sx={shiftLeftSx}>
+							<Icon icon="action" />
+						</Box>
+					)}
+					{showShiftRight && (
+						<Box onClick={shiftRight} sx={shiftRightSx}>
+							<Icon icon="action" />
+						</Box>
+					)}
+					{canEnlarge && (
+						<Box onClick={enlarge} sx={enlargeSx}>
+							<Icon icon="enlarge2" />
+						</Box>
+					)}
+					{canShrink && (
+						<Box onClick={shrink} sx={shrinkSx}>
+							<Icon icon="shrink2" />
+						</Box>
+					)}
+					{canIncreaseIndent && (
+						<Box sx={increaseIndentSx}>
+							<Icon icon="indent-increase" />
+						</Box>
+					)}
+					{canDecreaseIndent && (
+						<Box sx={decreaseIndentSx}>
+							<Icon icon="indent-decrease" />
+						</Box>
+					)}
+				</Box>
 			</NotExportable>
 			{showIcon && (
 				<Icon
@@ -101,13 +193,13 @@ export function ArkhamIndexDividerTab() {
 					onClick={selectIcon}
 				/>
 			)}
-			{divider.type === "scenario" && divider.scenario?.number_text && (
+			{showSideText && (
 				<>
-					<Image src={backgroundImage} sx={scenarioBackgroundSx} />
+					<Image src={backgroundImage} sx={sideBackgroundSx} />
 					<NotExportable>
-						<Box sx={scenarioNumberSx}>
+						<Box sx={sideTextSx}>
 							<FitInput
-								value={divider.scenario.number_text}
+								value={sideText}
 								contentEditable={false}
 								fitTextOptions={{
 									minFontSize: 8,

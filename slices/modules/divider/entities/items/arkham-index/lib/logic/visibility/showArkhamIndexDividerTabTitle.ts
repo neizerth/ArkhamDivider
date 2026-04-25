@@ -1,7 +1,7 @@
 import type {
 	ArkhamIndexDividerProps,
 	ArkhamIndexDividerTabSize,
-} from "../../model";
+} from "../../../model";
 
 type Options = {
 	divider: ArkhamIndexDividerProps;
@@ -14,8 +14,7 @@ export const showArkhamIndexDividerTabTitle = ({
 	tabSize,
 	showIcon,
 }: Options) => {
-	const isLargeTab = tabSize === "full" || tabSize > 2;
-	if (divider.layoutType === "scenario" && showIcon && !isLargeTab) {
+	if (divider.layoutType === "scenario" && !showIcon) {
 		return false;
 	}
 	if (divider.layoutType === "investigator" && tabSize === 1) {

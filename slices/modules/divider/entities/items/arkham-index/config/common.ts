@@ -19,6 +19,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 		height: 9.5,
 		width: horizontalTabWidths,
 		sideWidth: tabSideWidth,
+		indentSize: 5,
 	},
 	cornerRadius: 3,
 	icon: {
@@ -33,18 +34,21 @@ export const arkhamIndexDividerHorizontalObjects = {
 		top: 0,
 		left: 0.2,
 	},
-	scenarioBackground: {
+	sideBackground: {
 		width: 4.7,
 		height: 4.7,
 		top: 4.5,
 		left: 9.6,
 	},
-	scenarioNumber: {
+	sideText: {
 		fontSize: 4,
 		top: 5.1,
-		left: 9.9 + 0.3,
-		width: 3.7,
+		left: 9.9 + 0.4,
+		width: 3.5,
 		height: 4.4,
+		withXP: {
+			height: 4,
+		},
 	},
 	tabTitle: {
 		default: {
@@ -55,8 +59,16 @@ export const arkhamIndexDividerHorizontalObjects = {
 			right: 14,
 		},
 		withIcon: {
-			left: 17.5,
+			left: 15.5,
 			right: 24,
+		},
+		withSideText: {
+			left: 20,
+			right: 30,
+		},
+		fullOffset: {
+			default: 8,
+			withSideText: 13,
 		},
 	},
 };

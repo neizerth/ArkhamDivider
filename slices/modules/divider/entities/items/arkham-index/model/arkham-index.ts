@@ -11,11 +11,15 @@ export type ArkhamIndexDividerTabSize = number | "full";
 
 export type ArkhamIndexDividerProps = DividerWithRelations<{
 	icon?: Icon | null;
+	tabTitle?: string | null;
+	tabTitleFontSizeScale?: number;
+
 	customTitle?: string | null;
 	custonFontSizeScale?: number;
 
 	tabSize?: ArkhamIndexDividerTabSize;
 	tabIndex?: number;
+	indent?: boolean;
 }>;
 
 export type ArkhamIndexDividerLayout = DividerLayout<{

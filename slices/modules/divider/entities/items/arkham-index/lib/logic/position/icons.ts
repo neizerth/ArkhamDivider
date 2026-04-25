@@ -15,8 +15,11 @@ export const getArkhamIndexDividerIconLeft = ({
 	tabSideWidth,
 	iconWidth,
 }: Options) => {
+	if (tabSize === "full") {
+		return 0.5;
+	}
 	if (tabSize !== 1) {
-		return tabLeft + tabSideWidth;
+		return tabLeft + tabSideWidth * 0.7;
 	}
 	return tabLeft + (tabWidth - iconWidth) / 2;
 };

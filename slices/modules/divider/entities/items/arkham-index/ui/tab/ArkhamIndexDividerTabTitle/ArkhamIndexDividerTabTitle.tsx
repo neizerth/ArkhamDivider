@@ -31,7 +31,8 @@ export function ArkhamIndexDividerTabTitle(
 		onBlur,
 	} = useDividerText({
 		divider,
-		param: "customTitle",
+		param: "tabTitle",
+		fontSizeScaleParam: "tabTitleFontSizeScale",
 	});
 
 	const sx = {
