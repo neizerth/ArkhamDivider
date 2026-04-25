@@ -1,5 +1,6 @@
 // import * as C from "./ArkhamIndexDivider.components";
 
+import { Box } from "@mui/material";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
 	DividerBleedView as BleedView,
@@ -31,15 +32,16 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 
 	const tabSize = getArkhamIndexDividerTabSize(props);
 
-	const getPrintSx = usePrintSx();
 	const sxOptions = useArkhamIndexDividerSxOptions({
 		divider: props,
 		tabIndex,
 		tabSize,
 	});
+
+	const getPrintSx = usePrintSx(sxOptions);
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
 	const backgroundStrokeSx = getPrintSx(S.getBackgroundStrokeSx);
-
+	const bodySx = getPrintSx(S.getBodySx);
 	return (
 		<ArkhamIndexContext.Provider
 			value={{ layout, divider: props, tabSize, tabIndex, sxOptions }}
@@ -54,6 +56,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 				<Content hideBorderRadius>
 					<BackgroundStroke sx={backgroundStrokeSx} />
 					<Tab />
+					<Box sx={bodySx}></Box>
 				</Content>
 			</Container>
 		</ArkhamIndexContext.Provider>

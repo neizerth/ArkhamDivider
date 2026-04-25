@@ -13,21 +13,33 @@ export type Options = {
 	tabWidths: Record<number, number>;
 	tabSize: ArkhamIndexDividerTabSize;
 	tabIndex: number;
+	x?: number;
+	y?: number;
+	gap?: number;
 };
 
 type TabbedOptions = Options & { tabSize: number };
 
-const getRoundedPath = ({ width: w, height: h, cornerRadius: r }: Options) => {
+const getRoundedPath = ({
+	width: w,
+	height: h,
+	cornerRadius: r,
+	x = 0,
+	y = 0,
+	gap = 0,
+}: Options) => {
+	const ox = x - gap;
+	const oy = y - gap;
 	return path()
-		.moveTo(r, 0)
-		.lineTo(w - r, 0)
-		.arcTo(w, 0, w, r, r)
-		.lineTo(w, h - r)
-		.arcTo(w, h, w - r, h, r)
-		.lineTo(r, h)
-		.arcTo(0, h, 0, h - r, r)
-		.lineTo(0, r)
-		.arcTo(0, 0, r, 0, r)
+		.moveTo(ox + r, oy)
+		.lineTo(ox + w - r, oy)
+		.arcTo(ox + w, oy, ox + w, oy + r, r)
+		.lineTo(ox + w, oy + h - r)
+		.arcTo(ox + w, oy + h, ox + w - r, oy + h, r)
+		.lineTo(ox + r, oy + h)
+		.arcTo(ox, oy + h, ox, oy + h - r, r)
+		.lineTo(ox, oy + r)
+		.arcTo(ox, oy, ox + r, oy, r)
 		.closePath()
 		.toString();
 };
@@ -92,7 +104,12 @@ const getTabbedPath = (options: TabbedOptions) => {
 		tabHeight: tH,
 		tabSideWidth,
 		cornerRadius: r,
+		x = 0,
+		y = 0,
+		gap = 0,
 	} = options;
+	const ox = x - gap;
+	const oy = y - gap;
 
 	const tabContentWidth = getTabContentWidth(options);
 
@@ -111,35 +128,35 @@ const getTabbedPath = (options: TabbedOptions) => {
 	};
 	return (
 		path()
-			.moveTo(tabLeft, tH)
+			.moveTo(ox + tabLeft, oy + tH)
 			.bezierCurveTo(
-				tabLeft + tabCurviness.bottom,
-				tH,
-				tabLeft + tabCurviness.top,
-				0,
-				innerLeft,
-				0,
+				ox + tabLeft + tabCurviness.bottom,
+				oy + tH,
+				ox + tabLeft + tabCurviness.top,
+				oy,
+				ox + innerLeft,
+				oy,
 			)
 			// tab top border
-			.lineTo(innerRight, 0)
+			.lineTo(ox + innerRight, oy)
 			.bezierCurveTo(
-				innerRight + (tabSideWidth - tabCurviness.top),
-				0,
-				innerRight + (tabSideWidth - tabCurviness.bottom),
-				tH,
-				tabRight,
-				tH,
+				ox + innerRight + (tabSideWidth - tabCurviness.top),
+				oy,
+				ox + innerRight + (tabSideWidth - tabCurviness.bottom),
+				oy + tH,
+				ox + tabRight,
+				oy + tH,
 			)
 
 			// tab body
-			.lineTo(w - r, tH)
-			.arcTo(w, tH, w, tH + r, r)
-			.lineTo(w, h - r)
-			.arcTo(w, h, w - r, h, r)
-			.lineTo(r, h)
-			.arcTo(0, h, 0, h - r, r)
-			.lineTo(0, tH + r)
-			.arcTo(0, tH, r, tH, r)
+			.lineTo(ox + w - r, oy + tH)
+			.arcTo(ox + w, oy + tH, ox + w, oy + tH + r, r)
+			.lineTo(ox + w, oy + h - r)
+			.arcTo(ox + w, oy + h, ox + w - r, oy + h, r)
+			.lineTo(ox + r, oy + h)
+			.arcTo(ox, oy + h, ox, oy + h - r, r)
+			.lineTo(ox, oy + tH + r)
+			.arcTo(ox, oy + tH, ox + r, oy + tH, r)
 			.closePath()
 			.toString()
 	);
@@ -152,9 +169,21 @@ const getTabbedPath = (options: TabbedOptions) => {
 export const getArkhamIndexDividerBackgroundPath = (
 	options: Options,
 ): string => {
-	if (options.tabSize === "full") {
-		return getRoundedPath(options);
+	const x = options.x ?? 0;
+	const y = options.y ?? 0;
+	const gap = options.gap ?? 0;
+	const adjusted: Options = {
+		...options,
+		x,
+		y,
+		gap,
+		width: options.width + 2 * gap,
+		height: options.height + 2 * gap,
+	};
+
+	if (adjusted.tabSize === "full") {
+		return getRoundedPath(adjusted);
 	}
 
-	return getTabbedPath(options as TabbedOptions);
+	return getTabbedPath(adjusted as TabbedOptions);
 };

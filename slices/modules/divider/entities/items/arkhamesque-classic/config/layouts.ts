@@ -1,44 +1,7 @@
-import type {
-	DividerLayout,
-	DividerLayoutRenderOptions,
-} from "@/modules/divider/shared/model";
-import {
-	setJpegDPITransform,
-	stripJpegICCTransform,
-} from "@/modules/render/shared/config";
+import type { DividerLayout } from "@/modules/divider/shared/model";
 import { createSize } from "@/shared/util";
 import { arkhamesqueClassicCategoryId } from "./common";
 
-const renderOptions: DividerLayoutRenderOptions = {
-	transformRecord: {
-		jpeg: [
-			{
-				type: "colorspace",
-				value: "srgb",
-			},
-			{
-				type: "colorspace",
-				value: "lab",
-			},
-			stripJpegICCTransform,
-			{
-				type: "cast",
-				value: "uchar",
-			},
-			stripJpegICCTransform,
-			{
-				type: "set-icc",
-				icc: "USWebCoatedSWOP.icc",
-				transformOptions: {
-					embedded: true,
-					intent: 1,
-					black_point_compensation: true,
-				},
-			},
-			setJpegDPITransform,
-		],
-	},
-};
 const large: DividerLayout = {
 	id: "arkhamesque-classic",
 	types: ["scenario", "player", "investigator"],
@@ -57,7 +20,6 @@ const large: DividerLayout = {
 	},
 	bleed: 3,
 	iconParams: ["icon", "bottomIcon"],
-	renderOptions,
 };
 
 const medium: DividerLayout = {

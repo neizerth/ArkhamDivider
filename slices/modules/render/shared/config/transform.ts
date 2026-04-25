@@ -53,7 +53,9 @@ const defaultJPEGRenderTransforms: VipsTransform[] = [
 		type: "set-icc",
 		icc: "USWebCoatedSWOP.icc",
 		transformOptions: {
+			embedded: true,
 			intent: 1,
+			black_point_compensation: true,
 		},
 	},
 	setJpegDPITransform,

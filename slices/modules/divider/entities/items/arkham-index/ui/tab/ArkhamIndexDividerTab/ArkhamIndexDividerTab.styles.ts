@@ -148,6 +148,7 @@ export const getShrinkSx: ArkhamIndexDividerSxCallback<{ isFull: boolean }> = ({
 	isFull,
 }) => ({
 	position: "absolute",
+	zIndex: 4,
 	top: isFull ? mm(9) : mm(5.5),
 	left: isFull ? mm(8) : mm(-2.5),
 	fontSize: mm(3),
