@@ -69,6 +69,7 @@ export function ArkhamIndexDividerTab() {
 		tabWidth,
 		tabSideWidth,
 		iconWidth,
+		indentSize: sxOptions.indentSize,
 	});
 
 	const showIcon = !isEmptyIcon(icon);
@@ -110,7 +111,12 @@ export function ArkhamIndexDividerTab() {
 	const increaseIndentSx = getPrintSx(S.getIncreaseIndentSx);
 	const decreaseIndentSx = getPrintSx(S.getDecreaseIndentSx);
 
-	const { canIncreaseIndent, canDecreaseIndent } = useArkhamIndexIndent();
+	const {
+		canIncreaseIndent,
+		canDecreaseIndent,
+		increaseIndent,
+		decreaseIndent,
+	} = useArkhamIndexIndent();
 
 	const showTitle = showArkhamIndexDividerTabTitle({
 		divider,
@@ -137,7 +143,7 @@ export function ArkhamIndexDividerTab() {
 	const isFullSize = tabSize === "full" || tabSize === 3;
 
 	const showShiftLeft = tabIndex !== 0 && !isFullSize;
-	const showShiftRight = tabIndex !== 3 - (tabSize as number) && !isFullSize;
+	const showShiftRight = tabIndex < 3 - (tabSize as number) && !isFullSize;
 
 	return (
 		<>
@@ -150,6 +156,7 @@ export function ArkhamIndexDividerTab() {
 						left: mm(tabLeft),
 						width: mm(tabWidth),
 						height: mm(tabHeight),
+						display: divider.side === "front" ? "flex" : "none",
 					}}
 				>
 					{showShiftLeft && (
@@ -173,12 +180,12 @@ export function ArkhamIndexDividerTab() {
 						</Box>
 					)}
 					{canIncreaseIndent && (
-						<Box sx={increaseIndentSx}>
+						<Box onClick={increaseIndent} sx={increaseIndentSx}>
 							<Icon icon="indent-increase" />
 						</Box>
 					)}
 					{canDecreaseIndent && (
-						<Box sx={decreaseIndentSx}>
+						<Box onClick={decreaseIndent} sx={decreaseIndentSx}>
 							<Icon icon="indent-decrease" />
 						</Box>
 					)}

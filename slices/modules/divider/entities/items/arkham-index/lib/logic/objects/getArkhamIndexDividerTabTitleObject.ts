@@ -8,10 +8,11 @@ type Options = {
 	showIcon: boolean;
 	showSideText: boolean;
 	tabSize: ArkhamIndexDividerTabSize;
+	indentSize: number;
 };
 
 export const getArkhamIndexDividerTabTitleObject = (options: Options) => {
-	const { objects: O, showSideText, tabSize } = options;
+	const { objects: O, showSideText, tabSize, indentSize } = options;
 	const base = getBaseObject(options);
 
 	const sideObject = {
@@ -20,22 +21,21 @@ export const getArkhamIndexDividerTabTitleObject = (options: Options) => {
 	};
 
 	if (tabSize !== "full") {
-		return sideObject;
+		return {
+			...sideObject,
+			left: sideObject.left + indentSize,
+			right: sideObject.right + indentSize,
+		};
 	}
+
+	const left = showSideText
+		? O.tabTitle.fullOffset.withSideText
+		: O.tabTitle.fullOffset.default;
 
 	return {
 		...sideObject,
-		left: showSideText
-			? O.tabTitle.fullOffset.withSideText
-			: O.tabTitle.fullOffset.default,
+		left: left + indentSize,
 	};
-
-	// const fullOffset =
-
-	// return {
-	// ...sideObject,
-	// ...(tabSize === "full" ? { left: O.tabTitle.fullOffset } : {}),
-	// };
 };
 
 const getBaseObject = ({ objects: O, showIcon }: Options) => {

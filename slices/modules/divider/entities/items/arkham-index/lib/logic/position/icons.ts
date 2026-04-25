@@ -6,6 +6,7 @@ type Options = {
 	tabSize: ArkhamIndexDividerTabSize;
 	tabSideWidth: number;
 	iconWidth: number;
+	indentSize: number;
 };
 
 export const getArkhamIndexDividerIconLeft = ({
@@ -14,12 +15,13 @@ export const getArkhamIndexDividerIconLeft = ({
 	tabWidth,
 	tabSideWidth,
 	iconWidth,
+	indentSize,
 }: Options) => {
 	if (tabSize === "full") {
 		return 0.5;
 	}
 	if (tabSize !== 1) {
-		return tabLeft + tabSideWidth * 0.7;
+		return tabLeft + tabSideWidth * 0.7 + indentSize;
 	}
 	return tabLeft + (tabWidth - iconWidth) / 2;
 };

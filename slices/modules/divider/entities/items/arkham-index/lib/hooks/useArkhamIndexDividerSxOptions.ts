@@ -22,13 +22,18 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
 	const icon = getDividerIcon({ divider, param: "icon" });
 	const showIcon = !isEmptyIcon(icon);
+	const indent = divider.params?.indent ?? false;
+	const objects = getArkhamIndexDividerLayoutObjects(layout);
+	const indentSize =
+		indent && tabSize === 2 && tabIndex !== 0 ? objects.tab.indentSize : 0;
 
 	return useMemo((): ArkhamIndexDividerSxOptions => {
 		return {
-			objects: getArkhamIndexDividerLayoutObjects(layout),
+			objects,
 			showIcon,
 			tabIndex,
 			tabSize,
+			indentSize,
 		};
-	}, [layout, showIcon, tabIndex, tabSize]);
+	}, [objects, showIcon, tabIndex, tabSize, indentSize]);
 };

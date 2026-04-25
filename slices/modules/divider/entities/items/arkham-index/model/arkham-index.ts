@@ -35,6 +35,7 @@ export type ArkhamIndexDividerSxOptions = {
 	showIcon: boolean;
 	tabIndex: number;
 	tabSize: ArkhamIndexDividerTabSize;
+	indentSize: number;
 };
 
 export type ArkhamIndexDividerSxCallback<T = object> = PrintSxCallback<
