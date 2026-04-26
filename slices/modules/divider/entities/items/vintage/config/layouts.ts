@@ -43,11 +43,11 @@ const verticalLayout: VintageDividerLayout = {
 	...horizontalLayout,
 	id: "vintage-vertical",
 	orientation: "vertical",
-	size: createSize(66, 107.3),
+	size: createSize(66, 99.3),
 	printSize: {
 		300: {
-			size: createSize(780, 1267),
-			bleedSize: createSize(850, 1338),
+			size: createSize(780, 1173),
+			bleedSize: createSize(850, 1244),
 		},
 	},
 	params: {
@@ -55,8 +55,23 @@ const verticalLayout: VintageDividerLayout = {
 	},
 };
 
+const verticalLargeLayout: VintageDividerLayout = {
+	...verticalLayout,
+	id: "vintage-vertical-large",
+	groupId: "large",
+	name: "Large",
+	size: createSize(66, 107.3),
+	printSize: {
+		300: {
+			size: createSize(780, 1267),
+			bleedSize: createSize(850, 1338),
+		},
+	},
+};
+
 export const vintageLayouts: DividerLayout[] = [
 	horizontalLayout,
 	horizontalLargeLayout,
 	verticalLayout,
+	verticalLargeLayout,
 ];
