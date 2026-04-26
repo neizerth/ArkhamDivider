@@ -4,7 +4,7 @@ import {
 } from "../../../config/objects";
 
 export function getVintageDividerObjects(layoutId: string) {
-	if (layoutId === "vintage-vertical") {
+	if (layoutId.includes("vertical")) {
 		return vintageDividerVerticalObjects;
 	}
 	return vintageDividerObjects;

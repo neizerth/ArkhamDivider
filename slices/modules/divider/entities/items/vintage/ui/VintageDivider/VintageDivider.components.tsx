@@ -14,6 +14,7 @@ const bodyMap: Record<string, string> = {
 	vintage: "/body.avif",
 	"vintage-large": "/body_large.avif",
 	"vintage-vertical": "/body_vertical.avif",
+	"vintage-vertical-large": "/body_vertical-large.avif",
 };
 
 export const Body = () => {
