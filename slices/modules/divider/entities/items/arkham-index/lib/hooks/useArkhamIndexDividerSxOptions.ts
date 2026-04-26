@@ -9,7 +9,7 @@ import type {
 	ArkhamIndexDividerSxOptions,
 	ArkhamIndexDividerTabSize,
 } from "../../model";
-import { getArkhamIndexDividerLayoutObjects } from "../logic";
+import { getArkhamIndexDividerLayoutObjects } from "../logic/objects/getArkhamIndexDividerLayoutObjects";
 
 type Options = {
 	divider: ArkhamIndexDividerProps;
@@ -26,7 +26,6 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 	const objects = getArkhamIndexDividerLayoutObjects(layout);
 	const indentSize =
 		indent && tabSize === 2 && tabIndex !== 0 ? objects.tab.indentSize : 0;
-
 	return useMemo((): ArkhamIndexDividerSxOptions => {
 		return {
 			objects,

@@ -1,2 +1,1 @@
 export * from "./ArkhamIndexDividerMediaContent";
-export * from "./ArkhamIndexDividerTitle";

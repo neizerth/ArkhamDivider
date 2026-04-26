@@ -28,6 +28,28 @@ export const arkhamIndexDividerHorizontalObjects = {
 		width: 10,
 		height: 9,
 	},
+	title: {
+		fontSize: 3.7,
+		height: 7.6,
+		top: 0.5,
+		left: 2,
+		right: 2,
+	},
+	topLine: {
+		top: 7.6,
+		height: 2.2,
+	},
+	bottomLine: {
+		bottom: 4.6,
+		height: 8.3,
+	},
+	campaignIcon: {
+		fontSize: 3,
+		width: 4,
+		height: 4,
+		bottom: 2,
+		right: 1.5,
+	},
 	iconBackground: {
 		width: 9.4,
 		height: 9.4,
@@ -59,7 +81,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 			right: 14,
 		},
 		withIcon: {
-			left: 15.5,
+			left: 14.8,
 			right: 24,
 		},
 		withSideText: {

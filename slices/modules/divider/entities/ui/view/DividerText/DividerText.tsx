@@ -20,6 +20,7 @@ type DividerTextProps = FitInputProps & {
 	outlineSx?: SxProps;
 	clearProps?: IconButtonProps;
 	readonly?: boolean;
+	visible?: boolean;
 };
 
 export function DividerText({
@@ -38,6 +39,7 @@ export function DividerText({
 	onBlur: onBlurProp,
 	onFocus: onFocusProp,
 	readonly = false,
+	visible = false,
 	...props
 }: DividerTextProps) {
 	const renderId = useAppSelector(selectDividerRenderId);
@@ -70,7 +72,7 @@ export function DividerText({
 		[onBlurProp],
 	);
 
-	const hidden = hide && dividerId === renderId;
+	const hidden = hide && dividerId === renderId && !visible;
 
 	const baseProps = {
 		onFocus,

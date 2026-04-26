@@ -14,8 +14,8 @@ const horizontal: ArkhamIndexDividerLayout = {
 	size: createSize(87, 83),
 	printSize: {
 		300: {
-			size: createSize(1028, 1051),
-			bleedSize: createSize(1098, 1122),
+			size: createSize(1028, 980),
+			bleedSize: createSize(1098, 1051),
 		},
 	},
 	bleed: 3,
@@ -23,6 +23,12 @@ const horizontal: ArkhamIndexDividerLayout = {
 	tabs: {
 		type: "fixed",
 		value: 3,
+	},
+	playerParams: {
+		story: true,
+	},
+	params: {
+		title: true,
 	},
 };
 
@@ -38,6 +44,9 @@ const compact: ArkhamIndexDividerLayout = {
 			bleedSize: createSize(1098, 939),
 		},
 	},
+	params: {
+		title: false,
+	},
 };
 
 const vertical: ArkhamIndexDividerLayout = {
@@ -52,6 +61,9 @@ const vertical: ArkhamIndexDividerLayout = {
 			bleedSize: createSize(839, 1252),
 		},
 	},
+	params: {
+		title: false,
+	},
 };
 
 const verticalCompact: ArkhamIndexDividerLayout = {
@@ -64,6 +76,9 @@ const verticalCompact: ArkhamIndexDividerLayout = {
 			size: createSize(768, 1069),
 			bleedSize: createSize(839, 1140),
 		},
+	},
+	params: {
+		title: false,
 	},
 };
 

@@ -20,10 +20,12 @@ export type ArkhamIndexDividerProps = DividerWithRelations<{
 	tabSize?: ArkhamIndexDividerTabSize;
 	tabIndex?: number;
 	indent?: boolean;
+
+	color?: string | null;
 }>;
 
 export type ArkhamIndexDividerLayout = DividerLayout<{
-	size: "compact" | "large";
+	title: boolean;
 }>;
 
 export type ArkhamIndexDividerLayoutObjects = ReturnType<
