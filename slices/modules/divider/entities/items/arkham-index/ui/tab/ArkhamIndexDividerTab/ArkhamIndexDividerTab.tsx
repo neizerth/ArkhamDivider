@@ -1,11 +1,18 @@
-import { Box } from "@mui/material";
-import { useMemo } from "react";
+import { Box, Tooltip } from "@mui/material";
+import { useCallback, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { useTabPosition, useTabSize } from "@/modules/divider/shared/lib";
+import {
+	getDividerFaction,
+	setAllDividersParam,
+	useTabPosition,
+	useTabSize,
+} from "@/modules/divider/shared/lib";
 import { usePrintSx, usePrintUnitCallback } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
+import { useAppDispatch } from "@/shared/lib";
 import { FitInput, Image } from "@/shared/ui";
 import { arkhamIndexDividerBaseUrl } from "../../../config";
 import {
@@ -14,6 +21,7 @@ import {
 	getArkhamIndexDividerTabLeft,
 	getArkhamIndexDividerTabWidth,
 	getArkhamIndexSideText,
+	showArkhamIndexDividerTabIcon,
 	showArkhamIndexDividerTabTitle,
 	showArkhamIndexSideTextSx,
 	useArkhamIndexIndent,
@@ -31,8 +39,11 @@ const rightPosition = { position: "right" } as const;
 const tabSizes = [1, 2, 3, "full"];
 
 export function ArkhamIndexDividerTab() {
+	const { t } = useTranslation();
 	const { layout, tabSize, tabIndex, divider, sxOptions } =
 		useArkhamIndexContext();
+
+	const dispatch = useAppDispatch();
 
 	const tabWidths = sxOptions.objects.tab.width;
 	const tabSideWidth = sxOptions.objects.tab.sideWidth;
@@ -72,6 +83,7 @@ export function ArkhamIndexDividerTab() {
 		indentSize: sxOptions.indentSize,
 	});
 
+	const showGlyph = showArkhamIndexDividerTabIcon(divider);
 	const showIcon = !isEmptyIcon(icon);
 
 	const tabSxOptions = useMemo(
@@ -110,6 +122,17 @@ export function ArkhamIndexDividerTab() {
 	const shrinkSx = getPrintSx(S.getShrinkSx, { isFull: tabSize === "full" });
 	const increaseIndentSx = getPrintSx(S.getIncreaseIndentSx);
 	const decreaseIndentSx = getPrintSx(S.getDecreaseIndentSx);
+	const fullSizeSx = getPrintSx(S.getFullSizeSx);
+
+	const faction = getDividerFaction(divider) ?? "neutral";
+
+	const factionOptions = useMemo(() => {
+		return {
+			faction,
+		};
+	}, [faction]);
+
+	const factionImageSx = getPrintSx(S.getFactionImageSx, factionOptions);
 
 	const {
 		canIncreaseIndent,
@@ -136,6 +159,10 @@ export function ArkhamIndexDividerTab() {
 		tabSize,
 	});
 
+	const setFullSizeForAll = useCallback(() => {
+		dispatch(setAllDividersParam({ key: "tabSize", value: "full" }));
+	}, [dispatch]);
+
 	const mm = usePrintUnitCallback();
 
 	const sideText = getArkhamIndexSideText(divider);
@@ -157,6 +184,7 @@ export function ArkhamIndexDividerTab() {
 						width: mm(tabWidth),
 						height: mm(tabHeight),
 						display: divider.side === "front" ? "flex" : "none",
+						displayPrint: "none",
 					}}
 				>
 					{showShiftLeft && (
@@ -189,15 +217,28 @@ export function ArkhamIndexDividerTab() {
 							<Icon icon="indent-decrease" />
 						</Box>
 					)}
+					{tabSize === "full" && (
+						<Tooltip title={t("divider.arkham-index.setAllFull")} arrow>
+							<Box onClick={setFullSizeForAll} sx={fullSizeSx}>
+								<Icon icon="pushpin" />
+							</Box>
+						</Tooltip>
+					)}
 				</Box>
 			</NotExportable>
-			{showIcon && (
+			{showGlyph && (
 				<Icon
 					dividerId={divider.id}
 					icon={icon}
 					sx={iconSx}
 					scaleType="circle"
 					onClick={selectIcon}
+				/>
+			)}
+			{showIcon && !showGlyph && divider.layoutType !== "scenario" && (
+				<Image
+					src={`/images/faction/${divider.faction}.png`}
+					sx={factionImageSx}
 				/>
 			)}
 			{showSideText && (

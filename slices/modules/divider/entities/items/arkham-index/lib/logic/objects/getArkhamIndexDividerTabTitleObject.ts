@@ -20,7 +20,9 @@ export const getArkhamIndexDividerTabTitleObject = (options: Options) => {
 		...(showSideText ? O.tabTitle.withSideText : {}),
 	};
 
-	if (tabSize !== "full") {
+	const isFullSize = tabSize === "full";
+
+	if (!isFullSize) {
 		return {
 			...sideObject,
 			left: sideObject.left + indentSize,
@@ -35,6 +37,7 @@ export const getArkhamIndexDividerTabTitleObject = (options: Options) => {
 	return {
 		...sideObject,
 		left: left + indentSize,
+		...(isFullSize ? O.tabTitle.full : {}),
 	};
 };
 

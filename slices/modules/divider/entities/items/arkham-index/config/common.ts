@@ -78,19 +78,22 @@ export const arkhamIndexDividerHorizontalObjects = {
 			height: 6,
 			top: 2,
 			left: 6.5,
-			right: 14,
+			right: 11,
 		},
 		withIcon: {
 			left: 14.8,
-			right: 24,
+			right: 21,
 		},
 		withSideText: {
 			left: 20,
-			right: 30,
+			right: 27,
 		},
 		fullOffset: {
 			default: 8,
-			withSideText: 13,
+			withSideText: 12,
+		},
+		full: {
+			right: 13,
 		},
 	},
 };

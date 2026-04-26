@@ -1,3 +1,4 @@
+import type { Faction } from "@/modules/faction/shared/model";
 import { percent } from "@/shared/util";
 import { getArkhamIndexDividerTabTitleObject } from "../../../lib";
 import type {
@@ -12,11 +13,9 @@ type Options = {
 	tabLeft: number;
 };
 
-export const getIconSx: ArkhamIndexDividerSxCallback<Options> = ({
-	mm,
-	objects: O,
-	iconLeft: left,
-}) => ({
+type SxCallback<T = void> = ArkhamIndexDividerSxCallback<Options & T>;
+
+export const getIconSx: SxCallback = ({ mm, objects: O, iconLeft: left }) => ({
 	position: "absolute",
 	fontSize: mm(O.icon.fontSize),
 	left: mm(left),
@@ -31,7 +30,7 @@ export const getIconSx: ArkhamIndexDividerSxCallback<Options> = ({
 	},
 });
 
-export const getBackgroundSx: ArkhamIndexDividerSxCallback<Options> = ({
+export const getBackgroundSx: SxCallback = ({
 	mm,
 	iconLeft: left,
 	objects: O,
@@ -54,7 +53,7 @@ export const getBackgroundSx: ArkhamIndexDividerSxCallback<Options> = ({
 	};
 };
 
-export const getSideBackgroundSx: ArkhamIndexDividerSxCallback<Options> = ({
+export const getSideBackgroundSx: SxCallback = ({
 	mm,
 	iconLeft: left,
 	objects: O,
@@ -73,7 +72,7 @@ export const getSideBackgroundSx: ArkhamIndexDividerSxCallback<Options> = ({
 	};
 };
 
-export const getSideTextSx: ArkhamIndexDividerSxCallback<
+export const getSideTextSx: SxCallback<
 	Options & { sideObject: ArkhamIndexDividerLayoutObjects["sideText"] }
 > = ({ mm, iconLeft: left, sideObject: S }) => {
 	return {
@@ -91,9 +90,9 @@ export const getSideTextSx: ArkhamIndexDividerSxCallback<
 	};
 };
 
-export const getTitleSx: ArkhamIndexDividerSxCallback<
-	Options & { showSideText: boolean }
-> = (options) => {
+export const getTitleSx: SxCallback<Options & { showSideText: boolean }> = (
+	options,
+) => {
 	const { mm, tabWidth, tabLeft } = options;
 	const T = getArkhamIndexDividerTabTitleObject(options);
 	const width = tabWidth - T.right;
@@ -109,7 +108,7 @@ export const getTitleSx: ArkhamIndexDividerSxCallback<
 	};
 };
 
-export const getShiftSx: ArkhamIndexDividerSxCallback<{
+export const getShiftSx: SxCallback<{
 	position: "left" | "right";
 }> = ({ mm, position }) => ({
 	position: "absolute",
@@ -123,7 +122,7 @@ export const getShiftSx: ArkhamIndexDividerSxCallback<{
 	transform: position === "left" ? "rotate(180deg)" : "none",
 });
 
-export const getTabSx: ArkhamIndexDividerSxCallback = ({ mm }) => {
+export const getTabSx: SxCallback = ({ mm }) => {
 	return {
 		position: "absolute",
 		top: mm(4),
@@ -132,7 +131,7 @@ export const getTabSx: ArkhamIndexDividerSxCallback = ({ mm }) => {
 	};
 };
 
-export const getEnlargeSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
+export const getEnlargeSx: SxCallback = ({ mm }) => ({
 	position: "absolute",
 	top: mm(5.5),
 	right: mm(-2.5),
@@ -143,7 +142,7 @@ export const getEnlargeSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
 	cursor: "pointer",
 });
 
-export const getShrinkSx: ArkhamIndexDividerSxCallback<{ isFull: boolean }> = ({
+export const getShrinkSx: SxCallback<{ isFull: boolean }> = ({
 	mm,
 	isFull,
 }) => ({
@@ -158,7 +157,7 @@ export const getShrinkSx: ArkhamIndexDividerSxCallback<{ isFull: boolean }> = ({
 	cursor: "pointer",
 });
 
-export const getIncreaseIndentSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
+export const getIncreaseIndentSx: SxCallback = ({ mm }) => ({
 	position: "absolute",
 	top: mm(1),
 	right: mm(-0.5),
@@ -168,7 +167,7 @@ export const getIncreaseIndentSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
 	cursor: "pointer",
 });
 
-export const getDecreaseIndentSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
+export const getDecreaseIndentSx: SxCallback = ({ mm }) => ({
 	position: "absolute",
 	top: mm(5.5),
 	left: mm(-8.5),
@@ -176,4 +175,50 @@ export const getDecreaseIndentSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
 	color: "#ede3ce",
 	WebkitTextStroke: `${mm(0.1)} white`,
 	cursor: "pointer",
+});
+
+const factionPosition: Record<Faction, { top: number; left: number }> = {
+	neutral: { top: 1.1, left: 1.3 },
+	guardian: { top: 1.2, left: 1.3 },
+	seeker: { top: 1, left: 1.3 },
+	rogue: { top: 0.9, left: 1.3 },
+	mystic: { top: 1.1, left: 1.3 },
+	survivor: { top: 1.5, left: 1.3 },
+	multiclass: { top: 1.1, left: 1.3 },
+};
+
+export const getFactionImageSx: SxCallback<{ faction: Faction }> = ({
+	mm,
+	iconLeft,
+	faction,
+}) => ({
+	position: "absolute",
+	top: mm(factionPosition[faction].top),
+	left: mm(iconLeft + factionPosition[faction].left),
+	height: mm(7.5),
+	width: mm(7.2),
+	zIndex: 4,
+	cursor: "pointer",
+	objectFit: "contain",
+	"@media screen": {
+		":hover": {
+			opacity: percent(30),
+		},
+	},
+});
+
+export const getFullSizeSx: SxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 4,
+	top: mm(3.5),
+	right: mm(5.8),
+	fontSize: mm(3),
+	color: "#ede3ce",
+	WebkitTextStroke: `${mm(0.1)} white`,
+	cursor: "pointer",
+	"@media screen": {
+		":hover": {
+			opacity: percent(30),
+		},
+	},
 });

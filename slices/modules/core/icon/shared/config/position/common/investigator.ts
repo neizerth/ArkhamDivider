@@ -31,6 +31,7 @@ export default {
 		scale: percent(90),
 	},
 	neutral: {
+		top: percent(-1),
 		left: percent(-1),
 		scale: percent(85),
 	},
@@ -40,7 +41,7 @@ export default {
 	},
 	multiclass: {
 		top: percent(-3),
-		scale: percent(80),
+		scale: percent(90),
 	},
 	rogue: {
 		scale: percent(75),

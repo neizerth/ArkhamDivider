@@ -227,5 +227,7 @@
 	"category.simple-sticker.name": "Simple Stickers",
 	"category.simple-sticker.description": "Simple stickers for round hole punches",
 	"Starter Decks": "Starter Decks",
-	"PDF-only": "PDF-only"
+	"PDF-only": "PDF-only",
+	"divider.arkhamIndex.background.pickerTitle": "Background color",
+	"divider.arkham-index.setAllFull": "Set size to all"
 }

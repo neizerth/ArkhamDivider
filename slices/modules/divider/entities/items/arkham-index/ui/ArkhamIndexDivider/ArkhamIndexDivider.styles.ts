@@ -49,3 +49,14 @@ export const getCampaignIconSx: ArkhamIndexDividerSxCallback = ({
 		},
 	},
 });
+
+export const getColorPickerSx: PrintSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 3,
+	bottom: mm(13),
+	left: mm(2.5),
+	width: mm(4),
+	height: mm(4),
+	outline: `${mm(0.2)} solid rgba(255, 255, 255, 0.5)`,
+	borderRadius: "50%",
+});

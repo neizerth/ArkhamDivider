@@ -226,5 +226,7 @@
 	"category.simple-sticker.name": "Наклейки с иконками",
 	"category.simple-sticker.description": "Наклейки под фигурный дырокол",
 	"Starter Decks": "Стартовые колоды",
-	"PDF-only": "Только для PDF"
+	"PDF-only": "Только для PDF",
+	"divider.arkhamIndex.background.pickerTitle": "Цвет фона",
+	"divider.arkham-index.setAllFull": "Установить размер для всех"
 }

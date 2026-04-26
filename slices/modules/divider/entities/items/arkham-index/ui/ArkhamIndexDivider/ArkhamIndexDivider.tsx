@@ -13,11 +13,16 @@ import { DividerIcon } from "@/modules/divider/features/ui";
 import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
+import { absoluteFill } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib";
 import { Image } from "@/shared/ui";
 import { arkhamIndexDividerBaseUrl } from "../../config";
-import { useArkhamIndexDividerSxOptions } from "../../lib/hooks";
-import { getArkhamIndexDividerTabSize } from "../../lib/logic";
+import {
+	getArkhamIndexDividerDefaultColor,
+	getArkhamIndexDividerDefaultFilter,
+	getArkhamIndexDividerTabSize,
+	useArkhamIndexDividerSxOptions,
+} from "../../lib";
 import type {
 	ArkhamIndexDividerLayout,
 	ArkhamIndexDividerProps,
@@ -36,6 +41,13 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const tabIndex = useAppSelector(
 		selectDividerTabIndex({ id: props.id, tabsCount: 3, side: props.side }),
 	);
+
+	const defaultColor = getArkhamIndexDividerDefaultColor(props);
+
+	const backgroundColor = props.params?.color ?? defaultColor;
+	const backgroundFilter = backgroundColor
+		? "none"
+		: getArkhamIndexDividerDefaultFilter(props);
 
 	const getDividerIcon = useDividerIcon({ dividerId: props.id });
 	const [campaignIcon, startCampaignIcon] = getDividerIcon({
@@ -57,6 +69,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const bodySx = getPrintSx(S.getBodySx);
 	const mediaContentSx = getPrintSx(S.getMediaContentSx);
 	const campaignIconSx = getPrintSx(S.getCampaignIconSx);
+	const colorPickerSx = getPrintSx(S.getColorPickerSx);
 
 	const showMediaContent = props.layoutType !== "player";
 	return (
@@ -67,8 +80,20 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 				<BleedView>
 					<Image
 						src={`${arkhamIndexDividerBaseUrl}/background.avif`}
-						sx={backgroundSx}
+						sx={{
+							...backgroundSx,
+							filter: backgroundFilter,
+						}}
 					/>
+					{backgroundColor && (
+						<Box
+							sx={{
+								...absoluteFill,
+								backgroundColor,
+								mixBlendMode: "color",
+							}}
+						/>
+					)}
 				</BleedView>
 				<C.Layer>
 					<Box sx={bodySx}>
@@ -80,7 +105,8 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						<DividerColorPicker
 							dividerId={props.id}
 							param="color"
-							// defaultColor={props.color}
+							defaultColor={backgroundColor}
+							sx={colorPickerSx}
 							title={t("divider.arkhamIndex.background.pickerTitle")}
 						/>
 					</NotExportable>

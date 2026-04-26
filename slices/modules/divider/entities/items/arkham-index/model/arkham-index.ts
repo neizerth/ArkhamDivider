@@ -21,7 +21,7 @@ export type ArkhamIndexDividerProps = DividerWithRelations<{
 	tabIndex?: number;
 	indent?: boolean;
 
-	color?: string | null;
+	color?: string;
 }>;
 
 export type ArkhamIndexDividerLayout = DividerLayout<{
