@@ -1,7 +1,7 @@
 import { cmyk } from "@/modules/core/color/shared/lib";
 import { getLocaleConfig } from "@/modules/core/i18n/shared/lib";
 import { getDividerIcon } from "@/modules/divider/features/lib";
-import { getDividerTabIndex } from "@/modules/divider/shared/lib/logic/tab";
+import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
 import {
@@ -22,7 +22,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 	ctx,
 ) => {
 	const { story } = props;
-	const { text, unit, language, layout } = ctx;
+	const { text, unit, language, layout, state } = ctx;
 	const lasercut = ctx.lasercut.from(VintageDividerLasercut);
 
 	const vintageLayout = layout as VintageDividerLayout;
@@ -34,11 +34,11 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 	const title = params?.customTitle ?? t(props.title);
 	const topTitle = params?.customTopTitle ?? (story ? t(story.name) : "");
 
-	const tabIndex = getDividerTabIndex({
-		divider: props,
+	const tabIndex = selectDividerTabIndex({
+		id: props.id,
 		tabsCount: 3,
-		defaultTabIndex: 0,
-	});
+		side: props.side,
+	})(state);
 
 	const bleed = unit.fromBleed();
 	const { mm } = unit;
