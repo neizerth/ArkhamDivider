@@ -14,6 +14,8 @@ const getConcealedCardsDivider = (): Divider => {
 		side: "front",
 		layoutType: "scenario",
 		type: "encounter",
+		subtype: "encounter-set",
+		encounterCode: "concealed_cards",
 		title: "Concealed Cards",
 		icon: "special_cards",
 		cardsCount: 0,

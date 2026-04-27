@@ -8,6 +8,7 @@ export type ArkhamIndexDividerBackgroundPathOptions = {
 	width: number;
 	height: number;
 	cornerRadius: number;
+	cornerRadiusEnabled: boolean;
 	tabHeight: number;
 	tabSideWidth: number;
 	tabWidths: Record<number, number>;
@@ -26,12 +27,16 @@ const getRoundedPath = ({
 	width: w,
 	height: h,
 	cornerRadius: r,
+	cornerRadiusEnabled: cRE,
 	x = 0,
 	y = 0,
 	gap = 0,
 }: Options) => {
 	const ox = x - gap;
 	const oy = y - gap;
+	if (!cRE) {
+		return path().rect(ox, oy, w, h).closePath().toString();
+	}
 	return path()
 		.moveTo(ox + r, oy)
 		.lineTo(ox + w - r, oy)
@@ -106,6 +111,7 @@ const getTabbedPath = (options: TabbedOptions) => {
 		tabHeight: tH,
 		tabSideWidth,
 		cornerRadius: r,
+		cornerRadiusEnabled: cRE,
 		x = 0,
 		y = 0,
 		gap = 0,
@@ -128,28 +134,41 @@ const getTabbedPath = (options: TabbedOptions) => {
 		/** X offset of the control point on the top edge (y = 0) */
 		top: tabSideWidth * 0.6,
 	};
-	return (
-		path()
-			.moveTo(ox + tabLeft, oy + tH)
-			.bezierCurveTo(
-				ox + tabLeft + tabCurviness.bottom,
-				oy + tH,
-				ox + tabLeft + tabCurviness.top,
-				oy,
-				ox + innerLeft,
-				oy,
-			)
-			// tab top border
-			.lineTo(ox + innerRight, oy)
-			.bezierCurveTo(
-				ox + innerRight + (tabSideWidth - tabCurviness.top),
-				oy,
-				ox + innerRight + (tabSideWidth - tabCurviness.bottom),
-				oy + tH,
-				ox + tabRight,
-				oy + tH,
-			)
 
+	const p = path()
+		.moveTo(ox + tabLeft, oy + tH)
+		.bezierCurveTo(
+			ox + tabLeft + tabCurviness.bottom,
+			oy + tH,
+			ox + tabLeft + tabCurviness.top,
+			oy,
+			ox + innerLeft,
+			oy,
+		)
+		// tab top border
+		.lineTo(ox + innerRight, oy)
+		.bezierCurveTo(
+			ox + innerRight + (tabSideWidth - tabCurviness.top),
+			oy,
+			ox + innerRight + (tabSideWidth - tabCurviness.bottom),
+			oy + tH,
+			ox + tabRight,
+			oy + tH,
+		);
+
+	// If corner radius is disabled, keep the tab “hills” but draw the body corners as sharp 90° angles.
+	if (!cRE) {
+		return p
+			.lineTo(ox + w, oy + tH)
+			.lineTo(ox + w, oy + h)
+			.lineTo(ox, oy + h)
+			.lineTo(ox, oy + tH)
+			.closePath()
+			.toString();
+	}
+
+	return (
+		p
 			// tab body
 			.lineTo(ox + w - r, oy + tH)
 			.arcTo(ox + w, oy + tH, ox + w, oy + tH + r, r)

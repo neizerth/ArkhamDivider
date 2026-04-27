@@ -62,8 +62,20 @@ export type DividerType =
 
 export type ScenarioDividerData = (
 	| {
-			type: "campaign" | "encounter";
+			type: "campaign";
 	  }
+	| ({
+			type: "encounter";
+	  } & (
+			| {
+					subtype: "encounter-set";
+					encounterCode: string;
+			  }
+			| {
+					subtype: "scenario-encounter";
+					scenarioId: string;
+			  }
+	  ))
 	| {
 			type: "scenario";
 			scenario: StoryScenarioWithRelations;

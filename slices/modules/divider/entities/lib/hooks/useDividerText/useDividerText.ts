@@ -23,6 +23,7 @@ export const useDividerText = <T>({
 	defaultValue: defaultValueProp,
 	fontSizeScaleParam,
 	custom = false,
+	persistFontSizeScaleOnChange = false,
 }: UseDividerTextOptions<T>) => {
 	const dispatch = useAppDispatch();
 	const { id } = divider;
@@ -70,11 +71,9 @@ export const useDividerText = <T>({
 			return;
 		}
 
-		dispatch(setDividerParam({ id, key: param, value: undefined }));
+		dispatch(setDividerParam({ id, key: param, value: null }));
 		if (fontSizeScaleParam) {
-			dispatch(
-				setDividerParam({ id, key: fontSizeScaleParam, value: undefined }),
-			);
+			dispatch(setDividerParam({ id, key: fontSizeScaleParam, value: 100 }));
 		}
 	}, [
 		defaultCurrentValue,
@@ -88,6 +87,71 @@ export const useDividerText = <T>({
 
 	const { fontSizeScaleRef, onFontSizeChange } = useFontSizeScaleRef(
 		divider.fontSizeScale,
+	);
+
+	const persistFontSizeScale = useCallback(
+		(
+			nextFontSizeScale: number,
+			options?: { ignoreClearParamForFontSizeScale?: boolean },
+		) => {
+			const isValueEmpty = value === "";
+			const isDefaultCurrentValueEmpty =
+				isString(defaultCurrentValue) && value === defaultCurrentValue;
+
+			const shouldClearParamRaw = isValueEmpty || isDefaultCurrentValueEmpty;
+			const shouldClearParam =
+				options?.ignoreClearParamForFontSizeScale === true
+					? false
+					: shouldClearParamRaw;
+
+			const shouldUpdateFontSizeScale =
+				isNumber(nextFontSizeScale) &&
+				nextFontSizeScale !== defaultFontSizeScale;
+
+			if (!shouldUpdateFontSizeScale) {
+				return;
+			}
+
+			if (fontSizeScaleParam) {
+				dispatch(
+					setDividerParam({
+						id,
+						key: fontSizeScaleParam,
+						value: shouldClearParam ? 100 : nextFontSizeScale,
+					}),
+				);
+			}
+
+			dispatch(
+				updateDivider({
+					id,
+					changes: {
+						fontSizeScale: nextFontSizeScale,
+					},
+				}),
+			);
+		},
+		[
+			defaultCurrentValue,
+			defaultFontSizeScale,
+			dispatch,
+			fontSizeScaleParam,
+			id,
+			value,
+		],
+	);
+
+	const onFontSizeChangeWithPersist = useCallback(
+		(nextFontSizeScale: number) => {
+			onFontSizeChange(nextFontSizeScale);
+			if (!persistFontSizeScaleOnChange) {
+				return;
+			}
+			persistFontSizeScale(nextFontSizeScale, {
+				ignoreClearParamForFontSizeScale: true,
+			});
+		},
+		[onFontSizeChange, persistFontSizeScale, persistFontSizeScaleOnChange],
 	);
 
 	const onBlur = useCallback(() => {
@@ -107,40 +171,17 @@ export const useDividerText = <T>({
 
 		const nextFontSizeScale = fontSizeScaleRef.current;
 
-		const shouldUpdateFontSizeScale =
-			isNumber(nextFontSizeScale) && nextFontSizeScale !== defaultFontSizeScale;
-
-		if (!shouldUpdateFontSizeScale) {
-			return;
+		if (isNumber(nextFontSizeScale)) {
+			persistFontSizeScale(nextFontSizeScale);
 		}
-
-		if (fontSizeScaleParam) {
-			dispatch(
-				setDividerParam({
-					id,
-					key: fontSizeScaleParam,
-					value: shouldClearParam ? null : nextFontSizeScale,
-				}),
-			);
-		}
-
-		dispatch(
-			updateDivider({
-				id,
-				changes: {
-					fontSizeScale: nextFontSizeScale,
-				},
-			}),
-		);
 	}, [
 		id,
 		dispatch,
 		param,
 		value,
-		defaultFontSizeScale,
-		fontSizeScaleParam,
 		fontSizeScaleRef,
 		defaultCurrentValue,
+		persistFontSizeScale,
 	]);
 
 	return {
@@ -148,6 +189,6 @@ export const useDividerText = <T>({
 		translatedValue: defaultCurrentValue,
 		onChange,
 		onBlur,
-		onFontSizeChange,
+		onFontSizeChange: onFontSizeChangeWithPersist,
 	};
 };

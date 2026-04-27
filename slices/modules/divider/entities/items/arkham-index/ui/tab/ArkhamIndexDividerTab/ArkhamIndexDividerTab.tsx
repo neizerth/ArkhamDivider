@@ -2,6 +2,7 @@ import { Box, Tooltip } from "@mui/material";
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
+import { useDividerText } from "@/modules/divider/entities/lib";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
 import {
@@ -156,12 +157,18 @@ export function ArkhamIndexDividerTab() {
 
 	const mm = usePrintUnitCallback();
 
-	const sideText = getArkhamIndexSideText(divider);
-
 	const isFullSize = tabSize === "full" || tabSize === 3;
 
 	const showShiftLeft = tabIndex !== 0 && !isFullSize;
 	const showShiftRight = tabIndex < 3 - (tabSize as number) && !isFullSize;
+
+	const { value: sideText, onFontSizeChange } = useDividerText({
+		divider,
+		param: "sideText",
+		fontSizeScaleParam: "sideTextFontSizeScale",
+		persistFontSizeScaleOnChange: true,
+		defaultValue: getArkhamIndexSideText(divider),
+	});
 
 	return (
 		<>
@@ -237,13 +244,14 @@ export function ArkhamIndexDividerTab() {
 			{showSideText && (
 				<>
 					<Image src={backgroundImage} sx={sideBackgroundSx} />
-					<NotExportable>
+					<NotExportable visibleOn={["image"]}>
 						<Box sx={sideTextSx}>
 							<FitInput
 								value={sideText}
 								contentEditable={false}
 								fitTextOptions={{
 									minFontSize: 8,
+									onFontSizeChange,
 								}}
 							/>
 						</Box>

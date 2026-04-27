@@ -5,6 +5,9 @@ export const arkhamIndexCategoryId = "arkham-index";
 export const arkhamIndexDividerBaseUrl =
 	"/images/divider/background/arkham-index";
 
+export const arkhamIndexDividerExternalUrl = import.meta.env
+	.VITE_ARKHAM_INDEX_URL;
+
 const tabSideWidth = 6.5;
 const sideOffsetWidth = tabSideWidth * 2;
 
@@ -42,6 +45,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 	bottomLine: {
 		bottom: 4.6,
 		height: 8.3,
+		bottomOffset: 5.5,
 	},
 	campaignIcon: {
 		fontSize: 3,
@@ -54,7 +58,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 		width: 9.4,
 		height: 9.4,
 		top: 0,
-		left: 0.2,
+		left: 0.3,
 	},
 	sideBackground: {
 		width: 4.7,
@@ -65,8 +69,8 @@ export const arkhamIndexDividerHorizontalObjects = {
 	sideText: {
 		fontSize: 4,
 		top: 5.1,
-		left: 9.9 + 0.4,
-		width: 3.5,
+		left: 10.1,
+		width: 3.7,
 		height: 4.4,
 		withXP: {
 			height: 4,

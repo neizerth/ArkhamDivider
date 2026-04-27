@@ -1,5 +1,7 @@
 import { Box, type BoxProps } from "@mui/material";
 import { useMemo } from "react";
+import { selectShowCornerRadius } from "@/modules/print/shared/lib";
+import { useAppSelector } from "@/shared/lib";
 import { getArkhamIndexDividerBackgroundPath as getPath } from "../../lib";
 import { useArkhamIndexContext } from "../ArkhamIndexContext";
 
@@ -7,6 +9,7 @@ type ArkhamIndexDividerBorderProps = BoxProps;
 
 export function ArkhamIndexDividerBorder(props: ArkhamIndexDividerBorderProps) {
 	const { layout, tabSize, tabIndex, sxOptions } = useArkhamIndexContext();
+	const cornerRadiusEnabled = useAppSelector(selectShowCornerRadius);
 	const { tab, cornerRadius } = sxOptions.objects;
 
 	const { width, height } = layout.size;
@@ -24,6 +27,7 @@ export function ArkhamIndexDividerBorder(props: ArkhamIndexDividerBorderProps) {
 				tabWidths: tab.width,
 				tabSize,
 				tabIndex,
+				cornerRadiusEnabled,
 			}),
 		[
 			cornerRadius,
@@ -34,6 +38,7 @@ export function ArkhamIndexDividerBorder(props: ArkhamIndexDividerBorderProps) {
 			tabIndex,
 			tabSize,
 			width,
+			cornerRadiusEnabled,
 		],
 	);
 

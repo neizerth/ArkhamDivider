@@ -1,5 +1,6 @@
 import { LASERCUT_LINE_WIDTH } from "@/modules/pdf/shared/config";
 import { PDFLasercutService } from "@/modules/pdf/shared/lib";
+import { fromMm2Pt } from "@/modules/print/shared/lib";
 import type { ArkhamIndexDividerBackgroundPathOptions } from "../../lib";
 import { getArkhamIndexDividerBackgroundPath } from "../../lib";
 
@@ -11,14 +12,8 @@ export type DrawArkhamIndexLasercutOptions = {
 	/** Top-left of the divider in PDF units (pt), matches screen origin (0,0 of the layout). */
 	x: number;
 	y: number;
-	/**
-	 * Extra outline offset in **mm** — `PDFLasercutService.gap` in pt, divided by `mm(1)`.
-	 */
-	gap: number;
 	/** Path geometry in the same **mm** space as the on-screen `layout.size` / SVG viewBox. */
 	path: ArkhamIndexDividerBackgroundPathOptions;
-	/** `unit.mm` from {@link PDFBox} — one design millimeter in pt. */
-	mm2pt: (mm: number) => number;
 };
 
 /**
@@ -30,13 +25,15 @@ export class ArkhamIndexDividerLasercut extends PDFLasercutService {
 		if (!this.options.enabled) {
 			return;
 		}
+		const mm = fromMm2Pt();
+		const gap = this.gap / mm(1);
 		const d = getArkhamIndexDividerBackgroundPath({
 			...options.path,
 			x: 0,
 			y: 0,
-			gap: options.gap,
+			gap,
 		});
-		const s = options.mm2pt(1);
+		const s = mm(1);
 		const doc = this.doc as PDFPathable;
 		this.doc.save();
 		this.doc.translate(options.x, options.y);

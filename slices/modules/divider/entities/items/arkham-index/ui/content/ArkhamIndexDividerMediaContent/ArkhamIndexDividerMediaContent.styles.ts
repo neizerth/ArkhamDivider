@@ -43,3 +43,15 @@ export const getTitleSx: ArkhamIndexDividerSxCallback = ({
 	right: mm(O.title.right),
 	height: mm(O.title.height),
 });
+
+export const getImageSx: ArkhamIndexDividerSxCallback = ({
+	mm,
+	objects: O,
+}) => ({
+	position: "absolute",
+	top: mm(O.topLine.top + O.topLine.height),
+	bottom: mm(O.bottomLine.bottom + O.bottomLine.bottomOffset),
+	left: mm(-3),
+	right: mm(-3),
+	overflow: "hidden",
+});

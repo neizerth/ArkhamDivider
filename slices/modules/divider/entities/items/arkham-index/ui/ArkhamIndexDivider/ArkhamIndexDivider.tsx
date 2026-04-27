@@ -7,6 +7,7 @@ import {
 	DividerBleedView as BleedView,
 	DividerContainer as Container,
 	DividerColorPicker,
+	DividerMenu,
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
@@ -85,6 +86,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const campaignIconSx = getPrintSx(S.getCampaignIconSx);
 	const colorPickerSx = getPrintSx(S.getColorPickerSx);
 	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
+	const menuSx = getPrintSx(S.getMenuSx);
 
 	const showMediaContent = props.layoutType !== "player";
 	return (
@@ -127,9 +129,10 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 				<C.Layer>
 					<Box sx={bodySx}>
 						{showMediaContent && <MediaContent sx={mediaContentSx} />}
+						<DividerMenu dividerId={props.id} sx={menuSx} />
 					</Box>
 					<Tab />
-					<NotExportable visible={!lasercutEnabled}>
+					<NotExportable visible={!lasercutEnabled} visibleOn={["image"]}>
 						<BackgroundStroke sx={backgroundStrokeSx} />
 					</NotExportable>
 

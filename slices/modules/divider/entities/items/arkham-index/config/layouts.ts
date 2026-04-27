@@ -8,7 +8,7 @@ const horizontal: ArkhamIndexDividerLayout = {
 	types: ["scenario", "player", "investigator"],
 	categoryId: arkhamIndexCategoryId,
 	groupId: "horizontal",
-	name: "Medium",
+	name: "Large",
 	orientation: "horizontal",
 	color: true,
 	size: createSize(87, 83),
@@ -24,9 +24,6 @@ const horizontal: ArkhamIndexDividerLayout = {
 		type: "fixed",
 		value: 3,
 	},
-	playerParams: {
-		story: true,
-	},
 	params: {
 		title: true,
 	},
@@ -34,9 +31,9 @@ const horizontal: ArkhamIndexDividerLayout = {
 
 const compact: ArkhamIndexDividerLayout = {
 	...horizontal,
-	id: "arkham-index-compact",
-	groupId: "compact",
-	name: "Compact",
+	id: "arkham-index-medium",
+	groupId: "medium",
+	name: "Medium",
 	size: createSize(87, 73.5),
 	printSize: {
 		300: {
@@ -68,8 +65,8 @@ const vertical: ArkhamIndexDividerLayout = {
 
 const verticalCompact: ArkhamIndexDividerLayout = {
 	...vertical,
-	id: "arkham-index-vertical-compact",
-	groupId: "vertical-compact",
+	id: "arkham-index-vertical-medium",
+	groupId: "vertical-medium",
 	size: createSize(65, 90.5),
 	printSize: {
 		300: {

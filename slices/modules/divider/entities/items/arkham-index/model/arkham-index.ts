@@ -10,20 +10,24 @@ import type { getArkhamIndexDividerLayoutObjects } from "../lib";
 
 export type ArkhamIndexDividerTabSize = number | "full";
 
-export type ArkhamIndexDividerProps = DividerWithRelations<{
+export type ArkhamIndexDividerParams = {
 	icon?: Icon | null;
 	tabTitle?: string | null;
 	tabTitleFontSizeScale?: number;
 
 	customTitle?: string | null;
 	custonFontSizeScale?: number;
+	sideTextFontSizeScale?: number;
 
 	tabSize?: ArkhamIndexDividerTabSize;
 	tabIndex?: number;
 	indent?: boolean;
 
 	color?: string;
-}>;
+};
+
+export type ArkhamIndexDividerProps =
+	DividerWithRelations<ArkhamIndexDividerParams>;
 
 export type ArkhamIndexDividerLayout = DividerLayout<{
 	title: boolean;

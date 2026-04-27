@@ -5,6 +5,8 @@ import {
 	selectDividerTabIndex,
 } from "@/modules/divider/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
+import { selectShowCornerRadius } from "@/modules/print/shared/lib";
+import type { RootState } from "@/shared/store";
 import {
 	getArkhamIndexDividerIconLeft,
 	getArkhamIndexDividerLayoutObjects,
@@ -19,28 +21,34 @@ import {
 } from "../../lib";
 import type {
 	ArkhamIndexDividerLayout,
-	ArkhamIndexDividerProps,
+	ArkhamIndexDividerParams,
 } from "../../model";
 import { ArkhamIndexDividerLasercut } from "./ArkhamIndexDividerLasercut";
 
 const black = cmyk(0, 0, 0, 100);
 
 export const ArkhamIndexDividerPDF: PDFDivider<
-	ArkhamIndexDividerProps
+	ArkhamIndexDividerParams
 > = async (props, ctx) => {
 	const { text, unit, language, layout, lasercut, state } = ctx;
 	const { mm } = unit;
+
+	const select = <T>(selector: (state: RootState) => T) => selector(state);
 
 	const arkLayout = layout as ArkhamIndexDividerLayout;
 	const O = getArkhamIndexDividerLayoutObjects(arkLayout);
 	const wMm = layout.size.width;
 	const hMm = layout.size.height;
 
-	const tabIndex = selectDividerTabIndex({
-		id: props.id,
-		tabsCount: 3,
-		side: props.side,
-	})(state);
+	const tabIndex = select(
+		selectDividerTabIndex({
+			id: props.id,
+			tabsCount: 3,
+			side: props.side,
+		}),
+	);
+
+	const cornerRadiusEnabled = select(selectShowCornerRadius);
 
 	const tabSize = getArkhamIndexDividerTabSize(props);
 	const indentSize = getArkhamIndexDividerTabIndentSize({
@@ -59,6 +67,7 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 		tabWidths: O.tab.width,
 		tabSize,
 		tabIndex,
+		cornerRadiusEnabled,
 	};
 
 	const bleed = unit.fromBleed();
@@ -67,9 +76,7 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 	lasercutService.drawArkhamIndexDividerLasercut({
 		x: bleed.x(0),
 		y: bleed.y(0),
-		gap: lasercut.gap / mm(1),
 		path: pathOptions,
-		mm2pt: mm,
 	});
 
 	const tabWidth = getArkhamIndexDividerTabWidth({
@@ -93,7 +100,7 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 		indentSize,
 	});
 
-	const fontFamily = getDefaultDividerFontFamily(language);
+	const _fontFamily = getDefaultDividerFontFamily(language);
 
 	if (showArkhamIndexDividerTabIcon(props)) {
 		const icon = getDividerIcon({
@@ -118,6 +125,7 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 			fontSize: mm(O.icon.fontSize),
 			color: black,
 			overprint: true,
+			iconOptions: { scaleType: "circle" },
 		});
 	}
 
@@ -136,16 +144,20 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 			width: S.width,
 			height: S.height,
 		});
+
+		const fontSizeScale = props.params?.sideTextFontSizeScale ?? 100;
+		const fontSize = mm((S.fontSize * fontSizeScale) / 100);
+
 		const h = mm(S.height);
 		await text.draw(sideText, {
 			x: sideBox.x(),
 			y: sideBox.y() + h / 2,
 			width: sideBox.width(),
 			height: h,
-			fontSize: mm(S.fontSize),
+			fontSize,
 			align: "center",
 			baseline: "middle",
-			fontFamily,
+			fontFamily: "Arkhamic",
 			color: black,
 			overprint: true,
 		});
