@@ -30,13 +30,13 @@ const black = cmyk(0, 0, 0, 100);
 export const ArkhamIndexDividerPDF: PDFDivider<
 	ArkhamIndexDividerParams
 > = async (props, ctx) => {
-	const { text, unit, language, layout, lasercut, state } = ctx;
+	const { text, unit, language, lasercut, state } = ctx;
 	const { mm } = unit;
 
 	const select = <T>(selector: (state: RootState) => T) => selector(state);
 
-	const arkLayout = layout as ArkhamIndexDividerLayout;
-	const O = getArkhamIndexDividerLayoutObjects(arkLayout);
+	const layout = ctx.layout as ArkhamIndexDividerLayout;
+	const O = getArkhamIndexDividerLayoutObjects(layout);
 	const wMm = layout.size.width;
 	const hMm = layout.size.height;
 
@@ -50,7 +50,11 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 
 	const cornerRadiusEnabled = select(selectShowCornerRadius);
 
-	const tabSize = getArkhamIndexDividerTabSize(props);
+	const tabSize = getArkhamIndexDividerTabSize({
+		divider: props,
+		layout,
+	});
+
 	const indentSize = getArkhamIndexDividerTabIndentSize({
 		divider: props,
 		tabIndex,

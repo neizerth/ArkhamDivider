@@ -70,7 +70,10 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 
 	const showBackgroundIcon = props.layoutType === "player";
 
-	const tabSize = getArkhamIndexDividerTabSize(props);
+	const tabSize = getArkhamIndexDividerTabSize({
+		divider: props,
+		layout,
+	});
 
 	const sxOptions = useArkhamIndexDividerSxOptions({
 		divider: props,

@@ -1,11 +1,21 @@
 import type {
+	ArkhamIndexDividerLayout,
 	ArkhamIndexDividerProps,
 	ArkhamIndexDividerTabSize,
 } from "../../model";
 
-export const getArkhamIndexDividerTabSize = (
-	divider: ArkhamIndexDividerProps,
-): ArkhamIndexDividerTabSize => {
+type Options = {
+	layout: ArkhamIndexDividerLayout;
+	divider: ArkhamIndexDividerProps;
+};
+
+export const getArkhamIndexDividerTabSize = ({
+	divider,
+	layout,
+}: Options): ArkhamIndexDividerTabSize => {
+	if (layout.params?.title === false) {
+		return "full";
+	}
 	return divider.params?.tabSize ?? getDefaultTabSize(divider);
 };
 

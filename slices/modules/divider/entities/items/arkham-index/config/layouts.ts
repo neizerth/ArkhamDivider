@@ -29,16 +29,33 @@ const horizontal: ArkhamIndexDividerLayout = {
 	},
 };
 
-const compact: ArkhamIndexDividerLayout = {
+const medium: ArkhamIndexDividerLayout = {
 	...horizontal,
 	id: "arkham-index-medium",
 	groupId: "medium",
 	name: "Medium",
-	size: createSize(87, 73.5),
+	size: createSize(87, 75.5),
 	printSize: {
 		300: {
-			size: createSize(1028, 868),
-			bleedSize: createSize(1098, 939),
+			size: createSize(1028, 892),
+			bleedSize: createSize(1098, 963),
+		},
+	},
+	params: {
+		title: true,
+	},
+};
+
+const trim: ArkhamIndexDividerLayout = {
+	...horizontal,
+	id: "arkham-index-trim",
+	groupId: "trim",
+	name: "No tab",
+	size: createSize(87, 75.5),
+	printSize: {
+		300: {
+			size: createSize(1028, 892),
+			bleedSize: createSize(1098, 963),
 		},
 	},
 	params: {
@@ -81,7 +98,8 @@ const verticalCompact: ArkhamIndexDividerLayout = {
 
 export const arkhamIndexLayouts: DividerLayout[] = [
 	horizontal,
-	compact,
+	medium,
+	trim,
 	vertical,
 	verticalCompact,
 ];

@@ -170,62 +170,66 @@ export function ArkhamIndexDividerTab() {
 		defaultValue: getArkhamIndexSideText(divider),
 	});
 
+	const canChangeSize = layout.params?.title !== false;
+
 	return (
 		<>
 			<NotExportable visible={showIcon}>
 				<Image src={backgroundImage} sx={backgroundSx} onClick={selectIcon} />
 			</NotExportable>
-			<NotExportable>
-				<Box
-					sx={{
-						position: "absolute",
-						top: 0,
-						left: mm(tabLeft),
-						width: mm(tabWidth),
-						height: mm(tabHeight),
-						display: divider.side === "front" ? "flex" : "none",
-						displayPrint: "none",
-					}}
-				>
-					{showShiftLeft && (
-						<Box onClick={shiftLeft} sx={shiftLeftSx}>
-							<Icon icon="action" />
-						</Box>
-					)}
-					{showShiftRight && (
-						<Box onClick={shiftRight} sx={shiftRightSx}>
-							<Icon icon="action" />
-						</Box>
-					)}
-					{canEnlarge && (
-						<Box onClick={enlarge} sx={enlargeSx}>
-							<Icon icon="enlarge2" />
-						</Box>
-					)}
-					{canShrink && (
-						<Box onClick={shrink} sx={shrinkSx}>
-							<Icon icon="shrink2" />
-						</Box>
-					)}
-					{canIncreaseIndent && (
-						<Box onClick={increaseIndent} sx={increaseIndentSx}>
-							<Icon icon="indent-increase" />
-						</Box>
-					)}
-					{canDecreaseIndent && (
-						<Box onClick={decreaseIndent} sx={decreaseIndentSx}>
-							<Icon icon="indent-decrease" />
-						</Box>
-					)}
-					{tabSize === "full" && (
-						<Tooltip title={t("divider.arkham-index.setAllFull")} arrow>
-							<Box onClick={setFullSizeForAll} sx={fullSizeSx}>
-								<Icon icon="pushpin" />
+			{canChangeSize && (
+				<NotExportable>
+					<Box
+						sx={{
+							position: "absolute",
+							top: 0,
+							left: mm(tabLeft),
+							width: mm(tabWidth),
+							height: mm(tabHeight),
+							display: divider.side === "front" ? "flex" : "none",
+							displayPrint: "none",
+						}}
+					>
+						{showShiftLeft && (
+							<Box onClick={shiftLeft} sx={shiftLeftSx}>
+								<Icon icon="action" />
 							</Box>
-						</Tooltip>
-					)}
-				</Box>
-			</NotExportable>
+						)}
+						{showShiftRight && (
+							<Box onClick={shiftRight} sx={shiftRightSx}>
+								<Icon icon="action" />
+							</Box>
+						)}
+						{canEnlarge && (
+							<Box onClick={enlarge} sx={enlargeSx}>
+								<Icon icon="enlarge2" />
+							</Box>
+						)}
+						{canShrink && (
+							<Box onClick={shrink} sx={shrinkSx}>
+								<Icon icon="shrink2" />
+							</Box>
+						)}
+						{canIncreaseIndent && (
+							<Box onClick={increaseIndent} sx={increaseIndentSx}>
+								<Icon icon="indent-increase" />
+							</Box>
+						)}
+						{canDecreaseIndent && (
+							<Box onClick={decreaseIndent} sx={decreaseIndentSx}>
+								<Icon icon="indent-decrease" />
+							</Box>
+						)}
+						{tabSize === "full" && (
+							<Tooltip title={t("divider.arkham-index.setAllFull")} arrow>
+								<Box onClick={setFullSizeForAll} sx={fullSizeSx}>
+									<Icon icon="pushpin" />
+								</Box>
+							</Tooltip>
+						)}
+					</Box>
+				</NotExportable>
+			)}
 			{showGlyph && (
 				<Icon
 					dividerId={divider.id}
