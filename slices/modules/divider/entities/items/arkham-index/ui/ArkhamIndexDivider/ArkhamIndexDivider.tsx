@@ -10,7 +10,11 @@ import {
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
-import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
+import {
+	getDividerFaction,
+	selectDividerTabIndex,
+} from "@/modules/divider/shared/lib";
+import { getFactionIcon } from "@/modules/faction/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { absoluteFill } from "@/shared/config";
@@ -50,10 +54,19 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		: getArkhamIndexDividerDefaultFilter(props);
 
 	const getDividerIcon = useDividerIcon({ dividerId: props.id });
-	const [campaignIcon, startCampaignIcon] = getDividerIcon({
+	const [campaignIcon, selectCampaignIcon] = getDividerIcon({
 		param: "campaignIcon",
 		defaultIcon: props.story?.icon,
 	});
+
+	const faction = getDividerFaction(props);
+
+	const [backgroundIcon, selectBackgroundIcon] = getDividerIcon({
+		param: "icon",
+		defaultIcon: faction && getFactionIcon(faction),
+	});
+
+	const showBackgroundIcon = props.layoutType === "player";
 
 	const tabSize = getArkhamIndexDividerTabSize(props);
 
@@ -70,6 +83,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const mediaContentSx = getPrintSx(S.getMediaContentSx);
 	const campaignIconSx = getPrintSx(S.getCampaignIconSx);
 	const colorPickerSx = getPrintSx(S.getColorPickerSx);
+	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
 
 	const showMediaContent = props.layoutType !== "player";
 	return (
@@ -83,14 +97,28 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						sx={{
 							...backgroundSx,
 							filter: backgroundFilter,
+							zIndex: 1,
 						}}
 					/>
+					{showBackgroundIcon && (
+						<C.Layer>
+							<DividerIcon
+								dividerId={props.id}
+								icon={backgroundIcon}
+								sx={backgroundIconSx}
+								visible
+							/>
+						</C.Layer>
+					)}
 					{backgroundColor && (
 						<Box
 							sx={{
 								...absoluteFill,
+								zIndex: 3,
 								backgroundColor,
 								mixBlendMode: "color",
+								pointerEvents: "none",
+								printColorAdjust: "exact",
 							}}
 						/>
 					)}
@@ -115,8 +143,29 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						icon={campaignIcon}
 						sx={campaignIconSx}
 						visible
-						onClick={startCampaignIcon}
+						onClick={selectCampaignIcon}
 					/>
+					{showBackgroundIcon && (
+						<Box
+							sx={{
+								...backgroundIconSx,
+								zIndex: 4,
+								aspectRatio: 1,
+								left: "50%",
+								transform: "translate(-50%, -50%)",
+								height: "1.2em",
+								mixBlendMode: "color",
+								borderRadius: "50%",
+								blur: "2px",
+								"@media screen": {
+									":hover": {
+										backgroundColor: "rgba(255, 255, 255, 0.01)",
+									},
+								},
+							}}
+							onClick={selectBackgroundIcon}
+						/>
+					)}
 				</C.Layer>
 			</Container>
 		</ArkhamIndexContext.Provider>

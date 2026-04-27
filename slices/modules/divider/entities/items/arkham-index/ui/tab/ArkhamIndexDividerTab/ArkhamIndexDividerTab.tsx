@@ -5,7 +5,6 @@ import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
 import {
-	getDividerFaction,
 	setAllDividersParam,
 	useTabPosition,
 	useTabSize,
@@ -124,15 +123,7 @@ export function ArkhamIndexDividerTab() {
 	const decreaseIndentSx = getPrintSx(S.getDecreaseIndentSx);
 	const fullSizeSx = getPrintSx(S.getFullSizeSx);
 
-	const faction = getDividerFaction(divider) ?? "neutral";
-
-	const factionOptions = useMemo(() => {
-		return {
-			faction,
-		};
-	}, [faction]);
-
-	const factionImageSx = getPrintSx(S.getFactionImageSx, factionOptions);
+	const factionImageSx = getPrintSx(S.getFactionImageSx);
 
 	const {
 		canIncreaseIndent,

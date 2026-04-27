@@ -72,6 +72,9 @@ export const arkhamIndexDividerHorizontalObjects = {
 			height: 4,
 		},
 	},
+	backgroundIcon: {
+		fontSize: 50,
+	},
 	tabTitle: {
 		default: {
 			fontSize: 6,

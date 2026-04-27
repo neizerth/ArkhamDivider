@@ -13,7 +13,7 @@ export function showArkhamIndexDividerTabIcon(
 	});
 	const isEmpty = isEmptyIcon(icon);
 
-	if (divider.layoutType !== "player") {
+	if (divider.layoutType === "scenario") {
 		return !isEmpty;
 	}
 

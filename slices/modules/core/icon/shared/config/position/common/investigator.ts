@@ -31,7 +31,7 @@ export default {
 		scale: percent(90),
 	},
 	neutral: {
-		top: percent(-1),
+		top: percent(-1.5),
 		left: percent(-1),
 		scale: percent(85),
 	},

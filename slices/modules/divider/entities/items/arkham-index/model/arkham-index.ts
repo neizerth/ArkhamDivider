@@ -4,6 +4,7 @@ import type {
 	DividerLayout,
 	DividerWithRelations,
 } from "@/modules/divider/shared/model";
+import type { Faction } from "@/modules/faction/shared/model";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
 import type { getArkhamIndexDividerLayoutObjects } from "../lib";
 
@@ -38,6 +39,7 @@ export type ArkhamIndexDividerSxOptions = {
 	tabIndex: number;
 	tabSize: ArkhamIndexDividerTabSize;
 	indentSize: number;
+	faction: Faction;
 };
 
 export type ArkhamIndexDividerSxCallback<T = object> = PrintSxCallback<

@@ -183,15 +183,11 @@ const factionPosition: Record<Faction, { top: number; left: number }> = {
 	seeker: { top: 1, left: 1.3 },
 	rogue: { top: 0.9, left: 1.3 },
 	mystic: { top: 1.1, left: 1.3 },
-	survivor: { top: 1.5, left: 1.3 },
+	survivor: { top: 1.6, left: 1.3 },
 	multiclass: { top: 1.1, left: 1.3 },
 };
 
-export const getFactionImageSx: SxCallback<{ faction: Faction }> = ({
-	mm,
-	iconLeft,
-	faction,
-}) => ({
+export const getFactionImageSx: SxCallback = ({ mm, iconLeft, faction }) => ({
 	position: "absolute",
 	top: mm(factionPosition[faction].top),
 	left: mm(iconLeft + factionPosition[faction].left),
