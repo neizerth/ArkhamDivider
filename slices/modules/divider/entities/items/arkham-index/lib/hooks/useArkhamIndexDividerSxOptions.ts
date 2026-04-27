@@ -10,6 +10,7 @@ import type {
 	ArkhamIndexDividerSxOptions,
 	ArkhamIndexDividerTabSize,
 } from "../../model";
+import { getArkhamIndexDividerTabIndentSize } from "../logic";
 import { getArkhamIndexDividerLayoutObjects } from "../logic/objects/getArkhamIndexDividerLayoutObjects";
 
 type Options = {
@@ -23,10 +24,13 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
 	const icon = getDividerIcon({ divider, param: "icon" });
 	const showIcon = !isEmptyIcon(icon);
-	const indent = divider.params?.indent ?? false;
 	const objects = getArkhamIndexDividerLayoutObjects(layout);
-	const indentSize =
-		indent && tabSize === 2 && tabIndex !== 0 ? objects.tab.indentSize : 0;
+	const indentSize = getArkhamIndexDividerTabIndentSize({
+		divider,
+		tabIndex,
+		tabSize,
+		tabIndentSize: objects.tab.indentSize,
+	});
 
 	const faction = getDividerFaction(divider) ?? "neutral";
 

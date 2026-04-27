@@ -15,7 +15,7 @@ import {
 	selectDividerTabIndex,
 } from "@/modules/divider/shared/lib";
 import { getFactionIcon } from "@/modules/faction/shared/lib";
-import { usePrintSx } from "@/modules/print/shared/lib";
+import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib";
@@ -40,6 +40,7 @@ import * as S from "./ArkhamIndexDivider.styles";
 
 export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { t } = useTranslation();
+	const lasercutEnabled = useAppSelector(selectLasercutEnabled);
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
 
 	const tabIndex = useAppSelector(
@@ -128,8 +129,11 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						{showMediaContent && <MediaContent sx={mediaContentSx} />}
 					</Box>
 					<Tab />
-					<NotExportable>
+					<NotExportable visible={!lasercutEnabled}>
 						<BackgroundStroke sx={backgroundStrokeSx} />
+					</NotExportable>
+
+					<NotExportable>
 						<DividerColorPicker
 							dividerId={props.id}
 							param="color"

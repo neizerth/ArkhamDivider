@@ -1,6 +1,7 @@
 export * from "./color";
 export * from "./getArkhamIndexDefaultDividerTitle";
 export * from "./getArkhamIndexDividerBackgroundPath";
+export * from "./getArkhamIndexDividerTabIndentSize";
 export * from "./getArkhamIndexDividerTabSize";
 export * from "./getArkhamIndexSideText";
 export * from "./objects";

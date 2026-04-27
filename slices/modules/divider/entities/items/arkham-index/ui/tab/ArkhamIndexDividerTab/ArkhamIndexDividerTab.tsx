@@ -167,6 +167,8 @@ export function ArkhamIndexDividerTab() {
 		<>
 			<NotExportable visible={showIcon}>
 				<Image src={backgroundImage} sx={backgroundSx} onClick={selectIcon} />
+			</NotExportable>
+			<NotExportable>
 				<Box
 					sx={{
 						position: "absolute",

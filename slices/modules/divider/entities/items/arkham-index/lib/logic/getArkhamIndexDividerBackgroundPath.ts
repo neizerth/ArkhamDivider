@@ -4,7 +4,7 @@ import type { ArkhamIndexDividerTabSize } from "../../model";
 
 const path = () => SVGPath.of(d3Path());
 
-export type Options = {
+export type ArkhamIndexDividerBackgroundPathOptions = {
 	width: number;
 	height: number;
 	cornerRadius: number;
@@ -17,6 +17,8 @@ export type Options = {
 	y?: number;
 	gap?: number;
 };
+
+type Options = ArkhamIndexDividerBackgroundPathOptions;
 
 type TabbedOptions = Options & { tabSize: number };
 

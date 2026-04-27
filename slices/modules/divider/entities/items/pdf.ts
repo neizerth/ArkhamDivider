@@ -3,6 +3,8 @@ import { arkhamStarterDividerCategoryId } from "./3mm/config";
 import { ArkhamStarterDividerPDF } from "./3mm/ui";
 import { arkhamDecoCategoryId } from "./arkham-deco/config";
 import { ArkhamDecoDividerPDF } from "./arkham-deco/ui";
+import { arkhamIndexCategoryId } from "./arkham-index/config";
+import { ArkhamIndexDividerPDF } from "./arkham-index/ui/pdf";
 import { arkhamesqueClassicCategoryId } from "./arkhamesque-classic/config/common";
 import { ArkhamesqueClassicDividerPDF } from "./arkhamesque-classic/ui/pdf";
 import { binderBookmarkCategoryId } from "./binder-bookmark/config/common";
@@ -31,6 +33,7 @@ import { VintageDividerPDF } from "./vintage/ui/pdf";
 // biome-ignore lint/suspicious/noExplicitAny: any is used to allow any type of params
 export const dividerPDFComponents: Record<string, PDFDivider<any>> = {
 	[arkhamesqueClassicCategoryId]: ArkhamesqueClassicDividerPDF,
+	[arkhamIndexCategoryId]: ArkhamIndexDividerPDF,
 	[arkhamDecoCategoryId]: ArkhamDecoDividerPDF,
 	[binderBookmarkCategoryId]: BinderBookmarkPDF,
 	[classicCategoryId]: ClassicDividerPDF,
