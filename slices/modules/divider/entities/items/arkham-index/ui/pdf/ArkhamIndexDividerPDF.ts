@@ -1,7 +1,9 @@
 import { cmyk } from "@/modules/core/color/shared/lib";
 import { getDividerIcon } from "@/modules/divider/features/lib";
-import { getDefaultDividerFontFamily } from "@/modules/divider/shared/lib";
-import { getDividerTabIndex } from "@/modules/divider/shared/lib/logic/tab";
+import {
+	getDefaultDividerFontFamily,
+	selectDividerTabIndex,
+} from "@/modules/divider/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import {
 	getArkhamIndexDividerIconLeft,
@@ -26,7 +28,7 @@ const black = cmyk(0, 0, 0, 100);
 export const ArkhamIndexDividerPDF: PDFDivider<
 	ArkhamIndexDividerProps
 > = async (props, ctx) => {
-	const { text, unit, language, layout, lasercut } = ctx;
+	const { text, unit, language, layout, lasercut, state } = ctx;
 	const { mm } = unit;
 
 	const arkLayout = layout as ArkhamIndexDividerLayout;
@@ -34,11 +36,11 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 	const wMm = layout.size.width;
 	const hMm = layout.size.height;
 
-	const tabIndex = getDividerTabIndex({
-		divider: props,
+	const tabIndex = selectDividerTabIndex({
+		id: props.id,
 		tabsCount: 3,
-		defaultTabIndex: 0,
-	});
+		side: props.side,
+	})(state);
 
 	const tabSize = getArkhamIndexDividerTabSize(props);
 	const indentSize = getArkhamIndexDividerTabIndentSize({
