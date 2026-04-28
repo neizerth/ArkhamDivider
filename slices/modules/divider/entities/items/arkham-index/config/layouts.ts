@@ -68,11 +68,11 @@ const vertical: ArkhamIndexDividerLayout = {
 	orientation: "vertical",
 	id: "arkham-index-vertical",
 	groupId: "large",
-	size: createSize(65, 107.5),
+	size: createSize(65, 108),
 	printSize: {
 		300: {
-			size: createSize(768, 1341),
-			bleedSize: createSize(839, 1270),
+			size: createSize(768, 1276),
+			bleedSize: createSize(839, 1346),
 		},
 	},
 	params: {
@@ -84,12 +84,12 @@ const verticalMedium: ArkhamIndexDividerLayout = {
 	...vertical,
 	id: "arkham-index-vertical-medium",
 	groupId: "vertical-medium",
-	size: createSize(65, 97.5),
+	size: createSize(65, 98),
 	name: "Medium",
 	printSize: {
 		300: {
-			size: createSize(768, 1152),
-			bleedSize: createSize(839, 1222),
+			size: createSize(768, 1157),
+			bleedSize: createSize(839, 1228),
 		},
 	},
 	params: {
@@ -101,12 +101,12 @@ const verticalTrim: ArkhamIndexDividerLayout = {
 	...vertical,
 	id: "arkham-index-vertical-trim",
 	groupId: "vertical-trim",
-	size: createSize(65, 97.5),
+	size: createSize(65, 98),
 	name: "No tab",
 	printSize: {
 		300: {
 			size: createSize(768, 1152),
-			bleedSize: createSize(839, 1222),
+			bleedSize: createSize(839, 1228),
 		},
 	},
 	params: {
