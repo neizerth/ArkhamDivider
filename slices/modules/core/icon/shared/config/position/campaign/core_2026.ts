@@ -3,8 +3,8 @@ import type { IconPositionManifest } from "../../../model";
 
 export default {
 	core_2026: {
-		left: percent(-1),
-		top: percent(-2),
+		left: percent(0),
+		top: percent(-1),
 		scale: percent(85),
 	},
 	gangs_of_arkham: {
