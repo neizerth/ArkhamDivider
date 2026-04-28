@@ -45,7 +45,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 	bottomLine: {
 		bottom: 4.6,
 		height: 8.3,
-		bottomOffset: 5.5,
+		bottomOffset: 5.3,
 	},
 	campaignIcon: {
 		fontSize: 3,
@@ -92,15 +92,15 @@ export const arkhamIndexDividerHorizontalObjects = {
 			right: 21,
 		},
 		withSideText: {
-			left: 20,
+			left: 21,
 			right: 27,
 		},
 		fullOffset: {
 			default: 8,
-			withSideText: 12,
+			withSideText: 12.5,
 		},
 		full: {
-			right: 13,
+			right: 19,
 		},
 	},
 };
@@ -109,12 +109,31 @@ export const arkhamIndexDividerHorizontalSmallObjects = mergeDeepRight(
 	arkhamIndexDividerHorizontalObjects,
 	{
 		topLine: {
-			top: 0,
+			top: 0.5,
 		},
 	},
 );
 
+const verticalTabWidths: Record<number, number> = {
+	1: 16 + sideOffsetWidth,
+	2: 28 + sideOffsetWidth,
+	3: 46 + sideOffsetWidth,
+};
+
 export const arkhamIndexDividerVerticalObjects = mergeDeepRight(
 	arkhamIndexDividerHorizontalObjects,
-	{},
+	{
+		tab: {
+			width: verticalTabWidths,
+		},
+	},
+);
+
+export const arkhamIndexDividerVerticalTrimObjects = mergeDeepRight(
+	arkhamIndexDividerVerticalObjects,
+	{
+		topLine: {
+			top: 0.5,
+		},
+	},
 );

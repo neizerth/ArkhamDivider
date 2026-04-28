@@ -11,14 +11,16 @@ type ArkhamIndexDividerMediaContentProps = BoxProps;
 export function ArkhamIndexDividerMediaContent(
 	props: ArkhamIndexDividerMediaContentProps,
 ) {
-	const { sxOptions, divider } = useArkhamIndexContext();
+	const { sxOptions, divider, layout } = useArkhamIndexContext();
 	const getPrintSx = usePrintSx(sxOptions);
 	const titleSx = getPrintSx(S.getTitleSx);
 	const topLineSx = getPrintSx(S.getTopLineSx);
 	const bottomLineSx = getPrintSx(S.getBottomLineSx);
 	const imageSx = getPrintSx(S.getImageSx);
 
-	const imageUrl = getArkhamIndexDividerImageUrl({ divider });
+	const { orientation } = layout;
+
+	const imageUrl = getArkhamIndexDividerImageUrl({ divider, orientation });
 
 	return (
 		<Box {...props}>

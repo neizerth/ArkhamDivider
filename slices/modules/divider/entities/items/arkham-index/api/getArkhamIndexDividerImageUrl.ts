@@ -1,11 +1,17 @@
+import type { Orientation } from "@mui/material";
 import { arkhamIndexDividerExternalUrl as baseUrl } from "../config";
 import type { ArkhamIndexDividerProps } from "../model";
 
 type Options = {
 	divider: ArkhamIndexDividerProps;
+	orientation: Orientation;
 	version?: number;
 };
-export function getArkhamIndexDividerImageUrl({ divider, version }: Options) {
+export function getArkhamIndexDividerImageUrl({
+	divider,
+	orientation,
+	version,
+}: Options) {
 	if (divider.layoutType === "player") {
 		return;
 	}
@@ -23,7 +29,7 @@ export function getArkhamIndexDividerImageUrl({ divider, version }: Options) {
 
 	const { story } = divider;
 	const storyCode = story.return_to_code ?? story.code;
-	const scenarioBase = `${imagesUrl}/scenario/${storyCode}`;
+	const scenarioBase = `${imagesUrl}/scenario/${storyCode}/${orientation}`;
 
 	if (divider.type === "campaign") {
 		return `${scenarioBase}/${story.code}.avif`;
@@ -32,7 +38,9 @@ export function getArkhamIndexDividerImageUrl({ divider, version }: Options) {
 	if (divider.type === "encounter") {
 		const subtype = divider.subtype;
 		const id =
-			subtype === "encounter-set" ? divider.encounterCode : divider.scenarioId;
+			subtype === "encounter-set"
+				? divider.encounterCode
+				: `${divider.scenarioId}-encounter`;
 		return `${scenarioBase}/${id}.avif`;
 	}
 

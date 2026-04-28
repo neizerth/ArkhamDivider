@@ -11,7 +11,7 @@ import * as S from "./ArkhamIndexDividerTitle.styles";
 type ArkhamIndexDividerTitleProps = BoxProps;
 
 export function ArkhamIndexDividerTitle(props: ArkhamIndexDividerTitleProps) {
-	const { divider, sxOptions, tabSize } = useArkhamIndexContext();
+	const { divider, sxOptions, tabSize, layout } = useArkhamIndexContext();
 
 	const { showIcon } = sxOptions;
 
@@ -51,7 +51,7 @@ export function ArkhamIndexDividerTitle(props: ArkhamIndexDividerTitleProps) {
 		...titleSx,
 	} as SxProps;
 
-	if (!defaultTitle) {
+	if (!defaultTitle || layout.params?.title === false) {
 		return null;
 	}
 

@@ -116,7 +116,7 @@ export const getBackgroundIconSx: ArkhamIndexDividerSxCallback = ({
 
 export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
-	top: `calc(50% - ${mm(5)})`,
+	top: `calc(50% - ${mm(2)})`,
 	transform: "translateY(-50%)",
 	left: mm(2.5),
 	color: "#ede3cebf",

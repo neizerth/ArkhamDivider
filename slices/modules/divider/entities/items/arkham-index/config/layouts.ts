@@ -67,28 +67,46 @@ const vertical: ArkhamIndexDividerLayout = {
 	...horizontal,
 	orientation: "vertical",
 	id: "arkham-index-vertical",
-	groupId: "vertical",
-	size: createSize(65, 100),
+	groupId: "large",
+	size: createSize(65, 107.5),
 	printSize: {
 		300: {
-			size: createSize(768, 1181),
-			bleedSize: createSize(839, 1252),
+			size: createSize(768, 1341),
+			bleedSize: createSize(839, 1270),
 		},
 	},
 	params: {
-		title: false,
+		title: true,
 	},
 };
 
-const verticalCompact: ArkhamIndexDividerLayout = {
+const verticalMedium: ArkhamIndexDividerLayout = {
 	...vertical,
 	id: "arkham-index-vertical-medium",
 	groupId: "vertical-medium",
-	size: createSize(65, 90.5),
+	size: createSize(65, 97.5),
+	name: "Medium",
 	printSize: {
 		300: {
-			size: createSize(768, 1069),
-			bleedSize: createSize(839, 1140),
+			size: createSize(768, 1152),
+			bleedSize: createSize(839, 1222),
+		},
+	},
+	params: {
+		title: true,
+	},
+};
+
+const verticalTrim: ArkhamIndexDividerLayout = {
+	...vertical,
+	id: "arkham-index-vertical-trim",
+	groupId: "vertical-trim",
+	size: createSize(65, 97.5),
+	name: "No tab",
+	printSize: {
+		300: {
+			size: createSize(768, 1152),
+			bleedSize: createSize(839, 1222),
 		},
 	},
 	params: {
@@ -101,5 +119,6 @@ export const arkhamIndexLayouts: DividerLayout[] = [
 	medium,
 	trim,
 	vertical,
-	verticalCompact,
+	verticalMedium,
+	verticalTrim,
 ];
