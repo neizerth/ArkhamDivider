@@ -115,7 +115,7 @@ export const arkhamIndexDividerHorizontalSmallObjects = mergeDeepRight(
 );
 
 const verticalTabWidths: Record<number, number> = {
-	1: 16 + sideOffsetWidth,
+	1: 14 + sideOffsetWidth,
 	2: 28 + sideOffsetWidth,
 	3: 46 + sideOffsetWidth,
 };
@@ -125,6 +125,7 @@ export const arkhamIndexDividerVerticalObjects = mergeDeepRight(
 	{
 		tab: {
 			width: verticalTabWidths,
+			indentSize: 2,
 		},
 	},
 );

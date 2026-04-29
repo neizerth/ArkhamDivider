@@ -39,6 +39,7 @@ export const getBackgroundSx: SxCallback = ({
 	const size = O.iconBackground.width;
 	return {
 		position: "absolute",
+		zIndex: 4,
 		width: mm(size),
 		height: mm(size),
 		top: mm(O.iconBackground.top),

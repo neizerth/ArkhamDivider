@@ -243,6 +243,7 @@ export function ArkhamIndexDividerTab() {
 				<Image
 					src={`/images/faction/${divider.faction}.png`}
 					sx={factionImageSx}
+					onClick={selectIcon}
 				/>
 			)}
 			{showSideText && (
