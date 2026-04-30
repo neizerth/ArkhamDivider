@@ -17,6 +17,7 @@ type SxCallback<T = void> = ArkhamIndexDividerSxCallback<Options & T>;
 
 export const getIconSx: SxCallback = ({ mm, objects: O, iconLeft: left }) => ({
 	position: "absolute",
+	zIndex: 5,
 	fontSize: mm(O.icon.fontSize),
 	left: mm(left),
 	top: mm(O.icon.top),
