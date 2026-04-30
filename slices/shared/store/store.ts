@@ -37,7 +37,7 @@ const persistConfig = {
 	storage,
 	migrate: createMigrate(migrationManifest, { debug: false }),
 	version: currentMigrationVersion,
-	blacklist: ["story", "arkhamesqueClassic"],
+	blacklist: ["story", "arkhamesqueClassic", "arkhamIndex"],
 };
 
 export const createStore = () => {

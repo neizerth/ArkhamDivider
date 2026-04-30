@@ -19,7 +19,7 @@ export function getArkhamIndexDividerImageUrl({
 	const imagesUrl = `${baseUrl}/images`;
 
 	if (divider.layoutType === "investigator") {
-		const base = `${imagesUrl}/${divider.investigator.code}`;
+		const base = `${imagesUrl}/investigator/${orientation}/${divider.investigator.code}`;
 
 		if (version) {
 			return `${base}_${version}.avif`;

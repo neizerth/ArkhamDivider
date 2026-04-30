@@ -1,6 +1,9 @@
 import type { PropsWithChildren } from "react";
-import { ArkhamesqueClassicProvider } from "../ArkhamesqueClassicProvider";
+import { useArkhamIndexData } from "@/modules/divider/entities/items/arkham-index/lib";
+import { useArkhamesqueClassicData } from "@/modules/divider/entities/items/arkhamesque-classic/lib";
 
-export const DividerProvider = (props: PropsWithChildren) => {
-	return <ArkhamesqueClassicProvider {...props} />;
+export const DividerProvider = ({ children }: PropsWithChildren) => {
+	useArkhamesqueClassicData();
+	useArkhamIndexData();
+	return children;
 };
