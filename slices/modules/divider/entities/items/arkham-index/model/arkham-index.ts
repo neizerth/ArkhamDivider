@@ -52,3 +52,8 @@ export type ArkhamIndexDividerSxCallback<T = object> = PrintSxCallback<
 
 export type ArkhamIndexDividerIconLocaleSxCallback<T = object> =
 	LocaleSxCallback<ArkhamIndexDividerSxOptions & T>;
+
+export type ArkhamIndexDividerData = {
+	supported_stories: string[];
+	investigator_alternatives: Record<string, number>;
+};
