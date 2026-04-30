@@ -70,4 +70,27 @@ const pocket: DividerLayout = {
 	},
 };
 
-export const binderBookmarkLayouts: DividerLayout[] = [layout, a4, duo, pocket];
+const card: DividerLayout = {
+	...layout,
+	id: "binder-bookmark-card",
+	groupId: "card",
+	name: "divider.binder-bookmark.card.name",
+	previewName: "divider.binder-bookmark.card.name",
+	description: "divider.binder-bookmark.card.description",
+	image: null,
+	size: createSize(63, 88),
+	printSize: {
+		300: {
+			size: createSize(744, 1039),
+			bleedSize: createSize(815, 1110),
+		},
+	},
+};
+
+export const binderBookmarkLayouts: DividerLayout[] = [
+	layout,
+	a4,
+	duo,
+	pocket,
+	card,
+];
