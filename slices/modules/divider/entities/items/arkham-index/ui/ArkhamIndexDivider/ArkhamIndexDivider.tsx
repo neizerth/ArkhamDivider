@@ -11,11 +11,7 @@ import {
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
-import {
-	getDividerFaction,
-	selectDividerTabIndex,
-} from "@/modules/divider/shared/lib";
-import { getFactionIcon } from "@/modules/faction/shared/lib";
+import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { absoluteFill } from "@/shared/config";
@@ -61,11 +57,9 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		defaultIcon: props.story?.icon,
 	});
 
-	const faction = getDividerFaction(props);
-
 	const [backgroundIcon, selectBackgroundIcon] = getDividerIcon({
 		param: "icon",
-		defaultIcon: faction && getFactionIcon(faction),
+		defaultIcon: props.icon,
 	});
 
 	const showBackgroundIcon = props.layoutType === "player";

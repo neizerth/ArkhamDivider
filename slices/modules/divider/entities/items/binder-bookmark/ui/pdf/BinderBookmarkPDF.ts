@@ -1,9 +1,6 @@
 import { cmyk } from "@/modules/core/color/shared/lib";
 import { getDividerIcon } from "@/modules/divider/features/lib";
-import {
-	getDefaultDividerFontFamily,
-	getDividerFaction,
-} from "@/modules/divider/shared/lib";
+import { getDefaultDividerFontFamily } from "@/modules/divider/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
 import { binderBookmarkObjects as O } from "../../config/common";
@@ -27,7 +24,6 @@ export const BinderBookmarkPDF: PDFDivider<BinderBookmarkProps> = async (
 	const title =
 		(props as { customTitle?: string | null }).customTitle ?? t(props.title);
 
-	const faction = getDividerFaction(props) ?? "neutral";
 	const titleObject = getBinderBookmarkTitleObject(language);
 
 	const bleed = unit.fromBleed();
