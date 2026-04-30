@@ -223,6 +223,8 @@
 	"divider.binder-bookmark.pocket.description": "Разделитель для вставки в карман листа",
 	"divider.binder-bookmark.card.name": "Карта",
 	"divider.binder-bookmark.card.description": "Разделитель формата карты",
+	"divider.binder-bookmark.ffg.name": "FFG-size",
+	"divider.binder-bookmark.ffg.description": "Разделитель формата FFG-карты",
 	"Binder Spines": "Корешки для альбома",
 	"Page margin": "Поля страницы",
 	"category.simple-sticker.name": "Наклейки с иконками",

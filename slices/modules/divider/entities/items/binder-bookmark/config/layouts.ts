@@ -87,10 +87,28 @@ const card: DividerLayout = {
 	},
 };
 
+const ffg: DividerLayout = {
+	...layout,
+	id: "binder-bookmark-ffg",
+	groupId: "ffg",
+	name: "divider.binder-bookmark.ffg.name",
+	previewName: "divider.binder-bookmark.ffg.name",
+	description: "divider.binder-bookmark.ffg.description",
+	image: null,
+	size: createSize(61.5, 88),
+	printSize: {
+		300: {
+			size: createSize(726, 1039),
+			bleedSize: createSize(797, 1110),
+		},
+	},
+};
+
 export const binderBookmarkLayouts: DividerLayout[] = [
 	layout,
 	a4,
 	duo,
 	pocket,
 	card,
+	ffg,
 ];
