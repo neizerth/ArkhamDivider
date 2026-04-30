@@ -29,7 +29,7 @@ export const getBackgroundIconSx: BinderBookmarkSxCallback = ({
 }) => ({
 	position: "absolute",
 	left: "50%",
-	top: `calc(50% + ${mm(5)})`,
+	top: `calc(50% + ${mm(4)})`,
 	transform: "translate(-50%, -50%)",
 	width: `${factionWidth[faction]}%`,
 });

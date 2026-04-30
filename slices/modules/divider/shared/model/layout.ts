@@ -34,7 +34,7 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	name: string;
 	previewName?: string;
 	authors?: Author[];
-	image?: string;
+	image?: string | null;
 	orientation: DividerOrientation;
 	color: boolean;
 	/** The size of the divider in mm */

@@ -221,6 +221,8 @@
 	"category.binder-bookmark.description": "Разделители для альбома",
 	"divider.binder-bookmark.pocket.name": "Для ячейки",
 	"divider.binder-bookmark.pocket.description": "Разделитель для вставки в карман листа",
+	"divider.binder-bookmark.card.name": "Карта",
+	"divider.binder-bookmark.card.description": "Разделитель формата карты",
 	"Binder Spines": "Корешки для альбома",
 	"Page margin": "Поля страницы",
 	"category.simple-sticker.name": "Наклейки с иконками",
