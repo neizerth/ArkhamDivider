@@ -1,4 +1,5 @@
 import type { DividerLayout } from "@/modules/divider/shared/model";
+
 import { createSize } from "@/shared/util";
 import { binderBookmarkCategoryId } from "./common";
 
@@ -19,6 +20,9 @@ const layout: DividerLayout = {
 	},
 	bleed: 3,
 	iconParams: ["icon"],
+	playerParams: {
+		story: true,
+	},
 };
 
 const a4: DividerLayout = {
