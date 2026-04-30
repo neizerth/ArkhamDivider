@@ -16,6 +16,7 @@ export type ArkhamIndexDividerParams = {
 	tabTitleFontSizeScale?: number;
 
 	customTitle?: string | null;
+	customImage?: string | null;
 	custonFontSizeScale?: number;
 	sideTextFontSizeScale?: number;
 

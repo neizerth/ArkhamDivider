@@ -1,5 +1,6 @@
 import { spawn } from "redux-saga/effects";
 import { clearUnusedDividerIcons } from "./clear-unused-divider-icons/clearUnusedDividerIcons";
+import { clearUnusedDividerMedia } from "./clear-unused-divider-media/clearUnusedDividerIcons";
 import { navigateOnCategoryChangeSaga } from "./navigate-on-category-change/navigateOnCategoryChangeSaga";
 import { navigateOnDividerTypeChangeSaga } from "./navigate-on-divider-type-change/navigateOnDividerTypeChangeSaga";
 import { removeUnsupportedLayoutDividersSaga } from "./remove-unsupported-layout-dividers/removeUnsupportedLayoutDividersSaga";
@@ -17,6 +18,7 @@ export function* dividerFeaturesSaga() {
 	yield spawn(setDividerTypeOnRouteChangeSaga);
 	yield spawn(setLayoutGridOnLayoutChangeSaga);
 	yield spawn(clearUnusedDividerIcons);
+	yield spawn(clearUnusedDividerMedia);
 	yield spawn(navigateOnCategoryChangeSaga);
 	yield spawn(removeUnsupportedLayoutDividersSaga);
 	yield spawn(setSupportedDividerTypeOnLayoutChangeSaga);

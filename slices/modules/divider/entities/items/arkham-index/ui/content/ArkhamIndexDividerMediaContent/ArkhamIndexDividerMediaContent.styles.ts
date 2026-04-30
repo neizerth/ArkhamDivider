@@ -1,4 +1,4 @@
-import { prefix } from "@/shared/util";
+import { percent, prefix } from "@/shared/util";
 import { arkhamIndexDividerBaseUrl } from "../../../config";
 import type { ArkhamIndexDividerSxCallback } from "../../../model";
 
@@ -54,4 +54,34 @@ export const getImageSx: ArkhamIndexDividerSxCallback = ({
 	left: mm(-3),
 	right: mm(-3),
 	overflow: "hidden",
+});
+
+export const getCoversCountSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 2,
+	gap: mm(1),
+	bottom: mm(3),
+	right: mm(6),
+});
+
+export const getIconSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
+	fontSize: mm(3),
+	color: "white",
+	textShadow: `0 0 ${mm(1)} rgba(0, 0, 0, 0.5)`,
+	WebkitTextStroke: `${mm(0.1)} rgba(0, 0, 0, 0.3)`,
+	"@media screen": {
+		":hover": {
+			opacity: percent(70),
+		},
+	},
+});
+
+export const getUploadSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
+	position: "absolute",
+	top: mm(3),
+	right: mm(6),
+	fontSize: mm(3),
+	gap: mm(1),
+
+	zIndex: 2,
 });

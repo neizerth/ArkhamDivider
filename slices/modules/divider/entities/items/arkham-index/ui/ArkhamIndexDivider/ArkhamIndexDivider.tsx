@@ -13,7 +13,6 @@ import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import {
 	selectDividerTabIndex,
-	selectPlayerParams,
 	selectScenarioParams,
 } from "@/modules/divider/shared/lib";
 import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
@@ -49,7 +48,6 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	);
 
 	const scenarioParams = useAppSelector(selectScenarioParams);
-	const _playerParams = useAppSelector(selectPlayerParams);
 
 	const { campaignIcon: showCampaignIcon } = scenarioParams;
 

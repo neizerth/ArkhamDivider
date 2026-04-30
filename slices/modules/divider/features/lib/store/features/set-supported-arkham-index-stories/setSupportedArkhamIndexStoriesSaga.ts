@@ -38,7 +38,7 @@ function* worker() {
 	}
 
 	const storiesData = stories.map((story) => {
-		const code = story.pack_code ?? story.code;
+		const code = story.return_to_code ?? story.code;
 		const supported = data.supported_stories.includes(code);
 
 		return {

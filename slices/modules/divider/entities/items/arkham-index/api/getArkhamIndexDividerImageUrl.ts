@@ -10,7 +10,7 @@ type Options = {
 export function getArkhamIndexDividerImageUrl({
 	divider,
 	orientation,
-	version,
+	version = 1,
 }: Options) {
 	if (divider.layoutType === "player") {
 		return;
@@ -21,8 +21,8 @@ export function getArkhamIndexDividerImageUrl({
 	if (divider.layoutType === "investigator") {
 		const base = `${imagesUrl}/investigator/${orientation}/${divider.investigator.code}`;
 
-		if (version) {
-			return `${base}_${version}.avif`;
+		if (version > 1) {
+			return `${base}-${version}.avif`;
 		}
 		return `${base}.avif`;
 	}

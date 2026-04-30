@@ -46,6 +46,7 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	params?: Params;
 	background?: boolean;
 	iconParams?: string[];
+	mediaParams?: string[];
 	/** The top creasing in mm */
 	creasingTop?: number;
 	scenarioParams?: {
