@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { setDividerParam } from "@/modules/divider/shared/lib";
 import { useNumber } from "@/shared/lib/hooks/common";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks/store";
@@ -43,12 +43,6 @@ export const useArkhamIndexImage = () => {
 			setCustomImage(null);
 		}
 	}, [customImage, setCustomImage]);
-
-	useEffect(() => {
-		return () => {
-			revokeCustomImage();
-		};
-	}, [revokeCustomImage]);
 
 	const imageUrl = getArkhamIndexDividerImageUrl({
 		divider,

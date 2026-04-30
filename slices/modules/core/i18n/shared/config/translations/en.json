@@ -234,5 +234,7 @@
 	"PDF-only": "PDF-only",
 	"divider.arkhamIndex.background.pickerTitle": "Background color",
 	"divider.arkham-index.setAllFull": "Set size to all",
-	"divider.arkham-index.noTab.name": "No tab"
+	"divider.arkham-index.noTab.name": "No tab",
+	"mui divider.arkham-index.customImage.horizontal.size": "Recommended image size: 1098x632px",
+	"mui divider.arkham-index.customImage.vertical.size": "Recommended image size: 839x856px"
 }

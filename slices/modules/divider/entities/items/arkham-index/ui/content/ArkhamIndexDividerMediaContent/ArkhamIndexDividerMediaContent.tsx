@@ -1,4 +1,5 @@
-import { Box, type BoxProps, IconButton } from "@mui/material";
+import { Box, type BoxProps, IconButton, Tooltip } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
@@ -13,7 +14,10 @@ type ArkhamIndexDividerMediaContentProps = BoxProps;
 export function ArkhamIndexDividerMediaContent(
 	props: ArkhamIndexDividerMediaContentProps,
 ) {
-	const { sxOptions } = useArkhamIndexContext();
+	const { t } = useTranslation();
+	const { sxOptions, layout } = useArkhamIndexContext();
+
+	const { orientation } = layout;
 
 	const getPrintSx = usePrintSx(sxOptions);
 	const titleSx = getPrintSx(S.getTitleSx);
@@ -57,9 +61,16 @@ export function ArkhamIndexDividerMediaContent(
 									<Icon icon="trash" sx={iconSx} />
 								</IconButton>
 							)}
-							<Upload accept="image/*" onChange={upload}>
-								<Icon icon="image" sx={iconSx} />
-							</Upload>
+							<Tooltip
+								arrow
+								title={t(
+									`mui divider.arkham-index.customImage.${orientation}.size`,
+								)}
+							>
+								<Upload accept="image/*" onChange={upload}>
+									<Icon icon="image" sx={iconSx} />
+								</Upload>
+							</Tooltip>
 						</Row>
 					</NotExportable>
 					{coversCount > 1 && (

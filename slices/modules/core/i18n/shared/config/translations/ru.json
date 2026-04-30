@@ -233,5 +233,7 @@
 	"PDF-only": "Только для PDF",
 	"divider.arkhamIndex.background.pickerTitle": "Цвет фона",
 	"divider.arkham-index.setAllFull": "Установить размер для всех",
-	"divider.arkham-index.noTab.name": "Без вкладки"
+	"divider.arkham-index.noTab.name": "Без вкладки",
+	"mui divider.arkham-index.customImage.horizontal.size": "Рекомендуемый размер картинки: 1098x632px",
+	"mui divider.arkham-index.customImage.vertical.size": "Рекомендуемый размер картинки: 839x856px"
 }
