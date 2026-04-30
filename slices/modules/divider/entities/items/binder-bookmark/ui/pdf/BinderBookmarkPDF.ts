@@ -8,6 +8,7 @@ import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
 import { binderBookmarkObjects as O } from "../../config/common";
 import {
+	getBinderBookmarkDefaultIcon,
 	getBinderBookmarkTitleObject,
 	showBinderBookmarkIcon,
 } from "../../lib";
@@ -56,13 +57,15 @@ export const BinderBookmarkPDF: PDFDivider<BinderBookmarkProps> = async (
 		overprint: true,
 	});
 
+	const defaultIcon = getBinderBookmarkDefaultIcon(props);
+
 	const icon = getDividerIcon({
 		divider: props,
 		param: "icon",
-		defaultIcon: faction,
+		defaultIcon,
 	});
 
-	const showIcon = showBinderBookmarkIcon({ divider: props });
+	const showIcon = showBinderBookmarkIcon(props);
 
 	if (icon && showIcon) {
 		const iconBox = bleed.box({

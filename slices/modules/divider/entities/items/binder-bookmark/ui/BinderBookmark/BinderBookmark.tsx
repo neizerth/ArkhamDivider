@@ -21,6 +21,7 @@ import { Image } from "@/shared/ui";
 import { prefix } from "@/shared/util";
 import { binderBookmarkBaseUrl } from "../../config";
 import {
+	getBinderBookmarkDefaultIcon,
 	getBinderBookmarkTitleObject,
 	showBinderBookmarkIcon,
 } from "../../lib";
@@ -69,16 +70,18 @@ export function BinderBookmark(props: BinderBookmarkProps) {
 		dividerId: props.id,
 	});
 
+	const defaultIcon = getBinderBookmarkDefaultIcon(props);
+
 	const [icon, selectIcon] = getDividerIcon({
 		param: "icon",
-		defaultIcon: faction,
+		defaultIcon,
 	});
 
 	const iconBackgroundType = icon === "neutral" ? "neutral" : "default";
 	const iconBackgroundUrl = asset(`/top-icon/${iconBackgroundType}.avif`);
 	const iconUrl = `/images/faction/${faction}.png`;
 
-	const showIcon = showBinderBookmarkIcon({ divider: props });
+	const showIcon = showBinderBookmarkIcon(props);
 
 	return (
 		<Container>
