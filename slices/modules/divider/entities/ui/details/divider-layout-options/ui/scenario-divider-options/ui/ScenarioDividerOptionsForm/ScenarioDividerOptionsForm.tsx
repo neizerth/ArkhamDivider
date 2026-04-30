@@ -49,7 +49,7 @@ export function ScenarioDividerOptionsForm({
 	const hasExtraEncounterSets = story.extra_encounter_sets.length > 0;
 	const showAdditionalOptions =
 		hasExtraEncounterSets ||
-		scenarioParams?.cardCount ||
+		scenarioParams?.cardsCount ||
 		Boolean(additionalParams);
 
 	const columnSize = 12 / (showAdditionalOptions ? 3 : 2);
@@ -125,7 +125,7 @@ export function ScenarioDividerOptionsForm({
 					<C.Header>{t("Additional")}</C.Header>
 
 					<Stack gap={1}>
-						{scenarioParams?.cardCount && (
+						{scenarioParams?.cardsCount && (
 							<>
 								<Controller
 									name="encounterSize"

@@ -11,7 +11,11 @@ import {
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
-import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
+import {
+	selectDividerTabIndex,
+	selectPlayerParams,
+	selectScenarioParams,
+} from "@/modules/divider/shared/lib";
 import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { absoluteFill } from "@/shared/config";
@@ -43,6 +47,11 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const tabIndex = useAppSelector(
 		selectDividerTabIndex({ id: props.id, tabsCount: 3, side: props.side }),
 	);
+
+	const scenarioParams = useAppSelector(selectScenarioParams);
+	const _playerParams = useAppSelector(selectPlayerParams);
+
+	const { campaignIcon: showCampaignIcon } = scenarioParams;
 
 	const defaultColor = getArkhamIndexDividerDefaultColor(props);
 
@@ -142,13 +151,15 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 							title={t("divider.arkhamIndex.background.pickerTitle")}
 						/>
 					</NotExportable>
-					<DividerIcon
-						dividerId={props.id}
-						icon={campaignIcon}
-						sx={campaignIconSx}
-						visible
-						onClick={selectCampaignIcon}
-					/>
+					{showCampaignIcon && (
+						<DividerIcon
+							dividerId={props.id}
+							icon={campaignIcon}
+							sx={campaignIconSx}
+							visible
+							onClick={selectCampaignIcon}
+						/>
+					)}
 					{showBackgroundIcon && (
 						<Box
 							sx={{

@@ -36,7 +36,7 @@ const horizontalLayout: DividerLayout = {
 		},
 	],
 	scenarioParams: {
-		cardCount: true,
+		cardsCount: true,
 		campaignIcon: true,
 	},
 	playerParams: {
@@ -138,7 +138,7 @@ const verticalLayout: DividerLayout = {
 		background: "/images/divider/background/classic/vertical_63.avif",
 	},
 	scenarioParams: {
-		cardCount: true,
+		cardsCount: true,
 		campaignIcon: true,
 	},
 	playerParams: {

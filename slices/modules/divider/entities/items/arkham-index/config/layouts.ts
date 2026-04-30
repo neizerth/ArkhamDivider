@@ -24,6 +24,9 @@ const horizontal: ArkhamIndexDividerLayout = {
 		type: "fixed",
 		value: 3,
 	},
+	scenarioParams: {
+		campaignIcon: true,
+	},
 	params: {
 		title: true,
 	},

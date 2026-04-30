@@ -30,7 +30,7 @@ const horizontal: DividerLayout = {
 	],
 	scenarioParams: {
 		campaignIcon: true,
-		cardCount: false,
+		cardsCount: false,
 	},
 	playerParams: {
 		numericXP: true,
@@ -60,7 +60,7 @@ const vertical: DividerLayout = {
 	},
 	scenarioParams: {
 		campaignIcon: true,
-		cardCount: false,
+		cardsCount: false,
 	},
 	iconParams,
 	additionalParams: {

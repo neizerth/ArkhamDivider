@@ -36,7 +36,7 @@ const chapter1Layout: ArkhamDecoDividerLayout = {
 	groupId: "chapter1",
 	scenarioParams: {
 		campaignIcon: true,
-		cardCount: true,
+		cardsCount: true,
 	},
 	playerParams: {
 		numericXP: true,

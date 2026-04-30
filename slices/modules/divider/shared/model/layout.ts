@@ -50,7 +50,7 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	creasingTop?: number;
 	scenarioParams?: {
 		campaignIcon?: boolean;
-		cardCount?: boolean;
+		cardsCount?: boolean;
 	};
 	playerParams?: {
 		story?: boolean;
