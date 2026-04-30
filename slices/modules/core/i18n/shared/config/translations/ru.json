@@ -230,5 +230,6 @@
 	"Starter Decks": "Стартовые колоды",
 	"PDF-only": "Только для PDF",
 	"divider.arkhamIndex.background.pickerTitle": "Цвет фона",
-	"divider.arkham-index.setAllFull": "Установить размер для всех"
+	"divider.arkham-index.setAllFull": "Установить размер для всех",
+	"divider.arkham-index.noTab.name": "Без вкладки"
 }

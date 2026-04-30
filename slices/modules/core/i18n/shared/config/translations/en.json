@@ -231,5 +231,6 @@
 	"Starter Decks": "Starter Decks",
 	"PDF-only": "PDF-only",
 	"divider.arkhamIndex.background.pickerTitle": "Background color",
-	"divider.arkham-index.setAllFull": "Set size to all"
+	"divider.arkham-index.setAllFull": "Set size to all",
+	"divider.arkham-index.noTab.name": "No tab"
 }

@@ -53,7 +53,8 @@ const trim: ArkhamIndexDividerLayout = {
 	...horizontal,
 	id: "arkham-index-trim",
 	groupId: "trim",
-	name: "No tab",
+	name: "divider.arkham-index.noTab.name",
+	previewName: "divider.arkham-index.noTab.name",
 	size: createSize(87, 75.5),
 	printSize: {
 		300: {
@@ -105,7 +106,8 @@ const verticalTrim: ArkhamIndexDividerLayout = {
 	id: "arkham-index-vertical-trim",
 	groupId: "vertical-trim",
 	size: createSize(65, 98),
-	name: "No tab",
+	name: "divider.arkham-index.noTab.name",
+	previewName: "divider.arkham-index.noTab.name",
 	printSize: {
 		300: {
 			size: createSize(768, 1152),
