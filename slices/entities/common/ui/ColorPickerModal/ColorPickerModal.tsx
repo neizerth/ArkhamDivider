@@ -18,33 +18,36 @@ const defaultColor = "#fff";
 export function ColorPickerModal({
 	value,
 	defaultValue,
-	...props
+	onSelectAll,
+	onColorSelect,
+	onCancel,
+	...dialogProps
 }: ColorPickerModalProps) {
 	const { t } = useTranslation();
 	const [color, setColor] = useState(value ?? defaultColor);
 
 	const close = useCallback(() => {
-		props.onCancel?.();
-	}, [props.onCancel]);
+		onCancel?.();
+	}, [onCancel]);
 
 	const select = useCallback(() => {
-		props.onColorSelect?.(color);
-	}, [props.onColorSelect, color]);
+		onColorSelect?.(color);
+	}, [onColorSelect, color]);
 
 	const reset = useCallback(() => {
-		props.onColorSelect?.(defaultValue);
-	}, [defaultValue, props.onColorSelect]);
+		onColorSelect?.(defaultValue);
+	}, [defaultValue, onColorSelect]);
 
 	const onColorChange = useCallback((color: ColorResult) => {
 		setColor(color.hexa);
 	}, []);
 
 	const selectToAll = useCallback(() => {
-		props.onSelectAll?.(color);
-	}, [props.onSelectAll, color]);
+		onSelectAll?.(color);
+	}, [onSelectAll, color]);
 
 	return (
-		<Dialog {...props}>
+		<Dialog {...dialogProps}>
 			<Stack
 				p={2}
 				justifyContent="center"
@@ -79,7 +82,7 @@ export function ColorPickerModal({
 				>
 					{t`Default`}
 				</Button>
-				{props.onSelectAll && (
+				{onSelectAll && (
 					<Button variant="contained" color="primary" onClick={selectToAll}>
 						{t`Set to all`}
 					</Button>
