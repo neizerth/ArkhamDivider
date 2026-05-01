@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import { propEq } from "ramda";
 import { useTranslation } from "react-i18next";
 import { IconCorrection as Icon } from "@/modules/core/icon/entities/ui";
 import { IconPopover } from "@/modules/core/icon/shared/ui";
@@ -15,7 +14,7 @@ import { useResponsiveGap } from "@/shared/lib";
 import { Row, SectionTitle } from "@/shared/ui";
 
 const dividerOnlyCategories = dividerCategories.filter(
-	propEq("divider", "type"),
+	({ type, unlisted }) => type === "divider" && !unlisted,
 );
 
 const iconSx = {

@@ -59,9 +59,15 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		: getArkhamIndexDividerDefaultFilter(props);
 
 	const getDividerIcon = useDividerIcon({ dividerId: props.id });
+
+	const investigator =
+		props.type === "investigator" ? props.investigator : null;
+
+	const defaultCampaignIcon = investigator?.icon ?? props.story?.icon;
+
 	const [campaignIcon, selectCampaignIcon] = getDividerIcon({
 		param: "campaignIcon",
-		defaultIcon: props.story?.icon,
+		defaultIcon: defaultCampaignIcon,
 	});
 
 	const [backgroundIcon, selectBackgroundIcon] = getDividerIcon({

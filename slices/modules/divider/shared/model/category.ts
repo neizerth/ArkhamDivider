@@ -23,4 +23,5 @@ export type DividerCategory = {
 	hasHorizontal: boolean;
 	hasOrientationVariants: boolean;
 	hasColorVariants: boolean;
+	unlisted?: boolean;
 };

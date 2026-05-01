@@ -1,14 +1,15 @@
 import { Button, Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { propEq } from "ramda";
 import { useTranslation } from "react-i18next";
 import { dividerCategories } from "@/modules/divider/entities/items";
 import { DividerCategoryPreview } from "@/modules/divider/entities/ui";
 import { useResponsiveGap } from "@/shared/lib";
 import { Image, Row, SectionTitle } from "@/shared/ui";
 
-const bookmarkCategories = dividerCategories.filter(propEq("bookmark", "type"));
+const bookmarkCategories = dividerCategories.filter(
+	({ type, unlisted }) => type === "bookmark" && !unlisted,
+);
 
 const binderSpinesUrl =
 	"https://boardgamegeek.com/filepage/320467/binder-spines";

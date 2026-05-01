@@ -1,14 +1,15 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import { propEq } from "ramda";
 import { useTranslation } from "react-i18next";
 import { dividerCategories } from "@/modules/divider/entities/items";
 import { DividerCategoryPreview } from "@/modules/divider/entities/ui";
 import { useResponsiveGap } from "@/shared/lib";
 import { SectionTitle } from "@/shared/ui";
 
-const stickerCategories = dividerCategories.filter(propEq("sticker", "type"));
+const stickerCategories = dividerCategories.filter(
+	({ type, unlisted }) => type === "sticker" && !unlisted,
+);
 
 export function StickersList() {
 	const getSpacing = useResponsiveGap(2);
