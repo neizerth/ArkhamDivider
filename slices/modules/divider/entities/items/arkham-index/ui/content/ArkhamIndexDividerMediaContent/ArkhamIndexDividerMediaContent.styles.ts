@@ -79,7 +79,7 @@ export const getIconSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
 export const getUploadSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
 	position: "absolute",
 	top: mm(3),
-	right: mm(6),
+	right: mm(5),
 	fontSize: mm(3),
 	gap: mm(1),
 
