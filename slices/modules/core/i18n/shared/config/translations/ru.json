@@ -237,5 +237,6 @@
 	"divider.arkham-index.noTab.name": "Без вкладки",
 	"mui divider.arkham-index.customImage.horizontal.size": "Рекомендуемый размер картинки: 1098x632px",
 	"mui divider.arkham-index.customImage.vertical.size": "Рекомендуемый размер картинки: 839x856px",
-	"Investigator Starter Decks": "Стартовые колоды сыщиков"
+	"Investigator Starter Decks": "Стартовые колоды сыщиков",
+	"category.arkham-index.description": "Разделители с артами из игры, поддержкой вкладок и загрузкой своих изображений"
 }

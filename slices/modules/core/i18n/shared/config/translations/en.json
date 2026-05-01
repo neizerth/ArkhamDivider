@@ -236,5 +236,6 @@
 	"divider.arkham-index.setAllFull": "Set size to all",
 	"divider.arkham-index.noTab.name": "No tab",
 	"mui divider.arkham-index.customImage.horizontal.size": "Recommended image size: 1098x632px",
-	"mui divider.arkham-index.customImage.vertical.size": "Recommended image size: 839x856px"
+	"mui divider.arkham-index.customImage.vertical.size": "Recommended image size: 839x856px",
+	"category.arkham-index.description": "Dividers with art from the game, tab support and custom image upload"
 }
