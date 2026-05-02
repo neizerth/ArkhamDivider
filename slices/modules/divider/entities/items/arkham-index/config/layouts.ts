@@ -115,8 +115,8 @@ const verticalTrim: ArkhamIndexDividerLayout = {
 	previewName: "divider.arkham-index.noTab.name",
 	printSize: {
 		300: {
-			size: createSize(768, 1158),
-			bleedSize: createSize(839, 1229),
+			size: createSize(768, 1157),
+			bleedSize: createSize(839, 1228),
 		},
 	},
 	sleeves: [
