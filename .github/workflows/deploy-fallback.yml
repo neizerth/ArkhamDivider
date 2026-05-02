@@ -40,6 +40,8 @@ jobs:
           VITE_GTM_ID: ${{ secrets.VITE_GTM_ID }}
           VITE_INVESTIGATORS_URL: ${{ secrets.VITE_INVESTIGATORS_URL }}
           VITE_ARKHAMESQUE_URL: ${{ secrets.VITE_ARKHAMESQUE_URL }}
+          VITE_ARKHAM_INDEX_URL: ${{ secrets.VITE_ARKHAM_INDEX_URL }}
+          
       - name: 📂 Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
