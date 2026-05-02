@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import { useCallback, useState } from "react";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
 	DividerBackground as Background,
@@ -11,6 +10,7 @@ import {
 import { selectScenarioParams } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
+import { useBoolean } from "@/shared/lib/hooks/common";
 import { arkhamDecoAssetUrl } from "../../config";
 import { useArkhamDecoSxOptions } from "../../lib";
 import type {
@@ -52,10 +52,7 @@ export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);
 	const menuSx = getPrintSx(S.getMenuSx);
 
-	const [showCardsInfo, setShowCardsInfo] = useState(false);
-	const toggleCardsInfo = useCallback(() => {
-		setShowCardsInfo((open) => !open);
-	}, []);
+	const [showCardsInfo, setShowCardsInfo] = useBoolean(false);
 
 	const showContent = !singleSide || props.side === "front";
 
@@ -93,7 +90,7 @@ export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 						<CardsCount
 							divider={props}
 							sx={cardsCountSx}
-							onClick={toggleCardsInfo}
+							onClick={setShowCardsInfo.toggle}
 						/>
 						{showCardsInfo && <CardsInfo sx={dividerCardsSx} divider={props} />}
 

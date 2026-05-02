@@ -13,7 +13,8 @@ export const selectShowCardsCount = createSelector(
 
 		return (
 			(params.encounterSize && divider.type === "encounter") ||
-			(params.scenarioSize && divider.layoutType === "scenario")
+			(params.scenarioSize && divider.type === "scenario") ||
+			(params.campaignSize && divider.type === "campaign")
 		);
 	},
 );

@@ -1,6 +1,5 @@
 import type { Faction } from "@/modules/faction/shared/model";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
-import { percent } from "@/shared/util";
 import type { ArkhamIndexDividerSxCallback } from "../../model";
 
 export const getBackgroundSx: PrintSxCallback = () => ({
@@ -30,25 +29,6 @@ export const getBodySx: ArkhamIndexDividerSxCallback = ({
 export const getMediaContentSx: PrintSxCallback = () => ({
 	position: "absolute",
 	inset: 0,
-});
-
-export const getCampaignIconSx: ArkhamIndexDividerSxCallback = ({
-	mm,
-	objects: O,
-}) => ({
-	position: "absolute",
-	fontSize: mm(O.campaignIcon.fontSize),
-	bottom: mm(O.campaignIcon.bottom),
-	right: mm(O.campaignIcon.right),
-	width: mm(O.campaignIcon.width),
-	height: mm(O.campaignIcon.height),
-	color: "white",
-	cursor: "pointer",
-	"@media screen": {
-		":hover": {
-			opacity: percent(70),
-		},
-	},
 });
 
 export const getColorPickerSx: PrintSxCallback = ({ mm }) => ({
@@ -116,9 +96,32 @@ export const getBackgroundIconSx: ArkhamIndexDividerSxCallback = ({
 
 export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
+	zIndex: 5,
 	top: `calc(50% - ${mm(2)})`,
 	transform: "translateY(-50%)",
 	left: mm(2.5),
 	color: "#ede3cebf",
 	filter: "drop-shadow(2px 2px 5px #000)",
+});
+
+export const getInfoSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
+	position: "absolute",
+	fontSize: mm(3),
+	bottom: mm(1.5),
+	right: mm(1.5),
+	gap: mm(0.5),
+	alignItems: "center",
+	color: "white",
+	cursor: "pointer",
+});
+
+export const getDividerCardsSx: PrintSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 6,
+	backgroundColor: "#ffffffb0",
+	boxShadow: `inset 0 0 ${mm(2)} rgba(0, 0, 0, 0.5), 0 0 ${mm(1)} rgba(255, 255, 255, 0.2)`,
+	left: mm(15),
+	top: mm(20.5),
+	bottom: mm(11),
+	right: mm(1.5),
 });

@@ -249,7 +249,7 @@ export function ArkhamIndexDividerTab() {
 			{showSideText && (
 				<>
 					<Image src={backgroundImage} sx={sideBackgroundSx} />
-					<NotExportable visibleOn={["image"]}>
+					<NotExportable visibleOn={["image", "zip"]}>
 						<Box sx={sideTextSx}>
 							<FitInput
 								value={sideText}

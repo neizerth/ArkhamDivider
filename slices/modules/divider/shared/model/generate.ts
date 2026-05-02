@@ -14,6 +14,7 @@ export type ScenarioDividerParams = {
 	scenarioDividers: boolean;
 	scenarioEncounterDividers: boolean;
 	campaignIcon: boolean;
+	campaignSize: boolean;
 	encounterSize: boolean;
 	scenarioSize: boolean;
 	extraEncounterSets: boolean;

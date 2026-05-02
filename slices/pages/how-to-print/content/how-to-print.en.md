@@ -23,10 +23,10 @@ Some layouts are designed for specific storage systems and inserts.
 
 ![Example: compact storage with bands](/how-to-print/img/img-016.avif)
 
-## 3) Export quality: Print vs PDF (HQ)
+## 3) Export quality: Print vs PDF (300+ DPI)
 
-- **Print**: direct printing (RGB, 72 DPI) or saving a quick PDF
-- **PDF (HQ)**: higher quality **300 DPI** files in **CMYK** (beta)
+- **Print**: direct printing (RGB, 96 DPI) or saving a quick PDF
+- **PDF**: higher quality **300 DPI** files in **CMYK** (beta)
 
 ## 4) Where to print
 
@@ -41,10 +41,10 @@ Tip: home printers often print darker than a monitor—try **+5–10% brightness
 
 ### Professional printing
 
-Bring **PDF (HQ)** (or TIFF) to a print shop and ask for:
+Bring **PDF (300+ DPI)** (or TIFF) to a print shop and ask for:
 
 - **300–320 g/m²** matte paper
-- **4 mm** corner rounding
+- **3 mm** corner rounding
 
 Color note: don’t expect a perfect match with official products—digital vs offset printing differs.
 

@@ -5,20 +5,20 @@ import { useTranslation } from "react-i18next";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
 	DividerBleedView as BleedView,
+	DividerCardsInfo as CardsInfo,
+	DividerColorPicker as ColorPicker,
 	DividerContainer as Container,
-	DividerColorPicker,
-	DividerMenu,
+	DividerCreaseLine as CreaseLine,
+	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
-import {
-	selectDividerTabIndex,
-	selectScenarioParams,
-} from "@/modules/divider/shared/lib";
+import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib";
+import { useBoolean } from "@/shared/lib/hooks/common";
 import { Image } from "@/shared/ui";
 import { arkhamIndexDividerBaseUrl } from "../../config";
 import {
@@ -33,7 +33,10 @@ import type {
 } from "../../model";
 import { ArkhamIndexContext } from "../ArkhamIndexContext";
 import { ArkhamIndexDividerBorder as BackgroundStroke } from "../ArkhamIndexDividerBorder";
-import { ArkhamIndexDividerMediaContent as MediaContent } from "../content/ArkhamIndexDividerMediaContent";
+import {
+	ArkhamIndexDividerCardsCount as CardsCount,
+	ArkhamIndexDividerMediaContent as MediaContent,
+} from "../content";
 import { ArkhamIndexDividerTab as Tab } from "../tab";
 import * as C from "./ArkhamIndexDivider.components";
 import * as S from "./ArkhamIndexDivider.styles";
@@ -42,14 +45,11 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { t } = useTranslation();
 	const lasercutEnabled = useAppSelector(selectLasercutEnabled);
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
+	const [showCardsInfo, setShowCardsInfo] = useBoolean(false);
 
 	const tabIndex = useAppSelector(
 		selectDividerTabIndex({ id: props.id, tabsCount: 3, side: props.side }),
 	);
-
-	const scenarioParams = useAppSelector(selectScenarioParams);
-
-	const { campaignIcon: showCampaignIcon } = scenarioParams;
 
 	const defaultColor = getArkhamIndexDividerDefaultColor(props);
 
@@ -59,16 +59,6 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		: getArkhamIndexDividerDefaultFilter(props);
 
 	const getDividerIcon = useDividerIcon({ dividerId: props.id });
-
-	const investigator =
-		props.type === "investigator" ? props.investigator : null;
-
-	const defaultCampaignIcon = investigator?.icon ?? props.story?.icon;
-
-	const [campaignIcon, selectCampaignIcon] = getDividerIcon({
-		param: "campaignIcon",
-		defaultIcon: defaultCampaignIcon,
-	});
 
 	const [backgroundIcon, selectBackgroundIcon] = getDividerIcon({
 		param: "icon",
@@ -93,10 +83,11 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const backgroundStrokeSx = getPrintSx(S.getBackgroundStrokeSx);
 	const bodySx = getPrintSx(S.getBodySx);
 	const mediaContentSx = getPrintSx(S.getMediaContentSx);
-	const campaignIconSx = getPrintSx(S.getCampaignIconSx);
 	const colorPickerSx = getPrintSx(S.getColorPickerSx);
 	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
 	const menuSx = getPrintSx(S.getMenuSx);
+	const infoSx = getPrintSx(S.getInfoSx);
+	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);
 
 	const showMediaContent = props.layoutType !== "player";
 	return (
@@ -137,17 +128,21 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 					)}
 				</BleedView>
 				<C.Layer>
+					<CreaseLine offset={layout.creasingTop} />
 					<Box sx={bodySx}>
 						{showMediaContent && <MediaContent sx={mediaContentSx} />}
-						<DividerMenu dividerId={props.id} sx={menuSx} />
+						<Menu dividerId={props.id} sx={menuSx} />
 					</Box>
 					<Tab />
-					<NotExportable visible={!lasercutEnabled} visibleOn={["image"]}>
+					<NotExportable
+						visible={!lasercutEnabled}
+						visibleOn={["image", "zip"]}
+					>
 						<BackgroundStroke sx={backgroundStrokeSx} />
 					</NotExportable>
 
 					<NotExportable>
-						<DividerColorPicker
+						<ColorPicker
 							dividerId={props.id}
 							param="color"
 							defaultColor={backgroundColor}
@@ -155,15 +150,9 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 							title={t("divider.arkhamIndex.background.pickerTitle")}
 						/>
 					</NotExportable>
-					{showCampaignIcon && (
-						<DividerIcon
-							dividerId={props.id}
-							icon={campaignIcon}
-							sx={campaignIconSx}
-							visible
-							onClick={selectCampaignIcon}
-						/>
-					)}
+					<CardsCount sx={infoSx} onClick={setShowCardsInfo.toggle} />
+					{showCardsInfo && <CardsInfo sx={dividerCardsSx} divider={props} />}
+
 					{showBackgroundIcon && (
 						<Box
 							sx={{

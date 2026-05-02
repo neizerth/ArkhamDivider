@@ -18,6 +18,7 @@ const horizontal: ArkhamIndexDividerLayout = {
 			bleedSize: createSize(1098, 1051),
 		},
 	},
+	creasingTop: 9.5,
 	bleed: 3,
 	iconParams: ["icon", "campaignIcon"],
 	mediaParams: ["customImage"],
@@ -27,6 +28,7 @@ const horizontal: ArkhamIndexDividerLayout = {
 	},
 	scenarioParams: {
 		campaignIcon: true,
+		cardsCount: true,
 	},
 	params: {
 		title: true,
@@ -66,6 +68,7 @@ const trim: ArkhamIndexDividerLayout = {
 	params: {
 		title: false,
 	},
+	tabs: null,
 };
 
 const vertical: ArkhamIndexDividerLayout = {
@@ -77,7 +80,7 @@ const vertical: ArkhamIndexDividerLayout = {
 	printSize: {
 		300: {
 			size: createSize(768, 1276),
-			bleedSize: createSize(839, 1346),
+			bleedSize: createSize(839, 1347),
 		},
 	},
 	params: {
@@ -112,12 +115,13 @@ const verticalTrim: ArkhamIndexDividerLayout = {
 	printSize: {
 		300: {
 			size: createSize(768, 1152),
-			bleedSize: createSize(839, 1228),
+			bleedSize: createSize(839, 1229),
 		},
 	},
 	params: {
 		title: false,
 	},
+	tabs: null,
 };
 
 export const arkhamIndexLayouts: DividerLayout[] = [

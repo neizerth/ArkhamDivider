@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { getDividerCards, getDividerCardsCount } from "../../../../lib/logic";
-import { DividerCardsInfoDetails } from "../DividerCardsInfoDetails";
+import { DividerCardsInfoDetails as Details } from "../DividerCardsInfoDetails";
 import { getSx } from "./DividerCardsInfo.styles";
 
 type DividerCardsInfoProps<T> = Omit<StackProps, "divider"> & {
@@ -32,10 +32,12 @@ export function DividerCardsInfo<T = void>({
 			<Box display="flex" flexWrap="wrap" gap={2}>
 				{cards.map((card, index) => (
 					<Box key={card.type} display="inline-block">
-						<DividerCardsInfoDetails cards={card.cards}>
-							<i>{t(`card.type.${card.type}`)}</i>({card.size})
+						<Details cards={card.cards} size={card.size}>
+							<i>
+								{t(`card.type.${card.type}`)} ({card.size})
+							</i>
 							<i>{index < cards.length - 1 && ", "}</i>
-						</DividerCardsInfoDetails>
+						</Details>
 					</Box>
 				))}
 			</Box>

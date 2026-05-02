@@ -67,7 +67,7 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	};
 	renderOptions?: DividerLayoutRenderOptions;
 	compatibility?: Partial<DividerLayoutCompatibility> | null;
-	tabs?: DividerLayoutTabConfig;
+	tabs?: DividerLayoutTabConfig | null;
 };
 
 export type DividerLayoutTabConfig =

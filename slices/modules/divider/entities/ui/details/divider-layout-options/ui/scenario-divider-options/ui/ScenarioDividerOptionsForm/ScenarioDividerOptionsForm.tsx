@@ -128,6 +128,18 @@ export function ScenarioDividerOptionsForm({
 						{scenarioParams?.cardsCount && (
 							<>
 								<Controller
+									name="campaignSize"
+									control={control}
+									render={({ field }) => (
+										<FormControlLabel
+											control={
+												<Checkbox {...field} checked={field.value ?? false} />
+											}
+											label={t("Campaign Size")}
+										/>
+									)}
+								/>
+								<Controller
 									name="encounterSize"
 									control={control}
 									render={({ field }) => (

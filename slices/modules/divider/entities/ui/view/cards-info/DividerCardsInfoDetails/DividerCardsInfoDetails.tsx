@@ -9,11 +9,13 @@ import * as S from "./DividerCardsInfoDetails.styles";
 
 export type DividerCardsInfoDetailsProps = PropsWithChildren & {
 	cards?: Record<number, number>;
+	size?: number;
 };
 
 export function DividerCardsInfoDetails({
 	children,
 	cards,
+	size = 0,
 }: DividerCardsInfoDetailsProps) {
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 	const [isHover, setIsHover] = useState(false);
@@ -79,12 +81,16 @@ export function DividerCardsInfoDetails({
 				<Paper
 					elevation={6}
 					sx={{
+						mt: 3,
 						p: 2,
 						maxWidth: 320,
 						pointerEvents: "auto",
+						borderRadius: 2,
 					}}
 				>
-					<Box fontWeight={600}>{t`Cards`}</Box>
+					<Box fontWeight={600}>
+						{t`Cards`} ({size})
+					</Box>
 					<Box component="span">
 						{items
 							.map(({ number, count }) => {

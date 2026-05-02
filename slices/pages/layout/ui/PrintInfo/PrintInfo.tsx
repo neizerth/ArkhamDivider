@@ -1,7 +1,8 @@
 import Stack from "@mui/material/Stack";
 import { isFalse } from "ramda-adjunct";
 import { useTranslation } from "react-i18next";
-import { selectCategory } from "@/modules/divider/entities/lib";
+import { selectCategory, selectLayout } from "@/modules/divider/entities/lib";
+import { selectScenarioParams } from "@/modules/divider/shared/lib";
 import { selectOrientedPageFormat } from "@/modules/print/shared/lib";
 import {
 	selectBleedEnabled,
@@ -25,6 +26,10 @@ export function PrintInfo() {
 	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
 	const pageFormat = useAppSelector(selectOrientedPageFormat);
 	const category = useAppSelector(selectCategory);
+	const layout = useAppSelector(selectLayout);
+	const layoutSizeSupport = layout?.scenarioParams?.cardsCount === true;
+	const { encounterSize, scenarioSize, campaignSize } =
+		useAppSelector(selectScenarioParams);
 
 	const showDoubleSidedWithoutBleed =
 		bleedEnabled === false && doubleSided === true;
@@ -32,16 +37,21 @@ export function PrintInfo() {
 	const isFirefox = browser?.name === "firefox";
 	const showFirefoxLargePaperInfo =
 		isFirefox && pageFormat ? isBiggerThanA4Mm(pageFormat.size.mm) : false;
-
 	const showSingleItemPerPageInfo = singleItemPerPage === true;
-
 	const isSticker = category?.type === "sticker";
+	const hasTabs = Boolean(layout?.tabs);
+
+	const showSize =
+		layoutSizeSupport &&
+		(encounterSize === true || scenarioSize === true || campaignSize === true);
 
 	const conditions = [
 		showDoubleSidedWithoutBleed,
 		showFirefoxLargePaperInfo,
 		showSingleItemPerPageInfo,
 		isSticker,
+		hasTabs,
+		showSize,
 	];
 
 	const hideContent = conditions.every(isFalse);
@@ -72,6 +82,16 @@ export function PrintInfo() {
 			{isSticker && (
 				<PrintInfoEntry title={t("printInfo.sticker.title")}>
 					{t("printInfo.sticker.body")}
+				</PrintInfoEntry>
+			)}
+			{hasTabs && (
+				<PrintInfoEntry title={t("printInfo.tabs.title")}>
+					{t("printInfo.tabs.body")}
+				</PrintInfoEntry>
+			)}
+			{showSize && (
+				<PrintInfoEntry title={t("printInfo.size.title")}>
+					{t("printInfo.size.body")}
 				</PrintInfoEntry>
 			)}
 		</Stack>
