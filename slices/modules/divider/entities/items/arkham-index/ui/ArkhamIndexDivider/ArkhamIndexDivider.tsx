@@ -89,6 +89,8 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const infoSx = getPrintSx(S.getInfoSx);
 	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);
 
+	const { side } = props;
+
 	const showMediaContent = props.layoutType !== "player";
 	return (
 		<ArkhamIndexContext.Provider
@@ -105,7 +107,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						}}
 					/>
 					{showBackgroundIcon && (
-						<C.Layer>
+						<C.Layer side={props.side}>
 							<DividerIcon
 								dividerId={props.id}
 								icon={backgroundIcon}
@@ -127,7 +129,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						/>
 					)}
 				</BleedView>
-				<C.Layer>
+				<C.Layer side={props.side}>
 					<CreaseLine offset={layout.creasingTop} />
 					<Box sx={bodySx}>
 						{showMediaContent && <MediaContent sx={mediaContentSx} />}
@@ -138,7 +140,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						visible={!lasercutEnabled}
 						visibleOn={["image", "zip"]}
 					>
-						<BackgroundStroke sx={backgroundStrokeSx} />
+						{side === "front" && <BackgroundStroke sx={backgroundStrokeSx} />}
 					</NotExportable>
 
 					<NotExportable>

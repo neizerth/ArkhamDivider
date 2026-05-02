@@ -24,9 +24,8 @@ export const ArkhamDecoDividerPDF: PDFDivider<ArkhamDecoDividerParams> = async (
 	props,
 	ctx,
 ) => {
-	const { story, fontSizeScale = 100 } = props;
+	const { story, fontSizeScale = 100, side } = props;
 	const { text, unit, language, playerParams, layout } = ctx;
-	const lasercut = ctx.lasercut.from(ArkhamDecoDividerLasercut);
 	const decoLayout = layout as ArkhamDecoDividerLayout;
 	const isTab = decoLayout.params?.tab ?? false;
 
@@ -63,17 +62,20 @@ export const ArkhamDecoDividerPDF: PDFDivider<ArkhamDecoDividerParams> = async (
 		height: bleed.height(),
 	};
 
-	if (isTab) {
-		lasercut.drawTab({
-			...lasercutBox,
-			tab: {
-				offsetInline: mm(O.header.left),
-				width: bleed.width(O.header.left, O.header.right),
-				height: mm(O.header.height),
-			},
-		});
-	} else {
-		lasercut.drawRect(lasercutBox);
+	if (side === "front") {
+		const lasercut = ctx.lasercut.from(ArkhamDecoDividerLasercut);
+		if (isTab) {
+			lasercut.drawTab({
+				...lasercutBox,
+				tab: {
+					offsetInline: mm(O.header.left),
+					width: bleed.width(O.header.left, O.header.right),
+					height: mm(O.header.height),
+				},
+			});
+		} else {
+			lasercut.drawRect(lasercutBox);
+		}
 	}
 
 	const fontFamily = getDefaultDividerFontFamily(language);

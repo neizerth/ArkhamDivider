@@ -67,7 +67,7 @@ export function TCGDividerSticker(props: TCGDividerStickerProps) {
 	return (
 		<Container>
 			<Box sx={{ backgroundColor: "white", ...absoluteFill }} />
-			<Content sx={contentSx}>
+			<Content sx={contentSx} side={props.side}>
 				<Icon dividerId={props.id} icon={icon} onClick={setIcon} sx={iconSx} />
 				<Text
 					sx={titleSx}

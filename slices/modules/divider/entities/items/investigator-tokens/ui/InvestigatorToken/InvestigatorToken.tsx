@@ -32,7 +32,7 @@ export function InvestigatorToken(props: DividerWithRelations) {
 		<Container>
 			<Background src={src} sx={backgroundSx} />
 			<Box sx={containerSx}>
-				<Content sx={{ borderRadius: "50%", outlineStyle }}>
+				<Content sx={{ borderRadius: "50%", outlineStyle }} side={side}>
 					<DividerMenu dividerId={props.id} sx={menuSx} />
 				</Content>
 			</Box>

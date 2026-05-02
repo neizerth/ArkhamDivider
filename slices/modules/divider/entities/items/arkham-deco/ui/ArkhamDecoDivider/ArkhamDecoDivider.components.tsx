@@ -85,7 +85,7 @@ export const Scratches = ({
 };
 
 export const TabCornerRadius = () => {
-	const { sxOptions } = useArkhamDecoDividerContext();
+	const { sxOptions, divider } = useArkhamDecoDividerContext();
 
 	const getPrintSx = usePrintSx(sxOptions);
 	const showCornerRadius = useAppSelector(selectShowCornerRadius);
@@ -96,7 +96,7 @@ export const TabCornerRadius = () => {
 
 	return (
 		<Box sx={sx}>
-			<DividerContent />
+			<DividerContent side={divider.side} />
 		</Box>
 	);
 };

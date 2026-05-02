@@ -91,12 +91,14 @@ export const ArkhamStarterDividerPDF: PDFDivider<
 	const bleed = unit.fromBleed();
 	const { mm } = unit;
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-	});
+	if (props.side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+		});
+	}
 
 	const defaultIcon = get3mmDividerDefaultIcon(props);
 

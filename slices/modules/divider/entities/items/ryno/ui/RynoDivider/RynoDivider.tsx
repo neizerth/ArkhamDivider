@@ -75,7 +75,7 @@ export function RynoDivider(props: RynoDividerProps) {
 					<C.Header src={images.header} />
 					{showCornerImage && <Image src={images.corner} sx={cornerSx} />}
 				</BleedView>
-				<DividerContent>
+				<DividerContent side={props.side}>
 					{props.layoutType !== "scenario" && !showCornerImage && (
 						<Image
 							src={getRynoDividerFactionImage(props)}

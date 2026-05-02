@@ -28,7 +28,7 @@ export const SarnetskyDividerPDF: PDFDivider<SarnetskyDividerParams> = async (
 	props,
 	ctx,
 ) => {
-	const { story, fontSizeScale = 100, type } = props;
+	const { story, fontSizeScale = 100, type, side } = props;
 	const { text, lasercut, unit, language, layout } = ctx;
 
 	const params = props.params as SarnetskyDividerParams | undefined;
@@ -51,12 +51,14 @@ export const SarnetskyDividerPDF: PDFDivider<SarnetskyDividerParams> = async (
 	const fontSize = mm((fontSizeScale / 100) * T.fontSize);
 	const bleed = unit.fromBleed();
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-	});
+	if (side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+		});
+	}
 
 	const fontFamily = getDefaultDividerFontFamily(language);
 

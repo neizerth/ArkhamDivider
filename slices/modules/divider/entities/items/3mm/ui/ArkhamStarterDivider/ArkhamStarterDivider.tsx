@@ -38,7 +38,7 @@ export function ArkhamStarterDivider(props: ArkhamStarterDividerProps) {
 			<Container>
 				<Background src={`${baseUrl}/background.avif`} />
 				<BleedView>{shwoCorner && <C.Corners />}</BleedView>
-				<Content>
+				<Content side={props.side}>
 					<TopHeader sx={headerSx} />
 					<SideHeader sx={sideHeaderSx} />
 				</Content>

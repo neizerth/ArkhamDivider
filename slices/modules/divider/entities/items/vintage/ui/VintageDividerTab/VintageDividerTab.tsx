@@ -39,16 +39,18 @@ export function VintageDividerTab({
 		<Box {...props} sx={sx}>
 			<Box sx={circleSx} />
 			<NotExportable>
-				{cornerRadiusEnabled && <Box sx={tabCornerRadiusSx} />}
 				{divider.side === "front" && (
-					<Box displayPrint="none">
-						{tabIndex > 0 && (
-							<Icon icon="action" sx={shiftLeftSx} onClick={shiftLeft} />
-						)}
-						{tabIndex < 2 && (
-							<Icon icon="action" sx={shiftRightSx} onClick={shiftRight} />
-						)}
-					</Box>
+					<>
+						{cornerRadiusEnabled && <Box sx={tabCornerRadiusSx} />}
+						<Box displayPrint="none">
+							{tabIndex > 0 && (
+								<Icon icon="action" sx={shiftLeftSx} onClick={shiftLeft} />
+							)}
+							{tabIndex < 2 && (
+								<Icon icon="action" sx={shiftRightSx} onClick={shiftRight} />
+							)}
+						</Box>
+					</>
 				)}
 			</NotExportable>
 		</Box>

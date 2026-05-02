@@ -56,7 +56,7 @@ export function Chapter2Divider(props: Chapter2DividerProps) {
 			<Background src={background} />
 
 			<Box sx={overlaySx} bgcolor={color} />
-			<Content zIndex={3}>
+			<Content zIndex={3} side={props.side}>
 				<DividerIcon
 					dividerId={props.id}
 					icon={icon}

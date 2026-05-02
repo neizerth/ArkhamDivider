@@ -34,7 +34,9 @@ export const ArkhamesqueClassicDividerPDF: PDFDivider<ArkhamesqueClassicDividerP
 			| undefined;
 		const titleFontFamily = getDefaultDividerFontFamily(language);
 
-		stampLasercut({ lasercut, unit });
+		if (pageItem.side === "front") {
+			stampLasercut({ lasercut, unit });
+		}
 
 		await drawTitle({
 			textService: text,

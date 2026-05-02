@@ -52,7 +52,7 @@ export function SarnetskyBand(props: SarnetskyBandProps) {
 		>
 			<Container>
 				<Background sx={backgroundSx} defaultColor={defaultColor} />
-				<DividerContent>
+				<DividerContent side={props.side}>
 					{type !== "concealed" && (
 						<DividerIcon
 							icon={icon}

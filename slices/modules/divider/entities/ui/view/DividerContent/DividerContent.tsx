@@ -7,13 +7,16 @@ import {
 	usePrintPxCallback,
 } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
+import type { Side } from "@/shared/model";
 
 type DividerContentProps = BoxProps & {
 	hideBorderRadius?: boolean;
+	side: Side;
 };
 
 export function DividerContent({
 	hideBorderRadius = false,
+	side,
 	...props
 }: DividerContentProps) {
 	const layoutSize = useAppSelector(selectPrintableLayoutSize);
@@ -25,8 +28,11 @@ export function DividerContent({
 	const { originalBleed, bleedEnabled } = layoutSize;
 	const offset = bleedEnabled ? originalBleed : 0;
 	const outlineWidth = 0.25;
+	const isFront = side === "front";
+
+	const enabled = borderRadius && !hideBorderRadius && isFront;
 	const sxProps = {
-		...(borderRadius && !hideBorderRadius
+		...(enabled
 			? {
 					outline: `${mm(outlineWidth)} dashed red`,
 					borderRadius: mm(borderRadius),

@@ -12,6 +12,7 @@ const iconOverprint = { overprint: true, color: blackInk } as const;
 export const Chapter2DividerPDF: PDFDivider<
 	Chapter2DividerProps["params"]
 > = async (props, ctx) => {
+	const { side } = props;
 	const { lasercut, unit, icon, crease, layout } = ctx;
 	const bleed = unit.fromBleed();
 
@@ -24,12 +25,14 @@ export const Chapter2DividerPDF: PDFDivider<
 		});
 	}
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-	});
+	if (side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+		});
+	}
 
 	const defaultIcon = getChapter2DividerDefaultIcon(props);
 

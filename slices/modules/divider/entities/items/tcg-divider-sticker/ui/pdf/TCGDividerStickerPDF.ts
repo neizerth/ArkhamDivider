@@ -21,7 +21,7 @@ const iconOverprint = { overprint: true, color: blackInk } as const;
 export const TCGDividerStickerPDF: PDFDivider<
 	TCGDividerStickerProps["params"]
 > = async (props, ctx) => {
-	const { story, fontSizeScale = 100 } = props;
+	const { story, fontSizeScale = 100, side } = props;
 	const { text, lasercut, unit, language, icon, layout } = ctx;
 
 	const xpCost = getDividerXPCost(props);
@@ -40,16 +40,18 @@ export const TCGDividerStickerPDF: PDFDivider<
 
 	const bleed = unit.fromBleed();
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-		cornerRadius: {
-			bottomLeft: 0,
-			bottomRight: 0,
-		},
-	});
+	if (side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+			cornerRadius: {
+				bottomLeft: 0,
+				bottomRight: 0,
+			},
+		});
+	}
 
 	const defaultIcon = getDefaultTCGDividerStickerIcon(props);
 	const mainIcon = getDividerIcon({

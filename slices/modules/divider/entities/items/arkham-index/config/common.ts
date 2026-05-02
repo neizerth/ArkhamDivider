@@ -113,7 +113,7 @@ export const arkhamIndexDividerHorizontalSmallObjects = mergeDeepRight(
 );
 
 const verticalTabWidths: Record<number, number> = {
-	1: 14 + sideOffsetWidth,
+	1: 15 + sideOffsetWidth,
 	2: 28 + sideOffsetWidth,
 	3: 46 + sideOffsetWidth,
 };

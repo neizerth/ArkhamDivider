@@ -104,6 +104,7 @@ export function Invocation2018Divider(props: DividerWithRelations) {
 		<Container>
 			<Background src={background} alt={layout.name} />
 			<Content
+				side={props.side}
 				sx={{
 					color: invocation2018DividerTextColor,
 				}}

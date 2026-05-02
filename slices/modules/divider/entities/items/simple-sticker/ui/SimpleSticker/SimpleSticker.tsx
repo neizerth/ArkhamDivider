@@ -51,6 +51,7 @@ export function SimpleSticker(props: SimpleStickerProps) {
 		<Container>
 			<BleedView sx={{ backgroundColor: "white" }} />
 			<Content
+				side={props.side}
 				sx={{
 					borderRadius: "50%",
 					display: "flex",

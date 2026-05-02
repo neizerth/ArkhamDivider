@@ -21,7 +21,7 @@ export const RynoDividerPDF: PDFDivider<RynoDividerParams> = async (
 	props,
 	ctx,
 ) => {
-	const { story, fontSizeScale = 100, type, layoutType } = props;
+	const { story, fontSizeScale = 100, type, layoutType, side } = props;
 	const { text, lasercut, unit, language, layout } = ctx;
 
 	const params = props.params as RynoDividerParams | undefined;
@@ -40,12 +40,14 @@ export const RynoDividerPDF: PDFDivider<RynoDividerParams> = async (
 	const { mm } = unit;
 	const bleed = unit.fromBleed();
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-	});
+	if (side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+		});
+	}
 
 	const fontFamily = getDefaultDividerFontFamily(language);
 

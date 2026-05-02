@@ -94,7 +94,7 @@ export function BinderBookmark(props: BinderBookmarkProps) {
 					/>
 				)}
 			</BleedView>
-			<Content>
+			<Content side={props.side}>
 				<Box sx={headerSx}>
 					<Image src={titleBackgroundUrl} sx={titleBackgroundSx} />
 					<Image

@@ -9,6 +9,7 @@ const black = cmyk(0, 0, 0, 100);
 export const SimpleStickerPDF: PDFDivider<
 	SimpleStickerProps["params"]
 > = async (props, ctx) => {
+	const { side } = props;
 	const { icon, lasercut, unit, layout } = ctx;
 	const bleed = unit.fromBleed();
 
@@ -19,7 +20,9 @@ export const SimpleStickerPDF: PDFDivider<
 	const cy = bleed.y() + bleed.height() / 2;
 	const radius = unit.mm(diameterMm / 2);
 
-	lasercut.drawCircle({ x: cx, y: cy, radius });
+	if (side === "front") {
+		lasercut.drawCircle({ x: cx, y: cy, radius });
+	}
 
 	const stickerIcon = getDividerIcon({
 		divider: props,

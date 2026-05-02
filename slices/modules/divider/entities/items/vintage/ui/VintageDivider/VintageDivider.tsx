@@ -74,6 +74,8 @@ export function VintageDivider(props: VintageDividerProps) {
 		param: "icon",
 	});
 
+	const { side } = props;
+
 	return (
 		<VintageDividerContext.Provider
 			value={{ divider: props, layout, sxOptions, tabIndex }}
@@ -83,7 +85,7 @@ export function VintageDivider(props: VintageDividerProps) {
 					<C.Body />
 					<C.Tab tabWidth={tabWidth} color={tabColor} />
 				</BleedView>
-				<Content hideBorderRadius>
+				<Content hideBorderRadius side={props.side}>
 					<TopTitle sx={topTitleSx} />
 					<Title sx={titleSx} />
 					<Tab sx={tabSx} />
@@ -105,7 +107,9 @@ export function VintageDivider(props: VintageDividerProps) {
 						}}
 					/>
 					<NotExportable>
-						{cornerRadiusEnabled && <Box sx={bodyCornerRadiusSx} />}
+						{cornerRadiusEnabled && side === "front" && (
+							<Box sx={bodyCornerRadiusSx} />
+						)}
 					</NotExportable>
 					<Menu dividerId={props.id} sx={menuSx} />
 				</Content>

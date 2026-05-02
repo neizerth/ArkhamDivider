@@ -1,6 +1,9 @@
 import type { BoxProps } from "@mui/material";
 import { DividerContent } from "@/modules/divider/entities/ui";
+import type { Side } from "@/shared/model";
 
-export const Layer = (props: BoxProps) => {
-	return <DividerContent {...props} hideBorderRadius />;
+type LayerProps = BoxProps & { side: Side };
+
+export const Layer = ({ side, ...props }: LayerProps) => {
+	return <DividerContent {...props} hideBorderRadius side={side} />;
 };

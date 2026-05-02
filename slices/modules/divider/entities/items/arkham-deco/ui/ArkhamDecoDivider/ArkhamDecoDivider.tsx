@@ -71,6 +71,7 @@ export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 				<Overlay />
 				{isTab && <C.TabCornerRadius />}
 				<Content
+					side={props.side}
 					sx={{ mixBlendMode: "multiply" }}
 					hidden={!showContent}
 					hideBorderRadius={isTab}

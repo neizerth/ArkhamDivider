@@ -17,7 +17,7 @@ export const SarnetskyBandDividerPDF: PDFDivider<SarnetskyBandParams> = async (
 	props,
 	ctx,
 ) => {
-	const { story, fontSizeScale = 100 } = props;
+	const { story, fontSizeScale = 100, side } = props;
 	const { text, lasercut, unit, language, layout } = ctx;
 
 	const layoutId = layout.id;
@@ -28,12 +28,14 @@ export const SarnetskyBandDividerPDF: PDFDivider<SarnetskyBandParams> = async (
 	const bleed = unit.fromBleed();
 	const { mm } = unit;
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-	});
+	if (side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+		});
+	}
 
 	const params = props.params as SarnetskyBandParams | undefined;
 

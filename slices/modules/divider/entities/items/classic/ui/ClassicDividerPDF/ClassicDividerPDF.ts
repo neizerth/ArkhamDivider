@@ -21,7 +21,7 @@ const correction = {
 };
 
 export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
-	const { story, fontSizeScale = 100 } = props;
+	const { story, fontSizeScale = 100, side } = props;
 	const { text, lasercut, unit, language, playerParams, layout } = ctx;
 
 	const O = getClassicLayoutObjects(layout);
@@ -43,12 +43,14 @@ export const ClassicDividerPDF: PDFDivider = async (props, ctx) => {
 		layout,
 	});
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-	});
+	if (side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+		});
+	}
 
 	const fontFamily = getDefaultDividerFontFamily(language);
 

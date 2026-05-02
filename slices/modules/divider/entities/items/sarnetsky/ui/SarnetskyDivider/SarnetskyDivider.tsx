@@ -57,7 +57,7 @@ export function SarnetskyDivider(props: SarnetskyDividerProps) {
 		>
 			<Container>
 				<Background {...props} />
-				<Content sx={sx} ref={containerRef}>
+				<Content sx={sx} ref={containerRef} side={props.side}>
 					{!showBlank && (
 						<>
 							<Title sx={titleSx} />

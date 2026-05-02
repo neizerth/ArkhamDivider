@@ -118,6 +118,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 		<Container>
 			<Background src={background} alt={layout.name} />
 			<Content
+				side={props.side}
 				sx={{
 					color: classicDividerTextColor,
 				}}

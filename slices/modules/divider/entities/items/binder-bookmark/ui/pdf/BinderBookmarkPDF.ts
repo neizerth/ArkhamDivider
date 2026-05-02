@@ -17,7 +17,7 @@ export const BinderBookmarkPDF: PDFDivider<BinderBookmarkProps> = async (
 	props,
 	ctx,
 ) => {
-	const { story, fontSizeScale = 100 } = props;
+	const { story, fontSizeScale = 100, side } = props;
 	const { text, lasercut, unit, language } = ctx;
 
 	const t = withStoryTranslation(story);
@@ -29,12 +29,14 @@ export const BinderBookmarkPDF: PDFDivider<BinderBookmarkProps> = async (
 	const bleed = unit.fromBleed();
 	const { mm } = unit;
 
-	lasercut.drawRect({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-	});
+	if (side === "front") {
+		lasercut.drawRect({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+		});
+	}
 
 	const fontFamily = getDefaultDividerFontFamily(language);
 	const titleFontSize = mm((fontSizeScale / 100) * titleObject.fontSize);

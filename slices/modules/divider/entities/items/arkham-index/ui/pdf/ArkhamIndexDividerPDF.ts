@@ -75,13 +75,15 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 	};
 
 	const bleed = unit.fromBleed();
-	const lasercutService = lasercut.from(ArkhamIndexDividerLasercut);
 
-	lasercutService.drawArkhamIndexDividerLasercut({
-		x: bleed.x(0),
-		y: bleed.y(0),
-		path: pathOptions,
-	});
+	if (props.side === "front") {
+		const lasercutService = lasercut.from(ArkhamIndexDividerLasercut);
+		lasercutService.drawArkhamIndexDividerLasercut({
+			x: bleed.x(0),
+			y: bleed.y(0),
+			path: pathOptions,
+		});
+	}
 
 	const tabWidth = getArkhamIndexDividerTabWidth({
 		tabWidths: O.tab.width,

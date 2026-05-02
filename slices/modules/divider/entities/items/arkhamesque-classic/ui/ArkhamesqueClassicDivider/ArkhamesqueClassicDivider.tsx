@@ -92,7 +92,7 @@ export function ArkhamesqueClassicDivider(
 						/>
 					</BleedView>
 				)}
-				<Content>
+				<Content side={props.side}>
 					<Title sx={titleSx} />
 					{props.layoutType === "scenario" && (
 						<ScenarioNumber sx={scenarioNumberSx} />

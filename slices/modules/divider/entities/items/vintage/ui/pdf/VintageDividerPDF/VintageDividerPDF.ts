@@ -21,9 +21,8 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 	props,
 	ctx,
 ) => {
-	const { story } = props;
+	const { story, side } = props;
 	const { text, unit, language, layout, state } = ctx;
-	const lasercut = ctx.lasercut.from(VintageDividerLasercut);
 
 	const vintageLayout = layout as VintageDividerLayout;
 	const OO = getVintageDividerObjects(vintageLayout.id);
@@ -44,17 +43,20 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 	const { mm } = unit;
 
 	// Lasercut outline with a tab.
-	lasercut.drawTab({
-		x: bleed.x(),
-		y: bleed.y(),
-		width: bleed.width(),
-		height: bleed.height(),
-		tab: {
-			offsetInline: mm(OO.tab.width * tabIndex),
-			width: mm(OO.tab.width),
-			height: mm(OO.tab.height),
-		},
-	});
+	if (side === "front") {
+		const lasercut = ctx.lasercut.from(VintageDividerLasercut);
+		lasercut.drawTab({
+			x: bleed.x(),
+			y: bleed.y(),
+			width: bleed.width(),
+			height: bleed.height(),
+			tab: {
+				offsetInline: mm(OO.tab.width * tabIndex),
+				width: mm(OO.tab.width),
+				height: mm(OO.tab.height),
+			},
+		});
+	}
 
 	const fontFamily = getVintageDividerTitleFontFamily(language);
 
