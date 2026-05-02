@@ -12,8 +12,8 @@ const tabSideWidth = 6.5;
 const sideOffsetWidth = tabSideWidth * 2;
 
 const horizontalTabWidths: Record<number, number> = {
-	1: 27 + sideOffsetWidth,
-	2: 48 + sideOffsetWidth,
+	1: 25 + sideOffsetWidth,
+	2: 46 + sideOffsetWidth,
 	3: 68 + sideOffsetWidth,
 };
 
@@ -22,7 +22,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 		height: 9.5,
 		width: horizontalTabWidths,
 		sideWidth: tabSideWidth,
-		indentSize: 11,
+		indentSize: 9,
 	},
 	cornerRadius: 3,
 	icon: {
