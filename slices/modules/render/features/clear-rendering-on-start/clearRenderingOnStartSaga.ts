@@ -1,6 +1,5 @@
 import { REHYDRATE } from "redux-persist";
-import { put, takeEvery, takeLatest } from "redux-saga/effects";
-import { appStarted } from "@/modules/core/app/shared/lib";
+import { put, takeLatest } from "redux-saga/effects";
 import { finishRender } from "../../shared/lib";
 
 function* worker() {
@@ -9,5 +8,4 @@ function* worker() {
 
 export function* clearRenderingOnStartSaga() {
 	yield takeLatest(REHYDRATE, worker);
-	yield takeEvery(appStarted.match, worker);
 }
