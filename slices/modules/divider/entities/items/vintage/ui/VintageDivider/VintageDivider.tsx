@@ -22,6 +22,7 @@ import { useAppSelector } from "@/shared/lib";
 import {
 	getVintageDividerDefaultTabColor as getDefaultTabColor,
 	getVintageDividerDefaultIcon,
+	getVintageDividerTabsCount,
 } from "../../lib";
 import { useVintageDividerSxOptions } from "../../lib/hooks";
 import type { VintageDividerLayout, VintageDividerProps } from "../../model";
@@ -40,8 +41,10 @@ export function VintageDivider(props: VintageDividerProps) {
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 	const cornerRadiusEnabled = useAppSelector(selectShowCornerRadius);
 
+	const tabsCount = getVintageDividerTabsCount(layout);
+
 	const tabIndex = useAppSelector(
-		selectDividerTabIndex({ id: props.id, tabsCount: 3, side: props.side }),
+		selectDividerTabIndex({ id: props.id, tabsCount, side: props.side }),
 	);
 
 	const sxOptions = useVintageDividerSxOptions();

@@ -7,6 +7,7 @@ import { withStoryTranslation } from "@/modules/story/shared/lib";
 import {
 	getVintageDividerDefaultIcon,
 	getVintageDividerObjects,
+	getVintageDividerTabsCount,
 	getVintageDividerTitleFontFamily,
 } from "../../../lib";
 import type {
@@ -32,10 +33,11 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 
 	const title = params?.customTitle ?? t(props.title);
 	const topTitle = params?.customTopTitle ?? (story ? t(story.name) : "");
+	const tabsCount = getVintageDividerTabsCount(vintageLayout);
 
 	const tabIndex = selectDividerTabIndex({
 		id: props.id,
-		tabsCount: 3,
+		tabsCount,
 		side: props.side,
 	})(state);
 

@@ -1,5 +1,6 @@
 export const vintageStoryColors: Record<string, string> = {
 	core: "#554820",
+	core_2026: "#554820",
 	dwl: "#1d2c1e",
 	ptc: "#421843",
 	tfa: "#133847",

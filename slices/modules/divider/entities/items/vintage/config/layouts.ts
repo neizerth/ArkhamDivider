@@ -19,15 +19,26 @@ const horizontalLayout: VintageDividerLayout = {
 		},
 	},
 	bleed: 3,
-	params: {
-		tabWidth: 30,
+	tabs: {
+		type: "fixed",
+		value: 3,
+	},
+};
+
+const horizontal8Layout: VintageDividerLayout = {
+	...horizontalLayout,
+	id: "vintage-horizontal-octa",
+	name: "Standard 8",
+	tabs: {
+		type: "fixed",
+		value: 8,
 	},
 };
 
 const horizontalLargeLayout: VintageDividerLayout = {
 	...horizontalLayout,
 	id: "vintage-large",
-	groupId: "large",
+	groupId: "horizontal-large",
 	name: "Large",
 	orientation: "horizontal",
 	size: createSize(90, 77),
@@ -39,10 +50,21 @@ const horizontalLargeLayout: VintageDividerLayout = {
 	},
 };
 
+const horizontalLarge8Layout: VintageDividerLayout = {
+	...horizontalLargeLayout,
+	id: "vintage-large-octa",
+	name: "Large 8",
+	tabs: {
+		type: "fixed",
+		value: 8,
+	},
+};
+
 const verticalLayout: VintageDividerLayout = {
 	...horizontalLayout,
 	id: "vintage-vertical",
 	orientation: "vertical",
+	groupId: "vertical",
 	size: createSize(66, 99.3),
 	printSize: {
 		300: {
@@ -50,15 +72,22 @@ const verticalLayout: VintageDividerLayout = {
 			bleedSize: createSize(850, 1244),
 		},
 	},
-	params: {
-		tabWidth: 22,
+};
+
+const vertical8Layout: VintageDividerLayout = {
+	...verticalLayout,
+	id: "vintage-vertical-6",
+	name: "Standard 6",
+	tabs: {
+		type: "fixed",
+		value: 6,
 	},
 };
 
 const verticalLargeLayout: VintageDividerLayout = {
 	...verticalLayout,
 	id: "vintage-vertical-large",
-	groupId: "large",
+	groupId: "vertical-large",
 	name: "Large",
 	size: createSize(66, 107.3),
 	printSize: {
@@ -69,9 +98,23 @@ const verticalLargeLayout: VintageDividerLayout = {
 	},
 };
 
+const verticalLarge8Layout: VintageDividerLayout = {
+	...verticalLargeLayout,
+	id: "vintage-vertical-large-6",
+	name: "Large 6",
+	tabs: {
+		type: "fixed",
+		value: 6,
+	},
+};
+
 export const vintageLayouts: DividerLayout[] = [
 	horizontalLayout,
+	horizontal8Layout,
 	horizontalLargeLayout,
+	horizontalLarge8Layout,
 	verticalLayout,
+	vertical8Layout,
 	verticalLargeLayout,
+	verticalLarge8Layout,
 ];

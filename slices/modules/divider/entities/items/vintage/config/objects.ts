@@ -24,7 +24,7 @@ export const vintageDividerObjects = {
 	},
 	tab: {
 		width: 30,
-		height: 10.5,
+		height: 16,
 	},
 	icon: {
 		top: 1.5,
@@ -34,6 +34,15 @@ export const vintageDividerObjects = {
 		fontSize: 7.2,
 	},
 };
+
+export const vintageDividerHorizontal8Objects = mergeDeepRight(
+	vintageDividerObjects,
+	{
+		tab: {
+			width: 11.25,
+		},
+	},
+);
 
 export const vintageDividerVerticalObjects = mergeDeepRight(
 	vintageDividerObjects,
@@ -48,6 +57,15 @@ export const vintageDividerVerticalObjects = mergeDeepRight(
 		},
 		icon: {
 			left: 7.1,
+		},
+	},
+);
+
+export const vintageDividerVertical6Objects = mergeDeepRight(
+	vintageDividerVerticalObjects,
+	{
+		tab: {
+			width: 11,
 		},
 	},
 );

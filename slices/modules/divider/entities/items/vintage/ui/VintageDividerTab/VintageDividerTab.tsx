@@ -4,6 +4,7 @@ import { useTabPosition } from "@/modules/divider/shared/lib";
 import { selectShowCornerRadius, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppSelector } from "@/shared/lib";
+import { getVintageDividerTabsCount } from "../../lib";
 import { useVintageDividerContext } from "../VintageDividerContext";
 import * as S from "./VintageDividerTab.styles";
 
@@ -13,7 +14,7 @@ export function VintageDividerTab({
 	sx: sxProp,
 	...props
 }: VintageDividerTabProps) {
-	const { sxOptions, tabIndex, divider } = useVintageDividerContext();
+	const { sxOptions, tabIndex, divider, layout } = useVintageDividerContext();
 
 	const cornerRadiusEnabled = useAppSelector(selectShowCornerRadius);
 
@@ -24,10 +25,12 @@ export function VintageDividerTab({
 	const shiftRightSx = getPrintSx(S.getShiftSx, { position: "right" } as const);
 	const tabCornerRadiusSx = getPrintSx(S.getTabCornerRadiusSx);
 
+	const tabsCount = getVintageDividerTabsCount(layout);
+
 	const { shiftLeft, shiftRight } = useTabPosition({
 		dividerId: divider.id,
 		tabIndex,
-		tabsCount: 3,
+		tabsCount,
 	});
 
 	const sx = {

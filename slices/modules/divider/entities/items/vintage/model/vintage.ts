@@ -19,11 +19,7 @@ export type VintageDividerParams = {
 
 export type VintageDividerProps = DividerWithRelations<VintageDividerParams>;
 
-export type VintageDividerLayoutParams = {
-	tabWidth: number;
-};
-
-export type VintageDividerLayout = DividerLayout<VintageDividerLayoutParams>;
+export type VintageDividerLayout = DividerLayout;
 
 export type VintageDividerObjects = ReturnType<typeof getVintageDividerObjects>;
 

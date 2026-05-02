@@ -5,21 +5,22 @@ import { useAppSelector } from "@/shared/lib";
 import { Image } from "@/shared/ui";
 import { prefix } from "@/shared/util";
 import { vintageDividerBaseUrl as baseUrl } from "../../config/common";
+import { getVintageDividerTabsCount } from "../../lib";
 import { useVintageDividerContext } from "../VintageDividerContext/VintageDividerContext";
 import * as S from "./VintageDivider.styles";
 
 const asset = prefix(baseUrl);
 
 const bodyMap: Record<string, string> = {
-	vintage: "/body.avif",
-	"vintage-large": "/body_large.avif",
-	"vintage-vertical": "/body_vertical.avif",
-	"vintage-vertical-large": "/body_vertical-large.avif",
+	horizontal: "/body.avif",
+	"horizontal-large": "/body_large.avif",
+	vertical: "/body_vertical.avif",
+	"vertical-large": "/body_vertical-large.avif",
 };
 
 export const Body = () => {
 	const { layout } = useVintageDividerContext();
-	const id = bodyMap[layout.id] ?? bodyMap.vintage;
+	const id = bodyMap[layout.groupId] ?? bodyMap.vintage;
 
 	const getPrintSx = usePrintSx();
 	const sx = getPrintSx(S.getBodySx);
@@ -34,14 +35,16 @@ export const Tab = ({
 	tabWidth: number;
 	color: string;
 }) => {
-	const { tabIndex } = useVintageDividerContext();
+	const { tabIndex, layout } = useVintageDividerContext();
 	const { sxOptions } = useVintageDividerContext();
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
+
+	const tabsCount = getVintageDividerTabsCount(layout);
 
 	const position = getDividerTabPosition({
 		tabIndex,
 		bleed: 3,
-		tabsCount: 3,
+		tabsCount,
 		tabWidth,
 	});
 
@@ -65,7 +68,10 @@ export const Tab = ({
 	return (
 		<Box sx={sx}>
 			<Box sx={colorSx} />
-			<Image src={asset("/tab.avif")} width="100%" />
+			<Image
+				src={asset("/tab.avif")}
+				sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+			/>
 		</Box>
 	);
 };

@@ -52,10 +52,11 @@ export const getBodySx: PrintSxCallback = () => ({
 export const getTabImageSx: VintageDividerSxCallback<{
 	position: Partial<BoxRect>;
 	bleedEnabled?: boolean;
-}> = ({ mm, position: P, bleedEnabled }) => ({
+}> = ({ mm, position: P, bleedEnabled, objects: O }) => ({
 	position: "absolute",
 	top: P.top && mm(P.top),
 	width: P.width && mm(P.width),
+	height: mm(O.tab.height),
 	left: P.left && mm(P.left),
 	right: P.right && mm(P.right),
 	clipPath: bleedEnabled ? "" : `inset(0 ${mm(3)} 0 ${mm(3)})`,

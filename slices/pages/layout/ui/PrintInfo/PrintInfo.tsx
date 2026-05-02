@@ -7,6 +7,7 @@ import { selectOrientedPageFormat } from "@/modules/print/shared/lib";
 import {
 	selectBleedEnabled,
 	selectDoubleSidePrintEnabled,
+	selectLasercutEnabled,
 	selectSingleItemPerPage,
 } from "@/modules/print/shared/lib/store/print";
 import { browser } from "@/shared/config/compatibility";
@@ -23,6 +24,8 @@ export function PrintInfo() {
 	const { t } = useTranslation();
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 	const doubleSided = useAppSelector(selectDoubleSidePrintEnabled);
+	const lasercutEnabled = useAppSelector(selectLasercutEnabled);
+
 	const singleItemPerPage = useAppSelector(selectSingleItemPerPage);
 	const pageFormat = useAppSelector(selectOrientedPageFormat);
 	const category = useAppSelector(selectCategory);
@@ -39,7 +42,7 @@ export function PrintInfo() {
 		isFirefox && pageFormat ? isBiggerThanA4Mm(pageFormat.size.mm) : false;
 	const showSingleItemPerPageInfo = singleItemPerPage === true;
 	const isSticker = category?.type === "sticker";
-	const hasTabs = Boolean(layout?.tabs);
+	const hasTabs = Boolean(layout?.tabs) && !lasercutEnabled;
 
 	const showSize =
 		layoutSizeSupport &&
