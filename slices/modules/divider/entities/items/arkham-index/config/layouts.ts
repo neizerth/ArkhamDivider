@@ -1,3 +1,4 @@
+import { sleeve65x100 } from "@/entities/sleeve/config/sizes";
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import { createSize } from "@/shared/util";
 import type { ArkhamIndexDividerLayout } from "../model";
@@ -118,6 +119,38 @@ const verticalTrim: ArkhamIndexDividerLayout = {
 			bleedSize: createSize(839, 1229),
 		},
 	},
+	sleeves: [
+		{
+			id: sleeve65x100.id,
+			size: sleeve65x100,
+			description: "info.sleeve.customCut.description",
+		},
+	],
+	params: {
+		title: false,
+	},
+	tabs: null,
+};
+
+const verticalTrim100: ArkhamIndexDividerLayout = {
+	...verticalTrim,
+	id: "arkham-index-vertical-trim-100",
+	groupId: "vertical-trim-100",
+	name: "divider.arkham-index.noTab100.name",
+	previewName: "divider.arkham-index.noTab100.name",
+	size: createSize(65, 100),
+	printSize: {
+		300: {
+			size: createSize(768, 1181),
+			bleedSize: createSize(839, 1252),
+		},
+	},
+	sleeves: [
+		{
+			id: sleeve65x100.id,
+			size: sleeve65x100,
+		},
+	],
 	params: {
 		title: false,
 	},
@@ -131,4 +164,5 @@ export const arkhamIndexLayouts: DividerLayout[] = [
 	vertical,
 	verticalMedium,
 	verticalTrim,
+	verticalTrim100,
 ];

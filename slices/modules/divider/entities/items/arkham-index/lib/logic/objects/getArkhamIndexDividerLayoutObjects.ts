@@ -12,7 +12,7 @@ export const getArkhamIndexDividerLayoutObjects = (
 	if (layout.id === "arkham-index-vertical-trim") {
 		return arkhamIndexDividerVerticalTrimObjects;
 	}
-	if (layout.id === "arkham-index-trim") {
+	if (layout.id.includes("trim")) {
 		return arkhamIndexDividerHorizontalSmallObjects;
 	}
 	if (layout.orientation === "horizontal") {

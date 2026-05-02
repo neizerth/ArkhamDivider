@@ -14,6 +14,7 @@ export const getTopLineSx: ArkhamIndexDividerSxCallback = ({
 	backgroundImage: `url(${asset("/top-line.avif")})`,
 	backgroundSize: "contain",
 	backgroundPosition: "center",
+	backgroundRepeat: "repeat-x",
 	left: mm(-3),
 	right: mm(-3),
 	bottom: 0,
@@ -49,8 +50,8 @@ export const getImageSx: ArkhamIndexDividerSxCallback = ({
 	objects: O,
 }) => ({
 	position: "absolute",
-	top: mm(O.topLine.top + O.topLine.height),
-	bottom: mm(O.bottomLine.bottom + O.bottomLine.bottomOffset),
+	top: mm(O.topLine.top + O.topLine.height - 0.2),
+	bottom: mm(O.bottomLine.bottom + O.bottomLine.bottomOffset - 0.2),
 	left: mm(-3),
 	right: mm(-3),
 	overflow: "hidden",
