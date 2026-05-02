@@ -185,10 +185,10 @@ const factionPosition: Record<
 > = {
 	neutral: { top: 1.1, left: 1.3, width: 7.3, height: 7.5 },
 	guardian: { top: 1.2, left: 1.3, width: 7.5, height: 7.5 },
-	seeker: { top: 1, left: 1.3, width: 7.6, height: 7.5 },
+	seeker: { top: 1.2, left: 1.3, width: 7.6, height: 7.5 },
 	rogue: { top: 0.9, left: 1.2, width: 7.7, height: 7.5 },
 	mystic: { top: 1.1, left: 1.3, width: 7.5, height: 7.5 },
-	survivor: { top: 1.6, left: 1.3, width: 7.3, height: 7.5 },
+	survivor: { top: 1.6, left: 1.3, width: 7.45, height: 7.5 },
 	multiclass: { top: 1.1, left: 1.3, width: 7.5, height: 7.5 },
 };
 
