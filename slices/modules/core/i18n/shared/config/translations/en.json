@@ -87,7 +87,7 @@
 	"printInfo.sticker.body": "When printing stickers on a regular printer, dense paper may not immediately adhere to the printing roller, and the direction of the paper may deviate. To compensate for this, it is recommended to set the page margins in the settings",
 	"printInfo.tabs.title": "Cutting dividers with tabs",
 	"printInfo.tabs.body": "A regular corner rounding tool is usually not suitable for rounding tabs. To avoid doing this manually with scissors, you can send the PDF layout to a print shop for laser cutting. To do this, enable the \"Lasercut\" option in the print settings and optionally \"Corner rounding\".",
-	"printInfo.size.title": "Number of cards on the divider",
+	"printInfo.size.title": "Number of cards on a divider",
 	"printInfo.size.body": "Always check the number of cards written on the divider before printing. Despite the fact that this information is taken from ArkhamDB and ArkhamCards, it may be inaccurate. If you find an error, please let me know about it.",
 	"credits.author.description": "<icon/>: You can spend any number<br/>of resources <donationLink>on this address</donationLink><br/><i>Remember, <author>{{name}}</author><br/>is grateful to you</i>",
 	"divider.subtype.faction": "Faction Dividers",
