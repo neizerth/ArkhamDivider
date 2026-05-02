@@ -19,10 +19,10 @@ export const getCircleSx: VintageDividerSxCallback = ({ mm }) => ({
 
 export const getShiftSx: VintageDividerSxCallback<{
 	position: "left" | "right";
-}> = ({ mm, position }) => ({
+}> = ({ mm, position, objects: O }) => ({
 	position: "absolute",
 	top: mm(4),
-	[position]: mm(2),
+	[position]: mm(O.tabShift.offset),
 	fontSize: mm(3),
 	color: "white",
 	transform: position === "left" ? "rotate(180deg)" : "none",

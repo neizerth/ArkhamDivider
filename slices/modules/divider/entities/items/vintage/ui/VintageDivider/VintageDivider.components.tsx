@@ -35,8 +35,7 @@ export const Tab = ({
 	tabWidth: number;
 	color: string;
 }) => {
-	const { tabIndex, layout } = useVintageDividerContext();
-	const { sxOptions } = useVintageDividerContext();
+	const { tabIndex, layout, sxOptions } = useVintageDividerContext();
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 
 	const tabsCount = getVintageDividerTabsCount(layout);

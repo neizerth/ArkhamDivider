@@ -35,8 +35,10 @@ export const getDividerTabPosition = ({
 		};
 	}
 
+	const left = tabIndex * tabWidth;
+
 	return {
 		width,
-		left: tabIndex * (bleed + tabWidth) - bleed,
+		left,
 	};
 };

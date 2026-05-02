@@ -119,14 +119,19 @@ export const getIconSx: VintageDividerSxCallback<{ tabIndex: number }> = ({
 export const getBodyCornerRadiusSx: VintageDividerSxCallback = ({
 	mm,
 	objects: O,
-}) => ({
-	position: "absolute",
-	zIndex: 2,
-	left: mm(-0.25),
-	right: mm(-0.25),
-	bottom: mm(-0.25),
-	border: `${mm(0.25)} dashed red`,
-	borderTop: "none",
-	top: mm(O.tab.height),
-	borderRadius: `0 0 ${mm(3)} ${mm(3)}`,
-});
+}) => {
+	const correction = {
+		left: 2 / 3,
+	};
+	return {
+		position: "absolute",
+		zIndex: 2,
+		left: mm(-0.25 * correction.left),
+		right: mm(-0.25),
+		bottom: mm(-0.25),
+		border: `${mm(0.25)} dashed red`,
+		borderTop: "none",
+		top: mm(O.tab.height),
+		borderRadius: `0 0 ${mm(3)} ${mm(3)}`,
+	};
+};
