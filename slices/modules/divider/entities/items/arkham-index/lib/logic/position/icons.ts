@@ -18,7 +18,7 @@ export const getArkhamIndexDividerIconLeft = ({
 	indentSize,
 }: Options) => {
 	if (tabSize === "full") {
-		return 0.5;
+		return 0;
 	}
 	if (tabSize !== 1) {
 		return tabLeft + tabSideWidth * 0.7 + indentSize;

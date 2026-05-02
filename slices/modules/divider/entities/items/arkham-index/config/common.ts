@@ -90,12 +90,12 @@ export const arkhamIndexDividerHorizontalObjects = {
 			right: 21,
 		},
 		withSideText: {
-			left: 21,
+			left: 19.5,
 			right: 27,
 		},
 		fullOffset: {
-			default: 8,
-			withSideText: 12.5,
+			default: 7,
+			withSideText: 12,
 		},
 		full: {
 			right: 19,
@@ -132,7 +132,7 @@ export const arkhamIndexDividerVerticalTrimObjects = mergeDeepRight(
 	arkhamIndexDividerVerticalObjects,
 	{
 		topLine: {
-			top: 0.5,
+			top: 0.2,
 		},
 	},
 );
