@@ -139,11 +139,13 @@ export function ArkhamIndexDividerTab() {
 		showIcon,
 	});
 
-	const { shiftLeft, shiftRight } = useTabPosition({
-		dividerId: divider.id,
-		tabIndex,
-		tabsCount: 3,
-	});
+	const { shiftLeft, shiftRight, canShiftLeft, canShiftRight } = useTabPosition(
+		{
+			dividerId: divider.id,
+			tabIndex,
+			tabsCount: 3,
+		},
+	);
 
 	const { enlarge, shrink, canEnlarge, canShrink } = useTabSize({
 		dividerId: divider.id,
@@ -159,8 +161,8 @@ export function ArkhamIndexDividerTab() {
 
 	const isFullSize = tabSize === "full" || tabSize === 3;
 
-	const showShiftLeft = tabIndex !== 0 && !isFullSize;
-	const showShiftRight = tabIndex < 3 - (tabSize as number) && !isFullSize;
+	const showShiftLeft = canShiftLeft && !isFullSize;
+	const showShiftRight = canShiftRight && !isFullSize;
 
 	const { value: sideText, onFontSizeChange } = useDividerText({
 		divider,

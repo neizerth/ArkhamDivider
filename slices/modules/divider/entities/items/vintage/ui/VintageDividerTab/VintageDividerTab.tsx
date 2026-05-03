@@ -27,11 +27,13 @@ export function VintageDividerTab({
 
 	const tabsCount = getVintageDividerTabsCount(layout);
 
-	const { shiftLeft, shiftRight } = useTabPosition({
-		dividerId: divider.id,
-		tabIndex,
-		tabsCount,
-	});
+	const { shiftLeft, shiftRight, canShiftLeft, canShiftRight } = useTabPosition(
+		{
+			dividerId: divider.id,
+			tabIndex,
+			tabsCount,
+		},
+	);
 
 	const sx = {
 		...sxStyles,
@@ -46,10 +48,10 @@ export function VintageDividerTab({
 					<>
 						{cornerRadiusEnabled && <Box sx={tabCornerRadiusSx} />}
 						<Box displayPrint="none">
-							{tabIndex > 0 && (
+							{canShiftLeft && (
 								<Icon icon="action" sx={shiftLeftSx} onClick={shiftLeft} />
 							)}
-							{tabIndex < 2 && (
+							{canShiftRight && (
 								<Icon icon="action" sx={shiftRightSx} onClick={shiftRight} />
 							)}
 						</Box>

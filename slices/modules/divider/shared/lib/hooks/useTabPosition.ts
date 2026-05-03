@@ -38,8 +38,13 @@ export const useTabPosition = ({ dividerId, tabIndex, tabsCount }: Options) => {
 		);
 	}, [dispatch, dividerId, tabIndex, tabsCount]);
 
+	const canShiftLeft = tabIndex > 0;
+	const canShiftRight = tabIndex < tabsCount - 1;
+
 	return {
 		shiftLeft,
 		shiftRight,
+		canShiftLeft,
+		canShiftRight,
 	};
 };
