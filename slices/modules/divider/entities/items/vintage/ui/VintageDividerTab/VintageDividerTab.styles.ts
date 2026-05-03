@@ -54,3 +54,28 @@ export const getRadialXPSx: VintageDividerSxCallback = ({ mm }) => ({
 	transform: "translateX(-50%)",
 	fontSize: mm(1.5),
 });
+
+export const getScenarioNumberSx: VintageDividerSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 4,
+	fontFamily: "Arkhamic, Teutonic, serif",
+	bottom: mm(0.5),
+	left: "50%",
+	transform: "translate(-50%)",
+	color: "black",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	width: mm(1.8),
+	height: mm(1.8),
+	borderRadius: "50%",
+	backgroundColor: "white",
+	border: `1px solid #151616`,
+});
+
+export const getScenarioNumberTextSx: VintageDividerSxCallback = ({ mm }) => ({
+	fontSize: mm(1.3),
+	position: "relative",
+	transform: "translateY(12%)",
+	whiteSpace: "nowrap",
+});
