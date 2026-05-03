@@ -14,7 +14,7 @@ export const vintageDividerObjects = {
 	},
 	topTitle: {
 		default: {
-			top: 10.2,
+			top: 10.3,
 			left: 5.8,
 			right: 5.8,
 			fontSize: 4,

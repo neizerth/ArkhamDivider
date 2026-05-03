@@ -1,11 +1,15 @@
 import { cmyk } from "@/modules/core/color/shared/lib";
 import { getLocaleConfig } from "@/modules/core/i18n/shared/lib";
 import { getDividerIcon } from "@/modules/divider/features/lib";
-import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
+import {
+	getDividerXPCost,
+	selectDividerTabIndex,
+} from "@/modules/divider/shared/lib";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
 import { withStoryTranslation } from "@/modules/story/shared/lib";
 import {
 	getVintageDividerDefaultIcon,
+	getVintageDividerIconObject,
 	getVintageDividerObjects,
 	getVintageDividerTabsCount,
 	getVintageDividerTitleFontFamily,
@@ -26,7 +30,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 	const { text, unit, language, layout, state } = ctx;
 
 	const vintageLayout = layout as VintageDividerLayout;
-	const OO = getVintageDividerObjects(vintageLayout.id);
+	const O = getVintageDividerObjects(vintageLayout.id);
 
 	const t = withStoryTranslation(story);
 	const params = props.params as VintageDividerParams | undefined;
@@ -53,9 +57,9 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 			width: bleed.width(),
 			height: bleed.height(),
 			tab: {
-				offsetInline: mm(OO.tab.width * tabIndex),
-				width: mm(OO.tab.width),
-				height: mm(OO.tab.height),
+				offsetInline: mm(O.tab.width * tabIndex),
+				width: mm(O.tab.width),
+				height: mm(O.tab.height),
 			},
 		});
 	}
@@ -64,7 +68,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 
 	// Draw top title (overprint black).
 	{
-		const topCfg = getLocaleConfig(language, OO.topTitle);
+		const topCfg = getLocaleConfig(language, O.topTitle);
 		const topScale = params?.topTitleFontSizeScale ?? 100;
 		const h = mm(topCfg.height);
 		await text.draw(topTitle, {
@@ -83,7 +87,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 
 	// Draw main title (overprint black).
 	{
-		const titleCfg = getLocaleConfig(language, OO.title);
+		const titleCfg = getLocaleConfig(language, O.title);
 		const fontSizeScale = props.fontSizeScale ?? 100;
 		const h = mm(titleCfg.height);
 		await text.draw(title, {
@@ -108,12 +112,19 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 		defaultIcon,
 	});
 
+	const xpCost = getDividerXPCost(props);
+
+	const I = getVintageDividerIconObject({
+		withXP: Boolean(xpCost),
+		objects: O,
+	});
+
 	if (icon) {
 		const iconBox = bleed.box({
-			top: OO.icon.top,
-			left: OO.icon.left + OO.tab.width * tabIndex,
-			width: OO.icon.width,
-			height: OO.icon.height,
+			top: I.top,
+			left: I.left + O.tab.width * tabIndex,
+			width: I.width,
+			height: I.height,
 		});
 
 		await ctx.icon.draw(icon, {
@@ -121,7 +132,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 			y: iconBox.y(),
 			width: iconBox.width(),
 			height: iconBox.height(),
-			fontSize: mm(OO.icon.fontSize),
+			fontSize: mm(I.fontSize),
 			color: black,
 			overprint: true,
 			iconOptions: { scaleType: "circle" },
