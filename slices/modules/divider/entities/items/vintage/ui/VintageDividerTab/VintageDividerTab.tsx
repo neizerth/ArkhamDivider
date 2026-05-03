@@ -26,6 +26,8 @@ export function VintageDividerTab({
 	const shiftRightSx = getPrintSx(S.getShiftSx, { position: "right" } as const);
 	const tabCornerRadiusSx = getPrintSx(S.getTabCornerRadiusSx);
 	const radialXPSx = getPrintSx(S.getRadialXPSx);
+	const scenarioNumberSx = getPrintSx(S.getScenarioNumberSx);
+	const scenarioNumberTextSx = getPrintSx(S.getScenarioNumberTextSx);
 
 	const tabsCount = getVintageDividerTabsCount(layout);
 
@@ -47,6 +49,13 @@ export function VintageDividerTab({
 		<Box {...props} sx={sx}>
 			<Box sx={circleSx} />
 			{xpCost && <RadialXP xpCost={xpCost} sx={radialXPSx} />}
+			{divider.type === "scenario" && (
+				<Box sx={scenarioNumberSx}>
+					<Box sx={scenarioNumberTextSx}>
+						{divider.scenario?.number_text?.replace(/-.*/, "")}
+					</Box>
+				</Box>
+			)}
 			<NotExportable>
 				{divider.side === "front" && (
 					<>
