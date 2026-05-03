@@ -225,3 +225,16 @@ export const LasTorCredits: Author = {
 		},
 	],
 };
+
+export const CarlosLemosCredits: Author = {
+	id: "carlos-lemos",
+	name: "Carlos Lemos",
+	image: getAssetUrl("/images/authors/carlos-lemos.png"),
+	contacts: [
+		{
+			id: "bgg",
+			icon: "bgg",
+			url: "https://boardgamegeek.com/profile/CarlosLemos",
+		},
+	],
+};
