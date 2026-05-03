@@ -11,14 +11,15 @@ import {
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
-import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import {
-	selectBleedEnabled,
-	selectShowCornerRadius,
-	usePrintSx,
-} from "@/modules/print/shared/lib";
+	getDividerXPCost,
+	selectDividerTabIndex,
+	selectPlayerParams,
+} from "@/modules/divider/shared/lib";
+import { selectShowCornerRadius, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppSelector } from "@/shared/lib";
+import { Row } from "@/shared/ui";
 import {
 	getVintageDividerDefaultTabColor as getDefaultTabColor,
 	getVintageDividerDefaultIcon,
@@ -32,14 +33,18 @@ import {
 } from "../text";
 import { VintageDividerContext } from "../VintageDividerContext";
 import { VintageDividerTab as Tab } from "../VintageDividerTab";
+import { VintageDividerInlineXP } from "../xp";
 import * as C from "./VintageDivider.components";
 import * as S from "./VintageDivider.styles";
 
 export function VintageDivider(props: VintageDividerProps) {
 	const { t } = useTranslation();
 	const layout = useAppSelector(selectLayout) as VintageDividerLayout;
-	const bleedEnabled = useAppSelector(selectBleedEnabled);
 	const cornerRadiusEnabled = useAppSelector(selectShowCornerRadius);
+
+	const playerParams = useAppSelector(selectPlayerParams);
+	const { sideXP, numericXP } = playerParams;
+	const showXP = sideXP || numericXP;
 
 	const tabsCount = getVintageDividerTabsCount(layout);
 
@@ -47,7 +52,9 @@ export function VintageDivider(props: VintageDividerProps) {
 		selectDividerTabIndex({ id: props.id, tabsCount, side: props.side }),
 	);
 
-	const sxOptions = useVintageDividerSxOptions();
+	const sxOptions = useVintageDividerSxOptions({
+		tabIndex,
+	});
 
 	const tabWidth = sxOptions.objects.tab.width;
 
@@ -58,13 +65,18 @@ export function VintageDivider(props: VintageDividerProps) {
 	const getLocaleSx = useLocaleSx(sxOptions);
 
 	const menuSx = getPrintSx(S.getMenuSx);
-	const tabSx = getPrintSx(S.getTabSx, { tabIndex });
-	const bleedViewSx = getPrintSx(S.getBleedViewSx, { bleedEnabled });
+	const tabSx = getPrintSx(S.getTabSx);
+	const bleedViewSx = getPrintSx(S.getBleedViewSx);
 	const colorPickerSx = getPrintSx(S.getColorPickerSx);
 	const titleSx = getLocaleSx(S.getTitleSx);
 	const topTitleSx = getLocaleSx(S.getTopTitleSx);
-	const iconSx = getPrintSx(S.getIconSx, { tabIndex });
+	const iconSx = getPrintSx(S.getIconSx);
 	const bodyCornerRadiusSx = getPrintSx(S.getBodyCornerRadiusSx);
+	const xpSx = getPrintSx(S.getXPSx);
+	const numericXPSx = getPrintSx(S.getNumericXPSx);
+	const inlineXPSx = getPrintSx(S.getInlineXPSx);
+
+	const xpCost = getDividerXPCost(props);
 
 	const getDividerIcon = useDividerIcon({
 		dividerId: props.id,
@@ -109,6 +121,14 @@ export function VintageDivider(props: VintageDividerProps) {
 							circled: 1.1,
 						}}
 					/>
+					{showXP && xpCost && (
+						<Row sx={xpSx}>
+							{sideXP && (
+								<VintageDividerInlineXP xpCost={xpCost} sx={inlineXPSx} />
+							)}
+							{numericXP && <Box sx={numericXPSx}>{xpCost.name}</Box>}
+						</Row>
+					)}
 					<NotExportable>
 						{cornerRadiusEnabled && side === "front" && (
 							<Box sx={bodyCornerRadiusSx} />

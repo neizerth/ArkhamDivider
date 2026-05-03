@@ -25,6 +25,8 @@ export type VintageDividerObjects = ReturnType<typeof getVintageDividerObjects>;
 
 export type VintageDividerSxOptions = {
 	objects: VintageDividerObjects;
+	tabIndex: number;
+	bleedEnabled: boolean;
 };
 
 export type VintageDividerSxCallback<T = void> = PrintSxCallback<

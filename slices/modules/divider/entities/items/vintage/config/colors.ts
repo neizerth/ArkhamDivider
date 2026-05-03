@@ -1,3 +1,5 @@
+import Color from "color";
+
 export const vintageStoryColors: Record<string, string> = {
 	core: "#554820",
 	core_2026: "#554820",
@@ -25,3 +27,15 @@ export const vintagePlayerColors: Record<string, string> = {
 };
 
 export const vintageDefaultColor = "#B2AAA2";
+
+// export const vintageXPColors = {
+// 	active: "#fff",
+// 	range: "rgba(255, 255, 255, 0.8)",
+// 	inactive: "rgba(0, 0, 0, 0.25)",
+// };
+
+export const vintageXPColors = {
+	active: "#151616",
+	range: Color("#151616").alpha(0.5).toString(),
+	inactive: Color("#151616").alpha(0.1).toString(),
+};

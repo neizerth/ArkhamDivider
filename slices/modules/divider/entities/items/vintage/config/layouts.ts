@@ -23,6 +23,10 @@ const horizontalLayout: VintageDividerLayout = {
 		type: "fixed",
 		value: 3,
 	},
+	playerParams: {
+		sideXP: true,
+		numericXP: true,
+	},
 };
 
 const horizontal8Layout: VintageDividerLayout = {

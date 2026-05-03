@@ -135,3 +135,25 @@ export const getBodyCornerRadiusSx: VintageDividerSxCallback = ({
 		borderRadius: `0 0 ${mm(3)} ${mm(3)}`,
 	};
 };
+
+export const getXPSx: VintageDividerSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 3,
+	alignItems: "center",
+	gap: mm(2),
+	fontSize: mm(2),
+	top: mm(10.8),
+	right: mm(7.5),
+	height: mm(5.4),
+});
+
+export const getInlineXPSx: VintageDividerSxCallback = ({ mm }) => ({
+	fontSize: mm(2),
+});
+
+export const getNumericXPSx: VintageDividerSxCallback = ({ mm }) => ({
+	fontFamily: "Atlantic Cruise Extended, Arkhamic, Teutonic, serif",
+	fontSize: mm(4),
+	position: "relative",
+	top: mm(0.3),
+});
