@@ -35,6 +35,10 @@ export const vintageDividerObjects = {
 		width: 7.8,
 		height: 7.7,
 		fontSize: 7.2,
+		withXP: {
+			fontSize: 6.2,
+			height: 6.7,
+		},
 	},
 };
 

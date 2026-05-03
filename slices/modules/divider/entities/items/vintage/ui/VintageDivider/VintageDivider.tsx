@@ -33,7 +33,7 @@ import {
 } from "../text";
 import { VintageDividerContext } from "../VintageDividerContext";
 import { VintageDividerTab as Tab } from "../VintageDividerTab";
-import { VintageDividerInlineXP } from "../xp";
+import { VintageDividerInlineXP as InlineXP } from "../xp";
 import * as C from "./VintageDivider.components";
 import * as S from "./VintageDivider.styles";
 
@@ -46,6 +46,8 @@ export function VintageDivider(props: VintageDividerProps) {
 	const { sideXP, numericXP } = playerParams;
 	const showXP = sideXP || numericXP;
 
+	const xpCost = getDividerXPCost(props);
+
 	const tabsCount = getVintageDividerTabsCount(layout);
 
 	const tabIndex = useAppSelector(
@@ -54,6 +56,7 @@ export function VintageDivider(props: VintageDividerProps) {
 
 	const sxOptions = useVintageDividerSxOptions({
 		tabIndex,
+		withXP: Boolean(xpCost),
 	});
 
 	const tabWidth = sxOptions.objects.tab.width;
@@ -75,8 +78,6 @@ export function VintageDivider(props: VintageDividerProps) {
 	const xpSx = getPrintSx(S.getXPSx);
 	const numericXPSx = getPrintSx(S.getNumericXPSx);
 	const inlineXPSx = getPrintSx(S.getInlineXPSx);
-
-	const xpCost = getDividerXPCost(props);
 
 	const getDividerIcon = useDividerIcon({
 		dividerId: props.id,
@@ -123,9 +124,7 @@ export function VintageDivider(props: VintageDividerProps) {
 					/>
 					{showXP && xpCost && (
 						<Row sx={xpSx}>
-							{sideXP && (
-								<VintageDividerInlineXP xpCost={xpCost} sx={inlineXPSx} />
-							)}
+							{sideXP && <InlineXP xpCost={xpCost} sx={inlineXPSx} />}
 							{numericXP && <Box sx={numericXPSx}>{xpCost.name}</Box>}
 						</Row>
 					)}

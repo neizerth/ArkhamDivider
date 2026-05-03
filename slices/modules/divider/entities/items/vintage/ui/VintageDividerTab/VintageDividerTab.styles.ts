@@ -45,3 +45,12 @@ export const getTabCornerRadiusSx: VintageDividerSxCallback = ({ mm }) => ({
 	border: `${mm(0.25)} dashed red`,
 	borderBottom: "none",
 });
+
+export const getRadialXPSx: VintageDividerSxCallback = ({ mm }) => ({
+	position: "absolute",
+	zIndex: 2,
+	bottom: mm(1.8),
+	left: "50%",
+	transform: "translateX(-50%)",
+	fontSize: mm(1.5),
+});

@@ -1,31 +1,30 @@
 import { Box, type BoxProps } from "@mui/material";
-import { range } from "ramda";
 import { useId } from "react";
 import { xpRangeStatuses } from "@/modules/divider/shared/config";
 import { getXPRangeStatus } from "@/modules/divider/shared/lib";
 import type { XPCost } from "@/modules/divider/shared/model";
-import { vintageXPColors as colors } from "../../../config/colors";
+import { vintageRadialXPColors as colors } from "../../../config/colors";
 
-type VintageDividerInlineXPProps = BoxProps & {
+type VintageDividerRadialXPProps = BoxProps & {
 	xpCost: XPCost;
 };
 
-// Scales with viewBox; parent controls final size via font-size (1em)
-const dotRadius = 1.6;
+const dotRadius = 0.9;
+const dotCenters = [
+	{ x: 1.5, y: 1.2 },
+	{ x: 4.6, y: 3.2 },
+	{ x: 8.1, y: 3.9 },
+	{ x: 11.8, y: 3.3 },
+	{ x: 15.0, y: 1.2 },
+];
 
-const dotGap = 5.8;
-const dotCenters = range(0, 5).map((i) => ({
-	x: dotGap * i - 1.5,
-	y: 2.0,
-}));
-
-const viewBox = { w: 23, h: 4.0 };
+const viewBox = { w: 16, h: 5 };
 const aspectRatio = viewBox.w / viewBox.h;
 
-export function VintageDividerInlineXP({
+export function VintageDividerRadialXP({
 	xpCost,
 	...props
-}: VintageDividerInlineXPProps) {
+}: VintageDividerRadialXPProps) {
 	const baseId = useId().replace(/:/g, "");
 
 	return (

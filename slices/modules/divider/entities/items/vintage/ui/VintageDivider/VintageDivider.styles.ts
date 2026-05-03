@@ -1,6 +1,7 @@
 import type { PrintSxCallback } from "@/modules/print/shared/model";
 import type { BoxRect } from "@/shared/model";
 import { percent } from "@/shared/util";
+import { getVintageDividerIconObject } from "../../lib/logic/objects/getVintageDividerIconObject";
 import type {
 	VintageDividerLocaleSxCallback,
 	VintageDividerSxCallback,
@@ -99,22 +100,27 @@ export const getColorPickerSx: PrintSxCallback = ({ mm }) => ({
 export const getIconSx: VintageDividerSxCallback<{ tabIndex: number }> = ({
 	mm,
 	tabIndex,
+	withXP,
 	objects: O,
-}) => ({
-	position: "absolute",
-	zIndex: 3,
-	top: mm(O.icon.top),
-	left: mm(O.icon.left + O.tab.width * tabIndex),
-	width: mm(O.icon.width),
-	height: mm(O.icon.height),
-	fontSize: mm(O.icon.fontSize),
-	cursor: "pointer",
-	"@media screen": {
-		":hover": {
-			opacity: percent(70),
+}) => {
+	const I = getVintageDividerIconObject({ withXP, objects: O });
+
+	return {
+		position: "absolute",
+		zIndex: 3,
+		top: mm(I.top),
+		left: mm(I.left + O.tab.width * tabIndex),
+		width: mm(I.width),
+		height: mm(I.height),
+		fontSize: mm(I.fontSize),
+		cursor: "pointer",
+		"@media screen": {
+			":hover": {
+				opacity: percent(70),
+			},
 		},
-	},
-});
+	};
+};
 
 export const getBodyCornerRadiusSx: VintageDividerSxCallback = ({
 	mm,
@@ -140,20 +146,19 @@ export const getXPSx: VintageDividerSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 3,
 	alignItems: "center",
-	gap: mm(2),
-	fontSize: mm(2),
+	gap: mm(1.8),
 	top: mm(10.8),
 	right: mm(7.5),
 	height: mm(5.4),
 });
 
 export const getInlineXPSx: VintageDividerSxCallback = ({ mm }) => ({
-	fontSize: mm(2),
+	fontSize: mm(1.8),
 });
 
 export const getNumericXPSx: VintageDividerSxCallback = ({ mm }) => ({
 	fontFamily: "Atlantic Cruise Extended, Arkhamic, Teutonic, serif",
-	fontSize: mm(4),
+	fontSize: mm(3.8),
 	position: "relative",
 	top: mm(0.3),
 });

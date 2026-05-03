@@ -1,2 +1,1 @@
-export * from "./VintageDividerInlineXP";
 export * from "./VintageDividerRadialXP";

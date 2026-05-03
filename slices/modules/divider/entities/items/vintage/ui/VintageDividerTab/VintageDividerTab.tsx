@@ -1,11 +1,12 @@
 import { Box, type BoxProps, type SxProps } from "@mui/material";
 import { Icon } from "@/modules/core/icon/shared/ui";
-import { useTabPosition } from "@/modules/divider/shared/lib";
+import { getDividerXPCost, useTabPosition } from "@/modules/divider/shared/lib";
 import { selectShowCornerRadius, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppSelector } from "@/shared/lib";
 import { getVintageDividerTabsCount } from "../../lib";
 import { useVintageDividerContext } from "../VintageDividerContext";
+import { VintageDividerRadialXP as RadialXP } from "../xp";
 import * as S from "./VintageDividerTab.styles";
 
 type VintageDividerTabProps = BoxProps;
@@ -24,6 +25,7 @@ export function VintageDividerTab({
 	const shiftLeftSx = getPrintSx(S.getShiftSx, { position: "left" } as const);
 	const shiftRightSx = getPrintSx(S.getShiftSx, { position: "right" } as const);
 	const tabCornerRadiusSx = getPrintSx(S.getTabCornerRadiusSx);
+	const radialXPSx = getPrintSx(S.getRadialXPSx);
 
 	const tabsCount = getVintageDividerTabsCount(layout);
 
@@ -34,6 +36,7 @@ export function VintageDividerTab({
 			tabsCount,
 		},
 	);
+	const xpCost = getDividerXPCost(divider);
 
 	const sx = {
 		...sxStyles,
@@ -43,6 +46,7 @@ export function VintageDividerTab({
 	return (
 		<Box {...props} sx={sx}>
 			<Box sx={circleSx} />
+			{xpCost && <RadialXP xpCost={xpCost} sx={radialXPSx} />}
 			<NotExportable>
 				{divider.side === "front" && (
 					<>

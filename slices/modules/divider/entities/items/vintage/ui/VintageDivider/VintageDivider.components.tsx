@@ -59,6 +59,7 @@ export const Tab = ({
 	});
 
 	const colorSxBase = getPrintSx(S.getTabColorSx);
+
 	const colorSx = {
 		...colorSxBase,
 		backgroundColor,

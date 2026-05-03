@@ -39,3 +39,9 @@ export const vintageXPColors = {
 	range: Color("#151616").alpha(0.5).toString(),
 	inactive: Color("#151616").alpha(0.1).toString(),
 };
+
+export const vintageRadialXPColors = {
+	active: "#000000",
+	range: "rgba(0, 0, 0, 0.6)",
+	inactive: "rgba(0, 0, 0, 0.2)",
+};
