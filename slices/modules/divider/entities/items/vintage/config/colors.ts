@@ -36,8 +36,8 @@ export const vintageDefaultColor = "#B2AAA2";
 
 export const vintageXPColors = {
 	active: "#151616",
-	range: Color("#151616").alpha(0.5).toString(),
-	inactive: Color("#151616").alpha(0.1).toString(),
+	range: Color("#151616").alpha(0.6).toString(),
+	inactive: Color("#151616").alpha(0.2).toString(),
 };
 
 export const vintageRadialXPColors = {
