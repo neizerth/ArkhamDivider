@@ -25,6 +25,7 @@ export const getShiftSx: VintageDividerSxCallback<{
 	[position]: mm(O.tabShift.offset),
 	fontSize: mm(3),
 	color: "white",
+	WebkitTextStroke: `${mm(0.15)} #151616`,
 	transform: position === "left" ? "rotate(180deg)" : "none",
 	cursor: "pointer",
 	"@media screen": {

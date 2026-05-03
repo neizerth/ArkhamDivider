@@ -24,7 +24,7 @@ export const vintageDividerObjects = {
 	},
 	tab: {
 		width: 30,
-		height: 16,
+		height: 17,
 	},
 	tabShift: {
 		offset: 2,

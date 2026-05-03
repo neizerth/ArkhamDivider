@@ -1,6 +1,6 @@
 import type { Faction } from "@/modules/faction/shared/model";
 import { percent } from "@/shared/util";
-import { getArkhamIndexDividerTabTitleObject } from "../../../lib";
+import { getArkhamIndexDividerTabTitleObject as getTitleObject } from "../../../lib/logic/objects/getArkhamIndexDividerTabTitleObject";
 import type {
 	ArkhamIndexDividerLayoutObjects,
 	ArkhamIndexDividerSxCallback,
@@ -96,7 +96,7 @@ export const getTitleSx: SxCallback<Options & { showSideText: boolean }> = (
 	options,
 ) => {
 	const { mm, tabWidth, tabLeft } = options;
-	const T = getArkhamIndexDividerTabTitleObject(options);
+	const T = getTitleObject(options);
 	const width = tabWidth - T.right;
 	const left = tabLeft + T.left;
 
