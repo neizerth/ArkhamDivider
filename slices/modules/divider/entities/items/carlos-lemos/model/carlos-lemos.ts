@@ -5,4 +5,9 @@ export type CarlosLemosDividerProps = DividerWithRelations<{
 	icon?: Icon | null;
 	customTitle?: string | null;
 	custonFontSizeScale?: number;
+
+	extraIcons?: Icon[] | null;
 }>;
+
+export type CarlosLemosDividerParams =
+	DividerWithRelations<CarlosLemosDividerProps>;

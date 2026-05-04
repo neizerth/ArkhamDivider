@@ -5,6 +5,7 @@ import { arkhamDecoCategoryId } from "./arkham-deco/config";
 import { arkhamIndexCategoryId } from "./arkham-index/config";
 import { arkhamesqueClassicCategoryId } from "./arkhamesque-classic/config";
 import { binderBookmarkCategoryId } from "./binder-bookmark/config";
+import { carlosLemosCategoryId } from "./carlos-lemos/config";
 import { chapter2CategoryId } from "./chapter2/config";
 import { classicCategoryId } from "./classic/config/common";
 import { dividerCategories, dividerLayouts } from "./data";
@@ -66,7 +67,9 @@ const SimpleSticker = lazy(
 const ArkhamIndexDivider = lazy(
 	() => import("./arkham-index/ui/ArkhamIndexDivider/ArkhamIndexDivider"),
 );
-
+const CarlosLemosDivider = lazy(
+	() => import("./carlos-lemos/ui/CarlosLemosDivider/CarlosLemosDivider"),
+);
 export const dividerComponents: Record<
 	string,
 	// biome-ignore lint/suspicious/noExplicitAny: any is used to allow any type of params
@@ -87,4 +90,5 @@ export const dividerComponents: Record<
 	[arkhamIndexCategoryId]: ArkhamIndexDivider,
 	[binderBookmarkCategoryId]: BinderBookmark,
 	[simpleStickerCategoryId]: SimpleSticker,
+	[carlosLemosCategoryId]: CarlosLemosDivider,
 };

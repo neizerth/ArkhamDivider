@@ -4,17 +4,17 @@ import { carlosLemosCategoryId } from "./common";
 
 const layout: DividerLayout = {
 	id: "carlos-lemos",
-	types: ["scenario", "player", "investigator"],
+	types: ["scenario"],
 	categoryId: carlosLemosCategoryId,
-	groupId: "carlosLemos",
+	groupId: "vertical",
 	name: "Carlos Lemos",
-	orientation: "horizontal",
+	orientation: "vertical",
 	color: true,
-	size: createSize(89, 76),
+	size: createSize(69, 108),
 	printSize: {
 		300: {
-			size: createSize(89, 76),
-			bleedSize: createSize(96, 83),
+			size: createSize(815, 1276),
+			bleedSize: createSize(886, 1346),
 		},
 	},
 	bleed: 3,
