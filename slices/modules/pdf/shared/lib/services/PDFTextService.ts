@@ -1,3 +1,4 @@
+import { isCMYKBlack } from "@/modules/core/color/shared/lib";
 import type { FontFamily } from "@/shared/model";
 import type { PDFColor } from "../../model";
 import type { PDFFontService } from "./PDFFontService";
@@ -41,12 +42,14 @@ export class PDFTextService {
 			fontFamily,
 			fontSize,
 			x,
-			overprint,
 			color,
 			opacity = 1,
 			y: yBase,
 			...textOptions
 		} = options;
+
+		const canUseOverprint = isCMYKBlack(color);
+		const overprint = canUseOverprint && options.overprint;
 
 		const font = await this.font.load(fontFamily);
 		const { descentRatio = 0 } = font;

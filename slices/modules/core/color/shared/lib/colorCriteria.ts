@@ -1,5 +1,9 @@
 import Color from "color";
-import type { RGBAColor, RGBColor } from "../model";
+import type { CMYKColor, RGBAColor, RGBColor } from "../model";
+
+export const isCMYKColor = (color: unknown): color is CMYKColor => {
+	return Array.isArray(color) && color.length === 4;
+};
 
 export const isRGBAColor = (color: unknown): color is RGBAColor => {
 	return Array.isArray(color) && color.length === 4;
