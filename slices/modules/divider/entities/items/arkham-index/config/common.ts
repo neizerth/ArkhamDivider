@@ -26,9 +26,9 @@ export const arkhamIndexDividerHorizontalObjects = {
 	},
 	cornerRadius: 3,
 	icon: {
-		fontSize: 7,
-		top: 0.3,
-		width: 10,
+		fontSize: 7.3,
+		top: 0.25,
+		width: 10.1,
 		height: 9,
 	},
 	title: {
