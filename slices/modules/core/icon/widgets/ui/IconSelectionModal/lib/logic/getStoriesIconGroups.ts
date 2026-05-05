@@ -1,4 +1,4 @@
-import { propEq } from "ramda";
+import { ascend, descend, prop, propEq, sortWith } from "ramda";
 import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import {
@@ -22,16 +22,25 @@ type Options = {
 };
 
 export const getStoriesIconGroups = ({
-	stories,
+	stories: unsortedStories,
 	icons,
 	encounterSets,
 	iconSet,
 }: Options): IconGroup[] => {
+	const stories = sortWith(
+		[
+			ascend(({ position }) => position || Infinity),
+			descend(({ is_official }) => Boolean(is_official)),
+			ascend(prop("name")),
+		],
+		unsortedStories,
+	);
+
 	const iconsBySet = iconSet
 		? icons.filter((i) => i.iconSet === iconSet)
 		: icons;
 
-	const toIcon = (name: string) => {
+	const toIcon = (name?: string) => {
 		const icon = encounterSets.find((s) => s.code === name)?.icon;
 
 		if (icon) {
