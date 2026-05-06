@@ -50,12 +50,14 @@ export const getEncounterSetDividers = (
 		...(returnStory?.extraEncounterSets ?? []),
 	]);
 
+	/**
+	 * "Scenario encounter sets" here mean the *main* encounter set for the scenario
+	 * (picked by scenario icon), to avoid duplicating the same code as both:
+	 * - encounter-set divider (from `story.encounterSets`)
+	 * - scenario-encounter divider (from `scenarios`)
+	 */
 	const scenarioEncounters = uniqSets(
-		compact([
-			...story.scenarios.map(({ encounterSet }) => encounterSet),
-			...(returnStory?.scenarios?.map(({ encounterSet }) => encounterSet) ??
-				[]),
-		]),
+		compact(scenarios.map(prop("encounterSet"))),
 	);
 
 	const scenarioEncounterCodes = scenarioEncounters.map(prop("code"));

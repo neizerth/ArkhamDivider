@@ -1,31 +1,31 @@
-import { uniq } from "ramda";
-import type { Story } from "@/modules/story/shared/model";
+import { isNotNil, uniq } from "ramda";
+import type { StoryWithRelations } from "@/modules/story/shared/model";
 
 type Options = {
-	story: Story;
+	story: StoryWithRelations;
 	includeReturnStory?: boolean;
 };
 
 export const getEncounterSetDividersCount = (options: Options) => {
 	const { story, includeReturnStory } = options;
 
-	const {
-		encounter_sets,
-		scenario_encounter_sets,
-		return_encounter_sets = [],
-		return_scenario_encounter_sets = [],
-	} = story;
-
-	const encounters = includeReturnStory
-		? [...encounter_sets, ...return_encounter_sets]
-		: encounter_sets;
+	const returnStory = includeReturnStory ? story.returnStory : null;
 
 	const scenarios = includeReturnStory
-		? [...scenario_encounter_sets, ...return_scenario_encounter_sets]
-		: scenario_encounter_sets;
+		? [...story.scenarios, ...(returnStory?.scenarios ?? [])]
+		: story.scenarios;
 
-	const encounterSetOnly = uniq(encounters).filter(
-		(code) => !scenarios.includes(code),
+	const baseEncounters = uniq([
+		...story.encounter_sets,
+		...(returnStory?.encounter_sets ?? []),
+	]);
+
+	const scenarioCodes = uniq(
+		scenarios.map((s) => s.encounterSet?.code).filter(isNotNil),
+	);
+
+	const encounterSetOnly = baseEncounters.filter(
+		(code) => !scenarioCodes.includes(code),
 	);
 
 	return encounterSetOnly.length;
