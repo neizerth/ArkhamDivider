@@ -7,6 +7,8 @@ import it from "./it.json";
 import ko from "./ko.json";
 import pl from "./pl.json";
 import ru from "./ru.json";
+import zh from "./zh.json";
+import zh_cn from "./zh_cn.json";
 
 export const translations: Record<string, Translation> = {
 	en,
@@ -17,4 +19,6 @@ export const translations: Record<string, Translation> = {
 	es,
 	ko,
 	it,
+	zh,
+	zh_cn,
 };

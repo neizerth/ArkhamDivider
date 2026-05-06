@@ -10,7 +10,7 @@
 		"dev": "vite",
 		"postinstall": "sh ./scripts/postinstall.sh",
 		"prebuild": "sh ./scripts/prebuild.sh",
-		"build": "tsc -b && vite build",
+		"build": "sh ./scripts/build.sh",
 		"build:sourcemap": "npm run build -- --sourcemap",
 		"build:analyze": "npm run build -- --mode analyze",
 		"build:explore": "npm run build:sourcemap && source-map-explorer 'dist/assets/*-*.js' --no-border-checks --html dist/source-map-explorer.html",
