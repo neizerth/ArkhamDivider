@@ -74,7 +74,7 @@ export const getStoriesIconGroups = ({
 		});
 
 		const [first] = subgroupIcons;
-		const mainIconSet = icons.find(propEq(first, "icon"))?.iconSet as string;
+		const mainIconSet = icons.find(propEq(first, "icon"))?.iconSet;
 
 		if (!isCampaign(story) || !mainIconSet) {
 			return {
