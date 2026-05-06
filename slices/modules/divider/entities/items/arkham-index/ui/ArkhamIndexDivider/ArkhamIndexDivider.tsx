@@ -1,6 +1,7 @@
 // import * as C from "./ArkhamIndexDivider.components";
 
 import { Box } from "@mui/material";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
@@ -78,13 +79,22 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		tabSize,
 	});
 
+	const backgroundSxOptions = useMemo(() => {
+		return {
+			backgroundIcon,
+		};
+	}, [backgroundIcon]);
+
 	const getPrintSx = usePrintSx(sxOptions);
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
 	const backgroundStrokeSx = getPrintSx(S.getBackgroundStrokeSx);
 	const bodySx = getPrintSx(S.getBodySx);
 	const mediaContentSx = getPrintSx(S.getMediaContentSx);
 	const colorPickerSx = getPrintSx(S.getColorPickerSx);
-	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
+	const backgroundIconSx = getPrintSx(
+		S.getBackgroundIconSx,
+		backgroundSxOptions,
+	);
 	const menuSx = getPrintSx(S.getMenuSx);
 	const infoSx = getPrintSx(S.getInfoSx);
 	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);

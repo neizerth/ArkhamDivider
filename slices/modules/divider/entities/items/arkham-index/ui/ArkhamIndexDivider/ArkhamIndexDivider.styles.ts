@@ -1,4 +1,5 @@
-import type { Faction } from "@/modules/faction/shared/model";
+import { isString } from "ramda-adjunct";
+import type { Icon } from "@/modules/core/icon/shared/model";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
 import type { ArkhamIndexDividerSxCallback } from "../../model";
 
@@ -42,16 +43,14 @@ export const getColorPickerSx: PrintSxCallback = ({ mm }) => ({
 	borderRadius: "50%",
 });
 
-export const getBackgroundIconSx: ArkhamIndexDividerSxCallback = ({
-	mm,
-	objects: O,
-	faction,
-}) => {
+export const getBackgroundIconSx: ArkhamIndexDividerSxCallback<{
+	backgroundIcon?: Icon | null;
+}> = ({ mm, objects: O, backgroundIcon }) => {
 	interface Config {
 		y: number;
 		scale: number;
 	}
-	const config: Record<Faction, Config> = {
+	const config: Record<string, Config> = {
 		neutral: {
 			y: 2,
 			scale: 1.3,
@@ -81,7 +80,14 @@ export const getBackgroundIconSx: ArkhamIndexDividerSxCallback = ({
 			scale: 1.1,
 		},
 	};
-	const F = config[faction];
+	const defaultConfig = {
+		y: 0,
+		scale: 1,
+	};
+	const F =
+		isString(backgroundIcon) && config[backgroundIcon]
+			? config[backgroundIcon]
+			: defaultConfig;
 	return {
 		position: "absolute",
 		fontSize: mm(O.backgroundIcon.fontSize * F.scale),
