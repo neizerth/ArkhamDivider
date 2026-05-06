@@ -9,6 +9,11 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # If the requested path is a directory (with its own index.html),
+  # let Apache serve it instead of falling back to SPA root.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
   # If the requested resource isn't a real file or directory, serve index.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
