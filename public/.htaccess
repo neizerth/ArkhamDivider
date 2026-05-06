@@ -9,14 +9,18 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # If the requested path is a directory (with its own index.html),
-  # let Apache serve it instead of falling back to SPA root.
+  # If this is an existing directory without trailing slash, add it.
+  # This allows `/ru` -> `/ru/` so Apache can serve `/ru/index.html`.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.+)$ $1/ [R=301,L]
+
+  # Never rewrite existing files or directories.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # If the requested resource isn't a real file or directory, serve index.html
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # SPA fallback
   RewriteRule ^ index.html [L]
 </IfModule>
 
