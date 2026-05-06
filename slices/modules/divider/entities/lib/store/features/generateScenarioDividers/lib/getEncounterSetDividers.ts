@@ -36,6 +36,10 @@ export const getEncounterSetDividers = (
 
 	const returnStory = includeReturnStory ? story.returnStory : null;
 
+	const scenarios = includeReturnStory
+		? [...story.scenarios, ...(returnStory?.scenarios ?? [])]
+		: story.scenarios;
+
 	const baseEncounters = uniqSets([
 		...story.encounterSets,
 		...(returnStory?.encounterSets ?? []),
@@ -117,35 +121,34 @@ export const getEncounterSetDividers = (
 		}
 		return story.code;
 	};
-	const scenarioEncounterSetDividers = story.scenarios.map(
-		(scenario): Divider => {
-			const title = scenario.scenario_name;
 
-			const cards = getScenarioCards({
-				scenario,
-				cardTypes: "encounter",
-			});
+	const scenarioEncounterSetDividers = scenarios.map((scenario): Divider => {
+		const title = scenario.scenario_name;
 
-			const cardsCount = cards.reduce((total, { size }) => total + size, 0);
-			const { icon } = scenario;
+		const cards = getScenarioCards({
+			scenario,
+			cardTypes: "encounter",
+		});
 
-			const storyCode = getScenarioStoryCode(scenario);
+		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
+		const { icon } = scenario;
 
-			return {
-				id: v4(),
-				side: "front",
-				layoutType: "scenario",
-				type: "encounter",
-				subtype: "scenario-encounter",
-				scenarioId: scenario.id,
-				title,
-				icon,
-				cardsCount,
-				cards,
-				storyCode,
-			};
-		},
-	);
+		const storyCode = getScenarioStoryCode(scenario);
+
+		return {
+			id: v4(),
+			side: "front",
+			layoutType: "scenario",
+			type: "encounter",
+			subtype: "scenario-encounter",
+			scenarioId: scenario.id,
+			title,
+			icon,
+			cardsCount,
+			cards,
+			storyCode,
+		};
+	});
 
 	if (!includeEncounterSets && includeScenarioEncounterSets) {
 		return scenarioEncounterSetDividers;

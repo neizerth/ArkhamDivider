@@ -89,6 +89,7 @@ export const getSideTextSx: SxCallback<
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
+		whiteSpace: "nowrap",
 	};
 };
 

@@ -37,6 +37,7 @@ export function getArkhamIndexDividerImageUrl({
 
 	if (divider.type === "encounter") {
 		const subtype = divider.subtype;
+
 		const id =
 			subtype === "encounter-set"
 				? divider.encounterCode
