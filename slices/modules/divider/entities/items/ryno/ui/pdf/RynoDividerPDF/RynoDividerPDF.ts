@@ -140,7 +140,7 @@ export const RynoDividerPDF: PDFDivider<RynoDividerParams> = async (
 	});
 
 	const defaultSubtitle = getRynoDividerDefaultSubtitle(props);
-	const subtitle = params?.customSubtitle ?? defaultSubtitle;
+	const subtitle = params?.customSubtitle ?? t(defaultSubtitle);
 
 	if (showSubtitle && subtitle) {
 		const subFontSize = O.subtitle.fontSize;
