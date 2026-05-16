@@ -17,8 +17,6 @@ export const imageSx: PrintSxCallback = () => ({
 export const imageContainerSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	inset: mm(O.frame.width),
-	borderRadius: "50%",
-	overflow: "hidden",
 });
 
 export const factionImageSx: PrintSxCallback = () => ({
@@ -51,8 +49,9 @@ export const frameSx: PrintSxCallback = ({ mm }) => ({
 	zIndex: 1,
 	width: `calc(100% + ${mm(F.borderWidth * 2)})`,
 	height: `calc(100% + ${mm(F.borderWidth * 2)})`,
-	left: `${mm(-F.borderWidth)}`,
-	top: `${mm(-F.borderWidth)}`,
+	left: `50%`,
+	top: `50%`,
+	transform: `translate(-50%, -50%)`,
 	borderRadius: "50%",
 });
 

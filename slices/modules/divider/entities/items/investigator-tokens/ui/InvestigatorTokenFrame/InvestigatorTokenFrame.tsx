@@ -55,7 +55,16 @@ export function InvestigatorTokenFrame({
 				<Box sx={factionBorderSx} />
 			</Box>
 			<Box sx={imageContainerSx}>
-				<Image src={src} sx={tokenImageSx} crossOrigin="anonymous" />
+				<Box
+					sx={{
+						position: "absolute",
+						inset: 0,
+						borderRadius: "50%",
+						overflow: "hidden",
+					}}
+				>
+					<Image src={src} sx={tokenImageSx} crossOrigin="anonymous" />
+				</Box>
 				<Image src={frameUrl} sx={frameSx} />
 				<Box
 					sx={{
