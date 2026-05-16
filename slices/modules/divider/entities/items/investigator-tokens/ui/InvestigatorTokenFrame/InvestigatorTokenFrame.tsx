@@ -22,6 +22,8 @@ type InvestigatorTokenFrameProps = BoxProps & {
 const angles = [0, 90, 180, 270];
 const uniqueIconAngles = [45, 135, 225, 315];
 
+const factionIconColors = ["#f0d878", "#c8a427", "#f0d878", "#c8a427"];
+
 export function InvestigatorTokenFrame({
 	src,
 	faction,
@@ -67,12 +69,17 @@ export function InvestigatorTokenFrame({
 				></Box>
 			</Box>
 			<InvestigatorTokenCircleFrame />
-			{angles.map((angle) => (
+			{angles.map((angle, index) => (
 				<Box
 					key={`faction-${angle}`}
 					sx={{ ...factionIconContainerSx, transform: `rotate(${angle}deg)` }}
 				>
-					<Icon icon={faction} sx={factionIconSx} manifest={positionManifest} />
+					<Icon
+						icon={faction}
+						sx={factionIconSx}
+						manifest={positionManifest}
+						color={factionIconColors[index]}
+					/>
 				</Box>
 			))}
 			{uniqueIconAngles.map((angle) => (

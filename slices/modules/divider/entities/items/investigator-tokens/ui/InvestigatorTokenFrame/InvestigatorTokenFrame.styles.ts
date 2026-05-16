@@ -58,7 +58,7 @@ export const factionIconSx: PrintSxCallback = ({ mm }) => ({
 	fontSize: mm(2),
 	top: 0,
 	left: 0,
-	color: "#c8a427",
+	// color: "#c8a427",
 	height: mm(3),
 });
 
