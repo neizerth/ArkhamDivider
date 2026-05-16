@@ -62,6 +62,7 @@ export const factionIconSx: PrintSxCallback = ({ mm }) => ({
 	top: 0,
 	left: 0,
 	height: mm(3),
+	textShadow: `0 0 ${mm(2)} rgba(0, 0, 0, 0.3)`,
 });
 
 export const uniqueIconSx: PrintSxCallback = ({ mm }) => ({
