@@ -8,7 +8,7 @@ import {
 	investigatorFactionTokensBaseUrl as baseUrl,
 	investigatorTokenFrameUrl as frameUrl,
 } from "../../config/common";
-// import { InvestigatorTokenGoldenBorder } from "./InvestigatorTokenFrame.components";
+import { InvestigatorTokenCircleFrame } from "../InvestigatorTokenCircleFrame";
 import * as S from "./InvestigatorTokenFrame.styles";
 import { positionManifest } from "./positionManifest";
 
@@ -40,7 +40,6 @@ export function InvestigatorTokenFrame({
 	const factionIconSx = getPrintSx(S.factionIconSx);
 	const uniqueIconSx = getPrintSx(S.uniqueIconSx);
 	const factionIconContainerSx = getPrintSx(S.getFactionIconContainerSx);
-	// const innerBorderSx = getPrintSx(S.innerBorderSx);
 
 	const tokenImageSx = {
 		...backgroundImageSx,
@@ -56,7 +55,18 @@ export function InvestigatorTokenFrame({
 			<Box sx={imageContainerSx}>
 				<Image src={src} sx={tokenImageSx} crossOrigin="anonymous" />
 				<Image src={frameUrl} sx={frameSx} />
+				<Box
+					sx={{
+						position: "absolute",
+						zIndex: 2,
+						inset: 0,
+						borderRadius: "50%",
+						background:
+							"radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.9) 100%)",
+					}}
+				></Box>
 			</Box>
+			<InvestigatorTokenCircleFrame />
 			{angles.map((angle) => (
 				<Box
 					key={`faction-${angle}`}

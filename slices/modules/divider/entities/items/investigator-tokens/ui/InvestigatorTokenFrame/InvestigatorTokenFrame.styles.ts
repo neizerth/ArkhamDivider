@@ -1,12 +1,15 @@
 import type { PrintSxCallback } from "@/modules/print/shared/model";
 import { investigatorTokenObjects as O } from "../../config";
 
+const F = O.frame;
+
 export const imageSx: PrintSxCallback = () => ({
 	position: "absolute",
 	zIndex: 2,
 	width: "100%",
 	height: "100%",
 	borderRadius: "50%",
+	objectFit: "cover",
 });
 
 export const imageContainerSx: PrintSxCallback = ({ mm }) => ({
@@ -14,7 +17,7 @@ export const imageContainerSx: PrintSxCallback = ({ mm }) => ({
 	inset: mm(O.frame.width),
 });
 
-export const factionImageSx: PrintSxCallback = ({ mm }) => ({
+export const factionImageSx: PrintSxCallback = () => ({
 	position: "absolute",
 	width: "100%",
 	height: "100%",
@@ -42,10 +45,10 @@ export const innerBorderSx: PrintSxCallback = ({ mm }) => ({
 export const frameSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 1,
-	width: `calc(100% + ${mm(O.frame.borderWidth * 2)})`,
-	height: `calc(100% + ${mm(O.frame.borderWidth * 2)})`,
-	left: `${mm(-O.frame.borderWidth)}`,
-	top: `${mm(-O.frame.borderWidth)}`,
+	width: `calc(100% + ${mm(F.borderWidth * 2)})`,
+	height: `calc(100% + ${mm(F.borderWidth * 2)})`,
+	left: `${mm(-F.borderWidth)}`,
+	top: `${mm(-F.borderWidth)}`,
 	borderRadius: "50%",
 });
 
@@ -63,7 +66,7 @@ export const uniqueIconSx: PrintSxCallback = ({ mm }) => ({
 	position: "relative",
 	zIndex: 3,
 	fontSize: mm(1.5),
-	top: mm(0.15),
+	top: 0,
 	left: 0,
 	color: "#c8a427",
 	textShadow: `0 0 ${mm(2)} rgba(0, 0, 0, 0.3)`,

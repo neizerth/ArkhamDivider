@@ -6,9 +6,14 @@ import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 import { layoutRoute } from "@/modules/core/router/entities/lib";
 import { Link } from "@/modules/core/router/entities/ui";
-import { Image } from "@/shared/ui";
+import { Image, Row } from "@/shared/ui";
 
 const JUMBOTRON_MIN_HEIGHT = 200;
+
+const baseUrl = "/images/divider/render/investigator-tokens";
+const backgroundImage = `${baseUrl}.avif`;
+const factionImage = `${baseUrl}-faction.avif`;
+const simpleImage = `${baseUrl}-simple.avif`;
 
 export function InvestigatorTokensPreview() {
 	const { t } = useTranslation();
@@ -34,7 +39,7 @@ export function InvestigatorTokensPreview() {
 						height: "100%",
 						objectFit: "cover",
 					}}
-					src="/images/divider/render/investigator-tokens.avif"
+					src={backgroundImage}
 					alt=""
 				/>
 				<Box
@@ -69,16 +74,24 @@ export function InvestigatorTokensPreview() {
 					>
 						{t("Investigator Tokens")}
 					</Typography>
-					<Link to={link} style={{ textDecoration: "none" }}>
-						<Button variant="contained" color="primary" size="large">
-							{t("layout.investigatorTokens.colored.title")}
-						</Button>
-					</Link>
-					<Link to={factionLink} style={{ textDecoration: "none" }}>
-						<Button variant="contained" color="primary" size="large">
-							{t("layout.investigatorTokens.faction.title")}
-						</Button>
-					</Link>
+					<Row gap={2}>
+						<Link to={link} style={{ textDecoration: "none" }}>
+							<Stack gap={2}>
+								<Image src={simpleImage} alt="" width={200} height={200} />
+								<Button variant="contained" color="primary" size="large">
+									{t("layout.investigatorTokens.colored.title")}
+								</Button>
+							</Stack>
+						</Link>
+						<Link to={factionLink} style={{ textDecoration: "none" }}>
+							<Stack gap={2}>
+								<Image src={factionImage} alt="" width={200} height={200} />
+								<Button variant="contained" color="primary" size="large">
+									{t("layout.investigatorTokens.faction.title")}
+								</Button>
+							</Stack>
+						</Link>
+					</Row>
 				</Stack>
 			</Box>
 		</Container>
