@@ -64,13 +64,11 @@ export function InvestigatorTokenCircleFrame(props: BoxProps<"svg">) {
 					y2="100"
 					gradientTransform={gradientTransform}
 				>
-					<stop offset="0%" stopColor="#FFF6D8" />
 					<stop offset="12%" stopColor="#F0D878" />
 					<stop offset="32%" stopColor="#C9A227" />
 					<stop offset="50%" stopColor="#7A5A18" />
 					<stop offset="68%" stopColor="#C9A227" />
 					<stop offset="88%" stopColor="#F0D878" />
-					<stop offset="100%" stopColor="#FFF6D8" />
 				</linearGradient>
 			</defs>
 			<g transform={strokeRotation}>
