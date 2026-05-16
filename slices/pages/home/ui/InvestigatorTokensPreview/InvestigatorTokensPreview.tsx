@@ -12,7 +12,8 @@ const JUMBOTRON_MIN_HEIGHT = 200;
 
 export function InvestigatorTokensPreview() {
 	const { t } = useTranslation();
-	const to = layoutRoute({ layoutId: "investigator-tokens" });
+	const link = layoutRoute({ layoutId: "investigator-tokens" });
+	const factionLink = layoutRoute({ layoutId: "investigator-tokens-faction" });
 
 	return (
 		<Container>
@@ -68,9 +69,14 @@ export function InvestigatorTokensPreview() {
 					>
 						{t("Investigator Tokens")}
 					</Typography>
-					<Link to={to} style={{ textDecoration: "none" }}>
+					<Link to={link} style={{ textDecoration: "none" }}>
 						<Button variant="contained" color="primary" size="large">
-							{t("Generate")}
+							{t("layout.investigatorTokens.colored.title")}
+						</Button>
+					</Link>
+					<Link to={factionLink} style={{ textDecoration: "none" }}>
+						<Button variant="contained" color="primary" size="large">
+							{t("layout.investigatorTokens.faction.title")}
 						</Button>
 					</Link>
 				</Stack>

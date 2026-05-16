@@ -29,6 +29,18 @@ export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	height: "100%",
 });
 
-export const backgroundSx: PrintSxCallback<{ side: Side }> = ({ side }) => ({
+export const backgroundImageSx: PrintSxCallback<{ side: Side }> = ({
+	side,
+}) => ({
 	filter: side === "back" ? "grayscale(1)" : "none",
+});
+
+export const frameSx: PrintSxCallback = () => ({
+	position: "absolute",
+	inset: 0,
+});
+
+export const frameBackgroundSx: PrintSxCallback = () => ({
+	position: "absolute",
+	inset: 0,
 });

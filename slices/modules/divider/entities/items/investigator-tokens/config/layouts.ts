@@ -27,6 +27,12 @@ const layout: DividerLayout = {
 	},
 };
 
+const factionLayout: DividerLayout = {
+	...layout,
+	id: "investigator-tokens-faction",
+	name: "layout.investigatorTokens.faction",
+};
+
 const colored: DividerLayout = {
 	...layout,
 	id: "investigator-tokens-colored",
@@ -40,4 +46,16 @@ const colored: DividerLayout = {
 	},
 };
 
-export const investigatorTokensLayouts = [layout, colored];
+const coloredFactionLayout: DividerLayout = {
+	...factionLayout,
+	id: "investigator-tokens-faction-colored",
+	name: "layout.investigatorTokens.faction.colored",
+	color: true,
+};
+
+export const investigatorTokensLayouts = [
+	layout,
+	colored,
+	factionLayout,
+	coloredFactionLayout,
+];
