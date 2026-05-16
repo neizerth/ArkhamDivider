@@ -74,7 +74,7 @@ export function InvestigatorTokensPreview() {
 					>
 						{t("Investigator Tokens")}
 					</Typography>
-					<Row gap={2} flexWrap="wrap">
+					<Row gap={2} flexWrap="wrap" justifyContent="center">
 						<Link to={link} style={{ textDecoration: "none" }}>
 							<Stack gap={2}>
 								<Image src={simpleImage} alt="" width={200} height={200} />
