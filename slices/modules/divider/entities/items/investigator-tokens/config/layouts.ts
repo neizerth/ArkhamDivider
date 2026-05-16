@@ -47,7 +47,7 @@ const colored: DividerLayout = {
 };
 
 const coloredFactionLayout: DividerLayout = {
-	...factionLayout,
+	...colored,
 	id: "investigator-tokens-faction-colored",
 	name: "layout.investigatorTokens.faction.colored",
 	color: true,
