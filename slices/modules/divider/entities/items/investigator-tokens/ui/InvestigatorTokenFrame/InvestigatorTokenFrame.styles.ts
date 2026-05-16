@@ -6,15 +6,19 @@ const F = O.frame;
 export const imageSx: PrintSxCallback = () => ({
 	position: "absolute",
 	zIndex: 2,
-	width: "100%",
-	height: "100%",
-	borderRadius: "50%",
+	width: "125%",
+	height: "125%",
+	left: "50%",
+	top: "50%",
+	transform: "translate(-50%, -50%)",
 	objectFit: "cover",
 });
 
 export const imageContainerSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	inset: mm(O.frame.width),
+	borderRadius: "50%",
+	overflow: "hidden",
 });
 
 export const factionImageSx: PrintSxCallback = () => ({
@@ -58,7 +62,6 @@ export const factionIconSx: PrintSxCallback = ({ mm }) => ({
 	fontSize: mm(2),
 	top: 0,
 	left: 0,
-	// color: "#c8a427",
 	height: mm(3),
 });
 
