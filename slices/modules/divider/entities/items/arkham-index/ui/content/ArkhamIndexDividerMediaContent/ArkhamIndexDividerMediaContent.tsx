@@ -55,7 +55,7 @@ export function ArkhamIndexDividerMediaContent(
 						crossOrigin="anonymous"
 					/>
 					<NotExportable>
-						<Row sx={uploadSx}>
+						<Row sx={uploadSx} displayPrint="none">
 							{customImage && (
 								<IconButton onClick={revokeCustomImage}>
 									<Icon icon="trash" sx={iconSx} />
