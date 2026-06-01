@@ -34,6 +34,9 @@ const horizontal: ArkhamIndexDividerLayout = {
 	params: {
 		title: true,
 	},
+	fontFamilySelection: {
+		ru: ["Teutonic", "Conkordia"],
+	},
 };
 
 const medium: ArkhamIndexDividerLayout = {

@@ -4,6 +4,7 @@ import { factions } from "@/modules/faction/shared/config";
 import { cardTypes } from "../../config";
 
 import type {
+	DividerLayoutParams,
 	DividerLayoutType,
 	InvestigatorDividerParams,
 	PlayerDividerParams,
@@ -18,6 +19,7 @@ export type DividerState = {
 	scenarioParams: Partial<ScenarioDividerParams>;
 	playerParams: Partial<PlayerDividerParams>;
 	investigatorParams: Partial<InvestigatorDividerParams>;
+	layoutParams: DividerLayoutParams | null;
 };
 
 const initialState: DividerState = {
@@ -56,6 +58,7 @@ const initialState: DividerState = {
 	investigatorParams: {
 		storyCodes: [],
 	},
+	layoutParams: null,
 };
 const state = createSliceState(initialState);
 
@@ -75,6 +78,7 @@ export const {
 	setScenarioParams,
 	setPlayerParams,
 	setInvestigatorParams,
+	setLayoutParams,
 } = divider.actions;
 
 export const {
@@ -84,6 +88,7 @@ export const {
 	selectScenarioParams,
 	selectPlayerParams,
 	selectInvestigatorParams,
+	selectLayoutParams,
 } = divider.selectors;
 
 export default divider.reducer;

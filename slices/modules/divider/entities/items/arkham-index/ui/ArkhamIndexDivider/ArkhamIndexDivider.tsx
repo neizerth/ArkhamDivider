@@ -173,7 +173,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 								aspectRatio: 1,
 								left: "50%",
 								transform: "translate(-50%, -50%)",
-								height: "1.2em",
+								height: "1em",
 								mixBlendMode: "color",
 								borderRadius: "50%",
 								blur: "2px",

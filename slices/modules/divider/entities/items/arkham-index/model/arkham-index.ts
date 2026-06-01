@@ -6,6 +6,7 @@ import type {
 } from "@/modules/divider/shared/model";
 import type { Faction } from "@/modules/faction/shared/model";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
+import type { FontFamily } from "@/shared/model";
 import type { getArkhamIndexDividerLayoutObjects } from "../lib";
 
 export type ArkhamIndexDividerTabSize = number | "full";
@@ -32,6 +33,7 @@ export type ArkhamIndexDividerProps =
 
 export type ArkhamIndexDividerLayout = DividerLayout<{
 	title: boolean;
+	fontFamily?: FontFamily;
 }>;
 
 export type ArkhamIndexDividerLayoutObjects = ReturnType<

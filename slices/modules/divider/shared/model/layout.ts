@@ -4,7 +4,7 @@ import type {
 	VipsTransformRecord,
 	VipsWriteOptionsRecord,
 } from "@/modules/render/shared/model";
-import type { Author, BoxSize } from "@/shared/model";
+import type { Author, BoxSize, FontFamily } from "@/shared/model";
 
 export type DividerLayoutSleeve = {
 	id: string;
@@ -24,6 +24,12 @@ export type DividerPrintSizeItem = {
 export type DividerPrintSize = Partial<Record<DPI, DividerPrintSizeItem>>;
 
 export type DividerOrientation = "horizontal" | "vertical";
+
+export type DividerLayoutParams<T = Record<string, unknown>> = {
+	[layoutId: string]: {
+		[locale: string]: T;
+	};
+};
 
 export type DividerLayout<Params = Record<string, unknown>> = {
 	id: string;
@@ -68,6 +74,7 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	renderOptions?: DividerLayoutRenderOptions;
 	compatibility?: Partial<DividerLayoutCompatibility> | null;
 	tabs?: DividerLayoutTabConfig | null;
+	fontFamilySelection?: Record<string, FontFamily[]> | null;
 };
 
 export type DividerLayoutTabConfig =

@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectBleedEnabled, selectDPI } from "@/modules/print/shared/lib";
-import { selectLayout } from "./selectLayout";
+import { selectLayout } from "./layout/selectLayout";
 
 export const selectDividerSize = createSelector(
 	[selectLayout, selectBleedEnabled, selectDPI],
