@@ -17,6 +17,8 @@ export const getHeaderSx: PrintSxCallback = () => ({
 	left: 0,
 	right: 0,
 	zIndex: 1,
+	transform: "translateZ(0)",
+	willChange: "filter",
 });
 
 export const getCornerSx: PrintSxCallback = ({ mm }) => ({

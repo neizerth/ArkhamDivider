@@ -87,7 +87,7 @@ export const RynoDividerPDF: PDFDivider<RynoDividerParams> = async (
 		});
 	}
 
-	const showSideIcons = layoutType === "scenario";
+	const _showSideIcons = layoutType === "scenario";
 	const showLeftIcon = showRynoDividerLeftIcon(props);
 
 	if (showLeftIcon && leftIcon) {
@@ -109,7 +109,7 @@ export const RynoDividerPDF: PDFDivider<RynoDividerParams> = async (
 		});
 	}
 
-	if (showSideIcons && type !== "campaign" && rightIcon) {
+	if (rightIcon) {
 		const w = mm(O.icons.right.width);
 		const h = mm(O.icons.right.height);
 		await ctx.icon.draw(rightIcon, {

@@ -14,7 +14,7 @@ import {
 	getRenderScale,
 	selectDividerRenderId,
 } from "@/modules/render/shared/lib";
-import { absoluteFill } from "@/shared/config";
+import { absoluteFill, isFirefox } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import { dividerComponents } from "../../../items";
 import {
@@ -70,7 +70,7 @@ export function DividerView(props: DividerViewProps) {
 				<Box
 					sx={{
 						...absoluteFill,
-						overflow: "hidden",
+						overflow: isFirefox ? "visible" : "hidden",
 					}}
 				>
 					<Box
@@ -83,7 +83,6 @@ export function DividerView(props: DividerViewProps) {
 							left: 0,
 							letterSpacing: 0,
 							transformOrigin: "top left",
-							overflow: "hidden",
 							"@media print": {
 								...getScaleSx(printScale),
 							},
