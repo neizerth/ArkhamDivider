@@ -49,7 +49,8 @@ export const findStory = (
 	if (!code) {
 		return;
 	}
-	for (const category of flattenCategories(data.stories)) {
+	const categories = flattenCategories(data.stories);
+	for (const category of categories) {
 		const match = category.data?.find((s) => s.code === code);
 		if (match) {
 			return { categoryPrefix: category.prefix, story: match };
@@ -66,7 +67,8 @@ export const findInvestigator = (
 	if (!code) {
 		return;
 	}
-	for (const category of flattenCategories(data.investigators)) {
+	const categories = flattenCategories(data.investigators);
+	for (const category of categories) {
 		const match = category.data?.find((inv) => inv.code === code);
 		if (match) {
 			return { categoryPrefix: category.prefix, investigator: match };
