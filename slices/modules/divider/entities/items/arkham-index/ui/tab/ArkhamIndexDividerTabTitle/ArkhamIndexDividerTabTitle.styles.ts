@@ -4,14 +4,16 @@ import type {
 	ArkhamIndexDividerSxCallback,
 } from "../../../model";
 
-export const getTitleSx: ArkhamIndexDividerIconLocaleSxCallback = () => {
+export const getTitleSx: ArkhamIndexDividerIconLocaleSxCallback = ({
+	fontFamily = "Teutonic",
+}) => {
 	return {
 		default: {
 			color: "white",
 			fontFamily: "Arkhamic, Teutonic, serif",
 		},
 		ru: {
-			fontFamily: "Teutonic, serif",
+			fontFamily: `${fontFamily}, serif`,
 		},
 		cn: {
 			fontFamily: "FZLiBian, Arkhamic, Teutonic, serif",
