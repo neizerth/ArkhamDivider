@@ -1,4 +1,5 @@
 import { mergeDeepRight } from "ramda";
+import type { Faction } from "@/modules/faction/shared/model";
 
 const tabSideWidth = 6.5;
 const sideOffsetWidth = tabSideWidth * 2;
@@ -14,7 +15,21 @@ const fontSizeScale: Record<string, number> = {
 	Conkordia: 1.3,
 };
 
+const factionIconPosition: Record<
+	Faction,
+	{ top: number; left: number; width: number; height: number }
+> = {
+	neutral: { top: 1.1, left: 1.3, width: 7.3, height: 7.5 },
+	guardian: { top: 1.2, left: 1.3, width: 7.5, height: 7.5 },
+	seeker: { top: 1.2, left: 1.3, width: 7.6, height: 7.5 },
+	rogue: { top: 0.9, left: 1.2, width: 7.7, height: 7.5 },
+	mystic: { top: 1.1, left: 1.3, width: 7.5, height: 7.5 },
+	survivor: { top: 1.6, left: 1.3, width: 7.45, height: 7.5 },
+	multiclass: { top: 1.1, left: 1.3, width: 7.5, height: 7.5 },
+};
+
 export const arkhamIndexDividerHorizontalObjects = {
+	factionIconPosition,
 	fontSizeScale,
 	tab: {
 		height: 9.5,
@@ -108,8 +123,51 @@ export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
 			default: {
 				fontSize: 4.5,
 				height: 6,
-				top: 0,
+				top: 0.2,
+				right: 4.5,
 			},
+			withIcon: {
+				left: 14.8,
+			},
+			withSideText: {
+				left: 19.5,
+			},
+			fullOffset: {
+				default: 4.3,
+				withSideText: 4.3,
+			},
+			full: {
+				right: 14,
+			},
+		},
+		iconBackground: {
+			width: 6.4,
+			height: 6.4,
+			top: -0.2,
+		},
+		icon: {
+			fontSize: 5.3,
+			top: 0.1,
+			width: 7.2,
+			height: 6.2,
+		},
+		sideBackground: {
+			top: 0.6,
+			left: 88,
+		},
+		sideText: {
+			top: 1.2,
+			left: 88.5,
+			withXP: {
+				fontSize: 3.1,
+			},
+		},
+		factionIconPosition: {
+			guardian: { top: 0.5, left: 0.7, width: 5.7, height: 5.7 },
+			seeker: { top: 0.45, left: 0.75, width: 5.7, height: 5.7 },
+			rogue: { top: 0.4, left: 0.7, width: 5.8, height: 5.8 },
+			mystic: { top: 0.5, left: 0.8, width: 5.5, height: 5.5 },
+			survivor: { top: 0.6, left: 0.7, width: 5.7, height: 5.7 },
 		},
 	},
 );

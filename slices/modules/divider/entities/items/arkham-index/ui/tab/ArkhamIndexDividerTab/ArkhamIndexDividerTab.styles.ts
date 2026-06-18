@@ -1,4 +1,3 @@
-import type { Faction } from "@/modules/faction/shared/model";
 import { percent } from "@/shared/util";
 import { getArkhamIndexDividerTabTitleObject as getTitleObject } from "../../../lib/logic/objects/getArkhamIndexDividerTabTitleObject";
 import type {
@@ -180,21 +179,13 @@ export const getDecreaseIndentSx: SxCallback = ({ mm }) => ({
 	cursor: "pointer",
 });
 
-const factionPosition: Record<
-	Faction,
-	{ top: number; left: number; width: number; height: number }
-> = {
-	neutral: { top: 1.1, left: 1.3, width: 7.3, height: 7.5 },
-	guardian: { top: 1.2, left: 1.3, width: 7.5, height: 7.5 },
-	seeker: { top: 1.2, left: 1.3, width: 7.6, height: 7.5 },
-	rogue: { top: 0.9, left: 1.2, width: 7.7, height: 7.5 },
-	mystic: { top: 1.1, left: 1.3, width: 7.5, height: 7.5 },
-	survivor: { top: 1.6, left: 1.3, width: 7.45, height: 7.5 },
-	multiclass: { top: 1.1, left: 1.3, width: 7.5, height: 7.5 },
-};
-
-export const getFactionImageSx: SxCallback = ({ mm, iconLeft, faction }) => {
-	const F = factionPosition[faction];
+export const getFactionImageSx: SxCallback = ({
+	mm,
+	iconLeft,
+	faction,
+	objects: O,
+}) => {
+	const F = O.factionIconPosition[faction];
 	return {
 		position: "absolute",
 		top: mm(F.top),
