@@ -94,6 +94,11 @@ export const getEncounterSetDividers = (
 
 		const storyCode = getEncounterStoryCode(encounterSet.code);
 
+		const isExtra = extraEncounters.some(propEq(encounterSet.code, "code"));
+
+		const packCode = encounterSet.pack_code ?? "";
+		const cycleCode = encounterSet.cycle_code ?? "";
+
 		return {
 			id: v4(),
 			side: "front",
@@ -101,6 +106,9 @@ export const getEncounterSetDividers = (
 			type: "encounter",
 			subtype: "encounter-set",
 			encounterCode: encounterSet.code,
+			packCode,
+			cycleCode,
+			isExtra,
 			title: name,
 			icon,
 			cardsCount,
@@ -137,6 +145,13 @@ export const getEncounterSetDividers = (
 
 		const storyCode = getScenarioStoryCode(scenario);
 
+		const isExtra = extraEncounters.some(
+			propEq(scenario.encounterSet?.code ?? "", "code"),
+		);
+
+		const packCode = scenario.encounterSet?.pack_code ?? "";
+		const cycleCode = scenario.encounterSet?.cycle_code ?? "";
+
 		return {
 			id: v4(),
 			side: "front",
@@ -144,6 +159,9 @@ export const getEncounterSetDividers = (
 			type: "encounter",
 			subtype: "scenario-encounter",
 			scenarioId: scenario.id,
+			packCode,
+			cycleCode,
+			isExtra,
 			title,
 			icon,
 			cardsCount,

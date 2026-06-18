@@ -21,5 +21,8 @@ const getConcealedCardsDivider = (): Divider => {
 		cardsCount: 0,
 		cards: [],
 		storyCode: "tsk",
+		packCode: "tsk",
+		cycleCode: "tsk",
+		isExtra: false,
 	};
 };
