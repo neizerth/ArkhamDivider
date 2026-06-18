@@ -15,11 +15,7 @@ import {
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
-import {
-	selectLasercutEnabled,
-	usePrintPxCallback,
-	usePrintSx,
-} from "@/modules/print/shared/lib";
+import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib";
@@ -102,8 +98,6 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const menuSx = getPrintSx(S.getMenuSx);
 	const infoSx = getPrintSx(S.getInfoSx);
 	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);
-
-	const mm = usePrintPxCallback();
 
 	const { side } = props;
 
@@ -192,17 +186,6 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 							onClick={selectBackgroundIcon}
 						/>
 					)}
-					<Box
-						sx={{
-							position: "absolute",
-							bottom: 0,
-							left: 0,
-							width: "100%",
-							height: mm(64),
-							zIndex: 5,
-							backgroundColor: "rgba(255, 0, 0, 1)",
-						}}
-					/>
 				</C.Layer>
 			</Container>
 		</ArkhamIndexContext.Provider>
