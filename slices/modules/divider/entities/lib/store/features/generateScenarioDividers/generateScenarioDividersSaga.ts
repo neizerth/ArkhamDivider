@@ -9,7 +9,6 @@ import {
 } from "./lib";
 
 function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
-	console.log("generateScenarioDividersSaga", payload);
 	const story: ReturnType<typeof selectStoryWithRelations> = yield select(
 		selectStoryWithRelations,
 	);

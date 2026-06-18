@@ -38,10 +38,11 @@ export function getArkhamIndexDividerImageUrl({
 	}
 
 	const storyCode = story.return_to_code ?? story.code;
-	const scenarioBase = `${imagesUrl}/scenario`;
+	const scenarioBaseUrl = `${imagesUrl}/scenario`;
+	const scenarioBase = `${scenarioBaseUrl}/${storyCode}/${orientation}`;
 
 	if (divider.type === "campaign") {
-		return `${scenarioBase}/${storyCode}/${orientation}/${story.code}.avif`;
+		return `${scenarioBase}/${story.code}.avif`;
 	}
 
 	if (divider.type === "encounter") {
@@ -54,13 +55,7 @@ export function getArkhamIndexDividerImageUrl({
 
 		const code = isExtra ? cycleCode : storyCode;
 
-		// console.log({
-		// 	isExtra,
-		// 	cycleCode,
-		// 	storyCode,
-		// });
-
-		return `${scenarioBase}/${code}/${orientation}/${id}.avif`;
+		return `${scenarioBaseUrl}/${code}/${orientation}/${id}.avif`;
 	}
 
 	const scenarioId = divider.scenario?.id;
