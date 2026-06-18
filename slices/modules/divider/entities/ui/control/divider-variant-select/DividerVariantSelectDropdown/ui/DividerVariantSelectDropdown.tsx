@@ -5,10 +5,11 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
-import { type JSX, useCallback, useRef, useState } from "react";
+import { type JSX, useCallback, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { changeLayoutColor } from "@/modules/divider/entities/lib/store/features/changeLayoutColor";
 import { changeLayoutOrientation } from "@/modules/divider/entities/lib/store/features/changeLayoutOrientation";
+import { setLayoutFontFamily } from "@/modules/divider/entities/lib/store/features/setLayoutFontFamily";
 import { changeLayoutId } from "@/modules/divider/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
@@ -16,6 +17,8 @@ import type { Defined, Single } from "@/shared/model";
 import { Select } from "@/shared/ui";
 import {
 	selectLayout,
+	selectLayoutFontFamily,
+	selectLocaleLayoutFonts,
 	useDividerColorData,
 	useDividerOrientationData,
 	useRouterLayout,
@@ -32,6 +35,8 @@ export function DividerVariantSelectDropdown(
 	const data = useRouterLayout();
 
 	const layout = useAppSelector(selectLayout);
+	const fonts = useAppSelector(selectLocaleLayoutFonts);
+
 	const category = data?.category;
 
 	const color = layout?.color ?? true;
@@ -45,6 +50,18 @@ export function DividerVariantSelectDropdown(
 	const orientationData = useDividerOrientationData(category);
 	const variants = useDividerVariants();
 	const hasColorVariants = category?.hasColorVariants ?? false;
+	const fontData = useMemo(() => {
+		return fonts.map((font) => {
+			return {
+				id: font,
+				label: font,
+				value: font,
+			};
+		});
+	}, [fonts]);
+
+	const layoutFontFamily = useAppSelector(selectLayoutFontFamily);
+	const fontFamily = layoutFontFamily ?? fonts[0];
 
 	const onClickAway = useCallback(() => {
 		if (selectOpen) {
@@ -81,6 +98,15 @@ export function DividerVariantSelectDropdown(
 		(event) => {
 			const value = (event.target as never as VariantValue).value;
 			dispatch(changeLayoutId(value));
+		},
+		[dispatch],
+	);
+
+	type FontValue = Single<typeof fontData>;
+	const handleFontChange = useCallback<Defined<SelectProps["onChange"]>>(
+		(event) => {
+			const value = (event.target as never as FontValue).value;
+			dispatch(setLayoutFontFamily(value));
 		},
 		[dispatch],
 	);
@@ -148,6 +174,21 @@ export function DividerVariantSelectDropdown(
 												onChange={handleVariantChange}
 												value={layout?.id}
 												label={t("Variant")}
+												containerSx={{
+													width: "100%",
+												}}
+											/>
+										</ListItem>
+									)}
+									{fontData.length > 1 && (
+										<ListItem>
+											<Select
+												onOpen={setSelectOpen.on}
+												onClose={setSelectOpen.off}
+												data={fontData}
+												onChange={handleFontChange}
+												label={t("Font Family")}
+												value={fontFamily}
 												containerSx={{
 													width: "100%",
 												}}

@@ -7,15 +7,19 @@ import type {
 export const getTitleSx: ArkhamIndexDividerIconLocaleSxCallback = ({
 	mm,
 	objects: O,
+	fontFamily = "Teutonic",
 }) => {
+	const fontSizeScale = O.fontSizeScale[fontFamily];
+	const fontSize = mm(O.title.fontSize * fontSizeScale);
+
 	return {
 		default: {
 			color: "white",
 			fontFamily: "Arkhamic, Teutonic, serif",
-			fontSize: mm(O.title.fontSize),
+			fontSize,
 		},
 		ru: {
-			fontFamily: "Teutonic, serif",
+			fontFamily: `${fontFamily}, serif`,
 		},
 		cn: {
 			fontFamily: "FZLiBian, Arkhamic, Teutonic, serif",

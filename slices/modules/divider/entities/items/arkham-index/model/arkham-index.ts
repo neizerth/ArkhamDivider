@@ -47,6 +47,7 @@ export type ArkhamIndexDividerSxOptions = {
 	tabSize: ArkhamIndexDividerTabSize;
 	indentSize: number;
 	faction: Faction;
+	fontFamily?: FontFamily;
 };
 
 export type ArkhamIndexDividerSxCallback<T = object> = PrintSxCallback<

@@ -3,7 +3,7 @@ import {
 	arkhamIndexDividerHorizontalSmallObjects,
 	arkhamIndexDividerVerticalObjects,
 	arkhamIndexDividerVerticalTrimObjects,
-} from "../../../config";
+} from "../../../config/objects";
 import type { ArkhamIndexDividerLayout } from "../../../model";
 
 export const getArkhamIndexDividerLayoutObjects = (

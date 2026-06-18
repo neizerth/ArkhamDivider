@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { createSliceState } from "redux-toolkit-helpers";
 import { factions } from "@/modules/faction/shared/config";
 import { cardTypes } from "../../config";
@@ -65,6 +65,33 @@ const state = createSliceState(initialState);
 export const divider = createSlice({
 	name: "divider",
 	...state,
+	reducers: {
+		...state.reducers,
+		setCurrentLayoutParams: (
+			state,
+			{ payload }: PayloadAction<DividerLayoutParams>,
+		) => {
+			if (!state.layoutId) {
+				return;
+			}
+			state.layoutParams ??= {};
+			state.layoutParams[state.layoutId] = payload;
+		},
+		setCurrentLayoutParam: (
+			state,
+			action: PayloadAction<{ key: string; value: unknown; locale: string }>,
+		) => {
+			if (!state.layoutId) {
+				return;
+			}
+
+			const { key, value, locale } = action.payload;
+			state.layoutParams ??= {};
+			state.layoutParams[state.layoutId] ??= {};
+			state.layoutParams[state.layoutId][locale] ??= {};
+			state.layoutParams[state.layoutId][locale][key] = value;
+		},
+	},
 	selectors: {
 		...state.selectors,
 		selectDividerType: (state) => getDividerType(state.dividerType),
@@ -79,6 +106,8 @@ export const {
 	setPlayerParams,
 	setInvestigatorParams,
 	setLayoutParams,
+	setCurrentLayoutParams,
+	setCurrentLayoutParam,
 } = divider.actions;
 
 export const {

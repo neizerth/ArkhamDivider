@@ -1,6 +1,9 @@
 import { useMemo } from "react";
 import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
-import { selectLayout } from "@/modules/divider/entities/lib";
+import {
+	selectLayout,
+	selectLayoutFontFamily,
+} from "@/modules/divider/entities/lib";
 import { getDividerIcon } from "@/modules/divider/features/lib";
 import { getDividerFaction } from "@/modules/divider/shared/lib";
 import { useAppSelector } from "@/shared/lib";
@@ -31,6 +34,7 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 		tabSize,
 		tabIndentSize: objects.tab.indentSize,
 	});
+	const fontFamily = useAppSelector(selectLayoutFontFamily);
 
 	const faction = getDividerFaction(divider) ?? "neutral";
 
@@ -42,6 +46,7 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 			tabSize,
 			indentSize,
 			faction,
+			fontFamily,
 		};
-	}, [objects, showIcon, tabIndex, tabSize, indentSize, faction]);
+	}, [objects, showIcon, tabIndex, tabSize, indentSize, faction, fontFamily]);
 };
