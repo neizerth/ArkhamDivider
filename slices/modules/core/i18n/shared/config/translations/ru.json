@@ -91,7 +91,7 @@
 	"divider.hasGrayscale": "Есть ч/б версия",
 	"divider.chapter1BoxCompatible": "Для коробки 1-ой Главы",
 	"divider.chapter2BoxCompatible": "Для коробки 2-ой Главы",
-	"divider.forDeckBox": "Для Дек бокса",
+	"divider.forDeckBox": "Для дек бокса",
 	"color.grayscale": "Ч/б",
 	"color.color": "Цветной",
 	"divider.type.scenario": "Сюжет",
@@ -256,5 +256,6 @@
 	"mui divider.arkham-index.customImage.horizontal.size": "Рекомендуемый размер картинки: 1098x632px",
 	"mui divider.arkham-index.customImage.vertical.size": "Рекомендуемый размер картинки: 839x910px",
 	"Investigator Starter Decks": "Стартовые колоды сыщиков",
-	"category.arkham-index.description": "Разделители с артами из игры, поддержкой вкладок и загрузкой своих изображений"
+	"category.arkham-index.description": "Разделители с артами из игры, поддержкой вкладок и загрузкой своих изображений",
+	"divider.arkham-index.deckbox.name": "Для дек бокса"
 }

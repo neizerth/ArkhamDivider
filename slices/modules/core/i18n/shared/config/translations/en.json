@@ -252,5 +252,6 @@
 	"divider.arkham-index.noTab100.name": "No tab 65x100",
 	"mui divider.arkham-index.customImage.horizontal.size": "Recommended image size: 1098x632px",
 	"mui divider.arkham-index.customImage.vertical.size": "Recommended image size: 839x910px",
-	"category.arkham-index.description": "Dividers with art from the game, tab support and custom image upload"
+	"category.arkham-index.description": "Dividers with art from the game, tab support and custom image upload",
+	"divider.arkham-index.deckbox.name": "Deck Box"
 }

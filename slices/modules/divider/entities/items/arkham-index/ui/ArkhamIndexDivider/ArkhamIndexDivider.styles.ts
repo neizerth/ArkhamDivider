@@ -5,7 +5,11 @@ import type { ArkhamIndexDividerSxCallback } from "../../model";
 
 export const getBackgroundSx: PrintSxCallback = () => ({
 	position: "absolute",
-	inset: 0,
+	left: "50%",
+	top: "50%",
+	transform: "translate(-50%, -50%)",
+	width: "100%",
+	height: "100%",
 	objectFit: "cover",
 });
 
@@ -103,7 +107,7 @@ export const getBackgroundIconSx: ArkhamIndexDividerSxCallback<{
 export const getMenuSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 5,
-	top: `calc(50% - ${mm(3)})`,
+	top: `calc(50% - ${mm(7)})`,
 	transform: "translateY(-50%)",
 	left: mm(2.5),
 	color: "#ffffff",

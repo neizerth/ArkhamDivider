@@ -1,4 +1,4 @@
-import { sleeve65x100 } from "@/entities/sleeve/config/sizes";
+import { sleeve65x100, tarot } from "@/entities/sleeve/config/sizes";
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import { createSize } from "@/shared/util";
 import type { ArkhamIndexDividerLayout } from "../model";
@@ -71,6 +71,36 @@ const trim: ArkhamIndexDividerLayout = {
 	},
 	params: {
 		title: false,
+	},
+	tabs: null,
+};
+
+const deckbox: ArkhamIndexDividerLayout = {
+	...horizontal,
+	id: "arkham-index-deckbox",
+	groupId: "deckbox",
+	name: "divider.arkham-index.deckbox.name",
+	previewName: "divider.arkham-index.deckbox.name",
+	size: createSize(94, 70),
+	printSize: {
+		300: {
+			size: createSize(1110, 827),
+			bleedSize: createSize(1181, 898),
+		},
+	},
+	sleeves: [
+		{
+			id: tarot.id,
+			size: tarot,
+			description: "info.sleeve.customCut.description",
+		},
+	],
+	params: {
+		title: false,
+	},
+	compatibility: {
+		chapter1Box: true,
+		deckBox: true,
 	},
 	tabs: null,
 };
@@ -164,6 +194,7 @@ export const arkhamIndexLayouts: DividerLayout[] = [
 	horizontal,
 	medium,
 	trim,
+	deckbox,
 	vertical,
 	verticalMedium,
 	verticalTrim,

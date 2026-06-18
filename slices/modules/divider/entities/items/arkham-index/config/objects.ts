@@ -101,6 +101,19 @@ export const arkhamIndexDividerHorizontalObjects = {
 	},
 };
 
+export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
+	arkhamIndexDividerHorizontalObjects,
+	{
+		tabTitle: {
+			default: {
+				fontSize: 4.5,
+				height: 6,
+				top: 0,
+			},
+		},
+	},
+);
+
 export const arkhamIndexDividerHorizontalSmallObjects = mergeDeepRight(
 	arkhamIndexDividerHorizontalObjects,
 	{
