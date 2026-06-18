@@ -13,7 +13,7 @@ export const getArkhamIndexDividerLayoutObjects = (
 	if (layout.id.includes("deckbox")) {
 		return arkhamIndexDividerDeckboxObjects;
 	}
-	if (layout.id === "arkham-index-vertical-trim") {
+	if (!layout.tabs && layout.orientation === "vertical") {
 		return arkhamIndexDividerVerticalTrimObjects;
 	}
 	if (!layout.tabs) {

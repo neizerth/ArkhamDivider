@@ -165,6 +165,32 @@ const verticalTrim: ArkhamIndexDividerLayout = {
 	tabs: null,
 };
 
+const verticalTrim95: ArkhamIndexDividerLayout = {
+	...vertical,
+	id: "arkham-index-vertical-trim-95",
+	groupId: "vertical-trim-95",
+	size: createSize(65, 95),
+	name: "divider.arkham-index.noTab95.name",
+	previewName: "divider.arkham-index.noTab95.name",
+	printSize: {
+		300: {
+			size: createSize(768, 1122),
+			bleedSize: createSize(839, 1193),
+		},
+	},
+	sleeves: [
+		{
+			id: sleeve65x100.id,
+			size: sleeve65x100,
+			description: "info.sleeve.customCut.description",
+		},
+	],
+	params: {
+		title: false,
+	},
+	tabs: null,
+};
+
 const verticalTrim100: ArkhamIndexDividerLayout = {
 	...verticalTrim,
 	id: "arkham-index-vertical-trim-100",
@@ -197,6 +223,8 @@ export const arkhamIndexLayouts: DividerLayout[] = [
 	deckbox,
 	vertical,
 	verticalMedium,
+
+	verticalTrim95,
 	verticalTrim,
 	verticalTrim100,
 ];
