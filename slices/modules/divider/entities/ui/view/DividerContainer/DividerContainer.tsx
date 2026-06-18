@@ -4,5 +4,12 @@ import { fullSize } from "@/shared/config";
 type DividerContainerProps = BoxProps;
 
 export function DividerContainer(props: DividerContainerProps) {
-	return <Box {...props} {...fullSize} position="relative" />;
+	return (
+		<Box
+			{...props}
+			{...fullSize}
+			position="relative"
+			sx={{ isolation: "isolate", ...props.sx }}
+		/>
+	);
 }

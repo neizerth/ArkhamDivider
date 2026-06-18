@@ -19,7 +19,12 @@ export function getArkhamIndexDividerImageUrl({
 	const imagesUrl = `${baseUrl}/images`;
 
 	if (divider.layoutType === "investigator") {
-		const base = `${imagesUrl}/investigator/${orientation}/${divider.investigator.code}`;
+		const code = divider.investigator?.code;
+		if (!code) {
+			return;
+		}
+
+		const base = `${imagesUrl}/investigator/${orientation}/${code}`;
 
 		if (version > 1) {
 			return `${base}-${version}.avif`;
@@ -27,7 +32,11 @@ export function getArkhamIndexDividerImageUrl({
 		return `${base}.avif`;
 	}
 
-	const { story } = divider;
+	const story = divider.story;
+	if (!story) {
+		return;
+	}
+
 	const storyCode = story.return_to_code ?? story.code;
 	const scenarioBase = `${imagesUrl}/scenario/${storyCode}/${orientation}`;
 
@@ -45,5 +54,10 @@ export function getArkhamIndexDividerImageUrl({
 		return `${scenarioBase}/${id}.avif`;
 	}
 
-	return `${scenarioBase}/${divider.scenario.id}.avif`;
+	const scenarioId = divider.scenario?.id;
+	if (!scenarioId) {
+		return;
+	}
+
+	return `${scenarioBase}/${scenarioId}.avif`;
 }

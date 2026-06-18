@@ -4,6 +4,7 @@ import IconButton, { type IconButtonProps } from "@mui/material/IconButton";
 import type { SxProps } from "@mui/material/styles";
 import { isString } from "ramda-adjunct";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { isSafari } from "@/shared/config";
 import { getStyleProp, setInputCursorAtTheEnd } from "@/shared/lib";
 import { delay, sanitizeHTML } from "@/shared/util";
 
@@ -88,6 +89,12 @@ export function BoxInput({
 
 	const onChange = useCallback(
 		(event: React.FormEvent<HTMLDivElement>) => {
+			// Safari keeps routing keystrokes to a stale contentEditable selection
+			// when focus moved elsewhere (e.g. nearby icon/color controls).
+			if (isSafari && ref.current && document.activeElement !== ref.current) {
+				ref.current.focus({ preventScroll: true });
+			}
+
 			const value = sanitizeHTML(event.currentTarget.innerText);
 
 			if (!value) {
@@ -101,7 +108,7 @@ export function BoxInput({
 				setStrokeValue(value);
 			}
 		},
-		[clear, onChangeProp, onValueChangeProp, stroke],
+		[clear, onChangeProp, onValueChangeProp, stroke, ref.current],
 	);
 
 	const onFocus = useCallback(
@@ -114,6 +121,8 @@ export function BoxInput({
 
 	const onBlur = useCallback(
 		(event: React.FocusEvent<HTMLDivElement>) => {
+			// WebKit keeps a ghost selection on blurred contentEditable nodes.
+			window.getSelection()?.removeAllRanges();
 			// delay is used to prevent the icon button from being hidden immediately
 			delay(300).then(() => setIsFocused(false));
 			props.onBlur?.(event);
@@ -131,6 +140,10 @@ export function BoxInput({
 		...positionProps,
 		...props.sx,
 		outline: "none",
+		userSelect: "text",
+		WebkitUserSelect: "text",
+		direction: "ltr",
+		unicodeBidi: "plaintext",
 		opacity: props.hidden ? 0 : 1,
 		visibility: props.hidden ? "hidden" : "visible",
 		pointerEvents: props.hidden ? "none" : "auto",
@@ -182,6 +195,7 @@ export function BoxInput({
 		<Box sx={containerSx}>
 			<Box
 				contentEditable
+				dir="ltr"
 				spellCheck={false}
 				{...props}
 				sx={sx}
@@ -194,7 +208,12 @@ export function BoxInput({
 			{stroke && !props.hidden && <Box sx={strokeSx}>{strokeValue}</Box>}
 
 			{showClear && (
-				<IconButton {...clearProps} sx={clearSx} onClick={clear}>
+				<IconButton
+					{...clearProps}
+					sx={clearSx}
+					onMouseDown={(event) => event.preventDefault()}
+					onClick={clear}
+				>
 					<ClearIcon />
 				</IconButton>
 			)}
