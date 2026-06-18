@@ -169,6 +169,9 @@ export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
 			mystic: { top: 0.5, left: 0.8, width: 5.5, height: 5.5 },
 			survivor: { top: 0.6, left: 0.7, width: 5.7, height: 5.7 },
 		},
+		topLine: {
+			top: -2.3,
+		},
 	},
 );
 
