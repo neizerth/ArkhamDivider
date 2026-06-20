@@ -19,7 +19,8 @@
 		"format": "npx @biomejs/biome check --write --unsafe ./slices",
 		"format:only": "npx @biomejs/biome format --write ./slices",
 		"lint": "npx @biomejs/biome check ./slices",
-		"lint:fix": "npx @biomejs/biome check --write ./slices"
+		"lint:fix": "npx @biomejs/biome check --write ./slices",
+		"deploy:workflows": "sh ./scripts/trigger-deploy-workflows.sh"
 	},
 	"dependencies": {
 		"@emotion/css": "^11.13.5",

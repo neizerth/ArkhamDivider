@@ -1,0 +1,11 @@
+name: Deploy All
+
+on:
+  workflow_dispatch:
+
+jobs:
+  vercel-redeploy:
+    uses: ./.github/workflows/vercel-redeploy.yml
+
+  deploy-fallback:
+    uses: ./.github/workflows/deploy-fallback.yml

@@ -2,6 +2,7 @@ name: Vercel Redeploy (Deploy Hook)
 
 on:
   workflow_dispatch:
+  workflow_call:
   # Twice per day (UTC)
   schedule:
     - cron: '0 3,15 * * *'
