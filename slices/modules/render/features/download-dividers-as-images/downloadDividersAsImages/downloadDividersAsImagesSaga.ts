@@ -124,7 +124,9 @@ function* zipDownloadWorker({
 		let progress = 0;
 
 		try {
-			for (const divider of dividers) {
+			for (let i = 0; i < total; i++) {
+				const divider = dividers[i];
+
 				if (zipFailed) {
 					break;
 				}
@@ -150,7 +152,9 @@ function* zipDownloadWorker({
 				}
 
 				const safeName = sanitizeFileName(divider.title);
-				const filename = `${safeName}.${imageFormat}`;
+				const index = (i + 1).toString().padStart(total.toString().length, "0");
+
+				const filename = `${index}_${safeName}.${imageFormat}`;
 				const file = new ZipPassThrough(filename);
 				zip.add(file);
 				file.push(contents as Uint8Array, true);
