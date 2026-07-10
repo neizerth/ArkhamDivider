@@ -149,12 +149,6 @@ export const getEncounterSetDividers = (
 			Boolean(scenario.encounterSet?.code) &&
 			extraEncounters.some(propEq(scenario.encounterSet?.code, "code"));
 
-		console.log({
-			isExtra,
-			scenario,
-			extraEncounters,
-		});
-
 		const packCode = scenario.encounterSet?.pack_code ?? "";
 		const cycleCode = scenario.encounterSet?.cycle_code ?? "";
 
