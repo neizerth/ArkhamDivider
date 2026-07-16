@@ -29,7 +29,13 @@ export const SarnetskyDividerPDF: PDFDivider<SarnetskyDividerParams> = async (
 	ctx,
 ) => {
 	const { story, fontSizeScale = 100, type, side } = props;
-	const { text, lasercut, unit, language, layout } = ctx;
+	const { text, lasercut, unit, language, layout, scenarioParams } = ctx;
+
+	const { singleSide = false } = scenarioParams;
+
+	if (singleSide && side === "back") {
+		return;
+	}
 
 	const params = props.params as SarnetskyDividerParams | undefined;
 
