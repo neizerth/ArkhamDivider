@@ -14,10 +14,13 @@ import {
 } from "redux-saga/effects";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import { selectDividersWithRelations } from "@/modules/divider/features/lib";
-import { selectPrintableLayoutSize } from "@/modules/divider/shared/lib";
+import {
+	selectPrintableLayoutSize,
+	selectScenarioParams,
+} from "@/modules/divider/shared/lib";
 import { selectDPI } from "@/modules/print/shared/lib";
 import { createStreamingDownloadSink } from "@/modules/render/shared/lib/logic/createStreamingDownloadSink";
-import type { ReturnAwaited } from "@/shared/model";
+import type { ReturnAwaited, Side } from "@/shared/model";
 import {
 	cancelRender,
 	finishRender,
@@ -39,6 +42,12 @@ function sanitizeFileName(name: string): string {
 	return name.replace(/[/\\?*:<>|"]/g, "_");
 }
 
+type ZipRenderItem = {
+	divider: ReturnType<typeof selectDividersWithRelations>[number];
+	side: Side;
+	dividerIndex: number;
+};
+
 function* zipDownloadWorker({
 	payload,
 }: ReturnType<typeof downloadDividersAsImages>) {
@@ -54,10 +63,31 @@ function* zipDownloadWorker({
 	const printableLayoutSize: ReturnType<typeof selectPrintableLayoutSize> =
 		yield select(selectPrintableLayoutSize);
 	const dpi: ReturnType<typeof selectDPI> = yield select(selectDPI);
+	const scenarioParams: ReturnType<typeof selectScenarioParams> =
+		yield select(selectScenarioParams);
 
 	const size = printableLayoutSize?.size;
 	const effectiveDpi = payloadDpi ?? dpi;
-	const total = dividers.length;
+	const { singleSide = false } = scenarioParams;
+
+	// singleSide backs differ (blank) and only exist in the DOM when duplex is on;
+	// the store still has front-only scenario/player dividers, so expand here.
+	const items: ZipRenderItem[] = dividers.flatMap((divider, dividerIndex) => {
+		if (singleSide && divider.side !== "back") {
+			return [
+				{ divider, side: "front" as const, dividerIndex },
+				{ divider, side: "back" as const, dividerIndex },
+			];
+		}
+		return [
+			{
+				divider,
+				side: (divider.side ?? "front") as Side,
+				dividerIndex,
+			},
+		];
+	});
+	const total = items.length;
 
 	if (total === 0 || !layout || !size) {
 		return;
@@ -125,7 +155,7 @@ function* zipDownloadWorker({
 
 		try {
 			for (let i = 0; i < total; i++) {
-				const divider = dividers[i];
+				const { divider, side, dividerIndex } = items[i];
 
 				if (zipFailed) {
 					break;
@@ -135,7 +165,7 @@ function* zipDownloadWorker({
 
 				const options: RenderDividerOptions = {
 					dividerId: divider.id,
-					side: divider.side,
+					side,
 					dpi: effectiveDpi,
 					imageFormat,
 					size,
@@ -152,9 +182,12 @@ function* zipDownloadWorker({
 				}
 
 				const safeName = sanitizeFileName(divider.title);
-				const index = (i + 1).toString().padStart(total.toString().length, "0");
+				const index = (dividerIndex + 1)
+					.toString()
+					.padStart(dividers.length.toString().length, "0");
+				const sideSuffix = singleSide ? `_${side}` : "";
 
-				const filename = `${index}_${safeName}.${imageFormat}`;
+				const filename = `${index}_${safeName}${sideSuffix}.${imageFormat}`;
 				const file = new ZipPassThrough(filename);
 				zip.add(file);
 				file.push(contents as Uint8Array, true);
