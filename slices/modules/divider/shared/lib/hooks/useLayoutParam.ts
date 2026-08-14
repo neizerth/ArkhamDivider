@@ -1,5 +1,4 @@
 import { useCallback } from "react";
-import { selectCurrentLanguage } from "@/modules/core/i18n/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { selectLayoutId, setLayoutParam } from "../store";
 
@@ -11,10 +10,9 @@ export type UseLayoutParamOptions = {
 
 export const useLayoutParam = <T = unknown>(options: UseLayoutParamOptions) => {
 	const dispatch = useAppDispatch();
-	const currentLocale = useAppSelector(selectCurrentLanguage);
 	const currentLayoutId = useAppSelector(selectLayoutId);
 	const { layoutId = currentLayoutId, key } = options;
-	const locale = options.locale ?? currentLocale;
+	const locale = options.locale ?? "global";
 
 	return useCallback(
 		(value: T) => {

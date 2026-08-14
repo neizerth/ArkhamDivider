@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { isEmptyIcon } from "@/modules/core/icon/shared/lib";
 import {
+	selectGlobalLayoutParam,
 	selectLayout,
 	selectLayoutFontFamily,
 } from "@/modules/divider/entities/lib";
-import { selectLocaleLayoutParam } from "@/modules/divider/entities/lib/store/selectors/layout/selectLocaleLayoutParam";
 import { getDividerIcon } from "@/modules/divider/features/lib";
 import { getDividerFaction } from "@/modules/divider/shared/lib";
 import { useAppSelector } from "@/shared/lib";
@@ -38,7 +38,7 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 	const fontFamily = useAppSelector(selectLayoutFontFamily);
 
 	const layoutBackSideShift = useAppSelector(
-		selectLocaleLayoutParam<boolean | undefined>("backSideShift"),
+		selectGlobalLayoutParam<boolean | undefined>("backSideShift"),
 	);
 
 	const backSideShift = layoutBackSideShift && divider.side === "back";
