@@ -86,20 +86,10 @@ export default defineConfig(({ mode }) => ({
 		include: ["react", "react-dom", "react-router"],
 		exclude: ["wasm-vips"],
 	},
-	build: {
-		rollupOptions: {
-			output: {
-				manualChunks(id) {
-					if (!id.includes("node_modules")) {
-						return;
-					}
-					// Keep node_modules in a single vendor chunk to avoid
-					// circular chunk dependencies (e.g. react-vendor <-> mui-vendor)
-					// that can happen with fine-grained manual chunking.
-					return "vendor";
-				},
-			},
-		},
-	},
+	// No `manualChunks`: grouping every node_modules id into one "vendor" chunk avoided
+	// circular chunk dependencies (react-vendor <-> mui-vendor), but it also merged the
+	// deps of every dynamic import — routes, divider types, pdfkit, wasm-vips,
+	// modern-screenshot, react-markdown — back into a single initial chunk.
+	// Rollup's own splitting follows the dynamic-import graph and keeps them deferred.
 	assetsInclude: ["**/*.ttf"],
 }));

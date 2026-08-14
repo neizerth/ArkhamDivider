@@ -40,8 +40,8 @@ export type AppSelector<ReturnType = unknown> = (
  * Deliberately NOT persisted:
  * - `router`   — resynced from the real router on mount (`useRouterLocation`),
  *                so a stored location is stale at best.
- * - `render`   — export progress / capture flags; `clearRenderingOnStartSaga`
- *                exists only to undo a persisted `pending` state after reload.
+ * - `render`   — export progress / capture flags; persisting them stranded the UI
+ *                in a `pending` state after a reload.
  * - `story`    — derived from the route.
  * - `arkhamesqueClassic`, `arkhamIndex` — lazily injected, refetched on demand.
  *
