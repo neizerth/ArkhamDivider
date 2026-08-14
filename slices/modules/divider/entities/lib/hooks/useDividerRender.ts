@@ -1,5 +1,5 @@
 import {
-	selectDividerRenderId,
+	selectIsDividerRendering,
 	selectRenderType,
 } from "@/modules/render/shared/lib";
 import type { RenderType } from "@/modules/render/shared/model";
@@ -11,13 +11,13 @@ type Options = {
 };
 
 export const useDividerRender = (options: Options) => {
-	const renderId = useAppSelector(selectDividerRenderId);
-	const renderType = useAppSelector(selectRenderType);
 	const { dividerId } = options;
+	const isRendering = useAppSelector(selectIsDividerRendering(dividerId));
+	const renderType = useAppSelector(selectRenderType);
 
 	if (!options.renderType) {
-		return renderId === dividerId;
+		return isRendering;
 	}
 
-	return renderId === dividerId && renderType === options.renderType;
+	return isRendering && renderType === options.renderType;
 };

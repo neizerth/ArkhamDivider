@@ -4,7 +4,7 @@ import {
 	useDividerParam,
 } from "@/modules/divider/shared/lib";
 import { getPrintNodeRect } from "@/modules/print/shared/lib";
-import { selectDividerRenderId } from "@/modules/render/shared/lib";
+import { selectIsRendering } from "@/modules/render/shared/lib";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import type { BoxRect } from "@/shared/model";
 import { isBoxRectEquals } from "@/shared/util";
@@ -22,7 +22,7 @@ export const useDividerObject = ({
 	containerWidth,
 	param,
 }: Options) => {
-	const exportId = useAppSelector(selectDividerRenderId);
+	const isRendering = useAppSelector(selectIsRendering);
 	const currentRect = useAppSelector(
 		selectDividerParam<BoxRect>({ id: dividerId, key: param }),
 	);
@@ -32,7 +32,7 @@ export const useDividerObject = ({
 	const setParam = useDividerParam<BoxRect>({ dividerId, key: param });
 
 	useEffect(() => {
-		if (!ref.current || !rect || !containerRef.current || exportId) {
+		if (!ref.current || !rect || !containerRef.current || isRendering) {
 			return;
 		}
 
@@ -65,7 +65,7 @@ export const useDividerObject = ({
 		containerRef.current,
 		containerWidth,
 		currentRect,
-		exportId,
+		isRendering,
 		setParam,
 	]);
 

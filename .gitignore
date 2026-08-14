@@ -31,3 +31,4 @@ dist-ssr
 
 .env.*
 .github/.rsync-exclude
+audit/

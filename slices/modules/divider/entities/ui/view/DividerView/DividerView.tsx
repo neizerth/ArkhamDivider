@@ -12,7 +12,7 @@ import {
 } from "@/modules/print/shared/lib";
 import {
 	getRenderScale,
-	selectDividerRenderId,
+	selectIsDividerRendering,
 } from "@/modules/render/shared/lib";
 import { absoluteFill, isFirefox } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
@@ -31,7 +31,7 @@ export function DividerView(props: DividerViewProps) {
 	const categoryId = useAppSelector(selectCategoryId);
 	const printScale = useAppSelector(selectWebPrintScale);
 	const previewZoom = useAppSelector(selectPreviewZoom);
-	const renderId = useAppSelector(selectDividerRenderId);
+	const isRendering = useAppSelector(selectIsDividerRendering(props.id));
 	const [ref, rect] = useBoundingRect();
 
 	if (!layoutSize || !categoryId) {
@@ -43,7 +43,6 @@ export function DividerView(props: DividerViewProps) {
 		return null;
 	}
 	const { size } = layoutSize;
-	const isRendering = renderId === props.id;
 	const scale = getRenderScale({
 		boundingRect: rect,
 		previewZoom,

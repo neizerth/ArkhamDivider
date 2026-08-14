@@ -3,8 +3,8 @@ import {
 	type IconCorrectionProps,
 } from "@/modules/core/icon/entities/ui";
 import {
-	selectDividerRenderId,
 	selectHideIconNodes,
+	selectIsDividerRendering,
 } from "@/modules/render/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 
@@ -19,9 +19,9 @@ export function DividerIcon({
 	...props
 }: DividerIconProps) {
 	const hide = useAppSelector(selectHideIconNodes);
-	const renderId = useAppSelector(selectDividerRenderId);
+	const isRendering = useAppSelector(selectIsDividerRendering(dividerId));
 
-	const shouldHide = !visible && hide && renderId === dividerId;
+	const shouldHide = !visible && hide && isRendering;
 	if (shouldHide) {
 		return null;
 	}
