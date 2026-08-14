@@ -255,5 +255,6 @@
 	"mui divider.arkham-index.customImage.horizontal.size": "Recommended image size: 1098x632px",
 	"mui divider.arkham-index.customImage.vertical.size": "Recommended image size: 839x910px",
 	"category.arkham-index.description": "Dividers with art from the game, tab support and custom image upload",
-	"divider.arkham-index.deckbox.name": "Deck Box"
+	"divider.arkham-index.deckbox.name": "Deck Box",
+	"divider.layout.arkham-index.sideShift": "Side shift. Use if the printer gives large shifts on the back side. This will not cut the card information when cutting."
 }

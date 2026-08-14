@@ -119,8 +119,6 @@ export const getInfoSx: ArkhamIndexDividerSxCallback = ({ mm }) => ({
 	fontSize: mm(3),
 	bottom: mm(1.5),
 	right: mm(1.5),
-	gap: mm(0.5),
-	alignItems: "center",
 	color: "white",
 	cursor: "pointer",
 });

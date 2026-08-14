@@ -4,6 +4,7 @@ import {
 	selectLayout,
 	selectLayoutFontFamily,
 } from "@/modules/divider/entities/lib";
+import { selectLocaleLayoutParam } from "@/modules/divider/entities/lib/store/selectors/layout/selectLocaleLayoutParam";
 import { getDividerIcon } from "@/modules/divider/features/lib";
 import { getDividerFaction } from "@/modules/divider/shared/lib";
 import { useAppSelector } from "@/shared/lib";
@@ -36,6 +37,11 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 	});
 	const fontFamily = useAppSelector(selectLayoutFontFamily);
 
+	const layoutBackSideShift = useAppSelector(
+		selectLocaleLayoutParam<boolean | undefined>("backSideShift"),
+	);
+
+	const backSideShift = layoutBackSideShift && divider.side === "back";
 	const faction = getDividerFaction(divider) ?? "neutral";
 
 	return useMemo((): ArkhamIndexDividerSxOptions => {
@@ -47,6 +53,16 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 			indentSize,
 			faction,
 			fontFamily,
+			backSideShift,
 		};
-	}, [objects, showIcon, tabIndex, tabSize, indentSize, faction, fontFamily]);
+	}, [
+		objects,
+		showIcon,
+		tabIndex,
+		tabSize,
+		indentSize,
+		faction,
+		fontFamily,
+		backSideShift,
+	]);
 };

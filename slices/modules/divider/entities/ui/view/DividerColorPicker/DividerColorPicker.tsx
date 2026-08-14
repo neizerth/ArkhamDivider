@@ -4,7 +4,7 @@ import { ColorPicker } from "@/entities/common/ui";
 import {
 	selectDividerById,
 	setAllDividersParam,
-	setDividerParam,
+	useDividerParam,
 } from "@/modules/divider/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
@@ -30,11 +30,16 @@ export function DividerColorPicker({
 	const params = divider?.params as Record<string, unknown> | undefined;
 	const value = params?.[param] as string | undefined;
 
+	const setParam = useDividerParam<string | undefined>({
+		dividerId,
+		key: param,
+	});
+
 	const onColorSelect = useCallback(
 		(color?: string) => {
-			dispatch(setDividerParam({ id: divider.id, key: param, value: color }));
+			setParam(color);
 		},
-		[divider.id, param, dispatch],
+		[setParam],
 	);
 
 	const onSelectAll = useCallback(

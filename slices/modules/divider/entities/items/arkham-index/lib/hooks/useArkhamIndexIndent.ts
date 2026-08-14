@@ -1,11 +1,9 @@
 import { useCallback } from "react";
-import { setDividerParam } from "@/modules/divider/shared/lib";
-import { useAppDispatch } from "@/shared/lib";
+import { useDividerParam } from "@/modules/divider/shared/lib";
 import { useArkhamIndexContext } from "../../ui/ArkhamIndexContext";
 
 export const useArkhamIndexIndent = () => {
 	const { tabSize, tabIndex, divider } = useArkhamIndexContext();
-	const dispatch = useAppDispatch();
 	const indent = divider.params?.indent ?? false;
 	const canUseIndent = tabSize === 2 && tabIndex !== 0;
 	const canIncreaseIndent = !indent && canUseIndent;
@@ -13,29 +11,19 @@ export const useArkhamIndexIndent = () => {
 
 	const dividerId = divider.id;
 
+	const setIndent = useDividerParam({ dividerId, key: "indent" });
+
 	const increaseIndent = useCallback(() => {
 		if (canIncreaseIndent) {
-			dispatch(
-				setDividerParam({
-					id: dividerId,
-					key: "indent",
-					value: true,
-				}),
-			);
+			setIndent(true);
 		}
-	}, [canIncreaseIndent, dispatch, dividerId]);
+	}, [canIncreaseIndent, setIndent]);
 
 	const decreaseIndent = useCallback(() => {
 		if (canDecreaseIndent) {
-			dispatch(
-				setDividerParam({
-					id: dividerId,
-					key: "indent",
-					value: false,
-				}),
-			);
+			setIndent(false);
 		}
-	}, [canDecreaseIndent, dispatch, dividerId]);
+	}, [canDecreaseIndent, setIndent]);
 
 	return {
 		canIncreaseIndent,

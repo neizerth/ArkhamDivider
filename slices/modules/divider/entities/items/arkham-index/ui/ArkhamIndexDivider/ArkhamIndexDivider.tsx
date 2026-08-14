@@ -102,6 +102,8 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { side } = props;
 
 	const showMediaContent = props.layoutType !== "player";
+	const showStroke = Boolean(layout.tabs);
+
 	return (
 		<ArkhamIndexContext.Provider
 			value={{ layout, divider: props, tabSize, tabIndex, sxOptions }}
@@ -150,7 +152,9 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						visible={!lasercutEnabled}
 						visibleOn={["image", "zip"]}
 					>
-						{side === "front" && <BackgroundStroke sx={backgroundStrokeSx} />}
+						{side === "front" && showStroke && (
+							<BackgroundStroke sx={backgroundStrokeSx} />
+						)}
 					</NotExportable>
 
 					<NotExportable>
@@ -162,7 +166,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 							title={t("divider.arkhamIndex.background.pickerTitle")}
 						/>
 					</NotExportable>
-					<CardsCount sx={infoSx} onClick={setShowCardsInfo.toggle} />
+					<CardsCount sx={infoSx} onСardCountClick={setShowCardsInfo.toggle} />
 					{showCardsInfo && <CardsInfo sx={dividerCardsSx} divider={props} />}
 
 					{showBackgroundIcon && (

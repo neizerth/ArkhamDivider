@@ -67,29 +67,39 @@ export const divider = createSlice({
 	...state,
 	reducers: {
 		...state.reducers,
-		setCurrentLayoutParams: (
+		setLayoutParams: (
 			state,
-			{ payload }: PayloadAction<DividerLayoutParams>,
+			{
+				payload,
+			}: PayloadAction<{
+				layoutId?: string;
+				layoutParams: DividerLayoutParams;
+			}>,
 		) => {
-			if (!state.layoutId) {
+			const { layoutId = state.layoutId, layoutParams } = payload;
+			if (!layoutId) {
 				return;
 			}
 			state.layoutParams ??= {};
-			state.layoutParams[state.layoutId] = payload;
+			state.layoutParams[layoutId] = layoutParams;
 		},
-		setCurrentLayoutParam: (
+		setLayoutParam: (
 			state,
-			action: PayloadAction<{ key: string; value: unknown; locale: string }>,
+			action: PayloadAction<{
+				key: string;
+				value: unknown;
+				locale: string;
+				layoutId?: string;
+			}>,
 		) => {
-			if (!state.layoutId) {
+			const { key, value, locale, layoutId = state.layoutId } = action.payload;
+			if (!layoutId) {
 				return;
 			}
-
-			const { key, value, locale } = action.payload;
 			state.layoutParams ??= {};
-			state.layoutParams[state.layoutId] ??= {};
-			state.layoutParams[state.layoutId][locale] ??= {};
-			state.layoutParams[state.layoutId][locale][key] = value;
+			state.layoutParams[layoutId] ??= {};
+			state.layoutParams[layoutId][locale] ??= {};
+			state.layoutParams[layoutId][locale][key] = value;
 		},
 	},
 	selectors: {
@@ -106,8 +116,7 @@ export const {
 	setPlayerParams,
 	setInvestigatorParams,
 	setLayoutParams,
-	setCurrentLayoutParams,
-	setCurrentLayoutParam,
+	setLayoutParam,
 } = divider.actions;
 
 export const {

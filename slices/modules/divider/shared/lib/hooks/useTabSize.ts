@@ -1,6 +1,7 @@
 import { useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "@/shared/lib";
-import { selectDividerParam, setDividerParam } from "../store";
+import { useAppSelector } from "@/shared/lib";
+import { selectDividerParam } from "../store";
+import { useDividerParam } from "./useDividerParam";
 
 type Options = {
 	dividerId: string;
@@ -9,7 +10,6 @@ type Options = {
 };
 
 export const useTabSize = ({ dividerId, sizes, tabSize }: Options) => {
-	const dispatch = useAppDispatch();
 	const currentSize = useAppSelector(
 		selectDividerParam({ id: dividerId, key: "tabSize" }),
 	);
@@ -22,12 +22,10 @@ export const useTabSize = ({ dividerId, sizes, tabSize }: Options) => {
 	const canEnlarge = sizeIndex < sizes.length - 1;
 	const canShrink = sizeIndex > 0;
 
-	const setTabSize = useCallback(
-		(size: unknown) => {
-			dispatch(setDividerParam({ id: dividerId, key: "tabSize", value: size }));
-		},
-		[dispatch, dividerId],
-	);
+	const setTabSize = useDividerParam({
+		dividerId,
+		key: "tabSize",
+	});
 
 	const enlarge = useCallback(() => {
 		if (!canEnlarge) {

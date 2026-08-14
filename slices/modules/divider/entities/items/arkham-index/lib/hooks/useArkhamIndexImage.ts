@@ -1,13 +1,12 @@
 import { useCallback } from "react";
-import { setDividerParam } from "@/modules/divider/shared/lib";
+import { useDividerParam } from "@/modules/divider/shared/lib";
 import { useNumber } from "@/shared/lib/hooks/common";
-import { useAppDispatch, useAppSelector } from "@/shared/lib/hooks/store";
+import { useAppSelector } from "@/shared/lib/hooks/store";
 import { getArkhamIndexDividerImageUrl } from "../../api";
 import { useArkhamIndexContext } from "../../ui/ArkhamIndexContext";
 import { selectArkhamIndexData } from "../store";
 
 export const useArkhamIndexImage = () => {
-	const dispatch = useAppDispatch();
 	const data = useAppSelector(selectArkhamIndexData);
 	const { divider, layout } = useArkhamIndexContext();
 
@@ -27,14 +26,10 @@ export const useArkhamIndexImage = () => {
 		max: coversCount,
 	});
 
-	const setCustomImage = useCallback(
-		(url: string | null) => {
-			dispatch(
-				setDividerParam({ id: dividerId, key: "customImage", value: url }),
-			);
-		},
-		[dispatch, dividerId],
-	);
+	const setCustomImage = useDividerParam<string | null>({
+		dividerId,
+		key: "customImage",
+	});
 
 	const revokeCustomImage = useCallback(() => {
 		if (customImage) {

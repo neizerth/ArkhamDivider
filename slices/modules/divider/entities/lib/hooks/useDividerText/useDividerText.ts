@@ -54,6 +54,7 @@ export const useDividerText = <T>({
 	});
 
 	const prevDefaultCurrentValueRef = useRef(defaultCurrentValue);
+
 	useEffect(() => {
 		const prevDefault = prevDefaultCurrentValueRef.current;
 		prevDefaultCurrentValueRef.current = defaultCurrentValue;

@@ -1,6 +1,6 @@
 import { put, select, takeEvery } from "redux-saga/effects";
 import { selectCurrentLanguage } from "@/modules/core/i18n/shared/lib";
-import { setCurrentLayoutParam } from "@/modules/divider/shared/lib";
+import { setLayoutParam } from "@/modules/divider/shared/lib";
 import { setLayoutFontFamily } from "./setLayoutFontFamily";
 
 function* worker({ payload }: ReturnType<typeof setLayoutFontFamily>) {
@@ -9,7 +9,7 @@ function* worker({ payload }: ReturnType<typeof setLayoutFontFamily>) {
 	);
 
 	yield put(
-		setCurrentLayoutParam({
+		setLayoutParam({
 			locale,
 			key: "fontFamily",
 			value: payload,

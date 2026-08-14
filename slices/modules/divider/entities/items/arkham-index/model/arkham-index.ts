@@ -34,6 +34,7 @@ export type ArkhamIndexDividerProps =
 export type ArkhamIndexDividerLayout = DividerLayout<{
 	title: boolean;
 	fontFamily?: FontFamily;
+	backSideShift?: boolean;
 }>;
 
 export type ArkhamIndexDividerLayoutObjects = ReturnType<
@@ -48,6 +49,7 @@ export type ArkhamIndexDividerSxOptions = {
 	indentSize: number;
 	faction: Faction;
 	fontFamily?: FontFamily;
+	backSideShift?: boolean;
 };
 
 export type ArkhamIndexDividerSxCallback<T = object> = PrintSxCallback<

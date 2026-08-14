@@ -2,9 +2,9 @@ import { useCallback } from "react";
 import type { IconRect } from "@/modules/core/icon/shared/model";
 import {
 	selectDividerParam,
-	setDividerParam,
+	useDividerParam,
 } from "@/modules/divider/shared/lib";
-import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { useAppSelector } from "@/shared/lib";
 import { isBoxRectEquals } from "@/shared/util";
 
 type Options = {
@@ -12,8 +12,6 @@ type Options = {
 };
 
 export const useEncounterIcons = ({ dividerId }: Options) => {
-	const dispatch = useAppDispatch();
-
 	const currentValue = useAppSelector(
 		selectDividerParam<IconRect[]>({
 			id: dividerId,
@@ -21,20 +19,19 @@ export const useEncounterIcons = ({ dividerId }: Options) => {
 		}),
 	);
 
+	const setScenarioEncounters = useDividerParam<IconRect[]>({
+		dividerId,
+		key: "scenarioEncounters",
+	});
+
 	return useCallback(
 		(icons: IconRect[]) => {
 			if (currentValue && !shouldUpdateIcons(currentValue, icons)) {
 				return;
 			}
-			dispatch(
-				setDividerParam({
-					id: dividerId,
-					key: "scenarioEncounters",
-					value: icons,
-				}),
-			);
+			setScenarioEncounters(icons);
 		},
-		[dispatch, dividerId, currentValue],
+		[currentValue, setScenarioEncounters],
 	);
 };
 
