@@ -1,5 +1,6 @@
 import Stack from "@mui/material/Stack";
 import { pick, range } from "ramda";
+import { memo } from "react";
 import { creditsParams } from "@/modules/print/shared/config";
 import {
 	getGridCropmarks,
@@ -29,7 +30,7 @@ type PrintablePageProps<Props extends WithId> = {
 	pageMargin: BoxPosition;
 };
 
-export function PrintablePage<T extends WithId>({
+function PrintablePageBase<T extends WithId>({
 	pageLayout,
 	Component,
 	showSide = false,
@@ -152,3 +153,14 @@ export function PrintablePage<T extends WithId>({
 		</Page>
 	);
 }
+
+/**
+ * A print sheet renders one of these per page, each mounting a full grid of dividers, so a
+ * re-render here is expensive. `PrintableContent` memoizes the props it spreads in, which is
+ * what makes this `memo` effective.
+ *
+ * The cast keeps the generic signature: `memo` would otherwise erase `<T extends WithId>`.
+ */
+export const PrintablePage = memo(
+	PrintablePageBase,
+) as typeof PrintablePageBase;

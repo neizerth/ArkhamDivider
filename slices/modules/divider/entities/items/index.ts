@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, memo } from "react";
 import type { DividerWithRelations } from "../../shared/model";
 import { arkhamStarterDividerCategoryId } from "./3mm/config";
 import { arkhamDecoCategoryId } from "./arkham-deco/config";
@@ -19,51 +19,66 @@ import { vintageDividerCategoryId } from "./vintage/config/common";
 
 export { dividerCategories, dividerLayouts, invocation2018CategoryId };
 
-const ClassicDivider = lazy(
+/**
+ * `memo` is needed even though `DividerView` is itself memoized. `DividerView` subscribes to
+ * preview zoom and print scale, so it re-renders whenever those change — while the divider's
+ * own props (a stable entry from the memoized `selectDividerPageLayouts`) are unchanged.
+ * Without `memo` that re-renders the whole divider subtree, times the print run.
+ */
+const lazyDivider = (
+	loader: () => Promise<{
+		// biome-ignore lint/suspicious/noExplicitAny: matches `dividerComponents` below
+		default: React.ComponentType<DividerWithRelations<any>>;
+	}>,
+) => memo(lazy(loader));
+
+const ClassicDivider = lazyDivider(
 	() => import("./classic/ui/ClassicDivider/ClassicDivider"),
 );
-const Invocation2018Divider = lazy(
+const Invocation2018Divider = lazyDivider(
 	() =>
 		import("./invocation2018/ui/Invocation2018Divider/Invocation2018Divider"),
 );
-const SarnetskyDivider = lazy(
+const SarnetskyDivider = lazyDivider(
 	() => import("./sarnetsky/ui/SarnetskyDivider/SarnetskyDivider"),
 );
-const SarnetskyBand = lazy(
+const SarnetskyBand = lazyDivider(
 	() => import("./sarnetsky-band/ui/SarnetskyBand/SarnetskyBand"),
 );
-const ArkhamDecoDivider = lazy(
+const ArkhamDecoDivider = lazyDivider(
 	() => import("./arkham-deco/ui/ArkhamDecoDivider/ArkhamDecoDivider"),
 );
-const RynoDivider = lazy(() => import("./ryno/ui/RynoDivider/RynoDivider"));
-const ArkhamesqueClassicDivider = lazy(
+const RynoDivider = lazyDivider(
+	() => import("./ryno/ui/RynoDivider/RynoDivider"),
+);
+const ArkhamesqueClassicDivider = lazyDivider(
 	() =>
 		import(
 			"./arkhamesque-classic/ui/ArkhamesqueClassicDivider/ArkhamesqueClassicDivider"
 		),
 );
-const ArkhamStarterDivider = lazy(
+const ArkhamStarterDivider = lazyDivider(
 	() => import("./3mm/ui/ArkhamStarterDivider/ArkhamStarterDivider"),
 );
-const VintageDivider = lazy(
+const VintageDivider = lazyDivider(
 	() => import("./vintage/ui/VintageDivider/VintageDivider"),
 );
-const InvestigatorToken = lazy(
+const InvestigatorToken = lazyDivider(
 	() => import("./investigator-tokens/ui/InvestigatorToken/InvestigatorToken"),
 );
-const Chapter2Divider = lazy(
+const Chapter2Divider = lazyDivider(
 	() => import("./chapter2/ui/Chapter2Divider/Chapter2Divider"),
 );
-const TCGDividerSticker = lazy(
+const TCGDividerSticker = lazyDivider(
 	() => import("./tcg-divider-sticker/ui/TCGDividerSticker/TCGDividerSticker"),
 );
-const BinderBookmark = lazy(
+const BinderBookmark = lazyDivider(
 	() => import("./binder-bookmark/ui/BinderBookmark/BinderBookmark"),
 );
-const SimpleSticker = lazy(
+const SimpleSticker = lazyDivider(
 	() => import("./simple-sticker/ui/SimpleSticker/SimpleSticker"),
 );
-const ArkhamIndexDivider = lazy(
+const ArkhamIndexDivider = lazyDivider(
 	() => import("./arkham-index/ui/ArkhamIndexDivider/ArkhamIndexDivider"),
 );
 

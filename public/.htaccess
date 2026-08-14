@@ -26,3 +26,26 @@
 
 # WASM MIME type
 AddType application/wasm .wasm
+
+# Caching. Keep in sync with the `headers` block in vercel.json.
+# The three prefixes are mutually exclusive, so these are independent blocks rather than
+# an If/ElseIf chain (ElseIf must directly follow its If, which comments would break).
+<IfModule mod_headers.c>
+  # Build output is content-hashed by Vite, so it can never go stale.
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header always set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+
+  # Deliberately NOT immutable: files under /fonts are replaced in place — notably
+  # ArkhamIcons.ttf, which `npm run font:install` re-downloads to the same path on every
+  # prebuild. A long immutable cache would strand clients on a stale icon font.
+  <If "%{REQUEST_URI} =~ m#^/fonts/#">
+    Header always set Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+  </If>
+
+  # Images are append-mostly: new dividers add new paths rather than replacing existing
+  # files, so they tolerate a longer window than /fonts.
+  <If "%{REQUEST_URI} =~ m#^/images/#">
+    Header always set Cache-Control "public, max-age=604800, stale-while-revalidate=2592000"
+  </If>
+</IfModule>

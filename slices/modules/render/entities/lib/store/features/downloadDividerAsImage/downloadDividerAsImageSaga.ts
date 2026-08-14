@@ -8,10 +8,10 @@ import {
 import { selectDPI } from "@/modules/print/shared/lib";
 import {
 	finishRender,
-	renderDivider,
 	setDividerRenderId,
 	startRender,
 } from "@/modules/render/shared/lib";
+import { renderDivider } from "@/modules/render/shared/lib/node";
 import type { ReturnAwaited } from "@/shared/model";
 import { downloadDividerAsImage } from "./downloadDividerAsImage";
 

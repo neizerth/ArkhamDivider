@@ -40,8 +40,6 @@ import type { RootState } from "@/shared/store";
 import {
 	cancelRender,
 	finishRender,
-	getVips,
-	renderDivider,
 	setDividerRenderId,
 	setHideIconNodes,
 	setHideTextNodes,
@@ -50,6 +48,8 @@ import {
 	setRenderStatusMessage,
 	startRender,
 } from "../../shared/lib";
+import { renderDivider } from "../../shared/lib/node";
+import { getVips } from "../../shared/lib/vips";
 import {
 	releaseExclusiveDownload,
 	tryAcquireExclusiveDownload,

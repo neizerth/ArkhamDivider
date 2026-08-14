@@ -24,14 +24,16 @@ import type { ReturnAwaited, Side } from "@/shared/model";
 import {
 	cancelRender,
 	finishRender,
-	type RenderDividerOptions,
-	renderDivider,
 	setDividerRenderId,
 	setRenderProgress,
 	setRenderProgressTotal,
 	setRenderStatusMessage,
 	startRender,
 } from "../../../shared/lib";
+import {
+	type RenderDividerOptions,
+	renderDivider,
+} from "../../../shared/lib/node";
 import {
 	releaseExclusiveDownload,
 	tryAcquireExclusiveDownload,

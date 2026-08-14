@@ -1,6 +1,7 @@
 import { GlobalStyles } from "@mui/material";
 import Box from "@mui/material/Box";
 import Stack, { type StackProps } from "@mui/material/Stack";
+import { useMemo } from "react";
 import {
 	selectDividerPageLayouts,
 	selectLayoutBleed,
@@ -41,6 +42,54 @@ export function PrintableContent(props: PrintableContentProps) {
 	const pageMargin = useAppSelector(selectPageMargin);
 	const story = useAppSelector(selectStory);
 
+	// Memoized above the early returns (hooks cannot be called conditionally). This component
+	// subscribes to a dozen selectors, and a fresh `pageSize`/`pageProps` object on every one
+	// of those updates defeats `memo` on `PrintablePage` and, through it, on `DividerView`.
+	const pageSize = useMemo(
+		() =>
+			pageFormat && pageLayoutGrid
+				? getPageSize({
+						units: "mm",
+						pageFormat,
+						unitSize: pageLayoutGrid.unitSize,
+						singleItemPerPage,
+						cropmarksEnabled,
+					})
+				: null,
+		[pageFormat, pageLayoutGrid, singleItemPerPage, cropmarksEnabled],
+	);
+
+	const pageProps = useMemo(
+		() =>
+			pageFormat && pageSize
+				? {
+						pageFormat,
+						showSide: doubleSided,
+						Component: DividerView,
+						singleItemPerPage,
+						previewZoom,
+						cropmarksEnabled,
+						bleed,
+						bleedEnabled,
+						pageSize,
+						enablePageCounter,
+						pageMargin,
+					}
+				: null,
+		[
+			pageFormat,
+			pageSize,
+			doubleSided,
+			singleItemPerPage,
+			previewZoom,
+			cropmarksEnabled,
+			bleed,
+			bleedEnabled,
+			enablePageCounter,
+			pageMargin,
+		],
+	);
+
 	if (!pageFormat || !pageLayoutGrid || pageLayouts.length === 0) {
 		return null;
 	}
@@ -49,35 +98,26 @@ export function PrintableContent(props: PrintableContentProps) {
 		return <StoryNotSupported />;
 	}
 
+	if (!pageSize || !pageProps) {
+		return null;
+	}
+
 	const sx = props.sx ?? {};
-
-	const pageSize = getPageSize({
-		units: "mm",
-		pageFormat,
-		unitSize: pageLayoutGrid.unitSize,
-		singleItemPerPage,
-		cropmarksEnabled,
-	});
-
-	const pageProps = {
-		pageFormat,
-		showSide: doubleSided,
-		Component: DividerView,
-		singleItemPerPage,
-		previewZoom,
-		cropmarksEnabled,
-		bleed,
-		bleedEnabled,
-		pageSize,
-		enablePageCounter,
-		pageMargin,
-	};
 
 	const zoom = previewZoom ? previewZoom : 100;
 
 	const marginId = JSON.stringify(pageMargin);
 
-	const debounceValue = `${pageLayouts.length}-${pageFormat.type}-${singleItemPerPage}-${previewZoom}-${marginId}`;
+	/**
+	 * Changing this remounts the whole print run, so it must only list things that actually
+	 * change what is rendered.
+	 *
+	 * `previewZoom` is deliberately absent: zoom is applied as a CSS width on the wrapper
+	 * below, so the browser can reflow in place. Including it cost a full unmount/remount of
+	 * every page on every zoom step — measured at ~2 s for a 63-divider run. `DividerView`
+	 * subscribes to the zoom itself and rescales from its own `ResizeObserver`.
+	 */
+	const debounceValue = `${pageLayouts.length}-${pageFormat.type}-${singleItemPerPage}-${marginId}`;
 
 	return (
 		<Stack
