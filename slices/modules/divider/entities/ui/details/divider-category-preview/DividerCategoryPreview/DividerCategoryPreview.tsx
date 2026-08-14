@@ -27,10 +27,21 @@ export function DividerCategoryPreview({ category }: DividerCategoryProps) {
 		<Card sx={{ height: "100%" }}>
 			<Box padding={2}>
 				<Link to={layoutRoute({ layoutId })}>
+					{/*
+					 * `component="img"` rather than CardMedia's `image` prop: the latter renders a
+					 * CSS background-image, which the browser always fetches. The home page lists
+					 * every category, so an <img> with `loading="lazy"` keeps the below-the-fold
+					 * previews off the critical path.
+					 */}
 					<CardMedia
-						sx={{ height: 200, backgroundSize: "contain" }}
+						component="img"
+						loading="lazy"
+						decoding="async"
+						// an <img> does not stretch like the background-image div it replaced,
+						// so the width has to be set explicitly
+						sx={{ width: "100%", height: 200, objectFit: "contain" }}
 						image={category.image}
-						title={t(name)}
+						alt={t(name)}
 					/>
 				</Link>
 				<Stack gap={1}>
