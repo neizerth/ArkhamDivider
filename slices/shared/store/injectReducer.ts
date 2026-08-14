@@ -1,5 +1,5 @@
 import type { Reducer, Store } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import { type Persistor, persistReducer } from "redux-persist";
 
 /**
  * Declare lazy slice keys and state types via declaration merging, for example:
@@ -26,6 +26,7 @@ export type InjectReducerFn = {
 
 type CreateInjectReducerOptions = {
 	store: Store;
+	persistor: Persistor;
 	persistConfig: Parameters<typeof persistReducer>[0];
 	buildRootReducer: () => Reducer;
 	asyncReducers: Record<string, Reducer>;
@@ -33,6 +34,7 @@ type CreateInjectReducerOptions = {
 
 export function createInjectReducer({
 	store,
+	persistor,
 	persistConfig,
 	buildRootReducer,
 	asyncReducers,
@@ -48,6 +50,17 @@ export function createInjectReducer({
 		}
 		asyncReducers[key] = injected;
 		store.replaceReducer(persistReducer(persistConfig, buildRootReducer()));
+
+		/**
+		 * `persistReducer` keeps `_persistoid`/`_paused` per instance and only
+		 * initializes them on the PERSIST action, which `persistStore` dispatches once
+		 * at startup. The instance created above never sees it, so without this call
+		 * persistence stops silently for the rest of the session.
+		 *
+		 * Re-dispatching PERSIST creates the persistoid and unpauses. State already
+		 * carries `_persist`, so redux-persist returns early — no second rehydrate.
+		 */
+		persistor.persist();
 	}
 
 	return injectReducerImpl as InjectReducerFn;
