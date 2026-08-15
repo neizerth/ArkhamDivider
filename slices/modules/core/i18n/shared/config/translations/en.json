@@ -256,5 +256,8 @@
 	"mui divider.arkham-index.customImage.vertical.size": "Recommended image size: 839x910px",
 	"category.arkham-index.description": "Dividers with art from the game, tab support and custom image upload",
 	"divider.arkham-index.deckbox.name": "Deck Box",
-	"divider.layout.arkham-index.sideShift": "Side shift. Use if the printer gives large shifts on the back side. This will not cut the card information when cutting."
+	"divider.layout.arkham-index.sideShift": "Side shift. Use if the printer gives large shifts on the back side. This will not cut the card information when cutting.",
+	"error.route.title": "This page could not be loaded",
+	"error.route.description": "The app may have been updated while this tab was open. Reloading usually fixes it.",
+	"error.route.reload": "Reload"
 }
