@@ -1,4 +1,5 @@
-import { lazy, memo } from "react";
+import { memo } from "react";
+import { lazyWithReload } from "@/shared/lib";
 import type { DividerWithRelations } from "../../shared/model";
 import { arkhamStarterDividerCategoryId } from "./3mm/config";
 import { arkhamDecoCategoryId } from "./arkham-deco/config";
@@ -30,7 +31,7 @@ const lazyDivider = (
 		// biome-ignore lint/suspicious/noExplicitAny: matches `dividerComponents` below
 		default: React.ComponentType<DividerWithRelations<any>>;
 	}>,
-) => memo(lazy(loader));
+) => memo(lazyWithReload(loader));
 
 const ClassicDivider = lazyDivider(
 	() => import("./classic/ui/ClassicDivider/ClassicDivider"),
