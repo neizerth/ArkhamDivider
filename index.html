@@ -44,7 +44,15 @@
   <body>
     <div id="root">
       <div class="loader">
-        <img src="/images/loader.gif" class="loader__image" />
+        <!--
+          This is the first screen, painted before any JS runs, so its weight is on the
+          critical path. The WebP is 104 KB against 321 KB for the GIF; the GIF stays as a
+          fallback and is never fetched by a browser that understands WebP.
+        -->
+        <picture>
+          <source srcset="/images/loader.webp" type="image/webp" />
+          <img src="/images/loader.gif" class="loader__image" alt="" />
+        </picture>
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>
