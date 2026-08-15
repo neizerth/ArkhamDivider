@@ -165,6 +165,14 @@ export function PrintableContent(props: PrintableContentProps) {
 								"@media screen": {
 									gap: 2,
 								},
+								/**
+								 * Centering the print run vertically can add a fractional offset before
+								 * the first sheet, which then accumulates down the run. Pagination
+								 * comes from the per-page break, so the print flow starts at the top.
+								 */
+								"@media print": {
+									justifyContent: "flex-start",
+								},
 								...sx,
 							}}
 						>

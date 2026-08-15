@@ -6,13 +6,27 @@ export const Page = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /**
+   * Cropmarks sit outside the grid, so a tight layout can push them past the sheet edge.
+   * Clipping them is the lesser evil: visible overflow paints them onto the neighbouring
+   * sheet instead, which is what made page 2 look shifted.
+   */
   overflow: hidden;
   margin: 0;
 
   @media print {
-    page-break-after: always;
-    /* Mobile Chrome can clip absolutely-positioned cropmarks more aggressively */
-    overflow: visible;
+    /**
+     * A page is sized to exactly the @page box, so sub-pixel rounding (Chrome on
+     * Android applies its own page scale) is enough to make it not fit. Without
+     * break-inside the browser splits the page instead of moving it whole, and the
+     * top of the next sheet bleeds onto the bottom of the previous one.
+     */
+    break-inside: avoid;
+    break-after: page;
+    &:last-of-type {
+      break-after: auto;
+    }
+    box-sizing: border-box;
   }
   @media screen {
     border-radius: 5px;
