@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { memo, Suspense } from "react";
+import { memo, Suspense, useRef } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import {
 	selectCategoryId,
@@ -23,6 +23,7 @@ import {
 	outlineSx,
 	renderContainerSx,
 } from "./DividerView.styles";
+import { useRepaintAfterRender } from "./useRepaintAfterRender";
 
 type DividerViewProps = DividerWithRelations;
 
@@ -33,6 +34,9 @@ export function DividerView(props: DividerViewProps) {
 	const previewZoom = useAppSelector(selectPreviewZoom);
 	const isRendering = useAppSelector(selectIsDividerRendering(props.id));
 	const [ref, rect] = useBoundingRect();
+	const nodeRef = useRef<HTMLDivElement | null>(null);
+
+	useRepaintAfterRender(nodeRef, isRendering);
 
 	if (!layoutSize || !categoryId) {
 		return null;
@@ -73,6 +77,7 @@ export function DividerView(props: DividerViewProps) {
 					}}
 				>
 					<Box
+						ref={nodeRef}
 						data-divider-node-id={`${props.id}:${props.side}`}
 						sx={{
 							...size,
