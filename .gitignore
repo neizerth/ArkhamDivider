@@ -32,3 +32,8 @@ dist-ssr
 .env.*
 .github/.rsync-exclude
 audit/
+
+# Test artifacts
+.vitest-attachments/
+**/__screenshots__/
+test-results/

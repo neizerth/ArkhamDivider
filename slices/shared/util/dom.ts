@@ -44,3 +44,14 @@ export const isBoxRectEquals = (a: BoxRect, b: BoxRect, minDelta = 0.01) => {
 	}
 	return true;
 };
+
+export const loadImage = (
+	attributes: Partial<HTMLImageElement>,
+): Promise<HTMLImageElement> => {
+	return new Promise((resolve, reject) => {
+		const img = new Image();
+		img.onload = () => resolve(img);
+		img.onerror = reject;
+		Object.assign(img, attributes);
+	});
+};
