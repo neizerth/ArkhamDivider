@@ -45,6 +45,19 @@ export function Page({
 		"@media screen": {
 			width: "100%",
 			...pageSideStyles[side],
+			/**
+			 * Skip layout and paint for pages outside the viewport. Unlike virtualizing the
+			 * list, the nodes stay in the DOM, so `window.print` still paginates the whole run
+			 * and `getDividerNodeById` still finds every divider during export.
+			 *
+			 * Scoped to `@media screen` on purpose: printing must lay out every page.
+			 *
+			 * `auto` in `contain-intrinsic-size` makes the browser remember each page's real
+			 * size after it has been rendered once, so the scrollbar settles instead of
+			 * jumping; the mm values are only the first-pass estimate.
+			 */
+			contentVisibility: "auto",
+			containIntrinsicSize: `auto ${width}mm auto ${height}mm`,
 		},
 	};
 

@@ -100,9 +100,9 @@ export default {
 	return_to_union_and_disillusion: returnPosition,
 	return_to_in_the_clutches_of_chaos: returnPosition,
 	the_secret_name: {
-		top: percent(2),
-		left: percent(-4),
-		scale: percent(92),
+		top: percent(-1),
+		left: percent(0),
+		scale: percent(85),
 	},
 	secrets_of_the_universe: {
 		top: percent(2),

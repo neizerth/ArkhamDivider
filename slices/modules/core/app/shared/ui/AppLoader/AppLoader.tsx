@@ -1,10 +1,18 @@
 import type { JSX } from "react";
-import * as C from "./AppLoader.components";
 
+/**
+ * Must stay visually identical to the markup in `index.html`: React replaces `#root`,
+ * so any style drift here shows up as a jump when the app boots.
+ * Classes `.loader` / `.loader__image` live in `index.html` for that reason.
+ */
 export function AppLoader(props: JSX.IntrinsicElements["div"]) {
 	return (
-		<C.Container {...props}>
-			<C.Image src="/images/loader.gif" />
-		</C.Container>
+		<div className="loader" {...props}>
+			{/*
+			  No <picture> fallback here, unlike index.html: this renders only once the app
+			  has booted, and anything running it already supports WebP.
+			*/}
+			<img src="/images/loader.webp" className="loader__image" alt="" />
+		</div>
 	);
 }

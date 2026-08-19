@@ -1,0 +1,13 @@
+name: Deploy All
+
+on:
+  workflow_dispatch:
+
+jobs:
+  vercel-redeploy:
+    uses: ./.github/workflows/vercel-redeploy.yml
+    secrets: inherit
+
+  deploy-fallback:
+    uses: ./.github/workflows/deploy-fallback.yml
+    secrets: inherit

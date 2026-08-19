@@ -36,6 +36,10 @@ export const getEncounterSetDividers = (
 
 	const returnStory = includeReturnStory ? story.returnStory : null;
 
+	const scenarios = includeReturnStory
+		? [...story.scenarios, ...(returnStory?.scenarios ?? [])]
+		: story.scenarios;
+
 	const baseEncounters = uniqSets([
 		...story.encounterSets,
 		...(returnStory?.encounterSets ?? []),
@@ -46,12 +50,14 @@ export const getEncounterSetDividers = (
 		...(returnStory?.extraEncounterSets ?? []),
 	]);
 
+	/**
+	 * "Scenario encounter sets" here mean the *main* encounter set for the scenario
+	 * (picked by scenario icon), to avoid duplicating the same code as both:
+	 * - encounter-set divider (from `story.encounterSets`)
+	 * - scenario-encounter divider (from `scenarios`)
+	 */
 	const scenarioEncounters = uniqSets(
-		compact([
-			...story.scenarios.map(({ encounterSet }) => encounterSet),
-			...(returnStory?.scenarios?.map(({ encounterSet }) => encounterSet) ??
-				[]),
-		]),
+		compact(scenarios.map(prop("encounterSet"))),
 	);
 
 	const scenarioEncounterCodes = scenarioEncounters.map(prop("code"));
@@ -88,6 +94,11 @@ export const getEncounterSetDividers = (
 
 		const storyCode = getEncounterStoryCode(encounterSet.code);
 
+		const isExtra = extraEncounters.some(propEq(encounterSet.code, "code"));
+
+		const packCode = encounterSet.pack_code ?? "";
+		const cycleCode = encounterSet.cycle_code ?? "";
+
 		return {
 			id: v4(),
 			side: "front",
@@ -95,6 +106,9 @@ export const getEncounterSetDividers = (
 			type: "encounter",
 			subtype: "encounter-set",
 			encounterCode: encounterSet.code,
+			packCode,
+			cycleCode,
+			isExtra,
 			title: name,
 			icon,
 			cardsCount,
@@ -117,35 +131,44 @@ export const getEncounterSetDividers = (
 		}
 		return story.code;
 	};
-	const scenarioEncounterSetDividers = story.scenarios.map(
-		(scenario): Divider => {
-			const title = scenario.scenario_name;
 
-			const cards = getScenarioCards({
-				scenario,
-				cardTypes: "encounter",
-			});
+	const scenarioEncounterSetDividers = scenarios.map((scenario): Divider => {
+		const title = scenario.scenario_name;
 
-			const cardsCount = cards.reduce((total, { size }) => total + size, 0);
-			const { icon } = scenario;
+		const cards = getScenarioCards({
+			scenario,
+			cardTypes: "encounter",
+		});
 
-			const storyCode = getScenarioStoryCode(scenario);
+		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
+		const { icon } = scenario;
 
-			return {
-				id: v4(),
-				side: "front",
-				layoutType: "scenario",
-				type: "encounter",
-				subtype: "scenario-encounter",
-				scenarioId: scenario.id,
-				title,
-				icon,
-				cardsCount,
-				cards,
-				storyCode,
-			};
-		},
-	);
+		const storyCode = getScenarioStoryCode(scenario);
+
+		const isExtra =
+			Boolean(scenario.encounterSet?.code) &&
+			extraEncounters.some(propEq(scenario.encounterSet?.code, "code"));
+
+		const packCode = scenario.encounterSet?.pack_code ?? "";
+		const cycleCode = scenario.encounterSet?.cycle_code ?? "";
+
+		return {
+			id: v4(),
+			side: "front",
+			layoutType: "scenario",
+			type: "encounter",
+			subtype: "scenario-encounter",
+			scenarioId: scenario.id,
+			packCode,
+			cycleCode,
+			isExtra,
+			title,
+			icon,
+			cardsCount,
+			cards,
+			storyCode,
+		};
+	});
 
 	if (!includeEncounterSets && includeScenarioEncounterSets) {
 		return scenarioEncounterSetDividers;

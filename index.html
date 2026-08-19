@@ -16,33 +16,45 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arkham Divider</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
     <!-- coi -->
     <style>
       body {
         margin: 0;
       }
       .loader {
+        position: fixed;
+        inset: 0;
         background-color: #eeeef1;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
-        width: 100vw;
-        height: 100vh;
       }
 
       .loader__image {
+        display: block;
         object-fit: contain;
-        max-width: 500px;
-        width: 100%;
-        height: 100%;
+        max-width: min(500px, 100%);
+        max-height: 100%;
+        width: auto;
+        height: auto;
       }
     </style>
   </head>
   <body>
     <div id="root">
       <div class="loader">
-        <img src="/images/loader.gif" class="loader__image" />
+        <!--
+          This is the first screen, painted before any JS runs, so its weight is on the
+          critical path. The WebP is 104 KB against 321 KB for the GIF; the GIF stays as a
+          fallback and is never fetched by a browser that understands WebP.
+        -->
+        <picture>
+          <source srcset="/images/loader.webp" type="image/webp" />
+          <img src="/images/loader.gif" class="loader__image" alt="" />
+        </picture>
       </div>
     </div>
     <script type="module" src="/src/main.tsx"></script>

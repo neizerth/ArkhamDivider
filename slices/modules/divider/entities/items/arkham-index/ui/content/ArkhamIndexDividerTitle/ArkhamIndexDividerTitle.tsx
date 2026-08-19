@@ -13,7 +13,7 @@ type ArkhamIndexDividerTitleProps = BoxProps;
 export function ArkhamIndexDividerTitle(props: ArkhamIndexDividerTitleProps) {
 	const { divider, sxOptions, tabSize, layout } = useArkhamIndexContext();
 
-	const { showIcon } = sxOptions;
+	const { showIcon, fontFamily } = sxOptions;
 
 	const { t } = useStoryTranslation(divider.story);
 
@@ -31,7 +31,12 @@ export function ArkhamIndexDividerTitle(props: ArkhamIndexDividerTitleProps) {
 		showIcon,
 	});
 
-	const defaultTranslatedTitle = t(defaultTitle ?? "").toUpperCase();
+	const defaultTranslatedTitle = t(defaultTitle ?? "");
+
+	const transformedTitle =
+		fontFamily !== "Conkordia"
+			? defaultTranslatedTitle.toUpperCase()
+			: defaultTranslatedTitle;
 
 	const {
 		value: title,
@@ -43,7 +48,7 @@ export function ArkhamIndexDividerTitle(props: ArkhamIndexDividerTitleProps) {
 		divider,
 		param: "customTitle",
 		fontSizeScaleParam: "custonFontSizeScale",
-		defaultValue: defaultTranslatedTitle,
+		defaultValue: transformedTitle,
 	});
 
 	const sx = {

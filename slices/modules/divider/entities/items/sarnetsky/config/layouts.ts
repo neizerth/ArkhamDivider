@@ -14,11 +14,11 @@ const horizontal: DividerLayout = {
 	color: true,
 	size: createSize(89, 75),
 	types: ["scenario", "player", "investigator"],
-	bleed: 2,
+	bleed: 3,
 	printSize: {
 		300: {
 			size: createSize(1051, 886),
-			bleedSize: createSize(1098, 933),
+			bleedSize: createSize(1122, 957),
 		},
 	},
 	sleeves: [
@@ -51,11 +51,11 @@ const vertical: DividerLayout = {
 	color: true,
 	size: createSize(63, 105),
 	types: ["scenario"],
-	bleed: 2,
+	bleed: 3,
 	printSize: {
 		300: {
 			size: createSize(744, 1240),
-			bleedSize: createSize(791, 1287),
+			bleedSize: createSize(815, 1311),
 		},
 	},
 	scenarioParams: {

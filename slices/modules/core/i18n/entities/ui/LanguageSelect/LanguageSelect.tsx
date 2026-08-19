@@ -54,6 +54,11 @@ export function LanguageSelect({
 				sx={{
 					width: "100%",
 				}}
+				MenuProps={{
+					disableScrollLock: true,
+					disableRestoreFocus: true,
+					disableAutoFocusItem: true,
+				}}
 				onChange={(event) => {
 					handleLanguageChange(event.target.value);
 				}}

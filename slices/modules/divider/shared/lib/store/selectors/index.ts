@@ -1,3 +1,4 @@
+export * from "./selectCurrentLayoutParams";
 export * from "./selectDividerParam";
 export * from "./selectDividerTabIndex";
 export * from "./selectLayoutWithRelations";

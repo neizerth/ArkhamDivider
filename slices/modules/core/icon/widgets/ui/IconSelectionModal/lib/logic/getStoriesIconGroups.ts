@@ -1,7 +1,8 @@
-import { propEq } from "ramda";
+import { ascend, descend, prop, propEq, sortWith, uniq } from "ramda";
 import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import {
+	isCampaign,
 	isChallengeStory,
 	isCoreSet,
 	isInvestigatorStory,
@@ -22,16 +23,25 @@ type Options = {
 };
 
 export const getStoriesIconGroups = ({
-	stories,
+	stories: unsortedStories,
 	icons,
 	encounterSets,
 	iconSet,
 }: Options): IconGroup[] => {
+	const stories = sortWith(
+		[
+			ascend(({ position }) => position || Infinity),
+			descend(({ is_official }) => Boolean(is_official)),
+			ascend(prop("name")),
+		],
+		unsortedStories,
+	);
+
 	const iconsBySet = iconSet
 		? icons.filter((i) => i.iconSet === iconSet)
 		: icons;
 
-	const toIcon = (name: string) => {
+	const toIcon = (name?: string) => {
 		const icon = encounterSets.find((s) => s.code === name)?.icon;
 
 		if (icon) {
@@ -63,12 +73,29 @@ export const getStoriesIconGroups = ({
 			return icon?.iconSet !== icoMoonSetId;
 		});
 
+		const [first] = subgroupIcons;
+		const mainIconSet = icons.find(propEq(first, "icon"))?.iconSet;
+		const isCore = isCoreSet(story);
+
+		if ((!isCampaign(story) || !mainIconSet) && !isCore) {
+			return {
+				...subGroup,
+				icons: subgroupIcons,
+			};
+		}
+
+		const iconSetIcons = icons
+			.filter(({ iconSet }) => iconSet === mainIconSet)
+			.map(prop("icon"));
+
+		const mergedIcons = uniq([...subgroupIcons, ...iconSetIcons]);
+
 		//
 		// NOTE: We intentionally avoid expanding campaign icons by `iconSet`.
 		// Some icon sets include multiple custom campaigns; expanding would mix them.
 		return {
 			...subGroup,
-			icons: subgroupIcons,
+			icons: mergedIcons,
 		};
 	};
 

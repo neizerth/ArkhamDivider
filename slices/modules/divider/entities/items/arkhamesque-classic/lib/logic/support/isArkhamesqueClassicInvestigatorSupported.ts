@@ -10,7 +10,7 @@ export const isArkhamesqueClassicInvestigatorSupported = ({
 	story,
 	data,
 }: Options) => {
-	if (story.investigators.length === 0) {
+	if (!story.investigators?.length) {
 		return false;
 	}
 

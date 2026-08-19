@@ -1,19 +1,20 @@
-import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
+import { lazyWithReload } from "@/shared/lib";
 import { Root } from "../ui/Root";
+import { RouteError } from "../ui/RouteError";
 
-const HomePage = lazy(() =>
+const HomePage = lazyWithReload(() =>
 	import("@/pages/home/ui").then((m) => ({ default: m.HomePage })),
 );
-const AboutPage = lazy(() =>
+const AboutPage = lazyWithReload(() =>
 	import("@/pages/about/ui").then((m) => ({ default: m.AboutPage })),
 );
-const HowToPrintPage = lazy(() =>
+const HowToPrintPage = lazyWithReload(() =>
 	import("@/pages/how-to-print/ui").then((m) => ({
 		default: m.HowToPrintPage,
 	})),
 );
-const LayoutPage = lazy(() =>
+const LayoutPage = lazyWithReload(() =>
 	import("@/pages/layout/ui").then((m) => ({ default: m.LayoutPage })),
 );
 
@@ -30,6 +31,9 @@ export const router =
 		{
 			path: "/",
 			element: <Root />,
+			// Catches lazy-route failures for the whole tree; without it React Router falls
+			// back to its own developer error screen.
+			errorElement: <RouteError />,
 			children: [
 				{
 					index: true,

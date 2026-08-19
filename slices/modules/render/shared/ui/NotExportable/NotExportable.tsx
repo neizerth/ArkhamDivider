@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from "react";
 import {
-	selectDividerRenderId,
+	selectIsDividerRendering,
+	selectIsRendering,
 	selectRenderType,
 } from "@/modules/render/shared/lib";
 import { useAppSelector } from "@/shared/lib";
@@ -20,7 +21,8 @@ export function NotExportable({
 	visibleOn,
 	hiddenOn,
 }: NotExportableProps) {
-	const exportDividerId = useAppSelector(selectDividerRenderId);
+	const isAnyRendering = useAppSelector(selectIsRendering);
+	const isRendering = useAppSelector(selectIsDividerRendering(id));
 	const renderType = useAppSelector(selectRenderType);
 
 	if (visibleOn && renderType && visibleOn.includes(renderType)) {
@@ -35,11 +37,11 @@ export function NotExportable({
 		return children;
 	}
 
-	if (exportDividerId && !id) {
+	if (isAnyRendering && !id) {
 		return null;
 	}
 
-	if (exportDividerId === id) {
+	if (isRendering) {
 		return null;
 	}
 

@@ -19,7 +19,12 @@ export function getArkhamIndexDividerImageUrl({
 	const imagesUrl = `${baseUrl}/images`;
 
 	if (divider.layoutType === "investigator") {
-		const base = `${imagesUrl}/investigator/${orientation}/${divider.investigator.code}`;
+		const code = divider.investigator?.code;
+		if (!code) {
+			return;
+		}
+
+		const base = `${imagesUrl}/investigator/${orientation}/${code}`;
 
 		if (version > 1) {
 			return `${base}-${version}.avif`;
@@ -27,22 +32,36 @@ export function getArkhamIndexDividerImageUrl({
 		return `${base}.avif`;
 	}
 
-	const { story } = divider;
+	const story = divider.story;
+	if (!story) {
+		return;
+	}
+
 	const storyCode = story.return_to_code ?? story.code;
-	const scenarioBase = `${imagesUrl}/scenario/${storyCode}/${orientation}`;
+	const scenarioBaseUrl = `${imagesUrl}/scenario`;
+	const scenarioBase = `${scenarioBaseUrl}/${storyCode}/${orientation}`;
 
 	if (divider.type === "campaign") {
 		return `${scenarioBase}/${story.code}.avif`;
 	}
 
 	if (divider.type === "encounter") {
-		const subtype = divider.subtype;
+		const { subtype, cycleCode, isExtra } = divider;
+
 		const id =
 			subtype === "encounter-set"
 				? divider.encounterCode
 				: `${divider.scenarioId}-encounter`;
-		return `${scenarioBase}/${id}.avif`;
+
+		const code = isExtra ? cycleCode : storyCode;
+
+		return `${scenarioBaseUrl}/${code}/${orientation}/${id}.avif`;
 	}
 
-	return `${scenarioBase}/${divider.scenario.id}.avif`;
+	const scenarioId = divider.scenario?.id;
+	if (!scenarioId) {
+		return;
+	}
+
+	return `${scenarioBase}/${scenarioId}.avif`;
 }

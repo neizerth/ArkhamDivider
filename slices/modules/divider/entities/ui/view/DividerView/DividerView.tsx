@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { memo, Suspense } from "react";
+import { memo, Suspense, useRef } from "react";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import {
 	selectCategoryId,
@@ -12,9 +12,9 @@ import {
 } from "@/modules/print/shared/lib";
 import {
 	getRenderScale,
-	selectDividerRenderId,
+	selectIsDividerRendering,
 } from "@/modules/render/shared/lib";
-import { absoluteFill } from "@/shared/config";
+import { absoluteFill, isFirefox } from "@/shared/config";
 import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import { dividerComponents } from "../../../items";
 import {
@@ -23,6 +23,7 @@ import {
 	outlineSx,
 	renderContainerSx,
 } from "./DividerView.styles";
+import { useRepaintAfterRender } from "./useRepaintAfterRender";
 
 type DividerViewProps = DividerWithRelations;
 
@@ -31,8 +32,11 @@ export function DividerView(props: DividerViewProps) {
 	const categoryId = useAppSelector(selectCategoryId);
 	const printScale = useAppSelector(selectWebPrintScale);
 	const previewZoom = useAppSelector(selectPreviewZoom);
-	const renderId = useAppSelector(selectDividerRenderId);
+	const isRendering = useAppSelector(selectIsDividerRendering(props.id));
 	const [ref, rect] = useBoundingRect();
+	const nodeRef = useRef<HTMLDivElement | null>(null);
+
+	useRepaintAfterRender(nodeRef, isRendering);
 
 	if (!layoutSize || !categoryId) {
 		return null;
@@ -43,7 +47,6 @@ export function DividerView(props: DividerViewProps) {
 		return null;
 	}
 	const { size } = layoutSize;
-	const isRendering = renderId === props.id;
 	const scale = getRenderScale({
 		boundingRect: rect,
 		previewZoom,
@@ -70,10 +73,11 @@ export function DividerView(props: DividerViewProps) {
 				<Box
 					sx={{
 						...absoluteFill,
-						overflow: "hidden",
+						overflow: isFirefox ? "visible" : "hidden",
 					}}
 				>
 					<Box
+						ref={nodeRef}
 						data-divider-node-id={`${props.id}:${props.side}`}
 						sx={{
 							...size,
@@ -83,7 +87,6 @@ export function DividerView(props: DividerViewProps) {
 							left: 0,
 							letterSpacing: 0,
 							transformOrigin: "top left",
-							overflow: "hidden",
 							"@media print": {
 								...getScaleSx(printScale),
 							},

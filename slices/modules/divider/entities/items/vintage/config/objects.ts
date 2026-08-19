@@ -8,7 +8,7 @@ export const vintageDividerObjects = {
 			left: 5,
 			right: 5,
 			height: 8.2,
-			fontSize: 8,
+			fontSize: 7.8,
 		},
 		ru: {},
 	},

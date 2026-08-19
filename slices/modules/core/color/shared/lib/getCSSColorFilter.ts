@@ -16,21 +16,29 @@ function photoshopContrastToCssPercent(psContrast: number): number {
 }
 
 /**
- * Combined **Brightness** (B/C) and **Lightness** (H/S) in PS are signed. For **negative** sums,
- * CSS `brightness(100+sum)%` usually reads **darker** than the same value in PS; positive sums
- * are left 1:1. Tune 0.7…0.9 vs a PS preview.
+ * PS Brightness/Contrast `brightness` slider: for **negative** values the CSS
+ * `brightness()` equivalent is darker than PS — scale down by this factor.
+ * Calibrated against PS references (tune if you have a new PS export).
  */
-const PS_LUMINANCE_DARKEN_TO_CSS = 0.5;
+const PS_BRIGHTNESS_DARKEN_TO_CSS = 0.5;
+
+/**
+ * PS Hue/Saturation `lightness` slider operates in HSL space — it is a
+ * fundamentally different operation from CSS `brightness()`. For small negative
+ * values the effect is much weaker than CSS brightness would suggest, so we use
+ * a much smaller factor. Calibrated against dwl.avif (lightness: -15).
+ */
+const PS_LIGHTNESS_DARKEN_TO_CSS = 0.04;
 
 function photoshopLuminanceToCssPercent(
 	brightness: number | undefined,
 	lightness: number | undefined,
 ): number {
-	const sum = (brightness ?? 0) + (lightness ?? 0);
-	if (sum >= 0) {
-		return 100 + sum;
-	}
-	return 100 + sum * PS_LUMINANCE_DARKEN_TO_CSS;
+	const br = brightness ?? 0;
+	const li = lightness ?? 0;
+	const brContrib = br >= 0 ? br : br * PS_BRIGHTNESS_DARKEN_TO_CSS;
+	const liContrib = li >= 0 ? li : li * PS_LIGHTNESS_DARKEN_TO_CSS;
+	return 100 + brContrib + liContrib;
 }
 
 /**

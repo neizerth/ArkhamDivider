@@ -1,6 +1,7 @@
 // import * as C from "./ArkhamIndexDivider.components";
 
 import { Box } from "@mui/material";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { selectLayout } from "@/modules/divider/entities/lib";
 import {
@@ -78,13 +79,22 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 		tabSize,
 	});
 
+	const backgroundSxOptions = useMemo(() => {
+		return {
+			backgroundIcon,
+		};
+	}, [backgroundIcon]);
+
 	const getPrintSx = usePrintSx(sxOptions);
 	const backgroundSx = getPrintSx(S.getBackgroundSx);
 	const backgroundStrokeSx = getPrintSx(S.getBackgroundStrokeSx);
 	const bodySx = getPrintSx(S.getBodySx);
 	const mediaContentSx = getPrintSx(S.getMediaContentSx);
 	const colorPickerSx = getPrintSx(S.getColorPickerSx);
-	const backgroundIconSx = getPrintSx(S.getBackgroundIconSx);
+	const backgroundIconSx = getPrintSx(
+		S.getBackgroundIconSx,
+		backgroundSxOptions,
+	);
 	const menuSx = getPrintSx(S.getMenuSx);
 	const infoSx = getPrintSx(S.getInfoSx);
 	const dividerCardsSx = getPrintSx(S.getDividerCardsSx);
@@ -92,6 +102,8 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { side } = props;
 
 	const showMediaContent = props.layoutType !== "player";
+	const showStroke = Boolean(layout.tabs);
+
 	return (
 		<ArkhamIndexContext.Provider
 			value={{ layout, divider: props, tabSize, tabIndex, sxOptions }}
@@ -140,7 +152,9 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						visible={!lasercutEnabled}
 						visibleOn={["image", "zip"]}
 					>
-						{side === "front" && <BackgroundStroke sx={backgroundStrokeSx} />}
+						{side === "front" && showStroke && (
+							<BackgroundStroke sx={backgroundStrokeSx} />
+						)}
 					</NotExportable>
 
 					<NotExportable>
@@ -152,7 +166,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 							title={t("divider.arkhamIndex.background.pickerTitle")}
 						/>
 					</NotExportable>
-					<CardsCount sx={infoSx} onClick={setShowCardsInfo.toggle} />
+					<CardsCount sx={infoSx} onСardCountClick={setShowCardsInfo.toggle} />
 					{showCardsInfo && <CardsInfo sx={dividerCardsSx} divider={props} />}
 
 					{showBackgroundIcon && (
@@ -163,7 +177,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 								aspectRatio: 1,
 								left: "50%",
 								transform: "translate(-50%, -50%)",
-								height: "1.2em",
+								height: "1em",
 								mixBlendMode: "color",
 								borderRadius: "50%",
 								blur: "2px",

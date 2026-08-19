@@ -110,7 +110,7 @@ const imagesWithPrefix = (
 		},
 		{
 			type: "background",
-			src: asset(`/background.png`),
+			src: asset(`/background.webp`),
 		},
 	];
 };
@@ -130,7 +130,7 @@ export const sarnetskyBandImages: Record<
 	concealed: [
 		{
 			type: "background",
-			src: asset("/concealed/background.png"),
+			src: asset("/concealed/background.webp"),
 		},
 	],
 };

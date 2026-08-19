@@ -4,6 +4,7 @@ import { changeLayoutOrientationSaga } from "./changeLayoutOrientation/changeLay
 import { generateInvestigatorDividersSaga } from "./generateInvestigatorDividers/generateInvestigatorDividersSaga";
 import { generatePlayerDividersSaga } from "./generatePlayerDividers/generatePlayerDividersSaga";
 import { generateScenarioDividersSaga } from "./generateScenarioDividers/generateScenarioDividersSaga";
+import { setLayoutFontFamilySaga } from "./setLayoutFontFamily/setLayoutFontFamilySaga";
 
 export function* dividerEntitiesSaga() {
 	yield spawn(generateScenarioDividersSaga);
@@ -11,4 +12,5 @@ export function* dividerEntitiesSaga() {
 	yield spawn(generateInvestigatorDividersSaga);
 	yield spawn(changeLayoutColorSaga);
 	yield spawn(changeLayoutOrientationSaga);
+	yield spawn(setLayoutFontFamilySaga);
 }

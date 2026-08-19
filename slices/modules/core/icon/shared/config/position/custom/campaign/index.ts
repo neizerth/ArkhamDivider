@@ -7,6 +7,7 @@ import north_country_cycle from "./north_country_cycle";
 import of_sphinx_and_sands from "./of_sphinx_and_sands";
 import souls_of_darkness from "./souls_of_darkness";
 import the_ghosts_of_onigawa from "./the_ghosts_of_onigawa";
+import the_matter_of_britain from "./the_matter_of_britain";
 import winter_winds from "./winter_winds";
 import zau from "./zau";
 import zaw from "./zaw";
@@ -38,4 +39,5 @@ export default {
 	...zce,
 	...winter_winds,
 	...the_ghosts_of_onigawa,
+	...the_matter_of_britain,
 };

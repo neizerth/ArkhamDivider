@@ -21,6 +21,7 @@ export function IconsDownload() {
 	const ttfUrl = url`/icons.ttf`;
 	const woffUrl = url`/icons.woff`;
 	const woff2Url = url`/icons.woff2`;
+	const pngUrl = url`/png.zip`;
 
 	const startSelection = useIconSelection();
 	const handleSelect = useCallback(() => {
@@ -92,6 +93,11 @@ export function IconsDownload() {
 						<Box component="a" href={svgUrl} style={{ textDecoration: "none" }}>
 							<Button variant="contained" color="primary" size="large">
 								SVG
+							</Button>
+						</Box>
+						<Box component="a" href={pngUrl} style={{ textDecoration: "none" }}>
+							<Button variant="contained" color="primary" size="large">
+								PNG
 							</Button>
 						</Box>
 						<Box component="a" href={ttfUrl} style={{ textDecoration: "none" }}>

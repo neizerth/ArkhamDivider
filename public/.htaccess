@@ -9,11 +9,43 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # If the requested resource isn't a real file or directory, serve index.html
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # If this is an existing directory without trailing slash, add it.
+  # This allows `/ru` -> `/ru/` so Apache can serve `/ru/index.html`.
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.+)$ $1/ [R=301,L]
+
+  # Never rewrite existing files or directories.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback
   RewriteRule ^ index.html [L]
 </IfModule>
 
 # WASM MIME type
 AddType application/wasm .wasm
+
+# Caching. Keep in sync with the `headers` block in vercel.json.
+# Use SetEnvIf (Apache 2.2+) — `<If>` expressions need Apache 2.4 and break the CentOS
+# fallback host (Apache/2.2.15) with a 500 for every request under this directory.
+<IfModule mod_setenvif.c>
+  SetEnvIf Request_URI "^/assets/" CACHE_ASSETS
+  SetEnvIf Request_URI "^/fonts/" CACHE_FONTS
+  SetEnvIf Request_URI "^/images/" CACHE_IMAGES
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Build output is content-hashed by Vite, so it can never go stale.
+  Header always set Cache-Control "public, max-age=31536000, immutable" env=CACHE_ASSETS
+
+  # Deliberately NOT immutable: files under /fonts are replaced in place — notably
+  # ArkhamIcons.ttf, which `npm run font:install` re-downloads to the same path on every
+  # prebuild. A long immutable cache would strand clients on a stale icon font.
+  Header always set Cache-Control "public, max-age=86400, stale-while-revalidate=604800" env=CACHE_FONTS
+
+  # Images are append-mostly: new dividers add new paths rather than replacing existing
+  # files, so they tolerate a longer window than /fonts.
+  Header always set Cache-Control "public, max-age=604800, stale-while-revalidate=2592000" env=CACHE_IMAGES
+</IfModule>

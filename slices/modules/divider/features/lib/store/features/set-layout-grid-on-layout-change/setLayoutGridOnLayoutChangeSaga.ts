@@ -6,9 +6,11 @@ import {
 import { setLayoutId } from "@/modules/divider/shared/lib";
 import {
 	selectBleedEnabled,
+	selectCropMarksEnabled,
 	selectPageFormat,
 	selectPageMargin,
 	setBleedEnabled,
+	setCropMarksEnabled,
 	setOrientation,
 	setPageLayoutGrid,
 	setPageMargin,
@@ -37,11 +39,15 @@ function* worker() {
 		yield select(selectBleedEnabled);
 	const pageMargin: ReturnType<typeof selectPageMargin> =
 		yield select(selectPageMargin);
+	const withCropmarks: ReturnType<typeof selectCropMarksEnabled> = yield select(
+		selectCropMarksEnabled,
+	);
 
 	const { rotated, ...grid } = getDividerLayoutGrid({
 		layout,
 		pageFormat,
 		withBleed,
+		withCropmarks,
 		pageMargin,
 	});
 
@@ -55,5 +61,6 @@ export function* setLayoutGridOnLayoutChangeSaga() {
 	yield takeEvery(setLayoutId.match, worker);
 	yield takeEvery(setPageSize.match, worker);
 	yield takeEvery(setBleedEnabled.match, worker);
+	yield takeEvery(setCropMarksEnabled.match, worker);
 	yield takeEvery(setPageMargin.match, worker);
 }

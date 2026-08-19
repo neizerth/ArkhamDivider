@@ -1,5 +1,6 @@
 import Color from "color";
 import type { CMYKColor, RGBAColor, RGBAColorObject, RGBColor } from "../model";
+import { isCMYKColor } from "./colorCriteria";
 
 /** CMYK components 0–100 (PDFKit divides by 100 for PDF). */
 export const cmyk = (
@@ -86,4 +87,12 @@ export const rgba256 = (color: RGBAColorObject) => {
 	const b = to256(color.b);
 
 	return `rgba(${r}, ${g}, ${b}, ${a})`;
+};
+
+export const isCMYKBlack = (color: unknown) => {
+	if (!isCMYKColor(color)) {
+		return false;
+	}
+	const [c, m, y, k] = color;
+	return c === 0 && m === 0 && y === 0 && k === 100;
 };

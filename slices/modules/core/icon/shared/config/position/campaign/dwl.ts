@@ -51,7 +51,10 @@ export default {
 	the_miskatonic_museum: {
 		top: percent(-2),
 	},
-	undimensioned_and_unseen: {},
+	undimensioned_and_unseen: {
+		top: percent(3),
+		left: percent(3),
+	},
 	beast_thralls: {
 		top: percent(2),
 		scale: percent(95),

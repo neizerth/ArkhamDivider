@@ -3,8 +3,9 @@ import type { IconButtonProps } from "@mui/material/IconButton";
 import type { SxProps } from "@mui/material/styles";
 import { type FocusEventHandler, useCallback, useState } from "react";
 import {
-	selectDividerRenderId,
 	selectHideTextNodes,
+	selectIsDividerRendering,
+	selectIsRendering,
 } from "@/modules/render/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { useAppSelector } from "@/shared/lib";
@@ -42,7 +43,8 @@ export function DividerText({
 	visible = false,
 	...props
 }: DividerTextProps) {
-	const renderId = useAppSelector(selectDividerRenderId);
+	const isRendering = useAppSelector(selectIsDividerRendering(dividerId));
+	const isAnyRendering = useAppSelector(selectIsRendering);
 	const hide = useAppSelector(selectHideTextNodes);
 
 	const [isFocused, setIsFocused] = useState(false);
@@ -72,7 +74,7 @@ export function DividerText({
 		[onBlurProp],
 	);
 
-	const hidden = hide && dividerId === renderId && !visible;
+	const hidden = hide && isRendering && !visible;
 
 	const baseProps = {
 		onFocus,
@@ -83,7 +85,7 @@ export function DividerText({
 		stroke: Boolean(stroke || strokeSx),
 		strokeSx,
 		hidden,
-		clearable: !renderId,
+		clearable: !isAnyRendering,
 		...props,
 	};
 

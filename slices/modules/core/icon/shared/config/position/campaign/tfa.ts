@@ -42,8 +42,7 @@ export default {
 		top: percent(-1),
 	},
 	expedition: {
-		left: percent(1),
-		scale: percent(105),
+		scale: percent(110),
 	},
 	knyan: {
 		top: percent(2),

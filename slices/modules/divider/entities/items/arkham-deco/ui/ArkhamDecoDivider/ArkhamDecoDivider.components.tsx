@@ -76,7 +76,7 @@ export const Scratches = ({
 			{positions[orientation].map((position, index) => (
 				<Image
 					key={index.toString()}
-					src={`${arkhamDecoAssetUrl}/scratches.png`}
+					src={`${arkhamDecoAssetUrl}/scratches.webp`}
 					sx={{ ...position, position: "absolute", zIndex: 4 }}
 				/>
 			))}

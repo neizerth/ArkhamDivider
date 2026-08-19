@@ -74,6 +74,7 @@ export const tokenIcons = [
 	"curse",
 	"frost",
 	"moon",
+	"bloodborne-insight",
 	"token_sealed_outline",
 ];
 

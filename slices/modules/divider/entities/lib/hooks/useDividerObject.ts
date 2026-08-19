@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 import {
 	selectDividerParam,
-	setDividerParam,
+	useDividerParam,
 } from "@/modules/divider/shared/lib";
 import { getPrintNodeRect } from "@/modules/print/shared/lib";
-import { selectDividerRenderId } from "@/modules/render/shared/lib";
-import { useAppDispatch, useAppSelector, useBoundingRect } from "@/shared/lib";
+import { selectIsRendering } from "@/modules/render/shared/lib";
+import { useAppSelector, useBoundingRect } from "@/shared/lib";
 import type { BoxRect } from "@/shared/model";
 import { isBoxRectEquals } from "@/shared/util";
 
@@ -22,16 +22,17 @@ export const useDividerObject = ({
 	containerWidth,
 	param,
 }: Options) => {
-	const dispatch = useAppDispatch();
-	const exportId = useAppSelector(selectDividerRenderId);
+	const isRendering = useAppSelector(selectIsRendering);
 	const currentRect = useAppSelector(
 		selectDividerParam<BoxRect>({ id: dividerId, key: param }),
 	);
 	const [ref, rect] = useBoundingRect<HTMLElement>();
 	const lastDispatchedRef = useRef<BoxRect | null>(null);
 
+	const setParam = useDividerParam<BoxRect>({ dividerId, key: param });
+
 	useEffect(() => {
-		if (!ref.current || !rect || !containerRef.current || exportId) {
+		if (!ref.current || !rect || !containerRef.current || isRendering) {
 			return;
 		}
 
@@ -57,23 +58,15 @@ export const useDividerObject = ({
 
 		lastDispatchedRef.current = printRect;
 
-		dispatch(
-			setDividerParam({
-				id: dividerId,
-				key: param,
-				value: printRect,
-			}),
-		);
+		setParam(printRect);
 	}, [
 		rect,
-		dispatch,
-		dividerId,
 		ref.current,
 		containerRef.current,
 		containerWidth,
 		currentRect,
-		param,
-		exportId,
+		isRendering,
+		setParam,
 	]);
 
 	return ref;

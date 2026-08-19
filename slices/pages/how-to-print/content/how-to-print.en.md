@@ -1,89 +1,149 @@
+# How to print dividers for AH:LCG
+
 ![Printed dividers in storage](/how-to-print/img/img-000.avif)
 
-## TL;DR: “Pro” standard (closest to FFG “Return To”)
+Don’t be intimidated by all the settings. If you’ve never printed dividers before, downloading a PDF and taking it to a local print shop is enough. Everything else is fine-tuning for your setup and preferences.
 
-- Paper thickness: **300–320 g/m²**
-- Paper type: **matte cardstock**
-- Finish: **no lamination**
-- Corners: **3 mm rounding**
-- Resolution: **300 DPI**
+## For results closest to Hobby World dividers
 
-## 1) Choose your style
+Use these settings:
 
-Pick what matches your storage and printing setup:
+- Paper: **matte cardstock 300–320 g/m²**
+- Lamination: **not needed**
+- Corner rounding: **3 mm**
+- Files: **PDF (300 DPI)**
 
-- **Orientation**: vertical or horizontal
-- **Storage compatibility**: layouts for “Return To” boxes, original campaign boxes, or deck boxes
-- **Printer-friendly**: black & white options (great for laser printers)
-- **Sleeve-ready**: sized to fit into sleeves (instead of lamination)
+---
 
-## 2) Storage solutions
+## Step 1. Choose a divider style
 
-Some layouts are designed for specific storage systems and inserts.
+The site offers several options. Pick what fits how you store your cards:
+
+- **Vertical or horizontal** dividers
+- Layouts for campaign boxes, “Return To” boxes, or deck boxes
+- Versions for **black & white** printing
+- **Sleeve-ready** layouts (can replace lamination and make dividers more durable)
 
 ![Example: compact storage with bands](/how-to-print/img/img-016.avif)
 
-## 3) Export quality: Print vs PDF (300+ DPI)
+---
 
-- **Print**: direct printing (RGB, 96 DPI) or saving a quick PDF
-- **PDF**: higher quality **300 DPI** files in **CMYK** (beta)
+## Step 2. Download files for printing
 
-## 4) Where to print
+On the dividers page you have two options:
 
-### Printing at home
+### “Print” button
 
-Most home printers handle **80–150 g/m²** paper. If you want the “Pro” feel:
+Good for quick printing at home.
 
-- **Glue method**: print front and back on separate sheets, then glue together
-- **Sleeve method**: use sleeves (or lamination) to add stiffness
+### PDF or image archive
 
-Tip: home printers often print darker than a monitor—try **+5–10% brightness** in printer settings.
+Click the arrow next to the Print button and download:
 
-### Professional printing
+- **PDF** — best for a print shop
+- Image archive — if you need a separate file per divider
 
-Bring **PDF (300+ DPI)** (or TIFF) to a print shop and ask for:
+If you’re printing outside your home, **PDF** is almost always the right choice.
 
-- **300–320 g/m²** matte paper
-- **3 mm** corner rounding
+---
 
-Color note: don’t expect a perfect match with official products—digital vs offset printing differs.
+## Step 3. Where to print
 
-## 5) Double‑sided printing & alignment
+### Option 1. At home
 
-No printer is perfectly accurate: front/back alignment will shift a bit.
+Most home printers don’t handle heavy **300–320 g/m²** cardstock. But you can still get good results:
 
-**Pro tip:** enable **Bleed** (usually ~3 mm) to avoid white borders.
+**Method 1. Glue two sides**
+
+Print the front and back on separate sheets, then glue them together.
+
+**Method 2. Adhesive paper**
+
+Print on sticker/label paper, cut out, and stick onto thick cardboard.
+
+**Method 3. Sleeves**
+
+Even thin dividers feel much stiffer inside a sleeve.
+
+### Option 2. Print shop (recommended)
+
+For quality without trial and error:
+
+1. Download the PDF.
+2. Send it to a print shop.
+3. Ask for:
+   - matte cardstock **300–320 g/m²**;
+   - **3 mm** corner rounding.
+
+Slight color differences from official products are normal. Print shops usually use digital printing; official components are made with different processes.
+
+---
+
+## Step 4. Double-sided printing
+
+With double-sided printing, the front and back almost never align perfectly.
+
+Layouts include **bleed** — a small image margin beyond the trim line — so you don’t get white edges after cutting.
+
+If the print shop asks about bleed, leave it enabled.
 
 ![Bleed example](/how-to-print/img/img-046.avif)
 
-## 6) Sleeving (instead of lamination)
+---
 
-Common compatible sizes:
+## Step 5. Cutting dividers
 
-- **“Return To / Classic” & Ryno (Horizontal)**: Sleeve Kings *Zombicide* / *Large CCG* (89×130 mm) — requires manual trimming at the top
-- **“Return To” (Vertical)**: 65×100 layout fits 65×100 mm sleeves
-- **3mm & Arkham Deco**: 94×69 mm “Outer sleeves”
-- **Arkham Deco (Vertical)**: 62×96 mm sleeves
+For manual cutting you need:
 
-## 7) Cutting & corner rounding
+- a hobby knife;
+- a metal ruler;
+- a flat surface.
 
-- For manual cutting: a hobby knife + metal ruler is enough
-- Red “+” marks are **crop marks** for accurate cutting
+Red “+” marks on the sheet are **crop marks** for trimming.
 
-Corner rounding:
+### Lamination or sleeves?
 
-![Corner rounding tool example](/how-to-print/img/img-034.avif)
+Dividers usually **don’t need lamination**.
 
-For “Vintage style” tabs, some corner cutters may struggle. If you want perfect rounding for Vintage, use **PDF (HQ)** layouts (they’re laser‑cut friendly and include rounded paths).
+If you want them stiffer and more durable, you have two options:
 
-## 8) Investigator tokens
+- **Lamination** — protects from moisture and wear, but adds thickness and unwanted glare.
+- **Sleeves** — a popular choice among AH:LCG players. Slide the divider into a standard card sleeve for extra protection without laminating each one.
 
-For a clean cut, a **25 mm** circle punch works great.
+On matte **300–320 g/m²** cardstock, extra lamination is usually unnecessary.
 
-## One more thing
+![Lamination and sleeves example](/how-to-print/img/img-034.avif)
 
-Always set print scale to **Actual Size / 100%**. Avoid “Fit to page” and extra margins.
-Print a **test page** before committing to a large batch.
+### Corner rounding
 
-Video example (cutting): `https://youtu.be/faZxq4966IU`
+![Corner rounding tool example](/how-to-print/img/img-036.avif)
 
+A corner rounder works well for most dividers.
+
+For layouts with large tabs (e.g. Vintage style), some hand rounders won’t fit. In that case, order **laser cutting** at a print shop — those layouts include suitable cut paths.
+
+---
+
+## Step 6. Investigator tokens
+
+For investigator tokens, a **25 mm** circle punch gives clean results.
+
+These punches are easy to find online.
+
+---
+
+## Before printing a large batch
+
+Check the scale settings:
+
+✅ Scale **100%** (Actual Size)
+
+❌ “Fit to page”
+
+❌ Automatic scaling
+
+Always print **1–2 test sheets** before a big run and check the size.
+
+That saves money on reprints.
+
+[Video: cutting example](https://youtu.be/faZxq4966IU)

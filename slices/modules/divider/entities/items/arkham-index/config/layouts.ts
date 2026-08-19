@@ -1,4 +1,4 @@
-import { sleeve65x100 } from "@/entities/sleeve/config/sizes";
+import { sleeve65x100, tarot } from "@/entities/sleeve/config/sizes";
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import { createSize } from "@/shared/util";
 import type { ArkhamIndexDividerLayout } from "../model";
@@ -34,6 +34,9 @@ const horizontal: ArkhamIndexDividerLayout = {
 	params: {
 		title: true,
 	},
+	fontFamilySelection: {
+		ru: ["Teutonic", "Conkordia"],
+	},
 };
 
 const medium: ArkhamIndexDividerLayout = {
@@ -57,8 +60,8 @@ const trim: ArkhamIndexDividerLayout = {
 	...horizontal,
 	id: "arkham-index-trim",
 	groupId: "trim",
-	name: "divider.arkham-index.noTab.name",
-	previewName: "divider.arkham-index.noTab.name",
+	name: "divider.arkham-index.trim.name",
+	previewName: "divider.arkham-index.trim.name",
 	size: createSize(87, 75.5),
 	printSize: {
 		300: {
@@ -68,6 +71,36 @@ const trim: ArkhamIndexDividerLayout = {
 	},
 	params: {
 		title: false,
+	},
+	tabs: null,
+};
+
+const deckbox: ArkhamIndexDividerLayout = {
+	...horizontal,
+	id: "arkham-index-deckbox",
+	groupId: "deckbox",
+	name: "divider.arkham-index.deckbox.name",
+	previewName: "divider.arkham-index.deckbox.name",
+	size: createSize(94, 70),
+	printSize: {
+		300: {
+			size: createSize(1110, 827),
+			bleedSize: createSize(1181, 898),
+		},
+	},
+	sleeves: [
+		{
+			id: tarot.id,
+			size: tarot,
+			description: "info.sleeve.customCut.description",
+		},
+	],
+	params: {
+		title: false,
+	},
+	compatibility: {
+		chapter1Box: true,
+		deckBox: true,
 	},
 	tabs: null,
 };
@@ -132,6 +165,32 @@ const verticalTrim: ArkhamIndexDividerLayout = {
 	tabs: null,
 };
 
+const verticalTrim95: ArkhamIndexDividerLayout = {
+	...vertical,
+	id: "arkham-index-vertical-trim-95",
+	groupId: "vertical-trim-95",
+	size: createSize(65, 95),
+	name: "divider.arkham-index.noTab95.name",
+	previewName: "divider.arkham-index.noTab95.name",
+	printSize: {
+		300: {
+			size: createSize(768, 1122),
+			bleedSize: createSize(839, 1193),
+		},
+	},
+	sleeves: [
+		{
+			id: sleeve65x100.id,
+			size: sleeve65x100,
+			description: "info.sleeve.customCut.description",
+		},
+	],
+	params: {
+		title: false,
+	},
+	tabs: null,
+};
+
 const verticalTrim100: ArkhamIndexDividerLayout = {
 	...verticalTrim,
 	id: "arkham-index-vertical-trim-100",
@@ -161,8 +220,11 @@ export const arkhamIndexLayouts: DividerLayout[] = [
 	horizontal,
 	medium,
 	trim,
+	deckbox,
 	vertical,
 	verticalMedium,
+
+	verticalTrim95,
 	verticalTrim,
 	verticalTrim100,
 ];

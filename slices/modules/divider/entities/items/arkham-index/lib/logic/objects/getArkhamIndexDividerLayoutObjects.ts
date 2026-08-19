@@ -1,18 +1,22 @@
 import {
+	arkhamIndexDividerDeckboxObjects,
 	arkhamIndexDividerHorizontalObjects,
 	arkhamIndexDividerHorizontalSmallObjects,
 	arkhamIndexDividerVerticalObjects,
 	arkhamIndexDividerVerticalTrimObjects,
-} from "../../../config";
+} from "../../../config/objects";
 import type { ArkhamIndexDividerLayout } from "../../../model";
 
 export const getArkhamIndexDividerLayoutObjects = (
 	layout: ArkhamIndexDividerLayout,
 ) => {
-	if (layout.id === "arkham-index-vertical-trim") {
+	if (layout.id.includes("deckbox")) {
+		return arkhamIndexDividerDeckboxObjects;
+	}
+	if (!layout.tabs && layout.orientation === "vertical") {
 		return arkhamIndexDividerVerticalTrimObjects;
 	}
-	if (layout.id.includes("trim")) {
+	if (!layout.tabs) {
 		return arkhamIndexDividerHorizontalSmallObjects;
 	}
 	if (layout.orientation === "horizontal") {

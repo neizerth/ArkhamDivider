@@ -19,7 +19,7 @@ export const getInvestigatorDividers = ({
 	const front = stories.flatMap((story) => {
 		const investigators = uniqBy(
 			(investigator) => `${investigator.name}-${investigator.faction_code}`,
-			story.investigators,
+			story.investigators ?? [],
 		);
 		return investigators.flatMap((investigator) => {
 			const faction = investigator.faction_code;
