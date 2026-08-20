@@ -114,14 +114,16 @@ export function CarlosLemosDivider(props: CarlosLemosDividerParams) {
 				)}
 			</Content>
 			<NotExportable>
-				<ColorPicker
-					sx={backgroundColorSx}
-					defaultColor={defaultBackgroundColor}
-					dividerId={id}
-					param="backgroundColor"
-					title={t(`divider.carlosLemos.backgroundColor.pickerTitle`)}
-				/>
-				<Menu dividerId={id} sx={menuSx} />
+				<BleedView>
+					<ColorPicker
+						sx={backgroundColorSx}
+						defaultColor={defaultBackgroundColor}
+						dividerId={id}
+						param="backgroundColor"
+						title={t(`divider.carlosLemos.backgroundColor.pickerTitle`)}
+					/>
+					<Menu dividerId={id} sx={menuSx} />
+				</BleedView>
 			</NotExportable>
 		</Container>
 	);
