@@ -50,6 +50,10 @@ export function CarlosLemosDividerEncounterIcons({
 			onSelected: onIconSelected,
 		});
 	}, [selectIcon, onIconSelected]);
+
+	const isEditable =
+		encounterIcons.length > 1 || encounterIcons[0] !== divider.icon;
+
 	return (
 		<Box {...props}>
 			<Row sx={containerSx}>
@@ -60,11 +64,12 @@ export function CarlosLemosDividerEncounterIcons({
 							icon={icon}
 							dividerId={divider.id}
 							onClick={() => removeIcon(icon)}
+							editable={isEditable}
 						/>
 					))}
 					<NotExportable>
 						{canAddIcon && (
-							<Box sx={addIconSx} onClick={select}>
+							<Box sx={addIconSx} onClick={select} displayPrint="none">
 								<Icon icon="arkham-plus" />
 							</Box>
 						)}

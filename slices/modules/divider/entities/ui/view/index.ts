@@ -4,6 +4,7 @@ export * from "./DividerBleedView";
 export * from "./DividerColorPicker";
 export * from "./DividerContainer";
 export * from "./DividerContent";
+export * from "./DividerContext";
 export * from "./DividerCreaseLine";
 export * from "./DividerMenu";
 export * from "./DividerText";

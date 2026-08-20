@@ -33,4 +33,17 @@ export const carlosLemosObjects = {
 		height: 5,
 		fontSize: 2.5,
 	},
+	encounters: {
+		top: 4.2,
+		left: 7.8,
+		right: 8,
+		height: 9,
+	},
+	encounterIcon: {
+		width: 7.2,
+		height: 7.2,
+		fontSize: 7.6,
+		top: 0.9,
+		left: 0.9,
+	},
 };

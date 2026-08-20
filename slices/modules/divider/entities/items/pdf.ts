@@ -9,6 +9,8 @@ import { arkhamesqueClassicCategoryId } from "./arkhamesque-classic/config/commo
 import { ArkhamesqueClassicDividerPDF } from "./arkhamesque-classic/ui/pdf";
 import { binderBookmarkCategoryId } from "./binder-bookmark/config/common";
 import { BinderBookmarkPDF } from "./binder-bookmark/ui/pdf";
+import { carlosLemosCategoryId } from "./carlos-lemos/config";
+import { CarlosLemosDividerPDF } from "./carlos-lemos/ui/pdf";
 import { chapter2CategoryId } from "./chapter2/config";
 import { Chapter2DividerPDF } from "./chapter2/ui/pdf";
 import { classicCategoryId } from "./classic/config/common";
@@ -36,6 +38,7 @@ export const dividerPDFComponents: Record<string, PDFDivider<any>> = {
 	[arkhamIndexCategoryId]: ArkhamIndexDividerPDF,
 	[arkhamDecoCategoryId]: ArkhamDecoDividerPDF,
 	[binderBookmarkCategoryId]: BinderBookmarkPDF,
+	[carlosLemosCategoryId]: CarlosLemosDividerPDF,
 	[classicCategoryId]: ClassicDividerPDF,
 	[invocation2018CategoryId]: Invocation2018DividerPDF,
 	[investigatorTokensCategoryId]: InvestigatorTokensDividerPDF,

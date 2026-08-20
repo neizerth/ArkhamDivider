@@ -5,6 +5,7 @@ import {
 	DividerColorPicker as ColorPicker,
 	DividerContainer as Container,
 	DividerContent as Content,
+	DividerText,
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
@@ -102,7 +103,11 @@ export function CarlosLemosDivider(props: CarlosLemosDividerParams) {
 				)}
 
 				{props.type !== "campaign" && props.story && (
-					<Box sx={campaignTitleSx}>{t(props.story.name)}</Box>
+					<DividerText
+						dividerId={id}
+						sx={campaignTitleSx}
+						value={t(props.story.name)}
+					/>
 				)}
 			</Content>
 			<NotExportable>

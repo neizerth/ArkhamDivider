@@ -86,9 +86,9 @@ export const getCampaignTitleSx: PrintSxCallback = ({ mm }) => {
 export const getEncounterIconsSx: PrintSxCallback = ({ mm }) => {
 	return {
 		position: "absolute",
-		top: mm(4.2),
-		left: mm(8),
-		right: mm(8),
-		height: mm(9),
+		top: mm(O.encounters.top),
+		left: mm(O.encounters.left),
+		right: mm(O.encounters.right),
+		height: mm(O.encounters.height),
 	};
 };

@@ -1,4 +1,5 @@
 import type { PrintSxCallback } from "@/modules/print/shared/model";
+import { carlosLemosObjects as O } from "../../config/objects";
 
 export const getContainerSx: PrintSxCallback = () => ({
 	position: "relative",
@@ -15,24 +16,27 @@ export const getIconRowContentSx: PrintSxCallback = () => ({
 	height: "100%",
 });
 
-export const getIconContainerSx: PrintSxCallback = ({ mm }) => ({
+export const getIconContainerSx: PrintSxCallback<{ editable: boolean }> = ({
+	mm,
+	editable,
+}) => ({
 	position: "relative",
-	height: mm(9),
-	width: mm(9),
-	cursor: "pointer",
+	height: mm(O.encounters.height),
+	width: mm(O.encounters.height),
+	cursor: editable ? "pointer" : "default",
 	"&:hover": {
-		opacity: 0.8,
+		opacity: editable ? 0.8 : 1,
 	},
 });
 
 export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 2,
-	height: mm(7.2),
-	width: mm(7.5),
-	fontSize: mm(7.6),
-	top: mm(0.9),
-	left: mm(0.8),
+	height: mm(O.encounterIcon.height),
+	width: mm(O.encounterIcon.width),
+	fontSize: mm(O.encounterIcon.fontSize),
+	top: mm(O.encounterIcon.top),
+	left: mm(O.encounterIcon.left),
 });
 
 export const getBackgroundSx: PrintSxCallback = ({ mm }) => ({
@@ -40,11 +44,9 @@ export const getBackgroundSx: PrintSxCallback = ({ mm }) => ({
 	objectFit: "contain",
 	left: 0,
 	top: "1%",
-	height: mm(9),
-	width: mm(9),
+	height: mm(O.encounters.height),
+	width: mm(O.encounters.height),
 	zIndex: 1,
-	// width: mm(1),
-	// height: mm(1),
 });
 
 export const getAddIconSx: PrintSxCallback = ({ mm }) => ({
