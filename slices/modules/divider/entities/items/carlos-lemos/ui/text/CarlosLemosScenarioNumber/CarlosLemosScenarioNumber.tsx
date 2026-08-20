@@ -3,11 +3,11 @@ import { useCallback } from "react";
 import { useDividerParam } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { FitInput } from "@/shared/ui/control";
-import type { CarlosLemosDividerProps } from "../../../model";
+import type { CarlosLemosDividerParams } from "../../../model";
 import * as S from "./CarlosLemosScenarioNumber.styles";
 
 type CarlosLemosScenarioNumberProps = BoxProps & {
-	divider: CarlosLemosDividerProps;
+	divider: CarlosLemosDividerParams;
 };
 
 export function CarlosLemosScenarioNumber({

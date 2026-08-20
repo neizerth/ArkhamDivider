@@ -21,7 +21,8 @@ import {
 	getCarlosLemosDividerBackgroundType as getBackgroundType,
 	getCarlosLemosDividerColorBrightness as getColorBrightness,
 } from "../../lib";
-import type { CarlosLemosDividerProps } from "../../model";
+import type { CarlosLemosDividerParams } from "../../model";
+import { CarlosLemosDividerEncounterIcons as EncounterIcons } from "../CarlosLemosDividerEncounterIcons";
 import {
 	CarlosLemosScenarioNumber as ScenarioNumber,
 	CarlosLemosDividerTitle as Title,
@@ -30,7 +31,7 @@ import * as S from "./CarlosLemosDivider.styles";
 
 const asset = prefix(carlosLemosBaseUrl);
 
-export function CarlosLemosDivider(props: CarlosLemosDividerProps) {
+export function CarlosLemosDivider(props: CarlosLemosDividerParams) {
 	const { t } = useStoryTranslation(props.story);
 
 	const { type, story, params, id, side } = props;
@@ -48,6 +49,7 @@ export function CarlosLemosDivider(props: CarlosLemosDividerProps) {
 	const iconSx = getPrintSx(S.getIconSx);
 	const scenarioNumberSx = getPrintSx(S.getScenarioNumberSx);
 	const campaignTitleSx = getPrintSx(S.getCampaignTitleSx);
+	const encounterIconsSx = getPrintSx(S.getEncounterIconsSx);
 
 	const defaultBackgroundColor = getBackgroundColor(story);
 	const backgroundColor = params?.backgroundColor ?? defaultBackgroundColor;
@@ -84,7 +86,9 @@ export function CarlosLemosDivider(props: CarlosLemosDividerProps) {
 				/>
 			</BleedView>
 			<Content side={side}>
-				{isEncounter ? null : (
+				{isEncounter ? (
+					<EncounterIcons divider={props} sx={encounterIconsSx} />
+				) : (
 					<>
 						<Title divider={props} sx={titleSx} />
 						<Icon

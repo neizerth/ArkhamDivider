@@ -17,7 +17,7 @@ export default {
 		top: percent(4),
 	},
 	mystic: {
-		left: percent(-1),
+		left: percent(1),
 		top: percent(-10),
 		scale: percent(90),
 	},

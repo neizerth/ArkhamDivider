@@ -1,0 +1,39 @@
+import { Box, type BoxProps } from "@mui/material";
+import type { Icon as IconType } from "@/modules/core/icon/shared/model";
+import { DividerIcon } from "@/modules/divider/features/ui";
+import { usePrintSx } from "@/modules/print/shared/lib";
+import { Image } from "@/shared/ui";
+import { prefix } from "@/shared/util";
+import { carlosLemosBaseUrl } from "../../config";
+import { carlosLemosObjects as O } from "../../config/objects";
+import * as S from "./CarlosLemosDividerEncounterIcons.styles";
+
+const asset = prefix(carlosLemosBaseUrl);
+
+export const Icon = ({
+	icon,
+	dividerId,
+	onClick,
+}: BoxProps & {
+	icon: IconType;
+	dividerId: string;
+}) => {
+	const getPrintSx = usePrintSx();
+	const containerSx = getPrintSx(S.getIconContainerSx);
+	const iconSx = getPrintSx(S.getIconSx);
+	const backgroundSx = getPrintSx(S.getBackgroundSx);
+
+	const backgroundImage = asset(`/icon.avif`);
+
+	return (
+		<Box sx={containerSx} onClick={onClick}>
+			<DividerIcon
+				icon={icon}
+				sx={iconSx}
+				dividerId={dividerId}
+				{...O.icon.params}
+			/>
+			<Image src={backgroundImage} sx={backgroundSx} />
+		</Box>
+	);
+};

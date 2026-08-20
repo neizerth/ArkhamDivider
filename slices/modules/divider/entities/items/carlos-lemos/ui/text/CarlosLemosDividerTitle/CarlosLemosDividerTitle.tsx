@@ -3,11 +3,11 @@ import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerText } from "@/modules/divider/entities/lib";
 import { DividerText } from "@/modules/divider/entities/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
-import type { CarlosLemosDividerProps } from "../../../model";
+import type { CarlosLemosDividerParams } from "../../../model";
 import * as S from "./CarlosLemosDividerTitle.styles";
 
 type CarlosLemosDividerTitleProps = BoxProps & {
-	divider: CarlosLemosDividerProps;
+	divider: CarlosLemosDividerParams;
 };
 
 export function CarlosLemosDividerTitle({

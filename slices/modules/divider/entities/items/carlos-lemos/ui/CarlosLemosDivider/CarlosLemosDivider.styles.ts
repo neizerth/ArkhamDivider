@@ -82,3 +82,13 @@ export const getCampaignTitleSx: PrintSxCallback = ({ mm }) => {
 		fontSize: mm(O.campaignTitle.fontSize),
 	};
 };
+
+export const getEncounterIconsSx: PrintSxCallback = ({ mm }) => {
+	return {
+		position: "absolute",
+		top: mm(4.2),
+		left: mm(8),
+		right: mm(8),
+		height: mm(9),
+	};
+};
