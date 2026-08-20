@@ -20,8 +20,8 @@ export const getColorSx: PrintSxCallback<{ maskSrc: string }> = ({
 export const getBackgroundColorSx: PrintSxCallback = ({ mm }) => ({
 	position: "absolute",
 	zIndex: 2,
-	bottom: mm(12),
-	left: mm(9),
+	bottom: mm(9),
+	left: mm(6),
 	width: mm(4),
 	height: mm(4),
 });
@@ -97,7 +97,7 @@ export const getMenuSx: PrintSxCallback = ({ mm }) => {
 	return {
 		position: "absolute",
 		zIndex: 2,
-		top: mm(43),
-		left: mm(8),
+		top: mm(40),
+		left: mm(5),
 	};
 };
