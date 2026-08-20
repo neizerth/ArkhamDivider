@@ -92,3 +92,12 @@ export const getEncounterIconsSx: PrintSxCallback = ({ mm }) => {
 		height: mm(O.encounters.height),
 	};
 };
+
+export const getMenuSx: PrintSxCallback = ({ mm }) => {
+	return {
+		position: "absolute",
+		zIndex: 2,
+		top: mm(40),
+		left: mm(5),
+	};
+};

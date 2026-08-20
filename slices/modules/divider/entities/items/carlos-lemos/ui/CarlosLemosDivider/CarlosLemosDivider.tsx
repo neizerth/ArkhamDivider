@@ -6,6 +6,7 @@ import {
 	DividerContainer as Container,
 	DividerContent as Content,
 	DividerText,
+	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon as Icon } from "@/modules/divider/features/ui";
@@ -51,6 +52,7 @@ export function CarlosLemosDivider(props: CarlosLemosDividerParams) {
 	const scenarioNumberSx = getPrintSx(S.getScenarioNumberSx);
 	const campaignTitleSx = getPrintSx(S.getCampaignTitleSx);
 	const encounterIconsSx = getPrintSx(S.getEncounterIconsSx);
+	const menuSx = getPrintSx(S.getMenuSx);
 
 	const defaultBackgroundColor = getBackgroundColor(story);
 	const backgroundColor = params?.backgroundColor ?? defaultBackgroundColor;
@@ -93,6 +95,7 @@ export function CarlosLemosDivider(props: CarlosLemosDividerParams) {
 					<>
 						<Title divider={props} sx={titleSx} />
 						<Icon
+							dividerId={id}
 							icon={icon}
 							sx={iconSx}
 							{...O.icon.params}
@@ -118,6 +121,7 @@ export function CarlosLemosDivider(props: CarlosLemosDividerParams) {
 					param="backgroundColor"
 					title={t(`divider.carlosLemos.backgroundColor.pickerTitle`)}
 				/>
+				<Menu dividerId={id} sx={menuSx} />
 			</NotExportable>
 		</Container>
 	);

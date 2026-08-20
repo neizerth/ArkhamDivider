@@ -232,9 +232,9 @@ export const CarlosLemosCredits: Author = {
 	image: getAssetUrl("/images/authors/carlos-lemos.png"),
 	contacts: [
 		{
-			id: "bgg",
-			icon: "bgg",
-			url: "https://boardgamegeek.com/profile/CarlosLemos",
+			id: "email",
+			icon: "email",
+			url: "mixlemos@gmail.com>",
 		},
 	],
 };

@@ -10,8 +10,8 @@ export const carlosLemosObjects = {
 		width: 8.9,
 		height: 8.9,
 		fontSize: 8.9,
-		top: 4.6,
-		right: 8.5,
+		top: 4.4,
+		right: 8.4,
 		params: {
 			scaleType: "circle",
 			scaleFactor: {

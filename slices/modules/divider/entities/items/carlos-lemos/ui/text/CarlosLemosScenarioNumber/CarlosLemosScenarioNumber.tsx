@@ -2,6 +2,7 @@ import { Box, type BoxProps } from "@mui/material";
 import { useCallback } from "react";
 import { useDividerParam } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
+import { NotExportable } from "@/modules/render/shared/ui";
 import { FitInput } from "@/shared/ui/control";
 import type { CarlosLemosDividerParams } from "../../../model";
 import * as S from "./CarlosLemosScenarioNumber.styles";
@@ -41,17 +42,19 @@ export function CarlosLemosScenarioNumber({
 
 	return (
 		<Box sx={sx}>
-			<FitInput
-				{...rest}
-				sx={inputSx}
-				defaultValue={value}
-				clearable={false}
-				contentEditable={false}
-				fitTextOptions={{
-					minFontSize: 8,
-					onFontSizeChange,
-				}}
-			/>
+			<NotExportable>
+				<FitInput
+					{...rest}
+					sx={inputSx}
+					defaultValue={value}
+					clearable={false}
+					contentEditable={false}
+					fitTextOptions={{
+						minFontSize: 8,
+						onFontSizeChange,
+					}}
+				/>
+			</NotExportable>
 		</Box>
 	);
 }
