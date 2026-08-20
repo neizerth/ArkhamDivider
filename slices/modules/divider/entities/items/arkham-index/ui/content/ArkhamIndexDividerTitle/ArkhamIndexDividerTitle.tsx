@@ -33,10 +33,11 @@ export function ArkhamIndexDividerTitle(props: ArkhamIndexDividerTitleProps) {
 
 	const defaultTranslatedTitle = t(defaultTitle ?? "");
 
-	const transformedTitle =
-		fontFamily !== "Conkordia"
-			? defaultTranslatedTitle.toUpperCase()
-			: defaultTranslatedTitle;
+	const isConkordia = fontFamily === "Conkordia";
+
+	const transformedTitle = isConkordia
+		? defaultTranslatedTitle.toUpperCase()
+		: defaultTranslatedTitle;
 
 	const {
 		value: title,

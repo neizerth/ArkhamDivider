@@ -64,7 +64,7 @@ export function ArkhamIndexDividerMediaContent(
 							<Tooltip
 								arrow
 								title={t(
-									`mui divider.arkham-index.customImage.${orientation}.size`,
+									`divider.arkham-index.customImage.${orientation}.size`,
 								)}
 							>
 								<Upload accept="image/*" onChange={upload}>

@@ -123,7 +123,9 @@ export function DividerLayoutInfo({
 							</Typography>
 						</Row>
 						{bleedEnabled && <BleedInfo bleed={layout.bleed} />}
-						{sleeves && <DividerLayoutSleeveInfo sleeves={sleeves} />}
+						{sleeves && sleeves.length > 0 && (
+							<DividerLayoutSleeveInfo sleeves={sleeves} />
+						)}
 					</Stack>
 				</Stack>
 				{image && (

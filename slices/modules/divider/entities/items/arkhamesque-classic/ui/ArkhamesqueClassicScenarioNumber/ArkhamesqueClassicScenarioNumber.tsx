@@ -27,11 +27,12 @@ export function ArkhamesqueClassicScenarioNumber(props: Props) {
 		return getArkhamesqueClassicScenarioNumberText({ data, divider });
 	}, [data, divider]);
 
-	const scaleRef = useRef<number | null>(
+	const defaultScale =
 		typeof divider.params?.scenarioNumberScale === "number"
 			? divider.params.scenarioNumberScale
-			: null,
-	);
+			: null;
+
+	const scaleRef = useRef<number | null>(defaultScale);
 
 	const setScenarioNumberScale = useDividerParam<number>({
 		dividerId: divider.id,

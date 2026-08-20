@@ -5,7 +5,7 @@ import { arkhamDecoCategory } from "./arkham-deco/config";
 import { arkhamIndexCategory } from "./arkham-index/config";
 import { arkhamesqueClassicCategory } from "./arkhamesque-classic/config";
 import { binderBookmarkCategory } from "./binder-bookmark/config";
-import { carlosLemosCategory } from "./carlos-lemos/config";
+import { carlosLemosCategory } from "./carlos-lemos/config/category";
 import { chapter2Category } from "./chapter2/config/category";
 import { classicCategory } from "./classic/config";
 import { investigatorTokensCategory } from "./investigator-tokens/config";

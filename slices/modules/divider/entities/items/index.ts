@@ -6,7 +6,7 @@ import { arkhamDecoCategoryId } from "./arkham-deco/config";
 import { arkhamIndexCategoryId } from "./arkham-index/config";
 import { arkhamesqueClassicCategoryId } from "./arkhamesque-classic/config";
 import { binderBookmarkCategoryId } from "./binder-bookmark/config";
-import { carlosLemosCategoryId } from "./carlos-lemos/config";
+import { carlosLemosCategoryId } from "./carlos-lemos/config/common";
 import { chapter2CategoryId } from "./chapter2/config";
 import { classicCategoryId } from "./classic/config/common";
 import { dividerCategories, dividerLayouts } from "./data";
@@ -83,7 +83,7 @@ const SimpleSticker = lazyDivider(
 const ArkhamIndexDivider = lazyDivider(
 	() => import("./arkham-index/ui/ArkhamIndexDivider/ArkhamIndexDivider"),
 );
-const CarlosLemosDivider = lazy(
+const CarlosLemosDivider = lazyDivider(
 	() => import("./carlos-lemos/ui/CarlosLemosDivider/CarlosLemosDivider"),
 );
 export const dividerComponents: Record<
