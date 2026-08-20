@@ -1,3 +1,4 @@
+import { sleeve70x110 } from "@/entities/sleeve/config";
 import type { DividerLayout } from "@/modules/divider/shared/model";
 import { createSize } from "@/shared/util";
 import { carlosLemosCategoryId } from "./common";
@@ -18,7 +19,12 @@ const layout: DividerLayout = {
 		},
 	},
 	bleed: 3,
-	sleeves: [],
+	sleeves: [
+		{
+			id: "70x110",
+			size: sleeve70x110,
+		},
+	],
 	iconParams: ["icon"],
 };
 
