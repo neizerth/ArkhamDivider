@@ -109,25 +109,24 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 			param: "icon",
 			defaultIcon: props.icon,
 		});
-		if (!icon) {
-			return;
+		if (icon) {
+			const iconBox = bleed.box({
+				top: O.icon.top,
+				left: iconLeft,
+				width: O.icon.width,
+				height: O.icon.height,
+			});
+			await ctx.icon.draw(icon, {
+				x: iconBox.x(),
+				y: iconBox.y(),
+				width: iconBox.width(),
+				height: iconBox.height(),
+				fontSize: mm(O.icon.fontSize),
+				color: black,
+				overprint: true,
+				iconOptions: { scaleType: "circle" },
+			});
 		}
-		const iconBox = bleed.box({
-			top: O.icon.top,
-			left: iconLeft,
-			width: O.icon.width,
-			height: O.icon.height,
-		});
-		await ctx.icon.draw(icon, {
-			x: iconBox.x(),
-			y: iconBox.y(),
-			width: iconBox.width(),
-			height: iconBox.height(),
-			fontSize: mm(O.icon.fontSize),
-			color: black,
-			overprint: true,
-			iconOptions: { scaleType: "circle" },
-		});
 	}
 
 	if (showArkhamIndexSideTextSx(props)) {
@@ -146,19 +145,32 @@ export const ArkhamIndexDividerPDF: PDFDivider<
 			height: S.height,
 		});
 
+		const fontFamily = "Arkhamic" as const;
 		const fontSizeScale = props.params?.sideTextFontSizeScale ?? 100;
-		const fontSize = mm((S.fontSize * fontSizeScale) / 100);
-
+		let fontSize = mm((S.fontSize * fontSizeScale) / 100);
+		const boxWidth = sideBox.width();
+		const textWidth = await text.measureTextWidth({
+			text: sideText,
+			fontFamily,
+			fontSize,
+		});
+		// PDFKit wraps whenever `width` is set; shrink to fit like FitText.
+		if (textWidth > boxWidth && textWidth > 0) {
+			fontSize *= boxWidth / textWidth;
+		}
+		const fittedWidth = await text.measureTextWidth({
+			text: sideText,
+			fontFamily,
+			fontSize,
+		});
 		const h = mm(S.height);
 		await text.draw(sideText, {
-			x: sideBox.x(),
+			x: sideBox.x() + (boxWidth - fittedWidth) / 2,
 			y: sideBox.y() + h / 2,
-			width: sideBox.width(),
 			height: h,
 			fontSize,
-			align: "center",
 			baseline: "middle",
-			fontFamily: "Arkhamic",
+			fontFamily,
 			color: black,
 			overprint: true,
 		});
