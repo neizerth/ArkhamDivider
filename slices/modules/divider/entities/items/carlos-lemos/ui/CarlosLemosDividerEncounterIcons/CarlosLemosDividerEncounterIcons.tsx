@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { useIconSelection } from "@/modules/core/icon/entities/lib";
 import type { Icon as IconType } from "@/modules/core/icon/shared/model";
 import { Icon } from "@/modules/core/icon/shared/ui";
+import { useDividerContext } from "@/modules/divider/entities/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { Row } from "@/shared/ui";
@@ -14,14 +15,13 @@ import type { CarlosLemosDividerParams } from "../../model";
 import * as C from "./CarlosLemosDividerEncounterIcons.components";
 import * as S from "./CarlosLemosDividerEncounterIcons.styles";
 
-type CarlosLemosDividerEncounterIconsProps = BoxProps & {
-	divider: CarlosLemosDividerParams;
-};
+type CarlosLemosDividerEncounterIconsProps = BoxProps;
 
-export function CarlosLemosDividerEncounterIcons({
-	divider,
-	...props
-}: CarlosLemosDividerEncounterIconsProps) {
+export function CarlosLemosDividerEncounterIcons(
+	props: CarlosLemosDividerEncounterIconsProps,
+) {
+	const divider = useDividerContext<CarlosLemosDividerParams>();
+
 	const { addIcon, removeIcon } = useCarlosLemosEncounterIcons(divider);
 	const getPrintSx = usePrintSx();
 	const containerSx = getPrintSx(S.getContainerSx);

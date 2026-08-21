@@ -1,19 +1,15 @@
 import { Box, type BoxProps } from "@mui/material";
 import { useLocaleSx } from "@/modules/core/i18n/entities/lib";
 import { useDividerText } from "@/modules/divider/entities/lib";
-import { DividerText } from "@/modules/divider/entities/ui";
+import { DividerText, useDividerContext } from "@/modules/divider/entities/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import type { CarlosLemosDividerParams } from "../../../model";
 import * as S from "./CarlosLemosDividerTitle.styles";
 
-type CarlosLemosDividerTitleProps = BoxProps & {
-	divider: CarlosLemosDividerParams;
-};
+type CarlosLemosDividerTitleProps = BoxProps;
+export function CarlosLemosDividerTitle(props: CarlosLemosDividerTitleProps) {
+	const divider = useDividerContext<CarlosLemosDividerParams>();
 
-export function CarlosLemosDividerTitle({
-	divider,
-	...props
-}: CarlosLemosDividerTitleProps) {
 	const getPrintSx = usePrintSx();
 	const getLocaleSx = useLocaleSx();
 

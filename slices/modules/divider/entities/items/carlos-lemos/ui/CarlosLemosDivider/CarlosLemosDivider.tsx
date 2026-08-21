@@ -5,6 +5,7 @@ import {
 	DividerColorPicker as ColorPicker,
 	DividerContainer as Container,
 	DividerContent as Content,
+	DividerContext,
 	DividerText,
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
@@ -69,61 +70,63 @@ export function CarlosLemosDivider(props: CarlosLemosDividerParams) {
 	});
 
 	return (
-		<Container>
-			<Background src={backgroundSrc} />
-			<BleedView sx={{ isolation: "isolate" }}>
-				<Image
-					src={colorSrc}
-					sx={{
-						...absoluteFill,
-						width: "100%",
-						height: "100%",
-						filter: `brightness(${colorBrightness})`,
-					}}
-				/>
-				<Box
-					sx={{
-						...colorSx,
-						backgroundColor,
-					}}
-				/>
-			</BleedView>
-			<Content side={side}>
-				{isEncounter ? (
-					<EncounterIcons divider={props} sx={encounterIconsSx} />
-				) : (
-					<>
-						<Title divider={props} sx={titleSx} />
-						<Icon
-							dividerId={id}
-							icon={icon}
-							sx={iconSx}
-							{...O.icon.params}
-							onClick={setIcon}
-						/>
-						<ScenarioNumber divider={props} sx={scenarioNumberSx} />
-					</>
-				)}
+		<DividerContext.Provider value={props}>
+			<Container>
+				<Background src={backgroundSrc} />
+				<BleedView sx={{ isolation: "isolate" }}>
+					<Image
+						src={colorSrc}
+						sx={{
+							...absoluteFill,
+							width: "100%",
+							height: "100%",
+							filter: `brightness(${colorBrightness})`,
+						}}
+					/>
+					<Box
+						sx={{
+							...colorSx,
+							backgroundColor,
+						}}
+					/>
+				</BleedView>
+				<Content side={side}>
+					{isEncounter ? (
+						<EncounterIcons sx={encounterIconsSx} />
+					) : (
+						<>
+							<Title sx={titleSx} />
+							<Icon
+								dividerId={id}
+								icon={icon}
+								sx={iconSx}
+								{...O.icon.params}
+								onClick={setIcon}
+							/>
+							<ScenarioNumber sx={scenarioNumberSx} />
+						</>
+					)}
 
-				{props.type !== "campaign" && props.story && (
-					<DividerText
-						dividerId={id}
-						sx={campaignTitleSx}
-						value={t(props.story.name)}
-					/>
-				)}
-				<NotExportable>
-					<ColorPicker
-						sx={backgroundColorSx}
-						defaultColor={defaultBackgroundColor}
-						dividerId={id}
-						param="backgroundColor"
-						title={t(`divider.carlosLemos.backgroundColor.pickerTitle`)}
-					/>
-					<Menu dividerId={id} sx={menuSx} />
-				</NotExportable>
-			</Content>
-		</Container>
+					{props.type !== "campaign" && props.story && (
+						<DividerText
+							dividerId={id}
+							sx={campaignTitleSx}
+							value={t(props.story.name)}
+						/>
+					)}
+					<NotExportable>
+						<ColorPicker
+							sx={backgroundColorSx}
+							defaultColor={defaultBackgroundColor}
+							dividerId={id}
+							param="backgroundColor"
+							title={t(`divider.carlosLemos.backgroundColor.pickerTitle`)}
+						/>
+						<Menu dividerId={id} sx={menuSx} />
+					</NotExportable>
+				</Content>
+			</Container>
+		</DividerContext.Provider>
 	);
 }
 

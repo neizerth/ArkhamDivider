@@ -1,5 +1,6 @@
 import { Box, type BoxProps } from "@mui/material";
 import { useCallback } from "react";
+import { useDividerContext } from "@/modules/divider/entities/ui";
 import { useDividerParam } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
@@ -7,15 +8,14 @@ import { FitInput } from "@/shared/ui/control";
 import type { CarlosLemosDividerParams } from "../../../model";
 import * as S from "./CarlosLemosScenarioNumber.styles";
 
-type CarlosLemosScenarioNumberProps = BoxProps & {
-	divider: CarlosLemosDividerParams;
-};
+type CarlosLemosScenarioNumberProps = BoxProps;
 
 export function CarlosLemosScenarioNumber({
-	divider,
 	sx,
-	...rest
+	...props
 }: CarlosLemosScenarioNumberProps) {
+	const divider = useDividerContext<CarlosLemosDividerParams>();
+
 	const getPrintSx = usePrintSx();
 	const inputSx = getPrintSx(S.getInputSx);
 
@@ -44,7 +44,7 @@ export function CarlosLemosScenarioNumber({
 		<Box sx={sx}>
 			<NotExportable>
 				<FitInput
-					{...rest}
+					{...props}
 					sx={inputSx}
 					defaultValue={value}
 					clearable={false}
