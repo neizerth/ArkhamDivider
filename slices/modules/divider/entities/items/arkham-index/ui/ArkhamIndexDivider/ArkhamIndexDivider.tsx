@@ -15,7 +15,11 @@ import {
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
-import { selectLasercutEnabled, usePrintSx } from "@/modules/print/shared/lib";
+import {
+	selectLasercutEnabled,
+	useCornerRadius,
+	usePrintSx,
+} from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { absoluteFill } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib";
@@ -45,6 +49,7 @@ import * as S from "./ArkhamIndexDivider.styles";
 export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { t } = useTranslation();
 	const lasercutEnabled = useAppSelector(selectLasercutEnabled);
+	const cornerRadiusEnabled = useCornerRadius();
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
 	const [showCardsInfo, setShowCardsInfo] = useBoolean(false);
 
@@ -102,7 +107,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { side } = props;
 
 	const showMediaContent = props.layoutType !== "player";
-	const showStroke = Boolean(layout.tabs);
+	const showStroke = Boolean(layout.tabs) || cornerRadiusEnabled;
 
 	return (
 		<ArkhamIndexContext.Provider
