@@ -1,3 +1,5 @@
+import { isString } from "ramda-adjunct";
+
 export const sanitizeHTML = (html: string): string => {
 	const container = document.createElement("div");
 	container.innerHTML = html.replace(/<br\/?>/, "\n");
@@ -25,3 +27,17 @@ export const prefix =
 		);
 		return `${prefix}${right}`;
 	};
+
+export const serialize = (value: unknown): string => {
+	if (typeof value === "string") {
+		return value;
+	}
+	try {
+		return JSON.stringify(value, null, 2);
+	} catch {
+		return String(value);
+	}
+};
+
+export const prepareString = (value: unknown): string =>
+	isString(value) ? value : "";

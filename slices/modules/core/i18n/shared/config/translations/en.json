@@ -260,6 +260,10 @@
 	"divider.arkham-index.deckbox.name": "Deck Box",
 	"divider.layout.arkham-index.sideShift": "Side shift. Use if the printer gives large shifts on the back side. This will not cut the card information when cutting.",
 	"error.route.title": "This page could not be loaded",
-	"error.route.description": "The app may have been updated while this tab was open. Reloading usually fixes it.",
-	"error.route.reload": "Reload"
+	"error.route.description": "This page failed to open. The home screen usually works — or reload if the app was just updated.",
+	"error.route.home": "Go to home",
+	"error.route.reload": "Reload",
+	"error.route.details": "Error details",
+	"error.route.copy": "Copy",
+	"error.route.copied": "Copied"
 }
