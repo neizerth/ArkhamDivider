@@ -27,6 +27,13 @@ export const dividers = createSlice({
 				return;
 			}
 			const prevParams = entity.params as Record<string, unknown> | undefined;
+			// A no-op write still replaced the entity object, so every subscriber
+			// re-rendered with a fresh reference. Measurement-driven writes
+			// (font size fitting) then re-fired on that render and dispatched
+			// again — an endless render/dispatch loop (React error #185).
+			if (prevParams && Object.is(prevParams[key], value)) {
+				return;
+			}
 			state.entities[id] = {
 				...entity,
 				params: {
@@ -50,6 +57,10 @@ export const dividers = createSlice({
 					const prevParams = entity.params as
 						| Record<string, unknown>
 						| undefined;
+
+					if (prevParams && Object.is(prevParams[key], value)) {
+						return null;
+					}
 
 					const params = {
 						...(prevParams ?? {}),

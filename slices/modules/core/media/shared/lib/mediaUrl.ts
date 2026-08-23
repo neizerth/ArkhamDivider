@@ -31,10 +31,13 @@ export const getMediaBlob = async (id?: string | null) => {
 };
 
 export const revokeMediaById = (id: string) => {
+	// Read the url before dropping the entry: reading after `delete` always
+	// returned `undefined`, so the object url was never actually revoked.
+	const url = urlMap.get(id);
+
 	urlMap.delete(id);
 	deleteMediaById(id);
 
-	const url = urlMap.get(id);
 	if (!url) {
 		return;
 	}

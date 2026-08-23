@@ -7,6 +7,7 @@ import {
 } from "@/modules/divider/entities/items/arkham-index/lib/store";
 import { selectCategoryId, setCategoryId } from "@/modules/divider/shared/lib";
 import { selectStories, setStories } from "@/modules/story/shared/lib";
+import { ownsStorySupport } from "../supportedStoryCategories";
 
 function* worker() {
 	const stories: ReturnType<typeof selectStories> = yield select(selectStories);
@@ -22,6 +23,11 @@ function* worker() {
 		yield select(selectCategoryId);
 
 	if (categoryId !== arkhamIndexCategoryId) {
+		if (ownsStorySupport(categoryId)) {
+			// That category owns the flags — resetting them here would undo its work.
+			return;
+		}
+
 		const haveUnsupportedStories = stories.some((story) => !story.supported);
 
 		if (!haveUnsupportedStories) {
@@ -48,8 +54,6 @@ function* worker() {
 			supported,
 		};
 	});
-
-	console.log("updated stories");
 
 	yield put(setStories(storiesData));
 }

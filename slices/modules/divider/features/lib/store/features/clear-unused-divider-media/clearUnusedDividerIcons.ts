@@ -12,6 +12,13 @@ import {
 } from "@/modules/divider/shared/lib";
 import { getDividerMedia } from "../../../logic";
 
+/**
+ * Object urls handed to dividers so far. The store only knows which urls are in
+ * use right now, so a url that just disappeared from the dividers is only
+ * recognizable by comparing against the previous pass.
+ */
+const trackedUrls = new Set<string>();
+
 function* worker() {
 	const layout: ReturnType<typeof selectLayout> = yield select(selectLayout);
 	if (!layout) {
@@ -21,12 +28,24 @@ function* worker() {
 	const dividers: ReturnType<typeof selectDividers> =
 		yield select(selectDividers);
 
-	const mediaUrls = dividers
-		.flatMap((divider) => getDividerMedia({ divider, mediaParams }))
-		.filter(isNotNil);
+	const usedUrls = new Set(
+		dividers
+			.flatMap((divider) => getDividerMedia({ divider, mediaParams }))
+			.filter(isNotNil),
+	);
 
-	for (const url of mediaUrls) {
+	// Revoking the *used* urls here killed every custom image as soon as any
+	// divider was updated. Only urls that dropped out of use may be revoked.
+	for (const url of trackedUrls) {
+		if (usedUrls.has(url)) {
+			continue;
+		}
 		URL.revokeObjectURL(url);
+		trackedUrls.delete(url);
+	}
+
+	for (const url of usedUrls) {
+		trackedUrls.add(url);
 	}
 }
 

@@ -105,37 +105,42 @@ export const useDividerText = <T>({
 					? false
 					: shouldClearParamRaw;
 
-			const shouldUpdateFontSizeScale =
-				isNumber(nextFontSizeScale) &&
-				nextFontSizeScale !== defaultFontSizeScale;
-
-			if (!shouldUpdateFontSizeScale) {
+			if (!isNumber(nextFontSizeScale)) {
 				return;
 			}
 
-			if (fontSizeScaleParam) {
+			// The guard has to compare against the value that is actually written:
+			// when the param is cleared back to 100 the stored value never reaches
+			// `nextFontSizeScale`, so comparing with it let every re-render dispatch
+			// again and spin the render loop (React error #185).
+			const nextParamValue = shouldClearParam ? 100 : nextFontSizeScale;
+
+			if (fontSizeScaleParam && nextParamValue !== defaultFontSizeScale) {
 				dispatch(
 					setDividerParam({
 						id,
 						key: fontSizeScaleParam,
-						value: shouldClearParam ? 100 : nextFontSizeScale,
+						value: nextParamValue,
 					}),
 				);
 			}
 
-			dispatch(
-				updateDivider({
-					id,
-					changes: {
-						fontSizeScale: nextFontSizeScale,
-					},
-				}),
-			);
+			if (nextFontSizeScale !== divider.fontSizeScale) {
+				dispatch(
+					updateDivider({
+						id,
+						changes: {
+							fontSizeScale: nextFontSizeScale,
+						},
+					}),
+				);
+			}
 		},
 		[
 			defaultCurrentValue,
 			defaultFontSizeScale,
 			dispatch,
+			divider.fontSizeScale,
 			fontSizeScaleParam,
 			id,
 			value,

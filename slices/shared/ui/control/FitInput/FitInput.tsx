@@ -31,10 +31,24 @@ export function FitInput({
 		}
 	}, [fontSize, isFocused]);
 
+	const onFontSizeChangeRef = useRef(fitTextOptions?.onFontSizeChange);
+	onFontSizeChangeRef.current = fitTextOptions?.onFontSizeChange;
+
+	const reportedFontSizeRef = useRef<number | null>(null);
+
 	useEffect(() => {
+		// Only the measured size matters here. Keying the effect on the callback
+		// identity too re-reported the same size after every store update the
+		// callback itself caused, which is one half of a render/dispatch loop.
 		const value = Number(fontSize.replace("%", ""));
-		fitTextOptions?.onFontSizeChange?.(value);
-	}, [fontSize, fitTextOptions?.onFontSizeChange]);
+
+		if (reportedFontSizeRef.current === value) {
+			return;
+		}
+
+		reportedFontSizeRef.current = value;
+		onFontSizeChangeRef.current?.(value);
+	}, [fontSize]);
 
 	const onFocus = useCallback<NonNullable<BoxInputProps["onFocus"]>>(
 		(event) => {
