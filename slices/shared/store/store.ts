@@ -4,6 +4,7 @@ import { createMigrate, persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import createSagaMiddleware, { type SagaMiddleware } from "redux-saga";
 import { router } from "@/modules/core/router/app/config";
+import { createDispatchStormMiddleware } from "./dispatchStormMiddleware";
 import { createInjectReducer, type LazyInjectedState } from "./injectReducer";
 import { createInjectSaga } from "./injectSaga";
 import { currentMigrationVersion, migrationManifest } from "./migrations";
@@ -108,6 +109,11 @@ export const createStore = () => {
 				immutableCheck: false,
 			});
 			middleware.push(sagaMiddleware);
+
+			if (import.meta.env.DEV) {
+				middleware.push(createDispatchStormMiddleware());
+			}
+
 			return middleware;
 		},
 	});

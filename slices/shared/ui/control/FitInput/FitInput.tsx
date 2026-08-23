@@ -1,10 +1,9 @@
 import type { SxProps } from "@mui/material/styles";
 import { useCallback, useEffect, useRef, useState } from "react";
-import useFitText from "use-fit-text";
 import { BoxInput, type BoxInputProps } from "../BoxInput";
-import { useRemeasureOnFontsLoaded } from "./useRemeasureOnFontsLoaded";
+import { type UseFitFontSizeOptions, useFitFontSize } from "./useFitFontSize";
 
-type UseFitTextOptions = Parameters<typeof useFitText>[0] & {
+type UseFitTextOptions = UseFitFontSizeOptions & {
 	onFontSizeChange?: (fontSize: number) => void;
 };
 
@@ -14,14 +13,15 @@ export type FitInputProps = BoxInputProps & {
 	strokeSx?: SxProps;
 };
 
+const toPercent = (fontSize: string) => Number(fontSize.replace("%", ""));
+
 export function FitInput({
 	fitTextOptions,
 	onFocus: onFocusProp,
 	onBlur: onBlurProp,
 	...props
 }: FitInputProps) {
-	const { ref, fontSize } = useFitText(fitTextOptions);
-	useRemeasureOnFontsLoaded(ref as React.MutableRefObject<HTMLElement | null>);
+	const { ref, fontSize } = useFitFontSize<HTMLDivElement>(fitTextOptions);
 	const [isFocused, setIsFocused] = useState(false);
 	const frozenFontSizeRef = useRef(fontSize);
 
@@ -40,7 +40,7 @@ export function FitInput({
 		// Only the measured size matters here. Keying the effect on the callback
 		// identity too re-reported the same size after every store update the
 		// callback itself caused, which is one half of a render/dispatch loop.
-		const value = Number(fontSize.replace("%", ""));
+		const value = toPercent(fontSize);
 
 		if (reportedFontSizeRef.current === value) {
 			return;
@@ -67,7 +67,12 @@ export function FitInput({
 		[onBlurProp],
 	);
 
-	const appliedFontSize = isFocused ? frozenFontSizeRef.current : fontSize;
+	// Freezing the size outright kept the caret steady but let the text grow past
+	// its slot and wrap while typing — a line break the single-line export never
+	// produces. Shrinking is allowed during input; only growing waits for blur.
+	const appliedFontSize = isFocused
+		? `${Math.min(toPercent(frozenFontSizeRef.current), toPercent(fontSize))}%`
+		: fontSize;
 
 	const sx = {
 		...props.sx,
