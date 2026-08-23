@@ -17,7 +17,7 @@ import { DividerIcon } from "@/modules/divider/features/ui";
 import { selectDividerTabIndex } from "@/modules/divider/shared/lib";
 import {
 	selectLasercutEnabled,
-	useCornerRadius,
+	selectShowCornerRadius,
 	usePrintSx,
 } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
@@ -49,7 +49,7 @@ import * as S from "./ArkhamIndexDivider.styles";
 export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { t } = useTranslation();
 	const lasercutEnabled = useAppSelector(selectLasercutEnabled);
-	const cornerRadiusEnabled = useCornerRadius();
+	const cornerRadiusEnabled = useAppSelector(selectShowCornerRadius);
 	const layout = useAppSelector(selectLayout) as ArkhamIndexDividerLayout;
 	const [showCardsInfo, setShowCardsInfo] = useBoolean(false);
 
@@ -107,7 +107,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { side } = props;
 
 	const showMediaContent = props.layoutType !== "player";
-	const showStroke = Boolean(layout.tabs) || cornerRadiusEnabled;
+	const showStroke = Boolean(layout.tabs) || Boolean(cornerRadiusEnabled);
 
 	return (
 		<ArkhamIndexContext.Provider
@@ -153,10 +153,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 						<Menu dividerId={props.id} sx={menuSx} />
 					</Box>
 					<Tab />
-					<NotExportable
-						visible={!lasercutEnabled}
-						visibleOn={["image", "zip"]}
-					>
+					<NotExportable visible={showStroke} visibleOn={["image", "zip"]}>
 						{side === "front" && showStroke && (
 							<BackgroundStroke sx={backgroundStrokeSx} />
 						)}
