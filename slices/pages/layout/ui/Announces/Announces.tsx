@@ -70,7 +70,7 @@ export function Announces() {
 							<Typography variant="caption" color="text.secondary">
 								{t("My new project")}
 							</Typography>
-							<Typography variant="subtitle1" fontWeight={600} component="h2">
+							<Typography variant="subtitle1" fontWeight={600}>
 								{t("Digital Investigator Board")}
 							</Typography>
 						</Stack>
