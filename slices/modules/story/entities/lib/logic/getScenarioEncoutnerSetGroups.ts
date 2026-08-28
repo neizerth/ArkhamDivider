@@ -1,4 +1,7 @@
-import { getEncounterSetGroups } from "@/modules/encounterSet/shared/lib/logic";
+import {
+	type EncounterIconInfo,
+	getEncounterSetGroups,
+} from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import { groupScenariosBySameEncounters } from "@/modules/story/shared/lib";
 import type { StoryScenario } from "../../../shared/model";
@@ -7,11 +10,13 @@ import type { ScenarioEncounterSetGroup } from "../../model";
 type Options = {
 	scenario: StoryScenario;
 	encounterSets: EncounterSet[];
+	icons?: EncounterIconInfo[];
 };
 
 export const getScenarioEncounterSetGroups = ({
 	scenario,
 	encounterSets,
+	icons,
 }: Options): ScenarioEncounterSetGroup[] => {
 	const { scenarios } = scenario;
 
@@ -19,6 +24,7 @@ export const getScenarioEncounterSetGroups = ({
 		return getSingleGroups({
 			scenario,
 			encounterSets,
+			icons,
 		});
 	}
 
@@ -26,19 +32,19 @@ export const getScenarioEncounterSetGroups = ({
 		mainScenario: scenario,
 		scenarios,
 		encounterSets,
+		icons,
 	});
 };
 
 const getSingleGroups = ({
 	scenario,
 	encounterSets,
-}: {
-	scenario: StoryScenario;
-	encounterSets: EncounterSet[];
-}): ScenarioEncounterSetGroup[] => {
+	icons,
+}: Options): ScenarioEncounterSetGroup[] => {
 	const visibleGroups = toVisibleGroups({
 		scenario,
 		encounterSets,
+		icons,
 	});
 	const showName = visibleGroups.length > 1;
 
@@ -61,10 +67,12 @@ const getMultiGroups = ({
 	mainScenario,
 	scenarios,
 	encounterSets,
+	icons,
 }: {
 	mainScenario: StoryScenario;
 	scenarios: StoryScenario[];
 	encounterSets: EncounterSet[];
+	icons?: EncounterIconInfo[];
 }): ScenarioEncounterSetGroup[] => {
 	const scenarioGroups = groupScenariosBySameEncounters(scenarios);
 	const showNameFromScenarioGroup = scenarioGroups.length > 1;
@@ -75,6 +83,7 @@ const getMultiGroups = ({
 			mainScenario,
 			scenario: groupedScenario,
 			encounterSets,
+			icons,
 		});
 		const showName = showNameFromScenarioGroup || visibleGroups.length > 1;
 
@@ -98,15 +107,18 @@ const toVisibleGroups = ({
 	scenario,
 	mainScenario = scenario,
 	encounterSets,
+	icons,
 }: {
 	scenario: StoryScenario;
 	mainScenario?: StoryScenario;
 	encounterSets: EncounterSet[];
+	icons?: EncounterIconInfo[];
 }): ReturnType<typeof getEncounterSetGroups> => {
 	return getEncounterSetGroups({
 		mainScenario,
 		scenario,
 		encounterSets,
+		icons,
 	}).filter(({ main, side }) => {
 		return main.length > 0 || side.length > 0;
 	});

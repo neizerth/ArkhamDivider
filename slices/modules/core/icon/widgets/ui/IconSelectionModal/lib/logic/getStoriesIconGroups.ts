@@ -1,8 +1,8 @@
 import { ascend, descend, prop, propEq, sortWith, uniq } from "ramda";
+import { getIconSetIcons } from "@/modules/core/icon/shared/lib";
 import type { ArkhamDividerIcon } from "@/modules/core/icon/shared/model";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import {
-	isCampaign,
 	isChallengeStory,
 	isCoreSet,
 	isInvestigatorStory,
@@ -38,64 +38,44 @@ export const getStoriesIconGroups = ({
 	);
 
 	const iconsBySet = iconSet
-		? icons.filter((i) => i.iconSet === iconSet)
+		? icons.filter((icon) => icon.iconSet === iconSet)
 		: icons;
 
+	const uniqueCycles = uniqueStoryCycles(stories);
+	const uniqueIconSets = uniqueCampaignIconSets(stories, icons);
 	const toIcon = (name?: string) => {
-		const icon = encounterSets.find((s) => s.code === name)?.icon;
-
-		if (icon) {
-			return icon;
+		if (!name) {
+			return;
 		}
 
-		// `icons` can contain multiple entries with the same `icon` name across icon sets.
-		// Prefer the currently selected icon set to keep search results and groups consistent.
 		return (
-			iconsBySet.find((i) => i.icon === name)?.icon ??
-			icons.find((i) => i.icon === name)?.icon
+			icons.find((icon) => icon.encounter_set_code === name)?.icon ??
+			encounterSets.find((set) => set.code === name)?.icon ??
+			iconsBySet.find((icon) => icon.icon === name)?.icon ??
+			icons.find((icon) => icon.icon === name)?.icon
 		);
 	};
-	const campaignGroups = stories.filter(
-		(story) =>
-			(isMainCampaign(story) || isSideCampaign(story) || isCoreSet(story)) &&
-			!isInvestigatorStory(story),
-	);
-	const sideGroups = stories.filter(isSideContent);
-	const challengeGroups = stories.filter(isChallengeStory);
-
 	const toIconGroup = getStoryIconSubgroup(toIcon);
 
 	const mapStory = (story: Story) => {
 		const subGroup = toIconGroup(story);
-		const subgroupIcons = subGroup.icons.filter((id) => {
-			const icon = icons.find(propEq(id, "icon"));
-
-			return icon?.iconSet !== icoMoonSetId;
-		});
-
-		const [first] = subgroupIcons;
-		const mainIconSet = icons.find(propEq(first, "icon"))?.iconSet;
-		const isCore = isCoreSet(story);
-
-		if ((!isCampaign(story) || !mainIconSet) && !isCore) {
-			return {
-				...subGroup,
-				icons: subgroupIcons,
-			};
-		}
-
-		const iconSetIcons = icons
-			.filter(({ iconSet }) => iconSet === mainIconSet)
+		const packs = storyPacks(story);
+		const byMeta = icons
+			.filter((icon) => belongsToStory(icon, story, packs, uniqueCycles))
 			.map(prop("icon"));
+		const campaignSet = getCampaignIconSet(story, icons);
+		const byIconSet =
+			campaignSet &&
+			campaignSet !== icoMoonSetId &&
+			uniqueIconSets.has(campaignSet)
+				? getIconSetIcons({ icons, iconSet: campaignSet })
+				: [];
 
-		const mergedIcons = uniq([...subgroupIcons, ...iconSetIcons]);
-
-		//
-		// NOTE: We intentionally avoid expanding campaign icons by `iconSet`.
-		// Some icon sets include multiple custom campaigns; expanding would mix them.
 		return {
 			...subGroup,
-			icons: mergedIcons,
+			icons: uniq([...subGroup.icons, ...byMeta, ...byIconSet]).filter(
+				(id) => icons.find(propEq(id, "icon"))?.iconSet !== icoMoonSetId,
+			),
 		};
 	};
 
@@ -103,17 +83,117 @@ export const getStoriesIconGroups = ({
 		{
 			id: "campaigns",
 			name: "Campaigns",
-			groups: campaignGroups.map(mapStory),
+			groups: stories
+				.filter(
+					(story) =>
+						(isMainCampaign(story) ||
+							isSideCampaign(story) ||
+							isCoreSet(story)) &&
+						!isInvestigatorStory(story),
+				)
+				.map(mapStory),
 		},
 		{
 			id: "side",
 			name: "Side Scenarios",
-			groups: sideGroups.map(mapStory),
+			groups: stories.filter(isSideContent).map(mapStory),
 		},
 		{
 			id: "challenges",
 			name: "Challenge Scenarios",
-			groups: challengeGroups.map(mapStory),
+			groups: stories.filter(isChallengeStory).map(mapStory),
 		},
 	];
+};
+
+const getCampaignIconSet = (story: Story, icons: ArkhamDividerIcon[]) => {
+	const names = [
+		story.icon,
+		story.campaign_id,
+		story.pack_code,
+		...(story.pack_codes ?? []),
+		story.code,
+	].filter((value): value is string => Boolean(value));
+
+	for (const name of names) {
+		const iconSet = icons.find((icon) => icon.icon === name)?.iconSet;
+		if (iconSet) {
+			return iconSet;
+		}
+	}
+};
+
+const uniqueCampaignIconSets = (
+	stories: Story[],
+	icons: ArkhamDividerIcon[],
+) => {
+	const owners = new Map<string, Set<string>>();
+
+	for (const story of stories) {
+		if (isInvestigatorStory(story)) {
+			continue;
+		}
+
+		const iconSet = getCampaignIconSet(story, icons);
+		if (!iconSet) {
+			continue;
+		}
+
+		const codes = owners.get(iconSet) ?? new Set<string>();
+		codes.add(story.code);
+		owners.set(iconSet, codes);
+	}
+
+	return new Set(
+		[...owners.entries()]
+			.filter(([, codes]) => codes.size === 1)
+			.map(([iconSet]) => iconSet),
+	);
+};
+
+const uniqueStoryCycles = (stories: Story[]) => {
+	const counts = new Map<string, number>();
+
+	for (const { cycle_code } of stories) {
+		if (!cycle_code) {
+			continue;
+		}
+		counts.set(cycle_code, (counts.get(cycle_code) ?? 0) + 1);
+	}
+
+	return new Set(
+		[...counts.entries()]
+			.filter(([, count]) => count === 1)
+			.map(([cycle]) => cycle),
+	);
+};
+
+const storyPacks = (story: Story) =>
+	new Set(
+		[
+			story.pack_code,
+			story.code,
+			story.campaign_id,
+			...(story.pack_codes ?? []),
+		].filter((value): value is string => Boolean(value)),
+	);
+
+const belongsToStory = (
+	icon: ArkhamDividerIcon,
+	story: Story,
+	packs: Set<string>,
+	uniqueCycles: Set<string>,
+) => {
+	if (icon.pack_code) {
+		return packs.has(icon.pack_code);
+	}
+
+	if (icon.cycle_code && uniqueCycles.has(icon.cycle_code)) {
+		return icon.cycle_code === story.cycle_code;
+	}
+
+	return Boolean(
+		icon.encounter_set_code &&
+			story.encounter_sets.includes(icon.encounter_set_code),
+	);
 };
