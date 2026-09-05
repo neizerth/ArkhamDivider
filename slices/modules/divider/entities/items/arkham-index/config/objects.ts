@@ -40,7 +40,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 	cornerRadius: 3,
 	icon: {
 		fontSize: 7.3,
-		top: 0.25,
+		top: 0.45,
 		width: 10.1,
 		height: 9,
 	},
@@ -68,7 +68,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 	iconBackground: {
 		width: 9.4,
 		height: 9.4,
-		top: 0,
+		top: 0.2,
 		left: 0.3,
 	},
 	sideBackground: {
@@ -122,7 +122,7 @@ export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
 		tabTitle: {
 			default: {
 				fontSize: 4.5,
-				height: 6,
+				height: 7,
 				top: 0.2,
 				right: 4.5,
 			},
@@ -143,11 +143,11 @@ export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
 		iconBackground: {
 			width: 6.4,
 			height: 6.4,
-			top: -0.2,
+			top: 0.3,
 		},
 		icon: {
 			fontSize: 5.3,
-			top: 0.1,
+			top: 0.5,
 			width: 7.2,
 			height: 6.2,
 		},
