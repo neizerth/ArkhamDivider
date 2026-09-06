@@ -107,7 +107,7 @@ export const arkhamIndexDividerHorizontalObjects = {
 			right: 27,
 		},
 		fullOffset: {
-			default: 7,
+			default: 7.3,
 			withSideText: 12,
 		},
 		full: {
