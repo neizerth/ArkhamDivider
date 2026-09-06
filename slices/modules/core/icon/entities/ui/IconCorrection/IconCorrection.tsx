@@ -2,8 +2,8 @@ import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
 import { isNumber, isString } from "ramda-adjunct";
 import { getNumericStyleProps } from "@/shared/lib/ui";
-import { defaultIconPositionManifest } from "../../../shared/config";
 import { getIconCorrection } from "../../../shared/lib";
+import { useIconPositionManifest } from "../../../shared/lib/hooks/useIconPositionManifest";
 import type { IconPositionManifest } from "../../../shared/model";
 import { Icon, type IconProps } from "../../../shared/ui";
 
@@ -13,9 +13,10 @@ export type IconCorrectionProps = IconProps & {
 };
 
 export function IconCorrection(props: IconCorrectionProps) {
+	const defaultManifest = useIconPositionManifest();
 	const {
 		icon,
-		manifest = defaultIconPositionManifest,
+		manifest = defaultManifest,
 		disableCorrection = false,
 		sx: sxProp,
 		...restProps

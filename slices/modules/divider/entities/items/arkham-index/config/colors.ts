@@ -100,12 +100,39 @@ const campaignFilters: Record<string, ColorFilter[]> = {
 			contrast: 100,
 		},
 	],
+	// PS-ish: mahogany grade on near-neutral ch2 leather
+	cob: [
+		{
+			hue: 5,
+			saturation: 65,
+			brightness: -15,
+			contrast: 20,
+			colorBalance: {
+				type: "midtones",
+				red: 10,
+				green: -85,
+				blue: -90,
+			},
+		},
+		{
+			saturation: -15,
+		},
+	],
 };
 
 /** One-off / standalone: cool charcoal + hint of indigo (cover top/bottom), not the warm nebula. */
 const standaloneFilters: ColorFilter[] = [
 	{
 		// hue: 200,
+		saturation: -75,
+		lightness: -18,
+		contrast: 12,
+	},
+];
+
+const standaloneFiltersCh2: ColorFilter[] = [
+	{
+		hue: 200,
 		saturation: -75,
 		lightness: -18,
 		contrast: 12,
@@ -124,5 +151,8 @@ export const arkhamIndexFactionColors = {
 
 export const arkhamIndexBackgroundFilters = {
 	campaign: campaignFilters,
-	standalone: standaloneFilters,
+	standalone: {
+		ch1: standaloneFilters,
+		ch2: standaloneFiltersCh2,
+	},
 };

@@ -25,7 +25,11 @@ const getFilter = (divider: ArkhamIndexDividerProps) => {
 	}
 
 	if (isSideContent(divider.story)) {
-		return colors.standalone;
+		const chapter = divider.story.chapter ?? 1;
+		const filters =
+			chapter === 2 ? colors.standalone.ch2 : colors.standalone.ch1;
+
+		return filters;
 	}
 
 	const code = divider.story.return_to_code || divider.story.code;

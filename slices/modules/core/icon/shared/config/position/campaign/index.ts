@@ -1,3 +1,4 @@
+import cob from "./cob";
 import core from "./core";
 import core_2026 from "./core_2026";
 import dwl from "./dwl";
@@ -24,4 +25,5 @@ export default {
 	...fhv,
 	...tdc,
 	...core_2026,
+	...cob,
 };

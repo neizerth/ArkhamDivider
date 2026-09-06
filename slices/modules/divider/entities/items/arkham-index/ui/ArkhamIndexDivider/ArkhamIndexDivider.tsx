@@ -104,6 +104,9 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const showMediaContent = props.layoutType !== "player";
 	const showStroke = Boolean(layout.tabs) || Boolean(cornerRadiusEnabled);
 
+	const background =
+		props.story?.chapter === 2 ? "/background_ch2.avif" : "/background.avif";
+
 	return (
 		<ArkhamIndexContext.Provider
 			value={{ layout, divider: props, tabSize, tabIndex, sxOptions }}
@@ -111,7 +114,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 			<Container>
 				<BleedView>
 					<Image
-						src={`${arkhamIndexDividerBaseUrl}/background.avif`}
+						src={`${arkhamIndexDividerBaseUrl}${background}`}
 						sx={{
 							...backgroundSx,
 							filter: backgroundFilter,
