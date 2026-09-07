@@ -25,7 +25,7 @@ export const standaloneStripColor: Record<string, RGBAColorObject> = {
 
 export const campaignStripColor: Record<string, RGBAColorObject> = {
 	core: { r: 0.36078432, g: 0.4, b: 0.5568628, a: 1 },
-	core_2026: { r: 0.6509804, g: 0.48235294, b: 0.39607844, a: 1 },
+	core_2026: { r: 0.5943396, g: 0.21900642, b: 0.1541919, a: 1 },
 	eoe: { r: 0.2509804, g: 0.62352943, b: 0.7254902, a: 1 },
 	tcu: { r: 0.32941177, g: 0.25490198, b: 0.36862746, a: 1 },
 	tde: { r: 0.2784314, g: 0.25882354, b: 0.34901962, a: 1 },
@@ -36,6 +36,7 @@ export const campaignStripColor: Record<string, RGBAColorObject> = {
 	tic: { r: 0.20784314, g: 0.4627451, b: 0.42352942, a: 1 },
 	ptc: { r: 0.42352942, g: 0.33333334, b: 0.5647059, a: 1 },
 	tsk: { r: 0.6132076, g: 0.12437701, b: 0.14499569, a: 1 },
+	cob: { r: 0.4339623, g: 0.16990031, b: 0.1836658, a: 1 },
 };
 
 export const storyStripColor: Record<string, RGBAColorObject> = {
