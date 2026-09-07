@@ -82,7 +82,14 @@ function PrintablePageBase<T extends WithId>({
 		},
 	};
 
-	const justifyContent = pageLayout.isLast ? "flex-start" : "center";
+	/**
+	 * The last sheet is topped out so the credits footer has the bottom of the page to
+	 * itself. With no footer to make room for there is nothing to justify against, and a
+	 * sheet whose grid fills it would push its top cropmarks off the edge and slide the page
+	 * counter over the first row, so those pages centre like every other one.
+	 */
+	const justifyContent =
+		pageLayout.isLast && showCredits ? "flex-start" : "center";
 
 	const hideCounter =
 		(singleItemPerPage && !cropmarksEnabled) || !enablePageCounter;
