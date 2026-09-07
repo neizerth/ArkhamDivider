@@ -1,3 +1,4 @@
+export * from "./useBlockSizeVar";
 export * from "./useBoundingRect";
 export * from "./useClickOutside";
 export * from "./useDisplayOnScroll";

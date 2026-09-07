@@ -4,6 +4,7 @@ import { useDividerObject } from "@/modules/divider/entities/lib";
 import { DividerColorPicker as ColorPicker } from "@/modules/divider/entities/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
+import { useBlockSizeVar } from "@/shared/lib";
 import {
 	getSarnetskyDefaultOverlayColor as getDefaultOverlayColor,
 	getSarnetskyStoryColor as getStoryColor,
@@ -33,6 +34,11 @@ export function SarnetskyDividerScenarioContent({
 		containerWidth: layout.size.width,
 	});
 
+	// The background icon is sized from this box's height; see `getBackgroundIconSx`.
+	const backgroundRef = useBlockSizeVar<HTMLDivElement>(
+		S.backgroundIconSizeVar,
+	);
+
 	const getPrintSx = usePrintSx(sxOptions);
 
 	if (divider.layoutType !== "scenario") {
@@ -56,7 +62,7 @@ export function SarnetskyDividerScenarioContent({
 			<Box {...props}>
 				<Stack sx={{ height: "100%", justifyContent: "space-between" }}>
 					<Stack sx={backgroundContainerSx}>
-						<Stack sx={backgroundSx}>
+						<Stack sx={backgroundSx} ref={backgroundRef}>
 							<Box sx={{ display: "inline-flex", flex: 1 }} ref={ref}>
 								<BackgroundIcon
 									sx={(backgroundIconSxStyle ?? {}) as SxProps}

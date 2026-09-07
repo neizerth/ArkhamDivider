@@ -19,7 +19,7 @@ function getSharedObserver(): ResizeObserver {
 	return sharedObserver;
 }
 
-function observe(node: Element, callback: Callback): () => void {
+export function observe(node: Element, callback: Callback): () => void {
 	const observer = getSharedObserver();
 	callbacks.set(node, callback);
 	observer.observe(node);

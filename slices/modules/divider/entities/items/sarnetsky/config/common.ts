@@ -113,6 +113,8 @@ export const sarnetskyHorizontalDividerObjects = {
 	background: {
 		fontSize: 32,
 		opacity: 0.07,
+		/** Smallest air left between the icon and the encounter rows below it, in mm. */
+		gap: 3,
 	},
 	scenarioContent: {
 		top: 23,
