@@ -29,6 +29,7 @@ export const useStoryData = (stories: Story[]) => {
 	const data = useMemo(() => {
 		return sortWith(
 			[
+				descend(({ chapter }) => chapter ?? 1),
 				ascend(({ position }) => position || Infinity),
 				descend(({ is_official }) => Boolean(is_official)),
 				ascend(prop("name")),
