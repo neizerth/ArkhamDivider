@@ -1,4 +1,5 @@
 import { cmyk } from "@/modules/core/color/shared/lib";
+import { getLocaleConfig } from "@/modules/core/i18n/shared/lib";
 import { getDefaultDividerFontFamily } from "@/modules/divider/shared/lib";
 import { getDividerXPCost } from "@/modules/divider/shared/lib/logic";
 import type { PDFDivider } from "@/modules/pdf/shared/model";
@@ -92,6 +93,33 @@ export const ArkhamDecoDividerPDF: PDFDivider<ArkhamDecoDividerParams> = async (
 		fontFamily,
 		color,
 	});
+
+	if (props.type === "player" && playerParams.campaignName) {
+		const campaignConfig = getLocaleConfig(language, O.campaignName);
+		const campaignName =
+			params?.customCampaignName ?? (story?.name ? t(story.name) : "");
+		const campaignScale = params?.campaignNameFontSizeScale ?? 100;
+
+		if (campaignName) {
+			const campaignHeight = mm(campaignConfig.height);
+			const campaignTopY = bleed.y(campaignConfig.top) + campaignHeight / 2;
+			await text.draw(campaignName, {
+				x: bleed.x(paddingLeft + campaignConfig.left),
+				y: campaignTopY,
+				width: bleed.width(
+					paddingLeft + campaignConfig.left,
+					paddingRight + campaignConfig.right,
+				),
+				height: campaignHeight,
+				fontSize: mm((campaignScale / 100) * campaignConfig.fontSize),
+				align: "center",
+				baseline: "middle",
+				overprint: true,
+				fontFamily,
+				color,
+			});
+		}
+	}
 
 	const showRightIcon = showArkhamDecoRightIcon({
 		divider: props,

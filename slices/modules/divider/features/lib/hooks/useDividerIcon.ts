@@ -6,12 +6,13 @@ import {
 import type { Icon } from "@/modules/core/icon/shared/model";
 import {
 	selectDividerById,
+	setAllDividersParam,
 	setDividerParam,
 } from "@/modules/divider/shared/lib";
 import { useAppDispatch, useAppSelector } from "@/shared/lib";
 import { getDividerIcon } from "../logic";
 
-type Options = Omit<UseIconSelectionOptions, "onSelected"> & {
+type Options = Omit<UseIconSelectionOptions, "onSelected" | "onSetToAll"> & {
 	dividerId: string;
 };
 
@@ -34,6 +35,13 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 		[dividerId, dispatch],
 	);
 
+	const handleIconSetToAll = useCallback(
+		({ icon, param }: { icon: Icon | null; param: string }) => {
+			dispatch(setAllDividersParam({ key: param, value: icon }));
+		},
+		[dispatch],
+	);
+
 	const startSelection = useIconSelection();
 
 	const { icon: currentIcon } = options;
@@ -42,9 +50,11 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 		({
 			param,
 			defaultIcon = options.defaultIcon ?? currentIcon,
+			canSetToAll = true,
 		}: {
 			param: string;
 			defaultIcon?: Icon | null;
+			canSetToAll?: boolean;
 		}) => {
 			const icon =
 				divider &&
@@ -54,15 +64,20 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 					defaultIcon,
 				});
 
-			const start = () =>
-				startSelection({
+			const start = () => {
+				const onSetToAll = canSetToAll
+					? (icon: Icon | null) => handleIconSetToAll({ icon, param })
+					: void 0;
+
+				return startSelection({
 					icon,
 					defaultIcon,
 					onSelected(icon) {
 						handleIconSelected({ icon, param });
 					},
+					onSetToAll,
 				});
-
+			};
 			return [icon, start] as const;
 		},
 		[
@@ -70,6 +85,7 @@ export function useDividerIcon({ dividerId, ...options }: Options) {
 			divider,
 			currentIcon,
 			handleIconSelected,
+			handleIconSetToAll,
 			options.defaultIcon,
 		],
 	);

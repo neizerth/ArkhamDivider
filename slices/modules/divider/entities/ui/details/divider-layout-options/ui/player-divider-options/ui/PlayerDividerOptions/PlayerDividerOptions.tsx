@@ -299,6 +299,46 @@ export function PlayerDividerOptions(props: BoxProps) {
 							/>
 						)}
 					</C.Row>
+					<C.Row>
+						{layout?.playerParams?.campaignName && (
+							<Stack alignItems="center" justifyContent="center" gap={1}>
+								<Controller
+									control={control}
+									name="campaignName"
+									render={({ field }) => (
+										<FormControlLabel
+											control={
+												<Switch
+													checked={field.value}
+													onChange={field.onChange}
+												/>
+											}
+											label={t("Campaign Name")}
+										/>
+									)}
+								/>
+							</Stack>
+						)}
+						{layout?.playerParams?.campaignIcon && (
+							<Stack alignItems="center" justifyContent="center" gap={1}>
+								<Controller
+									control={control}
+									name="campaignIcon"
+									render={({ field }) => (
+										<FormControlLabel
+											control={
+												<Switch
+													checked={field.value}
+													onChange={field.onChange}
+												/>
+											}
+											label={t("Campaign Icon")}
+										/>
+									)}
+								/>
+							</Stack>
+						)}
+					</C.Row>
 					<C.Row marginTop={4}>
 						<Row
 							flex={{ xs: 1, sm: 0 }}

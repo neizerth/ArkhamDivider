@@ -42,6 +42,7 @@ const chapter1Layout: ArkhamDecoDividerLayout = {
 		numericXP: true,
 		sideXP: true,
 		story: true,
+		campaignName: true,
 	},
 	additionalParams: {
 		singleSide: true,

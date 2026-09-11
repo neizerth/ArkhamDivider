@@ -11,6 +11,7 @@ export type IconSelectionContextValue = {
 	clearSelectedIcon: () => void;
 	setDefaultIcon: (icon: Icon | null) => void;
 	select: () => void;
+	setToAll: () => void;
 	reset: () => void;
 	clear: () => void;
 	selectedIcon: Icon | null;
@@ -19,6 +20,7 @@ export type IconSelectionContextValue = {
 	mode: IconSelectionMode;
 	setMode: (mode: IconSelectionMode) => void;
 	onSelectRef: RefObject<OnIconSelectedCallback | null>;
+	onSetToAllRef: RefObject<OnIconSelectedCallback | null>;
 };
 
 export const IconSelectionContext = createContext<IconSelectionContextValue>({
@@ -27,12 +29,14 @@ export const IconSelectionContext = createContext<IconSelectionContextValue>({
 	clearSelectedIcon: () => {},
 	setDefaultIcon: () => {},
 	select: () => {},
+	setToAll: () => {},
 	reset: () => {},
 	clear: () => {},
 	selectedIcon: null,
 	defaultIcon: null,
 	setSelectionActive: () => {},
 	onSelectRef: { current: null },
+	onSetToAllRef: { current: null },
 	mode: "selection",
 	setMode: () => {},
 });

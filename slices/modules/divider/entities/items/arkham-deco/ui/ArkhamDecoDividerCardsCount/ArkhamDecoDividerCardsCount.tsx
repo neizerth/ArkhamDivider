@@ -3,8 +3,8 @@ import type { SxProps } from "@mui/material/styles";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { getDividerCardsCount } from "@/modules/divider/entities/lib/logic";
 import {
-	selectShowCampaignIcon,
 	selectShowCardsCount,
+	selectShowDividerCampaignIcon,
 } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
@@ -23,7 +23,9 @@ export function ArkhamDecoDividerCardsCount({
 }: ArkhamDecoDividerCardsCountProps) {
 	const { sxOptions } = useArkhamDecoDividerContext();
 
-	const showCampaignIcon = useAppSelector(selectShowCampaignIcon);
+	const showCampaignIcon = useAppSelector(
+		selectShowDividerCampaignIcon(divider.id),
+	);
 	const showCardsCount = useAppSelector((state) =>
 		selectShowCardsCount(state, divider.id),
 	);

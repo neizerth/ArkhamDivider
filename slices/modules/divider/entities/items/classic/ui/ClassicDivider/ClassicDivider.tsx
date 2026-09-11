@@ -34,6 +34,7 @@ import {
 	getIconObject,
 } from "../../lib";
 import type { ClassicLayoutParams } from "../../model";
+import { ClassicDividerCampaignName as CampaignName } from "../ClassicDividerCampaignName";
 import { ClassicDividerStats as Stats } from "../ClassicDividerStats/ClassicDividerStats";
 import { ClassicDividerXP as XP } from "../ClassicDividerXP";
 import * as S from "./ClassicDivider.styles";
@@ -43,6 +44,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 	const layout = useAppSelector(selectLayout) as DividerLayout;
 	const { background } = layout.params as ClassicLayoutParams;
 	const playerParams = useAppSelector(selectPlayerParams);
+
 	const mm = usePrintUnitCallback();
 	const [showCardsInfo, setShowCardsInfo] = useState(false);
 
@@ -114,6 +116,8 @@ export function ClassicDivider(props: DividerWithRelations) {
 
 	const copy = usePreventDefault(copyToClipboard);
 
+	const canShowCardsInfo = Boolean(props.layoutType === "scenario");
+
 	return (
 		<Container>
 			<Background src={background} alt={layout.name} />
@@ -181,6 +185,9 @@ export function ClassicDivider(props: DividerWithRelations) {
 								readonly
 							/>
 						)}
+						{playerParams?.campaignName && (
+							<CampaignName divider={props} sxOptions={sxOptions} />
+						)}
 					</>
 				)}
 
@@ -193,7 +200,7 @@ export function ClassicDivider(props: DividerWithRelations) {
 						disableCorrection
 					/>
 				)}
-				{showCardsInfo && (
+				{canShowCardsInfo && showCardsInfo && (
 					<CardsInfo sx={dividerCardsSx} divider={props} zIndex={2} />
 				)}
 			</Content>

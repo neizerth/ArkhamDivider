@@ -11,6 +11,8 @@ import type { getArkhamDecoLayoutObjects } from "../lib";
 
 export type ArkhamDecoDividerParams = {
 	customTitle?: string;
+	customCampaignName?: string;
+	campaignNameFontSizeScale?: number;
 	smallIcon?: Icon | null;
 	campaignIcon?: Icon | null;
 	backgroundIcon?: Icon | null;

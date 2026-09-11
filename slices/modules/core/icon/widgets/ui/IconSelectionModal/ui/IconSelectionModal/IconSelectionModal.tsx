@@ -26,8 +26,10 @@ export function IconSelectionModal() {
 		selectedIcon,
 		selectionActive,
 		onSelectRef,
+		onSetToAllRef,
 		setSelectionActive,
 		select,
+		setToAll,
 		reset,
 		mode,
 		clear,
@@ -35,6 +37,7 @@ export function IconSelectionModal() {
 	const isPreviewMode = mode === "preview";
 	const open = selectionActive;
 	const isDefaultIcon = defaultIcon === selectedIcon;
+	const canSetToAll = Boolean(onSetToAllRef.current);
 	const prevOpenRef = useRef(open);
 	const openedNow = open && !prevOpenRef.current;
 
@@ -80,7 +83,8 @@ export function IconSelectionModal() {
 	const onClose = useCallback(() => {
 		setSelectionActive(false);
 		onSelectRef.current = null;
-	}, [onSelectRef, setSelectionActive]);
+		onSetToAllRef.current = null;
+	}, [onSelectRef, onSetToAllRef, setSelectionActive]);
 
 	const handleSectionClick = useCallback(
 		(index: number) => {
@@ -189,49 +193,67 @@ export function IconSelectionModal() {
 			<DialogActions
 				sx={{
 					flexShrink: 0,
-					flexWrap: "wrap",
-					gap: {
-						xs: `0.5em 0em`,
-					},
+					flexDirection: "column",
+					alignItems: "stretch",
+					// px: 2,
 				}}
 			>
-				{!isPreviewMode && (
-					<>
-						<Button
-							variant="outlined"
-							color="secondary"
-							onClick={onClose}
-							sx={{
-								marginLeft: { xs: 1, md: 0 },
-							}}
+				<Stack
+					gap={1}
+					sx={{
+						p: { xs: 0, sm: 1 },
+						flexDirection: { xs: "column", sm: "row" },
+						justifyContent: { xs: "stretch", sm: "space-between" },
+					}}
+				>
+					{!isPreviewMode && (
+						<Row
+							gap={1}
+							alignItems="center"
+							justifyContent={!isDefaultIcon ? "space-between" : "flex-start"}
 						>
-							{t`Cancel`}
-						</Button>
-						{!isEmptyIcon(selectedIcon) && (
-							<Button variant="contained" color="error" onClick={clear}>
-								<Row alignItems="center" gap={1}>
+							<Button variant="outlined" color="secondary" onClick={onClose}>
+								{t`Cancel`}
+							</Button>
+							{!isDefaultIcon && (
+								<Button variant="contained" color="secondary" onClick={reset}>
+									<Row alignItems="center" gap={1}>
+										<Icon icon={defaultIcon} />
+										{t`Default`}
+									</Row>
+								</Button>
+							)}
+						</Row>
+					)}
+					<Row gap={1} alignItems="center" justifyContent="space-between">
+						<Row>
+							{!isPreviewMode && !isEmptyIcon(selectedIcon) && (
+								<Button variant="contained" color="error" onClick={clear}>
 									{t`Remove`}
-								</Row>
-							</Button>
-						)}
-						{!isDefaultIcon && (
-							<Button
-								variant="contained"
-								color="secondary"
-								onClick={reset}
-								sx={{ order: { xs: -1, sm: 0 } }}
-							>
-								<Row alignItems="center" gap={1}>
-									<Icon icon={defaultIcon} />
-									{t`Default`}
-								</Row>
-							</Button>
-						)}
-					</>
-				)}
-				<Button variant="contained" color="primary" onClick={select}>
-					{t`Ok`}
-				</Button>
+								</Button>
+							)}
+						</Row>
+						<Row gap={1} alignItems="center" justifyContent="space-between">
+							<Row gap={1} justifyContent="flex-end" alignItems="center">
+								{!isPreviewMode && canSetToAll && (
+									<Button
+										variant="contained"
+										color="primary"
+										onClick={setToAll}
+									>
+										<Box display={{ xs: "block", sm: "none" }}>{t`All`}</Box>
+										<Box
+											display={{ xs: "none", sm: "block" }}
+										>{t`Set to all`}</Box>
+									</Button>
+								)}
+								<Button variant="contained" color="primary" onClick={select}>
+									{t`Ok`}
+								</Button>
+							</Row>
+						</Row>
+					</Row>
+				</Stack>
 			</DialogActions>
 		</Dialog>
 	);

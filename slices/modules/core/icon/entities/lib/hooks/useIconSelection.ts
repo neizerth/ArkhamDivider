@@ -11,6 +11,7 @@ export type UseIconSelectionOptions = {
 	defaultIcon?: Icon | null;
 	mode?: IconSelectionMode;
 	onSelected?: OnIconSelectedCallback;
+	onSetToAll?: OnIconSelectedCallback;
 };
 
 export function useIconSelection() {
@@ -20,6 +21,7 @@ export function useIconSelection() {
 		setSelectionActive,
 		setMode,
 		onSelectRef,
+		onSetToAllRef,
 	} = useIconSelectionContext();
 
 	return useCallback(
@@ -28,14 +30,22 @@ export function useIconSelection() {
 			defaultIcon = icon ?? null,
 			mode = "selection",
 			onSelected,
+			onSetToAll,
 		}: UseIconSelectionOptions) => {
-			console.log("useIconSelection", icon, defaultIcon, mode, onSelected);
 			setSelectedIcon(icon);
 			setDefaultIcon(defaultIcon);
 			setSelectionActive(true);
 			setMode(mode);
 			onSelectRef.current = onSelected ?? null;
+			onSetToAllRef.current = onSetToAll ?? null;
 		},
-		[setSelectedIcon, setDefaultIcon, onSelectRef, setSelectionActive, setMode],
+		[
+			setSelectedIcon,
+			setDefaultIcon,
+			onSelectRef,
+			onSetToAllRef,
+			setSelectionActive,
+			setMode,
+		],
 	);
 }

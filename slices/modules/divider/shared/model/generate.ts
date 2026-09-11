@@ -29,9 +29,12 @@ export type PlayerDividerParams = {
 	subtypes: DividerSubtype[];
 	numericXP: boolean;
 	sideXP: boolean;
+	campaignName: boolean;
+	campaignIcon: boolean;
 	xpCosts: XPCost[];
 };
 
 export type InvestigatorDividerParams = {
+	campaignIcon: boolean;
 	storyCodes: string[];
 };

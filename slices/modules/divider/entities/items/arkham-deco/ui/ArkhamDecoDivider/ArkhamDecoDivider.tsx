@@ -7,7 +7,10 @@ import {
 	DividerContent as Content,
 	DividerMenu as Menu,
 } from "@/modules/divider/entities/ui";
-import { selectScenarioParams } from "@/modules/divider/shared/lib";
+import {
+	selectPlayerParams,
+	selectScenarioParams,
+} from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
@@ -21,6 +24,7 @@ import { ArkhamDecoDividerBackgroundIcon as BackgroundIcon } from "../ArkhamDeco
 import { ArkhamDecoDividerCardsCount as CardsCount } from "../ArkhamDecoDividerCardsCount";
 import { ArkhamDecoDividerContext } from "../ArkhamDecoDividerContext";
 import {
+	ArkhamDecoDividerCampaignName as CampaignName,
 	ArkhamDecoDividerFooter as Footer,
 	ArkhamDecoDividerHeader as Header,
 	ArkhamDecoDividerTitle as Title,
@@ -41,6 +45,7 @@ export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 	const layout = useAppSelector(selectLayout) as ArkhamDecoDividerLayout;
 	const { orientation } = layout;
 	const { singleSide = false } = useAppSelector(selectScenarioParams);
+	const playerParams = useAppSelector(selectPlayerParams);
 	const contentSx = getPrintSx(S.getContentSx);
 	const isTab = layout.params?.tab ?? false;
 
@@ -55,6 +60,8 @@ export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 	const [showCardsInfo, setShowCardsInfo] = useBoolean(false);
 
 	const showContent = !singleSide || props.side === "front";
+	const showCampaignName =
+		props.type === "player" && Boolean(playerParams?.campaignName);
 
 	return (
 		<ArkhamDecoDividerContext.Provider
@@ -95,6 +102,7 @@ export function ArkhamDecoDivider(props: ArkhamDecoDividerProps) {
 						/>
 						{showCardsInfo && <CardsInfo sx={dividerCardsSx} divider={props} />}
 
+						{showCampaignName && <CampaignName />}
 						<Footer />
 					</Box>
 				</Content>

@@ -9,6 +9,8 @@ export type ClassicLayoutParams = {
 
 export type ClassicDividerParams = Partial<{
 	customTitle: string;
+	customCampaignName: string;
+	campaignNameFontSizeScale: number;
 	icon: Icon | null;
 	background: Icon | null;
 }>;

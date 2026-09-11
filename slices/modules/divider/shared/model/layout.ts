@@ -61,6 +61,8 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	};
 	playerParams?: {
 		story?: boolean;
+		campaignName?: boolean;
+		campaignIcon?: boolean;
 		numericXP?: boolean;
 		sideXP?: boolean;
 	};

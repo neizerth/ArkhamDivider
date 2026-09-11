@@ -40,6 +40,9 @@ const horizontalLayout: DividerLayout = {
 		campaignIcon: true,
 	},
 	playerParams: {
+		story: true,
+		campaignName: true,
+		campaignIcon: true,
 		numericXP: true,
 	},
 	params: {
@@ -142,6 +145,9 @@ const verticalLayout: DividerLayout = {
 		campaignIcon: true,
 	},
 	playerParams: {
+		story: true,
+		campaignName: true,
+		campaignIcon: true,
 		numericXP: true,
 	},
 };

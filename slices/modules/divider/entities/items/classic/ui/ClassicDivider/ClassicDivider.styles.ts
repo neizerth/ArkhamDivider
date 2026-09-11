@@ -27,6 +27,7 @@ export const getTextSx: ClassicDividerLocaleCallback = ({
 	ru: {
 		fontSize: mm(O.text.ru.fontSize),
 		height: mm(O.text.ru.height),
+		top: mm(O.text.ru.top),
 		fontFamily: "Conkordia, Arkhamic, Teutonic, serif",
 	},
 	cn: {
@@ -88,10 +89,13 @@ export const getBackgroundIconSx: ClassicDividerSxCallback = ({
 	},
 });
 
-export const getDividerStatsSx: ClassicDividerSxCallback = ({ mm }) => ({
+export const getDividerStatsSx: ClassicDividerSxCallback = ({
+	mm,
+	objects: O,
+}) => ({
 	position: "absolute",
 	bottom: mm(6.7),
-	right: mm(2.5),
+	right: mm(O.sideInfo.right),
 });
 
 const strokeClipSize = 11.3;

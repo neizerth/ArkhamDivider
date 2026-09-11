@@ -3,8 +3,8 @@ import type { SxProps } from "@mui/material/styles";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { getDividerCardsCount } from "@/modules/divider/entities/lib/logic";
 import {
-	selectShowCampaignIcon,
 	selectShowCardsCount,
+	selectShowDividerCampaignIcon,
 } from "@/modules/divider/shared/lib";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { usePrintSx } from "@/modules/print/shared/lib";
@@ -20,7 +20,9 @@ export function ClassicDividerStats({
 	divider,
 	...props
 }: ClassicDividerStatsProps) {
-	const showCampaignIcon = useAppSelector(selectShowCampaignIcon);
+	const showCampaignIcon = useAppSelector(
+		selectShowDividerCampaignIcon(divider.id),
+	);
 	const showCardsCount = useAppSelector((state) =>
 		selectShowCardsCount(state, divider.id),
 	);
