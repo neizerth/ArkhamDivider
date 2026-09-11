@@ -241,7 +241,9 @@ export function IconSelectionModal() {
 										color="primary"
 										onClick={setToAll}
 									>
-										<Box display={{ xs: "block", sm: "none" }}>{t`All`}</Box>
+										<Box
+											display={{ xs: "block", sm: "none" }}
+										>{t`icon.setToAll`}</Box>
 										<Box
 											display={{ xs: "none", sm: "block" }}
 										>{t`Set to all`}</Box>
