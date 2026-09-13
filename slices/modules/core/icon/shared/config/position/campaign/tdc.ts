@@ -82,7 +82,6 @@ export default {
 	},
 	obsidian_canyons: {
 		top: percent(2),
-		left: percent(-2),
 	},
 	sepulchre_of_the_sleeper: {
 		top: percent(2),
