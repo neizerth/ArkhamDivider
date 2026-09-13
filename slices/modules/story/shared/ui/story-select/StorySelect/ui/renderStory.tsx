@@ -34,6 +34,7 @@ export const renderStory = (
 		<Row
 			{...restItemProps}
 			key={story.code}
+			data-code={story.code}
 			alignItems="center"
 			gap={1}
 			onClick={onDelete}
