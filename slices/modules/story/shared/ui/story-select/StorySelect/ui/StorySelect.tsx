@@ -52,11 +52,13 @@ export function StorySelect({
 }: StorySelectProps) {
 	const options = useStoryData(stories);
 
-	const codes = Array.isArray(valueProp)
-		? valueProp
-		: valueProp != null
-			? [valueProp]
-			: [];
+	const codes = useMemo(() => {
+		if (Array.isArray(valueProp)) {
+			return valueProp;
+		}
+		return valueProp ? [valueProp] : [];
+	}, [valueProp]);
+
 	const value = props.multiple
 		? options.filter((option) => codes.includes(option.code))
 		: options.find((option) => option.code === valueProp) || null;
