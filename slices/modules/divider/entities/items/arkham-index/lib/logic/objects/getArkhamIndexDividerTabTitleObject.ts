@@ -9,16 +9,21 @@ type Options = {
 	showSideText: boolean;
 	tabSize: ArkhamIndexDividerTabSize;
 	indentSize: number;
+	fontFamily?: string;
 };
 
 export const getArkhamIndexDividerTabTitleObject = (options: Options) => {
-	const { objects: O, showSideText, tabSize, indentSize } = options;
+	const { objects: O, showSideText, tabSize, indentSize, fontFamily } = options;
 	const base = getBaseObject(options);
+
+	const isConkordia = fontFamily === "Conkordia";
 
 	const sideObject = {
 		...base,
 		...(showSideText ? O.tabTitle.withSideText : {}),
 	};
+
+	sideObject.top = isConkordia ? sideObject.top + 0.3 : sideObject.top;
 
 	const isFullSize = tabSize === "full";
 

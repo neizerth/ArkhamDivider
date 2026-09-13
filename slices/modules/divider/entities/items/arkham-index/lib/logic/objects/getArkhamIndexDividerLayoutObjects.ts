@@ -1,4 +1,5 @@
 import {
+	arkhamIndexDividerChapter2Objects,
 	arkhamIndexDividerDeckboxObjects,
 	arkhamIndexDividerHorizontalObjects,
 	arkhamIndexDividerHorizontalSmallObjects,
@@ -10,6 +11,9 @@ import type { ArkhamIndexDividerLayout } from "../../../model";
 export const getArkhamIndexDividerLayoutObjects = (
 	layout: ArkhamIndexDividerLayout,
 ) => {
+	if (layout.id.includes("chapter2")) {
+		return arkhamIndexDividerChapter2Objects;
+	}
 	if (layout.id.includes("deckbox")) {
 		return arkhamIndexDividerDeckboxObjects;
 	}

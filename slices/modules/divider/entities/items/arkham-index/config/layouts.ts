@@ -105,6 +105,30 @@ const deckbox: ArkhamIndexDividerLayout = {
 	tabs: null,
 };
 
+const chapter2: ArkhamIndexDividerLayout = {
+	...horizontal,
+	id: "arkham-index-chapter2",
+	groupId: "chapter2",
+	name: "divider.arkham-index.chapter2.name",
+	previewName: "divider.arkham-index.chapter2.name",
+	size: createSize(87, 68),
+	printSize: {
+		300: {
+			size: createSize(1028, 803),
+			bleedSize: createSize(1098, 874),
+		},
+	},
+	sleeves: null,
+	params: {
+		title: false,
+	},
+	compatibility: {
+		chapter1Box: true,
+		chapter2Box: true,
+	},
+	tabs: null,
+};
+
 const vertical: ArkhamIndexDividerLayout = {
 	...horizontal,
 	orientation: "vertical",
@@ -221,6 +245,7 @@ export const arkhamIndexLayouts: DividerLayout[] = [
 	medium,
 	trim,
 	deckbox,
+	chapter2,
 	vertical,
 	verticalMedium,
 

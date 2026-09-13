@@ -259,6 +259,7 @@
 	"divider.arkham-index.customImage.vertical.size": "Recommended image size: 839x910px",
 	"category.arkham-index.description": "Dividers with art from the game, tab support and custom image upload",
 	"divider.arkham-index.deckbox.name": "Deck Box",
+	"divider.arkham-index.chapter2.name": "Chapter 2 Box",
 	"divider.layout.arkham-index.sideShift": "Side shift. Use if the printer gives large shifts on the back side. This will not cut the card information when cutting.",
 	"error.route.title": "This page could not be loaded",
 	"error.route.description": "This page failed to open. The home screen usually works — or reload if the app was just updated.",

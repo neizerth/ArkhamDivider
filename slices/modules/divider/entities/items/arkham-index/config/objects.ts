@@ -123,7 +123,7 @@ export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
 			default: {
 				fontSize: 4.5,
 				height: 7,
-				top: 0.2,
+				top: -0.2,
 				right: 4.5,
 			},
 			withIcon: {
@@ -143,7 +143,7 @@ export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
 		iconBackground: {
 			width: 6.4,
 			height: 6.4,
-			top: 0.3,
+			top: -0.1,
 		},
 		icon: {
 			fontSize: 5.3,
@@ -171,6 +171,27 @@ export const arkhamIndexDividerDeckboxObjects = mergeDeepRight(
 		},
 		topLine: {
 			top: -2.3,
+		},
+	},
+);
+
+export const arkhamIndexDividerChapter2Objects = mergeDeepRight(
+	arkhamIndexDividerDeckboxObjects,
+	{
+		tabTitle: {
+			default: {
+				fontSize: 4.5,
+				height: 6,
+				top: 0.4,
+				right: 4.5,
+			},
+			ru: {
+				top: 0.2,
+			},
+		},
+
+		topLine: {
+			top: -3,
 		},
 	},
 );
