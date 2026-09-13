@@ -94,9 +94,12 @@ export const arkhamIndexDividerHorizontalObjects = {
 		default: {
 			fontSize: 6,
 			height: 6,
-			top: 2,
+			top: 2.4,
 			left: 6.5,
 			right: 11,
+		},
+		ru: {
+			top: 1.9,
 		},
 		withIcon: {
 			left: 14.8,

@@ -67,15 +67,12 @@ export const getEncounterSetDividers = (
 		...(includeExtraEncounterSets ? extraEncounters : []),
 	]);
 
-	const encounters = uniqEncounters.filter((encounter) => {
-		const isScenario = scenarioEncounterCodes.includes(encounter.code);
-
-		if (!includeScenarioEncounterSets && isScenario) {
-			return false;
-		}
-
-		return true;
-	});
+	// Scenario main sets are counted/rendered as scenario-encounter dividers.
+	// Always exclude them from encounter-set dividers to match
+	// `getEncounterSetDividersCount` and avoid a duplicate when both flags are on.
+	const encounters = uniqEncounters.filter(
+		(encounter) => !scenarioEncounterCodes.includes(encounter.code),
+	);
 
 	const returnEncounterSets = returnStory?.encounterSets ?? [];
 
