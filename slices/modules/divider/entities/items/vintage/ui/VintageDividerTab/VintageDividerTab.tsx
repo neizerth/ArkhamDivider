@@ -49,7 +49,7 @@ export function VintageDividerTab({
 		<Box {...props} sx={sx}>
 			<Box sx={circleSx} />
 			{xpCost && <RadialXP xpCost={xpCost} sx={radialXPSx} />}
-			{divider.type === "scenario" && (
+			{divider.type === "scenario" && divider.scenario?.number_text && (
 				<Box sx={scenarioNumberSx}>
 					<Box sx={scenarioNumberTextSx}>
 						{divider.scenario?.number_text?.replace(/-.*/, "")}
