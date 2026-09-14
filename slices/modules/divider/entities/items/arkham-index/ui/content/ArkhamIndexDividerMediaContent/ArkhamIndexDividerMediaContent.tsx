@@ -40,10 +40,14 @@ export function ArkhamIndexDividerMediaContent(
 		prev,
 	} = useArkhamIndexImage();
 
-	const copyCode = useCallback(() => {
-		const code = url?.split("/").pop()?.replace(".avif", "");
-		copyToClipboard(code ?? "");
-	}, [url]);
+	const copyCode = useCallback(
+		(e: React.MouseEvent<HTMLButtonElement>) => {
+			const code = url?.split("/").pop()?.replace(".avif", "");
+			copyToClipboard(code ?? "");
+			e.preventDefault();
+		},
+		[url],
+	);
 
 	const dividerImage = divider.story?.supported ? url : "/images/blank.avif";
 
@@ -62,7 +66,6 @@ export function ArkhamIndexDividerMediaContent(
 							objectPosition: "center",
 						}}
 						crossOrigin="anonymous"
-						onContextMenu={copyCode}
 					/>
 					<NotExportable>
 						<Row sx={uploadSx} displayPrint="none">
@@ -77,7 +80,11 @@ export function ArkhamIndexDividerMediaContent(
 									`divider.arkham-index.customImage.${orientation}.size`,
 								)}
 							>
-								<Upload accept="image/*" onChange={upload}>
+								<Upload
+									accept="image/*"
+									onChange={upload}
+									onContextMenu={copyCode}
+								>
 									<Icon icon="image" sx={iconSx} />
 								</Upload>
 							</Tooltip>
