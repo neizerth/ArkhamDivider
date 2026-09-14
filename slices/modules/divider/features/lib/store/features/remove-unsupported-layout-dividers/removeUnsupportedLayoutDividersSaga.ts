@@ -20,12 +20,15 @@ function* worker() {
 		yield select(selectDividers);
 
 	const dividers = allDividers.filter((divider) => {
-		const { storyCode } = divider;
-		const story = stories.find(propEq(storyCode, "code"));
+		if (layout.removeUnsupportedDividers) {
+			const { storyCode } = divider;
+			const story = stories.find(propEq(storyCode, "code"));
 
-		if (story?.supported === false) {
-			return false;
+			if (story?.supported === false) {
+				return false;
+			}
 		}
+
 		return layout.types.includes(divider.layoutType);
 	});
 

@@ -4,6 +4,7 @@ import Stack, { type StackProps } from "@mui/material/Stack";
 import { useMemo } from "react";
 import {
 	selectDividerPageLayouts,
+	selectLayout,
 	selectLayoutBleed,
 } from "@/modules/divider/entities/lib";
 import { DividerViewMemo as DividerView } from "@/modules/divider/entities/ui";
@@ -41,6 +42,7 @@ export function PrintableContent(props: PrintableContentProps) {
 	const enablePageCounter = useAppSelector(selectEnablePageCounter);
 	const pageMargin = useAppSelector(selectPageMargin);
 	const story = useAppSelector(selectStory);
+	const layout = useAppSelector(selectLayout);
 
 	// Memoized above the early returns (hooks cannot be called conditionally). This component
 	// subscribes to a dozen selectors, and a fresh `pageSize`/`pageProps` object on every one
@@ -94,7 +96,7 @@ export function PrintableContent(props: PrintableContentProps) {
 		return null;
 	}
 
-	if (story?.supported === false) {
+	if (story?.supported === false && layout?.removeUnsupportedDividers) {
 		return <StoryNotSupported />;
 	}
 
@@ -107,6 +109,9 @@ export function PrintableContent(props: PrintableContentProps) {
 	const zoom = previewZoom ? previewZoom : 100;
 
 	const marginId = JSON.stringify(pageMargin);
+
+	const showStoryNotSupported =
+		story?.supported === false && !layout?.removeUnsupportedDividers;
 
 	/**
 	 * Changing this remounts the whole print run, so it must only list things that actually
@@ -127,6 +132,7 @@ export function PrintableContent(props: PrintableContentProps) {
 				},
 			}}
 		>
+			{showStoryNotSupported && <StoryNotSupported />}
 			<Stack justifyContent="center" alignItems="center" displayPrint="none">
 				<PagePreviewZoomSelect />
 			</Stack>

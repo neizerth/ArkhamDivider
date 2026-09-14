@@ -16,7 +16,7 @@ export function StoryNotSupported(props: StoryNotSupportedProps) {
 		...props.sx,
 	} as SxProps;
 	return (
-		<Box {...props} sx={sx}>
+		<Box {...props} sx={sx} displayPrint="none">
 			<Alert severity="error">{t("contentNotSupported")}</Alert>
 		</Box>
 	);

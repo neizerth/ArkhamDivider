@@ -73,6 +73,7 @@ export type DividerLayout<Params = Record<string, unknown>> = {
 	additionalParams?: {
 		singleSide?: boolean;
 	};
+	removeUnsupportedDividers?: boolean;
 	renderOptions?: DividerLayoutRenderOptions;
 	compatibility?: Partial<DividerLayoutCompatibility> | null;
 	tabs?: DividerLayoutTabConfig | null;

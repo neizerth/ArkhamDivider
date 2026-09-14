@@ -21,6 +21,7 @@ import { absoluteFill } from "@/shared/config";
 import { useAppSelector } from "@/shared/lib";
 import { useBoolean } from "@/shared/lib/hooks/common";
 import { Image } from "@/shared/ui";
+import { prefix } from "@/shared/util";
 import { arkhamIndexDividerBaseUrl } from "../../config";
 import {
 	getArkhamIndexDividerDefaultColor,
@@ -41,6 +42,8 @@ import {
 import { ArkhamIndexDividerTab as Tab } from "../tab";
 import * as C from "./ArkhamIndexDivider.components";
 import * as S from "./ArkhamIndexDivider.styles";
+
+const asset = prefix(arkhamIndexDividerBaseUrl);
 
 export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 	const { t } = useTranslation();
@@ -114,7 +117,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 			<Container>
 				<BleedView>
 					<Image
-						src={`${arkhamIndexDividerBaseUrl}${background}`}
+						src={asset(background)}
 						sx={{
 							...backgroundSx,
 							filter: backgroundFilter,

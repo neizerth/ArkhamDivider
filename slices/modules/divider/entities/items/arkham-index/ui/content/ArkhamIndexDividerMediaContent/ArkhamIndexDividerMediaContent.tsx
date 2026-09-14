@@ -1,8 +1,10 @@
 import { Box, type BoxProps, IconButton, Tooltip } from "@mui/material";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
+import { copyToClipboard } from "@/shared/lib";
 import { Image, Row, Upload } from "@/shared/ui";
 import { useArkhamIndexImage } from "../../../lib";
 import { useArkhamIndexContext } from "../../ArkhamIndexContext";
@@ -15,7 +17,7 @@ export function ArkhamIndexDividerMediaContent(
 	props: ArkhamIndexDividerMediaContentProps,
 ) {
 	const { t } = useTranslation();
-	const { sxOptions, layout } = useArkhamIndexContext();
+	const { sxOptions, layout, divider } = useArkhamIndexContext();
 
 	const { orientation } = layout;
 
@@ -38,6 +40,13 @@ export function ArkhamIndexDividerMediaContent(
 		prev,
 	} = useArkhamIndexImage();
 
+	const copyCode = useCallback(() => {
+		const code = url?.split("/").pop()?.replace(".avif", "");
+		copyToClipboard(code ?? "");
+	}, [url]);
+
+	const dividerImage = divider.story?.supported ? url : "/images/blank.avif";
+
 	return (
 		<Box {...props}>
 			<ArkhamIndexDividerTitle sx={titleSx} />
@@ -45,7 +54,7 @@ export function ArkhamIndexDividerMediaContent(
 			{url && (
 				<Box sx={imageSx}>
 					<Image
-						src={url}
+						src={dividerImage}
 						sx={{
 							width: "100%",
 							height: "100%",
@@ -53,6 +62,7 @@ export function ArkhamIndexDividerMediaContent(
 							objectPosition: "center",
 						}}
 						crossOrigin="anonymous"
+						onContextMenu={copyCode}
 					/>
 					<NotExportable>
 						<Row sx={uploadSx} displayPrint="none">

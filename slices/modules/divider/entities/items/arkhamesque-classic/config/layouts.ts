@@ -20,6 +20,7 @@ const large: DividerLayout = {
 	},
 	bleed: 3,
 	iconParams: ["icon", "bottomIcon"],
+	removeUnsupportedDividers: true,
 };
 
 const medium: DividerLayout = {
