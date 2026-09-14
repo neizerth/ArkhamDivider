@@ -1,3 +1,4 @@
+import betrayal_at_the_mountains_of_madness from "./betrayal_at_the_mountains_of_madness";
 import bloodborne from "./bloodborne";
 import celtic_rising from "./celtic_rising";
 import darkham_horror from "./darkham_horror";
@@ -40,4 +41,5 @@ export default {
 	...winter_winds,
 	...the_ghosts_of_onigawa,
 	...the_matter_of_britain,
+	...betrayal_at_the_mountains_of_madness,
 };
