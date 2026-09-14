@@ -82,7 +82,8 @@ export const ArkhamStarterDividerPDF: PDFDivider<
 		});
 
 	const title = params?.customTitle ?? t(props.title);
-	const storyTitle = params?.customStoryTitle ?? props.story?.name ?? "";
+	const storyTitle =
+		params?.customStoryTitle ?? (story?.name ? t(story.name) : "");
 	const xp = params?.customXP ?? defaultXP ?? "";
 
 	const titleFontFamily = getDefaultDividerFontFamily(language);
