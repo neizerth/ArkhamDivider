@@ -33,6 +33,7 @@ export function VintageDividerTopTitle({
 		onFontSizeChange,
 	} = useDividerText({
 		divider,
+		defaultValue: divider.title,
 		param: "customTopTitle",
 		fontSizeScaleParam: "topTitleFontSizeScale",
 	});
