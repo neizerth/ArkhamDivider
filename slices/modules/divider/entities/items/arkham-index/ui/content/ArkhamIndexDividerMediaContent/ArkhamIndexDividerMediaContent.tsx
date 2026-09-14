@@ -1,12 +1,10 @@
 import { Box, type BoxProps, IconButton, Tooltip } from "@mui/material";
-import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
-import { copyToClipboard } from "@/shared/lib";
 import { Image, Row, Upload } from "@/shared/ui";
-import { useArkhamIndexImage } from "../../../lib";
+import { useArkhamIndexImage, useArkhamIndexImageCode } from "../../../lib";
 import { useArkhamIndexContext } from "../../ArkhamIndexContext";
 import { ArkhamIndexDividerTitle } from "../ArkhamIndexDividerTitle";
 import * as S from "./ArkhamIndexDividerMediaContent.styles";
@@ -40,14 +38,7 @@ export function ArkhamIndexDividerMediaContent(
 		prev,
 	} = useArkhamIndexImage();
 
-	const copyCode = useCallback(
-		(e: React.MouseEvent<HTMLButtonElement>) => {
-			const code = url?.split("/").pop()?.replace(".avif", "");
-			copyToClipboard(code ?? "");
-			e.preventDefault();
-		},
-		[url],
-	);
+	const copyCode = useArkhamIndexImageCode(url);
 
 	const dividerImage = divider.story?.supported ? url : "/images/blank.avif";
 
