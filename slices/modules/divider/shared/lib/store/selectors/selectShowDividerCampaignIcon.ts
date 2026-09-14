@@ -15,15 +15,15 @@ export const selector = createSelector(
 		selectInvestigatorParams,
 	],
 	(divider, scenarioParams, playerParams, investigatorParams) => {
-		if (divider.type === "scenario") {
+		if (divider.layoutType === "scenario") {
 			return scenarioParams.campaignIcon;
 		}
 
-		if (divider.type === "player") {
+		if (divider.layoutType === "player") {
 			return playerParams.campaignIcon;
 		}
 
-		if (divider.type === "investigator") {
+		if (divider.layoutType === "investigator") {
 			return investigatorParams.campaignIcon;
 		}
 
