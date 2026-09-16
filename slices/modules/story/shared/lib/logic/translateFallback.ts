@@ -15,22 +15,23 @@ export const translateFallback = ({
 	fallbackNamespace,
 	options,
 }: Options) => {
-	const translation = i18nInstance.t(text, omit(["ns"], options));
 	const { ns = fallbackNamespace } = options;
 
-	if (translation && translation !== text) {
-		return translation;
-	}
-
-	if (!ns) {
-		return text;
-	}
-
-	// i18n `t` overloads expect `context?: string`, while `TOptions` types `context` as `unknown`.
+	// i18n `t` / `exists` overloads expect `context?: string`, while `TOptions` types `context` as `unknown`.
 	const { context, ...rest } = options;
+	const contextOpt = typeof context === "string" ? { context } : {};
+
+	// Prefer network-loaded custom story content (`story.${code}`) when present.
+	if (ns && i18nInstance.exists(text, { ns, ...contextOpt })) {
+		return i18nInstance.t(text, {
+			...rest,
+			ns,
+			...contextOpt,
+		});
+	}
+
 	return i18nInstance.t(text, {
-		...rest,
-		ns,
-		...(typeof context === "string" ? { context } : {}),
+		...omit(["ns"], rest),
+		...contextOpt,
 	});
 };
