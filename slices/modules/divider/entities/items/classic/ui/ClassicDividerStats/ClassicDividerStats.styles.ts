@@ -1,4 +1,6 @@
+import { alpha } from "@mui/material/styles";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
+import { classicDividerTextColor } from "../../config/common";
 
 export const getSx: PrintSxCallback = ({ mm }) => ({
 	cursor: "pointer",
@@ -25,4 +27,20 @@ export const getTotalIconSx: PrintSxCallback = ({ mm }) => ({
 
 export const getIconSx: PrintSxCallback = ({ mm }) => ({
 	fontSize: mm(3),
+});
+
+export const getClearSx: PrintSxCallback = ({ mm }) => ({
+	left: "auto",
+	right: "-25%",
+	top: "-75%",
+	transform: "translate(-50%, -50%)",
+	marginRight: mm(0.5),
+	padding: mm(0.5),
+	background: classicDividerTextColor,
+	color: "#fdf8e3",
+	"@media screen": {
+		"&:hover": {
+			background: alpha(classicDividerTextColor, 0.5),
+		},
+	},
 });

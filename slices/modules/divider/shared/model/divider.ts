@@ -115,6 +115,7 @@ export type BaseDividerData<Params = void> = {
 	title: string;
 	fontSizeScale?: number;
 	customTitle?: string;
+	cardsCount?: number;
 	icon?: Icon | null;
 	params?: Params;
 };

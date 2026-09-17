@@ -1,21 +1,17 @@
 import { Tooltip } from "@mui/material";
-import { isNumber, isValidNumber } from "ramda-adjunct";
-import { type FocusEvent, useCallback } from "react";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@/modules/core/icon/shared/ui";
-import { getDividerCardsCount } from "@/modules/divider/entities/lib";
+import { useDividerCardsCount } from "@/modules/divider/entities/lib";
 import { useDividerIcon } from "@/modules/divider/features/lib";
 import { DividerIcon } from "@/modules/divider/features/ui";
 import {
-	selectDividerParam,
 	selectScenarioParams,
-	selectShowCardsCount,
-	setDividerParam,
 	useLayoutParam,
 } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
-import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { useAppSelector } from "@/shared/lib";
 import { BoxInput, Row, type RowProps } from "@/shared/ui";
 import { useArkhamIndexContext } from "../../ArkhamIndexContext";
 import * as S from "./ArkhamIndexDividerCardsCount.styles";
@@ -29,26 +25,20 @@ export function ArkhamIndexDividerCardsCount({
 	...props
 }: ArkhamIndexDividerCardsCountProps) {
 	const { t } = useTranslation();
-	const dispatch = useAppDispatch();
 	const { divider, sxOptions } = useArkhamIndexContext();
 
 	const { backSideShift = false } = sxOptions;
 
-	const showCardsCount = useAppSelector((state) =>
-		selectShowCardsCount(state, divider.id),
-	);
+	const {
+		showCardsCount,
+		cardsCount,
+		defaultCardsCount,
+		onValueChange,
+		onCommit,
+	} = useDividerCardsCount({ divider });
 
 	const { campaignIcon: showCampaignIcon } =
 		useAppSelector(selectScenarioParams);
-
-	const defaultCardsCount = getDividerCardsCount(divider) ?? 0;
-	const paramsCardsCount = useAppSelector(
-		selectDividerParam<number>({ id: divider.id, key: "cardsCount" }),
-	);
-
-	const cardsCount: number = isValidNumber(paramsCardsCount)
-		? Number(paramsCardsCount)
-		: defaultCardsCount;
 
 	const getDividerIcon = useDividerIcon({ dividerId: divider.id });
 
@@ -77,33 +67,6 @@ export function ArkhamIndexDividerCardsCount({
 	const toggleBackSideShift = useCallback(() => {
 		setBackSideShift(!backSideShift);
 	}, [setBackSideShift, backSideShift]);
-
-	const commitCardsCountValue = useCallback(
-		(newValue: string) => {
-			const number = Number(newValue);
-			if (!isNumber(number)) {
-				return;
-			}
-
-			const value = number === defaultCardsCount ? null : number;
-
-			dispatch(
-				setDividerParam({
-					id: divider.id,
-					key: "cardsCount",
-					value,
-				}),
-			);
-		},
-		[defaultCardsCount, dispatch, divider.id],
-	);
-
-	const setCardsCount = useCallback(
-		(event: FocusEvent<HTMLDivElement>) => {
-			commitCardsCountValue(event.currentTarget.textContent ?? "");
-		},
-		[commitCardsCountValue],
-	);
 
 	const isBackSide = divider.side === "back";
 
@@ -148,8 +111,8 @@ export function ArkhamIndexDividerCardsCount({
 							clearable
 							clearProps={{ sx: clearSx }}
 							onClick={onToggle}
-							onValueChange={commitCardsCountValue}
-							onBlur={setCardsCount}
+							onValueChange={onValueChange}
+							onBlur={onCommit}
 						/>
 					)}
 					{showCampaignIcon && (

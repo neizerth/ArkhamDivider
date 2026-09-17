@@ -1,15 +1,12 @@
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
 import { Icon } from "@/modules/core/icon/shared/ui";
-import { getDividerCardsCount } from "@/modules/divider/entities/lib/logic";
-import {
-	selectShowCardsCount,
-	selectShowDividerCampaignIcon,
-} from "@/modules/divider/shared/lib";
+import { useDividerCardsCount } from "@/modules/divider/entities/lib";
+import { selectShowDividerCampaignIcon } from "@/modules/divider/shared/lib";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
-import { Row, type RowProps } from "@/shared/ui";
+import { BoxInput, Row, type RowProps } from "@/shared/ui";
 import * as S from "./ClassicDividerStats.styles";
 
 type ClassicDividerStatsProps = Omit<RowProps, "divider"> & {
@@ -18,19 +15,25 @@ type ClassicDividerStatsProps = Omit<RowProps, "divider"> & {
 
 export function ClassicDividerStats({
 	divider,
+	onClick,
 	...props
 }: ClassicDividerStatsProps) {
 	const showCampaignIcon = useAppSelector(
 		selectShowDividerCampaignIcon(divider.id),
 	);
-	const showCardsCount = useAppSelector((state) =>
-		selectShowCardsCount(state, divider.id),
-	);
+	const {
+		showCardsCount,
+		cardsCount,
+		defaultCardsCount,
+		onValueChange,
+		onCommit,
+	} = useDividerCardsCount({ divider });
 
 	const getPrintSx = usePrintSx();
 
 	const textSx = getPrintSx(S.getTextSx);
 	const totalIconSx = getPrintSx(S.getTotalIconSx);
+	const clearSx = getPrintSx(S.getClearSx);
 	const sx = getPrintSx(S.getSx);
 	const iconSx = getPrintSx(S.getIconSx);
 
@@ -48,8 +51,6 @@ export function ClassicDividerStats({
 		...props.sx,
 	} as SxProps;
 
-	const cardsCount = getDividerCardsCount(divider);
-
 	return (
 		<Row {...props} sx={sxProp}>
 			{showCampaignIcon ? (
@@ -57,7 +58,18 @@ export function ClassicDividerStats({
 			) : (
 				showCardsCount && <Box sx={totalIconSx}>∑</Box>
 			)}
-			{showCardsCount && <Box sx={textSx}>{cardsCount}</Box>}
+			{showCardsCount && (
+				<BoxInput
+					sx={textSx}
+					value={cardsCount.toString()}
+					defaultValue={defaultCardsCount.toString()}
+					clearable
+					clearProps={{ sx: clearSx }}
+					onClick={onClick}
+					onValueChange={onValueChange}
+					onBlur={onCommit}
+				/>
+			)}
 		</Row>
 	);
 }

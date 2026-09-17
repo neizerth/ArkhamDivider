@@ -1,4 +1,7 @@
+import { alpha } from "@mui/material/styles";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
+
+const textColor = "#2e2622";
 
 export const getRowSx: PrintSxCallback = ({ mm }) => ({
 	cursor: "pointer",
@@ -25,4 +28,20 @@ export const getTextSx: PrintSxCallback = () => ({
 export const getTotalIconSx: PrintSxCallback = ({ mm }) => ({
 	position: "relative",
 	top: mm(-0.1),
+});
+
+export const getClearSx: PrintSxCallback = ({ mm }) => ({
+	left: "auto",
+	right: "100%",
+	top: "50%",
+	transform: "translate(-50%, -50%)",
+	marginRight: mm(0.5),
+	padding: mm(0.5),
+	background: textColor,
+	color: "#fdf8e3",
+	"@media screen": {
+		"&:hover": {
+			background: alpha(textColor, 0.5),
+		},
+	},
 });

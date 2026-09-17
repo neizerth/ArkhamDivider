@@ -1,14 +1,11 @@
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
 import { Icon } from "@/modules/core/icon/shared/ui";
-import { getDividerCardsCount } from "@/modules/divider/entities/lib/logic";
-import {
-	selectShowCardsCount,
-	selectShowDividerCampaignIcon,
-} from "@/modules/divider/shared/lib";
+import { useDividerCardsCount } from "@/modules/divider/entities/lib";
+import { selectShowDividerCampaignIcon } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { useAppSelector } from "@/shared/lib";
-import { Row, type RowProps } from "@/shared/ui";
+import { BoxInput, Row, type RowProps } from "@/shared/ui";
 import type { ArkhamDecoDividerProps } from "../../model";
 import { useArkhamDecoDividerContext } from "../ArkhamDecoDividerContext";
 import * as S from "./ArkhamDecoDividerCardsCount.styles";
@@ -19,6 +16,7 @@ type ArkhamDecoDividerCardsCountProps = Omit<RowProps, "divider"> & {
 
 export function ArkhamDecoDividerCardsCount({
 	divider,
+	onClick,
 	...props
 }: ArkhamDecoDividerCardsCountProps) {
 	const { sxOptions } = useArkhamDecoDividerContext();
@@ -26,15 +24,20 @@ export function ArkhamDecoDividerCardsCount({
 	const showCampaignIcon = useAppSelector(
 		selectShowDividerCampaignIcon(divider.id),
 	);
-	const showCardsCount = useAppSelector((state) =>
-		selectShowCardsCount(state, divider.id),
-	);
+	const {
+		showCardsCount,
+		cardsCount,
+		defaultCardsCount,
+		onValueChange,
+		onCommit,
+	} = useDividerCardsCount({ divider });
 
 	const getPrintSx = usePrintSx(sxOptions);
 
 	const textSx = getPrintSx(S.getTextSx);
 	const iconSx = getPrintSx(S.getIconSx);
 	const totalIconSx = getPrintSx(S.getTotalIconSx);
+	const clearSx = getPrintSx(S.getClearSx);
 	const rowSx = getPrintSx(S.getRowSx);
 
 	if (!divider.story?.icon) {
@@ -51,8 +54,6 @@ export function ArkhamDecoDividerCardsCount({
 		...props.sx,
 	} as SxProps;
 
-	const cardsCount = getDividerCardsCount(divider);
-
 	return (
 		<Row {...props} sx={sxProp}>
 			{showCampaignIcon ? (
@@ -60,7 +61,18 @@ export function ArkhamDecoDividerCardsCount({
 			) : (
 				showCardsCount && <Box sx={totalIconSx}>∑</Box>
 			)}
-			{showCardsCount && <Box sx={textSx}>{cardsCount}</Box>}
+			{showCardsCount && (
+				<BoxInput
+					sx={textSx}
+					value={cardsCount.toString()}
+					defaultValue={defaultCardsCount.toString()}
+					clearable
+					clearProps={{ sx: clearSx }}
+					onClick={onClick}
+					onValueChange={onValueChange}
+					onBlur={onCommit}
+				/>
+			)}
 		</Row>
 	);
 }
