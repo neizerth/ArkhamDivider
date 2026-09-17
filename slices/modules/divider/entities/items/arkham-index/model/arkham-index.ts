@@ -26,6 +26,7 @@ export type ArkhamIndexDividerParams = {
 	indent?: boolean;
 
 	color?: string;
+	cardsCount?: number;
 };
 
 export type ArkhamIndexDividerProps =

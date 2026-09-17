@@ -169,7 +169,7 @@ export function ArkhamIndexDivider(props: ArkhamIndexDividerProps) {
 							title={t("divider.arkhamIndex.background.pickerTitle")}
 						/>
 					</NotExportable>
-					<CardsCount sx={infoSx} onСardCountClick={setShowCardsInfo.toggle} />
+					<CardsCount sx={infoSx} onToggle={setShowCardsInfo.toggle} />
 					{showCardsInfo && <CardsInfo sx={dividerCardsSx} divider={props} />}
 
 					{showBackgroundIcon && (

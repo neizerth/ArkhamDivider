@@ -1,4 +1,3 @@
-import { v4 } from "uuid";
 import type { PageLayout, PageLayoutGrid, PageLayoutRow } from "../../model";
 
 type Options<T> = {
@@ -29,20 +28,37 @@ const getBackLayouts = <T>(frontLayouts: PageLayout<T>[]) => {
 	for (const frontLayout of frontLayouts) {
 		const items = frontLayout.items.map((row) => ({
 			...row,
-			id: v4(),
+			id: `${frontLayout.number}-back-${row.id}`,
 			items: row.items
 				.toReversed()
-				.map((item) => (item != null ? { ...item, side: "back" } : item)),
+				.map((item) => (item != null ? getBackItem(item) : item)),
 		}));
 		const backLayout: PageLayout<T> = {
 			...frontLayout,
 			side: "back",
 			items,
-			id: v4(),
+			id: `${frontLayout.number}-back`,
 		};
 		backLayouts.push(backLayout);
 	}
 	return backLayouts;
+};
+
+/**
+ * Reuse the same back-side wrapper while the front item reference is unchanged.
+ * Fresh `{...item, side:"back"}` on every layout pass used to defeat `memo` on every
+ * back divider whenever any one divider param changed.
+ */
+const backItemCache = new WeakMap<object, object>();
+
+const getBackItem = <T extends object>(item: T): T => {
+	const cached = backItemCache.get(item);
+	if (cached) {
+		return cached as T;
+	}
+	const back = { ...item, side: "back" };
+	backItemCache.set(item, back);
+	return back as T;
 };
 
 const getFrontLayouts = <T>({
@@ -83,8 +99,9 @@ const getFrontLayouts = <T>({
 				paddedRow.push(undefined);
 			}
 
+			const rowIndex = items.length;
 			items.push({
-				id: v4(),
+				id: `front-${pageLayouts.length + 1}-row-${rowIndex}`,
 				items: paddedRow,
 			});
 		}
@@ -92,7 +109,7 @@ const getFrontLayouts = <T>({
 		const pageNumber = pageLayouts.length + 1;
 
 		const pageLayout: PageLayout<T> = {
-			id: v4(),
+			id: `front-${pageNumber}`,
 			number: pageNumber,
 			side: "front",
 			items,

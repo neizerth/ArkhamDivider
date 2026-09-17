@@ -8,7 +8,20 @@ export const getContainerSx: PrintSxCallback = () => ({
 
 export const getCardsCountSx: PrintSxCallback = ({ mm }) => ({
 	fontFamily: "ArnoPro, serif",
-	gap: mm(0.5),
+	gap: mm(1),
+	textAlign: "right",
+	alignItems: "center",
+	justifyContent: "flex-end",
+});
+
+export const getClearSx: PrintSxCallback = ({ mm }) => ({
+	left: "auto",
+	right: "100%",
+	top: "50%",
+	transform: "translate(-50%, -50%)",
+	marginRight: mm(0.5),
+	color: "white",
+	padding: mm(0.5),
 });
 
 export const getCampaignIconSx: ArkhamIndexDividerSxCallback = ({

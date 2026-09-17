@@ -1,12 +1,10 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectScenarioParams } from "../divider";
-import { selectDividers } from "../dividers";
+import { selectDividerById } from "../dividers";
 
 export const selectShowCardsCount = createSelector(
-	[(_, id: string) => id, selectScenarioParams, selectDividers],
-	(id, params, dividers) => {
-		const divider = dividers.find((divider) => divider.id === id);
-
+	[selectDividerById, selectScenarioParams],
+	(divider, params) => {
 		if (!divider) {
 			return false;
 		}
