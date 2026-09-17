@@ -18,6 +18,7 @@ export type StoryScenario = Defined<Story["scenario"]>;
 
 export type StoryWithRelations = Omit<Story, "scenario" | "scenarios"> & {
 	encounterSets: EncounterSet[];
+	scenarioEncounterSets: EncounterSet[];
 	extraEncounterSets: EncounterSet[];
 	scenarios: StoryScenarioWithRelations[];
 	returnStory?: StoryWithRelations;

@@ -45,6 +45,9 @@ export const mapStoryWithRelations = ({
 	const encounterSets = allEncounterSets.filter(({ code }) =>
 		story.encounter_sets.includes(code),
 	);
+	const scenarioEncounterSets = allEncounterSets.filter(({ code }) =>
+		story.scenario_encounter_sets.includes(code),
+	);
 	const extraEncounterSets = allEncounterSets.filter(({ code }) =>
 		story.extra_encounter_sets.includes(code),
 	);
@@ -56,6 +59,7 @@ export const mapStoryWithRelations = ({
 	return {
 		...story,
 		encounterSets,
+		scenarioEncounterSets,
 		extraEncounterSets,
 		scenarios,
 		returnStory,
