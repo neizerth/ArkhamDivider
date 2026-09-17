@@ -1,5 +1,4 @@
 import { prop, uniqBy } from "ramda";
-import { getEncounterSetCards } from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSetTypeEntry } from "@/modules/encounterSet/shared/model";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 
@@ -17,53 +16,46 @@ export const getCampaignCards = ({
 		...scenarioEncounterSets,
 	]);
 
-	const uniqueCards = new Map<number, { type: string; quantity: number }>();
-	const fallbackByType = new Map<string, number>();
-
-	for (const encounterSet of sets) {
-		const types = getEncounterSetCards({ encounterSet });
-		const hasCardMap = types.some(
-			({ cards }) => cards && Object.keys(cards).length > 0,
-		);
-
-		if (!hasCardMap) {
-			for (const { type, size } of types) {
-				fallbackByType.set(type, (fallbackByType.get(type) ?? 0) + size);
-			}
-			continue;
-		}
-
-		for (const { type, cards } of types) {
-			if (!cards) {
-				continue;
-			}
-
-			for (const [number, quantity] of Object.entries(cards)) {
-				const id = Number(number);
-
-				if (!uniqueCards.has(id)) {
-					uniqueCards.set(id, { type, quantity });
-				}
-			}
-		}
-	}
-
+	const seen = new Set<number>();
 	const byType = new Map<
 		string,
 		{ size: number; cards: Record<number, number> }
 	>();
 
-	for (const [number, { type, quantity }] of uniqueCards) {
-		const entry = byType.get(type) ?? { size: 0, cards: {} };
-		entry.size += quantity;
-		entry.cards[number] = quantity;
-		byType.set(type, entry);
-	}
+	for (const { types = [] } of sets) {
+		for (const { type, size, cards } of types) {
+			if (size <= 0) {
+				continue;
+			}
 
-	for (const [type, size] of fallbackByType) {
-		const entry = byType.get(type) ?? { size: 0, cards: {} };
-		entry.size += size;
-		byType.set(type, entry);
+			const entry = byType.get(type) ?? { size: 0, cards: {} };
+
+			if (!cards) {
+				entry.size += size;
+				byType.set(type, entry);
+				continue;
+			}
+
+			const numbers = Object.keys(cards);
+			if (numbers.length === 0) {
+				entry.size += size;
+				byType.set(type, entry);
+				continue;
+			}
+
+			for (const number of numbers) {
+				const id = Number(number);
+				if (seen.has(id)) {
+					continue;
+				}
+
+				seen.add(id);
+				entry.size += cards[id];
+				entry.cards[id] = cards[id];
+			}
+
+			byType.set(type, entry);
+		}
 	}
 
 	return [...byType.entries()]
