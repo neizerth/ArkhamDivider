@@ -63,5 +63,9 @@ export function getArkhamIndexDividerImageUrl({
 		return;
 	}
 
+	if (scenarioId === story.code) {
+		return `${scenarioBase}/${story.code}-scenario.avif`;
+	}
+
 	return `${scenarioBase}/${scenarioId}.avif`;
 }
