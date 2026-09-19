@@ -1,4 +1,5 @@
 import { prop, uniqBy } from "ramda";
+import { compact } from "ramda-adjunct";
 import type { EncounterSetTypeEntry } from "@/modules/encounterSet/shared/model";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 
@@ -6,14 +7,22 @@ import type { StoryWithRelations } from "@/modules/story/shared/model";
  * Campaign size must count unique physical cards.
  * ArkhamDividerData merges related encounter cards into multiple sets, so summing
  * `size` double-counts (e.g. Dunwich 396 vs official 307).
+ *
+ * `scenario_encounter_sets` often stores scenario ids, not encounter-set codes
+ * (e.g. Carnevale → `carnevale_of_horrors` vs set code `venice`). Resolve those
+ * via each scenario's main/related encounter sets as well.
  */
 export const getCampaignCards = ({
 	encounterSets,
 	scenarioEncounterSets,
+	scenarios,
 }: StoryWithRelations): EncounterSetTypeEntry[] => {
 	const sets = uniqBy(prop("code"), [
 		...encounterSets,
 		...scenarioEncounterSets,
+		...scenarios.flatMap(({ encounterSet, encounterSets: scenarioSets }) =>
+			compact([encounterSet, ...scenarioSets]),
+		),
 	]);
 
 	const seen = new Set<number>();
