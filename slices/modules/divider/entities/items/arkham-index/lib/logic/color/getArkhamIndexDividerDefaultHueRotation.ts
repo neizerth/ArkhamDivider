@@ -1,5 +1,5 @@
 import { getColorFilterCssValue } from "@/modules/core/color/shared/lib";
-import { isSideContent } from "@/modules/story/shared/lib";
+import { isSideContent, isStandaloneStory } from "@/modules/story/shared/lib";
 import { arkhamIndexBackgroundFilters as colors } from "../../../config/colors";
 import type { ArkhamIndexDividerProps } from "../../../model";
 
@@ -24,7 +24,7 @@ const getFilter = (divider: ArkhamIndexDividerProps) => {
 		return;
 	}
 
-	if (isSideContent(divider.story)) {
+	if (isSideContent(divider.story) || isStandaloneStory(divider.story)) {
 		const chapter = divider.story.chapter ?? 1;
 		const filters =
 			chapter === 2 ? colors.standalone.ch2 : colors.standalone.ch1;
