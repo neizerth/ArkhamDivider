@@ -8,7 +8,7 @@ export const sarnetskyCategory: DividerCategory = createDividerCategory({
 	id: sarnetskyCategoryId,
 	type: "divider",
 	authors: [SarnetskyCredits],
-	name: "Eugene Sarnetsky",
+	name: "Eugene Sarnetsky Design",
 	image: "/images/divider/render/sarnetsky.avif",
 	layouts: sarnetskyLayouts,
 });

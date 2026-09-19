@@ -7,7 +7,7 @@ import { carlosLemosLayouts } from "./layouts";
 export const carlosLemosCategory: DividerCategory = createDividerCategory({
 	id: carlosLemosCategoryId,
 	type: "divider",
-	name: "Carlos Lemos",
+	name: "Carlos Lemos Design",
 	image: "/images/divider/render/carlos-lemos.avif",
 	layouts: carlosLemosLayouts,
 	authors: [CarlosLemosCredits],
