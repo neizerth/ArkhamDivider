@@ -3,6 +3,7 @@ import type { LayoutOrientation } from "@/modules/divider/entities/lib/store/fea
 import {
 	tcgDividerSticker70x95Objects,
 	tcgDividerSticker70x107HorizontalObjects,
+	tcgDividerStickerGamegenicFlexTabObjects,
 } from "../../../config";
 import type { TCGDividerStickerLayout } from "../../../model";
 
@@ -42,6 +43,9 @@ export const getObjects = (layout: TCGDividerStickerLayout): Objects => {
 		layout.orientation === "horizontal"
 	) {
 		return tcgDividerSticker70x107HorizontalObjects;
+	}
+	if (layout.params?.dividerType === "gamegenic-flex-tab") {
+		return tcgDividerStickerGamegenicFlexTabObjects;
 	}
 	return tcgDividerSticker70x95Objects;
 };

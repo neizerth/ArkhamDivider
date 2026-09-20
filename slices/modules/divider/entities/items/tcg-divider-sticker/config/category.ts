@@ -14,4 +14,3 @@ export const tcgDividerStickerCategory: DividerCategory = createDividerCategory(
 		authors: [VladimirYazykovCredits],
 	},
 );
-2;

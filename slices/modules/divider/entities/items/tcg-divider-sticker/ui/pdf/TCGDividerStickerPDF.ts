@@ -79,19 +79,20 @@ export const TCGDividerStickerPDF: PDFDivider<
 		});
 	}
 
-	const fontFamily = getDefaultDividerFontFamily(language);
-
-	await text.draw(title, {
-		x: bleed.x(T.left),
-		y: bleed.y(T.top),
-		width: bleed.width(T.left, T.right),
-		height: bleed.height(T.top, T.bottom),
-		fontSize: unit.mm((fontSizeScale / 100) * T.fontSize),
-		align: "center",
-		overprint: true,
-		fontFamily,
-		color: blackInk,
-	});
+	if (O.showTitle) {
+		const fontFamily = getDefaultDividerFontFamily(language);
+		await text.draw(title, {
+			x: bleed.x(T.left),
+			y: bleed.y(T.top),
+			width: bleed.width(T.left, T.right),
+			height: bleed.height(T.top, T.bottom),
+			fontSize: unit.mm((fontSizeScale / 100) * T.fontSize),
+			align: "center",
+			overprint: true,
+			fontFamily,
+			color: blackInk,
+		});
+	}
 
 	const sideIcon = getDividerIcon({
 		divider: props,

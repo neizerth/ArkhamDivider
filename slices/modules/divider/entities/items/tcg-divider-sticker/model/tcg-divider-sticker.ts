@@ -14,7 +14,7 @@ export type TCGDividerStickerProps = DividerWithRelations<{
 
 export type TCGDividerStickerLayout = DividerLayout<{
 	cut?: boolean;
-	dividerType?: "70x95" | "70x107";
+	dividerType?: "70x95" | "70x107" | "gamegenic-flex-tab" | "gamegenic-flex";
 }>;
 
 export type TCGDividerStickerSxOptions = {

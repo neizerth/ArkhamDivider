@@ -272,5 +272,10 @@
 	"error.route.reload": "Перезагрузить",
 	"error.route.details": "Подробности ошибки",
 	"error.route.copy": "Копировать",
-	"error.route.copied": "Скопировано"
+	"error.route.copied": "Скопировано",
+	"divider.gamegenic-flex-tab.name": "Gamegenic Flex Tab",
+	"divider.gamegenic-flex-tab.description": "Стикеры для закладки разделителей Game Genic Flex",
+	"divider.gamegenic-flex-tab.preview": "Вкладка Gamegenic Flex",
+	"divider.gamegenic-flex.name": "Gamegenic Flex",
+	"divider.gamegenic-flex.description": "Стикеры для разделителей Game Genic Flex"
 }

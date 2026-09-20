@@ -29,6 +29,7 @@ export const getTitleSx: TCGDividerStickerLocaleSxCallback = ({
 	const T = objects.title;
 	return {
 		default: {
+			display: objects.showTitle ? "block" : "none",
 			fontFamily: "Arkhamic, Teutonic, serif",
 			position: "absolute",
 			top: mm(T.top),

@@ -267,5 +267,10 @@
 	"error.route.reload": "Reload",
 	"error.route.details": "Error details",
 	"error.route.copy": "Copy",
-	"error.route.copied": "Copied"
+	"error.route.copied": "Copied",
+	"divider.gamegenic-flex-tab.name": "Gamegenic Flex Tab",
+	"divider.gamegenic-flex-tab.description": "Stickers for Tab Gamegenic Flex dividers",
+	"divider.gamegenic-flex-tab.preview": "Gamegenic Flex Tab",
+	"divider.gamegenic-flex.name": "Gamegenic Flex",
+	"divider.gamegenic-flex.description": "Stickers for Gamegenic Flex dividers"
 }
