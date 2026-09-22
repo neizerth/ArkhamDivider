@@ -2,6 +2,7 @@ import { prop, propEq, uniqBy } from "ramda";
 import { compact } from "ramda-adjunct";
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
+import { isReturnEncounterSet } from "@/modules/encounterSet/shared/lib";
 import { getEncounterSetCards } from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import { getScenarioCards } from "@/modules/story/entities/lib";
@@ -76,8 +77,12 @@ export const getEncounterSetDividers = (
 
 	const returnEncounterSets = returnStory?.encounterSets ?? [];
 
-	const getEncounterStoryCode = (code: string) => {
-		if (returnEncounterSets.some(propEq(code, "code"))) {
+	const getEncounterStoryCode = (encounterSet: EncounterSet) => {
+		if (isReturnEncounterSet(encounterSet) && encounterSet.pack_code) {
+			return encounterSet.pack_code;
+		}
+
+		if (returnEncounterSets.some(propEq(encounterSet.code, "code"))) {
 			return returnStory?.code ?? story.code;
 		}
 
@@ -89,7 +94,7 @@ export const getEncounterSetDividers = (
 		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
 		const { icon, name } = encounterSet;
 
-		const storyCode = getEncounterStoryCode(encounterSet.code);
+		const storyCode = getEncounterStoryCode(encounterSet);
 
 		const isExtra = extraEncounters.some(propEq(encounterSet.code, "code"));
 
@@ -123,6 +128,11 @@ export const getEncounterSetDividers = (
 	const returnScenarioCodes = returnStory?.scenarios.map(prop("id")) ?? [];
 
 	const getScenarioStoryCode = (scenario: StoryScenarioWithRelations) => {
+		const encounterSet = scenario.encounterSet;
+		if (encounterSet?.cycle_code === "return" && encounterSet.pack_code) {
+			return encounterSet.pack_code;
+		}
+
 		if (returnScenarioCodes.includes(scenario.id)) {
 			return returnStory?.code ?? story.code;
 		}

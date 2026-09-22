@@ -53,7 +53,8 @@ export function getArkhamIndexDividerImageUrl({
 				? divider.encounterCode
 				: `${divider.scenarioId}-encounter`;
 
-		const code = isExtra ? cycleCode : storyCode;
+		// Return-to extras: story already resolves via return_to_code (rtptc → ptc).
+		const code = isExtra && cycleCode !== "return" ? cycleCode : storyCode;
 
 		return `${scenarioBaseUrl}/${code}/${orientation}/${id}.avif`;
 	}
