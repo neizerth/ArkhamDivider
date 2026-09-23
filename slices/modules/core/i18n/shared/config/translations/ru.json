@@ -32,7 +32,7 @@
 	"cards.faction.survivor": "Карты Мистиков",
 	"cards.faction.multiclass": "Мультиклассовые карты",
 	"cards.investigator": "Карты сыщика",
-	"divider.sarnetsky.xpCost": "Уровнь {{level}}",
+	"divider.sarnetsky.xpCost": "Уровень {{level}}",
 	"divider.sarnetsky.frameColor.pickerTitle": "Цвет рамки",
 	"divider.sarnetsky.overlayColor.pickerTitle": "Цвет фона",
 	"Select All": "Выбрать все",
