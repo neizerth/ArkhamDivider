@@ -46,8 +46,7 @@ jobs:
       - name: 📂 Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
-      # Multiline rsync exclude rules (paths under SSH_DIR); with --delete these are not removed on the server.
-      # Repository or github-pages environment variable RSYNC_EXCLUDE (optional; empty = no extra excludes).
+      # Variable RSYNC_EXCLUDE. Example: docs/deploy-fallback.md
       - name: 📂 Write rsync exclude rules from variable
         env:
           RSYNC_EXCLUDE_FROM: ${{ vars.RSYNC_EXCLUDE }}
