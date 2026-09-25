@@ -47,18 +47,36 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
       # Multiline rsync exclude rules (paths under SSH_DIR); with --delete these are not removed on the server.
-      # Repository secret: RSYNC_EXCLUDE_FROM (optional; empty = no extra excludes).
-      - name: 📂 Write rsync exclude rules from secret
+      # Repository or github-pages environment variable RSYNC_EXCLUDE (optional; empty = no extra excludes).
+      - name: 📂 Write rsync exclude rules from variable
         env:
-          RSYNC_EXCLUDE_FROM: ${{ secrets.RSYNC_EXCLUDE }}
+          RSYNC_EXCLUDE_FROM: ${{ vars.RSYNC_EXCLUDE }}
         run: |
           mkdir -p .github
           printf '%s\n' "$RSYNC_EXCLUDE_FROM" > .github/.rsync-exclude
 
       - name: 📂 Sync files via rsync
         run: |
+          RSH="ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+          DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}"
           sshpass -p '${{ secrets.SSH_PASSWORD }}' rsync -avz --delete \
             --exclude-from=.github/.rsync-exclude \
-            -e "ssh -p ${{ secrets.SSH_PORT || 22 }} -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+            -e "$RSH" \
             ./dist/ \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_DIR }}
+            "$DEST"
+          # Vite's hashed bundles live in dist/assets. RSYNC_EXCLUDE must not be able
+          # to skip them: a missing module is served as index.html and fails MIME checks.
+          sshpass -p '${{ secrets.SSH_PASSWORD }}' rsync -avz --delete \
+            -e "$RSH" \
+            ./dist/assets/ \
+            "$DEST/assets/"
+
+      - name: Verify entry bundle on server
+        run: |
+          entry=$(grep -oE 'assets/index-[^"]+\.js' dist/index.html | head -1)
+          test -n "$entry"
+          test -s "dist/$entry"
+          sshpass -p '${{ secrets.SSH_PASSWORD }}' ssh -p "${{ secrets.SSH_PORT || 22 }}" \
+            -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "test -s '${{ secrets.SSH_DIR }}/$entry'"
