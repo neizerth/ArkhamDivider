@@ -11,7 +11,7 @@ export default {
 	},
 	hunted: {
 		top: percent(2),
-		scale: percent(90),
+		scale: percent(100),
 	},
 	misinformation: {
 		top: percent(2),
@@ -26,7 +26,7 @@ export default {
 		scale: percent(90),
 	},
 	preyed_upon: {
-		top: percent(-4),
+		top: percent(-2),
 		left: percent(-1),
 		scale: percent(90),
 	},
@@ -37,7 +37,7 @@ export default {
 	},
 	agents_of_zburamoarte: {
 		left: percent(-2),
-		scale: percent(90),
+		scale: percent(95),
 	},
 	friends_in_low_places: {
 		top: percent(-4),
@@ -48,5 +48,12 @@ export default {
 		scale: percent(100),
 		top: percent(2),
 		left: percent(1),
+	},
+	river_of_blood: {
+		top: percent(-3),
+		scale: percent(110),
+	},
+	blood_money: {
+		left: percent(-3),
 	},
 } as IconPositionManifest;
