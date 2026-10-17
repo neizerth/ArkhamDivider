@@ -7,6 +7,12 @@ type Options = {
 	orientation: Orientation;
 	version?: number;
 };
+
+const chapterCycleCode: Record<number, string> = {
+	1: "core",
+	2: "core_2026",
+};
+
 export function getArkhamIndexDividerImageUrl({
 	divider,
 	orientation,
@@ -53,8 +59,11 @@ export function getArkhamIndexDividerImageUrl({
 				? divider.encounterCode
 				: `${divider.scenarioId}-encounter`;
 
+		const chapter = story.chapter ?? 1;
+		const chapterCycle = chapterCycleCode[chapter];
+
 		// Return-to extras: story already resolves via return_to_code (rtptc → ptc).
-		const code = isExtra && cycleCode !== "return" ? cycleCode : storyCode;
+		const code = isExtra && cycleCode !== "return" ? chapterCycle : storyCode;
 
 		return `${scenarioBaseUrl}/${code}/${orientation}/${id}.avif`;
 	}
