@@ -1,4 +1,8 @@
 import { isNotNil } from "ramda";
+import {
+	applyEncounterSetData,
+	applyEncounterSetDataList,
+} from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
 import { getStoryScenarios } from "@/modules/story/shared/lib";
 import type {
@@ -25,11 +29,18 @@ export const mapStoryWithRelations = ({
 		if (!scenario) {
 			return;
 		}
-		const encounterSets = allEncounterSets.filter(({ code }) =>
-			scenario.encounter_sets?.includes(code),
+		const { encounter_set_data } = scenario;
+		const encounterSets = applyEncounterSetDataList(
+			allEncounterSets.filter(({ code }) =>
+				scenario.encounter_sets?.includes(code),
+			),
+			encounter_set_data,
 		);
-		const extraEncounterSets = allEncounterSets.filter(({ code }) =>
-			scenario.extra_encounter_sets?.includes(code),
+		const extraEncounterSets = applyEncounterSetDataList(
+			allEncounterSets.filter(({ code }) =>
+				scenario.extra_encounter_sets?.includes(code),
+			),
+			encounter_set_data,
 		);
 		const encounterSet = allEncounterSets.find(
 			({ icon }) => icon === scenario.icon,
@@ -38,18 +49,29 @@ export const mapStoryWithRelations = ({
 			...scenario,
 			encounterSets,
 			extraEncounterSets,
-			encounterSet,
+			encounterSet: encounterSet
+				? applyEncounterSetData(encounterSet, encounter_set_data)
+				: undefined,
 		};
 	};
 
-	const encounterSets = allEncounterSets.filter(({ code }) =>
-		story.encounter_sets.includes(code),
+	const { encounter_set_data } = story;
+
+	const encounterSets = applyEncounterSetDataList(
+		allEncounterSets.filter(({ code }) => story.encounter_sets.includes(code)),
+		encounter_set_data,
 	);
-	const scenarioEncounterSets = allEncounterSets.filter(({ code }) =>
-		story.scenario_encounter_sets.includes(code),
+	const scenarioEncounterSets = applyEncounterSetDataList(
+		allEncounterSets.filter(({ code }) =>
+			story.scenario_encounter_sets.includes(code),
+		),
+		encounter_set_data,
 	);
-	const extraEncounterSets = allEncounterSets.filter(({ code }) =>
-		story.extra_encounter_sets.includes(code),
+	const extraEncounterSets = applyEncounterSetDataList(
+		allEncounterSets.filter(({ code }) =>
+			story.extra_encounter_sets.includes(code),
+		),
+		encounter_set_data,
 	);
 
 	const scenarios = getStoryScenarios(story)
