@@ -18,7 +18,7 @@ const getConcealedCardsDivider = (): Divider => {
 		encounterCode: "concealed_cards",
 		title: "Concealed Cards",
 		icon: "special_cards",
-		cardsCount: 0,
+		cardsCount: 43,
 		cards: [],
 		storyCode: "tsk",
 		packCode: "tsk",
