@@ -2,10 +2,10 @@ import { prop, propEq, uniqBy } from "ramda";
 import { compact } from "ramda-adjunct";
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
-import { isReturnEncounterSet } from "@/modules/encounterSet/shared/lib";
+import { isReturnEncounterSet } from "@/modules/encounterSet/shared/lib/criteria";
 import { getEncounterSetCards } from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
-import { getScenarioCards } from "@/modules/story/entities/lib";
+import { getScenarioCards } from "@/modules/story/entities/lib/logic/cards/getScenarioCards";
 import type {
 	StoryScenarioWithRelations,
 	StoryWithRelations,
@@ -14,6 +14,7 @@ import { getSpecialEncounterSetDividers } from "./getSpecialEncounterSetDividers
 
 export type GetEncounterSetDividersOptions = {
 	story: StoryWithRelations;
+	coreEncounters?: Record<number, string[]>;
 	includeReturnStory: boolean;
 	includeExtraEncounterSets: boolean;
 	includeScenarioEncounterSets: boolean;
@@ -32,6 +33,9 @@ export const getEncounterSetDividers = (
 		includeScenarioEncounterSets = false,
 		includeExtraEncounterSets = false,
 	} = options;
+
+	const chapter = story.chapter ?? 1;
+	const coreEncounters = options.coreEncounters?.[chapter] ?? [];
 
 	const specialDividers = getSpecialEncounterSetDividers(options);
 
@@ -89,14 +93,15 @@ export const getEncounterSetDividers = (
 		return story.code;
 	};
 
-	const ecnounterSetDividers = encounters.map((encounterSet): Divider => {
+	const encounterSetDividers = encounters.map((encounterSet): Divider => {
 		const cards = getEncounterSetCards({ encounterSet });
 		const cardsCount = cards.reduce((total, { size }) => total + size, 0);
 		const { icon, name } = encounterSet;
 
 		const storyCode = getEncounterStoryCode(encounterSet);
-
 		const isExtra = extraEncounters.some(propEq(encounterSet.code, "code"));
+		const isCore =
+			Boolean(encounterSet.code) && coreEncounters?.includes(encounterSet.code);
 
 		const packCode = encounterSet.pack_code ?? "";
 		const cycleCode = encounterSet.cycle_code ?? "";
@@ -111,6 +116,7 @@ export const getEncounterSetDividers = (
 			packCode,
 			cycleCode,
 			isExtra,
+			isCore,
 			title: name,
 			icon,
 			cardsCount,
@@ -119,7 +125,7 @@ export const getEncounterSetDividers = (
 		};
 	});
 
-	const baseDividers = [...ecnounterSetDividers, ...specialDividers];
+	const baseDividers = [...encounterSetDividers, ...specialDividers];
 
 	if (!includeScenarioEncounterSets && includeEncounterSets) {
 		return baseDividers;
@@ -152,9 +158,15 @@ export const getEncounterSetDividers = (
 
 		const storyCode = getScenarioStoryCode(scenario);
 
+		const { encounterSet } = scenario;
+
 		const isExtra =
-			Boolean(scenario.encounterSet?.code) &&
-			extraEncounters.some(propEq(scenario.encounterSet?.code, "code"));
+			Boolean(encounterSet?.code) &&
+			extraEncounters.some(propEq(encounterSet?.code, "code"));
+
+		const isCore = Boolean(
+			encounterSet?.code && coreEncounters?.includes(encounterSet?.code),
+		);
 
 		const packCode = scenario.encounterSet?.pack_code ?? "";
 		const cycleCode = scenario.encounterSet?.cycle_code ?? "";
@@ -169,6 +181,7 @@ export const getEncounterSetDividers = (
 			packCode,
 			cycleCode,
 			isExtra,
+			isCore,
 			title,
 			icon,
 			cardsCount,

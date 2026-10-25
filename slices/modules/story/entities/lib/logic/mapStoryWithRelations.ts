@@ -4,7 +4,7 @@ import {
 	applyEncounterSetDataList,
 } from "@/modules/encounterSet/shared/lib/logic";
 import type { EncounterSet } from "@/modules/encounterSet/shared/model";
-import { getStoryScenarios } from "@/modules/story/shared/lib";
+import { getStoryScenarios } from "@/modules/story/shared/lib/logic/scenario/getStoryScenarios";
 import type {
 	Story,
 	StoryScenario,

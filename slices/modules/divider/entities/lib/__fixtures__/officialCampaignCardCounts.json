@@ -1,0 +1,8240 @@
+{
+	"source": "Количество карт.xlsx",
+	"campaigns": [
+		{
+			"name": "Ночь фанатички",
+			"nameWithYear": "Ночь фанатички (2016)",
+			"year": 2016,
+			"code": "core",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Ночь фанатички",
+							"investigators": 1,
+							"story": 50,
+							"encounter": 60,
+							"total": 111
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 4,
+					"items": [
+						{
+							"name": "Ночь фанатички. Часть I. Встреча",
+							"investigators": 1,
+							"story": 15,
+							"encounter": 0,
+							"total": 16,
+							"numbering": "№ 104-119"
+						},
+						{
+							"name": "Ночь фанатички. Часть II. Полуночные маски",
+							"investigators": 0,
+							"story": 20,
+							"encounter": 0,
+							"total": 20,
+							"numbering": "№ 120-141"
+						},
+						{
+							"name": "Культ Умордхота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 137-141"
+						},
+						{
+							"name": "Ночь фанатички. Часть III. Пожиратели из глубин",
+							"investigators": 0,
+							"story": 15,
+							"encounter": 3,
+							"total": 18,
+							"numbering": "№ 142-158"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 12,
+					"items": [
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 159"
+						},
+						{
+							"name": "Упыри",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 160-162"
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 163-165"
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 166"
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 167-468"
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 169-171"
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 172-173"
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2,
+							"numbering": "№ 174"
+						},
+						{
+							"name": "Агенты Хастура",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 175-176"
+						},
+						{
+							"name": "Агенты Йог-Сотота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 177-178"
+						},
+						{
+							"name": "Агенты Шуб-Ниггурат",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 179-180"
+						},
+						{
+							"name": "Агенты Ктулху",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 181-182"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Ночь фанатички",
+					"investigators": 1,
+					"story": 50,
+					"encounter": 60,
+					"total": 111
+				},
+				{
+					"section": "scenarios",
+					"name": "Ночь фанатички. Часть I. Встреча",
+					"investigators": 1,
+					"story": 15,
+					"encounter": 0,
+					"total": 16,
+					"numbering": "№ 104-119"
+				},
+				{
+					"section": "scenarios",
+					"name": "Ночь фанатички. Часть II. Полуночные маски",
+					"investigators": 0,
+					"story": 20,
+					"encounter": 0,
+					"total": 20,
+					"numbering": "№ 120-141"
+				},
+				{
+					"section": "scenarios",
+					"name": "Культ Умордхота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 137-141"
+				},
+				{
+					"section": "scenarios",
+					"name": "Ночь фанатички. Часть III. Пожиратели из глубин",
+					"investigators": 0,
+					"story": 15,
+					"encounter": 3,
+					"total": 18,
+					"numbering": "№ 142-158"
+				},
+				{
+					"section": "encounters",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 159"
+				},
+				{
+					"section": "encounters",
+					"name": "Упыри",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 160-162"
+				},
+				{
+					"section": "encounters",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 163-165"
+				},
+				{
+					"section": "encounters",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 166"
+				},
+				{
+					"section": "encounters",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 167-468"
+				},
+				{
+					"section": "encounters",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 169-171"
+				},
+				{
+					"section": "encounters",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 172-173"
+				},
+				{
+					"section": "encounters",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2,
+					"numbering": "№ 174"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Хастура",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 175-176"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Йог-Сотота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 177-178"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Шуб-Ниггурат",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 179-180"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Ктулху",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 181-182"
+				}
+			]
+		},
+		{
+			"name": "Ночь фанатички. Возвращение",
+			"nameWithYear": "Ночь фанатички. Возвращение (2022)",
+			"year": 2022,
+			"code": "rtnotz",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Ночь фанатички. Возвращение",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 24,
+							"total": 46
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 3,
+					"items": [
+						{
+							"name": "Часть I. Встреча",
+							"investigators": 0,
+							"story": 11,
+							"encounter": 4,
+							"total": 15,
+							"numbering": "№ 11-24"
+						},
+						{
+							"name": "Часть II. Полуночные маски",
+							"investigators": 0,
+							"story": 6,
+							"encounter": 2,
+							"total": 8,
+							"numbering": "№ 25-31"
+						},
+						{
+							"name": "Часть III. Пожиратели из глубин",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 2,
+							"total": 7,
+							"numbering": "№ 32-37"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 6,
+					"items": [
+						{
+							"name": "Упыри Умордхота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№38-40"
+						},
+						{
+							"name": "Культ Пожирателя",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№41-43"
+						},
+						{
+							"name": "Культ Умордхота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№44-46"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Ночь фанатички. Возвращение",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 24,
+					"total": 46
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть I. Встреча",
+					"investigators": 0,
+					"story": 11,
+					"encounter": 4,
+					"total": 15,
+					"numbering": "№ 11-24"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть II. Полуночные маски",
+					"investigators": 0,
+					"story": 6,
+					"encounter": 2,
+					"total": 8,
+					"numbering": "№ 25-31"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть III. Пожиратели из глубин",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 2,
+					"total": 7,
+					"numbering": "№ 32-37"
+				},
+				{
+					"section": "encounters",
+					"name": "Упыри Умордхота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№38-40"
+				},
+				{
+					"section": "encounters",
+					"name": "Культ Пожирателя",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№41-43"
+				},
+				{
+					"section": "encounters",
+					"name": "Культ Умордхота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№44-46"
+				}
+			]
+		},
+		{
+			"name": "Наследие Данвича",
+			"nameWithYear": "Наследие Данвича (2017)",
+			"year": 2017,
+			"code": "dwl",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Наследие Данвича",
+							"investigators": 11,
+							"story": 140,
+							"encounter": 156,
+							"total": 307
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "I-a. Факультативные занятия",
+							"investigators": 1,
+							"story": 17,
+							"encounter": 3,
+							"total": 21,
+							"numbering": "№ 40"
+						},
+						{
+							"name": "I-b. Казино всегда в выигрыше",
+							"investigators": 1,
+							"story": 16,
+							"encounter": 6,
+							"total": 23,
+							"numbering": "№ 41-61"
+						},
+						{
+							"name": "II. Мискатоникский музей",
+							"investigators": 1,
+							"story": 20,
+							"encounter": 13,
+							"total": 34,
+							"numbering": "№ 62-82"
+						},
+						{
+							"name": "III. Экспресс округа Эссекс",
+							"investigators": 4,
+							"story": 19,
+							"encounter": 13,
+							"total": 36,
+							"numbering": "№ 83-84"
+						},
+						{
+							"name": "IV. Кровь на алтаре",
+							"investigators": 3,
+							"story": 19,
+							"encounter": 16,
+							"total": 38,
+							"numbering": "№ 85-87"
+						},
+						{
+							"name": "V. Неизмеримые и невидимые",
+							"investigators": 0,
+							"story": 18,
+							"encounter": 20,
+							"total": 38,
+							"numbering": "№ 88-89"
+						},
+						{
+							"name": "VI. Там где ждет погибель",
+							"investigators": 0,
+							"story": 19,
+							"encounter": 13,
+							"total": 32,
+							"numbering": "№ 90-91"
+						},
+						{
+							"name": "VII. Потерянные во времени и пространстве",
+							"investigators": 0,
+							"story": 12,
+							"encounter": 24,
+							"total": 36,
+							"numbering": "№ 92-93"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 10,
+					"items": [
+						{
+							"name": "Судьба Армитеджа",
+							"investigators": 1,
+							"story": 0,
+							"encounter": 0,
+							"total": 1,
+							"numbering": "№ 94-96"
+						},
+						{
+							"name": "Чародейство",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 97-99"
+						},
+						{
+							"name": "Миньоны Бишопов",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 100-102"
+						},
+						{
+							"name": "Данвич",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 103-104"
+						},
+						{
+							"name": "Козодои",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 118-146"
+						},
+						{
+							"name": "Невезение",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 159-183"
+						},
+						{
+							"name": "Звери-миньоны",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 195-224"
+						},
+						{
+							"name": "Подручные Наоми",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 236-259"
+						},
+						{
+							"name": "По ту сторону",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 274-298"
+						},
+						{
+							"name": "Мерзкие чудовища",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 311-333"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Агенты Йог-Сотота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Наследие Данвича",
+					"investigators": 11,
+					"story": 140,
+					"encounter": 156,
+					"total": 307
+				},
+				{
+					"section": "scenarios",
+					"name": "I-a. Факультативные занятия",
+					"investigators": 1,
+					"story": 17,
+					"encounter": 3,
+					"total": 21,
+					"numbering": "№ 40"
+				},
+				{
+					"section": "scenarios",
+					"name": "I-b. Казино всегда в выигрыше",
+					"investigators": 1,
+					"story": 16,
+					"encounter": 6,
+					"total": 23,
+					"numbering": "№ 41-61"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. Мискатоникский музей",
+					"investigators": 1,
+					"story": 20,
+					"encounter": 13,
+					"total": 34,
+					"numbering": "№ 62-82"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Экспресс округа Эссекс",
+					"investigators": 4,
+					"story": 19,
+					"encounter": 13,
+					"total": 36,
+					"numbering": "№ 83-84"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Кровь на алтаре",
+					"investigators": 3,
+					"story": 19,
+					"encounter": 16,
+					"total": 38,
+					"numbering": "№ 85-87"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Неизмеримые и невидимые",
+					"investigators": 0,
+					"story": 18,
+					"encounter": 20,
+					"total": 38,
+					"numbering": "№ 88-89"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Там где ждет погибель",
+					"investigators": 0,
+					"story": 19,
+					"encounter": 13,
+					"total": 32,
+					"numbering": "№ 90-91"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. Потерянные во времени и пространстве",
+					"investigators": 0,
+					"story": 12,
+					"encounter": 24,
+					"total": 36,
+					"numbering": "№ 92-93"
+				},
+				{
+					"section": "encounters",
+					"name": "Судьба Армитеджа",
+					"investigators": 1,
+					"story": 0,
+					"encounter": 0,
+					"total": 1,
+					"numbering": "№ 94-96"
+				},
+				{
+					"section": "encounters",
+					"name": "Чародейство",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 97-99"
+				},
+				{
+					"section": "encounters",
+					"name": "Миньоны Бишопов",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 100-102"
+				},
+				{
+					"section": "encounters",
+					"name": "Данвич",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 103-104"
+				},
+				{
+					"section": "encounters",
+					"name": "Козодои",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 118-146"
+				},
+				{
+					"section": "encounters",
+					"name": "Невезение",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 159-183"
+				},
+				{
+					"section": "encounters",
+					"name": "Звери-миньоны",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 195-224"
+				},
+				{
+					"section": "encounters",
+					"name": "Подручные Наоми",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 236-259"
+				},
+				{
+					"section": "encounters",
+					"name": "По ту сторону",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 274-298"
+				},
+				{
+					"section": "encounters",
+					"name": "Мерзкие чудовища",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 311-333"
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Агенты Йог-Сотота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				}
+			]
+		},
+		{
+			"name": "Наследие Данвича. Возвращение",
+			"nameWithYear": "Наследие Данвича. Возвращение (2023)",
+			"year": 2023,
+			"code": "rtdwl",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Наследие Данвича. Возвращение",
+							"investigators": 1,
+							"story": 57,
+							"encounter": 24,
+							"total": 82
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "I-a. Факультативные занятия",
+							"investigators": 0,
+							"story": 2,
+							"encounter": 2,
+							"total": 4,
+							"numbering": "№ 12-14"
+						},
+						{
+							"name": "I-b. Казино всегда в выигрыше",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 4,
+							"total": 7,
+							"numbering": "№ 15-19"
+						},
+						{
+							"name": "II. Мискатоникский музей",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 4,
+							"total": 7,
+							"numbering": "№ 20-24"
+						},
+						{
+							"name": "III. Экспресс округа Эссекс",
+							"investigators": 0,
+							"story": 6,
+							"encounter": 1,
+							"total": 7,
+							"numbering": "№ 25-31"
+						},
+						{
+							"name": "IV. Кровь на алтаре",
+							"investigators": 0,
+							"story": 8,
+							"encounter": 2,
+							"total": 10,
+							"numbering": "№ 32-40"
+						},
+						{
+							"name": "V. Неизмеримые и невидимые",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 6,
+							"total": 7,
+							"numbering": "№ 41-46"
+						},
+						{
+							"name": "VI. Там где ждет погибель",
+							"investigators": 1,
+							"story": 5,
+							"encounter": 0,
+							"total": 6,
+							"numbering": "№ 47-52"
+						},
+						{
+							"name": "VII. Потерянные во времени и пространстве",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 5,
+							"total": 8,
+							"numbering": "№ 53-60"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 6,
+					"items": [
+						{
+							"name": "За порогом",
+							"investigators": 0,
+							"story": 6,
+							"encounter": 0,
+							"total": 6,
+							"numbering": "№ 61-63"
+						},
+						{
+							"name": "Восставшее зло",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 0,
+							"total": 3,
+							"numbering": "№ 64"
+						},
+						{
+							"name": "Тайные двери",
+							"investigators": 0,
+							"story": 2,
+							"encounter": 0,
+							"total": 2,
+							"numbering": "№ 65"
+						},
+						{
+							"name": "Ползучий холод",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 0,
+							"total": 4,
+							"numbering": "№ 66-67"
+						},
+						{
+							"name": "Неуправляемый страх",
+							"investigators": 0,
+							"story": 7,
+							"encounter": 0,
+							"total": 7,
+							"numbering": "№ 68-70"
+						},
+						{
+							"name": "Эмиссары Йог-Сотота",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 0,
+							"total": 4,
+							"numbering": "№ 71-62"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Наследие Данвича. Возвращение",
+					"investigators": 1,
+					"story": 57,
+					"encounter": 24,
+					"total": 82
+				},
+				{
+					"section": "scenarios",
+					"name": "I-a. Факультативные занятия",
+					"investigators": 0,
+					"story": 2,
+					"encounter": 2,
+					"total": 4,
+					"numbering": "№ 12-14"
+				},
+				{
+					"section": "scenarios",
+					"name": "I-b. Казино всегда в выигрыше",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 4,
+					"total": 7,
+					"numbering": "№ 15-19"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. Мискатоникский музей",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 4,
+					"total": 7,
+					"numbering": "№ 20-24"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Экспресс округа Эссекс",
+					"investigators": 0,
+					"story": 6,
+					"encounter": 1,
+					"total": 7,
+					"numbering": "№ 25-31"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Кровь на алтаре",
+					"investigators": 0,
+					"story": 8,
+					"encounter": 2,
+					"total": 10,
+					"numbering": "№ 32-40"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Неизмеримые и невидимые",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 6,
+					"total": 7,
+					"numbering": "№ 41-46"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Там где ждет погибель",
+					"investigators": 1,
+					"story": 5,
+					"encounter": 0,
+					"total": 6,
+					"numbering": "№ 47-52"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. Потерянные во времени и пространстве",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 5,
+					"total": 8,
+					"numbering": "№ 53-60"
+				},
+				{
+					"section": "encounters",
+					"name": "За порогом",
+					"investigators": 0,
+					"story": 6,
+					"encounter": 0,
+					"total": 6,
+					"numbering": "№ 61-63"
+				},
+				{
+					"section": "encounters",
+					"name": "Восставшее зло",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 0,
+					"total": 3,
+					"numbering": "№ 64"
+				},
+				{
+					"section": "encounters",
+					"name": "Тайные двери",
+					"investigators": 0,
+					"story": 2,
+					"encounter": 0,
+					"total": 2,
+					"numbering": "№ 65"
+				},
+				{
+					"section": "encounters",
+					"name": "Ползучий холод",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 0,
+					"total": 4,
+					"numbering": "№ 66-67"
+				},
+				{
+					"section": "encounters",
+					"name": "Неуправляемый страх",
+					"investigators": 0,
+					"story": 7,
+					"encounter": 0,
+					"total": 7,
+					"numbering": "№ 68-70"
+				},
+				{
+					"section": "encounters",
+					"name": "Эмиссары Йог-Сотота",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 0,
+					"total": 4,
+					"numbering": "№ 71-62"
+				}
+			]
+		},
+		{
+			"name": "Путь в Каркозу",
+			"nameWithYear": "Путь в Каркозу (2017)",
+			"year": 2017,
+			"code": "ptc",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Путь в Каркозу",
+							"investigators": 7,
+							"story": 175,
+							"encounter": 123,
+							"total": 305
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "I. Дайте занавес",
+							"investigators": 1,
+							"story": 18,
+							"encounter": 1,
+							"total": 20,
+							"numbering": "№ 43-60"
+						},
+						{
+							"name": "II. Последний король",
+							"investigators": 0,
+							"story": 20,
+							"encounter": 5,
+							"total": 25,
+							"numbering": "№ 61-83"
+						},
+						{
+							"name": "III. Отголоски прошлого",
+							"investigators": 2,
+							"story": 20,
+							"encounter": 10,
+							"total": 32,
+							"numbering": "№ 120-146"
+						},
+						{
+							"name": "IV. Невыразимая клятва",
+							"investigators": 0,
+							"story": 24,
+							"encounter": 12,
+							"total": 36,
+							"numbering": "№ 159-188"
+						},
+						{
+							"name": "V. Призрак истины",
+							"investigators": 4,
+							"story": 22,
+							"encounter": 12,
+							"total": 38,
+							"numbering": "№ 200-227"
+						},
+						{
+							"name": "VI. Бледная маска",
+							"investigators": 0,
+							"story": 21,
+							"encounter": 15,
+							"total": 36,
+							"numbering": "№ 240-262"
+						},
+						{
+							"name": "VII. Восход чёрных звёзд",
+							"investigators": 0,
+							"story": 20,
+							"encounter": 10,
+							"total": 30,
+							"numbering": "№ 274-303"
+						},
+						{
+							"name": "Морской потоп",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 0,
+							"total": 4,
+							"numbering": "№ 276, 279, 296, 299"
+						},
+						{
+							"name": "Вихрь в небе",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 0,
+							"total": 4,
+							"numbering": "№ 276, 279, 297, 298"
+						},
+						{
+							"name": "VIII. Туманная Каркоза",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 14,
+							"total": 36,
+							"numbering": "№ 316-342"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 11,
+					"items": [
+						{
+							"name": "Галлюцинации",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 84-85"
+						},
+						{
+							"name": "Бьякхи",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 86-87"
+						},
+						{
+							"name": "Обитатели Каркозы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 88-89"
+						},
+						{
+							"name": "Дурные предзнаменования",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 90-92"
+						},
+						{
+							"name": "Призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 93-94"
+						},
+						{
+							"name": "Дар Хастура",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 95-97"
+						},
+						{
+							"name": "Культ Жёлтого знака",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 98-100"
+						},
+						{
+							"name": "Грязь и упадок",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 101-103"
+						},
+						{
+							"name": "Незнакомец",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 104-105"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 9,
+					"items": [
+						{
+							"name": "Полуночные маски",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Упыри",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Агенты Хастура",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Путь в Каркозу",
+					"investigators": 7,
+					"story": 175,
+					"encounter": 123,
+					"total": 305
+				},
+				{
+					"section": "scenarios",
+					"name": "I. Дайте занавес",
+					"investigators": 1,
+					"story": 18,
+					"encounter": 1,
+					"total": 20,
+					"numbering": "№ 43-60"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. Последний король",
+					"investigators": 0,
+					"story": 20,
+					"encounter": 5,
+					"total": 25,
+					"numbering": "№ 61-83"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Отголоски прошлого",
+					"investigators": 2,
+					"story": 20,
+					"encounter": 10,
+					"total": 32,
+					"numbering": "№ 120-146"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Невыразимая клятва",
+					"investigators": 0,
+					"story": 24,
+					"encounter": 12,
+					"total": 36,
+					"numbering": "№ 159-188"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Призрак истины",
+					"investigators": 4,
+					"story": 22,
+					"encounter": 12,
+					"total": 38,
+					"numbering": "№ 200-227"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Бледная маска",
+					"investigators": 0,
+					"story": 21,
+					"encounter": 15,
+					"total": 36,
+					"numbering": "№ 240-262"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. Восход чёрных звёзд",
+					"investigators": 0,
+					"story": 20,
+					"encounter": 10,
+					"total": 30,
+					"numbering": "№ 274-303"
+				},
+				{
+					"section": "scenarios",
+					"name": "Морской потоп",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 0,
+					"total": 4,
+					"numbering": "№ 276, 279, 296, 299"
+				},
+				{
+					"section": "scenarios",
+					"name": "Вихрь в небе",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 0,
+					"total": 4,
+					"numbering": "№ 276, 279, 297, 298"
+				},
+				{
+					"section": "scenarios",
+					"name": "VIII. Туманная Каркоза",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 14,
+					"total": 36,
+					"numbering": "№ 316-342"
+				},
+				{
+					"section": "encounters",
+					"name": "Галлюцинации",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 84-85"
+				},
+				{
+					"section": "encounters",
+					"name": "Бьякхи",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 86-87"
+				},
+				{
+					"section": "encounters",
+					"name": "Обитатели Каркозы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 88-89"
+				},
+				{
+					"section": "encounters",
+					"name": "Дурные предзнаменования",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 90-92"
+				},
+				{
+					"section": "encounters",
+					"name": "Призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 93-94"
+				},
+				{
+					"section": "encounters",
+					"name": "Дар Хастура",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 95-97"
+				},
+				{
+					"section": "encounters",
+					"name": "Культ Жёлтого знака",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 98-100"
+				},
+				{
+					"section": "encounters",
+					"name": "Грязь и упадок",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 101-103"
+				},
+				{
+					"section": "encounters",
+					"name": "Незнакомец",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 104-105"
+				},
+				{
+					"section": "extra",
+					"name": "Полуночные маски",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Упыри",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Агенты Хастура",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				}
+			]
+		},
+		{
+			"name": "Путь в Каркозу. Возвращение",
+			"nameWithYear": "Путь в Каркозу. Возвращение (2023)",
+			"year": 2023,
+			"code": "rtptc",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Путь в Каркозу. Возвращение",
+							"investigators": 0,
+							"story": 39,
+							"encounter": 42,
+							"total": 81
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "I. Дайте занавес",
+							"investigators": 0,
+							"story": 6,
+							"encounter": 1,
+							"total": 7,
+							"numbering": "№ 14-20"
+						},
+						{
+							"name": "II. Последний король",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 4,
+							"total": 9,
+							"numbering": "№ 21-27"
+						},
+						{
+							"name": "III. Отголоски прошлого",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 2,
+							"total": 7,
+							"numbering": "№ 29-33"
+						},
+						{
+							"name": "IV. Невыразимая клятва",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 3,
+							"total": 6,
+							"numbering": "№ 33-39"
+						},
+						{
+							"name": "V. Призрак истины",
+							"investigators": 0,
+							"story": 7,
+							"encounter": 2,
+							"total": 9,
+							"numbering": "№ 40-47"
+						},
+						{
+							"name": "VI. Бледная маска",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 1,
+							"total": 6,
+							"numbering": "№ 48-53"
+						},
+						{
+							"name": "VII. Восход чёрных звёзд",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 2,
+							"total": 5,
+							"numbering": "№ 54-58"
+						},
+						{
+							"name": "VIII. Туманная Каркоза",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 1,
+							"total": 6,
+							"numbering": "№ 59-64"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 5,
+					"items": [
+						{
+							"name": "Иллюзорное зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 65"
+						},
+						{
+							"name": "Разлагающаяся реальность",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 66-68"
+						},
+						{
+							"name": "Посланники Хастура",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 69-70"
+						},
+						{
+							"name": "Невыносимые галлюцинации",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 71-75"
+						},
+						{
+							"name": "Невротический страх",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 76-78"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Путь в Каркозу. Возвращение",
+					"investigators": 0,
+					"story": 39,
+					"encounter": 42,
+					"total": 81
+				},
+				{
+					"section": "scenarios",
+					"name": "I. Дайте занавес",
+					"investigators": 0,
+					"story": 6,
+					"encounter": 1,
+					"total": 7,
+					"numbering": "№ 14-20"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. Последний король",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 4,
+					"total": 9,
+					"numbering": "№ 21-27"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Отголоски прошлого",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 2,
+					"total": 7,
+					"numbering": "№ 29-33"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Невыразимая клятва",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 3,
+					"total": 6,
+					"numbering": "№ 33-39"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Призрак истины",
+					"investigators": 0,
+					"story": 7,
+					"encounter": 2,
+					"total": 9,
+					"numbering": "№ 40-47"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Бледная маска",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 1,
+					"total": 6,
+					"numbering": "№ 48-53"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. Восход чёрных звёзд",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 2,
+					"total": 5,
+					"numbering": "№ 54-58"
+				},
+				{
+					"section": "scenarios",
+					"name": "VIII. Туманная Каркоза",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 1,
+					"total": 6,
+					"numbering": "№ 59-64"
+				},
+				{
+					"section": "encounters",
+					"name": "Иллюзорное зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 65"
+				},
+				{
+					"section": "encounters",
+					"name": "Разлагающаяся реальность",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 66-68"
+				},
+				{
+					"section": "encounters",
+					"name": "Посланники Хастура",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 69-70"
+				},
+				{
+					"section": "encounters",
+					"name": "Невыносимые галлюцинации",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 71-75"
+				},
+				{
+					"section": "encounters",
+					"name": "Невротический страх",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 76-78"
+				}
+			]
+		},
+		{
+			"name": "Забытая эпоха",
+			"nameWithYear": "Забытая эпоха (2018)",
+			"year": 2018,
+			"code": "tfa",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Забытая эпоха",
+							"investigators": 11,
+							"story": 117,
+							"encounter": 195,
+							"total": 323
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 11,
+					"items": [
+						{
+							"name": "I. Дремучие Джунгли",
+							"investigators": 1,
+							"story": 8,
+							"encounter": 2,
+							"total": 11,
+							"numbering": "№ 43-53"
+						},
+						{
+							"name": "II. Погибель эцтли",
+							"investigators": 1,
+							"story": 7,
+							"encounter": 7,
+							"total": 15,
+							"numbering": "№ 54-68"
+						},
+						{
+							"name": "III. Нити судьбы",
+							"investigators": 2,
+							"story": 31,
+							"encounter": 7,
+							"total": 40,
+							"numbering": "№ 113-148"
+						},
+						{
+							"name": "IV. Потусторонний предел",
+							"investigators": 1,
+							"story": 13,
+							"encounter": 22,
+							"total": 36,
+							"numbering": "№ 161-191"
+						},
+						{
+							"name": "V. Сердце древних",
+							"investigators": 0,
+							"story": 2,
+							"encounter": 6,
+							"total": 8,
+							"numbering": "№ 205-228"
+						},
+						{
+							"name": "Столпы судьбы",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 9,
+							"total": 13,
+							"numbering": "№ 207-2010, 2017-221"
+						},
+						{
+							"name": "К'ньян",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 9,
+							"total": 13,
+							"numbering": "№ 2011-2014, 222-228"
+						},
+						{
+							"name": "VI. Город архивов",
+							"investigators": 4,
+							"story": 22,
+							"encounter": 18,
+							"total": 44,
+							"numbering": "№ 237-264"
+						},
+						{
+							"name": "VII. Глубины Йота",
+							"investigators": 1,
+							"story": 9,
+							"encounter": 26,
+							"total": 36,
+							"numbering": "№ 277-303"
+						},
+						{
+							"name": "VIII. Расколотая вечность",
+							"investigators": 1,
+							"story": 13,
+							"encounter": 22,
+							"total": 36,
+							"numbering": "№ 314-343"
+						},
+						{
+							"name": "Эпилог: \"Обратить время вспять\"",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 0,
+							"total": 4,
+							"numbering": "№ 344-347"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 11,
+					"items": [
+						{
+							"name": "Тропический лес",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 11,
+							"total": 11,
+							"numbering": "№ 69-77"
+						},
+						{
+							"name": "Змеи",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 78-80"
+						},
+						{
+							"name": "Экспедиция",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 81-82"
+						},
+						{
+							"name": "Агенты Йига",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 83-85"
+						},
+						{
+							"name": "Стражи времени",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 86-87"
+						},
+						{
+							"name": "Смертельные ловушки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 88-89"
+						},
+						{
+							"name": "Искажения времени",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 90-91"
+						},
+						{
+							"name": "Забытые руины",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 92-94"
+						},
+						{
+							"name": "Пнакотикское братство",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 95-97"
+						},
+						{
+							"name": "Яд Йига",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 98-100"
+						},
+						{
+							"name": "Отрава",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 101-102"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Полуночные маски",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Агенты Йог-Сотота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Забытая эпоха",
+					"investigators": 11,
+					"story": 117,
+					"encounter": 195,
+					"total": 323
+				},
+				{
+					"section": "scenarios",
+					"name": "I. Дремучие Джунгли",
+					"investigators": 1,
+					"story": 8,
+					"encounter": 2,
+					"total": 11,
+					"numbering": "№ 43-53"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. Погибель эцтли",
+					"investigators": 1,
+					"story": 7,
+					"encounter": 7,
+					"total": 15,
+					"numbering": "№ 54-68"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Нити судьбы",
+					"investigators": 2,
+					"story": 31,
+					"encounter": 7,
+					"total": 40,
+					"numbering": "№ 113-148"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Потусторонний предел",
+					"investigators": 1,
+					"story": 13,
+					"encounter": 22,
+					"total": 36,
+					"numbering": "№ 161-191"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Сердце древних",
+					"investigators": 0,
+					"story": 2,
+					"encounter": 6,
+					"total": 8,
+					"numbering": "№ 205-228"
+				},
+				{
+					"section": "scenarios",
+					"name": "Столпы судьбы",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 9,
+					"total": 13,
+					"numbering": "№ 207-2010, 2017-221"
+				},
+				{
+					"section": "scenarios",
+					"name": "К'ньян",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 9,
+					"total": 13,
+					"numbering": "№ 2011-2014, 222-228"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Город архивов",
+					"investigators": 4,
+					"story": 22,
+					"encounter": 18,
+					"total": 44,
+					"numbering": "№ 237-264"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. Глубины Йота",
+					"investigators": 1,
+					"story": 9,
+					"encounter": 26,
+					"total": 36,
+					"numbering": "№ 277-303"
+				},
+				{
+					"section": "scenarios",
+					"name": "VIII. Расколотая вечность",
+					"investigators": 1,
+					"story": 13,
+					"encounter": 22,
+					"total": 36,
+					"numbering": "№ 314-343"
+				},
+				{
+					"section": "scenarios",
+					"name": "Эпилог: \"Обратить время вспять\"",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 0,
+					"total": 4,
+					"numbering": "№ 344-347"
+				},
+				{
+					"section": "encounters",
+					"name": "Тропический лес",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 11,
+					"total": 11,
+					"numbering": "№ 69-77"
+				},
+				{
+					"section": "encounters",
+					"name": "Змеи",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 78-80"
+				},
+				{
+					"section": "encounters",
+					"name": "Экспедиция",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 81-82"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Йига",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 83-85"
+				},
+				{
+					"section": "encounters",
+					"name": "Стражи времени",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 86-87"
+				},
+				{
+					"section": "encounters",
+					"name": "Смертельные ловушки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 88-89"
+				},
+				{
+					"section": "encounters",
+					"name": "Искажения времени",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 90-91"
+				},
+				{
+					"section": "encounters",
+					"name": "Забытые руины",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 92-94"
+				},
+				{
+					"section": "encounters",
+					"name": "Пнакотикское братство",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 95-97"
+				},
+				{
+					"section": "encounters",
+					"name": "Яд Йига",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 98-100"
+				},
+				{
+					"section": "encounters",
+					"name": "Отрава",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 101-102"
+				},
+				{
+					"section": "extra",
+					"name": "Полуночные маски",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Агенты Йог-Сотота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				}
+			]
+		},
+		{
+			"name": "Забытая эпоха. Возвращение",
+			"nameWithYear": "Забытая эпоха. Возвращение (2024)",
+			"year": 2024,
+			"code": "rttfa",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Забытая эпоха. Возвращение",
+							"investigators": 1,
+							"story": 30,
+							"encounter": 48,
+							"total": 79
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 9,
+					"items": [
+						{
+							"name": "I. Дремучие Джунгли",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 0,
+							"total": 1,
+							"numbering": "№ 16"
+						},
+						{
+							"name": "II. Погибель Эцтли",
+							"investigators": 0,
+							"story": 2,
+							"encounter": 9,
+							"total": 11,
+							"numbering": "№ 17-27"
+						},
+						{
+							"name": "III. Нити судьбы",
+							"investigators": 1,
+							"story": 9,
+							"encounter": 0,
+							"total": 10,
+							"numbering": "№ 28-37"
+						},
+						{
+							"name": "IV. Потусторонний предел",
+							"investigators": 0,
+							"story": 7,
+							"encounter": 0,
+							"total": 7,
+							"numbering": "№ 38-44"
+						},
+						{
+							"name": "V. Сердце древних ч.1",
+							"investigators": 0,
+							"story": 2,
+							"encounter": 2,
+							"total": 4,
+							"numbering": "№ 45-47"
+						},
+						{
+							"name": "V. Сердце древних ч.2",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 4,
+							"total": 5,
+							"numbering": "№ 48-52"
+						},
+						{
+							"name": "VI. Город архивов",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 2,
+							"total": 7,
+							"numbering": "№ 53-58"
+						},
+						{
+							"name": "VII. Глубины Йота",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 1,
+							"total": 2,
+							"numbering": "№ 59-60"
+						},
+						{
+							"name": "VIII. Расколотая вечность",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 5,
+							"total": 6,
+							"numbering": "№ 61-65"
+						},
+						{
+							"name": "Эпилог: \"Обратить время вспять\"",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 0,
+							"total": 1,
+							"numbering": "№ 66"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 5,
+					"items": [
+						{
+							"name": "Тропический лес",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 67-70"
+						},
+						{
+							"name": "Культ Пнакота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 71-73"
+						},
+						{
+							"name": "Обречённая экспедиция",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 74-75"
+						},
+						{
+							"name": "Вневременные охотники",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 76-77"
+						},
+						{
+							"name": "Отравляющая ненависть",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 78-80"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Забытая эпоха. Возвращение",
+					"investigators": 1,
+					"story": 30,
+					"encounter": 48,
+					"total": 79
+				},
+				{
+					"section": "scenarios",
+					"name": "I. Дремучие Джунгли",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 0,
+					"total": 1,
+					"numbering": "№ 16"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. Погибель Эцтли",
+					"investigators": 0,
+					"story": 2,
+					"encounter": 9,
+					"total": 11,
+					"numbering": "№ 17-27"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Нити судьбы",
+					"investigators": 1,
+					"story": 9,
+					"encounter": 0,
+					"total": 10,
+					"numbering": "№ 28-37"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Потусторонний предел",
+					"investigators": 0,
+					"story": 7,
+					"encounter": 0,
+					"total": 7,
+					"numbering": "№ 38-44"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Сердце древних ч.1",
+					"investigators": 0,
+					"story": 2,
+					"encounter": 2,
+					"total": 4,
+					"numbering": "№ 45-47"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Сердце древних ч.2",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 4,
+					"total": 5,
+					"numbering": "№ 48-52"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Город архивов",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 2,
+					"total": 7,
+					"numbering": "№ 53-58"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. Глубины Йота",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 1,
+					"total": 2,
+					"numbering": "№ 59-60"
+				},
+				{
+					"section": "scenarios",
+					"name": "VIII. Расколотая вечность",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 5,
+					"total": 6,
+					"numbering": "№ 61-65"
+				},
+				{
+					"section": "scenarios",
+					"name": "Эпилог: \"Обратить время вспять\"",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 0,
+					"total": 1,
+					"numbering": "№ 66"
+				},
+				{
+					"section": "encounters",
+					"name": "Тропический лес",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 67-70"
+				},
+				{
+					"section": "encounters",
+					"name": "Культ Пнакота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 71-73"
+				},
+				{
+					"section": "encounters",
+					"name": "Обречённая экспедиция",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 74-75"
+				},
+				{
+					"section": "encounters",
+					"name": "Вневременные охотники",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 76-77"
+				},
+				{
+					"section": "encounters",
+					"name": "Отравляющая ненависть",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 78-80"
+				}
+			]
+		},
+		{
+			"name": "Нарушенный круг",
+			"nameWithYear": "Нарушенный круг (2019)",
+			"year": 2019,
+			"code": "tcu",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Нарушенный круг",
+							"investigators": 5,
+							"story": 176,
+							"encounter": 142,
+							"total": 323
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 11,
+					"items": [
+						{
+							"name": "0, пролог. Исчехзновение в поместье Сумерек",
+							"investigators": 0,
+							"story": 7,
+							"encounter": 0,
+							"total": 7,
+							"numbering": "№ 43-49"
+						},
+						{
+							"name": "I. Час ведьмовства",
+							"investigators": 0,
+							"story": 14,
+							"encounter": 1,
+							"total": 15,
+							"numbering": "№ 50-64"
+						},
+						{
+							"name": "II. На пороге смерти. Сцена 1-3",
+							"investigators": 0,
+							"story": 21,
+							"encounter": 0,
+							"total": 21,
+							"numbering": "№ 65-85"
+						},
+						{
+							"name": "III. Тайное имя (2019)",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 16,
+							"total": 38,
+							"numbering": "№ 120-150"
+						},
+						{
+							"name": "IV. Расплата за грехи (2019)",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 18,
+							"total": 40,
+							"numbering": "№ 161-185"
+						},
+						{
+							"name": "V. Ради высшего блага  (2019)",
+							"investigators": 1,
+							"story": 21,
+							"encounter": 16,
+							"total": 38,
+							"numbering": "№ 197-228"
+						},
+						{
+							"name": "VI. Единство и разочарование  (2019)",
+							"investigators": 4,
+							"story": 24,
+							"encounter": 14,
+							"total": 42,
+							"numbering": "№ 238-272"
+						},
+						{
+							"name": "VII. В когтях Хаоса  (2019)",
+							"investigators": 0,
+							"story": 14,
+							"encounter": 8,
+							"total": 22,
+							"numbering": "№ 284-312"
+						},
+						{
+							"name": "Музыка проклятых",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 4,
+							"total": 8,
+							"numbering": "№ 286-287, 302-303, 311-312"
+						},
+						{
+							"name": "Тайны Вселенной",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 4,
+							"total": 8,
+							"numbering": "№ 288-289, 304-305, 309-310"
+						},
+						{
+							"name": "VIII. Перед Чёрным престолом  (2019)",
+							"investigators": 0,
+							"story": 23,
+							"encounter": 13,
+							"total": 36,
+							"numbering": "№ 325-346"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 10,
+					"items": [
+						{
+							"name": "Страж",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 86-87"
+						},
+						{
+							"name": "Агенты Азатота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 88-89"
+						},
+						{
+							"name": "Ковен Анетты",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 90-91"
+						},
+						{
+							"name": "Ведьмовство",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 92-94"
+						},
+						{
+							"name": "Ложа Серебряных Сумерек",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 95-97"
+						},
+						{
+							"name": "Город грехов",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 98-99"
+						},
+						{
+							"name": "Призрачные хищники",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 100-102"
+						},
+						{
+							"name": "Заточённые духи",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 103-104"
+						},
+						{
+							"name": "Царство смерти",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 105-106"
+						},
+						{
+							"name": "Неотвратимый рок",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 107-108"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Полуночные маски",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Пожиратель из глубин",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Агенты Шуб-Ниггурат",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Нарушенный круг",
+					"investigators": 5,
+					"story": 176,
+					"encounter": 142,
+					"total": 323
+				},
+				{
+					"section": "scenarios",
+					"name": "0, пролог. Исчехзновение в поместье Сумерек",
+					"investigators": 0,
+					"story": 7,
+					"encounter": 0,
+					"total": 7,
+					"numbering": "№ 43-49"
+				},
+				{
+					"section": "scenarios",
+					"name": "I. Час ведьмовства",
+					"investigators": 0,
+					"story": 14,
+					"encounter": 1,
+					"total": 15,
+					"numbering": "№ 50-64"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. На пороге смерти. Сцена 1-3",
+					"investigators": 0,
+					"story": 21,
+					"encounter": 0,
+					"total": 21,
+					"numbering": "№ 65-85"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Тайное имя (2019)",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 16,
+					"total": 38,
+					"numbering": "№ 120-150"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Расплата за грехи (2019)",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 18,
+					"total": 40,
+					"numbering": "№ 161-185"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Ради высшего блага  (2019)",
+					"investigators": 1,
+					"story": 21,
+					"encounter": 16,
+					"total": 38,
+					"numbering": "№ 197-228"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Единство и разочарование  (2019)",
+					"investigators": 4,
+					"story": 24,
+					"encounter": 14,
+					"total": 42,
+					"numbering": "№ 238-272"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. В когтях Хаоса  (2019)",
+					"investigators": 0,
+					"story": 14,
+					"encounter": 8,
+					"total": 22,
+					"numbering": "№ 284-312"
+				},
+				{
+					"section": "scenarios",
+					"name": "Музыка проклятых",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 4,
+					"total": 8,
+					"numbering": "№ 286-287, 302-303, 311-312"
+				},
+				{
+					"section": "scenarios",
+					"name": "Тайны Вселенной",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 4,
+					"total": 8,
+					"numbering": "№ 288-289, 304-305, 309-310"
+				},
+				{
+					"section": "scenarios",
+					"name": "VIII. Перед Чёрным престолом  (2019)",
+					"investigators": 0,
+					"story": 23,
+					"encounter": 13,
+					"total": 36,
+					"numbering": "№ 325-346"
+				},
+				{
+					"section": "encounters",
+					"name": "Страж",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 86-87"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Азатота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 88-89"
+				},
+				{
+					"section": "encounters",
+					"name": "Ковен Анетты",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 90-91"
+				},
+				{
+					"section": "encounters",
+					"name": "Ведьмовство",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 92-94"
+				},
+				{
+					"section": "encounters",
+					"name": "Ложа Серебряных Сумерек",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 95-97"
+				},
+				{
+					"section": "encounters",
+					"name": "Город грехов",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 98-99"
+				},
+				{
+					"section": "encounters",
+					"name": "Призрачные хищники",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 100-102"
+				},
+				{
+					"section": "encounters",
+					"name": "Заточённые духи",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 103-104"
+				},
+				{
+					"section": "encounters",
+					"name": "Царство смерти",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 105-106"
+				},
+				{
+					"section": "encounters",
+					"name": "Неотвратимый рок",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 107-108"
+				},
+				{
+					"section": "extra",
+					"name": "Полуночные маски",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Пожиратель из глубин",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Агенты Шуб-Ниггурат",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				}
+			]
+		},
+		{
+			"name": "Нарушенный круг. Возвращение",
+			"nameWithYear": "Нарушенный круг. Возвращение (2023)",
+			"year": 2023,
+			"code": "rttcu",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Нарушенный круг. Возвращение",
+							"investigators": 1,
+							"story": 40,
+							"encounter": 43,
+							"total": 84
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 9,
+					"items": [
+						{
+							"name": "0, пролог. Исчехзновение в поместье Сумерек",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 0,
+							"total": 1,
+							"numbering": "№ 16"
+						},
+						{
+							"name": "I. Час ведьмовства",
+							"investigators": 0,
+							"story": 7,
+							"encounter": 0,
+							"total": 7,
+							"numbering": "№ 17-23"
+						},
+						{
+							"name": "II. На пороге смерти. Сцена 1-3",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 2,
+							"total": 5,
+							"numbering": "№ 24-28"
+						},
+						{
+							"name": "III. Тайное имя (2019)",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 0,
+							"total": 5,
+							"numbering": "№ 29-33"
+						},
+						{
+							"name": "IV. Расплата за грехи (2019)",
+							"investigators": 1,
+							"story": 6,
+							"encounter": 2,
+							"total": 9,
+							"numbering": "№ 34-41"
+						},
+						{
+							"name": "V. Ради высшего блага  (2019)",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 0,
+							"total": 4,
+							"numbering": "№ 42-45"
+						},
+						{
+							"name": "VI. Единство и разочарование  (2019)",
+							"investigators": 0,
+							"story": 2,
+							"encounter": 2,
+							"total": 4,
+							"numbering": "№ 46-48"
+						},
+						{
+							"name": "VII. В когтях Хаоса  (2019)",
+							"investigators": 0,
+							"story": 7,
+							"encounter": 0,
+							"total": 7,
+							"numbering": "№ 49-55"
+						},
+						{
+							"name": "VIII. Перед Чёрным престолом  (2019)",
+							"investigators": 0,
+							"story": 5,
+							"encounter": 4,
+							"total": 9,
+							"numbering": "№ 56-61"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 7,
+					"items": [
+						{
+							"name": "Порча",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Неминуемое зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Невыразимый рок",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Изменчивое царство",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Город проклятых",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5
+						},
+						{
+							"name": "Пронизывающая мгла",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Кровожадные духи",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Нарушенный круг. Возвращение",
+					"investigators": 1,
+					"story": 40,
+					"encounter": 43,
+					"total": 84
+				},
+				{
+					"section": "scenarios",
+					"name": "0, пролог. Исчехзновение в поместье Сумерек",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 0,
+					"total": 1,
+					"numbering": "№ 16"
+				},
+				{
+					"section": "scenarios",
+					"name": "I. Час ведьмовства",
+					"investigators": 0,
+					"story": 7,
+					"encounter": 0,
+					"total": 7,
+					"numbering": "№ 17-23"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. На пороге смерти. Сцена 1-3",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 2,
+					"total": 5,
+					"numbering": "№ 24-28"
+				},
+				{
+					"section": "scenarios",
+					"name": "III. Тайное имя (2019)",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 0,
+					"total": 5,
+					"numbering": "№ 29-33"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Расплата за грехи (2019)",
+					"investigators": 1,
+					"story": 6,
+					"encounter": 2,
+					"total": 9,
+					"numbering": "№ 34-41"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Ради высшего блага  (2019)",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 0,
+					"total": 4,
+					"numbering": "№ 42-45"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Единство и разочарование  (2019)",
+					"investigators": 0,
+					"story": 2,
+					"encounter": 2,
+					"total": 4,
+					"numbering": "№ 46-48"
+				},
+				{
+					"section": "scenarios",
+					"name": "VII. В когтях Хаоса  (2019)",
+					"investigators": 0,
+					"story": 7,
+					"encounter": 0,
+					"total": 7,
+					"numbering": "№ 49-55"
+				},
+				{
+					"section": "scenarios",
+					"name": "VIII. Перед Чёрным престолом  (2019)",
+					"investigators": 0,
+					"story": 5,
+					"encounter": 4,
+					"total": 9,
+					"numbering": "№ 56-61"
+				},
+				{
+					"section": "encounters",
+					"name": "Порча",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "encounters",
+					"name": "Неминуемое зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "encounters",
+					"name": "Невыразимый рок",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "encounters",
+					"name": "Изменчивое царство",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "encounters",
+					"name": "Город проклятых",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5
+				},
+				{
+					"section": "encounters",
+					"name": "Пронизывающая мгла",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "encounters",
+					"name": "Кровожадные духи",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				}
+			]
+		},
+		{
+			"name": "На краю земли",
+			"nameWithYear": "На краю земли (2022)",
+			"year": 2022,
+			"code": "eoe",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "На краю земли",
+							"investigators": 58,
+							"story": 134,
+							"encounter": 151,
+							"total": 343
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 10,
+					"items": [
+						{
+							"name": "Часть I: Лёд и смерть",
+							"investigators": 0,
+							"story": 14,
+							"encounter": 7,
+							"total": 21,
+							"numbering": "№ 1-17"
+						},
+						{
+							"name": "Крушение (сцена a)",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 1,
+							"total": 5,
+							"numbering": "№ 18-22"
+						},
+						{
+							"name": "Пропавшие в ночи (сцена b)",
+							"investigators": 0,
+							"story": 4,
+							"encounter": 17,
+							"total": 21,
+							"numbering": "№ 23-43"
+						},
+						{
+							"name": "Сочащиеся кошмары (сцена c)",
+							"investigators": 0,
+							"story": 3,
+							"encounter": 6,
+							"total": 9,
+							"numbering": "№ 44-48"
+						},
+						{
+							"name": "Роковой мираж (???)",
+							"investigators": 9,
+							"story": 35,
+							"encounter": 9,
+							"total": 53,
+							"numbering": "№ 49-95"
+						},
+						{
+							"name": "Часть II: К запретным вершинам",
+							"investigators": 7,
+							"story": 12,
+							"encounter": 15,
+							"total": 34,
+							"numbering": "№ 96-120"
+						},
+						{
+							"name": "Часть III: Город Старцев",
+							"investigators": 8,
+							"story": 26,
+							"encounter": 13,
+							"total": 47,
+							"numbering": "№ 121-147"
+						},
+						{
+							"name": "Часть IV: Сердце безумия",
+							"investigators": 0,
+							"story": 12,
+							"encounter": 6,
+							"total": 18,
+							"numbering": "№ 148-186"
+						},
+						{
+							"name": "Великая печать (сцены a)",
+							"investigators": 0,
+							"story": 10,
+							"encounter": 4,
+							"total": 14,
+							"numbering": "№ 159-170"
+						},
+						{
+							"name": "Смятение в глубинах (сцены b)",
+							"investigators": 0,
+							"story": 14,
+							"encounter": 17,
+							"total": 31,
+							"numbering": "№ 171-186"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 14,
+					"items": [
+						{
+							"name": "Агенты неизведанного",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 187-188"
+						},
+						{
+							"name": "Твари во льду",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 189-191"
+						},
+						{
+							"name": "Убийственная погода",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 192-194"
+						},
+						{
+							"name": "Старцы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 195-197"
+						},
+						{
+							"name": "Антарктические опасности",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 198-199"
+						},
+						{
+							"name": "Оставленные",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 200-202"
+						},
+						{
+							"name": "Безымянные ужасы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 203-205"
+						},
+						{
+							"name": "Скверна",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 206-207"
+						},
+						{
+							"name": "Пингвины",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 208-209"
+						},
+						{
+							"name": "Шогготы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 210-211"
+						},
+						{
+							"name": "Безмолвие и тайны",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 212-213"
+						},
+						{
+							"name": "Члены экспедиции",
+							"investigators": 9,
+							"story": 0,
+							"encounter": 0,
+							"total": 9,
+							"numbering": "№ 214-222"
+						},
+						{
+							"name": "Текели-ли",
+							"investigators": 16,
+							"story": 0,
+							"encounter": 0,
+							"total": 16,
+							"numbering": "№ 223-229"
+						},
+						{
+							"name": "Память об ушедших",
+							"investigators": 9,
+							"story": 0,
+							"encounter": 0,
+							"total": 9,
+							"numbering": "№ 230-238"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 4,
+					"items": [
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "На краю земли",
+					"investigators": 58,
+					"story": 134,
+					"encounter": 151,
+					"total": 343
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть I: Лёд и смерть",
+					"investigators": 0,
+					"story": 14,
+					"encounter": 7,
+					"total": 21,
+					"numbering": "№ 1-17"
+				},
+				{
+					"section": "scenarios",
+					"name": "Крушение (сцена a)",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 1,
+					"total": 5,
+					"numbering": "№ 18-22"
+				},
+				{
+					"section": "scenarios",
+					"name": "Пропавшие в ночи (сцена b)",
+					"investigators": 0,
+					"story": 4,
+					"encounter": 17,
+					"total": 21,
+					"numbering": "№ 23-43"
+				},
+				{
+					"section": "scenarios",
+					"name": "Сочащиеся кошмары (сцена c)",
+					"investigators": 0,
+					"story": 3,
+					"encounter": 6,
+					"total": 9,
+					"numbering": "№ 44-48"
+				},
+				{
+					"section": "scenarios",
+					"name": "Роковой мираж (???)",
+					"investigators": 9,
+					"story": 35,
+					"encounter": 9,
+					"total": 53,
+					"numbering": "№ 49-95"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть II: К запретным вершинам",
+					"investigators": 7,
+					"story": 12,
+					"encounter": 15,
+					"total": 34,
+					"numbering": "№ 96-120"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть III: Город Старцев",
+					"investigators": 8,
+					"story": 26,
+					"encounter": 13,
+					"total": 47,
+					"numbering": "№ 121-147"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть IV: Сердце безумия",
+					"investigators": 0,
+					"story": 12,
+					"encounter": 6,
+					"total": 18,
+					"numbering": "№ 148-186"
+				},
+				{
+					"section": "scenarios",
+					"name": "Великая печать (сцены a)",
+					"investigators": 0,
+					"story": 10,
+					"encounter": 4,
+					"total": 14,
+					"numbering": "№ 159-170"
+				},
+				{
+					"section": "scenarios",
+					"name": "Смятение в глубинах (сцены b)",
+					"investigators": 0,
+					"story": 14,
+					"encounter": 17,
+					"total": 31,
+					"numbering": "№ 171-186"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты неизведанного",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 187-188"
+				},
+				{
+					"section": "encounters",
+					"name": "Твари во льду",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 189-191"
+				},
+				{
+					"section": "encounters",
+					"name": "Убийственная погода",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 192-194"
+				},
+				{
+					"section": "encounters",
+					"name": "Старцы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 195-197"
+				},
+				{
+					"section": "encounters",
+					"name": "Антарктические опасности",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 198-199"
+				},
+				{
+					"section": "encounters",
+					"name": "Оставленные",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 200-202"
+				},
+				{
+					"section": "encounters",
+					"name": "Безымянные ужасы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 203-205"
+				},
+				{
+					"section": "encounters",
+					"name": "Скверна",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 206-207"
+				},
+				{
+					"section": "encounters",
+					"name": "Пингвины",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 208-209"
+				},
+				{
+					"section": "encounters",
+					"name": "Шогготы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 210-211"
+				},
+				{
+					"section": "encounters",
+					"name": "Безмолвие и тайны",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 212-213"
+				},
+				{
+					"section": "encounters",
+					"name": "Члены экспедиции",
+					"investigators": 9,
+					"story": 0,
+					"encounter": 0,
+					"total": 9,
+					"numbering": "№ 214-222"
+				},
+				{
+					"section": "encounters",
+					"name": "Текели-ли",
+					"investigators": 16,
+					"story": 0,
+					"encounter": 0,
+					"total": 16,
+					"numbering": "№ 223-229"
+				},
+				{
+					"section": "encounters",
+					"name": "Память об ушедших",
+					"investigators": 9,
+					"story": 0,
+					"encounter": 0,
+					"total": 9,
+					"numbering": "№ 230-238"
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				}
+			]
+		},
+		{
+			"name": "Алые ключи. Кампания",
+			"nameWithYear": "Алые ключи. Кампания (2022)",
+			"year": 2022,
+			"code": "tsk",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Алые ключи. Кампания",
+							"investigators": 14,
+							"story": 194,
+							"encounter": 142,
+							"total": 350
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 10,
+					"items": [
+						{
+							"name": "Загадки и дождь",
+							"investigators": 0,
+							"story": 18,
+							"encounter": 1,
+							"total": 19,
+							"numbering": "№ 1-19"
+						},
+						{
+							"name": "Смертельная жара",
+							"investigators": 0,
+							"story": 19,
+							"encounter": 12,
+							"total": 31,
+							"numbering": "№ 20-44"
+						},
+						{
+							"name": "Кровавые тени",
+							"investigators": 0,
+							"story": 15,
+							"encounter": 10,
+							"total": 25,
+							"numbering": "№ 45-65"
+						},
+						{
+							"name": "Сделки во мраке",
+							"investigators": 0,
+							"story": 19,
+							"encounter": 11,
+							"total": 30,
+							"numbering": "№ 66-90"
+						},
+						{
+							"name": "Безумные танцы",
+							"investigators": 0,
+							"story": 16,
+							"encounter": 3,
+							"total": 19,
+							"numbering": "№ 91-108"
+						},
+						{
+							"name": "По тонкомулду",
+							"investigators": 0,
+							"story": 18,
+							"encounter": 13,
+							"total": 31,
+							"numbering": "№ 109-134"
+						},
+						{
+							"name": "Псы войны",
+							"investigators": 0,
+							"story": 25,
+							"encounter": 6,
+							"total": 31,
+							"numbering": "№ 135-159"
+						},
+						{
+							"name": "Оттенки страдания",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 5,
+							"total": 27,
+							"numbering": "№ 160-180"
+						},
+						{
+							"name": "Без следа",
+							"investigators": 2,
+							"story": 9,
+							"encounter": 2,
+							"total": 13,
+							"numbering": "№ 181-193"
+						},
+						{
+							"name": "Конгресс ключей",
+							"investigators": 0,
+							"story": 21,
+							"encounter": 1,
+							"total": 22,
+							"numbering": "№ 194-215"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 16,
+					"items": [
+						{
+							"name": "Багряный заговор",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 216-217"
+						},
+						{
+							"name": "Странные происшествия",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 218-219"
+						},
+						{
+							"name": "Тайны в изобилии",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 220-221"
+						},
+						{
+							"name": "Тень сомнения",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 222-223"
+						},
+						{
+							"name": "Тёмная вуаль",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 224-225"
+						},
+						{
+							"name": "Команда зачистки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 226-228"
+						},
+						{
+							"name": "Алая ворожба",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 229-230"
+						},
+						{
+							"name": "Внешние",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 231-233"
+						},
+						{
+							"name": "Тайная война",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 234-236"
+						},
+						{
+							"name": "Агенты Внешних",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 237-238"
+						},
+						{
+							"name": "Агенты Юггота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 239-240"
+						},
+						{
+							"name": "Пространственная аномалия",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 241-243"
+						},
+						{
+							"name": "Растекающаяся порча",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 244-246"
+						},
+						{
+							"name": "За пределами пределов",
+							"investigators": 0,
+							"story": 9,
+							"encounter": 2,
+							"total": 11,
+							"numbering": "№ 247-251"
+						},
+						{
+							"name": "Красная Клика",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 10,
+							"total": 10,
+							"numbering": "№ 252-261"
+						},
+						{
+							"name": "Вокруг света",
+							"investigators": 12,
+							"story": 3,
+							"encounter": 0,
+							"total": 15,
+							"numbering": "№ 262-270"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 9,
+					"items": [
+						{
+							"name": "Полуночные маски",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Упыри",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Сокрытые карты",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 43,
+							"total": 43
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Алые ключи. Кампания",
+					"investigators": 14,
+					"story": 194,
+					"encounter": 142,
+					"total": 350
+				},
+				{
+					"section": "scenarios",
+					"name": "Загадки и дождь",
+					"investigators": 0,
+					"story": 18,
+					"encounter": 1,
+					"total": 19,
+					"numbering": "№ 1-19"
+				},
+				{
+					"section": "scenarios",
+					"name": "Смертельная жара",
+					"investigators": 0,
+					"story": 19,
+					"encounter": 12,
+					"total": 31,
+					"numbering": "№ 20-44"
+				},
+				{
+					"section": "scenarios",
+					"name": "Кровавые тени",
+					"investigators": 0,
+					"story": 15,
+					"encounter": 10,
+					"total": 25,
+					"numbering": "№ 45-65"
+				},
+				{
+					"section": "scenarios",
+					"name": "Сделки во мраке",
+					"investigators": 0,
+					"story": 19,
+					"encounter": 11,
+					"total": 30,
+					"numbering": "№ 66-90"
+				},
+				{
+					"section": "scenarios",
+					"name": "Безумные танцы",
+					"investigators": 0,
+					"story": 16,
+					"encounter": 3,
+					"total": 19,
+					"numbering": "№ 91-108"
+				},
+				{
+					"section": "scenarios",
+					"name": "По тонкомулду",
+					"investigators": 0,
+					"story": 18,
+					"encounter": 13,
+					"total": 31,
+					"numbering": "№ 109-134"
+				},
+				{
+					"section": "scenarios",
+					"name": "Псы войны",
+					"investigators": 0,
+					"story": 25,
+					"encounter": 6,
+					"total": 31,
+					"numbering": "№ 135-159"
+				},
+				{
+					"section": "scenarios",
+					"name": "Оттенки страдания",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 5,
+					"total": 27,
+					"numbering": "№ 160-180"
+				},
+				{
+					"section": "scenarios",
+					"name": "Без следа",
+					"investigators": 2,
+					"story": 9,
+					"encounter": 2,
+					"total": 13,
+					"numbering": "№ 181-193"
+				},
+				{
+					"section": "scenarios",
+					"name": "Конгресс ключей",
+					"investigators": 0,
+					"story": 21,
+					"encounter": 1,
+					"total": 22,
+					"numbering": "№ 194-215"
+				},
+				{
+					"section": "encounters",
+					"name": "Багряный заговор",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 216-217"
+				},
+				{
+					"section": "encounters",
+					"name": "Странные происшествия",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 218-219"
+				},
+				{
+					"section": "encounters",
+					"name": "Тайны в изобилии",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 220-221"
+				},
+				{
+					"section": "encounters",
+					"name": "Тень сомнения",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 222-223"
+				},
+				{
+					"section": "encounters",
+					"name": "Тёмная вуаль",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 224-225"
+				},
+				{
+					"section": "encounters",
+					"name": "Команда зачистки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 226-228"
+				},
+				{
+					"section": "encounters",
+					"name": "Алая ворожба",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 229-230"
+				},
+				{
+					"section": "encounters",
+					"name": "Внешние",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 231-233"
+				},
+				{
+					"section": "encounters",
+					"name": "Тайная война",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 234-236"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Внешних",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 237-238"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Юггота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 239-240"
+				},
+				{
+					"section": "encounters",
+					"name": "Пространственная аномалия",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 241-243"
+				},
+				{
+					"section": "encounters",
+					"name": "Растекающаяся порча",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 244-246"
+				},
+				{
+					"section": "encounters",
+					"name": "За пределами пределов",
+					"investigators": 0,
+					"story": 9,
+					"encounter": 2,
+					"total": 11,
+					"numbering": "№ 247-251"
+				},
+				{
+					"section": "encounters",
+					"name": "Красная Клика",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 10,
+					"total": 10,
+					"numbering": "№ 252-261"
+				},
+				{
+					"section": "encounters",
+					"name": "Вокруг света",
+					"investigators": 12,
+					"story": 3,
+					"encounter": 0,
+					"total": 15,
+					"numbering": "№ 262-270"
+				},
+				{
+					"section": "extra",
+					"name": "Полуночные маски",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Упыри",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Сокрытые карты",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 43,
+					"total": 43
+				}
+			]
+		},
+		{
+			"name": "Пир в Хемлок-Вейл. Кампания",
+			"nameWithYear": "Пир в Хемлок-Вейл. Кампания (2024)",
+			"year": 2024,
+			"code": "fhv",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Пир в Хемлок-Вейл. Кампания",
+							"investigators": 12,
+							"story": 190,
+							"encounter": 153,
+							"total": 355
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Высечено в камне",
+							"investigators": 1,
+							"story": 22,
+							"encounter": 13,
+							"total": 36,
+							"numbering": "№ 1-22"
+						},
+						{
+							"name": "Дом Хемлоков",
+							"investigators": 1,
+							"story": 21,
+							"encounter": 9,
+							"total": 31,
+							"numbering": "№ 23-48"
+						},
+						{
+							"name": "Тихая пустошь",
+							"investigators": 0,
+							"story": 17,
+							"encounter": 9,
+							"total": 26,
+							"numbering": "№ 49-68"
+						},
+						{
+							"name": "Пропавшая сестра",
+							"investigators": 0,
+							"story": 19,
+							"encounter": 9,
+							"total": 28,
+							"numbering": "№ 69-87"
+						},
+						{
+							"name": "Тварь в глубине",
+							"investigators": 0,
+							"story": 15,
+							"encounter": 14,
+							"total": 29,
+							"numbering": "№ 88-104"
+						},
+						{
+							"name": "Чудовищная лощина",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 9,
+							"total": 31,
+							"numbering": "№ 105-125"
+						},
+						{
+							"name": "Самая долгая ночь",
+							"investigators": 1,
+							"story": 14,
+							"encounter": 23,
+							"total": 38,
+							"numbering": "№ 126-150"
+						},
+						{
+							"name": "Участь Хемлок-Вейл",
+							"investigators": 0,
+							"story": 23,
+							"encounter": 8,
+							"total": 31,
+							"numbering": "№ 151-174"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 19,
+					"items": [
+						{
+							"name": "День первый",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 3,
+							"total": 4,
+							"numbering": "№ 175-176"
+						},
+						{
+							"name": "День второй",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 3,
+							"total": 4,
+							"numbering": "№ 177-178"
+						},
+						{
+							"name": "День третий",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 3,
+							"total": 4,
+							"numbering": "№ 179-180"
+						},
+						{
+							"name": "День отдыха",
+							"investigators": 0,
+							"story": 2,
+							"encounter": 0,
+							"total": 2,
+							"numbering": "№ 181-182"
+						},
+						{
+							"name": "День дождя",
+							"investigators": 4,
+							"story": 2,
+							"encounter": 0,
+							"total": 6,
+							"numbering": "№ 183-185"
+						},
+						{
+							"name": "День пиршества",
+							"investigators": 0,
+							"story": 6,
+							"encounter": 2,
+							"total": 8,
+							"numbering": "№ 186-192"
+						},
+						{
+							"name": "Жители",
+							"investigators": 2,
+							"story": 9,
+							"encounter": 0,
+							"total": 11,
+							"numbering": "№ 193-203"
+						},
+						{
+							"name": "Хемлок-Вейл",
+							"investigators": 0,
+							"story": 9,
+							"encounter": 0,
+							"total": 9,
+							"numbering": "№ 204-212"
+						},
+						{
+							"name": "Памятные безделушки",
+							"investigators": 3,
+							"story": 0,
+							"encounter": 0,
+							"total": 3,
+							"numbering": "№ 213-215"
+						},
+						{
+							"name": "Ужасы в камне",
+							"investigators": 0,
+							"story": 6,
+							"encounter": 6,
+							"total": 12,
+							"numbering": "№ 216-223"
+						},
+						{
+							"name": "Агенты Цвета",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 224-225"
+						},
+						{
+							"name": "Преображение",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 226-227"
+						},
+						{
+							"name": "Хворь",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 228-229"
+						},
+						{
+							"name": "Преломления",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 230-231"
+						},
+						{
+							"name": "Чаща",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 11,
+							"total": 11,
+							"numbering": "№ 232-237"
+						},
+						{
+							"name": "Микониды",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 238-240"
+						},
+						{
+							"name": "Мутации",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 241-242"
+						},
+						{
+							"name": "Пожар!",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 243"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 4,
+					"items": [
+						{
+							"name": "Полуночные маски",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Упыри",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Пир в Хемлок-Вейл. Кампания",
+					"investigators": 12,
+					"story": 190,
+					"encounter": 153,
+					"total": 355
+				},
+				{
+					"section": "scenarios",
+					"name": "Высечено в камне",
+					"investigators": 1,
+					"story": 22,
+					"encounter": 13,
+					"total": 36,
+					"numbering": "№ 1-22"
+				},
+				{
+					"section": "scenarios",
+					"name": "Дом Хемлоков",
+					"investigators": 1,
+					"story": 21,
+					"encounter": 9,
+					"total": 31,
+					"numbering": "№ 23-48"
+				},
+				{
+					"section": "scenarios",
+					"name": "Тихая пустошь",
+					"investigators": 0,
+					"story": 17,
+					"encounter": 9,
+					"total": 26,
+					"numbering": "№ 49-68"
+				},
+				{
+					"section": "scenarios",
+					"name": "Пропавшая сестра",
+					"investigators": 0,
+					"story": 19,
+					"encounter": 9,
+					"total": 28,
+					"numbering": "№ 69-87"
+				},
+				{
+					"section": "scenarios",
+					"name": "Тварь в глубине",
+					"investigators": 0,
+					"story": 15,
+					"encounter": 14,
+					"total": 29,
+					"numbering": "№ 88-104"
+				},
+				{
+					"section": "scenarios",
+					"name": "Чудовищная лощина",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 9,
+					"total": 31,
+					"numbering": "№ 105-125"
+				},
+				{
+					"section": "scenarios",
+					"name": "Самая долгая ночь",
+					"investigators": 1,
+					"story": 14,
+					"encounter": 23,
+					"total": 38,
+					"numbering": "№ 126-150"
+				},
+				{
+					"section": "scenarios",
+					"name": "Участь Хемлок-Вейл",
+					"investigators": 0,
+					"story": 23,
+					"encounter": 8,
+					"total": 31,
+					"numbering": "№ 151-174"
+				},
+				{
+					"section": "encounters",
+					"name": "День первый",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 3,
+					"total": 4,
+					"numbering": "№ 175-176"
+				},
+				{
+					"section": "encounters",
+					"name": "День второй",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 3,
+					"total": 4,
+					"numbering": "№ 177-178"
+				},
+				{
+					"section": "encounters",
+					"name": "День третий",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 3,
+					"total": 4,
+					"numbering": "№ 179-180"
+				},
+				{
+					"section": "encounters",
+					"name": "День отдыха",
+					"investigators": 0,
+					"story": 2,
+					"encounter": 0,
+					"total": 2,
+					"numbering": "№ 181-182"
+				},
+				{
+					"section": "encounters",
+					"name": "День дождя",
+					"investigators": 4,
+					"story": 2,
+					"encounter": 0,
+					"total": 6,
+					"numbering": "№ 183-185"
+				},
+				{
+					"section": "encounters",
+					"name": "День пиршества",
+					"investigators": 0,
+					"story": 6,
+					"encounter": 2,
+					"total": 8,
+					"numbering": "№ 186-192"
+				},
+				{
+					"section": "encounters",
+					"name": "Жители",
+					"investigators": 2,
+					"story": 9,
+					"encounter": 0,
+					"total": 11,
+					"numbering": "№ 193-203"
+				},
+				{
+					"section": "encounters",
+					"name": "Хемлок-Вейл",
+					"investigators": 0,
+					"story": 9,
+					"encounter": 0,
+					"total": 9,
+					"numbering": "№ 204-212"
+				},
+				{
+					"section": "encounters",
+					"name": "Памятные безделушки",
+					"investigators": 3,
+					"story": 0,
+					"encounter": 0,
+					"total": 3,
+					"numbering": "№ 213-215"
+				},
+				{
+					"section": "encounters",
+					"name": "Ужасы в камне",
+					"investigators": 0,
+					"story": 6,
+					"encounter": 6,
+					"total": 12,
+					"numbering": "№ 216-223"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Цвета",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 224-225"
+				},
+				{
+					"section": "encounters",
+					"name": "Преображение",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 226-227"
+				},
+				{
+					"section": "encounters",
+					"name": "Хворь",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 228-229"
+				},
+				{
+					"section": "encounters",
+					"name": "Преломления",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 230-231"
+				},
+				{
+					"section": "encounters",
+					"name": "Чаща",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 11,
+					"total": 11,
+					"numbering": "№ 232-237"
+				},
+				{
+					"section": "encounters",
+					"name": "Микониды",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 238-240"
+				},
+				{
+					"section": "encounters",
+					"name": "Мутации",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 241-242"
+				},
+				{
+					"section": "encounters",
+					"name": "Пожар!",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 243"
+				},
+				{
+					"section": "extra",
+					"name": "Полуночные маски",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Упыри",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				}
+			]
+		},
+		{
+			"name": "Пожиратели снов",
+			"nameWithYear": "Пожиратели снов (2024)",
+			"year": 2024,
+			"code": "tde",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Пожиратели снов",
+							"investigators": 5,
+							"story": 162,
+							"encounter": 159,
+							"total": 326
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "I–А: За вратами сна",
+							"investigators": 1,
+							"story": 20,
+							"encounter": 4,
+							"total": 25,
+							"numbering": "№ 39-62"
+						},
+						{
+							"name": "I–Б: Кошмар наяву",
+							"investigators": 1,
+							"story": 16,
+							"encounter": 8,
+							"total": 25,
+							"numbering": "№ 63-83"
+						},
+						{
+							"name": "II–А: В поисках Кадата",
+							"investigators": 0,
+							"story": 25,
+							"encounter": 18,
+							"total": 43,
+							"numbering": "№ 119-154"
+						},
+						{
+							"name": "II–Б: Тысяча кошмарных форм",
+							"investigators": 1,
+							"story": 21,
+							"encounter": 12,
+							"total": 34,
+							"numbering": "№ 168-194"
+						},
+						{
+							"name": "III–А: Тёмная сторона Луны",
+							"investigators": 1,
+							"story": 18,
+							"encounter": 18,
+							"total": 37,
+							"numbering": "№ 206-233"
+						},
+						{
+							"name": "III–Б: Точка невозврата",
+							"investigators": 1,
+							"story": 19,
+							"encounter": 8,
+							"total": 28,
+							"numbering": "№ 247-270+275"
+						},
+						{
+							"name": "IV–А: Где обитают боги",
+							"investigators": 0,
+							"story": 20,
+							"encounter": 21,
+							"total": 41,
+							"numbering": "№ 286-322"
+						},
+						{
+							"name": "IV–Б: Плетущая космос",
+							"investigators": 0,
+							"story": 23,
+							"encounter": 15,
+							"total": 38,
+							"numbering": "№ 333-354"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 12,
+					"items": [
+						{
+							"name": "Агенты Атлач-Начи",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 84-85"
+						},
+						{
+							"name": "Агенты Ньярлатхотепа",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 86-89"
+						},
+						{
+							"name": "Шёпот Гипноса",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 90"
+						},
+						{
+							"name": "Жители Подземного мира",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 91-92"
+						},
+						{
+							"name": "Проклятие сновидца",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 93-95"
+						},
+						{
+							"name": "Мир грёз",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 96-97"
+						},
+						{
+							"name": "Сливающиеся реальности",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 98-100"
+						},
+						{
+							"name": "Пауки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 101-103"
+						},
+						{
+							"name": "Корсары",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 104-105"
+						},
+						{
+							"name": "Зуги",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 106-109"
+						},
+						{
+							"name": "Ужасы долины",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 271-272"
+						},
+						{
+							"name": "Опускаясь в смолу",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 273-274"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Упыри",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Пожиратели снов",
+					"investigators": 5,
+					"story": 162,
+					"encounter": 159,
+					"total": 326
+				},
+				{
+					"section": "scenarios",
+					"name": "I–А: За вратами сна",
+					"investigators": 1,
+					"story": 20,
+					"encounter": 4,
+					"total": 25,
+					"numbering": "№ 39-62"
+				},
+				{
+					"section": "scenarios",
+					"name": "I–Б: Кошмар наяву",
+					"investigators": 1,
+					"story": 16,
+					"encounter": 8,
+					"total": 25,
+					"numbering": "№ 63-83"
+				},
+				{
+					"section": "scenarios",
+					"name": "II–А: В поисках Кадата",
+					"investigators": 0,
+					"story": 25,
+					"encounter": 18,
+					"total": 43,
+					"numbering": "№ 119-154"
+				},
+				{
+					"section": "scenarios",
+					"name": "II–Б: Тысяча кошмарных форм",
+					"investigators": 1,
+					"story": 21,
+					"encounter": 12,
+					"total": 34,
+					"numbering": "№ 168-194"
+				},
+				{
+					"section": "scenarios",
+					"name": "III–А: Тёмная сторона Луны",
+					"investigators": 1,
+					"story": 18,
+					"encounter": 18,
+					"total": 37,
+					"numbering": "№ 206-233"
+				},
+				{
+					"section": "scenarios",
+					"name": "III–Б: Точка невозврата",
+					"investigators": 1,
+					"story": 19,
+					"encounter": 8,
+					"total": 28,
+					"numbering": "№ 247-270+275"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV–А: Где обитают боги",
+					"investigators": 0,
+					"story": 20,
+					"encounter": 21,
+					"total": 41,
+					"numbering": "№ 286-322"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV–Б: Плетущая космос",
+					"investigators": 0,
+					"story": 23,
+					"encounter": 15,
+					"total": 38,
+					"numbering": "№ 333-354"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Атлач-Начи",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 84-85"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Ньярлатхотепа",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 86-89"
+				},
+				{
+					"section": "encounters",
+					"name": "Шёпот Гипноса",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 90"
+				},
+				{
+					"section": "encounters",
+					"name": "Жители Подземного мира",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 91-92"
+				},
+				{
+					"section": "encounters",
+					"name": "Проклятие сновидца",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 93-95"
+				},
+				{
+					"section": "encounters",
+					"name": "Мир грёз",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 96-97"
+				},
+				{
+					"section": "encounters",
+					"name": "Сливающиеся реальности",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 98-100"
+				},
+				{
+					"section": "encounters",
+					"name": "Пауки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 101-103"
+				},
+				{
+					"section": "encounters",
+					"name": "Корсары",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 104-105"
+				},
+				{
+					"section": "encounters",
+					"name": "Зуги",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 106-109"
+				},
+				{
+					"section": "encounters",
+					"name": "Ужасы долины",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 271-272"
+				},
+				{
+					"section": "encounters",
+					"name": "Опускаясь в смолу",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 273-274"
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Упыри",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				}
+			]
+		},
+		{
+			"name": "Заговор в Инсмуте",
+			"nameWithYear": "Заговор в Инсмуте (2025)",
+			"year": 2025,
+			"code": "tic",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Заговор в Инсмуте",
+							"investigators": 6,
+							"story": 162,
+							"encounter": 158,
+							"total": 326
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Часть I. Яма отчаяния",
+							"investigators": 0,
+							"story": 12,
+							"encounter": 6,
+							"total": 18,
+							"numbering": "№41-55"
+						},
+						{
+							"name": "Часть II. Исчезновение Элины Харпер",
+							"investigators": 2,
+							"story": 14,
+							"encounter": 12,
+							"total": 28,
+							"numbering": "№56-83"
+						},
+						{
+							"name": "Часть III. В пучину",
+							"investigators": 1,
+							"story": 21,
+							"encounter": 13,
+							"total": 35,
+							"numbering": "№123-151"
+						},
+						{
+							"name": "Часть IV. Риф Дьявола",
+							"investigators": 3,
+							"story": 19,
+							"encounter": 16,
+							"total": 38,
+							"numbering": "№163-188"
+						},
+						{
+							"name": "Часть V. Кошмар на полном ходу",
+							"investigators": 0,
+							"story": 28,
+							"encounter": 14,
+							"total": 42,
+							"numbering": "№198-219"
+						},
+						{
+							"name": "Часть VI. Свет в тумане",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 18,
+							"total": 40,
+							"numbering": "№231-260"
+						},
+						{
+							"name": "Часть VII. Обитель Дагона",
+							"investigators": 0,
+							"story": 20,
+							"encounter": 16,
+							"total": 36,
+							"numbering": "№274-300"
+						},
+						{
+							"name": "Часть VIII. Сквозь водоворот",
+							"investigators": 0,
+							"story": 26,
+							"encounter": 16,
+							"total": 42,
+							"numbering": "№311-338"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 10,
+					"items": [
+						{
+							"name": "Агенты Дагона",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 84-85"
+						},
+						{
+							"name": "Агенты Гидры",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 86-87"
+						},
+						{
+							"name": "Создания из пучины",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 88-90"
+						},
+						{
+							"name": "Прилив",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 91-93"
+						},
+						{
+							"name": "Туман над Инсмутом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 94-95"
+						},
+						{
+							"name": "Расколотые воспоминания",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 96-98"
+						},
+						{
+							"name": "Поломка",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2,
+							"numbering": "№ 99"
+						},
+						{
+							"name": "Сизигия",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 100-101"
+						},
+						{
+							"name": "Затопленные пещеры",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 102-104"
+						},
+						{
+							"name": "Местные",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 105-107"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 4,
+					"items": [
+						{
+							"name": "Полуночные маски",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5
+						},
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Агенты Ктулху",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Заговор в Инсмуте",
+					"investigators": 6,
+					"story": 162,
+					"encounter": 158,
+					"total": 326
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть I. Яма отчаяния",
+					"investigators": 0,
+					"story": 12,
+					"encounter": 6,
+					"total": 18,
+					"numbering": "№41-55"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть II. Исчезновение Элины Харпер",
+					"investigators": 2,
+					"story": 14,
+					"encounter": 12,
+					"total": 28,
+					"numbering": "№56-83"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть III. В пучину",
+					"investigators": 1,
+					"story": 21,
+					"encounter": 13,
+					"total": 35,
+					"numbering": "№123-151"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть IV. Риф Дьявола",
+					"investigators": 3,
+					"story": 19,
+					"encounter": 16,
+					"total": 38,
+					"numbering": "№163-188"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть V. Кошмар на полном ходу",
+					"investigators": 0,
+					"story": 28,
+					"encounter": 14,
+					"total": 42,
+					"numbering": "№198-219"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть VI. Свет в тумане",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 18,
+					"total": 40,
+					"numbering": "№231-260"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть VII. Обитель Дагона",
+					"investigators": 0,
+					"story": 20,
+					"encounter": 16,
+					"total": 36,
+					"numbering": "№274-300"
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть VIII. Сквозь водоворот",
+					"investigators": 0,
+					"story": 26,
+					"encounter": 16,
+					"total": 42,
+					"numbering": "№311-338"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Дагона",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 84-85"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Гидры",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 86-87"
+				},
+				{
+					"section": "encounters",
+					"name": "Создания из пучины",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 88-90"
+				},
+				{
+					"section": "encounters",
+					"name": "Прилив",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 91-93"
+				},
+				{
+					"section": "encounters",
+					"name": "Туман над Инсмутом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 94-95"
+				},
+				{
+					"section": "encounters",
+					"name": "Расколотые воспоминания",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 96-98"
+				},
+				{
+					"section": "encounters",
+					"name": "Поломка",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2,
+					"numbering": "№ 99"
+				},
+				{
+					"section": "encounters",
+					"name": "Сизигия",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 100-101"
+				},
+				{
+					"section": "encounters",
+					"name": "Затопленные пещеры",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 102-104"
+				},
+				{
+					"section": "encounters",
+					"name": "Местные",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 105-107"
+				},
+				{
+					"section": "extra",
+					"name": "Полуночные маски",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5
+				},
+				{
+					"section": "extra",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Агенты Ктулху",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				}
+			]
+		},
+		{
+			"name": "Затонувший город",
+			"nameWithYear": "Затонувший город (2025)",
+			"year": 2025,
+			"code": "tdc",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Затонувший город",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 0,
+							"total": 350
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Последнее дело",
+							"investigators": 0,
+							"story": 9,
+							"encounter": 13,
+							"total": 22,
+							"numbering": "№1-16"
+						},
+						{
+							"name": "Западная стена",
+							"investigators": 1,
+							"story": 18,
+							"encounter": 4,
+							"total": 23,
+							"numbering": "№17-35"
+						},
+						{
+							"name": "Затонувший квартал",
+							"investigators": 0,
+							"story": 18,
+							"encounter": 3,
+							"total": 21,
+							"numbering": "№36-52"
+						},
+						{
+							"name": "Пасека",
+							"investigators": 4,
+							"story": 12,
+							"encounter": 24,
+							"total": 40,
+							"numbering": "№53-83"
+						},
+						{
+							"name": "Великое хранилище",
+							"investigators": 0,
+							"story": 22,
+							"encounter": 7,
+							"total": 29,
+							"numbering": "№87-111"
+						},
+						{
+							"name": "Зал Древних",
+							"investigators": 0,
+							"story": 12,
+							"encounter": 19,
+							"total": 31,
+							"numbering": "№112-138"
+						},
+						{
+							"name": "Обсидиановые каньоны",
+							"investigators": 0,
+							"story": 33,
+							"encounter": 12,
+							"total": 45,
+							"numbering": "№139-172"
+						},
+						{
+							"name": "Гробница Спящего",
+							"investigators": 0,
+							"story": 9,
+							"encounter": 0,
+							"total": 9,
+							"numbering": "№173-181"
+						},
+						{
+							"name": "Рок, покаравший Аркхэм. Часть I",
+							"investigators": 1,
+							"story": 4,
+							"encounter": 2,
+							"total": 7,
+							"numbering": "№182-188"
+						},
+						{
+							"name": "Рок, покаравший Аркхэм. Часть II",
+							"investigators": 0,
+							"story": 35,
+							"encounter": 9,
+							"total": 44,
+							"numbering": "№188-220"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 12,
+					"items": [
+						{
+							"name": "Пиявки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 221-222"
+						},
+						{
+							"name": "Пилигримы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 223-224"
+						},
+						{
+							"name": "Звёздные отродья",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 225-228"
+						},
+						{
+							"name": "Подводные существа",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 229-230, 233"
+						},
+						{
+							"name": "Наследие космоса",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 229-230"
+						},
+						{
+							"name": "Древний туман",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 231-232"
+						},
+						{
+							"name": "Наводнение",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 231-233"
+						},
+						{
+							"name": "Р’льех",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 234-235"
+						},
+						{
+							"name": "Владычество",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 236-238"
+						},
+						{
+							"name": "Неотвратимый",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 239-240"
+						},
+						{
+							"name": "Глубоководные",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 241-243"
+						},
+						{
+							"name": "Сновидения",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 244-245"
+						},
+						{
+							"name": "Инопланетные машины",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 246-247"
+						},
+						{
+							"name": "Задачи",
+							"investigators": 0,
+							"story": 8,
+							"encounter": 0,
+							"total": 8,
+							"numbering": "№ 248-255"
+						},
+						{
+							"name": "Экспедиция",
+							"investigators": 9,
+							"story": 0,
+							"encounter": 0,
+							"total": 9,
+							"numbering": "№ 256-261"
+						}
+					]
+				},
+				"extra": {
+					"expectedCount": 4,
+					"items": [
+						{
+							"name": "Полуночные маски",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 10,
+							"total": 10
+						},
+						{
+							"name": "Крысы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Охваченные страхом",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7
+						},
+						{
+							"name": "Древнее зло",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3
+						},
+						{
+							"name": "Пронизывающий холод",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Тёмный культ",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6
+						},
+						{
+							"name": "Ночные призраки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						},
+						{
+							"name": "Запертые двери",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2
+						},
+						{
+							"name": "Агенты Ктулху",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Затонувший город",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 0,
+					"total": 350
+				},
+				{
+					"section": "scenarios",
+					"name": "Последнее дело",
+					"investigators": 0,
+					"story": 9,
+					"encounter": 13,
+					"total": 22,
+					"numbering": "№1-16"
+				},
+				{
+					"section": "scenarios",
+					"name": "Западная стена",
+					"investigators": 1,
+					"story": 18,
+					"encounter": 4,
+					"total": 23,
+					"numbering": "№17-35"
+				},
+				{
+					"section": "scenarios",
+					"name": "Затонувший квартал",
+					"investigators": 0,
+					"story": 18,
+					"encounter": 3,
+					"total": 21,
+					"numbering": "№36-52"
+				},
+				{
+					"section": "scenarios",
+					"name": "Пасека",
+					"investigators": 4,
+					"story": 12,
+					"encounter": 24,
+					"total": 40,
+					"numbering": "№53-83"
+				},
+				{
+					"section": "scenarios",
+					"name": "Великое хранилище",
+					"investigators": 0,
+					"story": 22,
+					"encounter": 7,
+					"total": 29,
+					"numbering": "№87-111"
+				},
+				{
+					"section": "scenarios",
+					"name": "Зал Древних",
+					"investigators": 0,
+					"story": 12,
+					"encounter": 19,
+					"total": 31,
+					"numbering": "№112-138"
+				},
+				{
+					"section": "scenarios",
+					"name": "Обсидиановые каньоны",
+					"investigators": 0,
+					"story": 33,
+					"encounter": 12,
+					"total": 45,
+					"numbering": "№139-172"
+				},
+				{
+					"section": "scenarios",
+					"name": "Гробница Спящего",
+					"investigators": 0,
+					"story": 9,
+					"encounter": 0,
+					"total": 9,
+					"numbering": "№173-181"
+				},
+				{
+					"section": "scenarios",
+					"name": "Рок, покаравший Аркхэм. Часть I",
+					"investigators": 1,
+					"story": 4,
+					"encounter": 2,
+					"total": 7,
+					"numbering": "№182-188"
+				},
+				{
+					"section": "scenarios",
+					"name": "Рок, покаравший Аркхэм. Часть II",
+					"investigators": 0,
+					"story": 35,
+					"encounter": 9,
+					"total": 44,
+					"numbering": "№188-220"
+				},
+				{
+					"section": "encounters",
+					"name": "Пиявки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 221-222"
+				},
+				{
+					"section": "encounters",
+					"name": "Пилигримы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 223-224"
+				},
+				{
+					"section": "encounters",
+					"name": "Звёздные отродья",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 225-228"
+				},
+				{
+					"section": "encounters",
+					"name": "Подводные существа",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 229-230, 233"
+				},
+				{
+					"section": "encounters",
+					"name": "Наследие космоса",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 229-230"
+				},
+				{
+					"section": "encounters",
+					"name": "Древний туман",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 231-232"
+				},
+				{
+					"section": "encounters",
+					"name": "Наводнение",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 231-233"
+				},
+				{
+					"section": "encounters",
+					"name": "Р’льех",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 234-235"
+				},
+				{
+					"section": "encounters",
+					"name": "Владычество",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 236-238"
+				},
+				{
+					"section": "encounters",
+					"name": "Неотвратимый",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 239-240"
+				},
+				{
+					"section": "encounters",
+					"name": "Глубоководные",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 241-243"
+				},
+				{
+					"section": "encounters",
+					"name": "Сновидения",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 244-245"
+				},
+				{
+					"section": "encounters",
+					"name": "Инопланетные машины",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 246-247"
+				},
+				{
+					"section": "encounters",
+					"name": "Задачи",
+					"investigators": 0,
+					"story": 8,
+					"encounter": 0,
+					"total": 8,
+					"numbering": "№ 248-255"
+				},
+				{
+					"section": "encounters",
+					"name": "Экспедиция",
+					"investigators": 9,
+					"story": 0,
+					"encounter": 0,
+					"total": 9,
+					"numbering": "№ 256-261"
+				},
+				{
+					"section": "extra",
+					"name": "Полуночные маски",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 10,
+					"total": 10
+				},
+				{
+					"section": "extra",
+					"name": "Крысы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Охваченные страхом",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7
+				},
+				{
+					"section": "extra",
+					"name": "Древнее зло",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3
+				},
+				{
+					"section": "extra",
+					"name": "Пронизывающий холод",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Тёмный культ",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6
+				},
+				{
+					"section": "extra",
+					"name": "Ночные призраки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				},
+				{
+					"section": "extra",
+					"name": "Запертые двери",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2
+				},
+				{
+					"section": "extra",
+					"name": "Агенты Ктулху",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4
+				}
+			]
+		},
+		{
+			"name": "Сердце Тьмы",
+			"nameWithYear": "Сердце Тьмы (2023)",
+			"year": 2023,
+			"code": "zhod",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Сердце Тьмы",
+							"investigators": 9,
+							"story": 92,
+							"encounter": 106,
+							"total": 207
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 3,
+					"items": [
+						{
+							"name": "Часть I. Африка наблюдает",
+							"investigators": 2,
+							"story": 18,
+							"encounter": 18,
+							"total": 38
+						},
+						{
+							"name": "Часть II. В сердце Конго",
+							"investigators": 2,
+							"story": 35,
+							"encounter": 18,
+							"total": 55
+						},
+						{
+							"name": "Часть III. Аватар Тьмы",
+							"investigators": 3,
+							"story": 38,
+							"encounter": 24,
+							"total": 65
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 4,
+					"items": [
+						{
+							"name": "Культ Тьмы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 128-130"
+						},
+						{
+							"name": "Дикая природа Африки",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 131-135"
+						},
+						{
+							"name": "Тьма",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 18,
+							"total": 18,
+							"numbering": "№ 136-142"
+						},
+						{
+							"name": "Земли Конго",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 12,
+							"total": 12,
+							"numbering": "№ 143-148"
+						},
+						{
+							"name": "Джулиан Герберт",
+							"investigators": 2,
+							"story": 1,
+							"encounter": 0,
+							"total": 3,
+							"numbering": "№ 143-148"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Сердце Тьмы",
+					"investigators": 9,
+					"story": 92,
+					"encounter": 106,
+					"total": 207
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть I. Африка наблюдает",
+					"investigators": 2,
+					"story": 18,
+					"encounter": 18,
+					"total": 38
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть II. В сердце Конго",
+					"investigators": 2,
+					"story": 35,
+					"encounter": 18,
+					"total": 55
+				},
+				{
+					"section": "scenarios",
+					"name": "Часть III. Аватар Тьмы",
+					"investigators": 3,
+					"story": 38,
+					"encounter": 24,
+					"total": 65
+				},
+				{
+					"section": "encounters",
+					"name": "Культ Тьмы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 128-130"
+				},
+				{
+					"section": "encounters",
+					"name": "Дикая природа Африки",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 131-135"
+				},
+				{
+					"section": "encounters",
+					"name": "Тьма",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 18,
+					"total": 18,
+					"numbering": "№ 136-142"
+				},
+				{
+					"section": "encounters",
+					"name": "Земли Конго",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 12,
+					"total": 12,
+					"numbering": "№ 143-148"
+				},
+				{
+					"section": "encounters",
+					"name": "Джулиан Герберт",
+					"investigators": 2,
+					"story": 1,
+					"encounter": 0,
+					"total": 3,
+					"numbering": "№ 143-148"
+				}
+			]
+		},
+		{
+			"name": "Тёмная материя",
+			"nameWithYear": "Тёмная материя (2020)",
+			"year": 2020,
+			"code": "zdm",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Тёмная материя",
+							"investigators": 16,
+							"story": 165,
+							"encounter": 215,
+							"total": 396
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "I. Оборванец",
+							"investigators": 1,
+							"story": 29,
+							"encounter": 10,
+							"total": 40,
+							"numbering": "№ 1-35"
+						},
+						{
+							"name": "II. Электронный кошмар",
+							"investigators": 9,
+							"story": 19,
+							"encounter": 16,
+							"total": 44,
+							"numbering": "№ 36-68"
+						},
+						{
+							"name": "III-a. Потерянный Квант",
+							"investigators": 1,
+							"story": 15,
+							"encounter": 20,
+							"total": 36,
+							"numbering": "№ 69-93"
+						},
+						{
+							"name": "III-b. В тени Земли",
+							"investigators": 1,
+							"story": 22,
+							"encounter": 31,
+							"total": 54,
+							"numbering": "№ 94-134"
+						},
+						{
+							"name": "III-c. Странные луны",
+							"investigators": 3,
+							"story": 23,
+							"encounter": 17,
+							"total": 43,
+							"numbering": "№ 135-168"
+						},
+						{
+							"name": "IV. Машина в жёлтом",
+							"investigators": 0,
+							"story": 7,
+							"encounter": 21,
+							"total": 28,
+							"numbering": "№ 169-187"
+						},
+						{
+							"name": "V. Фрагмент Каркозы",
+							"investigators": 1,
+							"story": 14,
+							"encounter": 31,
+							"total": 46,
+							"numbering": "№ 188-221"
+						},
+						{
+							"name": "VI. Звездопад",
+							"investigators": 0,
+							"story": 35,
+							"encounter": 18,
+							"total": 53,
+							"numbering": "№ 222-267"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "Искусственный интеллект",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 12,
+							"total": 12,
+							"numbering": "№ 268-272"
+						},
+						{
+							"name": "Бугимен",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 273-276"
+						},
+						{
+							"name": "Межзвёздные хищники",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 277-279"
+						},
+						{
+							"name": "Взгляд Хастура",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 280-281"
+						},
+						{
+							"name": "Анахронизм",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 2,
+							"total": 2,
+							"numbering": "№ 282"
+						},
+						{
+							"name": "Дальний космос",
+							"investigators": 0,
+							"story": 1,
+							"encounter": 7,
+							"total": 8,
+							"numbering": "№ 283-287"
+						},
+						{
+							"name": "Тёмное прошлое",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 288-289"
+						},
+						{
+							"name": "Конец времён",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 290-293"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Тёмная материя",
+					"investigators": 16,
+					"story": 165,
+					"encounter": 215,
+					"total": 396
+				},
+				{
+					"section": "scenarios",
+					"name": "I. Оборванец",
+					"investigators": 1,
+					"story": 29,
+					"encounter": 10,
+					"total": 40,
+					"numbering": "№ 1-35"
+				},
+				{
+					"section": "scenarios",
+					"name": "II. Электронный кошмар",
+					"investigators": 9,
+					"story": 19,
+					"encounter": 16,
+					"total": 44,
+					"numbering": "№ 36-68"
+				},
+				{
+					"section": "scenarios",
+					"name": "III-a. Потерянный Квант",
+					"investigators": 1,
+					"story": 15,
+					"encounter": 20,
+					"total": 36,
+					"numbering": "№ 69-93"
+				},
+				{
+					"section": "scenarios",
+					"name": "III-b. В тени Земли",
+					"investigators": 1,
+					"story": 22,
+					"encounter": 31,
+					"total": 54,
+					"numbering": "№ 94-134"
+				},
+				{
+					"section": "scenarios",
+					"name": "III-c. Странные луны",
+					"investigators": 3,
+					"story": 23,
+					"encounter": 17,
+					"total": 43,
+					"numbering": "№ 135-168"
+				},
+				{
+					"section": "scenarios",
+					"name": "IV. Машина в жёлтом",
+					"investigators": 0,
+					"story": 7,
+					"encounter": 21,
+					"total": 28,
+					"numbering": "№ 169-187"
+				},
+				{
+					"section": "scenarios",
+					"name": "V. Фрагмент Каркозы",
+					"investigators": 1,
+					"story": 14,
+					"encounter": 31,
+					"total": 46,
+					"numbering": "№ 188-221"
+				},
+				{
+					"section": "scenarios",
+					"name": "VI. Звездопад",
+					"investigators": 0,
+					"story": 35,
+					"encounter": 18,
+					"total": 53,
+					"numbering": "№ 222-267"
+				},
+				{
+					"section": "encounters",
+					"name": "Искусственный интеллект",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 12,
+					"total": 12,
+					"numbering": "№ 268-272"
+				},
+				{
+					"section": "encounters",
+					"name": "Бугимен",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 273-276"
+				},
+				{
+					"section": "encounters",
+					"name": "Межзвёздные хищники",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 277-279"
+				},
+				{
+					"section": "encounters",
+					"name": "Взгляд Хастура",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 280-281"
+				},
+				{
+					"section": "encounters",
+					"name": "Анахронизм",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 2,
+					"total": 2,
+					"numbering": "№ 282"
+				},
+				{
+					"section": "encounters",
+					"name": "Дальний космос",
+					"investigators": 0,
+					"story": 1,
+					"encounter": 7,
+					"total": 8,
+					"numbering": "№ 283-287"
+				},
+				{
+					"section": "encounters",
+					"name": "Тёмное прошлое",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 288-289"
+				},
+				{
+					"section": "encounters",
+					"name": "Конец времён",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 290-293"
+				}
+			]
+		},
+		{
+			"name": "Bloodborne «Город незримого»",
+			"nameWithYear": "Bloodborne «Город незримого» (2024)",
+			"year": 2024,
+			"code": "bloodborne",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Bloodborne «Город незримого»",
+							"investigators": 44,
+							"story": 221,
+							"encounter": 311,
+							"total": 576
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 8,
+					"items": [
+						{
+							"name": "01. Охота начинается",
+							"investigators": 0,
+							"story": 26,
+							"encounter": 9,
+							"total": 35,
+							"numbering": "№ 01-31"
+						},
+						{
+							"name": "02. Бойся древней крови",
+							"investigators": 0,
+							"story": 20,
+							"encounter": 20,
+							"total": 40,
+							"numbering": "№ 32-61"
+						},
+						{
+							"name": "03. Бесконечная ночь",
+							"investigators": 0,
+							"story": 25,
+							"encounter": 8,
+							"total": 33,
+							"numbering": "№ 62-86"
+						},
+						{
+							"name": "04. Слабость человека",
+							"investigators": 5,
+							"story": 15,
+							"encounter": 21,
+							"total": 41,
+							"numbering": "№ 87-120"
+						},
+						{
+							"name": "05. Алтарь отчаяния",
+							"investigators": 3,
+							"story": 31,
+							"encounter": 4,
+							"total": 38,
+							"numbering": "№ 121-157"
+						},
+						{
+							"name": "06. Зов свыше",
+							"investigators": 0,
+							"story": 26,
+							"encounter": 13,
+							"total": 39,
+							"numbering": "№ 158-189"
+						},
+						{
+							"name": "07. Причастие",
+							"investigators": 4,
+							"story": 37,
+							"encounter": 5,
+							"total": 46,
+							"numbering": "№ 190-233"
+						},
+						{
+							"name": "08. Восход на Аркхэмом",
+							"investigators": 0,
+							"story": 29,
+							"encounter": 37,
+							"total": 66,
+							"numbering": "№ 234-282"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 32,
+					"items": [
+						{
+							"name": "Чудовища",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 283-284"
+						},
+						{
+							"name": "Очень волнующе!",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 285-287"
+						},
+						{
+							"name": "Разложение",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 288-290"
+						},
+						{
+							"name": "Добро пожаловать в Ярнам",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 291-293"
+						},
+						{
+							"name": "Агенты Идона",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 294-297"
+						},
+						{
+							"name": "Безмолвная молитва",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 298-300"
+						},
+						{
+							"name": "Сияние",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 301-304"
+						},
+						{
+							"name": "Исчезающее озеро",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 305-307"
+						},
+						{
+							"name": "След когтя",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 9,
+							"total": 9,
+							"numbering": "№ 308-311"
+						},
+						{
+							"name": "Нечистота",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 3,
+							"total": 3,
+							"numbering": "№ 312-314"
+						},
+						{
+							"name": "Агенты Мерго",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 315-317"
+						},
+						{
+							"name": "Луна",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 5,
+							"total": 5,
+							"numbering": "№ 318-321"
+						},
+						{
+							"name": "Метаморфоз",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 322-325"
+						},
+						{
+							"name": "Охотники Ярнама",
+							"investigators": 12,
+							"story": 0,
+							"encounter": 14,
+							"total": 26,
+							"numbering": "№ 326-350"
+						},
+						{
+							"name": "Глубокое море",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 351-353"
+						},
+						{
+							"name": "Агенты Рома",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 10,
+							"total": 10,
+							"numbering": "№ 351-357"
+						},
+						{
+							"name": "Задания",
+							"investigators": 8,
+							"story": 12,
+							"encounter": 0,
+							"total": 20,
+							"numbering": "№ 358-375"
+						},
+						{
+							"name": "Небесные",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 376-378"
+						},
+						{
+							"name": "Агенты Ибраитас",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 379-382"
+						},
+						{
+							"name": "Агенты Амигдалы",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 383-385"
+						},
+						{
+							"name": "Глаз",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 386-389"
+						},
+						{
+							"name": "Агенты Бледнокровного",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 390-392"
+						},
+						{
+							"name": "Идон Корч",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 393-395"
+						},
+						{
+							"name": "Молочай",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 396-399"
+						},
+						{
+							"name": "Потомок птумериан",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 400-403"
+						},
+						{
+							"name": "Агенты Коса",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 8,
+							"total": 8,
+							"numbering": "№ 404-407"
+						},
+						{
+							"name": "Астральная часовая башня",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 7,
+							"total": 7,
+							"numbering": "№ 408-411"
+						},
+						{
+							"name": "Живая нить",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 412-413"
+						},
+						{
+							"name": "Хрупкий сувенир",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 4,
+							"total": 4,
+							"numbering": "№ 414-415"
+						},
+						{
+							"name": "Повешенный",
+							"investigators": 0,
+							"story": 0,
+							"encounter": 6,
+							"total": 6,
+							"numbering": "№ 416-421"
+						},
+						{
+							"name": "Руководство",
+							"investigators": 6,
+							"story": 0,
+							"encounter": 0,
+							"total": 6,
+							"numbering": "№ 422-427"
+						},
+						{
+							"name": "Союзники",
+							"investigators": 6,
+							"story": 0,
+							"encounter": 0,
+							"total": 6,
+							"numbering": "№ 428-433"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Bloodborne «Город незримого»",
+					"investigators": 44,
+					"story": 221,
+					"encounter": 311,
+					"total": 576
+				},
+				{
+					"section": "scenarios",
+					"name": "01. Охота начинается",
+					"investigators": 0,
+					"story": 26,
+					"encounter": 9,
+					"total": 35,
+					"numbering": "№ 01-31"
+				},
+				{
+					"section": "scenarios",
+					"name": "02. Бойся древней крови",
+					"investigators": 0,
+					"story": 20,
+					"encounter": 20,
+					"total": 40,
+					"numbering": "№ 32-61"
+				},
+				{
+					"section": "scenarios",
+					"name": "03. Бесконечная ночь",
+					"investigators": 0,
+					"story": 25,
+					"encounter": 8,
+					"total": 33,
+					"numbering": "№ 62-86"
+				},
+				{
+					"section": "scenarios",
+					"name": "04. Слабость человека",
+					"investigators": 5,
+					"story": 15,
+					"encounter": 21,
+					"total": 41,
+					"numbering": "№ 87-120"
+				},
+				{
+					"section": "scenarios",
+					"name": "05. Алтарь отчаяния",
+					"investigators": 3,
+					"story": 31,
+					"encounter": 4,
+					"total": 38,
+					"numbering": "№ 121-157"
+				},
+				{
+					"section": "scenarios",
+					"name": "06. Зов свыше",
+					"investigators": 0,
+					"story": 26,
+					"encounter": 13,
+					"total": 39,
+					"numbering": "№ 158-189"
+				},
+				{
+					"section": "scenarios",
+					"name": "07. Причастие",
+					"investigators": 4,
+					"story": 37,
+					"encounter": 5,
+					"total": 46,
+					"numbering": "№ 190-233"
+				},
+				{
+					"section": "scenarios",
+					"name": "08. Восход на Аркхэмом",
+					"investigators": 0,
+					"story": 29,
+					"encounter": 37,
+					"total": 66,
+					"numbering": "№ 234-282"
+				},
+				{
+					"section": "encounters",
+					"name": "Чудовища",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 283-284"
+				},
+				{
+					"section": "encounters",
+					"name": "Очень волнующе!",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 285-287"
+				},
+				{
+					"section": "encounters",
+					"name": "Разложение",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 288-290"
+				},
+				{
+					"section": "encounters",
+					"name": "Добро пожаловать в Ярнам",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 291-293"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Идона",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 294-297"
+				},
+				{
+					"section": "encounters",
+					"name": "Безмолвная молитва",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 298-300"
+				},
+				{
+					"section": "encounters",
+					"name": "Сияние",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 301-304"
+				},
+				{
+					"section": "encounters",
+					"name": "Исчезающее озеро",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 305-307"
+				},
+				{
+					"section": "encounters",
+					"name": "След когтя",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 9,
+					"total": 9,
+					"numbering": "№ 308-311"
+				},
+				{
+					"section": "encounters",
+					"name": "Нечистота",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 3,
+					"total": 3,
+					"numbering": "№ 312-314"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Мерго",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 315-317"
+				},
+				{
+					"section": "encounters",
+					"name": "Луна",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 5,
+					"total": 5,
+					"numbering": "№ 318-321"
+				},
+				{
+					"section": "encounters",
+					"name": "Метаморфоз",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 322-325"
+				},
+				{
+					"section": "encounters",
+					"name": "Охотники Ярнама",
+					"investigators": 12,
+					"story": 0,
+					"encounter": 14,
+					"total": 26,
+					"numbering": "№ 326-350"
+				},
+				{
+					"section": "encounters",
+					"name": "Глубокое море",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 351-353"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Рома",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 10,
+					"total": 10,
+					"numbering": "№ 351-357"
+				},
+				{
+					"section": "encounters",
+					"name": "Задания",
+					"investigators": 8,
+					"story": 12,
+					"encounter": 0,
+					"total": 20,
+					"numbering": "№ 358-375"
+				},
+				{
+					"section": "encounters",
+					"name": "Небесные",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 376-378"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Ибраитас",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 379-382"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Амигдалы",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 383-385"
+				},
+				{
+					"section": "encounters",
+					"name": "Глаз",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 386-389"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Бледнокровного",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 390-392"
+				},
+				{
+					"section": "encounters",
+					"name": "Идон Корч",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 393-395"
+				},
+				{
+					"section": "encounters",
+					"name": "Молочай",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 396-399"
+				},
+				{
+					"section": "encounters",
+					"name": "Потомок птумериан",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 400-403"
+				},
+				{
+					"section": "encounters",
+					"name": "Агенты Коса",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 8,
+					"total": 8,
+					"numbering": "№ 404-407"
+				},
+				{
+					"section": "encounters",
+					"name": "Астральная часовая башня",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 7,
+					"total": 7,
+					"numbering": "№ 408-411"
+				},
+				{
+					"section": "encounters",
+					"name": "Живая нить",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 412-413"
+				},
+				{
+					"section": "encounters",
+					"name": "Хрупкий сувенир",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 4,
+					"total": 4,
+					"numbering": "№ 414-415"
+				},
+				{
+					"section": "encounters",
+					"name": "Повешенный",
+					"investigators": 0,
+					"story": 0,
+					"encounter": 6,
+					"total": 6,
+					"numbering": "№ 416-421"
+				},
+				{
+					"section": "encounters",
+					"name": "Руководство",
+					"investigators": 6,
+					"story": 0,
+					"encounter": 0,
+					"total": 6,
+					"numbering": "№ 422-427"
+				},
+				{
+					"section": "encounters",
+					"name": "Союзники",
+					"investigators": 6,
+					"story": 0,
+					"encounter": 0,
+					"total": 6,
+					"numbering": "№ 428-433"
+				}
+			]
+		},
+		{
+			"name": "Симфония Эриха Цанна",
+			"nameWithYear": "Симфония Эриха Цанна (2020)",
+			"year": 2020,
+			"code": "zez",
+			"sections": {
+				"campaign": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Симфония Эриха Цанна",
+							"investigators": 11,
+							"story": 25,
+							"encounter": 32,
+							"total": 68
+						}
+					]
+				},
+				"scenarios": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Сценарий",
+							"investigators": 9,
+							"story": 24,
+							"encounter": 32,
+							"total": 65,
+							"numbering": "№ 1-45"
+						}
+					]
+				},
+				"encounters": {
+					"expectedCount": 1,
+					"items": [
+						{
+							"name": "Карта сыщика Изабель ла Фратта",
+							"investigators": 2,
+							"story": 1,
+							"encounter": 0,
+							"total": 3,
+							"numbering": "№ 46-48"
+						}
+					]
+				}
+			},
+			"dividers": [
+				{
+					"section": "campaign",
+					"name": "Симфония Эриха Цанна",
+					"investigators": 11,
+					"story": 25,
+					"encounter": 32,
+					"total": 68
+				},
+				{
+					"section": "scenarios",
+					"name": "Сценарий",
+					"investigators": 9,
+					"story": 24,
+					"encounter": 32,
+					"total": 65,
+					"numbering": "№ 1-45"
+				},
+				{
+					"section": "encounters",
+					"name": "Карта сыщика Изабель ла Фратта",
+					"investigators": 2,
+					"story": 1,
+					"encounter": 0,
+					"total": 3,
+					"numbering": "№ 46-48"
+				}
+			]
+		}
+	]
+}

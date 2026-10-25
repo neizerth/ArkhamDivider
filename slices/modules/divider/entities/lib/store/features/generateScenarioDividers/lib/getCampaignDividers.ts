@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
-import { getCampaignCards } from "@/modules/story/entities/lib";
+import { getCampaignCards } from "@/modules/story/entities/lib/logic/cards/getCampaignCards";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 
 type Options = {

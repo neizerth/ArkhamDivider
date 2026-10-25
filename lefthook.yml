@@ -1,16 +1,29 @@
+# Plain output: VS Code Git dialog strips ESC and shows raw [38;2;…] / [96m codes.
+colors: false
+no_tty: true
+
 pre-commit:
   parallel: true
   commands:
     format:
       files: git diff --cached --name-only
       glob: "*.{js,ts,jsx,tsx}"
-      run: npm run lint
+      run: npm run lint -- --colors=off
+      env:
+        NO_COLOR: "1"
+        FORCE_COLOR: "0"
     types:
       files: git diff --cached --name-only
       glob: "*.{js,ts,jsx,tsx}"
-      run: npm run ts:check
+      run: npx tsc --pretty false
+      env:
+        NO_COLOR: "1"
+        FORCE_COLOR: "0"
 commit-msg:
   parallel: true
   commands:
     commitlint:
       run: npx commitlint --edit
+      env:
+        NO_COLOR: "1"
+        FORCE_COLOR: "0"

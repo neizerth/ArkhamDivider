@@ -7,6 +7,7 @@ import {
 	getEncounterSetDividers,
 	getScenarioDividers,
 } from "./lib";
+import { selectCoreEncounters } from "./lib/selectors";
 
 function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
 	const story: ReturnType<typeof selectStoryWithRelations> = yield select(
@@ -16,6 +17,9 @@ function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
 	if (!story) {
 		return;
 	}
+
+	const coreEncounters: ReturnType<typeof selectCoreEncounters> =
+		yield select(selectCoreEncounters);
 
 	const campaignDividers = payload.campaignDivider
 		? getCampaignDividers({
@@ -36,6 +40,7 @@ function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
 		payload.encounterDividers || payload.scenarioEncounterDividers
 			? getEncounterSetDividers({
 					story,
+					coreEncounters,
 					includeEncounterSets: payload.encounterDividers,
 					includeReturnStory: payload.returnSet,
 					includeScenarioEncounterSets: payload.scenarioEncounterDividers,

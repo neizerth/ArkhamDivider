@@ -69,6 +69,7 @@ export type ScenarioDividerData = (
 			packCode: string;
 			cycleCode: string;
 			isExtra: boolean;
+			isCore: boolean;
 	  } & (
 			| {
 					subtype: "encounter-set";

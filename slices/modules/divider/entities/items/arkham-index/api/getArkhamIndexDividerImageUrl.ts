@@ -52,7 +52,7 @@ export function getArkhamIndexDividerImageUrl({
 	}
 
 	if (divider.type === "encounter") {
-		const { subtype, cycleCode, isExtra } = divider;
+		const { subtype, isCore } = divider;
 
 		const id =
 			subtype === "encounter-set"
@@ -63,7 +63,8 @@ export function getArkhamIndexDividerImageUrl({
 		const chapterCycle = chapterCycleCode[chapter];
 
 		// Return-to extras: story already resolves via return_to_code (rtptc → ptc).
-		const code = isExtra && cycleCode !== "return" ? chapterCycle : storyCode;
+
+		const code = isCore ? chapterCycle : storyCode;
 
 		return `${scenarioBaseUrl}/${code}/${orientation}/${id}.avif`;
 	}

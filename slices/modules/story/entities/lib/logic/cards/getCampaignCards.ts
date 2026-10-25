@@ -4,9 +4,11 @@ import type { EncounterSetTypeEntry } from "@/modules/encounterSet/shared/model"
 import type { StoryWithRelations } from "@/modules/story/shared/model";
 
 /**
- * Campaign size must count unique physical cards.
- * ArkhamDividerData merges related encounter cards into multiple sets, so summing
- * `size` double-counts (e.g. Dunwich 396 vs official 307).
+ * Campaign size is the sum of encounter-set type `size` values (unique sets only).
+ *
+ * Do not dedupe by collector number across sets: numbers collide between packs
+ * and alternate sets (Flood/Vortex, Doom of Arkham I/II) while Excel / Hobby /
+ * arkham-divider-data `validation.size` all sum `size` as-is.
  *
  * `scenario_encounter_sets` often stores scenario ids, not encounter-set codes
  * (e.g. Carnevale → `carnevale_of_horrors` vs set code `venice`). Resolve those
@@ -25,7 +27,6 @@ export const getCampaignCards = ({
 		),
 	]);
 
-	const seen = new Set<number>();
 	const byType = new Map<
 		string,
 		{ size: number; cards: Record<number, number> }
@@ -38,29 +39,13 @@ export const getCampaignCards = ({
 			}
 
 			const entry = byType.get(type) ?? { size: 0, cards: {} };
+			entry.size += size;
 
-			if (!cards) {
-				entry.size += size;
-				byType.set(type, entry);
-				continue;
-			}
-
-			const numbers = Object.keys(cards);
-			if (numbers.length === 0) {
-				entry.size += size;
-				byType.set(type, entry);
-				continue;
-			}
-
-			for (const number of numbers) {
-				const id = Number(number);
-				if (seen.has(id)) {
-					continue;
+			if (cards) {
+				for (const [number, qty] of Object.entries(cards)) {
+					const id = Number(number);
+					entry.cards[id] = (entry.cards[id] ?? 0) + qty;
 				}
-
-				seen.add(id);
-				entry.size += cards[id];
-				entry.cards[id] = cards[id];
 			}
 
 			byType.set(type, entry);

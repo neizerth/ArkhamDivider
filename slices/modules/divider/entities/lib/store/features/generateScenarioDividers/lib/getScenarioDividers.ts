@@ -1,8 +1,8 @@
 import { ascend, prop, sortWith } from "ramda";
 import { v4 } from "uuid";
 import type { Divider } from "@/modules/divider/shared/model";
-import { getScenarioCards } from "@/modules/story/entities/lib";
-import { getStoryScenarios } from "@/modules/story/shared/lib";
+import { getScenarioCards } from "@/modules/story/entities/lib/logic/cards/getScenarioCards";
+import { getStoryScenarios } from "@/modules/story/shared/lib/logic/scenario/getStoryScenarios";
 import type {
 	StoryScenarioWithRelations,
 	StoryWithRelations,
