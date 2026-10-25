@@ -24,5 +24,6 @@ const getConcealedCardsDivider = (): Divider => {
 		packCode: "tsk",
 		cycleCode: "tsk",
 		isExtra: false,
+		isCore: false,
 	};
 };
