@@ -11,6 +11,7 @@ import { selectLayout } from "@/modules/divider/entities/lib";
 import { generateScenarioDividers } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
 import {
 	deleteAllDividers,
+	selectDividersTotal,
 	selectScenarioParams,
 	setScenarioParams,
 } from "@/modules/divider/shared/lib";
@@ -42,6 +43,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 	const stories = useAppSelector(selectScenarioStories);
 	const layout = useAppSelector(selectLayout);
 	const defaultValues = useAppSelector(selectScenarioParams);
+	const dividersCount = useAppSelector(selectDividersTotal);
 
 	const { control, handleSubmit, getValues } = useForm<ScenarioDividerParams>({
 		defaultValues,
@@ -68,6 +70,8 @@ export function ScenarioDividerOptions(props: BoxProps) {
 		dispatch(deleteAllDividers());
 	}, [dispatch]);
 
+	const showButtons = Boolean(story || dividersCount > 0);
+
 	return (
 		<Box {...props}>
 			<form onSubmit={preventDefault}>
@@ -88,7 +92,7 @@ export function ScenarioDividerOptions(props: BoxProps) {
 								}}
 							/>
 						</Box>
-						{story && (
+						{showButtons && (
 							<Row
 								sx={{
 									flex: { xs: 1, sm: 0 },
@@ -111,30 +115,34 @@ export function ScenarioDividerOptions(props: BoxProps) {
 										<span>{t("Clear")}</span>
 									</Row>
 								</Button>
-								<Button
-									variant="contained"
-									sx={formButtonSx}
-									name="mode"
-									type="submit"
-									value="create"
-									onClick={generate("create")}
-								>
-									<Row gap={0.5} alignItems="center">
-										<Icon icon="check" />
-										<span> {t("Generate")}</span>
-									</Row>
-								</Button>
-								<Button
-									variant="contained"
-									sx={formButtonSx}
-									name="mode"
-									onClick={generate("add")}
-								>
-									<Row gap={0.5} alignItems="center">
-										<Icon icon="plus" />
-										<span> {t("Add")}</span>
-									</Row>
-								</Button>
+								{story && (
+									<>
+										<Button
+											variant="contained"
+											sx={formButtonSx}
+											name="mode"
+											type="submit"
+											value="create"
+											onClick={generate("create")}
+										>
+											<Row gap={0.5} alignItems="center">
+												<Icon icon="check" />
+												<span> {t("Generate")}</span>
+											</Row>
+										</Button>
+										<Button
+											variant="contained"
+											sx={formButtonSx}
+											name="mode"
+											onClick={generate("add")}
+										>
+											<Row gap={0.5} alignItems="center">
+												<Icon icon="plus" />
+												<span> {t("Add")}</span>
+											</Row>
+										</Button>
+									</>
+								)}
 							</Row>
 						)}
 					</Row>
