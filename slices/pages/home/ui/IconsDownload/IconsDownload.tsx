@@ -14,6 +14,7 @@ import { prefix } from "@/shared/util";
 const url = prefix(ArkhamDividerAPI.fontsUrl);
 
 const JUMBOTRON_MIN_HEIGHT = 200;
+const filename = "ArkhamDivider-Icons";
 
 export function IconsDownload() {
 	const { t } = useTranslation();
@@ -90,17 +91,32 @@ export function IconsDownload() {
 						</Typography>
 					</Stack>
 					<Row gap={2} flexWrap="wrap">
-						<Box component="a" href={svgUrl} style={{ textDecoration: "none" }}>
+						<Box
+							component="a"
+							href={svgUrl}
+							download={`${filename}.zip`}
+							style={{ textDecoration: "none" }}
+						>
 							<Button variant="contained" color="primary" size="large">
 								SVG
 							</Button>
 						</Box>
-						<Box component="a" href={pngUrl} style={{ textDecoration: "none" }}>
+						<Box
+							component="a"
+							href={pngUrl}
+							download={`${filename}.zip`}
+							style={{ textDecoration: "none" }}
+						>
 							<Button variant="contained" color="primary" size="large">
 								PNG
 							</Button>
 						</Box>
-						<Box component="a" href={ttfUrl} style={{ textDecoration: "none" }}>
+						<Box
+							component="a"
+							href={ttfUrl}
+							download={`${filename}.ttf`}
+							style={{ textDecoration: "none" }}
+						>
 							<Button variant="contained" color="primary" size="large">
 								TTF
 							</Button>
@@ -109,6 +125,7 @@ export function IconsDownload() {
 						<Box
 							component="a"
 							href={woffUrl}
+							download={`${filename}.woff`}
 							style={{ textDecoration: "none" }}
 						>
 							<Button variant="contained" color="primary" size="large">
@@ -118,6 +135,7 @@ export function IconsDownload() {
 						<Box
 							component="a"
 							href={woff2Url}
+							download={`${filename}.woff2`}
 							style={{ textDecoration: "none" }}
 						>
 							<Button variant="contained" color="primary" size="large">
