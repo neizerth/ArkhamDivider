@@ -23,6 +23,7 @@ export const getPlayerDividers = ({
 	const xpCosts = nullableCollection(options.xpCosts ?? []);
 
 	const dividers: Divider[] = [];
+	const hasFactionSubtype = subtypes.includes("faction");
 
 	for (const faction of factions) {
 		for (const subtype of subtypes) {
@@ -43,6 +44,22 @@ export const getPlayerDividers = ({
 			});
 		}
 		for (const xpCost of xpCosts) {
+			if (hasFactionSubtype) {
+				const params = getDividerSubtypeData({
+					subtype: "faction",
+					faction,
+				});
+				dividers.push({
+					id: v4(),
+					type: "player",
+					layoutType: "player",
+					side: "front",
+					faction,
+					xpCost,
+					storyCode,
+					...params,
+				});
+			}
 			for (const cardSlot of cardSlots) {
 				const title = cardSlotNames[cardSlot];
 				const icon = `${cardSlot}_inverted`;

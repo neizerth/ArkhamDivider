@@ -92,14 +92,13 @@ export function ClassicDividerXP(props: ClassicDividerXPProps) {
 			) : (
 				<Box position="relative" width="100%" height="1em" sx={containerSx}>
 					{isSkill && xpCost?.type === "fixed" && xpCost.value === 0 ? (
-						<>
-							<Background>
-								<Icon icon={item.nullBackground} color={frameColor} />
-							</Background>
-							<Level>
-								<Icon icon={"s_frame_background_null"} color={"#fff"} />
-							</Level>
-						</>
+						<Background
+							sx={{
+								transform: "translate(0.019em, 0.019em)",
+							}}
+						>
+							<Icon icon={item.nullBackground} color={"#000"} />
+						</Background>
 					) : (
 						<>
 							<Background position="relative" sx={backgroundIconSx}>
