@@ -5,9 +5,11 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { downloadFileAs } from "@/modules/core/file/features/download-file-as";
 import { useIconSelection } from "@/modules/core/icon/entities/lib";
 import { Icon } from "@/modules/core/icon/shared/ui";
 import { ArkhamDividerAPI } from "@/shared/api";
+import { useAppDispatch } from "@/shared/lib";
 import { Image, Row } from "@/shared/ui";
 import { prefix } from "@/shared/util";
 
@@ -18,6 +20,7 @@ const filename = "ArkhamDivider-Icons";
 
 export function IconsDownload() {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
 	const svgUrl = url`/icons.zip`;
 	const ttfUrl = url`/icons.ttf`;
 	const woffUrl = url`/icons.woff`;
@@ -31,6 +34,12 @@ export function IconsDownload() {
 			mode: "preview",
 		});
 	}, [startSelection]);
+	const download = useCallback(
+		(fileUrl: string, name: string) => {
+			dispatch(downloadFileAs({ url: fileUrl, name }));
+		},
+		[dispatch],
+	);
 	return (
 		<Container>
 			<Box
@@ -91,57 +100,46 @@ export function IconsDownload() {
 						</Typography>
 					</Stack>
 					<Row gap={2} flexWrap="wrap">
-						<Box
-							component="a"
-							href={svgUrl}
-							download={`${filename}.zip`}
-							style={{ textDecoration: "none" }}
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={() => download(svgUrl, `${filename}.zip`)}
 						>
-							<Button variant="contained" color="primary" size="large">
-								SVG
-							</Button>
-						</Box>
-						<Box
-							component="a"
-							href={pngUrl}
-							download={`${filename}.zip`}
-							style={{ textDecoration: "none" }}
+							SVG
+						</Button>
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={() => download(pngUrl, `${filename}.zip`)}
 						>
-							<Button variant="contained" color="primary" size="large">
-								PNG
-							</Button>
-						</Box>
-						<Box
-							component="a"
-							href={ttfUrl}
-							download={`${filename}.ttf`}
-							style={{ textDecoration: "none" }}
+							PNG
+						</Button>
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={() => download(ttfUrl, `${filename}.ttf`)}
 						>
-							<Button variant="contained" color="primary" size="large">
-								TTF
-							</Button>
-						</Box>
-
-						<Box
-							component="a"
-							href={woffUrl}
-							download={`${filename}.woff`}
-							style={{ textDecoration: "none" }}
+							TTF
+						</Button>
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={() => download(woffUrl, `${filename}.woff`)}
 						>
-							<Button variant="contained" color="primary" size="large">
-								WOFF
-							</Button>
-						</Box>
-						<Box
-							component="a"
-							href={woff2Url}
-							download={`${filename}.woff2`}
-							style={{ textDecoration: "none" }}
+							WOFF
+						</Button>
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={() => download(woff2Url, `${filename}.woff2`)}
 						>
-							<Button variant="contained" color="primary" size="large">
-								WOFF2
-							</Button>
-						</Box>
+							WOFF2
+						</Button>
 					</Row>
 					<Row>
 						<Button
