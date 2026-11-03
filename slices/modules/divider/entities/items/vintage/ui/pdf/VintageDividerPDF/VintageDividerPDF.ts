@@ -36,7 +36,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 	const params = props.params as VintageDividerParams | undefined;
 
 	const title = params?.customTitle ?? t(props.title);
-	const topTitle = params?.customTopTitle ?? (story ? t(story.name) : "");
+	const topTitle = params?.customTopTitle || (story?.name ? t(story.name) : "");
 	const tabsCount = getVintageDividerTabsCount(vintageLayout);
 
 	const tabIndex = selectDividerTabIndex({
@@ -59,7 +59,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 			tab: {
 				offsetInline: mm(O.tab.width * tabIndex),
 				width: mm(O.tab.width),
-				height: mm(O.tab.height),
+				height: mm(O.tab.height - O.topTitle.default.height),
 			},
 		});
 	}
@@ -67,7 +67,7 @@ export const VintageDividerPDF: PDFDivider<VintageDividerParams> = async (
 	const fontFamily = getVintageDividerTitleFontFamily(language);
 
 	// Draw top title (overprint black).
-	{
+	if (topTitle) {
 		const topCfg = getLocaleConfig(language, O.topTitle);
 		const topScale = params?.topTitleFontSizeScale ?? 100;
 		const h = mm(topCfg.height);

@@ -10,7 +10,6 @@ export const vintageDividerObjects = {
 			height: 8.2,
 			fontSize: 7.8,
 		},
-		ru: {},
 	},
 	topTitle: {
 		default: {
@@ -20,7 +19,6 @@ export const vintageDividerObjects = {
 			fontSize: 4,
 			height: 6.6,
 		},
-		ru: {},
 	},
 	tab: {
 		width: 30,

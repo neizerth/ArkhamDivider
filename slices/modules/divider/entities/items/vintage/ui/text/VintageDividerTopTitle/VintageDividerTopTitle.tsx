@@ -24,7 +24,8 @@ export function VintageDividerTopTitle({
 		...sxProp,
 	} as SxProps;
 
-	// Reuse the same editable title for now; separate param can be introduced later if needed.
+	const defaultValue = divider.story?.name ?? divider.title;
+
 	const {
 		value: title,
 		translatedValue: translatedTitle,
@@ -33,9 +34,10 @@ export function VintageDividerTopTitle({
 		onFontSizeChange,
 	} = useDividerText({
 		divider,
-		defaultValue: divider.title,
 		param: "customTopTitle",
 		fontSizeScaleParam: "topTitleFontSizeScale",
+		custom: true,
+		defaultValue,
 	});
 
 	return (

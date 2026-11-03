@@ -38,8 +38,8 @@ export const getShiftSx: VintageDividerSxCallback<{
 export const getTabCornerRadiusSx: VintageDividerSxCallback = ({ mm }) => ({
 	position: "absolute",
 	top: mm(-0.25),
-	left: mm(-0.25),
-	right: mm(-0.25),
+	left: mm(-0.15),
+	right: mm(-0.15),
 	bottom: mm(0.25),
 	borderRadius: `${mm(3)} ${mm(3)} 0 0`,
 	border: `${mm(0.25)} dashed red`,

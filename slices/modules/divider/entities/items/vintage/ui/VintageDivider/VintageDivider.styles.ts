@@ -137,7 +137,7 @@ export const getBodyCornerRadiusSx: VintageDividerSxCallback = ({
 		bottom: mm(-0.25),
 		border: `${mm(0.25)} dashed red`,
 		borderTop: "none",
-		top: mm(O.tab.height),
+		top: mm(O.tab.height - O.topTitle.default.height),
 		borderRadius: `0 0 ${mm(3)} ${mm(3)}`,
 	};
 };
