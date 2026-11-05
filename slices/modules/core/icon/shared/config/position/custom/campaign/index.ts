@@ -1,10 +1,12 @@
 import bloodborne from "./bloodborne";
 import celtic_rising from "./celtic_rising";
 import darkham_horror from "./darkham_horror";
+import devils_in_the_canyon from "./devils_in_the_canyon";
 import jumanji from "./jumanji";
 import night_of_vespers from "./night_of_vespers";
 import north_country_cycle from "./north_country_cycle";
 import of_sphinx_and_sands from "./of_sphinx_and_sands";
+import shadows_of_yog_sothoth from "./shadows_of_yog_sothoth";
 import souls_of_darkness from "./souls_of_darkness";
 import the_ghosts_of_onigawa from "./the_ghosts_of_onigawa";
 import the_matter_of_britain from "./the_matter_of_britain";
@@ -29,6 +31,8 @@ export default {
 	...zcf,
 	...zdm,
 	...darkham_horror,
+	...devils_in_the_canyon,
+	...shadows_of_yog_sothoth,
 	...zhod,
 	...jumanji,
 	...night_of_vespers,
