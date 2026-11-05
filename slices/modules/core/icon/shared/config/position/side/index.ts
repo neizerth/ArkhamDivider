@@ -9,6 +9,7 @@ import hotel from "./hotel";
 import lol from "./lol";
 import mtt from "./mtt";
 import tmg from "./tmg";
+import traces_to_nowhere_pack from "./traces_to_nowhere_pack";
 import wog from "./wog";
 import zbh from "./zbh";
 
@@ -26,4 +27,5 @@ export default {
 	...lol,
 	...tmg,
 	...wog,
+	...traces_to_nowhere_pack,
 };
