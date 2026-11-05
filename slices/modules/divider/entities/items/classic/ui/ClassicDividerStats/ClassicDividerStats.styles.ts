@@ -4,7 +4,7 @@ import { classicDividerTextColor } from "../../config/common";
 
 export const getSx: PrintSxCallback = ({ mm }) => ({
 	cursor: "pointer",
-	padding: mm(0.7),
+	padding: mm(1),
 	fontFamily: "ArnoPro, serif",
 	fontSize: mm(3),
 	gap: mm(0.8),
