@@ -55,6 +55,8 @@ npm run dev
 
 @Sarnetsky - Eugene Sarnetsky design template
 
+Alexander Gurtyak - artwork for fan expansions of the Arkham Index design
+
 ### Testing
 
 @fspoettel, @5argon, @polochamps

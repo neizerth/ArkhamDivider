@@ -37,6 +37,7 @@ Big thanks to everyone who contributed knowledge, data, design, and translations
 - @smallville247 - Arkhamesque design template
 - @Sarnetsky - Eugene Sarnetsky design template
 - @fabula_rasa - Reworked Return To template 
+- Alexander Gurtyak - artwork for fan expansions of the Arkham Index design
 
 ### Testing
 
