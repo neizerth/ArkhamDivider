@@ -37,7 +37,7 @@ Arkham Divider — это фанатский инструмент для удо�
 - @smallville247 — шаблон Arkhamesque
 - @Sarnetsky — шаблон Eugene Sarnetsky
 - @fabula_rasa - Базовый шаблон Возвращения 
-- Александр Гуртяк — подготовка артов для фан-дополнений дизайна Arkham Index
+- @aagurt — подготовка артов для фан-дополнений дизайна Arkham Index
 
 
 ### Тестирование

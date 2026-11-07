@@ -37,4 +37,5 @@ audit/
 .vitest-attachments/
 **/__screenshots__/
 test-results/
-.claude/
+.claude/*
+!.claude/settings.json

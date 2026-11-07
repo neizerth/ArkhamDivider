@@ -20,8 +20,11 @@ pre-commit:
         NO_COLOR: "1"
         FORCE_COLOR: "0"
 commit-msg:
-  parallel: true
+  # Strip first. Cursor injects its trailer before hooks, in parallel with commitlint.
+  parallel: false
   commands:
+    strip-ai-attribution:
+      run: sh ./scripts/strip-ai-commit-attribution.sh {1}
     commitlint:
       run: npx commitlint --edit
       env:
