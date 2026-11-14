@@ -15,7 +15,6 @@ export const useDividerParam = <T = unknown>({
 
 	return useCallback(
 		(value: T) => {
-			console.log("useDividerParam", dividerId, key, value);
 			dispatch(setDividerParam({ id: dividerId, key, value }));
 		},
 		[dispatch, dividerId, key],

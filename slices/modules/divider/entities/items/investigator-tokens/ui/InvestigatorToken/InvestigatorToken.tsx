@@ -32,7 +32,6 @@ export function InvestigatorToken(props: DividerWithRelations) {
 	const getPrintSx = usePrintSx(sxProps);
 
 	if (props.layoutType !== "investigator") {
-		console.log("not investigator");
 		return null;
 	}
 	const { faction } = props;

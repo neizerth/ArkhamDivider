@@ -26,8 +26,6 @@ function* worker() {
 		.filter((icon) => typeof icon !== "string")
 		.map((icon) => icon.mediaId as string);
 
-	// console.log("usedMediaIds", usedMediaIds);
-
 	revokeMediaExceptFor(usedMediaIds);
 }
 
