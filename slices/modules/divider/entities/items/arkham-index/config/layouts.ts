@@ -4,6 +4,8 @@ import { createSize } from "@/shared/util";
 import type { ArkhamIndexDividerLayout } from "../model";
 import { arkhamIndexCategoryId } from "./common";
 
+export const arkhamIndexDividerTabsCount = 3;
+
 const horizontal: ArkhamIndexDividerLayout = {
 	id: "arkham-index",
 	types: ["scenario", "player", "investigator"],
@@ -25,7 +27,7 @@ const horizontal: ArkhamIndexDividerLayout = {
 	mediaParams: ["customImage"],
 	tabs: {
 		type: "fixed",
-		value: 3,
+		value: arkhamIndexDividerTabsCount,
 	},
 	scenarioParams: {
 		campaignIcon: true,

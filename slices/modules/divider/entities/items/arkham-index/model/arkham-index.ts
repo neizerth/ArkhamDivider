@@ -45,11 +45,13 @@ export type ArkhamIndexDividerSxOptions = {
 	objects: ArkhamIndexDividerLayoutObjects;
 	showIcon: boolean;
 	tabIndex: number;
+	tabsCount: number;
 	tabSize: ArkhamIndexDividerTabSize;
 	indentSize: number;
 	faction: Faction;
 	fontFamily?: FontFamily;
 	backSideShift?: boolean;
+	centerTextByTab?: boolean;
 };
 
 export type ArkhamIndexDividerSxCallback<T = object> = PrintSxCallback<

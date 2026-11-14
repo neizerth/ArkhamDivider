@@ -3,6 +3,8 @@ type Options = {
 	bleed: number;
 	tabsCount: number;
 	tabWidth: number;
+	tabSize?: number;
+	offset?: number;
 };
 
 type Position = {
@@ -15,23 +17,25 @@ export const getDividerTabPosition = ({
 	bleed,
 	tabsCount,
 	tabWidth,
+	tabSize = 1,
+	offset = 0,
 }: Options): Position => {
-	const isFirstTab = tabIndex === 0;
+	const isFirst = isFirstTab(tabIndex);
 	const width = tabWidth + bleed * 2;
 
-	if (isFirstTab) {
+	if (isFirst) {
 		return {
 			width,
-			left: 0,
+			left: offset,
 		};
 	}
 
-	const isLastTab = tabIndex === tabsCount - 1;
+	const isLast = isLastTab({ tabIndex, tabsCount, tabSize });
 
-	if (isLastTab) {
+	if (isLast) {
 		return {
 			width,
-			right: 0,
+			right: offset,
 		};
 	}
 
@@ -41,4 +45,21 @@ export const getDividerTabPosition = ({
 		width,
 		left,
 	};
+};
+
+export const isFirstTab = (tabIndex: number) => {
+	return tabIndex === 0;
+};
+
+export const isLastTab = ({
+	tabIndex,
+	tabsCount,
+	tabSize,
+}: {
+	tabIndex: number;
+	tabsCount: number;
+	tabSize: number;
+}) => {
+	const restIndex = tabsCount - tabSize;
+	return tabIndex === restIndex;
 };

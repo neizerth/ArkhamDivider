@@ -1,11 +1,8 @@
 import { Box } from "@mui/material";
-import { getDividerTabPosition } from "@/modules/divider/shared/lib/logic/tab";
-import { selectBleedEnabled, usePrintSx } from "@/modules/print/shared/lib";
-import { useAppSelector } from "@/shared/lib";
+import { usePrintSx } from "@/modules/print/shared/lib";
 import { Image } from "@/shared/ui";
 import { prefix } from "@/shared/util";
 import { vintageDividerBaseUrl as baseUrl } from "../../config/common";
-import { getVintageDividerTabsCount } from "../../lib";
 import { useVintageDividerContext } from "../VintageDividerContext/VintageDividerContext";
 import * as S from "./VintageDivider.styles";
 
@@ -28,35 +25,11 @@ export const Body = () => {
 	return <Image src={asset(id)} sx={sx} />;
 };
 
-export const Tab = ({
-	tabWidth,
-	color: backgroundColor,
-}: {
-	tabWidth: number;
-	color: string;
-}) => {
-	const { tabIndex, layout, sxOptions } = useVintageDividerContext();
-	const bleedEnabled = useAppSelector(selectBleedEnabled);
-
-	const tabsCount = getVintageDividerTabsCount(layout);
-
-	const position = getDividerTabPosition({
-		tabIndex,
-		bleed: 3,
-		tabsCount,
-		tabWidth,
-	});
-
-	const tabPosition = {
-		...position,
-		top: -3,
-	};
+export const Tab = ({ color: backgroundColor }: { color: string }) => {
+	const { sxOptions } = useVintageDividerContext();
 
 	const getPrintSx = usePrintSx(sxOptions);
-	const sx = getPrintSx(S.getTabImageSx, {
-		position: tabPosition,
-		bleedEnabled,
-	});
+	const sx = getPrintSx(S.getTabImageSx);
 
 	const colorSxBase = getPrintSx(S.getTabColorSx);
 

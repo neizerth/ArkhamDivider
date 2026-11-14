@@ -56,10 +56,9 @@ export function VintageDivider(props: VintageDividerProps) {
 
 	const sxOptions = useVintageDividerSxOptions({
 		tabIndex,
+		tabsCount,
 		withXP: Boolean(xpCost),
 	});
-
-	const tabWidth = sxOptions.objects.tab.width;
 
 	const defaultTabColor = getDefaultTabColor(props);
 	const tabColor = props.params?.tabColor ?? defaultTabColor;
@@ -99,7 +98,7 @@ export function VintageDivider(props: VintageDividerProps) {
 			<Container>
 				<BleedView sx={bleedViewSx}>
 					<C.Body />
-					<C.Tab tabWidth={tabWidth} color={tabColor} />
+					<C.Tab color={tabColor} />
 				</BleedView>
 				<Content hideBorderRadius side={props.side}>
 					<TopTitle sx={topTitleSx} />

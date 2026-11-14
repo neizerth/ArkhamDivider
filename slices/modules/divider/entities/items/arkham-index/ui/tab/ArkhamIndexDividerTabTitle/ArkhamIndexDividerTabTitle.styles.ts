@@ -25,7 +25,10 @@ export const getTitleSx: ArkhamIndexDividerIconLocaleSxCallback = ({
 };
 
 export const getTextSx: ArkhamIndexDividerSxCallback = (options) => {
-	const textAlign = getArkhamIndexTitleAlign(options);
+	const textAlign = getArkhamIndexTitleAlign({
+		...options,
+		centerTextByTab: false,
+	});
 
 	return {
 		height: "100%",

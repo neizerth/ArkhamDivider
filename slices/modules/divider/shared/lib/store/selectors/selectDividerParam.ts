@@ -10,7 +10,7 @@ type Options = {
 export const selectDividerParam =
 	<T>({ id, key }: Options) =>
 	(state: RootState) =>
-		selector(state, id, key) as T | undefined;
+		selector(state, id, key) as T;
 
 const selector = createSelector(
 	[selectDividerById, (_: RootState, _id: string, key: string) => key],

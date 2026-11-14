@@ -1,5 +1,6 @@
 import { percent, prefix } from "@/shared/util";
 import { arkhamIndexDividerBaseUrl } from "../../../config";
+import { getArkhamIndexDividerContentTitleObject as getTitleObject } from "../../../lib/logic/objects/getArkhamIndexDividerContentTitleObject";
 import type { ArkhamIndexDividerSxCallback } from "../../../model";
 
 const asset = prefix(arkhamIndexDividerBaseUrl);
@@ -34,16 +35,17 @@ export const getBottomLineSx: ArkhamIndexDividerSxCallback = ({
 	right: mm(-3),
 });
 
-export const getTitleSx: ArkhamIndexDividerSxCallback = ({
-	mm,
-	objects: O,
-}) => ({
-	position: "absolute",
-	top: mm(O.title.top),
-	left: mm(O.title.left),
-	right: mm(O.title.right),
-	height: mm(O.title.height),
-});
+export const getTitleSx: ArkhamIndexDividerSxCallback = (options) => {
+	const { mm } = options;
+	const T = getTitleObject(options);
+	return {
+		position: "absolute",
+		top: mm(T.top),
+		left: mm(T.left),
+		right: mm(T.right),
+		height: mm(T.height),
+	};
+};
 
 export const getImageSx: ArkhamIndexDividerSxCallback = ({
 	mm,

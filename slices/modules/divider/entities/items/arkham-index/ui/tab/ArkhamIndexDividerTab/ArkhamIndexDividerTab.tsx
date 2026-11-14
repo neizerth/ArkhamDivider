@@ -139,11 +139,14 @@ export function ArkhamIndexDividerTab() {
 		showIcon,
 	});
 
+	const { tabsCount } = sxOptions;
+
 	const { shiftLeft, shiftRight, canShiftLeft, canShiftRight } = useTabPosition(
 		{
 			dividerId: divider.id,
 			tabIndex,
-			tabsCount: 3,
+			tabsCount,
+			tabSize: tabSize === "full" ? tabsCount : tabSize,
 		},
 	);
 

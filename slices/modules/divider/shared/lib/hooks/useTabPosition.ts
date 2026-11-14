@@ -5,9 +5,15 @@ type Options = {
 	dividerId: string;
 	tabIndex: number;
 	tabsCount: number;
+	tabSize?: number;
 };
 
-export const useTabPosition = ({ dividerId, tabIndex, tabsCount }: Options) => {
+export const useTabPosition = ({
+	dividerId,
+	tabIndex,
+	tabsCount,
+	tabSize = 1,
+}: Options) => {
 	const setTabIndex = useDividerParam({
 		dividerId,
 		key: "tabIndex",
@@ -28,8 +34,8 @@ export const useTabPosition = ({ dividerId, tabIndex, tabsCount }: Options) => {
 		setTabIndex(tabIndex + 1);
 	}, [setTabIndex, tabIndex, tabsCount]);
 
-	const canShiftLeft = tabIndex > 0;
-	const canShiftRight = tabIndex < tabsCount - 1;
+	const canShiftLeft = tabIndex > 0 && tabSize < tabsCount;
+	const canShiftRight = tabIndex < tabsCount - tabSize;
 
 	return {
 		shiftLeft,

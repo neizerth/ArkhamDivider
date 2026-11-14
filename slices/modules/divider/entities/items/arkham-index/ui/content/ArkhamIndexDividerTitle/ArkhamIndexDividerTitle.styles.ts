@@ -64,3 +64,32 @@ export const getTitleOutlineSx: ArkhamIndexDividerSxCallback = ({ mm }) => {
 		right: mm(-0.5),
 	};
 };
+
+export const getCenterTextSx: ArkhamIndexDividerSxCallback = ({
+	mm,
+	tabIndex,
+	tabsCount,
+	tabSize,
+	centerTextByTab,
+}) => {
+	const base = {
+		position: "absolute",
+		zIndex: 2,
+		top: mm(2),
+	} as const;
+
+	if (centerTextByTab && tabSize !== tabsCount) {
+		const offset = mm(-2);
+		return {
+			...base,
+			...(tabIndex === 0
+				? { transform: `translateX(100%)`, right: offset }
+				: { transform: `translateX(-100%)`, left: offset }),
+		};
+	}
+
+	return {
+		...base,
+		right: mm(0.5),
+	};
+};

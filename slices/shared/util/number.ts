@@ -7,3 +7,6 @@ export const round = (value: number, precision = 2) => {
 
 export const minmax = (min: number, max: number) => (value: number) =>
 	Math.min(Math.max(value, min), max);
+
+export const isNumber = (value: unknown): value is number =>
+	typeof value === "number";

@@ -6,8 +6,13 @@ import {
 	selectLayoutFontFamily,
 } from "@/modules/divider/entities/lib";
 import { getDividerIcon } from "@/modules/divider/features/lib";
-import { getDividerFaction } from "@/modules/divider/shared/lib";
+import {
+	getDividerFaction,
+	selectDividerParam,
+	useTabsCount,
+} from "@/modules/divider/shared/lib";
 import { useAppSelector } from "@/shared/lib";
+import { arkhamIndexDividerTabsCount } from "../../config";
 import type {
 	ArkhamIndexDividerLayout,
 	ArkhamIndexDividerProps,
@@ -41,8 +46,16 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 		selectGlobalLayoutParam<boolean | undefined>("backSideShift"),
 	);
 
+	const centerTextByTab = useAppSelector(
+		selectDividerParam<boolean | undefined>({
+			id: divider.id,
+			key: "centerTextByTab",
+		}),
+	);
+
 	const backSideShift = layoutBackSideShift && divider.side === "back";
 	const faction = getDividerFaction(divider) ?? "neutral";
+	const tabsCount = useTabsCount(divider.id) ?? arkhamIndexDividerTabsCount;
 
 	return useMemo((): ArkhamIndexDividerSxOptions => {
 		return {
@@ -54,6 +67,8 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 			faction,
 			fontFamily,
 			backSideShift,
+			tabsCount,
+			centerTextByTab,
 		};
 	}, [
 		objects,
@@ -64,5 +79,7 @@ export const useArkhamIndexDividerSxOptions = (options: Options) => {
 		faction,
 		fontFamily,
 		backSideShift,
+		tabsCount,
+		centerTextByTab,
 	]);
 };

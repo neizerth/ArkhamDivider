@@ -1,5 +1,5 @@
+import { getDividerTabPosition } from "@/modules/divider/shared/lib/logic/tab";
 import type { PrintSxCallback } from "@/modules/print/shared/model";
-import type { BoxRect } from "@/shared/model";
 import { percent } from "@/shared/util";
 import { getVintageDividerIconObject } from "../../lib/logic/objects/getVintageDividerIconObject";
 import type {
@@ -50,18 +50,30 @@ export const getBodySx: PrintSxCallback = () => ({
 	bottom: 0,
 });
 
-export const getTabImageSx: VintageDividerSxCallback<{
-	position: Partial<BoxRect>;
-	bleedEnabled?: boolean;
-}> = ({ mm, position: P, bleedEnabled, objects: O }) => ({
-	position: "absolute",
-	top: P.top && mm(P.top),
-	width: P.width && mm(P.width),
-	height: mm(O.tab.height),
-	left: P.left && mm(P.left),
-	right: P.right && mm(P.right),
-	clipPath: bleedEnabled ? "" : `inset(0 ${mm(3)} 0 ${mm(3)})`,
-});
+export const getTabImageSx: VintageDividerSxCallback = ({
+	mm,
+	tabIndex,
+	tabsCount,
+	bleedEnabled,
+	objects: O,
+}) => {
+	const P = getDividerTabPosition({
+		tabIndex,
+		bleed: 3,
+		tabsCount,
+		tabWidth: O.tab.width,
+	});
+
+	return {
+		position: "absolute",
+		top: mm(-3),
+		width: P.width && mm(P.width),
+		height: mm(O.tab.height),
+		left: P.left && mm(P.left),
+		right: P.right && mm(P.right),
+		clipPath: bleedEnabled ? "" : `inset(0 ${mm(3)} 0 ${mm(3)})`,
+	};
+};
 
 export const getTabColorSx = () => ({
 	position: "absolute",

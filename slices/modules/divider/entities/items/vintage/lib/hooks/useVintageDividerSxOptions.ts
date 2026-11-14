@@ -6,17 +6,22 @@ import { getVintageDividerObjects } from "../logic";
 
 type Options = {
 	tabIndex: number;
+	tabsCount: number;
 	withXP: boolean;
 };
 
-export function useVintageDividerSxOptions({ tabIndex, withXP }: Options) {
+export function useVintageDividerSxOptions({
+	tabIndex,
+	tabsCount,
+	withXP,
+}: Options) {
 	const layoutId = useAppSelector(selectLayoutId) as string;
 	const bleedEnabled = useAppSelector(selectBleedEnabled);
 
 	const sxOptions = useMemo(() => {
 		const objects = getVintageDividerObjects(layoutId);
-		return { objects, tabIndex, bleedEnabled, withXP };
-	}, [layoutId, tabIndex, bleedEnabled, withXP]);
+		return { objects, tabIndex, tabsCount, bleedEnabled, withXP };
+	}, [layoutId, tabIndex, tabsCount, bleedEnabled, withXP]);
 
 	return sxOptions;
 }
