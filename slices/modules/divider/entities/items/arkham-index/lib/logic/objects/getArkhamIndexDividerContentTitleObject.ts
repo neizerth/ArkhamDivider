@@ -41,14 +41,14 @@ export const getArkhamIndexDividerContentTitleObject = ({
 	if (isFirstTab(tabIndex)) {
 		return {
 			...O.title,
-			right: restWidth,
+			right: restWidth - O.title.right / 2,
 		};
 	}
 
 	if (isLastTab({ tabIndex, tabsCount, tabSize })) {
 		return {
 			...O.title,
-			left: restWidth,
+			left: restWidth - O.title.left / 2,
 		};
 	}
 
