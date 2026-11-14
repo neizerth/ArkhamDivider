@@ -16,6 +16,7 @@ import {
 	useDividerParamState,
 } from "@/modules/divider/shared/lib";
 import { usePrintSx } from "@/modules/print/shared/lib";
+import { NotExportable } from "@/modules/render/shared/ui";
 import { useStoryTranslation } from "@/modules/story/shared/lib";
 import { useAppDispatch } from "@/shared/lib";
 import { Row } from "@/shared/ui";
@@ -108,25 +109,29 @@ export function ArkhamIndexDividerTitle(props: ArkhamIndexDividerTitleProps) {
 				strokeSx={strokeSx}
 				visible
 			/>
-
-			<Row sx={centerTextSx} gap={2} displayPrint="none">
-				<Tooltip title={t("divider.arkham-index.setAllCenterTextByTab")} arrow>
-					<Button
-						variant="outlined"
-						onClick={() => setAllCenterTextByTab(centerTextByTab)}
+			<NotExportable>
+				<Row sx={centerTextSx} gap={2} displayPrint="none">
+					<Tooltip
+						title={t("divider.arkham-index.setAllCenterTextByTab")}
+						arrow
 					>
-						<AutoAwesomeMotionIcon />
-					</Button>
-				</Tooltip>
-				<Tooltip title={t("divider.arkham-index.centerTextByTab")} arrow>
-					<Button
-						variant={centerTextByTab ? "contained" : "outlined"}
-						onClick={() => setCenterTextByTab(!centerTextByTab)}
-					>
-						<FormatAlignCenterIcon />
-					</Button>
-				</Tooltip>
-			</Row>
+						<Button
+							variant="outlined"
+							onClick={() => setAllCenterTextByTab(centerTextByTab)}
+						>
+							<AutoAwesomeMotionIcon />
+						</Button>
+					</Tooltip>
+					<Tooltip title={t("divider.arkham-index.centerTextByTab")} arrow>
+						<Button
+							variant={centerTextByTab ? "contained" : "outlined"}
+							onClick={() => setCenterTextByTab(!centerTextByTab)}
+						>
+							<FormatAlignCenterIcon />
+						</Button>
+					</Tooltip>
+				</Row>
+			</NotExportable>
 		</Box>
 	);
 }
