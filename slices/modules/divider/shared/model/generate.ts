@@ -8,6 +8,12 @@ import type {
 
 export type GenerateDividersMode = "add" | "create";
 
+export type ScenarioDividerSortBy =
+	| "type"
+	| "name"
+	| "cardsCountAsc"
+	| "cardsCountDesc";
+
 export type ScenarioDividerParams = {
 	campaignDivider: boolean;
 	encounterDividers: boolean;
@@ -20,6 +26,7 @@ export type ScenarioDividerParams = {
 	extraEncounterSets: boolean;
 	returnSet: boolean;
 	singleSide: boolean;
+	sortBy: ScenarioDividerSortBy;
 };
 
 export type PlayerDividerParams = {

@@ -1,5 +1,7 @@
 import { put, select, takeEvery } from "redux-saga/effects";
-import { addManyDividers, setDividers } from "@/modules/divider/shared/lib";
+import { sortScenarioDividers } from "@/modules/divider/entities/lib/logic";
+import { selectDividers, setDividers } from "@/modules/divider/shared/lib";
+import type { Divider } from "@/modules/divider/shared/model";
 import { selectStoryWithRelations } from "@/modules/story/entities/lib";
 import { generateScenarioDividers } from "./generateScenarioDividers";
 import {
@@ -48,15 +50,24 @@ function* worker({ payload }: ReturnType<typeof generateScenarioDividers>) {
 				})
 			: [];
 
-	const dividers = [
+	const generated = [
 		...campaignDividers,
 		...scenarioDividers,
 		...encounterSetDividers,
 	];
 
-	const actionCreator = payload.mode === "add" ? addManyDividers : setDividers;
+	let existing: Divider[] = [];
 
-	yield put(actionCreator(dividers));
+	if (payload.mode === "add") {
+		existing = yield select(selectDividers);
+	}
+
+	const dividers = sortScenarioDividers(
+		[...existing, ...generated],
+		payload.sortBy,
+	);
+
+	yield put(setDividers(dividers));
 }
 
 export function* generateScenarioDividersSaga() {

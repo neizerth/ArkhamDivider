@@ -2,8 +2,10 @@ import type { SxProps } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid, { type GridProps } from "@mui/material/Grid";
+import type { SelectChangeEvent } from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import { isUndefined } from "ramda-adjunct";
+import { useCallback } from "react";
 import { type Control, Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { OfficialIcon } from "@/modules/core/icon/entities/ui";
@@ -12,14 +14,36 @@ import {
 	selectEncounterSetDividersCount,
 	selectScenarioDividersCount,
 } from "@/modules/divider/entities/lib";
+import { sortScenarioDividers } from "@/modules/divider/entities/lib/store/features/sortScenarioDividers";
 import type {
 	DividerLayout,
 	ScenarioDividerParams,
+	ScenarioDividerSortBy,
 } from "@/modules/divider/shared/model";
 import { selectDoubleSidePrintEnabled } from "@/modules/print/shared/lib";
 import type { StoryWithRelations } from "@/modules/story/shared/model";
-import { useAppSelector } from "@/shared/lib";
+import { useAppDispatch, useAppSelector } from "@/shared/lib";
+import { Select } from "@/shared/ui";
 import * as C from "./ScenarioDividerOptionsForm.components";
+
+const SORT_BY_OPTIONS: {
+	id: ScenarioDividerSortBy;
+	value: ScenarioDividerSortBy;
+	labelKey: string;
+}[] = [
+	{ id: "type", value: "type", labelKey: "sortBy.type" },
+	{ id: "name", value: "name", labelKey: "sortBy.name" },
+	{
+		id: "cardsCountAsc",
+		value: "cardsCountAsc",
+		labelKey: "sortBy.cardsCountAsc",
+	},
+	{
+		id: "cardsCountDesc",
+		value: "cardsCountDesc",
+		labelKey: "sortBy.cardsCountDesc",
+	},
+];
 
 type ScenarioDividerOptionsFormProps = GridProps & {
 	layout: DividerLayout;
@@ -36,6 +60,7 @@ export function ScenarioDividerOptionsForm({
 	...props
 }: ScenarioDividerOptionsFormProps) {
 	const { t } = useTranslation();
+	const dispatch = useAppDispatch();
 
 	const doubleSidePrintEnabled = useAppSelector(selectDoubleSidePrintEnabled);
 	const campaignDividerCount = useAppSelector(selectCampaignDividersCount);
@@ -43,6 +68,18 @@ export function ScenarioDividerOptionsForm({
 		selectEncounterSetDividersCount,
 	);
 	const scenarioDividerCount = useAppSelector(selectScenarioDividersCount);
+
+	const onSortByChange = useCallback(
+		(
+			event: SelectChangeEvent<unknown>,
+			fieldOnChange: (value: ScenarioDividerSortBy) => void,
+		) => {
+			const sortBy = event.target.value as ScenarioDividerSortBy;
+			fieldOnChange(sortBy);
+			dispatch(sortScenarioDividers(sortBy));
+		},
+		[dispatch],
+	);
 
 	const { scenarioParams, additionalParams } = layout;
 
@@ -120,86 +157,105 @@ export function ScenarioDividerOptionsForm({
 					)}
 				/>
 			</Grid>
-			{showAdditionalOptions && (
-				<Grid size={size} sx={columnSx}>
-					<C.Header>{t("Additional")}</C.Header>
 
-					<Stack gap={1}>
-						{scenarioParams?.cardsCount && (
-							<>
-								<Controller
-									name="campaignSize"
-									control={control}
-									render={({ field }) => (
-										<FormControlLabel
-											control={
-												<Checkbox {...field} checked={field.value ?? false} />
-											}
-											label={t("Campaign Size")}
-										/>
-									)}
-								/>
-								<Controller
-									name="encounterSize"
-									control={control}
-									render={({ field }) => (
-										<FormControlLabel
-											control={
-												<Checkbox {...field} checked={field.value ?? false} />
-											}
-											label={t("Encounter Size")}
-										/>
-									)}
-								/>
-								<Controller
-									name="scenarioSize"
-									control={control}
-									render={({ field }) => (
-										<FormControlLabel
-											control={
-												<Checkbox {...field} checked={field.value ?? false} />
-											}
-											label={t("Scenario Size")}
-										/>
-									)}
-								/>
-							</>
-						)}
-						{hasExtraEncounterSets && (
+			<Grid size={size} sx={columnSx}>
+				<C.Header>{t("Additional")}</C.Header>
+
+				<Stack gap={1}>
+					{scenarioParams?.cardsCount && (
+						<>
 							<Controller
-								name="extraEncounterSets"
+								name="campaignSize"
 								control={control}
 								render={({ field }) => (
 									<FormControlLabel
 										control={
 											<Checkbox {...field} checked={field.value ?? false} />
 										}
-										label={t("Extra Dividers")}
+										label={t("Campaign Card Count")}
 									/>
 								)}
 							/>
-						)}
-						{layout.additionalParams?.singleSide && (
 							<Controller
-								name="singleSide"
+								name="encounterSize"
 								control={control}
 								render={({ field }) => (
 									<FormControlLabel
 										control={
-											<Checkbox
-												{...field}
-												checked={field.value ?? false}
-												disabled={!doubleSidePrintEnabled}
-											/>
+											<Checkbox {...field} checked={field.value ?? false} />
 										}
-										label={t("layout.singleSideLayout")}
+										label={t("Encounter Card Count")}
 									/>
 								)}
 							/>
+							<Controller
+								name="scenarioSize"
+								control={control}
+								render={({ field }) => (
+									<FormControlLabel
+										control={
+											<Checkbox {...field} checked={field.value ?? false} />
+										}
+										label={t("Scenario Card Count")}
+									/>
+								)}
+							/>
+						</>
+					)}
+					{hasExtraEncounterSets && (
+						<Controller
+							name="extraEncounterSets"
+							control={control}
+							render={({ field }) => (
+								<FormControlLabel
+									control={
+										<Checkbox {...field} checked={field.value ?? false} />
+									}
+									label={t("Extra Dividers")}
+								/>
+							)}
+						/>
+					)}
+					{layout.additionalParams?.singleSide && (
+						<Controller
+							name="singleSide"
+							control={control}
+							render={({ field }) => (
+								<FormControlLabel
+									control={
+										<Checkbox
+											{...field}
+											checked={field.value ?? false}
+											disabled={!doubleSidePrintEnabled}
+										/>
+									}
+									label={t("layout.singleSideLayout")}
+								/>
+							)}
+						/>
+					)}
+					<Controller
+						name="sortBy"
+						control={control}
+						render={({ field }) => (
+							<Select
+								label={t("Sort by")}
+								fullWidth
+								size="small"
+								data={SORT_BY_OPTIONS.map(({ id, value, labelKey }) => ({
+									id,
+									value,
+									label: t(labelKey),
+								}))}
+								{...field}
+								onChange={(event) => onSortByChange(event, field.onChange)}
+								value={field.value ?? "type"}
+							/>
 						)}
-					</Stack>
-				</Grid>
-			)}
+					/>
+				</Stack>
+			</Grid>
+
 			<Grid size={12} sx={columnSx}>
 				{returnStory && (
 					<Controller

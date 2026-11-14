@@ -29,6 +29,7 @@ const initialState: DividerState = {
 	scenarioParams: {
 		encounterDividers: true,
 		scenarioDividers: true,
+		sortBy: "type",
 	},
 	playerParams: {
 		factions,
