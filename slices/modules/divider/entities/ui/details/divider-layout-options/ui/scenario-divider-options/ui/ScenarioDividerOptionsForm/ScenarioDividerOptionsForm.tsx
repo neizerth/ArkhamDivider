@@ -32,7 +32,8 @@ const SORT_BY_OPTIONS: {
 	labelKey: string;
 }[] = [
 	{ id: "type", value: "type", labelKey: "sortBy.type" },
-	{ id: "name", value: "name", labelKey: "sortBy.name" },
+	{ id: "nameAsc", value: "nameAsc", labelKey: "sortBy.nameAsc" },
+	{ id: "nameDesc", value: "nameDesc", labelKey: "sortBy.nameDesc" },
 	{
 		id: "cardsCountAsc",
 		value: "cardsCountAsc",

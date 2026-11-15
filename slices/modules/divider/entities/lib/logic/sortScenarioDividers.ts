@@ -1,3 +1,4 @@
+import { ascend, descend, sortWith } from "ramda";
 import type {
 	Divider,
 	ScenarioDividerSortBy,
@@ -17,21 +18,30 @@ export const sortScenarioDividers = (
 
 	switch (sortBy) {
 		case "type":
-			return list.toSorted(
-				(a, b) =>
-					(TYPE_ORDER[a.type] ?? Infinity) - (TYPE_ORDER[b.type] ?? Infinity),
-			);
-		case "name":
-			return list.toSorted((a, b) => a.title.localeCompare(b.title));
+			return sortWith([ascend(getTypeOrd), ascend(getNameOrd)], list);
+		case "nameAsc":
+			return sortWith([ascend(getNameOrd), ascend(getTypeOrd)], list);
+		case "nameDesc":
+			return sortWith([descend(getNameOrd), ascend(getTypeOrd)], list);
 		case "cardsCountAsc":
-			return list.toSorted(
-				(a, b) => (a.cardsCount ?? Infinity) - (b.cardsCount ?? Infinity),
+			return sortWith(
+				[ascend(getCardsCountOrd), ascend(getTypeOrd), ascend(getNameOrd)],
+				list,
 			);
 		case "cardsCountDesc":
-			return list.toSorted(
-				(a, b) => (b.cardsCount ?? Infinity) - (a.cardsCount ?? Infinity),
+			return sortWith(
+				[descend(getCardsCountOrd), ascend(getTypeOrd), ascend(getNameOrd)],
+				list,
 			);
 		default:
 			return list;
 	}
 };
+
+const getTypeOrd = (divider: Divider) => {
+	return TYPE_ORDER[divider.type] ?? Infinity;
+};
+
+const getNameOrd = (divider: Divider) => divider.title;
+
+const getCardsCountOrd = (divider: Divider) => divider.cardsCount ?? Infinity;

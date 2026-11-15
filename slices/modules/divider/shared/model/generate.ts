@@ -10,7 +10,8 @@ export type GenerateDividersMode = "add" | "create";
 
 export type ScenarioDividerSortBy =
 	| "type"
-	| "name"
+	| "nameAsc"
+	| "nameDesc"
 	| "cardsCountAsc"
 	| "cardsCountDesc";
 
