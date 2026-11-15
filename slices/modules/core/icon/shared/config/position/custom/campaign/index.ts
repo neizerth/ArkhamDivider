@@ -10,6 +10,7 @@ import shadows_of_yog_sothoth from "./shadows_of_yog_sothoth";
 import souls_of_darkness from "./souls_of_darkness";
 import the_ghosts_of_onigawa from "./the_ghosts_of_onigawa";
 import the_matter_of_britain from "./the_matter_of_britain";
+import the_phantom_of_the_opera from "./the_phantom_of_the_opera";
 import winter_winds from "./winter_winds";
 import zau from "./zau";
 import zaw from "./zaw";
@@ -44,4 +45,5 @@ export default {
 	...winter_winds,
 	...the_ghosts_of_onigawa,
 	...the_matter_of_britain,
+	...the_phantom_of_the_opera,
 };
