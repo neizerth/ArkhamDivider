@@ -75,6 +75,7 @@ export const getScenarioNumberSx: VintageDividerSxCallback = ({ mm }) => ({
 
 export const getScenarioNumberTextSx: VintageDividerSxCallback = ({ mm }) => ({
 	fontSize: mm(1.3),
+	lineHeight: 1,
 	position: "relative",
 	transform: "translateY(12%)",
 	whiteSpace: "nowrap",
