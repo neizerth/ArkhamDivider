@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/material/styles";
-import { Icon } from "@/modules/core/icon/shared/ui";
 import { useDividerCardsCount } from "@/modules/divider/entities/lib";
+import { DividerIcon as Icon } from "@/modules/divider/features/ui";
 import { selectShowDividerCampaignIcon } from "@/modules/divider/shared/lib";
 import type { DividerWithRelations } from "@/modules/divider/shared/model";
 import { usePrintSx } from "@/modules/print/shared/lib";

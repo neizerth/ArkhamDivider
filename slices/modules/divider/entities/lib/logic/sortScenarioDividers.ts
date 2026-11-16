@@ -1,5 +1,4 @@
 import { ascend, descend, sortWith } from "ramda";
-import { normalizeScenarioDividerSortBy } from "@/modules/divider/shared/lib";
 import type {
 	Divider,
 	ScenarioDividerSortBy,
@@ -15,9 +14,7 @@ export const sortScenarioDividers = (
 	dividers: Divider[],
 	sortBy: ScenarioDividerSortBy = "type",
 ): Divider[] => {
-	const list = [...dividers];
-
-	switch (normalizeScenarioDividerSortBy(sortBy)) {
+	switch (sortBy) {
 		case "type":
 			return sortWith(
 				[
@@ -27,7 +24,7 @@ export const sortScenarioDividers = (
 					ascend(getMinCardNumberOrd),
 					ascend(getNameOrd),
 				],
-				list,
+				dividers,
 			);
 		case "name":
 			return sortWith(
@@ -37,7 +34,7 @@ export const sortScenarioDividers = (
 					ascend(getPositionOrd),
 					ascend(getMinCardNumberOrd),
 				],
-				list,
+				dividers,
 			);
 		case "cardsCount":
 			return sortWith(
@@ -47,7 +44,7 @@ export const sortScenarioDividers = (
 					ascend(getPositionOrd),
 					ascend(getNameOrd),
 				],
-				list,
+				dividers,
 			);
 		case "minCardNumber":
 			return sortWith(
@@ -57,10 +54,10 @@ export const sortScenarioDividers = (
 					descend(getTypeOrd),
 					ascend(getNameOrd),
 				],
-				list,
+				dividers,
 			);
 		default:
-			return list;
+			return dividers;
 	}
 };
 

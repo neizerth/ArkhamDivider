@@ -15,7 +15,6 @@ import {
 	selectScenarioDividersCount,
 } from "@/modules/divider/entities/lib";
 import { sortScenarioDividers } from "@/modules/divider/entities/lib/store/features/sortScenarioDividers";
-import { normalizeScenarioDividerSortBy } from "@/modules/divider/shared/lib";
 import type {
 	DividerLayout,
 	ScenarioDividerParams,
@@ -249,7 +248,6 @@ export function ScenarioDividerOptionsForm({
 								}))}
 								{...field}
 								onChange={(event) => onSortByChange(event, field.onChange)}
-								value={normalizeScenarioDividerSortBy(field.value)}
 							/>
 						)}
 					/>
