@@ -105,6 +105,11 @@ export const getEncounterSetDividers = (
 
 		const packCode = encounterSet.pack_code ?? "";
 		const cycleCode = encounterSet.cycle_code ?? "";
+		const isReturnEncounter = returnEncounterSets.some(
+			propEq(encounterSet.code, "code"),
+		);
+		const position =
+			isReturnEncounter && returnStory ? returnStory.position : story.position;
 
 		return {
 			id: v4(),
@@ -121,7 +126,9 @@ export const getEncounterSetDividers = (
 			icon,
 			cardsCount,
 			cards,
+			minCardNumber: encounterSet.min_card_number,
 			storyCode,
+			storyPosition: position,
 		};
 	});
 
@@ -170,6 +177,9 @@ export const getEncounterSetDividers = (
 
 		const packCode = scenario.encounterSet?.pack_code ?? "";
 		const cycleCode = scenario.encounterSet?.cycle_code ?? "";
+		const isReturnScenario = returnScenarioCodes.includes(scenario.id);
+		const position =
+			isReturnScenario && returnStory ? returnStory.position : story.position;
 
 		return {
 			id: v4(),
@@ -186,7 +196,10 @@ export const getEncounterSetDividers = (
 			icon,
 			cardsCount,
 			cards,
+			minCardNumber:
+				scenario.min_card_number ?? scenario.encounterSet?.min_card_number,
 			storyCode,
+			storyPosition: position,
 		};
 	});
 

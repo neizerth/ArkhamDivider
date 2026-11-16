@@ -10,10 +10,9 @@ export type GenerateDividersMode = "add" | "create";
 
 export type ScenarioDividerSortBy =
 	| "type"
-	| "nameAsc"
-	| "nameDesc"
-	| "cardsCountAsc"
-	| "cardsCountDesc";
+	| "name"
+	| "minCardNumber"
+	| "cardsCount";
 
 export type ScenarioDividerParams = {
 	campaignDivider: boolean;

@@ -11,7 +11,12 @@ export const selectCoreEncounters = createSelector(
 		return coreStories.reduce((acc, story) => {
 			const chapter = story.chapter ?? 1;
 			const encounters = acc[chapter] ?? [];
-			acc[chapter] = uniq([...encounters, ...story.encounter_sets]);
+			// scenario_encounter_sets too — core's arkham/torch/tentacles are reused as extras.
+			acc[chapter] = uniq([
+				...encounters,
+				...story.encounter_sets,
+				...story.scenario_encounter_sets,
+			]);
 			return acc;
 		}, {} as CoreEncounters);
 	},

@@ -32,18 +32,13 @@ const SORT_BY_OPTIONS: {
 	labelKey: string;
 }[] = [
 	{ id: "type", value: "type", labelKey: "sortBy.type" },
-	{ id: "nameAsc", value: "nameAsc", labelKey: "sortBy.nameAsc" },
-	{ id: "nameDesc", value: "nameDesc", labelKey: "sortBy.nameDesc" },
 	{
-		id: "cardsCountAsc",
-		value: "cardsCountAsc",
-		labelKey: "sortBy.cardsCountAsc",
+		id: "minCardNumber",
+		value: "minCardNumber",
+		labelKey: "sortBy.minCardNumber",
 	},
-	{
-		id: "cardsCountDesc",
-		value: "cardsCountDesc",
-		labelKey: "sortBy.cardsCountDesc",
-	},
+	{ id: "name", value: "name", labelKey: "sortBy.name" },
+	{ id: "cardsCount", value: "cardsCount", labelKey: "sortBy.cardsCount" },
 ];
 
 type ScenarioDividerOptionsFormProps = GridProps & {

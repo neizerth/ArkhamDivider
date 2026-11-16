@@ -12,7 +12,7 @@ const storyToDivider = (story: StoryWithRelations): Divider => {
 	const cards = getCampaignCards(story);
 	const cardsCount = cards.reduce((acc, { size }) => acc + size, 0);
 
-	const { icon } = story;
+	const { icon, position } = story;
 
 	return {
 		id: v4(),
@@ -24,6 +24,7 @@ const storyToDivider = (story: StoryWithRelations): Divider => {
 		icon,
 		cards,
 		cardsCount,
+		storyPosition: position,
 	};
 };
 

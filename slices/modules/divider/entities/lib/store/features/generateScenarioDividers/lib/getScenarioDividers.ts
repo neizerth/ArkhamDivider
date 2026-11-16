@@ -58,6 +58,11 @@ export const getScenarioDividers = ({
 		const { icon } = scenario;
 
 		const storyCode = getScenarioStoryCode(scenario);
+		const isReturnScenario = returnScenarioCodes.includes(scenario.id);
+		const position =
+			isReturnScenario && story.returnStory
+				? story.returnStory.position
+				: story.position;
 
 		return {
 			id: v4(),
@@ -68,8 +73,10 @@ export const getScenarioDividers = ({
 			icon,
 			cardsCount,
 			cards,
+			minCardNumber: scenario.min_card_number,
 			storyCode,
 			scenario,
+			storyPosition: position,
 		};
 	});
 };

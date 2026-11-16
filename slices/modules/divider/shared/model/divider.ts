@@ -88,6 +88,8 @@ export type ScenarioDividerData = (
 	layoutType: "scenario";
 	storyCode: string;
 	cardsCount?: number;
+	minCardNumber?: number;
+	storyPosition?: number;
 	cards?: EncounterSetTypeEntry[];
 };
 

@@ -18,19 +18,44 @@ export const sortScenarioDividers = (
 
 	switch (sortBy) {
 		case "type":
-			return sortWith([ascend(getTypeOrd), ascend(getNameOrd)], list);
-		case "nameAsc":
-			return sortWith([ascend(getNameOrd), ascend(getTypeOrd)], list);
-		case "nameDesc":
-			return sortWith([descend(getNameOrd), ascend(getTypeOrd)], list);
-		case "cardsCountAsc":
 			return sortWith(
-				[ascend(getCardsCountOrd), ascend(getTypeOrd), ascend(getNameOrd)],
+				[
+					ascend(getTypeOrd),
+					ascend(getPositionOrd),
+					ascend(getScenarioNumberOrd),
+					ascend(getMinCardNumberOrd),
+					ascend(getNameOrd),
+				],
 				list,
 			);
-		case "cardsCountDesc":
+		case "name":
 			return sortWith(
-				[descend(getCardsCountOrd), ascend(getTypeOrd), ascend(getNameOrd)],
+				[
+					ascend(getNameOrd),
+					ascend(getTypeOrd),
+					ascend(getPositionOrd),
+					ascend(getMinCardNumberOrd),
+				],
+				list,
+			);
+		case "cardsCount":
+			return sortWith(
+				[
+					ascend(getCardsCountOrd),
+					ascend(getTypeOrd),
+					ascend(getPositionOrd),
+					ascend(getNameOrd),
+				],
+				list,
+			);
+		case "minCardNumber":
+			return sortWith(
+				[
+					ascend(getPositionOrd),
+					ascend(getMinCardNumberOrd),
+					descend(getTypeOrd),
+					ascend(getNameOrd),
+				],
 				list,
 			);
 		default:
@@ -40,6 +65,27 @@ export const sortScenarioDividers = (
 
 const getTypeOrd = (divider: Divider) => {
 	return TYPE_ORDER[divider.type] ?? Infinity;
+};
+
+const getPositionOrd = (divider: Divider) => {
+	if (divider.layoutType !== "scenario" || divider.type === "campaign") {
+		return Infinity;
+	}
+	return divider.storyPosition ?? Infinity;
+};
+
+const getScenarioNumberOrd = (divider: Divider) => {
+	if (divider.type !== "scenario") {
+		return Infinity;
+	}
+	return divider.scenario.number ?? Infinity;
+};
+
+const getMinCardNumberOrd = (divider: Divider) => {
+	if (divider.layoutType !== "scenario" || divider.type === "campaign") {
+		return Infinity;
+	}
+	return divider.minCardNumber ?? Infinity;
 };
 
 const getNameOrd = (divider: Divider) => divider.title;
