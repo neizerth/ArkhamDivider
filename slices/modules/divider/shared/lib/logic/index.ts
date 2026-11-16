@@ -3,6 +3,7 @@ export * from "./createLayoutGroups";
 export * from "./getDefaultDividerFontFamily";
 export * from "./getSupportedLayoutDPI";
 export * from "./isSkillDivider";
+export * from "./normalizeScenarioDividerSortBy";
 export * from "./params";
 export * from "./type";
 export * from "./xp";

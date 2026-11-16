@@ -11,6 +11,7 @@ import { selectLayout } from "@/modules/divider/entities/lib";
 import { generateScenarioDividers } from "@/modules/divider/entities/lib/store/features/generateScenarioDividers";
 import {
 	deleteAllDividers,
+	normalizeScenarioDividerSortBy,
 	selectDividersTotal,
 	selectScenarioParams,
 	setScenarioParams,
@@ -42,7 +43,11 @@ export function ScenarioDividerOptions(props: BoxProps) {
 	const story = useAppSelector(selectStoryWithRelations);
 	const stories = useAppSelector(selectScenarioStories);
 	const layout = useAppSelector(selectLayout);
-	const defaultValues = useAppSelector(selectScenarioParams);
+	const scenarioParams = useAppSelector(selectScenarioParams);
+	const defaultValues = {
+		...scenarioParams,
+		sortBy: normalizeScenarioDividerSortBy(scenarioParams.sortBy),
+	};
 	const dividersCount = useAppSelector(selectDividersTotal);
 
 	const { control, handleSubmit, getValues } = useForm<ScenarioDividerParams>({

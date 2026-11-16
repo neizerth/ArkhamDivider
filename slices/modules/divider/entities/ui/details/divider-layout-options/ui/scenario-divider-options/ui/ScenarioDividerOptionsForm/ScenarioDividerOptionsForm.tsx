@@ -15,6 +15,7 @@ import {
 	selectScenarioDividersCount,
 } from "@/modules/divider/entities/lib";
 import { sortScenarioDividers } from "@/modules/divider/entities/lib/store/features/sortScenarioDividers";
+import { normalizeScenarioDividerSortBy } from "@/modules/divider/shared/lib";
 import type {
 	DividerLayout,
 	ScenarioDividerParams,
@@ -53,6 +54,7 @@ export function ScenarioDividerOptionsForm({
 	story,
 	control,
 	defaultValues,
+	onChange,
 	...props
 }: ScenarioDividerOptionsFormProps) {
 	const { t } = useTranslation();
@@ -73,8 +75,10 @@ export function ScenarioDividerOptionsForm({
 			const sortBy = event.target.value as ScenarioDividerSortBy;
 			fieldOnChange(sortBy);
 			dispatch(sortScenarioDividers(sortBy));
+			// MUI Select onChange does not bubble to Grid; persist params explicitly.
+			onChange?.(event as never);
 		},
-		[dispatch],
+		[dispatch, onChange],
 	);
 
 	const { scenarioParams, additionalParams } = layout;
@@ -94,7 +98,7 @@ export function ScenarioDividerOptionsForm({
 	};
 
 	return (
-		<Grid container {...props}>
+		<Grid container {...props} onChange={onChange}>
 			<Grid size={size} sx={columnSx}>
 				<C.Header>{t("Campaign")}</C.Header>
 				<Controller
@@ -245,7 +249,7 @@ export function ScenarioDividerOptionsForm({
 								}))}
 								{...field}
 								onChange={(event) => onSortByChange(event, field.onChange)}
-								value={field.value ?? "type"}
+								value={normalizeScenarioDividerSortBy(field.value)}
 							/>
 						)}
 					/>

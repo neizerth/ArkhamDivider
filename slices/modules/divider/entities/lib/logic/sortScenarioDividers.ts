@@ -1,4 +1,5 @@
 import { ascend, descend, sortWith } from "ramda";
+import { normalizeScenarioDividerSortBy } from "@/modules/divider/shared/lib";
 import type {
 	Divider,
 	ScenarioDividerSortBy,
@@ -16,7 +17,7 @@ export const sortScenarioDividers = (
 ): Divider[] => {
 	const list = [...dividers];
 
-	switch (sortBy) {
+	switch (normalizeScenarioDividerSortBy(sortBy)) {
 		case "type":
 			return sortWith(
 				[
