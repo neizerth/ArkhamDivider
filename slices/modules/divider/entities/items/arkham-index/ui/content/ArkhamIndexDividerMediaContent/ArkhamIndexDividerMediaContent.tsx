@@ -4,7 +4,11 @@ import { Icon } from "@/modules/core/icon/shared/ui";
 import { usePrintSx } from "@/modules/print/shared/lib";
 import { NotExportable } from "@/modules/render/shared/ui";
 import { Image, Row, Upload } from "@/shared/ui";
-import { useArkhamIndexImage, useArkhamIndexImageCode } from "../../../lib";
+import {
+	hasArkhamIndexDividerArt,
+	useArkhamIndexImage,
+	useArkhamIndexImageCode,
+} from "../../../lib";
 import { useArkhamIndexContext } from "../../ArkhamIndexContext";
 import { ArkhamIndexDividerTitle } from "../ArkhamIndexDividerTitle";
 import * as S from "./ArkhamIndexDividerMediaContent.styles";
@@ -40,7 +44,9 @@ export function ArkhamIndexDividerMediaContent(
 
 	const copyCode = useArkhamIndexImageCode(url);
 
-	const dividerImage = divider.story?.supported ? url : "/images/blank.avif";
+	const dividerImage = hasArkhamIndexDividerArt(divider)
+		? url
+		: "/images/blank.avif";
 
 	return (
 		<Box {...props}>
