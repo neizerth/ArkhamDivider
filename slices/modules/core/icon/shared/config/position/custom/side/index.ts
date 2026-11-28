@@ -5,6 +5,7 @@ import code_red_at_bleeding_heart from "./code_red_at_bleeding_heart";
 import knightfall from "./knightfall";
 import return_to_consternation_on_the_constellation from "./return_to_consternation_on_the_constellation";
 import return_to_the_wendigo from "./return_to_the_wendigo";
+import sanitarium from "./sanitarium";
 import stranger_things from "./stranger_things";
 import the_collector from "./the_collector";
 import the_festival from "./the_festival";
@@ -46,4 +47,5 @@ export default {
 	...the_limens_of_belief,
 	...the_nameless_city,
 	...zwtws,
+	...sanitarium,
 };
